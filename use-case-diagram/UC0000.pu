@@ -3,7 +3,7 @@
 ' https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
 
 
-title ユースケース図
+'title ユースケース図
 
 left to right direction
 skinparam packageStyle rectangle
