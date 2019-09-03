@@ -1,0 +1,57 @@
+@startuml
+' http://plantuml.com/
+' https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+
+
+title ユースケース図
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor ゲスト
+' 教員
+actor 登録ユーザ
+' 図書館員,モデレータ
+actor リポジトリ管理者
+actor システム管理者
+' 外部システム
+actor IRDB 
+actor ERDB_JP
+actor RSS_Reader
+
+' WEKO3
+actor コミュニティ管理者
+
+rectangle WEKO3 {
+
+' ゲスト
+ゲスト -- (キーワード検索)
+ゲスト -- (ツリーからのディレクトリ検索)
+ゲスト -- (アイテム詳細閲覧)
+ゲスト -- (ランキング閲覧)
+
+' 登録ユーザ
+登録ユーザ -- (アイテム登録)
+登録ユーザ -- (登録アイテムワークフロー)
+
+' リポジトリ管理者
+リポジトリ管理者 -- (アイテムタイプ作成・編集)
+リポジトリ管理者 -- (アイテム一括管理)
+リポジトリ管理者 -- (ツリー編集)
+リポジトリ管理者 -- (査読／承認)
+リポジトリ管理者 -- (インポート)
+リポジトリ管理者 -- (ログ解析閲覧)
+リポジトリ管理者 -- (デザインカスタマイズ)
+リポジトリ管理者 -- (ランキング管理)
+リポジトリ管理者 -- (OAI-PMH管理)
+
+' システム管理者
+システム管理者  -- (ユーザ管理)
+
+' 外部システム連携
+(OAI-PMH) -- IRDB
+(KBART) -- ERDB_JP
+(RSS) --  RSS_Reader
+
+}
+@enduml
