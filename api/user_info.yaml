@@ -1,0 +1,368 @@
+openapi: 3.0.3
+info:
+  title: ユーザー情報取得用WEB API
+  version: "1.0"
+tags:
+  - name: users
+    description: ユーザー情報
+paths:
+  /api/{version}/users:
+    get:
+      tags:
+        - users
+      summary: ユーザー情報検索
+      description: |-
+        ユーザー情報の検索を行う。
+        |ロール|動作|
+        |----|----|
+        |リポジトリ管理者|全ユーザーを検索可能|
+        |一般ユーザー|全ユーザーを検索可能<br>一部の検索条件は使用不可|
+        |ゲストユーザー|APIを実行できない|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: id
+          in: query
+          description: 検索条件(ユーザーID)
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: 検索条件(ユーザー名)
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: 検索条件(メールアドレス)
+          schema:
+            type: string
+        - name: active
+          in: query
+          description: 検索条件(active)
+          schema:
+            type: boolean
+            default: true
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+        - name: page
+          in: query
+          description: オフセットページネーションのページ数
+          schema:
+            type: integer
+            default: 1
+        - name: cursor
+          in: query
+          description: カーソルページネーションのカーソル(この次のデータから取得)
+          schema:
+            type: string
+            default: null
+        - name: limit
+          in: query
+          description: 取得する検索結果の最大数
+          schema:
+            type: integer
+            default: 10
+        - name: sort
+          in: query
+          description: ソートキー
+          schema:
+            type: string
+            default: id
+        - name: simple_data
+          in: query
+          description: |-
+            簡易データを取得するかどうか  
+            ※簡易データ:IDのみのデータ
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: 検索成功
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                example: "no-cache, no-store, must-revalidate"
+            Pragma:
+              schema:
+                type: string
+                example: "no-cache"
+            Expires:
+              schema:
+                type: integer
+                example: "0"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/Users"
+                  - $ref: "#/components/schemas/UsersSimple"
+        "400":
+          description: パラメータ不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["user:read"]
+
+  /api/{version}/users/{id}:
+    get:
+      tags:
+        - users
+      summary: ユーザー情報取得
+      description: |-
+        指定したIDのユーザー情報を取得する。
+        |ロール|動作|
+        |----|----|
+        |リポジトリ管理者|全ユーザーを取得可能|
+        |一般ユーザー|全ユーザーを取得可能|
+        |ゲストユーザー|APIを実行できない|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: id
+          in: path
+          description: 取得するユーザーのID
+          required: true
+          schema:
+            type: integer
+          example: 1
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: If-None-Match
+          in: header
+          description: 前回取得したETagの値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 前回取得したLast-Modifiedの値
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+        - name: include_item_info
+          in: query
+          description: |-
+            ユーザーに関連するアイテム情報を取得する
+            - アップロードしたアイテム
+            - ダウンロード可能なアイテム(制限公開ファイル)
+          schema:
+            type: boolean
+            default: true
+      responses:
+        "200":
+          description: 検索成功
+          headers:
+            Etag:
+              schema:
+                type: string
+            Last-Modified:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDetail"
+        "304":
+          description: 前回取得時から更新なし
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: ユーザーが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["user:read"]
+
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: アイテムID
+          example: 10
+        name:
+          type: string
+          description: アイテム名
+          example: The item
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ユーザーID
+          example: 10
+        name:
+          type: string
+          description: ユーザー名
+          example: The user
+        email:
+          type: string
+          description: メールアドレス
+          example: example@email.com
+        timezone:
+          type: string
+          description: 使用するタイムゾーン
+          example: "Etc/GMT-9"
+        language:
+          type: string
+          description: 使用する言語
+          example: Japanese
+        active:
+          type: boolean
+          description: 有効フラグ
+          example: true
+    UserSimple:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ユーザーID
+          example: 10
+    UserDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ユーザーID
+          example: 10
+        name:
+          type: string
+          description: ユーザー名
+          example: The user
+        email:
+          type: string
+          description: メールアドレス
+          example: example@email.com
+        active:
+          type: boolean
+          description: 有効フラグ
+          example: true
+        upload_items:
+          type: array
+          description: アップロードしたアイテム
+          items:
+            $ref: "#/components/schemas/Item"
+        downloadable_items:
+          type: array
+          description: ダウンロード可能なアイテム(制限公開ファイル)
+          items:
+            $ref: "#/components/schemas/Item"
+    Users:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/User"
+        total_results:
+          type: integer
+          description: 検索条件に一致した項目数
+          example: 100
+        count_results:
+          type: integer
+          description: このレスポンスに含まれる項目数
+          example: 10
+        cursor:
+          type: string
+          description: 検索結果の最後の項目のカーソル
+          example: 1234567890000
+    UsersSimple:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserSimple"
+        total_results:
+          type: integer
+          description: 検索条件に一致した項目数
+          example: 100
+        count_results:
+          type: integer
+          description: このレスポンスに含まれる項目数
+          example: 10
+        cursor:
+          type: string
+          description: 検索結果の最後の項目のカーソル
+          example: 1234567890000
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item
+            "file:read": Grants access to read file
+            "index:read": Grants access to read index
+            "author:read": Grants access to read author
+            "statistics:read": Grants access to read statistics
+            "user:read": Grants access to read user

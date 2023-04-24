@@ -1,0 +1,243 @@
+openapi: 3.0.3
+info:
+  title: 著者情報取得用WEB API
+  version: "1.0"
+tags:
+  - name: author_info
+    description: 著者情報取得
+paths:
+  /api/{version}/authors/{author_id}:
+    get:
+      tags:
+        - author_info
+      summary: 著者情報取得
+      description: |-
+        指定した著者情報の取得
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用不可能|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: author_id
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: Accept-Language
+          in: header
+          description: 表示する言語の指定
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Bearer アクセストークン
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+        - name: If-None-Match
+          in: header
+          description: 1回目のレスポンスヘッダーETagに設定された値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 1回目のレスポンスヘッダーLast-Modifiedに設定された値
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            E-Tag:
+              schema:
+                type: string
+            Last-Modified:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                 $ref: "#/components/schemas/ResponseBody"
+        "304":
+          description: 前回取得時から更新なし
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: 指定した著者が存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "412":
+          description: ヘッダで定義した前提条件が満たされていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: サーバー内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["user:read"]
+
+components:
+  schemas:
+    ResponseBody:
+      type: object
+      properties:
+        affiliationInfo:
+          $ref: "#/components/schemas/affiliationInfo"
+        authorIdInfo:
+          $ref: "#/components/schemas/authorIdInfo"
+        authorNameInfo:
+          $ref: "#/components/schemas/authorNameInfo"
+        emailInfo:
+          $ref: "#/components/schemas/emailInfo"
+        gather_flg:
+          type: integer
+        id:
+          $ref: "#/components/schemas/elasticsearch"
+        is_deleted:
+          type: string
+        pk_id:
+          type: string
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+    affiliationInfo:
+      type: array
+      items:
+        type: object
+        properties:
+          affiliationNameInfo: 
+            $ref: "#/components/schemas/affiliationNameInfo"
+          identifierInfo:
+            $ref: "#/components/schemas/identifierInfo"
+    affiliationNameInfo: 
+      type: array
+      items: 
+        type: object
+        properties:
+          affiliationName:
+            type: string
+          affiliationNameLang:
+            type: string
+          affiliationNameShowFlg:
+            type: string
+    identifierInfo:
+      type: array
+      items: 
+        type: object
+        properties:
+          affiliationId:
+            type: string
+          affiliationIdType:
+            type: string
+          identifierShowFlg:
+            type: string
+    authorIdInfo:
+      type: array
+      items: 
+        type: object
+        properties:
+          authorId:
+            type: string
+          authorIdShowFlg:
+            type: string
+          idType:
+            type: string
+    authorNameInfo:
+      type: object
+      properties:
+        familyName:
+          type: string
+        firstName:
+          type: string
+        fullName:
+          type: string
+        language:
+          type: string
+        nameFormat:
+          type: string
+        nameShowFlg:
+          type: string
+    emailInfo:
+      type: array
+      items: 
+        type: object
+        properties:
+          email:
+            type: string
+    elasticsearch:
+      type: object
+      properties:
+        _id:
+          type: string
+        _index:
+          type: string
+        _primary_term:
+          type: integer
+        _seq_no:
+          type: integer
+        _shards:
+          $ref: "#/components/schemas/shards"
+        _type:
+          type: string
+        _version:
+          type: integer
+        result:
+          type: string
+    shards:
+      type: object
+      properties:
+        failed:
+          type: integer
+        successful: 
+          type: integer  
+        total: 
+          type: integer
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item
+            "file:read": Grants access to read file
+            "index:read": Grants access to read index
+            "author:read": Grants access to read author
+            "statistics:read": Grants access to read statistics
+            "user:read": Grants access to read user

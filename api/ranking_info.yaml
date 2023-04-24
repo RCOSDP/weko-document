@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: ランキング情報取得用WEB API
+  version: "1.0"
+tags:
+  - name: ranking
+    description: ランキング情報
+paths:
+  /api/{version}/ranking/{ranking_type}:
+    get:
+      tags:
+        - rankings
+      summary: ランキング情報取得
+      description: |-
+        指定したranking_typeのランキング情報を取得する。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|全ランキングを取得可能|
+        |リポジトリ管理者|全ランキングを取得可能|
+        |コミュニティ管理者|全ランキングを取得可能|
+        |登録ユーザー|全ランキングを取得可能|
+        |一般ユーザー|全ランキングを取得可能|
+        |ゲストユーザー|全ランキングを取得可能|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: ranking_type
+          in: path
+          description: 取得するランキングタイプ
+          required: true
+          schema:
+            type: string
+          example: most_reviewed_items
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: If-None-Match
+          in: header
+          description: 前回取得したETagの値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 前回取得したLast-Modifiedの値
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+        - name: item_period
+          in: query
+          description: 新着アイテムの統計期間(現在日からの過去日数)
+          schema:
+            type: integer
+        - name: statistical_period
+          in: query
+          description: ランキングの統計期間(現在日からの過去日数)
+          schema:
+            type: integer
+        - name: display_rank
+          required: true
+          in: query
+          description: ランキングの表示件数
+          schema:
+            type: integer            
+      responses:
+        "200":
+          description: 正常終了
+          headers:
+            Etag:
+              schema:
+                type: string
+            Last-Modified:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ranking"
+        "304":
+          description: 前回取得時から更新なし
+        "400":
+          description: バリデーションエラー、ランキング表示許可エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: 内部サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["user:read"]
+
+components:
+  schemas:
+    ranking:
+      type: object
+      properties:
+        ranking_type:
+          type: string
+          description: ランキングタイプ
+          example: download_count    
+        ranking:
+          type: object
+          description: ランキング
+          items:
+            $ref: "#/components/schemas/ranking"
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item
+            "file:read": Grants access to read file
+            "index:read": Grants access to read index
+            "author:read": Grants access to read author
+            "statistics:read": Grants access to read statistics
+            "user:read": Grants access to read user

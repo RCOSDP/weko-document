@@ -1,0 +1,1039 @@
+openapi: 3.0.3
+info:
+  title: アイテム情報取得用WEB API
+  version: "1.0"
+tags:
+  - name: items
+    description: アイテム情報
+paths:
+  /api/{version}/records/{pid}/detail:
+    get:
+      tags:
+        - items
+      summary: アイテム詳細情報取得
+      description: |-
+        アイテムの詳細情報を取得する。
+        |ロール|動作|
+        |----|----|
+        |リポジトリ管理者|全アイテムを取得可能|
+        |一般ユーザー|権限がないアイテムは取得不可|
+        |ゲストユーザー|権限がないアイテムは取得不可|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: pid
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: number
+          example: 1
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: If-None-Match
+          in: header
+          description: 前回取得したETagの値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 前回取得したLast-Modifiedの値
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            Etag:
+              description: アイテム情報のバージョンID
+              schema:
+                type: string
+            Last-Modified:
+              description: アイテム情報の更新日時
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+        "304":
+          description: 前回取得時から更新なし
+        "400":
+          description: リクエスト不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: アイテムが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+  /api/{version}/records/{pid}/versions:
+    get:
+      tags:
+        - items
+      summary: アイテムバージョン情報取得
+      description: |-
+        アイテムのバージョン情報を取得する。
+        |ロール|動作|
+        |----|----|
+        |リポジトリ管理者|全アイテムを取得可能|
+        |一般ユーザー|権限がないアイテムは取得不可|
+        |ゲストユーザー|権限がないアイテムは取得不可|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: pid
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: number
+          example: 1
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: If-None-Match
+          in: header
+          description: 前回取得したETagの値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 前回取得したLast-Modifiedの値
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            Etag:
+              description: アイテム情報のバージョンID
+              schema:
+                type: string
+            Last-Modified:
+              description: アイテム情報の更新日時
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemVersions"
+        "304":
+          description: 前回取得時から更新なし
+        "400":
+          description: リクエスト不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: アイテムが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+  /api/{version}/records/{pid}/cites/{citename}:
+    get:
+      tags:
+        - items
+      summary: アイテム引用情報取得
+      description: |-
+        アイテムの引用情報を取得する。
+        |ロール|動作|
+        |----|----|
+        |リポジトリ管理者|全アイテムを取得可能|
+        |一般ユーザー|権限がないアイテムは取得不可|
+        |ゲストユーザー|権限がないアイテムは取得不可|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: pid
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: number
+          example: 1
+        - name: citename
+          in: path
+          description: サイト名
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+      responses:
+        "200":
+          description: 取得成功
+          content:
+            text/plain:
+              example: "1. https://weko3.example.org/api/v1/records/1."
+        "400":
+          description: リクエスト不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: アイテムまたはサイトが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+  /api/{version}/oai:
+    get:
+      tags:
+        - items
+      summary: OAI-PMH
+      description: |-
+        OAI-PMHプロトコルに従ってメタデータを自動収集するためのAPI
+        |ロール|動作|
+        |----|----|
+        |リポジトリ管理者|全アイテムでAPI実行可能|
+        |一般ユーザー|権限がないアイテムはAPI実行不可|
+        |ゲストユーザー|権限がないアイテムはAPI実行不可|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: If-None-Match
+          in: header
+          description: 前回取得したETagの値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 前回取得したLast-Modifiedの値
+          schema:
+            type: string
+        - name: verb
+          in: query
+          description: プロトコルリクエストの種別
+          required: true
+          schema:
+            type: string
+            enum:
+              [
+                "GetRecord",
+                "ListRecords",
+                "ListIdentifiers",
+                "ListMetadataFormats",
+                "ListSets",
+                "Identify",
+              ]
+        - name: metadataPrefix
+          in: query
+          description: |-
+            出力フォーマット  
+            verb=GetRecord,ListRecords,ListIdentifiersの場合は必須
+          schema:
+            type: string
+            enum: ["jpcoar_1.0", "oai_dc", "ddi"]
+        - name: identifier
+          in: query
+          description: |-
+            アイテムを一意に識別するID  
+            verb=GetRecordの場合は必須
+          schema:
+            type: string
+          example: oai:weko3.example.org:00000001
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            Etag:
+              description: アイテム情報のバージョンID
+              schema:
+                type: string
+            Last-Modified:
+              description: アイテム情報の更新日時
+              schema:
+                type: string
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/OAI-PMH"
+        "400":
+          description: リクエスト不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: アイテムが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+  /api/{version}/records/{pid}/export/{format}:
+    get:
+      tags:
+        - items
+      summary: エクスポート
+      description: |-
+        アイテムのエクスポートを行う。
+        |ロール|動作|
+        |----|----|
+        |リポジトリ管理者|全アイテムをエクスポート可能|
+        |一般ユーザー|権限がないアイテムはエクスポート不可|
+        |ゲストユーザー|権限がないアイテムはエクスポート不可|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: pid
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: number
+          example: 1
+        - name: format
+          in: path
+          description: 出力フォーマット
+          required: true
+          schema:
+            type: string
+            enum: ["jpcoar_1.0", "oai_dc", "ddi", "json", "bibtex"]
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: If-None-Match
+          in: header
+          description: 前回取得したETagの値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 前回取得したLast-Modifiedの値
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            Etag:
+              description: アイテム情報のバージョンID
+              schema:
+                type: string
+            Last-Modified:
+              description: アイテム情報の更新日時
+              schema:
+                type: string
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/OAI-PMH"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExportJson"
+            text/plain:
+              example: "@article{oai:weko3.example.org:00000001, title = {item} }"
+        "400":
+          description: リクエスト不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: アイテムが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+  /api/{version}/records/{pid}/files/{filename}/detail:
+    get:
+      tags:
+        - items
+      summary: ファイル詳細情報取得
+      description: |-
+        ファイルの詳細情報を取得する。
+        |ロール|動作|
+        |----|----|
+        |リポジトリ管理者|全アイテムを取得可能|
+        |一般ユーザー|権限がないアイテムは取得不可|
+        |ゲストユーザー|権限がないアイテムは取得不可|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: pid
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: number
+          example: 1
+        - name: filename
+          in: path
+          description: ファイル名
+          required: true
+          schema:
+            type: string
+          example: main.pdf
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: If-None-Match
+          in: header
+          description: 前回取得したETagの値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 前回取得したLast-Modifiedの値
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            Etag:
+              description: このファイルを含むアイテム情報のバージョンID
+              schema:
+                type: string
+            Last-Modified:
+              description: このファイルを含むアイテム情報の更新日時
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileDetail"
+        "304":
+          description: 前回取得時から更新なし
+        "400":
+          description: リクエスト不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: アイテムまたはファイルが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+  /api/{version}/records/{pid}/files/{filename}/versions:
+    get:
+      tags:
+        - items
+      summary: ファイルバージョン情報取得
+      description: |-
+        ファイルのバージョン情報を取得する。
+        |ロール|動作|
+        |----|----|
+        |リポジトリ管理者|全アイテムを取得可能|
+        |一般ユーザー|権限がないアイテムは取得不可|
+        |ゲストユーザー|権限がないアイテムは取得不可|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: pid
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: number
+          example: 1
+        - name: filename
+          in: path
+          description: ファイル名
+          required: true
+          schema:
+            type: string
+          example: main.pdf
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: If-None-Match
+          in: header
+          description: 前回取得したETagの値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 前回取得したLast-Modifiedの値
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            Etag:
+              description: このファイルを含むアイテム情報のバージョンID
+              schema:
+                type: string
+            Last-Modified:
+              description: このファイルを含むアイテム情報の更新日時
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileDetail"
+        "304":
+          description: 前回取得時から更新なし
+        "400":
+          description: リクエスト不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: アイテムまたはファイルが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+components:
+  schemas:
+    Item:
+      description: アイテム詳細情報
+      type: object
+      properties:
+        metadata:
+          description: アイテムのメタデータ
+          type: object
+          example:
+            _oai:
+              id: "oai:weko3.example.org:00000001"
+            path:
+              - "1557819733276"
+        files:
+          description: ファイル情報一覧
+          type: array
+          items:
+            $ref: "#/components/schemas/File"
+        item_type_name:
+          description: アイテムタイプ名
+          type: string
+          example: "デフォルトアイテムタイプ（フル）(1)"
+        index_names:
+          description: インデックス名
+          type: array
+          items:
+            type: string
+          example:
+            - "conference paper"
+        title_name:
+          description: アイテムのタイトル
+          type: string
+          example: "item"
+        can_edit:
+          description: 編集可能フラグ
+          type: boolean
+          example: true
+        google_scholar_meta:
+          description: Google Scholar用のメタデータ
+        google_dataset_meta:
+          description: Google Dataset Search用のメタデータ
+        online_analysis:
+          type: object
+          properties:
+            analysis_url:
+              description: Online AnalysisのURL
+              type: string
+            rights:
+              description: 権利情報
+              type: array
+              items:
+                type: string
+            access_right:
+              description: アクセス権限
+              type: string
+              example: "Open access"
+    File:
+      description: ファイル情報
+      type: object
+      properties:
+        version_id:
+          description: ファイルのバージョンID
+          type: string
+        is_thumbnail:
+          description: サムネイルかどうか
+          type: boolean
+        url:
+          description: URL情報
+          type: object
+          properties:
+            url:
+              description: URL
+              type: string
+            label:
+              description: 表示内容
+              type: string
+            object_type:
+              description: タイプ
+              type: string
+        size:
+          description: サイズ
+          type: string
+          example: "1 MB"
+        mimetype:
+          description: ファイルフォーマット
+          type: string
+          example: "application/pdf"
+        filename:
+          description: ファイル名
+          type: string
+        terms:
+          type: string
+        terms_content:
+          type: string
+        accessrole:
+          description: アクセス権限種別
+          type: string
+        future_date_message:
+          description: メッセージ
+          type: string
+        billing:
+          description: 課金情報<br>課金ファイルでない場合は項目なし
+          type: object
+          properties:
+            billable:
+              description: 課金可能かどうか
+              type: boolean
+            file_price:
+              description: 課金額<br>課金不可の場合は項目なし
+              type: string
+            currency_unit:
+              description: 通貨単位<br>課金不可の場合は項目なし
+              type: string
+            priceinfo:
+              description: 課金情報
+              type: array
+              items:
+                type: object
+                properties:
+                  role:
+                    description: 課金可能なロール
+                    type: string
+                  price:
+                    description: 課金額(税込み価格)
+                    type: string
+        license:
+          description: ライセンス情報
+          type: object
+          properties:
+            name:
+              description: ライセンス名
+              type: string
+            icon:
+              description: ライセンスのアイコン
+              type: string
+            url:
+              description: ライセンスのURL
+              type: string
+    ItemVersions:
+      description: アイテムのバージョン情報一覧
+      type: array
+      items:
+        $ref: "#/components/schemas/ItemVersion"
+    ItemVersion:
+      description: バージョン情報
+      type: object
+      properties:
+        pid:
+          description: |-
+            アイテムを一意に識別するID  
+            バージョン情報を含む  
+            最新バージョンの場合はバージョン情報を含まない
+          type: string
+          example: "1.1"
+        version_index:
+          description: バージョンを表す数値
+          type: string
+          example: "1"
+        updated:
+          description: このバージョンの更新日時
+          type: string
+          example: "2023-01-01 00:00:00.000000"
+    OAI-PMH:
+      type: object
+    ExportJson:
+      type: object
+      properties:
+        id:
+          description: アイテムを一意に識別するID
+          type: string
+        metadata:
+          description: アイテムメタデータ
+          type: string
+        links:
+          type: string
+        created:
+          description: 作成日時
+          type: string
+        updated:
+          description: 更新日時
+          type: string
+    FileDetail:
+      description: ファイル詳細情報
+      type: object
+      properties:
+        record_metadata:
+          description: このファイルを含むアイテムのメタデータ
+          type: object
+        filename:
+          description: ファイル名
+          type: string
+        file:
+          $ref: "#/components/schemas/File"
+    FileVersions:
+      description: ファイルのバージョン情報一覧
+      type: object
+      properties:
+        id:
+          description: Bucket ID
+          type: string
+        size:
+          description: ファイルサイズ
+          type: string
+        quota_size:
+          description: ファイルの割り当てサイズ
+          type: string
+        max_file_size:
+          description: ファイルの最大サイズ
+          type: string
+        locked:
+          type: string
+        contents:
+          description: バージョン一覧
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                description: ファイル名
+                type: string
+              version_id:
+                description: ファイルのバージョンID
+                type: string
+              is_head:
+                description: 最新バージョンかどうか
+                type: string
+              mimetype:
+                description: MIMEタイプ
+                type: string
+              size:
+                description: ファイルサイズ
+                type: string
+              checksum:
+                description: ファイルのチェックサム
+                type: string
+              delete_marker:
+                description: 削除フラグ
+                type: string
+              created_user_id:
+                description: ファイル作成者のID
+                type: string
+              updated_user_id:
+                description: ファイル更新者のID
+                type: string
+              uploaded_owners:
+                description: 更新者情報
+                type: object
+                properties:
+                  created_user:
+                    description: 作成者
+                    type: object
+                    properties:
+                      user_id:
+                        description: ユーザーID
+                        type: string
+                      username:
+                        description: ユーザー名
+                        type: string
+                      displayname:
+                        description: 表示名
+                        type: string
+                      email:
+                        description: メール
+                        type: string
+                  updated_user:
+                    description: 更新者
+                    type: object
+                    properties:
+                      user_id:
+                        description: ユーザーID
+                        type: string
+                      username:
+                        description: ユーザー名
+                        type: string
+                      displayname:
+                        description: 表示名
+                        type: string
+                      email:
+                        description: メール
+                        type: string
+              is_show:
+                description: 表示フラグ
+                type: string
+              is_thumbnail:
+                description: サムネイルかどうか
+                type: string
+              tags:
+                description: ファイルのタグ一覧
+                type: object
+              created:
+                description: ファイルの作成日時
+                type: string
+              updated:
+                description: ファイルの更新日時
+                type: string
+              links:
+                type: object
+                properties:
+                  self:
+                    description: このファイルのリンク
+                    type: string
+                  version:
+                    description: このファイルのリンク(バージョン指定)
+                    type: string
+                  uploads:
+                    description: アップロード用リンク
+                    type: string
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          description: エラーコード
+          type: string
+        message:
+          description: エラーメッセージ
+          type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item
+            "file:read": Grants access to read file
+            "index:read": Grants access to read index
+            "author:read": Grants access to read author
+            "statistics:read": Grants access to read statistics
+            "user:read": Grants access to read user

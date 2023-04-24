@@ -1,0 +1,288 @@
+openapi: 3.0.3
+info:
+  title: 利用統計情報の取得用WEB API
+  version: "1.0"
+tags:
+  - name: stats_info
+    description: 利用統計情報の取得
+paths:
+  /api/{version}/stats/{record_id}:
+    get:
+      tags:
+        - item_stats
+      summary: アイテム閲覧数取得
+      description: |-
+        指定したファイルのアイテム閲覧数取得
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: record_id
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: string
+        - name: Accept-Language
+          in: header
+          description: 表示する言語の指定
+          schema:
+            type: string
+            default: en
+        - name: Authorization
+          in: header
+          description: Bearer アクセストークン
+          schema:
+            type: string
+        - name: If-None-Match
+          in: header
+          description: 1回目のレスポンスヘッダーETagに設定された値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 1回目のレスポンスヘッダーLast-Modifiedに設定された値
+          schema:
+            type: string
+        - name: date
+          in: query
+          description: 閲覧数が必要な年月
+          schema:
+            type: string
+            example: 2023-2
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            E-Tag:
+              schema:
+                type: string
+            Last-Modified:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                 $ref: "#/components/schemas/ItemStats"
+        "304":
+          description: 前回取得時から更新なし
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: 指定したアイテムが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "412":
+          description: ヘッダで定義した前提条件が満たされていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: サーバー内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["user:read"]
+
+  /api/{version}/stats/{record_id}/{filename}:
+    get:
+      tags:
+        - file_stats
+      summary: ファイルの利用統計情報の取得
+      description: |-
+        指定したファイルのアイテム閲覧数取得
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: record_id
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: string
+        - name: filename
+          in: path
+          description: ファイルの名前
+          required: true
+          schema:
+            type: string
+        - name: Accept-Language
+          in: header
+          description: 表示する言語の指定
+          schema:
+            type: string
+            default: en
+        - name: Authorization
+          in: header
+          description: Bearer アクセストークン
+          schema:
+            type: string
+        - name: If-None-Match
+          in: header
+          description: 1回目のレスポンスヘッダーETagに設定された値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 1回目のレスポンスヘッダーLast-Modifiedに設定された値
+          schema:
+            type: string
+        - name: date
+          in: query
+          description: 利用統計情報が必要な年月
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            E-Tag:
+              schema:
+                type: string
+            Last-Modified:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                 $ref: "#/components/schemas/FileStats"
+        "304":
+          description: 前回取得時から更新なし
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: 指定したファイルが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "412":
+          description: ヘッダで定義した前提条件が満たされていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: サーバー内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["user:read"]
+
+components:
+  schemas:
+    ItemStats:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: 閲覧数
+          example: 18
+        country:
+          type: object
+          description: ユーザーの国ごとの閲覧数
+          example: {"UNKNOWN":10,"JPN":8}
+        period:
+          type: string
+          description: 指定した年月
+          example: YYYY-MM
+    FileStats:
+      type: object
+      properties:
+        download_total:
+          type: integer
+          description: ダウンロード数
+        preview_total:
+          type: integer
+          description: 閲覧数
+        country:
+          type: array
+          items:
+            type: object
+            properties:
+              country: 
+                type: string
+              download_counts:
+                type: integer
+              preview_counts:
+                type: integer
+          description: ユーザーの国ごとの利用統計情報
+        period:
+          type: string
+          description: 指定する年月の候補。全期間の場合はtotalと表示する。
+          example: YYYY-MM
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item
+            "file:read": Grants access to read file
+            "index:read": Grants access to read index
+            "author:read": Grants access to read author
+            "statistics:read": Grants access to read statistics
+            "user:read": Grants access to read user

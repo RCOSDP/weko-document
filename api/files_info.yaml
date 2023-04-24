@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: ファイル取得用WEB API
+  version: "1.0"
+tags:
+  - name: files
+    description: ファイル取得
+paths:
+  /api/{version}/records/{pid}/files/{filename}:
+    get:
+      tags:
+        - files
+      summary: ファイル取得
+      description: |-
+        指定したファイルの取得
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: pid
+          in: path
+          description: レコードを一意に識別するID
+          required: true
+          schema:
+            type: integer
+          example: 1
+        - name: filename
+          in: path
+          description: 取得するファイル名
+          required: true
+          schema:
+            type: string
+          example: main.pdf
+        - name: Range
+          in: header
+          description: リジューム機能を使用する際のファイルの取得範囲
+          schema:
+            type: string
+        - name: If-None-Match
+          in: header
+          description: 1回目のレスポンスヘッダーETagに設定された値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 1回目のレスポンスヘッダーLast-Modifiedに設定された値
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Bearer アクセストークン
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 取得成功。ボディはファイルのデータ
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: "text/csv, application/pdf, image/png"
+            Content-Length:
+              schema:
+                type: integer
+                example: 1024
+            E-Tag:
+              schema:
+                type: string
+            Last-Modified:
+              schema:
+                type: string
+          content:
+            All:
+              schema:
+                type: string
+                example: filedata
+        "206":
+          description: 部分取得成功。ボディはファイルのデータ
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: "text/csv, application/pdf, image/png"
+            Content-Length:
+              schema:
+                type: integer
+                example: 1024
+            Content-Range:
+              schema:
+                type: string
+                example: "bytes 200-1000/2048"
+            Accept-Range:
+              schema:
+                type: string
+                example: "bytes"
+            E-Tag:
+              schema:
+                type: string
+            Last-Modified:
+              schema:
+                type: string
+          content:
+            All:
+              schema:
+                type: string
+                example: filedata
+        "304":
+          description: 前回取得時から更新なし
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: 指定したファイルが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "412":
+          description: ヘッダで定義した前提条件が満たされていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: サーバー内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["user:read"]
+
+components:
+  schemas:
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item
+            "file:read": Grants access to read file
+            "index:read": Grants access to read index
+            "author:read": Grants access to read author
+            "statistics:read": Grants access to read statistics
+            "user:read": Grants access to read user

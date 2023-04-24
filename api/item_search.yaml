@@ -1,0 +1,281 @@
+openapi: 3.0.3
+info:
+  title: アイテム検索用WEB API
+  version: "1.0"
+tags:
+  - name: item_search
+    description: アイテム検索
+paths:
+  /api/{version}/search:
+    get:
+      tags:
+        - item_search
+      summary: アイテム検索
+      description: |-
+        指定したファイルの取得
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: Accept-Language
+          in: header
+          description: 表示する言語の指定
+          schema:
+            type: string
+            default: en
+        - name: Authorization
+          in: header
+          description: Bearer アクセストークン
+          schema:
+            type: string
+        - name: q
+          in: query
+          description: 検索するキーワード
+          schema:
+            type: string
+        - name: search-type
+          in: query
+          description: 検索する種類(キーワード検索かフルテキスト検索)
+          schema:
+            type: integer
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+        - name: page
+          in: query
+          description: 取得するページ番号
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          description: ページネーションのカーソル(この次のデータから取得)
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: 取得する検索結果の最大数
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: ソートキー
+          schema:
+            type: string
+            default: id
+        - name: metadata
+          in: query
+          description: 検索するメタデータの値
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 検索成功
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, no-store, must-revalidate
+            Pragma:
+              schema:
+                type: string
+                example: no-cache
+            Expires:
+              schema:
+                type: integer
+                example: 0
+          content:
+            application/json:
+              schema:
+                 $ref: "#/components/schemas/SearchResult"
+        "400":
+          description: パラメータ不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: サーバー内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["user:read"]
+
+components:
+  schemas:
+    ResponseBody:
+      type: object
+      properties:
+        total_results:
+          type: integer
+          description: 検索条件に一致した項目数
+          example: 100
+        count_results:
+          type: integer
+          description: このレスポンスに含まれる項目数
+          example: 10
+        cursor:
+          type: string
+          description: 検索結果の最後の項目のカーソル
+          example: 1234567890000
+        searchresult:
+          $ref: "#/components/schemas/SearchResult"
+    SearchResult:
+      type: object
+      properties:
+        took:
+          type: integer
+          description: 実行時間(ミリ秒)
+        timed_out:
+          type: boolean
+          description: 検索のタイムアウト判定
+        _shards:
+          $ref: "#/components/schemas/shards"
+        _hits:
+          $ref: "#/components/schemas/hits"
+        aggregations:
+          $ref: "#/components/schemas/aggregations"
+      description: 検索結果
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+    shards:
+      type: object
+      properties:
+        total: 
+          type: integer
+        successful: 
+          type: integer          
+        skipped: 
+          type: integer
+        failed:
+          type: integer
+    hits:
+      type: object
+      properties:
+        total:
+          type: integer
+        max_score:
+          type: integer
+        hits:
+          type: array
+          items: 
+            $ref: "#/components/schemas/items"
+    items:
+      type: object
+      properties:
+        _index:
+          type: string
+        _typpe:
+          type: string
+        _id:
+          type: string
+        _version:
+          type: integer
+        _score:
+          type: integer
+        _source:
+          type: object
+          description: アイテム情報
+          example: item1
+    aggregations:
+      type: object
+      properties:
+        Data_Type:
+          type: object
+          properties:
+            doc_count: 
+              type: integer
+            Data_Type:
+              $ref: "#/components/schemas/aggregations_data"
+        Distributor:
+          type: object
+          properties:
+            doc_count: 
+              type: integer
+            Data_Type:
+              $ref: "#/components/schemas/aggregations_data"
+        Data_Language:
+          type: object
+          properties:
+            doc_count: 
+              type: integer
+            Data_Type:
+              $ref: "#/components/schemas/aggregations_data"
+        Temporal:
+          type: object
+          properties:
+            doc_count: 
+              type: integer
+            Data_Type:
+              $ref: "#/components/schemas/aggregations_data"
+        Access:
+          type: object
+          properties:
+            doc_count: 
+              type: integer
+            Data_Type:
+              $ref: "#/components/schemas/aggregations_data"
+        Topic:
+          type: object
+          properties:
+            doc_count: 
+              type: integer
+            Data_Type:
+              $ref: "#/components/schemas/aggregations_data"
+        Location:
+          type: object
+          properties:
+            doc_count: 
+              type: integer
+            Data_Type:
+              $ref: "#/components/schemas/aggregations_data"
+    aggregations_data:
+      type: object
+      properties:
+        doc_count_error_upper_bound:
+          type: integer
+        sum_other_doc_count:
+          type: integer
+        buckets:
+          type: object
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item
+            "file:read": Grants access to read file
+            "index:read": Grants access to read index
+            "author:read": Grants access to read author
+            "statistics:read": Grants access to read statistics
+            "user:read": Grants access to read user
