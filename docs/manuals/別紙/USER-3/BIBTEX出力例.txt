@@ -1,0 +1,12 @@
+@article{oai:jc-niirdc-mig-rc.repo.nii.ac.jp:00000007,
+ author = {テスト, 太郎 and Test,Taro},
+ issue = {1},
+ journal = {テスト},
+ month = {Feb},
+ note = {テスト, 123456789, テスト, テスト},
+ pages = {15--25},
+ title = {テスト1},
+ volume = {10},
+ year = {2021},
+ yomi = {テスト, タロウ}
+}

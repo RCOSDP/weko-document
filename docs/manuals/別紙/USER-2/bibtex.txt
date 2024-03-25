@@ -1,0 +1,90 @@
+@article{weko_49660_1,
+   author	 = "山岸,良匡",
+   title	 = "Plasma tea catechins and risk of cardiovascular disease in middle-aged Japanese subjects: The JPHC study",
+   journal	 = "Atherosclerosis",
+   year 	 = "2018",
+   volume	 = "277",
+   number	 = "",
+   pages	 = "90--97",
+   month	 = "aug"
+}
+@article{weko_43477_1,
+   author	 = "Shirakawa,Toru and Yamagishi,Kazumasa and Yatsuya,Hiroshi and Tanabe,Naohito and Tamakoshi,Akiko and Iso,Hiroyasu and the JACC Study Group",
+   title	 = "Alcohol consumption and mortality from aortic disease among Japanese men: The Japan Collaborative Cohort study",
+   journal	 = "Atherosclerosis",
+   year 	 = "2017",
+   volume	 = "266",
+   number	 = "",
+   pages	 = "64--68",
+   month	 = "nov"
+}
+@article{weko_42002_1,
+   author	 = "Kihara,Tomomi and Yamagishi,Kazumasa and Iso,Hiroyasu and Tamakoshi,Akiko",
+   title	 = "Passive smoking and mortality from aortic dissection or aneurysm",
+   journal	 = "Atherosclerosis",
+   year 	 = "2017",
+   volume	 = "263",
+   number	 = "",
+   pages	 = "145--150",
+   month	 = "aug"
+}
+@article{weko_41918_1,
+   author	 = "Iso,Hiroyasu and Maruyama,Koutatsu and Eshak,Ehab S and Ikehara,Satoyo and Yamagishi,Kazumasa and Tamakoshi,Akiko",
+   title	 = "Blood soluble Fas levels and mortality from cardiovascular disease in middle-aged Japanese: The JACC study.",
+   journal	 = "Atherosclerosis",
+   year 	 = "2017",
+   volume	 = "260",
+   number	 = "",
+   pages	 = "97--101",
+   month	 = "may"
+}
+@article{weko_41864_1,
+   author	 = "Cui,Renzhe and Yamagishi,Kazumasa and Muraki,Isao and Hayama-Terada,Mina and Umesawa,Mitsumasa and Imano,Hironori and Li,Yuanying and Eshak,Ehab S and Ohira,Tetsuya and Kiyama,Masahiko and Okada,Takeo and Kitamura,Akihiko and Tanigawa,Takeshi and Iso,Hiroyasu",
+   title	 = "Association between markers of arterial stiffness and atrial fibrillation in the Circulatory Risk in Communities Study (CIRCS).",
+   journal	 = "Atherosclerosis",
+   year 	 = "2017",
+   volume	 = "263",
+   number	 = "",
+   pages	 = "244--248",
+   month	 = "aug"
+}
+@article{weko_41860_1,
+   author	 = "Liu,Keyang and Cui,Renzhe and Eshak,Ehab S and Cui,Meishan and Dong,Jia-Yi and Kiyama,Masahiko and Okada,Takeo and Kitamura,Akihiko and Umesawa,Mitsumasa and Yamagishi,Kazumasa and Imano,Hironori and Ohira,Tetsuya and Iso,Hiroyasu",
+   title	 = "Associations of central aortic pressure and brachial blood pressure with flow mediated dilatation in apparently healthy Japanese men: The Circulatory Risk in Communities Study (CIRCS).",
+   journal	 = "Atherosclerosis",
+   year 	 = "2017",
+   volume	 = "259",
+   number	 = "",
+   pages	 = "46--50",
+   month	 = "apr"
+}
+@article{weko_37653_1,
+   author	 = "Cui,Renzhe and Iso,Hiroyasu and Yamagishi,Kazumasa and Saito,Isao and Kokubo,Yoshihiro and Inoue,Manami and Sawada,Norie and Tsugane,Shoichiro",
+   title	 = "Trends in the proportions of stroke subtypes and coronary heart disease in the Japanese men and women from 1995 to 2009",
+   journal	 = " Atherosclerosis  ",
+   year 	 = "2016",
+   volume	 = "248",
+   number	 = "",
+   pages	 = "219--223",
+   month	 = "may"
+}
+@article{weko_35726_1,
+   author	 = "Yamagishi,Kazumasa and Ikeda,Ai and Moriyama,Yuri and Chei,Choy-Lye and Noda,Hiroyuki and Umesawa,Mitsumasa and Cui,Renzhe and Nagao,Masanori and Kitamura,Akihiko and Yamamoto,Yorihiro and Asada,Takashi and Iso,Hiroyasu",
+   title	 = "Serum coenzyme Q10 and risk of disabling dementia: The Circulatory Risk in Communities Study (CIRCS)",
+   journal	 = "Atherosclerosis",
+   year 	 = "2014",
+   volume	 = "237",
+   number	 = "2",
+   pages	 = "400--403",
+   month	 = "dec"
+}
+@article{weko_27186_1,
+   author	 = "Cui,Renzhe and Iso,Hiroyasu and Yamagishi,Kazumasa and Saito,Isao and Kokubo,Yoshihiro",
+   title	 = "High serum total cholesterol levels is a risk factor of ischemic stroke for general Japanese population: The JPHC study",
+   journal	 = "Atherosclerosis",
+   year 	 = "2012",
+   volume	 = "221",
+   number	 = "2",
+   pages	 = "565--569",
+   month	 = "apr"
+}

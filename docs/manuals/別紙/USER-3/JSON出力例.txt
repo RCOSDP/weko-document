@@ -1,0 +1,377 @@
+{
+    "created": "2021-08-23T03:55:00.513540+00:00",
+    "id": 7,
+    "links": {},
+    "metadata": {
+        "_buckets": {
+            "deposit": "54131a01-0820-4845-a33f-f40dc6db06ad" 
+        },
+        "_deposit": {
+            "created_by": 2,
+            "id": "7",
+            "owners": [
+                2
+            ],
+            "pid": {
+                "revision_id": 0,
+                "type": "depid",
+                "value": "7" 
+            },
+            "status": "published" 
+        },
+        "_oai": {
+            "id": "oai:jc-niirdc-mig-rc.repo.nii.ac.jp:00000007",
+            "sets": [
+                "25" 
+            ]
+        },
+        "author_link": [
+            "1" 
+        ],
+        "item_10001_alternative_title_1": {
+            "attribute_name": "その他（別言語等）のタイトル",
+            "attribute_value_mlt": [
+                {
+                    "subitem_alternative_title": "テスト" 
+                }
+            ]
+        },
+        "item_10001_biblio_info_7": {
+            "attribute_name": "書誌情報",
+            "attribute_value_mlt": [
+                {
+                    "bibliographicIssueDates": {
+                        "bibliographicIssueDate": "2021-02-17",
+                        "bibliographicIssueDateType": "Issued" 
+                    },
+                    "bibliographicIssueNumber": "1",
+                    "bibliographicPageEnd": "25",
+                    "bibliographicPageStart": "15",
+                    "bibliographicVolumeNumber": "10",
+                    "bibliographic_titles": [
+                        {
+                            "bibliographic_title": "テスト" 
+                        }
+                    ]
+                }
+            ]
+        },
+        "item_10001_description_19": {
+            "attribute_name": "フォーマット",
+            "attribute_value_mlt": [
+                {
+                    "subitem_description": "テスト",
+                    "subitem_description_type": "Other" 
+                }
+            ]
+        },
+        "item_10001_description_4": {
+            "attribute_name": "著者ID",
+            "attribute_value_mlt": [
+                {
+                    "subitem_description": "123456789",
+                    "subitem_description_type": "Other" 
+                }
+            ]
+        },
+        "item_10001_description_5": {
+            "attribute_name": "抄録",
+            "attribute_value_mlt": [
+                {
+                    "subitem_description": "テスト",
+                    "subitem_description_type": "Abstract" 
+                }
+            ]
+        },
+        "item_10001_description_6": {
+            "attribute_name": "内容記述",
+            "attribute_value_mlt": [
+                {
+                    "subitem_description": "テスト",
+                    "subitem_description_type": "Other" 
+                }
+            ]
+        },
+        "item_10001_heading_23": {
+            "attribute_name": "見出し",
+            "attribute_value_mlt": [
+                {
+                    "subitem_heading_banner_headline": "テスト",
+                    "subitem_heading_headline": "テスト",
+                    "subitem_heading_language": "ja" 
+                },
+                {
+                    "subitem_heading_banner_headline": "test",
+                    "subitem_heading_headline": "test",
+                    "subitem_heading_language": "en" 
+                }
+            ]
+        },
+        "item_10001_publisher_8": {
+            "attribute_name": "出版者",
+            "attribute_value_mlt": [
+                {
+                    "subitem_publisher": "テスト" 
+                }
+            ]
+        },
+        "item_10001_relation_10": {
+            "attribute_name": "ISBN",
+            "attribute_value_mlt": [
+                {
+                    "subitem_relation_type_id": {
+                        "subitem_relation_type_id_text": "9780123456789",
+                        "subitem_relation_type_select": "ISBN" 
+                    }
+                }
+            ]
+        },
+        "item_10001_relation_11": {
+            "attribute_name": "書誌レコードID",
+            "attribute_value_mlt": [
+                {
+                    "subitem_relation_type_id": {
+                        "subitem_relation_type_id_text": "A00001",
+                        "subitem_relation_type_select": "NCID" 
+                    }
+                }
+            ]
+        },
+        "item_10001_relation_12": {
+            "attribute_name": "論文ID（NAID）",
+            "attribute_value_mlt": [
+                {
+                    "subitem_relation_type": "isVersionOf",
+                    "subitem_relation_type_id": {
+                        "subitem_relation_type_id_text": "B00001",
+                        "subitem_relation_type_select": "NAID" 
+                    }
+                }
+            ]
+        },
+        "item_10001_relation_13": {
+            "attribute_name": "PubMed番号",
+            "attribute_value_mlt": [
+                {
+                    "subitem_relation_type": "isVersionOf",
+                    "subitem_relation_type_id": {
+                        "subitem_relation_type_id_text": "テスト",
+                        "subitem_relation_type_select": "PMID" 
+                    }
+                }
+            ]
+        },
+        "item_10001_relation_14": {
+            "attribute_name": "DOI",
+            "attribute_value_mlt": [
+                {
+                    "subitem_relation_type": "isVersionOf",
+                    "subitem_relation_type_id": {
+                        "subitem_relation_type_id_text": "テスト",
+                        "subitem_relation_type_select": "DOI" 
+                    }
+                }
+            ]
+        },
+        "item_10001_relation_16": {
+            "attribute_name": "情報源",
+            "attribute_value_mlt": [
+                {
+                    "subitem_relation_name": [
+                        {
+                            "subitem_relation_name_text": "テスト" 
+                        }
+                    ]
+                }
+            ]
+        },
+        "item_10001_relation_17": {
+            "attribute_name": "関連サイト",
+            "attribute_value_mlt": [
+                {
+                    "subitem_relation_name": [
+                        {
+                            "subitem_relation_name_text": "テスト" 
+                        }
+                    ],
+                    "subitem_relation_type_id": {
+                        "subitem_relation_type_id_text": "https://www.nii.ac.jp/",
+                        "subitem_relation_type_select": "URI" 
+                    }
+                }
+            ]
+        },
+        "item_10001_relation_18": {
+            "attribute_name": "他の資源との関係",
+            "attribute_value_mlt": [
+                {
+                    "subitem_relation_name": [
+                        {
+                            "subitem_relation_name_text": "テスト" 
+                        }
+                    ]
+                }
+            ]
+        },
+        "item_10001_rights_15": {
+            "attribute_name": "権利",
+            "attribute_value_mlt": [
+                {
+                    "subitem_rights": "テスト" 
+                }
+            ]
+        },
+        "item_10001_source_id_9": {
+            "attribute_name": "ISSN",
+            "attribute_value_mlt": [
+                {
+                    "subitem_source_identifier": "12345678",
+                    "subitem_source_identifier_type": "ISSN" 
+                }
+            ]
+        },
+        "item_10001_subject_21": {
+            "attribute_name": "日本十進分類法",
+            "attribute_value_mlt": [
+                {
+                    "subitem_subject": "テスト",
+                    "subitem_subject_scheme": "NDC" 
+                }
+            ]
+        },
+        "item_10001_version_type_20": {
+            "attribute_name": "著者版フラグ",
+            "attribute_value_mlt": [
+                {
+                    "subitem_version_resource": "http://purl.org/coar/version/c_ab4af688f83e57aa",
+                    "subitem_version_type": "AM" 
+                }
+            ]
+        },
+        "item_creator": {
+            "attribute_name": "著者",
+            "attribute_type": "creator",
+            "attribute_value_mlt": [
+                {
+                    "creatorNames": [
+                        {
+                            "creatorName": "テスト, 太郎" 
+                        },
+                        {
+                            "creatorName": "テスト, タロウ",
+                            "creatorNameLang": "ja-Kana" 
+                        },
+                        {
+                            "creatorName": "Test,Taro",
+                            "creatorNameLang": "en" 
+                        }
+                    ],
+                    "nameIdentifiers": [
+                        {
+                            "nameIdentifier": "1",
+                            "nameIdentifierScheme": "WEKO" 
+                        },
+                        {
+                            "nameIdentifier": "//ci",
+                            "nameIdentifierScheme": "https",
+                            "nameIdentifierURI": "https://orcid.org///ci" 
+                        }
+                    ]
+                }
+            ]
+        },
+        "item_files": {
+            "attribute_name": "ファイル情報",
+            "attribute_type": "file",
+            "attribute_value_mlt": [
+                {
+                    "accessrole": "open_date",
+                    "date": [
+                        {
+                            "dateType": "Available",
+                            "dateValue": "2021-02-17" 
+                        }
+                    ],
+                    "displaytype": "detail",
+                    "filename": "Sample1.pdf",
+                    "filesize": [
+                        {
+                            "value": "210.8 kB" 
+                        }
+                    ],
+                    "format": "application/pdf",
+                    "licensetype": "license_6",
+                    "mimetype": "application/pdf",
+                    "url": {
+                        "label": "Sample1.pdf",
+                        "url": "https://18.182.214.241:4498/record/7/files/Sample1.pdf" 
+                    },
+                    "version_id": "6a417577-e1fa-45b6-a75b-84e6b7a73ccf" 
+                }
+            ]
+        },
+        "item_keyword": {
+            "attribute_name": "キーワード",
+            "attribute_value_mlt": [
+                {
+                    "subitem_subject": "テスト",
+                    "subitem_subject_scheme": "Other" 
+                },
+                {
+                    "subitem_subject": "test",
+                    "subitem_subject_language": "en",
+                    "subitem_subject_scheme": "Other" 
+                }
+            ]
+        },
+        "item_language": {
+            "attribute_name": "言語",
+            "attribute_value_mlt": [
+                {
+                    "subitem_language": "jpn" 
+                }
+            ]
+        },
+        "item_resource_type": {
+            "attribute_name": "資源タイプ",
+            "attribute_value_mlt": [
+                {
+                    "resourcetype": "journal article",
+                    "resourceuri": "http://purl.org/coar/resource_type/c_6501" 
+                }
+            ]
+        },
+        "item_title": "テスト1",
+        "item_titles": {
+            "attribute_name": "タイトル",
+            "attribute_value_mlt": [
+                {
+                    "subitem_title": "テスト1" 
+                },
+                {
+                    "subitem_title": "test1",
+                    "subitem_title_language": "en" 
+                }
+            ]
+        },
+        "item_type_id": "10001",
+        "owner": "2",
+        "path": [
+            "25" 
+        ],
+        "pubdate": {
+            "attribute_name": "公開日",
+            "attribute_value": "2021-02-17" 
+        },
+        "publish_date": "2021-02-17",
+        "publish_status": "0",
+        "recid": "7",
+        "relation_version_is_last": true,
+        "title": [
+            "テスト1" 
+        ],
+        "weko_creator_id": "2",
+        "weko_shared_id": 2
+    },
+    "updated": "2021-10-07T16:24:42.601676+00:00" 
+}
