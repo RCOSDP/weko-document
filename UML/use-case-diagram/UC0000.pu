@@ -8,7 +8,7 @@
 left to right direction
 skinparam packageStyle rectangle
 
-actor ゲスト
+actor GUEST as "ゲスト"
 ' 教員
 actor 登録ユーザ
 ' 図書館員,モデレータ
@@ -18,6 +18,7 @@ actor システム管理者
 actor IRDB 
 actor ERDB_JP
 actor RSS_Reader
+actor GRDM
 
 ' WEKO3
 actor コミュニティ管理者
@@ -25,12 +26,43 @@ actor コミュニティ管理者
 rectangle WEKO3 {
 
 ' ゲスト
-ゲスト -- (キーワード検索する)
-ゲスト -- (インデックスツリーからディレクトリ検索する)
-ゲスト -- (アイテムの詳細画面を閲覧する)
-ゲスト -- (アイテムの詳細画面からファイルをダウンロードする)
-ゲスト -- (アイテムの詳細画面でファイルをプレビューする)
-ゲスト -- (ランキングを閲覧する)
+usecase UC_GUEST_0010 as "アイテムをキーワード検索で探す"
+usecase UC_GUEST_0020 as "アイテムを全文検索で探す"
+usecase UC_GUEST_0030 as "アイテムを詳細検索で探す"
+usecase UC_GUEST_0040 as "アイテムをインデックスツリー経由で探す"
+usecase UC_GUEST_0050 as "アイテム詳細画面を閲覧する"
+usecase UC_GUEST_0050 as "アイテム詳細画面でアイテムの利用統計を閲覧する"
+usecase UC_GUEST_0050 as "アイテム詳細画面でアイテムのバージョンを閲覧する"
+usecase UC_GUEST_0060 as "アイテム詳細画面からコンテンツをダウンロードする"
+usecase UC_GUEST_0070 as "アイテム詳細画面でコンテンツをプレビューする"
+usecase UC_GUEST_0080 as "アイテム詳細画面からコンテンツ詳細画面を開く"
+usecase UC_GUEST_0090 as "アイテム詳細画面からメタデータをエクスポートする"
+usecase UC_GUEST_0100 as "アイテム詳細画面からアイテムのメタデータを共有する"
+usecase UC_GUEST_0110 as "アイテム詳細画面を印刷する"
+usecase UC_GUEST_0120 as "表示言語を変更する"
+usecase UC_GUEST_0121 as "ログイン画面を表示する"
+usecase UC_GUEST_0130 as "アイテムランキングを閲覧する"
+usecase UC_GUEST_0140 as "コミュニティ一覧を閲覧する"
+usecase UC_GUEST_0150 as "アイテムをファセット検索で探す"
+
+
+GUEST -- UC_GUEST_0010
+GUEST -- UC_GUEST_0020
+GUEST -- UC_GUEST_0030
+GUEST -- UC_GUEST_0040
+GUEST -- UC_GUEST_0050
+GUEST -- UC_GUEST_0060
+GUEST -- UC_GUEST_0070
+GUEST -- UC_GUEST_0080
+GUEST -- UC_GUEST_0090
+GUEST -- UC_GUEST_0100
+GUEST -- UC_GUEST_0110
+GUEST -- UC_GUEST_0120
+GUEST -- UC_GUEST_0121
+GUEST -- UC_GUEST_0130
+GUEST -- UC_GUEST_0140
+GUEST -- UC_GUEST_0150
+
 
 ' 登録ユーザ
 登録ユーザ -- (アイテムを登録する)
