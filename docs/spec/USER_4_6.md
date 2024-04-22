@@ -155,7 +155,8 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
         \[CiNii ResearchのJSON-LD\]  
         https://support.nii.ac.jp/ja/cir/r\_json
     
-      - 取得データは、アイテムの対応項目および対応するJPCOARマッピングが設定されたメタデータ項目に自動入力される  
+      - 取得データは、アイテムの対応項目および対応するJPCOARマッピング(jpcoar_v2_mapping)が設定されたメタデータ項目に自動入力される
+        
         取得データの入力先メタデータ項目
 
 | **データ**   | **パス**                                          | **対応するJPCOARマッピング**                   |
@@ -170,7 +171,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 | 寄与者所属名    | contributor.jpcoar:affiliationName              |                                       |
 | 寄与者識別子    | contributor.personIdentifier                    |                                       |
 | 収録物識別子    | publication.publicationidentifier               |                                       |
-| 収録物名      | publication.prism:publicationName               | prism:publicationName                 |
+| 収録物名      | publication.prism:publicationName               | jpcoar:sourceTitle                 |
 | 収録物発行日    | publication.prism:publicationDate               |                                       |
 | 巻         | publication.prism:volume                        | jpcoar:volume                          |
 | 号         | publication.prism:number                        | jpcoar:issue                          |
