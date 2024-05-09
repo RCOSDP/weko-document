@@ -2099,6 +2099,11 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
   - テンポラリファイルの格納先は環境変数(docker-compose.yml) で設定できるようにする  
     <https://docs.python.org/3/library/tempfile.html#tempfile.gettempdir>
 
+6. 排他処理
+
+インポート処理中「cache::import_start_time」キーに現在時間を格納する。キーは/admin/items/import/check_import_is_availableを呼び出すことでインポート処理の有無を確認しキーを削除する。
+
+
 【補足】Import機能と個別登録(WorkFlow)の違い
 
   - Import機能はTSVファイルの文法チェックを実施しています。

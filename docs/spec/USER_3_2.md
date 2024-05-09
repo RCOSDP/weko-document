@@ -127,7 +127,7 @@
     
       - Markdown
     
-      - JSON/XMLL
+      - JSON/XML
     
       - CSV
     
