@@ -76,23 +76,72 @@ deposit: write
 </tbody>
 </table>
 
-**CURLでのリクエスト実行例：**
+##### CURLでのリクエスト実行例：
 
-  - 各APIのリクエスト仕様の詳細は後述。
+各APIのリクエスト仕様の詳細は後述。
 
-**　1. GET /sword/service-document**
+###### GET /sword/service-document
 
-|                                                                                                                                           |
-| ----------------------------------------------------------------------------------------------------------------------------------------- |
-| curl https://192.168.56.103/sword/service-document -H "Authorization:Bearer Dp85qdLJefoKZ9AuUeIVCqL0Zj9lHxulU1ZSqWGZKI0xJUfxA4wKFnWgztEo" |
+```
+curl https://192.168.56.103/sword/service-document -H "Authorization:Bearer Dp85qdLJefoKZ9AuUeIVCqL0Zj9lHxulU1ZSqWGZKI0xJUfxA4wKFnWgztEo" |
+```
+
 
   - > \-H オプション
     
       - > Authorization は "Bearer" + " (半角スペース)" + "認証キー"の形式で指定する
 
-**　2. POST /sword/service-document**
+###### POST /sword/service-document**
 
-|                                                                                                                                                                                                                                                                                                                        |
+
+```
+curl -s -k https://weko3.ir.rcos.nii.ac.jp/sword/service-document -F
+ "file=@import.zip;type=application/zip" -H "Authorization:Bearer 50is1B9XcyHcyRckWx9z0V
+2XZnpHq7" -H "Content-Disposition:attachment; filename=import.zip" -H "Packaging:http://
+purl.org/net/sword/3.0/package/SimpleZip"| jq .
+{
+  "@context": "https://swordapp.github.io/swordv3/swordv3.jsonld",
+  "@id": "https://weko3.ir.rcos.nii.ac.jp/sword/deposit/96568",
+  "@type": "Status",
+  "actions": {
+    "appendFiles": false,
+    "appendMetadata": false,
+    "deleteFiles": false,
+    "deleteMetadata": false,
+    "deleteObject": true,
+    "getFiles": false,
+    "getMetadata": false,
+    "replaceFiles": false,
+    "replaceMetadata": false
+  },
+  "eTag": "5",
+  "fileSet": {},
+  "links": [
+    {
+      "@id": "https://weko3.ir.rcos.nii.ac.jp/records/96568",
+      "contentType": "text/html",
+      "rel": [
+        "alternate"
+      ]
+    },
+    {
+      "@id": "http://hdl.handle.net/20.500.12465/0000096568",
+      "contentType": "text/html",
+      "rel": [
+        "alternate"
+      ]
+    }
+  ],
+  "metadata": {},
+  "service": "/sword/service-document",
+  "state": [
+    {
+      "@id": "http://purl.org/net/sword/3.0/state/ingested",
+      "description": ""
+    }
+  ]
+}                                                                                       ```
+                                                                                |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | curl https://192.168.56.103/sword/service-document -F "file=@export-all3.zip;type=application/zip" -H "Authorization:Bearer Dp85qdLJefoKZ9AuUeIVCqL0Zj9lHxulU1ZSqWGZKI0xJUfxA4wKFnWgztEo" -H "Content-Disposition:attachment; filename=export-all3.zip" -H "Packaging:http://purl.org/net/sword/3.0/package/SimpleZip" |
 
@@ -115,6 +164,7 @@ deposit: write
       - Packaging は "http://purl.org/net/sword/3.0/package/SimpleZip" を指定
     
       - 必須の Content-Length および Content-Type については前述の通り、-Fオプションにて自動付加されるため-Hオプションでの指定は不要
+
 
 **　3. GET /sword/deposit/\<recid\>**
 
