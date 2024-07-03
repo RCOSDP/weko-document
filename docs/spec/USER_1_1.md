@@ -117,15 +117,19 @@
 
 <!-- end list -->
 
-  - > 関連モジュール
+#### 関連モジュール
 
-<!-- end list -->
+##### weko\_search\_ui：検索結果をUIに表示する
 
-  - > weko\_search\_ui：検索結果をUIに表示する
+config.WEKO_SEARCH_UI_JSTEMPLATE_LIST_RESULTS : アイテム一覧のテンプレート
 
-  - > weko\_items\_ui
+##### weko\_records
 
-  - > weko\_theme
+utils.sort_meta_data_by_options: 
+
+##### weko\_items\_ui
+
+##### weko\_theme
 
 <!-- end list -->
 

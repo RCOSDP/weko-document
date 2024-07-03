@@ -16,19 +16,120 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 
 #### 構造
 
-- meta_fix
-- meta_list
-- table_row
+- meta_fix : アイテムタイプの定義上必須となっている固定プロパティの辞書
+    - pubdate
+        - title: "PubDate"
+        - option: 
+            - crtf: false,
+            - hidden: false,
+            - multiple: false,
+            - required: true,
+            - showlist: false
+        - input_type: "datetime",
+        - title_i18n: 
+            - en: "PubDate",
+            - ja: "公開日"
+        - input_value: ""
+- meta_list：アイテムタイプに含まれる固定プロパティ以外のプロパティの辞書
+- table_row：アイテムタイプの順序順プロパティ名のリスト
 - edit_notes
 - meta_system
-- upload_file
+    - system_file": {
+        - "title": "File Information",
+        - "option": {
+            - "crtf": false,
+            - "hidden": true,
+            - "oneline": false,
+            - "multiple": false,
+            - "required": false,
+            - "showlist": false
+        - "input_type": "cus_125",
+        - "title_i18n": {
+            - "en": "File Information",
+            - "ja": "ファイル情報"
+        - "input_value": ""
+    - "system_identifier_doi": 
+        - "title": "Persistent Identifier(DOI)",
+        - "option": {
+            - "crtf": false,
+            - "hidden": true,
+            - "oneline": false,
+            - "multiple": false,
+            - "required": false,
+            - "showlist": false
+        - "input_type": "cus_123",
+        - "title_i18n": {
+            - "en": "Persistent Identifier(DOI)",
+            - "ja": "永続識別子（DOI）"
+        - "input_value": ""
+    - "system_identifier_hdl": {
+        - "title": "Persistent Identifier(HDL)",
+        - "option": {
+            - "crtf": false,
+            - "hidden": true,
+            - "oneline": false,
+            - "multiple": false,
+            - "required": false,
+            - "showlist": false
+        - "input_type": "cus_123",
+        - "title_i18n": {
+            - "en": "Persistent Identifier(HDL)",
+            - "ja": "永続識別子（HDL）"
+        - "input_value": ""
+    - "system_identifier_uri": {
+        - "title": "Persistent Identifier(URI)",
+        - "option": {
+            - "crtf": false,
+            - "hidden": true,
+            - "oneline": false,
+            - "multiple": false,
+            - "required": false,
+            - "showlist": false
+        - "input_type": "cus_123",
+        - "title_i18n": {
+            - "en": "Persistent Identifier(URI)",
+            - "ja": "永続識別子（URI）"
+        - "input_value": ""
+- upload_file：true or false.  使っていない？
 - schemaeditor
-- table_row_map
-    - form
-    - name
-    - action
     - schema
-    - mapping
+- table_row_map
+    - form：アイテムタイプのJSON Form
+    - name： アイテムタイプの名前
+    - action： "upt"
+    - schema：アイテムタイプのJSON Schema
+        - type
+        - "type": "object",
+        - "$schema": "http://json-schema.org/draft-04/schema#",
+        - "required": []
+        - properties: {}
+        - description: ""
+    - mapping：プロパティのマッピング
+        - system_identifier_doi": {
+            - "ddi_mapping": {
+                - "stdyDscr": {
+                    - "citation": {
+                        - "holdings": {
+                            - "@attributes": {
+                                - "URI": "subitem_systemidt_identifier"
+            - "lom_mapping": "",
+            - "lido_mapping": "",
+            - "spase_mapping": "",
+            - "jpcoar_mapping": {
+                - "identifier": {
+                    - "@value": "subitem_systemidt_identifier",
+                    - "@attributes": {
+                        - "identifierType": "subitem_systemidt_identifier_type"
+            - "junii2_mapping": "",
+            - "oai_dc_mapping": {
+                - "identifier": {
+                    - "@value": "subitem_systemidt_identifier"      
+            - "display_lang_type": "",
+            - "jpcoar_v1_mapping": {
+                - "identifier": {
+                    - "@value": "subitem_systemidt_identifier",
+                        - "@attributes": {
+                            - "identifierType": "subitem_systemidt_identifier_type"
 
 #### 関連モジュール
 
