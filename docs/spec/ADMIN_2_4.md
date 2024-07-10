@@ -591,13 +591,19 @@
         
           - DOI：空欄であること
         
-          - DOI\_RA：JaLC, Crossref, DataCite, NDL JaLC のいずれかであること
+          - DOI\_RA：JaLC, Crossref, DataCite のいずれかであること
+          - DOI_RA：NDL JaLCの場合、自動採番は行われない。
+            インポートファイルにdoiやprefixが含まれている場合はエラーメッセージを表示する。
+               - DOIが空欄の場合
+　              「Please specify DOI prefix/suffix.」
+               - インポートファイルにdoiやprefixが含まれている場合　(「prefix」もしくは「prefix/」を指定した場合）
+　              「DOI suffixを設定してください。」／「Please specify DOI suffix.」
 
   - ※4) DataCiteについて  
     制限等は現状設けていない
 
   - ※5) NDL JaLCについて  
-    制限等は現状設けていない
+    DOI RA：NDL JaLCの場合、資源タイプは「doctoral thesis」である必要があります。
 
   - CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の通り。
 
