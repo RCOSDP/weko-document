@@ -122,6 +122,23 @@ Invenio index コマンドによる再インデクシング
 
   - > reindexの処理概要
 
+
+  ```
+  Usage: invenio index reindex [OPTIONS]
+
+  Reindex all records.
+
+  :param pid_type: Pid type.
+
+Options:
+  --yes-i-know
+  -t, --pid-type TEXT  [required]
+  --include-delete
+  --skip-exists
+  --size INTEGER
+  --help 
+  ```
+
 invenio index reindex -t recid --yes-i-know
 
   - select \* from pidstore\_pid where object\_type='rec' and status='R' and pid\_type='recid';
@@ -137,6 +154,9 @@ invenio index reindex -t recid --yes-i-know
       - 既にアイテムのデータがあれば上書き、無ければ新規登録。
     
       - エラーが発生しても他のタスクは処理を続けます。エラーだったものは上書き/新規登録されません。
+
+
+
 
 <!-- end list -->
 
@@ -203,6 +223,20 @@ $ docker-compose exec web invenio index reindex -t recid --yes-i-know
 6\) インデックス登録
 
 $ docker-compose exec web invenio index run --skip-errors
+
+
+| TH | TH | TH |
+| ---- | ---- | ---- |
+| Usage: invenio index reindex [OPTIONS] || |
+| Reindex all records. | | |
+| :param pid_type: Pid type. | | |
+| Options: | | |
+|  | -t, --pid-type TEXT  [required]  | |
+|  | --include-delete  | 削除済みアイテムをreindexする |
+|  | --skip-exists  | |
+|  | --size INTEGER | |
+|  | --help  | |
+
 
 ## クエリ例
 
