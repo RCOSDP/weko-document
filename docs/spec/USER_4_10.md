@@ -139,7 +139,7 @@ DOI付与の種類
 2.3. PID発行機関が指定するメタデータ制約条件に基づきバリデート
 
   - 「Identifier Grant」画面から\[次へ（Next）\]ボタン押下時に、設定したPID発行機関と、アイテムの入力値を以下の資料で比較する  
-    　　PID付与の制約条件の資料：　別紙「JPCOAR\_JaLC\_Guideline\_appendix\_v1.pdf」
+    　　PID付与の制約条件の資料：　別紙「JPCOARv2\_JaLC\_Guideline\_appendix\_ver1.pdf」
     
       - 添付のPID付与の条件を満たしている場合  
         　・　\[次へ（Next）\]ボタン押下で次のアクションに進める

@@ -16,6 +16,7 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 
 #### 構造
 
+```
 - meta_fix : アイテムタイプの定義上必須となっている固定プロパティの辞書
     - pubdate
         - title: "PubDate"
@@ -31,7 +32,9 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
             - ja: "公開日"
         - input_value: ""
 - meta_list：アイテムタイプに含まれる固定プロパティ以外のプロパティの辞書
+    - "item_1617186331708": {"title": "Title", "option": {"crtf": true, "hidden": false, "multiple": true, "required": true, "showlist": true}, "input_type": "cus_1001", "title_i18n": {"en": "Title", "ja": "タイトル"}, "input_value": "", "input_maxItems": "9999", "input_minItems": "1"}
 - table_row：アイテムタイプの順序順プロパティ名のリスト
+    -  ["item_1617186331708", "item_1617186385884",...]
 - edit_notes
 - meta_system
     - system_file": {
@@ -130,6 +133,7 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
                     - "@value": "subitem_systemidt_identifier",
                         - "@attributes": {
                             - "identifierType": "subitem_systemidt_identifier_type"
+```
 
 #### 関連モジュール
 

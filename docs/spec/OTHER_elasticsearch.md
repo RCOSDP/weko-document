@@ -238,6 +238,12 @@ $ docker-compose exec web invenio index run --skip-errors
 |  | --help  | |
 
 
+reindex時、ボディサイズがINDEXER\_MAX\_BODY\_SIZEを超える場合は、BASE64 fileを削除(v1.0.7では意味のない処理)。
+
+```
+INDEXER_MAX_BODY_SIZE = 62914560
+```
+
 ## クエリ例
 
 ### root_file_idの値がない(null,"")ドキュメントを検索

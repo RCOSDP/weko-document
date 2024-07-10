@@ -321,14 +321,18 @@
           - 「Back」ボタンを押すことで、マージ確認画面を閉じる。
         
           - マージ処理が終わるまで次のマージ処理はできない。
+          
+          - アイテム更新完了するまで、あるいはエラーが発生するまで、著者DBはコミットしない。
 
-<!-- end list -->
+          - マージ状況は author_merge_status.tsv に出力される。
 
-  - > 関連モジュール
 
-<!-- end list -->
 
-  - > weko-authors
+#### 関連モジュール
+
+- weko-authors
+- weko-angular/app-author-search
+- weko-deposit
 
 <!-- end list -->
 
