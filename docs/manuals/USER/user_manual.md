@@ -1,32 +1,10 @@
-ユーザ操作マニュアル
+# ユーザ操作マニュアル
 
 一般閲覧者・登録ユーザ・管理者
 
-（コミュニティ管理者、リポジトリ管理者およびシステム管理者）
+V1.0.7
 
-V1.0.5
-
-<table>
-<thead>
-<tr class="header">
-<th>20240122</th>
-<th><p>以下の項目で制限公開機能の変更点を反映した</p>
-<p>4.1.4　コンテンツファイル</p>
-<p>4.1.8 Information画面</p>
-<p>5.1.1.6 アイテム登録</p></th>
-<th>朝岡</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>20240306</td>
-<td>V1.0.5</td>
-<td>林</td>
-</tr>
-</tbody>
-</table>
-
-はじめに
+## はじめに
 
 このマニュアルは、WEKO3システム（以下、システムと称す）の操作方法を説明したものです。データの登録、参照などを行うユーザが参照してください。
 
@@ -40,13 +18,12 @@ V1.0.5
 
   - データを登録するコミュニティ管理者、リポジトリ管理者およびシステム管理者
 
-<!-- end list -->
 
-  - マニュアルの構成
+### マニュアルの構成
 
 このマニュアルは、次に示す章から構成されています。
 
-第１章　システムの概要
+[第１章　システムの概要](./Chapter01.md)
 
 システムの概要について説明しています。
 
@@ -104,7 +81,7 @@ V1.0.5
 </tbody>
 </table>
 
-# 目次
+## 目次
 
 [1 システムの概要 6](#システムの概要)
 
@@ -1161,7 +1138,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 ※　現在、\[Author Version Flag\]の「published」を指定しての検索は機能していません。
 
-※　現在、「Creater」及び「ItemType」による並び替えが機能していません。
+
 
 ## 異体字検索について
 
@@ -1972,8 +1949,7 @@ Information画面の各項目の内容は以下の通りです。
 </tbody>
 </table>
 
-#   
-アイテムを登録する
+# アイテムを登録する
 
 この章では、アイテムを登録するための操作手順について説明します。
 
@@ -2071,7 +2047,7 @@ Information画面の各項目の内容は以下の通りです。
 | 3  | 進捗                                   | ファイルの登録が完了すると［![icon050060](media/media/image129.png)］が表示されます。 |
 | 4  | アクション［![](media/media/image130.png)］ | クリックすると、登録したファイルが削除されます。                                       |
 
-1.  メタデータを自動的に入力する
+#### メタデータを自動的に入力する
 
 外部データベースからメタデータを自動的に入力する手順について説明します
 
@@ -2104,7 +2080,7 @@ Information画面の各項目の内容は以下の通りです。
 <td>1</td>
 <td>ID選択</td>
 <td><p>外部データベースを選択します。</p>
-<p>外部データベースは、CrossRefが利用できます。</p></td>
+<p>外部データベースは、CrossRef、CiNii Researchが利用できます。</p></td>
 </tr>
 <tr class="even">
 <td>2</td>
@@ -2152,19 +2128,71 @@ Information画面の各項目の内容は以下の通りです。
 </tbody>
 </table>
 
+
+
+| **データ**   | **パス**                                          | **対応するJPCOARマッピング**                   |
+| --------- | ----------------------------------------------- | ------------------------------------- |
+| タイトル      | dc:title                                        | dc:title                              |
+| 別タイトル     | dcterms:alternative                             | dc:title                              |
+| 成果物識別子    | productIdentifier.identifier(type=xx)           | jpcoar:relation                       |
+| 著者名       | creator.foaf:name                               | jpcoar:creatorName                            |
+| 著者識別子     | creator.personIdentifier                        |                                       |
+| 著者所属名     | creator.jpcoar:affiliationName                  |                                       |
+| 寄与者名      | contributor.foaf:name                           | jpcoar:contributorName |
+| 寄与者所属名    | contributor.jpcoar:affiliationName              |                                       |
+| 寄与者識別子    | contributor.personIdentifier                    |                                       |
+| 収録物識別子    | publication.publicationidentifier               |                                       |
+| 収録物名      | publication.prism:publicationName               | jpcoar:sourceTitle                 |
+| 収録物発行日    | publication.prism:publicationDate               |                                       |
+| 巻         | publication.prism:volume                        | jpcoar:volume                          |
+| 号         | publication.prism:number                        | jpcoar:issue                          |
+| 開始ページ     | publication.prism:startingPage                  | jpcoar:pageStart                    |
+| 終了ページ     | publication.prism:endingPage                    | jpcoar:pageEnd                      |
+| 総ページ数     | publication.jpcoar:numPages                     | jpcoar:numPages                       |
+| 発行者       | publication.dc:publisher                        | dc:publisher                          |
+| 日付        | publication.prism:publicationDate               | datacite:date               |
+| 収録誌のNCID  | publication.publicationIdentifier(@type=NCID)   |jpcoar:sourceIdentifier                            |
+| 収録誌のISSN  | publication.publicationIdentifier(@type=ISSN)   | jpcoar:sourceIdentifier                            |
+| 学位授与番号    | ndl:dissertationNumber                          |                                       |
+| 学位名       | ndl:degreeName                                  |                                       |
+| 学位授与年月日   | ndl:dateGranted                                 |                                       |
+| 学位授与機関識別子 | degreeAwardInstitution.institutionIdentifier    |                                       |
+| 学位授与機関名   | degreeAwardInstitution.jpcoar:degreeGrantorName |                                       |
+| 学会、会議名    | jpcoar:conferenceName                           |                                       |
+| 開催地       | jpcoar:conferencePlace                          |                                       |
+| 開催期間(開始日) | jpcoar:conferenceDate.jpcoar:startDay           |                                       |
+| 開催期間(開始月) | jpcoar:conferenceDate.jpcoar:startMonth         |                                       |
+| 開催期間(開始年) | jpcoar:conferenceDate.jpcoar:startYear          |                                       |
+| 開催期間(終了日) | jpcoar:conferenceDate.jpcoar:endDay             |                                       |
+| 開催期間(終了月) | jpcoar:conferenceDate.jpcoar:endDay             |                                       |
+| 開催期間(終了年) | jpcoar:conferenceDate.jpcoar:endDay             |                                       |
+| 助成機関名     | fundingProgram.notation                         |                                       |
+| 関連物関連タイプ  | relatedProduct.relationType                     |                                       |
+| 関連物識別子    | relatedProduct.productIdentifier                |                                       |
+| 関連物タイトル   | relatedProduct.jpcoar:relatedTitle              |                                       |
+| 抄録タイプ     | description.type                                | typeはAbstraction固定                    |
+| 抄録本文      | description.notation                            | dc:description                        |
+| 主題URL     | foaf:topic.@id                                  | jpcoar:subject                        |
+| 主題タイトル    | foaf:topic.dc:title                             | jpcoar:subject                        |
+| バージョン     | datacite:version                                |                                       |
+| 言語        | dc:language                                     |                                       |
+
+
 【補足】
 
 ・複数のプロパティに同じマッピング情報が設定されている場合、1つ目（1番上）のプロパティにのみセットします。（例：アイテムタイプの中に「ISBN」「ISSN」の順でプロパティが含まれており、いずれも「jpcoar: sourceIdentifier」にマッピングされていた場合、［メタデータの自動入力］でデータを取り込むと「ISBN」にデータがセットされます。）
 
-1.  代理投稿者を設定する
 
-代理投稿者を設定する手順について説明します。
 
-1.  表示されたItem Registration画面で、代理投稿者の「Other user」をラジオボタンから選択します。
+1.  投稿者を設定する
+
+投稿者を設定する手順について説明します。
+
+1.  表示されたItem Registration画面で、投稿者の「Other user」をラジオボタンから選択します。
 
 ![zu050540](media/media/image140.png)
 
-図 5‑9代理投稿者の設定画面
+図 5‑9投稿者の設定画面
 
 > ユーザ情報入力項目が表示されます。
 
@@ -2176,7 +2204,7 @@ Information画面の各項目の内容は以下の通りです。
 
 ［Username］、または［Email］に入力すると、リポジトリに登録されているユーザが候補一覧に表示されます。ユーザ候補一覧からユーザを選択すると、選択したユーザのユーザ名とメールアドレスが設定されます。
 
-代理投稿者として指定されたユーザは、アイテム登録者と同様に該当アイテムの編集権限が付与されます。代理投稿者の設定は1つのユーザのみにできます。
+投稿者として指定されたユーザは、アイテム登録者と同様に該当アイテムの編集権限が付与されます。投稿者の設定は1つのユーザのみにできます。
 
 入力したユーザがリポジトリに存在しない場合、［Shared user information is not valid/Please check it again\!］というエラーメッセージが表示されます。
 
@@ -2642,7 +2670,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 <tr class="even">
 <td>4</td>
 <td>［公開しない］</td>
-<td>管理者、アイテムの作成者・代理投稿者のみがダウンロードできます。</td>
+<td>管理者、アイテムの作成者・投稿者のみがダウンロードできます。</td>
 </tr>
 <tr class="odd">
 <td>5</td>
@@ -2791,7 +2819,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 <tr class="even">
 <td>4</td>
 <td>［公開しない］</td>
-<td>管理者、アイテムの作成者・代理投稿者のみがダウンロードできます。</td>
+<td>管理者、アイテムの作成者・投稿者のみがダウンロードできます。</td>
 </tr>
 </tbody>
 </table>
@@ -3883,7 +3911,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 
 ここでは、システムに登録済みのアイテムを編集する手順を説明します。
 
-アイテムを編集可能なユーザ権限は管理者およびアイテムの登録者および代理投稿者です。
+アイテムを編集可能なユーザ権限は管理者およびアイテムの登録者および投稿者です。
 
 インデックスの配下のアイテムを編集できます。編集するアイテムをインデックスツリーで探します。
 
@@ -3990,7 +4018,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 
 ここでは、システムに登録済みのアイテムを削除する手順を説明します。
 
-アイテムを削除可能なユーザ権限は管理者およびアイテムの登録者および代理投稿者です。
+アイテムを削除可能なユーザ権限は管理者およびアイテムの登録者および投稿者です。
 
 インデックスの配下のアイテムを削除できます。削除するアイテムをインデックスツリーで探します。
 
