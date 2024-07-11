@@ -52,10 +52,7 @@
 
   - アイテム詳細画面のメタデータのラベルが複数言語表示される
     
-      - 【Administration > アイテムタイプ管理(ItemTypes) >メタデータ (Metadata) 画面】の 「Localization Settings」 の「Japanese」/「English」に設定した内容を、ラベルに表示する。  
-        　「公開日」については、上記設定が無い場合は以下の内容を固定表示する。  
-        　・JP：「公開日」  
-        　・EN：「Publish Date」
+      - ラベルの表示を、【Administration \> アイテムタイプ管理(ItemTypes) \>メタデータ (Metadata) 画面】の 「Localization Settings」 での「Japanese」/「English」テキストボックスに設定する。
 
   - アイテムの詳細画面での作成者について表示する。
     
