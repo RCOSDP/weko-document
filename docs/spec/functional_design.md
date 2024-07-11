@@ -17729,7 +17729,7 @@ invenio では、UI とAPI　のアプリケーションが２つあり（※）
     
       - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/nginx/login.php#L16-L20>
     
-      - 「$\_SERVER\[Idp側での属性名\]」で渡された情報を「$post\_args\[WEKO側での属性名\]」として受け取る
+      - 「$\_SERVER\\[Idp側での属性名\\]」で渡された情報を「$post\_args\\[WEKO側での属性名\\]」として受け取る
 
   - 認証時にIdPより取得した属性情報に基づきログインユーザに対してロール割り当てを行う
     
