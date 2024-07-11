@@ -180,5 +180,12 @@ utils.sort_meta_data_by_options:
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>v0.9.22対応</td>
 </tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/1</p>
+</blockquote></td>
+<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
+<td>v1.0.7対応</td>
+</tr>
 </tbody>
 </table>

@@ -535,5 +535,12 @@ D: Deleted</td>
 <td>V09.27</td>
 <td></td>
 </tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/1</p>
+</blockquote></td>
+<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
+<td>v1.0.7対応</td>
+</tr>
 </tbody>
 </table>

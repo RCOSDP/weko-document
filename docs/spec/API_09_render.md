@@ -157,5 +157,12 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
 </tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/1</p>
+</blockquote></td>
+<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
+<td>v1.0.7対応</td>
+</tr>
 </tbody>
 </table>
