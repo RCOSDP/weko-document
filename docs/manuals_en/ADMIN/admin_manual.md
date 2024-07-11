@@ -14239,6 +14239,10 @@ In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](
 
 ![](media/media/image396.png)
 
+Additional Information:
+
+Faceted search has a function to display only the values that match the display language, which can be controlled in the config file. When this function is not used, all registered values are displayed regardless of the language, and when it is used, only the values that match the display language are displayed.
+
 ## Configure the site information
 
 This section explains how to configure the site information.

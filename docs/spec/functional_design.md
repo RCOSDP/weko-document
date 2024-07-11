@@ -17232,6 +17232,15 @@ invenio.cfg(instans.cfg) \> config.py(各モジュール)
 > WEKO\_RECORDS\_UI\_SECRET\_KEY
 > 
 > WEKO\_ITEMS\_UI\_HIDE\_AUTO\_FILL\_METADATA
+> 
+> WEKO\_SEARCH\_UI\_FACET\_LANG\_DISP\_FLG
+> 
+> DISPLAY\_LOGIN
+> 
+> WEKO\_RECORDS\_UI\_LANG\_DISP\_FLG
+> 
+> WEKO\_THEME\_FETCH\_SEARCH\_FLG
+
 
 3.config.py
 
