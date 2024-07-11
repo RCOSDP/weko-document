@@ -1,0 +1,10 @@
+{
+    "devDependencies": {
+        "honkit": "^5.1.4"
+    },
+    "dependencies": {
+        "gitbook-plugin-intopic-toc": "^1.1.1",
+        "gitbook-plugin-back-to-top-button": "^0.1.4",
+        "ebook-convert" : "^2.0.1"
+    }
+}
