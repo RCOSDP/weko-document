@@ -5,6 +5,8 @@
     "dependencies": {
         "gitbook-plugin-intopic-toc": "^1.1.1",
         "gitbook-plugin-back-to-top-button": "^0.1.4",
-        "ebook-convert" : "^2.0.1"
+        "ebook-convert" : "^2.0.1",
+        "gitbook-plugin-hide-published-with":"^0.0.1",
+        "gitbook-plugin-anchors":"^0.7.1"
     }
 }
