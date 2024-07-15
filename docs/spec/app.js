@@ -9,17 +9,7 @@ async function main (){
   // Markdown のリンク記法の配列で入ってくる
   let resultMarkdownLinkList = message.match(/\[(.*)\]\((.*)\)/gm);
   console.log(resultMarkdownLinkList);
- 
-  // 大量に取得してしまうと確認がしにくいので、いったん取得後に数件に限定する処理
-  // チューニング用
-  /*
-  resultMarkdownLinkList = [
-    resultMarkdownLinkList[0],
-    resultMarkdownLinkList[1],
-    resultMarkdownLinkList[2]
-  ]
-  */
- 
+  
   // ファイルを結合して README.md 1ファイルに集約
   let targetContent = "";
   let targetContentAll = "";

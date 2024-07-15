@@ -6,7 +6,7 @@
 
 [USER-1-1: 簡易検索（全文検索・キーワード検索） 1](./USER_1_1.md)
 
-[USER-1-2: 詳細検索 4](./USER_1_2.md))
+[USER-1-2: 詳細検索 4](./USER_1_2.md)
 
 [USER-1-3: インデックス検索 11](./USER_1_3.md)
 
@@ -184,7 +184,7 @@
 
 ### 10 Resource Sync 277
 
-[ADMIN-10-1: Resource List 277](./ADMIN_10_1.md))
+[ADMIN-10-1: Resource List 277](./ADMIN_10_1.md)
 
 [ADMIN-10-2: Change List 283](./ADMIN_10_2.md)
 
@@ -234,7 +234,7 @@
 
 [ADMIN-13-12: ユーザープロファイル 350](./ADMIN_13_12.md)
 
-[ADMIN-14 設定 354](./ADMIN_14.md)
+### ADMIN-14 設定 354
 
 [ADMIN-14-1: アイテム表示 354](./ADMIN_14_1.md)
 

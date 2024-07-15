@@ -1392,7 +1392,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 ◆出力イメージ
 
-> \#ItemType 紀要論文（出版者版、オープンアクセス、JaLC\_DOI\_登録あり）(16) https://…………/items/jsonschema/16
+> \#ItemType 紀要論文（出版者版、オープンアクセス、JaLC\_DOI\_登録あり）(16) https://FQDN/items/jsonschema/16
 > 
 > \#.id .uri .metadata.path\[0\] .pos\_index\[0\] .publish\_status .feedback\_mail\[0\] .cnri .doi\_ra .doi .edit\_mode .metadata.pubdate　 …
 > 
