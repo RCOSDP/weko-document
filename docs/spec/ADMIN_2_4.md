@@ -1366,7 +1366,22 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 | 3      | \-       | インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに紐づいていないアイテムにDOIを付与しようとした場合 | エラー    | アイテムにDOIが付与されているため、インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに関連付けが必要です。 | Since the item has a DOI, it must be associated with an index whose index status is "Public" and whose Harvest Publishing is "Public". |             |
 | 4      | \-       | 既存アイテムに付与されているDOIとインポートファイルで指定されたDOIの値が異なる場合                  | エラー    | 指定された{}が登録している{}と異なっています。                                        | Specified {} is different from existing {}.                                                                                            | {}に「DOI」が入る |
 
-\-5. ファイル以外のチェック
+\-5. 課金ファイルアイテムの項目チェック
+
+課金ファイル項目の「.billing」に「billing_file」を指定した場合、各課金ファイル項目付与の要件を確認する。
+エラーメッセージはImport（インポート）画面の表/Check Resultに出力。
+
+| **\#** | **対象項目** | **条件**                                                        | **処理** | **メッセージ(日本語)**                                                   | **メッセージ(英語)**                                                                                                                          | **備考**      |
+| ------ | -------- | ------------------------------------------------------------- | ------ | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| 1      | 各項目      | ファイル情報が複数存在する場合                                         | エラー    | 課金ファイルに複数のファイルを登録することはできません。                                               | Can't register multiple files for the billing file.                                                                                                      |             |
+| 2      | \-       | 課金ファイルの表示形式をプレビューにしていた場合                    | エラー    | 課金ファイルの表示形式にプレビューを指定することはできません。                          | Preview can't be selected as the billing file display type.                                                                                  |             |
+| 3      | \-       | 価格情報のロールまたは価格が未入力の場合 | エラー    | 以下の項目が入力必須となります。ご確認の上、再度入力してください。 | The following items is required. Please recheck and input.{} | {}に「DOI」が入る     
+| 4      | \-       | 価格情報の同一のロールに複数の価格が設定されている場合                  | エラー    | 同じロールに複数の価格を設定することはできません。                                        | Can't set multiple prices on a role.                                                                                            
+| 5      | \-       | 価格情報の価格に半角数字以外が入力されていた場合 | エラー | 価格は半角数字で指定してください。　| Please specify price by half-width number.
+| 6      | \-       | システムに存在しないロールが入力されていた場合 | エラー | 指定されたbillingroleはシステムに存在しません。 | The specified billingrole does not exist in system.
+| 7      | \-       | accessroleにnull、open_access、open_noが入力されていた場合 | エラー | open_date, open_loginのいずれかを設定してください。 | One of the following metadata is required.open_date, open_login.
+
+\-6. ファイル以外のチェック
 
 操作アカウントの権限チェックを行う。
 
