@@ -2171,5 +2171,12 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
 </tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/26</p>
+</blockquote></td>
+<td>7d258293ee1243d1f2b692d494b658e7170dbe84</td>
+<td>H2024-01</td>
+</tr>
 </tbody>
 </table>
