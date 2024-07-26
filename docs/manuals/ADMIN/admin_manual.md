@@ -2461,6 +2461,10 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image75.png)
 
 66. ［実行］を選択します。全件エクスポート処理が実行されます。
+
+    Start Timeにエクスポートが開始した時刻が表示されます。
+
+    Finish TImeにエクスポートが終了した時刻が表示されます。
     
     正常に処理が完了するとダウンロードのURLが画面上に表示されます。
     
@@ -2999,6 +3003,13 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 | エラー | DOIに関するエラー                       | You cannot keep an item private because it has a DOI.                                                                                  | アイテムにDOIが付与されているため、アイテムを非公開にすることはできません。                          | DOIが付与されているアイテムに対して、アイテムを非公開として更新しようとした場合                     |
 | エラー | DOIに関するエラー                       | Since the item has a DOI, it must be associated with an index whose index status is "Public" and whose Harvest Publishing is "Public". | アイテムにDOIが付与されているため、インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに関連付けが必要です。 | インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに紐づいていないアイテムにDOIを付与しようとした場合 |
 | エラー | DOIに関するエラー                       | Specified {DOI} is different from existing {DOI}.                                                                                      | 指定された{DOI}が登録済みの{DOI}と異なっています                                    | 既存アイテムに付与されているDOIとインポートファイルで指定されたDOIの値が異なる場合                  |
+| エラー | 課金ファイルに関するエラー | Can't register multiple files for the billing file.  | 課金ファイルに複数のファイルを登録することはできません。 | 「.billing」に「billing_file」を指定した場合<br>ファイル情報が複数存在する場合   |
+| エラー | 課金ファイルに関するエラー | Preview can't be selected as the billing file display type.  |  課金ファイルの表示形式にプレビューを指定することはできません。 | 「.billing」に「billing_file」を指定した場合<br>課金ファイルの表示形式をプレビューにしていた場合  |
+| エラー | 課金ファイルに関するエラー | The following items is required. Please recheck and input.{} |  以下の項目が入力必須となります。ご確認の上、再度入力してください。 | 「.billing」に「billing_file」を指定した場合<br>価格情報のロールまたは価格が未入力の場合<br>{}に「DOI」が入る     
+| エラー | 課金ファイルに関するエラー |  Can't set multiple prices on a role. | 同じロールに複数の価格を設定することはできません。 | 「.billing」に「billing_file」を指定した場合<br>価格情報の同一のロールに複数の価格が設定されている場合     |              
+| エラー | 課金ファイルに関するエラー | Please specify price by half-width number. |  価格は半角数字で指定してください。　| 「.billing」に「billing_file」を指定した場合<br>価格情報の価格に半角数字以外が入力されていた場合 |
+| エラー | 課金ファイルに関するエラー | The specified billingrole does not exist in system. |  指定されたbillingroleはシステムに存在しません。 | 「.billing」に「billing_file」を指定した場合<br>システムに存在しないロールが入力されていた場合
+| エラー | 課金ファイルに関するエラー | One of the following metadata is required.open_date, open_login. | open_date, open_loginのいずれかを設定してください。 | 「.billing」に「billing_file」を指定した場合<br>accessroleにnull、open_access、open_noが入力されていた場合
 
 4)  > ［インポート］をクリックします。
     
@@ -3296,6 +3307,43 @@ TSV**ファイル**での**ファイル**情報の登録
 <tr class="even">
 <td>File[0].バージョン情報</td>
 <td>登録するコンテンツファイルのバージョン情報を記載する。バージョン情報はテキスト形式で入力する。</td>
+</tr>
+</tbody>
+</table>
+
+課金ファイル情報の登録
+
+<table>
+<thead>
+<tr class="header">
+<th>ラベル名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>File[0].課金[0] (.billing)</td>
+<td><p>登録するファイルに課金設定を付与する場合、「billing_file」を記載する。</p></td>
+</tr>
+<tr class="even">
+<td>File[0].価格情報[0].ロール (.priceinfo[0].billingrole)</td>
+<td><p>ファイルに設定する課金設定のロール番号を記載する。</p></td>
+</tr>
+<tr class="odd">
+<td>File[0].価格情報[0].価格 (.priceinfo[0]..price)</td>
+<td><p>ファイルに設定する課金設定の価格を記載する。</p>
+<p>半角数字で記載する。</p></td>
+</tr>
+<tr class="even">
+<td>File[0].価格情報[0].税 (.priceinfo[0].tax)</td>
+<td><p>ファイルに設定する課金設定の価格の税込表示を設定する。</p>
+<p>価格を税込表示にする場合、「include_tax」を記載する。</p></td>
+</tr>
+<tr class="odd">
+<td>File[0].表示形式</td>
+<td><p>登録するコンテンツファイルの表示形式を入力する。previewは課金ファイル項目の「.billing」に「billing_file」を指定した場合、記載するとバリデーションエラーが発生する。選択できる項目は以下の通り。</p>
+<p>・detail ：詳細表示</p>
+<p>・simple ：簡易表示</p></td>
 </tr>
 </tbody>
 </table>
