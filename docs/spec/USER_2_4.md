@@ -403,5 +403,12 @@
 <td>V0.9.27</td>
 <td></td>
 </tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/26</p>
+</blockquote></td>
+<td>7d258293ee1243d1f2b692d494b658e7170dbe84</td>
+<td>H2024-01</td>
+</tr>
 </tbody>
 </table>
