@@ -23,6 +23,11 @@ V1.0.5
 <td>V1.0.5</td>
 <td>林</td>
 </tr>
+<tr class="even">
+<td>20240726</td>
+<td>H2024-01</td>
+<td>米司</td>
+</tr>
 </tbody>
 </table>
 
