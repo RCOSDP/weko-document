@@ -2452,7 +2452,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 64. ［アイテムタイプ］を選択すると指定したアイテムタイプのアイテムをエクスポートします。アイテムIDを指定すると、指定したアイテムID範囲のアイテムをエクスポートできます。
 
-![](media/media/image74.png)
+![](media/media/image440.png)
 
 65. 処理を行う場合は、［エクスポート］をクリックします。
     
