@@ -604,6 +604,7 @@
 
   - ※5) NDL JaLCについて  
     DOI RA：NDL JaLCの場合、資源タイプは「doctoral thesis」である必要があります。
+    
 
   - CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の通り。
 
