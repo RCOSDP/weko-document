@@ -93,39 +93,26 @@
           - ［保存（Save）］ボタンを押すと、設定内容を保存し、メッセージを表示する  
             メッセージ：「Update successfully」
         
-          - 送信時の処理(v0.9.22)
+          - 送信時の処理
             
               - 宛先：チェックした機関のメールアドレス
             
-              - 件名：\[○○機関リポジトリ\]YYYY.MM-yyyy.mm statistics report  
+              - 件名：\[○○機関リポジトリ\]YYYY.MM-yyyy.mm Site License Usage Statistics Report  
                 ※YYYY.MMは集計月(from), yyyy.mmは集計月(to)を表示
+       
+              - 添付ファイル名：SiteLicenseUserReport_YYYY.MM-yyyy.mm.zip
             
-              - メールのテンプレート： https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko\_admin/templates/weko\_admin/email\_templates/site\_license\_report.html
+              - メールのテンプレート： weko-admin.weko_admin.templates.weko_admin.email_templates.site_license_report.html
             
               - 本文：サイトライセンス利用統計の内容
                 
-                  - WEKO Top Page Access Count
+                  - SearchReport
                 
-                  - Number Of Searches
+                  - FileDownloadReport
                 
-                  - Number Of Views
+                  - Usagestatistics
                 
-                  - Number Of File download
-                
-                  - Number Of File Regeneration
-        
-          - 送信時の処理(※)
-            
-              - ※0.9.22には取り込まれていないが、メールの内容が既存の機能仕様書の通りになるよう修正されているので、以下に既存の機能仕様を残しておく。
-            
-              - 宛先：チェックした機関のメールアドレス
-            
-              - 件名：\[○○機関リポジトリ\]YYYY.MM-yyyy.mm 利用統計レポート  
-                ※YYYY.MMは集計月(from), yyyy.mmは集計月(to)を表示
-            
-              - メールのテンプレート： サイトライセンス利用統計メールひな形.docx
-            
-              - サイトライセンス利用統計の内容
+                  - FileViewReport
 
 <table>
 <thead>
@@ -181,7 +168,7 @@
 
 > 画面表示したとき、［保存（Save）］ボタンを押したときの処理は、以下で行う。
 
-  - > パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/admin.py>
+  - > weko_admin.admin.py
 
   - > SiteLicenseSendMailSettingsViewクラスのindexメソッド
     
@@ -203,7 +190,7 @@
 
 > ［メール手動送信（Manual Send）］ボタンを押したときの処理は、以下で行う。
 
-  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/views.py>
+  - weko_admin.views.py
 
   - manual\_send\_site\_license\_mailメソッド
     
@@ -213,7 +200,11 @@
         
           - 集計月の入力値より、fromの月の1日を「start\_date」、toの月の最終日を「end\_date」とする。
         
-          - QueryCommonReportsHelper.getメソッドによって、サイトアクセスレポートを取得する。
+          - QuerySitelicenseReportsHelper.getメソッドによって、サイトライセンスレポートを取得する。
+   
+              - キーワード検索の統計以外はオンラインISSNを設定したインデックス毎に集計された結果を出力する。
+   
+              - QuerySitelicenseReportsHelper.get_site_license_reportメソッドにおいて、Elasticsearchのインデックスから値を取得し、Calculationメソッドにおいて集計を行う。
         
           - 取得したサイトアクセスレポートを用いて、send\_site\_license\_mailメソッドでサイトライセンス機関のメールアドレスに対してメールを送信する。
             
@@ -240,6 +231,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/26</p>
+</blockquote></td>
+<td>7d258293ee1243d1f2b692d494b658e7170dbe84</td>
+<td>H2024-01</td>
 </tr>
 </tbody>
 </table>

@@ -101,6 +101,10 @@
         
           - 「キャンセル」ボタンを押すと、全件エクスポート処理のキャンセルを行わず、確認用ダイアログを閉じる。
 
+  - Start Time：エクスポート開始時刻を表示する
+
+  - Finish Time：エクスポート終了時刻を表示する
+
 <!-- end list -->
 
   - > 関連モジュール
@@ -141,6 +145,7 @@
     
       - 「エクスポート」ボタンを押し、更にポップアップの「Excute」ボタンを押下する。その場合、weko\_search\_ui.static.js.weko\_search\_ui.export.handleExportメソッドによってexport\_allメソッドが呼び出され、更にexport\_all\_taskメソッドを呼び出す。これらによってエクスポートするアイテムのメタデータを集め、ダウンロードURLを生成し、表示させる。
         
+          - アイテム情報をファイルに出力する処理を非同期処理で行う。すべてのファイル出力処理が完了した際に、weko_search_ui.utils.get_export_statusメソッドにおいてbagファイルやzipファイルの作成を行う。
           - エクスポートして、URLが表示されるまでの間に、「キャンセル」ボタンを押し、「execute」ボタンを押す。その場合、weko\_search\_ui.admin.ItemBulkExport.cancel\_exportメソッドが呼び出され、ダウンロードURLの生成、表示をキャンセルする。
     
       - 画面上に表示されたダウンロードURLを押下する。その場合、weko\_search\_ui.admin.ItemBulkExport.export\_allメソッドにて、 FileInstance.get\_by\_uriメソッドが呼び出され、ダウンロードファイルを生成し、ダウンロードする。なお、ダウンロードされるファイル形式はzipであり、アイテムのメタデータについてのファイルはtsv形式である。
@@ -178,6 +183,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/26</p>
+</blockquote></td>
+<td>7d258293ee1243d1f2b692d494b658e7170dbe84</td>
+<td>H2024-01</td>
 </tr>
 </tbody>
 </table>

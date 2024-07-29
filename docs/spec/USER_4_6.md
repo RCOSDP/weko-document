@@ -97,6 +97,24 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
       - アイテムで個別に編集した作成者の項目は、Adminの著者DBには反映されない。  
         なお、アイテムで個別に編集した後に著者DBから著者を取り込むと、個別編集した項目は上書きされる
 
+  - 課金によるアクセス制限を行うファイルの登録
+
+      - アイテム登録時にファイル情報で課金ファイルを指示することで、そのファイルを課金ファイルとして登録する。
+   
+      - ファイルプロパティ、制限公開プロパティに課金ファイルに関する以下の項目を追加する。 これによってアイテム登録時に課金ファイルを指示できるようにする。
+   
+          - 課金ファイル(チェックボックス)
+       
+          - 価格情報(リスト)
+
+              - ロール(プルダウン)
+           
+              - 税込または税抜(チェックボックス)
+           
+              - 価格(テキストボックス)
+           
+      - 課金ファイル関連のプロパティはメタデータに1つだけ設定できるものとする。
+
 2\. アイテムのメタデータを自動入力できる
 
   - Web APIのアカウント情報を設定する
@@ -251,19 +269,49 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 
   - > 処理概要
 
-> 選択されたメタデータを表示する処理
+- 選択されたメタデータを表示する処理
 
-  - > パネルがオープンか、クローズかの状態を取得する
+  - パネルがオープンか、クローズかの状態を取得する
     
-      - > すべての項目に対してデフォルトの状態はクローズとする
+    - すべての項目に対してデフォルトの状態はクローズとする
     
-      - > 「$rootScope.recordsVM.invenioRecordsSchema.required」から必須項目を取得し、それらの項目のパネルが初期としとオープンの状態とする
+      -  「$rootScope.recordsVM.invenioRecordsSchema.required」から必須項目を取得し、それらの項目のパネルが初期としとオープンの状態とする
 
-  - > パネルの中身に表示する処理はプロパティのデータを取得し、タイプに応じて以下のテンプレートで表示する
+  -  パネルの中身に表示する処理はプロパティのデータを取得し、タイプに応じて以下のテンプレートで表示する
     
-      - > form.html（https://github.com/inveniosoftware/invenio-records-js/blob/master/src/invenio-records-js/templates/form.html）
+      -  form.html（https://github.com/inveniosoftware/invenio-records-js/blob/master/src/invenio-records-js/templates/form.html）
     
-      - > decorators（https://github.com/inveniosoftware/invenio-records-js/tree/master/src/invenio-records-js/templates/decorators）
+      -  decorators（https://github.com/inveniosoftware/invenio-records-js/tree/master/src/invenio-records-js/templates/decorators）
+
+  -  課金によるアクセス制限を行うファイルの登録
+ 
+      -  Item Registration 
+
+          -  アクセスラジオボタンが「オープンアクセス日を指定する」または「ログインユーザーのみ」の場合に課金ファイルチェックボックスを表示し、課金ファイルの指示ができるようにする。
+        
+          -  課金ファイルチェックボックスがONの場合に価格情報を表示し、ロールごとの価格を設定できるようにする。
+
+          -  Nextボタン押下時に課金ファイルの入力チェックを行う。
+
+              -   課金ファイルチェックボックスがONかつファイルが複数存在する場合はNG
+       
+              -   課金ファイルの表示形式をプレビューにしていた場合はNG
+       
+              -   価格情報のロールまたは価格が未入力の場合はNG
+       
+              -   価格情報に同じロールが指定されていたらNG
+       
+              -   価格情報の価格に数字以外が入力されていたらNG
+           
+      - Approval
+        
+          - アイテムに課金ファイルが存在する場合は価格情報を画面に表示する。
+       
+      - Metadata
+        
+          - 保存ボタン押下時の処理に入力チェックを行う
+       
+              - 課金ファイル関連のプロパティ(ファイルプロパティ、課金ファイルプロパティ、制限公開ファイルプロパティ)が複数存在する場合はNG 
 
 2\. 設定
 
@@ -295,6 +343,13 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/26</p>
+</blockquote></td>
+<td>7d258293ee1243d1f2b692d494b658e7170dbe84</td>
+<td>H2024-01</td>
 </tr>
 </tbody>
 </table>
