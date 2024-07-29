@@ -1112,7 +1112,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 <td>6</td>
 <td><img src="media/media/image67.png" style="width:1.48646in;height:1.93872in" /></td>
 <td><p>検索条件の日付（Contents Created Date, Academic Degree Date）は次のどちらかの形式で値を入力します。</p>
-<p>•yyyymmdd、yyyy形式で入力します。上記以外の入力値を指定した場合は「Field does not validate」を表示し、アイテム検索はできません。存在しない日付を入力した場合も「Field does not validate」エラーを発行します。</p>
+<p>•yyyymmdd、yyyy形式で入力します。上記以外の入力値を指定した場合は「Field does not validate」を表示し、アイテム検索はできません(v1.0.7修正)。存在しない日付を入力した場合も「Field does not validate」エラーを発行します(v1.0.7修正)。</p>
 <p>•エリアフォーカス時に表示するカレンダーで日付を選択して入力します。</p>
 <p>•エリアフォーカス時に表示するカレンダーで日付を選択して入力します。</p></td>
 </tr>
@@ -1603,11 +1603,11 @@ Information画面の各項目の内容は以下の通りです。
 </tbody>
 </table>
 
-> ※「Secret URL」ボタンを押下することで、シークレットURLを発行し、押下したユーザーのメールアドレスに発行したURLを通知します。
+> ※「Secret URL」ボタンを押下することで、シークレットURLを発行し、押下したユーザーのメールアドレスに発行したURLを通知します(v1.0.7追加)。
 > 
 > シークレットURLとは、URLを知っていれば誰でも対象のコンテンツファイルをダウンロードできるURLとなっており、アイテム登録者及びシステム、リポジトリ管理者が発行できます。
 > 
-> ファイルエリアに「Secret URL」ボタンが追加されるのは、下記の条件を満たした場合となります。
+> ファイルエリアに「Secret URL」ボタンが追加されるのは、下記の条件を満たした場合となります(v1.0.7追加)。
 > 
 > 1.アイテム登録者・またはリポジトリ管理者・システム管理者である。
 > 
@@ -2077,7 +2077,7 @@ Information画面の各項目の内容は以下の通りです。
 <td>1</td>
 <td>ID選択</td>
 <td><p>外部データベースを選択します。</p>
-<p>外部データベースは、CrossRef、CiNii Researchが利用できます。</p></td>
+<p>外部データベースは、CrossRef、CiNii Researchが利用できます(v1.0.7修正)。</p></td>
 </tr>
 <tr class="even">
 <td>2</td>
@@ -3460,7 +3460,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 <td><p>DOI発行機関を表示された［識別子の付与］のラジオボタンで選択します。</p>
 <ul>
 <li><blockquote>
-<p>対応している［識別子の付与］の種類は以下の通りです(現時点では、JaLC Datacite DOIまたはNDL JaLC DOIを付与することはできません)。</p>
+<p>対応している［識別子の付与］の種類は以下の通りです(現時点では、NDL JaLC DOIを付与することはできません(v1.0.7修正))。</p>
 </blockquote></li>
 </ul>
 <ul>
@@ -3481,7 +3481,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 <tr class="even">
 <td>2</td>
 <td>戻るボタン</td>
-<td>前のアクションに戻ります。</td>
+<td>前のアクションに戻ります(v1.0.7追加)。</td>
 </tr>
 <tr class="odd">
 <td>3</td>

@@ -79,7 +79,7 @@
         
           - JPCOAR v1スキーマ：「jpcoar\_v1l
         
-          - JPCOAR v1スキーマ：「jpcoar\_v2l
+          - JPCOAR v1スキーマ：「jpcoar\_v2l(v1.0.7追加)
         
           - omスキーマ：「lom」
     

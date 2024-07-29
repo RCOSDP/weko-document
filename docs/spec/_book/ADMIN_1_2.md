@@ -54,7 +54,7 @@
         
           - jpcoar\_v1\_mapping：JPCOAR v1スキーマに対応
         
-          - jpcoar\_v2\_mapping：JPCOAR v2スキーマに対応
+          - jpcoar\_v2\_mapping：JPCOAR v2スキーマに対応(v1.0.7追加)
         
           - oai\_dc\_mapping：Dublin Coreスキーマに対応
         
