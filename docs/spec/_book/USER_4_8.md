@@ -148,7 +148,7 @@
         > テーブル名：feedback\_mail\_list  
         > 保存情報：item\_id、mail\_list
     
-      - > Elasticsearchに「feedback\_mail\_list」属性に保存する
+      - > ~~ Elasticsearchに「feedback\_mail\_list」属性に保存する ~~ v1.0.8よりDBのみに記録するように変更。
 
   - > 【Administration \> 統計（Statistics） \> フィードバックメール（Feedback Mail）】に入力した情報をデータベースに以下のように保存する  
     > テーブル名：feedback\_email\_setting  
@@ -230,6 +230,13 @@
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td><blockquote>
+<p>2024/08/27</p>
+</blockquote></td>
+<td>f49b016c92ef98e0656947bf651ca1a2f3dbc286</td>
+<td>v1.0.8</td>
+</tr>
 <tr class="odd">
 <td><blockquote>
 <p>2023/08/31</p>
