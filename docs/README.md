@@ -1,16 +1,25 @@
+# WEKO3 Documents
 
-npx honkit init admin_manual
-npx honkit serve
-npx honkit build
+## ビルド方法
 
-sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin version=4.23.0
+honkitと必要なプラグインをインストールする。
 
-npx honkit pdf . ../ADMIN.pdf
+```
+npm install
+```
+
 
 
 ```
-cd spec/
-node app.js
-cd ../
-npx honkit pdf spec/pdf/ spec/pdf/spec.pdf
+npx honkit build manuals/ADMIN/base/ manuals/ADMIN/html
+```
+
+build user manual.
+
+```
+npx honkit build manuals/USER/base/ manuals/USER/html
+```
+
+```
+npx honkit build spec/base spec/html
 ```
