@@ -1,66 +1,110 @@
-### OAI-PMH 
+# OAI-PMH 2.0
 
-  - > 目的・用途
+## 目的・用途
 
-<!-- end list -->
+OAI-PMH(Open Archives Initiative Protocol for Metadata Harvesting)2.0とは、メタデータ交換のための通信プロトコルである。
 
-  - > OAI-PMHとは、データベース内のメタデータを様々な指定をして受け渡すことを可能とするプロトコルである。OAI-PMHを用いることによって様々なスキーマでメタデータの提供を可能としている。利用方法
+プロトコルの仕様（日本語訳）：
+[https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/](https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/)
 
-OAI-PMHのリクエストURLは以下のようになる。以下の「値」と「verbのパラメータ」に任意の値を指定することで、メタデータを取得することができる。指定できる値については後述。
 
-https://\[host\]/oai?verb=「値」&「verbのパラメータ」=「値」&「 verbのパラメータ」=「値」&...
+WEKO3はメタデータをリポジトリから取り込むハーベスタ機能とリポジトリからハーベスタに対してメタデータを提供するプロバイダ機能の両方に対応する。
 
-  - > 機能内容
+WEKO3のOAIPMHプロバイダのベースURLは以下となる。
 
-<!-- end list -->
+https://[host]/oai
 
-  - Verbに指定できる値は、以下の6種類となる。
-    
-      - GetRecord  
-        リポジトリから個別のメタデータレコードを検索するためのverb。  
-        追加で指定するパラメータは次の2つになる。  
-        １．identifier：レコードの抽出元となるリポジトリのアイテムの固有識別子を指定する引数。必須項目。  
-        ２．metadataPrefix：返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。
+
+OAIPMHプロバイダ機能を有効にするには[Identify設定](#Identify設定)が必要。
+
+## 機能内容
+
+* Verbに指定できる値は、以下の6種類となる。    
+
+### GetRecord  
         
-          - 以下に応答例を示す。
+この verb は、あるリポジトリから個別のメタデータレコードを検索するために使用される。
 
-\<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
+メタデータはアイテムタイプマッピングを利用してrecords_metadataのレコードを元に作成される。
 
-\<responseDate\>yyyy-mm-ddThh:mm:ssZ\</responseDate\>
+datestampにはrecords_metadataテーブルのupdatedカラム値が利用される。
+        
+#### 引数  
+        
+- identifier：レコードの抽出元となるリポジトリのアイテムの固有識別子を指定する引数。必須項目。  
+- metadataPrefix：返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。
 
-\<request metadataPrefix="○○○○" verb="GetRecord" identifier="○○○○"\>https://\[host\]/oai\</request\>
+#### エラー
 
-\<GetRecord\>
+- badArgument - 要求に不正な引数があるか、必要な引数がありません。
+- cannotDisseminateFormat - metadataPrefix 引数の値が、identifier 引数の値によって指定されたアイテムでサポートされていません。
+- idDoesNotExist - このリポジトリでは、 identifier 引数の値が不明または不正です。
+        
+#### 例
 
-\<record\>
+https://[host]/oai?verb=GetRecord&metadataPrefix=jpcoar_2.0&identifier=https://dev.ir.rcos.nii.ac.jp/oai?verb=GetRecord&metadataPrefix=jpcoar_2.0&identifier=oai:weko3.example.org:00000001
 
-\<header\>
+```
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
 
-\<identifier\>○○○○\</identifier\>
+<responseDate>yyyy-mm-ddThh:mm:ssZ</responseDate>
+<request metadataPrefix="jpcoar_2.0" verb="GetRecord" identifier="oai:weko3.example.org:00000001">https://[host]/oai</request>
+<GetRecord>
+<record>
+<header>
+<identifier>oai:weko3.example.org:00000001</identifier>
+<datestamp>yyyy-mm-ddThh:mm:ssZ</datestamp>
+<setSpec>○○○○</setSpec>
+</header>
+<metadata>
+指定したアイテムのメタデータがここに記載される
+</metadata>
+</record>
+</GetRecord>
+</OAI-PMH\>
+```
 
-\<datestamp\>yyyy-mm-ddThh:mm:ssZ\</datestamp\>
+idDoesNotExist　の例。
 
-\<setSpec\>○○○○\</setSpec\>
+```
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>2024-09-10T15:31:52Z</responseDate>
+<request>https://dev.ir.rcos.nii.ac.jp/oai</request>
+<error code="idDoesNotExist">No matching identifier</error>
+</OAI-PMH>
+```
 
-\</header\>
+cannotDisseminateFormat　の例。
 
-\<metadata\>
 
-\<指定したアイテムのメタデータがここに記載される\>
+```
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>2024-09-10T15:31:20Z</responseDate>
+<request>https://dev.ir.rcos.nii.ac.jp/oai</request>
+<error code="cannotDisseminateFormat">The metadataPrefix "oai_marc" is not supported by this repository.</error>
+</OAI-PMH>
+```
 
-\</metadata\>
+badArgument　の例。
 
-\</record\>
+```
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>yyyy-mm-ddThh:mm:ssZ</responseDate>
+<request>https://[host]/oai</request>
+<error code="badArgument">Missing data for required field "metadataPrefix".</error>
+<error code="badArgument">Missing data for required field "identifier".</error>
+</OAI-PMH>
+```
 
-\</GetRecord\>
-
-\</OAI-PMH\>
-
-  - Identify  
-    リポジトリについての情報を検索する際に使用するverb。  
-    追加で指定する引数はなし。
+### Identify  
     
-      - 以下に応答例を示す。
+リポジトリについての情報を検索する際に使用するverb。  
+    
+#### 引数
+
+なし
+    
+#### 例
 
 \<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
 
@@ -280,15 +324,11 @@ https://\[host\]/oai?verb=「値」&「verbのパラメータ」=「値」&「 v
 
 <!-- end list -->
 
-  - > 関連モジュール
+## 関連モジュール
 
-<!-- end list -->
+* Invenio_oaiserver
 
-  - > Invenio\_oaiserver
-
-<!-- end list -->
-
-  - > 更新履歴
+##  更新履歴
 
 <table>
 <thead>
