@@ -2161,63 +2161,77 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><h3 id="oai-pmh"><a name="oai-pmh" class="plugin-anchor" href="#oai-pmh"><i class="fa fa-link" aria-hidden="true"></i></a>OAI-PMH</h3>
+                                <html><head></head><body><h1 id="oai-pmh-20"><a name="oai-pmh-20" class="plugin-anchor" href="#oai-pmh-20"><i class="fa fa-link" aria-hidden="true"></i></a>OAI-PMH 2.0</h1>
+<h2 id="目的・用途"><a name="目的・用途" class="plugin-anchor" href="#目的・用途"><i class="fa fa-link" aria-hidden="true"></i></a>目的・用途</h2>
+<p>OAI-PMH(Open Archives Initiative Protocol for Metadata Harvesting)2.0とは、メタデータ交換のための通信プロトコルである。</p>
+<p>プロトコルの仕様（日本語訳）：
+<a href="https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/" target="_blank">https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/</a></p>
+<p>WEKO3はメタデータをリポジトリから取り込むハーベスタ機能とリポジトリからハーベスタに対してメタデータを提供するプロバイダ機能の両方に対応する。</p>
+<p>WEKO3のOAIPMHプロバイダのベースURLは以下となる。</p>
+<p><a href="https://[host]/oai" target="_blank">https://[host]/oai</a></p>
+<p>OAIPMHプロバイダ機能を有効にするには<a href="#Identify設定">Identify設定</a>が必要。</p>
+<h2 id="機能内容"><a name="機能内容" class="plugin-anchor" href="#機能内容"><i class="fa fa-link" aria-hidden="true"></i></a>機能内容</h2>
 <ul>
-<li><blockquote>
-<p>目的・用途</p>
-</blockquote>
-</li>
+<li>Verbに指定できる値は、以下の6種類となる。    </li>
 </ul>
-<!-- end list -->
+<h3 id="getrecord"><a name="getrecord" class="plugin-anchor" href="#getrecord"><i class="fa fa-link" aria-hidden="true"></i></a>GetRecord</h3>
+<p>この verb は、あるリポジトリから個別のメタデータレコードを検索するために使用される。</p>
+<p>メタデータはアイテムタイプマッピングを利用してrecords_metadataのレコードを元に作成される。</p>
+<p>datestampにはrecords_metadataテーブルのupdatedカラム値が利用される。</p>
+<h4 id="引数"><a name="引数" class="plugin-anchor" href="#引数"><i class="fa fa-link" aria-hidden="true"></i></a>引数</h4>
 <ul>
-<li><blockquote>
-<p>OAI-PMHとは、データベース内のメタデータを様々な指定をして受け渡すことを可能とするプロトコルである。OAI-PMHを用いることによって様々なスキーマでメタデータの提供を可能としている。利用方法</p>
-</blockquote>
-</li>
+<li>identifier：レコードの抽出元となるリポジトリのアイテムの固有識別子を指定する引数。必須項目。  </li>
+<li>metadataPrefix：返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。</li>
 </ul>
-<p>OAI-PMHのリクエストURLは以下のようになる。以下の「値」と「verbのパラメータ」に任意の値を指定することで、メタデータを取得することができる。指定できる値については後述。</p>
-<p><a href="https://\[host\]/oai?verb=「値」&amp;「verbのパラメータ」=「値」&amp;「" target="_blank">https://\[host\]/oai?verb=「値」&amp;「verbのパラメータ」=「値」&amp;「</a> verbのパラメータ」=「値」&amp;...</p>
+<h4 id="エラー"><a name="エラー" class="plugin-anchor" href="#エラー"><i class="fa fa-link" aria-hidden="true"></i></a>エラー</h4>
 <ul>
-<li><blockquote>
-<p>機能内容</p>
-</blockquote>
-</li>
+<li>badArgument - 要求に不正な引数があるか、必要な引数がありません。</li>
+<li>cannotDisseminateFormat - metadataPrefix 引数の値が、identifier 引数の値によって指定されたアイテムでサポートされていません。</li>
+<li>idDoesNotExist - このリポジトリでは、 identifier 引数の値が不明または不正です。</li>
 </ul>
-<!-- end list -->
-<ul>
-<li><p>Verbに指定できる値は、以下の6種類となる。</p>
-<ul>
-<li><p>GetRecord<br>リポジトリから個別のメタデータレコードを検索するためのverb。<br>追加で指定するパラメータは次の2つになる。<br>１．identifier：レコードの抽出元となるリポジトリのアイテムの固有識別子を指定する引数。必須項目。<br>２．metadataPrefix：返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。</p>
-<ul>
-<li>以下に応答例を示す。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>\<oai-pmh xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd" \></oai-pmh></p>
-<p>\<responsedate\>yyyy-mm-ddThh:mm:ssZ\&lt;/responseDate&gt;</responsedate\></p>
-<p>\<request metadataprefix="○○○○" verb="GetRecord" identifier="○○○○" \><a href="https://\[host\]/oai\" target="_blank">https://\[host\]/oai\</a>&lt;/request&gt;</request></p>
-<p>\<getrecord\></getrecord\></p>
-<p>\<record\></record\></p>
-<p>\<header\></header\></p>
-<p>\<identifier\>○○○○\&lt;/identifier&gt;</identifier\></p>
-<p>\<datestamp\>yyyy-mm-ddThh:mm:ssZ\&lt;/datestamp&gt;</datestamp\></p>
-<p>\<setspec\>○○○○\&lt;/setSpec&gt;</setspec\></p>
-<p>\&lt;/header&gt;</p>
-<p>\<metadata\></metadata\></p>
-<p>\&lt;指定したアイテムのメタデータがここに記載される&gt;</p>
-<p>\&lt;/metadata&gt;</p>
-<p>\&lt;/record&gt;</p>
-<p>\&lt;/GetRecord&gt;</p>
-<p>\&lt;/OAI-PMH&gt;</p>
-<ul>
-<li><p>Identify<br>リポジトリについての情報を検索する際に使用するverb。<br>追加で指定する引数はなし。</p>
-<ul>
-<li>以下に応答例を示す。</li>
-</ul>
-</li>
-</ul>
+<h4 id="例"><a name="例" class="plugin-anchor" href="#例"><i class="fa fa-link" aria-hidden="true"></i></a>例</h4>
+<p><a href="https://[host]/oai?verb=GetRecord&amp;metadataPrefix=jpcoar_2.0&amp;identifier=https://dev.ir.rcos.nii.ac.jp/oai?verb=GetRecord&amp;metadataPrefix=jpcoar_2.0&amp;identifier=oai:weko3.example.org:00000001" target="_blank">https://[host]/oai?verb=GetRecord&amp;metadataPrefix=jpcoar_2.0&amp;identifier=https://dev.ir.rcos.nii.ac.jp/oai?verb=GetRecord&amp;metadataPrefix=jpcoar_2.0&amp;identifier=oai:weko3.example.org:00000001</a></p>
+<pre><code>&lt;OAI-PMH xmlns=&quot;http://www.openarchives.org/OAI/2.0/&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd&quot;\&gt;
+
+&lt;responseDate&gt;yyyy-mm-ddThh:mm:ssZ&lt;/responseDate&gt;
+&lt;request metadataPrefix=&quot;jpcoar_2.0&quot; verb=&quot;GetRecord&quot; identifier=&quot;oai:weko3.example.org:00000001&quot;&gt;https://[host]/oai&lt;/request&gt;
+&lt;GetRecord&gt;
+&lt;record&gt;
+&lt;header&gt;
+&lt;identifier&gt;oai:weko3.example.org:00000001&lt;/identifier&gt;
+&lt;datestamp&gt;yyyy-mm-ddThh:mm:ssZ&lt;/datestamp&gt;
+&lt;setSpec&gt;○○○○&lt;/setSpec&gt;
+&lt;/header&gt;
+&lt;metadata&gt;
+指定したアイテムのメタデータがここに記載される
+&lt;/metadata&gt;
+&lt;/record&gt;
+&lt;/GetRecord&gt;
+&lt;/OAI-PMH\&gt;
+</code></pre><p>idDoesNotExist　の例。</p>
+<pre><code>&lt;OAI-PMH xmlns=&quot;http://www.openarchives.org/OAI/2.0/&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd&quot;&gt;
+&lt;responseDate&gt;2024-09-10T15:31:52Z&lt;/responseDate&gt;
+&lt;request&gt;https://dev.ir.rcos.nii.ac.jp/oai&lt;/request&gt;
+&lt;error code=&quot;idDoesNotExist&quot;&gt;No matching identifier&lt;/error&gt;
+&lt;/OAI-PMH&gt;
+</code></pre><p>cannotDisseminateFormat　の例。</p>
+<pre><code>&lt;OAI-PMH xmlns=&quot;http://www.openarchives.org/OAI/2.0/&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd&quot;&gt;
+&lt;responseDate&gt;2024-09-10T15:31:20Z&lt;/responseDate&gt;
+&lt;request&gt;https://dev.ir.rcos.nii.ac.jp/oai&lt;/request&gt;
+&lt;error code=&quot;cannotDisseminateFormat&quot;&gt;The metadataPrefix &quot;oai_marc&quot; is not supported by this repository.&lt;/error&gt;
+&lt;/OAI-PMH&gt;
+</code></pre><p>badArgument　の例。</p>
+<pre><code>&lt;OAI-PMH xmlns=&quot;http://www.openarchives.org/OAI/2.0/&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd&quot;&gt;
+&lt;responseDate&gt;yyyy-mm-ddThh:mm:ssZ&lt;/responseDate&gt;
+&lt;request&gt;https://[host]/oai&lt;/request&gt;
+&lt;error code=&quot;badArgument&quot;&gt;Missing data for required field &quot;metadataPrefix&quot;.&lt;/error&gt;
+&lt;error code=&quot;badArgument&quot;&gt;Missing data for required field &quot;identifier&quot;.&lt;/error&gt;
+&lt;/OAI-PMH&gt;
+</code></pre><h3 id="identify"><a name="identify" class="plugin-anchor" href="#identify"><i class="fa fa-link" aria-hidden="true"></i></a>Identify</h3>
+<p>リポジトリについての情報を検索する際に使用するverb。  </p>
+<h4 id="引数"><a name="引数" class="plugin-anchor" href="#引数"><i class="fa fa-link" aria-hidden="true"></i></a>引数</h4>
+<p>なし</p>
+<h4 id="例"><a name="例" class="plugin-anchor" href="#例"><i class="fa fa-link" aria-hidden="true"></i></a>例</h4>
 <p>\<oai-pmh xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd" \></oai-pmh></p>
 <p>\<responsedate\>yyyy-mm-ddThh:mm:ssZ\&lt;/responseDate&gt;</responsedate\></p>
 <p>\<request verb="Identify" \><a href="https://\[host\" target="_blank">https://\[host\</a>] /oai\&lt;/request&gt;</request></p>
@@ -2369,26 +2383,11 @@
 </li>
 </ul>
 <!-- end list -->
+<h2 id="関連モジュール"><a name="関連モジュール" class="plugin-anchor" href="#関連モジュール"><i class="fa fa-link" aria-hidden="true"></i></a>関連モジュール</h2>
 <ul>
-<li><blockquote>
-<p>関連モジュール</p>
-</blockquote>
-</li>
+<li>Invenio_oaiserver</li>
 </ul>
-<!-- end list -->
-<ul>
-<li><blockquote>
-<p>Invenio_oaiserver</p>
-</blockquote>
-</li>
-</ul>
-<!-- end list -->
-<ul>
-<li><blockquote>
-<p>更新履歴</p>
-</blockquote>
-</li>
-</ul>
+<h2 id="更新履歴"><a name="更新履歴" class="plugin-anchor" href="#更新履歴"><i class="fa fa-link" aria-hidden="true"></i></a>更新履歴</h2>
 <table>
 <thead>
 <tr class="header">
@@ -2449,7 +2448,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API-2: WebAPI：OAI-PMH 429","level":"1.4.2","depth":2,"next":{"title":"API-3: WebAPI：OpenSearch 436","level":"1.4.3","depth":2,"path":"api/API_03_OpenSearch.md","ref":"api/API_03_OpenSearch.md","articles":[]},"previous":{"title":"API-1: WebAPI：OAuth2 425","level":"1.4.1","depth":2,"path":"api/API_01_Oauth2.md","ref":"api/API_01_Oauth2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","back-to-top-button","anchors","collapsible-chapters","hide-published-with","plantuml-cloud"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"plantuml-cloud":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"Research Center for Open Science and Data Platform, National Institute of Informatics","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"機能仕様書","language":"ja","gitbook":"*","description":""},"file":{"path":"api/API_02_OAIPMH.md","mtime":"2024-08-27T03:35:33.216Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-09-07T03:04:46.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API-2: WebAPI：OAI-PMH 429","level":"1.4.2","depth":2,"next":{"title":"API-3: WebAPI：OpenSearch 436","level":"1.4.3","depth":2,"path":"api/API_03_OpenSearch.md","ref":"api/API_03_OpenSearch.md","articles":[]},"previous":{"title":"API-1: WebAPI：OAuth2 425","level":"1.4.1","depth":2,"path":"api/API_01_Oauth2.md","ref":"api/API_01_Oauth2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","back-to-top-button","anchors","collapsible-chapters","hide-published-with","plantuml-cloud"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"plantuml-cloud":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"Research Center for Open Science and Data Platform, National Institute of Informatics","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"機能仕様書","language":"ja","gitbook":"*","description":""},"file":{"path":"api/API_02_OAIPMH.md","mtime":"2024-09-10T15:50:19.926Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-09-10T15:51:15.605Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

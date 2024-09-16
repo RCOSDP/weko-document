@@ -15,7 +15,9 @@ WEKO3のOAIPMHプロバイダのベースURLは以下となる。
 https://[host]/oai
 
 
-OAIPMHプロバイダ機能を有効にするには[Identify設定](#Identify設定)が必要。
+OAIPMHプロバイダ機能を有効にするには[Identify設定](../admin/ADMIN_9_2.md)が必要である。
+
+メタデータを出力するにはインデックスの [ハーベスト公開](../admin/ADMIN_3_1.md)が有効になっている必要がある。
 
 ## 機能内容
 
@@ -45,7 +47,7 @@ datestampにはrecords_metadataテーブルのupdatedカラム値が利用され
 https://[host]/oai?verb=GetRecord&metadataPrefix=jpcoar_2.0&identifier=https://dev.ir.rcos.nii.ac.jp/oai?verb=GetRecord&metadataPrefix=jpcoar_2.0&identifier=oai:weko3.example.org:00000001
 
 ```
-<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
 
 <responseDate>yyyy-mm-ddThh:mm:ssZ</responseDate>
 <request metadataPrefix="jpcoar_2.0" verb="GetRecord" identifier="oai:weko3.example.org:00000001">https://[host]/oai</request>
@@ -61,7 +63,7 @@ https://[host]/oai?verb=GetRecord&metadataPrefix=jpcoar_2.0&identifier=https://d
 </metadata>
 </record>
 </GetRecord>
-</OAI-PMH\>
+</OAI-PMH>
 ```
 
 idDoesNotExist　の例。
@@ -106,205 +108,215 @@ badArgument　の例。
     
 #### 例
 
-\<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
+```
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>yyyy-mm-ddThh:mm:ssZ</responseDate>
+<request verb="Identify">https://[host] /oai</request>
+<Identify>
+<repositoryName>○○○○</repositoryName>
+<adminEmail>○○○○</adminEmail>
+<baseURL>https://[host]/oai</baseURL>
+<protocolVersion>2.0</protocolVersion>
+<earliestDatestamp> yyyy-mm-ddThh:mm:ssZ </earliestDatestamp>
+<deletedRecord>transient</deletedRecord>
+<granularity>YYYY-MM-DDThh:mm:ssZ</granularity>
+</Identify>
+</OAI-PMH>
+```
 
-\<responseDate\>yyyy-mm-ddThh:mm:ssZ\</responseDate\>
+### ListIdentifiers
 
-\<request verb="Identify"\>https://\[host\] /oai\</request\>
+任意の引数を指定し、ヘッダの検索する際に使用するverb。  
+    
+    
+ ####　引数
+ 
+- from：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの下限を設定する。  
+- until：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの上限を設定する。  
+- metadataPrefix：返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。  
+- set：Spec値を持つ任意の引数。選択的ハーベスティングを行う際のセットの基準を指定する。  
+- resumptionToken：リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。
+    
+#### 例
 
-\<Identify\>
+```
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>YYYY-MM-DDThh:mm:ssZ</responseDate>
+<request verb="ListIdentifiers" metadataPrefix="○○○○">https://[host]/oai</request>
+<ListIdentifiers>
+<header>
+<指定したヘッダの情報>
+</header>
+</ListIdentifiers>
+</OAI-PMH>
+```
 
-\<repositoryName\>○○○○\</repositoryName\>
+### ListMetadataFormats  
+    
+リポジトリから入手可能なメタデータフォーマットを検索する際に使用するverb。  
+    
+#### 引数
+    
+identifier：アイテムに利用可能なメタデータフォーマットが要求されている場合に、そのアイテムの固有識別子を指定する任意の引数。
 
-\<adminEmail\>○○○○\</adminEmail\>
+#### 例    
 
-\<baseURL\>https://\[host\] /oai\</baseURL\>
+```
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>YYYY-MM-DDThh:mm:ssZ</responseDate>
+<ListMetadataFormats>
+<metadataFormat>
+<metadataPrefix>jpcoar</metadataPrefix>
+<schema>https://github.com/JPCOAR/schema/blob/master/2.0/jpcoar_scm.xsd</schema>
+<metadataNamespace>https://github.com/JPCOAR/schema/blob/master/2.0/</metadataNamespace>
+</metadataFormat>
+<metadataFormat>
+<metadataPrefix>jpcoar_1.0</metadataPrefix>
+<schema>https://irdb.nii.ac.jp/schema/jpcoar/1.0/jpcoar_scm.xsd</schema>
+<metadataNamespace>https://irdb.nii.ac.jp/schema/jpcoar/1.0/</metadataNamespace>
+</metadataFormat>
+<metadataFormat>
+<metadataPrefix>jpcoar_2.0</metadataPrefix>
+<schema>https://irdb.nii.ac.jp/schema/jpcoar/2.0/jpcoar_scm.xsd</schema>
+<metadataNamespace>https://irdb.nii.ac.jp/schema/jpcoar/2.0/</metadataNamespace>
+</metadataFormat>
+<metadataFormat>
+<metadataPrefix>oai_dc</metadataPrefix>
+<schema>http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd</schema>
+<metadataNamespace>http://www.w3.org/2001/XMLSchema</metadataNamespace>
+</metadataFormat>
+<metadataFormat>
+<metadataPrefix>ddi</metadataPrefix>
+<schema>https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd</schema>
+<metadataNamespace>ddi:codebook:2_5</metadataNamespace>
+</metadataFormat>
+<metadataFormat>
+<metadataPrefix>jpcoar_v1</metadataPrefix>
+<schema>https://github.com/JPCOAR/schema/blob/master/1.0/jpcoar_scm.xsd</schema>
+<metadataNamespace>https://github.com//schema/blob/master/1.0/</metadataNamespace>
+</metadataFormat>
+<metadataFormat>
+<metadataPrefix>lom</metadataPrefix>
+<schema>http://www.lido-schema.org http://www.lido-schema.org/schema/v1.0/lido-v1.0.xsd</schema>
+<metadataNamespace>http://ltsc.ieee.org/xsd/LOM</metadataNamespace>
+</metadataFormat>
+</ListMetadataFormats>
+</OAI-PMH><?xml version='1.0' encoding='UTF-8'?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2024-09-10T16:03:44Z</responseDate>
+  <request verb="ListMetadataFormats">https://dev.ir.rcos.nii.ac.jp/oai</request>
+  <ListMetadataFormats>
+    <metadataFormat>
+      <metadataPrefix>jpcoar_1.0</metadataPrefix>
+      <schema>https://irdb.nii.ac.jp/schema/jpcoar/1.0/jpcoar_scm.xsd</schema>
+      <metadataNamespace>https://irdb.nii.ac.jp/schema/jpcoar/1.0/</metadataNamespace>
+    </metadataFormat>
+    <metadataFormat>
+      <metadataPrefix>jpcoar</metadataPrefix>
+      <schema>https://github.com/JPCOAR/schema/blob/master/2.0/jpcoar_scm.xsd</schema>
+      <metadataNamespace>https://github.com/JPCOAR/schema/blob/master/2.0/</metadataNamespace>
+    </metadataFormat>
+    <metadataFormat>
+      <metadataPrefix>jpcoar_2.0</metadataPrefix>
+      <schema>https://irdb.nii.ac.jp/schema/jpcoar/2.0/jpcoar_scm.xsd</schema>
+      <metadataNamespace>https://irdb.nii.ac.jp/schema/jpcoar/2.0/</metadataNamespace>
+    </metadataFormat>
+    <metadataFormat>
+      <metadataPrefix>oai_dc</metadataPrefix>
+      <schema>http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd</schema>
+      <metadataNamespace>http://www.w3.org/2001/XMLSchema</metadataNamespace>
+    </metadataFormat>
+    <metadataFormat>
+      <metadataPrefix>ddi</metadataPrefix>
+      <schema>https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd</schema>
+      <metadataNamespace>ddi:codebook:2_5</metadataNamespace>
+    </metadataFormat>
+    <metadataFormat>
+      <metadataPrefix>jpcoar_v1</metadataPrefix>
+      <schema>https://github.com/JPCOAR/schema/blob/master/1.0/jpcoar_scm.xsd</schema>
+      <metadataNamespace>https://github.com/JPCOAR/schema/blob/master/1.0/</metadataNamespace>
+    </metadataFormat>
+    <metadataFormat>
+      <metadataPrefix>lom</metadataPrefix>
+      <schema>http://www.lido-schema.org http://www.lido-schema.org/schema/v1.0/lido-v1.0.xsd</schema>
+      <metadataNamespace>http://ltsc.ieee.org/xsd/LOM</metadataNamespace>
+    </metadataFormat>
+  </ListMetadataFormats>
+</OAI-PMH>
+```
 
-\<protocolVersion\>2.0\</protocolVersion\>
+### ListRecord  
 
-\<earliestDatestamp\> yyyy-mm-ddThh:mm:ssZ \</earliestDatestamp\>
+リポジトリからレコードを収集する際に使用するverb。  
 
-\<deletedRecord\>transient\</deletedRecord\>
+各レコードのメタデータはアイテムタイプマッピングを利用してrecords_metadataのレコードを元に作成される。
+各レコードのdatestampにはrecords_metadataテーブルのupdatedカラム値が利用される。
 
-\<granularity\>YYYY-MM-DDThh:mm:ssZ\</granularity\>
+#### 引数
 
-\</Identify\>
-
-\</OAI-PMH\>
-
-  - ListIdentifiers  
-    任意の引数を指定し、ヘッダの検索する際に使用するverb。  
-    追加で指定可能な引数は次の5つとなる。  
     １．from：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの下限を設定する。  
     ２．until：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの上限を設定する。  
     ３．metadataPrefix：返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。  
     ４．set：Spec値を持つ任意の引数。選択的ハーベスティングを行う際のセットの基準を指定する。  
     ５. resumptionToken：リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。
     
-      - 以下に応答例を示す。
+#### 例
 
-\<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
+```
+<?xml version='1.0' encoding='UTF-8'?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2024-09-10T16:05:37Z</responseDate>
+  <request verb="ListRecords" metadataPrefix="jpcoar_2.0">https://dev.ir.rcos.nii.ac.jp/oai</request>
+  <ListRecords>
+    <record>
+      <header>
+        <identifier>oai:weko3.example.org:00000001</identifier>
+        <datestamp>2024-09-01T12:52:55Z</datestamp>
+        <setSpec>○○○○</setSpec>
+      </header>
+      <metadata>
+      <メタデータ>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:weko3.example.org:02000001</identifier>
+        <datestamp>2024-09-01T12:52:55Z</datestamp>
+        <setSpec>1623632832836</setSpec>
+      </header>
+      <metadata>
+      <メタデータ>
+      </metadata>
+    </record>
+    ....
+  </ListRecords>
+</OAI-PMH>
 
-\<responseDate\>YYYY-MM-DDThh:mm:ssZ\</responseDate\>
+```
 
-\<request verb="ListIdentifiers" metadataPrefix="○○○○"\>https://\[host\]/oai\</request\>
+### ListSets  
 
-\<ListIdentifiers\>
+リポジトリのセット構成を検索する際に使用するverb。  
 
-\<header\>
-
-\<指定したヘッダの情報\>
-
-\</header\>
-
-\</ListIdentifiers\>
-
-\</OAI-PMH\>
-
-  - ListMetadataFormats  
-    リポジトリから入手可能なメタデータフォーマットを検索する際に使用するverb。  
-    指定可能な引数を以下に示す。  
-    identifier：アイテムに利用可能なメタデータフォーマットが要求されている場合に、そのアイテムの固有識別子を指定する任意の引数。
+#### 引数
     
-      - 以下に応答例を示す。
-
-\<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
-
-\<responseDate\>YYYY-MM-DDThh:mm:ssZ\</responseDate\>
-
-\<ListMetadataFormats\>
-
-\<metadataFormat\>
-
-\<metadataPrefix\>jpcoar\</metadataPrefix\>
-
-\<schema\>https://github.com/JPCOAR/schema/blob/master/2.0/jpcoar\_scm.xsd\</schema\>
-
-\<metadataNamespace\>https://github.com/JPCOAR/schema/blob/master/2.0/\</metadataNamespace\>
-
-\</metadataFormat\>
-
-\<metadataFormat\>
-
-\<metadataPrefix\>jpcoar\_1.0\</metadataPrefix\>
-
-\<schema\>https://irdb.nii.ac.jp/schema/jpcoar/1.0/jpcoar\_scm.xsd\</schema\>
-
-\<metadataNamespace\>https://irdb.nii.ac.jp/schema/jpcoar/1.0/\</metadataNamespace\>
-
-\</metadataFormat\>
-
-\<metadataFormat\>
-
-\<metadataPrefix\>jpcoar\_2.0\</metadataPrefix\>
-
-\<schema\>https://irdb.nii.ac.jp/schema/jpcoar/2.0/jpcoar\_scm.xsd\</schema\>
-
-\<metadataNamespace\>https://irdb.nii.ac.jp/schema/jpcoar/2.0/\</metadataNamespace\>
-
-\</metadataFormat\>
-
-\<metadataFormat\>
-
-\<metadataPrefix\>oai\_dc\</metadataPrefix\>
-
-\<schema\>http://www.openarchives.org/OAI/2.0/oai\_dc/ http://www.openarchives.org/OAI/2.0/oai\_dc.xsd\</schema\>
-
-\<metadataNamespace\>http://www.w3.org/2001/XMLSchema\</metadataNamespace\>
-
-\</metadataFormat\>
-
-\<metadataFormat\>
-
-\<metadataPrefix\>ddi\</metadataPrefix\>
-
-\<schema\>https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd\</schema\>
-
-\<metadataNamespace\>ddi:codebook:2\_5\</metadataNamespace\>
-
-\</metadataFormat\>
-
-\<metadataFormat\>
-
-\<metadataPrefix\>jpcoar\_v1\</metadataPrefix\>
-
-\<schema\>https://github.com/JPCOAR/schema/blob/master/1.0/jpcoar\_scm.xsd\</schema\>
-
-\<metadataNamespace\>https://github.com//schema/blob/master/1.0/\</metadataNamespace\>
-
-\</metadataFormat\>
-
-\<metadataFormat\>
-
-\<metadataPrefix\>lom\</metadataPrefix\>
-
-\<schema\>http://www.lido-schema.org http://www.lido-schema.org/schema/v1.0/lido-v1.0.xsd\</schema\>
-
-\<metadataNamespace\>http://ltsc.ieee.org/xsd/LOM\</metadataNamespace\>
-
-\</metadataFormat\>
-
-\</ListMetadataFormats\>
-
-\</OAI-PMH\>
-
-  - ListRecord  
-    リポジトリからレコードを収集する際に使用するverb。  
-    追加で指定可能な引数は次の5つとなる。  
-    １．from：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの下限を設定する。  
-    ２．until：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの上限を設定する。  
-    ３．metadataPrefix：返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。  
-    ４．set：Spec値を持つ任意の引数。選択的ハーベスティングを行う際のセットの基準を指定する。  
-    ５. resumptionToken：リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。
+- resumptionToken：リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。
     
-      - 以下に応答例を示す。
+#### 例
 
-> \<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
-> 
-> \<responseDate\>YYYY-MM-DDThh:mm:ssZ\</responseDate\>
-> 
-> \<request verb="ListRecords" metadataPrefix="○○○○"\>https://\[host\]/oai\</request\>
-> 
-> \<ListRecords\>
-> 
-> \<record\>
-> 
-> \<header\>
-> 
-> \<指定したレコードの情報\>
-> 
-> \</header\>
-> 
-> \</record\>
-> 
-> \</ListRecords\>
-> 
-> \</OAI-PMH\>
+```
+<?xml version='1.0' encoding='UTF-8'?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2024-09-10T16:09:43Z</responseDate>
+  <request verb="ListSets">https://[host]/oai</request>
+  <ListSets>
+    <set>
+     <セット内容>
+    </set>
+  </ListSets>
+</OAI-PMH>
+```
 
-  - ListSets  
-    リポジトリのセット構成を検索する際に使用するverb。  
-    使用可能となる引数は次のものである。  
-    resumptionToken：リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。
-    
-      - 以下に応答例を示す。
-
-> \<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
-> 
-> \<responseDate\>YYYY-MM-DDThh:mm:ssZ\</responseDate\>
-> 
-> \<request verb="ListSets"\>https://\[host\]/oai\</request\>
-> 
-> \<ListSets\>
-> 
-> \<set\>
-> 
-> \<セット構成の情報\>
-> 
-> \</ListSets\>
-> 
-> \</OAI-PMH\>
-> 
-> \</OAI-PMH\>\</OAI-PMH\>
 
   - > リクエストに不備がある場合は以下のエラーのいずれかがOAI-PMH出力の本文内に記載される。
     
