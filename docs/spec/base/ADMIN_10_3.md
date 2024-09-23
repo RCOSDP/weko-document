@@ -99,7 +99,7 @@ resyncを利用して外部機関からデータを収集する
         
           - Saving format
             
-              - JPCOAR-XMLのみ
+              - JPCOAR-XML/BIOSAMPLE-JSON-LD/BIOPROJECT-JSON-LD
 
   - 「Create」タブにて「Resync」を作成する
     
@@ -147,7 +147,7 @@ resyncを利用して外部機関からデータを収集する
         
           - Saving format
             
-              - 値：JPCOAR-XML
+              - 選択肢：JPCOAR-XML、BIOSAMPLE-JSON-LD、BIOPROJECT-JSON-LD
     
       - ［Create］ボタンを押すと、入力内容をチェックし、問題がなければ、「Resync」のレコードを作成し、「List」タブに移動する
         

@@ -12276,7 +12276,7 @@ Table 11‑3. The elements on the Resync create tab
 <tr class="odd">
 <td>Saving Format</td>
 <td><p>Specify a data format to be synchronized with the target repository.</p>
-<p>The supported format is "JPCOAR-XML".</p></td>
+<p>The supported format is "JPCOAR-XML", "BIOSAMPLE-JSON-LD" and "BIOPROJECT-JSON-LD".</p></td>
 </tr>
 </tbody>
 </table>
