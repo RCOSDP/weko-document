@@ -7595,7 +7595,7 @@ Resyncの入力項目を次に示します。
 <tr class="odd">
 <td>Saving Format</td>
 <td><p>対象のレポジトリと同期するデータの形式を選択します。</p>
-<p>対応している形式：［JPCOAR-XML］</p></td>
+<p>対応している形式：［JPCOAR-XML］、「BIOSAMPLE-JSON-LD」、「BIOPROJECT-JSON-LD」</p></td>
 </tr>
 </tbody>
 </table>
