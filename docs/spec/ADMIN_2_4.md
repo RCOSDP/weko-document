@@ -1007,7 +1007,7 @@ DOI付与後は変更不可</td>
 
 | **\#** | **条件**                     | **処理** | **メッセージ(日本語)**                   | **メッセージ(英語)**                            | **備考**                  |
 | ------ | -------------------------- | ------ | -------------------------------- | ---------------------------------------- | ----------------------- |
-| 1      | 値が-1                   | 警告    | 該当アイテムのCustomSortOrderがデータベースから削除されます。                       | The CustomSortOrder of the item will be removed from the database.                     |  |
+| 1      | 値が-1の場合                   | 警告    | 該当アイテムのCustomSortOrderがデータベースから削除されます。                       | The CustomSortOrder of the item will be removed from the database.                     |  |
 | 2      | 値が半角数字の整数でない場合 | エラー    | CustomSortOrderは半角数字の整数で指定してください。 | Please specify CustomSortOrder as a whole number in half-width characters. |  |
 | 3      | 値が-1を除いて0または負の値の場合 | エラー    | CustomSortOrderの値は、-1を除いて0または負の値にすることはできません。 | CustomSortOrder cannot be zero or negative, except for -1. |  |
 
