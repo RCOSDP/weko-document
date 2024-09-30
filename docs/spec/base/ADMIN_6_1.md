@@ -678,10 +678,6 @@
 > 
 > """Enable DB backup of aggregation."""
 > 
-> STATS\_WEKO\_DB\_BACKUP\_BOOKMARK = False
-> 
-> """Enable DB backup of bookmark."""
-> 
 > invenio\_stats.tasks.aggregate\_events 実行時の集計範囲は --start-date, --end-date に指定された日付を元に集計する。
 
   - > 関連コード： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/aggregations.py#L385>
