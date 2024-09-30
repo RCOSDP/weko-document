@@ -68,9 +68,7 @@
 > 
 > {
 > 
-> "\_index" : "tenant1-stats-celery-task-000001",
-> 
-> "\_type" : "celery-task-day-aggregation",
+> "\_index" : "tenant1-stats-index-000001",
 > 
 > "\_id" : "7b2c80be-4058-360f-a247-d228118032d2",
 > 
@@ -102,7 +100,9 @@
 > 
 > "repository\_name" : "weko",
 > 
-> "execution\_time" : "-1 day, 15:00:02.734294"
+> "execution\_time" : "-1 day, 15:00:02.734294",
+> 
+> "event\_type" : "celery-task"
 > 
 > }
 > 
@@ -146,9 +146,7 @@
 > 
 > {
 > 
-> "\_index" : "tenant1-stats-file-download-000001",
-> 
-> "\_type" : "file-download-day-aggregation",
+> "\_index" : "tenant1-stats-index-000001",
 > 
 > "\_id" : "b72c0fab-9215-3a8d-9ba1-bbae7162ea68",
 > 
@@ -200,7 +198,9 @@
 > 
 > "hostname" : "None",
 > 
-> "remote\_addr" : "192.168.56.1"
+> "remote\_addr" : "192.168.56.1",
+> 
+> "event\_type" : "file-download"
 > 
 > }
 > 
@@ -244,9 +244,7 @@
 > 
 > {
 > 
-> "\_index" : "tenant1-stats-file-preview-000001",
-> 
-> "\_type" : "file-preview-day-aggregation",
+> "\_index" : "tenant1-stats-index-000001",
 > 
 > "\_id" : "d665fc18-c050-3868-ae6f-45daaa06495d",
 > 
@@ -298,7 +296,9 @@
 > 
 > "hostname" : "None",
 > 
-> "remote\_addr" : "192.168.56.1"
+> "remote\_addr" : "192.168.56.1",
+> 
+> "event\_type" : "file-preview"
 > 
 > }
 > 
@@ -342,9 +342,7 @@
 > 
 > {
 > 
-> "\_index" : "tenant1-stats-item-create-000001",
-> 
-> "\_type" : "item-create-day-aggregation",
+> "\_index" : "tenant1-stats-index-000001",
 > 
 > "\_id" : "item\_create\_11",
 > 
@@ -372,7 +370,9 @@
 > 
 > "pid\_value" : "11",
 > 
-> "record\_name" : ""
+> "record\_name" : "",
+> 
+> "event\_type" : "item-create"
 > 
 > }
 > 
@@ -416,9 +416,7 @@
 > 
 > {
 > 
-> "\_index" : "tenant1-stats-record-view-000001",
-> 
-> "\_type" : "record-view-day-aggregation",
+> "\_index" : "tenant1-stats-index-000001",
 > 
 > "\_id" : "8eefc281-f477-3639-9475-1d2b2621d33f",
 > 
@@ -454,7 +452,9 @@
 > 
 > "site\_license\_name" : "",
 > 
-> "site\_license\_flag" : false
+> "site\_license\_flag" : false,
+> 
+> "event\_type" : "record-view"
 > 
 > }
 > 
@@ -498,9 +498,7 @@
 > 
 > {
 > 
-> "\_index" : "tenant1-stats-search-000001",
-> 
-> "\_type" : "search-day-aggregation",
+> "\_index" : "tenant1-stats-index-000001",
 > 
 > "\_id" : "1ef1be2d-9261-3182-91b6-a878ac568e83",
 > 
@@ -526,7 +524,9 @@
 > 
 > "site\_license\_name" : "",
 > 
-> "site\_license\_flag" : false
+> "site\_license\_flag" : false,
+> 
+> "event\_type" : "search"
 > 
 > }
 > 
@@ -570,9 +570,7 @@
 > 
 > {
 > 
-> "\_index" : "tenant1-stats-top-view-000001",
-> 
-> "\_type" : "top-view-day-aggregation",
+> "\_index" : "tenant1-stats-index-000001",
 > 
 > "\_id" : "3569afb4-53bd-3ef6-823d-e864be85faee",
 > 
@@ -596,7 +594,9 @@
 > 
 > "site\_license\_name" : "",
 > 
-> "site\_license\_flag" : false
+> "site\_license\_flag" : false,
+> 
+> "event\_type" : "top-view"
 > 
 > }
 > 
