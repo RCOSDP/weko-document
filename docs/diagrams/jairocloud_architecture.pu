@@ -1,0 +1,246 @@
+@startuml
+
+header Architecture
+footer 1 of 1
+title JAIRO Cloudアーキテクチャ図
+
+!include <archimate/Archimate>
+
+sprite $bProcess jar:archimate/business-process
+sprite $aService jar:archimate/application-service
+sprite $aComponent jar:archimate/application-component
+sprite $aStakeholder jar:archimate/stakeholder-filled
+
+skinparam databaseBackgroundColor LightBlue
+skinparam StorageBackgroundColor LightBlue
+skinparam rectangle {
+    BackgroundColor<<Service>> LightGreen
+    BackgroundColor<<Component>> LightYellow
+}
+
+Motivation_Stakeholder(AcademicInstitution, "学術機関")
+Motivation_Stakeholder(Researcher, "研究者")
+Motivation_Stakeholder(Librarian, "図書館員")
+Motivation_Stakeholder(ITstaff, "ITスタッフ")
+Motivation_Stakeholder(RepositoryManager, "リポジトリ管理者")
+Motivation_Stakeholder(ResearchSupportDepartments, "研究支援部門")
+
+
+rectangle "JAIRO Cloud" as JC <<$aService>> <<Service>>
+ 
+database JCDB <<$aComponent>> [
+データベース
+----
+メタデータ（論文、データ等機関リポジトリのコンテンツ）
+著者情報
+雑誌情報（ERDBJP用）
+識別子(DOI, Handle)
+本文テキスト
+関連情報（referenceBy等）
+利用統計
+]
+
+storage JCStorage <<$aComponent>> [
+ストレージ
+----
+コンテンツファイル（論文、データ等機関リポジトリのコンテンツ）
+]
+
+Rel_Composition(JC, JCDB)
+Rel_Composition(JC, JCStorage)
+
+Librarian --> JC: 論文登録、データ登録
+Researcher --> JC: 論文登録、データ登録
+AcademicInstitution --> JC: リポジトリ運用
+
+RepositoryManager --> JC: リポジトリ運用
+
+rectangle "制限公開" as RestrictedAccess <<$aComponent>> <<Component>>
+Rel_Composition(JC, RestrictedAccess)
+database RestrictedAccessDB <<$aComponent>> [
+データベース
+----
+メタデータ（制限公開）
+制限公開管理情報
+]
+storage RestrictedAccessStorage <<$aComponent>> [
+ストレージ
+----
+制限公開ファイル
+]
+Rel_Composition(RestrictedAccess, RestrictedAccessDB)
+Rel_Composition(RestrictedAccess, RestrictedAccessStorage)
+Researcher --> RestrictedAccess: 制限公開データ登録
+RepositoryManager --> RestrictedAccess: 制限公開データ運用
+
+rectangle "UMS" as UMS <<$aService>> <<Service>>
+JC <-left- UMS: Shibboleth
+Librarian --> UMS: 認証
+Researcher --> UMS: 認証
+
+rectangle "OA Assist" as OA_ASSIST <<$aService>> <<Service>>
+database OA_ASSIST_DB <<$aComponent>> [
+データベース
+----
+論文情報(Lens.org, JSTAGE)
+ファンド情報(Lens.org)
+雑誌OAポリシ情報(独自, Sherpa/Romeo)
+APC情報
+]
+Rel_Composition(OA_ASSIST_DB, OA_ASSIST)
+OA_ASSIST -up-> JC: SWORDv3
+OA_ASSIST -up-> UMS: Shibboleth
+Librarian --> OA_ASSIST: 論文登録
+
+rectangle "OAダッシュボード" as OA_DASHBOARD <<$aComponent>> <<Component>>
+database OA_DASHBOARD_DB <<$aComponent>> [
+データベース
+----
+OA状況情報
+]
+Rel_Composition(OA_DASHBOARD_DB, OA_DASHBOARD)
+Rel_Composition(OA_DASHBOARD_DB, OA_ASSIST_DB)
+Librarian --> OA_DASHBOARD: 論文登録
+Rel_Composition(OA_DASHBOARD, OA_ASSIST)
+Librarian --> OA_ASSIST: OA状況の管理
+
+rectangle "GakuNin RDM(GRDM)" as GRDM <<$aService>> <<Service>>
+database GRDM_DB <<$aComponent>> [
+データベース
+----
+プロジェクト情報
+研究者情報
+メタデータ（データ）
+]
+storage GRDM_Storage <<$aComponent>> [
+ストレージ
+----
+管理データファイル
+]
+Rel_Composition(GRDM_DB, GRDM)
+Rel_Composition(GRDM_Storage, GRDM)
+GRDM -up-> JC: SWORDv3
+GRDM -up-> JC: REST API
+Researcher --> GRDM: データ管理
+AcademicInstitution --> GRDM: 機関管理
+
+rectangle "Data Governance" as DG <<$aComponent>> <<Component>>
+Rel_Composition(DG, GRDM)
+
+rectangle "Data Provinance" as DPROV <<$aComponent>> <<Component>>
+Rel_Composition(DPROV, GRDM)
+
+rectangle "コード付帯機能" as CS <<$aComponent>> <<Component>>
+rectangle "①実行環境構築機能" as CS1 <<$aComponent>> <<Component>>
+rectangle "②計算機持ち込み機能" as CS2 <<$aComponent>> <<Component>>
+rectangle "③計算再現パッケージ機能" as CS3 <<$aComponent>> <<Component>>
+Rel_Composition(CS, GRDM)
+Rel_Composition(CS1, CS)
+Rel_Composition(CS2, CS)
+Rel_Composition(CS3, CS)
+Researcher --> CS
+
+rectangle "秘匿解析機能" as SC <<$aComponent>> <<Component>>
+Rel_Composition(SC, GRDM)
+
+rectangle "セキュア蓄積環境" as SS <<$aComponent>> <<Component>>
+Rel_Composition(SS, GRDM)
+
+storage SecureStorage <<$aComponent>> [
+    ストレージ
+    ----
+    機密データファイル
+]
+Rel_Composition(SecureStorage, SS)
+
+
+rectangle "GakuNin IdP" as GakuninIdP <<$aService>> <<Service>>
+ITstaff --> GakuninIdP: システム運用
+
+GakuninIdP -up-> GRDM: Shibboleth
+Researcher --> GakuninIdP: 認証
+Researcher --> GRDM: データ管理
+
+rectangle "CiNii Research" as CIR <<$aService>> <<Service>>
+database CIRDB <<$aComponent>> [
+データベース
+----
+メタデータ（データ、論文、本、博士論文、プロジェクト）
+]
+Rel_Composition(CIRDB, CIR)
+Researcher --> CIR: 検索
+
+rectangle "OSモニタ" as OSMON <<$aService>> <<Service>>
+Rel_Composition(CIRDB, OSMON)
+ResearchSupportDepartments --> OSMON: 機関業績モニタ
+
+rectangle "Google Scholar" as GOOGLE_SCHOLAR <<$aService>> <<Service>>
+rectangle "Google Dataset Search" as GOOGLE_DATASET <<$aService>> <<Service>>
+GOOGLE_SCHOLAR -down-> JC: HTML Meta Tag
+GOOGLE_DATASET -down-> JC: JSON/LD
+Researcher --> GOOGLE_SCHOLAR: 検索
+Researcher --> GOOGLE_DATASET: 検索
+
+
+rectangle "IRDB" as IRDB <<$aService>> <<Service>>
+database IRDBDB <<$aComponent>> [
+データベース
+----
+メタデータ（機関リポジトリのコンテンツ）
+統計情報
+]
+Rel_Composition(IRDB, IRDBDB)
+IRDB -up-> CIR: OAI-PMH<<JPCOARスキーマ>>
+JC -up-> IRDB: OAI-PMH<<JPCOARスキーマ>>
+Librarian --> IRDB: 検索
+Librarian --> IRDB: 統計情報の利用
+
+rectangle "ERDB-JP" as ERDBJP <<$aService>> <<Service>>
+ERDBJP -up-> JC: Knowledge Base And Related Tools (KBART)
+Librarian --> ERDBJP: 雑誌登録
+
+rectangle "SNS" as SNS <<$aService>> <<Service>>
+SNS -down-> JC: Open Graph Protocol(OGP)
+Researcher --> SNS: 投稿
+
+rectangle "大学Webサイト" as UNIV_WEB <<$aService>> <<Service>>
+UNIV_WEB -down-> JC: Open Search Protocol
+UNIV_WEB -down-> JC: RSS
+Librarian --> UNIV_WEB: サイト構築
+
+rectangle "DB-Spiral" as DBSPIRAL <<$aService>> <<Service>>
+database DBSPIRALDB <<$aComponent>> [
+データベース
+----
+業績情報
+]
+Rel_Composition(DBSPIRALDB, DBSPIRAL)
+DBSPIRAL -right-> JC: SWORDv3
+Researcher --> DBSPIRAL: 業績管理
+ResearchSupportDepartments --> DBSPIRAL: 機関業績管理
+
+rectangle "Research Map" as RMAP <<$aService>> <<Service>>
+database RMAPDB <<$aComponent>> [
+データベース
+----
+業績情報
+]
+Rel_Composition(RMAPDB, RMAP)
+JC -left-> RMAP: REST API
+RMAP -left-> JC: REST API
+Researcher --> RMAP: 業績管理
+ResearchSupportDepartments --> RMAP: 機関業績管理
+
+
+
+legend left
+凡例
+----
+<$aService> : アプリケーションサービス
+----
+<$aComponent> : アプリケーションコンポーネント
+----
+<$aStakeholder> : ステークホルダー
+endlegend
+
+@enduml
