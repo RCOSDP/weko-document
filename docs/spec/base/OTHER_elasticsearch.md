@@ -10,43 +10,9 @@ indices
 > 
 > tenant1-authors-author-v1.0.0
 > 
-> tenant1-deposits-deposit-v1.0.0
+> tenant1-events-stats-index-000001
 > 
-> tenant1-events-stats-celery-task-000001
-> 
-> tenant1-events-stats-file-download-000001
-> 
-> tenant1-events-stats-file-preview-000001
-> 
-> tenant1-events-stats-item-create-000001
-> 
-> tenant1-events-stats-record-view-000001
-> 
-> tenant1-events-stats-search-000001
-> 
-> tenant1-events-stats-top-view-000001
-> 
-> tenant1-marc21-authority-ad-v1.0.0
-> 
-> tenant1-marc21-bibliographic-bd-v1.0.0
-> 
-> tenant1-marc21-holdings-hd-v1.0.0
-> 
-> tenant1-stats-bookmarks
-> 
-> tenant1-stats-celery-task-000001
-> 
-> tenant1-stats-file-download-000001
-> 
-> tenant1-stats-file-preview-000001
-> 
-> tenant1-stats-item-create-000001
-> 
-> tenant1-stats-record-view-000001
-> 
-> tenant1-stats-search-000001
-> 
-> tenant1-stats-top-view-000001
+> tenant1-stats-index-000001
 > 
 > tenant1-weko-item-v1.0.0
 
@@ -86,37 +52,13 @@ template
 
   - マッピング
     
-      - item（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-schema-ui/weko\_schema\_ui/mappings/v6/weko/item-v1.0.0.json）
+      - item（modules/weko-schema-ui/weko\_schema\_ui/mappings/v6/weko/item-v1.0.0.json）
     
-      - author（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko\_authors/mappings/v6/authors/author-v1.0.0.json）
+      - author（modules/weko-authors/weko\_authors/mappings/v6/authors/author-v1.0.0.json）
     
-      - file-download（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats//contrib/file\_download/v6/file-download-v1.json）
+      - file-download（modules/invenio-stats//contrib/file\_download/v6/file-download-v1.json）
     
-      - file-preview（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/file\_preview/v6/file-preview-v1.json）
-    
-      - item-create（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/item\_create/v6/item-create-v1.json）
-    
-      - record-view（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/ invenio\_stats /contrib/record\_view/v6/record-view-v1.json）
-    
-      - search（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/search/v6/search-v1.json）
-    
-      - top-view（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/top\_view/v6/top-view-v1.json）
-    
-      - celery-task（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/celery\_task/v6/celery-task-v1.json）
-    
-      - aggr-file-download（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/aggregations/aggr\_file\_download/v6/aggr-file-download-v1.json）
-    
-      - aggr-file-preview（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/aggregations/aggr\_file\_preview/v6/aggr-file-preview-v1.json）
-    
-      - aggr-item-create（<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/contrib/aggregations/aggr_item_create/v6/aggr-item-create-v1.json>）
-    
-      - aggr-record-view（<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/contrib/aggregations/aggr_record_view/v6/aggr-record-view-v1.json>）
-    
-      - aggr-search（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/aggregations/aggr\_search/v6/aggr-search-v1.json）
-    
-      - aggr-top-view（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/aggregations/aggr\_top\_view/v6/aggr-top-view-v1.json）
-    
-      - aggr-celery-task（https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio\_stats/contrib/aggregations/aggr\_celery\_task/v6/aggr-celery-task-v1.json）
+      - aggr-file-download（modules/invenio-stats/invenio\_stats/contrib/aggregations/aggr\_file\_download/v6/aggr-file-download-v1.json）
 
 Invenio index コマンドによる再インデクシング
 

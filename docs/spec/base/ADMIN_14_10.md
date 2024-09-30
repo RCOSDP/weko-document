@@ -131,7 +131,7 @@
 
 <!-- end list -->
 
-  - > invenio-stats：register\_events 関数にて、各インデックスに対する処理クラス、前処理を設定している
+  - > invenio-stats：config.pyのSTATS\_EVENTSにて、各インデックスに対する処理クラス、前処理を設定している
 
   - > weko-admin：画面表示と集計除外処理を定義する
 
@@ -207,30 +207,39 @@
 
 3\. イベントログ処理
 
-  - modules/invenio-stats/invenio\_stats/contrib/registrations.py の register\_events 関数で初期化
+  - modules/invenio-stats/invenio\_stats/config.py の STATS\_EVENTSで設定
 
-  - 下記、register\_events 関数にて、各インデックスに対する処理クラス、前処理を設定している。  
+  - 下記、STATS\_EVENTSにて、各インデックスに対する処理クラス、前処理を設定している。  
     ログ解析機能を利用して設定された情報は flag\_restricted 関数内で利用されている。
 
 > 〜省略〜
 > 
-> def register\_events():
+> STATS_EVENTS = {
+> {
 > 
-> """Register sample events."""
+> "celery-task": {
 > 
-> return \[
+> "templates": "invenio\_stats.contrib.celery\_task",
 > 
-> dict(
+> "signal": [
 > 
-> event\_type='celery-task',
+> "invenio\_oaiharvester.signals.oaiharvest\_finished",
 > 
-> templates='invenio\_stats.contrib.celery\_task',
+> "weko\_sitemap.signals.sitemap\_finished"
 > 
-> processor\_class=EventsIndexer,
+> ],
 > 
-> processor\_config=dict(
+> "event\_builders": [
 > 
-> preprocessors=\[
+> "invenio\_stats.contrib.event\_builders.celery\_task\_event\_builder"
+> 
+> ],
+> 
+> "cls":EventsIndexer,
+> 
+> "params": {
+> 
+> "preprocessors": [
 > 
 > flag\_restricted,
 > 
@@ -240,11 +249,13 @@
 > 
 > build\_celery\_task\_unique\_id
 > 
-> \],
+> ],
 > 
-> suffix="%Y",
+> "suffix": "%Y",
 > 
-> )),
+> }
+> 
+> },
 > 
 > 〜省略〜
 
