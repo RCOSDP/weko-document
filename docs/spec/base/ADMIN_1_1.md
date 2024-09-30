@@ -73,7 +73,53 @@
           - > このプルダウンで選択したアイテムタイプに対して各種操作を実施する。
         
           - > 各アイテムタイプ名の末尾には、item\_typeテーブルの「tag」が追加されて表示される。
-    
+
+          - > アイテムタイプに属するメタデータで固定のプロパティ値として保存されているものは「固定プロパティ」として扱われる。  
+          (［×］ボタンを表示せず削除できないようにする等)
+            <table>
+            <thead>
+            <tr class="header">
+            <th>プロパティチェックボックス固定の設定値</th>
+            <th></th>
+            <tr class="even">
+            <td>オプション名</td>
+            <td>タイトル</td>
+            <td>資源タイプ</td>
+            </tr> 
+            <tr class="odd">
+            <td>Required</td>
+            <td>TRUE</td>
+            <td>TRUE</td>
+            </tr> 
+            <tr class="even">
+            <td>Allow Multiple</td>
+            <td>TRUE</td>
+            <td>TRUE</td>
+            </tr> 
+            <tr class="odd">
+            <td>Show List</td>
+            <td>FALSE</td>
+            <td>定義なし</td>
+            </tr> 
+            <tr class="even">
+            <td>Specify Newline</td>
+            <td>FALSE</td>
+            <td>定義なし</td>
+            </tr> 
+            <tr class="odd">
+            <td>Hide</td>
+            <td>FALSE</td>
+            <td>定義なし</td>
+            </tr> 
+            <tr class="even">
+            <td>Display on one line</td>
+            <td>FALSE</td>
+            <td>定義なし</td>
+            </tr> 
+            </tbody>
+            </table>
+            <tr>※TRUE：非活性、チェックあり、FALSE：非活性、チェックあり、定義なし：活性</tr>
+
       - 各アイテムタイプに実施できる操作は以下の通りである。
 
 <table>
@@ -227,6 +273,8 @@
       - アイテムタイプを新規作成する場合は、アイテムタイプを選択するプルダウンで、空白を選択する。
     
       - 「公開日」（Publish Date）はデフォルトの項目として常に表示されている。アイテム登録画面で入力必須の項目のため、オプションの「必須」はチェックありで変更できない。
+
+      - メタデータ項目名部分は他の新規メタデータと同様にメタデータ項目名、および多言語の項目名の編集ができる。デフォルトはコンフィグで保持している内容を表示する。
     
       - 「アイテムタイプ」（Item Type）テキストボックスにアイテムタイプの名前を入力する。
         
@@ -554,6 +602,13 @@
 </blockquote></td>
 <td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
 <td>v1.0.7対応</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/09/30</p>
+</blockquote></td>
+<td>-</td>
+<td>みなしご対応</td>
 </tr>
 </tbody>
 </table>
