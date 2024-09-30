@@ -3516,6 +3516,8 @@ This section explains how to explore communities.
 
 The "Communities" screen appears.
 
+The "Communities" screen that appears can be edited from the administrator screen, Settings → Communities page.
+
 zu070010.tif![](media/media/image237.png)
 
 2.  Click on the community name link from the list in the "Communities" screen.
