@@ -4224,6 +4224,8 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
     
     ［Communities］画面が表示されます。
 
+  表示される［Communities］画面は、管理者画面から設定→コミュニティページより編集可能です。  
+
 ![](media/media/image270.png)
 
 > 図 8‑1［Communities］画面

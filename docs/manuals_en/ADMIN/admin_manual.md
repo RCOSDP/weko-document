@@ -558,7 +558,9 @@ The format conventions used in this document are as follows:
 
 [15.20.3 Other email notifications for the restricted access 352](#other-email-notifications-for-the-restricted-access)
 
-[15.21 Set up an institution name 367](#set-up-an-institution-name)
+[15.21 Editing community tabs 366](#Editing-community-tabs) 
+
+[15.22 Set up an institution name 367](#set-up-an-institution-name)
 
 [16. User Account 368](#user-account)
 
@@ -1450,13 +1452,21 @@ Legend: 〇: Feature available, ×: Feature not available
 </tr>
 <tr class="even">
 <td></td>
-<td>Others</td>
+<td>Communities Page</td>
 <td>〇</td>
 <td>×</td>
 <td>×</td>
 <td></td>
 </tr>
 <tr class="odd">
+<td></td>
+<td>Others</td>
+<td>〇</td>
+<td>×</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="even">
 <td>Managing &lt;INDEXWORD PRONOUNCE="ゆうさああかうんと" INDEXITEM="ユーザーアカウント"&gt;User Accounts&lt;/INDEXWORD&gt;</td>
 <td>〇</td>
 <td>〇</td>
@@ -6876,7 +6886,13 @@ If you do not enter an item type name, the error message "Item type name is blan
 
 > The newly created item type name is suffixed with "(1)" in the "Standard Item Type" list.
 > 
-> "Publish Date" is always displayed as a default element. Since this is a required field on the item registration screen, the option "Required" is checked and cannot be changed.
+‘Publish Date’, ‘Title’ and ‘Resource Type’ are always displayed as default items.  
+    
+The options ‘Required’ are checked and cannot be changed, as ‘Publish Date’, ‘Title’ and ‘Resource Type’ are mandatory items.    
+ 
+The checkbox ‘Multiple’ of Publish Date is unchecked and cannot be changed.
+    
+’Allow Multiple’ of ’Title’ is checked and cannot be changed.
 
 ### Copy item types
 
@@ -15350,6 +15366,76 @@ The following describes the text embedded in the messages.
 
 \[Report - WF issued date\]: The WF issued date specified for the item type in the usage report
 
+## Editing community tabs
+This section explains how to edit the Community tab.
+
+1. click Settings and then Communities Page.
+
+　The Edit Community Tab screen appears.
+
+![](media/media/image413.png)
+
+2. enter the configuration items.
+     
+     The configuration items are shown below.
+
+<table>
+<thead>
+<tr class=‘header’>
+<th>Item name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class=‘odd’>
+<td>Title (English)</td>
+<td><p>The language is set to English, enter the name of the community you wish to display. </p>
+<p>If you do not set a community name, the default value ‘Communities’ will be displayed. </p>
+<p>Because this is a required field, you cannot leave this title unset and save it. </p></td>
+</tr>
+<tr class=‘even’>
+<td>Title (Japanese)</td>
+<td><p>The language is set to Japanese, enter the name of the community you wish to display. </p>
+<p>If you do not set a community name, the ‘Community’ set as the default value will be displayed. </p>
+<p>The field can be made to appear by pressing the Title add button. </p>
+<p>The text box itself can be deleted with the Delete button. </p></td>
+</tr>
+<tr class=‘odd’>
+<td>Supplement text</td>
+<td><p>Enter supplementary text to be displayed in the Community tab. </p>
+<p>If you do not set a supplementary text, the default value ‘created and curated by WEKO3 users’ is displayed. </p>
+<p>The text box itself can be deleted with the Delete button. </p></td>
+</tr>
+<tr class=‘even’>
+    <td>Icon</td>
+    <td>
+        <p>Enter the icon to be displayed on the Community tab. </p>
+        <p>By default, ‘fa fa-group’ is set and by pressing the draw button, you can see these icons. </p>
+        <img src="media/media/image414.png" alt="アイコン画像">
+    </td>
+</tr>
+<tr class=‘odd’>
+<td>Save</td>
+<td>You can save the content by pressing the Save button. </td>
+</tr>
+</tbody>
+</table>
+
+3. Setting icons
+
+　When setting the icons, you can click on the ‘See here’ button to go to the following URL to search for the icon settings
+
+　https://fontawesome.com/v4/icons/　
+
+　If the class of the icon does not exist, the following error message is output on the screen.
+
+![](media/media/image415.png)
+
+344.Error when saving.
+
+If the Save button is pressed with the required English title field left blank, an error similar to the following will be output on screen.
+![](media/media/image416.png)
+
 ## Set up an institution name
 
 \<INDEXWORD PRONOUNCE="きかんめいをせつてい" INDEXITEM="機関名を設定"\>This section explains how to set up an institution name\</INDEXWORD\>.
@@ -15360,7 +15446,7 @@ A screen appears where you can set up an institution name.
 
 2.  Specify a name in "Institution Name".
 
-zu0813010.tif![](media/media/image413.png)
+zu0813010.tif![](media/media/image417.png)
 
 3.  Click "Save".
 
@@ -15396,13 +15482,13 @@ This section explains how to manage \<INDEXWORD PRONOUNCE="くるうふ" INDEXIT
 
 The "My Groups" screen appears.
 
-zu1205010.tif![](media/media/image414.png)
+zu1205010.tif![](media/media/image418.png)
 
 2.  Click "Requests" or "Invitations".
 
 The "Pending requests" or "Pending invitations" screen appears.
 
-zu1205020.tif![](media/media/image415.png)
+zu1205020.tif![](media/media/image419.png)
 
 3.  Click "Accept" to join the group.
 
@@ -15416,11 +15502,11 @@ This section explains how to create a group.
 
 A screen appears where you can create a group.
 
-zu1205030.tif![](media/media/image416.png)
+zu1205030.tif![](media/media/image420.png)
 
 2.  Enter information for each element.
 
-zu1205040.tif![](media/media/image417.png)
+zu1205040.tif![](media/media/image421.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15443,19 +15529,19 @@ This section explains how to invite members to a group.
 
 A list of members appears.
 
-zu1205050.tif![](media/media/image418.png)
+zu1205050.tif![](media/media/image422.png)
 
 2.  Click "+Invite".
 
 A screen appears where you can enter information.
 
-zu1205060.tif![](media/media/image419.png)
+zu1205060.tif![](media/media/image423.png)
 
 3.  Enter an email address.
 
 Enter one email address per line to send the invitation to multiple addresses.
 
-zu1205070.tif![](media/media/image420.png)
+zu1205070.tif![](media/media/image424.png)
 
 4.  Click "Invite".
 
@@ -15469,11 +15555,11 @@ This section explains how to modify the information of a group.
 
 A screen appears where you can edit the setting.
 
-zu1205080.tif![](media/media/image421.png)
+zu1205080.tif![](media/media/image425.png)
 
 2.  Enter information for each element.
 
-zu1205090.tif![](media/media/image422.png)
+zu1205090.tif![](media/media/image426.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15496,19 +15582,19 @@ This section explains how to delete a group.
 
 A screen appears where you can edit the setting.
 
-zu1205100.tif![](media/media/image423.png)
+zu1205100.tif![](media/media/image427.png)
 
 2.  Click "Delete".
 
 You are prompted to confirm the deletion.
 
-zu1205110.tif![](media/media/image424.png)
+zu1205110.tif![](media/media/image428.png)
 
 3.  Click "Delete".
 
 The group is deleted.
 
-zu1205120.tif![](media/media/image425.png)
+zu1205120.tif![](media/media/image429.png)
 
 ## LINKID=changetimeout【参照先】Modify the session validity time
 
@@ -15518,11 +15604,11 @@ This section explains how to modify the session validity time.
 
 The "Life Time" screen appears.
 
-zu1206010.tif![](media/media/image426.png)
+zu1206010.tif![](media/media/image430.png)
 
 2.  Select the session validity time.
 
-zu1206020.tif![](media/media/image427.png)
+zu1206020.tif![](media/media/image431.png)
 
 3.  Click "Update".
 
