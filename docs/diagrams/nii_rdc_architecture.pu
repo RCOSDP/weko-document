@@ -12,7 +12,7 @@ sprite $aComponent jar:archimate/application-component
 sprite $aStakeholder jar:archimate/stakeholder-filled
 
 skinparam databaseBackgroundColor LightBlue
-skinparam StorageBackgroundColor LightBlue
+skinparam StorageBackgroundColor LightGray
 skinparam rectangle {
     BackgroundColor<<Service>> LightGreen
     BackgroundColor<<Component>> LightYellow
@@ -78,7 +78,11 @@ JC <-left- UMS: Shibboleth
 Librarian --> UMS: 認証
 Researcher --> UMS: 認証
 
-rectangle "OA Assist" as OA_ASSIST <<$aService>> <<Service>>
+rectangle "JC Login Proxy" as JCLoginProxy <<$aComponent>> <<Component>>
+JCLoginProxy --> UMS
+
+
+rectangle "OA Assist" as OA_ASSIST <<$aComponent>> <<Component>>
 database OA_ASSIST_DB <<$aComponent>> [
 データベース
 ----
@@ -87,8 +91,8 @@ database OA_ASSIST_DB <<$aComponent>> [
 雑誌OAポリシ情報(独自, Sherpa/Romeo)
 APC情報
 ]
+Rel_Composition(OA_ASSIST, JC, "SWORDv3")
 Rel_Composition(OA_ASSIST_DB, OA_ASSIST)
-OA_ASSIST -up-> JC: SWORDv3
 OA_ASSIST -up-> UMS: Shibboleth
 Librarian --> OA_ASSIST: 論文登録
 
@@ -125,12 +129,18 @@ Researcher --> GRDM: データ管理
 AcademicInstitution --> GRDM: 機関管理
 
 rectangle "Data Governance" as DG <<$aComponent>> <<Component>>
+rectangle "ガバナンスシート" as DG1 <<$aComponent>> <<Component>>
+rectangle "モニタリング" as DG2 <<$aComponent>> <<Component>>
+rectangle "リサーチフロー" as DG3 <<$aComponent>> <<Component>>
 Rel_Composition(DG, GRDM)
+Rel_Composition(DG1, DG)
+Rel_Composition(DG2, DG)
+Rel_Composition(DG3, DG)
 
 rectangle "Data Provinance" as DPROV <<$aComponent>> <<Component>>
 Rel_Composition(DPROV, GRDM)
 
-rectangle "コード付帯機能" as CS <<$aComponent>> <<Component>>
+rectangle "コード付帯機能" as CS <<$aService>> <<Service>>
 rectangle "①実行環境構築機能" as CS1 <<$aComponent>> <<Component>>
 rectangle "②計算機持ち込み機能" as CS2 <<$aComponent>> <<Component>>
 rectangle "③計算再現パッケージ機能" as CS3 <<$aComponent>> <<Component>>
@@ -153,12 +163,42 @@ storage SecureStorage <<$aComponent>> [
 ]
 Rel_Composition(SecureStorage, SS)
 
+rectangle "キュレーション機能" as Curation <<$aComponent>> <<Component>>
+Rel_Composition(Curation, GRDM)
+Rel_Composition(Curation, JC)
 
-rectangle "GakuNin IdP" as GakuninIdP <<$aService>> <<Service>>
-ITstaff --> GakuninIdP: システム運用
+rectangle "GakuNin LMS" as GakuNinLMS <<$aService>> <<Service>>
 
-GakuninIdP -up-> GRDM: Shibboleth
-Researcher --> GakuninIdP: 認証
+rectangle "JDCat" as JDCat <<$aService>> <<Service>>
+database JDCatDB <<$aComponent>> [
+データベース
+----
+メタデータ（社会科学系データ、人文科学系データ）
+]
+Rel_Composition(JDCatDB, JDCat)
+
+
+rectangle "情報学広場" as Hiroba <<$aService>> <<Service>>
+database HirobaDB <<$aComponent>> [
+データベース
+----
+メタデータ（情報処理学会論文誌、研究会誌等）
+課金情報
+]
+Rel_Composition(HirobaDB, Hiroba)
+storage HirobaStorage <<$aComponent>> [
+ストレージ
+----
+コンテンツファイル（情報処理学会論文誌、研究会誌等、課金コンテンツを含む）
+]
+Rel_Composition(HirobaStorage, Hiroba)
+
+
+rectangle "GakuNin IdP" as GakuNinIdP <<$aService>> <<Service>>
+ITstaff --> GakuNinIdP: システム運用
+GakuNinIdP -up-> GRDM: Shibboleth
+GakuNinIdP --> JCLoginProxy
+Researcher --> GakuNinIdP: 認証
 Researcher --> GRDM: データ管理
 
 rectangle "CiNii Research" as CIR <<$aService>> <<Service>>
