@@ -1,0 +1,56 @@
+@startuml
+
+header Architecture
+footer 1 of 1
+title 即時OA関連システムのアーキテクチャ図
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define DEVICONS2 https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/refs/heads/main/icons/devicons2
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include FONTAWESOME/users.puml
+!include DEVICONS/postgresql.puml
+!include DEVICONS2/elasticsearch.puml
+
+
+AddElementTag("new", $fontColor="#ffffbf", $borderColor="#ffffbf",$bgColor="#444444")
+AddElementTag("dotted", $fontColor="#000000",$borderColor="#000000",,$bgColor="#ffffff",$borderStyle=DashedLine())
+AddRelTag("dotted", $lineStyle = DottedLine())
+AddRelTag("dashed", $lineStyle = DashedLine())
+
+' Person(researcher,"在野研究者",$sprite="users")
+Person(guest,"研究者",$sprite="users")
+Person(soc,"学会",$sprite="users")
+
+'Container_Ext(orthros,"Orthros")
+'Container_Ext(google, "Google")
+' Container_Ext(orcid,"ORCID")
+
+
+Container(shared_repo,"共用リポジトリ","WEKO3","機関リポジトリを持たない研究者の研究成果を収集、公開"){
+    Container(repos1,"雑誌OAリポジトリ",$tags="new"){
+        Component(reg,"登録IF",$tags="new")
+        Component(stat,"利用統計IF",$tags="new")
+        Component(page,"雑誌PAGE",$tags="new")
+    }
+}
+
+Container(dashboard_4r,"研究者用ダッシュボード","","研究者による研究成果の管理を支援")
+Container(ums,"UMS","","")
+
+Rel(soc,repos1,"アクセス","https","1")
+Rel(repos1,ums,"リダイレクト","https","2")
+Rel(ums,soc,"ログイン画面の表示","https","3")
+Rel(soc,ums,"ログイン","https","4")
+Rel(ums,repos1,"ログイン処理","https","5")
+
+Rel(soc,reg,"登録","https","6")
+Rel(soc,page,"雑誌情報登録","https","7")
+
+Rel(guest,repos1,"アクセス","https","8")
+
+Rel(soc,stat,"利用統計の閲覧&DL","https","9")
+
+@enduml

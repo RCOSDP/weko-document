@@ -1,0 +1,81 @@
+@startuml
+
+header Architecture
+footer 1 of 1
+title W-OA-01b
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define DEVICONS2 https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/refs/heads/main/icons/devicons2
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include FONTAWESOME/users.puml
+!include DEVICONS/postgresql.puml
+!include DEVICONS2/elasticsearch.puml
+
+AddElementTag("new", $fontColor="#ffffbf", $borderColor="#ffffbf",$bgColor="#444444",$legendText="開発対象")
+AddElementTag("dotted", $fontColor="#000000",$borderColor="#000000",,$bgColor="#ffffff",$borderStyle=DashedLine())
+AddRelTag("dotted", $lineStyle = DottedLine())
+AddRelTag("dashed", $lineStyle = DashedLine())
+AddRelTag("new", $lineStyle=BoldLine(), $lineColor="#FF0000",$legendText="開発対象")
+
+Person(userRes, "研究者", "学認参加機関", $sprite="users")
+Person(userLib,"図書館員", "学認参加機関", $sprite="users")
+Person(userRes2, "研究者", "", $sprite="users")
+Person(userLib2,"図書館員", "", $sprite="users")
+
+System_Boundary(system_jc, "JAIRO Cloud","") {
+    Container(jc_repo, "機関リポジトリ", "WEKO3", "機関の研究成果を\n収集・公開",$tags="new"){
+        Component(jc_repo1,"グループ機能","","",$tags="new")
+        Component(jc_repo2,"ログ機能","","",$tags="new")
+    }
+    Container(ums, "UMS", "",""){
+        Component(ums1,"アカウント連携機能","","",$tags="new")
+        Component(ums2,"アカウント管理機能","","",$tags="new")
+        Component(ums3,"ログ機能","","",$tags="new")
+    }
+    Container(jcIdP, "JAIRO Cloud IdP", "", "")
+    Container(jcproxy,"JAIRO Cloud Proxy","",""){
+        Component(jcproxy1,"mAP連携機能","","",$tags="new")
+    }
+    ComponentDb(groupDB,"mAPグループキャッシュDB","","",$tags="new")
+}
+
+Container_Ext(mAP,"GakuNin mAP","","")
+Container_Ext(ds,"GakuNin DS","","")
+
+System_Boundary(univ, "学術機関") {
+    Container(idp,"GakuNin IdP","","")
+}
+
+Rel(userLib,ums1,"1-1 ロールを設定","https","")
+Rel(userRes,jc_repo,"1-2 ログイン画面へのアクセス","https","")
+Rel(jc_repo,ums,"1-3 リダイレクト","https","")
+Rel(ums,ds,"1-4 IdPの選択","https","")
+Rel(ds,idp,"1-5 リダイレクト","https","")
+Rel(idp,userRes,"1-6 ログイン画面の表示","https","")
+Rel(userRes,idp,"1-7 ログイン","https","")
+Rel(idp,jcproxy,"1-8 リダイレクト","https","")
+Rel(jcproxy1,mAP,"1-9 グループ情報の取得","https","",$tags="new")
+Rel(jcproxy1,groupDB,"1-10 グループ情報の保存","",$tags="new")
+Rel(jcproxy,ums1,"1-11 アカウント確認、更新、無ければ作成","https","",$tags="new")
+Rel(ums1,jc_repo,"1-12 アカウント確認、更新、無ければ作成","https","",$tags="new") 
+Rel(ums1,jc_repo,"1-13 グループ判定、ログイン成功","","",$tags="new")
+
+Rel(userLib,jc_repo1,"2-1 インデックスの管理")
+Rel(jc_repo1,groupDB,"2-2 グループ情報の取得","",$tags="new")
+Rel(userLib,jc_repo1,"2-3 グループ情報の設定","",$tags="new")
+
+
+Rel(userLib2,ums1,"3-1 ロールを設定","https","")
+Rel(userRes2,jc_repo,"3-2 ログイン画面へのアクセス","https","")
+Rel(jc_repo,ums,"3-3 リダイレクト","https","")
+Rel(ums,jcIdP,"3-4 リダイレクト","https","")
+Rel(jcIdP,userRes2,"3-5 ログイン画面の表示","https","")
+Rel(userRes2,jcIdP,"3-6 ログイン","https","")
+
+
+SHOW_LEGEND()
+
+@enduml

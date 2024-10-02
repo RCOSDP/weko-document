@@ -1,0 +1,35 @@
+@startuml
+
+header Architecture
+footer 1 of 1
+title W-OA-09c
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define DEVICONS2 https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/refs/heads/main/icons/devicons2
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include FONTAWESOME/users.puml
+!include DEVICONS/postgresql.puml
+!include DEVICONS2/elasticsearch.puml
+
+AddElementTag("new", $fontColor="#ffffbf", $borderColor="#ffffbf",$bgColor="#444444",$legendText="開発対象")
+AddElementTag("dotted", $fontColor="#000000",$borderColor="#000000",,$bgColor="#ffffff",$borderStyle=DashedLine())
+AddRelTag("dotted", $lineStyle = DottedLine())
+AddRelTag("dashed", $lineStyle = DashedLine())
+AddRelTag("new", $lineStyle=BoldLine(), $lineColor="#FF0000",$legendText="開発対象")
+
+Person(userRes, "研究者", "", $sprite="users")
+Person(userLib,"図書館員", "", $sprite="users")
+
+System_Boundary(system_jc, "JAIRO Cloud") {
+    Container(jc_repo, "機関リポジトリ", "WEKO3", "機関の研究成果を\n収集・公開")
+}
+
+System_Boundary(system_grdm, "GakuNin RDM") {
+    Container(grdm,"GakuNin RDM","GakuNin RDM","機関に所属する研究者の\n研究成果を管理、保存",$link="https://rdm.nii.ac.jp")
+}
+
+SHOW_LEGEND()
+@enduml
