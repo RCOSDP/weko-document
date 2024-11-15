@@ -62,7 +62,11 @@
     
       - 同一ブラウザを使っての複数アクティビティの実行を制限する(v1.0.7追加)。
 
+      - タブやブラウザを閉じた際のアクティビティ中止は「beforeunloadイベント」 や 「unloadイベント」をハンドリングして実施しているが、ブラウザによってこれらのイベントの動作が安定しないため、「force unlockボタン」によるロック解除機能を用意している。（weko-workflow/weko_workflow/static/js/weko_workflow/lock_activity.js）
+
       - 同一アクティビティを複数ユーザが開けないようロックする（/workflow/activity/lock/<ActivityID>）。
+
+      
 
   - > ゲストユーザーに対してログイン画面に移動する
 
