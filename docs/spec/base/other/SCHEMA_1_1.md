@@ -14,6 +14,179 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 #### 構造
 
 ```
+{
+    "meta_fix" : {
+        "pubdate" : {
+            "title": "PubDate",
+            "option": {
+                "crtf": false,
+                "hidden": false,
+                "multiple": false,
+                "required": true,
+                "showlist": false
+            },
+            "input_type": "datetime",
+            "title_i18n": {"en": "PubDate","ja": "公開日"},
+            "input_value": ""
+        }
+    },
+    "meta_list" : {
+        "item_30002_title0": {
+            "title": "Title",
+            "option": {
+                "crtf": true,
+                "hidden": false,
+                "oneline": false,
+                "multiple": true,
+                "required": true,
+                "showlist": true
+            },
+            "input_type": "cus_1001",
+            "title_i18n": {"en": "Title","ja": "タイトル"},
+            "input_value": "",
+            "input_maxItems": "9999",
+            "input_minItems": "1"
+        },
+    },
+    "table_row": [ 
+        "item_30002_title0",
+    ],
+    "edit_notes": {
+        "item_30002_title0": "",
+    },
+    "meta_system" : {
+        "system_file": {
+            "title": "File Information",
+            "option": {
+                "crtf": false,
+                "hidden": true,
+                "oneline": false,
+                "multiple": false,
+                "required": false,
+                "showlist": false
+            },
+            "input_type": "cus_125",
+            "title_i18n": {"en": "File Information","ja": "ファイル情報"},
+            "input_value": ""
+        },
+        "system_identifier_doi": {
+            "title": "Persistent Identifier(DOI)",
+            "option": {
+                "crtf": false,
+                "hidden": true,
+                "oneline": false,
+                "multiple": false,
+                "required": false,
+                "showlist": false
+            },
+            "input_type": "cus_123",
+            "title_i18n": {"en": "Persistent Identifier(DOI)","ja": "永続識別子（DOI）"},
+            "input_value": ""
+        },
+        "system_identifier_hdl": {
+            "title": "Persistent Identifier(HDL)",
+            "option": {
+                "crtf": false,
+                "hidden": true,
+                "oneline": false,
+                "multiple": false,
+                "required": false,
+                "showlist": false
+            },
+            "input_type": "cus_123",
+            "title_i18n": {"en": "Persistent Identifier(HDL)", "ja": "永続識別子（HDL）"},
+            "input_value": ""
+        },
+        "system_identifier_uri": {
+            "title": "Persistent Identifier(URI)",
+            "option": {
+                "crtf": false,
+                "hidden": true,
+                "oneline": false,
+                "multiple": false,
+                "required": false,
+                "showlist": false
+            },
+            "input_type": "cus_123",
+            "title_i18n": {"en": "Persistent Identifier(URI)","ja": "永続識別子（URI）"},
+            "input_value": ""
+        }
+    },
+    "upload_file" : false,
+    "schemaeditor" : {
+        "schema": {
+            "item_30002_title0":  {
+                "type": "object",
+                "format": "object",
+                "properties": {
+                    "subitem_title": {
+                        "type": "string",
+                        "title": "タイトル",
+                        "format": "text",
+                        "title_i18n": {"en": "Title","ja": "タイトル"}
+                    },
+                    "subitem_title_language": {
+                        "enum": [
+                            null,
+                            "ja",
+                            "ja-Kana",
+                            "ja-Latn",
+                            "en",
+                        ],
+                        "type": ["null","string"],
+                        "title": "言語",
+                        "format": "select"
+                    }
+                }
+            }
+        },
+    },
+    "table_row_map" : {
+        "form":[
+            {
+                "key": "pubdate",
+                "type": "template",
+                "title":"PubDate",
+                "format": "yyyy-MM-dd",
+                "required": true,
+                "title_i18n": {"en": "PubDate","ja": "公開日"},
+                "templateUrl": "/static/templates/weko_deposit/datepicker.html"
+            },
+        ],
+        "name": "デフォルトアイテムタイプ（フル）",
+        "action": "upt",
+        "schema":{
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "required": ["pubdate"],
+            "properties": {
+                "pubdate": {
+                    "type": "string",
+                    "title": "PubDate",
+                    "format": "datetime"
+                },
+            },
+            "description": ""
+        },
+        "mapping":{
+            "pubdate":{
+                "lom_mapping": "",
+                "lido_mapping": "",
+                "spase_mapping": "",
+                "jpcoar_mapping": "",
+                "junii2_mapping": "",
+                "oai_dc_mapping": "",
+                "display_lang_type": "",
+                "jpcoar_v1_mapping": ""
+            },
+            "item_30002_title0":  {"lom_mapping": "","lido_mapping": "","spase_mapping": "","jpcoar_mapping": {"title": {"@value": "subitem_title","@attributes": {"xml:lang": "subitem_title_language"}}},"junii2_mapping": "","oai_dc_mapping": {"title": {"@value": "subitem_title"}},"display_lang_type": "","jpcoar_v1_mapping": {"title": {"@value": "subitem_title","@attributes": {"xml:lang": "subitem_title_language"}}              
+            }
+        }
+    }
+}
+```
+
+```
 - meta_fix : アイテムタイプの定義上必須となっている固定プロパティの辞書
     - pubdate
         - title: "PubDate"
