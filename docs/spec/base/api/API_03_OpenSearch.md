@@ -8,7 +8,7 @@
 
 以下の形のURLを使用して検索ができる
 
-https://\[host\]/ api/opensearch/search?クエリパラメータ=値&クエリパラメータ値&...
+https://\[host\]/api/opensearch/search?クエリパラメータ=値&クエリパラメータ値&...
 
 <table>
 <thead>

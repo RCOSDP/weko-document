@@ -12,5 +12,10 @@ npx honkit pdf . ../ADMIN.pdf
 cd spec/
 node app.js
 cd ../
-npx honkit pdf spec/pdf/ spec/pdf/spec.pdf
+npx honkit pdf spec/base spec/pdf/spec.pdf
+npx honkit html spec/base spec/html
+npx honkit pdf manuals/ADMIN/base manuals/ADMIN/pdf/admin.pdf
+npx honkit html manuals/ADMIN/base manuals/ADMIN/html
+npx honkit pdf manuals/USER/base manuals/ADMIN/pdf/admin.pdf
+npx honkit html manuals/USER/base manuals/ADMIN/html
 ```

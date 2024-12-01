@@ -237,7 +237,7 @@
 
   - > 設定値：WEKO\_SEARCH\_MAX\_FEEDBACK\_MAIL = 100
 
-> １メールアドレスで送信できるアイテムの数： 最大10,000件を取得(ESの制限値)
+> １メールアドレスで送信できるアイテムの数： ~~最大10,000件を取得(ESの制限値)~~　DBのテーブルあたりの最大レコード数
 
 2\. 実装方法
 
@@ -269,7 +269,7 @@
 > 
 > 　・「is\_sending\_feedback = true」の場合、(2)に進む
 > 
-> (2)Elasticsearchからフィードバックメールの情報を取得する
+> (2) DBからフィードバックメールの情報を取得する
 > 
 > 　・アイテムごとの最新版に"feedback\_mail\_list"のデータがあるかどうか、チェックする
 > 
@@ -327,6 +327,13 @@
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td><blockquote>
+<p>2024/08/27</p>
+</blockquote></td>
+<td>f49b016c92ef98e0656947bf651ca1a2f3dbc286</td>
+<td>v1.0.8</td>
+</tr>
 <tr class="odd">
 <td><blockquote>
 <p>2023/08/31</p>
