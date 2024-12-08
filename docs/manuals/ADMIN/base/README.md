@@ -7569,11 +7569,11 @@ Resyncの入力項目を次に示します。
 </tr>
 <tr class="odd">
 <td>From Date</td>
-<td>データを取集する時間の開始日時を入力します。</td>
+<td>データを取集する時間の開始日時を入力します。※Resync Modeが「Incremental」の場合のみ有効です。</td>
 </tr>
 <tr class="even">
 <td>Until Date</td>
-<td>データを取集する時間の終了日時を入力します。</td>
+<td>データを取集する時間の終了日時を入力します。※現在は利用していません。</td>
 </tr>
 <tr class="odd">
 <td>Target Index<sup>※</sup></td>
@@ -7585,9 +7585,9 @@ Resyncの入力項目を次に示します。
 <td><p>Resyncモードを選択します。</p>
 <p>［Baseline］、［Incremental］、［Audit］の3種類があります。</p>
 <ul>
-<li><p>［Baseline］を選択する場合、ResourcelistのURLのみを「Base URL」に指定できます。<br />
-　ResourceListを使ってその中の日付をベースにデータを取得しているので、From date/Until dateの指定は不要になります。</p></li>
-<li><p>［Incremental］を選択する場合、ChangelistのURLのみを「Base URL」に指定できます。</p></li>
+<li><p>［Baseline］を選択する場合、descliption、capabilitylist、Resourcelist-Index、ResourcelistのURLを「Base URL」に指定できます。<br />
+　ResourceListを使ってその中の日付をベースにデータを取得しているので、From dateの指定は不要になります。</p></li>
+<li><p>［Incremental］を選択する場合、descliption、capabilitylist、Changelist-Index、ChangelistのURLを「Base URL」に指定できます。</p></li>
 <li><p>［Audit］を選択する場合、Sourceサーバと同期しているかどうか、ResourceListの変更があるかどうかチェックする機能なのでImportボタンを表示されません。</p></li>
 </ul>
 <p>3種類の詳細については、<a href="http://www.openarchives.org/rs/1.1/resourcesync%23DestPers">http://www.openarchives.org/rs/1.1/resourcesync#DestPers</a>を参照してください。</p></td>
@@ -7609,6 +7609,7 @@ Resyncの入力項目を次に示します。
      Resyncが作成されます。
      
      必須項目を入力しない場合、エラーメッセージ「項目名＋is required」が表示されます。
+     「From Date」、「Until Date」の日付のフォーマットが正しくない場合、エラーメッセージ「項目名＋の入力値が正しくありません。」が表示されます。
 
 #### Resyncを編集する
 
