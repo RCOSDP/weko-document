@@ -1358,9 +1358,9 @@
 </li>
 </ul>
 </li>
-<li><p>From Date：期間‐開始日時。カレンダーから選択</p>
+<li><p>From Date：期間‐開始日。カレンダーから選択</p>
 </li>
-<li><p>Until Date：期間‐開始日時。カレンダーから選択</p>
+<li><p>Until Date：期間‐終了日。カレンダーから選択 ※現在は利用していない。</p>
 </li>
 <li><p>Target Index：収集されたアイテムに対して登録先インデックスを指定。必須項目。インデックスツリー一覧から選択</p>
 </li>
@@ -1368,9 +1368,9 @@
 <ul>
 <li><p>選択肢：Audit、Baseline、Incremental</p>
 <ul>
-<li><p>Baselineの時に、resourcelistのURLのみを「Base URL」に指定できる<br>ResourceListを使ってその中の日付をベースにデータを取得しているので、From date/Until dateの指定は不要になる</p>
+<li><p>Baselineの時に、descliption、capabilitylist、Resourcelist-Index、ResourcelistのURLを「Base URL」に指定できる<br>ResourceListを使ってその中の日付をベースにデータを取得しているので、From dateの指定は不要になる</p>
 </li>
-<li><p>Incrementialの時に、changelistのURLのみを「Base URL」に指定できる</p>
+<li><p>Incrementalの時に、descliption、capabilitylist、Changelist-Index、ChangelistのURLを「Base URL」に指定できる</p>
 </li>
 <li><p>Auditの時に、Sourceサーバーと実行しているかどうか、<br>ResourceListの変更があるかどうかチェックする機能なのでImportボタンを表示されない</p>
 </li>
@@ -1392,6 +1392,7 @@
 <li><p>エラーの場合は以下の通りである</p>
 <ul>
 <li>必須項目を入力しない場合、以下のようなエラーメッセージを表示する<br>エラーメッセージ：「{項目名} is required」</li>
+<li> 「From Date」、「Until Date」の日付のフォーマットが正しくない場合、以下のエラーメッセージを表示する<br>エラーメッセージ：「項目名＋の入力値が正しくありません。」</li>
 </ul>
 </li>
 </ul>
