@@ -178,11 +178,11 @@
             
               - Contributor
             
-              - Community Administrator
+              - Community Administrator 
             
-              - Authenticated User
+              - Authenticated User : -98
             
-              - Guest
+              - Guest : -99
         
           - 「子インデックスのロール権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属するすべての子インデックスと子孫インデックスにロール権限の設定が再帰的に設定される。
     
@@ -560,6 +560,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/26</p>
+</blockquote></td>
+<td>7d258293ee1243d1f2b692d494b658e7170dbe84</td>
+<td>H2024-01</td>
 </tr>
 </tbody>
 </table>
