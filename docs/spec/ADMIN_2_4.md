@@ -479,42 +479,48 @@
 <td>.metadata.path[0]</td>
 <td>.IndexID[0]</td>
 <td>アイテムを登録するインデックスをID指定する。複数指定可。<br />
-.pos_index[n]とペアで指定する。<br />
+.pos_index[n]、custom_sort_order[0]と合わせて指定する。<br />
 .pos_index[n]が指定されていない場合は必須。存在しないインデックスを指定した場合はエラーメッセージを出力する。</td>
 </tr>
 <tr class="even">
 <td>.pos_index[0]</td>
 <td>.POS_INDEX[0]</td>
 <td>アイテムを登録するインデックスを名称(※1)で指定する。<br />
-.metadata.path[n]とペアで指定する。<br />
+.metadata.path[n]、custom_sort_order[0]と合わせて指定する。<br />
 .metadata.path[n]が指定されてない場合は必須。</td>
 </tr>
 <tr class="odd">
+<td>.custom_sort_order[0]</td>
+<td>.CustomSortOrder[0]</td>
+<td>アイテムのカスタムソートを指定する。1以上の整数を設定する。-1を入力した場合は既存の当該アイテムのカスタムソートを削除する。<br />
+.metadata.path[n]、.pos_index[n]と合わせて指定する。<br />
+</tr>
+<tr class="even">
 <td>.publish_status</td>
 <td>.PUBLISH_STATUS</td>
 <td>アイテムの公開／非公開を指定する。public/privateのいずれかを設定する。必須項目。</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>.feedback_mail[0]</td>
 <td>.FEEDBACK_MAIL[0]</td>
 <td>フィードバックメールの送信先メールアドレスを指定する。複数指定可。</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>.cnri</td>
 <td>.CNRI</td>
 <td>CNRIハンドルサーバを使用する場合(※2)に設定できる。CNRIは「prefix/suffix」の形式で設定される。通常モードの時は自動採番(※3)される。識別子変更モードの時は手入力で変更可能。</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>.doi_ra</td>
 <td>.DOI_RA</td>
 <td>DOIの種類を指定する。JaLC/Crossref/DataCite(※4)/NDL JaLC (※5)のいずれかを設定する。</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>.doi</td>
 <td>.DOI</td>
 <td>DOIを「prefix/suffix」の形式で設定する。通常モードの時は自動採番(※3)される。識別子変更モードの時は手入力で変更可能。</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>.edit_mode</td>
 <td>Keep/Upgrade Version</td>
 <td>対象のアイテムのバージョン更新可否を指定する。新規登録の場合は空、更新の場合は必須でKeep/Upgradeのいずれかを指定する。<br />
@@ -997,6 +1003,14 @@ DOI付与後は変更不可</td>
 | 3      | 組合せチェック（指定されたIndexIDとPOS\_INDEXがどちらも存在しない）            | エラー    | 指定された{}はシステムに存在しません。              | The specified {} does not exist in system.        | {}に「IndexID,POS\_INDEX」が入る |
 | 4      | 組合せチェック（IndexIDとPOS\_INDEXIDがどちらも指定されていない）            | エラー    | IndexID,POS\_INDEXがどちらも設定されていません。 | Both of Index ID and POS INDEX are not being set. |                            |
 
+  - .custom\_sort\_order\[0\]（.CustomSortOrder\[0\]）
+
+| **\#** | **条件**                     | **処理** | **メッセージ(日本語)**                   | **メッセージ(英語)**                            | **備考**                  |
+| ------ | -------------------------- | ------ | -------------------------------- | ---------------------------------------- | ----------------------- |
+| 1      | 値が-1の場合                   | 警告    | 該当アイテムのCustomSortOrderがデータベースから削除されます。                       | The CustomSortOrder of the item will be removed from the database.                     |  |
+| 2      | 値が半角数字の整数でない場合 | エラー    | CustomSortOrderは半角数字の整数で指定してください。 | Please specify CustomSortOrder as a whole number in half-width characters. |  |
+| 3      | 値が-1を除いて0または負の値の場合 | エラー    | CustomSortOrderの値は、-1を除いて0または負の値にすることはできません。 | CustomSortOrder cannot be zero or negative, except for -1. |  |
+
   - .publish\_status（.PUBLISH\_STATUS）
 
 | **\#** | **条件**                     | **処理** | **メッセージ(日本語)**                   | **メッセージ(英語)**                            | **備考**                  |
@@ -1403,9 +1417,9 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 > \#ItemType 紀要論文（出版者版、オープンアクセス、JaLC\_DOI\_登録あり）(16) https://…………/items/jsonschema/16
 > 
-> \#.id .uri .metadata.path\[0\] .pos\_index\[0\] .publish\_status .feedback\_mail\[0\] .cnri .doi\_ra .doi .edit\_mode .metadata.pubdate　 …
+> \#.id .uri .metadata.path\[0\] .pos\_index\[0\] .custom\_sort\_order\[0\] .publish\_status .feedback\_mail\[0\] .cnri .doi\_ra .doi .edit\_mode .metadata.pubdate　 …
 > 
-> \#ID URI .IndexID\[0\] .POS\_INDEX\[0\] .PUBLISH\_STATUS .FEEDBACK\_MAIL\[0\] .CNRI .DOI\_RA .DOI Keep/Upgrade Version PubDate …
+> \#ID URI .IndexID\[0\] .POS\_INDEX\[0\] .CustomSortOrder\[0\] .PUBLISH\_STATUS .FEEDBACK\_MAIL\[0\] .CNRI .DOI\_RA .DOI Keep/Upgrade Version PubDate …
 > 
 > \# …
 > 
