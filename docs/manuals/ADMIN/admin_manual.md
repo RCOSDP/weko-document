@@ -1579,7 +1579,7 @@ Resource Syncの管理に関する操作手順を説明しています。
 
 2.  画面右上のユーザカウントのプルダウンメニューから［Administration］を選択します。
     
-    ![グラフィカル ユーザー インターフェイス, テキスト 自動的に生成された説明](media/media/image3.png)
+    ![グラフィカル ユーザー インターフェイス, テキスト 自動的に生成された説明](media/media/image441.png)
     
     ［Administration］画面が表示されます。
 
