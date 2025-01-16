@@ -78,3 +78,229 @@ curl -XPOST 'http://localhost:9200/tenant1-weko-item-v1.0.0/item-v1.0.0/_update_
 ```
 curl -XPOST 'http://localhost:9200/tenant1-weko-item-v1.0.0/item-v1.0.0/_update_by_query?pretty' -H 'Content-type: application/json' -d '{"query":{"term":{"control_number":"2000002"}},"script":{"lang":"painless","source":"ctx._source.publish_status='0'"}}'
 ```
+
+# アイテム検索
+
+## 日時で検索する
+
+```
+curl "http://localhost:9200/tenant1-weko/_search?pretty" -H "Content-type: application/json" -d '{"query":{"range":{"_created":{"lt":"2025-01-11T02:33"}}},"_source":["_id","_created","_updated"]}'
+```
+
+```
+{
+  "took" : 5,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "39878b48-6ef1-4a80-a765-a523566d190b",
+        "_score" : 1.0,
+        "_source" : {
+          "_created" : "2025-01-11T02:22:49.506234+00:00",
+          "_updated" : "2025-01-11T02:23:57.229649+00:00"
+        }
+      },
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "ab279ae4-a9c8-447d-b5ba-1b9086a86536",
+        "_score" : 1.0,
+        "_source" : {
+          "_created" : "2025-01-11T02:23:54.577204+00:00",
+          "_updated" : "2025-01-11T02:23:56.488937+00:00"
+        }
+      }
+    ]
+  }
+}
+```
+
+## タイムゾーンを指定した日時で検索する
+
+
+```
+$ docker-compose -f docker-compose2.yml exec elasticsearch curl "http://localhost:9200/tenant1-weko/_search?pretty" -H "Content-type: application/json" -d '{"query":{"range":{"_created":{"lt":"2025-10-11T02:23:54","time_zone":"+09:00"}}},"_source":["_id","_created","_updated"]}'
+{
+  "took" : 8,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 4,
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "39878b48-6ef1-4a80-a765-a523566d190b",
+        "_score" : 1.0,
+        "_source" : {
+          "_created" : "2025-01-11T02:22:49.506234+00:00",
+          "_updated" : "2025-01-11T02:23:57.229649+00:00"
+        }
+      },
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "4ca215dc-3928-4b9a-8613-0a71955f1b37",
+        "_score" : 1.0,
+        "_source" : {
+          "_created" : "2025-01-11T02:35:02.657664+00:00",
+          "_updated" : "2025-01-11T02:36:37.396831+00:00"
+        }
+      },
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "dbef5c39-c822-421d-8cfe-feaf2a67488e",
+        "_score" : 1.0,
+        "_source" : {
+          "_created" : "2025-01-11T02:36:35.390837+00:00",
+          "_updated" : "2025-01-11T02:36:37.009785+00:00"
+        }
+      },
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "ab279ae4-a9c8-447d-b5ba-1b9086a86536",
+        "_score" : 1.0,
+        "_source" : {
+          "_created" : "2025-01-11T02:23:54.577204+00:00",
+          "_updated" : "2025-01-11T02:23:56.488937+00:00"
+        }
+      }
+    ]
+  }
+}
+```
+
+## 年月で検索する
+
+```
+curl "http://localhost:9200/tenant1-weko/_search?pretty" -H "Content-type: application/json" -d '{"query":{"range":{"publish_date":{"gte":"2025-01"}}},"_source":["_id","publish_date"]}'
+```
+
+```
+{
+  "took" : 7,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 4,
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "39878b48-6ef1-4a80-a765-a523566d190b",
+        "_score" : 1.0,
+        "_source" : {
+          "publish_date" : "2025-01-11"
+        }
+      },
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "4ca215dc-3928-4b9a-8613-0a71955f1b37",
+        "_score" : 1.0,
+        "_source" : {
+          "publish_date" : "2025-01-11"
+        }
+      },
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "dbef5c39-c822-421d-8cfe-feaf2a67488e",
+        "_score" : 1.0,
+        "_source" : {
+          "publish_date" : "2025-01-11"
+        }
+      },
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "ab279ae4-a9c8-447d-b5ba-1b9086a86536",
+        "_score" : 1.0,
+        "_source" : {
+          "publish_date" : "2025-01-11"
+        }
+      }
+    ]
+  }
+}
+```
+
+## Created and 日付 で検索する
+
+```
+curl "http://localhost:9200/tenant1-weko/_search?pretty" -H "Content-type: application/json" -d '{"query":{"nested":{"path":"date","query":{"bool":{"must":[{"term":{"date.dateType":{"value":"Created"}}},{"range":{"date.value":{"gte":"2025"}}}]}}}},"_source":["_id","date","control_number"]}'
+```
+
+```
+{
+  "took" : 8,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.1053605,
+    "hits" : [
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "4ca215dc-3928-4b9a-8613-0a71955f1b37",
+        "_score" : 1.1053605,
+        "_source" : {
+          "date" : [
+            {
+              "dateType" : "Created",
+              "value" : "2025-02-20"
+            }
+          ],
+          "control_number" : "2000002"
+        }
+      },
+      {
+        "_index" : "tenant1-weko-item-v1.0.0",
+        "_type" : "item-v1.0.0",
+        "_id" : "dbef5c39-c822-421d-8cfe-feaf2a67488e",
+        "_score" : 1.1053605,
+        "_source" : {
+          "date" : [
+            {
+              "dateType" : "Created",
+              "value" : "2025-02-20"
+            }
+          ],
+          "control_number" : "2000002.1"
+        }
+      }
+    ]
+  }
+}
+```
