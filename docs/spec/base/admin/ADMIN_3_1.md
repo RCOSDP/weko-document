@@ -531,7 +531,7 @@
 
   - インデックス削除について
     
-      - 【Administration \> インデックスツリー管理(Index Tree) \> ツリー編集（Edit Tree）】画面にてインデックスを選択後、「削除」ボタンを押し、ポップアップの選択肢「すべて削除」を押下する。この操作によってweko\_index\_tree.rest.deleteにて同フォルダのutil.pyのperform\_delete\_indexメソッドが呼び出される。このメソッドによってindexテーブルから該当インデックスとその子インデックスを論理削除する。
+      - 【Administration \> インデックスツリー管理(Index Tree) \> ツリー編集（Edit Tree）】画面にてインデックスを選択後、「削除」ボタンを押し、ポップアップの選択肢「すべて削除」を押下する。この操作によってweko\_index\_tree.rest.deleteにて同フォルダのutil.pyのperform\_delete\_indexメソッドが呼び出される。このメソッドによってindexテーブルから該当インデックスとその子インデックスを削除する。
 
   - インデックス移動について
     
