@@ -21,7 +21,7 @@
 管理者</th>
 <th>リポジトリ<br />
 管理者</th>
-<th>コミュニティ<br />
+<th>サブリポジトリ<br />
 管理者</th>
 <th>登録ユーザー</th>
 <th>一般ユーザー</th>
@@ -33,8 +33,8 @@
 <tr class="odd">
 <td>利用可否</td>
 <td>○</td>
-<td></td>
-<td></td>
+<td>○</td>
+<td>○</td>
 <td></td>
 <td></td>
 <td></td>
@@ -156,6 +156,8 @@
   - 削除時は、\[編集（Edit）\]ボタン押下後に出現する\[削除（Delete）\]ボタンを押下することで、weko\_authors.views.delete\_affiliationが呼び出され、db内のauthors\_affiliation\_settingsテーブルから削除対象が削除される。
 
   - 追加時は、追加したい情報を最下部のテキストボックスに入力後に\[追加（Add）\]ボタンを押すことで、weko\_authors.views.create\_affiliationが呼び出され、db内のauthors\_affiliation\_settingsテーブル内に情報が追加される。
+
+    - authors_affiliation_settingsテーブルのrepository_idには操作するユーザのロールに応じたリポジトリIDを設定する。
 
 <!-- end list -->
 

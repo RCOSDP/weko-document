@@ -19,7 +19,7 @@
 管理者</th>
 <th>リポジトリ<br />
 管理者</th>
-<th>コミュニティ<br />
+<th>サブリポジトリ<br />
 管理者</th>
 <th>登録ユーザー</th>
 <th>一般ユーザー</th>
@@ -31,8 +31,8 @@
 <tr class="odd">
 <td>利用可否</td>
 <td>○</td>
-<td></td>
-<td></td>
+<td>○</td>
+<td>○</td>
 <td></td>
 <td></td>
 <td></td>

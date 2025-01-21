@@ -24,7 +24,7 @@
 管理者</th>
 <th>リポジトリ<br />
 管理者</th>
-<th>コミュニティ<br />
+<th>サブリポジトリ<br />
 管理者</th>
 <th>登録ユーザー</th>
 <th>一般ユーザー</th>
@@ -36,8 +36,8 @@
 <tr class="odd">
 <td>利用可否</td>
 <td>○</td>
-<td></td>
-<td></td>
+<td>○</td>
+<td>○</td>
 <td></td>
 <td></td>
 <td></td>
@@ -440,7 +440,7 @@
 
   - > **【Administration\>著者DB管理（Author Management）\>編集（edit）】で開かれる編集画面は、初期状態としてweko\_authors.views.getが呼び出され、db内のauthorsテーブルからgather\_flgが0でかつis\_deleteにチェックがついていないものが取り出されて表示されている。**
 
-  - > **著者追加ボタンを押すと著者追加画面へ遷移し、任意の項目を入力後に\[保存（Save）\]ボタン押下で、weko\_authors.views.createが呼び出され、db内のauthorテーブルに情報が追加される。このとき、同メソッド内でidは自動作番され、gather\_flgは０,is\_deleteはFalseの状態で追加される。**
+  - > **著者追加ボタンを押すと著者追加画面へ遷移し、任意の項目を入力後に\[保存（Save）\]ボタン押下で、weko\_authors.views.createが呼び出され、db内のauthorテーブルに情報が追加される。このとき、同メソッド内でidは自動作番され、gather\_flgは０、is\_deleteはFalse、repository_idは操作ユーザの管理対象のリポジトリの状態で追加される。**
 
   - > **著者追加時は、各々の項目に対して入力テキストボックスを追加することができる。  
     > それぞれのテキストボックスには以下のような初期値が、あらかじめ入力されている。**

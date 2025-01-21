@@ -19,7 +19,7 @@
 管理者</th>
 <th>リポジトリ<br />
 管理者</th>
-<th>コミュニティ<br />
+<th>サブリポジトリ<br />
 管理者</th>
 <th>登録ユーザー</th>
 <th>一般ユーザー</th>
@@ -32,7 +32,7 @@
 <td>利用可否</td>
 <td>○</td>
 <td>○</td>
-<td></td>
+<td>○</td>
 <td></td>
 <td></td>
 <td></td>
@@ -42,7 +42,21 @@
 
   - > 機能内容
 
-1\. フィードバックメールを設定
+1 フィードバックメール情報を表示するリポジトリを選択する
+
+  - 【Administration > 統計（Statistics） > フィードバックメール（Feedback Mail）画面】で、設定を表示するリポジトリを選択できる
+
+      - リポジトリ選択プルダウンを設ける
+
+        - リポジトリ選択のプルダウンでの選択肢は以下の通りである
+
+          - システム管理者、リポジトリ管理者の場合は、システムに登録されている全てのリポジトリとする
+
+          - サブリポジトリ管理者の場合は、管理対象のサブリポジトリとする
+
+      - プルダウンからリポジトリを選択すると「フィードバックメール」、「送信除外対象者」、「送信履歴」エリアを選択されたリポジトリの情報に更新する
+
+2\. フィードバックメールを設定
 
   - 【Administration \> 統計（Statistics） \> フィードバックメール（Feedback Mail）画面】にフィードバックメールの送信機能に対して以下ように設定できる
     
@@ -89,7 +103,7 @@
     
       - 「送信履歴」（Send logs）領域に著者へのフィードバックメールの送信日時の履歴を確認する
 
-2\. アイテムのフィードバックメール送信先に指定した送信先に対して、月毎の利用統計をメールで自動送信
+3\. アイテムのフィードバックメール送信先に指定した送信先に対して、月毎の利用統計をメールで自動送信
 
   - 【前提条件】
     
@@ -134,7 +148,7 @@
 
   - ダウンロード回数と再生回数は、ファイルの差し替えを行った場合でも統計値は引き継いで集計する
 
-3\. フィードバックメールの送信履歴を確認
+4\. フィードバックメールの送信履歴を確認
 
   - 【Administration \> 統計（Statistics） \> フィードバックメール（Feedback Mail）画面】での「送信履歴」（Send logs）領域にフィードバックメールの送信履歴を表示する
     
@@ -168,7 +182,7 @@
                 
                   - アンカーを選択すると、画面レイアウトのようにモーダル画面上に失敗した著者のリストを表示する
 
-4\. フィードバックメールを再送信
+5\. フィードバックメールを再送信
 
   - 送信失敗した著者に対してのメールを再送信できる
     
@@ -250,22 +264,23 @@
     
       - > データベースに保存する  
         > テーブル名：feedback\_mail\_list  
-        > 保存情報：item\_id、mail\_list
+        > 保存情報：item\_id、mail\_list、repository_id
     
       - > Elasticsearchに「feedback\_mail\_list」属性に保存する
 
   - > 【Administration \> 統計（Statistics） \> フィードバックメール（Feedback Mail）画面】に入力した情報をデータベースに以下のように保存する  
     > テーブル名：feedback\_email\_setting  
-    > 保存情報：is\_sending\_feedback、manual\_mail
+    > 保存情報：is\_sending\_feedback、manual\_mail、repository_id
 
 > フィードバックメール送信のフロー
 > 
 > celaryタスクでフィードバックメールを送信するかどうか、チェックする  
 > 「schedule」に設定された時刻にフィードバックメール送信を「task」でのタスク（weko\_admin.tasks.send\_feedback\_mail）で実施する
+> 「feedback\_email\_setting」テーブルの行数だけ以下の処理を繰り返す
 > 
 > (1) 「feed\_back\_email\_setting」の情報を「feedback\_email\_setting」テーブルから取得する
 > 
-> 　・「is\_sending\_feedback = false」の場合、何も処理しない
+> 　・「is\_sending\_feedback = false」の場合、対象リポジトリの処理をスキップする
 > 
 > 　・「is\_sending\_feedback = true」の場合、(2)に進む
 > 
@@ -301,7 +316,7 @@
 > 
 > 　　テーブル名：feedback\_mail\_history
 > 
-> 　　履歴内容：id、start\_time、end\_time、stats\_date、total\_mail、failed\_mail
+> 　　履歴内容：id、start\_time、end\_time、stats\_date、total\_mail、failed\_mail、repository_id
 > 
 > 　・送信が失敗になる場合、送信が失敗する情報をデータベースに保存する
 > 

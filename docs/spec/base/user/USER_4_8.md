@@ -146,21 +146,22 @@
     
       - > データベースに保存する  
         > テーブル名：feedback\_mail\_list  
-        > 保存情報：item\_id、mail\_list
+        > 保存情報：item\_id、mail\_list、repository_id
     
       - > ~~ Elasticsearchに「feedback\_mail\_list」属性に保存する ~~ v1.0.8よりDBのみに記録するように変更。
 
   - > 【Administration \> 統計（Statistics） \> フィードバックメール（Feedback Mail）】に入力した情報をデータベースに以下のように保存する  
     > テーブル名：feedback\_email\_setting  
-    > 保存情報：is\_sending\_feedback、manual\_mail
+    > 保存情報：is\_sending\_feedback、manual\_mail、repository_id
 
 > フィードバックメール送信のフロー  
 > celaryタスクでフィードバックメールを送信するかどうか、チェックする  
 > 「schedule」に設定された時刻にフィードバックメール送信を「task」でのタスク（weko\_admin.tasks.send\_feedback\_mail）で実施する
+> 「feedback\_email\_setting」テーブルの行数だけ以下の処理を繰り返す
 > 
 > (1) 「feed\_back\_email\_setting」の情報を「feedback\_email\_setting」テーブルから取得する
 > 
-> 　・「is\_sending\_feedback = false」の場合、何も処理しない
+> 　・「is\_sending\_feedback = false」の場合、対象リポジトリの処理をスキップする
 > 
 > 　・「is\_sending\_feedback = true」の場合、(2)に進む
 > 

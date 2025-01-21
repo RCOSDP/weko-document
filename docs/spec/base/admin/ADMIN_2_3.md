@@ -19,7 +19,7 @@
 管理者</th>
 <th>リポジトリ<br />
 管理者</th>
-<th>コミュニティ<br />
+<th>サブリポジトリ<br />
 管理者</th>
 <th>登録ユーザー</th>
 <th>一般ユーザー</th>
@@ -31,8 +31,8 @@
 <tr class="odd">
 <td>利用可否</td>
 <td>○</td>
-<td>〇</td>
-<td></td>
+<td>○</td>
+<td>○</td>
 <td></td>
 <td></td>
 <td></td>
@@ -68,12 +68,16 @@
 
   - the last item ID: 最も新しく作られたアイテムIDを表示する。(v0.9.2)
 
+    - サブリポジトリ管理者の場合は、管理対象のサブリポジトリに属するアイテムの中で最も新しく作られたアイテムIDを表示する。
+
   - 「エクスポート」（Export）ボタン  
     Exportボタンを押すと、全件出力を実行してよいかの確認ダイアログを表示する。確認ダイアログで実行/キャンセルを選択する。
     
       - 「Execute」ボタン
         
           - 「実行」ボタンを押すと、確認用ダイアログを閉じてアイテムの全件エクスポートを行う。
+
+            - サブリポジトリ管理者の場合は、管理対象のサブリポジトリに属するアイテムの全件エクスポートを行う。
         
           - 実行後はダウンロードのURLを画面上に表示する。
         
@@ -124,6 +128,12 @@
       - weko\_search\_ui.admin.ItemBulkExport.Indexメソッドが呼び出され画面を表示する。
     
       - weko\_search\_ui.static.js.weko\_search\_ui.export.getLastItemIdメソッドによってget\_last\_item\_idが呼び出され、一番大きなキーidを取得する。
+
+        - Elasticsearchから以下の条件でアイテムを検索し、control_numberの最大値を取得する
+
+          - サブリポジトリ管理者であれば、サブリポジトリに属するインデックスのリストでpathの中からフィルタリングする。
+
+          - control_numberに.が含まれないものをフィルタリングする。
     
       - weko\_search\_ui.static.js.weko\_search\_ui.export.getListItemTypeメソッドによってget\_itemtypesが呼び出され、アイテムタイプのリストを取得し、json形式にして取得する。
 
