@@ -19,6 +19,7 @@
   * [USER-3-7: アイテム詳細：エクスポート 73](user/USER_3_7.md)
   * [USER-3-8: アイテム詳細：Google Scholar メタデータ出力 81](user/USER_3_8.md)
   * [USER-3-9: アイテム詳細：Google Dataset メタデータ出力 83](user/USER_3_9.md)
+  * [USER-3-10: アイテム詳細：所属コミュニティ情報表示](user/USER_3_10.md)
   * [USER-4-1: ワークフロー：アクティビティ一覧表示 85](user/USER_4_1.md)
   * [USER-4-2: ワークフロー：ワークフロー一覧表示 95](user/USER_4_2.md)
   * [USER-4-3: ワークフロー：ワークフロー 4](user/USER_4_3.md)
