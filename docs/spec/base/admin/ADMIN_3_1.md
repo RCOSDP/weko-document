@@ -77,6 +77,11 @@
           - インデックスの固定URLを表示する。  
             ※表示のみ。編集は行えない。
 
+      - 「CNRI」（CNRI）
+        
+          - インデックスのCNRIが存在する場合、表示する。  
+            ※表示のみ。編集は行えない。
+
       - 「コメント」（Comment）
         
           - インデックスのコメントを入力する。
@@ -139,7 +144,6 @@
 
   - 「ONLINE ISSN」（Online ISSN）  
     インデックスにオンラインISSNの値を入力する。  
-    この項目を入力した場合、同インデックスの雑誌情報「eISSN/eISBN」項目に同じ値を設定する。
     「このインデックス直下のアイテムの利用統計を集計する」（Aggregate usage statistics of items belonging to this index.)チェックボックスを設ける。
     
       - チェックを入れた場合、子インデックスへの再帰的な設定値反映および利用統計集計する。  
@@ -358,167 +362,174 @@
 </tr>
 <tr class="even">
 <td>6</td>
+<td>CNRI</td>
+<td></td>
+<td>(インデックスのCNRI)</td>
+<td>※表示のみ</td>
+</tr>
+<tr class="even">
+<td>7</td>
 <td>コメント</td>
 <td>comment</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>7</td>
+<td>8</td>
 <td>公開</td>
 <td>public_state</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>8</td>
+<td>9</td>
 <td></td>
 <td>public_date</td>
 <td>None</td>
 <td>yyyy/MM/dd HH:mm:ssの形式</td>
 </tr>
 <tr class="odd">
-<td>9</td>
+<td>10</td>
 <td></td>
 <td>recursive_public_state</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>10</td>
+<td>11</td>
 <td>インデックスリンク</td>
 <td>index_link_enabled</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>11</td>
+<td>12</td>
 <td></td>
 <td>index_link_name</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>12</td>
+<td>13</td>
 <td></td>
 <td>index_link_name_english</td>
 <td>New Index</td>
 <td>必須事項</td>
 </tr>
 <tr class="odd">
-<td>13</td>
+<td>14</td>
 <td>表示範囲</td>
 <td>more_check</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>14</td>
+<td>15</td>
 <td></td>
 <td>display_no</td>
 <td>5</td>
 <td>表示数</td>
 </tr>
 <tr class="odd">
-<td>15</td>
+<td>16</td>
 <td>RSSアイコン</td>
 <td>rss_status</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>16</td>
+<td>17</td>
 <td>PDFCoverPage</td>
 <td>coverpage_state</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>17</td>
+<td>18</td>
 <td></td>
 <td>recursive_coverpage_state</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>18</td>
+<td>19</td>
 <td>ハーベスト公開</td>
 <td>harvest_public_state</td>
 <td>true</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>19</td>
+<td>20</td>
 <td>ONLINE_ISSN</td>
 <td>online_issn</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>20</td>
+<td>21</td>
 <td></td>
 <td>biblio_flag</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>21</td>
+<td>22</td>
 <td>閲覧権限</td>
 <td>browsing_role</td>
 <td>3,-98,-99</td>
 <td>ロールID</td>
 </tr>
 <tr class="even">
-<td>22</td>
+<td>23</td>
 <td></td>
 <td>recursive_browsing_role</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>23</td>
+<td>24</td>
 <td></td>
 <td>browsing_group</td>
 <td>(現在存在するすべてのグループを許可)</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>24</td>
+<td>25</td>
 <td></td>
 <td>recursive_browsing_group</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>25</td>
+<td>26</td>
 <td>投稿権限</td>
 <td>contribute_role</td>
 <td>1,2,3,4,-98,-99</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>26</td>
+<td>27</td>
 <td></td>
 <td>recursive_contribute_role</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>27</td>
+<td>28</td>
 <td></td>
 <td>contribute_group</td>
 <td>(現在存在するすべてのグループを許可)</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>28</td>
+<td>29</td>
 <td></td>
 <td>recursive_contribute_group</td>
 <td>false</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>29</td>
+<td>30</td>
 <td>表示形式</td>
 <td>display_format</td>
 <td>1(一覧形式を表す)</td>
@@ -526,7 +537,7 @@
 <p>2:目次形式</p></td>
 </tr>
 <tr class="even">
-<td>30</td>
+<td>31</td>
 <td>サムネイル</td>
 <td>image_name</td>
 <td>None</td>
