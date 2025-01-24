@@ -816,5 +816,12 @@
 <td>V0.9.27</td>
 <td></td>
 </tr>
+<tr class="odd">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
+</tr>
 </tbody>
 </table>

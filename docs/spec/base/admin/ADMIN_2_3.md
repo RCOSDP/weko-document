@@ -32,13 +32,15 @@
 <td>利用可否</td>
 <td>○</td>
 <td>○</td>
-<td>○</td>
+<td>○※</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+
+※サブリポジトリ管理者は、自身の管理下にあるサブリポジトリに関連付けられたインデックスのアイテムのみエクスポート可能
 
   - > 機能内容
 
@@ -188,6 +190,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>

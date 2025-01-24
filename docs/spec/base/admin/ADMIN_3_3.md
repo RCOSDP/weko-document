@@ -110,6 +110,13 @@
 <tbody>
 <tr class="odd">
 <td><blockquote>
+<p>2023/08/31</p>
+</blockquote></td>
+<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
+<td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
 <p>2024/04/14</p>
 </blockquote></td>
 <td>cd0183f59a16928be2511e33e4495a3376f143c9</td>
@@ -117,10 +124,10 @@
 </tr>
 <tr class="odd">
 <td><blockquote>
-<p>2023/08/31</p>
+<p>2025/01/23</p>
 </blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>

@@ -837,19 +837,74 @@
         
           - > ここでは、pythonのdatetime.strptime(入力値, '%Y-%m-%d')で入力値を日付オブジェクトに変換している。入力値が'%Y-%m-%d'のフォーマットで構文解析できない場合、ValueErrorによって処理が中断され、カスタムレポートが返されない。
 
-- 定型レポートの集計対象をリポジトリ選択で絞り込む処理は以下のように行う。
+定型レポートの集計対象をリポジトリ選択プルダウンで絞り込む処理は以下のように行う。
 
-  - 各種レポートを取得するAPIにリポジトリ選択プルダウンの値をパラメータとして渡す。
+- 以下の各種レポートを取得するAPIにリポジトリ選択プルダウンの値をパラメータとして渡す。
 
-  - 各種QueryReportHelperの実際にクエリを実行するメソッドでリポジトリIDからレポートの絞り込みに必要な情報を取得する。
+    <table>
+    <thead>
+    <tr class="header">
+    <th>レポートタイプ</th>
+    <th>エンドポイント</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>file_download</td>
+    <td>/api/stats/report/file/file_download</td>
+    </tr>
+    <tr>
+    <td>file_preview</td>
+    <td>/api/stats/report/file/file_preview</td>
+    </tr>
+    <tr>
+    <td>billing_file_download</td>
+    <td>/api/stats/report/file/billing_file_download</td>
+    </tr>
+    <tr>
+    <td>billing_file_preview</td>
+    <td>/api/stats/report/file/billing_file_preview</td>
+    </tr>
+    <tr>
+    <td>index_access</td>
+    <td>/api/stats/report/record/record_view_per_index</td>
+    </tr>
+    <tr>
+    <td>detail_view</td>
+    <td>/api/stats/report/record/record_view</td>
+    </tr>
+    <tr>
+    <td>file_using_per_user</td>
+    <td>/api/stats/report/file/file_using_per_user</td>
+    </tr>
+    <tr>
+    <td>top_page_access</td>
+    <td>/api/stats/top_page_access</td>
+    </tr>
+    <tr>
+    <td>search_count</td>
+    <td>/api/stats/report/search_keywords</td>
+    </tr>
+    <tr>
+    <td>user_roles</td>
+    <td>/admin/report/user_report_data</td>
+    </tr>
+    <tr>
+    <td>site_access</td>
+    <td>/api/stats/site_access</td>
+    </tr>
+    </tbody>
+    </table>
 
-    - 例）QueryFileReportsHelper.get_file_stats_reportでリポジトリIDからサブリポジトリの配下のインデックスを取得する。
+- 各種QueryReportHelperの実際にクエリを実行するメソッドでリポジトリIDからレポートの絞り込みに必要な情報を取得する。
 
-  - 取得した情報をESTermsQueryクラスのrequired_filtersで指定してtermsによる絞り込みを行う。
+  - 例）QueryFileReportsHelper.get_file_stats_reportでリポジトリIDからサブリポジトリの配下のインデックスを取得する。
+
+- 取得した情報をESTermsQueryクラスのrequired_filtersで指定してtermsによる絞り込みを行う。
 
 <!-- end list -->
 
-  - > 更新履歴
+> 更新履歴
 
 <table>
 <thead>
@@ -874,12 +929,19 @@
 <td>V0.9.27</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><blockquote>
-<p>2024/07/1</p>
+<p>2024/07/01</p>
 </blockquote></td>
 <td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
 <td>v1.0.7対応</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>

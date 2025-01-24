@@ -157,7 +157,11 @@
 
   - 追加時は、追加したい情報を最下部のテキストボックスに入力後に\[追加（Add）\]ボタンを押すことで、weko\_authors.views.create\_affiliationが呼び出され、db内のauthors\_affiliation\_settingsテーブル内に情報が追加される。
 
-    - authors_affiliation_settingsテーブルのrepository_idには操作するユーザのロールに応じたリポジトリIDを設定する。
+    - authors_affiliation_settingsテーブルのrepository_idには操作ユーザに応じて以下のように設定する。
+
+      - システム管理者、リポジトリ管理者の場合には"Root Index"
+
+      - サブリポジトリ管理者の場合は、管理対象のサブリポジトリのIDをカンマ区切り
 
 <!-- end list -->
 
@@ -178,6 +182,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>

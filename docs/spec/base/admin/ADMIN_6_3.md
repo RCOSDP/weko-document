@@ -235,9 +235,10 @@
 
 > ［リポジトリ選択］プルダウンを選択したときの処理は、以下で行う。
 
-- `ここにメソッド名を入れる` メソッド  
+- get_site_license_send_mail_settings メソッド
 
   - フロントエンドで選択されたリポジトリ ID を取得し、バックエンド API にリクエストを送信する。
+    - エンドポイント: /get_site_license_send_mail_settings
 
   - サーバー側では、以下の処理を行う。
     
@@ -273,6 +274,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>

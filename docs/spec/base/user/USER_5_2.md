@@ -3,7 +3,7 @@
 
   - > 目的・用途
 
-本機能は、サブリポジトリに設定されたコンテンツポリシーの表示を行う機能である
+本機能は、コミュニティに設定されたコンテンツポリシーの表示を行う機能である
 
   - > 利用方法
 
@@ -56,11 +56,9 @@
 
   - > 関連モジュール
 
-<!-- end list -->
+    - invenio\_communities：画面表示を管理するモジュール
 
-  - > invenio\_communities：画面表示を管理するモジュール
-
-  - > weko\_theme：ページレイアウトを管理するモジュール
+    - weko\_theme：ページレイアウトを管理するモジュール
 
 <!-- end list -->
 
@@ -76,15 +74,15 @@
 
     - コンテンツポリシー情報
 
-      - データソース: communities_community
+      - テーブル: communities_community
 
-      - 取得条件: 対象コミュニティのサブリポジトリIDをキーに検索する
+      - 取得条件: URLで指定されたコミュニティのidをキーに検索する
 
   - テンプレート中でweko\_themeのwidget.jsを読み込んでおり、そのgetWidgetDesignSetting()関数でwidget\_design\_pageテーブルからページレイアウト情報を取得している
 
 <!-- end list -->
 
-  - > 更新履歴
+- > 更新履歴
 
 <table>
 <thead>
@@ -97,9 +95,9 @@
 <tbody>
 <tr class="odd">
 <td><blockquote>
-<p>YYYY/MM/DD</p>
+<p>2025/01/23</p>
 </blockquote></td>
-<td></td>
+<td>-</td>
 <td>初版作成</td>
 </tr>
 </tbody>

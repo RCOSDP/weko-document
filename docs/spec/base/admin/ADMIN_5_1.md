@@ -492,5 +492,12 @@
 <td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
 <td>v1.0.7対応</td>
 </tr>
+<tr class="odd">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
+</tr>
 </tbody>
 </table>

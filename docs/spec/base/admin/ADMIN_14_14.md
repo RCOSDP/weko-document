@@ -43,6 +43,7 @@
     
       - > 【Administration\>設定（Setting）\>サイトライセンス（Site Licsnse）】の順で、Site License画面へ遷移しサイトライセンスの設定を行う。設定できる項目を以下に示す。  
         > 以下の項目の設定後、画面最下部の\[保存（Save）\]ボタン押下で、変更が適応される。「ログインせずにコンテンツをダウンロードできるIPアドレスの範囲を指定してください(Please specify range of IP address which allow users can download contents without login.)」：初期状態では、\[その他の入力行（More Inpit Row）\]ボタンのみがあり、押下することで以下のテキストボックスが現れ、設定を可能とする。
+        サブリポジトリ管理者の場合には、管理対象のサブリポジトリに属するサイトライセンス設定を表示する。
         
           - > 機関名（Organization Name）：機関名を設定するテキストボックス。初期値はなし。
         
@@ -87,6 +88,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>

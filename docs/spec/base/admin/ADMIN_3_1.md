@@ -557,13 +557,6 @@
 <tbody>
 <tr class="odd">
 <td><blockquote>
-<p>2024/08/27</p>
-</blockquote></td>
-<td>f49b016c92ef98e0656947bf651ca1a2f3dbc286</td>
-<td>v1.0.8</td>
-</tr>
-<tr class="odd">
-<td><blockquote>
 <p>2023/08/31</p>
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
@@ -571,10 +564,24 @@
 </tr>
 <tr class="even">
 <td><blockquote>
-<p>2024/07/1</p>
+<p>2024/07/01</p>
 </blockquote></td>
 <td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
 <td>v1.0.7対応</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2024/08/27</p>
+</blockquote></td>
+<td>f49b016c92ef98e0656947bf651ca1a2f3dbc286</td>
+<td>v1.0.8</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>

@@ -32,13 +32,15 @@
 <td>利用可否</td>
 <td>○</td>
 <td>○</td>
-<td>○</td>
+<td>○※</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+
+※サブリポジトリ管理者の場合、他のサブリポジトリに登録された著者は更新できない。
 
   - > 機能内容
 
@@ -635,12 +637,21 @@ BOM付きのファイルのダウンロードを行うと、先頭について�
 <td></td>
 </tr>
 <tr class="odd">
-<td>22</td>
+<td>23</td>
 <td>インポート(Import)</td>
 <td></td>
 <td>ERROR</td>
 <td>ロールの権限が足りずこのインデックスにアイテム登録ができません。</td>
 <td>Your role cannot register items in this index.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>インポート(Import)</td>
+<td>他のサブリポジトリから登録された著者を更新した</td>
+<td>ERROR</td>
+<td>他のサブリポジトリに登録された著者は更新できません。</td>
+<td>Authors registered by other sub-repositories cannot be updated.</td>
 <td></td>
 </tr>
 </tbody>
@@ -700,6 +711,13 @@ BOM付きのファイルのダウンロードを行うと、先頭について�
 </blockquote></td>
 <td>V0.9.27</td>
 <td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>

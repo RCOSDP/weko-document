@@ -33,6 +33,7 @@
   * [USER-4-12: ワークフロー：OA Policy Confirmation（現在非対応） 49](user/USER_4_12.md)
   * [USER-4-13: ワークフロー：Approval 51](user/USER_4_13.md)
   * [USER-5-1: コミュニティ：コミュニティ 53](user/USER_5_1.md)
+  * [USER-5-2: コミュニティ：コンテンツポリシー](user/USER_5_2.md)
   * [USER-6-1: ランキング：ランキング 55](user/USER_6_1.md)
   * [USER-7-1: 大容量ファイルアップロード：ファイルアップロード 61](user/USER_7_1.md)
   * [USER-7-2: 言語切替：言語切替 62](user/USER_7_2.md)

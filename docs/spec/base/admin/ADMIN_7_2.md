@@ -171,14 +171,15 @@
     
       - > フロー（Flow）：【Administration＞ワークフロー管理（Work Flow）＞フロー（Flow　List）】のFlow Listの情報をプルダウン形式で表示する。初期状態では、No.が一番小さいものとなっている。
     
-      - > アイテムタイプ（ItemType）：db内のitem\_type\_nameテーブルのnameカラムから情報を取り出し、プルダウン形式で表示する。初期状態では、idカラムの数が一番小さいものとなっている。
-      - > リポジトリ（Repository）：db内のcommunities_communityテーブルのidカラムから情報を取り出し、プルダウン形式で表示する。初期状態では、idカラムの数が一番小さいものとなっている。
+      - > アイテムタイプ（ItemType）：db内のitem\_type\_nameテーブルのnameカラムから情報を取り出し、プルダウン形式で昇順で表示する。初期状態では、idが一番小さいものとなっている。
+
+      - > リポジトリ（Repository）：db内のcommunities_communityテーブルのidカラムから情報を取り出し、プルダウン形式で昇順で表示する。初期状態では、idが一番小さいものとなっている。
     
       - > 制限公開フラグ（Restrictedke）：チェックなし
     
       - > GakuNinRDM Flag：チェックなし
     
-      - > 登録先インデックスの指定（Registration Destination Index Designation）：db内のindexテーブルのindex\_nameカラムから情報を取り出し、プルダウン形式で表示する。初期状態ではどの情報も選択されておらず、「指定なし（Undesignated）」と表示されている。
+      - > 登録先インデックスの指定（Registration Destination Index Designation）：db内のindexテーブルのindex\_nameカラムから情報を取り出し、プルダウン形式で表示する。初期状態ではどの情報も選択せず、「指定なし（Undesignated）」とする。
     
       - > ストレージロケーション（Storage Location）：：db内のfiles\_locationテーブルのnameカラムから情報を取り出し、プルダウン形式で表示する。初期状態ではどの情報も選択されておらず、「指定なし（Undesignated）」と表示されている。
     
@@ -214,6 +215,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2025/01/23</p>
+</blockquote></td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>

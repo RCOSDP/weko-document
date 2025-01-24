@@ -318,7 +318,7 @@
 > 
 > 　　履歴内容：id、start\_time、end\_time、stats\_date、total\_mail、failed\_mail、repository_id
 > 
-> 　・送信が失敗になる場合、送信が失敗する情報をデータベースに保存する
+> 　・送信が失敗した場合、送信が失敗した情報をデータベースに保存する
 > 
 > 　　テーブル名：feedback\_mail\_failed
 > 
@@ -344,17 +344,24 @@
 <tbody>
 <tr class="odd">
 <td><blockquote>
+<p>2023/08/31</p>
+</blockquote></td>
+<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
+<td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
 <p>2024/08/27</p>
 </blockquote></td>
 <td>f49b016c92ef98e0656947bf651ca1a2f3dbc286</td>
 <td>v1.0.8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><blockquote>
-<p>2023/08/31</p>
+<p>2025/01/23</p>
 </blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
+<td>-</td>
+<td>サブリポジトリ対応</td>
 </tr>
 </tbody>
 </table>
