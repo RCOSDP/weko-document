@@ -841,60 +841,20 @@
 
 - 以下の各種レポートを取得するAPIにリポジトリ選択プルダウンの値をパラメータとして渡す。
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th>レポートタイプ</th>
-    <th>エンドポイント</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>file_download</td>
-    <td>/api/stats/report/file/file_download</td>
-    </tr>
-    <tr>
-    <td>file_preview</td>
-    <td>/api/stats/report/file/file_preview</td>
-    </tr>
-    <tr>
-    <td>billing_file_download</td>
-    <td>/api/stats/report/file/billing_file_download</td>
-    </tr>
-    <tr>
-    <td>billing_file_preview</td>
-    <td>/api/stats/report/file/billing_file_preview</td>
-    </tr>
-    <tr>
-    <td>index_access</td>
-    <td>/api/stats/report/record/record_view_per_index</td>
-    </tr>
-    <tr>
-    <td>detail_view</td>
-    <td>/api/stats/report/record/record_view</td>
-    </tr>
-    <tr>
-    <td>file_using_per_user</td>
-    <td>/api/stats/report/file/file_using_per_user</td>
-    </tr>
-    <tr>
-    <td>top_page_access</td>
-    <td>/api/stats/top_page_access</td>
-    </tr>
-    <tr>
-    <td>search_count</td>
-    <td>/api/stats/report/search_keywords</td>
-    </tr>
-    <tr>
-    <td>user_roles</td>
-    <td>/admin/report/user_report_data</td>
-    </tr>
-    <tr>
-    <td>site_access</td>
-    <td>/api/stats/site_access</td>
-    </tr>
-    </tbody>
-    </table>
+    |レポートタイプ|エンドポイント|
+    |:---|:---|
+    |file_download|/api/stats/report/file/file_download|
+    |file_preview|/api/stats/report/file/file_preview|
+    |billing_file_download|/api/stats/report/file/billing_file_download|
+    |billing_file_preview|/api/stats/report/file/billing_file_preview|
+    |index_access|/api/stats/report/record/record_view_per_index|
+    |detail_view|/api/stats/report/record/record_view|
+    |file_using_per_user|/api/stats/report/file/file_using_per_user|
+    |top_page_access|/api/stats/top_page_access|
+    |search_count|/api/stats/report/search_keywords|
+    |user_roles|/admin/report/user_report_data|
+    |site_access|/api/stats/site_access|
+
 
 - 各種QueryReportHelperの実際にクエリを実行するメソッドでリポジトリIDからレポートの絞り込みに必要な情報を取得する。
 
@@ -906,43 +866,9 @@
 
 > 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>2023/11/11</p>
-</blockquote></td>
-<td>V0.9.27</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><blockquote>
-<p>2024/07/01</p>
-</blockquote></td>
-<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
-<td>v1.0.7対応</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>2025/01/23</p>
-</blockquote></td>
-<td>-</td>
-<td>サブリポジトリ対応</td>
-</tr>
-</tbody>
-</table>
-
+|日付|GitHubコミットID|更新内容|
+|:---:|:---:|:---:|
+|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|> 2023/11/11|V0.9.27| |
+|> 2024/07/01|7733de131da9ad59ab591b2df1c70ddefcfcad98|v1.0.7対応|
+|> 2025/01/23|-|サブリポジトリ対応|
