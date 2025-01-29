@@ -1,0 +1,7 @@
+{
+  "title": "未病ユーザ操作マニュアル",
+  "description": "一般閲覧者・登録ユーザ・管理者",
+  "author": "Research Center for Open Science and Data Platform, National Institute of Informatics",
+  "language": "ja",
+  "plugins": ["intopic-toc", "back-to-top-button"]
+}
