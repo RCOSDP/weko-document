@@ -117,53 +117,51 @@
 直近に登録されたアイテム 5 件が表示されます。
 
 - 図 1-1 最新情報画面<br>
-  ![](media/media/image1.png)
+  <img src="media/media/image1.PNG">
 
 #### ログイン画面
 
 未病データベースへログインするための画面です。
 
 - 図 1-2 ログイン画面<br>
-  ![](media/media/image2.png)
+  <img src="media/media/image2.PNG">
 
 #### ログアウト画面
 
 未病データベースからログアウトするための画面です。
 
 - 図 1-3 ログアウト画面<br>
-  ![](media/media/image3.png)
+  <img src="media/media/image3.PNG">
 
 #### 検索結果画面
 
 詳細検索による検索結果が表示されます。
 
 - 図 1-4 検索結果画面<br>
-  ![](media/media/image4.png)
+  <img src="media/media/image4.PNG">
 
 #### アイテム詳細画面
 
 アイテムの詳細を閲覧することが出来ます。
 
 - 図 1-5 アイテム詳細画面<br>
-  ![](media/media/image5.png)
+  <img src="media/media/image5.PNG">
 
 #### ファイル一覧画面
 
 アイテムに添付されたファイルを確認することが出来ます。
 
 - 図 1-6 ファイル一覧画面<br>
-  ![](media/media/image6.png)
+  <img src="media/media/image6.PNG">
 
 ## 第２章　ログインまたはログアウトする
 
-この章では、未病データベースにログインおよびログアウトする方法を説明します。
-
-### 最新情報画面を表示する
+この章では、未病データベースに[ログイン]または[ログアウト]する方法を説明します。
 
 #### 画面項目説明
 
 - 図 2-1 最新情報画面<br>
-  ![](media/media/image7.png)
+  <img src="media/media/image7.PNG">
 
 <table>
 <thead>
@@ -181,32 +179,32 @@
 </tr>
 <tr class="even">
 <td>1</td>
-<td>[<img src="media/media/image58.PNG" style="width:0.2in;height:0.2in">]アイコン</td>
+<td>[<img src="media/media/image58.PNG">]アイコン</td>
 <td>
 <p>クリックすると最新情報画面に遷移します。</p></td>
 </tr>
 <tr class="odd">
 <td>2</td>
-<td>[<img src="media/media/image59.PNG" style="width:0.3in;">]プルダウンリスト</td>
+<td>[<img src="media/media/image59.PNG">]プルダウンリスト</td>
 <td>言語の切り替えが出来ます。<br>
 切替はja（日本語）とen（英語）の二種類です。</td>
 </tr>
 <tr class="even">
 <td>3</td>
-<td>[<img src="media/media/image60.PNG" style="width:0.7in;">]ボタン／<br>[<img src="media/media/image61.PNG" style="width:0.9in;">]ボタン
+<td>[<img src="media/media/image60.PNG">]ボタン／<br>[<img src="media/media/image61.PNG">]ボタン
 </td>
 <td>クリックすると[ログイン]もしくは[ログアウト]画面へ遷移します。</td>
 </tr>
 <tr class="odd">
 <td>4</td>
-<td>[<img src="media/media/image62.PNG" style="width:1in;">]ボタン</td>
+<td>[<img src="media/media/image62.PNG">]ボタン</td>
 <td>クリックするとインデックス一覧を表示します。</td>
 </tr>
 <tr class="even">
 <td>5</td>
 <td>[検索フォーム]</td>
 <td>アイテムを検索することが出来ます。<br>
-[<img src="media/media/image63.PNG" style="width:0.4in;">]ボタンをクリックすると検索結果画面へ遷移します。
+[<img src="media/media/image63.PNG">]ボタンをクリックすると検索結果画面へ遷移します。
 </td>
 </tr>
 <tr class="odd">
@@ -227,7 +225,7 @@
 </tbody>
 </table>
 
-#### 手順
+### 最新情報画面を表示する
 
 ここでは、最新情報画面を表示する手順を説明します。
 
@@ -240,7 +238,7 @@
 #### 画面項目説明
 
 - 図 2-2 ログイン画面<br>
-  ![](media/media/image8.png)
+  <img src="media/media/image8.PNG">
 
 <table>
 <thead>
@@ -258,7 +256,7 @@
 </tr>
 <tr class="even">
 <td>1</td>
-<td>[<img src="media/media/image64.PNG" style="width:0.5in;">]ボタン</td>
+<td>[<img src="media/media/image64.PNG">]ボタン</td>
 <td>
 <p>クリックすると最新情報画面に遷移します。</p></td>
 </tr>
@@ -274,7 +272,7 @@
 </tr>
 <tr class="odd">
 <td>4</td>
-<td>[<img src="media/media/image65.PNG" style="width:3in;">]ボタン</td>
+<td>[<img src="media/media/image65.PNG">]ボタン</td>
 <td>[メールアドレス]、[パスワード]が正しく入力されていれば、クリックして[ログイン]することが出来ます。</br>
 どちらかに誤りがある場合はバリデーションが表示され、[ログイン]することは出来ません。
 </td>
@@ -286,13 +284,13 @@
 
 ここでは、未病データベースへ[ログイン]を行う手順を説明します。
 
-1. 最新情報画面の[<img src="media/media/image60.PNG" style="width:1in;">]ボタンをクリックします。
+1. 最新情報画面の[<img src="media/media/image60.PNG">]ボタンをクリックします。
 
 2. ログイン画面に遷移します。
 
 3. メールアドレス、パスワードを入力します。
 
-4. ログイン画面の[<img src="media/media/image65.PNG" style="width:3in;">]ボタンをクリックします。
+4. ログイン画面の[<img src="media/media/image65.PNG">]ボタンをクリックします。
 
 5. [ログイン]が完了し、最新情報画面に遷移します。
 
@@ -301,7 +299,7 @@
 #### 画面項目説明
 
 - 図 2-3 ログアウト画面<br>
-  ![](media/media/image9.png)
+  <img src="media/media/image9.PNG">
 
 <table>
 <thead>
@@ -319,19 +317,19 @@
 </tr>
 <tr class="even">
 <td>1</td>
-<td>[<img src="media/media/image64.PNG" style="width:0.5in;">]ボタン</td>
+<td>[<img src="media/media/image64.PNG">]ボタン</td>
 <td>
 <p>クリックすると最新情報画面に遷移します。</p></td>
 </tr>
 <tr class="even">
 <td>2</td>
-<td>[<img src="media/media/image66.PNG" style="width:0.5in;">]ボタン</td>
+<td>[<img src="media/media/image66.PNG">]ボタン</td>
 <td>クリックすると未病データベースから[ログアウト]します。
 </td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>[<img src="media/media/image67.PNG" style="width:0.5in;">]ボタン</td>
+<td>[<img src="media/media/image67.PNG">]ボタン</td>
 <td>クリックすると最新情報画面に遷移します。
 </td>
 </tr>
@@ -342,11 +340,11 @@
 
 ここでは、未病データベースからの[ログアウト]を行う手順を説明します。
 
-1. 最新情報画面の[<img src="media/media/image61.PNG" style="width:1in;">]ボタンをクリックします。
+1. 最新情報画面の[<img src="media/media/image61.PNG">]ボタンをクリックします。
 
 2. ログアウト画面に遷移します。
 
-3. ログアウト画面の[<img src="media/media/image66.PNG" style="width:1.5in;">]ボタンをクリックします。
+3. ログアウト画面の[<img src="media/media/image66.PNG">]ボタンをクリックします。
 
 4. [ログアウト]が完了します。
 
@@ -357,10 +355,10 @@
 ### 3.1 　検索フォーム各部名称説明
 
 - 図 3-1 検索フォーム<br>
-  ![](media/media/image10.png)
+  <img src="media/media/image10.PNG">
 
-- 図 3-2 ③[<img src="media/media/image68.PNG" style="width:0.8in;">]ボタンのクリックで折りたたみを開いた状態<br>
-  ![](media/media/image11.png)
+- 図 3-2 ③[<img src="media/media/image68.PNG">]ボタンのクリックで折りたたみを開いた状態<br>
+  <img src="media/media/image11.PNG">
 
 <table>
 <thead>
@@ -386,13 +384,13 @@
 </tr>
 <tr class="odd">
 <td>2</td>
-<td>[<img src="media/media/image63.PNG" style="width:0.5in;">]ボタン</td>
+<td>[<img src="media/media/image63.PNG">]ボタン</td>
 <td>クリックすると「[キーワード入力]欄」と[詳細検索]欄の入力値で検索を行います。
 </td>
 </tr>
 <tr class="even">
 <td>3</td>
-<td>[<img src="media/media/image68.PNG" style="width:0.7in;">]ボタン</td>
+<td>[<img src="media/media/image68.PNG">]ボタン</td>
 <td>クリックすると折りたたまれた詳細検索欄が開きます。(図3-2 参照)
 </td>
 </tr>
@@ -406,14 +404,14 @@
 </tr>
 <tr class="even">
 <td>5</td>
-<td>[<img src="media/media/image69.PNG" style="width:0.5in;">]ボタン</td>
+<td>[<img src="media/media/image69.PNG">]ボタン</td>
 <td>クリックすると[フィルター]による絞り込みを解除します。
 </td>
 </tr>
 </tr>
 <tr class="odd">
 <td>6</td>
-<td>[<img src="media/media/image70.PNG" style="width:0.7in;">]ボタン</td>
+<td>[<img src="media/media/image70.PNG">]ボタン</td>
 <td>クリックすると[詳細検索]および[フィルター]で設定した検索条件のURLをコピーすることが出来ます。
 </td>
 </tr>
@@ -426,27 +424,27 @@
 </tr>
 <tr class="odd">
 <td>8</td>
-<td>[<img src="media/media/image71.PNG" style="width:0.3in;">]ボタン</td>
+<td>[<img src="media/media/image71.PNG">]ボタン</td>
 <td>クリックすると該当の検索条件項目を削除します。<br>
 [データセットの名称の検索方法]、[データセットの名称]は削除出来ません。
 </td>
 </tr>
 <tr class="even">
 <td>9</td>
-<td>[<img src="media/media/image74.PNG" style="width:0.7in;">]プルダウン</td>
+<td>[<img src="media/media/image74.PNG">]プルダウン</td>
 <td>クリックするとプルダウンが開き、検索条件項目を追加することが出来ます。
 </td>
 </tr>
 <tr class="odd">
 <td>10</td>
-<td>[<img src="media/media/image72.PNG" style="width:0.7in;">]ボタン</td>
+<td>[<img src="media/media/image72.PNG">]ボタン</td>
 <td>クリックすると詳細検索欄に入力した内容が解除されます。<br>
 追加または削除した検索条件項目は変動しません。
 </td>
 </tr>
 <tr class="even">
 <td>11</td>
-<td>[<img src="media/media/image73.PNG" style="width:0.7in;">]ボタン</td>
+<td>[<img src="media/media/image73.PNG">]ボタン</td>
 <td>クリックすると詳細検索欄が折りたたまれます。<br>
 詳細検索の入力内容は保持します。
 </td>
@@ -458,29 +456,29 @@
 
 ここでは詳細検索の手順を説明します。
 
-1. [<img src="media/media/image68.PNG" style="width:1in;">]ボタンをクリックし、詳細検索の折りたたみを開きます。
+1. [<img src="media/media/image68.PNG">]ボタンをクリックし、詳細検索の折りたたみを開きます。
 
-2. [<img src="media/media/image74.PNG" style="width:1in;">]プルダウンから追加したい検索条件項目を追加します。
+2. [<img src="media/media/image74.PNG">]プルダウンから追加したい検索条件項目を追加します。
 
    - 図 3-3<br>
      ![](media/media/image12.PNG)
 
-3. 検索条件項目を削除したい場合は[<img src="media/media/image71.PNG" style="width:0.3in;">]ボタンをクリックして削除します。
+3. 検索条件項目を削除したい場合は[<img src="media/media/image71.PNG">]ボタンをクリックして削除します。
 
    - 図 3-4<br>
-     ![](media/media/image13.PNG)
+     <img src="media/media/image13.PNG">
 
 4. 検索条件を入力、選択します。<br>
    空欄、もしくは「未選択」を選択した場合は検索条件には使用しません。
 
    - 図 3-5<br>
-     ![](media/media/image14.PNG)
+     <img src="media/media/image14.PNG">
 
-5. [<img src="media/media/image63.PNG" style="width:0.5in;">]ボタンをクリックして検索を実行します。
+5. [<img src="media/media/image63.PNG">]ボタンをクリックして検索を実行します。
 
 6. 検索結果が表示されます。
    - 図 3-6<br>
-     ![](media/media/image15.PNG)
+     <img src="media/media/image15.PNG">
 
 ### フィルター検索
 
@@ -489,18 +487,18 @@
 1. 詳細検索を行い、検索結果を表示します。
 
    - 図 3-7<br>
-     ![](media/media/image15.PNG)
+     <img src="media/media/image15.PNG">
 
 2. フィルターで絞り込みたい条件を選択します。<br>
    長文で省略表示されている場合、ホバーすると全文を確認出来ます。
 
    - 図 3-8<br>
-     ![](media/media/image16.PNG)
+     <img src="media/media/image16.PNG">
 
 3. 検索結果が絞り込まれます。
 
    - 図 3-9 検索結果がフィルターにより絞り込まれた状態<br>
-     ![](media/media/image17.PNG)
+     <img src="media/media/image17.PNG">
 
 4. 2.で選択した項目を解除すると、絞り込みも解除します。
 
@@ -511,26 +509,26 @@
 1. [詳細検索]、[フィルター]で検索結果を絞り込みます。
 
    - 図 3-10 検索結果がフィルターにより絞り込まれた状態<br>
-     ![](media/media/image17.PNG)
+     <img src="media/media/image17.PNG">
 
-2. [<img src="media/media/image70.PNG" style="width:1in;">]ボタンをクリックします。
+2. [<img src="media/media/image70.PNG">]ボタンをクリックします。
 
    - 図 3-11<br>
-     ![](media/media/image18.PNG)
+     <img src="media/media/image18.PNG">
 
 3. コピー成功のアラートが表示されます。
 
    - 図 3-12<br>
-     ![](media/media/image19.PNG)
+     <img src="media/media/image19.PNG">
 
 4. 外部ページ（Google など）のアドレスバーにコピーした URL を入力します。
 
    - 図 3-13<br>
-     ![](media/media/image20.PNG)
+     <img src="media/media/image20.PNG">
 
 5. 1.と同様の検索条件の検索結果が表示されます。
    - 図 3-14<br>
-     ![](media/media/image17.PNG)
+     <img src="media/media/image17.PNG">
 
 ## 第４章　アイテムをダウンロードする
 
@@ -539,7 +537,7 @@
 ### サマリーテーブル各部名称説明
 
 - 図 4-1<br>
-  ![](media/media/image21.PNG)<br>
+  <img src="media/media/image21.PNG"><br>
   ※ [フィルター]、[検索／フィルター条件のコピーボタン]については
   「[第３章　アイテムを検索する](#第３章アイテムを検索する)」で説明しているため、本章では割愛します。
 
@@ -612,20 +610,20 @@
 1. [詳細検索]、[フィルター]で検索結果を絞り込みます。
 
    - 図 4-2<br>
-     ![](media/media/image17.PNG)
+     <img src="media/media/image17.PNG">
 
 2. [検索結果全てを DL する]リンクをクリックします。
 
    - 図 4-3<br>
-     ![](media/media/image22.PNG)
+     <img src="media/media/image22.PNG">
 
 3. tsv 形式の検索結果をダウンロードします。
 
    - 図 4-4<br>
-     ![](media/media/image23.PNG)
+     <img src="media/media/image23.PNG">
 
    - 図 4-5 検索結果とダウンロードした tsv ファイルの内容<br>
-     ![](media/media/image24.PNG)
+     <img src="media/media/image24.PNG">
 
 ## 第５章　アイテムの詳細を表示する
 
@@ -634,7 +632,7 @@
 ### アイテム詳細画面各部名称説明
 
 - 図 5-1 アイテム詳細画面<br>
-  ![](media/media/image25.PNG)
+  <img src="media/media/image25.PNG">
 
 <table>
 <thead>
@@ -689,7 +687,7 @@
 </tr>
 <tr class="even">
 <td>7</td>
-<td>[<img src="media/media/image56.PNG" style="width:0.4in;height:0.2in">]ボタン</td>
+<td>[<img src="media/media/image56.PNG">]ボタン</td>
 <td>クリックするとファイル一覧画面に遷移します。
 </td>
 </tr>
@@ -701,7 +699,7 @@
 </tr>
 <tr class="even">
 <td>9</td>
-<td>[<img src="media/media/image55.PNG" style="width:0.2in;height:0.2in">]ボタン</td>
+<td>[<img src="media/media/image55.PNG">]ボタン</td>
 <td>クリックすると画面上部へ移動します。
 </td>
 </tr>
@@ -735,11 +733,11 @@
 1. 切り替えたいタブを選択します。
 
    - 図 5-2<br>
-     ![](media/media/image26.PNG)
+     <img src="media/media/image26.PNG">
 
 2. タブが切り替わり、表示されているアイテムの詳細が変わります。
    - 図 5-3<br>
-     ![](media/media/image27.PNG)
+     <img src="media/media/image27.PNG">
 
 ### セクションの切り替え
 
@@ -748,11 +746,11 @@
 1. セクションのプルダウンを開き、内容を確認したいセクション名をクリックします。
 
    - 図 5-4<br>
-     ![](media/media/image28.PNG)
+     <img src="media/media/image28.PNG">
 
 2. 選択したセクションに画面が移動します。
    - 図 5-5<br>
-     ![](media/media/image29.PNG)
+     <img src="media/media/image29.PNG">
 
 ### リクエストメール
 
@@ -761,12 +759,12 @@
 1. 「ユーザーが未病データベースにログインしていないこと」および「アイテムにフィードバックメールアドレスが登録されていること」の条件を満たす場合、[閲覧数]の下に[リクエストメール]が表示されます。
 
    - 図 5-6<br>
-     ![](media/media/image30.PNG)
+     <img src="media/media/image30.PNG">
 
-2. [<img src="media/media/image75.PNG" style="width:0.7in;">]ボタンをクリックするとリクエストメールの[送信フォーム]が開きます。
+2. [<img src="media/media/image75.PNG">]ボタンをクリックするとリクエストメールの[送信フォーム]が開きます。
 
    - 図 5-7 リクエストメール 送信フォーム<br>
-     ![](media/media/image31.PNG)
+     <img src="media/media/image31.PNG">
 
 3. [送信フォーム]に必要事項を入力のうえ、[送信]ボタンをクリックするとリクエストメールを送信することが出来ます。<br>（※現在は未実装です）
 
@@ -777,9 +775,9 @@
 1. 「ユーザーが未病データベースにログインしていること」および「アイテムにプロジェクト ID が登録されていること」の条件を満たす場合、[閲覧数]の下に[GakuNin RDM]が表示されます。
 
    - 図 5-8<br>
-     ![](media/media/image32.PNG)
+     <img src="media/media/image32.PNG">
 
-2. [<img src="media/media/image76.PNG" style="width:0.3in;">]アイコンをクリックすると GakuNinRDM のデータセットを開くことが出来ます。<br>（※現在は未実装です）
+2. [<img src="media/media/image76.PNG">]アイコンをクリックすると GakuNinRDM のデータセットを開くことが出来ます。<br>（※現在は未実装です）
 
 ## 第６章　添付ファイルを確認する
 
@@ -788,7 +786,7 @@
 ### ファイル一覧画面各部名称説明
 
 - 図 6-1 ファイル一覧画面<br>
-  ![](media/media/image33.PNG)
+  <img src="media/media/image33.PNG">
 
 <table>
 <thead>
@@ -837,7 +835,7 @@
 </tr>
 <tr class="odd">
 <td>6</td>
-<td>[<img src="media/media/image69.PNG" style="width:0.5in;">]ボタン</td>
+<td>[<img src="media/media/image69.PNG">]ボタン</td>
 <td>[フィルター]の絞り込みを解除します。</td>
 </tr>
 <tr class="even">
@@ -854,13 +852,13 @@
 </tr>
 <tr class="even">
 <td>9</td>
-<td>[<img src="media/media/image52.PNG" style="width:0.8in;">]ボタン</td>
+<td>[<img src="media/media/image52.PNG">]ボタン</td>
 <td>クリックするとファイルのプレビュー画面が別ウィンドウで開きます。
 </td>
 </tr>
 <tr class="odd">
 <td>10</td>
-<td>[<img src="media/media/image53.PNG" style="width:0.8in;">]ボタン</td>
+<td>[<img src="media/media/image53.PNG">]ボタン</td>
 <td>クリックすると選択したファイルを[ダウンロード]します。
 </td>
 </tr>
@@ -873,7 +871,7 @@
 </tr>
 <tr class="odd">
 <td>12</td>
-<td>[<img src="media/media/image77.PNG" style="width:0.8in;">]ボタン</td>
+<td>[<img src="media/media/image77.PNG">]ボタン</td>
 <td>ファイル一覧テーブルで選択したファイルを[ダウンロード]します。<br>(<em>0</em>件)には選択したファイル件数が入ります。
 </td>
 </tr>
@@ -890,14 +888,14 @@
 
 ここではファイルの[プレビュー]を確認する手順を説明します。
 
-1. [<img src="media/media/image52.PNG" style="width:1in;">]ボタンをクリックします。
+1. [<img src="media/media/image52.PNG">]ボタンをクリックします。
 
    - 図 6-2<br>
-     ![](media/media/image34.PNG)
+     <img src="media/media/image34.PNG">
 
 2. 別ウィンドウでファイルの[プレビュー]が開きます。
    - 図 6-3<br>
-     ![](media/media/image35.PNG)
+     <img src="media/media/image35.PNG">
 
 ### フィルターで絞り込みする
 
@@ -906,11 +904,11 @@
 1. フィルターに絞り込み条件を入力／選択します。
 
    - 図 6-4<br>
-     ![](media/media/image36.PNG)
+     <img src="media/media/image36.PNG">
 
 2. 即時絞り込みが実行されます。
    - 図 6-5<br>
-     ![](media/media/image37.PNG)
+     <img src="media/media/image37.PNG">
 
 ### ファイルをダウンロードする
 
@@ -928,15 +926,15 @@
 1. [全件ダウンロード]をクリックします。
 
    - 図 6-6<br>
-     ![](media/media/image38.PNG)
+     <img src="media/media/image38.PNG">
 
 2. 表示されている 4 件を[ダウンロード]します。
 
    - 図 6-7<br>
-     ![](media/media/image39.PNG)
+     <img src="media/media/image39.PNG">
 
    - 図 6-8 フォルダの中身<br>
-     ![](media/media/image40.PNG)
+     <img src="media/media/image40.PNG">
 
 #### 選択ダウンロード
 
@@ -945,16 +943,16 @@
 1. ダウンロードしたいファイルのチェックボックスにチェックを入れます。
 
    - 図 6-9<br>
-     ![](media/media/image41.PNG)
+     <img src="media/media/image41.PNG">
 
-2. [<img src="media/media/image51.PNG" style="width:1in;">]ボタンをクリックします。
+2. [<img src="media/media/image51.PNG">]ボタンをクリックします。
 
    - 図 6-10<br>
-     ![](media/media/image42.PNG)
+     <img src="media/media/image42.PNG">
 
 3. 選択したファイルを 2 件を[ダウンロード]します。
    - 図 6-11<br>
-     ![](media/media/image43.PNG)
+     <img src="media/media/image43.PNG">
 
 #### 個別ダウンロード
 
@@ -963,15 +961,15 @@
 
 1. [ダウンロード]ボタン
 
-   1-1. [<img src="media/media/image53.PNG" style="width:1in;">]ボタンをクリックします。
+   1-1. [<img src="media/media/image53.PNG">]ボタンをクリックします。
 
    - 図 6-12<br>
-     ![](media/media/image44.PNG)
+     <img src="media/media/image44.PNG">
 
    1-2. 選択したファイルが[ダウンロード]されます。
 
    - 図 6-13<br>
-     ![](media/media/image45.PNG)
+     <img src="media/media/image45.PNG">
 
 2. [格納場所 URL]
 
@@ -979,24 +977,24 @@
    URL が長文の場合は省略表示されるため、[すべてを表示]で折りたたみを開いてください。
 
    - 図 6-14<br>
-     ![](media/media/image46.PNG)
+     <img src="media/media/image46.PNG">
 
    2-2. 選択したファイルが[ダウンロード]されます。
 
    - 図 6-15<br>
-     ![](media/media/image47.PNG)
+     <img src="media/media/image47.PNG">
 
 ### ライセンスを確認する
 
 ここではファイルに設定されたライセンスの確認方法を説明します。
 
 1. [ライセンス]のアイコンをクリックします。<br>
-   ※下記例では [<img src="media/media/image54.PNG" style="width:0.8in;">]アイコン をクリックします。
+   ※下記例では [<img src="media/media/image54.PNG">]アイコン をクリックします。
 
    - 図 6-16<br>
-     ![](media/media/image48.PNG)
+     <img src="media/media/image48.PNG">
 
 2. 別タブで該当の[ライセンス]ページが表示されます。<br>
    クリックする[ライセンス]のアイコンによって遷移先は異なります。
    - 図 6-17 遷移先の例 「コモンズ証 CC0 1.0 全世界」(https://creativecommons.org/publicdomain/zero/1.0/deed.ja)<br>
-     ![](media/media/image49.PNG)
+     <img src="media/media/image49.PNG">
