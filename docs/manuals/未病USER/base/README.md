@@ -145,14 +145,14 @@
 アイテムの詳細を閲覧することが出来ます。
 
 - 図 1-5 アイテム詳細画面<br>
-  <img src="media/media/image5.PNG">
+  <img src="media/media/image5.png">
 
 #### ファイル一覧画面
 
 アイテムに添付されたファイルを確認することが出来ます。
 
 - 図 1-6 ファイル一覧画面<br>
-  <img src="media/media/image6.PNG">
+  <img src="media/media/image6.png">
 
 ## 第２章　ログインまたはログアウトする
 
