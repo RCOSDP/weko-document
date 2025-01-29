@@ -20,7 +20,7 @@
 　未病データベースの概要を説明しています。
 
 第２章　ログインまたはログアウトする<br>
-　未病データベースにログインおよびログアウトする方法を説明しています。
+　未病データベースに[ログイン]または[ログアウト]する方法を説明しています。
 
 第３章　アイテムを検索する<br>
 　アイテムを検索するための操作手順を説明しています。
@@ -106,7 +106,7 @@
 
 ### 未病データベースとは
 
-未病データベースとはシステムで登録された学術論文等アイテムを閲覧、およびダウンロードすることが出来る web アプリケーションです。
+未病データベースとはシステムで登録された学術論文(以下、アイテムと称す)を閲覧、およびダウンロードすることが出来る web アプリケーションです。
 
 ### 各画面説明
 
@@ -181,13 +181,13 @@
 </tr>
 <tr class="even">
 <td>1</td>
-<td>[<img src="media/media/image58.PNG" style="width:0.3in;height:0.3in">]アイコン</td>
+<td>[<img src="media/media/image58.PNG" style="width:0.2in;height:0.2in">]アイコン</td>
 <td>
 <p>クリックすると最新情報画面に遷移します。</p></td>
 </tr>
 <tr class="odd">
 <td>2</td>
-<td>[<img src="media/media/image59.PNG" style="width:0.4in;">]プルダウンリスト</td>
+<td>[<img src="media/media/image59.PNG" style="width:0.3in;">]プルダウンリスト</td>
 <td>言語の切り替えが出来ます。<br>
 切替はja（日本語）とen（英語）の二種類です。</td>
 </tr>
@@ -206,7 +206,7 @@
 <td>5</td>
 <td>[検索フォーム]</td>
 <td>アイテムを検索することが出来ます。<br>
-[<img src="media/media/image63.PNG" style="width:0.5in;">]ボタンをクリックすると検索結果画面へ遷移します。
+[<img src="media/media/image63.PNG" style="width:0.4in;">]ボタンをクリックすると検索結果画面へ遷移します。
 </td>
 </tr>
 <tr class="odd">
@@ -258,7 +258,7 @@
 </tr>
 <tr class="even">
 <td>1</td>
-<td>[<img src="media/media/image64.PNG" style="width:0.7in;">]ボタン</td>
+<td>[<img src="media/media/image64.PNG" style="width:0.5in;">]ボタン</td>
 <td>
 <p>クリックすると最新情報画面に遷移します。</p></td>
 </tr>
@@ -319,19 +319,19 @@
 </tr>
 <tr class="even">
 <td>1</td>
-<td>[<img src="media/media/image64.PNG" style="width:0.7in;">]ボタン</td>
+<td>[<img src="media/media/image64.PNG" style="width:0.5in;">]ボタン</td>
 <td>
 <p>クリックすると最新情報画面に遷移します。</p></td>
 </tr>
 <tr class="even">
 <td>2</td>
-<td>[<img src="media/media/image66.PNG" style="width:0.7in;">]ボタン</td>
+<td>[<img src="media/media/image66.PNG" style="width:0.5in;">]ボタン</td>
 <td>クリックすると未病データベースから[ログアウト]します。
 </td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>[<img src="media/media/image67.PNG" style="width:0.7in;">]ボタン</td>
+<td>[<img src="media/media/image67.PNG" style="width:0.5in;">]ボタン</td>
 <td>クリックすると最新情報画面に遷移します。
 </td>
 </tr>
@@ -476,7 +476,7 @@
    - 図 3-5<br>
      ![](media/media/image14.PNG)
 
-5. [<img src="media/media/image63.PNG" style="width:0.7in;">]ボタンをクリックして検索を実行します。
+5. [<img src="media/media/image63.PNG" style="width:0.5in;">]ボタンをクリックして検索を実行します。
 
 6. 検索結果が表示されます。
    - 図 3-6<br>
@@ -506,7 +506,7 @@
 
 ### 検索条件をコピーする
 
-ここでは検索条件のコピー方法を説明します。
+ここでは検索条件のコピーする手順を説明します。
 
 1. [詳細検索]、[フィルター]で検索結果を絞り込みます。
 
@@ -534,7 +534,7 @@
 
 ## 第４章　アイテムをダウンロードする
 
-この章では、アイテムをダウンロードする画面、および方法を説明します。
+この章では、アイテムをダウンロードする画面、および手順を説明します。
 
 ### サマリーテーブル各部名称説明
 
@@ -763,7 +763,7 @@
    - 図 5-6<br>
      ![](media/media/image30.PNG)
 
-2. [<img src="media/media/image75.PNG" style="width:0.9in;">]ボタンをクリックするとリクエストメールの[送信フォーム]が開きます。
+2. [<img src="media/media/image75.PNG" style="width:0.7in;">]ボタンをクリックするとリクエストメールの[送信フォーム]が開きます。
 
    - 図 5-7 リクエストメール 送信フォーム<br>
      ![](media/media/image31.PNG)
