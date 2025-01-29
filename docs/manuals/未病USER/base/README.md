@@ -357,7 +357,7 @@
 - 図 3-1 検索フォーム<br>
   <img src="media/media/image10.PNG">
 
-- 図 3-2 ③[<img src="media/media/image68.PNG">]ボタンのクリックで折りたたみを開いた状態<br>
+- 図 3-2 [<img src="media/media/image68.PNG">]ボタンのクリックで折りたたみを開いた状態<br>
   <img src="media/media/image11.PNG">
 
 <table>
@@ -461,7 +461,7 @@
 2. [<img src="media/media/image74.PNG">]プルダウンから追加したい検索条件項目を追加します。
 
    - 図 3-3<br>
-     ![](media/media/image12.PNG)
+     <img src="media/media/image12.PNG">
 
 3. 検索条件項目を削除したい場合は[<img src="media/media/image71.PNG">]ボタンをクリックして削除します。
 
@@ -619,10 +619,10 @@
 
 3. tsv 形式の検索結果をダウンロードします。
 
-   - 図 4-4<br>
+   - 図 4-4 検索結果 (アイテムは 3 件)<br>
      <img src="media/media/image23.PNG">
 
-   - 図 4-5 検索結果とダウンロードした tsv ファイルの内容<br>
+   - 図 4-5 ダウンロードした tsv ファイルの内容 (アイテムは検索結果と同じ 3 件)<br>
      <img src="media/media/image24.PNG">
 
 ## 第５章　アイテムの詳細を表示する
@@ -894,7 +894,7 @@
      <img src="media/media/image34.PNG">
 
 2. 別ウィンドウでファイルの[プレビュー]が開きます。
-   - 図 6-3<br>
+   - 図 6-3 PNG ファイルを[プレビュー]で開いた例<br>
      <img src="media/media/image35.PNG">
 
 ### フィルターで絞り込みする
@@ -933,7 +933,7 @@
    - 図 6-7<br>
      <img src="media/media/image39.PNG">
 
-   - 図 6-8 フォルダの中身<br>
+   - 図 6-8 ダウンロードしたファイル一覧リスト<br>
      <img src="media/media/image40.PNG">
 
 #### 選択ダウンロード
@@ -951,7 +951,7 @@
      <img src="media/media/image42.PNG">
 
 3. 選択したファイルを 2 件を[ダウンロード]します。
-   - 図 6-11<br>
+   - 図 6-11 ダウンロードしたファイル一覧リスト<br>
      <img src="media/media/image43.PNG">
 
 #### 個別ダウンロード
@@ -968,7 +968,7 @@
 
    1-2. 選択したファイルが[ダウンロード]されます。
 
-   - 図 6-13<br>
+   - 図 6-13 ダウンロードしたテキスト(.txt)ファイル<br>
      <img src="media/media/image45.PNG">
 
 2. [格納場所 URL]
@@ -981,7 +981,7 @@
 
    2-2. 選択したファイルが[ダウンロード]されます。
 
-   - 図 6-15<br>
+   - 図 6-15 ダウンロードした画像（.jpg）ファイル<br>
      <img src="media/media/image47.PNG">
 
 ### ライセンスを確認する
