@@ -640,7 +640,7 @@
 <td><blockquote>
 <p>2025/01/30</p>
 </blockquote></td>
-<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
+<td>3530eae9075af6afc57b777d8c3137f038523610</td>
 <td>学認mAP連携対応</td>
 </tr>
 </tbody>
