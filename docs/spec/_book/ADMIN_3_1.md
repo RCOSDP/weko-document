@@ -177,7 +177,7 @@
 
               - ロール権限に設定できるグループIDのフォーマット（プレフィックス、システム管理者用グループID）は、設定値 WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_PATTERN\_DICT を変更することで、フォーマットを変更できる。
 
-         - 上記以外のグループIDの場合はグループ権限として表示され、閲覧権限を変更設できる。
+         - 上記以外のグループIDの場合はグループ権限として表示され、閲覧権限を変更できる。
 
               - ただし、学認mAPのグループ情報は内部的には全てロールとして扱われる。
 
@@ -338,8 +338,7 @@
 
   - GakuNin mAPから連携されたグループ情報の閲覧権限初期値を設定する。（Trueの場合、閲覧権限ありとして初期値を設定する。）
     
-      [](TOOD: config.pyとinstance.cfgのパスを決める。)
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L87>
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L96>
     
       - 設定キー：WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_BROWSING\_PERMISSION
     
@@ -349,8 +348,7 @@
 
   - GakuNin mAPから連携されたグループ情報の投稿権限初期値を設定する。（Trueの場合、投稿権限ありとして初期値を設定する。）
     
-      [](TOOD: config.pyとinstance.cfgのパスを決める。)
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L87>
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L99>
     
       - 設定キー：WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSION
     
