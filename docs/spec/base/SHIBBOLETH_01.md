@@ -111,7 +111,7 @@
 
 >      WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT = {
 >          "prefix": "jc",                             # Prefix
->          "sysadm_group": "jc_roles_sysadm",        # システム管理者のグループ名
+>          "sysadm_group": "jc_roles_sysadm",          # システム管理者のグループ名
 >          "role_keyword": "roles",                    # ロールグループを表すキーワード
 >          "role_mapping": {
 >              "repoadm": "Repository Administrator",  # リポジトリ管理者グループ
