@@ -246,9 +246,9 @@
     自動で作成される。  
     ページレイアウト（Page Layout）画面】の詳細は[ADMIN-4-2: ページレイアウト](\\l)を参照  
     作成されるページは以下の通り。  
-      - Title：About、 URL：/about  
-      - Title：Editorial board、 URL：/eb  
-      - Title：OA Policy、 URL：/oapolicy  
+      - Title：About、 URL：/c/{community_id}/about  
+      - Title：Editorial board、 URL：/c/{community_id}/eb  
+      - Title：OA Policy、 URL：/c/{community_id}/oapolicy  
         ※作成されるページの内容編集、メニューへの配置等はユーザーが行う。
 
 <!-- end list -->
