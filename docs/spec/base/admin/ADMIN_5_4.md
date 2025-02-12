@@ -143,18 +143,9 @@
 
   - 編集時は、\[編集（Edit）\]ボタンを押下することで編集が可能となり、内容の変更後に\[保存(Save)\]ボタンを押すことで、weko\_authors.views.update\_prefixが呼び出されて、db内のauthors\_prefix\_settingsテーブルの情報が更新される。
 
-    - 編集時にrepository_idの値は更新しない。
-
   - 削除時は、\[編集（Edit）\]ボタン押下後に出現する\[削除（Delete）\]ボタンを押下することで、weko\_authors.views.delete\_prefixが呼び出され、db内のauthors\_prefix\_settingsテーブルから削除対象が削除される。
 
   - 追加時は、追加したい情報を最下部のテキストボックスに入力後に\[追加（Add）\]ボタンを押すことで、weko\_authors.views.create\_prefixが呼び出され、db内のauthors\_prefix\_settingsテーブル内に情報が追加される。
-
-    - repository_idには以下のように設定する。
-
-      - システム管理者、リポジトリ管理者の場合は、"Root Index"
-
-      - サブリポジトリ管理者の場合は、操作ユーザーの管理対象のリポジトリをカンマ区切り
-
 
 <!-- end list -->
 

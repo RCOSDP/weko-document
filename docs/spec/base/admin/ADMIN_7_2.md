@@ -58,7 +58,7 @@
           - 「更新日」（Updated）  
             ワークフローの更新日である。フォーマット：YYYY-MM-DD
 
-      -  サブリポジトリ管理者の場合は、管理対象のサブリポジトリに属するフローが一覧に表示される。
+      -  サブリポジトリ管理者の場合は、管理対象のサブリポジトリに属するワークフローが一覧に表示される。
 
 <!-- end list -->
 
@@ -75,7 +75,7 @@
           - 「アイテムタイプ」（Item Type）：プルダウンからアイテムタイプを選択する。  
             アイテムタイププルダウンの選択肢は【Administration＞アイテムタイプ管理（Item Types）＞メタデータ（Metadata）】で登録された標準アイテムタイプ一覧である。
 
-          - 「リポジトリ」（Repository）：プルダウンからアイテムタイプを選択する。  
+          - 「リポジトリ」（Repository）：プルダウンからリポジトリを選択する。  
             リポジトリプルダウンの選択肢は【Administration＞コミュニティ管理（Communities）＞コミュニティ（Community）】で登録されたコミュニティ一覧と"Root Index"である
         
           - 「制限公開フラグ」（Restricted Access Flag）：制限公開フラグをチェックする。  
@@ -156,7 +156,7 @@
     
       - > 登録先インデックスの指定（Registration Destination Index Designation）：db内のindexテーブルのindex\_nameカラムから情報を取り出し、プルダウン形式で表示する。初期状態ではどの情報も選択せず、「指定なし（Undesignated）」とする。
     
-      - > ストレージロケーション（Storage Location）：：db内のfiles\_locationテーブルのnameカラムから情報を取り出し、プルダウン形式で表示する。初期状態ではどの情報も選択されておらず、「指定なし（Undesignated）」と表示されている。
+      - > ストレージロケーション（Storage Location）：：db内のfiles\_locationテーブルのnameカラムから情報を取り出し、プルダウン形式で表示する。初期状態ではどの情報も選択せず、「指定なし（Undesignated）」とする。
     
       - > 表示/非表示（Display/Hide）：db内のacounts\_roleのnameカラムから情報を取り出し表示（Display）ボックス内に表示する。初期状態では、すべてのroleが表示側に表示される。
 

@@ -15,8 +15,6 @@
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |利用可否|○|○|○※| | | |
 
-※サブリポジトリ管理者の場合、他のサブリポジトリに登録された著者は更新できない。
-
   - > 機能内容
 
 (1) 一括登録画面の画面構成
@@ -618,15 +616,6 @@ BOM付きのファイルのダウンロードを行うと、先頭について�
 <td>ERROR</td>
 <td>ロールの権限が足りずこのインデックスにアイテム登録ができません。</td>
 <td>Your role cannot register items in this index.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>24</td>
-<td>インポート(Import)</td>
-<td>他のサブリポジトリから登録された著者を更新した</td>
-<td>ERROR</td>
-<td>他のサブリポジトリに登録された著者は更新できません。</td>
-<td>Authors registered by other sub-repositories cannot be updated.</td>
 <td></td>
 </tr>
 </tbody>
