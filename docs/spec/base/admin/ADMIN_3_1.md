@@ -15,34 +15,9 @@
 
   - > 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール   | システム管理者 | リポジトリ管理者 | サブリポジトリ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| -------- | -------------- | ---------------- | -------------------- | ------------ | ------------ | ------------------ |
+| 利用可否 | ○              | ○                | ○                    |              |              |                    |
 
   - > 機能内容
 
@@ -197,11 +172,11 @@
     
       - 「一覧形式」（List）  
         検索結果をアイテムの一覧で表示する。デフォルトはこの形式で設定されている。  
-        一覧形式の詳細は[USER-2-1 一覧形式表示](\\l)を参照すること。
+        一覧形式の詳細は[USER-2-1 一覧形式表示](../user/USER_2_1.md)を参照すること。
     
       - 「目次形式」（Table Of Contents）  
         検索結果を見出しの一覧で表示する。  
-        目次形式の詳細は[USER-2-2 目次形式表示](#目次形式表示)を参照すること。
+        目次形式の詳細は[USER-2-2 目次形式表示](../user/USER_2_2.md)を参照すること。
 
   - インデックスサムネイル画像のアップロードエリア
 
@@ -261,26 +236,14 @@
 
 4\. インデックスツリーを移動する。
 
-  - > インデックスの順序の変更と所属する親インデックスの変更はドラッグ&ドロップにより可能である。  
-    > なお、Root Indexを動かすことはできない。アイテムインポート中はインエックスを移動できない。
+  - インデックスの順序の変更と所属する親インデックスの変更はドラッグ&ドロップにより可能である。  
+    なお、Root Indexを動かすことはできない。アイテムインポート中はインエックスを移動できない。
 
-<!-- end list -->
 
-  - > 関連モジュール
-
-<!-- end list -->
-
-  - > weko\_index\_tree
-
-  - > weko\_search\_ui
-
-  - > weko\_admin
-
-<!-- end list -->
-
-  - > 関連モジュール
-
-<!-- end list -->
+  -  関連モジュール
+     - weko\_index\_tree
+     - weko\_search\_ui
+     - weko\_admin
 
   - インデックスツリー編集画面表示について
     
@@ -290,6 +253,9 @@
     
       - 【Administration \> インデックスツリー管理(Index Tree) \> ツリー編集（Edit Tree）】画面にて追加ボタンを押下すると、weko\_index\_tree.rest.postメソッドにてweko\_index\_tree.api.createが呼び出される。  
         それによって初期値が以下の表であるインデックスを生成され、indexテーブルに登録される。
+        インデックス作成時、識別可能なエンドポイントを作成する。
+        CNRIが有効である場合は、ハンドルを発行し、当該のエンドポイントの名前解決が可能な状態にする。
+
 
   - インデックスのキャッシュについて
     
@@ -297,230 +263,42 @@
         
           - index\_tree\_view\_" + os.environ.get('INVENIO\_WEB\_HOST\_NAME') + "\_" + lang
 
-<table>
-<thead>
-<tr class="header">
-<th>インデックスツリー設定値</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>#</td>
-<td>項目(日本語)</td>
-<td>DBキー</td>
-<td>デフォルト値</td>
-<td>備考</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>なし</td>
-<td>id</td>
-<td>(現在の時間を元にしたもの)</td>
-<td>time.timeメソッドに1000を掛けた値</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>なし</td>
-<td>parent</td>
-<td>(親インデックスのID)</td>
-<td>rootindex下なら初期値0</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>インデックス</td>
-<td>index_name</td>
-<td>New Index</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>4</td>
-<td></td>
-<td>index_name_english</td>
-<td>New Index</td>
-<td>必須事項</td>
-</tr>
-<tr class="even">
-<td>5</td>
-<td>コメント</td>
-<td>comment</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>6</td>
-<td>公開</td>
-<td>public_state</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>7</td>
-<td></td>
-<td>public_date</td>
-<td>None</td>
-<td>yyyy/MM/dd HH:mm:ssの形式</td>
-</tr>
-<tr class="odd">
-<td>8</td>
-<td></td>
-<td>recursive_public_state</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>9</td>
-<td>インデックスリンク</td>
-<td>index_link_enabled</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>10</td>
-<td></td>
-<td>index_link_name</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>11</td>
-<td></td>
-<td>index_link_name_english</td>
-<td>New Index</td>
-<td>必須事項</td>
-</tr>
-<tr class="odd">
-<td>12</td>
-<td>表示範囲</td>
-<td>more_check</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>13</td>
-<td></td>
-<td>display_no</td>
-<td>5</td>
-<td>表示数</td>
-</tr>
-<tr class="odd">
-<td>14</td>
-<td>RSSアイコン</td>
-<td>rss_status</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>15</td>
-<td>PDFCoverPage</td>
-<td>coverpage_state</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>16</td>
-<td></td>
-<td>recursive_coverpage_state</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>17</td>
-<td>ハーベスト公開</td>
-<td>harvest_public_state</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>18</td>
-<td>ONLINE_ISSN</td>
-<td>online_issn</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>19</td>
-<td></td>
-<td>biblio_flag</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>20</td>
-<td>閲覧権限</td>
-<td>browsing_role</td>
-<td>3,-98,-99</td>
-<td>ロールID</td>
-</tr>
-<tr class="even">
-<td>21</td>
-<td></td>
-<td>recursive_browsing_role</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>22</td>
-<td></td>
-<td>browsing_group</td>
-<td>(現在存在するすべてのグループを許可)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>23</td>
-<td></td>
-<td>recursive_browsing_group</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>24</td>
-<td>投稿権限</td>
-<td>contribute_role</td>
-<td>1,2,3,4,-98,-99</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>25</td>
-<td></td>
-<td>recursive_contribute_role</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>26</td>
-<td></td>
-<td>contribute_group</td>
-<td>(現在存在するすべてのグループを許可)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>27</td>
-<td></td>
-<td>recursive_contribute_group</td>
-<td>false</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>28</td>
-<td>表示形式</td>
-<td>display_format</td>
-<td>1(一覧形式を表す)</td>
-<td><p>1:一覧形式</p>
-<p>2:目次形式</p></td>
-</tr>
-<tr class="even">
-<td>29</td>
-<td>サムネイル</td>
-<td>image_name</td>
-<td>None</td>
-<td>値に入るのはサムネイル画像のパスを表す文字列</td>
-</tr>
-</tbody>
-</table>
+  - インデックスツリー設定値
+
+| #   | 項目(日本語)       | DBキー                     | デフォルト値                         | 備考                                                     |
+| --- | ------------------ | -------------------------- | ------------------------------------ | -------------------------------------------------------- |
+| 1   | なし               | id                         | (現在の時間を元にしたもの)           | time.timeメソッドに1000を掛けた値                        |
+| 2   | なし               | parent                     | (親インデックスのID)                 | rootindex下なら初期値0                                   |
+| 3   | インデックス       | index_name                 | New Index                            |                                                          |
+| 4   |                    | index_name_english         | New Index                            | 必須事項                                                 |
+| 5   | インデックスURL    | index_url                  | https://XXX.YYY.ZZZ                  | インデックス作成時に作成したインデックスのエンドポイント |
+| 6   | CNRI               | cnri                       | https://AAA.BBBB.CCCC                | インデックス作成時に作成したCNRI                         |
+| 5   | コメント           | comment                    | None                                 |                                                          |
+| 6   | 公開               | public_state               | false                                |                                                          |
+| 7   |                    | public_date                | None                                 | yyyy/MM/dd HH:mm:ssの形式                                |
+| 8   |                    | recursive_public_state     | false                                |                                                          |
+| 9   | インデックスリンク | index_link_enabled         | false                                |                                                          |
+| 10  |                    | index_link_name            | None                                 |                                                          |
+| 11  |                    | index_link_name_english    | New Index                            | 必須事項                                                 |
+| 12  | 表示範囲           | more_check                 | false                                |                                                          |
+| 13  |                    | display_no                 | 5                                    | 表示数                                                   |
+| 14  | RSSアイコン        | rss_status                 | false                                |                                                          |
+| 15  | PDFCoverPage       | coverpage_state            | false                                |                                                          |
+| 16  |                    | recursive_coverpage_state  | None                                 |                                                          |
+| 17  | ハーベスト公開     | harvest_public_state       | true                                 |                                                          |
+| 18  | ONLINE_ISSN        | online_issn                | None                                 |                                                          |
+| 19  |                    | biblio_flag                | None                                 |                                                          |
+| 20  | 閲覧権限           | browsing_role              | 3,-98,-99                            | ロールID                                                 |
+| 21  |                    | recursive_browsing_role    | false                                |                                                          |
+| 22  |                    | browsing_group             | (現在存在するすべてのグループを許可) |                                                          |
+| 23  |                    | recursive_browsing_group   | false                                |                                                          |
+| 24  | 投稿権限           | contribute_role            | 1,2,3,4,-98,-99                      |                                                          |
+| 25  |                    | recursive_contribute_role  | false                                |                                                          |
+| 26  |                    | contribute_group           | (現在存在するすべてのグループを許可) |                                                          |
+| 27  |                    | recursive_contribute_group | false                                |                                                          |
+| 28  | 表示形式           | display_format             | 1(一覧形式を表す)                    | 1:一覧形式<br>2:目次形式                                 |
+| 29  | サムネイル         | image_name                 | None                                 | 値に入るのはサムネイル画像のパスを表す文字列             |
+
 
   - インデックス編集について
     
@@ -531,6 +309,7 @@
   - インデックス削除について
     
       - 【Administration \> インデックスツリー管理(Index Tree) \> ツリー編集（Edit Tree）】画面にてインデックスを選択後、「削除」ボタンを押し、ポップアップの選択肢「すべて削除」を押下する。この操作によってweko\_index\_tree.rest.deleteにて同フォルダのutil.pyのperform\_delete\_indexメソッドが呼び出される。このメソッドによってindexテーブルから該当インデックスとその子インデックスを論理削除する。
+      また、インデックス追加時に作成したハンドルはインデックスの削除と同時に削除を実施する。
 
   - インデックス移動について
     
@@ -540,39 +319,11 @@
     
       - インデックスを作成、編集、削除、移動した際に、weko\_index\_tree.utils.save\_index\_trees\_to\_redisメソッドを用いて、インデックスツリーの日英の親子関係をredisに保存している。
 
-<!-- end list -->
+## 更新履歴
 
-  - > 更新履歴
-
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2024/08/27</p>
-</blockquote></td>
-<td>f49b016c92ef98e0656947bf651ca1a2f3dbc286</td>
-<td>v1.0.8</td>
-</tr>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>2024/07/1</p>
-</blockquote></td>
-<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
-<td>v1.0.7対応</td>
-</tr>
-</tbody>
-</table>
+| 日付       | GitHubコミットID                         | 更新内容   |
+| ---------- | ---------------------------------------- | ---------- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成   |
+| 2024/07/01 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
+| 2024/08/27 | f49b016c92ef98e0656947bf651ca1a2f3dbc286 | v1.0.8     |
+| 2025/03/14 | xxxxxxxxxxxx                             | v1.1.0    |
