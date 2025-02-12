@@ -23,7 +23,7 @@
           - 「教員」→一般利用者ロール'Contributor'
         
           - 「教官」→一般利用者ロール'Contributor'
-    
+
       - 上記のIdP属性値とロールとの対応は、以下のコンフィグで設定する
         
           - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L77-L82>
@@ -31,6 +31,20 @@
           - 設定キー：WEKO\_ACCOUNTS\_SHIB\_ROLE\_RELATION
     
       - IdP属性値がconfigに含まれないロールであった場合は、ロールを持たないユーザとなる
+
+          - 設定値によって既定のロールが設定されている場合は、設定値を用いて既定のロールを付与する。
+
+      - isMemberOfの属性値が付与されている場合、学認mAPグループからロールを割り当てる。
+
+          - 以下のフォーマットに従う学認mAPグループを持つ場合、それぞれ以下のロールに割り当てる。
+
+            - 「jc\_roles\_sysadm」→ システム管理者ロール'System Administrator'
+            
+            - 「jc\_\<entityid\>\_roles\_repoadm」→ リポジトリ管理者ロール'Repository Administrator'
+
+            - 「jc\_\<entityid\>\_roles\_comadm」→ コミュニティ管理者ロール'Community Administrator'
+
+            - 「jc\_\<entityid\>\_roles\_contributor」→ 一般利用者ロール'Contributor'
 
 2\. Shibboleth IdPからの属性情報に基づき、サイトライセンス機能を制御する
 
@@ -55,6 +69,12 @@
       - SHIB\_ATTR\_ROLE\_AUTHORITY\_NAMEについて、ロールの紐づけをconfig で指定できるものとし、configに含まれないロールであった場合は、WEKOのロールとしては設定しない
         
           - SHIB\_ATTR\_ROLE\_AUTHORITY\_NAMEに複数属性が含まれている場合は，複数ロールの割当を行えるようにする。（複数属性が含まれている場合は属性値を半角セミコロン「;」で区切られている）
+    
+      - 設定値WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSが有効（True）の場合、SHIB\_ATTR\_IS\_MEMBER\_OFについて、所属している学認mAPグループをWEKO3に紐づける。
+
+         - 学認mAPグループはそのグループエンティティIDを名前に持つロールとして登録される。
+
+         - ログイン時に所属している学認mAPグループをWEKO3のユーザーに付与する。
 
   - シボレスユーザの紐づけキー
     
@@ -68,8 +88,54 @@
         
           - 設定キー：WEKO\_ACCOUNTS\_SHIB\_ALLOW\_USERNAME\_INST\_EPPN
 
-4\. 実装
 
+4\. 設定
+
+  -  学認mAPグループ情報をWEKO3と連携するか設定する。(Trueの場合、学認mAPグループとWEKO3を連携する。)
+
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L111>
+    
+      - 設定キー：WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPS
+    
+      - 現在の設定値：
+
+> WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPS = False
+
+  - GakuNin mAPグループのグループIDのフォーマットおよびWEKO3のロールを紐づけるキーワード
+    
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L114>
+    
+      - 設定キー：WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_PATTERN\_DICT
+    
+      - 現在の設定値：
+
+>      WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT = {
+>          "prefix": "jc",                             # Prefix
+>          "sysadm_group": "jc_roles_sysadm",          # システム管理者のグループ名
+>          "role_keyword": "roles",                    # ロールグループを表すキーワード
+>          "role_mapping": {
+>              "repoadm": "Repository Administrator",  # リポジトリ管理者グループ
+>              "comadm": "Community Administrator",    # コミュニティ管理者グループ
+>              "contributor": "Contributor"            # コントリビュータグループ
+>          }
+>      }
+
+  -  isMemberOf属性がない場合に付与する、IdP毎のデフォルトの学認mAPグループを設定する。
+
+      - IdPのエンティティIDをキーとして、デフォルトの学認mAPグループをリストで値に設定する。
+
+         - 例 {"abc\_idp\_ac\_jp": \["jc\_abc\_idp\_ac\_jp\_groups\_yyy"\] }
+
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L126>
+    
+      - 設定キー：WEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPING
+    
+      - 現在の設定値：
+
+> WEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPING = {}
+
+5\. 実装
+　
   - weko\_accounts.views. shib\_sp\_login関数によって、IdPからのリクエストを処理する
     
       - リクエストにSHIB\_ATTR\_SESSION\_IDが含まれず、以下のコンフィグWEKO\_ACCOUNTS\_SHIB\_LOGIN\_ENABLEDがfalseの場合はエラーとしてWEKOのログイン画面に遷移する
@@ -121,6 +187,9 @@
                   - username：shibboleth\_userテーブルに作成するレコードのshib\_user\_nameフィールドと同じ
         
           - レコード作成の有無にかかわらず、weko\_accounts.api.ShibUser. check\_inメソッドの中で、ロールの割り当てを行う
+
+          - レコード作成の有無にかかわらず、weko\_accounts.api.ShibUser. gakunin_check\_inメソッドの中で、学認mAPグループを更新する。
+              - shibboleth\_userroleテーブルでSHIB\_ATTR\_IS\_MEMBER\_OF属性の値を基に、ユーザの学認mAPグループを割り当てる。
     
       - 上記以外の場合は、WEKOのログイン画面に遷移する
 
@@ -133,10 +202,77 @@
           - リクエストのWEKOアカウントのメールアドレスを使用して、shibboleth\_userテーブルにレコードを作成する
         
           - weko\_accounts.api.ShibUser. check\_inメソッドの中で、ロールの割り当てを行う
-        
+
+              - WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSがTrueのとき、学認mAPグループをWEKO3にロールとして作成し、ログインユーザーに学認mAPグループを割り当てる
+              
+                  - Redisの情報を用いて、WEKO3の学認mAPグループリストを更新する。
+
+                      - Redisからキーを「<institution_fqdn>\_gakunin\_groups」として対応する機関の学認mAPグループをリストで取得する。
+                          
+                          - <institution_fqdn>は対象機関のFQDNから、"."または"-"を"_"に置き換えた値になる。
+
+                      - 取得した学認mAPグループリストはロールとして登録されていないかチェックする。ロールとして登録されていない学認mAPグループの場合、新規ロールとしてaccounts\_roleテーブルにレコード追加する。
+
+                          - 学認mAPグループのインデックスツリーの権限の初期値を併せて登録する。
+                
+                 - shibboleth\_userroleテーブルでSHIB\_ATTR\_IS\_MEMBER\_OF属性の値を基に、ユーザーの学認mAPグループをロールとして割り当てる。
+
+                     - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる。
+
+                         - 認証されたIdPのentityIDの".", "-"を"\_"に置き換えた値をキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる。
+
+                         - 該当グループが見つからない場合、またはWEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない。
+
+                 - 学認mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる。
+
+                     - 以下のフォーマットに従う場合、対応するWEKO3のロールをログインユーザーに割り当てる。
+
+                         - 「jc\_roles\_sysadm」→ システム管理者ロール'System Administrator'
+                        
+                         - 「jc\_\<entityid\>\_roles\_repoadm」→ リポジトリ管理者ロール'Repository Administrator'
+
+                         - 「jc\_\<entityid\>\_roles\_comadm」→ コミュニティ管理者ロール'Community Administrator'
+
+                         - 「jc\_\<entityid\>\_roles\_contributor」→ 一般利用者ロール'Contributor'
+
           - ログインする
     
       - 新規IDでログインする場合は、weko\_accounts.views.shib\_auto\_login関数でログインする
+
+          - weko\_accounts.api.ShibUser. check\_inメソッドの中で、ロールの割り当てを行う
+
+              - WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSがTrueのとき、学認mAPグループをWEKO3にロールとして作成し、ログインユーザーに学認mAPグループを割り当てる
+              
+                  - Redisの情報を用いて、WEKO3の学認mAPグループリストを更新する。
+
+                      - Redisからキーを「<institution_fqdn>\_gakunin\_groups」として対応する機関の学認mAPグループをリストで取得する。
+                          
+                          - <institution_fqdn>は対象機関のFQDNから、"."または"-"を"_"に置き換えた値になる。
+
+                      - 取得した学認mAPグループリストはロールとして登録されていない場合、新規ロールとしてaccounts\_roleテーブルにレコード追加する。
+
+                          - 学認mAPグループのインデックスツリーの権限の初期値を併せて登録する。
+                
+                 - shibboleth\_userroleテーブルでSHIB\_ATTR\_IS\_MEMBER\_OF属性の値を基に、ユーザの学認mAPグループをロールとして割り当てる。
+
+                     - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる。
+
+                         - 認証されたIdPのentityIDの".", "-"を"\_"に置き換えた値をキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる。
+
+                         - 該当グループが見つからない場合、またはWEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない。
+
+                 - 学認mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる。
+
+                     - 以下のフォーマットに従う場合、対応するロールをログインユーザーに割り当てる。
+
+                         - 「jc\_roles\_sysadm」→ システム管理者ロール'System Administrator'
+                        
+                         - 「jc\_\<entityid\>\_roles\_repoadm」→ リポジトリ管理者ロール'Repository Administrator'
+
+                         - 「jc\_\<entityid\>\_roles\_comadm」→ コミュニティ管理者ロール'Community Administrator'
+
+                         - 「jc\_\<entityid\>\_roles\_contributor」→ 一般利用者ロール'Contributor'
+            
 
   - shibboleth\_userテーブルにレコードを作成する場合は、あわせてユーザ関連テーブルも上書きする
     
@@ -155,7 +291,7 @@
           - shibboleth\_user.shib\_user\_name ⇒ userprofiles\_userprofile.username
         
           - shibboleth\_user.shib\_role\_authority\_name ⇒ accounts\_userrole.user\_id,role\_id
-    
+
       - 1),2) どちらの登録の際も値のチェックは行わず、登録先の値を上書きする。
 
 <!-- end list -->
@@ -177,6 +313,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2025/02/03</p>
+</blockquote></td>
+<td>a62f7a5ea350ec1a811cb053dd27c54f284705a4</td>
+<td>学認mAP対応</td>
 </tr>
 </tbody>
 </table>
