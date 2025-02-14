@@ -269,23 +269,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorDocument"
-    put:
-      tags:
-        - deposit
-      summary: アイテム更新機能
-      description: |-
-        recidを指定してリポジトリ上に存在するアイテムに対して、JSON-LD形式のメタデータで更新
-        |ロール|動作|
-        |----|----|
-        |システム管理者|使用可能|
-        |リポジトリ管理者|使用可能|
-        |コミュニティ管理者|使用可能|
-        |登録ユーザー|使用可能|
-        |一般ユーザー|使用可能|
-        |ゲストユーザー|使用不可|
-      responses:
-        "200":
-          description: OK
     delete:
       tags:
         - deposit
@@ -313,6 +296,13 @@ paths:
           description: 代理投稿ユーザーのメールアドレスまたはePPN
           schema:
             type: string
+        - name: recid
+          in: path
+          required: true
+          description: レコードID
+          schema:
+            type: integer
+          example: 20000021
       responses:
         "204":
           description: 空のレスポンスを返す
@@ -437,6 +427,8 @@ components:
           type: string
         services:
           type: array
+          items:
+            type: string
           example: [TODO: 設定値18を入れる]
         staging:
           type: string
