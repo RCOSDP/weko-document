@@ -1,0 +1,583 @@
+openapi: 3.0.3
+info:
+  title: SWORD API
+  version: "1.0"
+tags:
+  - name: service_document
+    description: SWORD
+  - name: deposit
+    description: SWORD
+paths:
+  /api/service-document:
+    get:
+      tags:
+        - service_document
+      summary: サービスドキュメント取得機能
+      description: |-
+        リポジトリのサービスドキュメントを取得
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用不可|
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Bearer アクセストークン
+          schema:
+            type: string
+        - name: On-Behalf-Of
+          in: header
+          required: false
+          description: 代理投稿ユーザーのメールアドレスまたはePPN
+          schema:
+            type: string
+      responses:
+        "200":
+          description: サーバーのサービスドキュメントを返す
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceDocument"
+        "400":
+          description: リクエスト内容に何らかの不備がある場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "401":
+          description: リクエストでAuthorization ヘッダーが提供されない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "403":
+          description: 認証に失敗した場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "412":
+          description: サーバー側がOn-Behalf-Of をサポートしていないにもかかわらず、リクエストでOn-Behalf-Of ヘッダーが提供された場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "500":
+          description: サーバー内部エラーが発生した場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+    post:
+      tags:
+        - service_document
+      summary: アイテム登録機能
+      description: |-
+        WEKO3の一括登録フォーマットを用いて、アイテムを登録
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用不可|
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Bearer アクセストークン
+          schema:
+            type: string
+        - name: On-Behalf-Of
+          in: header
+          required: false
+          description: 代理投稿ユーザーのメールアドレスまたはePPN
+          schema:
+            type: string
+        - name: Content-Disposition
+          in: header
+          required: true
+          description: リクエストボディに付加したファイルのファイル名
+          schema:
+            type: string
+        - name: Content-Length
+          in: header
+          required: false
+          description: リクエストボディのサイズ
+          schema:
+            type: integer
+        - name: Content-Type
+          in: header
+          required: true
+          description: リクエストボディにファイルを付加するため "multipart/form-data"
+          schema:
+            type: string
+        - name: Packaging
+          in: header
+          required: true
+          description: パッケージフォーマット
+          schema:
+            type: string
+            enum:
+              - http://purl.org/net/sword/3.0/package/Binary
+              - http://purl.org/net/sword/3.0/package/SimpleZip
+              - http://purl.org/net/sword/3.0/package/SWORDBagIt
+        - name: Digest
+          in: header
+          required: false
+          description: リクエストボディのダイジェスト値
+          schema:
+            type: string
+            # enum: [SHA-256]
+          example: SHA-256=e0Pke8qpzEkkGjPE1RoSqNw7qu3tH4...
+      responses:
+        "200":
+          description: 登録されたアイテムのステータスドキュメントを返す
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusDocument"
+        "400":
+          description: リクエスト内容に何らかの不備がある場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "401":
+          description: リクエストでAuthorization ヘッダーが提供されない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "403":
+          description: 認証に失敗した場合、認証したOAuthトークンが「deposit:write」スコープを持っていない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "404":
+          description: 登録されたアイテムが見つからない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "412":
+          description: サーバー側がOn-Behalf-Of をサポートしていないにもかかわらず、リクエストでOn-Behalf-Of ヘッダーーが提供された場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "413":
+          description: 送信されたファイルのサイズがサーバーに設定されたmaxUploadSizeを超えている場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "415":
+          description: ヘッダーまたはボディに付加されたファイルのContent-Typeがサーバー側でサポートされていない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "500":
+          description: サーバー内部エラーが発生した場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+  /api/deposit/{recid}:
+    get:
+      tags:
+        - deposit
+      summary: ステータスドキュメント取得機能
+      description: |-
+        recidを指定してリポジトリ上に存在するアイテムのステータスドキュメントを取得
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用不可|
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Bearer アクセストークン
+          schema:
+            type: string
+        - name: On-Behalf-Of
+          in: header
+          required: false
+          description: 代理投稿ユーザーのメールアドレスまたはePPN
+          schema:
+            type: string
+        - name: recid
+          in: path
+          required: true
+          description: レコードID
+          schema:
+            type: integer
+          example: 20000021
+      responses:
+        "200":
+          description: 指定されたアイテムのステータスドキュメントを返す
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusDocument"
+        "400":
+          description: リクエスト内容に何らかの不備がある場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "401":
+          description: リクエストでAuthorization ヘッダーが提供されない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "403":
+          description: 認証に失敗した場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "404":
+          description: 指定したrecidに該当するアイテムが存在しない（削除されている）場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "412":
+          description: サーバー側がOn-Behalf-Of をサポートしていないにもかかわらず、リクエストでOn-Behalf-Of ヘッダーが提供された場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "500":
+          description: サーバー内部エラーが発生した場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+    put:
+      tags:
+        - deposit
+      summary: アイテム更新機能
+      description: |-
+        recidを指定してリポジトリ上に存在するアイテムに対して、JSON-LD形式のメタデータで更新
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用不可|
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+        - deposit
+      summary: アイテム削除機能
+      description: |-
+        recidを指定してアイテムを削除
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用不可|
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Bearer アクセストークン
+          schema:
+            type: string
+        - name: On-Behalf-Of
+          in: header
+          required: false
+          description: 代理投稿ユーザーのメールアドレスまたはePPN
+          schema:
+            type: string
+      responses:
+        "204":
+          description: 空のレスポンスを返す
+        "400":
+          description: リクエスト内容に何らかの不備がある場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "401":
+          description: リクエストでAuthorization ヘッダーが提供されない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "403":
+          description: 認証に失敗した場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "404":
+          description: 指定したrecidに該当するアイテムが存在しない（削除されている）場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "412":
+          description: サーバー側がOn-Behalf-Of をサポートしていないにもかかわらず、リクエストでOn-Behalf-Of ヘッダーが提供された場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "500":
+          description: サーバー内部エラーが発生した場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+
+components:
+  schemas:
+    ServiceDocument:
+      type: object
+      properties:
+        "@context":
+          type: string
+          enum: ["https://swordapp.github.io/swordv3/swordv3.jsonld"]
+        "@id":
+          type: string
+          example: "[WEKO3のURL]/sword/service-document"
+        "@type":
+          type: string
+          enum: ["ServiceDocument"]
+        accepted:
+          type: array
+          items:
+            type: string
+          example: [TODO: 設定値5を入れる]
+        acceptArchiveFormat:
+          type: array
+          items:
+            type: string
+          example: [TODO: 設定値6を入れる]
+        acceptDeposits:
+          type: boolean
+          example: [TODO: 設定値7を入れる]
+        acceptMetadata:
+          type: array
+          items:
+            type: string
+          example: [TODO: 設定値8を入れる]
+        acceptPackaging:
+          type: array
+          items:
+            type: string
+          example: [TODO: 設定値9を入れる]
+        authentication:
+          type: array
+          items:
+            type: string
+          example: [TODO: 設定値17を入れる]
+        byReferenceDeposit:
+          type: boolean
+          example: [TODO: 設定値14を入れる]
+        collectionPolicy:
+          type: object
+          properties:
+            "collectionPolicy.@id":
+              type: string
+            "collectionPolicy.description":
+              type: string
+          example: [TODO: 設定値10を入れる]
+        "dc:title":
+          type: string
+        "dcterms:abstract":
+          type: string
+          example: [TODO: 設定値4を入れる]
+        digest:
+          type: array
+          items:
+            type: string
+          example: [TODO: 設定値16を入れる]
+        maxAssembledSize:
+          type: integer
+          example: [TODO: 設定値21を入れる]
+        maxByReferenceSize:
+          type: integer
+          example: [TODO: 設定値20を入れる]
+        maxSegmentSize:
+          type: integer
+        maxSegments:
+          type: integer
+          example: [TODO: 設定値22を入れる]
+        maxUploadSize:
+          type: integer
+          example: [TODO: 設定値19を入れる]
+        onBehalfOf:
+          type: boolean
+          example: [TODO: 設定値15を入れる]
+        root:
+          type: string
+        services:
+          type: array
+          example: [TODO: 設定値18を入れる]
+        staging:
+          type: string
+          example: [TODO: 設定値12を入れる]
+        stagingMaxIdle:
+          type: integer
+          example: [TODO: 設定値13を入れる]
+        treatment:
+          type: object
+          properties:
+            "treatment.@id":
+              type: string
+            "treatment.description":
+              type: string
+        version:
+          type: string
+          example: [TODO: 設定値3を入れる]
+    StatusDocument:
+      type: object
+      properties:
+        "@context":
+          type: string
+          enum: ["https://swordapp.github.io/swordv3/swordv3.jsonld"]
+        "@id":
+          type: string
+          example: "[WEKO3のURL]/sword/deposit/[アイテムのrecid]"
+        "@type":
+          type: string
+          enum: ["StatusDocument"]
+        actions:
+          type: object
+          properties:
+            "actions. appendFiles":
+              type: boolean
+            "actions.appendMetadata":
+              type: boolean
+            "actions. deleteFiles":
+              type: boolean
+            "actions. deleteMetadata":
+              type: boolean
+            "actions. deleteObject":
+              type: boolean
+            "actions. getFiles":
+              type: boolean
+            "actions. getMetadata":
+              type: boolean
+            "actions. replaceFiles":
+              type: boolean
+            "actions. replaceMetadata":
+              type: boolean
+        eTag:
+          type: string
+          example: "[アイテムのリビジョン番号]"
+        fileSet:
+          type: object
+          properties:
+            "fileSet.@id":
+              type: string
+            "fileSet.eTag":
+              type: string
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              "links[].@id":
+                type: string
+              "links[].byReference":
+                type: string
+              "links[].contentType":
+                type: string
+              "links[].dcterms:isReplacedBy":
+                type: string
+              "links[].dcterms:relation":
+                type: string
+              "links[].dcterms:replaces":
+                type: string
+              "links[].depositedBy":
+                type: string
+              "links[].depositedOn":
+                type: string
+              "links[].depositedOnBehalfOf":
+                type: string
+              "links[].derivedFrom":
+                type: string
+              "links[].eTag":
+                type: string
+              "links[].log":
+                type: string
+              "links[].packaging":
+                type: string
+              "links[].rel":
+                type: string
+                enum:
+                  - alternate
+                  - packaging
+                  - depositedOn
+                  - depositedOnBehalfOf
+                  - status
+                  - log
+                  - dcterms:relation
+                  - dcterms:replaces
+                  - dcterms:isReplacedBy
+                  - versionReplaced
+                  - eTag
+                  - byReference
+                  - derivedFrom
+                  - metadataFormat
+              "links[].status":
+                type: string
+              "links[].versionReplacedOn":
+                type: string
+        metadata:
+          type: object
+          properties:
+            "metadata.@id":
+              type: string
+            "metadata.eTag":
+              type: string
+        service:
+          type: string
+        state:
+          type: array
+          items:
+            type: object
+            properties:
+              "state.@id":
+                type: string
+              "state.description":
+                type: string
+    ErrorDocument:
+      type: object
+      properties:
+        "@context":
+          type: string
+          enum: ["https://swordapp.github.io/swordv3/swordv3.jsonld"]
+        "@type":
+          type: string
+        error:
+          type: string
+        log:
+          type: string
+        timestamp:
+          type: string
