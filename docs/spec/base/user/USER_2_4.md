@@ -1,13 +1,13 @@
 
-### アイテム一括出力
+# アイテム一括出力
 
-  - > 目的・用途
+## 目的・用途
 
 本機能は、検索結果に表示されているアイテムの情報を一括で出力する機能である。
 
 なお、出力されるファイル形式はjson,tsv,bibである。
 
-  - > 利用方法
+## 利用方法
 
 1\. 【Administration \> 設定(Setting) \> アイテム一括出力(Item Export)画面】の「Allow/Disallow Item Exporting」及び「Export File Contents」をOnに設定する。
 
@@ -15,7 +15,7 @@
 
 3\. 検索結果エリア、あるいはアイテムリストエリア内にある\[エクスポート(Export)\]ボタンを押下する。
 
-  - > 利用可能なロール
+## 利用可能なロール
 
 <table>
 <thead>
@@ -46,7 +46,7 @@
 </tbody>
 </table>
 
-  - > 機能内容
+## 機能内容
 
 <!-- end list -->
 
@@ -194,15 +194,15 @@
 
 <!-- end list -->
 
-  - > 関連モジュール
+## 関連モジュール
 
 <!-- end list -->
 
-  - > weko\_items\_ui
+## weko\_items\_ui
 
 <!-- end list -->
 
-  - > 処理概要
+## 処理概要
 
 <!-- end list -->
 
@@ -362,7 +362,7 @@
 
 <!-- end list -->
 
-  - > 更新履歴
+## 更新履歴
 
 <table>
 <thead>
