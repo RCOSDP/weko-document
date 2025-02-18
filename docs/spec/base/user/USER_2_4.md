@@ -5,15 +5,23 @@
 
 本機能は、検索結果に表示されているアイテムの情報を一括で出力する機能である。
 
-なお、出力されるファイル形式はjson,tsv,bibである。
+なお、出力されるファイルはBagIt形式のZIPファイルであり、`JSON`、`BIBTEX`、`RO-Crate`の3つの出力フォーマットから選択可能である。
 
 ## 利用方法
 
-1\. 【Administration \> 設定(Setting) \> アイテム一括出力(Item Export)画面】の「Allow/Disallow Item Exporting」及び「Export File Contents」をOnに設定する。
+1. 事前準備
+   1. 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】の「Allow/Disallow Item Exporting」及び「Export File Contents」をOnに設定する。
 
-2\. いずれかのアイテム検索を行う。
-
-3\. 検索結果エリア、あるいはアイテムリストエリア内にある\[エクスポート(Export)\]ボタンを押下する。
+2. 操作方法
+   1. いずれかのアイテム検索を行う。
+   2. 検索結果エリア、あるいはアイテムリストエリア内にある「エクスポート(Export)」ボタンを押下する。
+   3. アイテム一括出力画面に遷移する。
+   4. 出力したいアイテムのチェックボックスにチェックを入れる。
+   5. 「File Contents」エリアでコンテンツファイルの出力有無を選択する。
+   6. 「Export Format」エリアで出力形式を選択する。
+   7. 「エクスポート(Export)」ボタンを押下し、ダウンロードする。  
+   ※手順6で`RO-Crate`を選択した場合、選択したアイテムの個数分のZIPファイルがダウンロードされる。  
+   ※手順5で`Do Not Export File Contents`を選択した場合、手順6で`RO-Crate`を選択することはできない。
 
 ## 利用可能なロール
 
