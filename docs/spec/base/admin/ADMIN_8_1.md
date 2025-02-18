@@ -200,14 +200,14 @@
       - 数字以外を入れて、作成した場合、作成時エラーメッセージを「Ranking」テキストボックスの下に表示する。  
         エラーメッセージ：無効な整数です。
 
-  - 「Thumbnail」ファイルフィールド  
-    コミュニティのサムネイル画像を登録する。  
-    設定可能なファイル拡張子はPNG、JPG、JPEG、GIF。  
-
   - 「Login Menu Enabled」ラジオボタン  
     コミュニティ画面上でのログインメニューの利用可否を設定する。  
     Disabledでメニュー非表示。Enabledでメニュー表示。  
     初期値はDisabled。  
+
+  - 「Thumbnail」ファイルフィールド  
+    コミュニティのサムネイル画像を登録する。  
+    設定可能なファイル拡張子はPNG、JPG、JPEG。  
 
   - 「Catalog」  
     JPCOARスキーマ2.0の"カタログ"スキーマのうち、下記に当たる情報を設定可能にする。  
@@ -218,7 +218,6 @@
   　 ・権利情報  
   　 ・アクセス権  
   　各項目は"カタログ"プロパティと同期する。  
-  　このうち、"主題"は表示上の名称を"タグ"として扱う。  
   　コミュニティの検索時、カタログ情報でも検索可能にする。  
   　また、コミュニティ検索結果の表示時、"主題"と"提供機関"を各コミュニティの情報として表示する。  
 
@@ -246,9 +245,9 @@
     自動で作成される。  
     ページレイアウト（Page Layout）画面】の詳細は[ADMIN-4-2: ページレイアウト](\\l)を参照  
     作成されるページは以下の通り。  
-      - Title：About、 URL：/c/{community_id}/about  
-      - Title：Editorial board、 URL：/c/{community_id}/eb  
-      - Title：OA Policy、 URL：/c/{community_id}/oapolicy  
+      - Title：About、 URL：/c/{community_id}/page/about  
+      - Title：Editorial board、 URL：/c/{community_id}/page/eb  
+      - Title：OA Policy、 URL：/c/{community_id}/page/oapolicy  
         ※作成されるページの内容編集、メニューへの配置等はユーザーが行う。
 
 <!-- end list -->
