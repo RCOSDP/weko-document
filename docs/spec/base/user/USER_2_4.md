@@ -248,154 +248,171 @@ export.zip
     後者のメソッドでは、アイテムエクスポートの設定、検索結果ロード時の検索設定を取得し、  
     それらが反映したアイテムリストを表示する。
 
-  - 「エクスポート」ボタンを押下すると`weko_search_ui.static.js.weko_search_ui.app.exportItems`メソッドが呼び出され、同ファイルの`getExportItemsMetadata`を呼び出し選択したアイテムのメタデータを取得する。その取得したメタデータに不足した必須項目があるかを同ファイルの`validateBibtexExport`メソッドで確認し、足りなかったらエラーメッセージをウェブ上に表示する。  
-    問題ない場合、`weko_items.ui.views.export`メソッドにて`export_items`メソッドを呼び出し、ZIPファイルを出力する。  
+  - 「エクスポート」ボタンを押下すると、選択したフォーマットにより以下の処理が行われる。
+    - `JSON`または`BIBTEX`の場合  
+    `weko_search_ui.static.js.weko_search_ui.app.exportItems`メソッドが呼び出され、同ファイルの`getExportItemsMetadata`を呼び出し選択したアイテムのメタデータを取得する。その取得したメタデータに不足した必須項目があるかを同ファイルの`validateBibtexExport`メソッドで確認し、足りなかったらエラーメッセージをウェブ上に表示する。  
+    問題ない場合、`weko_items.ui.views.export`メソッドにて`export_items`メソッドを呼び出し、ZIPファイルを出力する。
+
+    - `RO-Crate`の場合  
+    `weko_search_ui.static.js.weko_search_ui.app.exportItems`メソッドが呼び出され、同ファイルの`getExportItemsMetadata`を呼び出し選択したアイテムのメタデータを取得する。その取得したメタデータに不足した必須項目があるかを同ファイルの`validateBibtexExport`メソッドで確認し、足りなかったらエラーメッセージをウェブ上に表示する。  
+    問題ない場合、`weko_items.ui.views.export`メソッドにて`export_rocrate`メソッドを呼び出し、ZIPファイルを出力する。
 
     以下は出力するファイルごとの処理を記述する。
 
-  - **コンテンツファイルを含める場合はBagit形式でアイテムを一括出力する**
+  ### 出力表
+  |                                  | JSON | BIBTEX | RO-Crate |
+  | -------------------------------- | ---- | ------ | -------- |
+  | コンテンツファイルを含める場合   | ◯    | ◯      | ◯        |
+  | コンテンツファイルを含めない場合 | ◯    | ◯      | ✕       |
 
-      - 仕様書： 別紙「WEKO3_BagIt.pptx」を参照すること。
+### コンテンツファイルを含める場合はBagit形式でアイテムを一括出力する
 
-      - `weko_items_ui.utils.export_items`メソッドにて`bagit.make_bag`を実行することでbagitファイルを生成する。
+- 仕様書： 別紙「WEKO3_BagIt.pptx」を参照すること。
 
-      - コンテンツファイルを含める場合、エクスポート時には登録ファイルが1つのZIPファイルに圧縮されてダウンロードされる
+- `weko_items_ui.utils.export_items`メソッドにて`bagit.make_bag`を実行することでbagitファイルを生成する。
 
-      - ZIPファイルは階層構成（Bagit形式）で出力できる
+- コンテンツファイルを含める場合、エクスポート時には登録ファイルが1つのZIPファイルに圧縮されてダウンロードされる
 
-      - コンテンツファイルは個々に個別のディレクトリが作成され、その中に出力される（ディレクトリには連番が振られる）
+- ZIPファイルは階層構成（Bagit形式）で出力できる
 
-      - 一括出力されるアイテムのファイル形式は、アイテム一括出力画面の出力形式に合わせる
+- コンテンツファイルは個々に個別のディレクトリが作成され、その中に出力される（ディレクトリには連番が振られる）
 
-  - **ダウンロードするメタデータファイル（tsvファイル）**
+- 一括出力されるアイテムのファイル形式は、アイテム一括出力画面の出力形式に合わせる
 
-      - 「Item to Export」エリアの「Export Format」項目でJSONを選び、エクスポートボタンを押す。この操作によって、`weko_items_ui.utils.export_items`メソッドにて`write_files`メソッドが呼び出され、JSON形式でtsvファイルが出力される。  
-        tsvの形式については`weko_items_ui.utils.make_stats_file`メソッドを参照すること。
+### ダウンロードするメタデータファイル（tsvファイル）
 
-      - ファイル名ルール：[アイテムタイプ名(アイテムタイプバージョン)].tsv
+- 「Item to Export」エリアの「Export Format」項目でJSONを選び、エクスポートボタンを押す。この操作によって、`weko_items_ui.utils.export_items`メソッドにて`write_files`メソッドが呼び出され、JSON形式でtsvファイルが出力される。  
+  tsvの形式については`weko_items_ui.utils.make_stats_file`メソッドを参照すること。
 
-      - 基本仕様
+- ファイル名ルール：[アイテムタイプ名(アイテムタイプバージョン)].tsv
 
-          - TSV形式とする
+- 基本仕様
 
-          - 文字コードはBOM無しUTF-8、改行コードはCR+LFとする
+    - TSV形式とする
 
-          - アイテムタイプ毎にファイルを分けて出力する
+    - 文字コードはBOM無しUTF-8、改行コードはCR+LFとする
 
-          - ファイル名は「アイテム_タイプ名.txt」とする
+    - アイテムタイプ毎にファイルを分けて出力する
 
-          - 1行で1アイテムを記載する
+    - ファイル名は「アイテム_タイプ名.txt」とする
 
-      - 詳細仕様
+    - 1行で1アイテムを記載する
 
-          - ヘッダ行
+- 詳細仕様
 
-              - 先頭の5行はヘッダ行とする
+    - ヘッダ行
 
-              - ヘッダ行は、"#"で開始する
+        - 先頭の5行はヘッダ行とする
 
-          - ヘッダ各行の詳細
+        - ヘッダ行は、"#"で開始する
 
-              - 1行目 ： アイテムタイプの名称を記載する
+    - ヘッダ各行の詳細
 
-                  - 1カラム目 ： #ItemType (固定)
+        - 1行目 ： アイテムタイプの名称を記載する
 
-                  - 2カラム目 ： アイテムタイプの名称を記載する
+            - 1カラム目 ： #ItemType (固定)
 
-                  - 3カラム目 ： アイテムタイプのjsonschemaのURLを記載する
+            - 2カラム目 ： アイテムタイプの名称を記載する
 
-              - 2行目 ： 各メタデータ項目の内部キーを記載する
+            - 3カラム目 ： アイテムタイプのjsonschemaのURLを記載する
 
-                  - 内部キーは、JSONPathのルールに従い記載する
+        - 2行目 ： 各メタデータ項目の内部キーを記載する
 
-              - 3行目 ： 各メタデータ項目のラベルを記載する
+            - 内部キーは、JSONPathのルールに従い記載する
 
-                  - メタデータの階層に応じて、各階層のラベルを"."で連結する
+        - 3行目 ： 各メタデータ項目のラベルを記載する
 
-                  - 繰り返し可能な項目については、ラベルのサフィックスとして"#"+連番(1〜)を記載する  
-                    (例) 作成者#1.作成者識別子#1.作成者識別子
+            - メタデータの階層に応じて、各階層のラベルを"."で連結する
 
-              - 4行目 ： 各メタデータがReadonlyであるかを記載する。
+            - 繰り返し可能な項目については、ラベルのサフィックスとして"#"+連番(1〜)を記載する  
+              (例) 作成者#1.作成者識別子#1.作成者識別子
 
-                  - メタデータがReadonly属性を持つ場合、該当するメタデータの列に”System”と記載する。
+        - 4行目 ： 各メタデータがReadonlyであるかを記載する。
 
-              - 5行目 ： 各メタデータの設定を記述する。
+            - メタデータがReadonly属性を持つ場合、該当するメタデータの列に”System”と記載する。
 
-                  - 複数設定項目がある場合は、”,”で連結して記載する。  
-                    (例)Required, Allow Multiple
+        - 5行目 ： 各メタデータの設定を記述する。
 
-          - 各カラム詳細
+            - 複数設定項目がある場合は、”,”で連結して記載する。  
+              (例)Required, Allow Multiple
 
-              - 1カラム目 ： アイテムのrecidを記載すること。アイテムの新規登録の場合は、"n"+連番をユーザーが記載する
+    - 各カラム詳細
 
-              - 2カラム目 ： アイテムのランディングページのURIを記載する
+        - 1カラム目 ： アイテムのrecidを記載すること。アイテムの新規登録の場合は、"n"+連番をユーザーが記載する
 
-              - 3カラム目〜4+nカラム目 ： アイテムの属するインデックスのIDを記載する  
-                　複数指定可
+        - 2カラム目 ： アイテムのランディングページのURIを記載する
 
-              - 3+n+1カラム目〜 : アイテムタイプのメタデータをGUIの表示順に合わせて記載する
+        - 3カラム目〜4+nカラム目 ： アイテムの属するインデックスのIDを記載する  
+          　複数指定可
 
-          - その他
+        - 3+n+1カラム目〜 : アイテムタイプのメタデータをGUIの表示順に合わせて記載する
 
-              - インデックス  
-                インデックスはインデックスIDを記載する
+    - その他
 
-              - 作成者  
-                WEKOの著者名DBに登録されている場合は、作成者の2階層目のデータとして、weko_idを追加する【確認中】
+        - インデックス  
+          インデックスはインデックスIDを記載する
 
-              - ファイル  
-                file_path#xxは、ファイルプロパティの#xxと連番を合わせて対応する
+        - 作成者  
+          WEKOの著者名DBに登録されている場合は、作成者の2階層目のデータとして、weko_idを追加する【確認中】
 
-          - メタデータファイル(tsv)サンプル  
-            別紙「weko3_tsvformat.xlsx」を参照
+        - ファイル  
+          file_path#xxは、ファイルプロパティの#xxと連番を合わせて対応する
 
-  - **各アイテムの情報 BIBTEX形式**  
-    別紙「WEKOメタデータ取得API（JPCOAR_BiBTEX）_20200106NII案」を仕様書として参照すること
+    - メタデータファイル(tsv)サンプル  
+      別紙「weko3_tsvformat.xlsx」を参照
 
-      - 「Item to Export」エリアの「Export Format」項目でBIBTEXを選び、エクスポートボタンを押す。この操作によって、`weko_items_ui.utils.export_items`メソッドにて`write_bibtex_files`メソッドが呼び出され、bibファイルが出力される。
+### 各アイテムの情報 BIBTEX形式
+別紙「WEKOメタデータ取得API（JPCOAR_BiBTEX）_20200106NII案」を仕様書として参照すること
 
-      - ファイル名のルール：[アイテムタイプ名(アイテムタイプバージョン)].bib
+- 「Item to Export」エリアの「Export Format」項目でBIBTEXを選び、エクスポートボタンを押す。この操作によって、`weko_items_ui.utils.export_items`メソッドにて`write_bibtex_files`メソッドが呼び出され、bibファイルが出力される。
 
-      - 仕様書での「文献種別別出力フィールド」シート
+- ファイル名のルール：[アイテムタイプ名(アイテムタイプバージョン)].bib
 
-          - 「○ ※必須」： 必須項目  
-            　一括出力の時に、必須チェックを行う。  
-            `weko_items_ui.utils.make_bibtex_data`メソッドにおいてチェックを行っている。
+- 仕様書での「文献種別別出力フィールド」シート
 
-          - 「○」： 任意項目（ある場合Exportする、ない場合はNULLとしてExportする(項目名のみ)）
+    - 「○ ※必須」： 必須項目  
+      　一括出力の時に、必須チェックを行う。  
+      `weko_items_ui.utils.make_bibtex_data`メソッドにおいてチェックを行っている。
 
-          - 空白セル：Export対象外項目
+    - 「○」： 任意項目（ある場合Exportする、ない場合はNULLとしてExportする(項目名のみ)）
 
-      - 「○ ※必須」が入力されていない場合、「Export Format」で「BIBTEX」を選択したとき、「エクスポート」（Export）ボタンを押すと、  
-        該当アイテム行でのMessageエリアに、以下のようなエラーメッセージを表示する  
-        エラーメッセージ：  
-        JP： 「必須項目がありません」  
-        EN： 「Required item is not inputted.」
+    - 空白セル：Export対象外項目
 
-          - エラーになるアイテムは出力対象外となる。
+- 「○ ※必須」が入力されていない場合、「Export Format」で「BIBTEX」を選択したとき、「エクスポート」（Export）ボタンを押すと、  
+  該当アイテム行でのMessageエリアに、以下のようなエラーメッセージを表示する  
+  エラーメッセージ：  
+  JP： 「必須項目がありません」  
+  EN： 「Required item is not inputted.」
 
-      - ファイルサンプル  
-        別紙「bibtex.txt」
+    - エラーになるアイテムは出力対象外となる。
 
-  - **各アイテムのjsonファイル**
+- ファイルサンプル  
+  別紙「bibtex.txt」
 
-      - ファイル名ルール： recid_[recidの値]_metadata.json
+### 各アイテムのjsonファイル
 
-      - 各アイテム詳細画面左下の「エクスポート」エリアの「JSON」リンクで展開される内容を出力する。
+- ファイル名ルール： recid_[recidの値]_metadata.json
 
-  - エクスポートの最大アイテム数は以下で設定する
+- 各アイテム詳細画面左下の「エクスポート」エリアの「JSON」リンクで展開される内容を出力する。
 
-      - `/modules/weko-items-ui/weko_items_ui/config.py`  
-        　`WEKO_ITEMS_UI_DEFAULT_MAX_EXPORT_NUM = 100`
+- エクスポートの最大アイテム数は以下で設定する
 
-  - エクスポート処理実行時、weko_items_ui.utils.export_itemsメソッドにてtempfile.TemporaryDirectoryによってtmpファイルが生成される。  
-    テンポラリディレクトリのファイル名を以下のように設定する。  
-    なお、tmpファイルはエクスポート処理実行後に自動的に削除される。
+    - `/modules/weko-items-ui/weko_items_ui/config.py`  
+      　`WEKO_ITEMS_UI_DEFAULT_MAX_EXPORT_NUM = 100`
 
-      - `/home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_export_xxxxxxxx`
+- エクスポート処理実行時、weko_items_ui.utils.export_itemsメソッドにてtempfile.TemporaryDirectoryによってtmpファイルが生成される。  
+  テンポラリディレクトリのファイル名を以下のように設定する。  
+  なお、tmpファイルはエクスポート処理実行後に自動的に削除される。
 
-  - `weko_items_ui.utils.export_items`  
+    - `/home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_export_xxxxxxxx`
+
+- `weko_items_ui.utils.export_items`  
     <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/utils.py#L1423-L1507>
+
+### RO-Crate形式の出力
+- 「Item to Export」エリアの「Export Format」項目で`RO-Crate`を選び、エクスポートボタンを押す。この操作によって、`weko_items_ui.utils.export_rocrate`メソッドにてRO-Crate+BagItファイルが出力される。
+- `weko_items_ui.utils.export_rocrate`メソッド内で、`mapper(仮)`メソッドが呼び出され、ro-crate-metadata.jsonファイルを生成する。また、`create_data_file(仮)`メソッドが呼び出され、/dataフォルダ内にコンテンツファイルを出力する。
+- ro-crate-metadata.jsonと/dataフォルダを引数として`bagify`メソッドを実行することで、RO-Crate+BagIt形式のZIPファイルが生成される。
 
 ## 更新履歴
 
