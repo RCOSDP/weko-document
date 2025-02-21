@@ -134,6 +134,16 @@
 
 > WEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPING = {}
 
+  - 自機関のIdPを判別するためのIdPのentityID。
+    
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L129>
+    
+      - 設定キー：WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID
+    
+      - 現在の設定値：
+
+>      WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID = "https://weko3.example.org/idp/simplesamlphp"
+
 5\. 実装
 　
   - weko\_accounts.views. shib\_sp\_login関数によって、IdPからのリクエストを処理する
@@ -144,7 +154,7 @@
 
             - Redisからキーを「<institution_fqdn>\_gakunin\_groups」として対応する機関の学認mAPグループをリストで取得する
                 
-                - <institution_fqdn>は対象機関のホスト名（環境変数INVENIO_WEB_HOST_NAME）からFQDNを取得し、"."または"-"を"_"に置き換えた値になる
+                - <institution_fqdn>は対象機関のIdPのentityID（変数 WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID）からFQDNを取得し、"."または"-"を"_"に置き換えた値になる
 
             - 取得した学認mAPグループリストはロールとして登録されていないかチェックする。ロールとして登録されていない学認mAPグループの場合、新規ロールとしてaccounts\_roleテーブルにレコード追加する
 
