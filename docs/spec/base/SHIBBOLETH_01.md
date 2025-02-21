@@ -64,13 +64,13 @@
 
   - シボレス経由でログインする都度、シボレス属性値をWEKO3のユーザ情報に反映
     
-      - SHIB\_ATTR\_USER\_NAME は、invenio の仕様でユニークである必要がある。
+      - HTTP\_WEKOID は、invenio の仕様でユニークである必要がある。
     
-      - SHIB\_ATTR\_ROLE\_AUTHORITY\_NAMEについて、ロールの紐づけをconfig で指定できるものとし、configに含まれないロールであった場合は、WEKOのロールとしては設定しない
+      - HTTP\_WEKOSOCIETYAFFILIATIONについて、ロールの紐づけをconfig で指定できるものとし、configに含まれないロールであった場合は、WEKOのロールとしては設定しない
         
-          - SHIB\_ATTR\_ROLE\_AUTHORITY\_NAMEに複数属性が含まれている場合は，複数ロールの割当を行えるようにする。（複数属性が含まれている場合は属性値を半角セミコロン「;」で区切られている）
+          - HTTP\_WEKOSOCIETYAFFILIATIONに複数属性が含まれている場合は，複数ロールの割当を行えるようにする。（複数属性が含まれている場合は属性値を半角セミコロン「;」で区切られている）
     
-      - 設定値WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSが有効（True）の場合、SHIB\_ATTR\_IS\_MEMBER\_OFについて、所属している学認mAPグループをWEKO3に紐づける。
+      - 設定値WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSが有効（True）の場合、isMemberOfについて、所属している学認mAPグループをWEKO3に紐づける。
 
          - 学認mAPグループはそのグループエンティティIDを名前に持つロールとして登録される。
 
@@ -78,11 +78,11 @@
 
   - シボレスユーザの紐づけキー
     
-      - SHIB\_ATTR\_EPPNとする
+      - eppnとする
     
-      - 存在しない場合は、かわりにSHIB\_ATTR\_USER\_NAMEを利用することができる
+      - 存在しない場合は、かわりにHTTP\_WEKOIDを利用することができる
     
-      - SHIB\_ATTR\_USER\_NAMEを利用するかどうかは、以下のconfigで指定する
+      - HTTP\_WEKOIDを利用するかどうかは、以下のconfigで指定する
         
           - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L97>
         
@@ -137,8 +137,20 @@
 5\. 実装
 　
   - weko\_accounts.views. shib\_sp\_login関数によって、IdPからのリクエストを処理する
+     
+     - WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSがTrueのとき、学認mAPグループをWEKO3にロールとして作成する
     
-      - リクエストにSHIB\_ATTR\_SESSION\_IDが含まれず、以下のコンフィグWEKO\_ACCOUNTS\_SHIB\_LOGIN\_ENABLEDがfalseの場合はエラーとしてWEKOのログイン画面に遷移する
+        - Redisの情報を用いて、WEKO3の学認mAPグループリストを更新する
+
+            - Redisからキーを「<institution_fqdn>\_gakunin\_groups」として対応する機関の学認mAPグループをリストで取得する
+                
+                - <institution_fqdn>は対象機関のホスト名（環境変数INVENIO_WEB_HOST_NAME）からFQDNを取得し、"."または"-"を"_"に置き換えた値になる
+
+            - 取得した学認mAPグループリストはロールとして登録されていないかチェックする。ロールとして登録されていない学認mAPグループの場合、新規ロールとしてaccounts\_roleテーブルにレコード追加する
+
+                - 学認mAPグループのインデックスツリーの権限の初期値を併せて登録する
+
+      - リクエストにShib-Session-IDが含まれず、以下のコンフィグWEKO\_ACCOUNTS\_SHIB\_LOGIN\_ENABLEDがfalseの場合はエラーとしてWEKOのログイン画面に遷移する
         
           - > パス（instance.cfg）：  
             > <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L436>
@@ -158,23 +170,23 @@
             
               - 設定キー：WEKO\_ACCOUNTS\_SSO\_ATTRIBUTE\_MAP
     
-      - リクエストの内容にSHIB\_ATTR\_EPPNが含まれず、かわりにSHIB\_ATTR\_USER\_NAMEを利用しない設定である場合はエラーとしてWEKOのログイン画面に遷移する
+      - リクエストの内容にeppnが含まれず、かわりにHTTP\_WEKOIDを利用しない設定である場合はエラーとしてWEKOのログイン画面に遷移する
     
       - セッション情報はRedisに保存する
         
-          - キーは、以下のコンフィグの値にログイン画面での入力値SHIB\_ATTR\_SESSION\_IDを加えたものを用いる
+          - キーは、以下のコンフィグの値にログイン画面での入力値Shib-Session-IDを加えたものを用いる
             
               - パス：<https://github.com/RCOSDP/weko/blob/13c305a3048309dbda87a614ffedac18423820aa/modules/weko-accounts/weko_accounts/config.py#L32>
             
               - 設定キー：WEKO\_ACCOUNTS\_SHIB\_CACHE\_PREFIX
     
-      - リクエストの内容をもとに、shibboleth\_userテーブルからSHIB\_ATTR\_EPPNまたはSHIB\_ATTR\_USER\_NAMEを使用してレコードの存在を確認する
+      - リクエストの内容をもとに、shibboleth\_userテーブルからeppnまたはHTTP\_WEKOIDを使用してレコードの存在を確認する
 
   - 上記の処理で、shibboleth\_userテーブルにレコードが存在する場合は、weko\_accounts.views.shib\_auto\_login関数で続きの処理を行う
     
-      - リクエストのSHIB\_ATTR\_SESSION\_IDとsession\['shib\_session\_id'\]のどちらかに情報がある場合は、ログインする
+      - リクエストのShib-Session-IDとsession\['shib\_session\_id'\]のどちらかに情報がある場合は、ログインする
         
-          - リクエストにSHIB\_ATTR\_SESSION\_IDが含まれず、session\['shib\_session\_id'\]に情報がある場合は、weko\_accounts.api.ShibUser.new\_relation\_infoメソッドによってshibboleth\_userテーブルにレコードを作成する
+          - リクエストにShib-Session-IDが含まれず、session\['shib\_session\_id'\]に情報がある場合は、weko\_accounts.api.ShibUser.new\_relation\_infoメソッドによってshibboleth\_userテーブルにレコードを作成する
             
               - あわせて、userprofiles\_userprofileテーブルに以下の内容でレコードを作成する
                 
@@ -189,7 +201,7 @@
           - レコード作成の有無にかかわらず、weko\_accounts.api.ShibUser. check\_inメソッドの中で、ロールの割り当てを行う
 
           - レコード作成の有無にかかわらず、weko\_accounts.api.ShibUser. gakunin_check\_inメソッドの中で、学認mAPグループを更新する。
-              - shibboleth\_userroleテーブルでSHIB\_ATTR\_IS\_MEMBER\_OF属性の値を基に、ユーザの学認mAPグループを割り当てる。
+              - shibboleth\_userroleテーブルでisMemberOf属性の値を基に、ユーザの学認mAPグループを割り当てる。
     
       - 上記以外の場合は、WEKOのログイン画面に遷移する
 
@@ -203,29 +215,19 @@
         
           - weko\_accounts.api.ShibUser. check\_inメソッドの中で、ロールの割り当てを行う
 
-              - WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSがTrueのとき、学認mAPグループをWEKO3にロールとして作成し、ログインユーザーに学認mAPグループを割り当てる
-              
-                  - Redisの情報を用いて、WEKO3の学認mAPグループリストを更新する。
+              - WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSがTrueのとき、ログインユーザーに学認mAPグループを割り当てる
 
-                      - Redisからキーを「<institution_fqdn>\_gakunin\_groups」として対応する機関の学認mAPグループをリストで取得する。
-                          
-                          - <institution_fqdn>は対象機関のFQDNから、"."または"-"を"_"に置き換えた値になる。
+                 - shibboleth\_userroleテーブルでisMemberOf属性の値を基に、ユーザーの学認mAPグループをロールとして割り当てる
 
-                      - 取得した学認mAPグループリストはロールとして登録されていないかチェックする。ロールとして登録されていない学認mAPグループの場合、新規ロールとしてaccounts\_roleテーブルにレコード追加する。
+                     - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる
 
-                          - 学認mAPグループのインデックスツリーの権限の初期値を併せて登録する。
-                
-                 - shibboleth\_userroleテーブルでSHIB\_ATTR\_IS\_MEMBER\_OF属性の値を基に、ユーザーの学認mAPグループをロールとして割り当てる。
+                         - 認証されたIdPのentityIDの".", "-"を"\_"に置き換えた値をキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる
 
-                     - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる。
+                         - 該当グループが見つからない場合、またはWEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない
 
-                         - 認証されたIdPのentityIDの".", "-"を"\_"に置き換えた値をキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる。
+                 - 学認mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる
 
-                         - 該当グループが見つからない場合、またはWEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない。
-
-                 - 学認mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる。
-
-                     - 以下のフォーマットに従う場合、対応するWEKO3のロールをログインユーザーに割り当てる。
+                     - 以下のフォーマットに従う場合、対応するWEKO3のロールをログインユーザーに割り当てる
 
                          - 「jc\_roles\_sysadm」→ システム管理者ロール'System Administrator'
                         
@@ -241,29 +243,19 @@
 
           - weko\_accounts.api.ShibUser. check\_inメソッドの中で、ロールの割り当てを行う
 
-              - WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSがTrueのとき、学認mAPグループをWEKO3にロールとして作成し、ログインユーザーに学認mAPグループを割り当てる
-              
-                  - Redisの情報を用いて、WEKO3の学認mAPグループリストを更新する。
+              - WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPSがTrueのとき、ログインユーザーに学認mAPグループを割り当てる
 
-                      - Redisからキーを「<institution_fqdn>\_gakunin\_groups」として対応する機関の学認mAPグループをリストで取得する。
-                          
-                          - <institution_fqdn>は対象機関のFQDNから、"."または"-"を"_"に置き換えた値になる。
+                 - shibboleth\_userroleテーブルでisMemberOf属性の値を基に、ユーザの学認mAPグループをロールとして割り当てる
 
-                      - 取得した学認mAPグループリストはロールとして登録されていない場合、新規ロールとしてaccounts\_roleテーブルにレコード追加する。
+                     - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる
 
-                          - 学認mAPグループのインデックスツリーの権限の初期値を併せて登録する。
-                
-                 - shibboleth\_userroleテーブルでSHIB\_ATTR\_IS\_MEMBER\_OF属性の値を基に、ユーザの学認mAPグループをロールとして割り当てる。
+                         - 認証されたIdPのentityIDの".", "-"を"\_"に置き換えた値をキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる
 
-                     - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる。
+                         - 該当グループが見つからない場合、またはWEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない
 
-                         - 認証されたIdPのentityIDの".", "-"を"\_"に置き換えた値をキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる。
+                 - 学認mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる
 
-                         - 該当グループが見つからない場合、またはWEKO\_ACCOUNTS\_GAKUNIN\_DEFAULT\_GROUP\_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない。
-
-                 - 学認mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる。
-
-                     - 以下のフォーマットに従う場合、対応するロールをログインユーザーに割り当てる。
+                     - 以下のフォーマットに従う場合、対応するロールをログインユーザーに割り当てる
 
                          - 「jc\_roles\_sysadm」→ システム管理者ロール'System Administrator'
                         
@@ -278,11 +270,11 @@
     
       - 1\) シボレス属性値をshibboleth\_userテーブルに登録する
         
-          - SHIB\_ATTR\_MAIL ⇒ shibboleth\_user.shib\_mail
+          - mail ⇒ shibboleth\_user.shib\_mail
         
-          - SHIB\_ATTR\_USER\_NAME ⇒ shibboleth\_user.shib\_user\_name
+          - HTTP\_WEKOID ⇒ shibboleth\_user.shib\_user\_name
         
-          - SHIB\_ATTR\_ROLE\_AUTHORITY\_NAME ⇒shibboleth\_user.shib\_role\_authority\_name
+          - HTTP\_WEKOSOCIETYAFFILIATION ⇒shibboleth\_user.shib\_role\_authority\_name
     
       - 2\) shibboleth\_userテーブルから各テーブルに登録する
         
