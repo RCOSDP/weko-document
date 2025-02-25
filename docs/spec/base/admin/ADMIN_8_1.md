@@ -278,13 +278,13 @@
     
       - > id\_roleが操作するユーザのロールのidに含まれるものか、id\_userが操作するユーザのユーザidと一致するものだけに絞り込む
 
-> 編集（Edit）タブ表示時に、edit\_viewメソッド（WEKOソースでオーバーライドされていない）が呼び出される
+> 作成（Create）タブ表示時に、create_viewメソッドが呼び出される
 
-  - > この中で呼び出されるedit\_formメソッドでは、上記の分岐によるModelViewと異なる処理として、CommunityModelViewのインスタンスにindex\_id属性を追加して、入力フォームに「action」「edit」を追加する
+> 編集（Edit）タブ表示時に、edit_viewメソッドが呼び出される
 
-> 作成（Create）、編集（Edit）タブで［保存（Save）］ボタンを押すと、\_validate\_input\_idメソッドでidのバリデーションチェックを行い、保存処理中のon\_model\_changeメソッドでレコードのid\_userカラムを操作ユーザのidで更新する
+> 作成（Create）、で［保存（Save）］ボタンを押すと、\validate\_input\_idメソッドでidのバリデーションチェックを行い、レコードのid\_userカラムを操作ユーザのidで更新する
 
-  - > 編集（Edit）タブでの保存時はidを編集できないため、実質的には作成（Create）タブでの保存時のみにバリデーションチェックしている
+  - > 編集（Edit）タブでの保存時はidを編集できないため、作成（Create）タブでの保存時のみにバリデーションチェックしている
 
 <!-- end list -->
 
