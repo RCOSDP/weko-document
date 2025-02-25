@@ -142,7 +142,7 @@
     
       - 現在の設定値：
 
->      WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID = "https://weko3.example.org/idp/simplesamlphp"
+> WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID = "https://weko3.example.org/idp/simplesamlphp"
 
 5\. 実装
 　
