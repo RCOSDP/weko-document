@@ -144,6 +144,17 @@
 
 > WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID = "https://weko3.example.org/idp/simplesamlphp"
 
+
+  - 学認mAPのグループ情報を取得するキー値のsuffix
+    
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L131>
+    
+      - 設定キー：WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_SUFFIX
+
+      - 現在の設定値：
+
+> WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_SUFFIX = "_gakunin_groups"
+
 5\. 実装
 　
   - weko\_accounts.views. shib\_sp\_login関数によって、IdPからのリクエストを処理する
@@ -152,7 +163,7 @@
     
         - Redisの情報を用いて、WEKO3の学認mAPグループリストを更新する
 
-            - Redisからキーを「<institution_fqdn>\_gakunin\_groups」として対応する機関の学認mAPグループをリストで取得する
+            - Redisから「<institution_fqdn>とWEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_SUFFIXを結合した値」をキーとして対応する機関の学認mAPグループをリストで取得する
                 
                 - <institution_fqdn>は対象機関のIdPのentityID（変数 WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID）からFQDNを取得し、"."または"-"を"_"に置き換えた値になる
 
