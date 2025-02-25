@@ -138,12 +138,11 @@
     
       - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L129>
     
-      - 設定キー：WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID
+      - 設定キー：WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID
     
       - 現在の設定値：
 
-> WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID = "https://weko3.example.org/idp/simplesamlphp"
-
+> WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID = "https://weko3.example.org/idp/simplesamlphp"
 
   - 学認mAPのグループ情報を取得するキー値のsuffix
     
@@ -165,7 +164,7 @@
 
             - Redisから「<institution_fqdn>とWEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_SUFFIXを結合した値」をキーとして対応する機関の学認mAPグループをリストで取得する
                 
-                - <institution_fqdn>は対象機関のIdPのentityID（変数 WEKO\_ACCOUNTS\_OWN\_ENTITY\_ID）からFQDNを取得し、"."または"-"を"_"に置き換えた値になる
+                - <institution_fqdn>は対象機関のIdPのentityID（変数 WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID）からFQDNを取得し、"."または"-"を"_"に置き換えた値になる
 
             - 取得した学認mAPグループリストはロールとして登録されていないかチェックする。ロールとして登録されていない学認mAPグループの場合、新規ロールとしてaccounts\_roleテーブルにレコード追加する
 
