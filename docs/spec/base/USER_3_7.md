@@ -1,15 +1,15 @@
 
 ### エクスポート
 
-  - > 目的・用途
+  - 目的・用途
 
 本機能は、アイテム詳細画面から特定のアイテムの情報を設定されたスキーマ形式に出力する機能である。
 
-  - > 利用方法
+  - 利用方法
 
 エクスポートは、アイテム詳細画面の右下にあるOAI-PMH, BIBTEX, JSONのボタンを押下することで、アイテムの情報がスキーマ形式に出力される。
 
-  - > 利用可能なロール
+  - 利用可能なロール
 
 <table>
 <thead>
@@ -40,7 +40,7 @@
 </tbody>
 </table>
 
-  - > 機能内容
+  - 機能内容
 
 1\. OAI-PMHスキーマを管理
 
@@ -386,57 +386,57 @@
 
   - アイテム詳細画面の「Other Formats」で以下の形式でアイテム情報を出力できる
     
-      - > JSON
+      - JSON
         
-          - > アイテムのメタデータをJSON形式でエクスポートする。
+          - アイテムのメタデータをJSON形式でエクスポートする。
         
-          - > アイテム詳細画面のエクスポートエリアに表示されているJSONリンクを押下する。/records/\<item\_id\>/export/json
+          - アイテム詳細画面のエクスポートエリアに表示されているJSONリンクを押下する。/records/\<item\_id\>/export/json
         
-          - > 表示例は別紙「JSON出力例.txt」を参照。
+          - 表示例は別紙「JSON出力例.txt」を参照。
         
-          - > 設定
+          - 設定
             
-              - > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L198-L202>
+              - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L198-L202>
             
-              - > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records-rest/invenio_records_rest/serializers/__init__.py#L17>
+              - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records-rest/invenio_records_rest/serializers/__init__.py#L17>
         
-          - > シリアライザ：
+          - シリアライザ：
             
-              - > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records-rest/invenio_records_rest/serializers/json.py#L70>
+              - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records-rest/invenio_records_rest/serializers/json.py#L70>
     
-      - > BIBTEX
+      - BIBTEX
         
-          - > アイテムのメタデータをBIBTEX形式でエクスポートする。
+          - アイテムのメタデータをBIBTEX形式でエクスポートする。
         
-          - > アイテム詳細画面のエクスポートエリアに表示されているBIBTEXリンクを押下する。/records/\<item\_id\>/export/bibtex
+          - アイテム詳細画面のエクスポートエリアに表示されているBIBTEXリンクを押下する。/records/\<item\_id\>/export/bibtex
         
-          - > 表示例は別紙「BIBTEX出力例.txt」を参照。
+          - 表示例は別紙「BIBTEX出力例.txt」を参照。
         
-          - > 設定
+          - 設定
             
-              - > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L203-L207>
+              - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L203-L207>
             
-              - > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/box/export.html>
+              - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/box/export.html>
         
-          - > シリアライザ：
+          - シリアライザ：
             
-              - > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-schema-ui/weko_schema_ui/serializers/WekoBibTexSerializer.py>
+              - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-schema-ui/weko_schema_ui/serializers/WekoBibTexSerializer.py>
 
 <!-- end list -->
 
-  - > 関連モジュール
+  - 関連モジュール
 
 <!-- end list -->
 
-  - > weko-schema-ui
+  - weko-schema-ui
 
-  - > invenio-oaiserver
+  - invenio-oaiserver
 
-  - > invenio\_records
+  - invenio\_records
 
 <!-- end list -->
 
-  - > 処理概要
+  - 処理概要
 
 1\. 設定
 
@@ -465,6 +465,9 @@
 
   - 以下のケースに当たれば、プロバイダ機能が無効とし、エラーレスポンスを返す
     
+      - 前提条件
+          - アイテムが単一のインデックスにのみ属している
+
       - ケース
         
           - アイテムがプロバイダ機能の無効と設定しているインデックスに属する
@@ -477,13 +480,25 @@
         
           - エラーコード：コンフィグに設定している「OAISERVER\_CODE\_NO\_RECORDS\_MATCH」キー
         
-          - > エラーメッセージ：コンフィグに設定している「OAISERVER\_MESSAGE\_NO\_RECORDS\_MATCH 」キー
+          - エラーメッセージ：コンフィグに設定している「OAISERVER\_MESSAGE\_NO\_RECORDS\_MATCH 」キー
         
-          - > getrecordのエラーコード：errorに渡す引数  
-            > 「idDoesNotExist」
+          - getrecordのエラーコード：errorに渡す引数  
+            「idDoesNotExist」
         
-          - > getrecordのエラーメッセージ：errorに渡す引数  
-            > 「No matching identifier」
+          - getrecordのエラーメッセージ：errorに渡す引数  
+            「No matching identifier」
+
+  - アイテムが複数インデックス（ハーベスト公開／ハーベスト非公開の両方）に所属する場合
+      - GetRecord
+        - アイテムのメタデータは出力される
+        - setSpecには公開インデックスのみ分のみ出力される
+      
+      - ListRecords：setパラメータでアイテムが所属している 公開インデックス を指定した場合
+        - 該当アイテムのメタデータは出力される
+        - setSpecには公開インデックスのみ分のみ出力される
+      
+      - ListRecords：setパラメータでアイテムが所属している 非公開インデックス を指定した場合
+        - アイテムは出力されない（`<error code="noRecordsMatch">The combination of the values of the from, until, set and metadataPrefix arguments results in an empty list.</      error>`が出力される）
 
   - プロバイダ機能が有効になる場合、(2)に進む
 
@@ -566,7 +581,7 @@ Elasticsearch の利用
 
 <!-- end list -->
 
-  - > 更新履歴
+  - 更新履歴
 
 <table>
 <thead>
