@@ -11337,7 +11337,9 @@ zu1101400.tif![](media/media/image255.png)
 Notes:
 
 1. Changes to the flow are possible, but
+
    1.1. For items with individual registration history (not canceled): open with the flow at the time of registration when editing the item individually.
+   
    1.2. For items without individual registration history (bulk registration, etc.): open with the modified flow when editing the item individually.
 
 3.  Click "Save".
