@@ -11224,6 +11224,10 @@ You can then add actions to the flow. See "ANCHORID=editflow【参照元】Secti
 
 This section explains how to add actions to the flow and change the order of actions.
 
+Notes:
+
+Adding or removing actions to the flow, changing the order of actions, etc., will also affect the activities using the target flow, so please be careful when making changes.
+
 1.  Click the flow name you want to edit.
 
 A screen appears where you can edit the flow.
@@ -11329,6 +11333,12 @@ zu1101400.tif![](media/media/image255.png)
 2.  Specify a name for the workflow you want to edit, select a flow, and select an item type.zu1101500.tif
 
 ![](media/media/image256.png)
+
+Notes:
+
+1. Changes to the flow are possible, but
+   1.1. For items with individual registration history (not canceled): open with the flow at the time of registration when editing the item individually.
+   1.2. For items without individual registration history (bulk registration, etc.): open with the modified flow when editing the item individually.
 
 3.  Click "Save".
 
