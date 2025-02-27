@@ -11342,6 +11342,8 @@ Notes:
 
     1.2. For items without individual registration history (bulk registration, etc.): open with the modified flow when editing the item individually.
 
+    2. If the target workflow was in use, the item type cannot be changed.
+
 3.  Click "Save".
 
 The workflow is saved. If it is saved successfully, the message "Workflow created successfully" appears.
