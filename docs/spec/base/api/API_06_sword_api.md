@@ -1,19 +1,5 @@
 # SWORD API
 
-### 目次
-- [目的・用途](#目的用途)
-- [利用方法](#利用方法)
-- [利用可能なロール](#利用可能なロール)
-- [機能内容](#機能内容)
-- [API仕様](#api仕様)
-- [ドキュメント仕様](#ドキュメント仕様)
-- [エラータイプ](#エラータイプ)
-- [関連モジュール](#関連モジュール)
-- [処理概要](#処理概要)
-- [エラーメッセージ](#エラーメッセージ)
-- [サーバー設定値](#サーバー設定値)
-- [更新履歴](#更新履歴)
-
 ## 目的・用途
 
 クライアントからSWORD v3プロトコルに従いリポジトリ上のアイテム操作を実現する。  
@@ -38,7 +24,7 @@ XMLおよびJSON-LD形式のメタデータを含むZIPファイルをワーク�
 ### エンドポイント：
 
 | 項番 | HTTP request                  | 内容                                                                                                          |
-| ---- | ----------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| :--: | ----------------------------- | ------------------------------------------------------------------------------------------------------------- |
 |  1   | GET /sword/service-document   | リポジトリのサービスドキュメントを取得する。                                                                  |
 |  2   | POST /sword/service-document  | WEKO3の一括登録フォーマットを用いて、アイテムを登録する。                                                     |
 |  3   | GET /sword/deposit/<recid>    | recidを指定してリポジトリ上に存在するアイテムのステータスドキュメントを取得する。                             |
@@ -210,13 +196,18 @@ curl -X DELETE https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer D
     - OAuthアクセストークンによるユーザー認証を必須とする
 
 - アイテム登録機能で登録に使用するZIPファイルは、メタデータのファイルがTSV/CSV形式、XML形式、あるいはJSON-LD形式である必要がある。
-    - TSV/CSV形式のメタデータを含むZIPファイルの詳細は [ADMIN-2-4:インポート](../admin/ADMIN_2_4.md#インポート) を参照
-    - XML形式のメタデータを含むZIPファイルの詳細は、JPCOARスキーマに準拠したXMLファイルを含むZIPファイルである必要がある。
-    - JSON-LD形式のメタデータを含むZIPファイルは、RO-Crate+BagItまたはSWORDBagItに準拠したZIPファイルである必要がある。
+    - TSV/CSV形式のメタデータを含むZIPファイルの詳細は [ADMIN_2_4：インポート](../admin/ADMIN_2_4.md#インポート) を参照
+    - XML形式のメタデータを含むZIPファイルは、JPCOARスキーマに準拠したXMLファイルを含むZIPファイルである必要がある。
+    - JSON-LD形式のメタデータを含むZIPファイルは、[RO-Crate+BagIt](../admin/ADMIN_2_5.md#ro-cratebagitファイルの構成)
+      またはSWORDBagItに準拠したZIPファイルである必要がある。
 
-- XMLおよびJSON-LD形式のメタデータは、マッピング機能をもちいてWEKO3のアイテムタイプへ変換されメタデータの登録および更新に使用される。
+- メタデータ形式がXMLおよびJSON-LDの場合は、マッピング機能をもちいてWEKO3のアイテムタイプへ変換されメタデータの登録および更新に使用される。
 
-- JSON-LD形式のメタデータを含むZIPファイルは、データセット登録設定([設定:30](#conf30))が有効の場合、展開せずZIPファイルそのものをアイテムのファイルとして保存する。
+- メタデータ形式がJSON-LDの場合、メタデータ内の特定のフラグが有効の場合、展開せずZIPファイルそのものをアイテムのファイルとして保存する。  
+  フラグについては [ADMIN_2_5：RO-Crate インポート](../admin/ADMIN_2_5.md#カスタム語彙) を参照。
+
+- SWORD APIの管理者による設定は、[ADMIN_1_5：JSON-LD マッピング](../admin/ADMIN_1_5.md#json-ld-マッピング) 、
+  [ADMIN_16_1：SWORD API](../admin/ADMIN_16_1.md) を参照。
 
 ## API仕様
 
@@ -473,6 +464,7 @@ DELETE /sword/deposit/\<recid\>
 
 | エラータイプ文字列           | エラーコード | エラー原因等                                                                           |
 | ---------------------------- | ------ | -------------------------------------------------------------------------------------------- |
+| **SWORD v3 ErrorType**       |        |                                                                                              |
 | AuthenticationFailed         | 403    | 認証に失敗。                                                                                 |
 | AuthenticationRequired       | 401    | 認証情報が不足。                                                                             |
 | BadRequest                   | 400    | リクエストに何らかの不備がある。                                                             |
@@ -487,7 +479,7 @@ DELETE /sword/deposit/\<recid\>
 | FormatHeaderMismatch         | 415    | サーバーがサポートしていない形式のコンテンツがリクエストされた。                             |
 | InvalidSegmentSize           | 400    | Segmented File Upload時のファイルサイズが範囲外。                                            |
 | MaxAssembledSizeExceeded     | 400    | Segmented File Upload時の合計ファイルサイズが最大値を超えている。                            |
-| MaxUploadSizeExceeded        | 413    | アップロードされたコンテンツサイズが最大値を超えている                                       |
+| MaxUploadSizeExceeded        | 413    | アップロードされたコンテンツサイズが最大値を超えている。                                     |
 | MetadataFormatNotAcceptable  | 415    | サーバーがサポートしていない形式のMetadata-Formatがリクエストされた。                        |
 | MethodNotAllowed             | 405    | メソッドへのアクセスが許可されていない。                                                     |
 | OnBehalfOfNotAllowed         | 412    | サーバーが On-Behalf-Of をサポートしていない。                                               |
@@ -498,7 +490,7 @@ DELETE /sword/deposit/\<recid\>
 | **Additional ErrorType**     |        |                                                                                              |
 | NotFound                     | 404    | リクエストされたリソースが存在しない。                                                       |
 | ServerError                  | 500    | サーバー内部エラーが発生した。                                                               |
-
+| TooManyRequests              | 429    | 分間のリクエスト数が制限を超えている。                                                       |
 
 ## 関連モジュール
 
@@ -511,11 +503,17 @@ DELETE /sword/deposit/\<recid\>
 
   - weko_records_ui：レコード情報の取得、アイテムの削除を実行する
 
-  - weko_search_ui：インポート処理を実行する
+  - weko_search_ui：インポート処理およびメタデータのマッピング処理を実行する
 
   - weko_workflow：ワークフロー経由でインポート処理を実行する
 
 ## 関連テーブル
+
+  - item_type_mapping：アイテムタイプとjpcoar語彙のマッピング情報を保持する
+
+    - id：ID
+    - item_type_id：アイテムタイプID
+    - mapping：マッピング定義(JSON)
 
   - sword_clients：SWORD連携設定情報を保持する
 
@@ -525,7 +523,7 @@ DELETE /sword/deposit/\<recid\>
     - mapping_id：マッピング定義ID
     - workflow_id：ワークフローID
 
-  - sword_item_type_mappings：マッピング定義設定を保持する
+  - sword_item_type_mappings：アイテムタイプとJSON-LD語彙のマッピング定義設定を保持する
 
     - id：マッピング定義ID
     - name：マッピング定義名
@@ -570,21 +568,21 @@ DELETE /sword/deposit/\<recid\>
 1. リクエストをチェックする
     - **`Authorization`** ヘッダーに記載されたアクセストークンを使用しユーザーを認証する。  
       アクセストークンのScopeを確認し、`deposit:write`が与えられていなければエラーとする。
-    - **`On-Behalf-Of`** ヘッダーが存在する場合、`On-Behalf-Of`許容設定([設定値:15](#conf15))が無効であればエラー([エラーメッセージ:03](#err03))とする。
+    - **`On-Behalf-Of`** ヘッダーが存在する場合、`On-Behalf-Of`許容設定([設定値:15](#conf15))が無効であればエラー([メッセージ:03](#err03))とする。
     - **`Content-Length`** ヘッダーおよびファイルサイズを検証する。  
-      ファイルサイズ検証設定（[設定値:29](#conf29)）が有効であれば、`Content-Length`ヘッダーと実際のファイルサイズを比較し、不一致であればエラー([エラーメッセージ:07](#err07))とする。  
-      `Content-Length`ヘッダーの値あるいはファイルサイズがアップロードのサイズ上限（[設定値:19](#conf19)）を上回っていればエラー([エラーメッセージ:08](#err08))とする。
+      ファイルサイズ検証設定（[設定値:29](#conf29)）が有効であれば、`Content-Length`ヘッダーと実際のファイルサイズを比較し、不一致であればエラー([メッセージ:07](#err07))とする。  
+      `Content-Length`ヘッダーの値あるいはファイルサイズがアップロードのサイズ上限（[設定値:19](#conf19)）を上回っていればエラー([メッセージ:08](#err08))とする。
     - **`Content-Disposition`** ヘッダーを解析する。  
-      値が`attachment`かつオプションにファイル名が指定されているかを確認し、満たさない場合はエラー([エラーメッセージ:11](#err11))とする。
-      リクエストのファイルの有無や実際のファイルと上記のファイル名の合致を確認し、問題があればエラー([エラーメッセージ:12](#err12))とする。
+      値が`attachment`かつオプションにファイル名が指定されているかを確認し、満たさない場合はエラー([メッセージ:11](#err11))とする。
+      リクエストのファイルの有無や実際のファイルと上記のファイル名の合致を確認し、問題があればエラー([メッセージ:12](#err12))とする。
     - **`Content-Type`** ヘッダーをもとに送付されたファイルを検証する。  
-      ヘッダーの値が`application/zip`でなければ、エラー([エラーメッセージ:09](#err09))とする。  
+      ヘッダーの値が`application/zip`でなければ、エラー([メッセージ:09](#err09))とする。  
     - **`Packaging`** ヘッダーを検証する。  
-      値の末尾が`SWORDBagIt`のとき、`metadata`フォルダ内に`sword.json`ファイルが存在すればSWORDBagIt形式と判定し、なければエラー([エラーメッセージ:17](#err17))とする。  
+      値の末尾が`SWORDBagIt`のとき、`metadata`フォルダ内に`sword.json`ファイルが存在すればSWORDBagIt形式と判定し、なければエラー([メッセージ:17](#err17))とする。  
       値の末尾が`SimpleZip`のとき、`ro-crate-metadata.json`ファイルが存在すればRO-Crate+BagIt形式と判定し、なければTSV/CSVあるいはXML形式と判定する。  
-      値がその他の場合はエラー([エラーメッセージ:10](#err10))とする。
+      値がその他の場合はエラー([メッセージ:10](#err10))とする。
     - **`Digest`** ヘッダーを検証する。  
-      メタデータ形式がJSON-LD、かつダイジェスト検証設定（[設定値:28](#conf28)）が有効であるとき、Digestとリクエストボディのハッシュ値が一致しなければエラー([エラーメッセージ:13](#err13))とする。
+      メタデータ形式がJSON-LD、かつダイジェスト検証設定（[設定値:28](#conf28)）が有効であるとき、Digestとリクエストボディのハッシュ値が一致しなければエラー([メッセージ:13](#err13))とする。
 
     ※ SWORD APIでは使用可能なエラータイプが定められているため、適切なエラータイプが存在しない場合はBadRequest(エラーコード400)とし、エラードキュメントにエラー原因を記述し返却する。
 
@@ -599,7 +597,7 @@ DELETE /sword/deposit/\<recid\>
     - XMLファイルが含まれていなければエラーとする。
 
     **JSON-LD形式**
-    - 登録対象のファイルそれぞれのハッシュ値が`manifest-sha256.txt` に記載されている値と一致しなければエラー([エラーメッセージ:26](#err26))となる。
+    - 登録対象のファイルそれぞれのハッシュ値が`manifest-sha256.txt` に記載されている値と一致しなければエラー([メッセージ:26](#err26))となる。
 
 3. 登録の前処理を行う
 
@@ -609,42 +607,46 @@ DELETE /sword/deposit/\<recid\>
     - メタデータのマッピングを行わない
 
     **XML形式**
-    - メタデータをアイテムタイプにマッピングする
+    - メタデータをアイテムタイプにマッピングするo
+    - アイテムタイプとjpcoar語彙のマッピング定義からのキーが一致するXMLのメタデータの属性値を探す。
+    - 新しいJSONを作成し対応する「item_xxxx」をキー、対応するXMLのメタデータ部分を値とする。
+
 
     **JSON-LD形式**
     - アクセストークンから、マッピング定義、マッピング先アイテムタイプ、登録方式を取得する。  
-        マッピング定義またはマッピング先のアイテムタイプが存在しない場合はエラー([エラーメッセージ:29](#err29), [エラーメッセージ:24](#err24))とする。
+        マッピング定義またはマッピング先のアイテムタイプが存在しない場合はエラー（[メッセージ:29](#err29), [メッセージ:24](#err24)）とする。
     - JSONファイルからメタデータを取得し、マッピング定義に基づいてメタデータをアイテムタイプへマッピングする。  
-        マッピング処理の詳細については、[メタデータマッピング機能](#メタデータマッピング機能)を参照
+        マッピング処理の詳細については、[メタデータマッピング機能](../admin/ADMIN_2_5.md#マッピング機能)を参照。  
+        SWORD APIとしては原則1リクエストにつき1つのアイテムが登録されるべきだが、例外としてアイテム分割フラグ（[wk:isSplited](../admin/ADMIN_2_5.md#isSplited)）が有効であれば、メタデータを論文アイテムと論拠データアイテムに分割する。
+        [アイテム分割機能](#アイテム分割機能)を参照。
     - マッピング結果に基づいて、メタデータのバリデートや必須項目のチェックを行い、問題があればエラーとする。
     - 登録先インデックスの状態やアイテムの公開ステータスのチェックを行い、問題があればエラーとする。
     - アクセストークンにアイテム公開に必要なスコープが付与されていない場合はエラーとする。
-    - `On-Behalf-Of`ヘッダーが存在する場合、取得しアイテムのコントリビュータ情報とする。
-    - データセット登録設定（[設定値:30](#conf30)）が有効であれば、メタデータを含むZIPファイルそのものをアイテムのファイルとして
+    - `On-Behalf-Of`ヘッダーが存在する場合、取得しアイテムの代理投稿者情報とする。
+    - 登録用ファイル保存フラグ（[wk:saveAsIs](../admin/ADMIN_2_5.md#saveAsIs)）が有効であれば、メタデータを含むZIPファイルそのものをアイテムのファイルとして
       登録するようにメタデータを作成する。
     - マッピング先が無いメタデータはテキストエリアに保存する。
 
 4. 登録処理を行う
 
-    メタデータのファイル形式と登録方式によって処理を分岐する。  
-    現時点では、TSV/CSV形式の場合は直接登録、XML形式の場合はワークフロー登録に固定されている。  
-    一方、RO-Crate+BagIt形式およびSWORDBagIt形式のZIPファイルの場合は、連携設定から取得した登録方式に従う。
+    アイテムを登録するとき、一括登録機能をもちいて直接登録をするか、個別登録機能をもちいてワークフローを経由して登録を行う。  
+    [ADMIN_16_1：SWORD API TSV/XML](../admin/ADMIN_16_1.md)および[ADMIN_16_2：SWORD API JSON-LD](../admin/ADMIN_16_2.md)にて設定された登録方式に従う。
 
-    **TSV/CSV・JSON-LDで直接登録の場合**
+    **直接登録の場合**
     - 一括インポート機能を使用してインポート処理を行う。
 
-    **XMLの場合**
-    - 新しいアクティビティを作成する。
-    - マッピングしたメタデータをもとにアクティビティにメタデータを保存する。
-    - アイテムのPIDと、アクティビティ詳細画面のURLを返却する。
+    **ワークフロー経由で登録する場合**
 
-    **JSON-LDでワークフロー登録の場合**
     - 新しいアクティビティを作成する。
     - マッピングしたメタデータをもとにアクティビティにメタデータや登録先インデックスを保存する。
     - 承認不要のワークフローの場合はワークフローを最後まで実行し登録を完了させる。
     - 承認が必要なワークフローの場合は承認の直前まで進める。
-    - アクティビティの進行に必要なのメタデータが存在しない場合はエラーとし、どのメタデータが必須かJSON-LD形式で返却する。
+    - アクティビティの進行に必要なのメタデータが存在しない場合はアクティビティを停止し、どのメタデータが必須かエラーメッセージをJSON-LD形式で返却する。
     - アイテムのPIDと、登録が完了した場合はレコードのURL、承認待ちの場合はアクティビティ詳細画面のURLを返却する。
+    - アイテムを分割して登録する際、分割されたアイテムを適切な順序でアイテムリンクするように登録順を制御する。
+
+    ※ メタデータ形式がXML形式の場合、現時点ではインデックスを指定することができないため、直接登録は行えない。  
+      また、ワークフロー経由で登録する場合、ワークフローに登録先インデックスが指定されていなければ、メタデータ入力のみで停止する。
 
 
 ### アイテム状態取得機能：GET /sword/deposit/\<recid\>
@@ -665,12 +667,23 @@ DELETE /sword/deposit/\<recid\>
 - 空のレスポンスを返却する
 
 ### メタデータマッピング機能
+
 - JSON-LD形式のメタデータを、マッピング定義をもとにWEKO3のアイテムタイプにマッピングする機能を提供する。
 - 現時点でRO-Crate+BagIt形式のメタデータのマッピングにのみ対応している。
 - この処理にはJSON形式で記述されたマッピング定義と、アイテムタイプのスキーマ定義を使用する。  
   マッピング定義には、JSON-LD形式のメタデータのキーと、WEKO3のアイテムタイプのプロパティ名を対応付ける情報が記述されている。  
   そして、アイテムタイプのスキーマ定義をもとに登録に適した構造のメタデータを構築する。
 - アイテムタイプにマッピング定義にないメタデータを保持するプロパティが存在する場合、マッピング先のないメタデータはそこに格納される。
+
+### アイテム分割機能
+
+- SWORD v3プロトコルでは、1リクエストにつき1つのアイテムが登録されるべきであるが、WEKO3ではアイテム分割機能を提供している。
+- これは、1つのアイテムを論文アイテムと論拠データアイテムに分割して登録する機能であり、複数アイテムを1リクエストで登録するために提供される機能ではない。
+- この機能を使用するには、JSON-LD形式のメタデータ内で、`wk:isSplited`プロパティに`true`を設定する必要がある。
+- 記述方法については、[ADMIN_2_5：RO-Crate インポート](../admin/ADMIN_2_5.md#wkissplitedアイテム分割フラグ)を参照。
+- 分割されるアイテムは、論文アイテムと論拠データアイテムの2種に分類され、相互にアイテムリンクされる。
+- 論文アイテムから論拠データアイテムへのアイテムリンクのリレーションタイプは`isSupplementedBy`、論拠データアイテムから論文アイテムへのアイテムリンクのリレーションタイプは`isSupplementTo`である。
+- アイテムリンクにはアイテムIDが必要なため、先に論拠データを登録しそのアイテムIDを取得し、論文アイテムを登録する際に相互にアイテムリンクを設定する。 
 
 ### 処理に関するエトセトラ
 
@@ -842,7 +855,7 @@ DELETE /sword/deposit/\<recid\>
   ```python
   "Workflow ID is required for workflow registration."
   ```
-
+<!-- 
 33. ```dict``` 内にキーが存在しない場合<span id="err33">
   ```python
   "Invalid mapping definition: Value: [プロパティの値] got from [プロパティのキー] but still need to get [以降のプロパティのキー]."
@@ -871,7 +884,7 @@ DELETE /sword/deposit/\<recid\>
 38. ```type_of_item_type_path``` が ```value``` で終わらない、または ```value``` が1回以上含まれている場合<span id="err38">
   ```python
   "Failed in mapping process: type_of_item_type_path must contain exactly one 'value' element at the end."
-  ```
+  ``` -->
 
 ## サーバー設定値
 
@@ -905,7 +918,7 @@ DELETE /sword/deposit/\<recid\>
     WEKO_SWORDSERVER_SERVICEDOCUMENT_ACCEPT = ["*/*"]
     ```
 
-6. サーバーが解凍できるアーカイブ形式のリスト<span id="conf06">
+6. サーバーが展開できるアーカイブ形式のリスト<span id="conf06">
 
     サーバーが異なるフォーマットでパッケージを送信した場合、サーバーはそれをバイナリファイルとして扱うことができる。  
     ```python
@@ -1023,7 +1036,7 @@ DELETE /sword/deposit/\<recid\>
     ```python
     WEKO_SWORDSERVER_SERVICEDOCUMENT_MAX_SEGMENTS = 1000
     ```
-
+<!-- 
 23. 登録方式の列挙型クラス
 
     ```python
@@ -1031,7 +1044,7 @@ DELETE /sword/deposit/\<recid\>
     ```
 
     - `Direct` (1): Direct registration.
-    - `Workfolw` (2): Workflow registration.
+    - `Workfolw` (2): Workflow registration. -->
 
 24. RO-Crate+BagItのメタデータファイル名
 
@@ -1044,7 +1057,7 @@ DELETE /sword/deposit/\<recid\>
     ```python
     WEKO_SWORDSERVER_REQUIRED_FILES_SWORD = "metadata/sword.json"
     ```
-
+<!-- 
 26. データセット識別子に付与するプレフィックス
 
     ```python
@@ -1058,7 +1071,7 @@ DELETE /sword/deposit/\<recid\>
         "": "./",
         "enc": base64.b64encode(f"{WEKO_SWORDSERVER_DATASET_PREFIX}./".encode("utf-8")).decode("utf-8")
     }
-    ```
+    ``` -->
 
 28. クライアントにダイジェストを送信することを要求するか<span id="conf28">
 
@@ -1071,275 +1084,16 @@ DELETE /sword/deposit/\<recid\>
     ```python
     WEKO_SWORDSERVER_CONTENT_LENGTH = False
     ```
-
+<!-- 
 30. データセットのzipファイルをアイテムとして登録するか<span id="conf30">
 
     ```python
     WEKO_SWORDSERVER_DEPOSIT_DATASET = False
-    ```
+    ``` -->
 
 
+<!--
 ## 付録
-### 1. SWORD連携用メタデータマッピング定義仕様
-
-#### 用途・目的
-
-JSON-LD形式メタデータからWEKO3のアイテムタイプへの変換に用いるマッピング定義の仕様を定める。
-
-#### 語句
-##### JSON-LD形式のメタデータ
-GRDMから受信したデータセットのメタデータをJSON-LD形式で記述したもの。識別子による参照を用いて重複や階層化が極力排されている記述方法。  
-ro-crate-metadata.json、metadata/sword.jsonなど。
-
-##### マッピング定義
-登録先アイテムタイプと、JSON-LD形式のメタデータのスキーマの対応をJSON形式で記したもの。  
-データベースの"_public.sword_item_type_mappings"テーブルに以下のフィールドで保存される。
-- マッピング定義ID: int
-- マッピング定義: json
-- マッピング定義の名前: string
-- マッピング先のアイテムタイプID: int
-- バージョン: int
-- 論理削除フラグ: bool
-
-#### マッピング定義の構成
-
-<img src="./img/mapping.png" width="75%">
-
-マッピング定義はJSON形式で記述する。  
-これはアイテムタイプがJSONで記述されているためであり、プロパティごとのマッピング定義のキーはアイテムタイプに含まれる各プロパティのパスとする。  
-そして、キーに対応する値はメタデータプロパティの想定されるパスとする。  
-パスとはプロパティの階層構造をピリオド区切りで表現したものである。
-
-以下にマッピング定義の例を示す。  
-アイテムタイプにマッピングするのは、ファイルサイズ、アイテムのタイトルとその言語、著者氏名と寄与者氏名の5項目とする。  
-また、マッピング先のないプロパティをまとめて保持するプロパティを"extra"に対応付けて定義する。
-
-```json
-{
-  "File Information.SYSTEMFILE Size": "d2Vrby0uLw==.hasPart.contentSize",
-  "タイトル.タイトル": "#title.name",
-  "タイトル.言語": "#title.language",
-  "著者.著者名": "d2Vrby0uLw==.author.name",
-  "寄与者.寄与者姓名.姓名": "d2Vrby0uLw==.contributor.fullname",
-  "エキストラ": "extra"
-}
-```
-
-このとき、アイテムタイプのJSONは以下に示すように、`properties` 配下に各プロパティについて記述される。  
-マッピング定義ではこのスキーマから `title` を抽出してパスとして使用する。  
-例えば、著者氏名は`title`:"著者" の中の`title`:"著者名" に充てられているため、パスは "著者.著者名" である。
-
-```json
-{
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "required": [
-    "pubdate",
-    "item_1730255238992",
-    "item_1730255318606"
-  ],
-  "properties": {
-    "pubdate": {
-      "type": "string",
-      "title": "PubDate",
-      "format": "datetime"
-    },
-    "system_file": {
-      "type": "object",
-      "title": "File Information",
-      "format": "object",
-      "properties": {
-        "subitem_systemfile_size": {
-          "type": "string",
-          "title": "SYSTEMFILE Size",
-          "format": "text"
-        }
-      },
-      "system_prop": true
-    },
-    "item_1730255238992": {
-      "type": "object",
-      "title": "タイトル",
-      "required": [
-        "subitem_title",
-        "subitem_title_language"
-      ],
-      "properties": {
-        "subitem_title": {
-          "type": "string",
-          "title": "タイトル",
-          "format": "text",
-          "title_i18n": {
-            "en": "Title",
-            "ja": "タイトル"
-          }
-        },
-        "subitem_title_language": {
-          "enum": [
-            null,
-            "ja",
-            "ja-Kana",
-            "ja-Latn",
-            "en"
-          ],
-          "type": [
-            "null",
-            "string"
-          ],
-          "title": "言語",
-          "format": "select",
-          "currentEnum": [
-            "ja",
-            "ja-Kana",
-            "ja-Latn",
-            "en"
-          ]
-        }
-      }
-    },
-    "item_1730255318606": {
-      "type": "object",
-      "title": "著者",
-      "required": [
-        "subitem_author_name"
-      ],
-      "properties": {
-        "subitem_author_name": {
-          "type": "string",
-          "title": "著者名",
-          "format": "text",
-          "title_i18n": {
-            "en": "Author name",
-            "ja": "著者名"
-          }
-        }
-      }
-    },
-    "item_1730255441907": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "contributorNames": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "format": "object",
-              "properties": {
-                "lang": {
-                  "enum": [
-                    null,
-                    "ja",
-                    "ja-Kana",
-                    "ja-Latn",
-                    "en"
-                  ],
-                  "type": [
-                    "null",
-                    "string"
-                  ],
-                  "title": "言語",
-                  "format": "select",
-                  "currentEnum": [
-                    "ja",
-                    "ja-Kana",
-                    "ja-Latn",
-                    "en"
-                  ]
-                },
-                "contributorName": {
-                  "type": "string",
-                  "title": "姓名",
-                  "format": "text",
-                  "title_i18n": {
-                    "en": "Name",
-                    "ja": "姓名"
-                  }
-                }
-              }
-            },
-            "title": "寄与者姓名",
-            "format": "array"
-          }
-        }
-      },
-      "title": "寄与者",
-      "maxItems": 9999,
-      "minItems": 1
-    },
-  },
-}
-```
-
-そして、メタデータは以下のようなJSON-LD形式であることを想定する。  
-各プロパティは`@graph`の配列に格納されており、`@id`による参照をたどってパスとする。  
-例えば著者情報は、`@id`:"./"の要素内の "author" で "http://orcid.org/0000-0002-1825-0097" を参照しており、参照先の "name" に著者の氏名が充てられている。
-したがって、パスは "./.author.name" とする。  
-ただしここで、先頭の "." が区切り文字と混同してしまうため、"d2Vrby0uLw==.author.name" といったように内部的にエンコードして表記する。
-エンコードには任意のプレフィックスを含めることができる仕様とする。
-
-```json
-{
-  "@context": "https://w3id.org/ro/crate/1.1/context",
-  "@index": 1623632832836,
-  "@graph": [
-    {
-      "@id": "./",
-      "@type": "Dataset",
-      "author": {
-        "@id": "http://orcid.org/0000-0002-1825-0097"
-      },
-      "contributor": [
-        {
-          "@id": "http://orcid.org/0000-0002-1825-0085"
-        }
-      ],
-      "creator": {
-        "@id": "http://orcid.org/0000-0002-1825-0097"
-      },
-      "datePublished": "2023/01/18T23:39:34Z",
-      "hasPart": [
-        {
-          "@id": "data/sample.txt"
-        }
-      ],
-      "name": "The Sample"
-    },
-    {
-      "@id": "ro-crate-metadata.json",
-      "@type": "CreativeWork",
-      "about": {
-        "@id": "./"
-      },
-      "conformsTo": {
-        "@id": "https://w3id.org/ro/crate/1.1"
-      }
-    },
-    {
-      "@id": "data/sample.txt",
-      "@type": "File",
-      "contentSize": "1641",
-      "name": "sample.txt",
-    },
-    {
-      "@id": "http://orcid.org/0000-0002-1825-0097",
-      "@type": "Person",
-      "name": "Egon Willighagen"
-    },
-    {
-      "@id": "http://orcid.org/0000-0002-1825-0085",
-      "@type": "Person",
-      "fullname": "Stian Soiland-Reyes",
-    },
-    {
-      "@id": "#title",
-      "@type": "Thing",
-      "language": "ja",
-      "name": "アイテムのサンプル"
-    }
-  ]
-}
-```
 
 ### 2. JSON-LD形式メタデータからのWEKO3アイテムタイプへのマッピング処理仕様
 
@@ -1364,10 +1118,10 @@ JSON-LD形式メタデータをマッピング定義に従ってWEKO3の登録�
 | JSON-LD形式メタデータ | rocrate_metadata.jsonやsowrd.jsonとして保持されるメタデータファイル。 | SWORD API経由で送られてくる **`リクエストボディ(ZIPファイル)`** から取得する。 |
 | マッピング定義 | マッピングの定義をJSON形式で記述したもの。 | OAuth APIのアクセストークンを用いてWEKO3のデータベースに保存されている **`マッピング定義設定`** から取得する。 |
 | アイテムタイプのスキーマ | WEKO3のアイテムにおけるメタデータの構造を定義したもの。 | OAuth APIのアクセストークンを用いてWEKO3のデータベースに保存されている **`マッピング定義設定`** からアイテムタイプIDを取得し、アイテムタイプIDに該当するアイテムタイプのスキーマを取得する。 |
-
+-->
 <!-- ※ **`マッピング定義設定`** の詳細は、[テーブル定義書](./テーブル定義書.xlsx)を参照。 -->
 
-※ マッピング定義は、以下のような構造をもつJSONデータであり、アイテムタイプでの該当項目が記載されたキーと、該当項目がJSON-LD形式メタデータのどこに記載されているかを表したものが記載された値のペアをプロパティとして持つ。
+<!-- ※ マッピング定義は、以下のような構造をもつJSONデータであり、アイテムタイプでの該当項目が記載されたキーと、該当項目がJSON-LD形式メタデータのどこに記載されているかを表したものが記載された値のペアをプロパティとして持つ。
 
 ```json
 {
@@ -1445,12 +1199,13 @@ JSON-LD形式メタデータをマッピング定義に従ってWEKO3の登録�
   ```
 
 以上の工程により、アイテムタイプを完成させる。
-
+-->
 
 ## 更新履歴
 
-| 日付       | GitHubコミットID                           | 更新内容                              |
-| ---------- | ------------------------------------------ | ------------------------------------- |
-| 2022/06/13 | e6db31c99d459605f5bc09f15c4abd07ea573428   | 初版作成                              |
-| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | ADMIN-2-4へのリンクを追加             |
-| 2024/02/12 |                                            | JSON-LD形式のメタデータ登録機能を追加 |
+| 日付       | GitHubコミットID                           | 更新内容                                        |
+| ---------- | ------------------------------------------ | ----------------------------------------------- |
+| 2022/06/13 | e6db31c99d459605f5bc09f15c4abd07ea573428   | 初版作成                                        |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | ADMIN-2-4へのリンクを追加                       |
+| 2024/02/12 | 91e291b7bdb24c0f6cbc65d603f2f9427cd0f031   | JSON-LD形式のメタデータ登録機能を追加           |
+| 2025/03/07 |                                            | JSON-LD形式メタデータのマッピング処理仕様を削除 |
