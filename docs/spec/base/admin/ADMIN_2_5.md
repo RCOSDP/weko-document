@@ -51,7 +51,7 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
 `@id`は、エンティティの識別子を示し、リンクトデータとしての参照先を示す。  
 すべてのメタデータは、ルートデータセット（`@id: ./`）に記述される。
 
-```json
+```jsonc
 // ro-crate-metadata.json
 {
   "@context": "https://w3id.org/ro/crate/1.1/context",
@@ -306,7 +306,7 @@ RO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルを
 ### マッピング定義
 マッピング定義は以下のようなJSON形式で記述される。
 
-```json
+```jsonc
 {
   "Title": "dc:title",                                // アイテムタイプの "Title" に対応するメタデータのパス
   "Title.タイトル": "dc:title.value",                 // アイテムタイプの "Title.タイトル" に対応するメタデータのパス
