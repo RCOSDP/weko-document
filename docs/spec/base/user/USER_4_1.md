@@ -119,7 +119,7 @@ WEKO3へログイン後、[WorkFlow]タブを押下することで、アクテ�
 <tr class="even">
 <td>10</td>
 <td>Approver</td>
-<td>承認者のIDを表示する</td>
+<td>承認者のユーザー名を表示する</td><br>ユーザー名が設定されていない場合、承認者のメールアドレスを表示する</br>
 </tr>
 <tr class="odd">
 <td>11</td>
