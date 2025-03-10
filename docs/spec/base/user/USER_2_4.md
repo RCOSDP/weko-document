@@ -20,8 +20,9 @@
    5. 「File Contents」エリアでコンテンツファイルの出力有無を選択する。
    6. 「Export Format」エリアで出力形式を選択する。
    7. 「エクスポート(Export)」ボタンを押下し、ダウンロードする。  
-   ※手順6で`RO-Crate`を選択した場合、選択したアイテムの個数分のZIPファイルがダウンロードされる。  
-   ※手順5で`Do Not Export File Contents`を選択した場合、手順6で`RO-Crate`を選択することはできない。
+   ※手順5で`Do Not Export File Contents`を選択した場合、手順6で`RO-Crate`を選択することはできない。  
+   ※手順6で`RO-Crate`を選択した場合、自動的に`Export File Contents`が選択され、「File Contents」エリアはグレーアウトし`Do Not Export File Contents`を選択することはできない。  
+   ※手順6で`RO-Crate`を選択した場合、選択したアイテムの個数分のZIPファイルがダウンロードされる。
 
 ## 利用可能なロール
 
@@ -101,6 +102,8 @@
     - ラジオボタン： 「Do Not Export File Contents」、「Export File Contents」
 
     - 初期値： 「Do Not Export File Contents」
+
+    - 出力形式として`RO-Crate`が選択されている場合、「File Contents」エリアは非活性となり、自動的に「Export File Contents」が選択される(※「Do Not Export File Contents」を選択することはできない)。
 
 - 一括出力する形式の選択
 
@@ -265,7 +268,7 @@ export.zip
   | コンテンツファイルを含める場合   | ◯    | ◯      | ◯        |
   | コンテンツファイルを含めない場合 | ◯    | ◯      | ✕       |
 
-### コンテンツファイルを含める場合はBagit形式でアイテムを一括出力する
+### コンテンツファイルを含める場合はBagIt形式でアイテムを一括出力する(RO-Crate以外を選択した場合)
 
 - 仕様書： 別紙「WEKO3_BagIt.pptx」を参照すること。
 
@@ -273,11 +276,13 @@ export.zip
 
 - コンテンツファイルを含める場合、エクスポート時には登録ファイルが1つのZIPファイルに圧縮されてダウンロードされる
 
-- ZIPファイルは階層構成（Bagit形式）で出力できる
+- ZIPファイルは階層構成（BagIt形式）で出力できる
 
 - コンテンツファイルは個々に個別のディレクトリが作成され、その中に出力される（ディレクトリには連番が振られる）
 
 - 一括出力されるアイテムのファイル形式は、アイテム一括出力画面の出力形式に合わせる
+
+- ※`RO-Crate`を選択した場合、アイテムごとに個別のZIPファイルが生成されるため、一つのZIPファイルには1アイテム分のコンテンツファイルが`/data`フォルダに出力される
 
 ### ダウンロードするメタデータファイル（tsvファイル）
 
@@ -411,8 +416,8 @@ export.zip
 
 ### RO-Crate形式の出力
 - 「Item to Export」エリアの「Export Format」項目で`RO-Crate`を選び、エクスポートボタンを押す。この操作によって、`weko_items_ui.utils.export_rocrate`メソッドにてRO-Crate+BagItファイルが出力される。
-- `weko_items_ui.utils.export_rocrate`メソッド内で、`mapper(仮)`メソッドが呼び出され、ro-crate-metadata.jsonファイルを生成する。また、`create_data_file(仮)`メソッドが呼び出され、/dataフォルダ内にコンテンツファイルを出力する。
-- ro-crate-metadata.jsonと/dataフォルダを引数として`bagify`メソッドを実行することで、RO-Crate+BagIt形式のZIPファイルが生成される。
+- `weko_items_ui.utils.export_rocrate`メソッド内で、`weko_search_ui.mapper.JsonLdMapper.export_mapper`メソッドが呼び出され、ro-crate-metadata.jsonファイルを生成する。また、`create_data_file`メソッドが呼び出され、/dataフォルダ内にコンテンツファイルを出力する。
+- ro-crate-metadata.jsonと/dataフォルダが含まれるフォルダ名を引数として`bagify`メソッドを実行することでフォルダ内にBagIt形式の必須ファイルが付加され、このフォルダをZIPに圧縮することで、RO-Crate+BagIt形式のZIPファイルが生成される。
 
 ## 更新履歴
 
