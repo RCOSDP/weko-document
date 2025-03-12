@@ -224,7 +224,7 @@
 
 - > 処理概要
 
-  画面表示時に、weko_accounts.admin.ShibSettingView.index メソッドを GET で呼び出して、instance.cfg または weko-accounts で以下のコンフィグから Shibboleth の許可設定を読み込む。
+  画面表示時に、weko_accounts.admin.ShibSettingView.index 関数を GET で呼び出して、instance.cfg または weko-accounts で以下のコンフィグから Shibboleth の許可設定を読み込む。
 
   両方で設定されている場合、instance.cfg の設定が優先される。また、画面で設定を変更した場合は、その変更が最優先される。
 
@@ -236,7 +236,7 @@
 
   - 設定キー：WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED
 
-  ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index メソッドを POST で呼び出して、以下のようにしてコンテキストに設定を保存する。
+  ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index 関数を POST で呼び出して、以下のようにしてコンテキストに設定を保存する。
 
   > \_app = LocalProxy(lambda: current_app.extensions\['weko-admin'\].app)
   >
@@ -305,9 +305,11 @@
 
         取得した[o]属性が[機関の'organizationName']と一致したら[機関内]と判定することができる。
 
-  - ［保存（Save）］ボタンを押すと、設定内容を保存し、以下のメッセージを画面上部に表示する。  
-    JP：「デフォルトロール設定を更新しました」  
-    EN：「Updated Default Role settings」
+  - ［保存（Save）］ボタンを押すと、設定内容を保存し、以下のメッセージを画面上部に表示する。
+
+    (例：学認 IdP のロールを更新した場合)
+    JP：「学認 IdP のロール設定を更新しました」  
+    EN：「Gakunin Role was updated.」
 
 - > 関連モジュール
 
@@ -315,23 +317,52 @@
 
 - > 処理概要
 
-  画面表示時に weko_accounts.admin.ShibSettingView.index メソッドを GET で呼び出して、weko-accounts で以下のコンフィグからデフォルトロール設定を読み込む。
+  ログイン時に、weko_accounts.views.\_adjust_shib_admin_DB 関数で admin_settings テーブルを設定ファイルの内容で新規作成、もしくは更新する。
 
   また、画面で設定を変更した場合は、その変更が最優先される。
 
   - パス（config.py）： (暫定)
     <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L110-L116>
 
-  - 設定キー：WEKO_ACCOUNTS_GAKUNIN_ROLE, WEKO_ACCOUNTS_ORTHROS_INSIDE_ROLE,
-    WEKO_ACCOUNTS_ORTHROS_OUTSIDE_ROLE, WEKO_ACCOUNTS_OTHERS_ROLE
+  - 設定キー：WEKO_ACCOUNTS_GAKUNIN_ROLE, WEKO_ACCOUNTS_ORTHROS_OUTSIDE_ROLE, WEKO_ACCOUNTS_EXTRA_ROLE
 
-    ※ [学認 IdP]の処理のみ記載
-
-    > if current_app.config['WEKO_ACCOUNTS_GAKUNIN_ROLE']:
+    > if AdminSettings.query.filter_by(name='default_role_settings').first() is None:
     >
-    > gakunin_role = current_app.config['WEKO_ACCOUNTS_GAKUNIN_ROLE']
+    > new_setting = AdminSettings(
+    >
+    > id=8,
+    >
+    > name="default_role_settings",
+    >
+    > settings={
+    >
+    > "gakunin_role": \_app.config['WEKO_ACCOUNTS_GAKUNIN_ROLE']['defaultRole'],
+    >
+    > "orthros_outside_role": \_app.config['WEKO_ACCOUNTS_ORTHROS_OUTSIDE_ROLE']['defaultRole'],
+    >
+    > "extra_role": \_app.config['WEKO_ACCOUNTS_EXTRA_ROLE']['defaultRole']}
+    >
+    > )
+    >
+    > db.session.add(new_setting)
+    >
+    > db.session.commit()
+    >
+    > else:
+    >
+    > setting = AdminSettings.query.filter_by(name='default_role_settings').first()
+    >
+    > setting.settings = {
+    >
+    > "gakunin_role": \_app.config['WEKO_ACCOUNTS_GAKUNIN_ROLE']['defaultRole'],
+    >
+    > "orthros_outside_role": \_app.config['WEKO_ACCOUNTS_ORTHROS_OUTSIDE_ROLE']['defaultRole'],
+    >
+    > "extra_role": \_app.config['WEKO_ACCOUNTS_EXTRA_ROLE']['defaultRole']}
+    >
+    > db.session.commit()
 
-    選択肢の一覧はコンフィグから読み込んで HTML で生成する。
+  選択肢の一覧はコンフィグから読み込んで weko_accounts.shibuser.createDefaultRoleSettingArea 関数 で生成する。
 
   - パス（config.py）： (暫定)
     <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L121-L144>
@@ -342,27 +373,32 @@
 
       > role_list = current_app.config['WEKO_ACCOUNTS_ROLE_LIST']
 
-    - shibuser.html
-      > const defaultRoleList = document.getElementById('default-role-list').getAttribute('data-value');
-      >
-      > const gakuninRoleList = document.getElementById('gakunin-role-list');
-      >
-      > gakuninRoleList.appendChild(createSelectList(0, 'role', gakuninRoleList.getAttribute('data-value')));
-      >
-      > ※ createSelectList()　選択肢を作成するメソッド
+  ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index 関数で、以下のようにして admin_settings テーブルに設定を保存する。
 
-  ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index メソッドを POST で呼び出して、以下のようにしてコンテキストに設定を保存する。
+  - 最初に roles を宣言する（GET,POST 関わらず）
 
-  - ※ [学認 IdP]の処理のみ記載
-    > new_gakunin_role = request.form.get('roleLists0', '0')
+    > default_roles = AdminSettings.get('default_role_settings', dict_to_object=False)
     >
-    > if gakunin_role != new_gakunin_role:
+    > roles = {
     >
-    > gakunin_role = new_gakunin_role
+    > 'gakunin_role': default_roles.get('gakunin_role', current_app.config['WEKO_ACCOUNTS_GAKUNIN_ROLE']['defaultRole']),
     >
-    > \_app.config['WEKO_ACCOUNTS_GAKUNIN_ROLE'] = new_gakunin_role
+    > 'orthros_outside_role': default_roles.get('orthros_outside_role', current_app.config['WEKO_ACCOUNTS_ORTHROS_OUTSIDE_ROLE']['defaultRole']),
     >
-    > flash(\_('Gakunin IdP role was updated.'), category='success')
+    > 'extra_role': default_roles.get('extra_role', current_app.config['WEKO_ACCOUNTS_EXTRA_ROLE']['defaultRole'])
+    >
+    > }
+
+  - POST で更新する
+    > for key in roles:
+    >
+    > if roles[key] != new_roles[key]:
+    >
+    > roles[key] = new_roles[key]
+    >
+    > flash(_(f'{key.replace("_", " ").title()} was updated.'), category='success')
+    >
+    > AdminSettings.update('default_role_settings', roles)
 
 ### Shibboleth 属性と WEKO3 属性値のマッピング操作
 
@@ -384,9 +420,11 @@
 
   - 選択肢からマッピングしたい属性値を設定する。
 
-  - ［保存（Save）］ボタンを押すと、設定内容を保存し、以下のメッセージを画面上部に表示する。  
-    JP：「属性マッピング設定を更新しました」  
-    EN：「Updated Attribute Mapping settings」
+  - ［保存（Save）］ボタンを押すと、設定内容を保存し、以下のメッセージを画面上部に表示する。
+
+    (例：shib_eppn を更新した場合)  
+    JP：「属性マッピング設定（shib_eppn）を更新しました」  
+    EN：「Shibboleth Eppn mapping was updated.」
 
 - > 関連モジュール
 
@@ -394,7 +432,7 @@
 
 - > 処理概要
 
-  画面表示時に、weko_accounts.admin.ShibSettingView.index メソッドを GET で呼び出して、weko-accounts で以下のコンフィグから WEKO3 属性のマッピング設定を読み込む。
+  ログイン時に、weko_accounts.views.\_adjust_shib_admin_DB 関数で admin_settings テーブルを設定ファイルの内容で新規作成、もしくは更新する。
 
   また、画面で設定を変更した場合は、その変更が最優先される。
 
@@ -403,17 +441,23 @@
 
   - > 設定キー：WEKO_ACCOUNTS_ATTRIBUTE_MAP
 
-    > if current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']:
+    > if AdminSettings.query.filter_by(name='attribute_mapping').first() is None:
     >
-    > weko_eppn_value = current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']['shib_eppn']
+    > new_setting = AdminSettings(id=9, name="attribute_mapping", settings=\_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP'])
     >
-    > weko_role_authority_name_value = current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']['shib_role_authority_name']
+    > db.session.add(new_setting)
     >
-    > weko_mail_value = current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']['shib_mail']
+    > db.session.commit()
     >
-    > weko_user_name_value = current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']['shib_user_name']
+    > else:
+    >
+    > setting = AdminSettings.query.filter_by(name='attribute_mapping').first()
+    >
+    > setting.settings = \_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']
+    >
+    > db.session.commit()
 
-  選択肢の一覧はコンフィグから読み込んで HTML で生成する。
+  選択肢の一覧はコンフィグから読み込んで weko_accounts.shibuser.createAttrMapSettingArea 関数 で生成する。
 
   - > パス（config.py）： (暫定)
     > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L85-L100>
@@ -421,40 +465,46 @@
   - > 設定キー：WEKO_ACCOUNTS_ATTRIBUTE_LIST
 
     - admin.py
+
       > role_list = current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_LIST']
-    - shibuser.html
-      > const defaultAttrList = document.getElementById('default-attr-list').getAttribute('data-value');
-      >
-      > const eppnAttrList = document.getElementById('eppn-attr-list');
-      >
-      > eppnAttrList.appendChild(createSelectList(0, 'attr', eppnAttrList.getAttribute('data-value')));
-      >
-      > ※ createSelectList()　選択肢を作成するメソッド(デフォルトロール選択肢作成と同一)
 
-  ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index メソッドを POST で呼び出して、以下のようにしてコンテキストに設定を保存する。
+  ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index 関数で、以下のようにして admin_settings テーブルに設定を保存する。
 
-  - ※ ［shib_eppn］ 部分の処理のみ記載
+  - 最初に attributes を宣言する（GET,POST 関わらず）
 
-    > if weko_eppn_value != new_weko_eppn_value:
+    > attribute_mappings = AdminSettings.get('attribute_mapping', dict_to_object=False)
     >
-    > weko_eppn_value = new_weko_eppn_value
+    > attributes = {
     >
-    > with current_app.app_context():
+    > 'shib_eppn': attribute_mappings.get('shib_eppn', current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']['shib_eppn']),
     >
-    > current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']['shib_eppn'] =
+    > 'shib_role_authority_name': attribute_mappings.get('shib_role_authority_name', current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']['shib_role_authority_name']),
     >
-    > new_weko_eppn_value
+    > 'shib_mail': attribute_mappings.get('shib_mail', current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']['shib_mail']),
     >
-    > flash(\_('shib_eppn mapping was updated.'), category='success')
+    > 'shib_user_name': attribute_mappings.get('shib_user_name', current_app.config['WEKO_ACCOUNTS_ATTRIBUTE_MAP']['shib_user_name'])
+    >
+    > }
+
+  - POST で更新する
+    > for key in attributes:
+    >
+    > if attributes[key] != new_attributes[key]:
+    >
+    > attributes[key] = new_attributes[key]
+    >
+    > flash(_(f'{key.replace("_", " ").title()} mapping was updated.'), category='success')
+    >
+    > AdminSettings.update('attribute_mapping', attributes)
 
   属性マッピングは Invenio コマンドでも更新出来るようにする。
 
-  weko-accounts/cli.py に属性マッピングを更新するメソッドを作成する。
+  weko-admin/cli.py に update_attribute_mapping 関数を作成。
 
   マッピングを変更したい属性名(shib_eppn や shib_mail など)と、マッピングしたい属性値（'eduPersonPrincipalName'や'mail'など）をコマンド送信することで更新を行う。
 
   - コマンド例
-    > invenio update-attribute-mapping --shib_eppn 'eduPersonPrincipalName' --shib_mail 'mail'
+    > invenio admin_settings mapping_update --shib_eppn 'eduPersonPrincipalName' --shib_mail 'mail'
 
 ### ブロックユーザーの管理
 
@@ -481,17 +531,25 @@
 
 - > 処理概要
 
-  - ブロックユーザーの ePPN 管理は admin_settings テーブルで行う。<br>
-    ※ 初回のみ、テーブルにレコードを追加する手順が必要となる。
+  - ブロックユーザーの ePPN 管理は admin_settings テーブルで行う。
 
-    - レコードの内容
-      > id: 6(連番)<br>
-      > name: blocked_user_settings<br>
-      > settings: {"blocked_ePPNs": []}
-    - populate-instance.sh の create-admin-settings-begin 付近に以下文を追加する。
-      > ${INVENIO_WEB_INSTANCE} admin_settings create_settings \
-      > 6 "blocked_user_settings" \
-      > "{'blocked_ePPNs': []}"
+  - レコードがない場合、ログイン時に weko_accounts.views.\_adjust_shib_admin_DB 関数で admin_settings テーブルを設定ファイルの内容で新規作成する。
+
+    > if AdminSettings.query.filter_by(name='blocked_user_settings').first() is None:
+    >
+    > new_setting = AdminSettings(
+    >
+    > id=6,
+    >
+    > name="blocked_user_settings",
+    >
+    > settings={"blocked_ePPNs": []}
+    >
+    > )
+    >
+    > db.session.add(new_setting)
+    >
+    > db.session.commit()
 
   - システム管理者、およびリポジトリ管理者はブロックしたいユーザーの ePPN を settings.blocked_ePPNs に追加する。<br>
 
@@ -531,23 +589,23 @@
       >
       > }
 
-  - ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index メソッドを POST で呼び出して、以下のようにしてテーブルを更新する。
+  - ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index 関数を POST で呼び出して、以下のようにしてテーブルを更新する。
 
-  > new_block_user_list = request.form.get('block-eppn-option-list', '0')
-  >
-  > if block_user_list != new_block_user_list:
-  >
-  > new_eppn_list = json.loads(new_block_user_list)
-  >
-  > new_eppn_list.sort()
-  >
-  > updateSettings = {'blocked_ePPNs': new_eppn_list}
-  >
-  > AdminSettings.update('blocked_user_settings', updateSettings)
-  >
-  > flash(\_('Blocked user list was updated.'), category='success')
-  >
-  > block_user_list = json.dumps(new_eppn_list)
+    > new_block_user_list = request.form.get('block-eppn-option-list', '0')
+    >
+    > if block_user_list != new_block_user_list:
+    >
+    > new_eppn_list = json.loads(new_block_user_list)
+    >
+    > new_eppn_list.sort()
+    >
+    > updateSettings = {'blocked_ePPNs': new_eppn_list}
+    >
+    > AdminSettings.update('blocked_user_settings', updateSettings)
+    >
+    > flash(\_('Blocked user list was updated.'), category='success')
+    >
+    > block_user_list = str(new_eppn_list).replace('"', '\\"')
 
 <!-- end list -->
 
@@ -571,10 +629,10 @@
 </tr>
 <tr class="even">
 <td><blockquote>
-<p>2025/02/-</p>
+<p>2025/03/-</p>
 </blockquote></td>
 <td></td>
-<td>Shibboleth 管理画面を追加</td>
+<td>Shibboleth 管理画面の機能を追加</td>
 </tr>
 </tbody>
 </table>
