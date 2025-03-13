@@ -244,6 +244,8 @@ export.zip
   - `views.export`
   - `utils.export_items`
   - `utils.export_rocrate`
+- `weko_search_ui`
+  - `mapper.JsonLdMapper.export_mapper`
 
 ## 処理概要
   - 検索結果画面で「エクスポート」ボタンを押下すると、`weko_search_ui.app.checkForRestrictedContent`メソッドと`weko_items_ui.views.export`メソッドが呼び出される。  
