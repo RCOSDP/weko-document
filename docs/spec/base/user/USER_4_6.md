@@ -236,9 +236,32 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 
   - 「Automatic metadata input」からメタデータを自動入力した際、ISBN/ISSN/DOIはすべて「jpcoar:sourceIdentifier」にマッピングされるが、このマッピング情報がアイテムタイプに複数存在する場合は、１つ目（１番上）のプロパティにのみセットする
 
-3. アイテムのメタデータを補完できる
-- 「メタデータ自動入力」（Automatic Metadata Input）ボタンを押すと出現するポップアップウィンドウにて、「ID選択」プルダウンで`DOI`を選択し、DOIを入力して「取得」（Get）ボタンを押すことで、設定された優先度順にAPIから取得したメタデータまたは元のメタデータを、空白の項目にのみ自動入力する。
-- 設定方法および使用可能なAPIは、[ここに入力]を参照のこと。
+3. あらかじめ設定したAPIのリストからアイテムのメタデータを補完できる(メタデータ補完機能)
+- 「メタデータ自動入力」（Automatic metadata input）ボタンを押すと出現するポップアップウィンドウにて、「ID選択」プルダウンで`DOI`を選択し、DOIを入力して「取得」（Get）ボタンを押すことで、設定された優先度順にAPIから取得したメタデータまたは元のメタデータ(画面に手入力を行い、「Save」を押した場合。`Original`とする)を、空白の項目にのみ自動入力する。
+- `weko_items_autofill/config.py`にて、以下のように設定する
+ ```python
+  # weko_items_autofill/config.pyに設定値を保持する
+  WEKO_ITEMS_AUTOFILL_API_LIST = [
+    "JaLC API",
+    "医中誌 Web API",
+    "CrossRef",
+    "DataCite",
+    "CiNii Research"
+  ]
+
+  WEKO_ITEMS_AUTOFILL_TO_BE_USED = [
+    # 優先度順に格納
+    "医中誌 Web API",
+    "CrossRef",
+    "DataCite",
+    "Original"
+  ]
+ ```
+- 処理概要
+  - `WEKO_ITEMS_AUTOFILL_API_LIST`に設定されたAPIのリストから、`WEKO_ITEMS_AUTOFILL_TO_BE_USED`に設定された順番でAPIを呼び出し、取得したメタデータを空白の項目にのみ自動入力する。
+  - 上記の例だと、`医中誌 Web API`から取得したメタデータを優先して入力し、空白の項目がない場合は`CrossRef`、`DataCite`、`Original`の順で入力する。
+  - `Original`は、画面に手入力を行い、「Save」を押した場合のメタデータを指す。  
+    画面に入力を行っていない場合や、入力後に「Save」を押していない場合は、`Original`は空となり、影響を与えない。
 
 
 ## 関連モジュール
