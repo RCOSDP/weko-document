@@ -379,8 +379,8 @@
     
       - Description: 概要
     
-      - Search Pattern: 検索パターン ※パスの区切りは/(スラッシュ)  
-        例 path:"1628576973067/1628576975817"
+      - Search Pattern: 検索パターン  
+        例 path:"1628576975817"
 
 6\. Other Formats
 

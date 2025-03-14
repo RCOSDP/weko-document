@@ -58,7 +58,7 @@
         
           - Description：セットの説明を入れる
         
-          - Search Pattern
+          - Search Pattern: 検索パターン
     
       - 「保存（Save）」ボタンを押すと、設定されたセット内容をセット一覧に追加させ、メッセージをセット一覧に表示させる  
         メッセージ：「レコードが正常に作成されました。（Record was successfully saved）」
