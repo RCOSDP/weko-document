@@ -49,13 +49,24 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
 アイテムのメタデータは、`ro-crate-metadata.json`ファイルにJSON-LD形式で記述される。  
 `@graph`には、アイテムのメタデータを記述するエンティティが配列で格納される。  
 `@id`は、エンティティの識別子を示し、リンクトデータとしての参照先を示す。  
-すべてのメタデータは、ルートデータセット（`@id: ./`）に記述される。
+すべてのメタデータは、ルートデータセット（`{"@id": "./"}`）に記述される。
+また、ルートデータセットを指定するエンティティ（`{"@id": "ro0crate-metadata.json"}`）が必須である。
 
 ```jsonc
 // ro-crate-metadata.json
 {
   "@context": "https://w3id.org/ro/crate/1.1/context",
   "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "about": {
+        "@id": "./"
+      },
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.1"
+      }
+    },
     {
       "@id": "./",
       "@type": "Dataset",
