@@ -43,7 +43,11 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
 | data/                    |  ◯  | ペイロードディレクトリ。 配下のファイルはマニフェストの妥当性により担保される |
 | ro-crate-metadata.json   |  ◯  | アイテムのメタデータがJSON-LD形式で記述されたファイル                         |
 | manifst-sha256.txt       |  ◯  | data/内の各ファイルのSHA-256チェックサムをまとめたマニフェストファイル        |
-| tagmanifst-sha256.txt    |      | data/外の各ファイルのSHA-256チェックサムをまとめたマニフェストファイル        |
+| tagmanifst-sha256.txt    |      | data/外の各ファイルのSHA-256チェックサムをまとめたタグマニフェストファイル    |
+
+アイテムとして登録するファイルは、`data/`ディレクトリに格納される。
+アイテムにファイルを含まないとき、`data/`ディレクトリは空であるが、ディレクトリ自体は必須である。  
+またマニュフェストファイルも同様に空であるが、ファイル自体は必須である。
 
 ## メタデータ記述
 アイテムのメタデータは、`ro-crate-metadata.json`ファイルにJSON-LD形式で記述される。  
@@ -87,6 +91,33 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
       "name": "sample.txt"
     }
   ]
+}
+```
+
+また、アイテムの含まれるファイルのメタデータは、`hasPart`プロパティを使用して指定する。  
+ここでは、すべてのファイルを`data/`ディレクトリ以下の相対パスで表現する。
+
+```json
+{
+  "@id": "./",
+  "hasPart": [
+    {"@id": "data/sample.txt"},
+    {"@id": "data/img/sample.jpg"}
+  ]
+},
+{
+    "@id": "data/sample.txt",
+    "@type": "File",
+    "name": "sample.txt",
+    "contentSize": "1024 KB" ,
+    "fileFormat": "text/plain"
+},
+{
+    "@id": "data/img/sample.jpg",
+    "@type": "File",
+    "name": "sample.jpg",
+    "contentSize": "2048 MB" ,
+    "fileFormat": "image/jpeg"
 }
 ```
 
