@@ -237,14 +237,6 @@ https://\[host\]/oai?verb=「値」&「verbのパラメータ」=「値」&「 v
 > 
 > \</OAI-PMH\>
 
-      - 応答速度の改善
-        ListRecord の応答内容を事前にファイルへ出力することで、レスポンスを高速化する事が可能。
-        高速化機能を利用する場合、以下のコンフィグ値を設定する必要がある。
-        １．OAISERVER_FILE_BATCH_ENABLE : ファイルからレスポンスを作成する機能のON/OFFフラグ
-        ２．OAISERVER_FILE_BATCH_FORMATS : ファイル作成するフォーマット。
-        ３．CELERY_BEAT_SCHEDULE : ファイル作成をする実行間隔。
-        ４．OAISERVER_FILE_BATCH_STORAGE_LOACTION : ファイルを保存するストレージのロケーション。
-
   - ListSets  
     リポジトリのセット構成を検索する際に使用するverb。  
     使用可能となる引数は次のものである。  
@@ -285,6 +277,16 @@ https://\[host\]/oai?verb=「値」&「verbのパラメータ」=「値」&「 v
       - > noSetHierarchy：リポジトリがセットをサポートしていない場合。
     
       - > noMetadataFormats：指定したアイテムで利用可能なメタデータフォーマットではない場合。
+
+
+  - > ListRecordの応答速度の改善
+
+        ListRecord の応答内容を事前にファイルへ出力することで、レスポンスを高速化する事が可能。
+        高速化機能を利用する場合、以下のコンフィグ値を設定する必要がある。
+        １．OAISERVER_FILE_BATCH_ENABLE : ファイルからレスポンスを作成する機能のON/OFFフラグ
+        ２．OAISERVER_FILE_BATCH_FORMATS : ファイル作成するフォーマット。
+        ３．CELERY_BEAT_SCHEDULE : ファイル作成をする実行間隔。
+        ４．OAISERVER_FILE_BATCH_STORAGE_LOACTION : ファイルを保存するストレージのロケーション。
 
 <!-- end list -->
 
