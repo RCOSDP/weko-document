@@ -146,7 +146,7 @@
 | browser_version | バージョン|
 | os | os|
 | device| デバイス|
-| organizationName | 　shibboleth認証を行った機関の名称</br> 本項目には、Shibboleth認証時に返却されるOrganizationName(jao)の値を設定する。 </br> ローカル認証およびOrganizationNameが返却されなかった場合はNullとする。|
+| organizationName | 　shibboleth認証を行った機関の名称</br> 本項目には、Shibboleth認証時にレスポンスのボディで返却されるJaOrganizationName(jao)の値を設定する。 </br> ローカル認証およびJaOrganizationNameが返却されなかった場合はNullとする。|
 
   - > 更新履歴
 
