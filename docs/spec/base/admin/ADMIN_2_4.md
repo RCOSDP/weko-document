@@ -10,36 +10,12 @@
 
 ## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○※</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+|ロール|システム<br>管理者|リポジトリ<br>管理者|サブリポジトリ<br>管理者|登録ユーザー|一般ユーザー|ゲスト<br>(未ログイン)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|利用可否|○|○|○※| | | |
 
-※コミュニティ管理者は、自身の管理下にあるコミュニティに関連付けられたインデックスへのインポートのみ可能
+
+※サブリポジトリ管理者は、自身の管理下にあるサブリポジトリに関連付けられたインデックスへのインポートのみ可能
 
 ## 機能内容
 
@@ -2094,7 +2070,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
   - テンポラリファイルの格納先は環境変数(docker-compose.yml) で設定できるようにする  
     <https://docs.python.org/3/library/tempfile.html#tempfile.gettempdir>
 
-6. 排他処理
+1. 排他処理
 
 インポート処理中「cache::import_start_time」キーに現在時間を格納する。キーは/admin/items/import/check_import_is_availableを呼び出すことでインポート処理の有無を確認しキーを削除する。
 
@@ -2135,28 +2111,8 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
   - > 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>2024/07/1</p>
-</blockquote></td>
-<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
-<td>v1.0.7対応</td>
-</tr>
-</tbody>
-</table>
+|日付|GitHubコミットID|更新内容|
+|:---:|:---:|:---:|
+|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|> 2024/07/01|7733de131da9ad59ab591b2df1c70ddefcfcad98|v1.0.7対応|
+|> 2025/01/23|-|サブリポジトリ対応|
