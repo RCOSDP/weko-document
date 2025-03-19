@@ -9,15 +9,18 @@
 
   - > 利用方法
 
-1\. システム管理者、リポジトリ管理者でログインする。
+1\. システム管理者、リポジトリ管理者、サブリポジトリ管理者でログインする。
 
 2.【Administration\>インデックスツリー管理(Index Tree)\>ツリー編集(Edit Tree)】画面を開く。
 
   - > 利用可能なロール
 
-| ロール   | システム管理者 | リポジトリ管理者 | サブリポジトリ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
-| -------- | -------------- | ---------------- | -------------------- | ------------ | ------------ | ------------------ |
-| 利用可否 | ○              | ○                | ○                    |              |              |                    |
+
+|ロール|システム<br>管理者|リポジトリ<br>管理者|サブリポジトリ<br>管理者|登録ユーザー|一般ユーザー|ゲスト<br>(未ログイン)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|利用可否|○|○|○※| | | |
+
+※ サブリポジトリ管理者の場合は、管理対象のサブリポジトリに設定したインデックスをルートとしたインデックスツリーが表示される。
 
   - > 機能内容
 
@@ -263,42 +266,41 @@
         
           - index\_tree\_view\_" + os.environ.get('INVENIO\_WEB\_HOST\_NAME') + "\_" + lang
 
-  - インデックスツリー設定値
 
-| #   | 項目(日本語)       | DBキー                     | デフォルト値                         | 備考                                                     |
-| --- | ------------------ | -------------------------- | ------------------------------------ | -------------------------------------------------------- |
-| 1   | なし               | id                         | (現在の時間を元にしたもの)           | time.timeメソッドに1000を掛けた値                        |
-| 2   | なし               | parent                     | (親インデックスのID)                 | rootindex下なら初期値0                                   |
-| 3   | インデックス       | index_name                 | New Index                            |                                                          |
-| 4   |                    | index_name_english         | New Index                            | 必須事項                                                 |
-| 5   | インデックスURL    | index_url                  | https://XXX.YYY.ZZZ                  | インデックス作成時に作成したインデックスのエンドポイント |
-| 6   | CNRI               | cnri                       | https://AAA.BBBB.CCCC                | インデックス作成時に作成したCNRI                         |
-| 5   | コメント           | comment                    | None                                 |                                                          |
-| 6   | 公開               | public_state               | false                                |                                                          |
-| 7   |                    | public_date                | None                                 | yyyy/MM/dd HH:mm:ssの形式                                |
-| 8   |                    | recursive_public_state     | false                                |                                                          |
-| 9   | インデックスリンク | index_link_enabled         | false                                |                                                          |
-| 10  |                    | index_link_name            | None                                 |                                                          |
-| 11  |                    | index_link_name_english    | New Index                            | 必須事項                                                 |
-| 12  | 表示範囲           | more_check                 | false                                |                                                          |
-| 13  |                    | display_no                 | 5                                    | 表示数                                                   |
-| 14  | RSSアイコン        | rss_status                 | false                                |                                                          |
-| 15  | PDFCoverPage       | coverpage_state            | false                                |                                                          |
-| 16  |                    | recursive_coverpage_state  | None                                 |                                                          |
-| 17  | ハーベスト公開     | harvest_public_state       | true                                 |                                                          |
-| 18  | ONLINE_ISSN        | online_issn                | None                                 |                                                          |
-| 19  |                    | biblio_flag                | None                                 |                                                          |
-| 20  | 閲覧権限           | browsing_role              | 3,-98,-99                            | ロールID                                                 |
-| 21  |                    | recursive_browsing_role    | false                                |                                                          |
-| 22  |                    | browsing_group             | (現在存在するすべてのグループを許可) |                                                          |
-| 23  |                    | recursive_browsing_group   | false                                |                                                          |
-| 24  | 投稿権限           | contribute_role            | 1,2,3,4,-98,-99                      |                                                          |
-| 25  |                    | recursive_contribute_role  | false                                |                                                          |
-| 26  |                    | contribute_group           | (現在存在するすべてのグループを許可) |                                                          |
-| 27  |                    | recursive_contribute_group | false                                |                                                          |
-| 28  | 表示形式           | display_format             | 1(一覧形式を表す)                    | 1:一覧形式<br>2:目次形式                                 |
-| 29  | サムネイル         | image_name                 | None                                 | 値に入るのはサムネイル画像のパスを表す文字列             |
-
+|インデックスツリー設定値| | | | |
+|:----|:----|:----|:----|:----|
+|\#|項目(日本語)|DBキー|デフォルト値|備考|
+|1|なし|id|(現在の時間を元にしたもの)|time.timeメソッドに1000を掛けた値|
+|2|なし|parent|(親インデックスのID)|rootindex下なら初期値0|
+|3|インデックス|index_name|New Index| |
+|4| |index_name_english|New Index|必須事項|
+|5|コメント|comment|None| |
+|6|公開|public_state|false| |
+|7| |public_date|None|yyyy/MM/dd HH:mm:ssの形式|
+|8| |recursive_public_state|false| |
+|9|インデックスリンク|index_link_enabled|false| |
+|10| |index_link_name|None| |
+|11| |index_link_name_english|New Index|必須事項|
+|12|表示範囲|more_check|false| |
+|13| |display_no|5|表示数|
+|14|RSSアイコン|rss_status|false| |
+|15|PDFCoverPage|coverpage_state|false| |
+|16| |recursive_coverpage_state|None| |
+|17|ハーベスト公開|harvest_public_state|true| |
+|18|ONLINE_ISSN|online_issn|None| |
+|19| |biblio_flag|None| |
+|20|閲覧権限|browsing_role|3,-98,-99|ロールID|
+|21| |recursive_browsing_role|false| |
+|22| |browsing_group|(現在存在するすべてのグループを許可)| |
+|23| |recursive_browsing_group|false| |
+|24|投稿権限|contribute_role|1,2,3,4,-98,-99| |
+|25| |recursive_contribute_role|false| |
+|26| |contribute_group|(現在存在するすべてのグループを許可)| |
+|27| |recursive_contribute_group|false| |
+|28|表示形式|display_format|1(一覧形式を表す)|1:一覧形式|
+| |
+|2:目次形式|
+|29|サムネイル|image_name|None|値に入るのはサムネイル画像のパスを表す文字列|
 
   - インデックス編集について
     
@@ -321,9 +323,10 @@
 
 ## 更新履歴
 
-| 日付       | GitHubコミットID                         | 更新内容   |
-| ---------- | ---------------------------------------- | ---------- |
-| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成   |
-| 2024/07/01 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
-| 2024/08/27 | f49b016c92ef98e0656947bf651ca1a2f3dbc286 | v1.0.8     |
-| 2025/03/14 | xxxxxxxxxxxx                             | v1.1.0    |
+|日付|GitHubコミットID|更新内容|
+|:---:|:---:|:---:|
+|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|> 2024/07/01|7733de131da9ad59ab591b2df1c70ddefcfcad98|v1.0.7対応|
+|> 2024/08/27|f49b016c92ef98e0656947bf651ca1a2f3dbc286|v1.0.8|
+|> 2025/01/23|-|サブリポジトリ対応|
+

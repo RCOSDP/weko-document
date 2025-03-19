@@ -212,6 +212,11 @@
 - アクティビティを開いているユーザはredisのキー「workflow_locked_activity_<avtivity_id>」に値「<user_id>-str(int(datetime.timestamp(datetime.now()) * 10 ** 3))」という形式で格納される
 - アクティビティのロック解除はブラウザの「beforeunloadイベント」 や 「unloadイベント」をとらえ、アンロックを行うAPIを呼び出している。※「beforeunloadイベント」 や 「unloadイベント」の発火率がブラウザにより安定しないため、ユーザが自身でアンロックするボタンも設けた。
 
+| Redisキー名 | 説明 |キー名例|値例|
+| ---- | ---- |---- | ---- |
+| workflow_userlock_activity_<user_id> | TD |cache::workflow_userlock_activity_1||
+| workflow_locked_activity_<avtivity_id> | TD |cache::workflow_locked_activity_A-20241031-00004||
+
 
 ## 更新履歴
 
