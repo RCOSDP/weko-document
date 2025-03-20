@@ -23,15 +23,17 @@
 ## 画面仕様
 
 ## RO-Crate+BagItファイルの構成
-RO-Crate+BagItファイルは、以下の構成である必要がある。
+RO-Crate+BagItファイルは、以下の構成である必要がある。  
+参照：[Adding RO-Crate to Bagit](https://www.researchobject.org/ro-crate/specification/1.1/appendix/implementation-notes.html)
+
 
 ```plaintext
 ./ (bagit root)
  ├── bagit.txt
  ├── bag-info.txt
  ├── data/
+ │    ├── ro-crate-metadata.json
  │    └── <Files>
- ├── ro-crate-metadata.json
  ├── manifest-sha256.txt
  └── tagmanifest-sha256.txt
 ```
@@ -53,7 +55,8 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
 アイテムのメタデータは、`ro-crate-metadata.json`ファイルにJSON-LD形式で記述される。  
 `@graph`には、アイテムのメタデータを記述するエンティティが配列で格納される。  
 `@id`は、エンティティの識別子を示し、リンクトデータとしての参照先を示す。  
-すべてのメタデータは、ルートデータセット（`{"@id": "./"}`）に記述される。
+すべてのメタデータは、ルートデータセット（`{"@id": "./"}`）に記述され、
+ここにリンクトデータとしての参照先が指定されていないエンティティは、インポート時にすべて無視される。
 また、ルートデータセットを指定するエンティティ（`{"@id": "ro0crate-metadata.json"}`）が必須である。
 
 ```jsonc
@@ -94,8 +97,9 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
 }
 ```
 
-また、アイテムの含まれるファイルのメタデータは、`hasPart`プロパティを使用して指定する。  
-ここでは、すべてのファイルを`data/`ディレクトリ以下の相対パスで表現する。
+また、アイテムの含まれるすべてのファイルのメタデータは、`hasPart`プロパティを使用して指定する。  
+ここでは、すべてのファイルを`data/`ディレクトリ以下の相対パスで表現する。  
+[アイテム分離](#wkissplitedアイテム分割フラグ)の場合を除き、ルートデータセット以外のエンティティに`hasPart`プロパティにファイルを指定しても無視される。
 
 ```json
 {
@@ -148,6 +152,8 @@ TSV形式のメタデータ項目とシステム向け語彙について、定�
 | wk:textExtraction                          | -                    | 真偽値             | true         | File                 | 全文検索用本文抽出フラグ |
 | wk:saveAsIs                                | -                    | 真偽値             | false        | Dataset              | 登録用ファイル保存フラグ |
 | wk:isSplited                               | -                    | 真偽値             | false        | File                 | アイテム分割フラグ       |
+
+※ 登録用ファイル保存フラグとアイテム分割フラグが両方`true`の場合、アイテム分割フラグが優先され、ファイルは展開されて保存される。
 
 ### wk:index：インデックスID
 

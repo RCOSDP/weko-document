@@ -28,11 +28,11 @@
 
 - **JSON-LD形式のメタデータ**：  
   JSON-LD（JavaScript Object Notation for Linked Data）で記述されたアイテムのメタデータ。  
-  インポート対象のRO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルや、SWORD BagItの`metadata/sword.json`内容がこれに該当する。
+  インポート対象のRO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルや、SWORD BagItの`metadata/sword.json`の内容がこれに該当する。
 
 - **マッピング定義**：  
   登録先アイテムタイプと、JSON-LD形式のメタデータのスキーマの対応をJSON形式で記したもの。  
-  データベースの"_public.sword_item_type_mappings"テーブルに以下のフィールドで保存される。
+  データベースの"_public.jsonld_mappings"テーブルに以下のフィールドで保存される。
 
   - マッピング定義ID: int
   - マッピング定義: json
@@ -54,7 +54,7 @@
 JSON-LDのメタデータにないプロパティをアイテムタイプにマッピングする場合、`$`をプレフィックスとして指定することで固定値として扱うことができる。  
 また、マッピング先のないプロパティをまとめて保持するプロパティを"extra"に対応付けて定義することができる。
 
-```jsonc
+```json
 {
   "Title": "dc:title",
   "Title.タイトル": "dc:title.value",
@@ -220,11 +220,38 @@ JSON-LDのメタデータにないプロパティをアイテムタイプにマ�
 }
 ```
 
+### 制約事項
+
+- マッピング処理は、原則として`ro-crate-metadata.json`および`sword.json`に記述される値のみをアイテムタイプにマッピングする。
+- JSON-LDのメタデータに使用されるキーは、階層化されるときに同じキーを複数回使用することはできない。
+- 日付のフォーマットを変換する処理は行わない。  
+  日付のフォーマットが異なる場合は、アイテムタイプのバリエーションチェックエラーとなるため、`YYYY-MM-DD`形式で記述する必要がある。
+
+
 ## 関連モジュール
 
-- weko_search_ui：マッピング定義の永続化およびマッピング処理を実行する。
+- weko_search_ui：マッピング処理を実行する
+
+- weko_records：マッピング定義を管理する
+
 
 ## 関連テーブル
+
+  - jsond_mapping：アイテムタイプとjpcoar語彙のマッピング情報を保持する
+
+    - id：マッピング定義ID
+    - name：マッピング定義名
+    - mapping：マッピング定義(JSON)
+    - item_type_id：アイテムタイプID
+    - version_id：バージョンID
+    - is_delete：論理削除フラグ
+
+  - jsonld_mapping：マッピング定義を保持する
+
+    - id：ID
+    - item_type_id：アイテムタイプID
+    - mapping：マッピング定義(JSON)
+
 
 ## 処理概要
 

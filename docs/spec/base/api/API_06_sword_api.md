@@ -23,13 +23,13 @@ XMLおよびJSON-LD形式のメタデータを含むZIPファイルをワーク�
 
 ### エンドポイント：
 
-| 項番 | HTTP request                  | 内容                                                                                                          |
-| :--: | ----------------------------- | ------------------------------------------------------------------------------------------------------------- |
-|  1   | GET /sword/service-document   | リポジトリのサービスドキュメントを取得する。                                                                  |
-|  2   | POST /sword/service-document  | WEKO3の一括登録フォーマットを用いて、アイテムを登録する。                                                     |
-|  3   | GET /sword/deposit/<recid>    | recidを指定してリポジトリ上に存在するアイテムのステータスドキュメントを取得する。                             |
-|  4   | PUT /sword/deposit/<recid>    | recidを指定してリポジトリ上に存在するアイテムに対して、JSON-LD形式のメタデータで更新する。<br/>※現在は未実装 |
-|  5   | DELETE /sword/deposit/<recid> | recidを指定してアイテムを削除する。                                                                           |
+| 項番 | HTTP request                   | 内容                                                                                                          |
+| :--: | ------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+|  1   | GET /sword/service-document    | リポジトリのサービスドキュメントを取得する。                                                                  |
+|  2   | POST /sword/service-document   | WEKO3の一括登録フォーマットを用いて、アイテムを登録する。                                                     |
+|  3   | GET /sword/deposit/\<recid>    | recidを指定してリポジトリ上に存在するアイテムのステータスドキュメントを取得する。                             |
+|  4   | PUT /sword/deposit/\<recid>    | recidを指定してリポジトリ上に存在するアイテムに対して、JSON-LD形式のメタデータで更新する。<br/>※現在は未実装 |
+|  5   | DELETE /sword/deposit/\<recid> | recidを指定してアイテムを削除する。                                                                           |
 
 
 ### CURLでのリクエスト実行例：
@@ -166,7 +166,7 @@ $ curl -X POST -s -k https://192.168.56.101/sword/service-document -F "file=@imp
 
 #### GET /sword/deposit/\<recid\>
 
-```
+```shell
 curl -X GET https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer Dp85qdLJefoKZ9AuUeIVCqL0Zj9lHxulU1ZSqWGZKI0xJUfxA4wKFnWgztEo"
 ```
 
@@ -175,7 +175,7 @@ curl -X GET https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer Dp85
 
 #### DELETE /sword/deposit/\<recid\>
 
-```
+```shell
 curl -X DELETE https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer Dp85qdLJefoKZ9AuUeIVCqL0Zj9lHxulU1ZSqWGZKI0xJUfxA4wKFnWgztEo"
 ```
 
@@ -222,7 +222,7 @@ GET /sword/service-document
 | ヘッダー      | 必須 | 説明                                                                                                                  | 例                                      |
 | ------------- | ---- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
 | Authorization |  ○  | 操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。<br/>"Bearer" + " (半角スペース)" + "トークン"の形式。 | "Bearer fVzaeTNY5PCHsNS3rZOARrYR7kPBl4" |
-| On-Behalf-Of  |  -   | 代理投稿ユーザーのメールアドレス、ePPNなどを指定する。                                                                |                                         |
+| On-Behalf-Of  |  -   | 代理投稿ユーザーのメールアドレス、パーソナルアクセストークンまたはePPNが入る。                                        |                                         |
 
 #### レスポンスコード
 
@@ -254,10 +254,10 @@ POST /sword/service-document
 | Authorization       | ○     | 操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。<br/>"Bearer" + " (半角スペース)" + "トークン"の形式。                                                                                                                                                                  | "Bearer fVzaeTNY5PCHsNS3rZOARrYR7kPBl4"                                                                    |
 | On-Behalf-Of        | -      | 代理投稿ユーザーのメールアドレス、パーソナルアクセストークンまたはePPNが入る。                                                                                                                                                                                                         | パーソナルアクセストークン: <br>　　"e0Pke8qpzEkkGjPE1RoSqNw7qu3tH4..."<br>ePPN: "sample@sampleuniv.ac.jp" |
 | Content-Disposition | ○     | リクエストボディに付加したファイルのファイル名を指定する。                                                                                                                                                                                                                             | "attachment; filename=example.zip"                                                                         |
-| Content-Length      | ※     | リクエストボディに付加したファイルサイズを指定する。<br/>※ファイルサイズ検証設定([設定値:29](#conf29))が有効の場合、必須。                                                                                                                                                            | 1024000                                                                                                    |
+| Content-Length      | ※     | リクエストボディに付加したファイルサイズを指定する。<br/>※ファイルサイズ検証設定（[設定値:29](#conf24)）が有効の場合、必須。                                                                                                                                                          | 1024000                                                                                                    |
 | Content-Type        | ○     | リクエストボディにファイルを付加するため "multipart/form-data" を指定する。                                                                                                                                                                                                            | multipart/form-data; boundary=xxxxxxxx                                                                     |
 | Packaging           | ○     | パッケージフォーマットと指定する。<br/>SWORDでは以下の3つのパッケージフォーマットが定義されている。<br/>http://purl.org/net/sword/3.0/package/Binary<br/>http://purl.org/net/sword/3.0/package/SimpleZip<br/>http://purl.org/net/sword/3.0/package/SWORDBagIt<br/>※現在Binaryは未対応 | "http://purl.org/net/sword/3.0/package/SimpleZip"                                                          |
-| Digest              | ※     | ボディに付加したファイルのハッシュ値を指定する。<br/>※ダイジェスト検証設定([設定値:28](#conf28))が有効の場合、メタデータのファイルがJSON-LD形式であるときに必須。                                                                                                                     | "SHA-256=e0Pke8qpzEkkGjPE1RoSqNw7qu3tH4..."                                                                |
+| Digest              | ※     | ボディに付加したファイルのハッシュ値を指定する。<br/>※ダイジェスト検証設定（[設定値:28](#conf23)）が有効の場合、メタデータのファイルがJSON-LD形式であるときに必須。                                                                                                                     | "SHA-256=e0Pke8qpzEkkGjPE1RoSqNw7qu3tH4..."                                                                |
 
 
 #### ボディ
@@ -296,7 +296,7 @@ GET /sword/deposit/\<recid\>
 | フィールド         | 必須 | 説明                                                                                                                  | 例                                      |
 | ------------------ | ---- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
 | Authorization      | ○   | 操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。<br/>"Bearer" + " (半角スペース)" + "トークン"の形式。 | "Bearer fVzaeTNY5PCHsNS3rZOARrYR7kPBl4" |
-| On-Behalf-Of       | -    | 操作するWEKOユーザーのOAuth認証情報。<br/>"Bearer" + " (半角スペース)" + "アクセストークン"の形式で指定する。         | "user@example.com"                      |
+| On-Behalf-Of       | -    | 代理投稿ユーザーのメールアドレス、パーソナルアクセストークンまたはePPNが入る。                                        | "user@example.com"                      |
 
 
 #### パスパラメータ
@@ -334,7 +334,7 @@ DELETE /sword/deposit/\<recid\>
 | フィールド         | 必須 | 説明                                                                                                                  | 例                                      |
 | ------------------ | ---- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
 | Authorization      | ○   | 操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。<br/>"Bearer" + " (半角スペース)" + "トークン"の形式。 | "Bearer fVzaeTNY5PCHsNS3rZOARrYR7kPBl4" |
-| On-Behalf-Of       | -    | 操作するWEKOユーザーのOAuth認証情報。<br/>"Bearer" + " (半角スペース)" + "アクセストークン"の形式で指定する。         | "user@example.com"                      |
+| On-Behalf-Of       | -    | 代理投稿ユーザーのメールアドレス、パーソナルアクセストークンまたはePPNが入る。                                        | "user@example.com"                      |
 
 
 #### パスパラメータ
@@ -523,7 +523,7 @@ DELETE /sword/deposit/\<recid\>
     - mapping_id：マッピング定義ID
     - workflow_id：ワークフローID
 
-  - sword_item_type_mappings：アイテムタイプとJSON-LD語彙のマッピング定義設定を保持する
+  - jsonld_mappings：アイテムタイプとJSON-LD語彙のマッピング定義設定を保持する
 
     - id：マッピング定義ID
     - name：マッピング定義名
@@ -568,9 +568,9 @@ DELETE /sword/deposit/\<recid\>
 1. リクエストをチェックする
     - **`Authorization`** ヘッダーに記載されたアクセストークンを使用しユーザーを認証する。  
       アクセストークンのScopeを確認し、`deposit:write`が与えられていなければエラーとする。
-    - **`On-Behalf-Of`** ヘッダーが存在する場合、`On-Behalf-Of`許容設定([設定値:15](#conf15))が無効であればエラー([メッセージ:03](#err03))とする。
+    - **`On-Behalf-Of`** ヘッダーが存在する場合、`On-Behalf-Of`許容設定（[設定値:15](#conf15)）が無効であればエラー([メッセージ:03](#err03))とする。
     - **`Content-Length`** ヘッダーおよびファイルサイズを検証する。  
-      ファイルサイズ検証設定（[設定値:29](#conf29)）が有効であれば、`Content-Length`ヘッダーと実際のファイルサイズを比較し、不一致であればエラー([メッセージ:07](#err07))とする。  
+      ファイルサイズ検証設定（[設定値:29](#conf24)）が有効であれば、`Content-Length`ヘッダーと実際のファイルサイズを比較し、不一致であればエラー([メッセージ:07](#err07))とする。  
       `Content-Length`ヘッダーの値あるいはファイルサイズがアップロードのサイズ上限（[設定値:19](#conf19)）を上回っていればエラー([メッセージ:08](#err08))とする。
     - **`Content-Disposition`** ヘッダーを解析する。  
       値が`attachment`かつオプションにファイル名が指定されているかを確認し、満たさない場合はエラー([メッセージ:11](#err11))とする。
@@ -582,7 +582,7 @@ DELETE /sword/deposit/\<recid\>
       値の末尾が`SimpleZip`のとき、`ro-crate-metadata.json`ファイルが存在すればRO-Crate+BagIt形式と判定し、なければTSV/CSVあるいはXML形式と判定する。  
       値がその他の場合はエラー([メッセージ:10](#err10))とする。
     - **`Digest`** ヘッダーを検証する。  
-      メタデータ形式がJSON-LD、かつダイジェスト検証設定（[設定値:28](#conf28)）が有効であるとき、Digestとリクエストボディのハッシュ値が一致しなければエラー([メッセージ:13](#err13))とする。
+      メタデータ形式がJSON-LD、かつダイジェスト検証設定（[設定値:28](#conf23)）が有効であるとき、Digestとリクエストボディのハッシュ値が一致しなければエラー([メッセージ:13](#err13))とする。
 
     ※ SWORD APIでは使用可能なエラータイプが定められているため、適切なエラータイプが存在しない場合はBadRequest(エラーコード400)とし、エラードキュメントにエラー原因を記述し返却する。
 
@@ -607,7 +607,7 @@ DELETE /sword/deposit/\<recid\>
     - メタデータのマッピングを行わない
 
     **XML形式**
-    - メタデータをアイテムタイプにマッピングするo
+    - メタデータをアイテムタイプにマッピングする。
     - アイテムタイプとjpcoar語彙のマッピング定義からのキーが一致するXMLのメタデータの属性値を探す。
     - 新しいJSONを作成し対応する「item_xxxx」をキー、対応するXMLのメタデータ部分を値とする。
 
@@ -622,7 +622,7 @@ DELETE /sword/deposit/\<recid\>
     - マッピング結果に基づいて、メタデータのバリデートや必須項目のチェックを行い、問題があればエラーとする。
     - 登録先インデックスの状態やアイテムの公開ステータスのチェックを行い、問題があればエラーとする。
     - アクセストークンにアイテム公開に必要なスコープが付与されていない場合はエラーとする。
-    - `On-Behalf-Of`ヘッダーが存在する場合、取得しアイテムの代理投稿者情報とする。
+    - `On-Behalf-Of`ヘッダーが存在する場合、その値を取得しアイテムの代理投稿者情報とする。
     - 登録用ファイル保存フラグ（[wk:saveAsIs](../admin/ADMIN_2_5.md#saveAsIs)）が有効であれば、メタデータを含むZIPファイルそのものをアイテムのファイルとして
       登録するようにメタデータを作成する。
     - マッピング先が無いメタデータはテキストエリアに保存する。
@@ -855,36 +855,7 @@ DELETE /sword/deposit/\<recid\>
   ```python
   "Workflow ID is required for workflow registration."
   ```
-<!-- 
-33. ```dict``` 内にキーが存在しない場合<span id="err33">
-  ```python
-  "Invalid mapping definition: Value: [プロパティの値] got from [プロパティのキー] but still need to get [以降のプロパティのキー]."
-  ```
 
-34. ```list``` 内に ```list``` が含まれている場合<span id="err34">
-  ```python
-  "Invalid metadata file: List in list not supported."
-  ```
-
-35. ```dict``` 内にキーが存在しない場合<span id="err35">
-  ```python
-  "Invalid mapping definition: Value: [プロパティの値] got from list but still need to get [以降のプロパティのキー]."
-  ```
-
-36. ```dict``` 内の値が ```dict``` であり、さらにキーが必要な場合<span id="err36">
-  ```python
-  "Invalid mapping definition: Value is dict but still need to get more keys."
-  ```
-
-37. ```type_of_item_type_path``` の長さが ```item_map_keys``` の長さと一致しない場合<span id="err37">
-  ```python
-  f"Failed in mapping process: type_of_item_type_path length: [type_of_item_type_pathの長さ] is not equal to item_map_keys length: [item_map_keysの長さ]."
-  ```
-
-38. ```type_of_item_type_path``` が ```value``` で終わらない、または ```value``` が1回以上含まれている場合<span id="err38">
-  ```python
-  "Failed in mapping process: type_of_item_type_path must contain exactly one 'value' element at the end."
-  ``` -->
 
 ## サーバー設定値
 
@@ -1036,170 +1007,18 @@ DELETE /sword/deposit/\<recid\>
     ```python
     WEKO_SWORDSERVER_SERVICEDOCUMENT_MAX_SEGMENTS = 1000
     ```
-<!-- 
-23. 登録方式の列挙型クラス
 
-    ```python
-    WEKO_SWORDSERVER_REGISTRATION_TYPE = SwordClientModel.RegistrationType
-    ```
-
-    - `Direct` (1): Direct registration.
-    - `Workfolw` (2): Workflow registration. -->
-
-24. RO-Crate+BagItのメタデータファイル名
-
-    ```python
-    WEKO_SWORDSERVER_METADATA_FILE_ROCRATE = "ro-crate-metadata.json"
-    ```
-
-25. SWORDBagItのメタデータファイル名
-
-    ```python
-    WEKO_SWORDSERVER_REQUIRED_FILES_SWORD = "metadata/sword.json"
-    ```
-<!-- 
-26. データセット識別子に付与するプレフィックス
-
-    ```python
-    WEKO_SWORDSERVER_DATASET_PREFIX = "weko-"
-    ```
-
-27. データセット識別子の置換設定
-
-    ```python
-    WEKO_SWORDSERVER_DATASET_ROOT = {
-        "": "./",
-        "enc": base64.b64encode(f"{WEKO_SWORDSERVER_DATASET_PREFIX}./".encode("utf-8")).decode("utf-8")
-    }
-    ``` -->
-
-28. クライアントにダイジェストを送信することを要求するか<span id="conf28">
+23. クライアントにダイジェストを送信することを要求するか<span id="conf23">
 
     ```python
     WEKO_SWORDSERVER_DIGEST_VERIFICATION = True
     ```
 
-29. リクエストに Content-Length ヘッダーを要求するか<span id="conf29">
+24. リクエストに Content-Length ヘッダーを要求するか<span id="conf24">
 
     ```python
     WEKO_SWORDSERVER_CONTENT_LENGTH = False
     ```
-<!-- 
-30. データセットのzipファイルをアイテムとして登録するか<span id="conf30">
-
-    ```python
-    WEKO_SWORDSERVER_DEPOSIT_DATASET = False
-    ``` -->
-
-
-<!--
-## 付録
-
-### 2. JSON-LD形式メタデータからのWEKO3アイテムタイプへのマッピング処理仕様
-
-#### 用途・目的
-
-JSON-LD形式メタデータをマッピング定義に従ってWEKO3の登録先アイテムタイプに変換する。
-
-#### 概要
-
-本マッピング処理は、JSON-LD形式で送られてくるメタデータの各プロパティが、JSON-LDファイルのどこに記載されていて、それがアイテムタイプのどこに格納されるのかを、マッピング定義から判断して、アイテムタイプへの変換を行うものである。
-
-事前にSWORD API経由で送られてくるファイルの形式を判断し、JSON-LD形式のメタデータを含む場合のみ、本マッピング処理を実行する。
-
-マッピング処理が完了したら、その結果を用いた登録処理へと進む。
-
-#### 必須情報
-
-マッピング処理で必要となる情報は、以下の3つである。
-
-| 項目 | 詳細 | 取得方法 |
-| --- | --- | --- |
-| JSON-LD形式メタデータ | rocrate_metadata.jsonやsowrd.jsonとして保持されるメタデータファイル。 | SWORD API経由で送られてくる **`リクエストボディ(ZIPファイル)`** から取得する。 |
-| マッピング定義 | マッピングの定義をJSON形式で記述したもの。 | OAuth APIのアクセストークンを用いてWEKO3のデータベースに保存されている **`マッピング定義設定`** から取得する。 |
-| アイテムタイプのスキーマ | WEKO3のアイテムにおけるメタデータの構造を定義したもの。 | OAuth APIのアクセストークンを用いてWEKO3のデータベースに保存されている **`マッピング定義設定`** からアイテムタイプIDを取得し、アイテムタイプIDに該当するアイテムタイプのスキーマを取得する。 |
--->
-<!-- ※ **`マッピング定義設定`** の詳細は、[テーブル定義書](./テーブル定義書.xlsx)を参照。 -->
-
-<!-- ※ マッピング定義は、以下のような構造をもつJSONデータであり、アイテムタイプでの該当項目が記載されたキーと、該当項目がJSON-LD形式メタデータのどこに記載されているかを表したものが記載された値のペアをプロパティとして持つ。
-
-```json
-{
-  "著者.名前": "author.name",
-  "著者.所属": "author.affiliation",
-  ...
-  "ファイル.サイズ": "file.fileSize"
-}
-```
-
-※ **`マッピング定義設定`** テーブルは以下のフィールドを持つ。
-
-| フィールド名 | 説明 |
-| --- | --- |
-| マッピング定義ID | マッピング定義の識別子。 |
-| マッピング定義名 | マッピング定義の名称。 |
-| マッピング定義 | 上記の例のような構造のJSONデータ。 |
-| アイテムタイプID | マッピング先のアイテムタイプのID。 |
-| バージョンID | バージョンの識別子。 |
-| 論理削除フラグ | 論理削除(物理的には削除されていない)されたかどうかのフラグ。 |
-
-
-#### 前提条件
-
-- 本マッピング処理は、JSON-LD形式のメタデータを含むファイルのみに対応している。前段のメタデータ形式を判断する処理の結果、メタデータ形式がJSON-LD形式であると判断した場合のみ、本マッピング処理を実行する。
-- マッピング定義には、必ずアイテムタイプで対応付が可能な項目のみが記述されている必要がある。アイテムタイプで対応付が不可能な項目(アイテムタイプには定義されていないプロパティに対する定義)がマッピング定義に記述されている場合、エラーとなる。
-
-#### 処理詳細
-
-##### 1. 前処理
-
-- マッピング処理が行えるよう、事前準備を行う。
-- [必須情報](#必須情報)に記載されている各情報を揃える。
-  1. JSON-LD形式メタデータの取得
-     - リクエストボディ(ZIPファイル)から取得する。
-  2. マッピング定義設定の取得
-     - アクセストークンを用いて、WEKO3のデータベースから取得する。
-  3. マッピング定義の取得
-     - マッピング定義設定から取得する。
-  4. アイテムタイプのスキーマの取得
-     - マッピング定義設定からアイテムタイプIDを取得する。
-     - 取得したアイテムタイプIDに該当するアイテムタイプのスキーマを取得する。
-
-##### 2. マッピング処理
-
-マッピング定義には、アイテムタイプでの該当項目と、それがJSON-LD形式メタデータのどこに記載されているかを示したもののペアが、一つずつ記述されている。
-
-この処理では、はじめにアイテムタイプの大元となる空のデータ(**`ベースデータ`** とする)を作成し、マッピング定義の情報一つずつに対し、以下の処理を行うことで **`ベースデータ`** を更新し、アイテムタイプを完成させる。
-
-###### 2-1. マッピング定義から、JSON-LD形式メタデータのプロパティの値を取得
-
-- マッピング定義に従って、JSON-LD形式メタデータのプロパティの値を取得する。
-- 該当するプロパティが存在しない場合はスキップする。
-
-###### 2-2. 格納先データ構造を作成し、プロパティの値を格納
-
-- アイテムタイプのスキーマに従って、プロパティを格納するデータ構造を、**`ベースデータ`** の中に作成する。
-- JSON-LD形式メタデータから取得したプロパティの値を、作成したデータ構造へ格納する。
-- 該当するプロパティが存在しない場合はスキップする。
-
-マッピング定義のすべての情報に対して[2-1](#2-1-マッピング定義からjson-ld形式メタデータのプロパティを取得)、[2-2](#2-2-格納先データ構造を作成しプロパティを格納)を行う。
-
-###### 2-3. マッピング定義に存在しないプロパティの処理
-
-- マッピング定義に存在しないプロパティがある場合、それらをアイテムタイプの **`extra`** にテキストでまとめて保持する。
-- 名称は任意で設定できる。
-- 以下のような形式で追加する。
-
-  例
-
-  ```json
-  {
-    "extra": "{"著者.出身: 東京", "ファイル.改行コード: LF"}"
-  }
-  ```
-
-以上の工程により、アイテムタイプを完成させる。
--->
 
 ## 更新履歴
 
@@ -1208,4 +1027,4 @@ JSON-LD形式メタデータをマッピング定義に従ってWEKO3の登録�
 | 2022/06/13 | e6db31c99d459605f5bc09f15c4abd07ea573428   | 初版作成                                        |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | ADMIN-2-4へのリンクを追加                       |
 | 2024/02/12 | 91e291b7bdb24c0f6cbc65d603f2f9427cd0f031   | JSON-LD形式のメタデータ登録機能を追加           |
-| 2025/03/07 |                                            | JSON-LD形式メタデータのマッピング処理仕様を削除 |
+| 2025/03/07 | 6918f05b5dccb52126c36afb5f9b180e847c958f   | アイテムの分割機能について追記                  |
