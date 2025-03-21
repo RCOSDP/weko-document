@@ -50,6 +50,16 @@
         
           - デフォルト値：「New Index」
     
+      - 「インデックスURL」（Index URL）
+        
+          - インデックスの固定URLを表示する。  
+            ※表示のみ。編集は行えない。
+
+      - 「CNRI」（CNRI）
+        
+          - インデックスのCNRIが存在する場合、表示する。  
+            ※表示のみ。編集は行えない。
+
       - 「コメント」（Comment）
         
           - インデックスのコメントを入力する。
@@ -268,39 +278,39 @@
 
 
 |インデックスツリー設定値| | | | |
-|:----|:----|:----|:----|:----|
+|:---:|:---:|:---:|:---:|:---:|
 |\#|項目(日本語)|DBキー|デフォルト値|備考|
 |1|なし|id|(現在の時間を元にしたもの)|time.timeメソッドに1000を掛けた値|
 |2|なし|parent|(親インデックスのID)|rootindex下なら初期値0|
 |3|インデックス|index_name|New Index| |
 |4| |index_name_english|New Index|必須事項|
-|5|コメント|comment|None| |
-|6|公開|public_state|false| |
-|7| |public_date|None|yyyy/MM/dd HH:mm:ssの形式|
-|8| |recursive_public_state|false| |
-|9|インデックスリンク|index_link_enabled|false| |
-|10| |index_link_name|None| |
-|11| |index_link_name_english|New Index|必須事項|
-|12|表示範囲|more_check|false| |
-|13| |display_no|5|表示数|
-|14|RSSアイコン|rss_status|false| |
-|15|PDFCoverPage|coverpage_state|false| |
-|16| |recursive_coverpage_state|None| |
-|17|ハーベスト公開|harvest_public_state|true| |
-|18|ONLINE_ISSN|online_issn|None| |
-|19| |biblio_flag|None| |
-|20|閲覧権限|browsing_role|3,-98,-99|ロールID|
-|21| |recursive_browsing_role|false| |
-|22| |browsing_group|(現在存在するすべてのグループを許可)| |
-|23| |recursive_browsing_group|false| |
-|24|投稿権限|contribute_role|1,2,3,4,-98,-99| |
-|25| |recursive_contribute_role|false| |
-|26| |contribute_group|(現在存在するすべてのグループを許可)| |
-|27| |recursive_contribute_group|false| |
-|28|表示形式|display_format|1(一覧形式を表す)|1:一覧形式|
-| |
-|2:目次形式|
-|29|サムネイル|image_name|None|値に入るのはサムネイル画像のパスを表す文字列|
+|5|インデックスURL| |(インデックスの固定URL)|※表示のみ|
+|6|CNRI| |(インデックスのCNRI)|※表示のみ|
+|7|コメント|comment|None| |
+|8|公開|public_state|false| |
+|9| |public_date|None|yyyy/MM/dd HH:mm:ssの形式|
+|10| |recursive_public_state|false| |
+|11|インデックスリンク|index_link_enabled|false| |
+|12| |index_link_name|None| |
+|13| |index_link_name_english|New Index|必須事項|
+|14|表示範囲|more_check|false| |
+|15| |display_no|5|表示数|
+|16|RSSアイコン|rss_status|false| |
+|17|PDFCoverPage|coverpage_state|false| |
+|18| |recursive_coverpage_state|None| |
+|19|ハーベスト公開|harvest_public_state|true| |
+|20|ONLINE_ISSN|online_issn|None| |
+|21| |biblio_flag|None| |
+|22|閲覧権限|browsing_role|3,-98,-99|ロールID|
+|23| |recursive_browsing_role|false| |
+|24| |browsing_group|(現在存在するすべてのグループを許可)| |
+|25| |recursive_browsing_group|false| |
+|26|投稿権限|contribute_role|1,2,3,4,-98,-99| |
+|27| |recursive_contribute_role|false| |
+|28| |contribute_group|(現在存在するすべてのグループを許可)| |
+|29| |recursive_contribute_group|false| |
+|30|表示形式|display_format|1(一覧形式を表す)|1:一覧形式, 2:目次形式| |
+|31|サムネイル|image_name|None|値に入るのはサムネイル画像のパスを表す文字列|
 
   - インデックス編集について
     
