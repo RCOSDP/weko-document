@@ -276,11 +276,11 @@
 
   - > 関連モジュール
 
-<!-- end list -->
+    - > invenio\_communities
 
-  - > invenio\_communities
+  - > 関連テーブル
 
-<!-- end list -->
+    - > invenio\_communities
 
   - > 処理概要
 

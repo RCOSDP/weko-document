@@ -19,7 +19,7 @@
 管理者</th>
 <th>リポジトリ<br />
 管理者</th>
-<th>コミュニティ<br />
+<th>サブリポジトリ<br />
 管理者</th>
 <th>登録ユーザー</th>
 <th>一般ユーザー</th>
@@ -47,7 +47,7 @@
   - ユーザー画面のヘッダから［ログイン（Log in）］ボタンを押すと、ログイン画面に移動する
     
       - コンフィグの以下設定値の組み合わせに応じて、該当ログイン画面に移動する  
-        （シボレスログイン処理について、[ADMIN-14-19: Shibboleth](\\l) を参照）
+        （シボレスログイン処理について、[ADMIN-14-19: Shibboleth](../admin/ADMIN_14_19.md) を参照）
         
         1.  WEKO login only:
             
@@ -158,6 +158,13 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2024/03/14</p>
+</blockquote></td>
+<td>xxxxx</td>
+<td>W-OA-14_WEKO3サブリポジトリ管理・表示機能の開発対応</td>
 </tr>
 </tbody>
 </table>
