@@ -1,149 +1,76 @@
 
-### インポート
+# インポート
 
-  - > 目的・用途
+## 目的・用途
 
 本機能は、管理者として、アイテムの一括登録を実行する機能である。
 
-  - > 利用方法
+## 利用方法
 
 管理者は 【Administration \> アイテム管理（Items） \> インポート（Import）画面】を開き、アイテム一括登録用のzipファイルを登録する。
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○※</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+|  ロール  | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| -------- | -------------- | ---------------- | ------------------ | ------------ | ------------ | ------------------ |
+| 利用可否 |       〇       |        〇        |         〇         |      ×      |      ×      |        ×          |
 
 ※コミュニティ管理者は、自身の管理下にあるコミュニティに関連付けられたインデックスへのインポートのみ可能
 
-  - > 機能内容
-
-1\. 概要
+## 機能内容
 
   - 複数のアイテムを一括で登録する機能。システム管理者、リポジトリ管理者のみ使用できる。
-
   - 登録形式はBagitだが、ユーザにそれを意識させないようにしている。詳細はの1を参照。
-
   - 機能は3つの画面で構成されている。
-
   - 以下は各画面の関連と役割。
 
-> \+----------+ ≪選択画面≫
-> 
-> | | ●各アイテムタイプのTSVファイルテンプレートのダウンロード
-> 
-> | Select | ●インポートファイルの指定
-> 
-> | | ●「識別子変更モード」の設定と利用規約への同意
-> 
-> \+----------+
-> 
-> ↓
-> 
-> ↓【Next】 button click\!
-> 
-> ↓
-> 
-> \+----------+ ≪インポート画面≫
-> 
-> | | ●TSVファイルで指定した項目のチェック結果の確認
-> 
-> | Import | ●チェック結果のダウンロード
-> 
-> | |
-> 
-> \+----------+
-> 
-> ↓
-> 
-> ↓【Import】 button click\!
-> 
-> ↓
-> 
-> \+----------+ ≪結果画面≫
-> 
-> | | ●アイテムごとのインポート実行結果の確認
-> 
-> | Result | ●インポート実行結果のダウンロード
-> 
-> | |
-> 
-> \+----------+
+```
+    +-----------+ ≪選択画面≫
+    |           | ●各アイテムタイプのTSVファイルテンプレートのダウンロード
+    |  Select   | ●インポートファイルの指定
+    |           | ●「識別子変更モード」の設定と利用規約への同意
+    +-----------+
+        ↓
+        ↓【Next】 button click!
+        ↓
+    +-----------+ ≪インポート画面≫
+    |           | ●TSVファイルで指定した項目のチェック結果の確認
+    |  Import   | ●チェック結果のダウンロード
+    |           |
+    +-----------+
+        ↓
+        ↓【Import】 button click!
+        ↓
+    +-----------+ ≪結果画面≫
+    |           | ●アイテムごとのインポート実行結果の確認
+    |  Result   | ●インポート実行結果のダウンロード
+    |           |
+    +-----------+
+```
 
-2\. 画面ごとの仕様
+## 画面仕様
 
-2.1 選択画面(Select)
+### 選択画面(Select)
 
   - 各アイテムタイプのTSVファイルテンプレートのダウンロードとインポートファイルを指定する画面。  
     また「識別子変更モード」の設定と利用規約への同意を実施する
 
-> ────────────────────────────────────────────────
-> 
-> \#\# Message Area \#\# ★
-> 
-> ────────────────────────────────────────────────
-> 
-> ┌───────┐
-> 
-> │Select │Import Result
-> 
-> ┘ └─────────────────────────────────────
-> 
-> Select File 【Select File】①
-> 
-> Selected file name ②
-> 
-> □ Change Identifier Mode ③
-> 
-> 【Next】④
-> 
-> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-> 
-> Item Type Template
-> 
-> Item Type:\[ ⑤ \]【Download】⑥
+![選択画面](../media/media/image13.png)
 
 ★Message Area（管理画面共通）
 
-  - インポートファイルのチェックでエラーが発生した際にメッセージを表示する。
-
-  - 表示されるエラーメッセージは3.2(4)-1参照。
+  - インポートファイルのチェックでエラーが発生した際、画面上部にメッセージを表示する。
+  - 表示されるエラーメッセージは[3.2(4)-1](#形式チェック)参照。
 
 ①［ファイル選択（Select File）］ボタン
 
   - 押下するとファイル選択ダイアログを表示する。選択可能なファイルはzip形式で1つのみ。
 
-②Selected file name ラベル
+② Selected file name ラベル
 
   - ①で選択したファイル名を表示する。未選択時は「選択したファイル名（Selected file name）」を表示。
 
-③Change Identifier Mode チェックボックス
+③ [識別子変更モード（Change Identifier Mode）] チェックボックス
 
   - DOIやCNRIを変更する際に設定する。チェックありで④を押下すると「免責事項ダイアログ」が表示される。  
     免責事項の文面は以下（テキストファイルで保持。ファイルパスはコンフィグ管理→処理概要の2を参照）
@@ -153,25 +80,19 @@
   - チェックありの状態でImport画面に遷移してから選択画面に戻ると、選択ファイルを変更するまでは非活性になっており変更できない。
 
 > Japanese:
-> 
-> 免責事項：
-> 
-> ・本機能は設定にかかわらずDOIを強制的に変更します。
-> 
-> ・本機能は内容及び自機関で登録されているDOIについて十分に理解した上で作業を行なってください。
-> 
-> ・本機能の利用は、自機間の責任で行なってください。
-> 
-> ・本機能の利用により負った損害などについては、国立情報学研究所は一切の責任を追いません。
-> 
+>
+> 免責事項：  
+> \- 本機能は設定にかかわらずDOIを強制的に変更します。  
+> \- 本機能は内容及び自機関で登録されているDOIについて十分に理解した上で作業を行なってください。  
+> \- 本機能の利用は、自機間の責任で行なってください。  
+> \- 本機能の利用により負った損害などについては、国立情報学研究所は一切の責任を追いません。
+
 > English:
-> 
-> \- This function forcibly changes the DOI regardless of the setting.
-> 
-> \- Before starting this operation, you need fully understand the contents and DOI registered at your institution.
-> 
-> \- Use this function on your own responsibility.
-> 
+>
+> Disclaimer:  
+> \- This function forcibly changes the DOI regardless of the setting.  
+> \- Before starting this operation, you need fully understand the contents and DOI registered at your institution.  
+> \- Use this function on your own responsibility.  
 > \- National Institute of Informatics (NII) does not take any responsibility for damages caused by using this function.
 
 ④［次へ（Next）］ボタン
@@ -192,7 +113,7 @@
   - 押下すると⑤で選択したアイテムタイプのTSVファイルテンプレートをダウンロードする。  
     ファイルについては4.1参照。
 
-2.2 インポート画面(Import)
+### インポート画面(Import)
 
   - TSVファイルで指定した項目のチェック結果の確認とチェック結果のダウンロードができる。
 
@@ -303,7 +224,7 @@
 
   - チェック仕様については、3.2(4)-2\~3を参照
 
-2.3 結果画面(Result)
+### 結果画面(Result)
 
   - アイテムごとのインポート実行結果の確認とインポート実行結果のダウンロードができる。
 
@@ -363,9 +284,9 @@
 
   - 処理中のワークフローのステータスを表示する。
 
-3\. インポートファイル／TSVファイルについて
+## インポートファイル／TSVファイルについて
 
-3.1 インポートファイル
+### インポートファイル
 
   - エクスポート（一括出力）したファイルを流用できる
 
@@ -373,301 +294,137 @@
 
   - フォルダ構成
 
-> import.zip
-> 
-> │
-> 
-> ├bag-info.txt ※
-> 
-> ├bagit.txt ※
-> 
-> ├manifest-sha256.txt ※
-> 
-> ├manifest-sha512.txt ※
-> 
-> ├tagmanifest-sha256.txt ※
-> 
-> ├tagmanifest-shar512.txt ※
-> 
-> │
-> 
-> └/data
-> 
-> │
-> 
-> ├/recid\_n
-> 
-> │ └\<Files\>
-> 
-> │
-> 
-> ├ItemTypeName1(ItemType ID).tsv
-> 
-> └ItemTypeName2(ItemType ID).tsv
-> 
-> ※はBagit形式のファイル。インポート時は省略可能
+```plaintext
+./ (bagit root)
+  ├─bagit.txt ※
+  ├─bag-info.txt ※
+  ├─/data
+  │   ├─/recid_n
+  │   │   └─<Files>
+  │   ├─ItemTypeName1(ItemType ID).tsv
+  │   └─ItemTypeName2(ItemType ID).tsv
+  ├─manifest-sha256.txt ※
+  ├─manifest-sha512.txt ※
+  ├─tagmanifest-sha256.txt ※
+  └─tagmanifest-shar512.txt ※
+```
 
+※はBagit形式のファイル。インポート時は省略可能
   - 「/data」は変更不可
-
-  - 「/recid\_n」は変更可
-
+  - 「/recid_n」は変更可
   - アイテムタイプのTSVファイルは複数指定可能
 
-3.2 アイテムタイプごとのTSVファイル
+### アイテムタイプごとのTSVファイル
 
-  - 当該ファイルは以下で共通のレイアウトとしている。
-    
-      - Select画面でダウンロードできるテンプレートファイル(4.1)
-    
-      - インポートファイルに含めるアイテムタイプTSVファイル
-    
-      - エクスポート（一括出力）ファイルに含まれるアイテムタイプTSVファイル
+- 当該ファイルは以下で共通のレイアウトとしている。
+    - Select画面でダウンロードできるテンプレートファイル(4.1)
+    - インポートファイルに含めるアイテムタイプTSVファイル
+    - エクスポート（一括出力）ファイルに含まれるアイテムタイプTSVファイル
 
-(1) ヘッダ行
+1. ヘッダ行
 
-ヘッダ行は先頭が「\#」とする。
+    ヘッダ行は先頭が「\#」とする。
 
-  - 1行目：インポートするアイテムタイプの情報
+    **1行目**：インポートするアイテムタイプの情報
 
-| 1列目 | 「\#ItemType」固定                                                            |
-| --- | ------------------------------------------------------------------------- |
-| 2列目 | アイテムタイプ名                                                                  |
-| 3列目 | アイテムタイプのjsonschemaのURI。形式は「https://FQDN/items/jsonschema/\<ItemType ID\>」 |
+    | 1列目 | 「\#ItemType」固定                                                                       |
+    | ----- | ---------------------------------------------------------------------------------------- |
+    | 2列目 | アイテムタイプ名                                                                         |
+    | 3列目 | アイテムタイプのjsonschemaのURI。形式は「https://FQDN/items/jsonschema/<ItemType ID\>」 |
 
-  - 2行目：各項目のJSONパス。各種処理に使用される項目。
+    **2行目**：各項目のJSONパス。各種処理に使用される項目。
 
-  - 3行目：各項目のラベル。
-    
-      - アイテムタイプ以外の項目  
-        → 項目ごとにラベルの内容を定義。
-    
-      - アイテムタイプ項目  
-        → 【Administration \> アイテムタイプ管理（ItemTypes） \> メタデータ（Metadata）画面】のLocalization Settingで設定している内容を出力。設定がない場合は項目名を出力。
+    **3行目**：各項目のラベル。
+        
+    - アイテムタイプ以外の項目  
+    → 項目ごとにラベルの内容を定義。
 
-  - 4行目：インポート実行時に値を自動で設定する項目について「System」を出力 。対象はプロパティ定義内で「"readonly":true」を設定している項目。
+    - アイテムタイプ項目  
+    → 【Administration > アイテムタイプ管理（ItemTypes） > メタデータ（Metadata）画面】のLocalization Settingで設定している内容を出力。設定がない場合は項目名を出力。
 
-  - 5行目：各項目について「Allow Multiple」（繰り返し可）「Requierd」（必須）を出力
-    
-      - アイテムタイプ以外の項目  
-        → 項目ごとにラベルの内容を定義。
-    
-      - アイテムタイプ項目  
-        → 【Administration \> アイテムタイプ管理（ItemTypes） \> メタデータ（Metadata）画面】のOptionの設定内容がチェックありの項目について出力
+    **4行目**：インポート実行時に値を自動で設定する項目について「System」を出力 。対象はプロパティ定義内で「"readonly":true」を設定している項目。
 
-(2) アイテムタイプ項目以外の項目
+    **5行目**：各項目について「Allow Multiple」（繰り返し可）「Requierd」（必須）を出力
+        
+    - アイテムタイプ以外の項目  
+    → 項目ごとにラベルの内容を定義。
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>JSONパス</strong></th>
-<th><strong>ラベル</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>.id</td>
-<td>ID</td>
-<td>アイテムID。新規登録時、指定なしの場合は自動採番、未使用の番号を指定することもできる。更新時は登録済みの内容が必須。</td>
-</tr>
-<tr class="even">
-<td>.uri</td>
-<td>URI</td>
-<td>アイテムのURI。新規登録時は指定なし。更新時は登録済みの内容が必須となる。</td>
-</tr>
-<tr class="odd">
-<td>.metadata.path[0]</td>
-<td>.IndexID[0]</td>
-<td>アイテムを登録するインデックスをID指定する。複数指定可。<br />
-.pos_index[n]とペアで指定する。<br />
-.pos_index[n]が指定されていない場合は必須。存在しないインデックスを指定した場合はエラーメッセージを出力する。</td>
-</tr>
-<tr class="even">
-<td>.pos_index[0]</td>
-<td>.POS_INDEX[0]</td>
-<td>アイテムを登録するインデックスを名称(※1)で指定する。<br />
-.metadata.path[n]とペアで指定する。<br />
-.metadata.path[n]が指定されてない場合は必須。</td>
-</tr>
-<tr class="odd">
-<td>.publish_status</td>
-<td>.PUBLISH_STATUS</td>
-<td>アイテムの公開／非公開を指定する。public/privateのいずれかを設定する。必須項目。</td>
-</tr>
-<tr class="even">
-<td>.feedback_mail[0]</td>
-<td>.FEEDBACK_MAIL[0]</td>
-<td>フィードバックメールの送信先メールアドレスを指定する。複数指定可。</td>
-</tr>
-<tr class="odd">
-<td>.cnri</td>
-<td>.CNRI</td>
-<td>CNRIハンドルサーバを使用する場合(※2)に設定できる。CNRIは「prefix/suffix」の形式で設定される。通常モードの時は自動採番(※3)される。識別子変更モードの時は手入力で変更可能。</td>
-</tr>
-<tr class="even">
-<td>.doi_ra</td>
-<td>.DOI_RA</td>
-<td>DOIの種類を指定する。JaLC/Crossref/DataCite(※4)/NDL JaLC (※5)のいずれかを設定する。</td>
-</tr>
-<tr class="odd">
-<td>.doi</td>
-<td>.DOI</td>
-<td>DOIを「prefix/suffix」の形式で設定する。通常モードの時は自動採番(※3)される。識別子変更モードの時は手入力で変更可能。</td>
-</tr>
-<tr class="even">
-<td>.edit_mode</td>
-<td>Keep/Upgrade Version</td>
-<td>対象のアイテムのバージョン更新可否を指定する。新規登録の場合は空、更新の場合は必須でKeep/Upgradeのいずれかを指定する。<br />
-※インポートファイル（zip）に既存アイテムの元ファイルが同名、ファイルパスも同一で含まれていた場合（元ファイルを変更しない）<br />
-　・Keep: 重複登録されない<br />
-　・Upgrade: 重複登録する。ファイル名だけでは、同名同ファイルなのか同名異ファイルなのかが判断できない</td>
-</tr>
-</tbody>
-</table>
+    - アイテムタイプ項目  
+    → 【Administration \> アイテムタイプ管理（ItemTypes） \> メタデータ（Metadata）画面】のOptionの設定内容がチェックありの項目について出力
 
-  - ※1) インデックス名称について  
-    POS\_INDEXは階層を指定して記述する。階層の区切り文字はデフォルトで「///」。weko\_items\_ui/config.py の WEKO\_ITEMS\_UI\_INDEX\_PATH\_SPLIT にて区切り文字の変更が可能。  
-    同名のインデックスが複数存在した場合は、すべてのインデックスに登録される。  
-    日本語名称、英語名称のいずれかを指定できる。日本語名称のインデックスと英語名称のインデックスをまぜて指定することはできない。
+2. アイテムタイプ項目以外の項目
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>IndexID</strong></th>
-<th><strong>POS_INDEX</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>指定あり</td>
-<td>指定なし</td>
-<td>IndexID に指定されたインデックスに登録。</td>
-</tr>
-<tr class="even">
-<td>指定なし</td>
-<td>指定あり</td>
-<td>POS_INDEX に指定されたインデックスに登録。</td>
-</tr>
-<tr class="odd">
-<td>指定あり</td>
-<td>指定あり</td>
-<td>IndexID と POS_INDEX の組み合わせが正しい場合、該当するインデックスに登録。<br />
-不整合の場合、IndexID で指定されたインデックスに登録。<br />
-システムに存在しない IndexID と POS_INDEX を指定した場合はエラーとなる。</td>
-</tr>
-<tr class="even">
-<td>指定なし</td>
-<td>指定なし</td>
-<td>エラーとなる。</td>
-</tr>
-</tbody>
-</table>
+    | JSONパス          | ラベル               | 説明                                                                                                                                      |
+    | ----------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+    | .id               | ID                   | アイテムID。新規登録時、指定なしの場合は自動採番、未使用の番号を指定することもできる。更新時は登録済みの内容が必須。                      |
+    | .uri              | URI                  | アイテムのURI。新規登録時は指定なし。更新時は登録済みの内容が必須となる。                                                                 |
+    | .metadata.path[0] | .IndexID[0]          | アイテムを登録するインデックスをID指定する。複数指定可。.pos_index[n]とペアで指定する。<br>.pos_index[n]が指定されていない場合は必須。存在しないインデックスを指定した場合はエラーメッセージを出力する。 |
+    | .pos_index[0]     | .POS_INDEX[0]        | アイテムを登録するインデックスを名称(※1)で指定する。.metadata.path[n]とペアで指定する。<br>.metadata.path[n]が指定されてない場合は必須。 |
+    | .publish_status   | .PUBLISH_STATUS      | アイテムの公開／非公開を指定する。public/privateのいずれかを設定する。必須項目。                                                          |
+    | .feedback_mail[0] | .FEEDBACK_MAIL[0]    | フィードバックメールの送信先メールアドレスを指定する。複数指定可。                                                                        |
+    | .cnri             | .CNRI                | CNRIハンドルサーバを使用する場合(※2)に設定できる。CNRIは「prefix/suffix」の形式で設定される。通常モードの時は自動採番(※3)される。識別子変更モードの時は手入力で変更可能。 |
+    | .doi_ra           | .DOI_RA              | DOIの種類を指定する。JaLC/Crossref/DataCite(※4)/NDL JaLC (※5)のいずれかを設定する。                                                     |
+    | .doi              | .DOI                 | DOIを「prefix/suffix」の形式で設定する。通常モードの時は自動採番(※3)される。識別子変更モードの時は手入力で変更可能。                     |
+    | .edit_mode        | Keep/Upgrade Version | 対象のアイテムのバージョン更新可否を指定する。新規登録の場合は空、更新の場合は必須でKeep/Upgradeのいずれかを指定する。<br>※インポートファイル（zip）に既存アイテムの元ファイルが同名、ファイルパスも同一で含まれていた場合（元ファイルを変更しない） <br>・Keep: 重複登録されない <br>・Upgrade: 重複登録する。ファイル名だけでは、同名同ファイルなのか同名異ファイルなのかが判断できない |
 
-  - ※2) CNRIハンドルサーバの使用について  
-    CNRIハンドルの使用状態は「WEKO\_HANDLE\_ALLOW\_REGISTER\_CRNI」(modules/weko-handle/weko\_handle/config.py)の設定値で判断している
-    
+    - ※1) インデックス名称について  
+      POS\_INDEXは階層を指定して記述する。階層の区切り文字はデフォルトで「///」。weko_items_ui/config.py の WEKO_ITEMS_UI_INDEX_PATH_SPLIT にて区切り文字の変更が可能。  
+      同名のインデックスが複数存在した場合は、すべてのインデックスに登録される。  
+      日本語名称、英語名称のいずれかを指定できる。日本語名称のインデックスと英語名称のインデックスをまぜて指定することはできない。
+
+
+    | IndexID | POS_INDEX | 説明 |
+    | ------- | --------- | ---- |
+    | 指定あり | 指定なし | IndexID に指定されたインデックスに登録。 |
+    | 指定なし | 指定あり | POS_INDEX に指定されたインデックスに登録。 |
+    | 指定あり | 指定あり | IndexID と POS_INDEX の組み合わせが正しい場合、該当するインデックスに登録。<br>不整合の場合、IndexID で指定されたインデックスに登録。<br>システムに存在しない IndexID と POS_INDEX を指定した場合はエラーとなる。 |
+    | 指定なし | 指定なし | エラーとなる。 |
+
+    - ※2) CNRIハンドルサーバの使用について  
+      CNRIハンドルの使用状態は「WEKO\_HANDLE\_ALLOW\_REGISTER\_CRNI」(modules/weko-handle/weko\_handle/config.py)の設定値で判断している
       - 「False」：初期値。CNRIハンドルサーバを使用しない
-    
       - 「True」：CNRIハンドルサーバを使用する
 
-  - ※3) CNRIとDOIの自動採番時の指定について  
+    - ※3) CNRIとDOIの自動採番時の指定について  
     現状は以下の通り。
-    
       - 識別子変更モード
-        
           - DOIの自動採番は行わない。  
             インポートファイルにdoiやprefixが含まれている場合はエラーメッセージを表示する。
-            
               - DOIが空欄の場合  
                 　「Please specify DOI prefix/suffix.」
-            
               - インポートファイルにdoiやprefixが含まれている場合　(「prefix」もしくは「prefix/」を指定した場合）  
                 　「DOI suffixを設定してください。」／「Please specify DOI suffix.」
-    
       - Not 識別子変更モード
-        
-          - Admin \> Setting \> Identifier でprefixの設定があること
-        
+          - Admin > Setting > Identifier でprefixの設定があること
           - DOI：空欄であること
-        
-          - DOI\_RA：JaLC, Crossref, DataCite のいずれかであること
-          - DOI_RA：NDL JaLCの場合、自動採番は行われない。
+          - DOI_RA：JaLC, Crossref, DataCite のいずれかであること
+          - DOI_RA：NDL JaLCの場合、自動採番は行われない。  
             インポートファイルにdoiやprefixが含まれている場合はエラーメッセージを表示する。
-               - DOIが空欄の場合
+               - DOIが空欄の場合  
 　              「Please specify DOI prefix/suffix.」
-               - インポートファイルにdoiやprefixが含まれている場合　(「prefix」もしくは「prefix/」を指定した場合）
+               - インポートファイルにdoiやprefixが含まれている場合　(「prefix」もしくは「prefix/」を指定した場合）  
 　              「DOI suffixを設定してください。」／「Please specify DOI suffix.」
 
-  - ※4) DataCiteについて  
-    制限等は現状設けていない
+    - ※4) DataCiteについて  
+      制限等は現状設けていない
 
-  - ※5) NDL JaLCについて  
-    DOI RA：NDL JaLCの場合、資源タイプは「doctoral thesis」である必要があります。
+    - ※5) NDL JaLCについて  
+      DOI RA：NDL JaLCの場合、資源タイプは「doctoral thesis」である必要があります。
 
-  - CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の通り。
+    - CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の通り。
 
-  - 
+    |                                        | 識別子変更モード  | Not 識別子変更モード  |         |          |
+    | -------------------------------------- | ----------------- | --------------------- | ------- | -------- |
+    |                                        | 新規              | 更新                  | 新規    | 更新     |
+    | CNRI<br>（CNRIハンドル未設定ユーザー） | 空欄              | 空欄                  | 空欄    | 空欄     |
+    | CNRI<br>（CNRIハンドル設定ユーザー）   | 必須（変更不可）  | 変更可能              | 空欄    | 変更不可 |
+    | DOI_RA                                 | 設定可能          | DOI付与前は設定可能<br />DOI付与後は変更不可 | 設定可能 | DOI付与前は設定可能<br />DOI付与後は変更不可 |
+    | DOI                                    | 設定可能          | 変更可能              | 空欄    | DOI付与前は空欄<br />DOI付与後は変更不可 |
 
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>識別子変更モード</th>
-<th>Not 識別子変更モード</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>新規</td>
-<td>更新</td>
-<td>新規</td>
-<td>更新</td>
-</tr>
-<tr class="even">
-<td>CNRI<br />
-（CNRIハンドル未設定ユーザー）</td>
-<td>空欄</td>
-<td>空欄</td>
-<td>空欄</td>
-<td>空欄</td>
-</tr>
-<tr class="odd">
-<td>CNRI<br />
-（CNRIハンドル設定ユーザー）</td>
-<td>必須（変更不可）</td>
-<td>変更可能</td>
-<td>空欄</td>
-<td>変更不可</td>
-</tr>
-<tr class="even">
-<td>DOI_RA</td>
-<td>設定可能</td>
-<td>DOI付与前は設定可能<br />
-DOI付与後は変更不可</td>
-<td>設定可能</td>
-<td>DOI付与前は設定可能<br />
-DOI付与後は変更不可</td>
-</tr>
-<tr class="odd">
-<td>DOI</td>
-<td>設定可能</td>
-<td>変更可能</td>
-<td>空欄</td>
-<td>DOI付与前は空欄<br />
-DOI付与後は変更不可</td>
-</tr>
-</tbody>
-</table>
+3. アイテムタイプ項目
 
-  - 
-(3) アイテムタイプ項目
-
-基本はアイテムタイプに定義されている項目（プロパティ）に対して、TSVファイル内で設定されている内容を登録する。  
-次の項目は項目の設定以外の処理を行っている。
+    基本はアイテムタイプに定義されている項目（プロパティ）に対して、TSVファイル内で設定されている内容を登録する。  
+    次の項目は項目の設定以外の処理を行っている。
 
 －1. コンテンツファイル
 
@@ -852,7 +609,7 @@ DOI付与後は変更不可</td>
 
 (4) チェック仕様
 
-\-1. インポートファイル、TSVファイルの形式チェック
+\-1. インポートファイル、TSVファイルの形式チェック<span id="形式チェック">
 
 最初に実施。  
 エラーの場合は、Select（選択）画面の\#Message Area\#にメッセージを出力する。ただし、\#2はImport（インポート）画面の表/Check Resultに出力。
