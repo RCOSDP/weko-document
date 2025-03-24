@@ -212,7 +212,7 @@ export.zip
 
 #### ファイル構成
 ```
-export.zip    ※複数ダウンロードされる場合、export(1).zip、export(2).zip、...となる
+export_yyyyMMddHHmmss.zip    ※e.g. export_20250831123533.zip
 
   ├── bagit.txt
 
