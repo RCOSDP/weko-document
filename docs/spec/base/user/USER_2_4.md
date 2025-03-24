@@ -212,7 +212,7 @@ export.zip
 
 #### ファイル構成
 ```
-[アイテム名].zip
+export.zip    ※複数ダウンロードされる場合、export(1).zip、export(2).zip、...となる
 
   ├── bagit.txt
 
