@@ -122,7 +122,7 @@
 ### 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】の「Allow/Disallow Item Exporting」がOffに設定されている場合
 - 検索結果一覧画面に「エクスポート(Export)」ボタンを表示しない。
 
-### 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】に「Allow/Disallow Item Exporting」がOnに設定している、かつ「Export File Contents」がOffに設定されている場合
+### 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】の「Allow/Disallow Item Exporting」がOnに設定されている、かつ「Export File Contents」がOffに設定されている場合
 - 検索結果一覧画面に「エクスポート(Export)」ボタンを表示する。
 
 - 「File Contents」エリアにコンテンツファイルを出力するかどうかのラジオボタンを非活性にする。
@@ -212,31 +212,39 @@ export.zip
 
 #### ファイル構成
 ```
-export_yyyyMMddHHmmss.zip    ※e.g. export_20250831123533.zip
+export.zip
 
-  ├── bagit.txt
+  └── recid_[recid_1].zip    ※これがRO-Crate+BagIt形式のZIPファイル  e.g. recid_200001.zip
 
-  ├── bag-info.txt
+    ├── bagit.txt
 
-  ├── manifest-sha256.txt
+    ├── bag-info.txt
 
-  ├── manifest-sha512.txt
+    ├── manifest-sha256.txt
 
-  ├── tagmanifest-sha256.txt
+    ├── manifest-sha512.txt
 
-  ├── tagmanifest-sha512.txt
+    ├── tagmanifest-sha256.txt
 
-  ├── ro-crate-metadata.json
+    ├── tagmanifest-sha512.txt
 
-  └── /data    ※コンテンツファイルがない場合、空のフォルダとなる。
+    └── /data    ※コンテンツファイルがない場合、ro-crate-metadata.jsonのみが含まれる。
 
-      ├── sample.txt
+        ├── ro-crate-metadata.json
 
-      ├── sample.png
+        ├── sample.txt
 
-      ...
+        ├── sample.png
 
-      └── sample.csv
+        ...
+
+        └── sample.csv
+
+  ├── recid_[recid_2].zip    ※複数アイテムを選択した場合、アイテムごとにRO-Crate+BagIt形式ZIPファイルが作成される。
+
+  ├── recid_[recid_3].zip
+
+  ...
 ```
 
 ## 関連モジュール
@@ -284,7 +292,7 @@ export_yyyyMMddHHmmss.zip    ※e.g. export_20250831123533.zip
 
 - 一括出力されるアイテムのファイル形式は、アイテム一括出力画面の出力形式に合わせる
 
-- ※`RO-Crate`を選択した場合、アイテムごとに個別のZIPファイルが生成されるため、一つのZIPファイルには1アイテム分のコンテンツファイルが`/data`フォルダに出力される
+- ※`RO-Crate`を選択した場合、`export.zip`ファイル内にアイテムごとに個別のZIPファイルが生成されるため、一つのZIPファイルには1アイテム分のコンテンツファイルが`/data`フォルダに出力される
 
 ### ダウンロードするメタデータファイル（tsvファイル）
 
@@ -418,8 +426,9 @@ export_yyyyMMddHHmmss.zip    ※e.g. export_20250831123533.zip
 
 ### RO-Crate形式の出力
 - 「Item to Export」エリアの「Export Format」項目で`RO-Crate`を選び、エクスポートボタンを押す。この操作によって、`weko_items_ui.utils.export_rocrate`メソッドにてRO-Crate+BagItファイルが出力される。
-- `weko_items_ui.utils.export_rocrate`メソッド内で、`weko_search_ui.mapper.JsonLdMapper.export_mapper`メソッドが呼び出され、ro-crate-metadata.jsonファイルを生成する。また、`create_data_file`メソッドが呼び出され、/dataフォルダ内にコンテンツファイルを出力する。
-- ro-crate-metadata.jsonと/dataフォルダが含まれるフォルダ名を引数として`bagify`メソッドを実行することでフォルダ内にBagIt形式の必須ファイルが付加され、このフォルダをZIPに圧縮することで、RO-Crate+BagIt形式のZIPファイルが生成される。
+- `weko_items_ui.utils.export_rocrate`メソッド内で、`weko_search_ui.mapper.JsonLdMapper.to_rocrate_metadata`メソッドが呼び出され、/dataフォルダ内にro-crate-metadata.jsonファイルを生成する。また、`create_data_file`メソッドが呼び出され、/dataフォルダ内にコンテンツファイルを出力する。
+- /dataフォルダが含まれるフォルダ名を引数として`bagit.make_bag`メソッドを実行することでフォルダ内にBagIt形式の必須ファイルが付加され、このフォルダをZIPに圧縮することで、RO-Crate+BagIt形式のZIPファイルが生成される。
+- 複数アイテムを選択して実行した場合、`export.zip`ファイル内にアイテムごとに個別のRO-Crate+BagIt形式ZIPファイル`recid_[recid]`が生成される。
 
 ## 更新履歴
 
@@ -445,6 +454,13 @@ export_yyyyMMddHHmmss.zip    ※e.g. export_20250831123533.zip
 </blockquote></td>
 <td>V0.9.27</td>
 <td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2025/2/17</p>
+</blockquote></td>
+<td>V1.1.0</td>
+<td>RO-Crateエクスポート機能に対応</td>
 </tr>
 </tbody>
 </table>
