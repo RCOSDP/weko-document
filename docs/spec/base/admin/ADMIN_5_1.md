@@ -218,9 +218,12 @@
               - 外部著者IDテキストボックス：外部著者IDを入力する。  
                 クリーンビルド環境の場合、初期に表示される選択肢は「ORCID, CiNii, KAKEN2,ROR」とする。
             
-              - 「ID Prefix」画面にはリスト上に "WEKO" が存在する(WEKO3で著者を一意に決定するWEKO著者ID)が、「著者ID」のプルダウンのリストには表示されない。  
-                "WEKO"は著者登録時に自動付番(初期値のWEKO著者IDは1, 以降は2, 3, ...と付番されている max(authors.id)＋１)される。
+              - 「ID Prefix」画面にはリスト上に "WEKO" が存在する(WEKO3で著者を一意に決定するWEKO著者ID)が、「著者ID」のプルダウンのリストには表示されず、初期で固定されている。  
+                "WEKO"は著者追加画面表示時に自動付番(初期値のWEKO著者IDはmax(WEKOID)＋1)される。
             
+              - 外部著者識別子がWEKOの外部著者IDテキストボックスは必須項目とする。
+              - 外部著者識別子がWEKOの外部著者IDテキストボックスは半角数字のみとする。
+
               - \[確認（Confirm）\]ボタンを押すと、選択された外部著者IDに応じたランディングページが表示される。
                 
                   - 別ウィンドウで表示させる。
@@ -251,11 +254,89 @@
               - \[X」ボタンを押すことで、メールアドレスの入力欄が削除される。  
                 表示されている入力エリアが１つのみの場合、削除不可とする。
     
+          - <span style="color: red;">「所属機関識別子」（Identifier）</span>
+                
+              - <span style="color: red;">外部所属機関プルダウン：著者の外部所属機関を選択する。  
+                  「Affiliation ID」画面で登録されている外部所属機関から選択できる。  </span>
+                
+              - <span style="color: red;">外部所属機関IDテキストボックス：外部所属機関IDを入力する。  
+                  クリーンビルド環境の場合、初期に表示される選択肢は「ISNI, GRID, Ringgold, kakenshi, ROR」とする。  </span>
+                
+              - <span style="color: red;"> [確認（Confirm）]ボタンを押すと、選択された外部所属機関IDに応じたランディングページが表示される。</span>
+                  
+                  - <span style="color: red;">別ウィンドウで表示させる。</span>
+                  
+                  - <span style="color: red;">外部所属機関IDを入力しない場合、「確認」（Confirm）ボタンが非活性とする。</span>
+                  
+                  - <span style="color: red;">ランディングページのURLについて</span>
+                      
+                      - <span style="color: red;">「Affiliation ID」に設定されたURLに「##」が含まれている場合、「##」を外部所属機関IDに置換してURLと</span>する。
+                      
+                      - <span style="color: red;">「Affiliation ID」に設定されたURLに「##」が含まれていない場合、そのまま設定されたURLとする。</span>
+              
+              - <span style="color: red;">[表示／非表示（Display/Hide）]ラジオボタン</span>
+                  
+                  - <span style="color: red;">「表示」（Display）を選択すると、「著者DBから入力」（From author DB）機能で、外部所属機関IDが自動入力され</span>る。
+                  
+                  - <span style="color: red;">「非表示」（Hide）を選択すると、［著者DBから入力］（From author DB）機能で、外部所属機関IDが自動入力されな</span>い。
+              
+              - <span style="color: red;">[+所属期間識別子を追加（Add a new ID）]ボタンを押すことで、外部所属機関IDの入力欄が追加される。</span>
+              
+              - <span style="color: red;">[X」ボタンを押すことで、外部所属機関IDの入力欄が削除される。 
+                  表示されている入力エリアが１つのみの場合、削除不可とする。 </span>
+      
+          - <span style="color: red;"> 「所属機関名」</span>
+              - <span style="color: red;"> テキストボックス：所属機関名を入力する。</span>
+              
+              - <span style="color: red;">言語：選択肢は「ja-Kana, ja, en,fr,it,de,es,zh-tw,ru,la,ms,eo,ar,el,ko」とする。</span>
+              
+              - <span style="color: red;">[表示／非表示（Display/Hide）]ラジオボタン</span>
+                  
+                  - <span style="color: red;">「表示」（Display）を選択すると、「著者DBから入力」（From author DB）機能で、所属機関名が自動入力される。</span>
+                  
+                  - <span style="color: red;">「非表示」（Hide）を選択すると、［著者DBから入力］（From author DB）機能で、所属機関名が自動入力されない。</span>
+              
+              - <span style="color: red;">[+所属機関名を追加（Add Affiliaiton Name）]ボタンを押すことで、所属機関名の入力欄が追加される。</span>
+              
+              - <span style="color: red;">[X]ボタンを押すことで、所属機関名の入力欄が削除される。
+                  表示されている入力エリアが１つのみの場合、削除不可とする。 </span>
+
+          - <span style="color: red;">「所属期間(Affiliation Period)」</span>
+              
+              - <span style="color: red;">「開始日」「終了日」テキストボックス：所属期間を入力する。所属期間はyyyy-MM-ddの方式で入力するものとする。</span>
+                  - <span style="color: red;">開始日は終了日より前の日とする。</span>
+              
+              - <span style="color: red;">[X]ボタンを押すことで、所属期間の入力欄が削除される。
+                  表示されている入力エリアが１つのみの場合、削除不可とする。   </span>
+
+      - <span style="color: red;">[メタデータ強制変更フラグ(force change flag)]チェックボックス</span>
+          - <span style="color: red;">著者DB更新時のメタデータ自動更新機能：  
+              著者DB更新時にそのデータを使っているアイテムのメタデータを更新する機能</span>
+          - <span style="color: red;">著者DB更新時のメタデータ自動更新機能に影響するフラグである。</span>
+          - <span style="color: red;">著者編集時にのみ表示される。著者追加時には表示されない。</span>
+          - <span style="color: red;">チェックボックスがON/OFFで保存ボタンを押下した際の自動更新されるメタデータは以下のように分ける。  
+              ON時に更新される内容：氏名、著者識別子、E-Mail、所属機関識別子、所属機関名  
+              OFF時に更新される内容：著者識別子  
+
       - \[取消（Clear）\]ボタンを押すと、入力した内容が取消される。
     
       - \[保存（Save）\]ボタンを押すと、Author IDが追加される。
-        
-          - ボタン押下後、WEKO著者IDを自動付番し、Author IDの一覧画面に遷移する。
+          - <span style="color: red;">ボタン押下時、入力値を以下のように確認する。</span>
+              - <span style="color: red;">所属開始日と所属終了日が以下の場合でエラーが画面に表示する。</span>
+                  - <span style="color: red;">入力方式がyyyy-MM-ddに従っていない場合、  
+                      「所属開始日、または所属終了日が入力方式がyyyy-MM-ddに従っていません。  
+                      (The start date or end date does not follow the yyyy-MM-dd format.)」と表示される。</span>
+                  - <span style="color: red;">所属開始日が所属終了日より後の日の場合、  
+                      「所属終了日は所属開始日より後の日にして下さい。  
+                      (Please set end date to be after start date.)」と表示される。</span>
+              - <span style="color: red;">保存ボタンを押下時にWEKOIDが以下の場合でエラーを起こす</span>
+                  - <span style="color: red;">入力されていない場合、「WEKOIDの値を設定してください。（Please set WEKO ID.）」と表示する。</span>
+                  - <span style="color: red;">入力されたWEKOIDの値が既に使われている場合、  
+                  「そのWEKO IDは既に使われています。（The value is already in use as WEKO ID）」と表示する。</span>
+                  
+                  - <span style="color: red;">入力された値が半角数字でない場合、
+                      「WEKO IDは半角数字のみです。(The WEKO ID must be numeric characters only.)」と表示する。<span>
+          - 問題なく保存できれば、Author IDの一覧画面に遷移する。
         
           - 姓、名から姓名の情報（fullName）が生成される。
     
@@ -375,7 +456,8 @@
 
 2\. 実装方法
 
-  - nameIdentifiersでnameIdentifierScheme=WEKOを利用して当該アイテムに属性(author\_link)を追加する。  
+  - nameIdentifiersでnameIdentifierScheme=WEKOを利用してWEKOIDと紐づいているpk_idを取得し  
+    当該アイテムに属性(author\_link)を追加する。  
     著者情報のアイテム件数（Item Count）は以下のようにクエリを作成し、"author\_link"毎に著者情報をカウントする。
 
 > "size": 0,
@@ -449,7 +531,8 @@
 
   - > **氏名→言語入力欄に「ja-Kana」**
 
-  - > **著者ID→ID選択欄に「ORCID」(ただし、2項目目以降の追加時は「WEKO」が入力される。著者IDが「WEKO」のものは編集できないため、追加したテキストボックスは自動的に非活性となる。)**
+  - > **著者ID→ID選択欄に「WEKO」(ただし、2項目目以降の追加時は「WEKO」は表示されない。)**
+    > **初期値はWEKOIDのmax+1**
 
   - > **所属機関識別子→機関識別子選択欄に「ISNI」。所属機関名の言語選択欄に「ja」**
 
