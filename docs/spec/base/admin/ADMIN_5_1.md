@@ -254,88 +254,88 @@
               - \[X」ボタンを押すことで、メールアドレスの入力欄が削除される。  
                 表示されている入力エリアが１つのみの場合、削除不可とする。
     
-          - <span style="color: red;">「所属機関識別子」（Identifier）</span>
+          - 「所属機関識別子」（Identifier）
                 
-              - <span style="color: red;">外部所属機関プルダウン：著者の外部所属機関を選択する。  
-                  「Affiliation ID」画面で登録されている外部所属機関から選択できる。  </span>
+              - 外部所属機関プルダウン：著者の外部所属機関を選択する。  
+                  「Affiliation ID」画面で登録されている外部所属機関から選択できる。  
                 
-              - <span style="color: red;">外部所属機関IDテキストボックス：外部所属機関IDを入力する。  
-                  クリーンビルド環境の場合、初期に表示される選択肢は「ISNI, GRID, Ringgold, kakenshi, ROR」とする。  </span>
+              - 外部所属機関IDテキストボックス：外部所属機関IDを入力する。  
+                  クリーンビルド環境の場合、初期に表示される選択肢は「ISNI, GRID, Ringgold, kakenshi, ROR」とする。  
                 
-              - <span style="color: red;"> [確認（Confirm）]ボタンを押すと、選択された外部所属機関IDに応じたランディングページが表示される。</span>
+              -  [確認（Confirm）]ボタンを押すと、選択された外部所属機関IDに応じたランディングページが表示される。
                   
-                  - <span style="color: red;">別ウィンドウで表示させる。</span>
+                  - 別ウィンドウで表示させる。
                   
-                  - <span style="color: red;">外部所属機関IDを入力しない場合、「確認」（Confirm）ボタンが非活性とする。</span>
+                  - 外部所属機関IDを入力しない場合、「確認」（Confirm）ボタンが非活性とする。
                   
-                  - <span style="color: red;">ランディングページのURLについて</span>
+                  - ランディングページのURLについて
                       
-                      - <span style="color: red;">「Affiliation ID」に設定されたURLに「##」が含まれている場合、「##」を外部所属機関IDに置換してURLと</span>する。
+                      - 「Affiliation ID」に設定されたURLに「##」が含まれている場合、「##」を外部所属機関IDに置換してURLとする。
                       
-                      - <span style="color: red;">「Affiliation ID」に設定されたURLに「##」が含まれていない場合、そのまま設定されたURLとする。</span>
+                      - 「Affiliation ID」に設定されたURLに「##」が含まれていない場合、そのまま設定されたURLとする。
               
-              - <span style="color: red;">[表示／非表示（Display/Hide）]ラジオボタン</span>
+              - [表示／非表示（Display/Hide）]ラジオボタン
                   
-                  - <span style="color: red;">「表示」（Display）を選択すると、「著者DBから入力」（From author DB）機能で、外部所属機関IDが自動入力され</span>る。
+                  - 「表示」（Display）を選択すると、「著者DBから入力」（From author DB）機能で、外部所属機関IDが自動入力される。
                   
-                  - <span style="color: red;">「非表示」（Hide）を選択すると、［著者DBから入力］（From author DB）機能で、外部所属機関IDが自動入力されな</span>い。
+                  - 「非表示」（Hide）を選択すると、［著者DBから入力］（From author DB）機能で、外部所属機関IDが自動入力されない。
               
-              - <span style="color: red;">[+所属期間識別子を追加（Add a new ID）]ボタンを押すことで、外部所属機関IDの入力欄が追加される。</span>
+              - [+所属期間識別子を追加（Add a new ID）]ボタンを押すことで、外部所属機関IDの入力欄が追加される。
               
-              - <span style="color: red;">[X」ボタンを押すことで、外部所属機関IDの入力欄が削除される。 
-                  表示されている入力エリアが１つのみの場合、削除不可とする。 </span>
+              - [X」ボタンを押すことで、外部所属機関IDの入力欄が削除される。 
+                  表示されている入力エリアが１つのみの場合、削除不可とする。 
       
-          - <span style="color: red;"> 「所属機関名」</span>
-              - <span style="color: red;"> テキストボックス：所属機関名を入力する。</span>
+          -  「所属機関名」
+              -  テキストボックス：所属機関名を入力する。
               
-              - <span style="color: red;">言語：選択肢は「ja-Kana, ja, en,fr,it,de,es,zh-tw,ru,la,ms,eo,ar,el,ko」とする。</span>
+              - 言語：選択肢は「ja-Kana, ja, en,fr,it,de,es,zh-tw,ru,la,ms,eo,ar,el,ko」とする。
               
-              - <span style="color: red;">[表示／非表示（Display/Hide）]ラジオボタン</span>
+              - [表示／非表示（Display/Hide）]ラジオボタン
                   
-                  - <span style="color: red;">「表示」（Display）を選択すると、「著者DBから入力」（From author DB）機能で、所属機関名が自動入力される。</span>
+                  - 「表示」（Display）を選択すると、「著者DBから入力」（From author DB）機能で、所属機関名が自動入力される。
                   
-                  - <span style="color: red;">「非表示」（Hide）を選択すると、［著者DBから入力］（From author DB）機能で、所属機関名が自動入力されない。</span>
+                  - 「非表示」（Hide）を選択すると、［著者DBから入力］（From author DB）機能で、所属機関名が自動入力されない。
               
-              - <span style="color: red;">[+所属機関名を追加（Add Affiliaiton Name）]ボタンを押すことで、所属機関名の入力欄が追加される。</span>
+              - [+所属機関名を追加（Add Affiliaiton Name）]ボタンを押すことで、所属機関名の入力欄が追加される。
               
-              - <span style="color: red;">[X]ボタンを押すことで、所属機関名の入力欄が削除される。
-                  表示されている入力エリアが１つのみの場合、削除不可とする。 </span>
+              - [X]ボタンを押すことで、所属機関名の入力欄が削除される。
+                  表示されている入力エリアが１つのみの場合、削除不可とする。 
 
-          - <span style="color: red;">「所属期間(Affiliation Period)」</span>
+          - 「所属期間(Affiliation Period)」
               
-              - <span style="color: red;">「開始日」「終了日」テキストボックス：所属期間を入力する。所属期間はyyyy-MM-ddの方式で入力するものとする。</span>
-                  - <span style="color: red;">開始日は終了日より前の日とする。</span>
+              - 「開始日」「終了日」テキストボックス：所属期間を入力する。所属期間はyyyy-MM-ddの方式で入力するものとする。
+                  - 開始日は終了日より前の日とする。
               
-              - <span style="color: red;">[X]ボタンを押すことで、所属期間の入力欄が削除される。
-                  表示されている入力エリアが１つのみの場合、削除不可とする。   </span>
+              - [X]ボタンを押すことで、所属期間の入力欄が削除される。
+                  表示されている入力エリアが１つのみの場合、削除不可とする。   
 
-      - <span style="color: red;">[メタデータ強制変更フラグ(force change flag)]チェックボックス</span>
-          - <span style="color: red;">著者DB更新時のメタデータ自動更新機能：  
-              著者DB更新時にそのデータを使っているアイテムのメタデータを更新する機能</span>
-          - <span style="color: red;">著者DB更新時のメタデータ自動更新機能に影響するフラグである。</span>
-          - <span style="color: red;">著者編集時にのみ表示される。著者追加時には表示されない。</span>
-          - <span style="color: red;">チェックボックスがON/OFFで保存ボタンを押下した際の自動更新されるメタデータは以下のように分ける。  
+      - [メタデータ強制変更フラグ(force change flag)]チェックボックス
+          - 著者DB更新時のメタデータ自動更新機能：  
+              著者DB更新時にそのデータを使っているアイテムのメタデータを更新する機能
+          - 著者DB更新時のメタデータ自動更新機能に影響するフラグである。
+          - 著者編集時にのみ表示される。著者追加時には表示されない。
+          - チェックボックスがON/OFFで保存ボタンを押下した際の自動更新されるメタデータは以下のように分ける。  
               ON時に更新される内容：氏名、著者識別子、E-Mail、所属機関識別子、所属機関名  
               OFF時に更新される内容：著者識別子  
 
       - \[取消（Clear）\]ボタンを押すと、入力した内容が取消される。
     
       - \[保存（Save）\]ボタンを押すと、Author IDが追加される。
-          - <span style="color: red;">ボタン押下時、入力値を以下のように確認する。</span>
-              - <span style="color: red;">所属開始日と所属終了日が以下の場合でエラーが画面に表示する。</span>
-                  - <span style="color: red;">入力方式がyyyy-MM-ddに従っていない場合、  
+          - ボタン押下時、入力値を以下のように確認する。
+              - 所属開始日と所属終了日が以下の場合でエラーが画面に表示する。
+                  - 入力方式がyyyy-MM-ddに従っていない場合、  
                       「所属開始日、または所属終了日が入力方式がyyyy-MM-ddに従っていません。  
-                      (The start date or end date does not follow the yyyy-MM-dd format.)」と表示される。</span>
-                  - <span style="color: red;">所属開始日が所属終了日より後の日の場合、  
+                      (The start date or end date does not follow the yyyy-MM-dd format.)」と表示される。
+                  - 所属開始日が所属終了日より後の日の場合、  
                       「所属終了日は所属開始日より後の日にして下さい。  
-                      (Please set end date to be after start date.)」と表示される。</span>
-              - <span style="color: red;">保存ボタンを押下時にWEKOIDが以下の場合でエラーを起こす</span>
-                  - <span style="color: red;">入力されていない場合、「WEKOIDの値を設定してください。（Please set WEKO ID.）」と表示する。</span>
-                  - <span style="color: red;">入力されたWEKOIDの値が既に使われている場合、  
-                  「そのWEKO IDは既に使われています。（The value is already in use as WEKO ID）」と表示する。</span>
+                      (Please set end date to be after start date.)」と表示される。
+              - 保存ボタンを押下時にWEKOIDが以下の場合でエラーを起こす
+                  - 入力されていない場合、「WEKOIDの値を設定してください。（Please set WEKO ID.）」と表示する。
+                  - 入力されたWEKOIDの値が既に使われている場合、  
+                  「そのWEKO IDは既に使われています。（The value is already in use as WEKO ID）」と表示する。
                   
-                  - <span style="color: red;">入力された値が半角数字でない場合、
-                      「WEKO IDは半角数字のみです。(The WEKO ID must be numeric characters only.)」と表示する。<span>
+                  - 入力された値が半角数字でない場合、
+                      「WEKO IDは半角数字のみです。(The WEKO ID must be numeric characters only.)」と表示する。
           - 問題なく保存できれば、Author IDの一覧画面に遷移する。
         
           - 姓、名から姓名の情報（fullName）が生成される。
