@@ -576,7 +576,7 @@ POST /api/{version}/authors
       - 所属開始日（`periodStart`）が所属終了日（`periodEnd`）より後の日付の場合
 
 6. 著者情報を登録する
-    - `authorIdInfo.idType`が`WEKO`の`authorIdInfo.authorId`が指定されていない場合、既存のWEKOIDの最大値+1の数字を`authorIdInfo.authorId`として登録する。
+    - `authorIdInfo.idType`が`WEKO`の`authorIdInfo.authorId`が指定されていない場合、既存のWEKO IDの最大値+1の数字を`authorIdInfo.authorId`として登録する。
     - `authorIdInfo.idType`、`affiliationInfo.identifierInfo.affiliationIdType`は与えられた値で検索しIDを引っ張ってくる。
     - DBとElasticsearchに著者情報を登録する。
     - エラーが発生した場合は、ロールバックして500エラーを返す。

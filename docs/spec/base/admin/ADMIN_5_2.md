@@ -74,7 +74,7 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
   - ダウンロードURL(Download URL)
       - 全件エクスポートが完了すると、出力ファイル(tsv形式)をダウンロードできるURLが表示される
 
-      - 最後に出力されたダウンロードLINKが表示される（初期の全件エクスポート実行前は何も表示されない）  
+      - 最後に出力されたダウンロードURLが表示される（初期の全件エクスポート実行前は何も表示されない）  
           Export targetの値に応じて著者情報(Author)、著者識別子(ID_Prefix)、機関識別子(Affiliation_ID)のダウンロードURLが1つ表示される。
 
       - ダウンロードのURLの例(初期値)としては以下の通り（出力ファイル名はConfigで設定できるものとする）
@@ -592,6 +592,14 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+<td>
+</td>
+</tr><tr class="even">
+<td><blockquote>
+<p>2025/03/27</p>
+</blockquote></td>
+<td></td>
+<td>v1.1.0対応</td>
 </tr>
 </tbody>
 </table>

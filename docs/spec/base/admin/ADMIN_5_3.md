@@ -188,7 +188,7 @@
     <tr >
     <td>2</td>
     <td>Current WEKO ID</td>
-    <td>読み込んだ著者のインポート前のWEKO著者IDを表示する。</td>
+    <td>上書きする著者のインポート前のWEKO著者IDを表示する。</td>
     </tr>
     <tr >
     <td>3</td>
@@ -286,10 +286,10 @@
 <td>
   ・ 著者DBの場合のみ表示される。<br />
   ・ 表示されるのは以下の4つ<br />
-  　　・「インポートされる件数の合計」<br />
-  　　・「成功数」<br />
-  　　・「失敗数」<br />
-  　　・「実行待ち」<br />
+  　　・「総計」<br />
+  　　・「成功」<br />
+  　　・「失敗」<br />
+  　　・「処理待ち」<br />
 </td>
 </tr>
 <tr class="even">
@@ -332,7 +332,7 @@
     <tr >
     <td>4</td>
     <td>Previous WEKO ID</td>
-    <td>読み込んだ著者のインポート前のWEKO著者IDを表示する。</td>
+    <td>上書きする著者のインポート前のWEKO著者IDを表示する。</td>
     </tr>
     <tr >
     <td>5</td>
@@ -381,7 +381,7 @@
     <tr >
     <td>3</td>
     <td>終了日(End Date)</td>
-    <td>１データデータに対して登録処理が完了した日時を表示する。<br />
+    <td>１データに対して登録処理が完了した日時を表示する。<br />
     フォーマット：YYYY-MM-DD hh:mm:ss</td>
     </tr>
     <tr >
@@ -1427,8 +1427,15 @@
 <td><blockquote>
 <p>2023/11/11</p>
 </blockquote></td>
-<td>V0.9.27</td>
 <td></td>
+<td>V0.9.27
+</td>
+</tr><tr class="even">
+<td><blockquote>
+<p>2025/03/27</p>
+</blockquote></td>
+<td></td>
+<td>v1.1.0対応</td>
 </tr>
 </tbody>
 </table>
