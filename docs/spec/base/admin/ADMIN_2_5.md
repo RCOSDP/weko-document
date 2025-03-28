@@ -269,14 +269,21 @@ SWORD APIを利用時、ワークフローを経由してアイテムを登録�
 
 ### wk:textExtraction：全文検索用本文抽出フラグ
 
-WEKO3では、アイテムの全文検索を行うために、アイテム登録時にファイルの本文を抽出し、Elasticsearchに登録する。  
+WEKO3では、アイテム登録時に本文ファイルのテキストを抽出し、アイテムの全文検索に利用している。  
 本文抽出を行わない場合は、ファイルのメタデータとして`wk:textExtraction`を`false`に設定する。デフォルト値は`true`である。
 
 ```json
 {
   "@id": "data/sample.txt",
+  "@type": "File",
   "neme": "sample.txt",
   "wk:textExtraction": false
+},
+{
+  "@id": "/data/result.csv",
+  "@type": "File",
+  "name": "result.csv",
+  "wk:textExtraction": true
 }
 ```
 
@@ -418,6 +425,14 @@ RO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルを
 
 
 ## メタデータ補完機能
+
+## 本文抽出選択機能
+
+WEKO3では、アイテムの全文検索に使用するのために本文ファイルのテキストを抽出し、Elasticsearchに登録する。  
+本文ファイルをあえて全文検索対象から外したいというユースケースに対応するため、RO-Crateに含まれるメタデータ情報をもとに、全文検索機能の要不要を指定できる機能を提供する。  
+[全文検索用本文抽出フラグ](#wktextextraction全文検索用本文抽出フラグ)を使用して、本文抽出を行わないファイルを指定する。  
+
+
 
 ## 関連モジュール
 
