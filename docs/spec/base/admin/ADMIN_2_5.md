@@ -24,7 +24,8 @@
 
 ## RO-Crate+BagItファイルの構成
 RO-Crate+BagItファイルは、以下の構成である必要がある。  
-参照：[Adding RO-Crate to Bagit](https://www.researchobject.org/ro-crate/specification/1.1/appendix/implementation-notes.html)
+アイテムとして登録するファイルは、`data/`ディレクトリに格納される。  
+参照：[Adding RO-Crate to Bagit](https://www.researchobject.org/ro-crate/specification/1.1/appendix/implementation-notes.html)  
 
 
 ```plaintext
@@ -40,27 +41,26 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
 
 | ファイル or ディレクトリ | 必須 | 詳細                                                                          |
 | :----------------------- | :--: | :---------------------------------------------------------------------------- |
-| bagit.txt                |  ◯  | BagItファイルの宣言                                                           |
+| bagit.txt                |  ※  | BagItファイルの宣言                                                           |
 | bag-info.txt             |      | Bagに関するメタデータを含むファイル                                           |
-| data/                    |  ◯  | ペイロードディレクトリ。 配下のファイルはマニフェストの妥当性により担保される |
+| data/                    |  ※  | ペイロードディレクトリ。 配下のファイルはマニフェストの妥当性により担保される |
 | ro-crate-metadata.json   |  ◯  | アイテムのメタデータがJSON-LD形式で記述されたファイル                         |
-| manifst-sha256.txt       |  ◯  | data/内の各ファイルのSHA-256チェックサムをまとめたマニフェストファイル        |
+| manifst-sha256.txt       |  ※  | data/内の各ファイルのSHA-256チェックサムをまとめたマニフェストファイル        |
 | tagmanifst-sha256.txt    |      | data/外の各ファイルのSHA-256チェックサムをまとめたタグマニフェストファイル    |
 
-アイテムとして登録するファイルは、`data/`ディレクトリに格納される。
-アイテムにファイルを含まないとき、`data/`ディレクトリは空であるが、ディレクトリ自体は必須である。  
-またマニュフェストファイルも同様に空であるが、ファイル自体は必須である。
+ただし、この機能からのインポート時には、`data/` ディレクトリ以外は無視する。  
+※ この機能からインポートする際には必須でないが、SWORD APIを利用してアイテムを登録する際にはファイルの検証のため必須になるファイル。
+
 
 ## メタデータ記述
 アイテムのメタデータは、`ro-crate-metadata.json`ファイルにJSON-LD形式で記述される。  
 `@graph`には、アイテムのメタデータを記述するエンティティが配列で格納される。  
 `@id`は、エンティティの識別子を示し、リンクトデータとしての参照先を示す。  
 すべてのメタデータは、ルートデータセット（`{"@id": "./"}`）に記述され、
-ここにリンクトデータとしての参照先が指定されていないエンティティは、インポート時にすべて無視される。
+ここにリンクトデータとしての参照先が指定されていないエンティティは、インポート時にすべて無視される。  
 また、ルートデータセットを指定するエンティティ（`{"@id": "ro0crate-metadata.json"}`）が必須である。
 
-```jsonc
-// ro-crate-metadata.json
+```json
 {
   "@context": "https://w3id.org/ro/crate/1.1/context",
   "@graph": [
@@ -133,25 +133,29 @@ RO-Crateには、アイテムのメタデータを記述するための語彙が
 ### 使用語彙
 TSV形式のメタデータ項目とシステム向け語彙について、定義したカスタム語彙を以下に示す。  
 カスタム語彙はプレフィックスとして、`wk:`が付与されている。  
-インポート時に必須である項目は、インデックスIDと公開ステータスである。
+新規登録としてインポートする際に必須である項目は、インデックスIDと公開ステータスである。  
+更新登録としてインポートする際に追加で必須になる項目は、アイテムIDとURIである。  
+一部の語彙は、この機能では使用せず、SWORD APIを利用してアイテムを登録する際に使用することを前提としている。
 
-| 使用語彙                                   | 対応するTSV項目名    | バリュータイプ     | デフォルト値 | 親エンティティタイプ | 説明                     |
-| ------------------------------------------ | -------------------- | ------------------ | ------------ | -------------------- | ------------------------ |
-| identifier                                 | ID                   | 整数値             | -            | Dataset              | アイテムID               |
-| uri                                        | URI                  | URL                | -            | Dataset              | アイテムのURI            |
-| wk:index                                   | .IndexID             | 配列               | -            | Dataset              | インデックスID           |
-| wk:publishStatus                           | .PUBLISH_STATUS      | 文字列             | -            | Dataset              | 公開ステータス           |
-| wk:feedbackMail                            | .FEEDBACK_MAIL       | 文字列             | -            | Dataset              | フィードバックメール     |
-| wk:requestMail                             | .REQUEST_MAIL        | 文字列             | -            | Dataset              | リクエストメール         |
-| wk:grant.@id                               | .CNRI                | URL                | -            | Dataset              | CNRI                     |
-| wk:grant.@id                               | .DOI                 | URL                | -            | Dataset              | DOI                      |
-| wk:grant<br>.jpcoar:identifierRegistration | .DOI_RA              | URL                | -            | Dataset              | DOI_RA                   |
-| wk:editMode                                | Keep/Upgrade Version | 文字列             | -            | Dataset              | Keep/Upgrade Version     |
-| wk:itemLinks.identifier                    | -                    | 整数値 or 文字列   | -            | File                 | アイテムリンク先識別子   |
-| wk:itemLinks.value                         | -                    | 文字列             | -            | File                 | アイテムリンクタイプ     |
-| wk:textExtraction                          | -                    | 真偽値             | true         | File                 | 全文検索用本文抽出フラグ |
-| wk:saveAsIs                                | -                    | 真偽値             | false        | Dataset              | 登録用ファイル保存フラグ |
-| wk:isSplited                               | -                    | 真偽値             | false        | File                 | アイテム分割フラグ       |
+| 使用語彙                                   | 対応するTSV項目名    | バリュータイプ     | デフォルト値 | 新規 | 更新 | 説明                                     |
+| ------------------------------------------ | -------------------- | ------------------ | ------------ | :--: | :--: | ---------------------------------------- |
+| identifier                                 | ID                   | 整数値             | -            | ×   | 〇   | アイテムID                               |
+| uri                                        | URI                  | URL                | -            | ×   | 〇   | アイテムのURI                            |
+| wk:index                                   | .IndexID             | 配列               | -            | 〇   | 〇   | インデックスID                           |
+| wk:publishStatus                           | .PUBLISH_STATUS      | 文字列             | -            | 〇   | 〇   | 公開ステータス                           |
+| wk:feedbackMail                            | .FEEDBACK_MAIL       | 文字列             | -            |      |      | フィードバックメール                     |
+| wk:requestMail                             | .REQUEST_MAIL        | 文字列             | -            |      |      | リクエストメール                         |
+| wk:grant.@id                               | .CNRI                | URL                | -            |      |      | CNRI                                     |
+| wk:grant.@id                               | .DOI                 | URL                | -            |      |      | DOI                                      |
+| wk:grant<br>.jpcoar:identifierRegistration | .DOI_RA              | URL                | -            |      |      | DOI_RA                                   |
+| wk:editMode                                | Keep/Upgrade Version | 文字列             | -            |      | 〇   | Keep/Upgrade Version                     |
+| wk:itemLinks.identifier                    | -                    | 整数値 or 文字列   | -            |      |      | アイテムリンク先識別子（SWORD経由のみ）  |
+| wk:itemLinks.value                         | -                    | 文字列             | -            |      |      | アイテムリンクタイプ （SWORD経由のみ）   |
+| wk:textExtraction                          | -                    | 真偽値             | true         |      |      | 全文検索用本文抽出フラグ                 |
+| wk:saveAsIs                                | -                    | 真偽値             | false        |      |      | 登録用ファイル保存フラグ                 |
+| wk:isSplited                               | -                    | 真偽値             | false        |      |      | アイテム分割フラグ （SWORD経由のみ）     |
+| wk:metadataAutoFill                        | -                    | 真偽値             | false        |      |      | メタデータ自動補完フラグ                 |
+| wk:metadataReplace                         | -                    | 真偽値             | false        |      |      | メタデータのみ置換フラグ（SWORD経由のみ）|
 
 ※ 登録用ファイル保存フラグとアイテム分割フラグが両方`true`の場合、アイテム分割フラグが優先され、ファイルは展開されて保存される。
 
@@ -220,7 +224,7 @@ DOI発行機関を指定する場合は、`jpcoar:identifierRegistration`で指�
 ### wk:editMode：
 
 アイテムの編集時のモードを指定する。ルートデータセット直下に記述する。  
-`Keep`または`Upgrade Version`を指定する。
+`Keep`または`Upgrade`を指定する。
 
 
 ```json
@@ -244,8 +248,9 @@ DOI発行機関を指定する場合は、`jpcoar:identifierRegistration`で指�
 ### wk:itemLinks：アイテムリンク
 
 アイテムにリンクを設定する。`wk:itemLinks`は、`identifier`と`value`の2つのプロパティを持つ。  
-`identifier`はアイテムリンク先のアイテムIDを指定し、`value`はアイテムリンクのリレーションタイプを指定する。
-ルートデータセット直下に記述する。
+`identifier`はアイテムリンク先のアイテムIDを指定し、`value`はアイテムリンクのリレーションタイプを指定する。  
+ルートデータセット直下に記述する。  
+SWORD APIを利用時、ワークフローを経由してアイテムを登録する際に使用することを前提としている。
 
 ```json
 {
@@ -264,14 +269,21 @@ DOI発行機関を指定する場合は、`jpcoar:identifierRegistration`で指�
 
 ### wk:textExtraction：全文検索用本文抽出フラグ
 
-WEKO3では、アイテムの全文検索を行うために、アイテム登録時にファイルの本文を抽出し、Elasticsearchに登録する。  
+WEKO3では、アイテム登録時に本文ファイルのテキストを抽出し、アイテムの全文検索に利用している。  
 本文抽出を行わない場合は、ファイルのメタデータとして`wk:textExtraction`を`false`に設定する。デフォルト値は`true`である。
 
 ```json
 {
   "@id": "data/sample.txt",
+  "@type": "File",
   "neme": "sample.txt",
   "wk:textExtraction": false
+},
+{
+  "@id": "/data/result.csv",
+  "@type": "File",
+  "name": "result.csv",
+  "wk:textExtraction": true
 }
 ```
 
@@ -292,7 +304,7 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
 
 WEKO3においてRO-Crateは、SWORD APIを利用してアイテムを登録する際に使用することを前提としている。  
 原則として、RO-Crate+BagItファイルに含まれるアイテムは、1つのアイテムとして登録される。  
-例外的にアイテムを複数に分割して登録する場合は、`wk:isSplited`を`true`に設定する。デフォルト値は`false`である。ルートデータセット直下に記述する。  
+例外的にアイテムを複数に分割し、ワークフローを経由して登録する場合は、`wk:isSplited`を`true`に設定する。デフォルト値は`false`である。ルートデータセット直下に記述する。  
 分割するとき、`hasPart`プロパティを使用して、個別のアイテムを指定する。  
 メタデータは個別のアイテムをルートデータセットとみなして記述する。
 
@@ -332,6 +344,40 @@ WEKO3においてRO-Crateは、SWORD APIを利用してアイテムを登録す�
   "identifier": "_:item1"
 }
 ```
+
+### wk:metadataAutoFill：メタデータ自動補完フラグ
+
+アイテムのメタデータを自動補完するかどうかを指定する。ルートデータセット直下に記述する。  
+"jpcoar:relation"プロパティで関連情報として`cite_as`にDOIを指定すると、そのDOIを利用してメタデータを補完する。  
+このとき、`relationType`プロパティに`isVersionOf`を指定する必要がある。  
+関係情報が複数記述されるとき、はじめて`relationType`プロパティに`isVersionOf`を指定したものが対象となる。  
+自動補完機能については、[メタデータ補完機能](#メタデータ補完機能)を参照。
+
+```json
+{
+  "@id": "./",
+  "jpcoar:relation": [{ "@id": "_:Relation1" }, { "@id": "_:Relation2" }],
+  "wk:metadataAutoFill": true
+},
+{
+  "@id": "_:Relation1",
+  "relationType": "isVersionOf",
+  "cite-as": "https://doi.org/10.34477/0002000074"
+}
+```
+
+### wk:metadataReplace：メタデータのみ置換フラグ
+
+SWORD APIを利用してアイテムを登録する際に、メタデータのみを置換するかどうかを指定する。ルートデータセット直下に記述する。  
+暫定的に使用するフラグであり、将来的には廃止される予定である。
+
+```json
+{
+  "@id": "./",
+  "wk:metadataReplace": true
+}
+```
+
 
 ## マッピング機能
 RO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルを読み込み、あらかじめ設定されたマッピング定義に基づいてJSON-LD形式で記述されたメタデータをアイテムタイプへマッピングする。
@@ -379,6 +425,14 @@ RO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルを
 
 
 ## メタデータ補完機能
+
+## 本文抽出選択機能
+
+WEKO3では、アイテムの全文検索に使用するのために本文ファイルのテキストを抽出し、Elasticsearchに登録する。  
+本文ファイルをあえて全文検索対象から外したいというユースケースに対応するため、RO-Crateに含まれるメタデータ情報をもとに、全文検索機能の要不要を指定できる機能を提供する。  
+[全文検索用本文抽出フラグ](#wktextextraction全文検索用本文抽出フラグ)を使用して、本文抽出を行わないファイルを指定する。  
+
+
 
 ## 関連モジュール
 
