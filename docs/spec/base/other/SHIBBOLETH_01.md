@@ -108,21 +108,41 @@
 
   - リクエストの SHIB_ATTR_SESSION_ID と session\['shib_session_id'\]のどちらかに情報がある場合は、ログインする
 
-    - リクエストに SHIB_ATTR_SESSION_ID が含まれず、session\['shib_session_id'\]に情報がある場合は、weko_accounts.api.ShibUser.new_relation_info メソッドによって shibboleth_user テーブルにレコードを作成、および WEKO3 の新規 ID を作成する
+  - この先の処理は以下設定キーに応じて流れが異なる
 
-      - あわせて、userprofiles_userprofile テーブルに以下の内容でレコードを作成する
+    - > パス（行数後日修正）：<https://github.com/RCOSDP/weko/blob/13c305a3048309dbda87a614ffedac18423820aa/modules/weko-accounts/weko_accounts/config.py>
 
-        - user_id：shibboleth_user テーブルに作成するレコードの id フィールドと同じ
+    - > 設定キー：WEKO_ACCOUNTS_SKIP_CONFIRMATION_PAGE
 
-        - timezone：コンフィグのデフォルト値
+    - WEKO_ACCOUNTS_SKIP_CONFIRMATION_PAGE が false の場合は weko_accounts.views.shib_login 関数で ID 選択画面に遷移する
 
-        - language：コンフィグのデフォルト値
+      - 登録済みの ID でログインする場合は、weko_accounts.views.confirm_user 関数で続きの処理を行う
 
-        - username：shibboleth_user テーブルに作成するレコードの shib_user_name フィールドと同じ
+        - リクエストに、有効な WEKO アカウントとパスワードが含まれない場合は、WEKO のログイン画面に遷移する
 
-    - レコード作成の有無にかかわらず、weko_accounts.api.ShibUser. check_in メソッドの中で、ロールの割り当てを行う
+        - リクエストの WEKO アカウントのメールアドレスを使用して、shibboleth_user テーブルにレコードを作成する
 
-- 新規 ID 作成後は、weko_accounts.views.shib_auto_login 関数でログインする
+        - weko_accounts.api.ShibUser. check_in メソッドの中で、ロールの割り当てを行う
+
+        - ログインする
+
+      - リクエストに SHIB_ATTR_SESSION_ID が含まれず、session\['shib_session_id'\]に情報がある場合は、weko_accounts.api.ShibUser.new_relation_info メソッドによって shibboleth_user テーブルにレコードを作成、および WEKO3 の新規 ID を作成する
+
+        - あわせて、userprofiles_userprofile テーブルに以下の内容でレコードを作成する
+
+          - user_id：shibboleth_user テーブルに作成するレコードの id フィールドと同じ
+
+          - timezone：コンフィグのデフォルト値
+
+          - language：コンフィグのデフォルト値
+
+          - username：shibboleth_user テーブルに作成するレコードの shib_user_name フィールドと同じ
+
+      - レコード作成の有無にかかわらず、weko_accounts.api.ShibUser. check_in メソッドの中で、ロールの割り当てを行う
+
+    - WEKO_ACCOUNTS_SKIP_CONFIRMATION_PAGE が true の場合は weko_accounts.views.confirm_user_without_page 関数で新規 ID および shibboleth_user テーブルのレコードの自動生成を行う
+
+      - ログインする
 
 - shibboleth_user テーブルにレコードを作成する場合は、あわせてユーザ関連テーブルも上書きする
 
