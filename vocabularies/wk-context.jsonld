@@ -1,0 +1,121 @@
+{
+    "@id": "https://purl.org/wk/v1/context",
+    "@context": {
+      "wk:editMode": {"@id": "wk:editMode"},
+      "wk:feedbackMail": {"@id": "wk:feedbackMail"},
+      "wk:grant": {"@id": "wk:grant"},
+      "wk:index": {"@id": "wk:index"},
+      "wk:itemLinks": {"@id": "wk:itemLinks"},
+      "wk:metadataReplace": {"@id": "wk:metadataReplace"},
+      "wk:metadataAutoFill": {"@id": "wk:metadataAutoFill"},
+      "wk:publishStatus": {"@id": "wk:publishStatus"},
+      "wk:requestMail": {"@id": "wk:requestMail"},
+      "wk:saveAsIs": {"@id": "wk:saveAsIs"},
+      "wk:textExtraction": {"@id": "wk:textExtraction"}
+    },
+    "name": "WEKO3 Repository Context",
+    "description": "The custom vocabulary for WEKO3. This vocabulary is used to describe the properties of the WEKO3 repository.",
+    "creator": {
+      "@type": "Organization",
+      "schema:name": "NII, National Institute of Informatics"
+    },
+    "dateCreated": "2025-02-11",
+    "license": "",
+    "isBasedOn": [
+      {
+        "@id": "https://schema.irdb.nii.ac.jp/ja",
+        "scheme:name": "JPCOAR Schema"
+      }
+    ],
+    "properties": [
+      {
+        "@id": "wk:editMode",
+        "@type": "rdf:Property",
+        "schema:name": "Edit Mode",
+        "schema:description": "Indicates the edit mode of the resource. The value is one of 'Keep' or 'Upgrade'.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Text"
+      },
+      {
+        "@id": "wk:feedbackMail",
+        "@type": "rdf:Property",
+        "schema:name": "Feedback Mail List",
+        "schema:description": "Indicates the feedback mail list associated with the resource.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Text"
+      },
+      {
+        "@id": "wk:grant",
+        "@type": "rdf:Property",
+        "schema:name": "Grant Identifiers",
+        "schema:description": "Indicates the grant identifiers associated with the resource.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": ["jpcoar:identifier", "jpcoar:identifierRegistration"]
+      },
+      {
+        "@id": "wk:index",
+        "@type": "rdf:Property",
+        "schema:name": "Index",
+        "schema:description": "Indicates the identifier of the index.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Number"
+      },
+      {
+        "@id": "wk:itemLinks",
+        "@type": "rdf:Property",
+        "schema:name": "Item Links",
+        "schema:description": "Indicates the item links associated with the resource. ",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Text"
+      },
+      {
+        "@id": "wk:metadataReplace",
+        "@type": "rdf:Property",
+        "schema:name": "Metadata Replace",
+        "schema:description": "Indicates whether the item metadata is replaced or not. The value is either 'true' or 'false'.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Boolean"
+      },
+      {
+        "@id": "wk:metadataAutoFill",
+        "@type": "rdf:Property",
+        "schema:name": "Metadata Auto Fill",
+        "schema:description": "Indicates whether to use the metadata auto-fill or not. The value is either 'true' or 'false'.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Boolean"
+      },
+      {
+        "@id": "wk:publishStatus",
+        "@type": "rdf:Property",
+        "schema:name": "Publish Status",
+        "schema:description": "Indicates whether the item is public or not. The value is either 'public' or 'private'.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Text"
+      },
+      {
+        "@id": "wk:requestMail",
+        "@type": "rdf:Property",
+        "schema:name": "Request Mail List",
+        "schema:description": "Indicates the request mail list associated with the resource.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Text"
+      },
+      {
+        "@id": "wk:saveAsIs",
+        "@type": "rdf:Property",
+        "schema:name": "Save As Is",
+        "schema:description": "Indicates whether the resource save as is or not. The value is either 'true' or 'false'.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Boolean"
+      },
+      {
+        "@id": "wk:textExtraction",
+        "@type": "rdf:Property",
+        "schema:name": "Text Extraction",
+        "schema:description": "Indicates whether the resource is full-text searchable or not. The value is either 'true' or 'false'.",
+        "schema:domainIncludes": "schema:Dataset",
+        "schema:rangeIncludes": "schema:Boolean"
+      }
+    ]
+  }
+  

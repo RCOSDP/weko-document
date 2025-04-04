@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+docs/spec/pdf/
+docs/spec/html/
+docs/manuals/ADMIN/pdf/
+docs/manuals/ADMIN/html/
+docs/manuals/USER/pdf/
+docs/manuals/USER/html/
+
+
