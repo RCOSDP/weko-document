@@ -23428,9 +23428,9 @@ resyncを利用して外部機関からデータを収集する
             
               - デフォルト：1
         
-          - From Date：期間‐開始日時。カレンダーから選択
+          - From Date：期間‐開始日時。カレンダーから選択　※Resync Modeが「Incremental」の場合のみ有効。
         
-          - Until Date：期間‐開始日時。カレンダーから選択
+          - Until Date：期間‐開始日時。カレンダーから選択 ※現在未使用。
         
           - Target Index：収集されたアイテムに対して登録先インデックスを指定。必須項目。インデックスツリー一覧から選択
         
@@ -23438,10 +23438,10 @@ resyncを利用して外部機関からデータを収集する
             
               - 選択肢：Audit、Baseline、Incremental
                 
-                  - Baselineの時に、resourcelistのURLのみを「Base URL」に指定できる  
-                    ResourceListを使ってその中の日付をベースにデータを取得しているので、From date/Until dateの指定は不要になる
+                  - Baselineの時に、descliption、capabilitylist、Resourcelist-Index、ResourcelistのURLを「Base URL」に指定できる  
+                    ResourceListを使ってその中の日付をベースにデータを取得しているので、From date の指定は不要になる
                 
-                  - Incrementialの時に、changelistのURLのみを「Base URL」に指定できる
+                  - Incrementialの時に、descliption、capabilitylist、Changelist-Index、ChangelistのURLを「Base URL」に指定できる
                 
                   - Auditの時に、Sourceサーバーと実行しているかどうか、  
                     ResourceListの変更があるかどうかチェックする機能なのでImportボタンを表示されない
@@ -23458,6 +23458,8 @@ resyncを利用して外部機関からデータを収集する
             
               - 必須項目を入力しない場合、以下のようなエラーメッセージを表示する  
                 エラーメッセージ：「{項目名} is required」
+              - 「From Date」、「Until Date」の日付のフォーマットが正しくない場合、以下のようなエラーメッセージを表示する  
+                エラーメッセージ：「{項目名} の入力値が正しくありません。」
     
       - ［Create and Add Another］ボタンを押すと、［Create］ボタンを押したときと同様の処理によって設定された内容のレコードを作成して、他の「Resync」を作成可能とする
     

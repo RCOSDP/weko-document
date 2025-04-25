@@ -12242,11 +12242,11 @@ Table 11‑3. The elements on the Resync create tab
 </tr>
 <tr class="odd">
 <td>From Date</td>
-<td>Enter the start date and time of the data collection.</td>
+<td>Enter the start date and time of the data collection. *This is valid only when Resync Mode is set to “Incremental”.</td>
 </tr>
 <tr class="even">
 <td>Until Date</td>
-<td>Enter the end date and time of the data collection.</td>
+<td>Enter the end date and time of the data collection. *Not currently in use.</td>
 </tr>
 <tr class="odd">
 <td>Target Index<sup>*</sup></td>
@@ -12259,11 +12259,11 @@ Table 11‑3. The elements on the Resync create tab
 <p>You have three options: "Baseline", "Incremental" and "Audit".</p>
 <ul>
 <li><blockquote>
-<p>If you select "Baseline", you can specify only the URL of the Resourcelist as the Base URL.<br />
-　★In this case, you do not need to specify "From date" and "Until date" because the data collection is based on the date contained in the ResourceList.</p>
+<p>If you select Baseline, you can specify the URLs for descliption, capabilitylist, Resourcelist-Index, and Resourcelist as “Base URL”.<br />
+　★In this case, you do not need to specify "From date" because the data collection is based on the date contained in the ResourceList.</p>
 </blockquote></li>
 <li><blockquote>
-<p>If you select "Incremental", you can specify only the URL of the Changelist as the Base URL.</p>
+<p>If “Incremental” is selected, the URLs for descliption, capabilitylist, Changelist-Index, and Changelist can be specified as “Base URL”.</p>
 </blockquote></li>
 <li><blockquote>
 <p>If you select "Audit", the Import button will not be displayed; it is a function that checks the sync state with the Source server and any changes to the ResourceList.</p>
@@ -12290,6 +12290,7 @@ Table 11‑3. The elements on the Resync create tab
 > The Resync is created.
 > 
 > If you do not specify the required fields, the error message "\<element\_name\> is required" will be displayed.
+> If the date format of “From Date” or “Until Date” is incorrect, the error message "The input value for \<element\_name\> is incorrect." will be displayed.
 
 ### Edit a Resync
 
