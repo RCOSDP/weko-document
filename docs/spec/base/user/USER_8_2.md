@@ -42,8 +42,6 @@
 
   - > 機能内容
 
-<!-- end list -->
-
   - ユーザー画面のヘッダから［ログイン（Log in）］ボタンを押すと、ログイン画面に移動する
     
       - コンフィグの以下設定値の組み合わせに応じて、該当ログイン画面に移動する  
@@ -105,17 +103,15 @@
         
           - 「パスワードをお忘れの方はこちら」（Forgot password?）リンクを押すと、リセットパスワード画面に移動する
 
-<!-- end list -->
-
   - > 関連モジュール
-
-<!-- end list -->
 
   - > invenio\_accounts
 
   - > weko-accounts
 
-<!-- end list -->
+  - > 関連テーブル
+  - > accounts\_user\_session\_activity
+  - > accounts\_user
 
   - > 処理概要
 
@@ -138,8 +134,19 @@
 > ログインボタンを押すと、invenio-accountsのsessions.pyにあるlogin\_listenerのadd\_user\_sessionメソッドが呼び出される。
 
   - > ログイン時には、accounts\_user\_session\_activityテーブルとredisにセッション情報を記録して、accounts\_userテーブルの最終ログイン情報を更新する。
+  - > 登録するセッション情報を以下に示す。
 
-<!-- end list -->
+| セッション情報    |   登録内容                        |
+|------------|-------------------------------------------|
+| sid_s      | セッションID |
+| user_id    | ユーザID |
+| ip | IPアドレス|
+| country| 国名|
+| browser | ブラウザ|
+| browser_version | バージョン|
+| os | os|
+| device| デバイス|
+| organization_name | shibboleth認証を行った機関の名称</br> 本項目には、Shibboleth認証時にレスポンスのボディで返却されるJaOrganizationName(jao)の値を設定する。 </br> ローカル認証およびJaOrganizationNameが返却されなかった場合はNullとする。|
 
   - > 更新履歴
 
@@ -158,6 +165,16 @@
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>2025/03/28</p>
+</blockquote></td>
+<td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+<td>セッション情報表示の強化</td>
 </tr>
 </tbody>
 </table>
