@@ -3004,7 +3004,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
     
     ファイルの読み込みとチェックが実行されて、［インポート］タブが表示されます。［インポート］タブには、読み込んだファイルのチェック結果が表示されます。
 
-2)  > ［チェック結果］が［Register］または［Update］または[Warnig]であることを確認します。
+2)  > ［チェック結果］が［Register］または［Update］であることを確認します。
     
     ［エラー］が表示されている場合、インポートできません。ファイルを確認して、再度手順2.から操作してください。
 
@@ -3012,16 +3012,6 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 ［インポート］タブの項目は、「表 3-2［インポート］タブの項目」の説明に参照します。  
 インポートファイルのバリデーションチェックは、「表 3-3 TSVフォーマット不正のバリデーションチェック」、「表 3-4 メタデータ項目以外の不正のバリデーションチェック」、「表 3-5 メタデータ項目不正のバリデーションチェック」の説明に参照します。
-
-また、[チェック結果]がWarningの場合、「表 3-6 メタデータ項目重複のチェック」の説明に参照します。
-
-表 3-6 メタデータ項目重複のチェック
-
-| タイプ | 対象                               | 英語                                                                                                                                     | 日本語                                                              | 説明                                                            |
-| --- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------- |
-| 警告 | 識別子、タイトル、リソースタイプ、著者 | The same item may have been registered. | 同一のアイテムが登録されている可能性があります。   | 対象の項目が既に登録済の場合の警告メッセージするが登録は可能                                     |
-
-![](media/media/image440.png)
 
 3)  > ［インポート］をクリックします。
     
@@ -3589,9 +3579,7 @@ CNRIハンドル設定ユーザ
 <ul>
 <li><p>グループ</p></li>
 </ul>
-<p>ユーザが所属しているグループごとの閲覧権限を設定します。［子インデックスのグループにも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定されます。</p>
-<p>学認経由でのログイン時にGakuNin mAPからの情報に従って付与されたグループの閲覧権限に設定ファイルを用いてデフォルトの権限を付与できます。</p>
-<p>※学認経由でのログイン時に付与されたGakuNin mAPグループは内部的にロールとして扱われます。</p>
+<p>ユーザが所属しているグループごとの閲覧権限を設定します。［子インデックスのグループにも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定されます。</p></td>
 </tr>
 <tr class="even">
 <td>投稿権限</td>
@@ -3606,9 +3594,7 @@ CNRIハンドル設定ユーザ
 <li><p>グループ</p></li>
 </ul>
 <p>ユーザが所属しているグループごとの投稿権限を設定します。</p>
-<p>［子インデックスのグループにも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定されます。</p>
-<p>学認経由でのログイン時にGakuNin mAPからの情報に従って付与されたグループの投稿権限に設定ファイルを用いてデフォルトの権限を付与できます。</p>
-<p>※学認経由でのログイン時に付与されたGakuNin mAPグループは内部的にロールとして扱われます。</p>
+<p>［子インデックスのグループにも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定されます。</p></td>
 </tr>
 <tr class="odd">
 <td>表示形式(検索結果)</td>
@@ -5000,9 +4986,17 @@ Author IDを編集する方法を説明します。
      
      入力項目については、「（3）Author IDを追加する」を参照してください。
 
-109. ［保存］をクリックします。
+109. ［保存］をクリックします。  
      
      変更内容が保存されます。
+
+     ※ 変更内容が反映される際に、この著者DBに紐づいているメタデータを更新します。
+     更新対象は強制変更フラグによって変わります。
+     
+![グラフィカル ユーザー インターフェイス 中程度の精度で自動的に生成された説明](media/media/image440.png)
+
+    強制変更フラグがオフの場合：著者ID
+    強制変更フラグオンの場合：名前、著者ID、E-mail、機関識別子
      
 ##### Author IDを削除する
 
@@ -5347,8 +5341,10 @@ URLについて
 
 ![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image206.png)
 
-117. 処理を行う場合は、［エクスポート］をクリックします。
-     
+![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image441.png)
+
+117. 処理を行う場合は、エクスポート対象を選択後、［エクスポート］をクリックします。
+     エクスポート対象は著者DB、著者識別子、機関識別子から選択できます。
      ［エクスポート］をクリックすると、全件出力を実行してよいかの確認ダイアログが表示されます。表示されたダイアログのボタンを操作します。
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション 自動的に生成された説明](media/media/image207.png)
@@ -5363,111 +5359,220 @@ URLについて
 
 表 6‑9ダウンロードされる著者情報の項目
 
+
 <table>
 <thead>
 <tr class="header">
-<th>項番</th>
-<th><p>1行目</p>
-<p>ヘッダ項目（内部キー）</p></th>
-<th><p>2行目</p>
-<p>ラベル（英語）</p></th>
-<th><p>3行目</p>
-<p>ラベル</p>
-<p>（日本語）</p></th>
-<th>概要</th>
+<th >#</th> <th>ヘッダ項目</th> <th>ラベル(日本語)</th> <th>ラベル(英語)</th> <th>概要</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr  >
 <td>1</td>
 <td>pk_id</td>
-<td>WEKO ID</td>
-<td>WEKO ID</td>
-<td>WEKO3の著者ID( pk_id author_link)を出力する</td>
+<td >著者ID</td>
+<td >Author ID</td>
+<td >このリポジトリ内でのpk_idを出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>2</td>
+<td>weko_id</td>
+<td>WEKO ID</td>
+<td>WEKO ID</td>
+<td>WEKO IDを出力する</td>
+</tr>
+<tr >
+<td>3</td>
 <td>authorNameInfo[0...n].familyName</td>
-<td>Family Name</td>
 <td>姓</td>
+<td>Family Name</td>
 <td>著者の姓を出力する</td>
 </tr>
-<tr class="odd">
-<td>3</td>
+<tr >
+<td>4</td>
 <td>authorNameInfo[0...n].firstName</td>
-<td>Given name</td>
 <td>名</td>
+<td>Given name</td>
 <td>著者の名を出力する</td>
 </tr>
-<tr class="even">
-<td>4</td>
+<tr >
+<td>5</td>
 <td>authorNameInfo[0...n].language</td>
-<td>Language</td>
 <td>言語</td>
+<td>Language</td>
 <td>著者の言語を出力する</td>
 </tr>
-<tr class="odd">
-<td>5</td>
-<td>authorNameInfo[0...n].nameFormat</td>
-<td>name Format</td>
-<td>フォーマット</td>
-<td>「familyNmAndNm」を固定で出力する</td>
-</tr>
-<tr class="even">
+<tr >
 <td>6</td>
-<td>authorNameInfo[0...n].nameShowFlg</td>
-<td>Name Display</td>
-<td>姓名・言語 表示／非表示</td>
-<td><p>著者の姓名と言語の表示／非表示を出力する</p>
-<p>表示：Y</p>
-<p>非表示：N</p></td>
+<td>authorNameInfo[0...n].nameFormat</td>
+<td>フォーマット</td>
+<td>name Format</td>
+<td>著者の姓名のフォーマットを出力する<br />
+※現状(SP67時点)は「familyNmAndNm」固定</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>7</td>
-<td>authorNameInfo[0...n].idType</td>
-<td>Identifier Scheme</td>
+<td>authorNameInfo[0...n].nameShowFlg</td>
+<td>姓名・言語 表示／非表示</td>
+<td>Name Display</td>
+<td>著者の姓名と言語の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr >
+<td>8</td>
+<td>authorIdInfo[0...n].idType</td>
 <td>外部著者ID 識別子</td>
+<td>Identifier Scheme</td>
 <td>外部著者IDの識別子を出力する</td>
 </tr>
-<tr class="even">
-<td>8</td>
-<td>authorNameInfo[0...n].authorId</td>
-<td>Identifier URI</td>
+<tr >
+<td>9</td>
+<td>authorIdInfo[0...n].authorId</td>
 <td>外部著者ID URI</td>
+<td>Identifier URI</td>
 <td>外部著者IDの値を出力する</td>
 </tr>
-<tr class="odd">
-<td>9</td>
-<td>authorNameInfo[0...n].authorIdShowFlg</td>
-<td>Identifier Display</td>
-<td>外部著者ID 表示／非表示</td>
-<td><p>外部著者IDの表示／非表示を出力する</p>
-<p>表示：Y</p>
-<p>非表示：N</p></td>
-</tr>
-<tr class="even">
+<tr >
 <td>10</td>
+<td>authorIdInfo[0...n].authorIdShowFlg</td>
+<td>外部著者ID 表示／非表示</td>
+<td>Identifier Display</td>
+<td>外部著者IDの表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr >
+<td>11</td>
 <td>emailInfo[0...n].email</td>
-<td>Mail Address</td>
 <td>メールアドレス</td>
+<td>Mail Address</td>
 <td>著者のメールアドレスを出力する</td>
 </tr>
-<tr class="odd">
-<td>11</td>
+<tr >
+<td>12</td>
 <td>is_deleted</td>
-<td>Delete Flag</td>
 <td>削除フラグ</td>
-<td>全件エクスポートでは論理削除された著者情報は出力しないため、ヘッダ項目とラベルのみ出力する</td>
+<td>Delete Flag</td>
+<td>著者を削除する場合に "D" と出力する<br />
+※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる</td>
+</tr>
+<tr  >
+<td>13</td>
+<td>authorAffiliationInfo[0...n].affiliationId[0...n].idtype</td>
+<td>外部所属機関ID 識別子</td>
+<td>Affiliation Identifier Scheme</td>
+<td>外部所属機関IDの識別子を出力する</td>
+</tr>
+<tr  >
+<td>14</td>
+<td>authorAffiliationInfo[0...n].affiliationId[0...n].uri</td>
+<td>外部所属機関ID URI</td>
+<td>Affiliation Identifier URI</td>
+<td>外部所属機関IDの値を出力する</td>
+</tr>
+<tr  >
+<td>15</td>
+<td>authorAffiliationInfo[0...n].authorIdShowFlg</td>
+<td>外部所属機関ID 表示／非表示</td>
+<td>Affiliation Identifier Display</td>
+<td>外部所属機関IDの表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr  >
+<td>16</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].affiliationName</td>
+<td>外部所属機関名</td>
+<td>Affiliation Name</td>
+<td>外部所属機関名を出力する</td>
+</tr>
+<tr  >
+<td>17</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].language</td>
+<td>言語</td>
+<td>Language</td>
+<td>外部所属機関名の言語を出力する</td>
+</tr>
+<tr  >
+<td>18</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].nameShowFlg</td>
+<td>外部所属機関名・言語 表示／非表示</td>
+<td>Affiliation Name Display</td>
+<td>外部所属機関名と言語の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr  >
+<td>19</td>
+<td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].period</td>
+<td>外部所属機関 所属期間</td>
+<td>Affiliation Period</td>
+<td>外部所属機関所属期間を出力する。<br/>
+所属開始のみ："20250127"<br/>
+所属開始・終了："20250127-20250317"</td>
+</tr>
+<tr  >
+<td>20</td>
+<td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].nameShowFlg</td>
+<td>外部所属機関 所属期間 表示/非表示</td>
+<td>Affiliation Period Display</td>
+<td>外部所属機関 所属期間の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
 </tr>
 </tbody>
 </table>
+
+  - 著者識別子、機関識別子の各ヘッダの情報は以下の通り
+  
+<table>
+<thead>
+<tr class="header">
+<th >#</th> <th>ヘッダ項目</th> <th>ラベル(日本語)</th> <th>ラベル(英語)</th> <th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr >
+<td>1</td>
+<td>scheme</td>
+<td>スキーマ</td>
+<td>Scheme</td>
+<td>スキーマを入力する</td>
+</tr>
+<tr >
+<td>2</td>
+<td>name</td>
+<td>名前</td>
+<td>Name</td>
+<td>スキーマに対応する識別子名を入力する</td>
+</tr>
+<tr >
+<td>3</td>
+<td>url</td>
+<td>URL</td>
+<td>URL</td>
+<td>スキーマに応じるURLを入力する</td>
+</tr>
+<tr >
+<td>4</td>
+<td>is_deleted</td>
+<td>削除フラグ</td>
+<td>Delete Flag</td>
+<td>識別子を削除する場合に "D" と出力する<br />
+    エクスポートの場合は全て空欄である。</td>
+</tr>
+</tbody>
+</table>
+
+
 
 > 【注意事項】
 > 
 > ・繰り返し項目とする場合はヘッダ行の各項目名の後ろに \[1\], \[2\], ..., \[N\] と出力されます（1つ目の項目名には \[0\] が記載されています）。
 > 
 > ・WEKO ID, Delete Flag は繰り返し項目ではありません。
-> 
+
 > (2)［キャンセル］を選択します。
 > 
 > 全件エクスポートを行なわず、確認用ダイアログを閉じます。
@@ -5510,11 +5615,36 @@ URLについて
 
 一括登録を実行している端末が Admin\>Author Management\>Import 画面を開いた場合（他のブラウザで開いたとき，"Result"タブから再度"Import"タブに遷移したとき等）、メッセージ日本語は［インポートを実行中です。］、英語は［Import is in progress. ］ が表示されます。
 
-119. ［ファイル選択］をクリックしてtsvファイルを指定します。
-     
-     ファイル名が表示されます。
-     
-     tsvファイルの入力内容を表6-8に記載します。
+119. Selectタブでの操作  
+- [インポート対象]よりインポートする対象を選択します。
+    - 著者DB
+    - 著者識別子
+    - 機関識別子
+
+- ［ファイル選択］をクリックしてtsvファイルを指定します。
+
+    この際、インポート対象で選んだ対象とファイル形式が違う場合、エラーがでます。
+    
+    著者DBインポート時のtsvファイルの入力内容を表6-8に記載します。  
+    識別子情報インポート時のtsvファイルの入力内容を表6-8-1に記載します。  
+    識別子情報の1行目はテーブルを表す文字列が入ります。  
+    - #authors_prefix_settings（著者識別子）
+    - #authors_affiliation_settings（機関識別子）  
+
+- [インポート対象]で著者DBを選んでおり、ファイル選択で著者DBに対応したtsvファイルを入れている場合、  
+強制変更モードチェックボックスが使えるようになります。
+
+    ![グラフィカル](media/media/image444.png)
+
+    - このチェックボックスをONにした場合次のモーダルがでます。  
+    ![グラフィカル](media/media/image445.png)
+
+    - 「利用規約に同意します。」左のチェックボックスをクリックし、  
+    OKボタンを押すと強制変更モードがONになります。  
+    このモードをONにして著者DBの更新を行った場合、著者DBに関連づいているアイテムのメタデータを強制的に変更します。  
+    免責事項をよく読み、注意して利用してください。
+        - これ以外の操作でモーダルを閉じた場合、強制変更モードはOFFになります。
+
 
 表 6‑8インポートする著者情報の項目
 
@@ -5532,91 +5662,211 @@ URLについて
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr  >
 <td>1</td>
 <td>pk_id</td>
-<td>WEKO ID</td>
-<td>WEKO ID</td>
-<td><p>WEKO3の著者ID( pk_id author_link)を入力する。</p>
-<p>著者の編集をする際は必須項目となります。</p></td>
+<td >著者ID</td>
+<td >Author ID</td>
+<td >このリポジトリ内でのpk_idを出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>2</td>
-<td>authorNameInfo[0...n].familyName</td>
-<td>Family Name</td>
-<td>姓</td>
-<td>著者の姓を入力する</td>
+<td>weko_id</td>
+<td>WEKO ID</td>
+<td>WEKO ID</td>
+<td>WEKO IDを出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>3</td>
-<td>authorNameInfo[0...n].firstName</td>
-<td>Given name</td>
-<td>名</td>
-<td>著者の名を入力する</td>
+<td>authorNameInfo[0...n].familyName</td>
+<td>姓</td>
+<td>Family Name</td>
+<td>著者の姓を出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>4</td>
-<td>authorNameInfo[0...n].language</td>
-<td>Language</td>
-<td>言語</td>
-<td>著者の言語を入力する</td>
+<td>authorNameInfo[0...n].firstName</td>
+<td>名</td>
+<td>Given name</td>
+<td>著者の名を出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>5</td>
-<td>authorNameInfo[0...n].nameFormat</td>
-<td>name Format</td>
-<td>フォーマット</td>
-<td><p>著者の姓名のフォーマットを入力する。</p>
-<p>現在は固定で「familyNmAndNm」を入れる</p></td>
+<td>authorNameInfo[0...n].language</td>
+<td>言語</td>
+<td>Language</td>
+<td>著者の言語を出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>6</td>
-<td>authorNameInfo[0...n].nameShowFlg</td>
-<td>Name Display</td>
-<td>姓名・言語 表示／非表示</td>
-<td><p>著者の姓名と言語の表示／非表示を入力する</p>
-<p>表示：Y</p>
-<p>非表示：N</p></td>
+<td>authorNameInfo[0...n].nameFormat</td>
+<td>フォーマット</td>
+<td>name Format</td>
+<td>著者の姓名のフォーマットを出力する<br />
+※現状(SP67時点)は「familyNmAndNm」固定</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>7</td>
-<td>authorNameInfo[0...n].idType</td>
-<td>Identifier Scheme</td>
-<td>外部著者ID 識別子</td>
-<td>外部著者IDの識別子を入力する</td>
+<td>authorNameInfo[0...n].nameShowFlg</td>
+<td>姓名・言語 表示／非表示</td>
+<td>Name Display</td>
+<td>著者の姓名と言語の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
 </tr>
-<tr class="even">
+<tr >
 <td>8</td>
-<td>authorNameInfo[0...n].authorId</td>
-<td>Identifier URI</td>
-<td>外部著者ID URI</td>
-<td>外部著者IDの値を入力する</td>
+<td>authorIdInfo[0...n].idType</td>
+<td>外部著者ID 識別子</td>
+<td>Identifier Scheme</td>
+<td>外部著者IDの識別子を出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>9</td>
-<td>authorNameInfo[0...n].authorIdShowFlg</td>
-<td>Identifier Display</td>
-<td>外部著者ID 表示／非表示</td>
-<td><p>外部著者IDの表示／非表示を入力する</p>
-<p>表示：Y</p>
-<p>非表示：N</p></td>
+<td>authorIdInfo[0...n].authorId</td>
+<td>外部著者ID URI</td>
+<td>Identifier URI</td>
+<td>外部著者IDの値を出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>10</td>
-<td>emailInfo[0...n].email</td>
-<td>Mail Address</td>
-<td>メールアドレス</td>
-<td>著者のメールアドレスを入力する</td>
+<td>authorIdInfo[0...n].authorIdShowFlg</td>
+<td>外部著者ID 表示／非表示</td>
+<td>Identifier Display</td>
+<td>外部著者IDの表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>11</td>
+<td>emailInfo[0...n].email</td>
+<td>メールアドレス</td>
+<td>Mail Address</td>
+<td>著者のメールアドレスを出力する</td>
+</tr>
+<tr >
+<td>12</td>
 <td>is_deleted</td>
-<td>Delete Flag</td>
 <td>削除フラグ</td>
-<td>著者を削除する場合に"D"と入力する</td>
+<td>Delete Flag</td>
+<td>著者を削除する場合に "D" と出力する<br />
+※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる</td>
+</tr>
+<tr  >
+<td>13</td>
+<td>authorAffiliationInfo[0...n].affiliationId[0...n].idtype</td>
+<td>外部所属機関ID 識別子</td>
+<td>Affiliation Identifier Scheme</td>
+<td>外部所属機関IDの識別子を出力する</td>
+</tr>
+<tr  >
+<td>14</td>
+<td>authorAffiliationInfo[0...n].affiliationId[0...n].uri</td>
+<td>外部所属機関ID URI</td>
+<td>Affiliation Identifier URI</td>
+<td>外部所属機関IDの値を出力する</td>
+</tr>
+<tr  >
+<td>15</td>
+<td>authorAffiliationInfo[0...n].authorIdShowFlg</td>
+<td>外部所属機関ID 表示／非表示</td>
+<td>Affiliation Identifier Display</td>
+<td>外部所属機関IDの表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr  >
+<td>16</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].affiliationName</td>
+<td>外部所属機関名</td>
+<td>Affiliation Name</td>
+<td>外部所属機関名を出力する</td>
+</tr>
+<tr  >
+<td>17</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].language</td>
+<td>言語</td>
+<td>Language</td>
+<td>外部所属機関名の言語を出力する</td>
+</tr>
+<tr  >
+<td>18</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].nameShowFlg</td>
+<td>外部所属機関名・言語 表示／非表示</td>
+<td>Affiliation Name Display</td>
+<td>外部所属機関名と言語の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr  >
+<td>19</td>
+<td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].period</td>
+<td>外部所属機関 所属期間</td>
+<td>Affiliation Period</td>
+<td>外部所属機関所属期間を出力する。<br/>
+所属開始のみ："20250127"<br/>
+所属開始・終了："20250127-20250317"</td>
+</tr>
+<tr  >
+<td>20</td>
+<td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].nameShowFlg</td>
+<td>外部所属機関 所属期間 表示/非表示</td>
+<td>Affiliation Period Display</td>
+<td>外部所属機関 所属期間の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
 </tr>
 </tbody>
 </table>
+
+表 6-8-1 インポートする識別子情報の項目
+<table>
+<thead>
+<tr class="header">
+<th>項番</th>
+<th><p>2行目</p>
+<p>ヘッダ項目（内部キー）</p></th>
+<th><p>3行目</p>
+<p>ラベル（英語）</p></th>
+<th><p>4行目</p>
+<p>ラベル（日本語）</p></th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr >
+<td>1</td>
+<td>scheme</td>
+<td>スキーマ</td>
+<td>Scheme</td>
+<td>スキーマを入力する</td>
+</tr>
+<tr >
+<td>2</td>
+<td>name</td>
+<td>名前</td>
+<td>Name</td>
+<td>スキーマに対応する識別子名を入力する</td>
+</tr>
+<tr >
+<td>3</td>
+<td>url</td>
+<td>URL</td>
+<td>URL</td>
+<td>スキーマに応じるURLを入力する</td>
+</tr>
+<tr >
+<td>4</td>
+<td>is_deleted</td>
+<td>削除フラグ</td>
+<td>Delete Flag</td>
+<td>識別子を削除する場合に "D" と出力する<br />
+    エクスポートの場合は全て空欄である。</td>
+</tr>
+</tbody>
+</table>
+
+
 
 【注意事項】
 
@@ -5636,7 +5886,8 @@ URLについて
 
 ［チェック結果］が［Register］または［Update］であることを確認します。
 
-［エラー］が表示されている場合、インポートできません。ファイルを確認して、再度手順2.から操作してください。
+［エラー］が表示されている場合、そのデータはインポートできません。  
+問題がある場合、ファイルを確認して、再度手順2.から操作してください。
 
 ［インポート］タブの項目は、「表 6-9［インポート］タブの項目」の説明を参照してください。
 
@@ -5661,39 +5912,104 @@ URLについて
 <td><p>画面に表示されている著者情報のリストをTSV形式でダウンロードします。</p>
 <ul>
 <li><p>文字コードはBOM無しUTF-8、改行コードはCR+LFです。</p></li>
-<li><p>ファイル名には、ダウンロードした日付が、「Creator_check_<em>YYYYMMDD</em>.tsv」で表示されます。</p></li>
+<li><p>ファイル名には、ダウンロードした日付が、「(インポート対象))_check_<em>YYYYMMDD</em>.tsv」で表示されます。</p></li>
 </ul></td>
-</tr>
-<tr class="odd">
-<td>No.</td>
-<td>読み込んだファイルの著者の通し番号が表示されます。</td>
-</tr>
-<tr class="even">
-<td>WEKO著者ID</td>
-<td><p>読み込んだファイルのWEKO著者IDが表示されます。</p>
-<p>新規登録の場合は空欄となります。</p></td>
-</tr>
-<tr class="odd">
-<td>姓名</td>
-<td>読み込んだファイルの著者名が表示されます。</td>
-</tr>
-<tr class="even">
-<td>メールアドレス</td>
-<td>読み込んだファイルのメールアドレスが表示されます。</td>
-</tr>
-<tr class="odd">
-<td>チェック結果</td>
-<td><p>読み込んだファイルの各著者情報について、インポートが可能かどうかをチェックした結果が表示されます。</p>
-<ul>
-<li><p>エラー(ERROR): XXXXX：バリデーションエラーがあります。</p></li>
-<li><p>警告(Warning): XXXXX：バリデーション警告があります。</p></li>
-<li><p>登録(Register)：新規の著者です。</p></li>
-<li><p>更新(Update)：内容を更新する著者です。</p></li>
-<li><p>削除(Delete)：削除する著者です。</p></li>
-</ul></td>
-</tr>
 </tbody>
 </table>
+
+  - 画面に表示される著者DBの詳細情報は以下の通り
+
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>項目名</th>
+    <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>No.</td>
+    <td>読み込んだファイルの著者の通し番号を表示する。</td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>Current WEKO ID</td>
+    <td>上書きする著者のインポート前のWEKO著者IDを表示する。</td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>New WEKO ID</td>
+    <td>tsvから読み込んだ著者のインポート後のWEKO著者IDを表示する。</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>Full_Name</td>
+    <td>読み込んだ著者の姓と名を表示する。<br />
+    姓と名の間はカンマ＋スペース「姓, 名」で表示する。</td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>Mail Address</td>
+    <td>読み込んだ著者のメールアドレスを表示する。</td>
+    </tr>
+    <tr >
+    <td>6</td>
+    <td>チェック結果(Check Result)</td>
+    <td><p>読み込んだファイルの各著者について、インポートが可能かバリデーションチェックを実施する。<br />
+    ・エラーが無く、新規の著者の場合：「登録(Register)」と表示する<br />
+    ・エラーが無く、更新の著者の場合：「更新(Update)」と表示する<br />
+    ・削除する著者の場合：「削除(Delete)」と表示する<br />
+    ・バリデーションエラーがある場合：「エラー: XXXXX (ERROR: XXXXX)」とエラー内容を表示する</p>
+    <p>・登録は可能であるが、何らかの問題があるときは「警告（Warning）」と表示する。</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+  - 画面に表示される識別子の詳細情報は以下の通り
+
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>項目名</th>
+    <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>No.</td>
+    <td>読み込んだファイルのデータの通し番号を表示する。</td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>Scheme</td>
+    <td>読み込んだデータのスキーマを表示する。</td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>Scheme_Name</td>
+    <td>読み込んだデータのスキーマ名を表示する。</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>url</td>
+    <td>読み込んだデータのスキーマurlを表示する。
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>チェック結果(Check Result)</td>
+    <td><p>読み込んだファイルの各データについて、インポートが可能かバリデーションチェックを実施する。<br />
+    ・エラーが無く、新規の識別子スキーマの場合：「登録(Register)」と表示する<br />
+    ・エラーが無く、既存の識別子スキーマの場合：「更新(Update)」と表示する<br />
+    ・削除する識別子の場合：「削除(Delete)」と表示する<br />
+    ・バリデーションエラーがある場合：「エラー: XXXXX (ERROR: XXXXX)」とエラー内容を表示する</p>
+    <p>・登録は可能であるが、何らかの問題があるときは「警告（Warning）」と表示する。</p></td>
+    </tr>
+    </tbody>
+    </table>
 
 注※
 
@@ -5716,48 +6032,137 @@ URLについて
 <table>
 <thead>
 <tr class="header">
-<th>項目</th>
+<th>#</th>
+<th>内容</th>
 <th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>ダウンロード<sup>※</sup></td>
-<td><p>画面に表示されている著者情報のリストをTSV形式でダウンロードします。</p>
-<ul>
-<li><p>文字コードは日本語(Shift-JIS)、改行コードはCR+LFです。</p></li>
-<li><p>ファイル名には、ダウンロードした日付が、「Creator_List_Download_<em>YYYYMMDD</em>.tsv」で表示されます。</p></li>
-</ul></td>
+<td>1</td>
+<td>サマリー(Summary)</td>
+<td>
+  ・ 著者DBの場合のみ表示される。<br />
+  ・ 表示されるのは以下の4つ<br />
+  　　・「総計」<br />
+  　　・「成功」<br />
+  　　・「失敗」<br />
+  　　・「処理待ち」<br />
+</td>
 </tr>
 <tr class="even">
-<td>No.</td>
-<td>読み込んだファイルの著者の通し番号が表示されます。</td>
-</tr>
-<tr class="odd">
-<td>開始日</td>
-<td>［インポート］をクリックした後、著者の登録処理を開始した日時が表示されます。</td>
-</tr>
-<tr class="even">
-<td>終了日</td>
-<td>著者の登録処理が完了した日時が表示されます。</td>
-</tr>
-<tr class="odd">
-<td>WEKO著者ID</td>
-<td><p>読み込んだファイルのWEKO著者IDが表示されます。</p>
-<p>新規登録の場合は空欄となります。</p></td>
-</tr>
-<tr class="even">
-<td>ステータス</td>
-<td><p>著者の処理結果が表示されます。</p>
-<ul>
-<li><p>エラー(ERROR): XXXXX：登録処理でエラーが発生した場合です。</p></li>
-<li><p>登録成功(Register Success)：新規の著者を正常に登録しました。</p></li>
-<li><p>更新成功(Update Success)：著者情報の更新が正常に完了しました。</p></li>
-<li><p>削除成功(Delete Success)：著者を正常に削除しました。</p></li>
-</ul></td>
+<td>2</td>
+<td>ダウンロード(Download)</td>
+<td>ボタンを押下すると、画面に表示されている著者のリストをTSV形式でダウンロードできる。<br />
+・文字コードはBOM無しUTF-8、改行コードはCR+LFとする<br />
+・ファイル名は「{target}_List_Download_yyyymmdd.tsv」とする</td>
 </tr>
 </tbody>
 </table>
+
+  - 画面に表示される著者のインポート結果は以下の通り
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>項目名</th>
+    <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>No.</td>
+    <td>読み込んだファイルの著者の通し番号を表示する。</td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>開始日(Start Date)</td>
+    <td>1著者に対して登録処理を開始した日時を表示する。<br />
+    フォーマット：YYYY-MM-DD hh:mm:ss</td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>終了日(End Date)</td>
+    <td>１著者に対して登録処理が完了した日時を表示する。<br />
+    フォーマット：YYYY-MM-DD hh:mm:ss</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>Previous WEKO ID</td>
+    <td>上書きする著者のインポート前のWEKO著者IDを表示する。</td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>New WEKO ID</td>
+    <td>tsvから読み込んだ著者のインポート後のWEKO著者IDを表示する。</td>
+    </tr>
+    <tr >
+    <td>6</td>
+    <td>Full_name</td>
+    <td>読み込んだ著者の姓と名を表示する。<br />
+    姓と名の間はカンマ＋スペース「姓, 名」で表示する。</td>
+    </tr>
+    <tr >
+    <td>7</td>
+    <td>ステータス(Status)</td>
+    <td>登録した結果を表示する。<br />
+    ・「Register Success」：新規登録が完了した場合に表示<br />
+    ・「Update Success」：変更・更新登録が完了した場合に表示<br />
+    ・「Delete Success」：削除が完了した場合に表示<br />
+    ・「ERROR: XXXXX」：エラーが発生した場合に表示</td>
+    </tr>
+    </tbody>
+    </table>
+
+  - 画面に表示される識別子インポート結果は以下の通り
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>項目名</th>
+    <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>No.</td>
+    <td>読み込んだファイルのデータの通し番号を表示する。</td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>開始日(Start Date)</td>
+    <td>１データに対して登録処理を開始した日時を表示する。<br />
+    フォーマット：YYYY-MM-DD hh:mm:ss</td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>終了日(End Date)</td>
+    <td>１データデータに対して登録処理が完了した日時を表示する。<br />
+    フォーマット：YYYY-MM-DD hh:mm:ss</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>Scheme</td>
+    <td>読み込んだデータのスキーマを表示する。</td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>Scheme_Name</td>
+    <td>読み込んだデータのスキーマ名を表示する。</td>
+    </tr>
+    <tr >
+    <td>6</td>
+    <td>ステータス(Status)</td>
+    <td>登録した結果を表示する。<br />
+    「Register Success」：新規登録が完了した場合に表示<br />
+    「Update Success」：変更・更新登録が完了した場合に表示<br />
+    「Delete Success」：削除が完了した場合に表示<br />
+    「ERROR: XXXXX」：エラーが発生した場合に表示</td>
+    </tr>
+    </tbody>
+    </table>
 
 注※
 
@@ -5772,162 +6177,484 @@ URLについて
 
 表 6‑11 バリデーションチェック
 
-<table>
-<thead>
-<tr class="header">
-<th>タイプ</th>
-<th>チェックするタブ</th>
-<th>英語</th>
-<th>日本語</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>エラー</td>
-<td>選択(Select)</td>
-<td>The TSV file could not be read. Make sure the file format is TSV and that the file is UTF-8 encoded.</td>
-<td>TSVファイルを読み込めませんでした。ファイル形式がTSVであること、またそのファイルがUTF-8でエンコードされているかを確認してください。</td>
-<td><p>tsvファイルの形式のチェック</p>
-<p>・選択したファイルがtsvファイルでは無い、またはtsvファイルの文字コードがUTF-8では無い</p>
-<p>・tsvファイルの形式のエラー(タブ無し, ヘッダ行無し)</p></td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>選択(Select)</td>
-<td>There is no data to import.</td>
-<td>インポートのデータがありません。</td>
-<td>ヘッダ行だけの空レコードになっている</td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>選択(Select)</td>
-<td><p>The following metadata keys are duplicated.</p>
-<p>{1}</p></td>
-<td><p>以下のメタデータキーが重複しています。</p>
-<p>{1}</p></td>
-<td><p>ヘッダの間違いで内部キー(メタデータキー)が重複している</p>
-<p>{1}: メタデータキー名</p></td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>選択(Select)</td>
-<td><p>Specified item does not consistency with DB item.</p>
-<p>{1}</p></td>
-<td><p>指定された項目とDBの項目が一致しません。</p>
-<p>{1}</p></td>
-<td><p>tsvに指定された項目とDBの項目が一致していない</p>
-<p>{1}: 項目名</p></td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>選択/インポート(Select/Import)</td>
-<td>Celery is not running.</td>
-<td>Celeryは動いていません。</td>
-<td>Celeryが動いていない状態</td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>選択/インポート(Select/Import)</td>
-<td>Import is in progress.</td>
-<td>インポートを実行中です。</td>
-<td>自分の端末でインポートを実行中に、インポートを実行する</td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>選択/インポート(Select/Import)</td>
-<td>Import is in progress on another device.</td>
-<td>他の端末でインポートを実行中です。</td>
-<td>他の端末でインポートを実行している</td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>{} is required item.</td>
-<td>{}は必須項目です。</td>
-<td>著者更新時にWEKO著者IDが入力されていない状態</td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>Specified WEKO ID does not exist.</td>
-<td>指定されたWEKO IDが存在していません。</td>
-<td><p>・著者が一意に定まらない(存在しないWEKO著者ID)</p>
-<p>・削除対象の著者がDBに存在しない</p></td>
-</tr>
-</tbody>
-</table>
 
-<table>
-<thead>
-<tr class="header">
-<th>エラー</th>
-<th>インポート(Import)</th>
-<th>{1} should be set by one of {2}.</th>
-<th>{1}は{2}のいずれかを設定してください。</th>
-<th><p>・言語の指定でDBに存在しない言語を入力する</p>
-<p>・姓名・言語 表示／非表示で"Y","N"以外を入力する</p>
-<p>・外部著者識別子 表示／非表示で"Y","N"以外を入力する</p>
-<p>{1}: language, nameShowFlg, authorIdShowFlg</p>
-<p>{2}: 言語の一覧、"Y","N"</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>{1} should be set by one of {2}.</td>
-<td>{1}は{2}を設定してください。</td>
-<td><p>・削除フラグで"D"以外を入力する</p>
-<p>・姓名のフォーマットの値が「familyNmAndNm」以外の値</p>
-<p>{1}: is_deleted, nameFormat</p>
-<p>{2}: "D"、"familyNmAndNm"</p></td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>Specified Identifier Scheme '{1}' does not exist.</td>
-<td>指定された外部著者ID 識別子'{1}'が存在していません。</td>
-<td><p>ID PrefixでDBに存在しない識別子を入力する</p>
-<p>{1}:外部著者ID 識別子</p></td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>There is duplicated data in the TSV file.</td>
-<td>TSVファイルの中に重複するデータがあります。</td>
-<td>TSVファイルの中に重複するデータがある</td>
-</tr>
-<tr class="even">
-<td>ワーニング</td>
-<td>インポート(Import)</td>
-<td><p>External author identifier exists in DB.</p>
-<p>{1}</p></td>
-<td><p>外部著者識別子がDBに存在しています。</p>
-<p>{1}</p></td>
-<td><p>外部著者識別子がDBに存在している</p>
-<p>{1}:外部著者識別子</p></td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>選択/インポート/結果(Select/Import/Result)</td>
-<td>Internal server error</td>
-<td>サーバ内部エラー</td>
-<td>サーバ内部エラー（ネットワークの問題、予期しない例外など）が発生した</td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>結果(Result)</td>
-<td>Failed to import.</td>
-<td>インポートに失敗しました。</td>
-<td>エラーが発生したため、インポートに失敗した</td>
-</tr>
-</tbody>
-</table>
+  - 本画面で著者情報のチェックをしているエラー内容は以下の通り
+    <table>
+    <thead>
+    <tr class="header"> <th>#</th> <th>チェックするタブ</th> <th>チェック内容</th> <th>処理</th> <th>エラーメッセージ(日)</th> <th>エラーメッセージ(英)</th> <th>備考</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr > <td>1</td>
+    <td>選択(Select)</td>
+    <td>tsvファイルの形式のチェック<br />
+    #1: 選択したファイルがtsvファイルでは無い、またはtsvファイルの文字コードがUTF-8では無い<br />
+    #3: tsvファイルの形式のエラー(タブ無し, ヘッダ行無し)</td>
+    <td>ERROR</td>
+    <td>TSVファイルを読み込めませんでした。ファイル形式がTSVであること、またそのファイルがUTF-8でエンコードされているかを確認してください。</td>
+    <td>The TSV file could not be read. Make sure the file format is TSV and that the file is UTF-8 encoded.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>選択(Select)</td>
+    <td>ヘッダ行だけの空レコードになっている</td>
+    <td>ERROR</td>
+    <td>インポートのデータがありません。</td>
+    <td>There is no data to import.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>選択(Select)</td>
+    <td>ヘッダの間違いからメタデータキーが重複している</td>
+    <td>ERROR</td>
+    <td>以下のメタデータキーが重複しています。<br />
+    {1}</td>
+    <td>The following metadata keys are duplicated.<br />
+    {1}</td>
+    <td>{1}: メタデータキー名</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>選択(Select)</td>
+    <td>tsvに指定された項目とDBの項目が一致していない</td>
+    <td>ERROR</td>
+    <td>指定された項目とDBの項目が一致しません。<br />
+    {1}</td>
+    <td>Specified item does not consistency with DB item.<br />
+    {1}</td>
+    <td>{1}: 項目名</td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>Celeryが動いていない状態</td>
+    <td>ERROR</td>
+    <td>Celeryは動いていません。</td>
+    <td>Celery is not running.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>6</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>自分の端末にインポートを実行しているうちに、インポートを実行する</td>
+    <td>ERROR</td>
+    <td>インポートを実行中です。</td>
+    <td>Import is in progress.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>7</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>他の端末でインポートを実行している</td>
+    <td>ERROR</td>
+    <td>他の端末でインポートを実行中です。</td>
+    <td>Import is in progress on another device.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>8</td>
+    <td>インポート(Import)</td>
+    <td >WEKO_IDが入力されていない状態<br />
+    または著者情報、機関情報で他の情報を入力されたが、idTypeとauthorIdのいずれかを入力されていない状態</td>
+    <td>ERROR</td>
+    <td>{}は必須項目です。</td>
+    <td>{} is required item.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>9</td>
+    <td>インポート(Import)</td>
+    <td >WEKO_IDが半角数字でない状態</td>
+    <td>ERROR</td>
+    <td>WEKO_IDは半角数字のみです。</td>
+    <td>WEKO ID is Half-width digits only.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>10</td>
+    <td>インポート(Import)</td>
+    <td >#4 著者が一意に定まらない(存在しないAuthor ID (author_link))<br />
+    #5 削除対象の著者がDBに存在しない</td>
+    <td>ERROR</td>
+    <td >指定されたAuthor IDが存在していません。</td>
+    <td >Specified Author ID does not exist.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>11</td>
+    <td>インポート(Import)</td>
+    <td>WEKO IDが既に存在する。(既存のWEKO ID)</td>
+    <td>ERROR</td>
+    <td>指定されたWEKO IDが既に存在しています。</td>
+    <td>Specified WEKO ID already exist.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>12</td>
+    <td>インポート(Import)</td>
+    <td >#6 言語の指定でDBに存在しない言語を入力する<br />
+    #8 ヘッダ項目#7の姓名・言語 表示／非表示で"Y","N"以外を入力する<br />
+    #9 ヘッダ項目#10の外部著者識別子 表示／非表示で"Y","N"以外を入力する<br />
+    ヘッダ項目#13の外部所属機関識別子 表示／非表示で"Y","N"以外を入力する<br />
+    ヘッダ項目#16の外部所属機関名・言語 表示／非表示で"Y","N"以外を入力する
+    </td>
+    <td>ERROR</td>
+    <td>{1}は{2}のいずれかを設定してください。</td>
+    <td>{1} should be set by one of {2}.</td>
+    <td>{1}: language, nameShowFlg, authorIdShowFlg<br />
+    {2}: 言語の一覧、"Y","N"</td>
+    </tr>
+    <tr >
+    <td>13</td>
+    <td>インポート(Import)</td>
+    <td >#10 ヘッダ項目#20の削除フラグで"D"以外を入力する<br />
+    #13 姓名のフォーマットの値が「familyNmAndNm」以外の値</td>
+    <td>ERROR</td>
+    <td>{1}は{2}を設定してください。</td>
+    <td>{1} should be set by one of {2}.</td>
+    <td>{1}: is_deleted, nameFormat<br />
+    {2}: "D"、"familyNmAndNm"</td>
+    </tr>
+    <tr >
+    <td>14</td>
+    <td>インポート(Import)</td>
+    <td>ID PrefixでDBに存在しない識別子を入力する</td>
+    <td>ERROR</td>
+    <td>指定された外部著者ID 識別子'{1}'が存在していません。</td>
+    <td>Specified Identifier Scheme '{1}' does not exist.</td>
+    <td>{1}:外部著者ID 識別子</td>
+    </tr>
+    <tr  >
+    <td>15</td>
+    <td>インポート(Import)</td>
+    <td>Affiliation IDでDBに存在しない識別子を入力する</td>
+    <td>ERROR</td>
+    <td>指定された外部所属機関ID 識別子'{1}'が存在していません。</td>
+    <td>Specified Affiliation Identifier Scheme '{1}' does not exist.</td>
+    <td>{1}:外部所属機関ID 識別子</td>
+    </tr>
+    <tr >
+    <td>16</td>
+    <td>インポート(Import)</td>
+    <td>TSVファイルの中に重複するデータがある</td>
+    <td>ERROR</td>
+    <td>TSVファイルの中に重複するデータがあります。</td>
+    <td>There is duplicated data in the TSV file.</td>
+    <td>各レコードがマルチタスクで実行されているので、後勝ちで2番目のデータを上書きするのが難しい(重複する場合にどのレコードで更新されるか定まらない)。WARNING→ERRORに変更し、2つ目以降は更新されないようにする</td>
+    </tr>
+    <tr >
+    <td>17</td>
+    <td>インポート(Import)</td>
+    <td>外部著者識別子がDBに存在している</td>
+    <td>WARNING</td>
+    <td>外部著者識別子がDBに存在しています。<br />
+    {1}</td>
+    <td>External author identifier exists in DB.<br />
+    {1}</td>
+    <td>{1}:外部著者識別子</td>
+    </tr>
+    <tr  >
+    <td>18</td>
+    <td>インポート(Import)</td>
+    <td>外部所属機関所属期間が日付の形式になっていない</td>
+    <td>ERROR</td>
+    <td>外部所属機関所属期間が形式にあっていません。<br />
+     yyyy-MM-dd、または空白であるようにしてください。<br />
+     {1}</td>
+    <td>Affiliation Period must be in the format:<br />
+     yyyy-MM-dd, blank<br />
+     {1}</td>
+    <td>{1}:外部所属期間</td>
+    </tr>
+    <tr >
+    <td>19</td>
+    <td>インポート(Import)</td>
+    <td>所属期間終了日が開始日より早い</td>
+    <td>ERROR</td>
+    <td>所属期間終了日は開始日より後の日付にしてください</td>
+    <td>Period end must be after Period start.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>20</td>
+    <td>選択/インポート/結果<br />
+    (Select/Import/Result)</td>
+    <td>サーバ内部エラー（ネットワークの問題、予期しない例外など）が発生した</td>
+    <td>ERROR</td>
+    <td>サーバ内部エラー</td>
+    <td>Internal server error</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>21</td>
+    <td>結果(Result)</td>
+    <td>登録成功</td>
+    <td>INFO</td>
+    <td>登録成功</td>
+    <td>Register Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>22</td>
+    <td>結果(Result)</td>
+    <td>更新成功</td>
+    <td>INFO</td>
+    <td>更新成功</td>
+    <td>Update Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>23</td>
+    <td>結果(Result)</td>
+    <td>削除成功</td>
+    <td>INFO</td>
+    <td>削除成功</td>
+    <td>Delete Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>24</td>
+    <td>結果(Result)</td>
+    <td>エラーが発生したため、インポートに失敗した</td>
+    <td>ERROR</td>
+    <td>インポートに失敗しました。</td>
+    <td>Failed to import.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>25</td>
+    <td>インポート(Import)</td>
+    <td>削除済みの著者について、tsvに該当の著者情報を指定して更新した</td>
+    <td>WARNING</td>
+    <td>指定された著者は削除済です。tsvの内容で著者情報を更新しますが、著者は削除されたままです。</td>
+    <td>The specified author has been deleted. Update author information with tsv content, but author remains deleted as it is.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>26</td>
+    <td>インポート/結果<br />
+    (Import/Result)</td>
+    <td>アイテムに紐づいている著者を削除した</td>
+    <td>ERROR</td>
+    <td>アイテムがリンクしているため、指定された著者は削除できません。</td>
+    <td>The author is linked to items and cannot be deleted.</td>
+    <td>英語のメッセージが既存<br />
+    日本語のメッセージを新規追加</td>
+    </tr>
+    </tbody>
+    </table>
 
-| ワーニング | 結果(Result) | The specified author has been deleted. Update author information with tsv content, but author remains deleted as it is. | 指定された著者は削除済です。tsvの内容で著者情報を更新しますが、著者は削除されたままです。 | 削除済みの著者について、tsvに該当の著者情報を指定して更新した |
-| ----- | ---------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------------------- |
-| エラー   | 結果(Result) | The author is linked to items and cannot be deleted.                                                                    | アイテムがリンクしているため、指定された著者は削除できません。                | アイテムに紐づいている著者を削除した               |
+  - 本画面で識別子のチェックをしているエラー内容は以下の通り
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>チェックするタブ</th>
+    <th>チェック内容</th>
+    <th>処理</th>
+    <th>エラーメッセージ(日)</th>
+    <th>エラーメッセージ(英)</th>
+    <th>備考</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>選択(Select)</td>
+    <td>tsvファイルの形式のチェック<br />
+    #1: 選択したファイルがtsvファイルでは無い、またはtsvファイルの文字コードがUTF-8では無い<br />
+    #3: tsvファイルの形式のエラー(タブ無し, ヘッダ行無し, テーブル名の指定がない)</td>
+    <td>ERROR</td>
+    <td>TSVファイルを読み込めませんでした。ファイル形式がTSVであること、またそのファイルがUTF-8でエンコードされているかを確認してください。</td>
+    <td>The TSV file could not be read. Make sure the file format is TSV and that the file is UTF-8 encoded.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>選択(Select)</td>
+    <td>ヘッダ行だけの空レコードになっている</td>
+    <td>ERROR</td>
+    <td>インポートのデータがありません。</td>
+    <td>There is no data to import.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>選択(Select)</td>
+    <td>ヘッダの間違いからキーが重複している</td>
+    <td>ERROR</td>
+    <td>キーが重複しています。</td>
+    <td>The keys are duplicated.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>選択(Select)</td>
+    <td>tsvに指定された項目とDBの項目が一致していない</td>
+    <td>ERROR</td>
+    <td>指定された項目とDBの項目が一致しません。<br />
+    {1}</td>
+    <td>Specified item does not consistency with DB item.<br />
+    {1}</td>
+    <td>{1}: 項目名</td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>Celeryが動いていない状態</td>
+    <td>ERROR</td>
+    <td>Celeryは動いていません。</td>
+    <td>Celery is not running.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>6</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>自分の端末にインポートを実行しているうちに、インポートを実行する</td>
+    <td>ERROR</td>
+    <td>インポートを実行中です。</td>
+    <td>Import is in progress.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>7</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>他の端末でインポートを実行している</td>
+    <td>ERROR</td>
+    <td>他の端末でインポートを実行中です。</td>
+    <td>Import is in progress on another device.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>8</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>自分の端末でインポートを実行しているうちに、インポートを実行する</td>
+    <td>ERROR</td>
+    <td>インポートを実行中です。</td>
+    <td>Import is in progress.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>9</td>
+    <td>インポート(Import)</td>
+    <td>Schemeが記述されていない</td>
+    <td>ERROR</td>
+    <td>schemeを設定してください。</td>
+    <td>Scheme is required item.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>10</td>
+    <td>インポート(Import)</td>
+    <td>Nameが記述されていない</td>
+    <td>ERROR</td>
+    <td>nameを設定してください。</td>
+    <td>Name is required item.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>11</td>
+    <td>インポート(Import)</td>
+    <td>urlがURLの形式でない</td>
+    <td>ERROR</td>
+    <td>urlをURLの形式にしてください。</td>
+    <td>URL is not URL format.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>12</td>
+    <td>インポート(Import)</td>
+    <td>削除対象の識別子が存在しない</td>
+    <td>ERROR</td>
+    <td>指定された識別子が存在していません。</td>
+    <td>The specified identifier does not exist.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>13</td>
+    <td>インポート(Import)</td>
+    <td>TSVファイルの中に重複するデータがある</td>
+    <td>ERROR</td>
+    <td>TSVファイルの中に重複するデータがあります。</td>
+    <td>The specified scheme is duplicated.</td>
+    <td>各レコードがマルチタスクで実行されているので、後勝ちで2番目のデータを上書きするのが難しい(重複する場合にどのレコードで更新されるか定まらない)。WARNING→ERRORに変更し、2つ目以降は更新されないようにする</td>
+    </tr>
+    <tr >
+    <td>14</td>
+    <td>インポート(Import)</td>
+    <td>schemaに「WEKO」が入力されている。</td>
+    <td>ERROR</td>
+    <td>著者識別子WEKOは編集できません。</td>
+    <td>The scheme WEKO cannot be used.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>15</td>
+    <td>選択/インポート/結果<br />
+    (Select/Import/Result)</td>
+    <td>サーバ内部エラー（ネットワークの問題、予期しない例外など）が発生した</td>
+    <td>ERROR</td>
+    <td>サーバ内部エラー</td>
+    <td>Internal server error</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>16</td>
+    <td>結果(Result)</td>
+    <td>登録成功</td>
+    <td>INFO</td>
+    <td>登録成功</td>
+    <td>Register Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>17</td>
+    <td>結果(Result)</td>
+    <td>更新成功</td>
+    <td>INFO</td>
+    <td>更新成功</td>
+    <td>Update Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>18</td>
+    <td>結果(Result)</td>
+    <td>削除成功</td>
+    <td>INFO</td>
+    <td>削除成功</td>
+    <td>Delete Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>19</td>
+    <td>結果(Result)</td>
+    <td>エラーが発生したため、インポートに失敗した</td>
+    <td>ERROR</td>
+    <td>インポートに失敗しました。</td>
+    <td>Failed to import.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>20</td>
+    <td>インポート/結果<br />
+    (Import/Result)</td>
+    <td>著者DBに紐づいている識別子を削除した</td>
+    <td>ERROR</td>
+    <td>著者DBで使用されているため、指定された識別子は削除できません。</td>
+    <td>The specified scheme is used in the author ID.</td>
+    <td></td>
+    </tr>
+    </table>
+   
 
 ## 利用統計の設定
 
