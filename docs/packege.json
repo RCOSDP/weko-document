@@ -7,6 +7,8 @@
         "gitbook-plugin-back-to-top-button": "^0.1.4",
         "ebook-convert" : "^2.0.1",
         "gitbook-plugin-hide-published-with":"^0.0.1",
-        "gitbook-plugin-anchors":"^0.7.1"
+        "gitbook-plugin-anchors":"^0.7.1",
+        "gitbook-plugin-plantuml-cloud":"^1.0.2",
+        "gitbook-plugin-collapsible-chapters":"^0.1.8"
     }
 }
