@@ -1,0 +1,4990 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>ADMIN-2-4: アイテム管理：インポート 113 · 機能仕様書</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 5.1.4">
+        <meta name="author" content="Research Center for Open Science and Data Platform, National Institute of Informatics">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ADMIN_3_1.html" />
+    
+    
+    <link rel="prev" href="ADMIN_2_3.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../user/">
+            
+                <a href="../user/">
+            
+                    
+                    ユーザ機能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../user/USER_1_1.html">
+            
+                <a href="../user/USER_1_1.html">
+            
+                    
+                    USER-1-1: 簡易検索（全文検索・キーワード検索） 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../user/USER_1_2.html">
+            
+                <a href="../user/USER_1_2.html">
+            
+                    
+                    USER-1-2: 詳細検索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../user/USER_1_3.html">
+            
+                <a href="../user/USER_1_3.html">
+            
+                    
+                    USER-1-3: インデックス検索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../user/USER_1_4.html">
+            
+                <a href="../user/USER_1_4.html">
+            
+                    
+                    USER-1-4: ファセット検索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../user/USER_1_5.html">
+            
+                <a href="../user/USER_1_5.html">
+            
+                    
+                    USER-1-5: RSS 19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../user/USER_2_1.html">
+            
+                <a href="../user/USER_2_1.html">
+            
+                    
+                    USER-2-1: アイテムリスト：一覧形式表示 23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../user/USER_2_2.html">
+            
+                <a href="../user/USER_2_2.html">
+            
+                    
+                    USER-2-2: アイテムリスト：目次形式表示 28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../user/USER_2_3.html">
+            
+                <a href="../user/USER_2_3.html">
+            
+                    
+                    USER-2-3: アイテムリスト：雑誌情報 32
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../user/USER_2_4.html">
+            
+                <a href="../user/USER_2_4.html">
+            
+                    
+                    USER-2-4: アイテムリスト：アイテム一括出力 38
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../user/USER_3_1.html">
+            
+                <a href="../user/USER_3_1.html">
+            
+                    
+                    USER-3-1: アイテム詳細：メタデータ表示 44
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../user/USER_3_2.html">
+            
+                <a href="../user/USER_3_2.html">
+            
+                    
+                    USER-3-2: アイテム詳細：コンテンツファイル管理 51
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../user/USER_3_3.html">
+            
+                <a href="../user/USER_3_3.html">
+            
+                    
+                    USER-3-3: アイテム詳細：アイテムバージョン管理 63
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../user/USER_3_4.html">
+            
+                <a href="../user/USER_3_4.html">
+            
+                    
+                    USER-3-4: アイテム詳細：引用情報表示 66
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="../user/USER_3_5.html">
+            
+                <a href="../user/USER_3_5.html">
+            
+                    
+                    USER-3-5: アイテム詳細：統計情報表示 69
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="../user/USER_3_6.html">
+            
+                <a href="../user/USER_3_6.html">
+            
+                    
+                    USER-3-6: アイテム詳細：共有 72
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="../user/USER_3_7.html">
+            
+                <a href="../user/USER_3_7.html">
+            
+                    
+                    USER-3-7: アイテム詳細：エクスポート 73
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="../user/USER_3_8.html">
+            
+                <a href="../user/USER_3_8.html">
+            
+                    
+                    USER-3-8: アイテム詳細：Google Scholar メタデータ出力 81
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="../user/USER_3_9.html">
+            
+                <a href="../user/USER_3_9.html">
+            
+                    
+                    USER-3-9: アイテム詳細：Google Dataset メタデータ出力 83
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="../user/USER_4_1.html">
+            
+                <a href="../user/USER_4_1.html">
+            
+                    
+                    USER-4-1: ワークフロー：アクティビティ一覧表示 85
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="../user/USER_4_2.html">
+            
+                <a href="../user/USER_4_2.html">
+            
+                    
+                    USER-4-2: ワークフロー：ワークフロー一覧表示 95
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="../user/USER_4_3.html">
+            
+                <a href="../user/USER_4_3.html">
+            
+                    
+                    USER-4-3: ワークフロー：ワークフロー 4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="../user/USER_4_4.html">
+            
+                <a href="../user/USER_4_4.html">
+            
+                    
+                    USER-4-4: ワークフロー：Item Registration 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.23" data-path="../user/USER_4_5.html">
+            
+                <a href="../user/USER_4_5.html">
+            
+                    
+                    USER-4-5: ワークフロー：Item Registration：ファイルアップロード 8
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.24" data-path="../user/USER_4_6.html">
+            
+                <a href="../user/USER_4_6.html">
+            
+                    
+                    USER-4-6: ワークフロー：Item Registration：メタデータ入力 23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="../user/USER_4_7.html">
+            
+                <a href="../user/USER_4_7.html">
+            
+                    
+                    USER-4-7: ワークフロー：Item Registration：代理投稿 28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="../user/USER_4_8.html">
+            
+                <a href="../user/USER_4_8.html">
+            
+                    
+                    USER-4-8: ワークフロー：Item Registration：フィードバックメール機能 30
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.27" data-path="../user/USER_4_9.html">
+            
+                <a href="../user/USER_4_9.html">
+            
+                    
+                    USER-4-9: ワークフロー：Item Registration：インデックス指定 34
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.28" data-path="../user/USER_4_10.html">
+            
+                <a href="../user/USER_4_10.html">
+            
+                    
+                    USER-4-10: ワークフロー：Identifier Grant 36
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.29" data-path="../user/USER_4_11.html">
+            
+                <a href="../user/USER_4_11.html">
+            
+                    
+                    USER-4-11: ワークフロー：Item Link 45
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.30" data-path="../user/USER_4_12.html">
+            
+                <a href="../user/USER_4_12.html">
+            
+                    
+                    USER-4-12: ワークフロー：OA Policy Confirmation（現在非対応） 49
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.31" data-path="../user/USER_4_13.html">
+            
+                <a href="../user/USER_4_13.html">
+            
+                    
+                    USER-4-13: ワークフロー：Approval 51
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.32" data-path="../user/USER_5_1.html">
+            
+                <a href="../user/USER_5_1.html">
+            
+                    
+                    USER-5-1: コミュニティ：コミュニティ 53
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.33" data-path="../user/USER_6_1.html">
+            
+                <a href="../user/USER_6_1.html">
+            
+                    
+                    USER-6-1: ランキング：ランキング 55
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.34" data-path="../user/USER_7_1.html">
+            
+                <a href="../user/USER_7_1.html">
+            
+                    
+                    USER-7-1: 大容量ファイルアップロード：ファイルアップロード 61
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.35" data-path="../user/USER_7_2.html">
+            
+                <a href="../user/USER_7_2.html">
+            
+                    
+                    USER-7-2: 言語切替：言語切替 62
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.36" data-path="../user/USER_8_1.html">
+            
+                <a href="../user/USER_8_1.html">
+            
+                    
+                    USER-8-1: ユーザーアカウント：サインアップ 63
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.37" data-path="../user/USER_8_2.html">
+            
+                <a href="../user/USER_8_2.html">
+            
+                    
+                    USER-8-2: ユーザーアカウント：ログイン 65
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.38" data-path="../user/USER_8_3.html">
+            
+                <a href="../user/USER_8_3.html">
+            
+                    
+                    USER-8-3: ユーザーアカウント：パスワードリセット 67
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.39" data-path="../user/USER_8_4.html">
+            
+                <a href="../user/USER_8_4.html">
+            
+                    
+                    USER-8-4: ユーザーアカウント：ユーザープロファイル設定 69
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.40" data-path="../user/USER_8_5.html">
+            
+                <a href="../user/USER_8_5.html">
+            
+                    
+                    USER-8-5: ユーザーアカウント：API設定 71
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.41" data-path="../user/USER_9_1.html">
+            
+                <a href="../user/USER_9_1.html">
+            
+                    
+                    USER-9-1: Cookie：Cookie使用確認画面表示 75
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    管理機能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="ADMIN_1_1.html">
+            
+                <a href="ADMIN_1_1.html">
+            
+                    
+                    ADMIN-1-1: アイテムタイプ管理：メタデータ 76
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="ADMIN_1_2.html">
+            
+                <a href="ADMIN_1_2.html">
+            
+                    
+                    ADMIN-1-2: アイテムタイプ管理：マッピング 84
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="ADMIN_1_3.html">
+            
+                <a href="ADMIN_1_3.html">
+            
+                    
+                    ADMIN-1-3: アイテムタイプ管理：OAIスキーマ 88
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="ADMIN_1_4.html">
+            
+                <a href="ADMIN_1_4.html">
+            
+                    
+                    ADMIN-1-4: アイテムタイプ管理：プロパティ 90
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="ADMIN_2_1.html">
+            
+                <a href="ADMIN_2_1.html">
+            
+                    
+                    ADMIN-2-1: アイテム管理：一括更新 104
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="ADMIN_2_2.html">
+            
+                <a href="ADMIN_2_2.html">
+            
+                    
+                    ADMIN-2-2: アイテム管理：一括削除 108
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="ADMIN_2_3.html">
+            
+                <a href="ADMIN_2_3.html">
+            
+                    
+                    ADMIN-2-3: アイテム管理：一括エクスポート 110
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.8" data-path="ADMIN_2_4.html">
+            
+                <a href="ADMIN_2_4.html">
+            
+                    
+                    ADMIN-2-4: アイテム管理：インポート 113
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="ADMIN_3_1.html">
+            
+                <a href="ADMIN_3_1.html">
+            
+                    
+                    ADMIN-3-1: インデックスツリー管理：ツリー編集 155
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="ADMIN_3_2.html">
+            
+                <a href="ADMIN_3_2.html">
+            
+                    
+                    ADMIN-3-2: インデックスツリー管理：雑誌情報 162
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="ADMIN_3_3.html">
+            
+                <a href="ADMIN_3_3.html">
+            
+                    
+                    ADMIN-3-3: インデックスツリー管理：カスタムソート 165
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="ADMIN_4_1.html">
+            
+                <a href="ADMIN_4_1.html">
+            
+                    
+                    ADMIN-4-1: ウェブデザイン管理：ウィジェット 167
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="ADMIN_4_2.html">
+            
+                <a href="ADMIN_4_2.html">
+            
+                    
+                    ADMIN-4-2: ウェブデザイン管理：ページレイアウト 180
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="ADMIN_5_1.html">
+            
+                <a href="ADMIN_5_1.html">
+            
+                    
+                    ADMIN-5-1: 著者DB管理：編集 185
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="ADMIN_5_1_3.html">
+            
+                <a href="ADMIN_5_1_3.html">
+            
+                    
+                    著者DB管理：Affiliation ID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="ADMIN_5_2.html">
+            
+                <a href="ADMIN_5_2.html">
+            
+                    
+                    ADMIN-5-2: 著者DB管理：一括出力 198
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="ADMIN_5_3.html">
+            
+                <a href="ADMIN_5_3.html">
+            
+                    
+                    ADMIN-5-3: 著者DB管理：一括登録 204
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="ADMIN_5_4.html">
+            
+                <a href="ADMIN_5_4.html">
+            
+                    
+                    ADMIN-5-4: 著者DB管理：外部著者ID Prefix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="ADMIN_6_1.html">
+            
+                <a href="ADMIN_6_1.html">
+            
+                    
+                    ADMIN-6-1: 統計：運用レポート 217
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="ADMIN_6_2.html">
+            
+                <a href="ADMIN_6_2.html">
+            
+                    
+                    ADMIN-6-2: 統計：フィードバックメール 233
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="ADMIN_6_3.html">
+            
+                <a href="ADMIN_6_3.html">
+            
+                    
+                    ADMIN-6-3: 統計：サイトライセンス 238
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="ADMIN_7_1.html">
+            
+                <a href="ADMIN_7_1.html">
+            
+                    
+                    ADMIN-7-1: ワークフロー管理：フロー 242
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.23" data-path="ADMIN_7_2.html">
+            
+                <a href="ADMIN_7_2.html">
+            
+                    
+                    ADMIN-7-2: ワークフロー管理：ワークフロー 253
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.24" data-path="ADMIN_8_1.html">
+            
+                <a href="ADMIN_8_1.html">
+            
+                    
+                    ADMIN-8-1: コミュニティ管理：コミュニティ 256
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.25" data-path="ADMIN_8_2.html">
+            
+                <a href="ADMIN_8_2.html">
+            
+                    
+                    ADMIN-8-2:  コミュニティ管理：注目のコミュニティ 261
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.26" data-path="ADMIN_8_3.html">
+            
+                <a href="ADMIN_8_3.html">
+            
+                    
+                    ADMIN-8-3:  コミュニティ管理：参加リクエスト 264
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.27" data-path="ADMIN_9_1.html">
+            
+                <a href="ADMIN_9_1.html">
+            
+                    
+                    ADMIN-9-1: OAI-PMH：ハーベスト 265
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.28" data-path="ADMIN_9_2.html">
+            
+                <a href="ADMIN_9_2.html">
+            
+                    
+                    ADMIN-9-2: OAI-PMH：Identify 273
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.29" data-path="ADMIN_9_3.html">
+            
+                <a href="ADMIN_9_3.html">
+            
+                    
+                    ADMIN-9-3: OAI-PMH：Sets 275
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.30" data-path="ADMIN_10_1.html">
+            
+                <a href="ADMIN_10_1.html">
+            
+                    
+                    ADMIN-10-1: Resource Sync：Resource List 277
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.31" data-path="ADMIN_10_2.html">
+            
+                <a href="ADMIN_10_2.html">
+            
+                    
+                    ADMIN-10-2: Resource Sync：Change List 283
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.32" data-path="ADMIN_10_3.html">
+            
+                <a href="ADMIN_10_3.html">
+            
+                    
+                    ADMIN-10-3: Resource Sync：Resync 291
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.33" data-path="ADMIN_11_1.html">
+            
+                <a href="ADMIN_11_1.html">
+            
+                    
+                    ADMIN-11-1: レコード管理：永続識別子 296
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.34" data-path="ADMIN_11_2.html">
+            
+                <a href="ADMIN_11_2.html">
+            
+                    
+                    ADMIN-11-2: レコード管理：レコードメタデータ 299
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.35" data-path="ADMIN_12_1.html">
+            
+                <a href="ADMIN_12_1.html">
+            
+                    
+                    ADMIN-12-1: ファイル管理：バケット 302
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.36" data-path="ADMIN_12_2.html">
+            
+                <a href="ADMIN_12_2.html">
+            
+                    
+                    ADMIN-12-2: ファイル管理：ファイルインスタンス 306
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.37" data-path="ADMIN_12_3.html">
+            
+                <a href="ADMIN_12_3.html">
+            
+                    
+                    ADMIN-12-3: ファイル管理：ロケーション 311
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.38" data-path="ADMIN_12_4.html">
+            
+                <a href="ADMIN_12_4.html">
+            
+                    
+                    ADMIN-12-4: ファイル管理：マルチパートオブジェクト 317
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.39" data-path="ADMIN_12_5.html">
+            
+                <a href="ADMIN_12_5.html">
+            
+                    
+                    ADMIN-12-5: ファイル管理：オブジェクトバージョン 320
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.40" data-path="ADMIN_13_1.html">
+            
+                <a href="ADMIN_13_1.html">
+            
+                    
+                    ADMIN-13-1: ユーザ管理：アクセス_ロール 324
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.41" data-path="ADMIN_13_2.html">
+            
+                <a href="ADMIN_13_2.html">
+            
+                    
+                    ADMIN-13-2: ユーザ管理：アクセス_システムロール 328
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.42" data-path="ADMIN_13_3.html">
+            
+                <a href="ADMIN_13_3.html">
+            
+                    
+                    ADMIN-13-3: ユーザ管理：アクセス_ユーザー 329
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.43" data-path="ADMIN_13_4.html">
+            
+                <a href="ADMIN_13_4.html">
+            
+                    
+                    ADMIN-13-4: ユーザ管理：連結アカウント識別子 330
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.44" data-path="ADMIN_13_5.html">
+            
+                <a href="ADMIN_13_5.html">
+            
+                    
+                    ADMIN-13-5: ユーザ管理：連結アカウントトークン 331
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.45" data-path="ADMIN_13_6.html">
+            
+                <a href="ADMIN_13_6.html">
+            
+                    
+                    ADMIN-13-6: ユーザ管理：連結アカウント 332
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.46" data-path="ADMIN_13_7.html">
+            
+                <a href="ADMIN_13_7.html">
+            
+                    
+                    ADMIN-13-7: ユーザ管理：OAuthアプリケーショントークン 333
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.47" data-path="ADMIN_13_8.html">
+            
+                <a href="ADMIN_13_8.html">
+            
+                    
+                    ADMIN-13-8: ユーザ管理：OAuthアプリケーション 336
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.48" data-path="ADMIN_13_9.html">
+            
+                <a href="ADMIN_13_9.html">
+            
+                    
+                    ADMIN-13-9: ユーザ管理：ロール 339
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.49" data-path="ADMIN_13_10.html">
+            
+                <a href="ADMIN_13_10.html">
+            
+                    
+                    ADMIN-13-10: ユーザ管理：セッションアクティビティ 343
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.50" data-path="ADMIN_13_11.html">
+            
+                <a href="ADMIN_13_11.html">
+            
+                    
+                    ADMIN-13-11: ユーザ管理：ユーザー 345
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.51" data-path="ADMIN_13_12.html">
+            
+                <a href="ADMIN_13_12.html">
+            
+                    
+                    ADMIN-13-12: ユーザ管理：ユーザープロファイル 350
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.52" data-path="ADMIN_14_1.html">
+            
+                <a href="ADMIN_14_1.html">
+            
+                    
+                    ADMIN-14-1: 設定：アイテム表示 354
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.53" data-path="ADMIN_14_2.html">
+            
+                <a href="ADMIN_14_2.html">
+            
+                    
+                    ADMIN-14-2: 設定：インデックスリンク表示 356
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.54" data-path="ADMIN_14_3.html">
+            
+                <a href="ADMIN_14_3.html">
+            
+                    
+                    ADMIN-14-3: 設定：言語表示 357
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.55" data-path="ADMIN_14_4.html">
+            
+                <a href="ADMIN_14_4.html">
+            
+                    
+                    ADMIN-14-4: 設定：PDFカバーページ表示 361
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.56" data-path="ADMIN_14_5.html">
+            
+                <a href="ADMIN_14_5.html">
+            
+                    
+                    ADMIN-14-5: 設定：ランキング表示 364
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.57" data-path="ADMIN_14_6.html">
+            
+                <a href="ADMIN_14_6.html">
+            
+                    
+                    ADMIN-14-6: 設定：統計情報表示 367
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.58" data-path="ADMIN_14_7.html">
+            
+                <a href="ADMIN_14_7.html">
+            
+                    
+                    ADMIN-14-7: 設定：画面背景色 369
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.59" data-path="ADMIN_14_8.html">
+            
+                <a href="ADMIN_14_8.html">
+            
+                    
+                    ADMIN-14-8: 設定：識別子 370
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.60" data-path="ADMIN_14_9.html">
+            
+                <a href="ADMIN_14_9.html">
+            
+                    
+                    ADMIN-14-9: 設定：アイテム一括出力 374
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.61" data-path="ADMIN_14_10.html">
+            
+                <a href="ADMIN_14_10.html">
+            
+                    
+                    ADMIN-14-10: 設定：ログ解析 375
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.62" data-path="ADMIN_14_11.html">
+            
+                <a href="ADMIN_14_11.html">
+            
+                    
+                    ADMIN-14-11: 設定：検索設定 380
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.63" data-path="ADMIN_14_12.html">
+            
+                <a href="ADMIN_14_12.html">
+            
+                    
+                    ADMIN-14-12: 設定：ファセット検索 385
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.64" data-path="ADMIN_14_13.html">
+            
+                <a href="ADMIN_14_13.html">
+            
+                    
+                    ADMIN-14-13: 設定：サイト情報 395
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.65" data-path="ADMIN_14_14.html">
+            
+                <a href="ADMIN_14_14.html">
+            
+                    
+                    ADMIN-14-14: 設定：サイトライセンス 398
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.66" data-path="ADMIN_14_15.html">
+            
+                <a href="ADMIN_14_15.html">
+            
+                    
+                    ADMIN-14-15: 設定：サイトマップ 399
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.67" data-path="ADMIN_14_16.html">
+            
+                <a href="ADMIN_14_16.html">
+            
+                    
+                    ADMIN-14-16: 設定：メール送信 404
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.68" data-path="ADMIN_14_17.html">
+            
+                <a href="ADMIN_14_17.html">
+            
+                    
+                    ADMIN-14-17: 設定：WebAPIアカウント 406
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.69" data-path="ADMIN_14_18.html">
+            
+                <a href="ADMIN_14_18.html">
+            
+                    
+                    ADMIN-14-18: 設定：ファイルプレビュー 408
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.70" data-path="ADMIN_14_19.html">
+            
+                <a href="ADMIN_14_19.html">
+            
+                    
+                    ADMIN-14-19: 設定：Shibboleth 410
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.71" data-path="ADMIN_14_20.html">
+            
+                <a href="ADMIN_14_20.html">
+            
+                    
+                    ADMIN-14-20: 設定：制限公開 412
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.72" data-path="ADMIN_14_21.html">
+            
+                <a href="ADMIN_14_21.html">
+            
+                    
+                    ADMIN-14-21: 設定：その他 422
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.73" data-path="ADMIN_15_1.html">
+            
+                <a href="ADMIN_15_1.html">
+            
+                    
+                    ADMIN-15-1: メンテナンス：Elasticsearchインデックス 423
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../api/">
+            
+                <a href="../api/">
+            
+                    
+                    WEB API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../api/API_01_Oauth2.html">
+            
+                <a href="../api/API_01_Oauth2.html">
+            
+                    
+                    API-1: WebAPI：OAuth2 425
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../api/API_02_OAIPMH.html">
+            
+                <a href="../api/API_02_OAIPMH.html">
+            
+                    
+                    API-2: WebAPI：OAI-PMH 429
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../api/API_03_OpenSearch.html">
+            
+                <a href="../api/API_03_OpenSearch.html">
+            
+                    
+                    API-3: WebAPI：OpenSearch 436
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../api/API_04_workflow.html">
+            
+                <a href="../api/API_04_workflow.html">
+            
+                    
+                    API-4: WebAPI：Workflow API 5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../api/API_05_index_op.html">
+            
+                <a href="../api/API_05_index_op.html">
+            
+                    
+                    API-5: WebAPI：Index操作API 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../api/API_06_sword_api.html">
+            
+                <a href="../api/API_06_sword_api.html">
+            
+                    
+                    API-6: WebAPI：SWORD API 9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../api/API_07_item_search.html">
+            
+                <a href="../api/API_07_item_search.html">
+            
+                    
+                    API-7: WebAPI：アイテム検索用API 20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../api/API_08_index_search.html">
+            
+                <a href="../api/API_08_index_search.html">
+            
+                    
+                    API-8: WebAPI：インデックス検索用API 43
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../api/API_09_render.html">
+            
+                <a href="../api/API_09_render.html">
+            
+                    
+                    API-9: WebAPI：Render 81
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../api/API_10_JSON_Schema.html">
+            
+                <a href="../api/API_10_JSON_Schema.html">
+            
+                    
+                    API-10: WebAPI：JSON Schema 165
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../api/API_11_JSON_Form.html">
+            
+                <a href="../api/API_11_JSON_Form.html">
+            
+                    
+                    API-11: WebAPI：JSON Form 187
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../other/">
+            
+                <a href="../other/">
+            
+                    
+                    その他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../other/SCHEMA_1_1.html">
+            
+                <a href="../other/SCHEMA_1_1.html">
+            
+                    
+                    SCHEMA-1-1: データ構造：Render 328
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../other/SCHEMA_1_2.html">
+            
+                <a href="../other/SCHEMA_1_2.html">
+            
+                    
+                    SCHEMA-1-2: データ構造：Schema 329
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../other/MODULE_01.html">
+            
+                <a href="../other/MODULE_01.html">
+            
+                    
+                    2 その他：モジュール、ライブラリ 330
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../other/CONFIG_01.html">
+            
+                <a href="../other/CONFIG_01.html">
+            
+                    
+                    3 その他：コンフィグ 331
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../other/DB_01.html">
+            
+                <a href="../other/DB_01.html">
+            
+                    
+                    4 その他：DB 336
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../other/OTHER_elasticsearch.html">
+            
+                <a href="../other/OTHER_elasticsearch.html">
+            
+                    
+                    5 その他：elasticsearch 337
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../other/CELERY_01.html">
+            
+                <a href="../other/CELERY_01.html">
+            
+                    
+                    6 その他：celery タスク 342
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../other/LOG.html">
+            
+                <a href="../other/LOG.html">
+            
+                    
+                    7 その他：ログ 345
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../other/USAGE_LOG.html">
+            
+                <a href="../other/USAGE_LOG.html">
+            
+                    
+                    その他：利用統計ログ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../other/SESSION_01.html">
+            
+                <a href="../other/SESSION_01.html">
+            
+                    
+                    8 その他：セッション管理 357
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../api/API_ENDPOINT_01.html">
+            
+                <a href="../api/API_ENDPOINT_01.html">
+            
+                    
+                    9 その他：API Endpoint 358
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../other/SHIBBOLETH_01.html">
+            
+                <a href="../other/SHIBBOLETH_01.html">
+            
+                    
+                    10 その他：Shibboleth対応 359
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../other/WORKFLOW_01.html">
+            
+                <a href="../other/WORKFLOW_01.html">
+            
+                    
+                    11 その他：GakuNinRDM連携 362
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../other/ID_01.html">
+            
+                <a href="../other/ID_01.html">
+            
+                    
+                    12 その他：ID体系 371
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../other/KAISEKI_01.html">
+            
+                <a href="../other/KAISEKI_01.html">
+            
+                    
+                    13 その他：解析基盤連携 372
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../restricted_access/">
+            
+                <a href="../restricted_access/">
+            
+                    
+                    制限公開機能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../restricted_access/RESTRICTED_ACCESS_01.html">
+            
+                <a href="../restricted_access/RESTRICTED_ACCESS_01.html">
+            
+                    
+                    RESTRICTED_ACCESS-13-1: 制限公開機能：アイテムタイプ管理（制限公開） 373
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../restricted_access/RESTRICTED_ACCESS_02.html">
+            
+                <a href="../restricted_access/RESTRICTED_ACCESS_02.html">
+            
+                    
+                    RESTRICTED_ACCESS-13-2: 制限公開機能：アイテム詳細(制限公開) 376
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../restricted_access/RESTRICTED_ACCESS_03.html">
+            
+                <a href="../restricted_access/RESTRICTED_ACCESS_03.html">
+            
+                    
+                    RESTRICTED_ACCESS-13-3: 制限公開機能：ワークフロー管理（制限公開） 378
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../restricted_access/RESTRICTED_ACCESS_04.html">
+            
+                <a href="../restricted_access/RESTRICTED_ACCESS_04.html">
+            
+                    
+                    RESTRICTED_ACCESS-13-4: 制限公開機能：メールテンプレート 381
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../tool/">
+            
+                <a href="../tool/">
+            
+                    
+                    TOOL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../tool/TOOL_01.html">
+            
+                <a href="../tool/TOOL_01.html">
+            
+                    
+                    TOOL-1: ツール：システムプロパティマッピング 390
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ADMIN-2-4: アイテム管理：インポート 113</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><h1 id="インポート"><a name="インポート" class="plugin-anchor" href="#インポート"><i class="fa fa-link" aria-hidden="true"></i></a>インポート</h1>
+<h2 id="目的・用途"><a name="目的・用途" class="plugin-anchor" href="#目的・用途"><i class="fa fa-link" aria-hidden="true"></i></a>目的・用途</h2>
+<p>本機能は、管理者として、アイテムの一括登録を実行する機能である。</p>
+<h2 id="利用方法"><a name="利用方法" class="plugin-anchor" href="#利用方法"><i class="fa fa-link" aria-hidden="true"></i></a>利用方法</h2>
+<p>管理者は 【Administration &gt; アイテム管理（Items） &gt; インポート（Import）画面】を開き、アイテム一括登録用のzipファイルを登録する。</p>
+<h2 id="利用可能なロール"><a name="利用可能なロール" class="plugin-anchor" href="#利用可能なロール"><i class="fa fa-link" aria-hidden="true"></i></a>利用可能なロール</h2>
+<table>
+<thead>
+<tr class="header">
+<th>ロール</th>
+<th>システム<br>
+管理者</th>
+<th>リポジトリ<br>
+管理者</th>
+<th>コミュニティ<br>
+管理者</th>
+<th>登録ユーザー</th>
+<th>一般ユーザー</th>
+<th>ゲスト<br>
+(未ログイン)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>利用可否</td>
+<td>○</td>
+<td>○</td>
+<td>○※</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>※コミュニティ管理者は、自身の管理下にあるコミュニティに関連付けられたインデックスへのインポートのみ可能</p>
+<h2 id="機能内容"><a name="機能内容" class="plugin-anchor" href="#機能内容"><i class="fa fa-link" aria-hidden="true"></i></a>機能内容</h2>
+<h3 id="1-概要"><a name="1-概要" class="plugin-anchor" href="#1-概要"><i class="fa fa-link" aria-hidden="true"></i></a>1. 概要</h3>
+<ul>
+<li><p>複数のアイテムを一括で登録する機能。システム管理者、リポジトリ管理者のみ使用できる。</p>
+</li>
+<li><p>登録形式はBagitだが、ユーザにそれを意識させないようにしている。詳細はの1を参照。</p>
+</li>
+<li><p>機能は3つの画面で構成されている。</p>
+</li>
+<li><p>以下は各画面の関連と役割。</p>
+</li>
+</ul>
+<blockquote>
+<p>+----------+ ≪選択画面≫</p>
+<p>| | ●各アイテムタイプのTSVファイルテンプレートのダウンロード</p>
+<p>| Select | ●インポートファイルの指定</p>
+<p>| | ●「識別子変更モード」の設定と利用規約への同意</p>
+<p>+----------+</p>
+<p>↓</p>
+<p>↓【Next】 button click!</p>
+<p>↓</p>
+<p>+----------+ ≪インポート画面≫</p>
+<p>| | ●TSVファイルで指定した項目のチェック結果の確認</p>
+<p>| Import | ●チェック結果のダウンロード</p>
+<p>| |</p>
+<p>+----------+</p>
+<p>↓</p>
+<p>↓【Import】 button click!</p>
+<p>↓</p>
+<p>+----------+ ≪結果画面≫</p>
+<p>| | ●アイテムごとのインポート実行結果の確認</p>
+<p>| Result | ●インポート実行結果のダウンロード</p>
+<p>| |</p>
+<p>+----------+</p>
+</blockquote>
+<h3 id="2-画面ごとの仕様"><a name="2-画面ごとの仕様" class="plugin-anchor" href="#2-画面ごとの仕様"><i class="fa fa-link" aria-hidden="true"></i></a>2. 画面ごとの仕様</h3>
+<h4 id="21-選択画面select"><a name="21-選択画面select" class="plugin-anchor" href="#21-選択画面select"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 選択画面(Select)</h4>
+<ul>
+<li>各アイテムタイプのTSVファイルテンプレートのダウンロードとインポートファイルを指定する画面。<br>また「識別子変更モード」の設定と利用規約への同意を実施する</li>
+</ul>
+<blockquote>
+<p>────────────────────────────────────────────────</p>
+<p>## Message Area ## ★</p>
+<p>────────────────────────────────────────────────</p>
+<p>┌───────┐</p>
+<p>│Select │Import Result</p>
+<p>┘ └─────────────────────────────────────</p>
+<p>Select File 【Select File】①</p>
+<p>Selected file name ②</p>
+<p>□ Change Identifier Mode ③</p>
+<p>【Next】④</p>
+<p>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+<p>Item Type Template</p>
+<p>Item Type:[ ⑤ ]【Download】⑥</p>
+</blockquote>
+<p>★Message Area（管理画面共通）</p>
+<ul>
+<li><p>インポートファイルのチェックでエラーが発生した際にメッセージを表示する。</p>
+</li>
+<li><p>表示されるエラーメッセージは3.2(4)-1参照。</p>
+</li>
+</ul>
+<p>①［ファイル選択（Select File）］ボタン</p>
+<ul>
+<li>押下するとファイル選択ダイアログを表示する。選択可能なファイルはzip形式で1つのみ。</li>
+</ul>
+<p>②Selected file name ラベル</p>
+<ul>
+<li>①で選択したファイル名を表示する。未選択時は「選択したファイル名（Selected file name）」を表示。</li>
+</ul>
+<p>③Change Identifier Mode チェックボックス</p>
+<ul>
+<li><p>DOIやCNRIを変更する際に設定する。チェックありで④を押下すると「免責事項ダイアログ」が表示される。<br>免責事項の文面は以下（テキストファイルで保持。ファイルパスはコンフィグ管理→処理概要の2を参照）</p>
+</li>
+<li><p>免責事項ダイアログには［OK］ボタンと［キャンセル（Cancel）］ボタンがある。［OK］ボタンは、「利用規約に同意します（I agree to the terms of use.）」がチェックされるまでは非活性。［OK］ボタンを押下するとインポートファイルのチェックを行い、通過するとImport画面に遷移する。</p>
+</li>
+<li><p>チェックありの状態でImport画面に遷移してから選択画面に戻ると、選択ファイルを変更するまでは非活性になっており変更できない。</p>
+</li>
+</ul>
+<blockquote>
+<p>Japanese:</p>
+<p>免責事項：</p>
+<p>・本機能は設定にかかわらずDOIを強制的に変更します。</p>
+<p>・本機能は内容及び自機関で登録されているDOIについて十分に理解した上で作業を行なってください。</p>
+<p>・本機能の利用は、自機間の責任で行なってください。</p>
+<p>・本機能の利用により負った損害などについては、国立情報学研究所は一切の責任を追いません。</p>
+<p>English:</p>
+<p>- This function forcibly changes the DOI regardless of the setting.</p>
+<p>- Before starting this operation, you need fully understand the contents and DOI registered at your institution.</p>
+<p>- Use this function on your own responsibility.</p>
+<p>- National Institute of Informatics (NII) does not take any responsibility for damages caused by using this function.</p>
+</blockquote>
+<p>④［次へ（Next）］ボタン</p>
+<ul>
+<li>①でファイルが選択されるまでは非活性。<br>ただし、拡張子が「zip」でないファイルが選択された場合は活性化しない。<br>押下するとインポートファイルのチェックを行い、通過するとImport画面に遷移する。<br>チェック処理については、3.2(4)を参照。</li>
+</ul>
+<p>⑤Item Type セレクタ―</p>
+<ul>
+<li>TSVファイルテンプレートをダウンロードする際、対象とするアイテムタイプを選択する。<br>【Administration &gt; アイテムタイプ管理（Item Types） &gt; メタデータ（Metadata）】画面で確認できる標準アイテムタイプ（Standard Item Type）を表示。<br>表示形式は「Item Type name(Item Type ID)」。</li>
+</ul>
+<p>⑥Download ボタン</p>
+<ul>
+<li>押下すると⑤で選択したアイテムタイプのTSVファイルテンプレートをダウンロードする。<br>ファイルについては4.1参照。</li>
+</ul>
+<h4 id="22-インポート画面import"><a name="22-インポート画面import" class="plugin-anchor" href="#22-インポート画面import"><i class="fa fa-link" aria-hidden="true"></i></a>2.2 インポート画面(Import)</h4>
+<ul>
+<li>TSVファイルで指定した項目のチェック結果の確認とチェック結果のダウンロードができる。</li>
+</ul>
+<blockquote>
+<p>┌──────┐</p>
+<p>Select │Import│ Result</p>
+<p>───────┘ └─────────────────────────────────────</p>
+<p># Identifier Mode #①</p>
+<p>【Import】②</p>
+<p>Summary</p>
+<p>Total: ③</p>
+<p>New Item: ④</p>
+<p>Update: ⑤</p>
+<p>Check error: ⑥</p>
+<p>【Download】⑦</p>
+<p>┏━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┓</p>
+<p>┃No. ┃Item Type ┃Item ID ┃Title ┃Check Result┃</p>
+<p>┣━━━━╋━━━━━━━━━━╋━━━━━━━━╋━━━━━━╋━━━━━━━━━━━━┫</p>
+<p>┃ ⑧ ┃ ⑨ ┃ ⑩ ┃ ⑪ ┃ ⑫ ┃</p>
+<p>┗━━━━┻━━━━━━━━━━┻━━━━━━━━┻━━━━━━┻━━━━━━━━━━━━┛</p>
+</blockquote>
+<p>①Message ラベル</p>
+<ul>
+<li>※名称は要検討<br>Select画面の「③Change Identifier Mode チェックボックス」にチェックを入れた場合。メッセージ「識別子変更モードで登録します(Register with [Change Identigier Mode].)」を表示する。</li>
+</ul>
+<p>②Import ボタン</p>
+<ul>
+<li>押下するとインポートを実行する。<br>対象データがすべてエラーなど、インポートできない場合は非活性。</li>
+</ul>
+<p>③Summary/Total ラベル</p>
+<ul>
+<li>TSVファイルで設定されたアイテムの総数。TSVファイルが複数存在した場合、各ファイルで設定されたアイテムの合計を表示する。</li>
+</ul>
+<p>④Summary/New Item ラベル</p>
+<ul>
+<li>③の内、新規登録アイテムとなる件数を表示する。</li>
+</ul>
+<p>⑤Summary/Update ラベル</p>
+<ul>
+<li>③の内、更新アイテムとなる件数を表示する。</li>
+</ul>
+<p>⑥Summary/Check error ラベル</p>
+<ul>
+<li>③の内、TSVファイルの設定内容にエラーがある件数を表示する。</li>
+</ul>
+<p>⑦Download ボタン</p>
+<ul>
+<li>インポートファイルのチェック結果をTSV形式で出力する。出力項目が当該画面の⑧～⑫。<br>ダウンロードするファイルは4.2を参照。</li>
+</ul>
+<p>⑧表/No.</p>
+<ul>
+<li>項番。Not処理順。</li>
+</ul>
+<p>⑨表/Item Type</p>
+<ul>
+<li>アイテムをインポートする際に使用するアイテムタイプ名を表示する</li>
+</ul>
+<p>⑩表/Item ID</p>
+<ul>
+<li><p>新規登録の場合</p>
+<ul>
+<li><p>TSVファイルでID指定あり→「新規登録（Item ID）」</p>
+</li>
+<li><p>TSVファイルでID指定無し→ 空白</p>
+</li>
+</ul>
+</li>
+<li><p>更新の場合</p>
+<ul>
+<li>TSVファイルで指定したIDを表示する</li>
+</ul>
+</li>
+</ul>
+<p>⑪表/Title</p>
+<ul>
+<li><p>アイテムのタイトルを以下のルールで表示する。</p>
+<ul>
+<li><p>システムの言語属性に合わせたタイトルを表示する</p>
+</li>
+<li><p>一致するものがない場合は英語表記で表示する</p>
+</li>
+<li><p>画面の横幅に応じて表示する文字数をトリミング（末尾を「…」に置換）する</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>⑫表/Check Result</p>
+<ul>
+<li><p>TSVファイルの設定内容について、チェックした結果を以下の形式（()は英語表記）で表示する。</p>
+<ul>
+<li><p>新規登録→「登録(Registre)」</p>
+</li>
+<li><p>更新→「更新(Update)」</p>
+</li>
+<li><p>エラー→「エラー(ERROR)：\&lt;エラーメッセージ&gt;」</p>
+</li>
+<li><p>ワーニング→「警告(Warning)：\&lt;警告メッセージ&gt;」</p>
+</li>
+</ul>
+</li>
+<li><p>チェック仕様については、3.2(4)-2~3を参照</p>
+</li>
+</ul>
+<h4 id="23-結果画面result"><a name="23-結果画面result" class="plugin-anchor" href="#23-結果画面result"><i class="fa fa-link" aria-hidden="true"></i></a>2.3 結果画面(Result)</h4>
+<ul>
+<li><p>アイテムごとのインポート実行結果の確認とインポート実行結果のダウンロードができる。</p>
+</li>
+<li><p>現状、処理中に一度画面を離れた場合、処理はCeleryで管理されて継続するが、画面で進捗状況を再度確認することはできない。</p>
+</li>
+</ul>
+<blockquote>
+<p>┌──────┐</p>
+<p>Select Import │Result│</p>
+<p>───────────────┘ └─────────────────────────────────────</p>
+<p>【Download】①</p>
+<p>┏━━━━┳━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━┳━━━━━━┳━━━━━━━━━━━━━━━┓</p>
+<p>┃No. ┃Start Date ┃End Date ┃Item Id┃Action┃WrokFlow Status┃</p>
+<p>┣━━━━╋━━━━━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━╋━━━━━━━━━━━━━━━┫</p>
+<p>┃ ② ┃ ③ ┃ ④ ┃ ⑤ ┃ ⑥ ┃ ⑦ ┃</p>
+<p>┗━━━━┻━━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━┻━━━━━━┻━━━━━━━━━━━━━━━┛</p>
+</blockquote>
+<p>①Download ボタン</p>
+<ul>
+<li><p>インポート処理の実行結果を出力する。項目は当該画面の②～⑦．</p>
+</li>
+<li><p>ダウンロードファイルについては4.3参照。</p>
+</li>
+</ul>
+<p>②表/No.</p>
+<ul>
+<li>項番。Not処理順。</li>
+</ul>
+<p>③表/Start Date</p>
+<ul>
+<li>アイテムの登録処理を開始した日時。YYYY-MM-DD hh:mm:ssで表示する。</li>
+</ul>
+<p>④表/End Date</p>
+<ul>
+<li>アイテムの登録処理が完了した日時。YYYY-MM-DD hh:mm:ssで表示する。</li>
+</ul>
+<p>⑤表/Item Id</p>
+<ul>
+<li>処理対処のアイテムIDを表示する。新規登録の場合は空欄。</li>
+</ul>
+<p>⑥表/Action</p>
+<ul>
+<li><p>以下を表示する。</p>
+<ul>
+<li><p>「Start」：アイテム登録の処理が開始されている</p>
+</li>
+<li><p>「End」：アイテム登録の処理が正常に終了している。</p>
+</li>
+<li><p>「Error」：アイテム登録の処理がエラーで終了している。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>⑦表/WorkFlow Status</p>
+<ul>
+<li>処理中のワークフローのステータスを表示する。</li>
+</ul>
+<h3 id="3-インポートファイル／tsvファイルについて"><a name="3-インポートファイル／tsvファイルについて" class="plugin-anchor" href="#3-インポートファイル／tsvファイルについて"><i class="fa fa-link" aria-hidden="true"></i></a>3. インポートファイル／TSVファイルについて</h3>
+<h4 id="31-インポートファイル"><a name="31-インポートファイル" class="plugin-anchor" href="#31-インポートファイル"><i class="fa fa-link" aria-hidden="true"></i></a>3.1 インポートファイル</h4>
+<ul>
+<li><p>エクスポート（一括出力）したファイルを流用できる</p>
+</li>
+<li><p>対応しているファイル形式：zip（他の圧縮形式は不可）実装の詳細は処理概要の1を参照。</p>
+</li>
+<li><p>フォルダ構成</p>
+</li>
+</ul>
+<blockquote>
+<p>import.zip</p>
+<p>│</p>
+<p>├bag-info.txt ※</p>
+<p>├bagit.txt ※</p>
+<p>├manifest-sha256.txt ※</p>
+<p>├manifest-sha512.txt ※</p>
+<p>├tagmanifest-sha256.txt ※</p>
+<p>├tagmanifest-shar512.txt ※</p>
+<p>│</p>
+<p>└/data</p>
+<p>│</p>
+<p>├/recid_n</p>
+<p>│ └\<files\></files\></p>
+<p>│</p>
+<p>├ItemTypeName1(ItemType ID).tsv</p>
+<p>└ItemTypeName2(ItemType ID).tsv</p>
+<p>※はBagit形式のファイル。インポート時は省略可能</p>
+</blockquote>
+<ul>
+<li><p>「/data」は変更不可</p>
+</li>
+<li><p>「/recid_n」は変更可</p>
+</li>
+<li><p>アイテムタイプのTSVファイルは複数指定可能</p>
+</li>
+</ul>
+<h4 id="32-アイテムタイプごとのtsvファイル"><a name="32-アイテムタイプごとのtsvファイル" class="plugin-anchor" href="#32-アイテムタイプごとのtsvファイル"><i class="fa fa-link" aria-hidden="true"></i></a>3.2 アイテムタイプごとのTSVファイル</h4>
+<p>当該ファイルは以下で共通のレイアウトとしている。</p>
+<ul>
+<li>Select画面でダウンロードできるテンプレートファイル(4.1)</li>
+<li>インポートファイルに含めるアイテムタイプTSVファイル</li>
+<li>エクスポート（一括出力）ファイルに含まれるアイテムタイプTSVファイル</li>
+</ul>
+<h5 id="1-ヘッダ行"><a name="1-ヘッダ行" class="plugin-anchor" href="#1-ヘッダ行"><i class="fa fa-link" aria-hidden="true"></i></a>(1) ヘッダ行</h5>
+<p>ヘッダ行は先頭が「#」とする。</p>
+<h6 id="1行目：インポートするアイテムタイプの情報"><a name="1行目：インポートするアイテムタイプの情報" class="plugin-anchor" href="#1行目：インポートするアイテムタイプの情報"><i class="fa fa-link" aria-hidden="true"></i></a>1行目：インポートするアイテムタイプの情報</h6>
+<table>
+<thead>
+<tr>
+<th>1列目</th>
+<th>「#ItemType」固定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2列目</td>
+<td>アイテムタイプ名</td>
+</tr>
+<tr>
+<td>3列目</td>
+<td>アイテムタイプのjsonschemaのURI。形式は「<a href="https://FQDN/items/jsonschema/\" target="_blank">https://FQDN/items/jsonschema/\</a><itemtype id\>」</itemtype></td>
+</tr>
+</tbody>
+</table>
+<h6 id="2行目：各項目のjsonパス。各種処理に使用される項目。"><a name="2行目：各項目のjsonパス。各種処理に使用される項目。" class="plugin-anchor" href="#2行目：各項目のjsonパス。各種処理に使用される項目。"><i class="fa fa-link" aria-hidden="true"></i></a>2行目：各項目のJSONパス。各種処理に使用される項目。</h6>
+<h6 id="3行目：各項目のラベル。"><a name="3行目：各項目のラベル。" class="plugin-anchor" href="#3行目：各項目のラベル。"><i class="fa fa-link" aria-hidden="true"></i></a>3行目：各項目のラベル。</h6>
+<pre><code>  - アイテムタイプ以外の項目  
+    → 項目ごとにラベルの内容を定義。
+
+  - アイテムタイプ項目  
+    → 【Administration \&gt; アイテムタイプ管理（ItemTypes） \&gt; メタデータ（Metadata）画面】のLocalization Settingで設定している内容を出力。設定がない場合は項目名を出力。
+</code></pre><h6 id="4行目：インポート実行時に値を自動で設定する項目について「system」を出力-。対象はプロパティ定義内で「readonlytrue」を設定している項目。"><a name="4行目：インポート実行時に値を自動で設定する項目について「system」を出力-。対象はプロパティ定義内で「readonlytrue」を設定している項目。" class="plugin-anchor" href="#4行目：インポート実行時に値を自動で設定する項目について「system」を出力-。対象はプロパティ定義内で「readonlytrue」を設定している項目。"><i class="fa fa-link" aria-hidden="true"></i></a>4行目：インポート実行時に値を自動で設定する項目について「System」を出力 。対象はプロパティ定義内で「&quot;readonly&quot;:true」を設定している項目。</h6>
+<h6 id="5行目：各項目について「allow-multiple」（繰り返し可）「requierd」（必須）を出力"><a name="5行目：各項目について「allow-multiple」（繰り返し可）「requierd」（必須）を出力" class="plugin-anchor" href="#5行目：各項目について「allow-multiple」（繰り返し可）「requierd」（必須）を出力"><i class="fa fa-link" aria-hidden="true"></i></a>5行目：各項目について「Allow Multiple」（繰り返し可）「Requierd」（必須）を出力</h6>
+<pre><code>  - アイテムタイプ以外の項目  
+    → 項目ごとにラベルの内容を定義。
+
+  - アイテムタイプ項目  
+    → 【Administration \&gt; アイテムタイプ管理（ItemTypes） \&gt; メタデータ（Metadata）画面】のOptionの設定内容がチェックありの項目について出力
+</code></pre><h5 id="2-アイテムタイプ項目以外の項目"><a name="2-アイテムタイプ項目以外の項目" class="plugin-anchor" href="#2-アイテムタイプ項目以外の項目"><i class="fa fa-link" aria-hidden="true"></i></a>(2) アイテムタイプ項目以外の項目</h5>
+<table>
+<thead>
+<tr class="header">
+<th><strong>JSONパス</strong></th>
+<th><strong>ラベル</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.id</td>
+<td>ID</td>
+<td>アイテムID。新規登録時、指定なしの場合は自動採番、未使用の番号を指定することもできる。更新時は登録済みの内容が必須。</td>
+</tr>
+<tr class="even">
+<td>.uri</td>
+<td>URI</td>
+<td>アイテムのURI。新規登録時は指定なし。更新時は登録済みの内容が必須となる。</td>
+</tr>
+<tr class="odd">
+<td>.metadata.path[0]</td>
+<td>.IndexID[0]</td>
+<td>アイテムを登録するインデックスをID指定する。複数指定可。<br>
+.pos_index[n]とペアで指定する。<br>
+.pos_index[n]が指定されていない場合は必須。存在しないインデックスを指定した場合はエラーメッセージを出力する。</td>
+</tr>
+<tr class="even">
+<td>.pos_index[0]</td>
+<td>.POS_INDEX[0]</td>
+<td>アイテムを登録するインデックスを名称(※1)で指定する。<br>
+.metadata.path[n]とペアで指定する。<br>
+.metadata.path[n]が指定されてない場合は必須。</td>
+</tr>
+<tr class="odd">
+<td>.publish_status</td>
+<td>.PUBLISH_STATUS</td>
+<td>アイテムの公開／非公開を指定する。public/privateのいずれかを設定する。必須項目。</td>
+</tr>
+<tr class="even">
+<td>.feedback_mail[0]</td>
+<td>.FEEDBACK_MAIL[0]</td>
+<td>フィードバックメールの送信先メールアドレスを指定する。複数指定可。</td>
+</tr>
+<tr class="odd">
+<td>.cnri</td>
+<td>.CNRI</td>
+<td>CNRIハンドルサーバを使用する場合(※2)に設定できる。CNRIは「prefix/suffix」の形式で設定される。通常モードの時は自動採番(※3)される。識別子変更モードの時は「prefix/suffix」を設定する。識別子変更モードの時に「prefix」または「prefix/」を指定すると自動採番となる。</td>
+</tr>
+<tr class="even">
+<td>.doi_ra</td>
+<td>.DOI_RA</td>
+<td>DOIの種類を指定する。JaLC/Crossref/DataCite(※4)/NDL JaLC (※5)のいずれかを設定する。</td>
+</tr>
+<tr class="odd">
+<td>.doi</td>
+<td>.DOI</td>
+<td>DOIを「prefix/suffix」の形式で設定する。通常モードの時は自動採番(※3)される。識別子変更モードの時は手入力で変更可能。</td>
+</tr>
+<tr class="even">
+<td>.edit_mode</td>
+<td>Keep/Upgrade Version</td>
+<td>対象のアイテムのバージョン更新可否を指定する。新規登録の場合は空、更新の場合は必須でKeep/Upgradeのいずれかを指定する。<br>
+※インポートファイル（zip）に既存アイテムの元ファイルが同名、ファイルパスも同一で含まれていた場合（元ファイルを変更しない）<br>
+　・Keep: 重複登録されない<br>
+　・Upgrade: 重複登録する。ファイル名だけでは、同名同ファイルなのか同名異ファイルなのかが判断できない</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>※1) インデックス名称について<br>POS_INDEXは階層を指定して記述する。階層の区切り文字はデフォルトで「///」。weko_items_ui/config.py の WEKO_ITEMS_UI_INDEX_PATH_SPLIT にて区切り文字の変更が可能。<br>同名のインデックスが複数存在した場合は、すべてのインデックスに登録される。<br>日本語名称、英語名称のいずれかを指定できる。日本語名称のインデックスと英語名称のインデックスをまぜて指定することはできない。</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><strong>IndexID</strong></th>
+<th><strong>POS_INDEX</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>指定あり</td>
+<td>指定なし</td>
+<td>IndexID に指定されたインデックスに登録。</td>
+</tr>
+<tr class="even">
+<td>指定なし</td>
+<td>指定あり</td>
+<td>POS_INDEX に指定されたインデックスに登録。</td>
+</tr>
+<tr class="odd">
+<td>指定あり</td>
+<td>指定あり</td>
+<td>IndexID と POS_INDEX の組み合わせが正しい場合、該当するインデックスに登録。<br>
+不整合の場合、IndexID で指定されたインデックスに登録。<br>
+システムに存在しない IndexID と POS_INDEX を指定した場合はエラーとなる。</td>
+</tr>
+<tr class="even">
+<td>指定なし</td>
+<td>指定なし</td>
+<td>エラーとなる。</td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="※2-cnriハンドルサーバの使用について"><a name="※2-cnriハンドルサーバの使用について" class="plugin-anchor" href="#※2-cnriハンドルサーバの使用について"><i class="fa fa-link" aria-hidden="true"></i></a>※2) CNRIハンドルサーバの使用について</h5>
+<pre><code>CNRIハンドルの使用状態は「WEKO\_HANDLE\_ALLOW\_REGISTER\_CRNI」(modules/weko-handle/weko\_handle/config.py)の設定値で判断している
+
+  - 「False」：初期値。CNRIハンドルサーバを使用しない
+
+  - 「True」：CNRIハンドルサーバを使用する
+</code></pre><h5 id="※3-cnriとdoiの自動採番時の指定について"><a name="※3-cnriとdoiの自動採番時の指定について" class="plugin-anchor" href="#※3-cnriとdoiの自動採番時の指定について"><i class="fa fa-link" aria-hidden="true"></i></a>※3) CNRIとDOIの自動採番時の指定について</h5>
+<p>現状は以下の通り。</p>
+<ul>
+<li>識別子変更モード<ul>
+<li>DOIの自動採番は行わない。<br>インポートファイルにdoiやprefixが含まれている場合はエラーメッセージを表示する。</li>
+<li>DOIが空欄の場合<br>「Please specify DOI prefix/suffix.」</li>
+<li>インポートファイルにdoiやprefixが含まれている場合　(「prefix」もしくは「prefix/」を指定した場合）<br>「DOI suffixを設定してください。」／「Please specify DOI suffix.」</li>
+</ul>
+</li>
+<li>Not 識別子変更モード        <ul>
+<li>Admin &gt; Setting &gt; Identifier でprefixの設定があること<ul>
+<li>DOI：空欄であること</li>
+<li>DOI_RA：JaLC, Crossref, DataCite のいずれかであること</li>
+<li>DOI_RA：NDL JaLCの場合、自動採番は行われない。
+インポートファイルにdoiやprefixが含まれている場合はエラーメッセージを表示する。</li>
+<li>DOIが空欄の場合
+　     「Please specify DOI prefix/suffix.」</li>
+<li>インポートファイルにdoiやprefixが含まれている場合　(「prefix」もしくは「prefix/」を指定した場合）
+　      「DOI suffixを設定してください。」／「Please specify DOI suffix.」</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>※4) DataCiteについて<br>    制限等は現状設けていない</p>
+<p>※5) NDL JaLCについて<br>DOI RA：NDL JaLCの場合、資源タイプは「doctoral thesis」である必要があります。</p>
+<p>CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の通り。</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>識別子変更モード</th>
+<th></th>
+<th>Not 識別子変更モード</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>登録時のモード</td>
+<td>新規</td>
+<td>更新</td>
+<td>新規</td>
+<td>更新</td>
+</tr>
+<tr class="even">
+<td>CNRI<br>
+（CNRIハンドル未設定ユーザー）</td>
+<td>空欄</td>
+<td>空欄</td>
+<td>空欄</td>
+<td>空欄</td>
+</tr>
+<tr class="odd">
+<td>CNRI<br>
+（CNRIハンドル設定ユーザー）</td>
+<td>必須。「prefix」または「prefix/」を指定すると自動採番。「prefix/suffix」を指定すると指定された形式でCNRIハンドルを発行。</td>
+<td>変更可能</td>
+<td>空欄</td>
+<td>変更不可</td>
+</tr>
+<tr class="even">
+<td>DOI_RA</td>
+<td>設定可能</td>
+<td>DOI付与前は設定可能<br>
+DOI付与後は変更不可</td>
+<td>設定可能</td>
+<td>DOI付与前は設定可能<br>
+DOI付与後は変更不可</td>
+</tr>
+<tr class="odd">
+<td>DOI</td>
+<td>設定可能</td>
+<td>変更可能</td>
+<td>空欄</td>
+<td>DOI付与前は空欄<br>
+DOI付与後は変更不可</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>(3) アイテムタイプ項目</li>
+</ul>
+<p>基本はアイテムタイプに定義されている項目（プロパティ）に対して、TSVファイル内で設定されている内容を登録する。<br>次の項目は項目の設定以外の処理を行っている。</p>
+<p>－1. コンテンツファイル</p>
+<p>コンテンツファイルを指定してアップロードする。<br>自動設定は本文URLのみ対応済。</p>
+<p>プロパティID：<br>項目：</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>JSONパス</strong></th>
+<th><strong>初期設定ラベル</strong></th>
+<th><strong>System(自動設定)</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.file_path[0]</td>
+<td>.ファイルパス[0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.upload_id[0]</td>
+<td>. ファイルアップロードID[0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>.metadata.item_files[0].accessrole</td>
+<td>ファイル情報[0].アクセス</td>
+<td>空欄で「オープンアクセス」を自動設定／手入力</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.metadata.item_files[0].date[0].dateType</td>
+<td>ファイル情報[0].公開日[0].タイプ</td>
+<td>「Available」を自動設定（値があっても無視）</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>.metadata.item_files[0].date[0].dateValue</td>
+<td>ファイル情報[0].公開日[0].公開日</td>
+<td>「アクセス」＝オープンアクセスの際は自動設定／「アクセス」＝オープンアクセス日を指定 の際に手入力可／それ以外は空白</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.metadata.item_files[0].displaytype</td>
+<td>ファイル情報[0].表示形式</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>.metadata.item_files[0].fileDate[0].fileDateType</td>
+<td>ファイル情報[0].日付[0].日付タイプ</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.metadata.item_files[0].fileDate[0].fileDateValue</td>
+<td>ファイル情報[0].日付[0].日付</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>.metadata.item_files[0].filename</td>
+<td>ファイル情報[0].ファイル名</td>
+<td>空欄で自動設定／手入力</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.metadata.item_files[0].filesize[0].value</td>
+<td>ファイル情報[0].サイズ[0].サイズ</td>
+<td>空欄で自動設定／手入力</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>.metadata.item_files[0].format</td>
+<td>ファイル情報[0].フォーマット</td>
+<td><p>空欄で自動設定／手入力</p>
+<p>ファイルアップロードIDを入力の場合、必須</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.metadata.item_files[0].groups</td>
+<td>ファイル情報[0].グループ</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>.metadata.item_files[0].licensefree</td>
+<td>ファイル情報[0].自由ライセンス</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.metadata.item_files[0].licensetype</td>
+<td>ファイル情報[0].ライセンス</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>.metadata.item_files[0].url.label</td>
+<td>ファイル情報[0].本文URL.ラベル</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.metadata.item_files[0].url.objectType</td>
+<td>ファイル情報[0].本文URL.オブジェクトタイプ</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>.metadata.item_files[0].url.url</td>
+<td>ファイル情報[0].本文URL.本文URL</td>
+<td>空欄で自動設定(※1)／手入力</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.metadata.item_files[0].version</td>
+<td>ファイル情報[0].バージョン情報</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>※1: 本文URLは「THEME_SITEURL」(/home/invenio/.virtualenvs/invenio/var/instance/invenio.cfg&quot;) を利用して生成している。ルールは以下の通り。</p>
+<ul>
+<li><p>file_path &amp; 本文URLの両方を指定された場合、本文URLを無視し、システムがURLを生成し上書きする。</p>
+</li>
+<li><p>file_path のみ指定された場合、URLを生成し登録する。</p>
+</li>
+<li><p>本文URLのみ指定された場合、URLを使って登録する。</p>
+</li>
+</ul>
+<p>－2. サムネイルファイル</p>
+<p>プロパティID：<br>項目：</p>
+<table>
+<thead>
+<tr>
+<th><strong>JSONパス</strong></th>
+<th><strong>初期設定ラベル</strong></th>
+<th><strong>System(自動設定)</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.thumbnail_path[0]</td>
+<td>.サムネイルパス[0]</td>
+<td></td>
+<td>設定値ありで登録、設定値なしで削除する。指定したパスに該当ファイルがあれば常にアップロードして登録する。</td>
+</tr>
+<tr>
+<td>.metadata.item_1568286766453[0].subitem_thumbnail[0].thumbnail_label</td>
+<td>Thumbnail[0].URI[0].URI Label</td>
+<td>〇</td>
+<td>インポート時に設定されても無視する</td>
+</tr>
+<tr>
+<td>.metadata.item_1568286766453[0].subitem_thumbnail[0].thumbnail_url</td>
+<td>Thumbnail[0].URI[0].URI</td>
+<td>〇</td>
+<td>インポート時に設定されても無視する</td>
+</tr>
+</tbody>
+</table>
+<p>－3. 自動設定の項目</p>
+<ul>
+<li><strong>出版タイプ</strong> （JPCOARスキーマ「出版タイプ」：<a href="https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/16" target="_blank">https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/16</a> の統制語彙に基づく）<br>プロパティID：<br>項目：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>JSONパス</strong></th>
+<th><strong>初期設定ラベル</strong></th>
+<th><strong>JPCOAR[※]</strong></th>
+<th><strong>System(自動設定)</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.metadata.item_1531978917933.subitem_1522305645492</td>
+<td>出版タイプ.出版タイプ</td>
+<td>versiontype</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>.metadata.item_1531978917933.subitem_1600292170262</td>
+<td>出版タイプ.出版タイプResource</td>
+<td>versiontype.@rdf:resource</td>
+<td>〇</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>アクセス権</strong> （JPCOARスキーマ「アクセス権」：<a href="https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/5" target="_blank">https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/5</a> の統制語彙に基づく）<br>プロパティID：<br>項目：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>JSONパス</strong></th>
+<th><strong>初期設定ラベル</strong></th>
+<th><strong>JPCOAR[※]</strong></th>
+<th><strong>System(自動設定)</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.metadata.item_1531978848664.subitem_1522299639480</td>
+<td>Access Right.アクセス権</td>
+<td>accessRights</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>.metadata.item_1531978848664.subitem_1600958577026</td>
+<td>Access Right.アクセス権URI</td>
+<td>accessRights.@rdf:resource</td>
+<td>〇</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>資源タイプ</strong> （JPCOARスキーマ「資源タイプ」：<a href="https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/14" target="_blank">https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/14</a> の統制語彙に基づく）<br>プロパティID：<br>項目：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>JSONパス</strong></th>
+<th><strong>初期設定ラベル</strong></th>
+<th><strong>JPCOAR[※]</strong></th>
+<th><strong>System(自動設定)</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.metadata.item_1569380275317.resourcetype</td>
+<td>Resource Type.Type</td>
+<td>type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>.metadata.item_1569380275317.resourceuri</td>
+<td>Resource Type.Resource</td>
+<td>type.@rdf:resource</td>
+<td>〇</td>
+</tr>
+</tbody>
+</table>
+<p>[※]各Resource項目の自動設定機能は、【Administration &gt; アイテムタイプ管理（ItemTypes） &gt; マッピング（Mapping）画面】で対象のアイテムタイプについてJPCOARスキーマのマッピングが設定されている必要があります。<br>　「出版タイプ」と「アクセス権」については、移行ツール作成のアイテムタイプに含まれていない項目なので、該当環境で項目を追加した際は必ずマッピング設定をしてください。</p>
+<p>(4) チェック仕様</p>
+<p>-1. インポートファイル、TSVファイルの形式チェック</p>
+<p>最初に実施。<br>エラーの場合は、Select（選択）画面の#Message Area#にメッセージを出力する。ただし、#2はImport（インポート）画面の表/Check Resultに出力。</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>指定された項目が一括登録対象のアイテムタイプと一致しない（項目不足）</td>
+<td>エラー</td>
+<td>指定されたアイテムタイプと項目が一致しません。</td>
+<td>The item does not consistent with the specified item type.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>指定された項目が一括登録対象のアイテムタイプと一致しない（項目追加）</td>
+<td>警告</td>
+<td>次の項目指定されたアイテムタイプに存在しないため登録されません。{}</td>
+<td>The following items are not registered because they do not exist in the specified item type. {}</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>指定された圧縮ファイルの形式がzip以外</td>
+<td>エラー</td>
+<td>指定されたファイル{}の形式はインポートに対応していません。zip ,tar,gztar,bztar,xztarいずれかの形式を指定してください。</td>
+<td>The format of the specified file {} does not support import. Please specify one of the following formats: zip, tar, gztar, bztar, xztar.</td>
+<td><p>対応している圧縮形式がzipのみで、</p>
+<p>ファイル選択時のバリデーションチェックでzip以外のファイルでは［次へ（Next）］ボタンが活性化しないためこのチェックに到達しない。</p></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>指定された圧縮ファイル内でTSVファイルが見つからない（フォルダ構成誤り）</td>
+<td>エラー</td>
+<td>指定されたファイル{}にtsv/csvファイルが見つかりませんでした。ディレクトリ構成が正しいか確認してください。</td>
+<td>The tsv/csv file was not found in the specified file {}. Check if the directory structure is correct.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>UTF-8でエンコードされていない</td>
+<td>エラー</td>
+<td>{}ファイルを読み込めませんでした。ファイル形式が{}であること、またそのファイルがUTF-8でエンコードされているかを確認してください。</td>
+<td>The {} file could not be read. Make sure the file format is {} and that the file is UTF-8 encoded.</td>
+<td>{}に拡張子が入る</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>ファイルの１行目のフォーマットが正しくない（3列名にアイテムタイプIDが指定されていない など）</td>
+<td>エラー</td>
+<td>{}ファイルのヘッダ１行目の形式に誤りがあります。</td>
+<td>There is an error in the format of the first line of the header of the {} file.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>指定したアイテムタイプが存在しない</td>
+<td>エラー</td>
+<td>{}ファイルで指定されたアイテムタイプIDは存在しません。</td>
+<td>The item type ID specified in the {} file does not exist.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>TSV ファイルに改行が含まれている場合</td>
+<td>エラー</td>
+<td>{}ファイルが正しく読み込めません。</td>
+<td>Cannot read {} file correctly.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>指定したアイテムタイプが一括登録可能（最新版）でない場合</td>
+<td>エラー</td>
+<td>指定されたアイテムタイプが最新のバージョンでないため登録できません。</td>
+<td>Cannot register because the specified item type is not the latest version.</td>
+<td>現在はアイテムタイプのバージョン管理はしていないため使用していない</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Runtimeエラー（ElasticSearchがロックされた、サーバ接続不可、ネットワーク接続不可など）</td>
+<td>エラー</td>
+<td>サーバ内部エラー</td>
+<td>Internal server error</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>エラー</td>
+<td></td>
+<td>The specified {} does not exist in system.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>-2. メタデータ項目以外のチェック</p>
+<p>アイテムタイプのメタデータ以外の項目についてチェック仕様。<br>各項目は「JSONパス（ラベル）」で記載。<br>エラーメッセージはImport（インポート）画面の表/Check Resultに出力。</p>
+<ul>
+<li>.id（ID）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>半角数字以外</td>
+<td>エラー</td>
+<td>アイテムIDは半角数字で指定してください。</td>
+<td>Please specify item ID by half-width number.</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>指定されたアイテムIDをpidとしてもつアイテムが存在しない</td>
+<td>エラー</td>
+<td></td>
+<td>Item does not exits in the system</td>
+<td>多言語対応ができていない</td>
+</tr>
+<tr>
+<td>3</td>
+<td>指定されたアイテムIDがシステムでは削除済み</td>
+<td>エラー</td>
+<td></td>
+<td>Item already DELETED in the system</td>
+<td>多言語対応ができていない</td>
+</tr>
+<tr>
+<td>4</td>
+<td>アイテムIDが指定されていて、項目「status」が「new」</td>
+<td>ワーニング</td>
+<td>新規登録アイテムにIDが指定されています。IDを無視して登録を行います。</td>
+<td>ID is specified for the newly registered item. Ignore the ID and register.</td>
+<td>項目「status」はチェック中に付与される</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.id（ID）と.uri（URI）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>アイテムIDとURIの組み合わせが一致しない</td>
+<td>エラー</td>
+<td>指定されたURIとシステムURIが一致しません。</td>
+<td>Specified URI and system URI do not match.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.metadata.path[0]（.IndexID[0]）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>指定された内容が存在しない</td>
+<td>エラー</td>
+<td>指定された{}はシステムに存在しません。</td>
+<td>The specified {} does not exist in the system.</td>
+<td>{}に「IndexID」が入る</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.pos_index[0]（.POS_INDEX[0]）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IndexIDが指定されていない際、指定したPOS_INDEXが存在しない</td>
+<td>エラー</td>
+<td>指定された{}はシステムに存在しません。</td>
+<td>The specified {}does not exist in the system</td>
+<td>{}に「POS_INDEX」が入る</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.metadata.path[0]（.IndexID[0]）と.pos_index[0]（.POS_INDEX[0]）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>組合せチェック（IndexID→存在している、POS_INDEX→指定されたIndexIDと一致しない）</td>
+<td>警告</td>
+<td>指定された{}はシステムのものと一致していません。</td>
+<td>Specified {} does not match with existing index.</td>
+<td>{}に「POS_INDEX」が入る</td>
+</tr>
+<tr>
+<td>2</td>
+<td>組合せチェック（IndexID→存在していない、POS_INDEX→存在している）</td>
+<td>エラー</td>
+<td>指定された{}はシステムに存在しません。</td>
+<td>The specified {} does not exist in system.</td>
+<td>{}に「IndexID」が入る</td>
+</tr>
+<tr>
+<td>3</td>
+<td>組合せチェック（指定されたIndexIDとPOS_INDEXがどちらも存在しない）</td>
+<td>エラー</td>
+<td>指定された{}はシステムに存在しません。</td>
+<td>The specified {} does not exist in system.</td>
+<td>{}に「IndexID,POS_INDEX」が入る</td>
+</tr>
+<tr>
+<td>4</td>
+<td>組合せチェック（IndexIDとPOS_INDEXIDがどちらも指定されていない）</td>
+<td>エラー</td>
+<td>IndexID,POS_INDEXがどちらも設定されていません。</td>
+<td>Both of Index ID and POS INDEX are not being set.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.publish_status（.PUBLISH_STATUS）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>指定されていない</td>
+<td>エラー</td>
+<td>{}は必須項目です。</td>
+<td>{} is required item.</td>
+<td>{}に「PUBLISH_STATUS」が入る</td>
+</tr>
+<tr>
+<td>2</td>
+<td>指定された内容が不正（public/private）</td>
+<td>エラー</td>
+<td>{}はpublic,privateのいずれかを設定してください。</td>
+<td>Please set &quot;public&quot; or &quot;private&quot; for {}.</td>
+<td>{}に「PUBLISH_STATUS」が入る</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.feedback_mail[0]（.FEEDBACK_MAIL[0]）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>形式チェック（メールアドレスの形式不正）</td>
+<td>エラー</td>
+<td>指定された{}が不正です。</td>
+<td>Specified {} is invalid.</td>
+<td>{}にメールアドレスが入る</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.cnri（.CNRI）</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>CNRI使用フラグが「False」の時にCNRIを設定した</td>
+<td>エラー</td>
+<td>{}は設定できません。</td>
+<td>{} cannot be set.</td>
+<td>{}に「CNRI」が入る</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>通常モードで新規登録時に指定</td>
+<td>エラー</td>
+<td>{}は設定できません。</td>
+<td>{} cannot be set.</td>
+<td>{}に「CNRI」が入る</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>通常モードで更新時に登録内容から変更</td>
+<td>エラー</td>
+<td>指定されたCNRIは登録しているCNRIと異なっています。</td>
+<td>Specified {} is different from existing {}.</td>
+<td>両方の{}に「CNRI」が入る</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>識別子変更モードで新規／更新時にCNRIを設定しない</td>
+<td>エラー</td>
+<td>{}を設定してください。</td>
+<td>Please specify {}.</td>
+<td>{}に「CNRI」が入る</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>形式チェック（管理画面で登録されているPrefixと一致しない)</td>
+<td>エラー</td>
+<td>指定された{}のPrefixが誤っています。</td>
+<td>Specified Prefix of {} is incorrect.</td>
+<td>{}に「CNRI」が入る</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>形式チェック（Suffixに半角英数字、半角記号「_-.;()/」以外を使用）</td>
+<td>エラー</td>
+<td>CNRIのSuffixは半角英数字、半角記号「_-.;()/」以外使用できません。</td>
+<td>Suffix of CNRI can only be used with half-width alphanumeric characters and half-width symbols “_-.; () /”.</td>
+<td>エラーチェックが存在しない</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>形式チェック（最大長超え）</td>
+<td>エラー</td>
+<td>指定された{}が最大長を超えています。</td>
+<td>The specified {} exceeds the maximum length.</td>
+<td><p>{}に「CNRI」が入る</p>
+<p>pidstoreの上限が255のため、http://～とprefix/を含めて255が上限となるようにチェックする</p></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>.doi_ra（.DOI_RA）と.doi（.DOI）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>組合せチェック（通常モードで新規登録時にどちらも指定）</td>
+<td>エラー</td>
+<td>{}は設定できません。</td>
+<td>{} cannot be set.</td>
+<td>{}に「DOI」が入る</td>
+</tr>
+<tr>
+<td>2</td>
+<td>組合せチェック（通常モードで更新時に登録内容から変更）</td>
+<td>エラー</td>
+<td>指定された{ }が登録している{ }と異なっています。</td>
+<td>Specified { } is different from existing { }.</td>
+<td>両方の{}に「DOI_RA」または「DOI」が入る</td>
+</tr>
+<tr>
+<td>3</td>
+<td>組合せチェック（識別子変更モードで新規登録時にDOIのみ指定）</td>
+<td>エラー</td>
+<td>DOI_RAを設定してください。</td>
+<td>Please specify DOI_RA.</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>組合せチェック（識別子変更モードで新規登録時にDOI_RAのみ指定）</td>
+<td>エラー</td>
+<td>{}を設定してください。</td>
+<td>Please specify {}.</td>
+<td>{}に「DOI」が入る</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.doi_ra（.DOI_RA）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>指定された内容が不正（DOI_RAが設定されており、JaLC,Crrossref,DataCite,NDL JaLCのいずれでもない）</td>
+<td>エラー</td>
+<td>DOI_RAはJaLC,Crrossref,DataCite,NDL JaLCのいずれかを設定してください。</td>
+<td>DOI_RA should be set by one of JaLC, Crossref, DataCite, NDL JaLC.</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>通常モードで更新時に登録内容から変更</td>
+<td>ワーニング</td>
+<td></td>
+<td>The specified DOI RA is wrong and fixed with the correct DOI RA of the registered DOI.</td>
+<td>多言語対応ができていない</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.doi（.DOI）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>形式チェック（管理画面で登録されているPrefixと一致しない)</td>
+<td>エラー</td>
+<td>指定されたDOIのPrefixが誤っています。</td>
+<td>Specified Prefix of DOI is incorrect.</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>形式チェック（Suffixに半角英数字、半角記号「_-.;()/」以外を使用)</td>
+<td>エラー</td>
+<td>DOIのSuffixは半角英数字、半角記号「_-.;()/」以外使用できません。</td>
+<td>Suffix of {} can only be used with half-width alphanumeric characters and half-width symbols &quot;_-.; () /&quot;.</td>
+<td>エラーチェックがなく、このメッセージは表示されない</td>
+</tr>
+<tr>
+<td>3</td>
+<td>形式チェック（最大長超え)</td>
+<td>エラー</td>
+<td>指定されたDOIが最大長を超えています</td>
+<td>The specified DOI exceeds the maximum length.</td>
+<td>pidstoreの上限が255のため、<a href="http://～とprefix/を含めて255が上限となるようにチェックする" target="_blank">http://～とprefix/を含めて255が上限となるようにチェックする</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>指定された内容が不正（通常モードで更新時に登録内容から変更）</td>
+<td>ワーニング</td>
+<td></td>
+<td>The specified DOI is wrong and fixed with the registered DOI.</td>
+<td>多言語対応ができていない</td>
+</tr>
+<tr>
+<td>5</td>
+<td>識別子変更モードでDOIが指定されていない</td>
+<td>エラー</td>
+<td></td>
+<td>Please specify DOI prefix/suffix.</td>
+<td>多言語対応ができていない</td>
+</tr>
+<tr>
+<td>6</td>
+<td>識別子変更モードでDOIに「/」が含まれていない</td>
+<td>エラー</td>
+<td></td>
+<td>Please specify DOI suffix.</td>
+<td>多言語対応ができていない</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.edit_mode（Keep/Upgrade Version）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>指定されていない、指定された内容が不正（edit_modeがKeepでもUpgradeでもない）</td>
+<td>エラー</td>
+<td>Keep、Upgradeのいずれかを指定してください。</td>
+<td>Please specify either “Keep” or “Upgrade”.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.file_path[0]（.ファイルパス[#]）または.thumbnail_path[#]（.サムネイルパス[#]）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>新規登録時に指定したパスに該当するファイルが存在しない</td>
+<td>エラー</td>
+<td>（.file_path[#]）に指定したファイルが存在しません。</td>
+<td>The file specified in (.file_path [#]) does not exist.</td>
+<td>複数ファイルの場合は（.file_path[0],.file_path[1]…）と表示する</td>
+</tr>
+<tr>
+<td>2</td>
+<td>更新時に指定したパスに該当するファイルが存在しない</td>
+<td>ワーニング</td>
+<td>file_path[#]）に指定したファイルが存在しません。ファイルの更新はしません。csv/tsv内容でメタデータのみ更新します。</td>
+<td>The file specified in (.file_path [#]) does not exist.The file will not be updated. Update only the metadata with csv/tsv contents.</td>
+<td>複数ファイルの場合は（.file_path[0],.file_path[1]…）と表示する</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.file_path[0]（.ファイルパス[#]）とメタデータのファイル名／表示名 ※メタデータ項目の関連チェックだがここに記載</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ファイルパスで指定したファイル名とメタデータに設定されたファイル名が一致しない</td>
+<td>エラー</td>
+<td>{}に指定されたファイル名と{ }が一致しません。</td>
+<td>The file name specified in {} and { } do not match.</td>
+<td>ひとつ目の{}には.file_path[#]、ふたつ目の{}にはファイル名のJSON Pathが入る</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.thumbnail_path[#]（.サムネイルパス[#]）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>画像ファイル以外を指定</td>
+<td>エラー</td>
+<td>サムネイルは画像ファイル（gif, jpg, jpe, jpeg, png, bmp, tiff, tif）を指定してください。</td>
+<td>Please specify the image file(gif, jpg, jpe, jpeg, png, bmp, tiff, tif) for the thumbnail.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>.upload_id[#]（.ファイルアップロードID[#]）</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><strong>#</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1</strong></td>
+<td>アップロードIDがUUID型でない</td>
+<td>エラー</td>
+<td>アップロードIDを正しく入力してください</td>
+<td>Upload_id is invalid format</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>アップロードIDが見つからない</td>
+<td>エラー</td>
+<td>指定されたアップロードIDが見つかりません</td>
+<td>Specified upload_id is not found</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>未完了かすでにアイテムのバケットに紐づいているアップロードIDを指定している</td>
+<td>エラー</td>
+<td>指定されたアップロードIDは完了していないか、すでにアイテムに紐づけられています</td>
+<td>Specified upload_id not completed or already linked to the item</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>アップロードIDがファイル内で被っている</td>
+<td>エラー</td>
+<td>アップロードIDが重複しています</td>
+<td>Duplicate upload_id</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>クォータサイズ超過</td>
+<td>エラー</td>
+<td>ファイルの合計サイズがバケットのサイズを超えています</td>
+<td>Total file size exceeds bucket size</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><p>ファイルパス[0],</p>
+<p>.ファイルアップロードID[0]が同時に入力</p></td>
+<td>エラー</td>
+<td>ファイルパスかアップロードIDのみ入力してください</td>
+<td>Please enter only file_path or upload_id</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><p>.ファイルアップロードID[0]が入力されているが、</p>
+<p>File[0].フォーマットが未入力または正しくない場合</p></td>
+<td>エラー</td>
+<td>ファイル形式を正しく設定してください</td>
+<td>Please set the file format corrctly</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>アップロードIDで指定されているファイルと、ロケーションが異なる。</td>
+<td>エラー</td>
+<td>ファイルとアイテムのロケーションが異なります</td>
+<td>Files and Items have different locations</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>-3. メタデータ項目のチェック</p>
+<p>基本的なチェックはライブラリを使用している。(#1～3が該当)<br>4～8はそれぞれ実装。<br>エラーメッセージはImport（インポート）画面の表/Check Resultに出力。</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>#</strong></th>
+<th><strong>対象項目</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>入力形式がselect,checkboxes,radiosの項目</td>
+<td>プロパティに定義されている選択肢以外を指定した</td>
+<td>エラー</td>
+<td>{}は次の決められた選択肢に含まれていません。{}</td>
+<td>&quot;%r is not one of %r&quot;</td>
+<td>英語はライブラリ出力メッセージ。日本語はマッピングして出力。</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Optoinで「Required」を指定している項目</td>
+<td>指定されていない</td>
+<td>エラー</td>
+<td>{}は必須項目です。</td>
+<td>&quot;%r is a required property&quot;</td>
+<td>英語はライブラリ出力メッセージ。日本語はマッピングして出力。</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Multipleで繰り返しの上限数が指定されている</td>
+<td>上限数を超えている</td>
+<td>エラー</td>
+<td>{} の数が上限数を超えています。</td>
+<td>{} is too long</td>
+<td>英語はライブラリ出力メッセージ。日本語はマッピングして出力。</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>項目</td>
+<td>メタデータキーが重複指定している場合</td>
+<td>エラー</td>
+<td><p>以下のメタデータキーが重複しています。</p>
+<p>｛｝</p></td>
+<td><p>The following metadata keys are duplicated.</p>
+<p>{}</p></td>
+<td>重複するメタデータは改行で区切って出力</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>タイトル</td>
+<td>指定されていない</td>
+<td>エラー</td>
+<td>{}は必須項目です。</td>
+<td>Title is required item.</td>
+<td><p>2のエラーメッセージも同時に出力</p>
+<p>日本語ではフォーマットできずに｛｝のまま表示される</p></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>日付項目</td>
+<td>日付形式チェック（YYYY/MM/DDで指定）</td>
+<td>ワーニング</td>
+<td>日付はYYYY-MM-DD、YYYY-MM、YYYYのいずれかで指定してください。</td>
+<td>Please specify the date with any format of YYYY-MM-DD, YYYY-MM, YYYY.</td>
+<td>YYYY-MM-DD 形式で解釈できないときのエラーメッセージは設定されているが、YYYY-MM-DD 形式でYYYY/MM/DDを解釈できるため実際には出力されない</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>日付項目</td>
+<td>日付形式チェック（YYYY-MM-DD、YYYY-MM、YYYY以外で指定）</td>
+<td>エラー</td>
+<td>日付はYYYY-MM-DD、YYYY-MM、YYYYのいずれかで指定してください。</td>
+<td>Please specify the date with any format of YYYY-MM-DD, YYYY-MM, YYYY.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>.metadata.pubdate（公開日）</td>
+<td>形式チェック（YYYY-MM-DD以外で指定）</td>
+<td>エラー</td>
+<td>公開日はYYYY-MM-DDで指定してください。</td>
+<td>Please specify PubDate with YYYY-MM-DD.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>.metadata.pubdate（公開日）</td>
+<td>指定されていない</td>
+<td>エラー</td>
+<td>%rは必須項目です。</td>
+<td>%r is a required property</td>
+<td>%rが「’pubdate’」 と置き換わる</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>コンテンツファイルのオープンアクセスの日付</td>
+<td>形式チェック（YYYY-MM-DD以外で指定）</td>
+<td>エラー</td>
+<td>オープンアクセスの日付はYYYY-MM-DDで指定してください。</td>
+<td>Please specify Open Access Date with YYYY-MM-DD.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>マッピングによって必須になっている項目</td>
+<td>設定されていない</td>
+<td>エラー</td>
+<td>{}は必須項目です。</td>
+<td><p>The following metadata are required.</p>
+<p>{}</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>マッピングによって必須になっている項目（複数のうちいずれか１つを設定するもの）</td>
+<td>１つも設定されていない</td>
+<td>エラー</td>
+<td>{}のいずれかを設定してください。</td>
+<td><p>One of the following metadata is required.</p>
+<p>{}</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>-4. DOI付与アイテムの項目チェック</p>
+<p>DOIを指定したアイテムについて、指定された項目が各DOI付与の要件を見ているかを確認。<br>当該処理は個別登録のチェック処理を呼び出し実施している。</p>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>対象項目</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>各項目</td>
+<td>DOIを指定した際に入力項目が不足している</td>
+<td>エラー</td>
+<td>PID付与の条件を満たしていません。</td>
+<td>PID does not meet the conditions.</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>-</td>
+<td>DOI が付与されているアイテムに対して、アイテムを非公開として更新しようとした場合</td>
+<td>エラー</td>
+<td>アイテムにDOIが付与されているため、アイテムを非公開にすることはできません。</td>
+<td>You cannot keep an item private because it has a DOI.</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>-</td>
+<td>インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに紐づいていないアイテムにDOIを付与しようとした場合</td>
+<td>エラー</td>
+<td>アイテムにDOIが付与されているため、インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに関連付けが必要です。</td>
+<td>Since the item has a DOI, it must be associated with an index whose index status is &quot;Public&quot; and whose Harvest Publishing is &quot;Public&quot;.</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>-</td>
+<td>既存アイテムに付与されているDOIとインポートファイルで指定されたDOIの値が異なる場合</td>
+<td>エラー</td>
+<td>指定された{}が登録している{}と異なっています。</td>
+<td>Specified {} is different from existing {}.</td>
+<td>{}に「DOI」が入る</td>
+</tr>
+</tbody>
+</table>
+<p>-5. ファイル以外のチェック</p>
+<p>操作アカウントの権限チェックを行う。</p>
+<table>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>対象</strong></th>
+<th><strong>条件</strong></th>
+<th><strong>処理</strong></th>
+<th><strong>メッセージ(日本語)</strong></th>
+<th><strong>メッセージ(英語)</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>-</td>
+<td>操作アカウントが、アイテムの登録先インデックス（またはその親インデックス）へのインポートに必要な権限を持っていない場合</td>
+<td>エラー</td>
+<td>ロールの権限が足りずこのインデックスにアイテム登録ができません。</td>
+<td>Your role cannot register items in this index.</td>
+</tr>
+</tbody>
+</table>
+<p>4. ダウンロードファイルについて</p>
+<p>4.1 テンプレートファイル</p>
+<ul>
+<li><p>Select（選択）画面でダウンロードできる。アイテムタイプ（Item Type）セレクタ―で選択したアイテムタイプについて、ヘッダ行のみ出力したインポートに使用するTSVファイル。</p>
+</li>
+<li><p>ファイル名は「アイテムタイプ名(アイテムタイプID).tsv」で、詳細は3.2を参照。</p>
+</li>
+<li><p>TSV形式で文字コードはBOMありUTF-8、改行コードはLF</p>
+</li>
+</ul>
+<p>◆出力イメージ</p>
+<blockquote>
+<p>#ItemType 紀要論文（出版者版、オープンアクセス、JaLC_DOI_登録あり）(16) <a href="https://FQDN/items/jsonschema/16" target="_blank">https://FQDN/items/jsonschema/16</a></p>
+<p>#.id .uri .metadata.path[0] .pos_index[0] .publish_status .feedback_mail[0] .cnri .doi_ra .doi .edit_mode .metadata.pubdate　 …</p>
+<p>#ID URI .IndexID[0] .POS_INDEX[0] .PUBLISH_STATUS .FEEDBACK_MAIL[0] .CNRI .DOI_RA .DOI Keep/Upgrade Version PubDate …</p>
+<p># …</p>
+<p># Allow Multiple Allow Multiple Required Allow Multiple Required Required …</p>
+</blockquote>
+<p>4.2 インポート前チェック結果ファイル</p>
+<ul>
+<li><p>Import（インポート）画面でダウンロードできる。同画面の表に表示されているチェック結果をTSV形式で出力したファイル。</p>
+</li>
+<li><p>ファイル名は「Check_ダウンロード日付.tsv」で、2.2⑧～⑫の項目を出力。</p>
+</li>
+</ul>
+<blockquote>
+<p>◆出力イメージ</p>
+<p>#No. Item Type Item ID Title Check Result</p>
+</blockquote>
+<p>4.3 インポート実行結果ファイル</p>
+<ul>
+<li><p>Result（結果）画面でダウンロードできる。同画面の表に表示されているインポート実行結果をTSV形式で出力したファイル。</p>
+</li>
+<li><p>ファイル名は「List_ダウンロード日付.tsv」で、2.3②～⑦の項目を出力。</p>
+</li>
+<li><p>TSV形式で文字コードはBOM無しUTF-8、改行コードはLF</p>
+</li>
+</ul>
+<blockquote>
+<p>◆出力イメージ</p>
+<p>#No. Start Date End Date Item Id Action WorkFlow Status</p>
+</blockquote>
+<p>4.4. 「インポート」（Import）タブで一括登録のアイテムを確認・登録する</p>
+<ul>
+<li><p>インポート」（Import）タブ<br>読み込んだzipファイルの内容を表示し、一括登録して良いかの確認を促す<br>表示項目は以下の通りである</p>
+<ul>
+<li><p>「識別子 変更モード」で登録する旨のメッセージを表示する</p>
+<ul>
+<li><p>［Import］ボタンの上に赤字で以下のメッセージを表示する<br>メッセージ：<br>日本語：「 識別子で登録します」<br>英語：「Register with [Change Identifier Mode].」</p>
+</li>
+<li><p>「Import」タブから「Selectタブ」に遷移した場合、「識別子変更モード」チェックボックスはチェックありで非活性となっている</p>
+</li>
+</ul>
+</li>
+<li><p>「サマリー」(Summary)<br>読み込んだファイルのアイテム情報について、以下の件数を表示する</p>
+<ul>
+<li><p>総計(Total)：読み込んだファイルのアイテム数</p>
+</li>
+<li><p>新規登録アイテム(New Item)：読み込んだファイルのアイテムの内、新規登録となるアイテム数</p>
+</li>
+<li><p>更新アイテム(Update Item)：読み込んだファイルのアイテムの内、更新のアイテム数</p>
+</li>
+<li><p>チェックエラー(Result Error)：バリデートチェックでバリデートエラーとなったアイテム数</p>
+</li>
+</ul>
+</li>
+<li><p>詳細情報</p>
+<ul>
+<li><p>「No.」<br>読み込んだファイルのアイテムの通し番号を表示する</p>
+</li>
+<li><p>「アイテムタイプ」（Item Type）<br>読み込んだファイルのアイテムについて、登録されるアイテムタイプ名を表示する</p>
+</li>
+<li><p>「アイテムID」（Item Id）<br>読み込んだファイルのアイテムについて、新規登録／更新によって表示する内容を変更する</p>
+<ul>
+<li><p>新規：””表示なし</p>
+</li>
+<li><p>更新：画面上にアイテムIDを表示する</p>
+</li>
+</ul>
+</li>
+<li><p>「タイトル」（Title）<br>読み込んだファイルのアイテム名を表示する</p>
+<ul>
+<li><p>タイトル名はシステムの言語属性に合わせたtitleを表示する</p>
+</li>
+<li><p>システムの言語属性に合うtitleが無い場合は英語表記で表示する</p>
+</li>
+<li><p>タイトルが長い場合は、横スクロールにならないようにタイトルをトリミングする</p>
+<ul>
+<li>タイトルを表示上限文字数まで表示して、その直後に「...」をつける</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>「チェック結果」（Check Result）<br>読み込んだファイルの各アイテムについて、インポートが可能かバリデートチェックを実施する<br>エリアに表示する内容は以下の通りである</p>
+<ul>
+<li><p>エラーが無く、新規のアイテムの場合：「登録」（Register）と表示する</p>
+</li>
+<li><p>エラーが無く、アイテムの「.edit_mode」が「Upgrade」の場合：「バージョンの変更」（Upgrade Version）と表示する</p>
+</li>
+<li><p>エラーが無く、アイテムの「.edit_mode」が「Keep」の場合：「バージョンの維持」（Keep Version）と表示する</p>
+</li>
+<li><p>バリデーションエラーがある場合：「エラー: XXXXX」（Error: XXXXX）とエラー内容を表示する</p>
+</li>
+<li><p>バリデーションワーニングがある場合：「警告: XXXXX」（Warning: XXXXX）とワーニング内容を表示する</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>インポートファイルのバリデーションチェックは以下とする</p>
+<ul>
+<li><p>Bagit形式の仕様に従っていること</p>
+</li>
+<li><p>メタデータの必須項目が入力されていること</p>
+</li>
+<li><p>メタデータの入力内容が、入力制約に合致していること</p>
+<ul>
+<li><p>DOI付与：DOI_RA の設定に従い、資源タイプ、必須、いずれか必須のチェックを行うこと<br><a href="https://redmine.devops.rcos.nii.ac.jp/attachments/download/6107/JPCOAR_JaLC_Guideline_appendix_v1.pdf" target="_blank">https://redmine.devops.rcos.nii.ac.jp/attachments/download/6107/JPCOAR_JaLC_Guideline_appendix_v1.pdf</a></p>
+</li>
+<li><p>dc:titleのxml:langは必須としない。</p>
+</li>
+<li><p>日付項目：ISO-8601で規定する3 形式（YYYY-MM-DD、YYYY-MM、YYYY）のチェックを行うこと</p>
+</li>
+</ul>
+</li>
+<li><p>存在するインデックスツリーであること</p>
+</li>
+<li><p>新規登録の場合、既に登録されているDOIが割当されないこと</p>
+</li>
+<li><p>更新の場合、アイテムがWEKO上に存在し、論理削除されていないこと</p>
+</li>
+<li><p>更新の場合、更新前のアイテムタイプが変更後のアイテムタイプと一致していること</p>
+</li>
+<li><p>WEKOに登録されていないアイテムタイプがインポートファイルに含まれる場合はエラーとすること</p>
+</li>
+<li><p>TSVファイルの項目のバリデーションチェックは以下とする</p>
+<ul>
+<li><p>POS_INDEX[n]：インデックス名</p>
+<ul>
+<li><p>インデックス名が指定されていること</p>
+</li>
+<li><p>指定したインデックス名が存在していること</p>
+</li>
+</ul>
+</li>
+<li><p>FEEDBACK_MAIL：フィードバックメール送信先メールアドレス</p>
+<ul>
+<li>指定されたメールアドレスはメールアドレスの形式チェックをすること</li>
+</ul>
+</li>
+<li><p>PUBLISH_STATUS：アイテムの公開／非公開設定</p>
+<ul>
+<li>指定されたPUBLISH_STATUSがprivate, publicのいずれかであること</li>
+</ul>
+</li>
+<li><p>CNRI：CNRIハンドル</p>
+<ul>
+<li><p>「 識別子 変更モード」を指定している場合<br>・CNRIの値が空白になること</p>
+</li>
+<li><p>「 識別子 変更モード」を指定していない場合<br>・新規アイテム登録の場合、CNRIが指定されること<br>・既存アイテムへの更新の場合、指定されたCNRIが登録内容と同一であること</p>
+</li>
+</ul>
+</li>
+<li><p>DOI_RA：DOI付与の種類</p>
+<ul>
+<li><p>DOIが指定されている場合、DOI_RAが指定していることは必須である</p>
+</li>
+<li><p>DOI_RAが空白になること</p>
+</li>
+<li><p>指定されたDOI_RAがJaLC, Crossref, DataCite, NDL JaLC のいずれかであること</p>
+</li>
+<li><p>「 識別子 変更モード」を指定している場合<br>・指定した形式に応じてメタデータの項目チェックを行うこと<br>・既存アイテムへの更新の場合、指定された内容が登録内容と同一であること</p>
+</li>
+<li><p>「 識別子 変更モード」を指定していない場合<br>・新規アイテム登録の場合、 DOIが指定されていること<br>・既存アイテムへの更新の場合、指定された内容が登録内容と同一であること</p>
+</li>
+</ul>
+</li>
+<li><p>DOI ：DOI</p>
+<ul>
+<li><p>「 識別子 変更モード」を指定している場合<br>・DOIが空白になること</p>
+</li>
+<li><p>「 識別子 変更モード」を指定していない場合<br>・新規アイテム登録の場合、 DOIが指定されていること<br>・既存アイテムへの更新の場合、指定された内容が登録内容と同一であること</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>環境変数で設定した格納先が下記の状況の場合エラーメッセージを出力する。あわせて、エラーログにも出力する</p>
+<ul>
+<li><p>格納先のパスが無かった場合</p>
+</li>
+<li><p>格納先の書き込み権限が無かった場合</p>
+</li>
+<li><p>格納先の容量が不足している場合</p>
+</li>
+</ul>
+</li>
+<li><p>一括登録の実行時に他端末から実行した場合エラーメッセージを出力する。</p>
+<ul>
+<li><p>一括登録を実行中に他の端末が【Administration &gt; アイテム管理（Items） &gt; （Import）画面を開いた場合</p>
+</li>
+<li><p>一括登録を実行している端末が【Administration &gt; アイテム管理（Items） &gt; インポート（Import）画面を開いた場合（他のブラウザで開いたとき，&quot;Result&quot;タブから再度&quot;Import&quot;タブに遷移したとき等）</p>
+</li>
+<li><p>個別のアイテム編集中に、一括登録を実施した場合</p>
+</li>
+<li><p>個別のアイテム削除後に、一括登録を実施した場合</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>バリデーションのエラーメッセージ及びワーニングメッセージは以下の通りである</p>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><strong>No.</strong></th>
+<th><strong>タイプ</strong></th>
+<th><strong>英語</strong></th>
+<th><strong>日本語</strong></th>
+<th><strong>利用場合</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>エラー</td>
+<td>Specified item type does not exist.</td>
+<td>指定されたアイテムタイプが存在していません。</td>
+<td>指定されたアイテムタイプがシステムに存在しない場合</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>エラー</td>
+<td>Please specify item ID by half-width number.</td>
+<td>アイテムIDは半角数字で指定してください。</td>
+<td>アイテムIDが不正な形式で指定した場合</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>エラー</td>
+<td>Item ID does not match the specified URI information.</td>
+<td>アイテムIDが指定されたURIの情報と一致しません</td>
+<td>アイテムIDが指定されたURIの情報と一致しない場合</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>エラー</td>
+<td>Specified URI and system URI do not match.</td>
+<td>指定されたURIとシステムURIが一致しません。</td>
+<td>指定されたURIとシステムURIが一致しない場合</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>エラー</td>
+<td>Please specify {}.</td>
+<td>{}を設定してください。</td>
+<td>PUBLISH_STATUS, CNRI, DOI_RA, DOI, POS_INDEX, IndexIDが空白の場合</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>エラー</td>
+<td>{} is required item.</td>
+<td>{}は必須項目です。</td>
+<td>DOI_RA, DOI, PUBLISH_STATUSが指定されない場合</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>エラー</td>
+<td>{} cannot be set.</td>
+<td>{}は設定できません。</td>
+<td>指定できない識別子（CNRI, DOI_RA, DOI）を指定した場合</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>エラー</td>
+<td>{} must be one of JaLC, Crossref, DataCite.</td>
+<td>{}は JaLC, Crossref, DataCiteのいずれかである必須があります。</td>
+<td>DOI_RAにJaLC, Crossref, DataCite以外のものを指定した場合</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>エラー</td>
+<td>Specified {} is different from existing {}.</td>
+<td>指定された{}は登録している{}と異なっています。</td>
+<td>CNRI, DOI_RA, DOIに指定された内容が登録内容と異なる場合</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>エラー</td>
+<td>Specified {} is invalid.</td>
+<td>指定された{}は不正です。</td>
+<td>FEEDBACK_MAIL, DOI, PUBLISH_STATUSが不正な形式で指定した場合</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>エラー</td>
+<td>PID does not meet the conditions.</td>
+<td>PID付与の条件を満たしていません。</td>
+<td>DOIバリデーションチェックの場合</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>エラー</td>
+<td>The storage path is incorrect.{} Please contact the administrator.</td>
+<td>格納先のパスが正しくありません。{} 管理者へお問い合わせください。</td>
+<td><p>格納先のパスが無かった場合</p>
+<p>※v0.9.22ではエラーチェックがないため出力されない</p></td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>エラー</td>
+<td>The storage location cannot be accessed.{} Please contact the administrator.</td>
+<td>格納先にアクセスできません。{} 管理者へお問い合わせください。</td>
+<td><p>格納先の書き込み権限が無かった場合</p>
+<p>※v0.9.22ではエラーチェックがないため出力されない</p></td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>エラー</td>
+<td>There is not enough storage space. Please contact the administrator.</td>
+<td>格納先の容量が不足しています。管理者へお問い合わせください。</td>
+<td><p>格納先の容量が不足している場合</p>
+<p>※v0.9.22ではエラーチェックがないため出力されない</p></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>エラー</td>
+<td>Import is in progress on another device.</td>
+<td>他の端末でインポートを実行中です。</td>
+<td>一括登録を実行中に他の端末が Admin&gt;Items&gt;Import 画面を開いた場合</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>エラー</td>
+<td>Import is in progress.</td>
+<td>インポートを実行中です。</td>
+<td>一括登録を実行している端末が Admin&gt;Items&gt;Import 画面を開いた場合（他のブラウザで開いたとき，&quot;Result&quot;タブから再度&quot;Import&quot;タブに遷移したとき等）</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>エラー</td>
+<td>Cannot update because the corresponding item is being edited.</td>
+<td>該当アイテムが編集中のため更新できません。</td>
+<td>個別のアイテム編集中に、一括登録を実施した場合</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>エラー</td>
+<td>The corresponding item has been deleted.</td>
+<td>該当アイテムは削除済です。</td>
+<td>個別のアイテム削除後に、一括登録を実施した場合</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>ワーニング</td>
+<td>The specified {} does not exist in system.</td>
+<td>指定された{}はシステムに存在しません。</td>
+<td>指定したPOS_INDEXなどの指定した１つの項目がシステムに存在しない場合</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>ワーニング</td>
+<td>Specified {} and {} do not exist in system.</td>
+<td>指定された{}と{}はシステムに存在していません。</td>
+<td>指定したPOS_INDEX、INDEX_IDなどの複数項目がシステムに存在しない場合</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>ワーニング</td>
+<td>Specified {} does not match with existing index.</td>
+<td>指定された{}はシステムのものと一致していません。</td>
+<td>指定したPOS_INDEXはシステムのものと一致していない場合</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p>「ダウンロード」（Download）ボタン<br>画面に表示されているアイテムのリストをTSV形式でダウンロードできる</p>
+<ul>
+<li><p>文字コードはBOM無しUTF-8、改行コードはLFとする</p>
+</li>
+<li><p>タイトル等トリミングされている場合は、ファイルにはすべて出力されるようにする</p>
+</li>
+<li><p>ファイル名は「Check_ダウンロード日付.tsv」とする</p>
+</li>
+</ul>
+</li>
+<li><p>「インポート」（Import）ボタン<br>読み込んだTSVファイルのアイテムを登録する</p>
+<ul>
+<li><p>処理途中に問題があるアイテムがあっても、一括登録処理は中断させず、次のアイテムの処理に進む</p>
+</li>
+<li><p>大量登録時のセッションタイムアウトを防ぐように、処理は非同期処理とする</p>
+</li>
+<li><p>インデックスには</p>
+<ul>
+<li><p>インデックスID及びPOS_INDEX[n]を元に指定する</p>
+<ul>
+<li><p>POS_INDEX#nnが複数指定されている場合はそれぞれに登録する</p>
+</li>
+<li><p>インデックスIDとPOS_INDEX[n]が不整合の場合は、ワーニングメッセージを出力して、IndexID[n]で指定したインデックスに登録する</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DOI/CNRI付与には（「識別子変更モード」（Change Identifier Mode.）チェックボックスにチェックを入れる場合）</p>
+<ul>
+<li><p>新規で一括登録するアイテムに、DOI_RAの設定に従い、指定したDOI（JaLC, Crossref, DataCite, NDL JaLC）及びCNRIをpidstoreに登録できる</p>
+</li>
+<li><p>既存のアイテムに、DOI_RAの設定に従い、登録されているDOI（JaLC, Crossref, DataCite, NDL JaLC）及びCNRIを変更できる<br>pidstoreに存在する該当レコードを論理削除して指定したDOIを登録する</p>
+</li>
+<li><p>DOI/CNRI付与の処理はワークフローのIdentifier Grantで指定した時と同じ処理である</p>
+</li>
+</ul>
+</li>
+<li><p>ワークフローには</p>
+<ul>
+<li><p>該当アイテムタイプのワークフローが存在する場合、このワークフローが対象とする</p>
+</li>
+<li><p>該当アイテムタイプのワークフローが存在しない場合、新しいワークフローを作成、メタデータ登録(Item Registrationアクション)まで完了している</p>
+</li>
+<li><p>デフォルトフロー名：「Registration Flow」<br>アクション：Start -&gt; Item registration -&gt; End</p>
+</li>
+<li><p>デフォルトワークフロー名：該当アイテムタイプ名</p>
+</li>
+</ul>
+</li>
+<li><p>アイテム公開／非公開は、一括登録用ファイルの内容に合わせる</p>
+</li>
+<li><p>既存のアイテムを更新するときに値（必須項目以外）を空欄にしてインポート更新をした場合、空欄となったメタデータは削除として更新される</p>
+</li>
+<li><p>「インポート」（Import）ボタン押下後、結果タブの画面に遷移する</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>4.5. 「結果」（Result）タブで一括登録の結果を表示する</p>
+<ul>
+<li><p>「結果」（Result）タブ<br>最後に実施したアイテム一括登録の状況をリスト形式で確認する<br>初期値は表のヘッダ部分のみ表示されているものとし、以降は最後に一括登録を実施したときのリストが表示される<br>1000ミリ秒ごとに状況を取得し、画面に表示する<br>すべてのインポートが成功または失敗したら、それ以降は状況を取得しない</p>
+<ul>
+<li><p>表示項目は以下の通りである</p>
+<ul>
+<li><p>「No.」<br>読み込んだTSVファイルのアイテムの通し番号を表示する</p>
+</li>
+<li><p>「開始日」（Start Date）<br>[Import]ボタン押下後、1アイテムに対して登録処理を開始した日時を表示する<br>フォーマット：YYYY-MM-DD hh:mm:ss<br>登録処理開始後でも、ソース上で定義されていないエラーによる異常終了の場合は空白となる</p>
+</li>
+<li><p>「終了日」（End Date）<br>1アイテムに対して登録処理が完了した日時を表示する</p>
+</li>
+<li><p>フォーマット：YYYY-MM-DD hh:mm:ss</p>
+</li>
+<li><p>「アイテムID」（Item Id）<br>各アイテムのアイテムIDを表示する</p>
+</li>
+<li><p>「アクション」（Action）<br>各アイテムがワークフローのどのアクションにいるかを表示する<br>初期状態では空欄、開始後に「Start」、正常終了で「終了（End）」、異常終了で「Error:（エラーメッセージ）」<br>ただし、ソース上で定義されていないエラーによる異常終了の場合は「Start」</p>
+</li>
+<li><p>「ワークフローステータス」（Work Flow Status）<br>各アイテムのワークフローのステータスがどの状態かを表示する</p>
+</li>
+</ul>
+</li>
+<li><p>「ダウンロード」（Download）ボタン<br>画面に表示されているアイテムのリストをTSV形式でダウンロードできる</p>
+<ul>
+<li><p>文字コードはBOM無しUTF-8、改行コードはLFとする</p>
+</li>
+<li><p>タイトル等トリミングされている場合は、ファイルにはすべて出力されるようにする</p>
+</li>
+<li><p>ファイル名は「List_ダウンロード日付.tsv」とする</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>その他</p>
+<ul>
+<li><p>インポートのtsvファイルでファイル情報が無いにもかかわらず、「ファイル情報 [1] 」や「ファイル情報 [2] 」のヘッダがインポートファイルの中に存在している（ファイル情報 [0] は存在している）場合であっても、エラーとならないように対応</p>
+</li>
+<li><p>DOIの自動採番ルールは以下の通り</p>
+<ul>
+<li><p>識別子変更モード</p>
+</li>
+<li><p>DOIの自動採番は行わない</p>
+<ul>
+<li><p>インポートファイルにdoiやprefixが含まれている場合はエラーメッセージを表示する。</p>
+<ul>
+<li><p>DOIが空欄の場合<br>　「Please specify DOI prefix/suffix.」</p>
+</li>
+<li><p>インポートファイルにdoiやprefixが含まれている場合　(「prefix」もしくは「prefix/」を指定した場合）<br>　「DOI suffixを設定してください。」／「Please specify DOI suffix.」</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Not 識別子変更モード</p>
+<ul>
+<li><p>以下の条件をすべて満たしたときにDOIを付与する</p>
+<ul>
+<li><p>Admin &gt; Setting &gt; Identifier でprefixの設定があること</p>
+</li>
+<li><p>DOI：空欄であること</p>
+</li>
+<li><p>DOI_RA：JaLC, Crossref, DataCite, NDL JalC のいずれかであること</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>「Not 識別子変更モード」で、既存アイテム(DOI付与無し)に自由記述でDOIをインポートしようとした際にエラーメッセージを出す</p>
+<ul>
+<li>「指定された{DOI}が登録済みの{DOI}と異なっています」</li>
+</ul>
+</li>
+<li><p>DOIの付与はPID付与の制約条件表 ( JPCOAR_JaLC_Guideline_appendix_v1.pdf ) に従って、「必須」と「いずれか必須」の条件をもとにDOI付与可否を決定している。<br>なお、必須のマッピング項目がひとつのアイテムタイプ内に複数ある場合、複数あるうちのひとつだけ入力されていれば、DOI付与の条件を満たすものとする。</p>
+</li>
+<li><p>DOI付与済みアイテムを新規登録後、更新時に必須項目の値の削除や必須項目のプロパティの削除はできない。<br>削除をした場合、インポートタブのチェック処理で「PID付与の条件を満たしていません。」とエラーメッセージが表示される。<br>また、更新時に資源タイプ（dc:type）の変更は同じコンテンツ種類内でのみ許可される。それ以外の資源タイプに変更した場合、インポートタブのチェック処理で「DOI付与済みアイテムの資源タイプの変更はできません。」とエラーメッセージが表示される。</p>
+</li>
+<li><p>制限公開用プロパティもインポートすることができる</p>
+<ul>
+<li>制限公開用プロパティ: 利用規約情報、アクセス(制限公開)、データタイプ、提供方法（ワークフロー、ロール）</li>
+</ul>
+</li>
+<li><p>インポートしたアイテムは、操作アカウントによって作成されたものとして扱われる。</p>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><blockquote>
+<p>関連モジュール</p>
+</blockquote>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><blockquote>
+<p>weko-admin</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>weko-search-ui</p>
+</blockquote>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><blockquote>
+<p>処理概要</p>
+</blockquote>
+</li>
+</ul>
+<p>1 処理に関するエトセトラ</p>
+<ul>
+<li><p>アイテムタイプ項目のチェックに使用しているライブラリ</p>
+</li>
+<li><p>zipファイルの解凍に使用しているライブラリ：zipfile</p>
+</li>
+<li><p>インポート実行時のceleryタスク</p>
+</li>
+<li><p>識別子変更モードを指定した際のpidstroreの処理について</p>
+</li>
+<li><p>作成者プロパティの「iscreator」画面表示同様、TSVファイルに出力しないよう制御している</p>
+</li>
+<li><p>depositの「owners」が空欄になっていた場合でも&quot;list index out of range&quot;のエラーが発生しないようにエラーハンドリング処理を追加</p>
+</li>
+<li><p>インポート処理に例外が発生してもESに存在しているアイテム情報が消えないように実装</p>
+</li>
+<li><p>DOIを取り下げたアイテムは、インデックスの状態に関係なくインポートが機能し、ワークフローで編集できる</p>
+</li>
+<li><p>ユーザのセッション有効時間を超過した場合でもインポート処理は完了する</p>
+</li>
+<li><p>※インポート処理完了後に、celeryタスクの処理で、作業用のテンポラリディレクトリを削除する</p>
+</li>
+</ul>
+<p>2. tmpディレクトリ</p>
+<ul>
+<li><p>登録されたインポートファイルのチェックをする際に作成するテンポラリファイルは以下のように生成する</p>
+<ul>
+<li>/home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_import_xxxxxxxx</li>
+</ul>
+</li>
+<li><p>アイテムをインポートする際に作成するテンポラリファイルは以下のように生成する</p>
+<ul>
+<li>/home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_import_YYYYMMDDhhmmss</li>
+</ul>
+</li>
+</ul>
+<p>3. 設定</p>
+<ul>
+<li><p>一括登録画面のテンプレートを設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L87" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L87</a></p>
+</li>
+<li><p>設定キー：WEKO_ITEM_ADMIN_IMPORT_TEMPLATE</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_ITEM_ADMIN_IMPORT_TEMPLATE = &apos;weko_search_ui/admin/import.html&apos;</p>
+</blockquote>
+<ul>
+<li><p>「インポート」（Import）タブ にてダウンロードファイルに表示する項目を設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L512" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L512</a></p>
+</li>
+<li><p>設定キー：WEKO_IMPORT_CHECK_LIST_NAME</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_IMPORT_CHECK_LIST_NAME = [&quot;No&quot;, &quot;Item Type&quot;, &quot;Item Id&quot;, &quot;Title&quot;, &quot;Check result&quot;]</p>
+</blockquote>
+<ul>
+<li><p>「結果」（Result）タブにてダウンロードファイルに表示する項目を設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L514" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L514</a></p>
+</li>
+<li><p>設定キー：WEKO_IMPORT_LIST_NAME</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_IMPORT_LIST_NAME = [</p>
+<p>&quot;No&quot;,</p>
+<p>&quot;Start Date&quot;,</p>
+<p>&quot;End Date&quot;,</p>
+<p>&quot;Item Id&quot;,</p>
+<p>&quot;Action&quot;,</p>
+<p>&quot;Work Flow &quot;,</p>
+<p>]</p>
+</blockquote>
+<ul>
+<li><p>メール形式（フィードバックメール）を設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L524" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L524</a></p>
+</li>
+<li><p>設定キー：WEKO_IMPORT_EMAIL_PATTERN</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_IMPORT_EMAIL_PATTERN = r&quot;(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)&quot;</p>
+</blockquote>
+<ul>
+<li><p>tsvファイルに正当となる公開ステータスを設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L525" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L525</a></p>
+</li>
+<li><p>設定キー：WEKO_IMPORT_PUBLISH_STATUS</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_IMPORT_PUBLISH_STATUS = [&apos;public&apos;, &apos;private&apos;]</p>
+</blockquote>
+<ul>
+<li><p>tsvファイルに正当となるDOI_RAの値を設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L526" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L526</a></p>
+</li>
+<li><p>設定キー：WEKO_IMPORT_DOI_TYPE</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_IMPORT_DOI_TYPE = [&quot;JaLC&quot;, &quot;Crossref&quot;, &quot;DataCite&quot;, &quot;NDL JaLC&quot; ]</p>
+</blockquote>
+<ul>
+<li><p>日付(ISO-8601)プロパティのサブアイテムキーを設定する<br>日付形式のバリデーションチェックに使用する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L528" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L528</a></p>
+</li>
+<li><p>設定キー：WEKO_IMPORT_SUBITEM_DATE_ISO</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_IMPORT_SUBITEM_DATE_ISO = &quot;subitem_1582683677698&quot;</p>
+</blockquote>
+<ul>
+<li><p>免責事項表示の対応言語を設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L532" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L532</a></p>
+</li>
+<li><p>設定キー：WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FILE_LANGUAGES</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FILE_LANGUAGES = [&apos;en&apos;, &apos;ja&apos;]</p>
+</blockquote>
+<ul>
+<li><p>免責事項ファイルの配置先を設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L534" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L534</a></p>
+</li>
+<li><p>設定キー：WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FILE_LOCATION</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FILE_LOCATION = (</p>
+<p>&quot;/code/modules/weko-search-ui/weko_search_ui/static/change_identifier_mode/&quot;</p>
+<p>)</p>
+</blockquote>
+<ul>
+<li><p>免責事項ファイルのプレフィックスを設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L538" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L538</a></p>
+</li>
+<li><p>設定キー：WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FIRST_FILE_NAME</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FIRST_FILE_NAME = &quot;change_identifier_mode&quot;</p>
+</blockquote>
+<ul>
+<li><p>免責事項ファイルの拡張子を設定する</p>
+<ul>
+<li><p>パス：<a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L540" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L540</a></p>
+</li>
+<li><p>設定キー：WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FILE_EXTENSION</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FILE_EXTENSION = &quot;.txt&quot;</p>
+</blockquote>
+<ul>
+<li><p>POS_INDEXの区切り文字を設定する</p>
+<ul>
+<li><p>パス：modules/weko-items-ui/weko_items_ui/config.py</p>
+</li>
+<li><p>設定キー：WEKO_ITEMS_UI_INDEX_PATH_SPLIT</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_ITEMS_UI_INDEX_PATH_SPLIT = &apos;///&apos;</p>
+</blockquote>
+<ul>
+<li><p>インポート実行時のセッション</p>
+<ul>
+<li><p>パス：modules/ weko-admin/weko_admin/config.py</p>
+</li>
+<li><p>設定キー：WEKO_ADMIN_IMPORT_PAGE_LIFETIME</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_ADMIN_IMPORT_PAGE_LIFETIME = 43200</p>
+</blockquote>
+<p>4. 実装方法</p>
+<ul>
+<li><p>対応しているモジュール：weko_search_ui</p>
+</li>
+<li><p>depositの「owners」が空欄になっていた場合でも&quot;list index out of range&quot;のエラーが発生しないようにエラーハンドリング処理を追加</p>
+</li>
+<li><p>インポート処理に例外が発生してもESに存在しているアイテム情報が消えないように実装</p>
+</li>
+</ul>
+<p>5. tmpディレクトリ</p>
+<ul>
+<li><p>登録されたインポートファイルのチェックをする際に作成するテンポラリファイルは以下のように生成する</p>
+<ul>
+<li>/home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_import_xxxxxxxx</li>
+</ul>
+</li>
+<li><p>アイテムをインポートする際に作成するテンポラリファイルは以下のように生成する</p>
+<ul>
+<li>/home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_import_YYYYMMDDhhmmss</li>
+</ul>
+</li>
+<li><p>テンポラリファイルの格納先は環境変数(docker-compose.yml) で設定できるようにする<br><a href="https://docs.python.org/3/library/tempfile.html#tempfile.gettempdir" target="_blank">https://docs.python.org/3/library/tempfile.html#tempfile.gettempdir</a></p>
+</li>
+</ul>
+<ol>
+<li>排他処理</li>
+</ol>
+<p>インポート処理中「cache::import_start_time」キーに現在時間を格納する。キーは/admin/items/import/check_import_is_availableを呼び出すことでインポート処理の有無を確認しキーを削除する。</p>
+<p>【補足】Import機能と個別登録(WorkFlow)の違い</p>
+<ul>
+<li><p>Import機能はTSVファイルの文法チェックを実施しています。</p>
+</li>
+<li><p>メタデータ項目チェック（※）は共通処理（Draft4Validator）を使っていますが、他のチェック処理（tsvのインデックス名・ID、CNRI/DOIのチェック）は共通化できないので、別々に実装されています。<br>※必須項目チェック、入力データ型とアイテムタイプに定義されたデータ型と同じになるかのチェック。</p>
+</li>
+<li><p>個別登録と一括登録のチェック処理を別に実装している理由は、チェックするタイミングでデータの構成が違っているため、共通処理が使えません。</p>
+<ul>
+<li><p>個別登録のチェックタイミング：Identifier Grantの時に、メタデータが存在しているので、それを元にチェックする。</p>
+</li>
+<li><p>一括登録のチェックタイミング：メタデータがなくて、tsvファイルに指定されたデータを変換しチェックする。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>その他補足</p>
+<p>（Wikiより）</p>
+<ul>
+<li><p>「System」としている項目（&quot;資源タイプResource&quot;, &quot;出版タイプResource&quot;, &quot;アクセス権Resource&quot;）を一括登録時に自動で設定する機能に関して、<br>自動設定の前提として、対象のアイテムタイプについて各項目がAdmin&gt;ItemTypes&gt;MappingでJPCOARスキーマのマッピングが設定されている必要があります</p>
+</li>
+<li><p>インポート更新時にに資源タイプ（dc:type）の変更は同じコンテンツ種類内でのみ許可される。それ以外の資源タイプにを変更した場合、インポートタブのチェック処理で以下のようにエラーメッセージが表示される。</p>
+<ul>
+<li>「DOI 付与済みアイテムの資源タイプの変更はできません。」</li>
+</ul>
+</li>
+<li><p>同じコンテンツファイル（ファイル名とファイルパスが同一）を含んだインポートファイル（zip）をインポートした場合のファイルの格納方法は以下の通り。</p>
+<ul>
+<li><p>Keep: ファイルは上書きされる</p>
+</li>
+<li><p>Upgrade: ファイルは新しく格納される</p>
+</li>
+</ul>
+</li>
+<li><p>インポートのtsvファイル内のメタデータにおける&quot;\<br \>&quot;は、インポートの際に&quot;\n&quot;に置換する</p>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><blockquote>
+<p>更新履歴</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>日付</th>
+<th>GitHubコミットID</th>
+<th>更新内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>2023/08/31</p>
+</blockquote></td>
+<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
+<td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2024/07/1</p>
+</blockquote></td>
+<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
+<td>v1.0.7対応</td>
+</tr>
+</tbody>
+</table>
+</body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ADMIN_2_3.html" class="navigation navigation-prev " aria-label="Previous page: ADMIN-2-3: アイテム管理：一括エクスポート 110">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ADMIN_3_1.html" class="navigation navigation-next " aria-label="Next page: ADMIN-3-1: インデックスツリー管理：ツリー編集 155">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ADMIN-2-4: アイテム管理：インポート 113","level":"1.3.8","depth":2,"next":{"title":"ADMIN-3-1: インデックスツリー管理：ツリー編集 155","level":"1.3.9","depth":2,"path":"admin/ADMIN_3_1.md","ref":"admin/ADMIN_3_1.md","articles":[]},"previous":{"title":"ADMIN-2-3: アイテム管理：一括エクスポート 110","level":"1.3.7","depth":2,"path":"admin/ADMIN_2_3.md","ref":"admin/ADMIN_2_3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","back-to-top-button","anchors","collapsible-chapters","hide-published-with","plantuml-cloud"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"plantuml-cloud":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"Research Center for Open Science and Data Platform, National Institute of Informatics","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"機能仕様書","language":"ja","gitbook":"*","description":""},"file":{"path":"admin/ADMIN_2_4.md","mtime":"2024-09-07T00:43:34.514Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-09-10T15:51:15.605Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
