@@ -162,6 +162,24 @@
         
           - 「子インデックスのグループ権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定される。
 
+      - 学認mAP連携機能が有効な場合、閲覧権限の設定に学認mAPのグループ情報を利用できる。
+
+         - グループIDのフォーマットが「jc\_<institution_fqdn>\_roles\_<role_keyword>」に従っている学認グループは、ロール権限として表示され閲覧権限を変更できる。
+
+              - <institution_fqdn>には機関のFQDNから".","-"を"_"に置換した値が設定される。
+
+                  - 例: abc-u.ac.jp → abc_u_ac_jp
+
+              - 例外的に「jc_roles_sysadm」もロール権限として表示され閲覧権限を変更できる。
+
+              - ロール権限に設定できるグループIDのフォーマット（プレフィックス、システム管理者用グループID）は、設定値 WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_PATTERN\_DICT を変更することで、フォーマットを変更できる。
+
+         - 上記以外のグループIDの場合はグループ権限として表示され、閲覧権限を変更できる。
+
+              - ただし、学認mAPのグループ情報は内部的には全てロールとして扱われる。
+
+         - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの閲覧権限のデフォルト値は、WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_BROWSING\_PERMISSIONの真偽値から権限有無を決定する。
+
   - 「投稿権限」（Deposit Privilege）
     
       - ロール権限の設定には、  
@@ -189,6 +207,24 @@
           - 「グループ権限あり」（Group Authorized）は、デフォルトとして、登録されているグループが表示される。
         
           - 「子インデックスのグループ権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定される。
+
+      - 学認mAP連携機能が有効な場合、投稿権限の設定に学認mAPのグループ情報を利用できる。
+
+         - グループIDのフォーマットが「jc\_<institution_fqdn>\_roles\_<role_keyword>」に従っている学認グループは、ロール権限として表示され投稿権限を変更できる。
+
+              - <institution_fqdn>には機関のFQDNから".","-"を"_"に置換した値が設定される。
+
+                  - 例: abc-u.ac.jp → abc_u_ac_jp
+
+              - 例外的に「jc_roles_sysadm」もロール権限として表示され投稿権限を変更できる。
+
+              - ロール権限に設定できるグループIDのフォーマット（プレフィックス、システム管理者グループID）は、設定値 WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_PATTERN\_DICT を変更することで、フォーマットを変更できる。
+
+         - ロール権限として利用できない学認グループは、すべてグループ権限として表示され、投稿権限を変更できる。
+
+              - ただし、学認mAPのグループ情報は内部的には全てロールとして扱われる。
+
+         - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの投稿権限のデフォルト値は、WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSIONの真偽値から権限有無を決定する。
 
   - 「表示形式(検索結果)」（Display Format(Search Results)）  
     検索結果の表示形式を選択する。
@@ -294,6 +330,29 @@
       - インデックスのキャッシュはRedisサーバに以下キー名でインデックス保存時に作成される。
         
           - index\_tree\_view\_" + os.environ.get('INVENIO\_WEB\_HOST\_NAME') + "\_" + lang
+
+5\. 設定
+
+  - GakuNin mAPから連携されたグループ情報の閲覧権限初期値を設定する。（Trueの場合、閲覧権限ありとして初期値を設定する。）
+    
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L96>
+    
+      - 設定キー：WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_BROWSING\_PERMISSION
+    
+      - 現在の設定値：
+
+> WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_BROWSING\_PERMISSION = False
+
+  - GakuNin mAPから連携されたグループ情報の投稿権限初期値を設定する。（Trueの場合、投稿権限ありとして初期値を設定する。）
+    
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L99>
+    
+      - 設定キー：WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSION
+    
+      - 現在の設定値：
+
+> WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSION = False
+
 
 <table>
 <thead>
@@ -571,6 +630,13 @@
 </blockquote></td>
 <td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
 <td>v1.0.7対応</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2025/01/30</p>
+</blockquote></td>
+<td>3530eae9075af6afc57b777d8c3137f038523610</td>
+<td>学認mAP連携対応</td>
 </tr>
 </tbody>
 </table>
