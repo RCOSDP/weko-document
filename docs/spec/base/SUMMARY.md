@@ -62,7 +62,7 @@
 * [ADMIN-2-1: 一括更新 104](./admin/ADMIN_2_1.md)
 * [ADMIN-2-2: 一括削除 108](./admin/ADMIN_2_2.md)
 * [ADMIN-2-3: 一括エクスポート 110](./admin/ADMIN_2_3.md)
-* [ADMIN-2-4: インポート 113](./admin/ADMIN_2_4.md)
+* [ADMIN-2-4: インポート](./admin/ADMIN_2_4.md)
 ### 3 インデックスツリー管理 155
 * [ADMIN-3-1: ツリー編集 155](./admin/ADMIN_3_1.md)
 * [ADMIN-3-2: 雑誌情報 162](./admin/ADMIN_3_2.md)
@@ -143,7 +143,7 @@
 * [ADMIN-15-1: Elasticsearchインデックス 423](./admin/ADMIN_15_1.md)
 ## [WebAPI](./api/README.md)
 * [API-1: OAuth2 425](./api/API_01_Oauth2.md)
-* [API-2: OAI-PMH 429](./api/API_02_OAIPMH.md)
+* [API-2: OAI-PMH ](./api/API_02_OAIPMH.md)
 * [API-3: OpenSearch 436](./api/API_03_OpenSearch.md)
 * [API-4: Workflow API 5](./api/API_04_workflow.md)
 * [API-5: Index操作API 7](./api/API_05_index_op.md)

@@ -1,135 +1,91 @@
 
-### インポート
+# インポート
 
-  - > 目的・用途
+## 目的・用途
 
 本機能は、管理者として、アイテムの一括登録を実行する機能である。
 
-  - > 利用方法
+## 利用方法
 
 管理者は 【Administration \> アイテム管理（Items） \> インポート（Import）画面】を開き、アイテム一括登録用のzipファイルを登録する。
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○※</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+
+|ロール|システム管理者|リポジトリ管理者|コミュニティ管理者|登録ユーザー|一般ユーザー	|ゲスト(未ログイン)|
+|---|---|---|---|---|---|---|
+|利用可否|○|○|○※||||
 
 ※コミュニティ管理者は、自身の管理下にあるコミュニティに関連付けられたインデックスへのインポートのみ可能
 
-  - > 機能内容
+## 機能内容
 
-1\. 概要
+### 1. 概要
 
   - 複数のアイテムを一括で登録する機能。システム管理者、リポジトリ管理者のみ使用できる。
-
   - 登録形式はBagitだが、ユーザにそれを意識させないようにしている。詳細はの1を参照。
-
   - 機能は3つの画面で構成されている。
-
   - 以下は各画面の関連と役割。
 
-> \+----------+ ≪選択画面≫
-> 
-> | | ●各アイテムタイプのTSVファイルテンプレートのダウンロード
-> 
-> | Select | ●インポートファイルの指定
-> 
-> | | ●「識別子変更モード」の設定と利用規約への同意
-> 
-> \+----------+
-> 
-> ↓
-> 
-> ↓【Next】 button click\!
-> 
-> ↓
-> 
-> \+----------+ ≪インポート画面≫
-> 
-> | | ●TSVファイルで指定した項目のチェック結果の確認
-> 
-> | Import | ●チェック結果のダウンロード
-> 
-> | |
-> 
-> \+----------+
-> 
-> ↓
-> 
-> ↓【Import】 button click\!
-> 
-> ↓
-> 
-> \+----------+ ≪結果画面≫
-> 
-> | | ●アイテムごとのインポート実行結果の確認
-> 
-> | Result | ●インポート実行結果のダウンロード
-> 
-> | |
-> 
-> \+----------+
+```
+ +----------+ ≪選択画面≫
+ |          | ●各アイテムタイプのTSVファイルテンプレートのダウンロード
+ | Select   | ●インポートファイルの指定
+ |          | ●「識別子変更モード」の設定と利用規約への同意
+ +----------+
+ ↓
+ ↓【Next】 button click!
+ ↓
+ +----------+ ≪インポート画面≫
+ |          | ●TSVファイルで指定した項目のチェック結果の確認
+ | Import   | ●チェック結果のダウンロード 
+ |          |
+ +----------+
+ ↓
+ ↓【Import】 button click\!
+ ↓
+ +----------+ ≪結果画面≫
+ |          | ●アイテムごとのインポート実行結果の確認 
+ | Result   | ●インポート実行結果のダウンロード 
+ |          | 
+ +----------+
+```
 
-2\. 画面ごとの仕様
 
-2.1 選択画面(Select)
+### 2. 画面ごとの仕様
+
+#### 2.1 選択画面(Select)
 
   - 各アイテムタイプのTSVファイルテンプレートのダウンロードとインポートファイルを指定する画面。  
     また「識別子変更モード」の設定と利用規約への同意を実施する
 
-> ────────────────────────────────────────────────
-> 
-> \#\# Message Area \#\# ★
-> 
-> ────────────────────────────────────────────────
-> 
-> ┌───────┐
-> 
-> │Select │Import Result
-> 
-> ┘ └─────────────────────────────────────
-> 
-> Select File 【Select File】①
-> 
-> Selected file name ②
-> 
-> □ Change Identifier Mode ③
-> 
-> 【Next】④
-> 
-> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-> 
-> Item Type Template
-> 
-> Item Type:\[ ⑤ \]【Download】⑥
+```
+ ────────────────────────────────────────────────
+ 
+ ## Message Area ## ★
+ 
+ ────────────────────────────────────────────────
+ 
+ ┌───────┐
+ │Select │Import Result
+ ┘       └─────────────────────────────────────
+ 
+ Select File 【Select File】①
+ 
+ Selected file name ②
+ 
+ □ Change Identifier Mode ③
+ 
+ 【Next】④
+ 
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 
+ Item Type Template
+ 
+ Item Type:[ ⑤ ]【Download】⑥
 
 ★Message Area（管理画面共通）
+```
 
   - インポートファイルのチェックでエラーが発生した際にメッセージを表示する。
 
@@ -152,27 +108,34 @@
 
   - チェックありの状態でImport画面に遷移してから選択画面に戻ると、選択ファイルを変更するまでは非活性になっており変更できない。
 
-> Japanese:
-> 
-> 免責事項：
-> 
-> ・本機能は設定にかかわらずDOIを強制的に変更します。
-> 
-> ・本機能は内容及び自機関で登録されているDOIについて十分に理解した上で作業を行なってください。
-> 
-> ・本機能の利用は、自機間の責任で行なってください。
-> 
-> ・本機能の利用により負った損害などについては、国立情報学研究所は一切の責任を追いません。
-> 
-> English:
-> 
-> \- This function forcibly changes the DOI regardless of the setting.
-> 
-> \- Before starting this operation, you need fully understand the contents and DOI registered at your institution.
-> 
-> \- Use this function on your own responsibility.
-> 
-> \- National Institute of Informatics (NII) does not take any responsibility for damages caused by using this function.
+免責事項：
+
+Japanese:
+ 
+```
+
+ ・本機能は設定にかかわらずDOIを強制的に変更します。
+ 
+ ・本機能は内容及び自機関で登録されているDOIについて十分に理解した上で作業を行なってください。
+ 
+ ・本機能の利用は、自機間の責任で行なってください。
+ 
+ ・本機能の利用により負った損害などについては、国立情報学研究所は一切の責任を追いません。
+
+```
+
+English:
+
+```
+ 
+ - This function forcibly changes the DOI regardless of the setting.
+ 
+ - Before starting this operation, you need fully understand the contents and DOI registered at your institution.
+ 
+ - Use this function on your own responsibility.
+ 
+ - National Institute of Informatics (NII) does not take any responsibility for damages caused by using this function.
+```
 
 ④［次へ（Next）］ボタン
 
@@ -192,41 +155,41 @@
   - 押下すると⑤で選択したアイテムタイプのTSVファイルテンプレートをダウンロードする。  
     ファイルについては4.1参照。
 
-2.2 インポート画面(Import)
+#### 2.2 インポート画面(Import)
 
   - TSVファイルで指定した項目のチェック結果の確認とチェック結果のダウンロードができる。
 
-> ┌──────┐
-> 
-> Select │Import│ Result
-> 
-> ───────┘ └─────────────────────────────────────
-> 
-> \# Identifier Mode \#①
-> 
-> 【Import】②
-> 
-> Summary
-> 
-> Total: ③
-> 
-> New Item: ④
-> 
-> Update: ⑤
-> 
-> Check error: ⑥
-> 
-> 【Download】⑦
-> 
-> ┏━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┓
-> 
-> ┃No. ┃Item Type ┃Item ID ┃Title ┃Check Result┃
-> 
-> ┣━━━━╋━━━━━━━━━━╋━━━━━━━━╋━━━━━━╋━━━━━━━━━━━━┫
-> 
-> ┃ ⑧ ┃ ⑨ ┃ ⑩ ┃ ⑪ ┃ ⑫ ┃
-> 
-> ┗━━━━┻━━━━━━━━━━┻━━━━━━━━┻━━━━━━┻━━━━━━━━━━━━┛
+ ┌──────┐
+ 
+ Select │Import│ Result
+ 
+ ───────┘ └─────────────────────────────────────
+ 
+ \# Identifier Mode \#①
+ 
+ 【Import】②
+ 
+ Summary
+ 
+ Total: ③
+ 
+ New Item: ④
+ 
+ Update: ⑤
+ 
+ Check error: ⑥
+ 
+ 【Download】⑦
+ 
+ ┏━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┓
+ 
+ ┃No. ┃Item Type ┃Item ID ┃Title ┃Check Result┃
+ 
+ ┣━━━━╋━━━━━━━━━━╋━━━━━━━━╋━━━━━━╋━━━━━━━━━━━━┫
+ 
+ ┃ ⑧ ┃ ⑨ ┃ ⑩ ┃ ⑪ ┃ ⑫ ┃
+ 
+ ┗━━━━┻━━━━━━━━━━┻━━━━━━━━┻━━━━━━┻━━━━━━━━━━━━┛
 
 ①Message ラベル
 
@@ -303,29 +266,31 @@
 
   - チェック仕様については、3.2(4)-2\~3を参照
 
-2.3 結果画面(Result)
+#### 2.3 結果画面(Result)
 
   - アイテムごとのインポート実行結果の確認とインポート実行結果のダウンロードができる。
 
   - 現状、処理中に一度画面を離れた場合、処理はCeleryで管理されて継続するが、画面で進捗状況を再度確認することはできない。
 
-> ┌──────┐
-> 
-> Select Import │Result│
-> 
-> ───────────────┘ └─────────────────────────────────────
-> 
-> 【Download】①
-> 
-> ┏━━━━┳━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━┳━━━━━━┳━━━━━━━━━━━━━━━┓
-> 
-> ┃No. ┃Start Date ┃End Date ┃Item Id┃Action┃WrokFlow Status┃
-> 
-> ┣━━━━╋━━━━━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━╋━━━━━━━━━━━━━━━┫
-> 
-> ┃ ② ┃ ③ ┃ ④ ┃ ⑤ ┃ ⑥ ┃ ⑦ ┃
-> 
-> ┗━━━━┻━━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━┻━━━━━━┻━━━━━━━━━━━━━━━┛
+```
+ ┌──────┐
+ 
+ Select Import │Result│
+ 
+ ───────────────┘ └─────────────────────────────────────
+ 
+ 【Download】①
+ 
+ ┏━━━━┳━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━┳━━━━━━┳━━━━━━━━━━━━━━━┓
+ 
+ ┃No. ┃Start Date ┃End Date ┃Item Id┃Action┃WrokFlow Status┃
+ 
+ ┣━━━━╋━━━━━━━━━━━╋━━━━━━━━━╋━━━━━━━╋━━━━━━╋━━━━━━━━━━━━━━━┫
+ 
+ ┃ ② ┃ ③ ┃ ④ ┃ ⑤ ┃ ⑥ ┃ ⑦ ┃
+ 
+ ┗━━━━┻━━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━┻━━━━━━┻━━━━━━━━━━━━━━━┛
+```
 
 ①Download ボタン
 
@@ -363,9 +328,9 @@
 
   - 処理中のワークフローのステータスを表示する。
 
-3\. インポートファイル／TSVファイルについて
+### 3. インポートファイル／TSVファイルについて
 
-3.1 インポートファイル
+#### 3.1 インポートファイル
 
   - エクスポート（一括出力）したファイルを流用できる
 
@@ -373,39 +338,40 @@
 
   - フォルダ構成
 
-> import.zip
-> 
-> │
-> 
-> ├bag-info.txt ※
-> 
-> ├bagit.txt ※
-> 
-> ├manifest-sha256.txt ※
-> 
-> ├manifest-sha512.txt ※
-> 
-> ├tagmanifest-sha256.txt ※
-> 
-> ├tagmanifest-shar512.txt ※
-> 
-> │
-> 
-> └/data
-> 
-> │
-> 
-> ├/recid\_n
-> 
-> │ └\<Files\>
-> 
-> │
-> 
-> ├ItemTypeName1(ItemType ID).tsv
-> 
-> └ItemTypeName2(ItemType ID).tsv
-> 
-> ※はBagit形式のファイル。インポート時は省略可能
+ import.zip
+ ```
+ │
+ 
+ ├bag-info.txt ※
+ 
+ ├bagit.txt ※
+ 
+ ├manifest-sha256.txt ※
+ 
+ ├manifest-sha512.txt ※
+ 
+ ├tagmanifest-sha256.txt ※
+ 
+ ├tagmanifest-shar512.txt ※
+ 
+ │
+ 
+ └/data
+ 
+ │
+ 
+ ├/recid\_n
+ 
+ │ └\<Files\>
+ 
+ │
+ 
+ ├ItemTypeName1(ItemType ID).tsv
+ 
+ └ItemTypeName2(ItemType ID).tsv
+ ```
+
+ ※はBagit形式のファイル。インポート時は省略可能
 
   - 「/data」は変更不可
 
@@ -413,17 +379,14 @@
 
   - アイテムタイプのTSVファイルは複数指定可能
 
-3.2 アイテムタイプごとのTSVファイル
+#### 3.2 アイテムタイプごとのTSVファイル
 
-  - 当該ファイルは以下で共通のレイアウトとしている。
-    
-      - Select画面でダウンロードできるテンプレートファイル(4.1)
-    
-      - インポートファイルに含めるアイテムタイプTSVファイル
-    
-      - エクスポート（一括出力）ファイルに含まれるアイテムタイプTSVファイル
+- 当該ファイルは以下で共通のレイアウトとしている。    
+  - Select画面でダウンロードできるテンプレートファイル(4.1)
+  - インポートファイルに含めるアイテムタイプTSVファイル
+  - エクスポート（一括出力）ファイルに含まれるアイテムタイプTSVファイル
 
-(1) ヘッダ行
+##### (1) ヘッダ行
 
 ヘッダ行は先頭が「\#」とする。
 
@@ -454,7 +417,7 @@
       - アイテムタイプ項目  
         → 【Administration \> アイテムタイプ管理（ItemTypes） \> メタデータ（Metadata）画面】のOptionの設定内容がチェックありの項目について出力
 
-(2) アイテムタイプ項目以外の項目
+##### (2) アイテムタイプ項目以外の項目
 
 <table>
 <thead>
@@ -664,7 +627,7 @@ DOI付与後は変更不可</td>
 </table>
 
   - 
-(3) アイテムタイプ項目
+##### (3) アイテムタイプ項目
 
 基本はアイテムタイプに定義されている項目（プロパティ）に対して、TSVファイル内で設定されている内容を登録する。  
 次の項目は項目の設定以外の処理を行っている。
@@ -850,7 +813,7 @@ DOI付与後は変更不可</td>
 \[※\]各Resource項目の自動設定機能は、【Administration \> アイテムタイプ管理（ItemTypes） \> マッピング（Mapping）画面】で対象のアイテムタイプについてJPCOARスキーマのマッピングが設定されている必要があります。  
 　「出版タイプ」と「アクセス権」については、移行ツール作成のアイテムタイプに含まれていない項目なので、該当環境で項目を追加した際は必ずマッピング設定をしてください。
 
-(4) チェック仕様
+##### (4) チェック仕様
 
 \-1. インポートファイル、TSVファイルの形式チェック
 
@@ -1380,9 +1343,9 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 | ------ | ------ | ----------------------------------------------------------- | ------ | -------------------------------- | ---------------------------------------------- | ------ |
 | 1      | \-     | 操作アカウントが、アイテムの登録先インデックス（またはその親インデックス）へのインポートに必要な権限を持っていない場合 | エラー    | ロールの権限が足りずこのインデックスにアイテム登録ができません。 | Your role cannot register items in this index. |        |
 
-4\. ダウンロードファイルについて
+### 4. ダウンロードファイルについて
 
-4.1 テンプレートファイル
+#### 4.1 テンプレートファイル
 
   - Select（選択）画面でダウンロードできる。アイテムタイプ（Item Type）セレクタ―で選択したアイテムタイプについて、ヘッダ行のみ出力したインポートに使用するTSVファイル。
 
@@ -1392,27 +1355,27 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 ◆出力イメージ
 
-> \#ItemType 紀要論文（出版者版、オープンアクセス、JaLC\_DOI\_登録あり）(16) https://FQDN/items/jsonschema/16
-> 
-> \#.id .uri .metadata.path\[0\] .pos\_index\[0\] .publish\_status .feedback\_mail\[0\] .cnri .doi\_ra .doi .edit\_mode .metadata.pubdate　 …
-> 
-> \#ID URI .IndexID\[0\] .POS\_INDEX\[0\] .PUBLISH\_STATUS .FEEDBACK\_MAIL\[0\] .CNRI .DOI\_RA .DOI Keep/Upgrade Version PubDate …
-> 
-> \# …
-> 
-> \# Allow Multiple Allow Multiple Required Allow Multiple Required Required …
+ \#ItemType 紀要論文（出版者版、オープンアクセス、JaLC\_DOI\_登録あり）(16) https://FQDN/items/jsonschema/16
+ 
+ \#.id .uri .metadata.path\[0\] .pos\_index\[0\] .publish\_status .feedback\_mail\[0\] .cnri .doi\_ra .doi .edit\_mode .metadata.pubdate　 …
+ 
+ \#ID URI .IndexID\[0\] .POS\_INDEX\[0\] .PUBLISH\_STATUS .FEEDBACK\_MAIL\[0\] .CNRI .DOI\_RA .DOI Keep/Upgrade Version PubDate …
+ 
+ \# …
+ 
+ \# Allow Multiple Allow Multiple Required Allow Multiple Required Required …
 
-4.2 インポート前チェック結果ファイル
+#### 4.2 インポート前チェック結果ファイル
 
   - Import（インポート）画面でダウンロードできる。同画面の表に表示されているチェック結果をTSV形式で出力したファイル。
 
   - ファイル名は「Check\_ダウンロード日付.tsv」で、2.2⑧～⑫の項目を出力。
 
-> ◆出力イメージ
-> 
-> \#No. Item Type Item ID Title Check Result
+ ◆出力イメージ
+ 
+ \#No. Item Type Item ID Title Check Result
 
-4.3 インポート実行結果ファイル
+#### 4.3 インポート実行結果ファイル
 
   - Result（結果）画面でダウンロードできる。同画面の表に表示されているインポート実行結果をTSV形式で出力したファイル。
 
@@ -1420,11 +1383,11 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
   - TSV形式で文字コードはBOM無しUTF-8、改行コードはLF
 
-> ◆出力イメージ
-> 
-> \#No. Start Date End Date Item Id Action WorkFlow Status
+ ◆出力イメージ
+ 
+ \#No. Start Date End Date Item Id Action WorkFlow Status
 
-4.4. 「インポート」（Import）タブで一括登録のアイテムを確認・登録する
+#### 4.4. 「インポート」（Import）タブで一括登録のアイテムを確認・登録する
 
   - インポート」（Import）タブ  
     読み込んだzipファイルの内容を表示し、一括登録して良いかの確認を促す  
@@ -1573,7 +1536,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
             
               - 格納先の容量が不足している場合
         
-          - 一括登録の実行時に他端末から実行した場合エラーメッセージを出力する。
+          - 一括登録の実行時に他端末から実行した場合エラーメッセージを出力する。エラーメッセージが200文字を超える場合は以降の文字を省略する。
             
               - 一括登録を実行中に他の端末が【Administration \> アイテム管理（Items） \> （Import）画面を開いた場合
             
@@ -1799,7 +1762,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 「インポート」（Import）ボタン押下後、結果タブの画面に遷移する
 
-4.5. 「結果」（Result）タブで一括登録の結果を表示する
+#### 4.5. 「結果」（Result）タブで一括登録の結果を表示する
 
   - 「結果」（Result）タブ  
     最後に実施したアイテム一括登録の状況をリスト形式で確認する  
@@ -1889,19 +1852,15 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 <!-- end list -->
 
-  - > 関連モジュール
+## 関連モジュール
 
-<!-- end list -->
+- weko-admin
+- weko-search-ui
 
-  - > weko-admin
 
-  - > weko-search-ui
+## 処理概要
 
-<!-- end list -->
-
-  - > 処理概要
-
-1 処理に関するエトセトラ
+### 1 処理に関するエトセトラ
 
   - アイテムタイプ項目のチェックに使用しているライブラリ
 
@@ -1923,7 +1882,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
   - ※インポート処理完了後に、celeryタスクの処理で、作業用のテンポラリディレクトリを削除する
 
-2\. tmpディレクトリ
+### 2\. tmpディレクトリ
 
   - 登録されたインポートファイルのチェックをする際に作成するテンポラリファイルは以下のように生成する
     
@@ -1933,7 +1892,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_import\_YYYYMMDDhhmmss
 
-3\. 設定
+### 3\. 設定
 
   - 一括登録画面のテンプレートを設定する
     
@@ -1943,7 +1902,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_ITEM\_ADMIN\_IMPORT\_TEMPLATE = 'weko\_search\_ui/admin/import.html'
+ WEKO\_ITEM\_ADMIN\_IMPORT\_TEMPLATE = 'weko\_search\_ui/admin/import.html'
 
   - 「インポート」（Import）タブ にてダウンロードファイルに表示する項目を設定する
     
@@ -1953,7 +1912,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_IMPORT\_CHECK\_LIST\_NAME = \["No", "Item Type", "Item Id", "Title", "Check result"\]
+ WEKO\_IMPORT\_CHECK\_LIST\_NAME = \["No", "Item Type", "Item Id", "Title", "Check result"\]
 
   - 「結果」（Result）タブにてダウンロードファイルに表示する項目を設定する
     
@@ -1963,21 +1922,21 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_IMPORT\_LIST\_NAME = \[
-> 
-> "No",
-> 
-> "Start Date",
-> 
-> "End Date",
-> 
-> "Item Id",
-> 
-> "Action",
-> 
-> "Work Flow ",
-> 
-> \]
+ WEKO\_IMPORT\_LIST\_NAME = \[
+ 
+ "No",
+ 
+ "Start Date",
+ 
+ "End Date",
+ 
+ "Item Id",
+ 
+ "Action",
+ 
+ "Work Flow ",
+ 
+ \]
 
   - メール形式（フィードバックメール）を設定する
     
@@ -1987,7 +1946,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_IMPORT\_EMAIL\_PATTERN = r"(^\[a-zA-Z0-9\_.+-\]+@\[a-zA-Z0-9-\]+\\.\[a-zA-Z0-9-.\]+$)"
+ WEKO\_IMPORT\_EMAIL\_PATTERN = r"(^\[a-zA-Z0-9\_.+-\]+@\[a-zA-Z0-9-\]+\\.\[a-zA-Z0-9-.\]+$)"
 
   - tsvファイルに正当となる公開ステータスを設定する
     
@@ -1997,7 +1956,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_IMPORT\_PUBLISH\_STATUS = \['public', 'private'\]
+ WEKO\_IMPORT\_PUBLISH\_STATUS = \['public', 'private'\]
 
   - tsvファイルに正当となるDOI\_RAの値を設定する
     
@@ -2007,7 +1966,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_IMPORT\_DOI\_TYPE = \["JaLC", "Crossref", "DataCite", "NDL JaLC" \]
+ WEKO\_IMPORT\_DOI\_TYPE = \["JaLC", "Crossref", "DataCite", "NDL JaLC" \]
 
   - 日付(ISO-8601)プロパティのサブアイテムキーを設定する  
     日付形式のバリデーションチェックに使用する
@@ -2018,7 +1977,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_IMPORT\_SUBITEM\_DATE\_ISO = "subitem\_1582683677698"
+ WEKO\_IMPORT\_SUBITEM\_DATE\_ISO = "subitem\_1582683677698"
 
   - 免責事項表示の対応言語を設定する
     
@@ -2028,7 +1987,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_ADMIN\_IMPORT\_CHANGE\_IDENTIFIER\_MODE\_FILE\_LANGUAGES = \['en', 'ja'\]
+ WEKO\_ADMIN\_IMPORT\_CHANGE\_IDENTIFIER\_MODE\_FILE\_LANGUAGES = \['en', 'ja'\]
 
   - 免責事項ファイルの配置先を設定する
     
@@ -2038,11 +1997,11 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_ADMIN\_IMPORT\_CHANGE\_IDENTIFIER\_MODE\_FILE\_LOCATION = (
-> 
-> "/code/modules/weko-search-ui/weko\_search\_ui/static/change\_identifier\_mode/"
-> 
-> )
+ WEKO\_ADMIN\_IMPORT\_CHANGE\_IDENTIFIER\_MODE\_FILE\_LOCATION = (
+ 
+ "/code/modules/weko-search-ui/weko\_search\_ui/static/change\_identifier\_mode/"
+ 
+ )
 
   - 免責事項ファイルのプレフィックスを設定する
     
@@ -2052,7 +2011,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_ADMIN\_IMPORT\_CHANGE\_IDENTIFIER\_MODE\_FIRST\_FILE\_NAME = "change\_identifier\_mode"
+ WEKO\_ADMIN\_IMPORT\_CHANGE\_IDENTIFIER\_MODE\_FIRST\_FILE\_NAME = "change\_identifier\_mode"
 
   - 免責事項ファイルの拡張子を設定する
     
@@ -2062,7 +2021,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_ADMIN\_IMPORT\_CHANGE\_IDENTIFIER\_MODE\_FILE\_EXTENSION = ".txt"
+ WEKO\_ADMIN\_IMPORT\_CHANGE\_IDENTIFIER\_MODE\_FILE\_EXTENSION = ".txt"
 
   - POS\_INDEXの区切り文字を設定する
     
@@ -2072,7 +2031,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_ITEMS\_UI\_INDEX\_PATH\_SPLIT = '///'
+ WEKO\_ITEMS\_UI\_INDEX\_PATH\_SPLIT = '///'
 
   - インポート実行時のセッション
     
@@ -2082,9 +2041,9 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 現在の設定値：
 
-> WEKO\_ADMIN\_IMPORT\_PAGE\_LIFETIME = 43200
+ WEKO\_ADMIN\_IMPORT\_PAGE\_LIFETIME = 43200
 
-4\. 実装方法
+### 4\. 実装方法
 
   - 対応しているモジュール：weko\_search\_ui
 
@@ -2092,7 +2051,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
   - インポート処理に例外が発生してもESに存在しているアイテム情報が消えないように実装
 
-5\. tmpディレクトリ
+### 5\. tmpディレクトリ
 
   - 登録されたインポートファイルのチェックをする際に作成するテンポラリファイルは以下のように生成する
     
@@ -2105,7 +2064,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
   - テンポラリファイルの格納先は環境変数(docker-compose.yml) で設定できるようにする  
     <https://docs.python.org/3/library/tempfile.html#tempfile.gettempdir>
 
-6. 排他処理
+### 6. 排他処理
 
 インポート処理中「cache::import_start_time」キーに現在時間を格納する。キーは/admin/items/import/check_import_is_availableを呼び出すことでインポート処理の有無を確認しキーを削除する。
 
@@ -2123,7 +2082,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - 一括登録のチェックタイミング：メタデータがなくて、tsvファイルに指定されたデータを変換しチェックする。
 
-その他補足
+### その他補足
 
 （Wikiより）
 
@@ -2144,30 +2103,11 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 <!-- end list -->
 
-  - > 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>2024/07/1</p>
-</blockquote></td>
-<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
-<td>v1.0.7対応</td>
-</tr>
-</tbody>
-</table>
+## 更新履歴
+
+|日付|GitHubコミットID|更新内容|
+|---|---|---|
+|2024/07/1|7733de131da9ad59ab591b2df1c70ddefcfcad98|v1.0.7対応|
+|2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+

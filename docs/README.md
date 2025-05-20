@@ -1,12 +1,11 @@
+# WEKO3 documents
 
-npx honkit init admin_manual
-npx honkit serve
-npx honkit build
 
+```
 sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin version=4.23.0
+```
 
-npx honkit pdf . ../ADMIN.pdf
-
+## build
 
 ```
 npx honkit pdf spec/base spec/pdf/spec.pdf

@@ -1,18 +1,16 @@
-### OAI-PMH 
+# OAI-PMH 
 
-  - > 目的・用途
+## 目的・用途
 
-<!-- end list -->
+OAI-PMHとは、データベース内のメタデータを様々な指定をして受け渡すことを可能とするプロトコルである。OAI-PMHを用いることによって様々なスキーマでメタデータの提供を可能としている。
 
-  - > OAI-PMHとは、データベース内のメタデータを様々な指定をして受け渡すことを可能とするプロトコルである。OAI-PMHを用いることによって様々なスキーマでメタデータの提供を可能としている。利用方法
+## 利用方法
 
 OAI-PMHのリクエストURLは以下のようになる。以下の「値」と「verbのパラメータ」に任意の値を指定することで、メタデータを取得することができる。指定できる値については後述。
 
 https://\[host\]/oai?verb=「値」&「verbのパラメータ」=「値」&「 verbのパラメータ」=「値」&...
 
-  - > 機能内容
-
-<!-- end list -->
+## 機能内容
 
   - Verbに指定できる値は、以下の6種類となる。
     
@@ -24,37 +22,24 @@ https://\[host\]/oai?verb=「値」&「verbのパラメータ」=「値」&「 v
         
           - 以下に応答例を示す。
 
-\<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
-
-\<responseDate\>yyyy-mm-ddThh:mm:ssZ\</responseDate\>
-
-\<request metadataPrefix="○○○○" verb="GetRecord" identifier="○○○○"\>https://\[host\]/oai\</request\>
-
-\<GetRecord\>
-
-\<record\>
-
-\<header\>
-
-\<identifier\>○○○○\</identifier\>
-
-\<datestamp\>yyyy-mm-ddThh:mm:ssZ\</datestamp\>
-
-\<setSpec\>○○○○\</setSpec\>
-
-\</header\>
-
-\<metadata\>
-
-\<指定したアイテムのメタデータがここに記載される\>
-
-\</metadata\>
-
-\</record\>
-
-\</GetRecord\>
-
-\</OAI-PMH\>
+```
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>yyyy-mm-ddThh:mm:ssZ</responseDate>
+<request metadataPrefix="○○○○" verb="GetRecord" identifier="○○○○">https://[host]/oai</request>
+<GetRecord>
+<record>
+<header>
+<identifier>○○○○</identifier>
+<datestamp>yyyy-mm-ddThh:mm:ssZ</datestamp>
+<setSpec>○○○○</setSpec>
+</header>
+<metadata>
+指定したアイテムのメタデータがここに記載される
+</metadata>
+</record>
+</GetRecord>
+</OAI-PMH>
+```
 
   - Identify  
     リポジトリについての情報を検索する際に使用するverb。  
@@ -204,40 +189,42 @@ https://\[host\]/oai?verb=「値」&「verbのパラメータ」=「値」&「 v
 
 \</OAI-PMH\>
 
-  - ListRecord  
-    リポジトリからレコードを収集する際に使用するverb。  
-    追加で指定可能な引数は次の5つとなる。  
-    １．from：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの下限を設定する。  
-    ２．until：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの上限を設定する。  
-    ３．metadataPrefix：返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。  
-    ４．set：Spec値を持つ任意の引数。選択的ハーベスティングを行う際のセットの基準を指定する。  
-    ５. resumptionToken：リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。
+### ListRecord  
+
+リポジトリからレコードを収集する際に使用するverb。  
+追加で指定可能な引数は次の5つとなる。  
+
+|||
+|---|---|
+| from|UTCdatetimeの任意の引数。日付による選択的ハーベスティングの下限を設定する。|
+| until| UTCdatetimeの任意の引数。日付による選択的ハーベスティングの上限を設定する。  |
+| metadataPrefix | 返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。|  
+| set | Spec値を持つ任意の引数。選択的ハーベスティングを行う際のセットの基準を指定する。  |
+| resumptionToken | リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。|
     
-      - 以下に応答例を示す。
+以下に応答例を示す。
 
-> \<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"\>
-> 
-> \<responseDate\>YYYY-MM-DDThh:mm:ssZ\</responseDate\>
-> 
-> \<request verb="ListRecords" metadataPrefix="○○○○"\>https://\[host\]/oai\</request\>
-> 
-> \<ListRecords\>
-> 
-> \<record\>
-> 
-> \<header\>
-> 
-> \<指定したレコードの情報\>
-> 
-> \</header\>
-> 
-> \</record\>
-> 
-> \</ListRecords\>
-> 
-> \</OAI-PMH\>
+```
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>YYYY-MM-DDThh:mm:ssZ</responseDate> 
+<request verb="ListRecords" metadataPrefix="○○○○">https://[host]/oai</request>
+<ListRecords>
+<record>
+<header>
+指定したレコードの情報
+</header>
+</record> 
+</ListRecords>
+</OAI-PMH\>
+```
 
-  - ListSets  
+#### 処理概要
+
+1. パラメータを基にElasticsearchで絞り込みを実施
+2. 絞り込み結果をもとにPostgreSQLから応答XMLを作成
+
+
+### ListSets  
     リポジトリのセット構成を検索する際に使用するverb。  
     使用可能となる引数は次のものである。  
     resumptionToken：リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。
@@ -278,33 +265,12 @@ https://\[host\]/oai?verb=「値」&「verbのパラメータ」=「値」&「 v
     
       - > noMetadataFormats：指定したアイテムで利用可能なメタデータフォーマットではない場合。
 
-<!-- end list -->
+## 関連モジュール
 
-  - > 関連モジュール
+- Invenio_oaiserver
 
-<!-- end list -->
+## 更新履歴
 
-  - > Invenio\_oaiserver
-
-<!-- end list -->
-
-  - > 更新履歴
-
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+|日付|GitHubコミットID|更新内容|
+|---|---|---|
+|2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
