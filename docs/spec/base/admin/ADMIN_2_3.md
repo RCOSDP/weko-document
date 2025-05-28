@@ -97,7 +97,7 @@
     
       - 「キャンセル」ボタン
         
-          - 「キャンセル」ボタンを押すと、アイテムの全件エクスポートを行なわずわ、確認用ダイアログを閉じる。
+          - 「キャンセル」ボタンを押すと、アイテムの全件エクスポートを行わず、確認用ダイアログを閉じる。
 
   - 「キャンセル」（Cancel）ボタン  
     初期状態は非活性とし、Exportを実行している時に活性とする。  
@@ -106,7 +106,7 @@
     
       - 「実行」ボタン
         
-          - 「実行」ボタンを押すと、アイテムの全件エクスポートを行なわずわ、確認用ダイアログを閉じる。
+          - 「実行」ボタンを押すと、全権エクスポートのキャンセルを実行する。
     
       - 「キャンセル」ボタン
         
@@ -141,6 +141,8 @@
   - 一括出力（一括エクスポート）画面
     
       - 一括出力画面を表示している間、３秒ごとにweko_search_ui.static.js.weko_search_ui.export.checkExportStatusメソッドが呼び出される。このメソッド下でcheck_export_statusメソッドが呼び出され、これによってceleryが起動しているか、エクスポートできるかを確認する。
+
+        - エクスポートが完了済みの場合、キャッシュから一時ディレクトリのパスを取得し、zipファイルを作成する。また一時ディレクトリのttlとしてその時刻からWEKO_SEARCH_UI_EXPORT_FILE_RETENTION_DAYS日を記録する
     
       - celeryが起動していない、uri_statusがfalseの場合は「エクスポート」ボタンを不活性化する。
     
@@ -149,10 +151,16 @@
       - アイテムIDの入力欄に数字を入力すると出力するアイテムIDをweko_search_ui.static.js.weko_search_ui.export.InputItemIdChangeメソッドで制限する。
     
       - 「エクスポート」ボタンを押し、更にポップアップの「Excute」ボタンを押下する。その場合、weko_search_ui.static.js.weko_search_ui.export.handleExportメソッドによってexport_allメソッドが呼び出され、更にexport_all_taskメソッドを呼び出す。これらによってエクスポートするアイテムのメタデータを集め、ダウンロードURLを生成し、表示させる。
-        
-          - エクスポートして、URLが表示されるまでの間に、「キャンセル」ボタンを押し、「execute」ボタンを押す。その場合、weko_search_ui.admin.ItemBulkExport.cancel_exportメソッドが呼び出され、ダウンロードURLの生成、表示をキャンセルする。
+
+        - export_all_taskでWEKO_SEARCH_UI_BULK_EXPORT_LIMIT件ごとでpickleファイルの作成を行いwrite_files_tasksを実行する
+        - write_files_taskでpickleファイルからエクスポート対象のデータを取得し、tsvファイルを作成する
+        - export_all_task, write_files_taskでエラーが発生した場合、その回のエクスポートの一時ディレクトリを削除する
+
+      - エクスポートして、URLが表示されるまでの間に、「キャンセル」ボタンを押し、「execute」ボタンを押す。その場合、weko_search_ui.admin.ItemBulkExport.cancel_exportメソッドが呼び出され、ダウンロードURLの生成、表示をキャンセルする。またその回のエクスポートで作成された一時ディレクトリを削除する
     
       - 画面上に表示されたダウンロードURLを押下する。その場合、weko_search_ui.admin.ItemBulkExport.export_allメソッドにて、 FileInstance.get_by_uriメソッドが呼び出され、ダウンロードファイルを生成し、ダウンロードする。なお、ダウンロードされるファイル形式はzipであり、アイテムのメタデータについてのファイルはtsv形式である。
+
+        - エクスポート結果のzipファイルのttlがWEKO_SEARCH_UI_FILE_DOWNLOAD_TTL_BUFFER秒以下だった場合、ttlの時間をWEKO_SEARCH_UI_FILE_DOWNLOAD_TTL_BUFFER秒延長する
     
       - 一括エクスポートはHide項目も含めて出力する。(メタデータプロパティがHideのものも表示する。)
     
@@ -169,6 +177,15 @@
       - > 一括エクスポート中にエラーが発生した場合は，WEKO_SEARCH_UI_BULK_EXPORT_RETRYに指定された回数リトライする．(v0.9.22)
 
       - WEKO_ADMIN_CACHE_PREFIX : REDISキーフォーマット
+
+各設定値
+|設定値名|説明|デフォルト値|
+|:--:|:--|:--|
+|WEKO_SEARCH_UI_BULK_EXPORT_EXPIRED_TIME|一括エクスポート結果の保存期間（日）|7|
+|WEKO_SEARCH_UI_FILE_DOWNLOAD_TTL_BUFFER|一括エクスポート結果ダウンロードの際のバッファ（秒）|3600|
+|WEKO_SEARCH_UI_BULK_EXPORT_LIMIT|1ファイルあたりの出力件数。500件以上の場合エラーが発生する恐れあり|300|
+|WEKO_SEARCH_UI_BULK_EXPORT_RETRY|一括エクスポート中でエラーが発生した際のリトライ数|5|
+|WEKO_SEARCH_UI_BULK_EXPORT_RETRY_INTERVAL|一括エクスポート中のエラーの際におけるリトライ間のインターバル（秒）|1|
 
 ##
 
