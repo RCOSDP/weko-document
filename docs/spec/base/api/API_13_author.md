@@ -42,8 +42,8 @@
 | --- | --- | --- | --- |--- |
 |1|著者DB著者検索|GET   |/api/{version}/authors|author:search|
 |2|著者DB著者追加|POST  |/api/{version}/authors|author:create|
-|3|著者DB著者編集|PUT   |/api/{version}/authors|author:update|
-|4|著者DB著者削除|DELETE|/api/{version}/authors|author:delete|
+|3|著者DB著者編集|PUT   |/api/{version}/authors/{identifier}|author:update|
+|4|著者DB著者削除|DELETE|/api/{version}/authors/{identifier}|author:delete|
 
 ## 4. スコープと利用可能なロールの関係
 
@@ -517,7 +517,7 @@ POST /api/{version}/authors
     |項目名|型|説明|
     | --- | --- | --- |
     |language|string|著者姓名の記述言語。選択肢は画面と同様|
-    |firstname|string|著者名|
+    |firstName|string|著者名|
     |familyName|string|著者姓|
     |nameFormat|string|著者名と著者姓の組み合わせ方|
     |nameShowFlg|boolean|［著者DBから入力］機能で、氏名が自動入力されるかどうか。|
@@ -568,7 +568,7 @@ POST /api/{version}/authors
     - `authorIdInfo.idType`、`authorNameInfo.language`、`affiliationInfo.identifierInfo.affiliationIdType`、`affiliationInfo.affiliationNameInfo.affiliationNameLang`の値が選択肢に無い値の場合、400エラーを返す。
     - `authorIdInfo.idType`が`WEKO`の場合、`authorId`に半角数字以外の文字が含まれている場合または既に存在する値は場合は400エラーにする。入力された値が既に使用されている場合のエラーメッセージは「`The value is already in use as WEKO ID`」とする。
     - `authorIdInfo`について、`idType`と`authorId`の片方のみが送られた場合は400エラーを返す。
-    - `authorNameInfo`について、`firstname`または`familyName`が指定されたとき、`language`が指定されていなければ400エラーを返す。
+    - `authorNameInfo`について、`firstName`または`familyName`が指定されたとき、`language`が指定されていなければ400エラーを返す。
     - `identifierInfo`について、`affiliationIdType`と`affiliationId`の片方のみが送られた場合は400エラーを返す。
     - `affiliationNameInfo`について、`affiliationName`と`affiliationNameLang`の片方のみが送られた場合は400エラーを返す。
     - `affiliationPeriodInfo`について、以下の場合400エラーを返す。
@@ -605,7 +605,7 @@ POST /api/{version}/authors
 
 **エンドポイント**
 
-PUT /api/{version}/authors
+PUT /api/{version}/authors/{identifier}
 
 **スコープ**
 
@@ -618,6 +618,7 @@ PUT /api/{version}/authors
     | 項目 | 説明 |
     | --- | --- |
     | version | APIのバージョン |
+    | identifier | 更新対象の著者を一意に識別する値。<br>authorsテーブルのIDまたはElasticSearchのUUID のいずれかを指定する。 |
 
 - ヘッダーパラメータ
 
@@ -632,8 +633,6 @@ PUT /api/{version}/authors
     ```json
     {
         "force_change": false,
-        "id": "e2fc714c-6fcb-469c-993e-28a67c6fbcf5",
-        "pk_id": "1",
         "author": {
             "emailInfo": [
                 {
@@ -691,13 +690,9 @@ PUT /api/{version}/authors
 
     **データ構造**
 
-    ※ idとpk_idはどちらか、または両方を指定する。両方を指定した際、著者が一致しなければエラーとする。
-
     |項目名|型|必須|説明|
     | --- | --- | --- | --- |
     |force_change|boolean|✕|著者名の変更をアイテムに反映するかどうか|
-    |id|string|〇※|ElasticSearchのuuid|
-    |pk_id|string|〇※|authorsテーブルのid|
     |author|object|〇|変更情報を格納する。<br>空の辞書はエラーとする。|
 
     **emailInfo**
@@ -722,12 +717,12 @@ PUT /api/{version}/authors
     |項目名|型|必須|デフォルト値|説明|
     | --- | --- | --- | --- | --- |
     |language|string|△※|-|著者姓名の記述言語。選択肢は画面と同様|
-    |firstname|string|△※|-|著者名|
+    |firstName|string|△※|-|著者名|
     |familyName|string|△※|-|著者姓|
     |nameFormat|string|✕|"familyNmAndNm"※|著者名と著者姓の組み合わせ方|
     |nameShowFlg|boolean|✕|true|［著者DBから入力］機能で、氏名が自動入力されるかどうか。|
 
-    ※ firstnameまたはfamilyNameが指定されたときはlanguageは必須とする
+    ※ firstNameまたはfamilyNameが指定されたときはlanguageは必須とする
     ※ language、firstname、familyNameが送られてきた場合でnameFormatが指定されていない場合のみデフォルト値を適用する
 
     **identifierInfo**
@@ -855,7 +850,7 @@ PUT /api/{version}/authors
     |項目名|型|説明|
     | --- | --- | --- |
     |language|string|著者姓名の記述言語。選択肢は画面と同様|
-    |firstname|string|著者名|
+    |firstName|string|著者名|
     |familyName|string|著者姓|
     |nameFormat|string|著者名と著者姓の組み合わせ方|
     |nameShowFlg|boolean|［著者DBから入力］機能で、氏名が自動入力されるかどうか。|
@@ -898,22 +893,21 @@ PUT /api/{version}/authors
     - スコープに設定されている権限が満たせていなければ403エラーを返す。
 
 4. リクエストを確認する
+    - `identifier`が整数値でもUUIDでもない場合は400エラーにする。
     - 必須の項目が送られていない場合は400エラーにする。
-    - idとpk_idの両方が指定されていない場合は400エラーとする。
     - authorが空だった場合は、400エラーとなりエラーメッセージ「author can not be null.」が返却される。
     - 送られてきた値の型が定義と異なる場合は400エラーを返す。
     - `authorIdInfo.idtype`が`WEKO`の項目が存在しない場合は400エラーを返す。
 
 5. 指定された著者を確認する
-    - idとpk_idでそれぞれ著者情報を検索する。
+    - `identifier`で著者情報を検索する。
     - 指定された著者情報が存在しない場合は404エラーを返す。
-    - 両方が指定された際、著者が一致しなければ400エラーを返す。エラーメッセージは「`Parameters 'id' and 'pk_id' refer to different users.`」とする。
 
 6. 著者情報を確認する
     - `authorIdInfo.idType`、`authorNameInfo.language`、`affiliationInfo.identifierInfo.affiliationIdType`、`affiliationInfo.affiliationNameInfo.affiliationNameLang`の値が選択肢に無い値の場合、400エラーを返す。
     - `authorIdInfo.idType`が`WEKO`の場合、`authorId`に半角数字以外の文字が含まれている場合または既に存在する値は場合は400エラーにする。入力された値が既に使用されている場合のエラーメッセージは「`The value is already in use as WEKO ID`」とする。
     - `authorIdInfo`について、`idType`と`authorId`の片方のみが送られた場合は400エラーを返す。
-    - `authorNameInfo`について、`firstname`または`familyName`が指定されたとき、`language`が指定されていなければ400エラーを返す。
+    - `authorNameInfo`について、`firstName`または`familyName`が指定されたとき、`language`が指定されていなければ400エラーを返す。
     - `identifierInfo`について、`affiliationIdType`と`affiliationId`の片方のみが送られた場合は400エラーを返す。
     - `affiliationNameInfo`について、`affiliationName`と`affiliationNameLang`の片方のみが送られた場合は400エラーを返す。
     - `affiliationPeriodInfo`について、以下の場合400エラーを返す。
@@ -953,7 +947,7 @@ PUT /api/{version}/authors
 
 **エンドポイント**
 
-DELETE /api/{version}/authors
+DELETE /api/{version}/authors/{identifier}
 
 **スコープ**
 
@@ -967,32 +961,13 @@ DELETE /api/{version}/authors
     | 項目 | 説明 |
     | --- | --- |
     | version | APIのバージョン |
+    | identifier | 削除対象の著者を一意に識別する値。<br>authorsテーブルのIDまたはElasticSearchのUUID のいずれかを指定する。 |
 
 - ヘッダーパラメータ
 
     | 項目 | 値 | 必須 | 説明 |
     | --- | --- | --- | --- |
     | Authorization | Bearer <access_token> | 〇 |操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。|
-
-- リクエストボディ
-
-    **サンプル**
-
-    ```json
-    {
-        "id": "e2fc714c-6fcb-469c-993e-28a67c6fbcf5",
-        "pk_id": "1"
-    }
-    ```
-
-    **データ構造**
-
-    ※ idとpk_idはどちらか、または両方を指定する。両方を指定した際、著者が一致しなければエラーとする。
-
-    |項目名|型|必須|説明|
-    | --- | --- | --- | --- |
-    |id|string|〇※|ElasticSearchのuuid|
-    |pk_id|string|〇※|authorsテーブルのid|
 
 
 #### レスポンス<!-- omit in toc -->
@@ -1021,14 +996,11 @@ DELETE /api/{version}/authors
     - スコープに設定されている権限が満たせていなければ403エラーを返す。
 
 4. リクエストの確認
-    - 必須の項目が送られていない場合は400エラーにする。
-    - idとpk_idの両方が指定されていない場合は400エラーとする。
-    - authorが空だった場合は、400エラーとなりエラーメッセージ「`author can not be null.`」が返却される。
+    - `identifier`が整数値でもUUIDでもない場合は400エラーにする。
 
 5. パラメータの確認
-    - idとpk_idでそれぞれ著者情報を検索する。
+    - `identifier`で著者情報を検索する。
     - 指定された著者情報が存在しない場合は404エラーを返す。
-    - 両方が指定された際、著者が一致しなければ400エラーを返す。エラーメッセージは「`Parameters 'id' and 'pk_id' refer to different users.`」とする。
 
 6. 著者を削除する
     - DBとElasticsearchの著者情報の`is_deleted`をTrueに書き変える。
@@ -1040,3 +1012,4 @@ DELETE /api/{version}/authors
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 |2025/2/17||初版作成|
+|2025/5/30||REST対応|

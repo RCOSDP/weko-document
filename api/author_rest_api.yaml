@@ -121,6 +121,10 @@ paths:
       responses:
         '200':
           description: 正常終了
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorCreateResponse'
         '400':
           description: リクエストに不備がある
           content:
@@ -146,6 +150,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorBody"
 
+  /api/{version}/authors/{identifier}:
     put:
       tags:
         - author
@@ -167,6 +172,12 @@ paths:
           schema:
             type: string
           description: APIのバージョン
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 著者の識別子（ElasticSearchのuuidまたはauthorsテーブルのid）
       requestBody:
         required: true
         content:
@@ -176,6 +187,10 @@ paths:
       responses:
         '200':
           description: 正常終了
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorUpdateResponse'
         '400':
           description: リクエストに不備がある
           content:
@@ -228,12 +243,12 @@ paths:
           schema:
             type: string
           description: APIのバージョン
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AuthorDeleteRequest'
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 著者の識別子（ElasticSearchのuuidまたはauthorsテーブルのid）
       responses:
         '200':
           description: 正常終了
@@ -297,12 +312,6 @@ components:
         force_change:
           type: boolean
           description: 著者名の変更をアイテムに反映するかどうか
-        id:
-          type: string
-          description: ElasticSearchのuuid
-        pk_id:
-          type: string
-          description: authorsテーブルのid
         author:
           $ref: '#/components/schemas/Author'
     AuthorCreateResponse:
@@ -325,15 +334,6 @@ components:
         message:
           type: string
           description: Author successfully updated.
-    AuthorDeleteRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          description: ElasticSearchのuuid
-        pk_id:
-          type: string
-          description: authorsテーブルのid
     Author:
       type: object
       properties:
