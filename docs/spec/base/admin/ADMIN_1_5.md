@@ -43,7 +43,7 @@
 
 ### マッピング定義の構成
 
-<img src="../media/media/image16.png" width="75%">
+<img src="../media/media/image19.png" width="75%">
 
 アイテムタイプのプロパティごとのマッピング定義をJSON形式で記述する。  
 キーはアイテムタイプの各プロパティのパスとし、対応する値はJSON-LDのメタデータのパスとする。  
