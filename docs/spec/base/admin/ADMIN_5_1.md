@@ -16,34 +16,9 @@
 
   - > 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+|ロール|システム<br>管理者|リポジトリ<br>管理者|サブリポジトリ<br>管理者|登録ユーザー|一般ユーザー|ゲスト<br>(未ログイン)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|利用可否|○|○|○| | | |
 
   - > 機能内容
 
@@ -440,7 +415,7 @@
 
   - > **【Administration\>著者DB管理（Author Management）\>編集（edit）】で開かれる編集画面は、初期状態としてweko\_authors.views.getが呼び出され、db内のauthorsテーブルからgather\_flgが0でかつis\_deleteにチェックがついていないものが取り出されて表示されている。**
 
-  - > **著者追加ボタンを押すと著者追加画面へ遷移し、任意の項目を入力後に\[保存（Save）\]ボタン押下で、weko\_authors.views.createが呼び出され、db内のauthorテーブルに情報が追加される。このとき、同メソッド内でidは自動作番され、gather\_flgは０,is\_deleteはFalseの状態で追加される。**
+  - > **著者追加ボタンを押すと著者追加画面へ遷移し、任意の項目を入力後に\[保存（Save）\]ボタン押下で、weko\_authors.views.createが呼び出され、db内のauthorテーブルに情報が追加される。このとき、同メソッド内でidは自動作番され、gather\_flgは０、is\_deleteはFalseの状態で追加される。**
 
   - > **著者追加時は、各々の項目に対して入力テキストボックスを追加することができる。  
     > それぞれのテキストボックスには以下のような初期値が、あらかじめ入力されている。**
@@ -469,28 +444,8 @@
 
   - > 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>2024/07/1</p>
-</blockquote></td>
-<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
-<td>v1.0.7対応</td>
-</tr>
-</tbody>
-</table>
+|日付|GitHubコミットID|更新内容|
+|:---:|:---:|:---:|
+|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|> 2024/07/01|7733de131da9ad59ab591b2df1c70ddefcfcad98|v1.0.7対応|
+|> 2025/01/23|-|サブリポジトリ対応|

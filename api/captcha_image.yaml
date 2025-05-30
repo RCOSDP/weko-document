@@ -1,0 +1,177 @@
+openapi: 3.0.3
+info:
+  title: CAPTCHA画像用WEB API
+  version: "1.0"
+tags:
+  - name: captcha
+    description: CAPTCHA
+paths:
+  /api/{version}/captcha/image:
+    get:
+      tags:
+        - captcha
+      summary: CAPTCHA画像取得API
+      description: |-
+        CAPTCHA画像を生成し、取得するAPI
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+        ---
+        #### サンプルコード
+          curl <WEKO3のURL>/api/v1/captcha/image
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: CAPTCHA画像取得成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessGetBody"
+        "429":
+          description: |-
+            リクエスト制限
+            - リミットレートを超えてアクセスされた
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+  /api/{version}/captcha/validate:
+    post:
+      tags:
+        - captcha
+      summary: CAPTCHA結果検証API
+      description: |-
+        CAPTCHAの計算結果を検証するAPI
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+        ---
+        #### サンプルコード
+          curl -X POST -H "Content-Type: application/json" <WEKO3のURL>/api/v1/captcha/validate \  
+          -d '{ "key": "aaa", "calculation_result": 20 }'
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  description: CAPTCHA画像に紐づくkey値
+                  type: string
+                  example: "aaa"
+                calculation_result:
+                  description: CAPTCHA画像の計算結果
+                  type: integer
+                  example: 20
+              required:
+                - "key"
+                - "calculation_result"
+      responses:
+        "200":
+          description: CAPTCHA検証成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessCaptchaPostBody"
+        "400":
+          description: |-
+            リクエスト形式不正
+            - リクエストボディに必須項目がない
+            - 該当項目が空文字
+            - CAPTCHA検証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessCaptchaPostBody"
+        "429":
+          description: |-
+            リクエスト制限
+            - リミットレートを超えてアクセスされた
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+
+components:
+  schemas:
+    SuccessGetBody:
+      type: object
+      properties:
+        key:
+          description: CAPTCHA画像に紐づくkey値
+          type: string
+          example: "aaa"
+        image:
+          description: Base64でエンコードされたCAPTCHA画像
+          type: string
+          example: "VGhpcyBpcyBiYXNlNjQgZW5jb2RlZCBkYXRhLiA="
+        ttl:
+          description: CAPTCHA画像のTTL値(秒)
+          type: number
+          example: 600
+    SuccessCaptchaPostBody:
+      type: object
+      properties:
+        authorization_token:
+          description: 検証成功時に生成されたトークン
+          type: string
+          example: "68680b0b249e005b2d422393a17a9a3373ab6320d0d1af4d443336c0854602d8"
+    ErrorBody:
+      type: object
+      properties:
+        status:
+          description: HTTPステータスコード
+          type: string
+        message:
+          description: エラーメッセージ
+          type: string
