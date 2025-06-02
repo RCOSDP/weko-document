@@ -1,0 +1,3328 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>ADMIN-4-1: ウェブデザイン管理：ウィジェット 167 · 機能仕様書</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 5.1.4">
+        <meta name="author" content="Research Center for Open Science and Data Platform, National Institute of Informatics">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ADMIN_4_2.html" />
+    
+    
+    <link rel="prev" href="ADMIN_3_3.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../user/">
+            
+                <a href="../user/">
+            
+                    
+                    ユーザ機能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../user/USER_1_1.html">
+            
+                <a href="../user/USER_1_1.html">
+            
+                    
+                    USER-1-1: 簡易検索（全文検索・キーワード検索） 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../user/USER_1_2.html">
+            
+                <a href="../user/USER_1_2.html">
+            
+                    
+                    USER-1-2: 詳細検索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../user/USER_1_3.html">
+            
+                <a href="../user/USER_1_3.html">
+            
+                    
+                    USER-1-3: インデックス検索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../user/USER_1_4.html">
+            
+                <a href="../user/USER_1_4.html">
+            
+                    
+                    USER-1-4: ファセット検索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../user/USER_1_5.html">
+            
+                <a href="../user/USER_1_5.html">
+            
+                    
+                    USER-1-5: RSS 19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../user/USER_2_1.html">
+            
+                <a href="../user/USER_2_1.html">
+            
+                    
+                    USER-2-1: アイテムリスト：一覧形式表示 23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../user/USER_2_2.html">
+            
+                <a href="../user/USER_2_2.html">
+            
+                    
+                    USER-2-2: アイテムリスト：目次形式表示 28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../user/USER_2_3.html">
+            
+                <a href="../user/USER_2_3.html">
+            
+                    
+                    USER-2-3: アイテムリスト：雑誌情報 32
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../user/USER_2_4.html">
+            
+                <a href="../user/USER_2_4.html">
+            
+                    
+                    USER-2-4: アイテムリスト：アイテム一括出力 38
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../user/USER_3_1.html">
+            
+                <a href="../user/USER_3_1.html">
+            
+                    
+                    USER-3-1: アイテム詳細：メタデータ表示 44
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../user/USER_3_2.html">
+            
+                <a href="../user/USER_3_2.html">
+            
+                    
+                    USER-3-2: アイテム詳細：コンテンツファイル管理 51
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../user/USER_3_3.html">
+            
+                <a href="../user/USER_3_3.html">
+            
+                    
+                    USER-3-3: アイテム詳細：アイテムバージョン管理 63
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../user/USER_3_4.html">
+            
+                <a href="../user/USER_3_4.html">
+            
+                    
+                    USER-3-4: アイテム詳細：引用情報表示 66
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="../user/USER_3_5.html">
+            
+                <a href="../user/USER_3_5.html">
+            
+                    
+                    USER-3-5: アイテム詳細：統計情報表示 69
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="../user/USER_3_6.html">
+            
+                <a href="../user/USER_3_6.html">
+            
+                    
+                    USER-3-6: アイテム詳細：共有 72
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="../user/USER_3_7.html">
+            
+                <a href="../user/USER_3_7.html">
+            
+                    
+                    USER-3-7: アイテム詳細：エクスポート 73
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="../user/USER_3_8.html">
+            
+                <a href="../user/USER_3_8.html">
+            
+                    
+                    USER-3-8: アイテム詳細：Google Scholar メタデータ出力 81
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="../user/USER_3_9.html">
+            
+                <a href="../user/USER_3_9.html">
+            
+                    
+                    USER-3-9: アイテム詳細：Google Dataset メタデータ出力 83
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="../user/USER_4_1.html">
+            
+                <a href="../user/USER_4_1.html">
+            
+                    
+                    USER-4-1: ワークフロー：アクティビティ一覧表示 85
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="../user/USER_4_2.html">
+            
+                <a href="../user/USER_4_2.html">
+            
+                    
+                    USER-4-2: ワークフロー：ワークフロー一覧表示 95
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="../user/USER_4_3.html">
+            
+                <a href="../user/USER_4_3.html">
+            
+                    
+                    USER-4-3: ワークフロー：ワークフロー 4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="../user/USER_4_4.html">
+            
+                <a href="../user/USER_4_4.html">
+            
+                    
+                    USER-4-4: ワークフロー：Item Registration 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.23" data-path="../user/USER_4_5.html">
+            
+                <a href="../user/USER_4_5.html">
+            
+                    
+                    USER-4-5: ワークフロー：Item Registration：ファイルアップロード 8
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.24" data-path="../user/USER_4_6.html">
+            
+                <a href="../user/USER_4_6.html">
+            
+                    
+                    USER-4-6: ワークフロー：Item Registration：メタデータ入力 23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="../user/USER_4_7.html">
+            
+                <a href="../user/USER_4_7.html">
+            
+                    
+                    USER-4-7: ワークフロー：Item Registration：代理投稿 28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="../user/USER_4_8.html">
+            
+                <a href="../user/USER_4_8.html">
+            
+                    
+                    USER-4-8: ワークフロー：Item Registration：フィードバックメール機能 30
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.27" data-path="../user/USER_4_9.html">
+            
+                <a href="../user/USER_4_9.html">
+            
+                    
+                    USER-4-9: ワークフロー：Item Registration：インデックス指定 34
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.28" data-path="../user/USER_4_10.html">
+            
+                <a href="../user/USER_4_10.html">
+            
+                    
+                    USER-4-10: ワークフロー：Identifier Grant 36
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.29" data-path="../user/USER_4_11.html">
+            
+                <a href="../user/USER_4_11.html">
+            
+                    
+                    USER-4-11: ワークフロー：Item Link 45
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.30" data-path="../user/USER_4_12.html">
+            
+                <a href="../user/USER_4_12.html">
+            
+                    
+                    USER-4-12: ワークフロー：OA Policy Confirmation（現在非対応） 49
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.31" data-path="../user/USER_4_13.html">
+            
+                <a href="../user/USER_4_13.html">
+            
+                    
+                    USER-4-13: ワークフロー：Approval 51
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.32" data-path="../user/USER_5_1.html">
+            
+                <a href="../user/USER_5_1.html">
+            
+                    
+                    USER-5-1: コミュニティ：コミュニティ 53
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.33" data-path="../user/USER_6_1.html">
+            
+                <a href="../user/USER_6_1.html">
+            
+                    
+                    USER-6-1: ランキング：ランキング 55
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.34" data-path="../user/USER_7_1.html">
+            
+                <a href="../user/USER_7_1.html">
+            
+                    
+                    USER-7-1: 大容量ファイルアップロード：ファイルアップロード 61
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.35" data-path="../user/USER_7_2.html">
+            
+                <a href="../user/USER_7_2.html">
+            
+                    
+                    USER-7-2: 言語切替：言語切替 62
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.36" data-path="../user/USER_8_1.html">
+            
+                <a href="../user/USER_8_1.html">
+            
+                    
+                    USER-8-1: ユーザーアカウント：サインアップ 63
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.37" data-path="../user/USER_8_2.html">
+            
+                <a href="../user/USER_8_2.html">
+            
+                    
+                    USER-8-2: ユーザーアカウント：ログイン 65
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.38" data-path="../user/USER_8_3.html">
+            
+                <a href="../user/USER_8_3.html">
+            
+                    
+                    USER-8-3: ユーザーアカウント：パスワードリセット 67
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.39" data-path="../user/USER_8_4.html">
+            
+                <a href="../user/USER_8_4.html">
+            
+                    
+                    USER-8-4: ユーザーアカウント：ユーザープロファイル設定 69
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.40" data-path="../user/USER_8_5.html">
+            
+                <a href="../user/USER_8_5.html">
+            
+                    
+                    USER-8-5: ユーザーアカウント：API設定 71
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.41" data-path="../user/USER_9_1.html">
+            
+                <a href="../user/USER_9_1.html">
+            
+                    
+                    USER-9-1: Cookie：Cookie使用確認画面表示 75
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    管理機能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="ADMIN_1_1.html">
+            
+                <a href="ADMIN_1_1.html">
+            
+                    
+                    ADMIN-1-1: アイテムタイプ管理：メタデータ 76
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="ADMIN_1_2.html">
+            
+                <a href="ADMIN_1_2.html">
+            
+                    
+                    ADMIN-1-2: アイテムタイプ管理：マッピング 84
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="ADMIN_1_3.html">
+            
+                <a href="ADMIN_1_3.html">
+            
+                    
+                    ADMIN-1-3: アイテムタイプ管理：OAIスキーマ 88
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="ADMIN_1_4.html">
+            
+                <a href="ADMIN_1_4.html">
+            
+                    
+                    ADMIN-1-4: アイテムタイプ管理：プロパティ 90
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="ADMIN_2_1.html">
+            
+                <a href="ADMIN_2_1.html">
+            
+                    
+                    ADMIN-2-1: アイテム管理：一括更新 104
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="ADMIN_2_2.html">
+            
+                <a href="ADMIN_2_2.html">
+            
+                    
+                    ADMIN-2-2: アイテム管理：一括削除 108
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="ADMIN_2_3.html">
+            
+                <a href="ADMIN_2_3.html">
+            
+                    
+                    ADMIN-2-3: アイテム管理：一括エクスポート 110
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="ADMIN_2_4.html">
+            
+                <a href="ADMIN_2_4.html">
+            
+                    
+                    ADMIN-2-4: アイテム管理：インポート 113
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="ADMIN_3_1.html">
+            
+                <a href="ADMIN_3_1.html">
+            
+                    
+                    ADMIN-3-1: インデックスツリー管理：ツリー編集 155
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="ADMIN_3_2.html">
+            
+                <a href="ADMIN_3_2.html">
+            
+                    
+                    ADMIN-3-2: インデックスツリー管理：雑誌情報 162
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="ADMIN_3_3.html">
+            
+                <a href="ADMIN_3_3.html">
+            
+                    
+                    ADMIN-3-3: インデックスツリー管理：カスタムソート 165
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.12" data-path="ADMIN_4_1.html">
+            
+                <a href="ADMIN_4_1.html">
+            
+                    
+                    ADMIN-4-1: ウェブデザイン管理：ウィジェット 167
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="ADMIN_4_2.html">
+            
+                <a href="ADMIN_4_2.html">
+            
+                    
+                    ADMIN-4-2: ウェブデザイン管理：ページレイアウト 180
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="ADMIN_5_1.html">
+            
+                <a href="ADMIN_5_1.html">
+            
+                    
+                    ADMIN-5-1: 著者DB管理：編集 185
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="ADMIN_5_1_3.html">
+            
+                <a href="ADMIN_5_1_3.html">
+            
+                    
+                    著者DB管理：Affiliation ID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="ADMIN_5_2.html">
+            
+                <a href="ADMIN_5_2.html">
+            
+                    
+                    ADMIN-5-2: 著者DB管理：一括出力 198
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="ADMIN_5_3.html">
+            
+                <a href="ADMIN_5_3.html">
+            
+                    
+                    ADMIN-5-3: 著者DB管理：一括登録 204
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="ADMIN_5_4.html">
+            
+                <a href="ADMIN_5_4.html">
+            
+                    
+                    ADMIN-5-4: 著者DB管理：外部著者ID Prefix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="ADMIN_6_1.html">
+            
+                <a href="ADMIN_6_1.html">
+            
+                    
+                    ADMIN-6-1: 統計：運用レポート 217
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="ADMIN_6_2.html">
+            
+                <a href="ADMIN_6_2.html">
+            
+                    
+                    ADMIN-6-2: 統計：フィードバックメール 233
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="ADMIN_6_3.html">
+            
+                <a href="ADMIN_6_3.html">
+            
+                    
+                    ADMIN-6-3: 統計：サイトライセンス 238
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="ADMIN_7_1.html">
+            
+                <a href="ADMIN_7_1.html">
+            
+                    
+                    ADMIN-7-1: ワークフロー管理：フロー 242
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.23" data-path="ADMIN_7_2.html">
+            
+                <a href="ADMIN_7_2.html">
+            
+                    
+                    ADMIN-7-2: ワークフロー管理：ワークフロー 253
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.24" data-path="ADMIN_8_1.html">
+            
+                <a href="ADMIN_8_1.html">
+            
+                    
+                    ADMIN-8-1: コミュニティ管理：コミュニティ 256
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.25" data-path="ADMIN_8_2.html">
+            
+                <a href="ADMIN_8_2.html">
+            
+                    
+                    ADMIN-8-2:  コミュニティ管理：注目のコミュニティ 261
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.26" data-path="ADMIN_8_3.html">
+            
+                <a href="ADMIN_8_3.html">
+            
+                    
+                    ADMIN-8-3:  コミュニティ管理：参加リクエスト 264
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.27" data-path="ADMIN_9_1.html">
+            
+                <a href="ADMIN_9_1.html">
+            
+                    
+                    ADMIN-9-1: OAI-PMH：ハーベスト 265
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.28" data-path="ADMIN_9_2.html">
+            
+                <a href="ADMIN_9_2.html">
+            
+                    
+                    ADMIN-9-2: OAI-PMH：Identify 273
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.29" data-path="ADMIN_9_3.html">
+            
+                <a href="ADMIN_9_3.html">
+            
+                    
+                    ADMIN-9-3: OAI-PMH：Sets 275
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.30" data-path="ADMIN_10_1.html">
+            
+                <a href="ADMIN_10_1.html">
+            
+                    
+                    ADMIN-10-1: Resource Sync：Resource List 277
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.31" data-path="ADMIN_10_2.html">
+            
+                <a href="ADMIN_10_2.html">
+            
+                    
+                    ADMIN-10-2: Resource Sync：Change List 283
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.32" data-path="ADMIN_10_3.html">
+            
+                <a href="ADMIN_10_3.html">
+            
+                    
+                    ADMIN-10-3: Resource Sync：Resync 291
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.33" data-path="ADMIN_11_1.html">
+            
+                <a href="ADMIN_11_1.html">
+            
+                    
+                    ADMIN-11-1: レコード管理：永続識別子 296
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.34" data-path="ADMIN_11_2.html">
+            
+                <a href="ADMIN_11_2.html">
+            
+                    
+                    ADMIN-11-2: レコード管理：レコードメタデータ 299
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.35" data-path="ADMIN_12_1.html">
+            
+                <a href="ADMIN_12_1.html">
+            
+                    
+                    ADMIN-12-1: ファイル管理：バケット 302
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.36" data-path="ADMIN_12_2.html">
+            
+                <a href="ADMIN_12_2.html">
+            
+                    
+                    ADMIN-12-2: ファイル管理：ファイルインスタンス 306
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.37" data-path="ADMIN_12_3.html">
+            
+                <a href="ADMIN_12_3.html">
+            
+                    
+                    ADMIN-12-3: ファイル管理：ロケーション 311
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.38" data-path="ADMIN_12_4.html">
+            
+                <a href="ADMIN_12_4.html">
+            
+                    
+                    ADMIN-12-4: ファイル管理：マルチパートオブジェクト 317
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.39" data-path="ADMIN_12_5.html">
+            
+                <a href="ADMIN_12_5.html">
+            
+                    
+                    ADMIN-12-5: ファイル管理：オブジェクトバージョン 320
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.40" data-path="ADMIN_13_1.html">
+            
+                <a href="ADMIN_13_1.html">
+            
+                    
+                    ADMIN-13-1: ユーザ管理：アクセス_ロール 324
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.41" data-path="ADMIN_13_2.html">
+            
+                <a href="ADMIN_13_2.html">
+            
+                    
+                    ADMIN-13-2: ユーザ管理：アクセス_システムロール 328
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.42" data-path="ADMIN_13_3.html">
+            
+                <a href="ADMIN_13_3.html">
+            
+                    
+                    ADMIN-13-3: ユーザ管理：アクセス_ユーザー 329
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.43" data-path="ADMIN_13_4.html">
+            
+                <a href="ADMIN_13_4.html">
+            
+                    
+                    ADMIN-13-4: ユーザ管理：連結アカウント識別子 330
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.44" data-path="ADMIN_13_5.html">
+            
+                <a href="ADMIN_13_5.html">
+            
+                    
+                    ADMIN-13-5: ユーザ管理：連結アカウントトークン 331
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.45" data-path="ADMIN_13_6.html">
+            
+                <a href="ADMIN_13_6.html">
+            
+                    
+                    ADMIN-13-6: ユーザ管理：連結アカウント 332
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.46" data-path="ADMIN_13_7.html">
+            
+                <a href="ADMIN_13_7.html">
+            
+                    
+                    ADMIN-13-7: ユーザ管理：OAuthアプリケーショントークン 333
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.47" data-path="ADMIN_13_8.html">
+            
+                <a href="ADMIN_13_8.html">
+            
+                    
+                    ADMIN-13-8: ユーザ管理：OAuthアプリケーション 336
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.48" data-path="ADMIN_13_9.html">
+            
+                <a href="ADMIN_13_9.html">
+            
+                    
+                    ADMIN-13-9: ユーザ管理：ロール 339
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.49" data-path="ADMIN_13_10.html">
+            
+                <a href="ADMIN_13_10.html">
+            
+                    
+                    ADMIN-13-10: ユーザ管理：セッションアクティビティ 343
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.50" data-path="ADMIN_13_11.html">
+            
+                <a href="ADMIN_13_11.html">
+            
+                    
+                    ADMIN-13-11: ユーザ管理：ユーザー 345
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.51" data-path="ADMIN_13_12.html">
+            
+                <a href="ADMIN_13_12.html">
+            
+                    
+                    ADMIN-13-12: ユーザ管理：ユーザープロファイル 350
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.52" data-path="ADMIN_14_1.html">
+            
+                <a href="ADMIN_14_1.html">
+            
+                    
+                    ADMIN-14-1: 設定：アイテム表示 354
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.53" data-path="ADMIN_14_2.html">
+            
+                <a href="ADMIN_14_2.html">
+            
+                    
+                    ADMIN-14-2: 設定：インデックスリンク表示 356
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.54" data-path="ADMIN_14_3.html">
+            
+                <a href="ADMIN_14_3.html">
+            
+                    
+                    ADMIN-14-3: 設定：言語表示 357
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.55" data-path="ADMIN_14_4.html">
+            
+                <a href="ADMIN_14_4.html">
+            
+                    
+                    ADMIN-14-4: 設定：PDFカバーページ表示 361
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.56" data-path="ADMIN_14_5.html">
+            
+                <a href="ADMIN_14_5.html">
+            
+                    
+                    ADMIN-14-5: 設定：ランキング表示 364
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.57" data-path="ADMIN_14_6.html">
+            
+                <a href="ADMIN_14_6.html">
+            
+                    
+                    ADMIN-14-6: 設定：統計情報表示 367
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.58" data-path="ADMIN_14_7.html">
+            
+                <a href="ADMIN_14_7.html">
+            
+                    
+                    ADMIN-14-7: 設定：画面背景色 369
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.59" data-path="ADMIN_14_8.html">
+            
+                <a href="ADMIN_14_8.html">
+            
+                    
+                    ADMIN-14-8: 設定：識別子 370
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.60" data-path="ADMIN_14_9.html">
+            
+                <a href="ADMIN_14_9.html">
+            
+                    
+                    ADMIN-14-9: 設定：アイテム一括出力 374
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.61" data-path="ADMIN_14_10.html">
+            
+                <a href="ADMIN_14_10.html">
+            
+                    
+                    ADMIN-14-10: 設定：ログ解析 375
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.62" data-path="ADMIN_14_11.html">
+            
+                <a href="ADMIN_14_11.html">
+            
+                    
+                    ADMIN-14-11: 設定：検索設定 380
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.63" data-path="ADMIN_14_12.html">
+            
+                <a href="ADMIN_14_12.html">
+            
+                    
+                    ADMIN-14-12: 設定：ファセット検索 385
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.64" data-path="ADMIN_14_13.html">
+            
+                <a href="ADMIN_14_13.html">
+            
+                    
+                    ADMIN-14-13: 設定：サイト情報 395
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.65" data-path="ADMIN_14_14.html">
+            
+                <a href="ADMIN_14_14.html">
+            
+                    
+                    ADMIN-14-14: 設定：サイトライセンス 398
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.66" data-path="ADMIN_14_15.html">
+            
+                <a href="ADMIN_14_15.html">
+            
+                    
+                    ADMIN-14-15: 設定：サイトマップ 399
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.67" data-path="ADMIN_14_16.html">
+            
+                <a href="ADMIN_14_16.html">
+            
+                    
+                    ADMIN-14-16: 設定：メール送信 404
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.68" data-path="ADMIN_14_17.html">
+            
+                <a href="ADMIN_14_17.html">
+            
+                    
+                    ADMIN-14-17: 設定：WebAPIアカウント 406
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.69" data-path="ADMIN_14_18.html">
+            
+                <a href="ADMIN_14_18.html">
+            
+                    
+                    ADMIN-14-18: 設定：ファイルプレビュー 408
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.70" data-path="ADMIN_14_19.html">
+            
+                <a href="ADMIN_14_19.html">
+            
+                    
+                    ADMIN-14-19: 設定：Shibboleth 410
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.71" data-path="ADMIN_14_20.html">
+            
+                <a href="ADMIN_14_20.html">
+            
+                    
+                    ADMIN-14-20: 設定：制限公開 412
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.72" data-path="ADMIN_14_21.html">
+            
+                <a href="ADMIN_14_21.html">
+            
+                    
+                    ADMIN-14-21: 設定：その他 422
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.73" data-path="ADMIN_15_1.html">
+            
+                <a href="ADMIN_15_1.html">
+            
+                    
+                    ADMIN-15-1: メンテナンス：Elasticsearchインデックス 423
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../api/">
+            
+                <a href="../api/">
+            
+                    
+                    WEB API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../api/API_01_Oauth2.html">
+            
+                <a href="../api/API_01_Oauth2.html">
+            
+                    
+                    API-1: WebAPI：OAuth2 425
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../api/API_02_OAIPMH.html">
+            
+                <a href="../api/API_02_OAIPMH.html">
+            
+                    
+                    API-2: WebAPI：OAI-PMH 429
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../api/API_03_OpenSearch.html">
+            
+                <a href="../api/API_03_OpenSearch.html">
+            
+                    
+                    API-3: WebAPI：OpenSearch 436
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../api/API_04_workflow.html">
+            
+                <a href="../api/API_04_workflow.html">
+            
+                    
+                    API-4: WebAPI：Workflow API 5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../api/API_05_index_op.html">
+            
+                <a href="../api/API_05_index_op.html">
+            
+                    
+                    API-5: WebAPI：Index操作API 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../api/API_06_sword_api.html">
+            
+                <a href="../api/API_06_sword_api.html">
+            
+                    
+                    API-6: WebAPI：SWORD API 9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../api/API_07_item_search.html">
+            
+                <a href="../api/API_07_item_search.html">
+            
+                    
+                    API-7: WebAPI：アイテム検索用API 20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../api/API_08_index_search.html">
+            
+                <a href="../api/API_08_index_search.html">
+            
+                    
+                    API-8: WebAPI：インデックス検索用API 43
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../api/API_09_render.html">
+            
+                <a href="../api/API_09_render.html">
+            
+                    
+                    API-9: WebAPI：Render 81
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../api/API_10_JSON_Schema.html">
+            
+                <a href="../api/API_10_JSON_Schema.html">
+            
+                    
+                    API-10: WebAPI：JSON Schema 165
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../api/API_11_JSON_Form.html">
+            
+                <a href="../api/API_11_JSON_Form.html">
+            
+                    
+                    API-11: WebAPI：JSON Form 187
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../other/">
+            
+                <a href="../other/">
+            
+                    
+                    その他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../other/SCHEMA_1_1.html">
+            
+                <a href="../other/SCHEMA_1_1.html">
+            
+                    
+                    SCHEMA-1-1: データ構造：Render 328
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../other/SCHEMA_1_2.html">
+            
+                <a href="../other/SCHEMA_1_2.html">
+            
+                    
+                    SCHEMA-1-2: データ構造：Schema 329
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../other/MODULE_01.html">
+            
+                <a href="../other/MODULE_01.html">
+            
+                    
+                    2 その他：モジュール、ライブラリ 330
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../other/CONFIG_01.html">
+            
+                <a href="../other/CONFIG_01.html">
+            
+                    
+                    3 その他：コンフィグ 331
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../other/DB_01.html">
+            
+                <a href="../other/DB_01.html">
+            
+                    
+                    4 その他：DB 336
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../other/OTHER_elasticsearch.html">
+            
+                <a href="../other/OTHER_elasticsearch.html">
+            
+                    
+                    5 その他：elasticsearch 337
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../other/CELERY_01.html">
+            
+                <a href="../other/CELERY_01.html">
+            
+                    
+                    6 その他：celery タスク 342
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../other/LOG.html">
+            
+                <a href="../other/LOG.html">
+            
+                    
+                    7 その他：ログ 345
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../other/USAGE_LOG.html">
+            
+                <a href="../other/USAGE_LOG.html">
+            
+                    
+                    その他：利用統計ログ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../other/SESSION_01.html">
+            
+                <a href="../other/SESSION_01.html">
+            
+                    
+                    8 その他：セッション管理 357
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../api/API_ENDPOINT_01.html">
+            
+                <a href="../api/API_ENDPOINT_01.html">
+            
+                    
+                    9 その他：API Endpoint 358
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../other/SHIBBOLETH_01.html">
+            
+                <a href="../other/SHIBBOLETH_01.html">
+            
+                    
+                    10 その他：Shibboleth対応 359
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../other/WORKFLOW_01.html">
+            
+                <a href="../other/WORKFLOW_01.html">
+            
+                    
+                    11 その他：GakuNinRDM連携 362
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../other/ID_01.html">
+            
+                <a href="../other/ID_01.html">
+            
+                    
+                    12 その他：ID体系 371
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../other/KAISEKI_01.html">
+            
+                <a href="../other/KAISEKI_01.html">
+            
+                    
+                    13 その他：解析基盤連携 372
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../restricted_access/">
+            
+                <a href="../restricted_access/">
+            
+                    
+                    制限公開機能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../restricted_access/RESTRICTED_ACCESS_01.html">
+            
+                <a href="../restricted_access/RESTRICTED_ACCESS_01.html">
+            
+                    
+                    RESTRICTED_ACCESS-13-1: 制限公開機能：アイテムタイプ管理（制限公開） 373
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../restricted_access/RESTRICTED_ACCESS_02.html">
+            
+                <a href="../restricted_access/RESTRICTED_ACCESS_02.html">
+            
+                    
+                    RESTRICTED_ACCESS-13-2: 制限公開機能：アイテム詳細(制限公開) 376
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../restricted_access/RESTRICTED_ACCESS_03.html">
+            
+                <a href="../restricted_access/RESTRICTED_ACCESS_03.html">
+            
+                    
+                    RESTRICTED_ACCESS-13-3: 制限公開機能：ワークフロー管理（制限公開） 378
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../restricted_access/RESTRICTED_ACCESS_04.html">
+            
+                <a href="../restricted_access/RESTRICTED_ACCESS_04.html">
+            
+                    
+                    RESTRICTED_ACCESS-13-4: 制限公開機能：メールテンプレート 381
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../tool/">
+            
+                <a href="../tool/">
+            
+                    
+                    TOOL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../tool/TOOL_01.html">
+            
+                <a href="../tool/TOOL_01.html">
+            
+                    
+                    TOOL-1: ツール：システムプロパティマッピング 390
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ADMIN-4-1: ウェブデザイン管理：ウィジェット 167</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><h3 id="ウィジェット"><a name="ウィジェット" class="plugin-anchor" href="#ウィジェット"><i class="fa fa-link" aria-hidden="true"></i></a>ウィジェット</h3>
+<!-- end list -->
+<ul>
+<li><blockquote>
+<p>目的・用途</p>
+</blockquote>
+</li>
+</ul>
+<p>本機能は、ページレイアウトで利用するウィジェットを作成・編集・削除する機能である。</p>
+<ul>
+<li><blockquote>
+<p>利用方法</p>
+</blockquote>
+</li>
+</ul>
+<p>【Administration &gt; ウェブデザイン管理（Web Design） &gt; ウィジェット（Widget）画面】で各リポジトリにウィジェットを作成・編集・削除する</p>
+<ul>
+<li><blockquote>
+<p>利用可能なロール</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>ロール</th>
+<th>システム<br>
+管理者</th>
+<th>リポジトリ<br>
+管理者</th>
+<th>コミュニティ<br>
+管理者</th>
+<th>登録ユーザー</th>
+<th>一般ユーザー</th>
+<th>ゲスト<br>
+(未ログイン)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>利用可否</td>
+<td>○</td>
+<td>○</td>
+<td>○</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><blockquote>
+<p>機能内容</p>
+</blockquote>
+</li>
+</ul>
+<p>1. 概要</p>
+<ul>
+<li><p>ウィジェットは、WEKO3に表示する内容を多言語で設定できる</p>
+</li>
+<li><p>画面上の操作によって、コーディングを行わなくてもウィジェットのHTMLおよびScriptの編集ができる機能である</p>
+</li>
+</ul>
+<p>2. ウィジェット一覧を表示する</p>
+<ul>
+<li><p>【ウィジェット（Widget）画面】には以下のタブが表示される</p>
+<ul>
+<li><p>一覧（List）</p>
+</li>
+<li><p>作成（Create）</p>
+</li>
+<li><p>フィルターを追加▼（Add Filter▼）</p>
+<ul>
+<li><p>一覧（List）タブ選択中のみ表示</p>
+</li>
+<li><p>外観はタブだが機能としてはプルダウンメニュー</p>
+</li>
+</ul>
+</li>
+<li><p>選択▼（With selected▼）</p>
+<ul>
+<li><p>一覧（List）タブ選択中のみ表示</p>
+</li>
+<li><p>外観はタブだが機能としてはプルダウンメニュー</p>
+</li>
+</ul>
+</li>
+<li><p>編集（Edit）</p>
+<ul>
+<li><blockquote>
+<p>一覧（List）タブ選択中は非表示</p>
+</blockquote>
+</li>
+<li><p>一覧（List）タブの操作によって表示される</p>
+</li>
+<li><p>編集（Edit）タブまたは詳細（Details）タブ選択中に表示</p>
+</li>
+</ul>
+</li>
+<li><p>詳細（Details）</p>
+<ul>
+<li><blockquote>
+<p>一覧（List）タブ選択中は非表示</p>
+</blockquote>
+</li>
+<li><p>一覧（List）タブの操作によって表示される</p>
+</li>
+<li><p>編集（Edit）タブまたは詳細（Details）タブ選択中に表示</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>【ウィジェット（Widget）画面】の一覧タブにウィジェット一覧を表示する</p>
+<ul>
+<li><p>表示項目は以下の通りである</p>
+<ul>
+<li><p>チェックボックス</p>
+</li>
+<li><p>アクション（作成・編集・削除を表すアイコン）</p>
+</li>
+<li><p>「ID」：ウィジェットID</p>
+</li>
+<li><p>「Repository」：属するリポジトリ名</p>
+</li>
+<li><p>「Widget Type」：ウィジェットタイプ</p>
+</li>
+<li><p>「Label」：ウィジェット名</p>
+</li>
+<li><p>「Enable」：ウィジェットの状態</p>
+</li>
+</ul>
+</li>
+<li><p>［フィルターを追加▼（Add Filter▼）］ボタンをクリックすると、以下の追加可能なフィルターリストを表示し、フィルター名をクリックすると当該フィルターの入力エリアを追加する</p>
+<ul>
+<li><p>フィルター名</p>
+<ul>
+<li><p>「ID」</p>
+</li>
+<li><blockquote>
+<p>フィルター方式の選択肢：等しい、等しくない、より大きい、より小さい、空、一覧にある、一覧にない</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>入力された数字を使い、選択したフィルター方式で絞り込む</p>
+</blockquote>
+</li>
+<li><p>「Repository」</p>
+</li>
+<li><blockquote>
+<p>フィルター方式の選択肢：含む（contains）、含まれていません（not contains）、等しい（equals）、等しくない（not equal）、空（empty）、一覧にある（in list）、一覧にない（not in list）</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>入力された文字列を使い、選択したフィルター方式で絞り込む</p>
+</blockquote>
+</li>
+<li><p>「Widget Type」</p>
+</li>
+<li><blockquote>
+<p>フィルター方式の選択肢：「Repository」と同じである</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>入力された文字列を使い、選択したフィルター方式で絞り込む</p>
+</blockquote>
+</li>
+<li><p>「Enable」</p>
+</li>
+<li><blockquote>
+<p>フィルター方式の選択肢：等しい（equals）、等しくない（not equal）</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>入力エリアではなく選択肢「はい」「いいえ」を使い、「はい」なら有効なウィジェット、「いいえ」ならそうでないウィジェットを絞り込む</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>設定したフィルターは［適用（Apply）］ボタンを押下することで一覧に適用される</p>
+</li>
+<li><p>［フィルターをリセット（Reset filter）］ボタンを押下すると、設定したフィルターがリセットされる</p>
+</li>
+</ul>
+</li>
+<li><p>［選択▼（With selected▼）］ボタンをクリックすると、以下の追加可能な機能（現在削除ボタンのみ）を表示する</p>
+<ul>
+<li><p>レコードにチェックを入れない場合、「削除」（Delete）ボタンを押すと、エラーメッセージを表示する<br>メッセージ：<br>　日本語：「少なくとも１つのレコードを選択してください。」<br>　英語：「Please select at least one record.」</p>
+</li>
+<li><p>レコードにチェックを入れる場合、［削除（Delete）］ボタンを押すと、確認ダイアログを表示する<br>メッセージ：<br>　日本語：「選択したレコードを削除してもよろしいですか。」<br>　英語：「Are you sure you want to delete selected records?」</p>
+<ul>
+<li><p>［OK］ボタンを押すと、該当レコードを削除し、メッセージを画面上部に表示する<br>メッセージ：<br>　日本語：「レコード数＋レコードが正常に削除されました。」<br>　英語：「Record was successfully deleted.」</p>
+</li>
+<li><p>［キャンセル（Cancel）］ボタンを押すと、確認ダイアログを閉じる</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>検索テキストボックスでロールを検索する<br>プレースホルダー：「Search」</p>
+<ul>
+<li><p>任意テキストを入力し、キーボードでの「Enter」を押すと、Id、リポジトリ名、ウィジェットタイプでの検索を行う</p>
+</li>
+<li><p>テキストボックスの右端での［X］ボタンを押すと、検索条件がクリアーされる</p>
+</li>
+</ul>
+</li>
+<li><p>ウィジェット行の目アイコンを押すと、該当ウィジェットの詳細情報を「詳細」（Details）タブに表示する</p>
+<ul>
+<li>「移動」（Filter）テキストボックスにテキストを入力すると、入力値が項目名またはその値に含まれている項目に絞り込んで表示する</li>
+</ul>
+</li>
+<li><p>ウィジェット行の鉛筆アイコンを押すと、該当ウィジェットを「編集」（Edit）タブに表示し、ウィジェットの情報が編集できる</p>
+<ul>
+<li><p>編集中はそのウィジェットがロックされる</p>
+<ul>
+<li><p>一覧タブで、他のユーザーにロックされたウィジェットの鉛筆アイコンを押した場合、ロック解除の確認ダイアログを表示する<br>メッセージ：<br>日本語：「このウイジェットのロックを解除してよろしいでしょうか。」<br>英語：「Do you wan to unlock this widget?」</p>
+<ul>
+<li><p>［OK］ボタンを押すと、操作中のユーザーによって該当ウィジェットをロックして、「編集」（Edit）タブを表示する</p>
+<ul>
+<li>もともとロックしていた方の画面は変化しない</li>
+</ul>
+</li>
+<li><p>［閉じる］ボタンを押すと、確認ダイアログを閉じる</p>
+<ul>
+<li>そうした場合、空白の「編集」（Edit）タブが表示される</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ロックしている側の画面で［Save］［キャンセル（Cancel）］ボタンを押した場合、ロックが解除されて他のユーザーからも保存できるようになる</p>
+<ul>
+<li><p>「編集」（Edit）タブの表示中に、ログアウトや他の画面への遷移を行った場合には、ロックは解除されない</p>
+</li>
+<li><p>「編集」（Edit）タブの表示中にウェブブラウザのタブを閉じた場合には、ロックが解除されず、同一のユーザーで同じウィジェットの「編集」（Edit）タブを表示した場合でも、他のユーザーにロックされた場合と同様にロック解除の確認ダイアログを表示する</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>［Save］ボタンを押すと、編集内容が保存される</p>
+<ul>
+<li><p>widget_items、widget_multi_lang_dataテーブルが更新される</p>
+</li>
+<li><p>ウィジェットが他のユーザーにロックされていた場合は、保存されずに以下のエラーメッセージがポップアップで表示される<br>メッセージ：「Widget is locked by another user.」</p>
+</li>
+<li><p>ロックして「編集」（Edit）タブで操作しているウィジェットが他のユーザーによって削除された場合に、ロックしているユーザーが削除後に保存すると、削除されなかったかのように保存される</p>
+</li>
+</ul>
+</li>
+<li><p>［Delete］ボタンを押すと、確認ダイアログを表示する<br>メッセージ：「Are you sure to delete this widget Item?」</p>
+<ul>
+<li><p>［OK］ボタンを押すと、ロックを無視して該当ウィジェットを削除し、メッセージをポップアップで表示する<br>メッセージ：「Widget item has deleted successfully.」</p>
+<ul>
+<li>他のタブに移動しない。削除した後に［Save］ボタンを押すと削除されなかったかのように保存される</li>
+</ul>
+</li>
+<li><p>［キャンセル（Cancel）］ボタンを押すと、確認ダイアログを閉じる</p>
+</li>
+<li><p>該当ウィジェットがページレイアウトで使用されていた場合は、削除せずにエラーメッセージをポップアップで表示する<br>メッセージ：「Cannot delete this widget because it&apos;s setting in Widget Design.」</p>
+</li>
+</ul>
+</li>
+<li><p>［Cancel］ボタンを押すと、一覧タブに戻る</p>
+</li>
+</ul>
+</li>
+<li><p>「詳細」（Details）タブと「編集」（Edit）タブとは互いに行き来できる</p>
+</li>
+<li><p>ウィジェット行のごみ箱アイコンを押すと、ロックを無視して該当ウィジェットを削除し、メッセージを画面上部に表示する<br>メッセージ：<br>　日本語：「レコード数＋レコードが正常に削除されました。」<br>　英語：「Record was successfully deleted.」</p>
+<ul>
+<li>該当ウィジェットがページレイアウトで使用されていた場合は、削除せずにエラーメッセージをポップアップで表示する<br>メッセージ：「Cannot delete this widget because it&apos;s setting in Widget Design.」</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><p>「一覧」（List）から「作成」（Create）タブを押すと、「作成」（Create）タブに移動し、ウィジェットを新規作成できる</p>
+</li>
+<li><p><strong>共通の入力項目</strong></p>
+<ul>
+<li><p>「Repository」：システムでのリポジトリを選択する</p>
+<ul>
+<li>必須項目とする</li>
+</ul>
+</li>
+<li><p>「Type」：ウィジェット種別を設定する</p>
+<ul>
+<li><p>必須項目とする</p>
+</li>
+<li><p>ウィジェット種別は以下の通りである</p>
+<ul>
+<li><p>Free description</p>
+</li>
+<li><p>Access counter</p>
+</li>
+<li><p>Notice</p>
+</li>
+<li><p>New arrivals</p>
+</li>
+<li><p>Main contents</p>
+</li>
+<li><p>Menu</p>
+</li>
+<li><p>Header</p>
+</li>
+<li><p>Footer</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>「Language」：ウィジェットの設定言語を選択する</p>
+<ul>
+<li><p>必須項目とする</p>
+</li>
+<li><p>選択肢：【Administration &gt; 設定（Setting） &gt; 言語表示（Language）画面】に表示されるものと同じ言語を使用する</p>
+</li>
+<li><p>表示順序について、【言語表示（Language）画面】での「登録言語」の言語を一覧の上部に表示し、「対応言語」の言語一覧を次に表示する</p>
+</li>
+</ul>
+</li>
+<li><p>「Name」：ウィジェット名を設定する</p>
+<ul>
+<li>必須項目とする</li>
+</ul>
+</li>
+<li><p>「Theme」：枠や枠線といったWidgetのスタイルテンプレートを指定する</p>
+</li>
+<li><p>「Label Enable」：ラベルの表示制御を設定する</p>
+<ul>
+<li>デフォルトはチェック有りとする</li>
+</ul>
+</li>
+<li><p>「Label Color」ラベルの背景色を設定する</p>
+<ul>
+<li>「Label Enable」がチェックなしの場合は無効になる</li>
+</ul>
+</li>
+<li><p>「Label Text Color」：ラベルの文字色を設定する</p>
+<ul>
+<li>「Label Enable」がチェックなしの場合は無効になる</li>
+</ul>
+</li>
+<li><p>「Border Style」：Widgetの枠線のスタイルを選択する</p>
+</li>
+<li><p>3つの種類：実線、点線、二重線</p>
+</li>
+<li><p>「Border Color」：Widgetの枠線の色を指定する</p>
+</li>
+<li><p>「Background Color」：Widgetの背景色を指定する</p>
+</li>
+<li><p>「Enable」：ウィジェット内容の表示/非表示を設定する</p>
+<ul>
+<li>デフォルトはチェック有りとする</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>テーマ（Theme）について</strong><br>現在3つのテーマを以下のように対応している</p>
+<ul>
+<li><p>Default<br>枠は角丸である。枠線あり。影あり</p>
+</li>
+<li><p>Simple<br>枠は四角である。左枠線のみ。影なし</p>
+</li>
+<li><p>Side Line<br>枠は四角である。枠線なし。影なし</p>
+</li>
+<li><p>テーマの表示は以下になる</p>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><strong>テーマ</strong></th>
+<th><strong>イメージ</strong></th>
+<th><strong>メモ</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default</td>
+<td><img src="media/media/image3.png" style="width:1.29167in;height:0.46875in"></td>
+<td>現在のデフォルト(メインのデザイン)<br>
+角丸。枠線あり。影あり。</td>
+</tr>
+<tr class="even">
+<td>Side Line</td>
+<td><img src="media/media/image3.png" style="width:1.27083in;height:0.44792in"></td>
+<td>四角。左枠線のみ。影なし。</td>
+</tr>
+<tr class="odd">
+<td>Simple</td>
+<td><img src="media/media/image3.png" style="width:1.22917in;height:0.42708in"></td>
+<td>四角。枠線なし。影なし。</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p>各種ウィジェットでの入力項目</p>
+<ul>
+<li><p><strong>Free description</strong></p>
+<ul>
+<li><p>概要<br>自由記述コンテンツを表示するウィジェットである</p>
+</li>
+<li><p>機能<br>WYSIWYGエディタである</p>
+<ul>
+<li><p>HTMLを直に編集可能</p>
+</li>
+<li><p>Scriptが編集可能</p>
+</li>
+<li><p>画像にリンクを貼り付け可能／解除可能</p>
+</li>
+<li><p>文字にリンクを貼り付け可能／解除可能</p>
+</li>
+<li><p>ヘッダをフォーマット可能</p>
+</li>
+<li><p>フォントを選択可能</p>
+</li>
+<li><p>サイズを変更可能</p>
+</li>
+<li><p>文字を装飾可能</p>
+</li>
+<li><p>配置を変更可能</p>
+</li>
+<li><p>箇条書き可能</p>
+</li>
+<li><p>リンクのアンダーラインを解除可能</p>
+</li>
+<li><p>プレビュー可能</p>
+</li>
+<li><p>ファイルのアップロード可能（挿入リンクは相対パス）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Access counter</strong></p>
+<ul>
+<li><p>概要<br>アクセスカウンタを表示するウィジェットである</p>
+</li>
+<li><p>機能</p>
+<ul>
+<li><p>「Access counter initial value」：アクセスカウンタ値の初期値を指定する<br>デフォルト：0</p>
+</li>
+<li><p>「Preceding message」：アクセスカウンタ値前のメッセージを設定する</p>
+</li>
+<li><p>「Following message」：アクセスカウンタ値後のメッセージを設定する</p>
+</li>
+<li><p>「Other message to display」：他のメッセージを設定する</p>
+</li>
+<li><p>以下のイメージはアクセスカウンタのサンプルである</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>設定</strong></th>
+<th><strong>表示</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/media/image4.png" alt></td>
+<td><img src="media/media/image5.png" alt></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Notice</strong></p>
+<ul>
+<li><p>概要<br>お知らせを一覧表示するウィジェットである</p>
+</li>
+<li><p>機能<br>WYSIWYGエディタをである</p>
+<ul>
+<li><p>「自由記述」にお知らせ内容を設定可能とする<br>（「Free Description」部分のような機能がある）</p>
+</li>
+<li><p>お知らせ内容の全表示/部分表示を設定可能とする</p>
+<ul>
+<li><p>「Write More」チェックボックスにチェックを入れると、追加でお知らせの自由記述エリアを表示する</p>
+</li>
+<li><p>「Read more」テキストボックス：続きを読むリンク名を指定する</p>
+</li>
+<li><p>「Hide the rest」テキストボックス：続きを隠すリンク名を指定する</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>New arrivals</strong></p>
+<ul>
+<li><p>概要</p>
+<ul>
+<li><p>ウィジェット表示は、 公開日から指定された日数(新着日数)までのアイテム を公開日順(降順)に一覧表示する</p>
+<ul>
+<li>同一公開日の場合はタイトルの文字コードを第2の条件としてソートする</li>
+</ul>
+</li>
+<li><p>一覧表示されたアイテムは、アクセスユーザが閲覧可能なものとする</p>
+</li>
+<li><p>一覧表示されたアイテムは、アイテム詳細ページへのリンク表示とし、画面遷移可能とする</p>
+</li>
+</ul>
+</li>
+<li><p>機能</p>
+<ul>
+<li><p>「New date」テキストボックス：新着日数を設定する</p>
+<ul>
+<li><p>設定値は&quot;Today,1,2,3,・・・30&quot;の計31個のプルダウンとする</p>
+</li>
+<li><p>デフォルト値：5日</p>
+</li>
+</ul>
+</li>
+<li><p>「Display Results」テキストボックス：アイテム表示件数を設定する</p>
+<ul>
+<li><p>設定値は&quot;5,10,20,50,100&quot;の計5個のプルダウンとする</p>
+</li>
+<li><p>デフォルト値：5件</p>
+</li>
+</ul>
+</li>
+<li><p>「RSS feed」チェックボックス：RSS配信を設定する</p>
+<ul>
+<li>デフォルト：チェックなし</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Main contents</strong></p>
+<ul>
+<li><p>概要</p>
+<ul>
+<li><p>WEKO3のメイン画面は以下で構成されるものとする</p>
+<ul>
+<li><p>ヘッダ部</p>
+</li>
+<li><p>メイン部(メニュータブ、アイテム検索、インデックスツリー、検索結果表示)</p>
+</li>
+</ul>
+</li>
+<li><p>コンテンツ自体を編集できずに、コンテンツのラベル・テーマ・背景などしか編集できない</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Menu</strong></p>
+<ul>
+<li><p>概要<br>システムのページを表示するウィジェットである</p>
+</li>
+<li><p>機能</p>
+<ul>
+<li><p>「Orientation」ラジオボタン：メニューの表示向きを設定する</p>
+<ul>
+<li><p>選択肢：「Horizontal」、「Vertical」</p>
+</li>
+<li><p>デフォルト：「Horizontal」</p>
+</li>
+</ul>
+</li>
+<li><p>「Background Color」：背景色を色の表から設定する</p>
+<ul>
+<li>デフォルト色：白</li>
+</ul>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><p>「Active Background Color」：アクティブ背景色を設定する</p>
+<ul>
+<li>デフォルト色：白</li>
+</ul>
+</li>
+<li><p>「Default Color」：テキスト色を設定する</p>
+<ul>
+<li>デフォルト色：黒</li>
+</ul>
+</li>
+<li><p>「Active Color」：アクティブテキスト色を設定する</p>
+<ul>
+<li>デフォルト色：黒</li>
+</ul>
+</li>
+<li><p>「Show/Hide Pages」エリア：メニューに表示するページを指定する</p>
+<ul>
+<li><p>設定対象は【ページレイアウト（Page Layout）画面】で作成したページ一覧とする</p>
+</li>
+<li><p>デフォルト：すべてページが「Show」エリアに表示する</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Header/Footer</strong></p>
+<ul>
+<li><p>概要<br>ヘッダ/フッタを表示するウィジェットである。<br>ヘッダエリアは固定のヘッダ行（言語切替，ログインボタン，サインアップボタンを表示するエリア）と、自由にカスタマイズできるエリアがある。</p>
+</li>
+<li><p>機能</p>
+<ul>
+<li><p>WYSIWYGエディタである（「Free Description」部分のような機能がある）</p>
+</li>
+<li><p>固定のヘッダは既存のWidgetのHeader Widgetの中に含まれるものとする。位置はHeader Widgetの位置に従う</p>
+</li>
+<li><p>ヘッダWidgetで固定ヘッダの背景色・文字色は、「Fixed Header Background Color」と「Fixed Header Text Color」で設定できるものとする</p>
+</li>
+<li><p>自由にカスタマイズできるエリアの背景色は、「Background Color」で設定できるものとする</p>
+</li>
+<li><p>固定ヘッダの背景色・文字色のデフォルトカラーは背景は白、文字は灰色とする</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><blockquote>
+<p>関連モジュール</p>
+</blockquote>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><blockquote>
+<p>weko-gridlayout</p>
+</blockquote>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><blockquote>
+<p>処理概要</p>
+</blockquote>
+</li>
+</ul>
+<p>1. 設定</p>
+<blockquote>
+<p>表示言語設定に対応するウィジェットラベルを設定しない場合、ウィジェットラベルのデフォルトを設定する</p>
+</blockquote>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L28" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L28</a></p>
+</li>
+<li><p>設定キー： 「WEKO_GRIDLAYOUT_DEFAULT_WIDGET_LABEL」</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_DEFAULT_WIDGET_LABEL = &quot;No Title&quot;</p>
+<p>表示言語設定に対応するウィジェットがない場合、ウィジェット言語のデフォルトを設定する</p>
+</blockquote>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L31" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L31</a></p>
+</li>
+<li><p>設定キー： 「WEKO_GRIDLAYOUT_DEFAULT_LANGUAGE_CODE」</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_DEFAULT_LANGUAGE_CODE = &quot;en&quot;</p>
+<p>「New Arrivals」ウィジェット種類での「Display Results」のデフォルト値を設定する</p>
+</blockquote>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L34" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L34</a></p>
+</li>
+<li><p>設定キー： 「WEKO_GRIDLAYOUT_DEFAULT_DISPLAY_RESULT」</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_DEFAULT_DISPLAY_RESULT = &quot;5&quot;</p>
+<p>「New Arrivals」ウィジェット種類での「New date」のデフォルト値を設定する</p>
+</blockquote>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L37" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L37</a></p>
+</li>
+<li><p>設定キー： 「WEKO_GRIDLAYOUT_DEFAULT_NEW_DATE」</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_DEFAULT_NEW_DATE = &quot;5&quot;</p>
+<p>開発に使用しているウィジェット名を設定する</p>
+</blockquote>
+<ul>
+<li><p>パス：</p>
+<ul>
+<li><p><a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L40-L49" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L40-L49</a></p>
+</li>
+<li><p><a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L80" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L80</a></p>
+</li>
+</ul>
+</li>
+<li><p>設定キー：</p>
+<ul>
+<li><p>「WEKO_GRIDLAYOUT_ACCESS_COUNTER_TYPE」</p>
+</li>
+<li><p>「WEKO_GRIDLAYOUT_NEW_ARRIVALS_TYPE」</p>
+</li>
+<li><p>「WEKO_GRIDLAYOUT_NOTICE_TYPE」</p>
+</li>
+<li><p>「WEKO_GRIDLAYOUT_MAIN_TYPE」</p>
+</li>
+<li><p>「WEKO_GRIDLAYOUT_MENU_WIDGET_TYPE」</p>
+</li>
+</ul>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_ACCESS_COUNTER_TYPE = &quot;Access counter&quot;</p>
+<p>WEKO_GRIDLAYOUT_NEW_ARRIVALS_TYPE = &quot;New arrivals&quot;</p>
+<p>WEKO_GRIDLAYOUT_NOTICE_TYPE = &quot;Notice&quot;</p>
+<p>WEKO_GRIDLAYOUT_MAIN_TYPE = &quot;Main contents&quot;</p>
+<p>WEKO_GRIDLAYOUT_MENU_WIDGET_TYPE = &apos;Menu&apos;</p>
+</blockquote>
+<ul>
+<li><p>ウィジェットの高さの自動計算・不自動計算を設定する</p>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L89" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L89</a></p>
+</li>
+<li><p>設定キー： 「WEKO_GRIDLAYOUT_AUTO_ADJUST_THE_HEIGHT」</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_AUTO_ADJUST_THE_HEIGHT = True</p>
+</blockquote>
+<ul>
+<li><p>サーバから返却するウィジェットのデータを圧縮するかどうかを設定する</p>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L95" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L95</a></p>
+</li>
+<li><p>設定キー：「WEKO_GRIDLAYOUT_IS_COMPRESS_WIDGET」</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_IS_COMPRESS_WIDGET = True</p>
+</blockquote>
+<ul>
+<li><p>サーバから返却するウィジェットのデータの圧縮レベルを設定する</p>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L92" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L92</a></p>
+</li>
+<li><p>設定キー：「WEKO_GRIDLAYOUT_COMPRESS_LEVEL」</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_COMPRESS_LEVEL = 6</p>
+</blockquote>
+<ul>
+<li><p>サーバから返却するウィジェットデータのキャッシュ名を設定する</p>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L98-L102" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L98-L102</a></p>
+</li>
+<li><p>設定キー：</p>
+<ul>
+<li><p>「WEKO_GRIDLAYOUT_WIDGET_CACHE_KEY」</p>
+</li>
+<li><p>「WEKO_GRIDLAYOUT_WIDGET_PAGE_CACHE_KEY」</p>
+</li>
+</ul>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_WIDGET_CACHE_KEY = &quot;widget_cache&quot;</p>
+<p>WEKO_GRIDLAYOUT_WIDGET_PAGE_CACHE_KEY = &quot;widget_page_cache&quot;</p>
+</blockquote>
+<ul>
+<li><p>ウィジェットに関するファイルアップロードのBucketIDを設定する</p>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L104" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L104</a></p>
+</li>
+<li><p>設定キー：「WEKO_GRIDLAYOUT_BUCKET_UUID」</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_BUCKET_UUID = &quot;517f7d98-ab2c-4736-91ea-54ba34e7905d&quot;</p>
+</blockquote>
+<ul>
+<li><p>静的なウィジェットファイルサイズの上限を設定する</p>
+<ul>
+<li><p>パス： <a href="https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L107" target="_blank">https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L107</a></p>
+</li>
+<li><p>設定キー：「WEKO_GRIDLAYOUT_FILE_MAX_SIZE」</p>
+</li>
+<li><p>現在の設定値：</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>WEKO_GRIDLAYOUT_FILE_MAX_SIZE = 1024 * 1024 * 16 # 16 MB</p>
+</blockquote>
+<p>2. ウィジェットの実装方法</p>
+<ul>
+<li><p>対応しているライブラリ：</p>
+<ul>
+<li><p>Trumbowyg（<a href="https://alex-d.github.io/Trumbowyg/" target="_blank">https://alex-d.github.io/Trumbowyg/</a>）</p>
+<ul>
+<li>本ライブラリはウィジェットでのWYSIWYGエディタ機能を対応している</li>
+</ul>
+</li>
+<li><p>Gridstack.js（<a href="https://gridstackjs.com/" target="_blank">https://gridstackjs.com/</a>）</p>
+<ul>
+<li>トップページにてウィジェットデザインのレンダーを対応している</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>トップページにて、表示ページに関する特別なウィジェット設定があるかどうかチェックする</p>
+<ul>
+<li><p>ウィジェット設定がない場合　=&gt; デフォルトとし「Main Layout」の設定を読み出し、gridstackJSでレイアウトをレンダーする</p>
+</li>
+<li><p>ウィジェット設定がある場合　=&gt; 該当するページの設定を読み出し、gridstackJSでレイアウトをレンダーする</p>
+</li>
+</ul>
+</li>
+<li><p>ウィジェットの高さの自動計算</p>
+<ul>
+<li><p>概要的にスクロールバー高さの単位をgridstackライブラリでの単位に変換するのを行う方法である</p>
+</li>
+<li><p>ウィジェットをレンダーした上で、対象ウィジェットにスクロールバーが表示されるかどうかチェックする</p>
+<ul>
+<li><p>スクロールバーが表示されない場合　（スクロールバーの高さ = ウィジェットの高さ）<br>　　=&gt; 変換を行わずに、ウィジェットを表示する</p>
+</li>
+<li><p>スクロールバーが表示される場合　（スクロールバーの高さ &gt; ウィジェットの高さ）<br>　　=&gt; スクロールバー高さの単位をgridstackライブラリでの単位に変換する（ピクセル→セルの変換）</p>
+</li>
+</ul>
+</li>
+<li><p>その後、gridstackでのリサイズメソッドでウィジェットの高さを計算された値で更新する</p>
+</li>
+</ul>
+</li>
+<li><p><strong>導入しているTrumbowygプラグイン</strong></p>
+<ul>
+<li><p>Base64（<a href="https://alex-d.github.io/Trumbowyg/demos/#plugins-base64" target="_blank">https://alex-d.github.io/Trumbowyg/demos/#plugins-base64</a>）</p>
+</li>
+<li><p>Colors（<a href="https://alex-d.github.io/Trumbowyg/demos/#plugins-colors" target="_blank">https://alex-d.github.io/Trumbowyg/demos/#plugins-colors</a>）</p>
+</li>
+<li><p>Font family（<a href="https://alex-d.github.io/Trumbowyg/demos/#plugins-fontfamily" target="_blank">https://alex-d.github.io/Trumbowyg/demos/#plugins-fontfamily</a>）</p>
+</li>
+<li><p>Font size（<a href="https://alex-d.github.io/Trumbowyg/demos/#plugins-fontsize" target="_blank">https://alex-d.github.io/Trumbowyg/demos/#plugins-fontsize</a>）</p>
+</li>
+<li><p>Paste image（<a href="https://alex-d.github.io/Trumbowyg/demos/#plugins-pasteimage" target="_blank">https://alex-d.github.io/Trumbowyg/demos/#plugins-pasteimage</a>）</p>
+</li>
+<li><p>Resizimg（<a href="https://alex-d.github.io/Trumbowyg/demos/#plugins-resizimg" target="_blank">https://alex-d.github.io/Trumbowyg/demos/#plugins-resizimg</a>）</p>
+</li>
+<li><p>Table（<a href="https://alex-d.github.io/Trumbowyg/documentation/plugins/#plugin-table" target="_blank">https://alex-d.github.io/Trumbowyg/documentation/plugins/#plugin-table</a>）</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>3. 各種タブの操作</p>
+<ul>
+<li><p>画面表示、フィルターの操作、ウィジェット削除でウィジェット一覧を表示するときは、weko_gridlayout.admin.WidgetSettingView.index_viewメソッドで表示のためのウィジェット一覧を作成する</p>
+</li>
+<li><p>目アイコンをクリックして「詳細」（Details）タブを表示するときは、WidgetSettingViewのdetails_viewメソッドでウィジェットの詳細情報を取得する</p>
+</li>
+<li><p>鉛筆アイコンをクリックして「編集」（Edit）タブを表示するときは、WidgetSettingViewのedit_viewメソッドでウィジェットの情報を取得する</p>
+<ul>
+<li><p>WidgetItemServices.get_locked_widget_infoメソッドで、該当ウィジェットがロックされているか確認する</p>
+</li>
+<li><p>ロックされていなかった場合、ウィジェットをロックする</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>lock_key = WEKO_GRIDLAYOUT_WIDGET_ITEM_LOCK_KEY.format(widget_id)</p>
+<p>session[lock_key] = locked_value</p>
+</blockquote>
+<ul>
+<li><p>locked_valueは、str(datetime.utcnow().timestamp())で作成する</p>
+</li>
+<li><p>widget_itemsテーブルの該当ウィジェットについてのレコードで、「locked」をtrueにして、「locked_by_user」にロックしたユーザのidを記録する</p>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><p>編集（Edit）タブの［Save］ボタンでウィジェットを保存するときは、weko_gridlayout.views. save_widget_itemメソッドの中で、WidgetItemServices.save_commandメソッドから__edit_widgetメソッドを呼び出して保存する</p>
+<ul>
+<li><p>widget_itemsテーブルの該当ウィジェットについてのレコードを更新する</p>
+<ul>
+<li><p>「widget_id」：該当ウィジェットのもの</p>
+</li>
+<li><p>「repository_id」：「Repository」プルダウンで選択したリポジトリのid</p>
+</li>
+<li><p>「widget_type」：「Type」プルダウンで選択したウィジェットタイプ</p>
+</li>
+<li><p>「setings」：「Background Color」、「Fixed Header Background Color」、「Fixed Header Text Color」の設定</p>
+</li>
+<li><p>「is_enabled」：「Enable」がチェックされていればtrue、そうでなければfalse</p>
+</li>
+</ul>
+</li>
+<li><p>widget_multi_lang_dataテーブルの該当ウィジェットについてのレコードはすべて論理削除して、多言語設定があれば新たに言語ごとのレコードを作成する</p>
+<ul>
+<li><p>「id」：自動採番</p>
+</li>
+<li><p>「widget_id」：該当ウィジェットのもの</p>
+</li>
+<li><p>「lang_code」：設定した言語の言語コード</p>
+</li>
+<li><p>「label」：該当ウィジェットで、その言語で設定した「Name」の入力値</p>
+</li>
+<li><p>「description_data」：ウィジェットタイプと設定内容に応じて、以下のようになる</p>
+<ul>
+<li><p>ウィジェットタイプに固有の設定項目がない場合：null</p>
+</li>
+<li><p>ウィジェットタイプに固有の設定項目があり、設定されていない場合：{}</p>
+</li>
+<li><p>ウィジェットタイプに固有の設定項目があり、設定されている場合：その内容</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ウィジェットを削除するときは、どの操作で削除するかによって呼び出されるメソッドが異なる</p>
+<ul>
+<li><p>一覧（List）タブのごみ箱アイコンでウィジェットを削除する場合、WidgetSettingViewのdelete_modelメソッドの中で、WidgetItemServices.delete_by_idメソッドによって削除する</p>
+</li>
+<li><p>編集（Edit）タブの［Delete］ボタンでウィジェットを削除する場合、weko_gridlayout.views.delete_widget_itemメソッドの中で、WidgetItemServices.delete_by_idメソッドによって削除する</p>
+</li>
+<li><p>WidgetItemServices.delete_by_idメソッドでは、該当ウィジェットがページレイアウトに使用されているかどうかのチェックをWidgetDesignServices.is_used_in_widget_designメソッドによって行う</p>
+<ul>
+<li><p>使用されていた場合は、削除せずにメッセージを返す</p>
+</li>
+<li><p>使用されていなければ、widget_itemsテーブルとwidget_multi_lang_dataテーブルから該当ウィジェットのレコードを論理削除する</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>作成（Create）タブを表示するときは、WidgetSettingViewのcreate_viewメソッドで作成タブのテンプレートを呼び出す</p>
+</li>
+<li><p>作成（Create）タブの［Save］ボタンでウィジェットを保存するときは、weko_gridlayout.views. save_widget_itemメソッドの中でWidgetItemServices.save_commandメソッドからcreateメソッドを呼び出して保存する</p>
+<ul>
+<li><p>widget_itemsテーブルに、該当ウィジェットについてのレコードを作成する</p>
+</li>
+<li><p>多言語設定があれば、widget_multi_lang_dataテーブルに該当ウィジェットについてのレコードを作成する</p>
+</li>
+<li><p>それぞれの設定内容は、編集時と同様</p>
+</li>
+</ul>
+</li>
+</ul>
+<!-- end list -->
+<ul>
+<li><blockquote>
+<p>更新履歴</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>日付</th>
+<th>GitHubコミットID</th>
+<th>更新内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>2023/08/31</p>
+</blockquote></td>
+<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
+<td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2023/11/11</p>
+</blockquote></td>
+<td>V0.9.27</td>
+<td></td>
+</tr>
+</tbody>
+</table></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ADMIN_3_3.html" class="navigation navigation-prev " aria-label="Previous page: ADMIN-3-3: インデックスツリー管理：カスタムソート 165">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ADMIN_4_2.html" class="navigation navigation-next " aria-label="Next page: ADMIN-4-2: ウェブデザイン管理：ページレイアウト 180">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ADMIN-4-1: ウェブデザイン管理：ウィジェット 167","level":"1.3.12","depth":2,"next":{"title":"ADMIN-4-2: ウェブデザイン管理：ページレイアウト 180","level":"1.3.13","depth":2,"path":"admin/ADMIN_4_2.md","ref":"admin/ADMIN_4_2.md","articles":[]},"previous":{"title":"ADMIN-3-3: インデックスツリー管理：カスタムソート 165","level":"1.3.11","depth":2,"path":"admin/ADMIN_3_3.md","ref":"admin/ADMIN_3_3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","back-to-top-button","anchors","collapsible-chapters","hide-published-with","plantuml-cloud"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"plantuml-cloud":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"Research Center for Open Science and Data Platform, National Institute of Informatics","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"機能仕様書","language":"ja","gitbook":"*","description":""},"file":{"path":"admin/ADMIN_4_1.md","mtime":"2024-08-27T03:35:33.202Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-09-10T15:51:15.605Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

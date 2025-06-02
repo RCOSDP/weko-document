@@ -12,41 +12,18 @@
 
   - > 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>〇</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+
+|ロール|システム<br>管理者|リポジトリ<br>管理者|サブリポジトリ<br>管理者|登録ユーザー|一般ユーザー|ゲスト<br>(未ログイン)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|利用可否|○|○|○| | | |
 
   - > 機能内容
 
 1 インデックスの雑誌情報を追加する
 
   - 【Administration \> 設定(Setting) \> 雑誌情報(Index Journal)画面】でのインデックスツリーにインデックスを選択した状態でインデックスの雑誌情報が設定できる。
-    
+      - サブリポジトリ管理者の場合は、管理対象のサブリポジトリに設定したインデックスをルートとしたインデックスツリーを表示する。
+
       - 「Root Index」を選択している場合、右の「ジャーナル」エリアが非活性となる。
     
       - エクスポート時の出力の設定エリアを設ける
@@ -62,30 +39,32 @@
 | \# | 項目(英語)                                  | 項目(日本語)                | KBART項目名                          | 入力必須 | 入力インターフェース |
 | -- | --------------------------------------- | ---------------------- | --------------------------------- | ---- | ---------- |
 | 1  | Title                                   | タイトル                   | publication\_title                | ※    |            |
-| 2  | Print-format identifier                 | プリント版ISSN/プリント版ISBN    | print\_identifier                 |      |            |
-| 3  | Online-format identifier                | eISSN/eISBN            | online\_identifier                |      |            |
-| 4  | Date of first issue available online    | 最古オンライン巻号の出版年月日        | date\_first\_issue\_online        | ※    | カレンダー入力    |
-| 5  | Number of first volume available online | 提供最古巻                  | num\_first\_vol\_online           |      |            |
-| 6  | Number of first issue available online  | 提供最古号                  | num\_first\_issue\_online         |      |            |
-| 7  | Date of last issue available online     | 最新オンライン巻号の出版年月日        | date\_last\_issue\_online         |      | カレンダー入力    |
-| 8  | Number of last volume available online  | 提供最新巻                  | num\_last\_vol\_online            |      |            |
-| 9  | Number of last issue available online   | 提供最新号                  | num\_last\_issue\_online          |      |            |
-| 10 | Embargo information                     | エンバーゴ情報                | embargo\_info                     |      |            |
-| 11 | Coverage depth                          | カバー範囲                  | coverage\_depth                   | ※    | プルダウン入力    |
-| 12 | Coverage notes                          | カバー範囲に関する注記            | coverage\_notes                   |      |            |
-| 13 | Publisher name                          | 出版者                    | publisher\_name                   |      |            |
-| 14 | Publication type                        | 資料種別                   | publication\_type                 | ※    | プルダウン入力    |
-| 15 | Parent publication identifier           | シリーズのタイトルID            | parent\_publication\_title\_id    |      |            |
-| 16 | Preceding publication identifier        | 変遷前誌のタイトルID            | preceding\_publication\_title\_id |      |            |
-| 17 | Access type                             | アクセスモデル                | access\_type                      | ※    | プルダウン入力    |
-| 18 | Language                                | 言語                     | language                          | ※    | プルダウン入力    |
-| 19 | Title alternative                       | その他のタイトル（他の言語でのタイトルなど） | title\_alternative                |      |            |
-| 20 | Title transcription                     | タイトルヨミ                 | title\_transcription              |      |            |
-| 21 | NCID                                    | NCID                   | ncid                              |      |            |
-| 22 | NDL Call No.                            | NDL請求記号                | ndl\_callno                       |      |            |
-| 23 | NDL Bibliographic ID                    | NDL書誌ID                | ndl\_bibid                        |      |            |
-| 24 | J-STAGE CDJOURNAL                       | J-STAGE資料コード（雑誌名の略称）   | jstage\_code                      |      |            |
-| 25 | Ichushi Code                            | 医中誌ジャーナルコード            | ichushi\_code                     |      |            |
+| 2  | Abstract                                | 概要                   |                                    |           |            |
+| 3  | ISSN-L                                  | ISSN-L                 |                                   |      |            |
+| 4  | Print-format identifier                 | プリント版ISSN/プリント版ISBN    | print\_identifier                 |      |            |
+| 5  | Online-format identifier                | eISSN/eISBN            | online\_identifier                |      |            |
+| 6  | Date of first issue available online    | 最古オンライン巻号の出版年月日        | date\_first\_issue\_online        | ※    | カレンダー入力    |
+| 7  | Number of first volume available online | 提供最古巻                  | num\_first\_vol\_online           |      |            |
+| 8  | Number of first issue available online  | 提供最古号                  | num\_first\_issue\_online         |      |            |
+| 9  | Date of last issue available online     | 最新オンライン巻号の出版年月日        | date\_last\_issue\_online         |      | カレンダー入力    |
+| 10 | Number of last volume available online  | 提供最新巻                  | num\_last\_vol\_online            |      |            |
+| 11 | Number of last issue available online   | 提供最新号                  | num\_last\_issue\_online          |      |            |
+| 12 | Embargo information                     | エンバーゴ情報                | embargo\_info                     |      |            |
+| 13 | Coverage depth                          | カバー範囲                  | coverage\_depth                   | ※    | プルダウン入力    |
+| 14 | Coverage notes                          | カバー範囲に関する注記            | coverage\_notes                   |      |            |
+| 15 | Publisher name                          | 出版者                    | publisher\_name                   |      |            |
+| 16 | Publication type                        | 資料種別                   | publication\_type                 | ※    | プルダウン入力    |
+| 17 | Parent publication identifier           | シリーズのタイトルID            | parent\_publication\_title\_id    |      |            |
+| 18 | Preceding publication identifier        | 変遷前誌のタイトルID            | preceding\_publication\_title\_id |      |            |
+| 19 | Access type                             | アクセスモデル                | access\_type                      | ※    | プルダウン入力    |
+| 10 | Language                                | 言語                     | language                          | ※    | プルダウン入力    |
+| 21 | Title alternative                       | その他のタイトル（他の言語でのタイトルなど） | title\_alternative                |      |            |
+| 22 | Title transcription                     | タイトルヨミ                 | title\_transcription              |      |            |
+| 23 | NCID                                    | NCID                   | ncid                              |      |            |
+| 24 | NDL Call No.                            | NDL請求記号                | ndl\_callno                       |      |            |
+| 25 | NDL Bibliographic ID                    | NDL書誌ID                | ndl\_bibid                        |      |            |
+| 26 | J-STAGE CDJOURNAL                       | J-STAGE資料コード（雑誌名の略称）   | jstage\_code                      |      |            |
+| 27 | Ichushi Code                            | 医中誌ジャーナルコード            | ichushi\_code                     |      |            |
 
   - 入力項目の入力仕様は、  
     バリデーション仕様は、別紙「WEKO\_KBART出力項目一覧\_v1.17.xlsx」の\[ 型/入力制限 \]\[ データ長 \]\[ 備考 \]欄の記載に従う。
@@ -143,21 +122,8 @@
 
   - > 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+|日付|GitHubコミットID|更新内容|
+|:---:|:---:|:---:|
+|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|> 2025/01/23|-|サブリポジトリ対応|
+

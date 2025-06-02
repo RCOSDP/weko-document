@@ -1,48 +1,23 @@
 
-# 一括出力
+### 一括出力
 
-## 目的・用途
+  - > 目的・用途
 
 本機能は、著者DBの情報を一括出力する機能である。
 
-## 利用方法
+  - > 利用方法
 
 本画面にある \[エクスポート(Export)\] ボタンを押下することで、著者DBに登録されている著者情報をtsvファイルで出力する。
 
 tsvファイルのダウンロードURLにアクセスすることでtsvファイルを取得することができる。
 
-## 利用可能なロール
+  - > 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+|ロール|システム<br>管理者|リポジトリ<br>管理者|サブリポジトリ<br>管理者|登録ユーザー|一般ユーザー|ゲスト<br>(未ログイン)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|利用可否|○|○|○| | | |
 
-## 機能内容
+  - > 機能内容
 
 (1) 一括出力画面の画面構成
 
@@ -119,104 +94,19 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
 
   - 各ヘッダの情報は以下の通り
 
-<table>
-<thead>
-<tr class="header">
-<th>#</th>
-<th>ヘッダ項目</th>
-<th>ラベル(日本語)</th>
-<th>ラベル(英語)</th>
-<th>概要</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>pk_id</td>
-<td>WEKO ID</td>
-<td>WEKO ID</td>
-<td>WEKO3の著者ID(author_link)を出力する</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>authorNameInfo[0...n].familyName</td>
-<td>姓[0...n]</td>
-<td>Family Name[0...n]</td>
-<td>著者の姓を出力する</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>authorNameInfo[0...n].firstName</td>
-<td>名[0...n]</td>
-<td>Given name[0...n]</td>
-<td>著者の名を出力する</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>authorNameInfo[0...n].language</td>
-<td>言語[0...n]</td>
-<td>Language[0...n]</td>
-<td>著者の言語を出力する</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>authorNameInfo[0...n].nameFormat</td>
-<td>フォーマット[0...n]</td>
-<td>name Format[0...n]</td>
-<td>著者の姓名のフォーマットを出力する<br />
-※現状(SP67時点)は「familyNmAndNm」固定</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>authorNameInfo[0...n].nameShowFlg</td>
-<td><p>姓名・言語</p>
-<p>表示／非表示[0...n]</p></td>
-<td>Name Display[0...n]</td>
-<td>著者の姓名と言語の表示／非表示を出力する<br />
-表示する: "Y"<br />
-表示しない: "N"</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>authorNameInfo[0...n].idType</td>
-<td>外部著者ID 識別子[0...n]</td>
-<td>Identifier Scheme[0...n]</td>
-<td>外部著者IDの識別子を出力する</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>authorNameInfo[0...n].authorId</td>
-<td>外部著者ID URI[0...n]</td>
-<td>Identifier URI[0...n]</td>
-<td>外部著者IDの値を出力する</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>authorNameInfo[0...n].authorIdShowFlg</td>
-<td><p>外部著者ID</p>
-<p>表示／非表示[0...n]</p></td>
-<td>Identifier Display[0...n]</td>
-<td>外部著者IDの表示／非表示を出力する<br />
-表示する: "Y"<br />
-表示しない: "N"</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>emailInfo[0...n].email</td>
-<td>メールアドレス[0...n]</td>
-<td>Mail Address[0...n]</td>
-<td>著者のメールアドレスを出力する</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>is_deleted</td>
-<td>削除フラグ</td>
-<td>Delete Flag</td>
-<td>著者を削除する場合に "D" と出力する<br />
-※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる</td>
-</tr>
-</tbody>
-</table>
+| #   | ヘッダ項目                              | ラベル(日本語)                           | ラベル(英語)                           | 概要                                                                                   |
+|-----|-----------------------------------------|------------------------------------------|----------------------------------------|----------------------------------------------------------------------------------------|
+| 1   | pk_id                                   | WEKO ID                                  | WEKO ID                                | WEKO3の著者ID(author_link)を出力する                                                   |
+| 2   | authorNameInfo[0...n].familyName        | 姓[0...n]                                | Family Name[0...n]                     | 著者の姓を出力する                                                                    |
+| 3   | authorNameInfo[0...n].firstName         | 名[0...n]                                | Given name[0...n]                      | 著者の名を出力する                                                                    |
+| 4   | authorNameInfo[0...n].language          | 言語[0...n]                              | Language[0...n]                        | 著者の言語を出力する                                                                  |
+| 5   | authorNameInfo[0...n].nameFormat        | フォーマット[0...n]                      | name Format[0...n]                     | 著者の姓名のフォーマットを出力する<br />※現状(SP67時点)は「familyNmAndNm」固定         |
+| 6   | authorNameInfo[0...n].nameShowFlg       | 姓名・言語<br />表示／非表示[0...n]      | Name Display[0...n]                    | 著者の姓名と言語の表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N"       |
+| 7   | authorNameInfo[0...n].idType            | 外部著者ID 識別子[0...n]                 | Identifier Scheme[0...n]               | 外部著者IDの識別子を出力する                                                          |
+| 8   | authorNameInfo[0...n].authorId          | 外部著者ID URI[0...n]                    | Identifier URI[0...n]                  | 外部著者IDの値を出力する                                                              |
+| 9   | authorNameInfo[0...n].authorIdShowFlg   | 外部著者ID<br />表示／非表示[0...n]      | Identifier Display[0...n]              | 外部著者IDの表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N"             |
+| 10  | emailInfo[0...n].email                  | メールアドレス[0...n]                    | Mail Address[0...n]                    | 著者のメールアドレスを出力する                                                        |
+| 11  | is_deleted                              | 削除フラグ                               | Delete Flag                            | 著者を削除する場合に "D" と出力する<br />※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる |
 
 　【補足】  
 　　・同じ項目名を複数持つ場合は、各項目名の後ろに\[0\],\[1\],…,\[N\]と記載された状態で出力される。  
@@ -231,33 +121,11 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
 
   - 本画面でチェックしているエラー内容は以下の通り。
 
-<table>
-<thead>
-<tr class="header">
-<th>エラー発生条件</th>
-<th>表示されるエラーメッセージ</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>エクスポートのキャンセルに失敗した場合<br />
-（キャンセル中にエラーが発生した、またはキャンセルが実行される前にエクスポートが完了した場合）</td>
-<td>エクスポートのキャンセルに失敗しました。<br />
-（Failed to cancel export.）</td>
-</tr>
-<tr class="even">
-<td>他のユーザが全件エクスポート処理を実行中の場合</td>
-<td>他の端末でエクスポートを実行中です。<br />
-（Export is in progress on another device.）</td>
-</tr>
-<tr class="odd">
-<td>予期せぬエラーが発生した場合<br />
-（ネットワークに問題があった場合など）</td>
-<td>サーバ内部エラー<br />
-（Internal server error）</td>
-</tr>
-</tbody>
-</table>
+| エラー発生条件                                                                 | 表示されるエラーメッセージ                                                                 |
+|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| エクスポートのキャンセルに失敗した場合<br />（キャンセル中にエラーが発生した、またはキャンセルが実行される前にエクスポートが完了した場合） | エクスポートのキャンセルに失敗しました。<br />（Failed to cancel export.）                |
+| 他のユーザが全件エクスポート処理を実行中の場合                               | 他の端末でエクスポートを実行中です。<br />（Export is in progress on another device.）    |
+| 予期せぬエラーが発生した場合<br />（ネットワークに問題があった場合など）     | サーバ内部エラー<br />（Internal server error）                                          |
 
 (4) その他
 
@@ -268,6 +136,8 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
   - 全件エクスポートで出力されたファイルと、著者の一括登録で登録するファイルの形式は同じものとする。
 
   - 実行結果をサーバ上（オブジェクトストレージのファイルインスタンス）に配置することで、管理者がダウンロードできるようにする。
+
+  - サブリポジトリ管理者の場合も全ての著者をエクスポート可能とする。
 
 <!-- end list -->
 
@@ -294,21 +164,7 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
 
   - > 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+|日付|GitHubコミットID|更新内容|
+|:---:|:---:|:---:|
+|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|> 2025/01/23|-|サブリポジトリ対応|
