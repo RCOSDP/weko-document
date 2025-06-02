@@ -316,6 +316,26 @@
         
           - index\_tree\_view\_" + os.environ.get('INVENIO\_WEB\_HOST\_NAME') + "\_" + lang
 
+5\. 設定
+
+  - GakuNin mAPから連携されたグループ情報の閲覧権限初期値を設定する。（Trueの場合、閲覧権限ありとして初期値を設定する。）
+
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L96>
+
+      - 設定キー：WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_BROWSING\_PERMISSION
+
+      - 現在の設定値：
+
+> WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_BROWSING\_PERMISSION = False
+
+  - GakuNin mAPから連携されたグループ情報の投稿権限初期値を設定する。（Trueの場合、投稿権限ありとして初期値を設定する。）
+
+      - 設定キー：WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSION
+
+      - 現在の設定値：
+
+> WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSION = False
+
 
 |インデックスツリー設定値| | | | |
 |:---:|:---:|:---:|:---:|:---:|
@@ -379,4 +399,5 @@
 |> 2024/07/01|7733de131da9ad59ab591b2df1c70ddefcfcad98|v1.0.7対応|
 |> 2024/08/27|f49b016c92ef98e0656947bf651ca1a2f3dbc286|v1.0.8|
 |> 2025/01/23|-|サブリポジトリ対応|
+|> 2025/01/30|3530eae9075af6afc57b777d8c3137f038523610|学認mAP連携対応|
 
