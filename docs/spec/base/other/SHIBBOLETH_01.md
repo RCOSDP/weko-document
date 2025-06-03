@@ -18,11 +18,13 @@
         
           - 「管理者」→システム管理者ロール'System Administrator'
         
-          - 「図書館員」→リポジトリ管理者ロール'Repository Administrator'
+          - 「学認 IdP 経由」→ 一般利用者ロール'Contributor' 
         
-          - 「教員」→一般利用者ロール'Contributor'
+          - 「機関内の Orthros 経由」→ リポジトリ管理者ロール'Repository Administrator'
         
-          - 「教官」→一般利用者ロール'Contributor'
+          - 「機関外の Orthros 経由」→ コミュニティ管理者ロール'Community Administrator'
+          
+          - 「その他」→ ロール無'None'
     
       - 上記のIdP属性値とロールとの対応は、以下のコンフィグで設定する
         
@@ -174,8 +176,8 @@
           - > パス（instance.cfg）：  
             > <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L436>
         
-          - パス（config.py）：  
-            <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L29>
+          - > パス（config.py）：  
+            > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L29>
     
       - weko\_accounts.utils. parse\_attributes関数によってリクエストの内容を確認し、必須の項目が含まれない場合はエラーとしてWEKOのログイン画面に遷移する
         
@@ -184,10 +186,10 @@
               - > パス（instance.cfg）：  
                 > <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L442-L448>
             
-              - パス（config.py）：  
-                <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L64-L74>
+              - > パス（config.py）：  
+                > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L64-L74>
             
-              - 設定キー：WEKO\_ACCOUNTS\_SSO\_ATTRIBUTE\_MAP
+              - > 設定キー：WEKO\_ACCOUNTS\_SSO\_ATTRIBUTE\_MAP
     
       - リクエストの内容にeppnが含まれず、かわりにHTTP\_WEKOIDを利用しない設定である場合はエラーとしてWEKOのログイン画面に遷移する
     
@@ -195,33 +197,55 @@
         
           - キーは、以下のコンフィグの値にログイン画面での入力値Shib-Session-IDを加えたものを用いる
             
-              - パス：<https://github.com/RCOSDP/weko/blob/13c305a3048309dbda87a614ffedac18423820aa/modules/weko-accounts/weko_accounts/config.py#L32>
+              - > パス：<https://github.com/RCOSDP/weko/blob/13c305a3048309dbda87a614ffedac18423820aa/modules/weko-accounts/weko_accounts/config.py#L32>
             
-              - 設定キー：WEKO\_ACCOUNTS\_SHIB\_CACHE\_PREFIX
+              - > 設定キー：WEKO\_ACCOUNTS\_SHIB\_CACHE\_PREFIX
     
       - リクエストの内容をもとに、shibboleth\_userテーブルからeppnまたはHTTP\_WEKOIDを使用してレコードの存在を確認する
 
   - 上記の処理で、shibboleth\_userテーブルにレコードが存在する場合は、weko\_accounts.views.shib\_auto\_login関数で続きの処理を行う
     
       - リクエストのShib-Session-IDとsession\['shib\_session\_id'\]のどちらかに情報がある場合は、ログインする
+      
+      - この先の処理は以下設定キーに応じて流れが異なる
+
+          - > パス：<https://github.com/RCOSDP/weko/blob/13c305a3048309dbda87a614ffedac18423820aa/modules/weko-accounts/weko_accounts/config.py> 
+
+          - > 設定キー：WEKO\_ACCOUNTS\_SKIP\_CONFIRMATION\_PAGE
+
+          - WEKO\_ACCOUNTS\_SKIP\_CONFIRMATION\_PAGE が false の場合は weko\_accounts.views.shib\_login 関数で ID 選択画面に遷移する
+
+              - 登録済みの ID でログインする場合は、weko\_accounts.views.confirm\_user 関数で続きの処理を行う
+
+                  - リクエストに、有効な WEKO アカウントとパスワードが含まれない場合は、WEKO のログイン画面に遷移する
+
+                  - リクエストの WEKO アカウントのメールアドレスを使用して、shibboleth\_user テーブルにレコードを作成する
+
+                  - weko\_accounts.api.ShibUser.check\_in メソッドの中で、ロールの割り当てを行う
+
+                  - ログインする
         
-          - リクエストにShib-Session-IDが含まれず、session\['shib\_session\_id'\]に情報がある場合は、weko\_accounts.api.ShibUser.new\_relation\_infoメソッドによってshibboleth\_userテーブルにレコードを作成する
+              - リクエストにShib-Session-IDが含まれず、session\['shib\_session\_id'\]に情報がある場合は、weko\_accounts.api.ShibUser.new\_relation\_infoメソッドによってshibboleth\_userテーブルにレコードを作成する
             
-              - あわせて、userprofiles\_userprofileテーブルに以下の内容でレコードを作成する
+                  - あわせて、userprofiles\_userprofileテーブルに以下の内容でレコードを作成する
                 
-                  - user\_id：shibboleth\_userテーブルに作成するレコードのidフィールドと同じ
+                      - user\_id：shibboleth\_userテーブルに作成するレコードのidフィールドと同じ
                 
-                  - timezone：コンフィグのデフォルト値
+                      - timezone：コンフィグのデフォルト値
                 
-                  - language：コンフィグのデフォルト値
+                      - language：コンフィグのデフォルト値
                 
-                  - username：shibboleth\_userテーブルに作成するレコードのshib\_user\_nameフィールドと同じ
+                      - username：shibboleth\_userテーブルに作成するレコードのshib\_user\_nameフィールドと同じ
         
-          - レコード作成の有無にかかわらず、weko\_accounts.api.ShibUser. check\_inメソッドの中で、ロールの割り当てを行う
+              - レコード作成の有無にかかわらず、weko\_accounts.api.ShibUser.check\_inメソッドの中で、ロールの割り当てを行う
 
-          - レコード作成の有無にかかわらず、weko\_accounts.api.ShibUser. gakunin_check\_inメソッドの中で、学認mAPグループを更新する。
+              - レコード作成の有無にかかわらず、weko\_accounts.api.ShibUser. gakunin_check\_inメソッドの中で、学認mAPグループを更新する。
 
-              - shibboleth\_userroleテーブルでisMemberOf属性の値を基に、ユーザの学認mAPグループを割り当てる。
+                  - shibboleth\_userroleテーブルでisMemberOf属性の値を基に、ユーザの学認mAPグループを割り当てる。
+          
+          - WEKO\_ACCOUNTS\_SKIP\_CONFIRMATION\_PAGE が true の場合は weko\_accounts.views.confirm\_user\_without\_page 関数で新規 ID および shibboleth\_user テーブルのレコードの自動生成を行う
+
+              - ログインする
     
       - 上記以外の場合は、WEKOのログイン画面に遷移する
 
@@ -331,6 +355,13 @@
 </blockquote></td>
 <td>a62f7a5ea350ec1a811cb053dd27c54f284705a4</td>
 <td>学認mAP対応</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2025/03/12</p>
+</blockquote></td>
+<td>407a511f757c1991078dc69f4560a2f64a42b615</td>
+<td>ユーザープロビジョニング自動化追記、ロール情報修正</td>
 </tr>
 </tbody>
 </table>
