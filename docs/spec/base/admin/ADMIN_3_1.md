@@ -330,6 +330,8 @@
 
   - GakuNin mAPから連携されたグループ情報の投稿権限初期値を設定する。（Trueの場合、投稿権限ありとして初期値を設定する。）
 
+      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L99>
+
       - 設定キー：WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSION
 
       - 現在の設定値：

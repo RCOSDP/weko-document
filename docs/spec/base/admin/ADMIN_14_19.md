@@ -364,7 +364,7 @@
           - パス（config.py）：  
             <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L121-L144>
 
-          - 設定キー：WEKO\_ACCOUNTS\_ROL_LIST
+          - 設定キー：WEKO\_ACCOUNTS\_ROL\_LIST
 
               - admin.py
 
