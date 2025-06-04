@@ -15,14 +15,14 @@ paths:
       summary: サービスドキュメント取得機能
       description: |-
         リポジトリのサービスドキュメントを取得
-        |ロール|動作|
-        |----|----|
-        |システム管理者|使用可能|
-        |リポジトリ管理者|使用可能|
+        |ロール            |動作    |
+        | ---------------- | ------ |
+        |システム管理者    |使用可能|
+        |リポジトリ管理者  |使用可能|
         |コミュニティ管理者|使用可能|
-        |登録ユーザー|使用可能|
-        |一般ユーザー|使用可能|
-        |ゲストユーザー|使用不可|
+        |登録ユーザー      |使用可能|
+        |一般ユーザー      |使用可能|
+        |ゲストユーザー    |使用不可|
       parameters:
         - name: Authorization
           in: header
@@ -79,14 +79,14 @@ paths:
       summary: アイテム登録機能
       description: |-
         WEKO3の一括登録フォーマットを用いて、アイテムを登録
-        |ロール|動作|
-        |----|----|
-        |システム管理者|使用可能|
-        |リポジトリ管理者|使用可能|
+        |ロール            |動作    |
+        | ---------------- | ------ |
+        |システム管理者    |使用可能|
+        |リポジトリ管理者  |使用可能|
         |コミュニティ管理者|使用可能|
-        |登録ユーザー|使用可能|
-        |一般ユーザー|使用可能|
-        |ゲストユーザー|使用不可|
+        |登録ユーザー      |使用不可|
+        |一般ユーザー      |使用不可|
+        |ゲストユーザー    |使用不可|
       parameters:
         - name: Authorization
           in: header
@@ -137,8 +137,14 @@ paths:
             # enum: [SHA-256]
           example: SHA-256=e0Pke8qpzEkkGjPE1RoSqNw7qu3tH4...
       responses:
-        "200":
+        "201":
           description: 登録されたアイテムのステータスドキュメントを返す
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusDocument"
+        "202":
+          description: 登録するアイテムのステータスドキュメントを返す。<br> 登録のリクエストを受け付け、アクティビティが承認待ちとなっていることを示す
           content:
             application/json:
               schema:
@@ -198,14 +204,14 @@ paths:
       summary: ステータスドキュメント取得機能
       description: |-
         recidを指定してリポジトリ上に存在するアイテムのステータスドキュメントを取得
-        |ロール|動作|
-        |----|----|
-        |システム管理者|使用可能|
-        |リポジトリ管理者|使用可能|
+        |ロール            |動作    |
+        | ---------------- | ------ |
+        |システム管理者    |使用可能|
+        |リポジトリ管理者  |使用可能|
         |コミュニティ管理者|使用可能|
-        |登録ユーザー|使用可能|
-        |一般ユーザー|使用可能|
-        |ゲストユーザー|使用不可|
+        |登録ユーザー      |使用可能|
+        |一般ユーザー      |使用可能|
+        |ゲストユーザー    |使用不可|
       parameters:
         - name: Authorization
           in: header
@@ -269,20 +275,144 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorDocument"
+    post:
+      tags:
+        - deposit
+      summary: アイテム更新機能
+      description: |-
+        WEKO3の一括登録フォーマットを用いて、アイテムを更新
+        |ロール            |動作    |
+        | ---------------- | ------ |
+        |システム管理者    |使用可能|
+        |リポジトリ管理者  |使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー      |使用不可|
+        |一般ユーザー      |使用不可|
+        |ゲストユーザー    |使用不可|
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Bearer アクセストークン
+          schema:
+            type: string
+        - name: On-Behalf-Of
+          in: header
+          required: false
+          description: 代理投稿ユーザーのメールアドレスまたはePPN
+          schema:
+            type: string
+        - name: Content-Disposition
+          in: header
+          required: true
+          description: リクエストボディに付加したファイルのファイル名
+          schema:
+            type: string
+        - name: Content-Length
+          in: header
+          required: false
+          description: リクエストボディのサイズ
+          schema:
+            type: integer
+        - name: Content-Type
+          in: header
+          required: true
+          description: リクエストボディにファイルを付加するため "multipart/form-data"
+          schema:
+            type: string
+        - name: Packaging
+          in: header
+          required: true
+          description: パッケージフォーマット
+          schema:
+            type: string
+            enum:
+              - http://purl.org/net/sword/3.0/package/Binary
+              - http://purl.org/net/sword/3.0/package/SimpleZip
+              - http://purl.org/net/sword/3.0/package/SWORDBagIt
+        - name: Digest
+          in: header
+          required: false
+          description: リクエストボディのダイジェスト値
+          schema:
+            type: string
+            # enum: [SHA-256]
+          example: SHA-256=e0Pke8qpzEkkGjPE1RoSqNw7qu3tH4...
+      responses:
+        "200":
+          description: 更新されたアイテムのステータスドキュメントを返す
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusDocument"
+        "202":
+          description: 更新するアイテムのステータスドキュメントを返す。<br> 更新のリクエストを受け付け、アクティビティが承認待ちとなっていることを示す
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusDocument"
+        "400":
+          description: リクエスト内容に何らかの不備がある場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "401":
+          description: リクエストでAuthorization ヘッダーが提供されない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "403":
+          description: 認証に失敗した場合、認証したOAuthトークンが「deposit:write」スコープを持っていない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "404":
+          description: 登録されたアイテムが見つからない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "412":
+          description: サーバー側がOn-Behalf-Of をサポートしていないにもかかわらず、リクエストでOn-Behalf-Of ヘッダーーが提供された場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "413":
+          description: 送信されたファイルのサイズがサーバーに設定されたmaxUploadSizeを超えている場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "415":
+          description: ヘッダーまたはボディに付加されたファイルのContent-Typeがサーバー側でサポートされていない場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
+        "500":
+          description: サーバー内部エラーが発生した場合
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDocument"
     delete:
       tags:
         - deposit
       summary: アイテム削除機能
       description: |-
         recidを指定してアイテムを削除
-        |ロール|動作|
-        |----|----|
-        |システム管理者|使用可能|
-        |リポジトリ管理者|使用可能|
+        |ロール            |動作    |
+        | ---------------- | ------ |
+        |システム管理者    |使用可能|
+        |リポジトリ管理者  |使用可能|
         |コミュニティ管理者|使用可能|
-        |登録ユーザー|使用可能|
-        |一般ユーザー|使用可能|
-        |ゲストユーザー|使用不可|
+        |登録ユーザー      |使用不可|
+        |一般ユーザー      |使用不可|
+        |ゲストユーザー    |使用不可|
       parameters:
         - name: Authorization
           in: header
@@ -304,8 +434,22 @@ paths:
             type: integer
           example: 20000021
       responses:
+        "202":
+          description: 空のレスポンスを返す。 削除のリクエストを受け付け、アクティビティが承認待ちとなっていることを示す
+          headers:
+            Location:
+              description: 削除アクティビティ詳細画面のURL
+              schema:
+                type: string
+                example: "[WEKO3のURL]/workflow/activity/detail/[アクティビティID]"
         "204":
-          description: 空のレスポンスを返す
+          description: 空のレスポンスを返す。削除に成功したことを示す
+          headers:
+            Location:
+              description: ワークフローを使用した場合、削除アクティビティ詳細画面のURL
+              schema:
+                type: string
+                example: "[WEKO3のURL]/workflow/activity/detail/[アクティビティID]"
         "400":
           description: リクエスト内容に何らかの不備がある場合
           content:
@@ -361,33 +505,33 @@ components:
           type: array
           items:
             type: string
-          example: [TODO: 設定値5を入れる]
+          example: []
         acceptArchiveFormat:
           type: array
           items:
             type: string
-          example: [TODO: 設定値6を入れる]
+          example: []
         acceptDeposits:
           type: boolean
-          example: [TODO: 設定値7を入れる]
+          example: True
         acceptMetadata:
           type: array
           items:
             type: string
-          example: [TODO: 設定値8を入れる]
+          example: []
         acceptPackaging:
           type: array
           items:
             type: string
-          example: [TODO: 設定値9を入れる]
+          example: []
         authentication:
           type: array
           items:
             type: string
-          example: [TODO: 設定値17を入れる]
+          example: []
         byReferenceDeposit:
           type: boolean
-          example: [TODO: 設定値14を入れる]
+          example: False
         collectionPolicy:
           type: object
           properties:
@@ -395,47 +539,47 @@ components:
               type: string
             "collectionPolicy.description":
               type: string
-          example: [TODO: 設定値10を入れる]
+          example: {}
         "dc:title":
           type: string
         "dcterms:abstract":
           type: string
-          example: [TODO: 設定値4を入れる]
+          example: ""
         digest:
           type: array
           items:
             type: string
-          example: [TODO: 設定値16を入れる]
+          example: []
         maxAssembledSize:
           type: integer
-          example: [TODO: 設定値21を入れる]
+          example: 300000
         maxByReferenceSize:
           type: integer
-          example: [TODO: 設定値20を入れる]
+          example: 300000
         maxSegmentSize:
           type: integer
         maxSegments:
           type: integer
-          example: [TODO: 設定値22を入れる]
+          example: 300000
         maxUploadSize:
           type: integer
-          example: [TODO: 設定値19を入れる]
+          example: 300000
         onBehalfOf:
           type: boolean
-          example: [TODO: 設定値15を入れる]
+          example: True
         root:
           type: string
         services:
           type: array
           items:
             type: string
-          example: [TODO: 設定値18を入れる]
+          example: []
         staging:
           type: string
-          example: [TODO: 設定値12を入れる]
+          example: []
         stagingMaxIdle:
           type: integer
-          example: [TODO: 設定値13を入れる]
+          example: 300000
         treatment:
           type: object
           properties:
@@ -445,7 +589,7 @@ components:
               type: string
         version:
           type: string
-          example: [TODO: 設定値3を入れる]
+          example: "http://purl.org/net/sword/3.0"
     StatusDocument:
       type: object
       properties:
