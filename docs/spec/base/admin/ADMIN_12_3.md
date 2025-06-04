@@ -191,21 +191,42 @@
               - 「URI」：必須項目
             
               - 「Type」  
-                選択肢：Amazon S3
+                選択肢：「S3 Path」、「S3 Virtual Host」
             
               - 「access\_key」  
-                「Type」に「Amazon S3」を選択する時表示する
+                「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する
             
               - 「secret\_key」  
-                「Type」に「Amazon S3」を選択する時表示する
+                「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する
             
               - 「endpoint\_url」  
-                「Type」に「Amazon S3」を選択する時表示する
+                「Type」に「S3 Path」を選択する時表示する  
+                 保存時、入力内容の末尾に'/'が無い場合、補完する
             
               - > 「send\_file\_directrly」  
-                > 「Type」に「Amazon S3」を選択する時表示するチェックボックス  
+                > 「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示するチェックボックス  
                 > デフォルト：チェックあり
-            
+
+              - > 「default\_block\_size」  
+                > 「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する  
+                > デフォルト：5242880
+
+              - > 「maximum\_number\_of\_parts」  
+                > 「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する  
+                > デフォルト：10000
+
+              - > 「region\_name」  
+                > 「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する  
+                >  保存時に入力されていない場合、endpoint_urlを元に生成
+
+              - > 「signature\_version」  
+                > 「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する  
+                > 選択肢：s3、s3v4
+
+              - > 「url\_expiration」  
+                > 「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する  
+                > デフォルト：60
+
               - 「Quote Size」：使用上限
             
               - 「Default」  
@@ -231,6 +252,13 @@
                     ・「size」  
                     ・「quota\_size」  
                     ・「max\_file\_size」
+                    ・「s3\_endpoint\_url」
+                    ・「s3\_send\_file\_directly」
+                    ・「s3\_default\_block\_size」
+                    ・「s3\_maximum\_number\_of\_parts」
+                    ・「s3\_region\_name」
+                    ・「s3\_signature\_version」
+                    ・「s3\_url\_expiration」
         
           - エラーメッセージは以下の通りである
             
