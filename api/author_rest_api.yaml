@@ -318,22 +318,26 @@ components:
       type: object
       properties:
         author:
-          type: object
-          description: 登録された著者情報
-          $ref: '#/components/schemas/Author'
+          allOf:
+            - type: object
+            - description: 登録された著者情報
+            - $ref: '#/components/schemas/Author'
         message:
           type: string
-          description: Author successfully registered.
+          description: 登録結果メッセージ
+          example: Author successfully registered.
     AuthorUpdateResponse:
       type: object
       properties:
         author:
-          type: object
-          description: 更新された著者情報
-          $ref: '#/components/schemas/Author'
+          allOf:
+            - type: object
+            - description: 更新された著者情報
+            - $ref: '#/components/schemas/Author'
         message:
           type: string
-          description: Author successfully updated.
+          description: 更新結果メッセージ
+          example: Author successfully updated.
     Author:
       type: object
       properties:
