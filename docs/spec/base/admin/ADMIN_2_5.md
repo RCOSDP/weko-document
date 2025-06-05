@@ -17,14 +17,79 @@
 ## 機能内容
 
 - RO-Crate+BagItファイルをインポートし、アイテムを登録する。
+- ほとんどの機能は[インポート](./ADMIN_2_4.md#機能内容)機能と同じだが、使用するメタデータ形式がRO-Crateの`ro-crate-metadata.json`ファイルである点、
+  登録できるアイテムが1つずつである点が異なる。
 - RO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルを読み込み、アイテムのメタデータへマッピングする。
-- WEB APIを利用してDOIによるメタデータ補完を提供する。
+- WEB APIを利用してメタデータ内に記載されたDOIによるメタデータ補完を提供する。
+- アイテムのメタデータをインポートと同様の[チェック仕様](./ADMIN_2_4.md#4--チェック仕様)でバリデーションチェックを行う。
 
 ## 画面仕様
 
+### 選択画面
+
+![選択画面](../media/media/image27.png)
+
+RO-Crate+BagItファイルを選択する画面である。
+
+1. ［ファイル選択（Select File）］ボタン
+
+    - 押下するとファイル選択ダイアログを表示する。選択可能なファイルはzip形式で1つのみ。
+
+2. Selected file name ラベル
+
+    - 1.で選択したファイル名を表示する。未選択時は「選択したファイル名（Selected file name）」を表示。
+
+3. 識別子変更モード（Identifier Change Mode）チェックボックス
+
+    - [インポート機能](./ADMIN_2_4.md#change-identifier-mode)の識別子変更モードと同様。
+
+4. マッピング定義セレクター
+
+    - アイテムのメタデータをマッピングするためのマッピング定義を選択する。  
+      マッピング定義は、[ADMIN_1_5：JSON-LD マッピング](ADMIN_1_5.md)で管理者によって定義される。
+
+5. エラーメッセージ
+
+    - 選択したファイルに問題がある場合は、画面上部にエラーメッセージを表示する。  
+
+### インポート画面
+
+![インポート画面](../media/media/image28.png)
+
+インポートするファイルのバリデーションチェックの結果を表示する画面である。
+
+1. Import ボタン
+
+    - 押下するとインポートを実行する。  
+      対象データにエラーがありインポートできない場合は非活性。
+
+2. Download ボタン
+
+    - インポートファイルのチェック結果をTSV形式で出力する。
+
+3. チェック結果
+
+    - インポートするアイテムのアイテムタイプ、アイテムID（更新時）、タイトル、チェック結果を表示する。
+
+### 結果画面
+
+![結果画面](../media/media/image29.png)
+
+インポートの結果を表示する画面である。成功した場合は、登録されたアイテムのIDを表示する。  
+現状、処理中に一度画面を離れた場合、処理はCeleryで管理されて継続するが、画面で進捗状況を再度確認することはできない。
+
+1. Download ボタン
+
+    - インポート処理の実行結果を出力する。
+
+2. インポート結果
+
+    - インポート処理の結果を表示する。成功した場合は、登録されたアイテムのIDを表示する
+
+
 ## RO-Crate+BagItファイルの構成
 RO-Crate+BagItファイルは、以下の構成である必要がある。  
-アイテムとして登録するファイルは、`data/`ディレクトリに格納される。  
+アイテムとして登録するファイルとメタデータを記述した.`.json`ファイルは、`data/`ディレクトリに格納される。  
 参照：[Adding RO-Crate to Bagit](https://www.researchobject.org/ro-crate/specification/1.1/appendix/implementation-notes.html)  
 
 
@@ -80,11 +145,11 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
       "name": "Sample Dataset",
       "description": "This is a sample dataset.",
       "datePublished": "2025-03-01",
-      "creator": [ {"@id": "_:creator"} ],
+      "creator": [ {"@id": "#:creator"} ],
       "hasPart": [ {"@id": "data/sample.txt"} ]
     },
     {
-      "@id": "_:creator",
+      "@id": "#:creator",
       "@type": "Person",
       "name": "John Doe"
     },
@@ -131,15 +196,15 @@ RO-Crateには、アイテムのメタデータを記述するための語彙が
 そのため、カスタム語彙を定義して記述されているため、インポート処理においては、これらを解析し、システム向け情報を取得する。
 
 ### 使用語彙
-TSV形式のメタデータ項目とシステム向け語彙について、定義したカスタム語彙を以下に示す。  
+[TSV形式のメタデータ項目]()とシステム向け語彙について、定義したカスタム語彙を以下に示す。  
 カスタム語彙はプレフィックスとして、`wk:`が付与されている。  
 新規登録としてインポートする際に必須である項目は、インデックスIDと公開ステータスである。  
 更新登録としてインポートする際に追加で必須になる項目は、アイテムIDとURIである。  
-一部の語彙は、この機能では使用せず、SWORD APIを利用してアイテムを登録する際に使用することを前提としている。
+一部の語彙は、RO-Crateインポート機能では使用できず、SWORD APIを利用してアイテムを登録・更新する際に使用される。
 
 | 使用語彙                                   | 対応するTSV項目名    | バリュータイプ     | デフォルト値 | 新規 | 更新 | 説明                                     |
 | ------------------------------------------ | -------------------- | ------------------ | ------------ | :--: | :--: | ---------------------------------------- |
-| identifier                                 | ID                   | 整数値             | -            | ×   | 〇   | アイテムID                               |
+| identifier                                 | ID                   | 文字列             | -            | ×   | 〇   | アイテムID                               |
 | uri                                        | URI                  | URL                | -            | ×   | 〇   | アイテムのURI                            |
 | wk:index                                   | .IndexID             | 配列               | -            | 〇   | 〇   | インデックスID                           |
 | wk:publishStatus                           | .PUBLISH_STATUS      | 文字列             | -            | 〇   | 〇   | 公開ステータス                           |
@@ -149,15 +214,17 @@ TSV形式のメタデータ項目とシステム向け語彙について、定�
 | wk:grant.@id                               | .DOI                 | URL                | -            |      |      | DOI                                      |
 | wk:grant<br>.jpcoar:identifierRegistration | .DOI_RA              | URL                | -            |      |      | DOI_RA                                   |
 | wk:editMode                                | Keep/Upgrade Version | 文字列             | -            |      | 〇   | Keep/Upgrade Version                     |
-| wk:itemLinks.identifier                    | -                    | 整数値 or 文字列   | -            |      |      | アイテムリンク先識別子（SWORD経由のみ）  |
-| wk:itemLinks.value                         | -                    | 文字列             | -            |      |      | アイテムリンクタイプ （SWORD経由のみ）   |
+| wk:itemLinks.identifier                    | -                    | 整数値 or 文字列   | -            |      |      | アイテムリンク先識別子                   |
+| wk:itemLinks.value                         | -                    | 文字列             | -            |      |      | アイテムリンクタイプ                     |
 | wk:textExtraction                          | -                    | 真偽値             | true         |      |      | 全文検索用本文抽出フラグ                 |
 | wk:saveAsIs                                | -                    | 真偽値             | false        |      |      | 登録用ファイル保存フラグ                 |
 | wk:isSplited                               | -                    | 真偽値             | false        |      |      | アイテム分割フラグ （SWORD経由のみ）     |
 | wk:metadataAutoFill                        | -                    | 真偽値             | false        |      |      | メタデータ自動補完フラグ                 |
 | wk:metadataReplace                         | -                    | 真偽値             | false        |      |      | メタデータのみ置換フラグ（SWORD経由のみ）|
 
-※ 登録用ファイル保存フラグとアイテム分割フラグが両方`true`の場合、アイテム分割フラグが優先され、ファイルは展開されて保存される。
+※ 登録用ファイル保存フラグとアイテム分割フラグが両方`true`の場合、アイテム分割フラグが優先され、ファイルは展開されて保存される。  
+※ カスタム語彙の定義は、http://purl.org/wk/v1/wk-context.jsonld にjson-ld形式で定義されている。
+語彙の更新はコンテキストファイルのバージョンの更新を伴うこと。
 
 ### wk:index：インデックスID
 
@@ -210,12 +277,12 @@ DOI発行機関を指定する場合は、`jpcoar:identifierRegistration`で指�
 },
 {
   "@id": "1234/5678",
-  "@type": "Property ",
+  "@type": "PropertyValue",
   "jpcoar:identifier": "HDL"
 },
 {
   "@id": "10.1234/5678",
-  "@type": "Property ",
+  "@type": "PropertyValue",
   "jpcoar:identifier": "DOI",
   "jpcoar:identifierRegistration": "DataCite"
 }
@@ -250,17 +317,16 @@ DOI発行機関を指定する場合は、`jpcoar:identifierRegistration`で指�
 アイテムにリンクを設定する。`wk:itemLinks`は、`identifier`と`value`の2つのプロパティを持つ。  
 `identifier`はアイテムリンク先のアイテムIDを指定し、`value`はアイテムリンクのリレーションタイプを指定する。  
 ルートデータセット直下に記述する。  
-SWORD APIを利用時、ワークフローを経由してアイテムを登録する際に使用することを前提としている。
 
 ```json
 {
   "@id": "./",
   "wk:itemLinks": [
-    {"@id": "_:itemLink"}
+    {"@id": "#:itemLink"}
   ]
 },
 {
-  "@id": "_:itemLink",
+  "@id": "#:itemLink",
   "@type": "PropertyValue",
   "value": "isSupplementedBy",
   "identifier": "https://example.repo.nii.ac.jp/records/123456789"
@@ -270,7 +336,7 @@ SWORD APIを利用時、ワークフローを経由してアイテムを登録�
 ### wk:textExtraction：全文検索用本文抽出フラグ
 
 WEKO3では、アイテム登録時に本文ファイルのテキストを抽出し、アイテムの全文検索に利用している。  
-本文抽出を行わない場合は、ファイルのメタデータとして`wk:textExtraction`を`false`に設定する。デフォルト値は`true`である。
+本文抽出を行わない場合は、ファイル個々に対して`wk:textExtraction`を`false`に設定する。デフォルト値は`true`である。
 
 ```json
 {
@@ -302,46 +368,48 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
 
 ### wk:isSplited：アイテム分割フラグ<span id="isSplited">
 
-WEKO3においてRO-Crateは、SWORD APIを利用してアイテムを登録する際に使用することを前提としている。  
 原則として、RO-Crate+BagItファイルに含まれるアイテムは、1つのアイテムとして登録される。  
-例外的にアイテムを複数に分割し、ワークフローを経由して登録する場合は、`wk:isSplited`を`true`に設定する。デフォルト値は`false`である。ルートデータセット直下に記述する。  
+例外的にSWORD APIを通じてアイテムを新規登録する場合のみ、`wk:isSplited`を`true`に設定することでアイテムを複数に分割し登録することができる。デフォルト値は`false`である。ルートデータセット直下に記述する。  
 分割するとき、`hasPart`プロパティを使用して、個別のアイテムを指定する。  
 メタデータは個別のアイテムをルートデータセットとみなして記述する。
 
 以下の例は、論文アイテムとその論拠データアイテムに分割して登録する場合の例である。  
-アイテムはアイテムは`{"@id": "_:item1"}`と`{"@id": "_:item2"}`の2つに独立した状態で分割されるため、メタデータはそれぞれのアイテムに記述する。
-また、相互のアイテムは`wk:itemLinks`プロパティを使用してアイテムリンクを設定する。
+アイテムはアイテムは`{"@id": "#:item1"}`と`{"@id": "#:item2"}`の2つに独立した状態で分割されるため、メタデータはそれぞれのアイテムに記述する。  
+また、相互のアイテムは`wk:itemLinks`プロパティを使用してアイテムリンクを設定することができる。  
+このとき、`identifier`プロパティには、アイテムに与えた識別子を指定する。
 
 ```json
 {
   "@id": "./",
   "hasPart": [
-    {"@id": "_:item1"},
-    {"@id": "_:item2"}
+    {"@id": "#:item1"},
+    {"@id": "#:item2"}
   ],
   "wk:isSplited": true
 },
 {
-  "@id": "_:item1",
+  "@id": "#:item1",
   "datePublished": "2025-03-01",
-  "wk:itemLinks": [{"@id": "_:itemLink1"}]
+  "dc:title" : "論文アイテム",
+  "wk:itemLinks": [{"@id": "#:itemLink1"}]
 },
 {
-  "@id": "_:item2",
+  "@id": "#:item2",
   "datePublished": "2025-03-01",
-  "wk:itemLinks": [{"@id": "_:itemLink2"}]
+  "dc:title" : "論拠データアイテム",
+  "wk:itemLinks": [{"@id": "#:itemLink2"}]
 },
 {
-  "@id": "_:itemLink1",
+  "@id": "#:itemLink1",
   "@type": "PropertyValue",
   "value": "isSupplementedBy",
-  "identifier": "_:item2"
+  "identifier": "#:item2"
 },
 {
-  "@id": "_:itemLink2",
+  "@id": "#:itemLink2",
   "@type": "PropertyValue",
   "value": "isSupplementTo",
-  "identifier": "_:item1"
+  "identifier": "#:item1"
 }
 ```
 
@@ -351,24 +419,24 @@ WEKO3においてRO-Crateは、SWORD APIを利用してアイテムを登録す�
 "jpcoar:relation"プロパティで関連情報として`cite_as`にDOIを指定すると、そのDOIを利用してメタデータを補完する。  
 このとき、`relationType`プロパティに`isVersionOf`を指定する必要がある。  
 関係情報が複数記述されるとき、はじめて`relationType`プロパティに`isVersionOf`を指定したものが対象となる。  
-自動補完機能については、[メタデータ補完機能](#メタデータ補完機能)を参照。
+自動補完機能については、[DOIを使用したメタデータ補完機能](../user/USER_4_6.md#3-web-apiによるdoiを使用したメタデータ補完機能)を参照。
 
 ```json
 {
   "@id": "./",
-  "jpcoar:relation": [{ "@id": "_:Relation1" }, { "@id": "_:Relation2" }],
+  "jpcoar:relation": [{ "@id": "#:Relation1" }, { "@id": "#:Relation2" }],
   "wk:metadataAutoFill": true
 },
 {
-  "@id": "_:Relation1",
+  "@id": "#:Relation1",
   "relationType": "isVersionOf",
-  "cite-as": "https://doi.org/10.34477/0002000074"
+  "cite-as": "10.34477/0002000074"
 }
 ```
 
 ### wk:metadataReplace：メタデータのみ置換フラグ
 
-SWORD APIを利用してアイテムを登録する際に、メタデータのみを置換するかどうかを指定する。ルートデータセット直下に記述する。  
+SWORD APIを利用してアイテムを更新する際に、メタデータのみを置換するかどうかを指定する。ルートデータセット直下に記述する。  
 暫定的に使用するフラグであり、将来的には廃止される予定である。
 
 ```json
@@ -384,7 +452,7 @@ JSON-LD形式のメタデータファイルを読み込み、あらかじめ設�
 `ro-crate-metadata.json`と`sword.json`の形式に対応している。  
 この処理にはJSON形式で記述されたマッピング定義と、アイテムタイプのスキーマ定義を使用する。  
 マッピング定義には、JSON-LD形式のメタデータのキーと、WEKO3のアイテムタイプのプロパティ名を対応付ける情報が記述されている。  
-そして、アイテムタイプのスキーマ定義をもとに登録に適した構造のメタデータを構築する。
+そして、アイテムタイプのスキーマ定義をもとに登録に適した構造のメタデータを構築する。  
 アイテムタイプにマッピング定義にないメタデータを保持するプロパティが存在する場合、マッピング先を定義されていないメタデータはそこに格納される。
 
 ### 語句
@@ -403,52 +471,35 @@ JSON-LD形式のメタデータファイルを読み込み、あらかじめ設�
 - カスタム語彙で指定されたシステム向け情報の取得
 - マッピング定義に基づき、アイテムタイプへのマッピング処理を実行
 
-### マッピング定義
-マッピング定義は以下のようなJSON形式で記述される。
 
-```jsonc
-{
-  "Title": "dc:title",
-  "Title.タイトル": "dc:title.value",
-  "Title.言語": "dc:title.language",
-  "メタデータ登録日.日付": "dateCreated",
-  "メタデータ登録日.日付タイプ": "$Created",
-  "Creator": "creator",
-  "Creator.作成者姓名.姓名": "creator.creatorName",
-  "Creator.作成者姓名.言語": "creator.creatorNameLang",
-}
-```
+### 特記事項
+JSON-LDに配列として複数記述されていない場合でも、アイテムタイプのスキーマ定義が配列となっているプロパティは、スキーマ定義に従い配列としてマッピングする。  
+逆に、JSON-LDにオブジェクトの配列として複数記述されていいても、スキーマ定義が配列になっていないプロパティは、先頭の要素が単一のオブジェクトとしてマッピングされる。
 
-| アイテムタイプのプロパティのパス | JSON-LDのメタデータのパス | 説明                                                                  |
-| -------------------------------- | ------------------------- | --------------------------------------------------------------------- |
-| Title                            | dc:title                  | アイテムタイプの "Title" に対応するメタデータのパス                   |
-| Title.タイトル                   | dc:title.value            | アイテムタイプの "Title.タイトル" に対応するメタデータのパス          |
-| Title.言語                       | dc:title.language         | アイテムタイプの "Title.言語" に対応するメタデータのパス              |
-| メタデータ登録日.日付            | dateCreated               | アイテムタイプの "メタデータ登録日.日付" に対応するメタデータのパス   |
-| メタデータ登録日.日付タイプ      | $Created                  | アイテムタイプの "メタデータ登録日.日付タイプ" に対応する固定値       |
-| Creator                          | creator                   | アイテムタイプの "Creator" に対応するメタデータのパス                 |
-| Creator.作成者姓名.姓名          | creator.creatorName       | アイテムタイプの "Creator.作成者姓名.姓名" に対応するメタデータのパス |
-| Creator.作成者姓名.言語          | creator.creatorNameLang   | アイテムタイプの "Creator.作成者姓名.言語" に対応するメタデータのパス |
-
-
-## メタデータ補完機能
 
 ## 本文抽出選択機能
 
 WEKO3では、アイテムの全文検索に使用するのために本文ファイルのテキストを抽出し、Elasticsearchに登録する。  
 本文ファイルをあえて全文検索対象から外したいというユースケースに対応するため、RO-Crateに含まれるメタデータ情報をもとに、全文検索機能の要不要を指定できる機能を提供する。  
 [全文検索用本文抽出フラグ](#wktextextraction全文検索用本文抽出フラグ)を使用して、本文抽出を行わないファイルを指定する。  
+メタデータとファイル情報をデータベースへコミットする処理の内部で、本文抽出を行わないファイルの情報を確認し、抽出の対象から除外する。
 
+この機能は、RO-Crate+BagItファイルのインポート時、あるいはSWORD APIを利用してアイテムを登録する際に使用できる。  
+現時点では、個別登録機能を用いて手動でアイテムを登録・更新するときには抽出是非の設定ができないため、対象外とするファイルを指定することはできない。
 
 
 ## 関連モジュール
 
-- weko_search_ui：インポート処理およびマッピング処理を実行する
+- weko_search_ui：画面表示、インポート処理およびマッピング処理を実行する。
+
+- weko_deposit：アイテムのメタデータをモデル化し、永続化する。本文抽出を行い、Elasticsearchに登録する。
 
 ## 関連テーブル
+
+- jsonld_mapping：マッピング定義を格納するテーブル
 
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                        |
 | ---------- | ------------------------------------------ | ----------------------------------------------- |
-| 2024/03/07 |                                            | 初版作成                                        |
+| 2024/03/07 | 111d579dc68943b810918b2ccd46939f0208f4ba   | 初版作成                                        |

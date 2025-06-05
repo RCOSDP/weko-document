@@ -231,7 +231,7 @@ curl -X DELETE https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer D
     - OAuthアクセストークンによるユーザー認証を必須とする
 
 - アイテム登録機能で登録に使用するZIPファイルは、メタデータのファイルがTSV/CSV形式、XML形式、あるいはJSON-LD形式である必要がある。
-    - TSV/CSV形式のメタデータを含むZIPファイルの詳細は [ADMIN_2_4：インポート](../admin/ADMIN_2_4.md#インポート) を参照
+    - TSV/CSV形式のメタデータを含むZIPファイルの詳細は [ADMIN_2_4：インポート](../admin/ADMIN_2_4.md#インポートファイルtsvファイルについて) を参照
     - XML形式のメタデータを含むZIPファイルは、JPCOARスキーマに準拠したXMLファイルを含むZIPファイルである必要がある。
     - JSON-LD形式のメタデータを含むZIPファイルは、[RO-Crate+BagIt](../admin/ADMIN_2_5.md#ro-cratebagitファイルの構成)
       またはSWORDBagItに準拠したZIPファイルである必要がある。
