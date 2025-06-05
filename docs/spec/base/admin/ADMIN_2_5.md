@@ -144,11 +144,11 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
       "name": "Sample Dataset",
       "description": "This is a sample dataset.",
       "datePublished": "2025-03-01",
-      "creator": [ {"@id": "_:creator"} ],
+      "creator": [ {"@id": "#:creator"} ],
       "hasPart": [ {"@id": "data/sample.txt"} ]
     },
     {
-      "@id": "_:creator",
+      "@id": "#:creator",
       "@type": "Person",
       "name": "John Doe"
     },
@@ -321,11 +321,11 @@ DOI発行機関を指定する場合は、`jpcoar:identifierRegistration`で指�
 {
   "@id": "./",
   "wk:itemLinks": [
-    {"@id": "_:itemLink"}
+    {"@id": "#:itemLink"}
   ]
 },
 {
-  "@id": "_:itemLink",
+  "@id": "#:itemLink",
   "@type": "PropertyValue",
   "value": "isSupplementedBy",
   "identifier": "https://example.repo.nii.ac.jp/records/123456789"
@@ -373,7 +373,7 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
 メタデータは個別のアイテムをルートデータセットとみなして記述する。
 
 以下の例は、論文アイテムとその論拠データアイテムに分割して登録する場合の例である。  
-アイテムはアイテムは`{"@id": "_:item1"}`と`{"@id": "_:item2"}`の2つに独立した状態で分割されるため、メタデータはそれぞれのアイテムに記述する。  
+アイテムはアイテムは`{"@id": "#:item1"}`と`{"@id": "#:item2"}`の2つに独立した状態で分割されるため、メタデータはそれぞれのアイテムに記述する。  
 また、相互のアイテムは`wk:itemLinks`プロパティを使用してアイテムリンクを設定することができる。  
 このとき、`identifier`プロパティには、アイテムに与えた識別子を指定する。
 
@@ -381,34 +381,34 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
 {
   "@id": "./",
   "hasPart": [
-    {"@id": "_:item1"},
-    {"@id": "_:item2"}
+    {"@id": "#:item1"},
+    {"@id": "#:item2"}
   ],
   "wk:isSplited": true
 },
 {
-  "@id": "_:item1",
+  "@id": "#:item1",
   "datePublished": "2025-03-01",
   "dc:title" : "論文アイテム",
-  "wk:itemLinks": [{"@id": "_:itemLink1"}]
+  "wk:itemLinks": [{"@id": "#:itemLink1"}]
 },
 {
-  "@id": "_:item2",
+  "@id": "#:item2",
   "datePublished": "2025-03-01",
   "dc:title" : "論拠データアイテム",
-  "wk:itemLinks": [{"@id": "_:itemLink2"}]
+  "wk:itemLinks": [{"@id": "#:itemLink2"}]
 },
 {
-  "@id": "_:itemLink1",
+  "@id": "#:itemLink1",
   "@type": "PropertyValue",
   "value": "isSupplementedBy",
-  "identifier": "_:item2"
+  "identifier": "#:item2"
 },
 {
-  "@id": "_:itemLink2",
+  "@id": "#:itemLink2",
   "@type": "PropertyValue",
   "value": "isSupplementTo",
-  "identifier": "_:item1"
+  "identifier": "#:item1"
 }
 ```
 
@@ -423,11 +423,11 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
 ```json
 {
   "@id": "./",
-  "jpcoar:relation": [{ "@id": "_:Relation1" }, { "@id": "_:Relation2" }],
+  "jpcoar:relation": [{ "@id": "#:Relation1" }, { "@id": "#:Relation2" }],
   "wk:metadataAutoFill": true
 },
 {
-  "@id": "_:Relation1",
+  "@id": "#:Relation1",
   "relationType": "isVersionOf",
   "cite-as": "10.34477/0002000074"
 }
@@ -501,4 +501,4 @@ WEKO3では、アイテムの全文検索に使用するのために本文ファ
 
 | 日付       | GitHubコミットID                           | 更新内容                                        |
 | ---------- | ------------------------------------------ | ----------------------------------------------- |
-| 2024/03/07 |                                            | 初版作成                                        |
+| 2024/03/07 | 111d579dc68943b810918b2ccd46939f0208f4ba   | 初版作成                                        |
