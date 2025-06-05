@@ -333,7 +333,7 @@
 | .edit_mode        | Keep/Upgrade Version | 対象のアイテムのバージョン更新可否を指定する。新規登録の場合は空、更新の場合は必須でKeep/Upgradeのいずれかを指定する。<br>※インポートファイル（zip）に既存アイテムの元ファイルが同名、ファイルパスも同一で含まれていた場合（元ファイルを変更しない） <br>・Keep: 重複登録されない <br>・Upgrade: 重複登録する。ファイル名だけでは、同名同ファイルなのか同名異ファイルなのかが判断できない |
 
 #### ※2) CNRIハンドルサーバの使用について  
-    CNRIハンドルの使用状態は「WEKO\_HANDLE\_ALLOW\_REGISTER\_CRNI」(modules/weko-handle/weko\_handle/config.py)の設定値で判断している
+CNRIハンドルの使用状態は「WEKO\_HANDLE\_ALLOW\_REGISTER\_CRNI」(modules/weko-handle/weko\_handle/config.py)の設定値で判断している
     
 - 「False」：初期値。CNRIハンドルサーバを使用しない
 - 「True」：CNRIハンドルサーバを使用する
@@ -1908,4 +1908,4 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 | 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成            |
 | 2024/07/01 |7733de131da9ad59ab591b2df1c70ddefcfcad98|v1.0.7対応         |
 | 2025/01/23 |-                                       |サブリポジトリ対応 |
-| 2025/06/05 |                                        |メタデータ補完機能 |
+| 2025/06/05 |218410fd51f7dce1ca7df00cdbe851033e936f2d|メタデータ補完機能 |
