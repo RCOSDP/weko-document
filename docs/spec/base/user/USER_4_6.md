@@ -42,8 +42,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 ※一般ユーザーは、ロールとして利用可能に設定することはできないが、個別のユーザーをAction Userとして設定することはできる。
 
 ## 機能内容
-
-1. アイテムのメタデータを入力する
+### 1. アイテムのメタデータを入力する
 
   - 【アイテム登録画面】に入力するアイテムのメタデータを表示する
 
@@ -98,7 +97,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
       - アイテムで個別に編集した作成者の項目は、Adminの著者DBには反映されない。  
         なお、アイテムで個別に編集した後に著者DBから著者を取り込むと、個別編集した項目は上書きされる
 
-2. アイテムのメタデータを自動入力できる
+### 2. アイテムのメタデータを自動入力できる
 
   - Web APIのアカウント情報を設定する
     
@@ -130,23 +129,23 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
           - 取得データは、アイテムの対応項目および対応するJPCOARマッピングが設定されたメタデータ項目に自動入力される  
             取得データの入力先メタデータ項目
 
-| # | 要素                                                              | JPCOARスキーマ                                      |
-| -- | --------------------------------------------------------------- | ----------------------------------------------- |
-| 1  | article_title                                                  | dc:title                                        |
-| 2  | author                                                          | jpcoar:creatorName                              |
-| 3  | contributor(contributor_role属性が editor, chair, translator)     | jpcoar:contributorName                          |
+| # | 要素                                                                 | JPCOARスキーマ                                  |
+| -- | ------------------------------------------------------------------- | ----------------------------------------------- |
+| 1  | article_title                                                       | dc:title                                        |
+| 2  | author                                                              | jpcoar:creatorName                              |
+| 3  | contributor(contributor_role属性が editor, chair, translator)       | jpcoar:contributorName                          |
 | 4  | contributor(contributor_role属性が editor, chair, translator 以外)  | jpcoar:creatorName                              |
-| 5  | organization(contributor_role属性が editor, chair, translator)    | jpcoar:affiliationName                          |
+| 5  | organization(contributor_role属性が editor, chair, translator)      | jpcoar:affiliationName                          |
 | 6  | organization(contributor_role属性が editor, chair, translator 以外) | jpcoar:affiliationName                          |
-| 7  | journal_title                                                  | jpcoar:sourceTitle                              |
-| 8  | volume                                                          | jpcoar:volume                                   |
-| 9  | issue                                                           | jpcoar:issue                                    |
-| 10 | first_page                                                     | jpcoar:pageStart                                |
-| 11 | last_page                                                      | jpcoar:pageEnd                                  |
-| 12 | year                                                            | datacite:date(dateType="Issued")                |
-| 13 | issn                                                            | jpcoar:sourceIdentifier(identifierType="ISSN")  |
-| 14 | isbn                                                            | jpcoar:relatedIdentifier(identifierType="ISBN") |
-| 15 | doi                                                             | jpcoar:relatedIdentifier(identifierType="DOI")  |
+| 7  | journal_title                                                       | jpcoar:sourceTitle                              |
+| 8  | volume                                                              | jpcoar:volume                                   |
+| 9  | issue                                                               | jpcoar:issue                                    |
+| 10 | first_page                                                          | jpcoar:pageStart                                |
+| 11 | last_page                                                           | jpcoar:pageEnd                                  |
+| 12 | year                                                                | datacite:date(dateType="Issued")                |
+| 13 | issn                                                                | jpcoar:sourceIdentifier(identifierType="ISSN")  |
+| 14 | isbn                                                                | jpcoar:relatedIdentifier(identifierType="ISBN") |
+| 15 | doi                                                                 | jpcoar:relatedIdentifier(identifierType="DOI")  |
 
   - CiNii API経由でアイテムメタデータを入力する
     
@@ -236,61 +235,58 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 
   - 「Automatic metadata input」からメタデータを自動入力した際、ISBN/ISSN/DOIはすべて「jpcoar:sourceIdentifier」にマッピングされるが、このマッピング情報がアイテムタイプに複数存在する場合は、１つ目（１番上）のプロパティにのみセットする
 
-3. Web APIによるDOIを使用したメタデータ補完機能
-- 「メタデータ自動入力」（Automatic metadata input）ボタンを押すと出現するポップアップウィンドウにて、「ID選択」プルダウンで`DOI`を選択し、DOIを入力して「取得」（Get）ボタンを押すことで、設定された優先度順にAPIから取得したメタデータまたは元のメタデータ(画面に手入力を行い、「Save」を押した場合。`Original`とする)を、空白の項目にのみ自動入力する。
-- `weko_items_autofill/config.py`にて、以下のように設定する
- ```python
-  # weko_items_autofill/config.pyに設定値を保持する
-  WEKO_ITEMS_AUTOFILL_API_LIST = [
-    "JaLC API",
-    "医中誌 Web API",
-    "CrossRef",
-    "DataCite",
-    "CiNii Research"
-  ]
+### 3. Web APIによるDOIを使用したメタデータ補完機能
+- 「メタデータ自動入力」（Automatic metadata input）ボタンを押すと出現するポップアップウィンドウにて、「ID選択」プルダウンで`DOI`を選択し、DOIを入力して「取得」（Get）ボタンを押すことで、管理者によって設定された優先度順にAPIから取得したメタデータで、すでに画面に手入力したメタデータを更新する。
+- `instance.cfg`にて、以下のように設定する
+    ```python
+    # instance.cfgに設定値を保持する
+    WEKO_ITEMS_AUTOFILL_API_LIST = [
+        "JaLC API",
+        "医中誌 Web API",
+        "CrossRef",
+        "DataCite",
+        "CiNii Research"
+    ]
 
-  WEKO_ITEMS_AUTOFILL_TO_BE_USED = [
-    # 優先度順に格納
-    "医中誌 Web API",
-    "CrossRef",
-    "DataCite",
-    "Original"
-  ]
- ```
+    WEKO_ITEMS_AUTOFILL_TO_BE_USED = [
+        # 優先度順に格納
+        "医中誌 Web API",
+        "CrossRef",
+        "DataCite",
+        "Original"
+    ]
+    ```
 - 処理概要
   - `WEKO_ITEMS_AUTOFILL_API_LIST`に設定されたAPIのリストから、`WEKO_ITEMS_AUTOFILL_TO_BE_USED`に設定された順番でAPIを呼び出し、取得したメタデータを空白の項目にのみ自動入力する。
   - 上記の例だと、`医中誌 Web API`から取得したメタデータを優先して入力し、空白の項目がない場合は`CrossRef`、`DataCite`、`Original`の順で入力する。
   - `Original`は、画面に手入力を行い、「Save」を押した場合のメタデータを指す。  
     画面に入力を行っていない場合や、入力後に「Save」を押していない場合は、`Original`は空となり、影響を与えない。
+  - 各APIについては、[メタデータ補完機能](../admin/ADMIN_X_X.md)を参照のこと。
 
 
 ## 関連モジュール
 
 
-  - > 「weko_workflow」：アイテム編集可能な権限をチェックする処理モジュールである
+  -  「weko_workflow」：アイテム編集可能な権限をチェックする処理モジュールである
 
-  - > 「weko_items_ui」：メタデータ登録を管理する処理モジュールである
+  -  「weko_items_ui」：メタデータ登録を管理する処理モジュールである
 
-  - > 「weko-items-autofill」：メタデータ自動入力用のデータを取得する処理モジュールである
+  -  「weko-items-autofill」：メタデータ自動入力用のデータを取得する処理モジュールである
 
 
 ## 処理概要
 
-> 選択されたメタデータを表示する処理
+選択されたメタデータを表示する処理
 
-  - > パネルがオープンか、クローズかの状態を取得する
-    
-      - > すべての項目に対してデフォルトの状態はクローズとする
-    
-      - > 「$rootScope.recordsVM.invenioRecordsSchema.required」から必須項目を取得し、それらの項目のパネルが初期としとオープンの状態とする
+  -  パネルがオープンか、クローズかの状態を取得する
+      -  すべての項目に対してデフォルトの状態はクローズとする
+      - 「$rootScope.recordsVM.invenioRecordsSchema.required」から必須項目を取得し、それらの項目のパネルが初期としとオープンの状態とする
 
-  - > パネルの中身に表示する処理はプロパティのデータを取得し、タイプに応じて以下のテンプレートで表示する
-    
-      - > form.html（https://github.com/inveniosoftware/invenio-records-js/blob/master/src/invenio-records-js/templates/form.html）
-    
-      - > decorators（https://github.com/inveniosoftware/invenio-records-js/tree/master/src/invenio-records-js/templates/decorators）
+  -  パネルの中身に表示する処理はプロパティのデータを取得し、タイプに応じて以下のテンプレートで表示する
+      -  form.html（https://github.com/inveniosoftware/invenio-records-js/blob/master/src/invenio-records-js/templates/form.html）
+      -  decorators（https://github.com/inveniosoftware/invenio-records-js/tree/master/src/invenio-records-js/templates/decorators）
 
-2. 設定
+1. 設定
 
 | **設定**                           | **説明**               | **デフォルト値** | **実装箇所**                                        |
 | -------------------------------- | -------------------- | ---------- | ----------------------------------------------- |
@@ -298,9 +294,10 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 
 ## 更新履歴
 
-|日付|GitHubコミットID|更新内容|
-|---|---|---|
+| 日付     | GitHubコミットID                       |更新内容|
+| -------- | -------------------------------------- | ------ |
+|2025/03/13|94a0d70019b3dbf7ed6c01692b75a3dbad640db6|v1.1.0  |
 |2025/01/01|09c6391d2ed1bae053fee9f8dfc98e95e1e1b87f|v1.0.7a2|
-|2024/04/14|cd0183f59a16928be2511e33e4495a3376f143c9|v1.0.6|
+|2024/04/14|cd0183f59a16928be2511e33e4495a3376f143c9|v1.0.6  |
 |2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
 

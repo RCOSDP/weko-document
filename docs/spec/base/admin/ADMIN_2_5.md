@@ -380,23 +380,28 @@ SWORD APIを利用してアイテムを登録する際に、メタデータの�
 
 
 ## マッピング機能
-RO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルを読み込み、あらかじめ設定されたマッピング定義に基づいてJSON-LD形式で記述されたメタデータをアイテムタイプへマッピングする。
+JSON-LD形式のメタデータファイルを読み込み、あらかじめ設定されたマッピング定義に基づいてWEKO3のアイテムタイプにマッピングする機能を提供する。  
+`ro-crate-metadata.json`と`sword.json`の形式に対応している。  
+この処理にはJSON形式で記述されたマッピング定義と、アイテムタイプのスキーマ定義を使用する。  
+マッピング定義には、JSON-LD形式のメタデータのキーと、WEKO3のアイテムタイプのプロパティ名を対応付ける情報が記述されている。  
+そして、アイテムタイプのスキーマ定義をもとに登録に適した構造のメタデータを構築する。
+アイテムタイプにマッピング定義にないメタデータを保持するプロパティが存在する場合、マッピング先を定義されていないメタデータはそこに格納される。
 
 ### 語句
 
 - **JSON-LD形式のメタデータ**：  
   JSON-LD（JavaScript Object Notation for Linked Data）で記述されたアイテムのメタデータ。  
-  インポート対象のRO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルの内容がこれに該当する。
+  インポート対象のRO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルあるいは`sword.json`ファイルの内容がこれに該当する。
 - **マッピング定義**：  
   JSON-LD形式で記述されたメタデータをアイテムタイプへマッピングするための定義。  
-  マッピング定義は、[ADMIN_1_5：JSON-LD マッピング](ADMIN_1_5.md)でユーザーによって定義される。
+  マッピング定義は、[ADMIN_1_5：JSON-LD マッピング](ADMIN_1_5.md)で管理者によって定義される。
 
 ### 処理概要
 
 - JSON-LD形式のメタデータの読み込み
 - マッピング定義の読み込み
 - カスタム語彙で指定されたシステム向け情報の取得
-- マッピング処理の実行
+- マッピング定義に基づき、アイテムタイプへのマッピング処理を実行
 
 ### マッピング定義
 マッピング定義は以下のようなJSON形式で記述される。
@@ -409,7 +414,8 @@ RO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルを
   "メタデータ登録日.日付": "dateCreated",
   "メタデータ登録日.日付タイプ": "$Created",
   "Creator": "creator",
-  "Creator.作成者姓名.姓名": "creator.name",
+  "Creator.作成者姓名.姓名": "creator.creatorName",
+  "Creator.作成者姓名.言語": "creator.creatorNameLang",
 }
 ```
 
@@ -421,7 +427,8 @@ RO-Crate+BagItファイルに含まれる`ro-crate-metadata.json`ファイルを
 | メタデータ登録日.日付            | dateCreated               | アイテムタイプの "メタデータ登録日.日付" に対応するメタデータのパス   |
 | メタデータ登録日.日付タイプ      | $Created                  | アイテムタイプの "メタデータ登録日.日付タイプ" に対応する固定値       |
 | Creator                          | creator                   | アイテムタイプの "Creator" に対応するメタデータのパス                 |
-| Creator.作成者姓名.姓名          | creator.name              | アイテムタイプの "Creator.作成者姓名.姓名" に対応するメタデータのパス |
+| Creator.作成者姓名.姓名          | creator.creatorName       | アイテムタイプの "Creator.作成者姓名.姓名" に対応するメタデータのパス |
+| Creator.作成者姓名.言語          | creator.creatorNameLang   | アイテムタイプの "Creator.作成者姓名.言語" に対応するメタデータのパス |
 
 
 ## メタデータ補完機能
