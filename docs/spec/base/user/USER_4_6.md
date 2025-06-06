@@ -239,7 +239,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 - 「メタデータ自動入力」（Automatic metadata input）ボタンを押すと出現するポップアップウィンドウにて、「ID選択」プルダウンで`DOI`を選択し、DOIを入力して「取得」（Get）ボタンを押すことで、管理者によって設定された優先度順にAPIから取得したメタデータで、すでに画面に手入力したメタデータを更新する。
 - `instance.cfg`にて、以下のように設定する
     ```python
-    # instance.cfgに設定値を保持する
+    # weko_items_autofill/config.pyに利用可能なWeb APIのリストを定義する
     WEKO_ITEMS_AUTOFILL_API_LIST = [
         "JaLC API",
         "医中誌 Web API",
@@ -248,6 +248,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
         "CiNii Research"
     ]
 
+    # instance.cfgに使用するWeb APIの優先度を定義する
     WEKO_ITEMS_AUTOFILL_TO_BE_USED = [
         # 優先度順に格納
         "医中誌 Web API",
@@ -257,11 +258,11 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     ]
     ```
 - 処理概要
-  - `WEKO_ITEMS_AUTOFILL_API_LIST`に設定されたAPIのリストから、`WEKO_ITEMS_AUTOFILL_TO_BE_USED`に設定された順番でAPIを呼び出し、取得したメタデータを空白の項目にのみ自動入力する。
-  - 上記の例だと、`医中誌 Web API`から取得したメタデータを優先して入力し、空白の項目がない場合は`CrossRef`、`DataCite`、`Original`の順で入力する。
-  - `Original`は、画面に手入力を行い、「Save」を押した場合のメタデータを指す。  
-    画面に入力を行っていない場合や、入力後に「Save」を押していない場合は、`Original`は空となり、影響を与えない。
-  - 各APIについては、[メタデータ補完機能](../admin/ADMIN_X_X.md)を参照のこと。
+  - `WEKO_ITEMS_AUTOFILL_API_LIST`に設定されたAPIのリストから、`WEKO_ITEMS_AUTOFILL_TO_BE_USED`に設定されたWEB APIからDOIをもとにメタデータを取得し、プロパティごとに自動入力する。
+  - 同じプロパティに対して複数のAPIからメタデータが取得された場合は、`WEKO_ITEMS_AUTOFILL_TO_BE_USED`に設定された順番で優先度をつけて最上位のAPIから取得したメタデータを入力する。
+  - 上記の例だと、`Original`のメタデータに対して、`DataCite`、`CrossRef`、`医中誌 Web API`の順にメタデータを取得し、プロパティ単位で上書きする。
+    `Original`は、画面に手入力したメタデータを指す。
+  - 各APIについては、[ADMIN_X_X：メタデータ補完機能](../admin/ADMIN_X_X.md)を参照のこと。
 
 
 ## 関連モジュール
