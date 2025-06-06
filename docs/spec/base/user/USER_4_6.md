@@ -261,7 +261,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
   - 同じプロパティに対して複数のAPIからメタデータが取得された場合は、`WEKO_ITEMS_AUTOFILL_TO_BE_USED`に設定された順番で優先度をつけて最上位のAPIから取得したメタデータを入力する。
   - 上記の例だと、`Original`のメタデータに対して、`DataCite`、`CrossRef`、`医中誌 Web API`の順にメタデータを取得し、プロパティ単位で上書きする。
     `Original`は、画面に手入力したメタデータを指す。
-  - 各APIについては、[メタデータ補完機能](../admin/ADMIN_X_X.md)を参照のこと。
+  - 各APIについては、[ADMIN_X_X：メタデータ補完機能](../admin/ADMIN_X_X.md)を参照のこと。
 
 
 ## 関連モジュール
