@@ -118,6 +118,8 @@
   * [ADMIN-14-20: 設定：制限公開 412](admin/ADMIN_14_20.md)
   * [ADMIN-14-21: 設定：その他 422](admin/ADMIN_14_21.md)
   * [ADMIN-15-1: メンテナンス：Elasticsearchインデックス 423](admin/ADMIN_15_1.md)
+  * [ADMIN-16-1: SWORD API：TSV/XML](admin/ADMIN_16_1.md)
+  * [ADMIN-16-2: SWORD API：JSON-LD](admin/ADMIN_16_2.md)
 * [WEB API](api/README.md)
   * [API-1: WebAPI：OAuth2 425](api/API_01_Oauth2.md)
   * [API-2: WebAPI：OAI-PMH 429](api/API_02_OAIPMH.md)
