@@ -1,0 +1,823 @@
+openapi: 3.0.3
+info:
+  title: アイテム情報取得用WEB API
+  version: "1.0"
+tags:
+  - name: item
+    description: アイテム情報
+paths:
+  /api/{version}/records:
+    get:
+      tags:
+        - item
+      summary: アイテム検索
+      description: |-
+        アイテムを検索し、RO-Crate形式で返却する。  
+        権限がないアイテムの情報は取得不可。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+        ---
+        #### サンプルコード
+          curl <WEKO3のURL>/api/v1/records?creator=John
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: Accept-Language
+          in: header
+          description: 表示する言語の指定
+          schema:
+            type: string
+            default: en
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: q
+          in: query
+          description: 検索するキーワード
+          schema:
+            type: string
+        - name: search_type
+          in: query
+          description: |-
+            検索する種類
+            0:フルテキスト検索
+            1:キーワード検索
+          schema:
+            type: integer
+            enum: [0, 1]
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+        - name: page
+          in: query
+          description: 取得するページ番号
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          description: ページネーションのカーソル(この次のデータから取得)
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: 取得する検索結果の最大数
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: |-
+            ソートキー
+            |値|項目|
+            |----|----|
+            |controlnumber|ID|
+            |wtl|Title|
+            |creator|Creator|
+            |upd|Update date|
+            |createdate|Create date|
+            |pyear|Date of Issued|
+            |publish_date|Publish date|
+            |custom_sort|Custom sort|
+            |itemType|Item Type|
+            |relevance|Relevance|
+            |temporal|Temporal|
+          schema:
+            type: string
+            default: controlnumber
+        - name: title
+          in: query
+          description: タイトル
+          schema:
+            type: string
+        - name: exact_title_match
+          in: query
+          description: |-
+            タイトル完全一致検索を指定
+          schema:
+            type: boolean
+            default: false
+        - name: creator
+          in: query
+          description: 作成者
+          schema:
+            type: string
+        - name: subject
+          in: query
+          description: 件名
+          schema:
+            type: string
+        - name: sbjscheme
+          in: query
+          description: 件名種別
+          schema:
+            type: integer
+        - name: spatial
+          in: query
+          description: 地域
+          schema:
+            type: string
+        - name: des
+          in: query
+          description: 内容記述
+          schema:
+            type: string
+        - name: publisher
+          in: query
+          description: 出版者
+          schema:
+            type: string
+        - name: cname
+          in: query
+          description: 寄与者
+          schema:
+            type: string
+        - name: fd_attr
+          in: query
+          description: 日付種別
+          schema:
+            type: string
+        - name: filedate_from
+          in: query
+          description: 日付下限
+          schema:
+            type: string
+        - name: filedate_to
+          in: query
+          description: 日付上限
+          schema:
+            type: string
+        - name: mimetype
+          in: query
+          description: フォーマット
+          schema:
+            type: string
+        - name: id
+          in: query
+          description: 識別子
+          schema:
+            type: string
+        - name: id_attr
+          in: query
+          description: 識別子種別
+          schema:
+            type: string
+        - name: srctitle
+          in: query
+          description: 雑誌名
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: 資源タイプ
+          schema:
+            type: integer
+        - name: lang
+          in: query
+          description: 言語
+          schema:
+            type: string
+        - name: temporal
+          in: query
+          description: 期間
+          schema:
+            type: string
+        - name: dategranted_from
+          in: query
+          description: 学位取得日下限
+          schema:
+            type: string
+        - name: dategranted_to
+          in: query
+          description: 学位取得日上限
+          schema:
+            type: string
+        - name: version
+          in: query
+          description: 著者版フラグ
+          schema:
+            type: string
+        - name: dissno
+          in: query
+          description: 学位番号
+          schema:
+            type: string
+        - name: degreename
+          in: query
+          description: 学位名
+          schema:
+            type: string
+        - name: dgname
+          in: query
+          description: 学位授与機関
+          schema:
+            type: string
+        - name: wid
+          in: query
+          description: 作成者識別子
+          schema:
+            type: integer
+        - name: iid
+          in: query
+          description: インデックスID
+          schema:
+            type: integer
+        - name: license
+          in: query
+          description: ライセンス
+          schema:
+            type: string
+        - name: textX (Xは1~10の整数)
+          in: query
+          description: 詳細検索条件設定でtextXに割り当てた項目の値
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 検索成功
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                example: "no-cache, no-store, must-revalidate"
+            Pragma:
+              schema:
+                type: string
+                example: "no-cache"
+            Expires:
+              schema:
+                type: integer
+                example: 0
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResponse"
+        "400":
+          description: パラメータ不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: サーバー内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+  /api/{version}/records/{record_id}:
+    get:
+      tags:
+        - item
+      summary: アイテム詳細情報取得
+      description: |-
+        アイテムの詳細情報を取得し、RO-Crate形式で返却する。   
+        権限がないアイテムの情報は取得不可。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+        ---
+        #### サンプルコード
+          curl <WEKO3のURL>/api/v1/records/1
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: record_id
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: number
+          example: 1
+        - name: Accept-Language
+          in: header
+          description: 表示する言語の指定
+          schema:
+            type: string
+            default: en
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: If-None-Match
+          in: header
+          description: 1回目のレスポンスヘッダーETagに設定された値
+          schema:
+            type: string
+        - name: If-Modified-Since
+          in: header
+          description: 1回目のレスポンスヘッダーLast-Modifiedに設定された値
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: 取得成功
+          headers:
+            Etag:
+              description: アイテム情報のバージョンID
+              schema:
+                type: string
+            Last-Modified:
+              description: アイテム情報の更新日時
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DetailResponse"
+        "304":
+          description: 前回取得時から更新なし
+        "400":
+          description: リクエスト不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: アクセス権限なし
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: 指定したアイテムが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: サーバー内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+  /api/{version}/records/list:
+    post:
+      tags:
+        - item
+      summary: 検索結果一覧取得
+      description: |-
+        検索結果の一覧をTSV形式で一括取得する。  
+        権限がないアイテムの情報は取得不可。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+        ---
+        #### サンプルコード
+          curl -X POST -H "Content-Type: application/json" <WEKO3のURL>/api/v1/records/list?title=John \  
+          -d '[ { "id": 1, "name": { "i18n": "field", "en": "Field", "ja": "分野" }, "roCrateKey": "genre" }'
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: Accept-Language
+          in: header
+          description: 表示する言語の指定
+          schema:
+            type: string
+            default: en
+        - name: Authorization
+          in: header
+          description: 認可情報
+          schema:
+            type: string
+            example: Bearer アクセストークン
+        - name: q
+          in: query
+          description: 検索するキーワード
+          schema:
+            type: string
+        - name: search_type
+          in: query
+          description: |-
+            検索する種類
+            0:フルテキスト検索
+            1:キーワード検索
+          schema:
+            type: integer
+            enum: [0, 1]
+        - name: sort
+          in: query
+          description: |-
+            ソートキー
+            |値|項目|
+            |----|----|
+            |controlnumber|ID|
+            |wtl|Title|
+            |creator|Creator|
+            |upd|Update date|
+            |createdate|Create date|
+            |pyear|Date of Issued|
+            |publish_date|Publish date|
+            |custom_sort|Custom sort|
+            |itemType|Item Type|
+            |relevance|Relevance|
+            |temporal|Temporal|
+          schema:
+            type: string
+            default: controlnumber
+        - name: title
+          in: query
+          description: タイトル
+          schema:
+            type: string
+        - name: exact_title_match
+          in: query
+          description: |-
+            タイトル完全一致検索を指定
+          schema:
+            type: boolean
+            default: false
+        - name: creator
+          in: query
+          description: 作成者
+          schema:
+            type: string
+        - name: subject
+          in: query
+          description: 件名
+          schema:
+            type: string
+        - name: sbjscheme
+          in: query
+          description: 件名種別
+          schema:
+            type: integer
+        - name: spatial
+          in: query
+          description: 地域
+          schema:
+            type: string
+        - name: des
+          in: query
+          description: 内容記述
+          schema:
+            type: string
+        - name: publisher
+          in: query
+          description: 出版者
+          schema:
+            type: string
+        - name: cname
+          in: query
+          description: 寄与者
+          schema:
+            type: string
+        - name: fd_attr
+          in: query
+          description: 日付種別
+          schema:
+            type: string
+        - name: filedate_from
+          in: query
+          description: 日付下限
+          schema:
+            type: string
+        - name: filedate_to
+          in: query
+          description: 日付上限
+          schema:
+            type: string
+        - name: mimetype
+          in: query
+          description: フォーマット
+          schema:
+            type: string
+        - name: id
+          in: query
+          description: 識別子
+          schema:
+            type: string
+        - name: id_attr
+          in: query
+          description: 識別子種別
+          schema:
+            type: string
+        - name: srctitle
+          in: query
+          description: 雑誌名
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: 資源タイプ
+          schema:
+            type: integer
+        - name: lang
+          in: query
+          description: 言語
+          schema:
+            type: string
+        - name: temporal
+          in: query
+          description: 期間
+          schema:
+            type: string
+        - name: dategranted_from
+          in: query
+          description: 学位取得日下限
+          schema:
+            type: string
+        - name: dategranted_to
+          in: query
+          description: 学位取得日上限
+          schema:
+            type: string
+        - name: version
+          in: query
+          description: 著者版フラグ
+          schema:
+            type: string
+        - name: dissno
+          in: query
+          description: 学位番号
+          schema:
+            type: string
+        - name: degreename
+          in: query
+          description: 学位名
+          schema:
+            type: string
+        - name: dgname
+          in: query
+          description: 学位授与機関
+          schema:
+            type: string
+        - name: wid
+          in: query
+          description: 作成者識別子
+          schema:
+            type: integer
+        - name: iid
+          in: query
+          description: インデックスID
+          schema:
+            type: integer
+        - name: license
+          in: query
+          description: ライセンス
+          schema:
+            type: string
+        - name: textX (Xは1~10の整数)
+          in: query
+          description: 詳細検索条件設定でtextXに割り当てた項目の値
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RecordsGetResponse"
+      responses:
+        "200":
+          description: 取得成功。ボディはTSVファイルのデータ
+          headers:
+            Content-Length:
+              schema:
+                type: integer
+                example: 1024
+            ETag:
+              schema:
+                type: string
+            Last-Modified:
+              schema:
+                type: string
+          content:
+            All:
+              schema:
+                type: string
+                example: search_result.tsv
+        "400":
+          description: パラメータ不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: 検索結果が存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: サーバー内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+components:
+  schemas:
+    SearchResponse:
+      type: object
+      properties:
+        total_results:
+          type: integer
+          description: 検索条件に一致した項目数
+          example: 100
+        count_results:
+          type: integer
+          description: このレスポンスに含まれる項目数
+          example: 10
+        cursor:
+          type: integer
+          description: 検索結果の最後の項目のカーソル
+          example: 1234567890000
+        page:
+          type: integer
+          description: ページ番号
+          example: 1
+        search_results:
+          type: array
+          items:
+            $ref: "#/components/schemas/RocrateMetadata"
+        failures:
+          type: array
+          description: RO-Crateへの変換に失敗したアイテム一覧
+          items:
+            $ref: "#/components/schemas/FailureItem"
+    RecordsGetResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          "id":
+            type: integer
+            example: 1
+          "name":
+            type: object
+            properties:
+              "i18n":
+                type: string
+                example: "field"
+              "en":
+                type: string
+                example: "Field"
+              "ja":
+                type: string
+                example: "分野"
+          "roCrateKey":
+            type: string
+            example: "genre"
+
+    DetailResponse:
+      type: object
+      properties:
+        "rocrate":
+          $ref: "#/components/schemas/RocrateMetadata"
+        "metadata":
+          $ref: "#/components/schemas/ItemMetadata"
+
+    RocrateMetadata:
+      type: object
+      properties:
+        "@context":
+          type: string
+          example: "https://w3id.org/ro/crate/1.1/context"
+        "@graph":
+          type: array
+          description: エンティティ一覧
+          items:
+            type: object
+          example:
+            [
+              { "@id": "./", "@type": "Dataset", "headline": ["sample data"] },
+              {
+                "@id": "ro-crate-metadata.json",
+                "@type": "CreativeWork",
+                "conformsTo": { "@id": "https://w3id.org/ro/crate/1.1" },
+                "about": { "@id": "./" },
+              },
+              {
+                "@id": "sample_filename_01",
+                "@type": "File",
+                "accessMode": "open_access",
+                "dateCreated": "2024-01-01",
+                "name": ["sample_filename_01"],
+              },
+              {
+                "@id": "resource_type/",
+                "@type": "Dataset",
+                "name": ["data paper"],
+                "url": ["http://purl.org/coar/resource_type/c_beb9"],
+              },
+            ]
+    ItemMetadata:
+      type: object
+      example:
+        {
+          "Title": [{ "Title": "sample data", "Language": "ja" }],
+          "File Information":
+            [{ "FileName": "sample_filename_01", "Access": "open_access" }],
+          "Resource Type":
+            [
+              {
+                "Resource Type Identifier": "http://purl.org/coar/resource_type/c_beb9",
+                "Resource Type": "data paper",
+              },
+            ],
+        }
+    FailureItem:
+      type: object
+      properties:
+        "id":
+          type: string
+          example: "1"
+        "title":
+          type: array
+          items:
+            type: string
+          example: ["item_title"]
+        "item_type":
+          type: string
+          example: "item_type_name"
+    ErrorBody:
+      type: object
+      properties:
+        status:
+          type: string
+          description: ステータスコード
+        message:
+          type: string
+          description: エラーメッセージ
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item
+            "file:read": Grants access to read file
+            "index:read": Grants access to read index
+            "ranking:read": Grants access to read ranking
+            "user:read": Grants access to read user
+            "author:read": Grants access to read author
