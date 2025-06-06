@@ -239,7 +239,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 - 「メタデータ自動入力」（Automatic metadata input）ボタンを押すと出現するポップアップウィンドウにて、「ID選択」プルダウンで`DOI`を選択し、DOIを入力して「取得」（Get）ボタンを押すことで、管理者によって設定された優先度順にAPIから取得したメタデータで、すでに画面に手入力したメタデータを更新する。
 - `instance.cfg`にて、以下のように設定する
     ```python
-    # instance.cfgに設定値を保持する
+    # weko_items_autofill/config.pyに利用可能なWeb APIのリストを定義する
     WEKO_ITEMS_AUTOFILL_API_LIST = [
         "JaLC API",
         "医中誌 Web API",
@@ -248,6 +248,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
         "CiNii Research"
     ]
 
+    # instance.cfgに使用するWeb APIの優先度を定義する
     WEKO_ITEMS_AUTOFILL_TO_BE_USED = [
         # 優先度順に格納
         "医中誌 Web API",
