@@ -1077,6 +1077,14 @@ SWORD APIの管理に関する操作手順を説明しています。
 <p>(*2)</p></td>
 <td></td>
 </tr>
+<tr>
+<td></td>
+<td>ワークスペース設定</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+<td></td>
+</tr>
 <tr class="odd">
 <td>コミュニティ管理</td>
 <td>-</td>
@@ -1568,11 +1576,27 @@ SWORD APIの管理に関する操作手順を説明しています。
 <td></td>
 </tr>
 <tr class="even">
-<td>ユーザカウント管理</td>
+<td>ユーザアカウント管理</td>
 <td>〇</td>
 <td>〇</td>
 <td>〇</td>
-<td>19. ユーザカウントの管理</td>
+<td>19. ユーザアカウントの管理</td>
+<td></td>
+</tr>
+<tr>
+<td>ログ管理</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>17. ログ管理</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>エクスポート</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
 <td></td>
 </tr>
 <tr class="odd">
