@@ -148,6 +148,7 @@
   * [11 その他：GakuNinRDM連携 362](other/WORKFLOW_01.md)
   * [12 その他：ID体系 371](other/ID_01.md)
   * [13 その他：解析基盤連携 372](other/KAISEKI_01.md)
+  * [14 その他：プッシュ通知機能](other/INBOX_01.md)
 * [制限公開機能](restricted_access/README.md)
   * [RESTRICTED_ACCESS-13-1: 制限公開機能：アイテムタイプ管理（制限公開） 373](restricted_access/RESTRICTED_ACCESS_01.md)
   * [RESTRICTED_ACCESS-13-2: 制限公開機能：アイテム詳細(制限公開) 376](restricted_access/RESTRICTED_ACCESS_02.md)
