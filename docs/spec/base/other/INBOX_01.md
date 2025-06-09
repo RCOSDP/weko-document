@@ -241,10 +241,18 @@ LDNには通知のシナリオに応じてタイプがあり、WEKO3では以下
 選択された言語のテンプレートが存在しない場合、英語のテンプレートを使用する。
 
 ```python
->>> template = 'Your item "{{ item_title }}" has been registered.'
->>> body = template.replace("{{ ", "{").replace(" }}", "}").format(item_title=item_title)
+>>> template = 'Your item "{{ object_name }}" has been registered.'
+>>> body = template.replace("{{ ", "{").replace(" }}", "}").format(object_name=object_name)
 'Your item "Sample Journal" has been registered.'
 ```
+
+**利用可能なプレースホルダ**
+- `{{ timestamp }}`: 通知の発行日時（ISO8601形式）
+- `{{ object_name }}`: アイテムのタイトル
+- `{{ object_uri }}`: アイテム詳細画面のURL
+- `{{ context_uri }}`: アクティビティ詳細画面のURL
+- `{{ actor_name }}`: 操作者の表示名
+- `{{ target_name }}`: 受信者の表示名
 
 ### 通知の送信
 
