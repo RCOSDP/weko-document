@@ -416,9 +416,9 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
 ### wk:metadataAutoFill：メタデータ自動補完フラグ
 
 アイテムのメタデータを自動補完するかどうかを指定する。ルートデータセット直下に記述する。  
-"jpcoar:relation"プロパティで関連情報として`cite_as`にDOIを指定すると、そのDOIを利用してメタデータを補完する。  
-このとき、`relationType`プロパティに`isVersionOf`を指定する必要がある。  
-関係情報が複数記述されるとき、はじめて`relationType`プロパティに`isVersionOf`を指定したものが対象となる。  
+"jpcoar:relation"プロパティで関連情報として`jpcoar:relatedIdentifier`にDOIを指定すると、そのDOIを利用してメタデータを補完する。  
+このとき、`relationType`プロパティに`isVersionOf`、`identifierType`プロパティに`DOI`を指定する必要がある。  
+関係情報が複数記述されるとき、はじめて条件を満たしたものが対象となる。  
 自動補完機能については、[DOIを使用したメタデータ補完機能](../user/USER_4_6.md#3-web-apiによるdoiを使用したメタデータ補完機能)を参照。
 
 ```json
@@ -430,7 +430,14 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
 {
   "@id": "#:Relation1",
   "relationType": "isVersionOf",
-  "cite-as": "10.34477/0002000074"
+  "jpcoar:relatedIdentifier": {
+    "@id": "#:RelatedIdentifier_3"
+  }
+},
+{
+  "@id": "#:RelatedIdentifier_3",
+  "value": "https://doi.org/10.2964/jsik_2021_067",
+  "identifierType": "DOI"
 }
 ```
 
