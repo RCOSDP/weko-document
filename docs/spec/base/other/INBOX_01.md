@@ -303,7 +303,6 @@ INBOX の開発時は、あらかじめinbox ディレクトリにリポジト�
       - mongo
 +   volumes:
 +     - ./inbox:/app
-+   command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080", "--reload"]
 ```
 
 として、ホットリロードを有効にする。
