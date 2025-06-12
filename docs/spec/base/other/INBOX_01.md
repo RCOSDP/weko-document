@@ -30,16 +30,13 @@ WEKO3のアプリケーション環境設定（instance.cfg）で、通知機能
 WEKO_NOTIFICATIONS = True
 ```
 
-通知サーバーの環境設定（docker-compose.yml）で、プッシュ通知の有効化と認証鍵の設定を行う。  
+通知サーバーの環境設定（docker-compose.yml）で、プッシュ通知に使用する認証鍵の設定を行う。  
 各機関リポジトリごとにプッシュ通知を発行するためにVAPIDの秘密鍵と公開鍵を生成し、環境変数として設定が必要である。  
 
 ```diff
 # docker-compose.yml
   inbox:
     environment:
--     - ENABLE_PUSH_NOTIFICATIONS=False
-+     - ENABLE_PUSH_NOTIFICATIONS=True
-
 -     - VAPID_PUBLIC_KEY=
 +     - VAPID_PUBLIC_KEY=BENmk-3PWlV9zoIRMOgzJrpgnk0bzCPNWqs2T4TchRKigOjAUBdeyEKntjixJuEJDhvC2XYVHeKQCv1OxVCiX4s
 -     - VAPID_PRIVATE_KEY=
