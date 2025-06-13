@@ -60,6 +60,9 @@
 
   - テキストボックスに入力して検索を行う場合、文字間に空白を入れることでAND検索を行うことができる。
 
+  - テキストボックスに入力して検索を行う場合、文字列を「△OR△」または「△|△」 (△は半角または全角スペース)で区切ることでOR検索を行うことができる。
+    - 「OR」、「|」で区切ることによるOR検索よりも、スペースで区切ることによるAND検索の方を優先して処理する。
+
   - 以下の特殊な意味をもつ英字のみでは検索を行うことができない。  
     a, an, and, are, as, at, be, but, by, for, if, in, into, is, it, no, not, of, on, or, such, that, the, their, then, there, these, they, this, to, was, will, with
 
@@ -619,6 +622,12 @@
 | 10      | doi         | relation.relatedIdentifier | identifierType=DOI     |
 | 11      | NAID        | relation.relatedIdentifier | identifierType=NAID    |
 | 12      | ichushi     | relation.relatedIdentifier | identifierType=ICHUSHI |
+
+> 表 1-2-3の追加検索用のキーが「\*」の場合、キーに対応する値が存在すればよいものとして検索する。
+
+> 検索項目がタイトル、著者名、内容記述、出版者、寄与者、ID、雑誌名、学位名、学位授与機関、テキストX (Xは1~10の整数) のいずれかで、検索文字列に「△OR△」または「△|△」(△は半角または全角スペース)が含まれる場合
+
+  - > 「△OR△」、「△|△」を区切りとして検索文字列を分割する。分割後の各文字列にそれぞれ対応するshould条件を作成する。それらの条件を`minimum_shoud_match=1`として検索することにより、OR検索を行う。
 
 > 検索処理後、「メインコンテンツ」ウィジェットの［トップ（Top）］タブに検索結果エリアを表示する。
 

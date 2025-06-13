@@ -42,15 +42,14 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 ※一般ユーザーは、ロールとして利用可能に設定することはできないが、個別のユーザーをAction Userとして設定することはできる。
 
 ## 機能内容
-
-1\. アイテムのメタデータを入力する
+### 1. アイテムのメタデータを入力する
 
   - 【アイテム登録画面】に入力するアイテムのメタデータを表示する
 
-  - 【Administration \> アイテムタイプ管理（Item Types） \> メタデータ（Meta）画面】で設定したOptionに応じて、アイテム登録/編集画面におけるアイテムタイプ項目の表示を制御する
+  - 【Administration > アイテムタイプ管理（Item Types） > メタデータ（Meta）画面】で設定したOptionに応じて、アイテム登録/編集画面におけるアイテムタイプ項目の表示を制御する
     
       - メタデータ画面のItem Nameに対するOption属性に「Required」を設定した項目は、アイテム登録/編集画面の表示時に「Required」パネルに配置し、パネルを展開可能とする  
-        「Required」を設定した項目のラベルの右側に「 \* 」と付けされる
+        「Required」を設定した項目のラベルの右側に「 * 」と付けされる
         
           - Item Name配下のAttributeに対するOption属性「Required」はこの制御の対象としない
     
@@ -70,19 +69,19 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     
       - 入力方法はカレンダー入力、または手入力である
     
-      - デフォルト値はサーバ日付（/api/admin/get\_server\_date）を利用する
+      - デフォルト値はサーバ日付（/api/admin/get_server_date）を利用する
     
       - 無効な日付が入力された場合のチェックを行う
         
-          - modules/weko-theme/weko\_theme/static/js/weko\_theme/search\_detail.js
+          - modules/weko-theme/weko_theme/static/js/weko_theme/search_detail.js
         
-          - modules/weko-theme/weko\_theme/static/js/weko\_theme/top\_page.js
+          - modules/weko-theme/weko_theme/static/js/weko_theme/top_page.js
 
   - 作成者プロパティへの著者情報の入力
     
       - 「著者DBから入力」（From author DB）ボタンを押下すると、著者DBの検索ウィンドウが表示される
     
-      - 「検索」ボタンを押すと、【Administration \> 著者DB管理（Author Management） \> 編集（Edit）】で登録された著者DB一覧を表示する
+      - 「検索」ボタンを押すと、【Administration > 著者DB管理（Author Management） > 編集（Edit）】で登録された著者DB一覧を表示する
     
       - ［入力（import）］ ボタンを押すと、選択した著者情報をメタデータの各エリアに入力する
     
@@ -91,18 +90,18 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
       - アイテム作成時、作成者識別子は編集不可となる。
       - アイテム編集時、作成者識別子"WEKO"のデータ部分はユーザーでの編集は不可とする（作成者識別子Scheme, 作成者識別子URI, 作成者識別子はグレーアウトする）。それ以外の識別子は変更可能となる。
     
-      - アイテム登録時にDB, ESに"author\_link"という情報を持たせ、アイテムと著者DBの紐づけを行う
+      - アイテム登録時にDB, ESに"author_link"という情報を持たせ、アイテムと著者DBの紐づけを行う
     
-      - アイテムとの紐づけを行わない(解除する)場合は、「作成者」パネル内の各入力エリアの右上にある\[×\]で紐づけを解除する
+      - アイテムとの紐づけを行わない(解除する)場合は、「作成者」パネル内の各入力エリアの右上にある[×]で紐づけを解除する
     
       - アイテムで個別に編集した作成者の項目は、Adminの著者DBには反映されない。  
         なお、アイテムで個別に編集した後に著者DBから著者を取り込むと、個別編集した項目は上書きされる
 
-2\. アイテムのメタデータを自動入力できる
+### 2. アイテムのメタデータを自動入力できる
 
   - Web APIのアカウント情報を設定する
     
-      - 【Administration \> 設定（Setting） \> WebAPIアカウント（WebAPI Account）画面】にアイテムメタデータ自動入力機能で連携するWeb APIのアカウント情報を設定する  
+      - 【Administration > 設定（Setting） > WebAPIアカウント（WebAPI Account）画面】にアイテムメタデータ自動入力機能で連携するWeb APIのアカウント情報を設定する  
         現在、CrossRefのみ対応している
     
       - 設定項目は以下とする
@@ -125,36 +124,36 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 
   - CrossRef API経由でアイテムメタデータを入力する
     
-      - 「CrossRef」を選択し、DOIの値をテキストフィールドに入力して「取得」（Get）ボタンを押すと、【Administration \> 設定（Setting） \> WebAPIアカウント（WebAPI Account）画面】に設定されたAPIの利用にあたり必要なクレデンシャル情報(CrossRef Query Services Account)で書誌情報が取得される
+      - 「CrossRef」を選択し、DOIの値をテキストフィールドに入力して「取得」（Get）ボタンを押すと、【Administration > 設定（Setting） > WebAPIアカウント（WebAPI Account）画面】に設定されたAPIの利用にあたり必要なクレデンシャル情報(CrossRef Query Services Account)で書誌情報が取得される
         
           - 取得データは、アイテムの対応項目および対応するJPCOARマッピングが設定されたメタデータ項目に自動入力される  
             取得データの入力先メタデータ項目
 
-| \# | 要素                                                              | JPCOARスキーマ                                      |
-| -- | --------------------------------------------------------------- | ----------------------------------------------- |
-| 1  | article\_title                                                  | dc:title                                        |
-| 2  | author                                                          | jpcoar:creatorName                              |
-| 3  | contributor(contributor\_role属性が editor, chair, translator)     | jpcoar:contributorName                          |
-| 4  | contributor(contributor\_role属性が editor, chair, translator 以外)  | jpcoar:creatorName                              |
-| 5  | organization(contributor\_role属性が editor, chair, translator)    | jpcoar:affiliationName                          |
-| 6  | organization(contributor\_role属性が editor, chair, translator 以外) | jpcoar:affiliationName                          |
-| 7  | journal\_title                                                  | jpcoar:sourceTitle                              |
-| 8  | volume                                                          | jpcoar:volume                                   |
-| 9  | issue                                                           | jpcoar:issue                                    |
-| 10 | first\_page                                                     | jpcoar:pageStart                                |
-| 11 | last\_page                                                      | jpcoar:pageEnd                                  |
-| 12 | year                                                            | datacite:date(dateType="Issued")                |
-| 13 | issn                                                            | jpcoar:sourceIdentifier(identifierType="ISSN")  |
-| 14 | isbn                                                            | jpcoar:relatedIdentifier(identifierType="ISBN") |
-| 15 | doi                                                             | jpcoar:relatedIdentifier(identifierType="DOI")  |
+| # | 要素                                                                 | JPCOARスキーマ                                  |
+| -- | ------------------------------------------------------------------- | ----------------------------------------------- |
+| 1  | article_title                                                       | dc:title                                        |
+| 2  | author                                                              | jpcoar:creatorName                              |
+| 3  | contributor(contributor_role属性が editor, chair, translator)       | jpcoar:contributorName                          |
+| 4  | contributor(contributor_role属性が editor, chair, translator 以外)  | jpcoar:creatorName                              |
+| 5  | organization(contributor_role属性が editor, chair, translator)      | jpcoar:affiliationName                          |
+| 6  | organization(contributor_role属性が editor, chair, translator 以外) | jpcoar:affiliationName                          |
+| 7  | journal_title                                                       | jpcoar:sourceTitle                              |
+| 8  | volume                                                              | jpcoar:volume                                   |
+| 9  | issue                                                               | jpcoar:issue                                    |
+| 10 | first_page                                                          | jpcoar:pageStart                                |
+| 11 | last_page                                                           | jpcoar:pageEnd                                  |
+| 12 | year                                                                | datacite:date(dateType="Issued")                |
+| 13 | issn                                                                | jpcoar:sourceIdentifier(identifierType="ISSN")  |
+| 14 | isbn                                                                | jpcoar:relatedIdentifier(identifierType="ISBN") |
+| 15 | doi                                                                 | jpcoar:relatedIdentifier(identifierType="DOI")  |
 
   - CiNii API経由でアイテムメタデータを入力する
     
       - 「CiNii」を選択し、CRIDをテキストフィールドに入力して「取得」（Get）ボタンを押すと書誌情報が取得される
     
       - 書誌情報の取得は、CiNii API を利用する  
-        \[CiNii ResearchのJSON-LD\]  
-        https://support.nii.ac.jp/ja/cir/r\_json
+        [CiNii ResearchのJSON-LD]  
+        https://support.nii.ac.jp/ja/cir/r_json
     
       - 取得データは、アイテムの対応項目および対応するJPCOARマッピング(jpcoar_v2_mapping)が設定されたメタデータ項目に自動入力される
         
@@ -211,7 +210,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     
       - 「WEKOID」を選択し、recidの値をテキストフィールドに入力して「取得」（Get）ボタンを押すと、書誌情報が取得される
         
-          - PersestentIdentifier.getを用い、pidstore\_pidテーブルからレコードID(object\_uuid)を取得する
+          - PersestentIdentifier.getを用い、pidstore_pidテーブルからレコードID(object_uuid)を取得する
         
           - JPCOARスキーママッピングが一致した項目について、メタデータを流用入力する
             
@@ -236,47 +235,70 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 
   - 「Automatic metadata input」からメタデータを自動入力した際、ISBN/ISSN/DOIはすべて「jpcoar:sourceIdentifier」にマッピングされるが、このマッピング情報がアイテムタイプに複数存在する場合は、１つ目（１番上）のプロパティにのみセットする
 
-<!-- end list -->
+### 3. Web APIによるDOIを使用したメタデータ補完機能
+- 「メタデータ自動入力」（Automatic metadata input）ボタンを押すと出現するポップアップウィンドウにて、「ID選択」プルダウンで`DOI`を選択し、DOIを入力して「取得」（Get）ボタンを押すことで、管理者によって設定された優先度順にAPIから取得したメタデータで、すでに画面に手入力したメタデータを更新する。
+- `instance.cfg`にて、以下のように設定する
+    ```python
+    # weko_items_autofill/config.pyに利用可能なWeb APIのリストを定義する
+    WEKO_ITEMS_AUTOFILL_API_LIST = [
+        "JaLC API",
+        "医中誌 Web API",
+        "CrossRef",
+        "DataCite",
+        "CiNii Research"
+    ]
+
+    # instance.cfgに使用するWeb APIの優先度を定義する
+    WEKO_ITEMS_AUTOFILL_TO_BE_USED = [
+        # 優先度順に格納
+        "医中誌 Web API",
+        "CrossRef",
+        "DataCite",
+        "Original"
+    ]
+    ```
+- 処理概要
+  - `WEKO_ITEMS_AUTOFILL_API_LIST`に設定されたAPIのリストから、`WEKO_ITEMS_AUTOFILL_TO_BE_USED`に設定されたWEB APIからDOIをもとにメタデータを取得し、プロパティごとに自動入力する。
+  - 同じプロパティに対して複数のAPIからメタデータが取得された場合は、`WEKO_ITEMS_AUTOFILL_TO_BE_USED`に設定された順番で優先度をつけて最上位のAPIから取得したメタデータを入力する。
+  - 上記の例だと、`Original`のメタデータに対して、`DataCite`、`CrossRef`、`医中誌 Web API`の順にメタデータを取得し、プロパティ単位で上書きする。
+    `Original`は、画面に手入力したメタデータを指す。
+  - 各APIについては、[ADMIN_X_X：メタデータ補完機能](../admin/ADMIN_X_X.md)を参照のこと。
+
 
 ## 関連モジュール
 
-<!-- end list -->
 
-  - > 「weko\_workflow」：アイテム編集可能な権限をチェックする処理モジュールである
+  -  「weko_workflow」：アイテム編集可能な権限をチェックする処理モジュールである
 
-  - > 「weko\_items\_ui」：メタデータ登録を管理する処理モジュールである
+  -  「weko_items_ui」：メタデータ登録を管理する処理モジュールである
 
-  - > 「weko-items-autofill」：メタデータ自動入力用のデータを取得する処理モジュールである
+  -  「weko-items-autofill」：メタデータ自動入力用のデータを取得する処理モジュールである
 
-<!-- end list -->
 
 ## 処理概要
 
-> 選択されたメタデータを表示する処理
+選択されたメタデータを表示する処理
 
-  - > パネルがオープンか、クローズかの状態を取得する
-    
-      - > すべての項目に対してデフォルトの状態はクローズとする
-    
-      - > 「$rootScope.recordsVM.invenioRecordsSchema.required」から必須項目を取得し、それらの項目のパネルが初期としとオープンの状態とする
+  -  パネルがオープンか、クローズかの状態を取得する
+      -  すべての項目に対してデフォルトの状態はクローズとする
+      - 「$rootScope.recordsVM.invenioRecordsSchema.required」から必須項目を取得し、それらの項目のパネルが初期としとオープンの状態とする
 
-  - > パネルの中身に表示する処理はプロパティのデータを取得し、タイプに応じて以下のテンプレートで表示する
-    
-      - > form.html（https://github.com/inveniosoftware/invenio-records-js/blob/master/src/invenio-records-js/templates/form.html）
-    
-      - > decorators（https://github.com/inveniosoftware/invenio-records-js/tree/master/src/invenio-records-js/templates/decorators）
+  -  パネルの中身に表示する処理はプロパティのデータを取得し、タイプに応じて以下のテンプレートで表示する
+      -  form.html（https://github.com/inveniosoftware/invenio-records-js/blob/master/src/invenio-records-js/templates/form.html）
+      -  decorators（https://github.com/inveniosoftware/invenio-records-js/tree/master/src/invenio-records-js/templates/decorators）
 
-2\. 設定
+1. 設定
 
 | **設定**                           | **説明**               | **デフォルト値** | **実装箇所**                                        |
 | -------------------------------- | -------------------- | ---------- | ----------------------------------------------- |
-| WEKO\_ITEMS\_UI\_SAVE\_FREQUENCY | メタデータ登録画面における自動セーブ機能 | 10分        | modules/weko-items-ui/weko\_items\_ui/config.py |
+| WEKO_ITEMS_UI_SAVE_FREQUENCY | メタデータ登録画面における自動セーブ機能 | 10分        | modules/weko-items-ui/weko_items_ui/config.py |
 
 ## 更新履歴
 
-|日付|GitHubコミットID|更新内容|
-|---|---|---|
+| 日付     | GitHubコミットID                       |更新内容|
+| -------- | -------------------------------------- | ------ |
+|2025/03/13|94a0d70019b3dbf7ed6c01692b75a3dbad640db6|v1.1.0  |
 |2025/01/01|09c6391d2ed1bae053fee9f8dfc98e95e1e1b87f|v1.0.7a2|
-|2024/04/14|cd0183f59a16928be2511e33e4495a3376f143c9|v1.0.6|
+|2024/04/14|cd0183f59a16928be2511e33e4495a3376f143c9|v1.0.6  |
 |2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
 

@@ -11,38 +11,27 @@
 
   - > 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+|ロール|システム<br>管理者|リポジトリ<br>管理者|サブリポジトリ<br>管理者|登録ユーザー|一般ユーザー|ゲスト<br>(未ログイン)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|利用可否|○|○|○| | | |
 
   - > 機能内容
 
-1\. フィードバックメールを設定
+1 フィードバックメール情報を表示するリポジトリを選択する
+
+  - 【Administration > 統計（Statistics） > フィードバックメール（Feedback Mail）画面】で、設定を表示するリポジトリを選択できる
+
+      - リポジトリ選択プルダウンを設ける
+
+        - リポジトリ選択のプルダウンでの選択肢は以下の通りである
+
+          - システム管理者、リポジトリ管理者の場合は、システムに登録されている全てのリポジトリとする
+
+          - サブリポジトリ管理者の場合は、管理対象のサブリポジトリとする
+
+      - プルダウンからリポジトリを選択すると「フィードバックメール」、「送信除外対象者」、「送信履歴」エリアを選択されたリポジトリの情報に更新する
+
+2\. フィードバックメールを設定
 
   - 【Administration \> 統計（Statistics） \> フィードバックメール（Feedback Mail）画面】にフィードバックメールの送信機能に対して以下ように設定できる
     
@@ -89,7 +78,7 @@
     
       - 「送信履歴」（Send logs）領域に著者へのフィードバックメールの送信日時の履歴を確認する
 
-2\. アイテムのフィードバックメール送信先に指定した送信先に対して、月毎の利用統計をメールで自動送信
+3\. アイテムのフィードバックメール送信先に指定した送信先に対して、月毎の利用統計をメールで自動送信
 
   - 【前提条件】
     
@@ -134,7 +123,7 @@
 
   - ダウンロード回数と再生回数は、ファイルの差し替えを行った場合でも統計値は引き継いで集計する
 
-3\. フィードバックメールの送信履歴を確認
+4\. フィードバックメールの送信履歴を確認
 
   - 【Administration \> 統計（Statistics） \> フィードバックメール（Feedback Mail）画面】での「送信履歴」（Send logs）領域にフィードバックメールの送信履歴を表示する
     
@@ -151,6 +140,8 @@
           - 表示情報
             
               - 「\#」：番号順
+
+              - 「リポジトリ」（Repository）：フィードバックメールの処理の対象となるリポジトリを出力する
             
               - 「送信開始日時」（Start time）：フィードバックメールの処理が開始したときの日時を出力する
             
@@ -168,7 +159,7 @@
                 
                   - アンカーを選択すると、画面レイアウトのようにモーダル画面上に失敗した著者のリストを表示する
 
-4\. フィードバックメールを再送信
+5\. フィードバックメールを再送信
 
   - 送信失敗した著者に対してのメールを再送信できる
     
@@ -250,22 +241,23 @@
     
       - > データベースに保存する  
         > テーブル名：feedback\_mail\_list  
-        > 保存情報：item\_id、mail\_list
+        > 保存情報：item\_id、mail\_list、repository_id
     
       - > Elasticsearchに「feedback\_mail\_list」属性に保存する
 
   - > 【Administration \> 統計（Statistics） \> フィードバックメール（Feedback Mail）画面】に入力した情報をデータベースに以下のように保存する  
     > テーブル名：feedback\_email\_setting  
-    > 保存情報：is\_sending\_feedback、manual\_mail
+    > 保存情報：is\_sending\_feedback、manual\_mail、repository_id
 
 > フィードバックメール送信のフロー
 > 
 > celaryタスクでフィードバックメールを送信するかどうか、チェックする  
 > 「schedule」に設定された時刻にフィードバックメール送信を「task」でのタスク（weko\_admin.tasks.send\_feedback\_mail）で実施する
+> 「feedback\_email\_setting」テーブルの行数だけ以下の処理を繰り返す
 > 
 > (1) 「feed\_back\_email\_setting」の情報を「feedback\_email\_setting」テーブルから取得する
 > 
-> 　・「is\_sending\_feedback = false」の場合、何も処理しない
+> 　・「is\_sending\_feedback = false」の場合、対象リポジトリの処理をスキップする
 > 
 > 　・「is\_sending\_feedback = true」の場合、(2)に進む
 > 
@@ -301,9 +293,9 @@
 > 
 > 　　テーブル名：feedback\_mail\_history
 > 
-> 　　履歴内容：id、start\_time、end\_time、stats\_date、total\_mail、failed\_mail
+> 　　履歴内容：id、start\_time、end\_time、stats\_date、total\_mail、failed\_mail、repository_id
 > 
-> 　・送信が失敗になる場合、送信が失敗する情報をデータベースに保存する
+> 　・送信が失敗した場合、送信が失敗した情報をデータベースに保存する
 > 
 > 　　テーブル名：feedback\_mail\_failed
 > 
@@ -318,28 +310,8 @@
 
   - > 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2024/08/27</p>
-</blockquote></td>
-<td>f49b016c92ef98e0656947bf651ca1a2f3dbc286</td>
-<td>v1.0.8</td>
-</tr>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+|日付|GitHubコミットID|更新内容|
+|:---:|:---:|:---:|
+|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|> 2024/08/27|f49b016c92ef98e0656947bf651ca1a2f3dbc286|v1.0.8|
+|> 2025/01/23|-|サブリポジトリ対応|

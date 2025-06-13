@@ -1,0 +1,528 @@
+openapi: 3.0.3
+info:
+  title: インデックス情報取得用WEB API
+  version: "1.0"
+tags:
+  - name: Index Management
+    description: インデックス管理
+paths:
+  /api/{version}/tree:
+    get:
+      tags:
+        - Index Management
+      summary: 全インデックス取得
+      description: |
+        全インデックスを取得する。
+        |ロール            |動作                      |
+        | ---------------- | ------------------------ |
+        |システム管理者    |全インデックスを取得可能  |
+        |リポジトリ管理者  |全インデックスを取得可能  |
+        |コミュニティ管理者|管理下の全インデックスと公開インデックス取得可能|
+        |登録ユーザー      |公開インデックスを取得可能|
+        |一般ユーザー      |公開インデックスを取得可能|
+        |ゲストユーザー    |取得不可                  |
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          description: APIのバージョン
+      responses:
+        '200':
+          description: 正常終了
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/indextree'
+        '401':
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '403':
+          description: 該当ユーザの権限で指定されたインデックスへのアクセスが許可されていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '404':
+          description: 指定されたインデックスが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '500':
+          description: サーバ内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+      security:
+        - OAuth2: ["index:read"]
+
+  /api/{version}/tree/{index_id}:
+    get:
+      tags:
+        - Index Management
+      summary: インデックス取得
+      description: |
+        指定されたインデックスを取得する。
+        その配下の全インデックスを取得する。
+        |ロール            |動作                      |
+        | ---------------- | ------------------------ |
+        |システム管理者    |全インデックスを取得可能  |
+        |リポジトリ管理者  |全インデックスを取得可能  |
+        |コミュニティ管理者|管理下の全インデックスと公開インデックス取得可能|
+        |登録ユーザー      |公開インデックスを取得可能|
+        |一般ユーザー      |公開インデックスを取得可能|
+        |ゲストユーザー    |取得不可                  |
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          description: APIのバージョン
+        - name: index_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 取得したいインデックスのID
+      responses:
+        '200':
+          description: 正常終了
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/indextree'
+        '401':
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '403':
+          description: 該当ユーザの権限で指定されたインデックスへのアクセスが許可されていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '404':
+          description: 指定されたインデックスが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '500':
+          description: サーバ内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+      security:
+        - OAuth2: ["index:read"]
+
+
+  /api/{version}/tree/index:
+    post:
+      tags:
+        - Index Management
+      summary: インデックス登録
+      description: |
+        インデックスを登録する。
+        |ロール            |動作                       |
+        | ---------------- | ------------------------- |
+        |システム管理者    |全インデックス下に作成可能 |
+        |リポジトリ管理者  |全インデックス下に作成可能 |
+        |コミュニティ管理者|管理下の全インデックスの下に作成可能|
+        |登録ユーザー      |利用不可                   |
+        |一般ユーザー      |利用不可                   |
+        |ゲストユーザー    |利用不可                   |
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          description: APIのバージョン
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/index'
+      responses:
+        '200':
+          description: 正常終了
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/index"
+        '400':
+          description: 必須の項目が記述されていない。リクエストボディが無い。
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '401':
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '403':
+          description: 該当ユーザに必要なロールが付与されていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '500':
+          description: サーバ内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+      security:
+        - OAuth2: ["index:create"]
+
+
+  /api/{version}/tree/index/{index_id}:
+    put:
+      tags:
+        - Index Management
+      summary: インデックス変更
+      description: |
+        指定されたインデックスの情報を変更する。
+        |ロール            |動作                          |
+        | ---------------- | ---------------------------- |
+        |システム管理者    |全インデックス更新可能        |
+        |リポジトリ管理者  |全インデックス更新可能        |
+        |コミュニティ管理者|管理下の全インデックス更新可能|
+        |登録ユーザー      |利用不可                      |
+        |一般ユーザー      |利用不可                      |
+        |ゲストユーザー    |利用不可                      |
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          description: APIのバージョン
+        - name: index_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 更新したいインデックスのID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/index'
+      responses:
+        '200':
+          description: 正常終了
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/index"
+        '400':
+          description: リクエストに不備がある
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '401':
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '403':
+          description: 該当ユーザに必要なロールが付与されていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '404':
+          description: 指定されたインデックスが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '500':
+          description: サーバ内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+      security:
+        - OAuth2: ["index:update"]
+
+
+    delete:
+      tags:
+        - Index Management
+      summary: インデックス削除
+      description: |
+        指定されたインデックスを削除する。
+        |ロール            |動作                          |
+        | ---------------- | ---------------------------- |
+        |システム管理者    |全インデックス削除可能        |
+        |リポジトリ管理者  |全インデックス削除可能        |
+        |コミュニティ管理者|管理下の全インデックス削除可能|
+        |登録ユーザー      |利用不可                      |
+        |一般ユーザー      |利用不可                      |
+        |ゲストユーザー    |利用不可                      |
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          description: APIのバージョン
+        - name: index_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 削除したいインデックスのID
+      responses:
+        '204':
+          description: 正常終了
+        '400':
+          description: リクエストに不備がある
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '401':
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '403':
+          description: 該当ユーザに必要なロールが付与されていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '404':
+          description: 指定されたインデックスが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+        '500':
+          description: サーバ内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+      security:
+        - OAuth2: ["index:delete"]
+
+
+components:
+  schemas:
+    indextree:
+      type: object
+      properties:
+        index:
+          $ref: '#/components/schemas/indexdetail'
+    indexdetail:
+      type: object
+      description: インデックスツリー
+      properties:
+        browsing_group:
+          description: 表示グループ
+          type: string
+          example: ""
+        browsing_role:
+          description: 表示可能ロール
+          type: string
+          example: "3,-98,-99"
+        children:
+          description: 子インデックス情報
+          type: array
+          items:
+            $ref: '#/components/schemas/indexdetail'
+        cid:
+          description: child id
+          type: integer
+          example: 1616224532673
+        contribute_group:
+          description: contribute_group
+          type: string
+          example: ""
+        contribute_role:
+          description: contribute_role
+          type: string
+          example: "1,2,3,4,-98,-99"
+        coverpage_state:
+          description: coverpage_state flag
+          type: boolean
+          example: false
+        display_no:
+          description: 表示位置
+          type: integer
+          example: 5
+        emitLoadNextLevel:
+          description: emitLoadNextLevel
+          type: boolean
+          example: false
+        id:
+          description: child id
+          type: integer
+          example: 1616224532673
+        index_link_enabled:
+          description: index_link flag
+          type: boolean
+          example: false
+        link_name:
+          description: link_name
+          type: string
+          example: "New Index"
+        more_check:
+          description: more_check flag
+          type: boolean
+          example: false
+        name:
+          description: index name
+          type: string
+          example: "Data Usage Report"
+        pid:
+          description: index id
+          type: integer
+          example: 0
+        position:
+          description: 表示場所
+          type: integer
+          example: -99
+        public_date:
+          description: public_date (null or date)
+          type: string
+          example: null
+        public_state:
+          description: public_state flag
+          type: boolean
+          example: true
+        recursive_coverpage_check:
+          description: recursive_coverpage_check flag
+          type: boolean
+          example: false
+        settings:
+          description: settings
+          type: object
+          properties:
+            checked:
+              description: checked
+              type: boolean
+              example: false
+            isCollapsedOnInit:
+              description: isCollapsedOnInit
+              type: boolean
+              example: true
+        value:
+          description: index name
+          type: string
+          example: "Data Usage Report"
+
+    index:
+      type: object
+      properties:
+        index:
+          $ref: '#/components/schemas/indexinfo'
+    indexinfo:
+      type: object
+      properties:
+        pid:
+          type: integer
+          description: 親インデックスのID
+        cid:
+          type: integer
+          description: 対象インデックスのID
+          example: 1623632832836
+        position:
+          type: integer
+          description: 表示順位
+        index_name:
+          type: string
+          description: 日本語のインデックス名
+        index_name_english:
+          type: string
+          description: 英語のインデックス名
+        index_link_name:
+          type: string
+          description: 日本語のインデックスリンク表示名
+        index_link_name_english:
+          type: string
+          description: 英語のインデックスリンク表示名
+        index_link_enabled:
+          type: boolean
+          description: インデックスリンクに表示するかどうか
+        more_check:
+          type: boolean
+          description: 子インデックスの初回表示個数を変更するかどうか
+        display_no:
+          type: integer
+          description: 子インデックスの初回表示個数
+        harvest_public_state:
+          type: boolean
+          description: ハーベスト公開設定
+        public_state:
+          type: boolean
+          description: 公開設定
+        public_date:
+          type: string
+          description: 公開日
+        coverpage_state:
+          type: boolean
+          description: DF Cover Page (JA)
+        browsing_role:
+          type: string
+          description: 閲覧権限のあるロール
+        contribute_role:
+          type: string
+          description: 投稿権限のあるロール
+        browsing_group:
+          type: string
+          description: 閲覧権限のあるグループ
+        contribute_group:
+          type: string
+          description: 投稿権限のあるグループ
+        value_english:
+          type: string
+          description: 英語のインデックス名
+
+    error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item
+            "file:read": Grants access to read file
+            "index:read": Grants access to read index
+            "index:create": Grants access to create index
+            "index:update": Grants access to update index
+            "index:delete": Grants access to delete index
+            "author:read": Grants access to read author
+            "statistics:read": Grants access to read statistics
+            "user:read": Grants access to read user
