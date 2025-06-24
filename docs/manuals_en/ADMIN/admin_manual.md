@@ -14094,6 +14094,8 @@ Table 15‑10. The elements in "Main Screen Initial Display Setting"
 <li><blockquote>
 <p>When you select "Communities", the community list displayed will be the same as the one displayed in the "Community" tab of the main content.</p>
 </blockquote></li>
+<p>When you select "Web content", you can set "Display settings for web content".</p>
+</blockquote></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -14108,6 +14110,11 @@ Table 15‑10. The elements in "Main Screen Initial Display Setting"
 <td><p>Specify the facet display.</p>
 <p>You can select an index from the displayed index tree.</p>
 <p>The default is set to "Root Index".</p></td>
+</tr>
+<tr class="even">
+<td>Display settings for web content</td>
+<td><p>Set the widgets to be displayed on the TOP screen.</p>
+<p>You can select the widget in the Free description.</p></td>
 </tr>
 </tbody>
 </table>
