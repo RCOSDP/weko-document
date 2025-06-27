@@ -7,7 +7,7 @@ sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | 
 
 ## ドキュメントのビルド
 
-## ユーザ操作マニュアル
+### ユーザ操作マニュアル
 
 ```
 rm -r build/user
@@ -17,7 +17,7 @@ npx honkit pdf manuals/USER/base build/user/pdf/user.pdf
 npx honkit build manuals/USER/base build/user/html/
 ```
 
-## システム管理マニュアル
+### システム管理マニュアル
 
 ```
 rm -r build/admin
@@ -27,7 +27,7 @@ npx honkit pdf manuals/ADMIN/base build/admin/pdf/admin.pdf
 npx honkit build manuals/ADMIN/base build/admin/html
 ```
 
-## 機能仕様書のビルド
+### 機能仕様書のビルド
 
 ```
 rm -r build/spec
