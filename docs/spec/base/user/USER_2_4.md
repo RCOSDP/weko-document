@@ -233,7 +233,7 @@ tsvの形式についてはweko_items_ui.utils.make_stats_fileメソッドを参
    - メタデータファイル(tsv)サンプル  
      別紙「weko3\_tsvformat.xlsx」を参照
 
-### 各アイテムの情報 BIBTEX形式
+### ダウンロードするアイテム情報 BIBTEX形式
 
 別紙「WEKOメタデータ取得API（JPCOAR_BiBTEX）_20200106NII案」を仕様書として参照すること
 
@@ -261,7 +261,7 @@ tsvの形式についてはweko_items_ui.utils.make_stats_fileメソッドを参
 - ファイルサンプル  
  別紙「bibtex.txt」
 
-### RO-Crate形式でアイテムを一括出力する
+### ダウンロードするメタデータファイル RO-Crate形式
 
 RO-Crateの形式については[ADMIN_2.5 RO-Crateインポート](../admin/ADMIN_2_5.md)を参照すること。
 
