@@ -91,30 +91,32 @@
 
   - アイテム間の関係性：
 
-| 関連性              | 内容           | junii2 | JPCOAR |
-| ---------------- | ------------ | ------ | ------ |
-| relateTo         | 関連している       |        |        |
-| isVersionOf      | 異版である        | ○      | ○      |
-| hasVersion       | 異版あり         | ○      | ○      |
-| isReplacedBy     | 置換される        | ○      | ○      |
-| replaces         | 置換する         | ○      | ○      |
-| isRequiredBy     | 要件とされる       | ○      | ○      |
-| requires         | 要件とする        | ○      | ○      |
-| isPartOf         | 部分である        | ○      | ○      |
-| hasPart          | 部分を持つ        | ○      | ○      |
-| isReferencedBy   | 参照される        | ○      | ○      |
-| references       | 参照する         | ○      | ○      |
-| isFormatOf       | 別フォーマットである   | ○      | ○      |
-| hasFormat        | 別フォーマットあり    | ○      | ○      |
-| isSupplementedBy | ～によって補足されている |        | ○      |
-| isSuppllementTo  | ～を補足している     |        | ○      |
-| isIdenticalTo    | ～と同一である      |        | ○      |
-| isDeriverdFrom   | ～に由来している     |        | ○      |
-| isSourceOf       | ～の由来になっている   |        | ○      |
-| isCitedBy        | ～によって引用されている |        | ○※     |
-| Cites            | ～を引用している     |        | ○※     |
+| 関連性           | 内容                     | junii2 | JPCOAR |
+| ---------------- | ----------------------   | ------ | ------ |
+| relateTo         | 関連している             |        |        |
+| isVersionOf      | 異版である               | ○     | ○     |
+| hasVersion       | 異版あり                 | ○     | ○     |
+| isReplacedBy     | 置換される               | ○     | ○     |
+| replaces         | 置換する                 | ○     | ○     |
+| isRequiredBy     | 要件とされる             | ○     | ○     |
+| requires         | 要件とする               | ○     | ○     |
+| isPartOf         | 部分である               | ○     | ○     |
+| hasPart          | 部分を持つ               | ○     | ○     |
+| isReferencedBy   | 参照される               | ○     | ○     |
+| references       | 参照する                 | ○     | ○     |
+| isFormatOf       | 別フォーマットである     | ○     | ○     |
+| hasFormat        | 別フォーマットあり       | ○     | ○     |
+| isSupplementedBy | ～によって補足されている |        | ○※2  |
+| isSuppllementTo  | ～を補足している         |        | ○※2  |
+| isIdenticalTo    | ～と同一である           |        | ○     |
+| isDeriverdFrom   | ～に由来している         |        | ○     |
+| isSourceOf       | ～の由来になっている     |        | ○     |
+| isCitedBy        | ～によって引用されている |        | ○※   |
+| Cites            | ～を引用している         |        | ○※   |
 
 ※JPCPAR2.0で追加（https://schema.irdb.nii.ac.jp/ja/schema/2.0/20）
+
+※2 isSupplementedByあるいはisSuppllementToが選択されたとき、片方からのアイテムリンクが設定されると、逆方向のアイテムリンクは自動的に設定される。
 
 2\. 設定されたアイテム間リンクを表示する
 
@@ -192,23 +194,10 @@
 
 <!-- end list -->
 
-  - > 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+## 変更履歴
+
+| 日付       | GitHubコミットID                           | 更新内容                                        |
+| ---------- | ------------------------------------------ | ----------------------------------------------- |
+| 2023/08/31 |                                            | 初版作成                                        |
+| 2025/06/09 | 3fc73854d6f984009d6bf815728f99b2b1e73202   | アイテムリンクの一部双方向化について追記        |

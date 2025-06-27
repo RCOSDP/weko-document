@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: リクエストメール送信用WEB API
+  version: "1.0"
+tags:
+  - name: request mail
+    description: リクエストメール
+paths:
+  /api/{version}/records/{pid}/request-mail:
+    post:
+      tags:
+        - request mail
+      summary: リクエストメール送信API
+      description: |-
+        リクエストメールの送信が有効の場合、リクエストメールを送信する。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能|
+        |リポジトリ管理者|使用可能|
+        |コミュニティ管理者|使用可能|
+        |登録ユーザー|使用可能|
+        |一般ユーザー|使用可能|
+        |ゲストユーザー|使用可能|
+        ---
+        #### サンプルコード
+          curl -X POST -H "Content-Type: application/json" <WEKO3のURL>/api/v1/records/1/request-mail \  
+          -d '{ "from": "contributor@example.org", \  
+          "subject": "About request mail", \  
+          "message": "this is message of request mail.", \  
+          "key": "aaa", \  
+          "authorization_token": "68680b0b249e005b2d422393a17a9a3373ab6320d0d1af4d443336c0854602d8" }'
+
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: pid
+          in: path
+          description: レコードを一意に識別するID
+          required: true
+          schema:
+            type: integer
+          example: 1
+        - name: Accept-Language
+          in: header
+          description: 言語
+          schema:
+            type: string
+            default: en
+        - name: pretty
+          in: query
+          description: レスポンスの整形
+          schema:
+            type: boolean
+            default: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: string
+                  example: "contributor@example.org"
+                subject:
+                  type: string
+                  example: "About request mail"
+                message:
+                  type: string
+                  example: "this is message of request mail."
+                key:
+                  description: CAPTCHA画像に紐づくkey値
+                  type: string
+                  example: "aaa"
+                authorization_token:
+                  description: 検証成功時に生成されたトークン
+                  type: string
+                  example: "68680b0b249e005b2d422393a17a9a3373ab6320d0d1af4d443336c0854602d8"
+              required:
+                - "from"
+                - "subject"
+                - "message"
+                - "key"
+                - "authorization_token"
+      responses:
+        "200":
+          description: リクエストメール送信成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessBody"
+        "400":
+          description: |-
+            リクエスト形式不正
+            - リクエストボディに必須項目がない
+            - 該当項目が空文字
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: |-
+            認証失敗
+            - authorization_tokenが取得できない
+            - authorization_tokenの値が間違っている
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: |-
+            存在しない
+            - アイテムが存在しない
+            - リクエスト送信先が存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "429":
+          description: |-
+            リクエスト制限
+            - リミットレートを超えてアクセスされた
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+
+components:
+  schemas:
+    SuccessBody:
+      type: object
+      properties:
+        from:
+          description: 送信者のメールアドレス
+          example: "contributor@example.org"
+        subject:
+          description: リクエストメールの件名
+          type: string
+          example: "About request mail"
+        message:
+          description: リクエストメールの内容
+          type: string
+          example: "this is message of request mail."
+    ErrorBody:
+      type: object
+      properties:
+        status:
+          description: HTTPステータスコード
+          type: string
+        message:
+          description: エラーメッセージ
+          type: string

@@ -70,7 +70,15 @@
           - 「メールアドレス」（Email address）
         
           - 「メールアドレスの再入力」（Re-enter email address）
-    
+
+          - 「access key」
+
+          - 「secret key」
+
+          - 「endpoint url」
+
+          - 「region name」
+
       - ［Update Profile］ボタンを押すと、設定内容をチェックし、エラーがない場合、設定内容を保存する
         
           - 「メールアドレス」を変更する場合、変更されたメールアドレスに確認メールを送信し、メッセージを画面上部に表示する  
@@ -131,6 +139,14 @@
   - > タイムゾーン（Timezone）はtimezoneカラムに保存される。
 
   - > 言語（Language）はlanguageカラムに保存される。
+
+  - > access key はaccess_keyカラムに保存される。
+
+  - > secret key はsecret_keyカラムに保存される。
+
+  - > endpoint url はs3_endpoint_urlカラムに保存される。
+
+  - > region name はs3_region_nameカラムに保存される。
 
 > メールアドレスの変更は、flask\_loginのグローバル変数current\_user.emailを更新することで保存される。
 
