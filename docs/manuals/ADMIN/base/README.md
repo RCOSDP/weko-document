@@ -9570,6 +9570,7 @@ $.item_30002_title0.attribute_value_mlt[*].subitem_title
 <li><blockquote>
 <p>［コミュニティ一覧を表示する］を選択する場合、表示するコミュニティ一覧は、メインコンテンツのコミュニティタブで表示されるものと同じです。</p>
 </blockquote></li>
+<li><blockquote>
 <p>［WEBコンテンツを表示する］を選択する場合、[WEBコンテンツ表示設定]を設定できます。</p>
 </blockquote></li>
 </ul></td>

@@ -14094,6 +14094,7 @@ Table 15‑10. The elements in "Main Screen Initial Display Setting"
 <li><blockquote>
 <p>When you select "Communities", the community list displayed will be the same as the one displayed in the "Community" tab of the main content.</p>
 </blockquote></li>
+<li><blockquote>
 <p>When you select "Web content", you can set "Display settings for web content".</p>
 </blockquote></li>
 </ul></td>
