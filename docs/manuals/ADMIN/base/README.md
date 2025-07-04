@@ -9558,7 +9558,7 @@ $.item_30002_title0.attribute_value_mlt[*].subitem_title
 <tr class="odd">
 <td>初期表示画面設定</td>
 <td><p>初期表示画面を設定します。</p>
-<p>［インデックス検索結果を表示する］、［ランキングを表示する］、［コミュニティ一覧を表示する］を選択できます。</p>
+<p>［インデックス検索結果を表示する］、［ランキングを表示する］、［コミュニティ一覧を表示する］、［WEBコンテンツを表示する］を選択できます。</p>
 <p>デフォルトは［インデックス検索結果を表示する］です。</p>
 <ul>
 <li><blockquote>
@@ -9569,6 +9569,9 @@ $.item_30002_title0.attribute_value_mlt[*].subitem_title
 </blockquote></li>
 <li><blockquote>
 <p>［コミュニティ一覧を表示する］を選択する場合、表示するコミュニティ一覧は、メインコンテンツのコミュニティタブで表示されるものと同じです。</p>
+</blockquote></li>
+<li><blockquote>
+<p>［WEBコンテンツを表示する］を選択する場合、[WEBコンテンツ表示設定]を設定できます。</p>
 </blockquote></li>
 </ul></td>
 </tr>
@@ -9584,6 +9587,11 @@ $.item_30002_title0.attribute_value_mlt[*].subitem_title
 <td><p>ファセットの表示を設定します。</p>
 <p>表示されているインデックスツリーから1つのインデックスを選択できます。</p>
 <p>デフォルトは「Root Index」です。</p></td>
+</tr>
+<tr class="even">
+<td>WEBコンテンツ表示設定</td>
+<td><p>TOP画面に表示するウィジェットを設定します。</p>
+<p>［Fred description］のウィジェットを選択できます。</p></td>
 </tr>
 </tbody>
 </table>
