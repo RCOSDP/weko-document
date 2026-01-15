@@ -76,6 +76,8 @@
 * [ADMIN-2-3: 一括エクスポート 110](./admin/ADMIN_2_3.md)
 * [ADMIN-2-4: インポート 113](./admin/ADMIN_2_4.md)
 * [ADMIN-2-5: RO-Crateインポート](./admin/ADMIN_2_5.md)
+* [ADMIN-2-6: ヴァリデーション設定](./admin/ADMIN_2_6.md)
+* [ADMIN-2-7: ヴァリデーションレポート](./admin/ADMIN_2_7.md)
 ### インデックスツリー管理 155
 * [ADMIN-3-1: ツリー編集 155](./admin/ADMIN_3_1.md)
 * [ADMIN-3-2: 雑誌情報 162](./admin/ADMIN_3_2.md)

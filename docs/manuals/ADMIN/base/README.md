@@ -191,6 +191,8 @@ SWORD APIの管理に関する操作手順を説明しています。
 
 [3.4 インポートする 68](#インポートする)
 
+[3.5 ヴァリデーションを設定する ](#ヴァリデーションを設定する)
+
 [4. インデックスツリー管理 89](#インデックスツリー管理)
 
 [4.1 インデックスツリーを管理する 90](#インデックスツリーを管理する)
@@ -3652,6 +3654,149 @@ CNRIハンドル設定ユーザ
 ・インデックスの日本語名が入力されていない場合、インポートがエラーとなります。
 
 ・存在しないインデックスは指定しないでください。アイテム登録が正常に行われません。
+
+### ヴァリデーションを設定する
+
+アイテム登録時に実施されるヴァリデーション機能の設定方法について説明します。
+
+#### 利用者
+
+本機能を利用するには以下の条件を全て満たす必要があります。
+
+- 管理者権限を有していること  
+- コンフィグ値 **「WEKO_ADMIN_VALIDATION_ENABLE」** が `True` に設定されていること  
+- コンフィグ値 **「WEKO_ADMIN_VALIDATION_STORAGE_LOCATION」** に Location 名が定義されていること  
+- 上記コンフィグで指定された Location が、WEKO のファイル管理機能に登録されていること  
+
+---
+
+#### ヴァリデーション概要
+
+アイテム登録時に、アイテムのメタデータに統制語彙に従わない値が含まれていないかを検証し、その結果をレポートとして出力します。  
+現在、本機能によるヴァリデーションは、ハーベスト（OAI-PMH、ResouceSync）を通じて登録されるアイテムのみを対象としています。  
+ヴァリデーション対象となるメタデータ項目や、使用する統制語彙の内容は、JSON 形式の設定ファイルにより定義します。
+
+---
+
+#### 設定方法
+
+以下のヴァリデーション設定画面から、設定ファイルの登録を行います。
+
+![ヴァリデーション設定画面](media/media/image_validation_1.png)
+
+| 機能 | 項目説明 |
+|---|---|
+| アップロードボタン | 設定ファイルをアップロードするボタンです。ボタンを押下すると OS 標準のファイル選択ダイアログが表示され、ファイルを選択すると登録されます。<br>既に設定ファイルが登録されている状態で新しいファイルをアップロードした場合は更新扱いとなり、既存のファイルは削除され、新しくアップロードされたファイルが登録されます。なお、本機能ではバージョン管理を行わないため、更新前のファイルを取得することはできません。 |
+| ダウンロードボタン | 登録されている設定ファイルをダウンロードするボタンです。設定ファイルが登録されていない場合は非活性となります。 |
+| 削除ボタン | 登録されている設定ファイルを削除するボタンです。設定ファイルが登録されていない場合は非活性となります。 |
+| バージョン情報 | 登録されている統制語彙 JSON ファイルに記載されたバージョン情報を表示します。設定ファイルが登録されていない場合は表示されません。 |
+| OAI-PMH に関する設定状況 | 統制語彙 JSON ファイルにおいて、OAI-PMH のヴァリデーション機能が有効な場合は「活性」、無効な場合は「非活性」を表示します。設定ファイルが登録されていない場合は表示されません。 |
+| ResouceSync に関する設定状況 | 統制語彙 JSON ファイルにおいて、ResouceSync のヴァリデーション機能が有効な場合は「活性」、無効な場合は「非活性」を表示します。設定ファイルが登録されていない場合は表示されません。 |
+
+
+
+設定ファイルの項目を下表に記載します。
+
+![統制語彙設定JSON ファイル](media/media/image_validation_2.png)
+
+実際の設定ファイルは以下のような内容となります。
+
+```
+{
+  "version" : "0.0.1_sample",
+  "validationTargets" : [
+    { "targetName" : "OAI-PMH",  "isActive" : true  },
+    {  "targetName" : "ResouceSync",  "isActive" : true }
+  ],
+  "controlledItems" : [
+    {  "vocabularyName" : "Data Type",  "controlledVocabulary" : [・・・ 統制語彙 ・・・]  ],
+      "itemTypes" : [
+        {
+          "identifier" : "/items/jsonschema/20",
+          "name" : "Harvesting_DDI",
+          "path" : "$.item_1588260046718[*].subitem_1591178807921"
+        },
+        {
+          "identifier" : "/items/jsonschema/12",
+          "name" : "Multiple",
+          "path" : "$.item_1636460428217[*].subitem_1522657697257",
+          "condition" : [
+            {
+              "conditionPath" : "$.item_1636460428217[*].subitem_1522657647525",
+              "conditionValue" : "Other"
+            }
+          ]
+        }
+      ]
+    }
+    ・・・その他の統制語彙項目・・・
+  ]
+}
+```
+
+#### 画面表示時・設定時のエラー
+
+画面表示時や設定ファイルのアップロード時には、以下のエラーが発生する可能性があります。  
+エラーメッセージとその原因を以下の表に示します。
+
+| No. | エラーコード | 英語 | 日本語 | 原因 |
+|----:|-------------|------|--------|------|
+| 1 | ERR_WAV-001 | Validation feature is disabled, so validation settings are unavailable. | ヴァリデーション機能が無効なため、ヴァリデーション設定を利用できません。 | コンフィグ値「WEKO_ADMIN_VALIDATION_ENABLE」が未定義、または False の場合 |
+| 2 | ERR_WAV-002 | The file Location for validation setting has not been configured. | ヴァリデーション設定のファイル保存先が設定されていません。 | コンフィグ値「WEKO_ADMIN_VALIDATION_STORAGE_LOCATION」が定義されていない場合 |
+| 3 | ERR_WAV-003 | Location '{location_name}' was not found. | ロケーション「{location_name}」が登録されていません。 | 指定された Location が存在しない場合 |
+| 4 | ERR_WAV-004 | IO error occurred. | 入出力エラーが発生しました。 | ファイルの書き込みに失敗した場合 |
+| 5 | ERR_WAV-005 | The JSON encoding is incorrect. Expected UTF-8 without BOM. | JSON ファイルのエンコードが BOM なし UTF-8 ではありません。 | BOM 付き UTF-8、または UTF-8 以外のエンコードで保存されている場合 |
+| 6 | ERR_WAV-006 | The JSON format is incorrect. | JSON ファイルの形式に不正があります。 | JSON 構文が不正な場合 |
+| 7 | ERR_WAV-007 | The JSON format is incorrect. Required field version is missing or empty. | JSON の構造に不備があります。version が未定義、または空です。 | version が定義されていない場合 |
+| 8 | ERR_WAV-008 | The JSON structure is invalid. validationTargets is not defined as an array. | JSON の構造に不備があります。validationTargets が配列として定義されていません。 | validationTargets が配列でない場合 |
+| 9 | ERR_WAV-009 | The JSON structure is invalid. {targetName} isActive is not defined as a boolean. | JSON の構造に不備があります。{targetName} の isActive がブール値として定義されていません。 | isActive が未定義、または boolean 以外の場合 |
+| 10 | ERR_WAV-010 | The JSON structure is invalid. {targetName} is not defined in validationTargets. | JSON の構造に不備があります。validationTargets に {targetName} が定義されていません。 | OAI-PMH または ResouceSync が定義されていない場合 |
+| 11 | ERR_WAV-011 | Validation feature is disabled, so validation reports are unavailable. | ヴァリデーション機能が無効なため、ヴァリデーションレポートを利用できません。 | コンフィグ値「WEKO_ADMIN_VALIDATION_ENABLE」が未定義、または False の場合 |
+
+
+#### ヴァリデーション結果のレポートを取得する
+
+ヴァリデーションレポート画面では、ヴァリデーション結果をレポートとしてダウンロードできます。  
+不要となったレポートは削除することが可能です。
+
+![ヴァリデーションレポート画面](media/media/image_validation_3.png)
+
+| 項目 | 項目説明 |
+|---|---|
+| 対象日付 | ヴァリデーションレポートの対象日付です。レポートは日付単位で生成されます。 |
+| 不一致件数 | 対象日付に実施されたヴァリデーションにおいて、不一致が検出された件数です。 |
+| ダウンロードボタン | ヴァリデーションレポートをダウンロードするボタンです。 |
+| 削除ボタン | ヴァリデーションレポートを削除するボタンです。削除後は一覧から表示されなくなります。 |
+
+---
+
+#### ヴァリデーション結果のレポート内容を確認する
+
+レポートに記載される各項目の内容を以下に示します。
+
+![実行レポート](media/media/image_validation_4.png)
+
+実際のレポートは、以下のような JSON 形式で出力されます。
+
+```json
+{
+  "targetDate": "2025-10-17",
+  "notMatchCount": 27,
+  "notMatchs": [
+    {
+      "version": "0.0.1_sample",
+      "validationTarget": "OAI-PMH",
+      "detectionTime": "2025-10-17T12:07:33",
+      "itemId": "HarvestingDDI_item1.json",
+      "handling": "Dry-run",
+      "controlledItem": "Topic",
+      "incorrectWord": "テスト変換項目（Topic）"
+    }
+    ・・・その他の不一致項目・・・
+  ]
+}
+```
+
 
 ## インデックスツリー管理
 
