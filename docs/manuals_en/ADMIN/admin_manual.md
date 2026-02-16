@@ -162,6 +162,8 @@ The format conventions used in this document are as follows:
 
 [3.4 Import items 67](#import-items)
 
+[3.5 Configure Validation ](#configure-validation)
+
 [4. ‏Index Tree 88](#index-tree)
 
 [4.1 ‏Manage the index tree 89](#manage-the-index-tree)
@@ -8386,6 +8388,153 @@ You cannot modify the resource type (dc:type) when updating. If you modify one, 
 ‏- Keep: Do not register duplicates
 
 ‏- Upgrade: Register duplicates (\* The rationale behind this is that, based on the filename alone, it is impossible to determine whether the two files are the same or different files with the same name).
+
+## Configure Validation
+
+This section explains how to configure the validation feature that is executed during item registration.
+
+---
+
+#### Eligible Users
+
+To use this feature, all of the following conditions must be met:
+
+- You must have administrator privileges  
+- The configuration value **`WEKO_ADMIN_VALIDATION_ENABLE`** must be set to `True`  
+- A Location name must be defined in the configuration value **`WEKO_ADMIN_VALIDATION_STORAGE_LOCATION`**  
+- The Location specified in the configuration must be registered in WEKO’s file management system  
+
+---
+
+#### Validation Overview
+
+During item registration, the system verifies whether the item metadata contains values that do not conform to the defined controlled vocabularies, and outputs the results as a report.  
+Currently, this validation feature is applied only to items registered via harvesting mechanisms (OAI-PMH and ResouceSync).  
+The metadata fields subject to validation and the content of the controlled vocabularies are defined using a JSON-format configuration file.
+
+---
+
+#### Configuration Procedure
+
+Register the configuration file from the validation settings screen shown below.
+
+![Validation Settings Screen](media/media/image_validation_1.png)
+
+| Function | Description |
+|---|---|
+| Upload Button | A button to upload the configuration file. When the button is clicked, the OS-standard file selection dialog is displayed, and the selected file is registered.<br>If a configuration file is already registered, uploading a new file is treated as an update: the existing file is deleted and replaced with the newly uploaded file. Since version management is not supported, previously registered files cannot be retrieved after an update. |
+| Download Button | A button to download the registered configuration file. This button is disabled if no configuration file is registered. |
+| Delete Button | A button to delete the registered configuration file. This button is disabled if no configuration file is registered. |
+| Version Information | Displays the version information described in the registered controlled vocabulary JSON file. This information is not displayed if no configuration file is registered. |
+| OAI-PMH Status | Displays “Active” if validation for OAI-PMH is enabled in the controlled vocabulary JSON file, or “Inactive” if it is disabled. This status is not displayed if no configuration file is registered. |
+| ResouceSync Status | Displays “Active” if validation for ResouceSync is enabled in the controlled vocabulary JSON file, or “Inactive” if it is disabled. This status is not displayed if no configuration file is registered. |
+
+---
+
+The items defined in the configuration file are shown below.
+
+![Controlled Vocabulary Configuration JSON File](media/media/image_validation_2.png)
+
+An example of the actual configuration file is shown below.
+
+```json
+{
+  "version": "0.0.1_sample",
+  "validationTargets": [
+    { "targetName": "OAI-PMH", "isActive": true },
+    { "targetName": "ResouceSync", "isActive": true }
+  ],
+  "controlledItems": [
+    {
+      "vocabularyName": "Data Type",
+      "controlledVocabulary": [ ... controlled vocabulary ... ],
+      "itemTypes": [
+        {
+          "identifier": "/items/jsonschema/20",
+          "name": "Harvesting_DDI",
+          "path": "$.item_1588260046718[*].subitem_1591178807921"
+        },
+        {
+          "identifier": "/items/jsonschema/12",
+          "name": "Multiple",
+          "path": "$.item_1636460428217[*].subitem_1522657697257",
+          "condition": [
+            {
+              "conditionPath": "$.item_1636460428217[*].subitem_1522657647525",
+              "conditionValue": "Other"
+            }
+          ]
+        }
+      ]
+    }
+    ... other controlled vocabulary items ...
+  ]
+}
+```
+
+#### Errors During Screen Display and Configuration
+
+Errors may occur when displaying the screen or uploading a configuration file.  
+The possible error messages and their causes are listed in the table below.
+
+| No. | Error Code | English Message | Japanese Message | Cause |
+|---:|------------|-----------------|------------------|-------|
+| 1 | ERR_WAV-001 | Validation feature is disabled, so validation settings are unavailable. | ヴァリデーション機能が無効なため、ヴァリデーション設定を利用できません。 | The configuration value `WEKO_ADMIN_VALIDATION_ENABLE` is undefined or set to False. |
+| 2 | ERR_WAV-002 | The file Location for validation setting has not been configured. | ヴァリデーション設定のファイル保存先が設定されていません。 | The configuration value `WEKO_ADMIN_VALIDATION_STORAGE_LOCATION` is not defined. |
+| 3 | ERR_WAV-003 | Location `{location_name}` was not found. | ロケーション「{location_name}」が登録されていません。 | The specified Location does not exist. |
+| 4 | ERR_WAV-004 | IO error occurred. | 入出力エラーが発生しました。 | Failed to write the file. |
+| 5 | ERR_WAV-005 | The JSON encoding is incorrect. Expected UTF-8 without BOM. | JSON ファイルのエンコードが BOM なし UTF-8 ではありません。 | The uploaded JSON file is not encoded in UTF-8 without BOM. |
+| 6 | ERR_WAV-006 | The JSON format is incorrect. | JSON ファイルの形式に不正があります。 | The uploaded JSON file has invalid JSON syntax. |
+| 7 | ERR_WAV-007 | The JSON format is incorrect. Required field `version` is missing or empty. | JSON の構造に不備があります。version が未定義、または空です。 | The `version` field is missing or empty. |
+| 8 | ERR_WAV-008 | The JSON structure is invalid. `validationTargets` is not defined as an array. | JSON の構造に不備があります。validationTargets が配列として定義されていません。 | `validationTargets` is not defined as an array. |
+| 9 | ERR_WAV-009 | The JSON structure is invalid. `{targetName}` `isActive` is not defined as a boolean. | JSON の構造に不備があります。{targetName} の isActive がブール値として定義されていません。 | `isActive` is missing or not defined as a boolean. |
+| 10 | ERR_WAV-010 | The JSON structure is invalid. `{targetName}` is not defined in `validationTargets`. | JSON の構造に不備があります。validationTargets に {targetName} が定義されていません。 | `validationTargets` does not include OAI-PMH or ResouceSync. |
+| 11 | ERR_WAV-011 | Validation feature is disabled, so validation reports are unavailable. | ヴァリデーション機能が無効なため、ヴァリデーションレポートを利用できません。 | The configuration value `WEKO_ADMIN_VALIDATION_ENABLE` is undefined or set to False. |
+
+---
+
+#### Retrieve Validation Result Reports
+
+On the validation report screen, validation results can be downloaded as reports.  
+Reports that are no longer needed can be deleted.
+
+![Validation Report Screen](media/media/image_validation_3.png)
+
+| Item | Description |
+|---|---|
+| Target Date | The target date of the validation report. Reports are generated on a per-date basis. |
+| Mismatch Count | The number of mismatches detected in the validation performed on the target date. |
+| Download Button | A button to download the validation report. |
+| Delete Button | A button to delete the validation report. Deleted reports will no longer be displayed in the list. |
+
+---
+
+#### Review the Contents of a Validation Result Report
+
+The items included in the report are described below.
+
+![Execution Report](media/media/image_validation_4.png)
+
+An actual report is output in the following JSON format.
+
+```json
+{
+  "targetDate": "2025-10-17",
+  "notMatchCount": 27,
+  "notMatchs": [
+    {
+      "version": "0.0.1_sample",
+      "validationTarget": "OAI-PMH",
+      "detectionTime": "2025-10-17T12:07:33",
+      "itemId": "HarvestingDDI_item1.json",
+      "handling": "Dry-run",
+      "controlledItem": "Topic",
+      "incorrectWord": "テスト変換項目（Topic）"
+    }
+    ... other mismatch items ...
+  ]
+}
+```
 
 # ‏Index Tree
 
