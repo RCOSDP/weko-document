@@ -42,11 +42,11 @@
 
             - 「jc\_roles\_sysadm」→ システム管理者ロール'System Administrator'
 
-            - 「jc\_\<entityid\>\_roles\_repoadm」→ リポジトリ管理者ロール'Repository Administrator'
+            - 「jc\_\<entityid\>\_ro\_radm」→ リポジトリ管理者ロール'Repository Administrator'
 
-            - 「jc\_\<entityid\>\_roles\_comadm」→ コミュニティ管理者ロール'Community Administrator'
+            - 「jc\_\<entityid\>\_ro\_cadm」→ コミュニティ管理者ロール'Community Administrator'
 
-            - 「jc\_\<entityid\>\_roles\_contributor」→ 一般利用者ロール'Contributor'
+            - 「jc\_\<entityid\>\_ro\_cont」→ 一般利用者ロール'Contributor'
 
 2\. Shibboleth IdPからの属性情報に基づき、サイトライセンス機能を制御する
 
@@ -113,11 +113,11 @@
 >      WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT = {
 >          "prefix": "jc",                             # Prefix
 >          "sysadm_group": "jc_roles_sysadm",          # システム管理者のグループ名
->          "role_keyword": "roles",                    # ロールグループを表すキーワード
+>          "role_keyword": "ro",                       # ロールグループを表すキーワード
 >          "role_mapping": {
->              "repoadm": "Repository Administrator",  # リポジトリ管理者グループ
->              "comadm": "Community Administrator",    # コミュニティ管理者グループ
->              "contributor": "Contributor"            # コントリビュータグループ
+>              "radm": "Repository Administrator",     # リポジトリ管理者グループ
+>              "cadm": "Community Administrator",      # コミュニティ管理者グループ
+>              "cont": "Contributor"                   # コントリビュータグループ
 >          }
 >      }
 
@@ -125,7 +125,7 @@
 
       - IdPのエンティティIDをキーとして、デフォルトの学認mAPグループをリストで値に設定する。
 
-         - 例 {"abc\_idp\_ac\_jp": \["jc\_abc\_idp\_ac\_jp\_groups\_yyy"\] }
+         - 例 {"abc\_idp\_ac\_jp": \["jc\_abc\_idp\_ac\_jp\_gr\_yyy"\] }
 
       - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L126>
 
@@ -275,11 +275,11 @@
 
                           - 「jc\_roles\_sysadm」→ システム管理者ロール'System Administrator'
 
-                          - 「jc\_\<entityid\>\_roles\_repoadm」→ リポジトリ管理者ロール'Repository Administrator'
+                          - 「jc\_\<entityid\>\_ro\_radm」→ リポジトリ管理者ロール'Repository Administrator'
 
-                          - 「jc\_\<entityid\>\_roles\_comadm」→ コミュニティ管理者ロール'Community Administrator'
+                          - 「jc\_\<entityid\>\_ro\_cadm」→ コミュニティ管理者ロール'Community Administrator'
 
-                          - 「jc\_\<entityid\>\_roles\_contributor」→ 一般利用者ロール'Contributor'
+                          - 「jc\_\<entityid\>\_ro\_cont」→ 一般利用者ロール'Contributor'
 
           - ログインする
     
@@ -303,11 +303,11 @@
 
                           - 「jc\_roles\_sysadm」→ システム管理者ロール'System Administrator'
 
-                          - 「jc\_\<entityid\>\_roles\_repoadm」→ リポジトリ管理者ロール'Repository Administrator'
+                          - 「jc\_\<entityid\>\_ro\_radm」→ リポジトリ管理者ロール'Repository Administrator'
 
-                          - 「jc\_\<entityid\>\_roles\_comadm」→ コミュニティ管理者ロール'Community Administrator'
+                          - 「jc\_\<entityid\>\_ro\_cadm」→ コミュニティ管理者ロール'Community Administrator'
 
-                          - 「jc\_\<entityid\>\_roles\_contributor」→ 一般利用者ロール'Contributor'
+                          - 「jc\_\<entityid\>\_ro\_cont」→ 一般利用者ロール'Contributor'
 
   - shibboleth\_userテーブルにレコードを作成する場合は、あわせてユーザ関連テーブルも上書きする
     
