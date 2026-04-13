@@ -522,15 +522,15 @@ The format conventions used in this document are as follows:
 
 [15.11 Configure the search conditions, the number of results displayed, and the initial display 318](#configure-the-search-conditions-the-number-of-results-displayed-and-the-initial-display)
 
-[15.11.1 Configure the author search setting 318](#configure-the-author-search-setting)
+[15.11.1 Configure the initial display 318](#configure-the-initial-display)
 
-[15.11.2 Configure the search results settings 318](#configure-the-search-results-settings)
+[15.11.2 Configure the index tree/facet display 318](#configure-the-index-treefacet-display)
 
 [15.11.3 Configure detail search results settings 319](#configure-detail-search-results-settings)
 
-[15.11.4 Configure the index tree/facet display 321](#configure-the-index-treefacet-display)
+[15.11.2 Configure the search results settings 322](#configure-the-search-results-settings)
 
-[15.11.5 Configure the initial display 323](#configure-the-initial-display)
+[15.11.1 Configure the author search setting 323](#configure-the-author-search-setting)
 
 [15.12 Manage faceted searches 325](#manage-faceted-searches)
 
@@ -13803,53 +13803,20 @@ The setting is saved.
 
 ## Configure the search conditions, the number of results displayed, and the initial display
 
-To access the screen where you can \<INDEXWORD PRONOUNCE="けんさくのせつてい" INDEXITEM="検索の設定"\>configure the search settings\</INDEXWORD\>, click "Setting" and then click "Search".
+To access the screen where you can \<INDEXWORD PRONOUNCE="けんさくのせつてい" INDEXITEM="検索の設定"\>configure the search settings\</INDEXWORD\>, click "Setting" and then click "Search".  
+This screen is divided into four tabs based on functionality. Clicking [Save All Tab Information] will save all information from each tab.
 
-### Configure the author search setting
+### Configure the initial display
 
-This section explains how to configure the author search.
+You can configure the elements in the main content when the top page screen is initially displayed. This section explains how to configure the initial display.
 
-1.  Specify the elements in "Search Author Setting".
-
-> ![](media/media/image387.png)
-> 
-> The following table lists the elements displayed.
-
-Table 15‑7. The elements in the "Search Author Setting" area
-
-<table>
-<thead>
-<tr class="header">
-<th>Element title</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Search Author</td>
-<td><p>Specify whether to search by author name or by author ID.</p>
-<p>The default is set to "Search by Author Name" (checked).</p></td>
-</tr>
-</tbody>
-</table>
-
-2.  Click "Save".
-
-The setting is saved.
-
-### Configure the search results settings
-
-This section explains how to configure the search results settings.
-
-1.  Specify the elements in "Search Results Setting".
+1.  Set the items in the [Main Screen Initial Display Setting] section of the [Search Screen Display Settings] tab.
 
 The following table lists the elements displayed.
 
-zu0816010.tif![](media/media/image388.png)
+![](media/media/image391.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
-Table 15‑8. The elements in "Search Results Setting"
+Table 15‑9. The elements in "Main Screen Initial Display Setting"
 
 <table>
 <thead>
@@ -13860,29 +13827,95 @@ Table 15‑8. The elements in "Search Results Setting"
 </thead>
 <tbody>
 <tr class="odd">
-<td>Default Display Number</td>
-<td>Specify the default number of search results from the select box.</td>
+<td>Default Contents to Display</td>
+<td><p>Specify the default contents to display.</p>
+<p>You can select "Index search result", "Ranking" or "Communities".</p>
+<p>The default is set to "Index search result".</p>
+<ul>
+<li><blockquote>
+<p>When you select "Index search result", you can set "Default Index to Display".</p>
+</blockquote></li>
+<li><blockquote>
+<p>When you select "Ranking", the ranking displayed will be the same as the one displayed in the "Ranking" tab of the main content.</p>
+</blockquote></li>
+<li><blockquote>
+<p>When you select "Communities", the community list displayed will be the same as the one displayed in the "Community" tab of the main content.</p>
+</blockquote></li>
+<li><blockquote>
+<p>When you select "Web content", you can set "Display settings for web content".</p>
+</blockquote></li>
+</ul></td>
 </tr>
 <tr class="even">
-<td>Default Display Sort (Index Search)</td>
-<td>Specify the default sort condition for index search from the select box.</td>
+<td>Default Index to Display</td>
+<td><p>Specify the default index to display.</p>
+<p>You can select "Index of the newest item registered" or "Specific index".</p>
+<p>The default is set to "Index of the newest item registered".</p>
+<p>If you select "Specific index", you can specify the initial display index.</p></td>
 </tr>
 <tr class="odd">
-<td>Default Display Sort (Keywords Search)</td>
-<td>Specify the default sort condition for keyword search from the select box.</td>
-</tr>
-<tr class="even">
-<td>Please set the sort of search results.</td>
-<td><p>Specify how search results should be sorted.</p>
-<p>The sort conditions in the "Allow" list will be displayed in the sort condition selection column on the Home screen.</p>
-<p>The sort condition in the "Deny" list will not be displayed in the sort condition selection column on the Home screen.</p></td>
+<td>Initial Display Index</td>
+<td><p>Specify the facet display.</p>
+<p>You can select an index from the displayed index tree.</p>
+<p>The default is set to "Root Index".</p></td>
 </tr>
 </tbody>
 </table>
 
-2.  Click "Save".
+2.  Click "Save all tab information".
 
-The setting is saved.
+> The setting is saved.
+
+### Configure the index tree/facet display
+
+This section explains how to configure the index tree/facet display.
+
+1.  Specify the elements in "Index Tree/Facet Display Setting".
+
+The following table lists the elements displayed.
+
+![](media/media/image390.png)
+
+Table 15‑10. The elements in "Index Tree/Facet Display Setting"
+
+<table>
+<thead>
+<tr class="header">
+<th>Element title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Index Tree</td>
+<td><p>Specify the index tree display.</p>
+<p>Check the "Display" checkbox to display the index tree.</p>
+<p>The default is set to the checked state.</p></td>
+</tr>
+<tr class="even">
+<td>Width (Grid)</td>
+<td>Select a value from the drop-down menu. The value you specify is the number of grids. For information on the grid, see <a href="https://getbootstrap.com/docs/4.1/layout/grid/">https://getbootstrap.com/docs/4.1/layout/grid/</a>.</td>
+</tr>
+<tr class="odd">
+<td>Height (Pixel)</td>
+<td>Specify the height. If you do not specify the height and the width, they will be automatically adjusted according to the content of the index tree.</td>
+</tr>
+<tr class="even">
+<td>Facet</td>
+<td><p>Specify the facet display.</p>
+<p>Check the "Display" checkbox to display the facet.</p>
+<p>The default is set to the unchecked state.</p></td>
+</tr>
+<tr class="odd">
+<td>Community</td>
+<td><p>Configure the display settings for the Community tab.</p></td>
+</tr>
+</tbody>
+</table>
+
+2.  Click "Save all tab information".
+
+> The setting is saved.
 
 ### Configure detail search results settings
 
@@ -13890,15 +13923,17 @@ This section explains how to configure the detail search results settings.
 
 1.  In "Detail Search Conditions Setting", specify items in the "Useable Item" and "Initial Condition" columns.
 
-You can specify items you want to use for detail searches by checking the corresponding boxes under "Useable Item". The items with the "Initial Condition" turned on will be displayed as default in the detail search screen.
+You can specify items you want to use for detail searches by checking the corresponding boxes under "Useable Item". The items with the "Initial Condition" turned on will be displayed as default in the detail search screen.  
+You cannot select [Initial Condition] unless you first select [Useable Item].
 
-zu0816020.tif![](media/media/image389.png)
+![](media/media/image389.png)
 
-2.  Click "Save".
+2.  Click "Save all tab information".
 
 The setting is saved.
 
-The "JPCOAR Mapping" column in the "Detail Search Conditions Setting" area in the above image shows sample text and is not the actual JPCOAR mapping defined.
+The "JPCOAR Mapping" column in the "Detail Search Conditions Setting" area in the above image shows sample text and is not the actual JPCOAR mapping defined.  
+When there is a large amount of mapping information, the latter part will be displayed in an abbreviated form. To view the full content that has been abbreviated, hover your cursor over it to display the entire text in a tooltip.
 
 Informational: The items specified in the search condition will be used to search the following.
 
@@ -14013,17 +14048,126 @@ Informational: The items specified in the search condition will be used to searc
 </tbody>
 </table>
 
-### Configure the index tree/facet display
+#### Change the label for Detail Search
 
-This section explains how to configure the index tree/facet display.
+Click the \[Edit\] button for the search criteria within the [Advanced Search Criteria Settings] tab to change the labels of the items displayed in the advanced search function.
 
-1.  Specify the elements in "Index Tree/Facet Display Setting".
+1.  Click \[Edit\].
 
-> The following table lists the elements displayed.
-> 
-> ![](media/media/image390.png)
+![](media/media/image389_1.png)
 
-Table 15‑9. The elements in "Index Tree/Facet Display Setting"
+2. Edit the label and click [Settings (Changes will not be saved unless you click the Save all tab information button)].
+
+![](media/media/image389_2.png)
+
+3. Click "Save all tab information".
+
+The setting is saved.
+
+
+#### Customize Detail Search
+
+The advanced search function allows you to configure detailed searches targeting specific fields within item types.
+To set specific fields for advanced searches, map the search criteria to the [General Advanced Search Fields].
+
+The general advanced search items consist of the items listed in the table below.
+
+| General items            | Description               |
+| --------------- | ---------------- |
+| text1           | Text-based General Detailed Search Item    |
+| text2           |                  |
+| text3           |                  |
+| text4           |                  |
+| text5           |                  |
+| text6           |                  |
+| text7           |                  |
+| text8           |                  |
+| text9           |                  |
+| text10          |                  |
+| integer\_EN\_1  | Integer-type Generic Detailed Search Item |
+| integer\_EN\_2  |                  |
+| integer\_EN\_3  |                  |
+| integer\_EN\_4  |                  |
+| integer\_EN\_5  |                  |
+| float\_EN\_1    | Floating-point Generic Detailed Search Item   |
+| float\_EN\_2    |                  |
+| float\_EN\_3    |                  |
+| float\_EN\_4    |                  |
+| float\_EN\_5    |                  |
+| date\_EN\_1     | Date-type Generic Advanced Search Field    |
+| date\_EN\_2     |                  |
+| date\_EN\_3     |                  |
+| date\_JA\_4     |                  |
+| date\_EN\_5     |                  |
+| geopoint\_EN\_1 | Latitude, longitude            |
+| geoshape\_EN\_1 | Type, Coordinates           |
+
+※For details on setting display items, refer to “15.11.3 Configure detail search results settings”.
+
+※For label settings, refer to “15.11.4 Changing Labels in Advanced Search”.
+
+1. Click [Mapping Settings] in the row of the [Generic Advanced Search Item] for which you want to configure advanced search.    
+* In the attached screen, advanced search is configured for the [Generic Advanced Search Item] for Text 1 through Text 10.
+
+![](media/media/image389_3.png)
+
+2. Select the item type to search for from the [Item Type List].
+
+3. Specify the metadata element you wish to search for as the search item using a JSON path in the [Mapping Path].  
+     (Example JSON path setting: $.item_1592405734122.attribute_value_mlt\[\*\].subitem_1592369405220)  
+     If the JSON path cannot uniquely identify the search item, you can specify the search target by comparing it against a metadata element that serves as a condition.  
+     Specify the JSON path of the metadata element serving as the condition in the \[Condition\].  
+     Specify the value to be compared against the condition in the\[Condition Value\].  
+     If the metadata element specified by the JSON path in \[Condition\] matches the value in \[CCondition Value\], the metadata element specified in \[CMapping Path\] becomes the search target. 
+
+     ※This feature becomes active when items are registered or updated. Retroactive processing will not be performed on items prior to configuration.
+
+![](media/media/image389_4.png)
+
+4. Edit the value and click [Settings (Changes will not be saved unless you click the Save all tab information button)].
+
+5. Click "Save all tab information".
+
+The setting is saved.
+
+##### Retrieving JSON Path Using the Chrome Extension “JSONVue”
+
+Installing the Chrome extension “JSONVue” makes it easier to retrieve JSON paths.
+
+After installing JSONVue, access https://FQDN/records/ITEM ID/export/json
+to view the item's JSON data in your browser.
+
+Right-click the JSON key containing the search target.
+
+![](media/media/image389_5.png)
+
+Select “JSONVue” > “Copy path” from the displayed menu to obtain the JSON path for the corresponding JSON key.
+
+For example, when using the title as the search item, executing Copy path at the subitem_title location will yield the following JSON path:
+
+```
+metadata.item_30002_title0.attribute_value_mlt[0].subitem_title
+```
+
+Replace \[0\] with \[*\] Replace metadata with $.
+
+```
+$.item_30002_title0.attribute_value_mlt[*].subitem_title
+```
+
+Setting the above JSON path enables detailed searches for titles.
+
+### Configure the search results settings
+
+This section explains how to configure the search results settings.
+
+1.  Set the items in the Search Results Settings [Search Results Setting] under the [Search Results Settings] tab.
+
+The following table lists the elements displayed.
+
+![](media/media/image388.png)
+
+Table 15‑8. The elements in "Search Results Setting"
 
 <table>
 <thead>
@@ -14034,43 +14178,41 @@ Table 15‑9. The elements in "Index Tree/Facet Display Setting"
 </thead>
 <tbody>
 <tr class="odd">
-<td>Index Tree</td>
-<td><p>Specify the index tree display.</p>
-<p>Check the "Display" checkbox to display the index tree.</p>
-<p>The default is set to the checked state.</p></td>
+<td>Default Display Number</td>
+<td>Specify the default number of search results from the select box.</td>
 </tr>
 <tr class="even">
-<td>Width (Grid)</td>
-<td>Select a value from the drop-down menu. The value you specify is the number of grids. For information on the grid, see <a href="https://getbootstrap.com/docs/4.1/layout/grid/">https://getbootstrap.com/docs/4.1/layout/grid/</a>.</td>
+<td>Default Display Sort (Index Search)</td>
+<td>Specify the default sort condition for index search from the select box.</td>
 </tr>
 <tr class="odd">
-<td>Height (Pixel)</td>
-<td>Specify the height. If you do not specify the height and the width, they will be automatically adjusted according to the content of the index tree.</td>
+<td>Default Display Sort (Keywords Search)</td>
+<td>Specify the default sort condition for keyword search from the select box.</td>
 </tr>
 <tr class="even">
-<td>Facet</td>
-<td><p>Specify the facet display.</p>
-<p>Check the "Display" checkbox to display the facet.</p>
-<p>The default is set to the unchecked state.</p></td>
+<td>Please set the sort of search results.</td>
+<td><p>Specify how search results should be sorted.</p>
+<p>The sort conditions in the "Allow" list will be displayed in the sort condition selection column on the Home screen.</p>
+<p>The sort condition in the "Deny" list will not be displayed in the sort condition selection column on the Home screen.</p></td>
 </tr>
 </tbody>
 </table>
 
-2.  Click "Save".
+2.  Click "Save all tab information".
 
-> The setting is saved.
+The setting is saved.
 
-### Configure the initial display
+### Configure the author search setting
 
-You can configure the elements in the main content when the top page screen is initially displayed. This section explains how to configure the initial display.
+This section explains how to configure the author search.
 
-1.  Specify the elements in "Main Screen Initial Display Setting".
+1.  Specify the elements in "Search Author Setting".
 
-> The following table lists the elements displayed.
-> 
-> ![](media/media/image391.png)
+![](media/media/image387.png)
+ 
+The following table lists the elements displayed.
 
-Table 15‑10. The elements in "Main Screen Initial Display Setting"
+Table 15‑7. The elements in the "Search Author Setting" area
 
 <table>
 <thead>
@@ -14081,41 +14223,16 @@ Table 15‑10. The elements in "Main Screen Initial Display Setting"
 </thead>
 <tbody>
 <tr class="odd">
-<td>Default Contents to Display</td>
-<td><p>Specify the default contents to display.</p>
-<p>You can select "Index search result", "Ranking" or "Communities".</p>
-<p>The default is set to "Index search result".</p>
-<ul>
-<li><blockquote>
-<p>When you select "Index search result", you can set "Default Index to Display".</p>
-</blockquote></li>
-<li><blockquote>
-<p>When you select "Ranking", the ranking displayed will be the same as the one displayed in the "Ranking" tab of the main content.</p>
-</blockquote></li>
-<li><blockquote>
-<p>When you select "Communities", the community list displayed will be the same as the one displayed in the "Community" tab of the main content.</p>
-</blockquote></li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>Default Index to Display</td>
-<td><p>Specify the default index to display.</p>
-<p>You can select "Index of the newest item registered" or "Specific index".</p>
-<p>The default is set to "Index of the newest item registered".</p>
-<p>If you select "Specific index", you can specify the initial display index.</p></td>
-</tr>
-<tr class="odd">
-<td>Initial Display Index</td>
-<td><p>Specify the facet display.</p>
-<p>You can select an index from the displayed index tree.</p>
-<p>The default is set to "Root Index".</p></td>
+<td>Search Author</td>
+<td><p>Specify whether to search by author name or by author ID.</p>
+<p>The default is set to "Search by Author Name" (checked).</p></td>
 </tr>
 </tbody>
 </table>
 
-2.  Click "Save".
+2.  Click "Save all tab information".
 
-> The setting is saved.
+The setting is saved.
 
 ## Manage faceted searches
 
