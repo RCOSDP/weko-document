@@ -114,7 +114,7 @@
         * [ADMIN-10-1: Resource List 277](./admin/ADMIN_10_1.md)
         * [ADMIN-10-2: Change List 283](./admin/ADMIN_10_2.md)
         * [ADMIN-10-3: Resync 291](./admin/ADMIN_10_3.md)
-    * 11 SWQRD API
+    * 11 SWORD API
         * [ADMIN-16-1: TSV/XML](admin/ADMIN_16_1.md)
         * [ADMIN-16-2: JSON-LD](admin/ADMIN_16_2.md)
     * レコード管理 296
