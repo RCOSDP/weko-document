@@ -2852,15 +2852,15 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 デフォルトアイテムタイプ（フル）のJSON-LDマッピングを保存しようとすると、
 以下画面例のように「公開日」に対応するマッピングが必要です、を含むエラーメッセージが表示される環境があります。
 
-![](media/media/image489.png)
+![JSON-LDマッピングエラー画面](media/media/image489.png)
 
 その場合、JSON-LDマッピングに下記箇所が存在します。
 
-![](media/media/image490.png)
+![JSON-LDマッピング（修正前）](media/media/image490.png)
 
 それを下記のように書き換え、変更を保存してください。
 
-![](media/media/image491.png)
+![JSON-LDマッピング（修正後）](media/media/image491.png)
 
 エラーが表示されなくなります。
 
@@ -2869,7 +2869,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 デフォルトアイテムタイプ（フル）のJSON-LDマッピングを保存しようとすると、
 以下画面例のように「Title」に対応するマッピングが必要です等が大量のエラーメッセージが表示されることが環境があります。
 
-![](media/media/image492.png)
+![JSON-LDマッピングエラー画面](media/media/image492.png)
 
 その場合は、以下JSON-LDマッピングをコピーして保存すると、
 エラーメッセージが減少する可能性があります。
