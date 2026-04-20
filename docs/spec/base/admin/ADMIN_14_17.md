@@ -1,14 +1,14 @@
-### WebAPIアカウント
+# WebAPIアカウント
 
-  - > 目的・用途
+## 目的・用途
 
 本機能は、アイテムメタデータ自動入力機能におけるAPIアカウント認証で使用する情報を設定する機能である
 
-  - > 利用方法
+## 利用方法
 
 【Administration \> 設定（Setting） \> WebAPIアカウント（WebAPI Account）画面】にてアイテムメタデータ自動入力機能で連携するWeb APIのアカウント情報を設定する
 
-  - > 利用可能なロール
+## 利用可能なロール
 
 <table>
 <thead>
@@ -39,11 +39,11 @@
 </tbody>
 </table>
 
-  - > 機能内容
+## 機能内容
 
 <!-- end list -->
 
-  - v0.9.22では、CrossRefのみ対応している
+  - v2.0.0では、CrossRefおよびOA Assist APIの設定に対応している
 
   - 設定項目は以下とする
     
@@ -55,6 +55,9 @@
         
           - 入力タイプで "CrossRef" を選択した場合は、以下の入力フィールドを表示する  
             「CrossRefクエリサービスアカウント」（CrossRef Query Services Account）
+          - 入力タイプで "OA Assist" を選択した場合は、以下の入力フィールドを表示する  
+            「OA assist API Client ID」
+            「OA assist API Client Secret」
 
   - ［保存（Save）］ボタンを押すと入力内容のチェックを行い、エラーがなければ設定情報が保存される
     
@@ -71,17 +74,11 @@
       - エラーが発生しなかった場合は、以下のメッセージが表示される  
         メッセージ：「Account info has been saved successfully.」
 
-<!-- end list -->
+## 関連モジュール
 
-  - > 関連モジュール
+- weko\_admin
 
-<!-- end list -->
-
-  - weko\_admin
-
-<!-- end list -->
-
-  - > 処理概要
+## 処理概要
 
 <!-- end list -->
 
@@ -103,9 +100,7 @@
     
       - 接続確認に成功した場合に、api\_certificateテーブルに「入力タイプ」（Input Type）の選択値のvalueと「api\_code」フィールドが一致するレコードがあるかどうか確認して、あった場合にそのレコードを更新する
 
-<!-- end list -->
-
-  - > 更新履歴
+## 更新履歴
 
 <table>
 <thead>
@@ -116,6 +111,20 @@
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td><blockquote>
+<p>2026/03/18</p>
+</blockquote></td>
+<td>37ff130e96e87f9d012917cd160e7fbc08d0c19a</td>
+<td>v2.0.0</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2023/08/31</p>
+</blockquote></td>
+<td></td>
+<td>初版作成</td>
+</tr>
 <tr class="odd">
 <td><blockquote>
 <p>2023/08/31</p>
