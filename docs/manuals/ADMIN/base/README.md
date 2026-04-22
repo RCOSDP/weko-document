@@ -2842,9 +2842,6 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 }
 ```
 
-
-
-
 ### JSON－LD Mappingを編集/削除する
 1. ［一覧］から編集、削除したいマッピング定義の編集ボタンを選択します。
    ![JSON-LD Mapping一覧画面](media/media/image455.png)
@@ -2855,6 +2852,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 ※起動しているアクティビティがある場合は変更できません。起動しているアクティビティをすべて終了してください。
 
+![アクティビティが起動している場合に表示されるメッセージ](media/media/image493.png)
 
 ### トラブルシューティング
 
@@ -2878,7 +2876,8 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 #### 「Title」に対応するマッピングが必要です等が大量のエラーメッセージが表示される
 
 デフォルトアイテムタイプ（フル）のJSON-LDマッピングを保存しようとすると、
-以下画面例のように「Title」に対応するマッピングが必要です等が大量のエラーメッセージが表示されることが環境があります。
+以下画面例のように「Title」に対応するマッピングが必要です等の
+大量のエラーメッセージが表示されることがあります。
 
 ![JSON-LDマッピングエラー画面](media/media/image492.png)
 
@@ -10041,7 +10040,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 3. デフォルト設定を除く、ロケーションの一覧が表示されます。
 
-![ロケーション一覧](pics/storage/storage000.png)
+![ロケーション一覧](media/storage/storage000.png)
 
 4. 「作成」タブをクリックします。
 
@@ -10055,13 +10054,13 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 |URI|s3://jctest/|
 |Type|S3 Path|
 
-![ロケーション作成画面](pics/storage/storage001.png)
+![ロケーション作成画面](media/storage/storage001.png)
 
 6. 保存ボタンをクリックします。
 
 7. すると、より詳細な設定が可能な画面が表示されます。
 
-![ロケーション設定画面（詳細）](pics/storage/storage002.png)
+![ロケーション設定画面（詳細）](media/storage/storage002.png)
 
 8. 機関ストレージのaccess_key, secret_key, endpoint_url, region_nameを設定します。
 
@@ -10082,7 +10081,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 4. 「ストレージロケーション」に機関ストレージを設定します。
 
-![ワークフロー設定画面](pics/storage/storage003.png)
+![ワークフロー設定画面](media/storage/storage003.png)
 
 5. 「保存」をクリックします。
 
