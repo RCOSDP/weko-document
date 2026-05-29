@@ -80,8 +80,8 @@ query.opensearch_factory※</td>
 <li><p>html</p></li>
 </ul></td>
 <td><p>レスポンス結果のフォーマット</p>
-<p>デフォルトはhtml形式。</p>
-<p>値がhtmlもしくは指定されていない場合、詳細検索画面に遷移する。</p></td>
+<p>デフォルトはhtml形式。（広場機能）</p>
+<p>値がhtmlもしくは指定されていない場合、詳細検索画面に遷移する。（広場機能）</p></td>
 </tr>
 <tr class="odd">
 <td>size</td>
@@ -92,9 +92,63 @@ query.opensearch_factory※</td>
 <tr class="even">
 <td>page</td>
 <td></td>
-<td>Int</td>
+<td>int</td>
 <td>表示するページ番号</td>
 </tr>
+<tr class="odd">
+<td>index_id</td>
+<td></td>
+<td>int</td>
+<td>検索対象のインデックスID</td>
+</tr>
+<tr class="even">
+<td>idx</td>
+<td></td>
+<td>string</td>
+<td>検索対象のインデックスID(コンマ区切りで複数指定可)</td>
+</tr>
+<tr class="odd">
+<td>recursive</td>
+<td></td>
+<td><ul><li><p>0</p></li>
+<li><p>1</p></li></ul></td>
+<td>0: idxで指定したインデックスの子インデックスを検索対象にしない<br>
+1: idxで指定したインデックスの子インデックスを検索対象にする</td>
+</tr>
+<tr class="even">
+<td>sort</td>
+<td></td>
+<td><ul>
+<li><p>controlnumber</p></li>
+<li><p>-controlnumber</p></li>
+<li><p>custom_sort</p></li>
+<li><p>-custom_sort</p></li>
+</ul></td>
+<td>ソート方法を指定する<br>
+controlnumber: アイテムID順<br>
+custom_sort: カスタムソート順（広場機能）<br>
+「-」を付与することで昇順/降順が切り替わる<br>
+</td>
+</tr>
+<tr class="odd">
+<td>list_view_num</td>
+<td></td>
+<td>int</td>
+<td>レスポンスに含めるフィード件数</td>
+</tr>
+<tr class="even">
+<td>page_no</td>
+<td></td>
+<td>int</td>
+<td>表示するページ番号</td>
+</tr>
+<tr class="odd">
+<td>pubDateFrom</td>
+<td></td>
+<td>int</td>
+<td>パラメータにて指定した値を、出版年月日(開始)の検索条件として、WEKO検索のAND条件に加える。</td>
+</tr>
+
 <tr class="odd">
 <td>以下は設定ファイルやアイテムタイプマッピングにより定義が変化する</td>
 <td></td>
@@ -133,6 +187,15 @@ query.opensearch_factory※</td>
 </tr>
 </tbody>
 </table>
+
+- カスタムソートについて
+
+  - インデックスID順で表示される。<br>
+  - 一部アイテムのみカスタムソート設定（未設定アイテムあり）の場合、カスタムソート設定アイテム→未設定アイテム（未設定同士は作成日時昇順）に表示される。<br>
+  - 検索結果がmax_result_window以上の場合はカスタムソートを行わず、インデックスID順かつ作成日時順（アイテムID順）表示される。<br>
+  - インデックスIDが未指定の場合はカスタムソートを行わない。<br>
+  - 複数インデックスに所属するアイテムがある場合、昇順なら最小インデックスID、降順なら最大インデックスIDのカスタムソート順で表示される。<br>
+  - 複数インデックスに所属するアイテムがある場合、重複されて表示されない。
 
 レスポンス例：
 
@@ -438,7 +501,7 @@ query.opensearch_factory※</td>
 
   - 利用できるクエリパラメータは以下を参照
     
-      - パス：https://github.com/RCOSDP/weko/blob/adbdfd55ce1d9a289e1dd0af8e4383663f6eddaf/modules/weko-search-ui/weko\_search\_ui/config.py\#L245
+      - パス：https://github.com/RCOSDP/weko/blob/v0.9.26_hiroba/modules/weko-search-ui/weko_search_ui/config.py#L269
     
       - 設定キー：WEKO\_SEARCH\_KEYWORDS\_DICT
 
