@@ -95,7 +95,7 @@
           - ［保存（Save）］ボタンを押すと、設定内容を保存し、メッセージを表示する  
             メッセージ：「Update successfully」
         
-          - 送信時の処理
+          - 送信時の処理(v0.9.26)
             
               - 宛先：チェックした機関のメールアドレス
             
@@ -104,7 +104,7 @@
        
               - 添付ファイル名：SiteLicenseUserReport_YYYY.MM-yyyy.mm.zip
             
-              - メールのテンプレート： weko-admin.weko_admin.templates.weko_admin.email_templates.site_license_report.html
+              - メールのテンプレート： https://github.com/RCOSDP/weko/blob/v0.9.26_hiroba/modules/weko-admin/weko_admin/templates/weko_admin/email_templates/site_license_report.html
             
               - 本文：サイトライセンス利用統計の内容
                 

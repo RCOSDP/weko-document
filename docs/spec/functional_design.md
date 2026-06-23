@@ -945,6 +945,22 @@
         
           - 「送信間隔」（Transmission Interval）プルダウンに送信周期を設定する  
             選択肢：「Daily、Weekly、Monthly」
+
+              運用レポートのスケジュール設定によって集計される期間は以下の通りである
+
+              | # | 頻度  | 集計期間  | 選択肢  |  備考  |
+              |------------|------------|------------|------------|------------|
+              | 1 | Daily | 処理日の前々日の0時から<br>前々日末23時59分まで | なし  |   |
+              | 2 | Weekly  | 処理日の8日前の0時から<br>前々日末23時59分まで  | 月曜日～日曜日 |　「月曜日」を指定した場合、月曜日にレポートを作成し送信する   |
+              | 3 | Monthly  | 処理日の前月ひと月分  |  02～31、月末 |  「29」～「31」を指定した場合、その日付が存在しない月(2月や小の月)はレポートを送信しない  |
+
+            また、自動送信のスケジュールによって送信されるファイル名は以下の通りである
+
+              | # | 頻度  | zipファイル名 | レポートファイル名  | ファイル内のヘッダー  |
+              |------------|------------|------------|------------|------------|
+              | 1 | Daily | `logReport_<集計日>.zip`  | `logReport_<レポートタイプ>_<集計日>.tsv`  |  Aggregation Period `<集計日>`  | 
+              | 2 | Weekly  | `logReport_<集計開始日>_<集計終了日>.zip` | `logReport_<レポートタイプ>_<集計開始日>_<集計終了日>.tsv`  | Aggregation Period `<集計開始日>_<集計終了日>`  |
+              | 3 | Monthly  | `logReport_<集計月>.zip` | `logReport_<レポートタイプ>_<集計月>.tsv`  | Aggregation Month `<集計月>`  | 
         
           - 定型レポートのオン・オフ
             
@@ -18666,7 +18682,7 @@ invenio.cfg(instans.cfg) \> config.py(各モジュール)
 > 
 > 'task': 'weko\_admin.tasks.send\_feedback\_mail',
 > 
-> 'schedule': crontab(day\_of\_month='1', hour=0, minute=0),
+> 'schedule': crontab(day\_of\_month='2', hour=0, minute=0),
 > 
 > 'args': \[\],
 > 
@@ -18686,7 +18702,7 @@ invenio.cfg(instans.cfg) \> config.py(各モジュール)
 > 
 > 'task': 'weko\_admin.tasks.check\_send\_site\_access\_report',
 > 
-> 'schedule': timedelta(days=1, minutes=0, hours=0),
+> 'schedule': timedelta(days=2, minutes=0, hours=0),
 > 
 > 'args': \[\],
 > 
@@ -18762,6 +18778,13 @@ docker-compose -f docker-compose2.yml exec --user root web celery -A invenio_app
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2026/04/24</p>
+</blockquote></td>
+<td>9e0f85766e12ec69e0c313baeada9f1f9842776d</td>
+<td>W2025-33</td>
 </tr>
 </tbody>
 </table>
@@ -19541,6 +19564,8 @@ invenio では、UI とAPI　のアプリケーションが２つあり（※）
       - SHIB\_ATTR\_ROLE\_AUTHORITY\_NAMEについて、ロールの紐づけをconfig で指定できるものとし、configに含まれないロールであった場合は、WEKOのロールとしては設定しない
         
           - SHIB\_ATTR\_ROLE\_AUTHORITY\_NAMEに複数属性が含まれている場合は，複数ロールの割当を行えるようにする。（複数属性が含まれている場合は属性値を半角セミコロン「;」で区切られている）
+      
+      - SHIB\_ATTR\_HANDLEは256字以降の文字を切り捨てる。
 
   - シボレスユーザの紐づけキー
     
@@ -20820,6 +20845,13 @@ E-mail：\[restricted\_site\_mail\]*
 </blockquote></td>
 <td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
 <td>初版作成</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2026/04/24</p>
+</blockquote></td>
+<td>9e0f85766e12ec69e0c313baeada9f1f9842776d</td>
+<td>W2025-33</td>
 </tr>
 </tbody>
 </table>
