@@ -62,7 +62,7 @@
 > 
 > 'task': 'weko\_admin.tasks.send\_feedback\_mail',
 > 
-> 'schedule': crontab(day\_of\_month='1', hour=0, minute=0),
+> 'schedule': crontab(day\_of\_month='2', hour=0, minute=0),
 > 
 > 'args': \[\],
 > 
@@ -82,7 +82,7 @@
 > 
 > 'task': 'weko\_admin.tasks.check\_send\_site\_access\_report',
 > 
-> 'schedule': timedelta(days=1, minutes=0, hours=0),
+> 'schedule': crontab(day\_of\_month='2', hour=0, minute=0),
 > 
 > 'args': \[\],
 > 
@@ -143,21 +143,8 @@ docker-compose -f docker-compose2.yml exec --user root web celery -A invenio_app
 
   - > 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+  |日付|GitHubコミットID|更新内容|
+  |:---:|:---:|:---:|
+  |> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+  |> 2026/04/24|-|統計レポート機能の改修|
+

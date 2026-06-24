@@ -88,7 +88,7 @@
   - > 設定キー：「send-feedback-mail-schedules」
 
   - > 設定値: day\_of\_month、hour、minute  
-    > 現在の設定値：day\_of\_month='1', hour=0, minute=0
+    > 現在の設定値：day\_of\_month='2', hour=0, minute=0
 
 > フィードバックメールの送信履歴の表示件数
 
@@ -202,3 +202,4 @@
 |> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
 |> 2024/08/27|f49b016c92ef98e0656947bf651ca1a2f3dbc286|v1.0.8|
 |> 2025/01/23|-|サブリポジトリ対応|
+|> 2026/04/24|-|統計レポート機能の改修|

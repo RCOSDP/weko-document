@@ -45,7 +45,9 @@
                     
                       - 「メールアドレス」（Email Address）
             
-              - リポジトリ管理者は、送信したい機関にチェックボックスでチェックできる
+              - 管理者は、メールアドレスが設定されていない機関以外の送信したい機関にチェックボックスでチェックできる
+
+              - ヘッダーのチェックボックスをチェックすることで、メールアドレスが設定されていない機関以外の送信したい機関を一括でチェックできる。
             
               - 初期値は全てのチェックボックスにチェックがついていない状態とする
             
@@ -53,7 +55,7 @@
         
           - 「Automatic Send」
             
-              - 自動送信を「送信／無効」（Enable／Disable）のラジオボタンを設ける
+              - 自動送信の「有効／無効」（Enable／Disable）のラジオボタンを設ける
             
               - ラジオボタンの初期値は「無効」（Disable）とする
             
@@ -80,14 +82,14 @@
           - ［保存（Save）］ボタンを押すと、設定内容を保存し、メッセージを表示する  
             メッセージ：「Update successfully」
         
-          - 送信時の処理(v0.9.22)
+          - 送信時の処理
             
               - 宛先：チェックした機関のメールアドレス
             
               - 件名：\[○○機関リポジトリ\]YYYY.MM-yyyy.mm statistics report  
                 ※YYYY.MMは集計月(from), yyyy.mmは集計月(to)を表示
             
-              - メールのテンプレート： https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko\_admin/templates/weko\_admin/email\_templates/site\_license\_report.html
+              - メールのテンプレート： modules/weko-admin/weko_admin/templates/weko_admin/email_templates/site_license_report.html
             
               - 本文：サイトライセンス利用統計の内容
                 
@@ -207,3 +209,4 @@
 |:---:|:---:|:---:|
 |> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
 |> 2025/01/23|-|サブリポジトリ対応|
+|> 2026/04/24|-|W2025-33|
