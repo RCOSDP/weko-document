@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="710" viewBox="0 0 760 710" font-family="Meiryo, 'Yu Gothic', sans-serif">
+  <defs>
+    <marker id="ar--rrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#5F6368"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="710" fill="#ffffff"/>
+  <text x="24" y="28" font-size="16" font-weight="bold" fill="#202124">全体処理フロー（Phase 1〜3）</text>
+
+  <!-- pre-step 1: backup -->
+  <rect x="70" y="44" width="420" height="50" rx="8" fill="#FFFFFF" stroke="#5F6368" stroke-dasharray="6 4"/>
+  <text x="280" y="66" font-size="12.5" font-weight="bold" fill="#5F6368" text-anchor="middle">［事前準備・手動 / 本プログラム対象外］</text>
+  <text x="280" y="84" font-size="11.5" fill="#5F6368" text-anchor="middle">DBバックアップ取得（pg_dump）</text>
+
+  <!-- pre-step 2: dry-run -->
+  <rect x="70" y="112" width="420" height="50" rx="8" fill="#FFFFFF" stroke="#5F6368" stroke-dasharray="6 4"/>
+  <text x="280" y="134" font-size="12.5" font-weight="bold" fill="#5F6368" text-anchor="middle">［事前確認・dry-run実行］</text>
+  <text x="280" y="152" font-size="11.5" fill="#5F6368" text-anchor="middle">設定JSON検証・想定変更（事前レポート）／DB無更新</text>
+
+  <!-- start -->
+  <rect x="200" y="180" width="160" height="40" rx="20" fill="#E6F4EA" stroke="#34A853"/>
+  <text x="280" y="205" font-size="13" fill="#202124" text-anchor="middle">開始（本実行）</text>
+
+  <!-- phase1 -->
+  <rect x="120" y="240" width="320" height="56" rx="8" fill="#E8F0FE" stroke="#4285F4"/>
+  <text x="280" y="264" font-size="13" font-weight="bold" fill="#202124" text-anchor="middle">Phase1 プロパティ</text>
+  <text x="280" y="284" font-size="12" fill="#5F6368" text-anchor="middle">標準PropをUPSERT追加（非破壊）</text>
+
+  <!-- phase2 -->
+  <rect x="120" y="318" width="320" height="56" rx="8" fill="#E8F0FE" stroke="#4285F4"/>
+  <text x="280" y="342" font-size="13" font-weight="bold" fill="#202124" text-anchor="middle">Phase2 item_type 12/20</text>
+  <text x="280" y="362" font-size="12" fill="#5F6368" text-anchor="middle">cus_旧→新・itemキー置換・reload</text>
+
+  <!-- phase3 -->
+  <rect x="120" y="396" width="320" height="56" rx="8" fill="#E8F0FE" stroke="#4285F4"/>
+  <text x="280" y="420" font-size="13" font-weight="bold" fill="#202124" text-anchor="middle">Phase3 検証・後処理</text>
+  <text x="280" y="440" font-size="12" fill="#5F6368" text-anchor="middle">旧キー残0検証・独自Prop論理削除</text>
+
+  <!-- post-report -->
+  <rect x="120" y="474" width="320" height="56" rx="8" fill="#F1F3F4" stroke="#5F6368"/>
+  <text x="280" y="498" font-size="13" font-weight="bold" fill="#202124" text-anchor="middle">事後レポート出力</text>
+  <text x="280" y="518" font-size="12" fill="#5F6368" text-anchor="middle">検証結果・処理サマリ</text>
+
+  <!-- end -->
+  <rect x="200" y="552" width="160" height="40" rx="20" fill="#E6F4EA" stroke="#34A853"/>
+  <text x="280" y="577" font-size="13" fill="#202124" text-anchor="middle">完了</text>
+
+  <!-- re-harvest (out of scope) -->
+  <rect x="100" y="616" width="360" height="52" rx="8" fill="#FFFFFF" stroke="#5F6368" stroke-dasharray="6 4"/>
+  <text x="280" y="638" font-size="12.5" font-weight="bold" fill="#5F6368" text-anchor="middle">［本プログラム対象外］再ハーベスト</text>
+  <text x="280" y="656" font-size="11.5" fill="#5F6368" text-anchor="middle">OAI-PMH / ResourceSync でメタデータ再取得</text>
+
+  <!-- arrows -->
+  <path d="M280,94 L280,110" stroke="#5F6368" fill="none" stroke-dasharray="6 4" marker-end="url(#ar--rrow2)"/>
+  <path d="M280,162 L280,178" stroke="#5F6368" fill="none" stroke-dasharray="6 4" marker-end="url(#ar--rrow2)"/>
+  <path d="M280,220 L280,238" stroke="#5F6368" fill="none" marker-end="url(#ar--rrow2)"/>
+  <path d="M280,296 L280,316" stroke="#5F6368" fill="none" marker-end="url(#ar--rrow2)"/>
+  <path d="M280,374 L280,394" stroke="#5F6368" fill="none" marker-end="url(#ar--rrow2)"/>
+  <path d="M280,452 L280,472" stroke="#5F6368" fill="none" marker-end="url(#ar--rrow2)"/>
+  <path d="M280,530 L280,550" stroke="#5F6368" fill="none" marker-end="url(#ar--rrow2)"/>
+  <path d="M280,592 L280,616" stroke="#5F6368" fill="none" stroke-dasharray="6 4" marker-end="url(#ar--rrow2)"/>
+</svg>
