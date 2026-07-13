@@ -9,22 +9,22 @@
 
 Scopeに「index:create」をもつアクセストークンを使用してAPIを呼び出す
 
-| **Method**    | **HTTP request**           | **Description** |
-| ------------- | -------------------------- | --------------- |
-| create\_index | POST /api/indextree/create |                 |
+| **Method**   | **HTTP request**           | **Description** |
+| ------------ | -------------------------- | --------------- |
+| create_index | POST /api/indextree/create |                 |
 
 パラメータは以下の内容のjsonとする
 
-| **Parameter name**                 | **Value** | **Description**       |
-| ---------------------------------- | --------- | --------------------- |
-| Path parameters                    |           |                       |
-| parent\_id                         | 数値        | 親インデックスのID            |
-| index\_info                        | json      | 必須。以下の項目のうち少なくとも1つが必要 |
-| index\_info.index\_name            | 文字列       | 日本語のインデックス名           |
-| index\_info.index\_name\_english   | 文字列       | 英語のインデックス名            |
-| index\_info.comment                | 文字列       | コメント                  |
-| index\_info.public\_state          | 真偽値       | 公開設定                  |
-| index\_info.harvest\_public\_state | 真偽値       | ハーベスト公開設定             |
+| **Parameter name**               | **Value** | **Description**       |
+| -------------------------------- | --------- | --------------------- |
+| Path parameters                  |           |                       |
+| parent_id                        | 数値        | 親インデックスのID            |
+| index_info                       | json      | 必須。以下の項目のうち少なくとも1つが必要 |
+| index_info.index_name            | 文字列       | 日本語のインデックス名           |
+| index_info.index_name_english    | 文字列       | 英語のインデックス名            |
+| index_info.comment               | 文字列       | コメント                  |
+| index_info.public_state          | 真偽値       | 公開設定                  |
+| index_info.harvest_public_state  | 真偽値       | ハーベスト公開設定             |
 
 curlによるリクエスト例
 
@@ -35,106 +35,45 @@ $ curl https://ホスト/api/indextree/create -H "Authorization:Bearer アクセ
 
 ### 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | |
 
 ### 機能内容
 
-<!-- end list -->
-
   - 以下を指定してインデックスを新規作成する
-    
-      - 親インデックス
-
+    - 親インデックス
   - 指定されなかった場合はRoot Index直下に作成される
-    
-      - 日本語のインデックス名
-    
-      - 英語のインデックス名
-
+    - 日本語のインデックス名
+    - 英語のインデックス名
   - 各インデックス名は、指定されなかった場合は「New Index」が設定される
-    
-      - コメント
-    
-      - 公開設定
-
+    - コメント
+    - 公開設定
   - 指定されなかった場合は「False」が設定される
-    
-      - ハーベスト公開設定
-
+    - ハーベスト公開設定
   - 指定されなかった場合は「True」が設定される
-
-<!-- end list -->
 
 ### 関連モジュール
 
-<!-- end list -->
-
-  - weko\_index\_tree
-
-<!-- end list -->
+  - weko_index_tree
 
 ### 処理概要
 
-<!-- end list -->
-
   - Scope:
-    
-      - weko- index-tree /weko\_ index\_tree /scopes.py
-
+    - weko-index-tree/weko_index_tree/scopes.py
   - API:
-    
-      - modules/weko-index-tree/weko\_index\_tree/views.py
-
-  - create\_index関数でindexテーブルに新規インデックスを作成する
-    
-      - 以下の情報を用いてインデックスを新規作成する
-
+    - modules/weko-index-tree/weko_index_tree/views.py
+  - create_index関数でindexテーブルに新規インデックスを作成する
+    - 以下の情報を用いてインデックスを新規作成する
   - id：作成時のUNIX時間を1000倍したものを用いる
-
-  - parent\_id：パラメータで指定されなかった場合には0を設定する
-
-  - index\_name：「New Index」固定
-    
-      - 作成したインデックスを、index\_infoの内容を用いてupdateする
-    
-      - 作成が成功すると、以下の内容のレスポンスが返却される
-
+  - parent_id：パラメータで指定されなかった場合には0を設定する
+  - index_name：「New Index」固定
+    - 作成したインデックスを、index_infoの内容を用いてupdateする
+    - 作成が成功すると、以下の内容のレスポンスが返却される
   - Indexes.updateメソッドの返却値をjson形式にエンコードしたものをレスポンスボディに入れようとする
-
   - しかし、updateメソッドの返却値はNoneなので、実際に入るのはエラーメッセージ「'NoneType' object is not iterable」である
-    
-      - パラメータとして空のjsonを渡した場合は、400エラーとなりエラーメッセージ「No data to create.」が返却される
-    
-      - index\_infoが空だった場合は、400エラーとなりエラーメッセージ「index\_info can not be null.」が返却される
-
-<!-- end list -->
+    - パラメータとして空のjsonを渡した場合は、400エラーとなりエラーメッセージ「No data to create.」が返却される
+    - index_infoが空だった場合は、400エラーとなりエラーメッセージ「index_info can not be null.」が返却される
 
 
 ## インデックス管理API
@@ -152,11 +91,11 @@ APIの認証にはOAuth2を利用する。
 
 | 項番 | HTTP Method | エンドポイント                        | Description                          |
 | :--: | ----------- | ------------------------------------- | ------------------------------------ |
-|  1   | GET         | /api/\<version>/tree                   | 全インデックスの情報を取得する       |
-|  2   | GET         | /api/\<version>/tree/\<index_id>        | 指定したインデックスの情報を取得する |
-|  3   | POST        | /api/\<version>/tree/index             | インデックスを新規作成する           |
-|  4   | PUT         | /api/\<version>/tree/index/\<index_id>  | 指定したインデックスを更新する       |
-|  5   | DELETE      | /api/\<version>/tree/index/\<index_id>  | 指定したインデックスを削除する       |
+|  1   | GET         | /api/<version>/tree                   | 全インデックスの情報を取得する       |
+|  2   | GET         | /api/<version>/tree/<index_id>        | 指定したインデックスの情報を取得する |
+|  3   | POST        | /api/<version>/tree/index             | インデックスを新規作成する           |
+|  4   | PUT         | /api/<version>/tree/index/<index_id>  | 指定したインデックスを更新する       |
+|  5   | DELETE      | /api/<version>/tree/index/<index_id>  | 指定したインデックスを削除する       |
 
 ### Scope
 インデックス情報を取得するためには、アクセストークンに以下のスコープを要求する。

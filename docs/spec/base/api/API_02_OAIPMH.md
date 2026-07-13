@@ -129,8 +129,8 @@ badArgument　の例。
 任意の引数を指定し、ヘッダの検索する際に使用するverb。  
     
     
- ####　引数
- 
+#### 引数
+
 - from：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの下限を設定する。  
 - until：UTCdatetimeの任意の引数。日付による選択的ハーベスティングの上限を設定する。  
 - metadataPrefix：返却レコードのメタデータ部に含まれるフォーマットを指定する引数。必須項目。  
@@ -275,7 +275,7 @@ identifier：アイテムに利用可能なメタデータフォーマットが�
 </header>
 </record> 
 </ListRecords>
-</OAI-PMH\>
+</OAI-PMH>
 ```
 
 #### 処理概要
@@ -284,10 +284,14 @@ identifier：アイテムに利用可能なメタデータフォーマットが�
 2. 絞り込み結果をもとにPostgreSQLから応答XMLを作成
 
 
-### ListSets  
-    リポジトリのセット構成を検索する際に使用するverb。  
-    使用可能となる引数は次のものである。  
-    resumptionToken：リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。
+### ListSets
+
+リポジトリのセット構成を検索する際に使用するverb。
+
+使用可能となる引数は次のものである。
+
+resumptionToken：リポジトリが応答する際に不完全リストとセットになっている要素。この要素を指定して検索を行うことで完全リストの検索を可能とする任意の引数。
+
 #### 例
 
 ```
@@ -346,45 +350,21 @@ identifier：アイテムに利用可能なメタデータフォーマットが�
 ```
 
 
-  - > リクエストに不備がある場合は以下のエラーのいずれかがOAI-PMH出力の本文内に記載される。
-    
-      - > badArgument：不正な引数があるか、必須となる引数がない場合。
-    
-      - > cannotDisseminateFormat：metadataPrefixの値がidentifierにより指定されたアイテムでサポートされていない場合。
-    
-      - > idDoesNotExist：リポジトリでidentiferの値が不明であるか、不正なものである場合。
-    
-      - > badResumptionToken：resumptionTokenの値が無効であるか期限切れである場合。
-    
-      - > noRecordsMatch：from、until、setの値を組み合わせると空のリストになる場合。
-    
-      - > noSetHierarchy：リポジトリがセットをサポートしていない場合。
-    
-      - > noMetadataFormats：指定したアイテムで利用可能なメタデータフォーマットではない場合。
-
-<!-- end list -->
+- リクエストに不備がある場合は以下のエラーのいずれかがOAI-PMH出力の本文内に記載される。
+  - badArgument：不正な引数があるか、必須となる引数がない場合。
+  - cannotDisseminateFormat：metadataPrefixの値がidentifierにより指定されたアイテムでサポートされていない場合。
+  - idDoesNotExist：リポジトリでidentifierの値が不明であるか、不正なものである場合。
+  - badResumptionToken：resumptionTokenの値が無効であるか期限切れである場合。
+  - noRecordsMatch：from、until、setの値を組み合わせると空のリストになる場合。
+  - noSetHierarchy：リポジトリがセットをサポートしていない場合。
+  - noMetadataFormats：指定したアイテムで利用可能なメタデータフォーマットではない場合。
 
 ## 関連モジュール
 
 * Invenio_oaiserver
 
-##  更新履歴
+## 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| ---- | ---- | ---- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |

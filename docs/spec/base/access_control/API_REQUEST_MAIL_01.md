@@ -8,8 +8,6 @@
 - [POST /api/\<version>/captcha/validate](#post-apiversioncaptchavalidate)
 - [POST /api/\<version>/records/\<pid_value>/request-mail](#post-apiversionrecordspid_valuerequest-mail)
 
-
-
 ## GET /api/\<version>/captcha/image
 
 表内のいずれかの○に合致すれば、CAPTCHA画像を取得することが出来ます。
@@ -17,9 +15,6 @@
 | ロール   | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
 | -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 利用可否 | ○                 | ○                   | ○                      | ○            | ○            | ○                        |
-
-
-
 
 ## POST /api/\<version>/captcha/validate
 
@@ -36,8 +31,6 @@
 | calculation_result<br>が正しい | ○                  | ○                    | ○                      | ○            | ○            | ○                       |
 | calculation_result<br>が誤り                                 | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-
-
 ## POST /api/\<version>/records/\<pid_value>/request-mail
 
 表内のいずれかの○に合致すれば、リクエストメール送信APIへアクセスすることが出来ます。
@@ -52,8 +45,6 @@
 | -------------------------------------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | authorization_token<br>が正しい | ○                  | ○                    | ○                      | ○            | ○            | ○                       |
 | authorization_token<br>が誤り                                 | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
-
-
 
 ## 更新履歴
 

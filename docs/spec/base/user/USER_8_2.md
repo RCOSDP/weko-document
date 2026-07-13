@@ -1,177 +1,131 @@
-
 ### ログイン
 
-  - > 目的・用途
+#### 目的・用途
 
 本機能は、サインアップ済みのユーザーがログインするための機能である。
 
-  - > 利用方法
+#### 利用方法
 
 ユーザー画面のヘッダから［ログイン（Log in）］ボタンを押す。
 
-  - > 利用可能なロール
+#### 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>サブリポジトリ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | サブリポジトリ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-  - > 機能内容
+#### 機能内容
 
-  - ユーザー画面のヘッダから［ログイン（Log in）］ボタンを押すと、ログイン画面に移動する
-    
-      - コンフィグの以下設定値の組み合わせに応じて、該当ログイン画面に移動する  
-        （シボレスログイン処理について、[ADMIN-14-19: Shibboleth](../admin/ADMIN_14_19.md) を参照）
-        
-        1.  WEKO login only:
-            
-              - WEKO\_ACCOUNTS\_SHIB\_LOGIN\_ENABLED = False
-        
-        2.  WEKO login + Shibbolth(Idp):
-            
-              - WEKO\_ACCOUNTS\_SHIB\_LOGIN\_ENABLED = True
-            
-              - WEKO\_ACCOUNTS\_SHIB\_IDP\_LOGIN\_ENABLED = True
-        
-        3.  WEKO login + Shibbolth(DS):
-            
-              - WEKO\_ACCOUNTS\_SHIB\_LOGIN\_ENABLED = True
-            
-              - WEKO\_ACCOUNTS\_SHIB\_IDP\_LOGIN\_ENABLED = False
-        
-        4.  Shibbolth(Idp):
-            
-              - WEKO\_ACCOUNTS\_SHIB\_LOGIN\_ENABLED = True
-            
-              - WEKO\_ACCOUNTS\_SHIB\_IDP\_LOGIN\_ENABLED = True
-            
-              - WEKO\_ACCOUNTS\_SHIB\_INST\_LOGIN\_DIRECTLY\_ENABLED = True
-        
-        5.  Shibbolth(DS)
-            
-              - WEKO\_ACCOUNTS\_SHIB\_LOGIN\_ENABLED = True
-            
-              - WEKO\_ACCOUNTS\_SHIB\_IDP\_LOGIN\_ENABLED = False
-            
-              - WEKO\_ACCOUNTS\_SHIB\_DP\_LOGIN\_DIRECTLY\_ENABLED= True
+- ユーザー画面のヘッダから［ログイン（Log in）］ボタンを押すと、ログイン画面に移動する
 
-  - WEKOのログイン画面からログインする
-    
-      - 表示言語はヘッダにて選択しているシステム言語とする
-    
-      - メールアドレスとパスワードのテキストボックスを設ける
-    
-      - ［ログイン（Log In）］ボタン、「サインアップ」（Sign Up）リンク、「パスワードをお忘れの方はこちら」（Forgot password?）リンクを設ける
-        
-          - ［ログイン（Log In）］ボタンを押すと、入力した情報で、ログインリクエストを送信する
-            
-              - 問題なければ、もともとのユーザー画面に移動する
-            
-              - エラーがあった場合、エラー内容を メールアドレスとパスワードのテキストボックスの上部に表示させる
-                
-                  - メールアドレス、またはパスワードを入力しない場合  
-                    エラーメッセージ：「{} not provided」
-                
-                  - メールアドレス、またはパスワードを正しく入力しない場合  
-                    エラーメッセージ：「Specified user does not exist」
-        
-          - 「サインアップ」（Sign Up）リンクを押すと、アカウント登録画面に移動する
-        
-          - 「パスワードをお忘れの方はこちら」（Forgot password?）リンクを押すと、リセットパスワード画面に移動する
+  - コンフィグの以下設定値の組み合わせに応じて、該当ログイン画面に移動する  
+    （シボレスログイン処理について、[ADMIN-14-19: Shibboleth](../admin/ADMIN_14_19.md) を参照）
 
-  - > 関連モジュール
+    1. WEKO login only:
 
-  - > invenio\_accounts
+       - WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED = False
 
-  - > weko-accounts
+    2. WEKO login + Shibbolth(Idp):
 
-  - > 関連テーブル
-  - > accounts\_user\_session\_activity
-  - > accounts\_user
+       - WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED = True
 
-  - > 処理概要
+       - WEKO_ACCOUNTS_SHIB_IDP_LOGIN_ENABLED = True
 
-> ログイン画面の種類を決定するコンフィグは、instance.cfgまたはweko-accountsのconfig.pyで設定する。両方で設定されている場合、instance.cfgの設定が優先される。
+    3. WEKO login + Shibbolth(DS):
 
-  - > パス（instance.cfg）：  
-    > https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg
+       - WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED = True
 
-  - > パス（config.py）：  
-    > <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py>
+       - WEKO_ACCOUNTS_SHIB_IDP_LOGIN_ENABLED = False
 
-  - > 対象となるコンフィグは以下の通り。
-    
-      - WEKO\_ACCOUNTS\_SHIB\_LOGIN\_ENABLED
-    
-      - WEKO\_ACCOUNTS\_SHIB\_IDP\_LOGIN\_ENABLED
-    
-      - WEKO\_ACCOUNTS\_SHIB\_INST\_LOGIN\_DIRECTLY\_ENABLED
+    4. Shibbolth(Idp):
 
-> ログインボタンを押すと、invenio-accountsのsessions.pyにあるlogin\_listenerのadd\_user\_sessionメソッドが呼び出される。
+       - WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED = True
 
-  - > ログイン時には、accounts\_user\_session\_activityテーブルとredisにセッション情報を記録して、accounts\_userテーブルの最終ログイン情報を更新する。
-  - > 登録するセッション情報を以下に示す。
+       - WEKO_ACCOUNTS_SHIB_IDP_LOGIN_ENABLED = True
 
-| セッション情報    |   登録内容                        |
+       - WEKO_ACCOUNTS_SHIB_INST_LOGIN_DIRECTLY_ENABLED = True
+
+    5. Shibbolth(DS)
+
+       - WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED = True
+
+       - WEKO_ACCOUNTS_SHIB_IDP_LOGIN_ENABLED = False
+
+       - WEKO_ACCOUNTS_SHIB_DP_LOGIN_DIRECTLY_ENABLED = True
+
+- WEKOのログイン画面からログインする
+
+  - 表示言語はヘッダにて選択しているシステム言語とする
+
+  - メールアドレスとパスワードのテキストボックスを設ける
+
+  - ［ログイン（Log In）］ボタン、「サインアップ」（Sign Up）リンク、「パスワードをお忘れの方はこちら」（Forgot password?）リンクを設ける
+
+    - ［ログイン（Log In）］ボタンを押すと、入力した情報で、ログインリクエストを送信する
+
+      - 問題なければ、もともとのユーザー画面に移動する
+
+      - エラーがあった場合、エラー内容を メールアドレスとパスワードのテキストボックスの上部に表示させる
+
+        - メールアドレス、またはパスワードを入力しない場合  
+          エラーメッセージ：「{} not provided」
+
+        - メールアドレス、またはパスワードを正しく入力しない場合  
+          エラーメッセージ：「Specified user does not exist」
+
+    - 「サインアップ」（Sign Up）リンクを押すと、アカウント登録画面に移動する
+
+    - 「パスワードをお忘れの方はこちら」（Forgot password?）リンクを押すと、リセットパスワード画面に移動する
+
+#### 関連モジュール
+
+- invenio_accounts
+- weko-accounts
+
+#### 関連テーブル
+
+- accounts_user_session_activity
+- accounts_user
+
+#### 処理概要
+
+ログイン画面の種類を決定するコンフィグは、instance.cfgまたはweko-accountsのconfig.pyで設定する。両方で設定されている場合、instance.cfgの設定が優先される。
+
+- パス（instance.cfg）：  
+  https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg
+
+- パス（config.py）：  
+  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py>
+
+- 対象となるコンフィグは以下の通り。
+
+  - WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED
+
+  - WEKO_ACCOUNTS_SHIB_IDP_LOGIN_ENABLED
+
+  - WEKO_ACCOUNTS_SHIB_INST_LOGIN_DIRECTLY_ENABLED
+
+ログインボタンを押すと、invenio-accountsのsessions.pyにあるlogin_listenerのadd_user_sessionメソッドが呼び出される。
+
+- ログイン時には、accounts_user_session_activityテーブルとredisにセッション情報を記録して、accounts_userテーブルの最終ログイン情報を更新する。
+
+- 登録するセッション情報を以下に示す。
+
+| セッション情報 | 登録内容 |
 |------------|-------------------------------------------|
-| sid_s      | セッションID |
-| user_id    | ユーザID |
-| ip | IPアドレス|
-| country| 国名|
-| browser | ブラウザ|
-| browser_version | バージョン|
-| os | os|
-| device| デバイス|
-| organization_name | shibboleth認証を行った機関の名称</br> 本項目には、Shibboleth認証時にレスポンスのボディで返却されるJaOrganizationName(jao)の値を設定する。 </br> ローカル認証およびJaOrganizationNameが返却されなかった場合はNullとする。|
+| sid_s | セッションID |
+| user_id | ユーザID |
+| ip | IPアドレス |
+| country | 国名 |
+| browser | ブラウザ |
+| browser_version | バージョン |
+| os | os |
+| device | デバイス |
+| organization_name | shibboleth認証を行った機関の名称<br> 本項目には、Shibboleth認証時にレスポンスのボディで返却されるJaOrganizationName(jao)の値を設定する。 <br> ローカル認証およびJaOrganizationNameが返却されなかった場合はNullとする。 |
 
-  - > 更新履歴
+#### 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-<tr class="odd">
-<td><blockquote>
-<p>2024/03/14</p>
-</blockquote></td>
-<td>xxxxx</td>
-<td>W-OA-14_WEKO3サブリポジトリ管理・表示機能の開発対応</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2024/03/14 | xxxxx | W-OA-14_WEKO3サブリポジトリ管理・表示機能の開発対応 |

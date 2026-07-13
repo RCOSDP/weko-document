@@ -10,7 +10,7 @@
   | WEKO | 未病データベース用のWEKO3リポジトリ（バックエンド） |
   | Shibbolethログイン | 学認IdPやOrthrosアカウントによるログイン |
 
-### 1\. Shibbolethログイン時のロール付与
+### 1. Shibbolethログイン時のロール付与
 
 - WEKOの処理に変更を加えず使用する
 
@@ -25,7 +25,7 @@
   - 所属グループが「目標2Grp」ではない場合、通常通りログインする
 
 
-### 2\. Shibbolethログインの実装
+### 2. Shibbolethログインの実装
 
 - nginx/ams/weko-frontend/pages/login.vueのonMounted関数でEmbedded DSを導入する
 
@@ -45,11 +45,11 @@
     }
     ```
 
-  - /secure/login.pyからweko_accounts\.views\.shib_sp_login関数を実行する
+  - /secure/login.pyからweko_accounts.views.shib_sp_login関数を実行する
 
-- weko_accounts\.views\.shib_sp_login関数によって、IdPからのリクエストを処理する
+- weko_accounts.views.shib_sp_login関数によって、IdPからのリクエストを処理する
 
-  - 参考： [SHIBBOLETH_01: 5\.実装](../other/SHIBBOLETH_01.md)
+  - 参考： [SHIBBOLETH_01: 5.実装](../other/SHIBBOLETH_01.md)
 
   - ログイン処理後のリダイレクト先はフロントのTOPページを指定する
 
@@ -59,7 +59,7 @@
 
   - ユーザがトークン発行を許可することで認可コードを受け取ることが出来る
 
-### 3\. Shibbolethログイン、OAuth認証時のエラー
+### 3. Shibbolethログイン、OAuth認証時のエラー
 
 - Shibbolethログイン、およびトークン取得時のエラー内容は以下の通り  
   検知したエラーはログイン画面、OAuth認証画面でそれぞれ表示する
@@ -83,7 +83,7 @@
     | スコープ誤り | 400 | The scope is incorrect. | スコープに誤りがあります。<br>/The scope is incorrect. |
     | ユーザーが【Reject】を選択 | 200 | Access has been denied. | アクセスが拒否されました。<br>/Access has been denied. |
 
-### 4\. 目標2ユーザ以外が閲覧権限が必要なアイテム詳細画面にアクセスした場合
+### 4. 目標2ユーザ以外が閲覧権限が必要なアイテム詳細画面にアクセスした場合
 
 - 未ログインユーザが閲覧権限が必要なアイテム詳細画面にアクセスした場合
 

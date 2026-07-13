@@ -127,9 +127,9 @@
         * [ADMIN-12-4: マルチパートオブジェクト 317](./admin/ADMIN_12_4.md)
         * [ADMIN-12-5: オブジェクトバージョン 320](./admin/ADMIN_12_5.md)
     * ユーザ管理 324
-        * [ADMIN-13-1: アクセス\_ロール 324](./admin/ADMIN_13_1.md)
-        * [ADMIN-13-2: アクセス\_システムロール 328](./admin/ADMIN_13_2.md)
-        * [ADMIN-13-3: アクセス\_ユーザー 329](./admin/ADMIN_13_3.md)
+        * [ADMIN-13-1: アクセス_ロール 324](./admin/ADMIN_13_1.md)
+        * [ADMIN-13-2: アクセス_システムロール 328](./admin/ADMIN_13_2.md)
+        * [ADMIN-13-3: アクセス_ユーザー 329](./admin/ADMIN_13_3.md)
         * [ADMIN-13-4: 連結アカウント識別子 330](./admin/ADMIN_13_4.md)
         * [ADMIN-13-5: 連結アカウントトークン 331](./admin/ADMIN_13_5.md)
         * [ADMIN-13-6: 連結アカウント 332](./admin/ADMIN_13_6.md)

@@ -31,7 +31,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
 -   関連モジュール
 
-weko_records_ui.rest.py
+-   weko_records_ui.rest.py
 
 -   処理概要
 
@@ -42,8 +42,8 @@ weko_records_ui.rest.py
     -   デフォルトでは同一ホストからのアクセスは１分当たり100回までとする
 
     -   制限を超える場合429エラー（Too Many Requests）とする
-    
-    - 制限公開機能がOFF（WEKO_RECORDS_UI_RESTRICTED_API が False）である場合、403エラー（Forbidden）とする
+
+    -   制限公開機能がOFF（WEKO_RECORDS_UI_RESTRICTED_API が False）である場合、403エラー（Forbidden）とする
 
 -   指定されたアイテム/ファイルの情報を取得する
 
@@ -59,7 +59,7 @@ weko_records_ui.rest.py
 
     -   ファイル名と利用規約テキストからEtagを生成する。
 
-        -   Etagはファイル名と利用規約テキストをアンダースコアで連結した文字列（\[ファイル名\]\_\[利用規約テキスト\]）をmd5でハッシュ化した値とする。
+        -   Etagはファイル名と利用規約テキストをアンダースコアで連結した文字列（[ファイル名]_[利用規約テキスト]）をmd5でハッシュ化した値とする。
 
 -   リクエスト
 
@@ -69,7 +69,7 @@ weko_records_ui.rest.py
 
     -   API仕様書を参照
 
-- 設定値
+-   設定値
 
       - WEKO_RECORDS_UI_RESTRICTED_API
 
@@ -100,7 +100,6 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
 -   利用可能なロール
 
-  -------------------------------------------------------------------------------------------------
 | ロール             | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 |:------------------:|:-------------:|:---------------:|:------------------:|:-----------:|:-----------:|:----------------:|
 | 利用可否           | ○             | ○               | ○                  | ○           | ○           | ○                |
@@ -121,15 +120,11 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
 -   利用申請ワークフローが指定されていないロールのユーザーからのリクエストはエラーとする。
 
-
 -   関連モジュール
-
 
 -   weko_records_ui.rest.py
 
-
 -   処理概要
-
 
 -   OAuth2認証機能を用いてユーザーの適切なアクセス制限を行う。
 
@@ -139,7 +134,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
     -   制限を超える場合429エラー（Too Many Requests）とする
 
-- 制限公開機能がOFF（WEKO_RECORDS_UI_RESTRICTED_API が False）である場合、403エラー（Forbidden）とする
+-   制限公開機能がOFF（WEKO_RECORDS_UI_RESTRICTED_API が False）である場合、403エラー（Forbidden）とする
 
 -   ゲストユーザーの場合、リクエストに含まれるメールアドレスを確認する
 
@@ -192,7 +187,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
     -   API仕様書を参照
 
-- 設定値
+-   設定値
 
       - WEKO_RECORDS_UI_RESTRICTED_API
 
@@ -215,8 +210,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
 -   目的・用途
 
-本機能は制限公開ファイルの利用申請のワークフローにおける申請内容の登録（item
-Registration）を行うためのAPIである。
+本機能は制限公開ファイルの利用申請のワークフローにおける申請内容の登録（item Registration）を行うためのAPIである。
 
 -   利用方法
 
@@ -230,9 +224,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
 -   機能内容
 
-
--   指定された利用申請ワークフローアクティビティのItem
-    Registrationの処理を行う。
+-   指定された利用申請ワークフローアクティビティのItem Registrationの処理を行う。
 
     -   ItemRegistrationの各入力項目に対する入力情報はリクエスト内に含まれるJSONで受け取り、depositを行う。
 
@@ -242,13 +234,11 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
 -   本利用申請ワークフローのアクティビティの場合のみ利用可能とし、通常のワークフローアクティビティでは使用できない。
 
-
 -   関連モジュール
 
-weko_workflow.rest.py
+-   weko_workflow.rest.py
 
 -   処理概要
-
 
 -   OAuth2認証機能を用いてユーザーの適切なアクセス制限を行う。
 
@@ -258,7 +248,7 @@ weko_workflow.rest.py
 
     -   制限を超える場合429エラー（Too Many Requests）とする
 
-- 制限公開機能がOFF（WEKO_RECORDS_UI_RESTRICTED_API が False）である場合、403エラー（Forbidden）とする
+-   制限公開機能がOFF（WEKO_RECORDS_UI_RESTRICTED_API が False）である場合、403エラー（Forbidden）とする
 
 -   ゲストユーザーの場合、リクエストに含まれるtokenを確認する
 
@@ -292,7 +282,7 @@ weko_workflow.rest.py
 
     -   API仕様書を参照
 
-- 設定値
+-   設定値
 
       - WEKO_RECORDS_UI_RESTRICTED_API
 

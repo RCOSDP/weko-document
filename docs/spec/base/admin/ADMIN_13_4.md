@@ -1,79 +1,29 @@
-
 ### 連結アカウント識別子
 
-  - > 目的・用途
+## 目的・用途
 
-本機能は、invenioデフォルト機能を使用してaccounts\_useridentityテーブルをメンテナンスする際に使用する機能であるが、WEKO v0.9.22ではこのテーブルを使用していない。
+本機能は、invenioデフォルト機能を使用してaccounts_useridentityテーブルをメンテナンスする際に使用する機能であるが、WEKO v0.9.22ではこのテーブルを使用していない。
 
-  - > 利用方法
+## 利用方法
 
-【Administration \> ユーザー管理（User Management） \> 連結アカウント識別子（Linked account identities）画面】にて操作を行う。
+【Administration > ユーザー管理（User Management） > 連結アカウント識別子（Linked account identities）画面】にて操作を行う。
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 利用可否 | ○ | | | | | |
 
-  - > 機能内容
+## 機能内容
 
-<!-- end list -->
+## 関連モジュール
 
-  - 
-<!-- end list -->
+- invenio_accounts（関連するソースはWEKOにフォークされてない）
 
-  - > 関連モジュール
+## 処理概要
 
-<!-- end list -->
+## 更新履歴
 
-  - invenio\_accounts（関連するソースはWEKOにフォークされてない）
-
-<!-- end list -->
-
-  - > 処理概要
-
-  - > 更新履歴
-
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2022/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+|:---:|:---:|:---:|
+| 2022/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |

@@ -14,14 +14,9 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 
 ## 関連モジュール
 
-<!-- end list -->
+- Invenio_oaiserver
 
-  - > Invenio\_oaiserver
-
-<!-- end list -->
-
-
-##
+## 構造
 
 | # | 1 | 2 | 3 | 4 | 5 | 6 |
 |---|---|---|---|---|---|---|
@@ -39,11 +34,13 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 |   | } |   |   |   |   |   |
 
 
+```sql
 UPDATE item_type SET schema=jsonb_set(schema,'{properties,item_1727013688876}','{"type": "object", "format": "object",
  "properties": {"subitem_select_item": {"items": {"enum": [null,"a","b","c"], "type": ["null","string"], "title": "値", "format"
 : "select", "editAble": true}}, "subitem_select_language": {"enum": [null, "ja", "ja-Kana", "ja-Latn", "en", "fr", "it", "de", "
 es", "zh-cn", "zh-tw", "ru", "la", "ms", "eo", "ar", "el", "ko"], "type": ["null", "string"], "title": "言語", "format": "select
 ", "editAble": true}}}') WHERE id=16;
+```
 
 
 ```
@@ -5352,21 +5349,6 @@ es", "zh-cn", "zh-tw", "ru", "la", "ms", "eo", "ar", "el", "ko"], "type": ["null
 
 #### 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| ---- | ---- | ---- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |

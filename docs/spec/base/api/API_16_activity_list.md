@@ -50,7 +50,7 @@
 
     -   取得したアクティビティ一覧をjsonに格納して返却する。
 
--   URLはapi/:version/activities
+-   URLはapi/:version/workflow/activities
 
   | パラメータ | 値           |
   |------------|--------------|
@@ -65,6 +65,7 @@
   | Accept-Language   | 表示する言語の指定                                    |
   | Authorization     | Bearer アクセストークン                               |
   | If-None-Match     | 初回リクエスト時のレスポンスヘッダーに設定されているETagの値 |
+
 -   ボディ
 
 > 無し
@@ -93,6 +94,7 @@
   | キー名 | 値             |
   |--------|----------------|
   | ETag   | コンテンツのハッシュ値 |
+
 -   ボディ
 
 > アクティビティ一覧をJSON形式で返す（※詳細はAPI仕様書を参照）

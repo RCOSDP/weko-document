@@ -8,7 +8,7 @@ SWORD API のアクセスコントロールについて記述します。
 - [GET /sword/deposit/\<recid\>](#get-sworddepositrecid)
 - [POST /sword/service-document](#post-swordservice-document) ※
 - [PUT /sword/deposit/\<recid\>](#put-sworddepositrecid) ※
-- [DELETE /sword/deposit/](#delete-sworddeposit) ※
+- [DELETE /sword/deposit/\<recid\>](#delete-sworddepositrecid) ※
 
 ※ `weko_swordserver/config.py` の `WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE` の値によって使用可能なロールを指定することが出来ます。  
 ただし、インデックスの公開状態や投稿権限を無視して投稿可能となります。
@@ -61,7 +61,7 @@ SWORD API のアクセスコントロールについて記述します。
   | トークンのスコープに<br>deposit:write<br>deposit:actions<br>item:update<br>**user:activity** が全て存在 | ○ | ○ | × | × | × | × |
   | 上記以外 | × | × | × | × | × | × |
 
-## DELETE /sword/deposit/<recid>
+## DELETE /sword/deposit/\<recid>
 
 ○ に合致すれば、レコードIDを指定してアイテムを削除することが出来ます。
 
@@ -76,7 +76,6 @@ SWORD API のアクセスコントロールについて記述します。
   | ----------------------------------------------------------------------------------------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
   | トークンのスコープに<br>deposit:write<br>deposit:actions<br>item:delete<br>**user:activity** が全て存在 | ○ | ○ | × | × | × | × |
   | 上記以外 | × | × | × | × | × | × |
-
 
 ## 更新履歴
 

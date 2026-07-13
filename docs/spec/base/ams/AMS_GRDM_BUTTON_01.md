@@ -14,12 +14,11 @@
 
 ### 1. RO-CrateからWEKOのアイテムへの変換
 
-プロジェクトURLはRO-Crate内で`ams:projectId`として記述される。  
-WEKOのJSON-LDマッピング機能( [ADMIN_1_5：JSON-LDマッピング](../admin/ADMIN_1_5.md) )を使用して、  
-`ams:projectId`を未病アイテムタイプのプロジェクトURL(関連情報プロパティ)にマッピングする。
+プロジェクトURLはRO-Crate内で`ams:projectId`として記述される。
+WEKOのJSON-LDマッピング機能( [ADMIN_1_5：JSON-LDマッピング](../admin/ADMIN_1_5.md) )を使用して、`ams:projectId`を未病アイテムタイプのプロジェクトURL(関連情報プロパティ)にマッピングする。
 
-`ams:projectId`を`プロジェクトURL.関連識別子.関連識別子`にマッピングする。(以下、関連識別子とする。)  
-`プロジェクトURL.関連タイプ`には固定値で後述の`grdm.relationType` の値をマッピングする。(以下、関連タイプとする。)  
+`ams:projectId`を`プロジェクトURL.関連識別子.関連識別子`にマッピングする。(以下、関連識別子とする。)
+`プロジェクトURL.関連タイプ`には固定値で後述の`grdm.relationType` の値をマッピングする。(以下、関連タイプとする。)
 JSON-LDマッピング機能により、`ams:projectId`が存在する場合のみ関連タイプが登録される。
 
 - RO-Crateの例
@@ -43,8 +42,7 @@ JSON-LDマッピング機能により、`ams:projectId`が存在する場合の�
 
 ### 2. WEKOのアイテムからRO-Crateへの変換
 
-アイテム取得API (`/api/v1/records/<アイテムID>`)使用時、  
-WEKOのRO-Crateマッピング機能を使用し、関連識別子と関連タイプを以下のキーにマッピングする。  
+アイテム取得API (`/api/v1/records/<アイテムID>`)使用時、WEKOのRO-Crateマッピング機能を使用し、関連識別子と関連タイプを以下のキーにマッピングする。
 
 - 関連識別子
   - ツリー構造: root > プロジェクトURL > URL > URL
@@ -55,16 +53,15 @@ WEKOのRO-Crateマッピング機能を使用し、関連識別子と関連タ�
 
 ### 3. フロントでのGRDMボタン表示
 
-WEKOのアイテム詳細情報取得APIを使用し、RO-Crateから関連識別子と関連タイプを取得する。  
+WEKOのアイテム詳細情報取得APIを使用し、RO-Crateから関連識別子と関連タイプを取得する。
 関連識別子と関連タイプが以下の2条件を共にみたす場合、関連識別子をプロジェクトURLとして扱う。
 
-- `nginx/ams/weko-frontend/app.config.ts` で設定した `grdm.url` の値が`''`(空文字列)の場合、関連識別子が空でないこと  
+- `nginx/ams/weko-frontend/app.config.ts` で設定した `grdm.url` の値が`''`(空文字列)の場合、関連識別子が空でないこと。
   `nginx/ams/weko-frontend/app.config.ts` で設定した `grdm.url` の値が`''`(空文字列)でない場合、関連識別子が `grdm.url` の値から始まること
-
 - 関連タイプが `nginx/ams/weko-frontend/app.config.ts` で設定した `grdm.relationType` の値と一致すること
 
-プロジェクトURLが設定されている場合、ユーザのログイン状態に関わらずアイテム詳細画面にGRDMボタンを表示する。  
-ユーザがGRDMボタンを押下した場合は、プロジェクトURLを新規ウィンドウで開く。  
+プロジェクトURLが設定されている場合、ユーザのログイン状態に関わらずアイテム詳細画面にGRDMボタンを表示する。
+ユーザがGRDMボタンを押下した場合は、プロジェクトURLを新規ウィンドウで開く。
 GRDMボタンを表示している場合、リクエストボタンとその表示領域は非表示とする。
 
 ### 更新履歴

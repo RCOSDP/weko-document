@@ -1,47 +1,20 @@
 ### 制限公開(v1.0.7追加)
 
-  - > 目的・用途
+## 目的・用途
 
 本機能は、制限公開に関する機能を設定し、利用報告督促メールを送付する機能である
 
-  - > 利用方法
+## 利用方法
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 利用可否 | ○ | ○ |  |  |  |  |
 
-  - > 機能内容
+## 機能内容
 
-<!-- end list -->
-
-  - 使用している画面：【Admin \> Setting \> Restricted Access画面】：制限公開に関する機能を設定し、利用報告督促メールを送付する画面である
+  - 使用している画面：【Admin > Setting > Restricted Access画面】：制限公開に関する機能を設定し、利用報告督促メールを送付する画面である
 
 １．コンテンツ未登録アイテムの利用申請について設定する
 
@@ -227,7 +200,6 @@
 
           - 英語：「Restricted Access was successfully updated.」
 
-
 ５. 利用報告ワークフローへのアクセスについて設定する
 
   - WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG が True の場合のみ表示
@@ -330,36 +302,24 @@
 
       - 　 モーダル画面の「送信」ボタンを押下すると、メールが送信される。メールの送信が完了したらメッセージを表示する
 
-<!-- end list -->
+## 関連モジュール
 
-  - > 関連モジュール
+  - weko_admin
 
-<!-- end list -->
-
-  - > weko\_admin
-
-<!-- end list -->
-
-  - > 処理概要
-
-<!-- end list -->
+## 処理概要
 
   - 設定内容をデータベースに保存する
 
-      - テーブル：「admin\_settings」
+      - テーブル：「admin_settings」
 
-      - フィールド：'name'="restricted\_access"
+      - フィールド：'name'="restricted_access"
         例：
 
-> {"terms\_and\_conditions": \[{"key": "161699201191", "content": {"en": {"title": "Terms 1", "content": "Terms and Conditions Description"}, "ja": {"title": "利用規約1", "content": ""}}, "existed": true}\], "content\_file\_download": {"download\_limit": 10, "expiration\_date": 9999999, "download\_limit\_unlimited\_chk": false, "expiration\_date\_unlimited\_chk": true}, "usage\_report\_workflow\_access": {"expiration\_date\_access": 500, "expiration\_date\_access\_unlimited\_chk": false}}
+> {"terms_and_conditions": [{"key": "161699201191", "content": {"en": {"title": "Terms 1", "content": "Terms and Conditions Description"}, "ja": {"title": "利用規約1", "content": ""}}, "existed": true}], "content_file_download": {"download_limit": 10, "expiration_date": 9999999, "download_limit_unlimited_chk": false, "expiration_date_unlimited_chk": true}, "usage_report_workflow_access": {"expiration_date_access": 500, "expiration_date_access_unlimited_chk": false}}
 
-  - > ゲストユーザーに対して、アクティビティ画面を表示する関数（"display\_guest\_activity"）には"record\_after\_update"変数を設定する
+  - ゲストユーザーに対して、アクティビティ画面を表示する関数（"display_guest_activity"）には"record_after_update"変数を設定する
 
-<!-- end list -->
-
-  - > メール本文について
-
-<!-- end list -->
+  - メール本文について
 
   - メール名：利用申請WFの通知メール
 
@@ -379,7 +339,7 @@
 >
 > 問い合わせ窓口：【リポジトリメールアドレス】
 >
-> \----------------------------------------------------------------------------------
+> ----------------------------------------------------------------------------------
 >
 > This is a message from 【リポジトリ名（英語）】.
 >
@@ -431,7 +391,7 @@
 >
 > 問い合わせ窓口：【リポジトリメールアドレス】
 >
-> \----------------------------------------------------------------------------------
+> ----------------------------------------------------------------------------------
 >
 > This is a message from 【リポジトリ名（英語）】.
 >
@@ -497,7 +457,7 @@
 >
 > 問い合わせ窓口：【リポジトリメールアドレス】
 >
-> \----------------------------------------------------------------------------------
+> ----------------------------------------------------------------------------------
 >
 > This is a message from 【リポジトリ名（英語）】.
 >
@@ -531,15 +491,15 @@
 
 埋め込み文字の整理
 
-  - 【リポジトリ名（日本語）】：Admin\>Settings\>Site Info に設定されている日本語のSite Name
+  - 【リポジトリ名（日本語）】：Admin>Settings>Site Info に設定されている日本語のSite Name
 
-  - 【リポジトリ名（英語）】：Admin\>Setting\>Site Info に設定されている英語のSite Name
+  - 【リポジトリ名（英語）】：Admin>Setting>Site Info に設定されている英語のSite Name
 
-  - 【ゲストユーザ向けの利用申請WFへのアクセスリンク】： \#24088 で対応したテンポラリリンク
+  - 【ゲストユーザ向けの利用申請WFへのアクセスリンク】： #24088 で対応したテンポラリリンク
 
-  - 【リポジトリURL】：「THEME\_SITEURL」 に設定されているURL
+  - 【リポジトリURL】：「THEME_SITEURL」 に設定されているURL
 
-  - 【リポジトリメールアドレス】：Admin\>Setting\>Mail のDefault sender
+  - 【リポジトリメールアドレス】：Admin>Setting>Mail のDefault sender
 
   - 【申請番号】：対象となる利用申請のアクティビティID
 
@@ -555,11 +515,11 @@
 
   - 【申請年月日】利用申請アイテムタイプ項目の申請日の設定値
 
-  - 【ダウンロードリンク】： \#24088 で対応したテンポラリリンク
+  - 【ダウンロードリンク】： #24088 で対応したテンポラリリンク
 
-  - 【データのダウンロード期限日】：利用申請アイテムタイプ項目の承認日からAdmin\>Setting\>Restricted AccessのExpiration Date経過した日付
+  - 【データのダウンロード期限日】：利用申請アイテムタイプ項目の承認日からAdmin>Setting>Restricted AccessのExpiration Date経過した日付
 
-  - 【利用報告WFへのアクセスリンク】： \#24327 で対応したアクセスリンク
+  - 【利用報告WFへのアクセスリンク】： #24327 で対応したアクセスリンク
 
   - 【報告番号】：対象となる利用報告のアクティビティID
 
@@ -572,8 +532,6 @@
   - 【報告-データ名】：利用報告アイテムタイプ項目のデータ名の設定値
 
   - 【報告-WF起票日】：利用報告アイテムタイプ項目のWF起票日の設定値
-
-<!-- end list -->
 
 ８. 制限公開アイテムに非対象ユーザーがアクセスを試みた際に表示されるエラーメッセージについて設定する
 
@@ -590,11 +548,11 @@
     日本語：「制限公開の設定を変更しました。」
     英語：「Restricted Access was successfully updated.」
 
-  - > 関連モジュール
+## 関連モジュール
     
-  - > weko_admin
+  - weko_admin
     
-  - > 処理概要
+## 処理概要
     
   - 設定内容をデータベースに保存する
 
@@ -608,50 +566,23 @@
 
   - データベース内に"error_msg"というキーを持たない場合は、weko_admin.utils.get_restricted_access で初期状態のものが作成される。その後、設定が変更されるたび値が更新される。
 
-  - > 設定値
+## 設定値
     
-      - > WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG
+      - WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG
         
-          - > パス：<https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/weko-admin/weko_admin/config.py#L1298>
+          - パス：<https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/weko-admin/weko_admin/config.py#L1298>
 
-          - > 初期値：False
+          - 初期値：False
 
-          - > 制限公開機能の設定画面表示非表示および利用申請系機能と制限公開コンテンツ機能の有効無効を切り替える。
+          - 制限公開機能の設定画面表示非表示および利用申請系機能と制限公開コンテンツ機能の有効無効を切り替える。
 
-          - > scripts/instance.cfg で定義されている場合は、そちらの設定を優先する。
+          - scripts/instance.cfg で定義されている場合は、そちらの設定を優先する。
 
-  - > 更新履歴
+## 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2025/10/31</td>
-<td><strong>160a811eed2c61492558905db34fa0619da6b18f</strong></td>
-<td>各機能の表示・有効の条件を追加</td>
-</tr>
-<tr class="even">
-<td>2024/07/12</td>
-<td><strong>a27f536b5e375ada10a651ba1f13a589c9243ca1</strong></td>
-<td>コンテンツ未登録アイテムの利用申請設定、各種制限公開機能の有効化、無効化設定機能追加</td>
-</tr>
-<tr class="odd">
-<td>2024/01/19</td>
-<td><strong>8c312e8cb1db9c6479b86d1443a38720079838b0</strong></td>
-<td>シークレットURL機能追加</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2025/10/31 | 160a811eed2c61492558905db34fa0619da6b18f | 各機能の表示・有効の条件を追加 |
+| 2024/07/12 | a27f536b5e375ada10a651ba1f13a589c9243ca1 | コンテンツ未登録アイテムの利用申請設定、各種制限公開機能の有効化、無効化設定機能追加 |
+| 2024/01/19 | 8c312e8cb1db9c6479b86d1443a38720079838b0 | シークレットURL機能追加 |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |

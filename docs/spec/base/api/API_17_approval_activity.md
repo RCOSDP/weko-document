@@ -20,7 +20,11 @@ APIを実行する。
 
 -   関連モジュール
 
+-   weko_workflow.rest.py
+
 -   weko_workflow.views.py
+
+-   weko_workflow.utils.py
 
 -   処理概要
 
@@ -78,18 +82,17 @@ APIを実行する。
 
 -   機能内容
 
-
 -   指定したアクティビティをログイン中のユーザーで却下する。
-
 
 -   関連モジュール
 
+-   weko_workflow.rest.py
 
 -   weko_workflow.views.py
 
+-   weko_workflow.utils.py
 
 -   処理概要
-
 
 -   OAuth2認証機能を用いてユーザーの適切なアクセス制限を行う。
 
@@ -120,7 +123,6 @@ APIを実行する。
 -   レスポンス
 
     -   API仕様書を参照
-
 
 -   更新履歴
 

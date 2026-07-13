@@ -4,7 +4,7 @@
 本機能は、アイテムタイプとJSON-LDのマッピングを設定する機能である。
 
 ## 利用方法
-管理者は、【Administration > アイテム管理（Items） > JSON-LD マッピング（JSON-LD Mapping）】を開き、アイテムタイプのプロパティとJSON-LDのマッピング定義を設定する。
+管理者は、【Administration > アイテムタイプ管理（Item Types） > JSON-LD マッピング（JSON-LD Mapping）】を開き、アイテムタイプのプロパティとJSON-LDのマッピング定義を設定する。
 
 ## 利用可能なロール
 

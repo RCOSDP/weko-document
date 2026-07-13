@@ -8,43 +8,20 @@
 
   - サンプルコード
 
-    curl -X POST -H "Content-Type: application/json" <WEKO3のURL>/api/v1/records/1/request-mail \  
-    -d '{ "from": "contributor@example.org", \  
-    "subject": "About request mail", \  
-    "message": "this is message of request mail.", \  
-    "key": "aaa", \  
+    ```bash
+    curl -X POST -H "Content-Type: application/json" <WEKO3のURL>/api/v1/records/1/request-mail \
+    -d '{ "from": "contributor@example.org",
+    "subject": "About request mail",
+    "message": "this is message of request mail.",
+    "key": "aaa",
     "authorization_token": "68680b0b249e005b2d422393a17a9a3373ab6320d0d1af4d443336c0854602d8" }'
+    ```
 
 - 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
 - 機能内容
 
@@ -82,21 +59,6 @@
 
 - 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2025/10/10</p>
-</blockquote></td>
-<td></td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| ---- | ---- | ---- |
+| 2025/10/10 |  | 初版作成 |

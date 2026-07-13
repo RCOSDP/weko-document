@@ -21,7 +21,7 @@
 
 ## 機能内容
 
-- 【Administration \> 設定(Setting) \> アイテム一括出力(Item Export)画面】に「Allow/Disallow Item Exporting」及び「Export File Contents」がOnに設定している場合
+- 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】に「Allow/Disallow Item Exporting」及び「Export File Contents」がOnに設定している場合
 
     - 検索結果一覧画面に「エクスポート」（Export）ボタンを押下すると、アイテム一括出力画面に遷移する。
     - アイテム一括出力画面にボタンを押下したときの検索結果一覧画面のアイテム名を全てリストとして表示する。  
@@ -71,10 +71,10 @@
     - 「エクスポート」（Export）ボタン  
       チェックボックスにチェックがついているアイテムに関してExportできる
 
-- 【Administration \> 設定(Setting) \> アイテム一括出力(Item Export)画面】の「Allow/Disallow Item Exporting」がOffに設定している場合、  
+- 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】の「Allow/Disallow Item Exporting」がOffに設定している場合、  
   検索結果一覧画面に「エクスポート(Export)」ボタンを表示しない。
 
-- 【Administration \> 設定(Setting) \> アイテム一括出力(Item Export)画面】に「Allow/Disallow Item Exporting」がOnに設定している、かつ「Export File Contents」がOffに設定している場合
+- 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】に「Allow/Disallow Item Exporting」がOnに設定している、かつ「Export File Contents」がOffに設定している場合
 
     - 検索結果一覧画面に「エクスポート(Export)」ボタンを表示する。
     - 「File Contents」エリアにコンテンツファイルを出力するかどうかのラジオボタンを非活性にする。
@@ -129,9 +129,9 @@
     - Unicode正規化（NFKD）を実施する。
     - 特別な文字（\&EMPTY&）を変換する（ [~~\#23229~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229) ）
     - メタデータをエスケープして出力する（ MarkupSafeライブラリ による処理）
-    - 改行コード（\\n）→\<br/\> に変換する（ [~~\#23229\#note-6~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229#note-6) ）
+    - 改行コード（\\n）→<br/> に変換する（ [~~\#23229\#note-6~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229#note-6) ）
 
-  - エクスポートできるファイルサイズは定数「 WEKO\_ITEMS\_UI\_EXPORT\_MAX\_FILE\_SIZE 」にて制限できる。
+  - エクスポートできるファイルサイズは定数「 WEKO_ITEMS_UI_EXPORT_MAX_FILE_SIZE 」にて制限できる。
 
 
 
@@ -231,7 +231,7 @@ tsvの形式についてはweko_items_ui.utils.make_stats_fileメソッドを参
          file_path[n]は、ファイルプロパティのnと連番を合わせて対応する
 
    - メタデータファイル(tsv)サンプル  
-     別紙「weko3\_tsvformat.xlsx」を参照
+     別紙「weko3_tsvformat.xlsx」を参照
 
 ### ダウンロードするアイテム情報 BIBTEX形式
 
@@ -278,16 +278,16 @@ RO-Crateの形式については[ADMIN_2.5 RO-Crateインポート](../admin/ADM
 ### その他
 
 - エクスポートの最大アイテム数は以下で設定する  
-  /modules/weko-items-ui/weko\_items\_ui/config.py  
- 　WEKO\_ITEMS\_UI\_DEFAULT\_MAX\_EXPORT\_NUM = 100
+  /modules/weko-items-ui/weko_items_ui/config.py  
+ 　WEKO_ITEMS_UI_DEFAULT_MAX_EXPORT_NUM = 100
 
-- エクスポート処理実行時、weko\_items\_ui.utils.export\_itemsメソッドにてtempfile.TemporaryDirectoryによってtmpファイルが生成される。  
+- エクスポート処理実行時、weko_items_ui.utils.export_itemsメソッドにてtempfile.TemporaryDirectoryによってtmpファイルが生成される。  
  テンポラリディレクトリのファイル名を以下のように設定する。  
  なお、tmpファイルはエクスポート処理実行後に自動的に削除される。
 
-   - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_export\_xxxxxxxx
+   - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_export_xxxxxxxx
 
-- weko\_items\_ui.utils.export\_items  
+- weko_items_ui.utils.export_items  
  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/utils.py#L1423-L1507>
 
 

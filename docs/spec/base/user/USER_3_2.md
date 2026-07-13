@@ -32,7 +32,7 @@
                 コンテンツファイルが登録されていない場合はリンク先のURLへ遷移する。
             
               - オープンアクセス指定日より前は「Download is available from YYYY/MM/DD.」と表示する。日付が一桁の場合、0埋め表示をしない。  
-                ログインしているロールが該当登録者、管理者以外の場合は、公開されていないファイルを選択すると、「権限が必要です (Permission required)」と表示する。STATS\_WEKO\_DEFAULT\_TIMEZONEに設定されたタイムゾーンに基づく時刻を表示する。
+                ログインしているロールが該当登録者、管理者以外の場合は、公開されていないファイルを選択すると、「権限が必要です (Permission required)」と表示する。STATS_WEKO_DEFAULT_TIMEZONEに設定されたタイムゾーンに基づく時刻を表示する。
         
           - ファイルに対してのアクション
             
@@ -82,7 +82,7 @@
                 公開前のアイテムがある場合は「Cannot preview file」と表示する。  
                 該当登録者、管理者以外で公開前のアイテムがある場合は「Restricted Access」と表示する。
         
-          - ファイルサイズによりプレビューできない場合は、「Cannot preview file」の表示に、「 file size exceeded. 」が表示される。表示可能なファイルサイズの閾値は定数「WEKO\_ITEMS\_UI\_FILE\_SISE\_PREVIEW\_LIMIT」より設定できる。登録されたファイル一覧を表示する。
+          - ファイルサイズによりプレビューできない場合は、「Cannot preview file」の表示に、「 file size exceeded. 」が表示される。表示可能なファイルサイズの閾値は定数「WEKO_ITEMS_UI_FILE_SISE_PREVIEW_LIMIT」より設定できる。登録されたファイル一覧を表示する。
             
               - ファイル名リンク：コンテンツファイルをダウンロードする。  
                 コンテンツファイルが登録されていない場合はリンク先のURLへ遷移する。
@@ -130,9 +130,9 @@
         
           - プレビュー切替はコンテンツファイル一覧の並びに依存する。
         
-          - スライドナビゲーションにて、先頭（|\<）/前（＜）/次（＞）/末尾（\>|）のスライドへ移動できる。
+          - スライドナビゲーションにて、先頭（|<）/前（＜）/次（＞）/末尾（>|）のスライドへ移動できる。
 
-  - > PDF形式のファイルに対して、PDFにはカバーページが付与される場合、PDFカバーページはコンテンツファイルの1ページ目に付与し、コンテンツファイルの中身と合わせてカバーページをプレビューに表示する
+  - PDF形式のファイルに対して、PDFにはカバーページが付与される場合、PDFカバーページはコンテンツファイルの1ページ目に付与し、コンテンツファイルの中身と合わせてカバーページをプレビューに表示する
 
   - PDF形式のファイルのプレビューは、拡大率やページ数を変更する機能のあるツールバーに囲われた状態で表示される。
 
@@ -177,65 +177,15 @@
       - ファイル詳細画面では、アイテム詳細画面のファイル情報に加えて、「バージョン」タブに更新履歴情報を表示する。  
         更新履歴の表示項目は、以下とする。
 
-<table>
-<thead>
-<tr class="header">
-<th>#</th>
-<th>表示項目</th>
-<th>説明</th>
-<th>備考</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>バージョン（Version）</td>
-<td>ファイルのバージョンを表示する<br />
-最新バージョンはCurrentと表示する</td>
-<td>コンテンツファイルが削除された場合は該当バージョンを論理削除する</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>更新日時（Date Modified）</td>
-<td>コンテンツファイルの登録日時</td>
-<td>ISO8601のTZ付き形式とする<br />
-形式：「YYYY-MM-DD hh:mm:ss」</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>オブジェクトファイル名（Object File Name）</td>
-<td><p>コンテンツファイルにアクセス可能なリンクになっている</p>
-<p>※ファイルサイズが大きい場合はマルチパートダウンロードのURLへ差し替えとなる。 マルチパートダウンロードの詳細は、[アイテム詳細]&gt;[コンテンツファイル管理]&gt;[ マルチパートダウンロード処理について]を参照</p></td>
-<td>/api/files/BUCKET_ID/FileName</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>ファイル容量（File Size）</td>
-<td>ファイル容量をバイト表示する</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>ファイルハッシュ値（File Hash Value）</td>
-<td></td>
-<td>sha256ハッシュ値</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>投稿者名（Contributor Name）</td>
-<td>ファイルを登録したユーザ名</td>
-<td>ゲストユーザの場合は非表示とする</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>表示/非表示（Show/Hide）</td>
-<td>本項目は管理者またはアイテム登録者のみ表示される<br />
-本項目を最新バージョンの行に表示しない<br />
-また、"表示"に設定した場合、該当行が全ユーザに表示される</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| # | 表示項目 | 説明 | 備考 |
+| --- | --- | --- | --- |
+| 1 | バージョン（Version） | ファイルのバージョンを表示する<br>最新バージョンはCurrentと表示する | コンテンツファイルが削除された場合は該当バージョンを論理削除する |
+| 2 | 更新日時（Date Modified） | コンテンツファイルの登録日時 | ISO8601のTZ付き形式とする<br>形式：「YYYY-MM-DD hh:mm:ss」 |
+| 3 | オブジェクトファイル名（Object File Name） | コンテンツファイルにアクセス可能なリンクになっている<br>※ファイルサイズが大きい場合はマルチパートダウンロードのURLへ差し替えとなる。 マルチパートダウンロードの詳細は、[アイテム詳細]>[コンテンツファイル管理]>[ マルチパートダウンロード処理について]を参照 | /api/files/BUCKET_ID/FileName |
+| 4 | ファイル容量（File Size） | ファイル容量をバイト表示する |  |
+| 5 | ファイルハッシュ値（File Hash Value） |  | sha256ハッシュ値 |
+| 6 | 投稿者名（Contributor Name） | ファイルを登録したユーザ名 | ゲストユーザの場合は非表示とする |
+| 7 | 表示/非表示（Show/Hide） | 本項目は管理者またはアイテム登録者のみ表示される<br>本項目を最新バージョンの行に表示しない<br>また、"表示"に設定した場合、該当行が全ユーザに表示される |  |
 
   - 該当アイテムが非公開と設定すれば、
     
@@ -259,7 +209,7 @@
     (日)「YYYY年MM月DD日からダウンロード可能です」  
     (英)「Download is available from YYYY/MM/DD.」
 
-  - ファイルのリンク、\[ダウンロード(Download)\]ボタン、\[プレビュー(Preview)\]ボタンを押下すると、ログイン画面を表示する（Shibboleth連携の場合はShibbolethログイン画面を表示する）
+  - ファイルのリンク、[ダウンロード(Download)]ボタン、[プレビュー(Preview)]ボタンを押下すると、ログイン画面を表示する（Shibboleth連携の場合はShibbolethログイン画面を表示する）
     
       - ログイン認証時、権限のチェックを行う。
         
@@ -325,11 +275,9 @@
     
       - 「Informaton」画面のURLを入力：　"Permission required"を表示する
 
-<!-- end list -->
-
   - 「制限公開」設定のファイルについては、下記条件の場合、DLボタンの代わりにApply（申請）ボタンが表示される。
     
-      - 1.対象のコンテンツ（＝ファイル）のアクセスロールが「制限公開」（open\_restricted）である。
+      - 1.対象のコンテンツ（＝ファイル）のアクセスロールが「制限公開」（open_restricted）である。
     
       - 2.該当コンテンツをダウンロードする権限が、画面表示しているユーザ（未ログイン含む）に無い。
 
@@ -419,8 +367,6 @@
 
           - コピーボタンを押下すると、該当URLをクリップボードにコピーする
 
-<!-- end list -->
-
 ### 6. 「Import to GakuNin RDM」機能
 
 この機能は、WEKO3で公開されているGakuNin RDMプロジェクトアーカイブを、GakuNin RDMに新しいプロジェクトとしてインポートするためのものです。GakuNin RDMプロジェクトアーカイブはGakuNin RDM上でプロジェクトをエクスポートすることで作成されます。
@@ -438,11 +384,7 @@
 
 ## 関連モジュール
 
-<!-- end list -->
-
-  - > weko-records-ui
-
-<!-- end list -->
+  - weko-records-ui
 
 ## 処理概要
 
@@ -455,9 +397,9 @@
   - テンポラリーフォルダーの初期値は「/var/tmp」であり、以下のConfigファイルで設定できる  
     <https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/invenio-files-rest/invenio_files_rest/config.py#L132>
     
-      - 設定キー：「FILES\_REST\_DEFAULT\_PDF\_SAVE\_PATH」
+      - 設定キー：「FILES_REST_DEFAULT_PDF_SAVE_PATH」
     
-      - 現在の設定値：FILES\_REST\_DEFAULT\_PDF\_SAVE\_PATH = tempfile.gettempdir()
+      - 現在の設定値：FILES_REST_DEFAULT_PDF_SAVE_PATH = tempfile.gettempdir()
 
   - 予期せぬエラーによりファイルをテンポラリーフォルダーに書き込むことができない場合、以下のメッセージがプレビュー画面に表示される  
     メッセージ：「Unexpected server response (502) while retrieving PDF + ファイルパス」
@@ -475,12 +417,12 @@
 
   - ファイルビューアのライブラリ：pdfjs-dist (ver. 1.4.192)
 
-  - weko\_records\_ui.permissions.check\_file\_download\_permissionを使用する。
+  - weko_records_ui.permissions.check_file_download_permissionを使用する。
 
 #### (1)アイテム詳細画面に表示、ダウンロードする処理
 
   - ファイル情報の表示処理について  
-    アクセスしているユーザーの権限が管理者であるかどうか、weko\_records\_ui.permissions.check\_file\_download\_permissionにて「WEKO\_PERMISSION\_SUPER\_ROLE\_USER」を使用する
+    アクセスしているユーザーの権限が管理者であるかどうか、weko_records_ui.permissions.check_file_download_permissionにて「WEKO_PERMISSION_SUPER_ROLE_USER」を使用する
     
       - 権限が管理者の場合、アイテムに登録されるファイルの表示形式に応じてファイルの情報を取得し、表示する
     
@@ -501,7 +443,7 @@
             
               - コンテンツのアクセスが「ログインユーザのみ」とした場合、以下のように制限する
                 
-                  - weko\_records\_ui.permissions.checl\_file\_download\_permissionでcheck\_user\_group\_permissionを呼び出して使用する。
+                  - weko_records_ui.permissions.check_file_download_permissionでcheck_user_group_permissionを呼び出して使用する。
                 
                   - 設定されているグループに所属するユーザーには該当コンテンツファイルを表示する
                 
@@ -509,7 +451,7 @@
             
               - コンテンツのアクセスが「公開しない」とした場合、以下のように制限する
                 
-                  - weko\_records\_ui.permissions.checl\_file\_download\_permissionでcheck\_user\_permissionを呼び出して使用する。
+                  - weko_records_ui.permissions.check_file_download_permissionでcheck_user_permissionを呼び出して使用する。
                 
                   - 管理者またはアイテム登録者には該当コンテンツファイルを表示する
                 
@@ -566,7 +508,7 @@
     
       - アクセスが「制限公開」（Restricted Access）と設定されているコンテンツに対して
 
-          - weko\_records\_ui.permissions.check\_file\_download\_permissionでcheck\_open\_restricted\_permissionを呼び出して使用する。
+          - weko_records_ui.permissions.check_file_download_permissionでcheck_open_restricted_permissionを呼び出して使用する。
            
           - WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG が False の場合は「公開しない」と同様の制限となる
 
@@ -610,7 +552,7 @@
 
                   - ワンタイムURLはメール送信によって利用申請者に通達される
 
-                  - ワンタイムURLの有効期限及びダウンロード回数上限は、【Administration \> 設定 (Setting) \> 制限公開 (Restricted Access)画面】での「コンテンツファイルのダウンロード」(Content File Download)エリアで設定される
+                  - ワンタイムURLの有効期限及びダウンロード回数上限は、【Administration > 設定 (Setting) > 制限公開 (Restricted Access)画面】での「コンテンツファイルのダウンロード」(Content File Download)エリアで設定される
 
                   - 作成されたワンタイムURLはテーブルfile_onetime_downloadに保存される
 
@@ -681,13 +623,13 @@
               - 各ワンタイムURLの初回利用時、ユーザーのアカウントに応じた利用報告ワークフローのリンクが利用者にメールで通知される
 
                   - ゲストユーザの利用報告ワークフローに対して、
-                    リンクの有効期限は【Administration \> Setting \> Restricted Access画面】での「利用報告ワークフローへのアクセス」(Usage Report Workflow Access)エリアで設定される
+                    リンクの有効期限は【Administration > Setting > Restricted Access画面】での「利用報告ワークフローへのアクセス」(Usage Report Workflow Access)エリアで設定される
 
                       - 設定された有効期限を超過した場合、対象の利用報告ワークフローのステータスを「キャンセル」に自動で更新する
 
                       - 設定された有効期限を超過したリンクにアクセスした場合は、エラーページを表示する
 
-                          - weko\_workflow.utils.validate\_guest\_activity\_expiredを使用する。
+                          - weko_workflow.utils.validate_guest_activity_expiredを使用する。
 
                           - 日本語：「指定したリンクはアクセス有効期限を超過しています。 」
 
@@ -749,13 +691,13 @@
     
       - ファイルのプレビュー及びファイルダウンロードにて、「PDFカバーページ」処理を実施する
     
-      - weko\_records\_ui.admin.PdfCoverPageSettingView.indexを使用する。
+      - weko_records_ui.admin.PdfCoverPageSettingView.indexを使用する。
     
       - 以下の条件を満たす場合、PDFカバーページを作成する
         
           - ファイルのプレビューの権限がある
         
-          - 【Administration \> Setting \> PDF Cover Page】及び【Administration \> インデックスツリー管理 (Index Tree) \> ツリー編集 (Edit Tree)】でPDFカバーページの設定が有効になっている
+          - 【Administration > Setting > PDF Cover Page】及び【Administration > インデックスツリー管理 (Index Tree) > ツリー編集 (Edit Tree)】でPDFカバーページの設定が有効になっている
         
           - 対象ファイルの形式は「PDF」形式である
         
@@ -764,7 +706,7 @@
   - プレビュー表示処理について
     
       - コンテンツファイルが「preview」の場合、詳細画面にプレビューを表示する。  
-        weko\_records\_ui.utils.get\_file\_info\_listを使用する
+        weko_records_ui.utils.get_file_info_listを使用する
 
 #### (2) ファイル詳細画面に表示、ダウンロードする処理
 
@@ -792,21 +734,21 @@
   - ダウンロード処理について  
     (1)での「ダウンロード処理について」のようにチェックする
 
-#### (3)ファイルバージョンの情報をweko\_records\_ui.view.default\_view\_methodで取得し、更新履歴情報を表示する
+#### (3)ファイルバージョンの情報をweko_records_ui.view.default_view_methodで取得し、更新履歴情報を表示する
 
   - データベースから該当ファイルの情報を以下のように取得する
     
-      - 更新日時：files\_object.updated
+      - 更新日時：files_object.updated
     
-      - オブジェクトファイル名：files\_objectkey
+      - オブジェクトファイル名：files_objectkey
     
-      - ファイル容量：files\_files.size
+      - ファイル容量：files_files.size
     
-      - ファイルハッシュ値：files\_files.checksum
+      - ファイルハッシュ値：files_files.checksum
     
-      - 投稿者名：userprofiles\_userprofile.username
+      - 投稿者名：userprofiles_userprofile.username
     
-      - 表示/非表示：files\_object.is\_show
+      - 表示/非表示：files_object.is_show
 
 【補足】
 
@@ -831,9 +773,7 @@
 
   - 閾値を超えるサイズのファイルについては、マルチパートダウンロードを行う。マルチパートダウンロードは、本文URLとは異なるURLからファイルをダウンロードできる。
 
-  - 閾値は、定数「MAX\_DOWNLOAD\_SIZE\_AT\_ONE\_TIME」にて設定できる。1パートあたりのサイズは、定数「 DOWNLOAD\_SIZE\_IN\_ONE\_PART」にて設定できる。
-
-<!-- end list -->
+  - 閾値は、定数「MAX_DOWNLOAD_SIZE_AT_ONE_TIME」にて設定できる。1パートあたりのサイズは、定数「 DOWNLOAD_SIZE_IN_ONE_PART」にて設定できる。
 
   - ダウンロードのボタン・リンクを押下すると、大容量ファイルダウンロードを開始する旨のメッセージが表示される。
 

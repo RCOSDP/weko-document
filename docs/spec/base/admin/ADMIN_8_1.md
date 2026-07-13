@@ -5,7 +5,7 @@
 
 ## 利用方法
 
-【Administration\>コミュニティ管理(Communities)\>コミュニティ(Community)】画面にて操作を行う
+【Administration>コミュニティ管理(Communities)>コミュニティ(Community)】画面にて操作を行う
 
 ## 利用可能なロール
 
@@ -87,13 +87,13 @@
     - 入力項目は以下の通りである
         - 「Id」テキストボックス
             - コミュニティIdを入力する。必須項目である。最大文字数は100文字とする。
-            - 入力可能な形式はアルファベットの小文字、「-」、 「\_」、数字となる
+            - 入力可能な形式はアルファベットの小文字、「-」、 「_」、数字となる
             - 最初の1文字には数字を使うことはできない
             - 最初の1文字に「-」を使うことができるが、その直後に数字を使うことはできない
             - アルファベットの大文字が入力された場合、作成時に小文字に直す。
             - 入力不可な形式を入力する場合、エラーメッセージを「Id」テキストボックスの直下に表示する
-                - 最初の1文字についてのエラーメッセージ：「The first character cannot be a number or special character. It should be an alphabet character, "-" or "\_"」
-                - 2文字目以降についてのエラーメッセージ：「Don't use space or special character except \`-\` and \`\_\`.」
+                - 最初の1文字についてのエラーメッセージ：「The first character cannot be a number or special character. It should be an alphabet character, "-" or "_"」
+                - 2文字目以降についてのエラーメッセージ：「Don't use space or special character except `-` and `_`.」
             - 最初の文字が「-」+数字だった場合のエラーメッセージ：「Cannot set negative number to ID.」
             - Idに入力したものがが既に存在している場合、作成時エラーメッセージ「Id」テキストボックスの直下に表示する。  
             エラーメッセージ：「既に存在しています。」
@@ -106,7 +106,7 @@
             - コミュニティを設定するインデックスを選択する。必須項目である。デフォルトは1番目の項目とする
             - 「Index」プルダウンの選択肢は自身の関連しているコミュニティに限定されたインデックス一覧である
             - 各インデックスの表示形式は以下の通りである  
-            Index<id=インデックスId, index\_name=インデックス名>
+            Index<id=インデックスId, index_name=インデックス名>
         - 「Group」プルダウン
             - コミュニティを設定するグループを選択する。
             - 「Group」プルダウンの選択肢は、mAPグループを意味するプレフィックスが付いたロール一覧である。
@@ -182,24 +182,24 @@
 
 ## 処理概要
 
-本画面は、flaskのModelViewでcommunities\_communityテーブルのメンテナンスを行う機能である
-本画面を操作すると、ModelView を継承するinvenio\_communities.admin. CommunityModelViewクラスのメソッドが呼び出される
+本画面は、flaskのModelViewでcommunities_communityテーブルのメンテナンスを行う機能である
+本画面を操作すると、ModelView を継承するinvenio_communities.admin. CommunityModelViewクラスのメソッドが呼び出される
 
 一覧（List）タブ表示時、編集（Edit）タブ表示時に、操作するユーザのロールを確認して、それらのidで最小のものが以下のコンフィグで指定する値より大きい場合にはModelViewとは異なる処理を行う
 
   - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio_communities/config.py#L165>
-  - 設定キー：COMMUNITIES\_LIMITED\_ROLE\_ACCESS\_PERMIT
+  - 設定キー：COMMUNITIES_LIMITED_ROLE_ACCESS_PERMIT
 
-一覧（List）タブ表示時に、index\_viewメソッド（WEKOソースでオーバーライドされていない）が呼び出される
+一覧（List）タブ表示時に、index_viewメソッド（WEKOソースでオーバーライドされていない）が呼び出される
 
-  - この中で呼び出されるget\_queryメソッドとget\_count\_queryメソッドでは、上記の分岐によるModelViewと異なる処理として、取得するコミュニティの絞り込みを行う
-      - id\_roleが操作するユーザのロールのidに含まれるものか、group\_idが操作するユーザのロールのidに含まれるものだけに絞り込む
+  - この中で呼び出されるget_queryメソッドとget_count_queryメソッドでは、上記の分岐によるModelViewと異なる処理として、取得するコミュニティの絞り込みを行う
+      - id_roleが操作するユーザのロールのidに含まれるものか、group_idが操作するユーザのロールのidに含まれるものだけに絞り込む
 
 作成（Create）タブ表示時に、create_viewメソッドが呼び出される
 
 編集（Edit）タブ表示時に、edit_viewメソッドが呼び出される
 
-作成（Create）、で［保存（Save）］ボタンを押すと、\validate\_input\_idメソッドでidのバリデーションチェックを行い、レコードのid\_userカラムを操作ユーザのidで更新する
+作成（Create）、で［保存（Save）］ボタンを押すと、validate_input_idメソッドでidのバリデーションチェックを行い、レコードのid_userカラムを操作ユーザのidで更新する
 
   - 編集（Edit）タブでの保存時はidを編集できないため、作成（Create）タブでの保存時のみにバリデーションチェックしている
 

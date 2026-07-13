@@ -8,13 +8,13 @@
 
 ## 関連モジュール
 
-  - weko\_logging
+  - weko_logging
 
 ## ログ取得機能マスタ定義
 
   - パス: <https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-logging/weko_logging/config.py#L96-L324>
 
-  - 設定キー：WEKO\_LOGGING\_USER\_ACTIVITY\_DB\_SETTING
+  - 設定キー：WEKO_LOGGING_USER_ACTIVITY_DB_SETTING
 
   - どのような操作が行われた場合に、基本監査ログを出力するか定義したマスタ。
 
@@ -59,12 +59,12 @@ WEKO_LOGGING_OPERATION_MASTER = {
 | 機能ID | キー        | 機能             |
 | -----: | :--------- | :--------------- |
 | 01     | GENERAL    | 一般              |
-| 10     | ITEM\_TYPE | アイテムタイプ操作 |
+| 10     | ITEM_TYPE | アイテムタイプ操作 |
 | 11     | ITEM       | アイテム操作       |
 | 12     | FILE       | ファイル操作       |
 | 20     | WORKFLOW   | ワークフロー操作   |
 | 21     | INDEX      | インデックス操作   |
-| 22     | AUTHOR\_DB | 著者DB            |
+| 22     | AUTHOR_DB | 著者DB            |
 
 ### 処理ID
 
@@ -79,66 +79,66 @@ WEKO_LOGGING_OPERATION_MASTER = {
 
 | 処理ID | キー                     | 処理                         | 操作対象       |
 | -----: | :------------------------   | :------------------------- | :------------- |
-| 1      | ITEM\_TYPE\_CREATE          | アイテムタイプ作成           | アイテムタイプ |
-| 2      | ITEM\_TYPE\_UPDATE          | アイテムタイプ編集           | アイテムタイプ |
-| 3      | ITEM\_TYPE\_DELETE          | アイテムタイプ削除           | アイテムタイプ |
-| 4      | ITEM\_TYPE\_MAPPING\_CREATE | アイテムタイプマッピング作成 | アイテムタイプ |
-| 5      | ITEM\_TYPE\_MAPPING\_UPDATE | アイテムタイプマッピング編集 | アイテムタイプ |
-| 6      | ITEM\_TYPE\_MAPPING\_DELETE | アイテムタイプマッピング削除 | アイテムタイプ |
+| 1      | ITEM_TYPE_CREATE          | アイテムタイプ作成           | アイテムタイプ |
+| 2      | ITEM_TYPE_UPDATE          | アイテムタイプ編集           | アイテムタイプ |
+| 3      | ITEM_TYPE_DELETE          | アイテムタイプ削除           | アイテムタイプ |
+| 4      | ITEM_TYPE_MAPPING_CREATE | アイテムタイプマッピング作成 | アイテムタイプ |
+| 5      | ITEM_TYPE_MAPPING_UPDATE | アイテムタイプマッピング編集 | アイテムタイプ |
+| 6      | ITEM_TYPE_MAPPING_DELETE | アイテムタイプマッピング削除 | アイテムタイプ |
 
 **11：アイテム操作**
 
 | 処理ID | キー                | 処理                                                       | 操作対象 |
 | -----: | :-------------------- | :--------------------------------------------------------- | :------- |
-| 1      | ITEM\_CREATE          | アイテム登録                                              | アイテム |
-| 2      | ITEM\_UPDATE          | アイテム更新                                              | アイテム |
-| 3      | ITEM\_DELETE          | アイテム削除                                              | アイテム |
-| 4      | ITEM\_DELETE\_REQUEST | アイテム削除申請                                            | アイテム |
-| 5      | ITEM\_IMPORT          | アイテムインポート                                          | -       |
-| 6      | ITEM\_BULK\_CREATE    | アイテム一括登録                                            | -       |
-| 7      | ITEM\_BULK\_DELETE    | アイテム一括削除                                            | -       |
-| 8      | ITEM\_CREATE\_LINK    | アイテム間連携登録                                          | アイテム |
-| 9      | ITEM\_UPDATE\_LINK    | アイテム間連携変更                                          | アイテム |
-| 10     | ITEM\_DELETE\_LINK    | アイテム間連携削除                                          | アイテム |
-| 11     | ITEM\_ASSIGN\_DOI     | DOI付与                                                   | アイテム |
-| 12     | ITEM\_WITHDRAW\_DOI   | DOI取り下げ                                                | アイテム |
-| 13     | ITEM\_PUBLISH         | アイテム公開                                               | アイテム |
-| 14     | ITEM\_UNPUBLISH       | アイテム非公開                                             | アイテム |
-| 15     | ITEM\_EXTERNAL\_LINK  | 外部へのアイテム情報連携<br>（ステータス連携（OAアシスト）等） | アイテム |
+| 1      | ITEM_CREATE          | アイテム登録                                              | アイテム |
+| 2      | ITEM_UPDATE          | アイテム更新                                              | アイテム |
+| 3      | ITEM_DELETE          | アイテム削除                                              | アイテム |
+| 4      | ITEM_DELETE_REQUEST | アイテム削除申請                                            | アイテム |
+| 5      | ITEM_IMPORT          | アイテムインポート                                          | -       |
+| 6      | ITEM_BULK_CREATE    | アイテム一括登録                                            | -       |
+| 7      | ITEM_BULK_DELETE    | アイテム一括削除                                            | -       |
+| 8      | ITEM_CREATE_LINK    | アイテム間連携登録                                          | アイテム |
+| 9      | ITEM_UPDATE_LINK    | アイテム間連携変更                                          | アイテム |
+| 10     | ITEM_DELETE_LINK    | アイテム間連携削除                                          | アイテム |
+| 11     | ITEM_ASSIGN_DOI     | DOI付与                                                   | アイテム |
+| 12     | ITEM_WITHDRAW_DOI   | DOI取り下げ                                                | アイテム |
+| 13     | ITEM_PUBLISH         | アイテム公開                                               | アイテム |
+| 14     | ITEM_UNPUBLISH       | アイテム非公開                                             | アイテム |
+| 15     | ITEM_EXTERNAL_LINK  | 外部へのアイテム情報連携<br>（ステータス連携（OAアシスト）等） | アイテム |
 
 **12：ファイル操作**
 
 | 処理ID | キー                | 処理                 | 操作対象 |
 | -----: | :------------------ | :------------------ | :------- |
-| 1      | FILE\_CREATE        | ファイル登録         | ファイル |
-| 2      | FILE\_UPDATE        | ファイル変更         | ファイル |
-| 3      | FILE\_DELETE        | ファイル削除         | ファイル |
-| 4      | FILE\_REQUEST\_MAIL | リクエストメール     | ファイル |
-| 5      | FILE\_DOWNLOAD      | ファイルダウンロード  | ファイル |
+| 1      | FILE_CREATE        | ファイル登録         | ファイル |
+| 2      | FILE_UPDATE        | ファイル変更         | ファイル |
+| 3      | FILE_DELETE        | ファイル削除         | ファイル |
+| 4      | FILE_REQUEST_MAIL | リクエストメール     | ファイル |
+| 5      | FILE_DOWNLOAD      | ファイルダウンロード  | ファイル |
 
 **20：ワークフロー操作**
 
 | 処理ID | キー             | 処理             | 操作対象     |
 | -----: | :--------------- | :-------------- | :---------- |
-| 1      | WORKFLOW\_CREATE | ワークフロー登録 | ワークフロー |
-| 2      | WORKFLOW\_UPDATE | ワークフロー変更 | ワークフロー |
-| 3      | WORKFLOW\_DELETE | ワークフロー削除 | ワークフロー |
+| 1      | WORKFLOW_CREATE | ワークフロー登録 | ワークフロー |
+| 2      | WORKFLOW_UPDATE | ワークフロー変更 | ワークフロー |
+| 3      | WORKFLOW_DELETE | ワークフロー削除 | ワークフロー |
 
 **21：インデックス操作**
 
 | 処理ID | キー         | 処理             | 操作対象     |
 | -----: | :------------ | :-------------- | :---------- |
-| 1      | INDEX\_CREATE | インデックス登録 | インデックス |
-| 2      | INDEX\_UPDATE | インデックス変更 | インデックス |
-| 3      | INDEX\_DELETE | インデックス削除 | インデックス |
+| 1      | INDEX_CREATE | インデックス登録 | インデックス |
+| 2      | INDEX_UPDATE | インデックス変更 | インデックス |
+| 3      | INDEX_DELETE | インデックス削除 | インデックス |
 
 **22：著者DB**
 
 | 処理ID | キー           | 処理         | 操作対象 |
 | -----: | :------------- | :---------- | :------ |
-| 1      | AUTHOR\_CREATE | 著者情報登録 | 著者     |
-| 2      | AUTHOR\_UPDATE | 著者情報変更 | 著者     |
-| 3      | AUTHOR\_DELETE | 著者情報削除 | 著者     |
+| 1      | AUTHOR_CREATE | 著者情報登録 | 著者     |
+| 2      | AUTHOR_UPDATE | 著者情報変更 | 著者     |
+| 3      | AUTHOR_DELETE | 著者情報削除 | 著者     |
 
 **操作対象一覧**
 
@@ -168,13 +168,13 @@ WEKO_LOGGING_OPERATION_MASTER = {
 
       - パス: <https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-logging/weko_logging/config.py#L82-L88>
 
-      - 設定キー：WEKO\_LOGGING\_USER\_ACTIVITY\_DB\_SETTING
+      - 設定キー：WEKO_LOGGING_USER_ACTIVITY_DB_SETTING
 
       - 現在の設定値：
 
-> WEKO\_LOGGING\_USER\_ACTIVITY\_DB\_SETTING = {
+> WEKO_LOGGING_USER_ACTIVITY_DB_SETTING = {
 > 
->   "log\_level": "ERROR",
+>   "log_level": "ERROR",
 > 
 >   "delete": {
 > 
@@ -191,19 +191,19 @@ WEKO_LOGGING_OPERATION_MASTER = {
       - パス: <https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-logging/weko_logging/config.py#L91-L93>
 
 
-      - 設定キー：WEKO\_LOGGING\_USER\_ACTIVITY\_DB\_SETTING
+      - 設定キー：WEKO_LOGGING_USER_ACTIVITY_DB_SETTING
 
       - 現在の設定値：
 
-> WEKO\_LOGGING\_USER\_ACTIVITY\_STREAM\_SETTING = {
+> WEKO_LOGGING_USER_ACTIVITY_STREAM_SETTING = {
 > 
->   "log\_level": "ERROR"
+>   "log_level": "ERROR"
 > 
 > }
 
 ### テーブル定義
 
-  - テーブル名：user\_activity\_logs
+  - テーブル名：user_activity_logs
 
       - json、remarks以外の項目はjsonの中に同じ項目を入れる
 
@@ -211,9 +211,9 @@ WEKO_LOGGING_OPERATION_MASTER = {
 | -------------- | --------------- | ------------------------------ | -------- | ---------- | ------------------------------------------- |
 | 識別子         | id              | integer                        | Yes(PK)  | -          | 連番。                                      |
 | 日時           | date            | timestamp(6) without time zone | Yes      | -          | ログを出力する日時                          |
-| ユーザーID     | user\_id         | integer                        |          | null       | 操作を行ったユーザーのID                    |
-| コミュニティID | community\_id | text                           | Yes      | -          | コミュニティ（サブリポジトリ）のID |
-| ロググループID     | log\_group\_id       | integer                        |          | null       | リクエスト毎に付けられる一連の処理のID   |
+| ユーザーID     | user_id         | integer                        |          | null       | 操作を行ったユーザーのID                    |
+| コミュニティID | community_id | text                           | Yes      | -          | コミュニティ（サブリポジトリ）のID |
+| ロググループID     | log_group_id       | integer                        |          | null       | リクエスト毎に付けられる一連の処理のID   |
 | ログ           | json            | jsonb                          |          | -          | ログ。中身はjson項目定義参照                |
 | 備考           | remarks         |                                |      | null       |
 
@@ -226,19 +226,19 @@ WEKO_LOGGING_OPERATION_MASTER = {
 | 項目名         | 物理名              | カラム参照 | 型　　　 | デフォルト | 説明                                 |
 | :------------ | :------------------ | :-------: | :------ | :-------- | :----------------------------------- |
 | 識別子         | id                  | 〇        | integer | -         | レコードのID                          |
-| ログレベル     | log\_level           |          | string  | -         | ERROR, INFOのいずれか                 |
+| ログレベル     | log_level           |          | string  | -         | ERROR, INFOのいずれか                 |
 | 日時           | date                | 〇        | string  | -         | ログを出力する日時                     |
-| ユーザーID     | user\_id            | 〇        | integer | null      | 操作を行ったユーザーのID               |
+| ユーザーID     | user_id            | 〇        | integer | null      | 操作を行ったユーザーのID               |
 | eppn          | eppn                 |          | string  | null      | 操作を行ったユーザーのeppnのID          |
-| IPアドレス     | ip\_address         |           | string  | null      | 操作が行われた環境のIPアドレス          |
-| クライアントID | client\_id           |           | string  | null      | クライアントID                        |
-| コミュニティID | community\_id        | 〇        | string  | -          | コミュニティ（サブリポジトリ）のID     |
+| IPアドレス     | ip_address         |           | string  | null      | 操作が行われた環境のIPアドレス          |
+| クライアントID | client_id           |           | string  | null      | クライアントID                        |
+| コミュニティID | community_id        | 〇        | string  | -          | コミュニティ（サブリポジトリ）のID     |
 | 操作元         | source              |           | string  | null       | リクエストされたWEKOのAPIのURL        |
-| ロググループID  | log\_group\_id      |           | integer | null       | リクエスト毎に付けられる一連の処理のID |
-| 機能ID         | operation\_type\_id |           | integer | -          | 各処理の大項目。マスタを参照する。     |
-| 処理ID         | operation\_id       |           | integer | -          | 各処理に対するID。マスタを参照する。   |
+| ロググループID  | log_group_id      |           | integer | null       | リクエスト毎に付けられる一連の処理のID |
+| 機能ID         | operation_type_id |           | integer | -          | 各処理の大項目。マスタを参照する。     |
+| 処理ID         | operation_id       |           | integer | -          | 各処理に対するID。マスタを参照する。   |
 | 対象           | target              |           | string  | null       | 操作の対象                           |
-| 対象キー       | target\_key         |           | string  | null       | 操作対象のID                         |
+| 対象キー       | target_key         |           | string  | null       | 操作対象のID                         |
 
 サンプル
 ```json
@@ -264,9 +264,9 @@ WEKO_LOGGING_OPERATION_MASTER = {
 ### 処理概要
 
 - メソッドの引数から機能ID、処理ID、対象キー、備考を受け取る
-- flaskパッケージのrequestやcurrent\_userから値を取得する
-    - requestから取得するもの：source、ip\_address、client\_id
-    - current\_userから取得するもの：user\_id
+- flaskパッケージのrequestやcurrent_userから値を取得する
+    - requestから取得するもの：source、ip_address、client_id
+    - current_userから取得するもの：user_id
 - DBと標準出力にログを出力する
     - DBに書き込むときのフォーマット標準出力のフォーマットの定義は別にする
     - 日時はDBと標準出力で同じにする
@@ -279,7 +279,7 @@ WEKO_LOGGING_OPERATION_MASTER = {
 
 ### 処理概要
 
-- [設定値](#設定値) の WEKO\_LOGGING\_USER\_ACTIVITY\_SETTINGにある 「delete」キーの情報から設定期間を読み込む
+- [設定値](#設定値) の WEKO_LOGGING_USER_ACTIVITY_SETTINGにある 「delete」キーの情報から設定期間を読み込む
     - 設定できる期間は任意の日、週、月、年とする
 - 設定期間を超えたログをDBから物理削除する
   - バッチは一日に一回の間隔で回す
