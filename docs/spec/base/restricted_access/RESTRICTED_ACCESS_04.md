@@ -1,5 +1,13 @@
 ### メールテンプレート
 
+#### 目的・用途
+
+制限公開ワークフロー（利用申請〜承認〜ダウンロード〜利用報告）で用いる自動送信メールの件名・本文・追加宛先（Recipients／CC／BCC）を管理者が編集する機能である。
+
+#### 利用可能なロール
+
+システム管理者のみ（`weko-admin/ext.py` の endpoint `mailtemplates` に対するアクセス制御による）。
+
 - admin_settings テーブルの name が restricted_access のレコードの settings.edit_mail_templates_enable が true の場合のみ有効
 
   - 使用している画面  
@@ -73,6 +81,8 @@
       - ただしデータベースにはデータが保持されたまま残るため、機能を再び有効化した場合は以前に登録したメールアドレスに送信されるようになる
 
 デフォルトで以下のメールが設定されており、それぞれ制限公開機能で用いる自動送信メールに関係している
+
+> 実装（v2.0.2）の補足：デフォルトメールテンプレートの実体は `scripts/demo/restricted_mail_template.sql`（テーブル `mail_templates`）に投入され、現行では **id=1〜15 の15種**が定義されている（以下①〜⑦に加え、ゲストユーザー向けの承認依頼／承認／審査結果、シークレットURL提供、利用申請のお知らせ、利用報告受付／承認／審査結果 等）。また③④⑤の件名は現行実装では「（ログインユーザー向け）／(for logged in users)」が付く（以下の①〜⑦は初版時点の短縮形＝テンプレートファイル `.tpl` の件名に対応）。
 
 *① 非ログインユーザに利用申請ワークフローURLを送信する  
 Subject: 利用申請登録のご案内／Register Application for Use  
@@ -366,6 +376,45 @@ Also, if you received this message in error, please notify [restricted_site_name
 *[restricted_site_name_en]：[restricted_site_url]  
 E-mail：[restricted_site_mail]*
 
+#### 関連モジュール
+
+- invenio-mail（メールテンプレート編集画面・保存・宛先検証：`admin.py` / `models.py` / `static/js/invenio_mail/mail_template.js`）
+- weko-admin（`edit_mail_templates_enable` による画面ゲート：`config.py` / `ext.py` / `utils.py`）
+- weko-workflow（送信時のプレースホルダ置換・宛先確定：`utils.py`）
+
+#### 処理概要
+
+- 保存フロー：JS側で Subject・本文の必須チェック（未入力時「Please input the Mail Subject and Mail Body.」）→ `/save` → `get_invalid_emails` でメールアドレス検証（`User.query.filter_by(email, active=True)` に一致しないアドレスは「Invalid email addresses (...) detected. Please correct them to match the addresses which are registered in WEKO.」）→ `MailTemplates.save_and_update` ＋ `MailTemplateUsers.save_and_update`
+- 送信フロー：`get_mail_data` → 無効化ユーザーの宛先を自動削除（`MailTemplateUsers.delete_by_user_id`）→ `INVENIO_MAIL_ADDITIONAL_RECIPIENTS_ENABLED` 判定（無効時は subject/body のみ、有効時のみ recipients/cc/bcc を付加）→ プレースホルダ置換（`replace_characters`）→ 送信
+- 宛先は**メールアドレス文字列ではなく user_id で永続化**される（テーブル `mail_template_users`）。これが「WEKO登録済みユーザー限定」「削除・無効化ユーザーの自動除外」「機能再有効化時の復活」の根拠である。
+
+#### 主要設定値（config / AdminSettings）
+
+| キー | 既定値 | 用途 |
+| --- | --- | --- |
+| `INVENIO_MAIL_ADDITIONAL_RECIPIENTS_ENABLED` | False | Recipients／CC／BCC の表示・送信の有効化（メールテンプレート拡張機能） |
+| AdminSettings `restricted_access.edit_mail_templates_enable` | False | メールテンプレート編集機能／画面の有効化 |
+| `WEKO_WORKFLOW_MAIL_TEMPLATE_FOLDER_PATH` | （テンプレートフォルダ） | 件名フォールバック用 `.tpl` の格納先 |
+| `WEKO_WORKFLOW_USAGE_REPORT_REMINDER_MAIL_TEMPLATE_ID` | `'6'` | 利用報告リマインドメールの固定テンプレートID |
+| `WEKO_WORKFLOW_REQUEST_FOR_REGISTER_USAGE_REPORT` | `'7'` | 利用報告登録依頼メールの固定テンプレートID |
+| `INVENIO_MAIL_DEFAULT_TEMPLATE_CATEGORY_ID` | `3` | デフォルトテンプレートのカテゴリID |
+
+#### モデル / テーブル
+
+- `admin_settings`（`AdminSettings`）：制限公開設定JSONを格納（`edit_mail_templates_enable` 等）
+- `mail_templates`（`MailTemplates`）：`mail_subject` / `mail_body` / `default_mail` / `genre_id`
+- `mail_template_users`（`MailTemplateUsers`）：`template_id` / `user_id` / `mail_type`（複合PK）。追加宛先を user_id で保持
+- `mail_template_genres`（`MailTemplateGenres`）：テンプレートのジャンル
+- `MailType` Enum：`recipient` / `cc` / `bcc`
+
+#### プレースホルダ（置換変数）
+
+置換の権威定義は `weko-workflow/weko_workflow/utils.py` の `replace_characters`（`replace_list`）。ヘルプ画面の一覧は `invenio-mail/config.py` の `INVENIO_MAIL_VARIABLE_HELP`。主なプレースホルダは以下（本文で使用しているものを含む）。
+
+`[restricted_site_name_ja]` `[restricted_site_name_en]` `[restricted_institution_name_ja]` `[restricted_institution_name_en]` `[restricted_site_url]` `[restricted_site_mail]` `[url_guest_user]` `[usage_report_url]` `[restricted_download_link]` `[restricted_activity_id]` `[restricted_usage_activity_id]` `[restricted_fullname]` `[restricted_mail_address]` `[restricted_university_institution]` `[restricted_research_title]` `[restricted_research_plan]` `[restricted_data_name]` `[restricted_application_date]` `[restricted_expiration_date]` `[restricted_expiration_date_ja]` `[restricted_expiration_date_en]` `[restricted_download_count]` `[restricted_download_count_ja]` `[restricted_download_count_en]` `[restricted_approver_name]` `[data_download_date]` `[file_name]` `[secret_url]` `[terms_of_use_jp]` `[terms_of_use_en]` `[landing_url]` `[register_date]` `[advisor_fullname]` `[guarantor_fullname]` ほか
+
+> 注：ヘルプ一覧（`INVENIO_MAIL_VARIABLE_HELP`）には `[resricted_download_count]`（`restricted` のtypo）が含まれるが、実際の置換キーは `[restricted_download_count]` であり、ヘルプ表示と実置換キーが不一致（バグ疑い）。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
@@ -373,3 +422,4 @@ E-mail：[restricted_site_mail]*
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2024/10/31 | edd6d1f14e0f8344cec7552ed8a02bd2bccf68b7 | メールテンプレート拡張機能を追加 |
 | 2025/10/31 | 160a811eed2c61492558905db34fa0619da6b18f | 設定値による表示制御を記載 |
+| 2026/07/13 |  | 実装(v2.0.2)と突き合わせ、目的・利用可能ロール・関連モジュール・処理概要・configキー・モデル・権威プレースホルダ一覧を追記。デフォルトメールが現行15種である旨、宛先のuser_id永続化挙動を注記 |
