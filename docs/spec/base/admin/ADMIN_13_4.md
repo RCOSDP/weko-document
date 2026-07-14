@@ -2,7 +2,7 @@
 
 ## 目的・用途
 
-本機能は、invenioデフォルト機能を使用してaccounts_useridentityテーブルをメンテナンスする際に使用する機能であるが、WEKO v0.9.22ではこのテーブルを使用していない。
+本機能は、invenio デフォルト機能（Flask-Admin）を使用して外部認証との連結アカウント識別子（`oauthclient_useridentity` テーブル）をメンテナンスする際に使用する機能である。WEKO では通常このテーブルを使用しない。
 
 ## 利用方法
 
@@ -16,15 +16,17 @@
 
 ## 機能内容
 
+- 連結アカウント識別子（`UserIdentity`）の一覧表示・編集・削除を行う。新規作成は不可（`can_create=False`）。
+- 各レコードは `id`（識別子値）・`method`（認証方式）・`id_user`（ユーザーID）を持つ。
+
 ## 関連モジュール
 
-- invenio_accounts（関連するソースはWEKOにフォークされてない）
+- invenio-oauthclient（`admin.UserIdentityView`、model `UserIdentity`、テーブル `oauthclient_useridentity`。WEKO ソースにはフォークされていない外部依存）
 
 ## 処理概要
 
-## 実装補足（v2.0.2 実装との突き合わせ）
-
-- 画面/ハンドラ（訂正）：連結アカウント識別子の実体は **invenio-oauthclient** の `UserIdentityView`（model `UserIdentity`、テーブル `oauthclient_useridentity`、`can_create=False`）。旧記述の `invenio_accounts` / `accounts_useridentity` は当バージョンでは誤り。
+- Flask-Admin の ModelView（`invenio_oauthclient.admin.UserIdentityView`）でテーブル `oauthclient_useridentity` を保守する。`can_create=False` のため新規作成タブは表示されず、一覧・編集・削除のみ。
+- ※旧記述の関連モジュール `invenio_accounts` ／テーブル `accounts_useridentity` は当バージョンでは誤り（実体は invenio-oauthclient / `oauthclient_useridentity`）。
 
 ## 更新履歴
 

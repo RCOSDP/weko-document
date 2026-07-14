@@ -2,6 +2,8 @@
 
 ## 目的・用途
 
+本機能は、OAI-PMH 出力等に用いるメタデータスキーマ（xsd）を登録・管理する機能である。登録したスキーマは、アイテムタイプのマッピング先および OAI-PMH の metadataPrefix として利用される。
+
 ## 利用方法
 
 【Administration > アイテムタイプ管理（Item Types） > OAIスキーマ（OAI Schema）画面】にて操作する。

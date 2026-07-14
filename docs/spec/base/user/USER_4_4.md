@@ -28,9 +28,13 @@
 
 ## 関連モジュール
 
+- weko-workflow（ワークフロー／アクティビティ進行）
+- weko-items-ui（アイテム登録画面・メタデータ入力・重複チェック）
+- weko-deposit（アイテムの永続化）
+
 ## 処理概要
 
-処理についてはそれぞれの項目に記述する。
+処理についてはそれぞれの項目（[USER-4-5〜4-9](./USER_4_5.md)、[4-16](./USER_4_16.md)、[4-17](./USER_4_17.md)）に記述する。Item Registration アクション（endpoint `item_login`、action_id 3）は `weko_workflow.views` が制御し、入力画面は `weko-items-ui` のアイテム編集 iframe（`views.iframe_items_index` 等）で描画される。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

@@ -69,6 +69,10 @@
 
 #### 関連モジュール
 
+- weko-workflow（Item Registration 画面でのフィードバックメール設定、承認時の送信先確定）
+- weko-records（送信先テーブル `feedback_mail_list`＝`FeedbackMailList`、承認時 `update_by_list_item_id`）
+- weko-admin（フィードバックメール送信タスク `tasks.send_feedback_mail`、設定 `feedback_email_setting`）
+
 #### 処理概要
 
 1. 設定

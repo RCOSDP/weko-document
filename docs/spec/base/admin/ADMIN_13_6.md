@@ -2,7 +2,7 @@
 
 ## 目的・用途
 
-本機能は、invenioデフォルト機能を使用してoauthclient_remotetokenテーブルをメンテナンスする際に使用する機能であるが、WEKO v0.9.22ではこのテーブルを使用していない。
+本機能は、invenio デフォルト機能（Flask-Admin）を使用して外部認証との連結アカウント（`oauthclient_remoteaccount` テーブル）をメンテナンスする際に使用する機能である。WEKO では通常このテーブルを使用しない。
 
 ## 利用方法
 
@@ -16,15 +16,16 @@
 
 ## 機能内容
 
+- 連結アカウント（`RemoteAccount`）の一覧表示・編集・削除を行う。
+- 各レコードは `id` / `user_id` / `client_id` / `extra_data`（および紐づくトークン `remote_tokens`）を持つ。
+
 ## 関連モジュール
 
-- invenio_oauthclient（WEKOソース内にforkされていない）
+- invenio-oauthclient（`admin.RemoteAccountView`、model `RemoteAccount`、テーブル `oauthclient_remoteaccount`。WEKO ソースにはフォークされていない外部依存）
 
 ## 処理概要
 
-## 実装補足（v2.0.2 実装との突き合わせ）
-
-- 画面/ハンドラ（訂正）：連結アカウントの実体は `invenio_oauthclient.admin.RemoteAccountView`（model `RemoteAccount`、テーブル `oauthclient_remoteaccount`）。目的・用途の対象テーブルを `oauthclient_remotetoken` とするのは誤り（`oauthclient_remoteaccount` が正）。
+- Flask-Admin の ModelView（`invenio_oauthclient.admin.RemoteAccountView`）でテーブル `oauthclient_remoteaccount` を保守する。一覧列は `id` / `user_id` / `client_id` / `extra_data` / `remote_tokens`。
 
 ## 更新履歴
 

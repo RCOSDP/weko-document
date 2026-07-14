@@ -49,7 +49,13 @@
 
 ## 関連モジュール
 
+- weko-workflow（アクション定義 `WEKO_WORKFLOW_ACTION_OA_POLICY_CONFIRMATION`／`cli.init_action`、キャッシュキー `WEKO_WORKFLOW_OAPOLICY_SEARCH`）
+
 ## 処理概要
+
+- 本アクション（endpoint `oa_policy`、action_id 6）は config と DB シードに定義されているのみで、`WEKO_WORKFLOW_ACTIONS` に含まれず `views.py` に処理分岐が無いため、**v2.0.2 では実際には動作しない（非対応）**。以下は初版当時の想定仕様を参考として残す。
+  - OAポリシー確認画面で雑誌名を SHERPA/RoMEO へインクリメンタルサーチし、選択雑誌の RoMEO colours・Paid OA 情報を表示、[次へ]で `jpcoar:sourceTitle` にマッピングしてアイテム登録画面へ自動入力する想定。
+  - SHERPA/RoMEO 検索結果は Redis にキャッシュする想定（TTL は config 設定可能とする想定）。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

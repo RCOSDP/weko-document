@@ -30,6 +30,9 @@
 
 ### 処理概要
 
+- End は endpoint `end_action`（action_id 2）。ワークフローの遷移（`weko_workflow.views.next_action`）が次アクションを `end_action` と判定すると `weko_workflow.api.end_activity` を呼び、アクティビティを完了状態にする。強制終了時は `quit_activity` 経由で本画面に至る。
+- 完了メッセージ（利用申請/利用登録ワークフロー時の「申請が承認されました…」等）の出し分けはテンプレート側で行う。
+
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - End は action_id **2**（endpoint `end_action`）。`views.next_action` が次アクション=`end_action` を検知し `weko_workflow.api.end_activity` を呼んで完了処理する。完了メッセージの分岐はテンプレート側。
