@@ -201,6 +201,11 @@ curl -X DELETE http://localhost:9200/grips_repo*
 curl "http://localhost:9200/tenant1-events-stats-file-download-000001/stats-file-download/2024-05-02T15:40:30-9262f1675b96f8481cc7c924d4c88a4ebf816649/_update" -d '{"doc":{"file_id":"","root_file_id":""}}' -H 'Content-type: application/json' -X POST
 ```
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足：検索バックエンドは Elasticsearch 6.8.23。インデックス接頭辞は `SEARCH_INDEX_PREFIX`（環境変数）。アイテム索引 `{prefix}-weko-item-v1.0.0`（`INDEXER_DEFAULT_INDEX`）、検索索引 `{prefix}-weko`（`SEARCH_UI_SEARCH_INDEX`）。`INDEXER_MAX_BODY_SIZE=62914560`。
+- `invenio index reindex` には未記載の新オプション `--item-type-id <INTEGER>` と `-f, --file <TEXT>` が追加されている（`--size` 既定 6000）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

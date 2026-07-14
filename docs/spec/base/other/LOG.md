@@ -20,3 +20,7 @@
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足：ログ出力の設定は `weko_logging.config`（`WEKO_LOGGING_FS_LOGFILE`＝`{instance_path}/weko-logging.log`、`WEKO_LOGGING_FS_LEVEL`＝既定 ERROR、`WEKO_LOGGING_FS_BACKUPCOUNT`＝31）および Sentry 連携（instance.cfg）。基本監査ログは別途 [基本監査ログ](./USER_ACTIVITY_LOG.md) を参照。

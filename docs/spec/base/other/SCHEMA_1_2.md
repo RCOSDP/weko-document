@@ -14,7 +14,10 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 
 ## 関連モジュール
 
-- Invenio_oaiserver
+- weko-records（アイテムタイプ定義の格納。本ダンプは `weko_records.models.ItemType.schema` カラム＝JSON Schema draft-04）
+- weko-items-ui（取得エンドポイント `GET /items/jsonschema/<item_type_id>` → `views.get_json_schema`）
+
+> 補足：本ファイルは特定アイテムタイプ（デフォルトアイテムタイプ相当、例では `item_type.id=16`）の `schema` カラムのサンプルダンプである。旧記述の「関連モジュール: Invenio_oaiserver」および冒頭のOAuth向け目的・用途はコピペ誤り。
 
 ## 構造
 

@@ -9,3 +9,7 @@
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2023/11/11 | V0.9.27 | V0.9.27追加機能 |
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足：通常セッションの有効期限は `PERMANENT_SESSION_LIFETIME`（既定 1日）、インポート画面は `WEKO_ADMIN_IMPORT_PAGE_LIFETIME`（既定 43200秒＝12時間）。サーバ側セッションは Redis（`ACCOUNTS_SESSION_REDIS_URL`、DB=1）に保存される。

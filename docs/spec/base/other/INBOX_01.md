@@ -351,3 +351,8 @@ INBOX の開発時は、あらかじめinbox ディレクトリにリポジト�
 | ---------- | ------------------------------------------ | ----------------------------------------------- |
 | 2025/03/17 |                                            | 初版作成                                        |
 | 2025/06/09 | c6cf6e817c99bdb58acd33cb9d9cc06c5f73cabf   | 通知の購読設定画面の画像を追加                  |
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足：通知は `weko-notifications`（`Notification` / `NotificationClient`、model `NotificationsUserSettings`＝table `notifications_user_settings`）が生成し、`weko-workflow`（進行に応じた通知）・`weko-swordserver`（`notify_item_imported`/`notify_item_deleted`）から呼ばれる。config `WEKO_NOTIFICATIONS`（True）、`WEKO_NOTIFICATIONS_INBOX_ADDRESS`（既定 `http://inbox:8080`）/`_INBOX_ENDPOINT`（`/inbox`）/`_USERS_URI`、`COAR_NOTIFY_LINK_REL`（`http://www.w3.org/ns/ldp#inbox`＝Discovery の Link ヘッダ rel）。
+- 補足：`ActivityType` Enum に `TentativeAccept` / `Undo` は無い（11種）。削除系（Delete）通知メソッドは実装済み。

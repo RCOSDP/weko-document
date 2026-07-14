@@ -14,7 +14,10 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 
 ## 関連モジュール
 
-- Invenio_oaiserver
+- weko-records（アイテムタイプ定義の格納。本ダンプは `weko_records.models.ItemType.form` カラム＝schema form 配列）
+- weko-items-ui（取得エンドポイント `GET /items/schemaform/<item_type_id>` → `views.get_schema_form`）
+
+> 補足：本ファイルは特定アイテムタイプ（デフォルトアイテムタイプ相当）の `form` カラムのサンプルダンプである。旧記述の「関連モジュール: Invenio_oaiserver」および冒頭のOAuth向け目的・用途はコピペ誤り。
 
 #### 構造
 

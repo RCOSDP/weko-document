@@ -370,3 +370,7 @@ CELERY_BEAT_SCHEDULE = {
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足：利用統計ログは `invenio_stats.tasks.process_events`（生イベント処理）と `aggregate_events`（集計）で処理される。イベント種別は `invenio_stats.contrib.registrations` に登録（celery-task / file-download / file-preview / item-create / record-view / search / top-view）。インデックス名は `SEARCH_INDEX_PREFIX` に依存。関連モジュール：invenio-stats / weko-search-ui / weko-workflow / invenio-oaiharvester。

@@ -93,3 +93,8 @@ docker-compose -f docker-compose2.yml exec --user root web celery -A invenio_app
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- `CELERY_BEAT_SCHEDULE` の定義は `scripts/instance.cfg`（jinja テンプレート、`environ()` で invenio.cfg を生成）にあり、各タスクは対応モジュールの `tasks.py` に実在する（`invenio_stats.tasks.process_events`/`aggregate_events`、`weko_indextree_journal.tasks.export_journal_task`、`weko_admin.tasks.*`、`invenio_oaiharvester.tasks.check_schedules_and_run`、`invenio_files_rest.tasks.check_send_alert_mail`/`check_file_storage_time`、`weko_authors.tasks.check_tmp_file_time_for_author`、`weko_sitemap.tasks.update_sitemap`、`invenio_resourcesyncclient.tasks.run_sync_auto`、`weko_workflow.tasks.cancel_expired_usage_report_activities`、`weko_items_ui.tasks.bulk_post_item_to_researchmap`）。
+- 補足：`weko_logging.tasks.delete_log`（ログ削除）は実装済みだが beat スケジュールではコメントアウトされ**無効**（定期実行されない）。

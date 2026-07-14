@@ -228,3 +228,7 @@
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 |  | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正）：GakuNinRDM 連携のエンドポイントは小文字 `/depositactivity`（POST）/ `/depositactivity/<activity_id>`（GET, DELETE）、処理クラスは `weko_workflow.views.ActivityActionResource`。OAuth2 スコープ `user:activity`（`weko_workflow.scopes.activity_scope`）。config `WEKO_WORKFLOW_GAKUNINRDM_DATA`（workflow_id=-1 / flow_id=-1 / item_type_id=15 / action_endpoint_list=[begin_action, item_login, item_link, identifier_grant, approval, end_action]）、`WEKO_WORKFLOW_GAKUNINRDM_PREFIX`（ログ接頭辞）。

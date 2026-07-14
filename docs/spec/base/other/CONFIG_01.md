@@ -147,3 +147,9 @@ WEKO_RECORDS_UI_OA_GET_OA_POLICIES_URL
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正、v2.0.2）：
+  - S3 のキー名は `S3_SECRET_ACCESS_KEY`（`S3_SECRECT_ACCESS_KEY` は誤り。`S3_ACCCESS_KEY_ID` の綴りはソース側もこの綴り）。
+  - `WEKO_WORKFLOW_APPROVE_DONE` / `WEKO_WORKFLOW_APPROVE_REJECTED` / `WEKO_WORKFLOW_USAGE_REPORT_ACTIVITY_URL` は v2.0.2 に存在しない（旧版の残存。一覧から削除／現行キーへ更新すべき）。
+  - config は `scripts/instance.cfg`（jinja テンプレート）から生成され、環境変数 `environ()` で上書きされる。GitHub参照リンクは v0.9.22 固定で陳腐化。

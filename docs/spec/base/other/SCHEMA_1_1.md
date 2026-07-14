@@ -1,9 +1,13 @@
 # Render
 
-
 ## 目的・用途
 
+アイテムタイプの「render」定義（アイテムタイプ編集画面が内部的に保持する描画・入力設定の構造）のサンプルダンプ。`weko_records.models.ItemType.render` カラム（JSON）に格納され、ここから schema / form が導出される。`meta_fix`（pubdate 等のシステム項目）・`meta_list`（プロパティ毎の入力設定：input_type、option＝crtf/hidden/multiple/required/showlist、title_i18n）・`table_row` / `schemaeditor` 等を含む。
 
+## 関連モジュール
+
+- weko-records（`weko_records.models.ItemType.render` カラムに格納）
+- weko-itemtypes-ui（取得エンドポイント `GET /admin/itemtypes/<item_type_id>/render` → `admin.ItemTypeMetaDataView.render_itemtype`）
 
 ## 利用方法
 
