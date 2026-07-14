@@ -21,6 +21,8 @@ WEKOのJSON-LDマッピング機能( [ADMIN_1_5：JSON-LDマッピング](../adm
 `プロジェクトURL.関連タイプ`には固定値で後述の`grdm.relationType` の値をマッピングする。(以下、関連タイプとする。)
 JSON-LDマッピング機能により、`ams:projectId`が存在する場合のみ関連タイプが登録される。
 
+> WEKO実装（v2.0.2）：JSON-LDマッピング機能は weko-admin の「SWORD API JSON-LDマッピング設定」画面（`SwordAPIJsonldSettingsView`）として提供される。マッピング定義はテーブル `jsonld_mappings`（モデル `ItemTypeJsonldMapping`、API `weko_records.api.JsonldMapping`）に保持され、変換処理は `weko_search_ui.mapper.JsonLdMapper` が担う。固定値のマッピング（例：`"$isVersionOf"`）は先頭 `$` による固定値指定記法で表現される。関連モジュール：weko-admin / weko-records / weko-search-ui。
+
 - RO-Crateの例
   ```json
   "@id": "./",
@@ -43,6 +45,8 @@ JSON-LDマッピング機能により、`ams:projectId`が存在する場合の�
 ### 2. WEKOのアイテムからRO-Crateへの変換
 
 アイテム取得API (`/api/v1/records/<アイテムID>`)使用時、WEKOのRO-Crateマッピング機能を使用し、関連識別子と関連タイプを以下のキーにマッピングする。
+
+> WEKO実装（v2.0.2）：アイテム取得API `GET /api/v1/records/<id>` は weko-records-ui の `WekoRecordsResource.get_v1`（`rest.py`、`WEKO_RECORDS_UI_REST_ENDPOINTS` の `item_route`）が担当する（invenio-records-rest の `/api/records` とは別系統）。RO-Crate変換は `RoCrateConverter`（`weko_records_ui.utils`）が行い、変換定義はテーブル `rocrate_mapping`（モデル `RocrateMapping`）に保持される。レスポンスは `index` / `rocrate` / `metadata` を含み、`metadata.hasRequestmailAddress`（リクエストメールアドレスの有無）も返す。関連タイプ・関連識別子は jpcoar の `relatedIdentifier`（`relationType`）としてマッピングされる。
 
 - 関連識別子
   - ツリー構造: root > プロジェクトURL > URL > URL
@@ -69,3 +73,4 @@ GRDMボタンを表示している場合、リクエストボタンとその表�
 | 日付         | GitHubコミットID | 更新内容   |
 |--------------|------------------|------------|
 | 2025/08/29   |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3   | 初版作成   |
+| 2026/07/14   |  | 実装(v2.0.2)と突き合わせ。JSON-LDマッピング（SWORD API JSON-LD設定/`JsonLdMapper`）とRO-Crate変換（`RoCrateConverter`/`rocrate_mapping`/`WekoRecordsResource.get_v1`）のバックエンド実装を追記 |
