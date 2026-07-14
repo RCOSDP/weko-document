@@ -74,6 +74,10 @@ Google Scholar出力をすることのできるリソースタイプ
 
 resリストをgoogle_scholar_metaで受け取り、templating.render_templateを呼び出してアイテムメタデータを作成する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- `weko_records_ui.utils.get_google_scholar_meta`（`default_view_method` から `record_tree` 付きで呼ぶ）。config `WEKO_RECORDS_UI_GOOGLE_SCHOLAR_OUTPUT_RESOURCE_TYPE`。`target_map` のほか citation_doi / citation_issn / citation_pdf_url / citation_dissertation_institution（`InstitutionName`）等も出力する。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

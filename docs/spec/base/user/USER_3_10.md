@@ -43,6 +43,10 @@
 communities_communityテーブルのroot_node_idカラムがインデックスのIDとなっているため、  
 紐づくコミュニティのレコードを特定し、同テーブルから表示情報を取得する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- `default_view_method` が `record.navi` の各インデックスから `weko_workflow.api.GetCommunity.get_community_by_root_node_id`（→ `invenio_communities.models.Community.get_by_root_node_id`、table `communities_community`）でコミュニティを解決する。関連モジュール（追記）：weko-workflow / invenio-communities / weko-index-tree。
+
 #### 更新履歴
 
 |日付|GitHubコミットID|更新内容|

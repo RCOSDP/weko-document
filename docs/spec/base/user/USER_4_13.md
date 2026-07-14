@@ -70,6 +70,10 @@
 
 マルチパートダウンロードの詳細は、[アイテム詳細]>[コンテンツファイル管理]>[ マルチパートダウンロード処理について]と同様
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- Approval は action_id **4**（endpoint `approval`、`views.next_action`）。次アクションが取得できない場合はログ「next_action: can not get next_flow_action」＋エラー返却。完了時は `weko_workflow.api.end_activity`。承認時に `FeedbackMailList` / `RequestMailList` / `ItemApplication`（いずれも **weko-records**）を `update_by_list_item_id` で更新する。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容 |

@@ -291,6 +291,11 @@ RO-Crateの形式については[ADMIN_2.5 RO-Crateインポート](../admin/ADM
  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/utils.py#L1423-L1507>
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_items_ui.views.export`（route `/items/export`）。出力は `weko_items_ui.utils.export_items`（`bagit.make_bag` / `write_files`(TSV) / `write_bibtex_files` / `write_rocrate` / `make_stats_file`）。RO-Crate 変換は `weko_search_ui.mapper.JsonLdMapper.to_rocrate_metadata`、マッピングは `weko_records.api.JsonldMapping`（table `jsonld_mappings`）。管理設定は AdminSettings `item_export_settings`（`allow_item_exporting` / `enable_contents_exporting`）。上限 `WEKO_ITEMS_UI_DEFAULT_MAX_EXPORT_NUM`（100、ロール別 `_PER_ROLE`）。
+- 実装補足（訂正）：出力ファイル名は `recid_{record_id}.zip`（`recod_` は誤植、外側は `export.zip`）。`WEKO_ITEMS_UI_EXPORT_MAX_FILE_SIZE` および JS `getExportItemsMetadata` は存在しない。TSV 出力で有効なテキスト処理は `escape_newline`（`\n`→`<br/>`）のみで、NFKD 正規化・MarkupSafe エスケープ・`&EMPTY&` 置換は無効（コメントアウト）。bibtex 検証は `/items/validate_bibtext_export`。
+
 ## 更新履歴
 
 

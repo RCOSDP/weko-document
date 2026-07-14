@@ -129,6 +129,11 @@
         なお、「開始ページ」と「終了ページ」はweko_search_ui.rest.get にてrecords_metadataテーブルの「Page Start」「Page End」から取得し、表示する。
       - アイテムタイトルのリンクをクリックすると、該当アイテムの詳細画面に遷移する。アイテム詳細画面の処理については[USER-3-1 メタデータ表示](#メタデータ表示)を参照すること。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 目次形式は `weko_search_ui.rest` の検索リソースが各ヒットに `get_heading_info`（`subitem_heading_banner_headline`＝大見出し / `subitem_heading_headline`＝小見出し / `subitem_heading_language`）で `heading` を付与し、`itemtablecontents.html` が連続一致でグルーピングする。ページ番号キーは `pageStart` / `pageEnd`（camelCase）。
+- 実装補足（訂正）：インデックス表示形式は '1'＝一覧 / '2'＝目次 の2種のみ（「Journal」は display_format の値ではなく別機能）。
+
 #### 更新履歴
 
 |日付|GitHubコミットID|更新内容|

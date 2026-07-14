@@ -198,6 +198,11 @@ ls
 docker-compose exec -u root web celery -A invenio_app.celery call weko_indextree_journal.tasks.export_journal_task --args='[{"p_path":"var/instance/static/weko/kbart/"}]'
 ```
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 表示は `weko_search_ui.views.search` が `weko_search_ui.utils.get_journal_info`（`is_output` が False なら None を返し非表示）を呼ぶ。KBART出力は Celery `weko_indextree_journal.tasks.export_journal_task`（出力先 `weko/kbart`、beat は instance.cfg）。table `journal`（`Journal`）。
+- 実装補足（訂正）：KBARTファイル名のプレフィックスは `WEKO` 固定ではなく `OAISERVER_REPOSITORY_NAME` 由来。`is_output` は KBART 出力をフィルタせず画面表示のみに作用する（出力は全 Journal）。
+
 #### 更新履歴
 
 |日付|GitHubコミットID|更新内容|

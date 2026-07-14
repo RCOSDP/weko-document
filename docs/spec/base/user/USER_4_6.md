@@ -240,6 +240,10 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 | -------------------------------- | -------------------- | ---------- | ----------------------------------------------- |
 | WEKO_ITEMS_UI_SAVE_FREQUENCY | メタデータ登録画面における自動セーブ機能 | 10分        | modules/weko-items-ui/weko_items_ui/config.py |
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 自動保存間隔 `WEKO_ITEMS_UI_SAVE_FREQUENCY`（600000ms＝10分）。自動入力対象は `WEKO_ITEMS_AUTOFILL_API_LIST`（JaLC/医中誌/CrossRef/DataCite/CiNii Research。`WEKO_ITEMS_AUTOFILL_TO_BE_USED` の既定は空で instance.cfg が全6種を設定）。重複チェックは `weko_items_ui.utils.is_duplicate_record`。
+
 ## 更新履歴
 
 | 日付     | GitHubコミットID                       |更新内容|

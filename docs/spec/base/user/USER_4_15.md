@@ -30,6 +30,10 @@
 
 ### 処理概要
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- End は action_id **2**（endpoint `end_action`）。`views.next_action` が次アクション=`end_action` を検知し `weko_workflow.api.end_activity` を呼んで完了処理する。完了メッセージの分岐はテンプレート側。
+
 ### 更新履歴
 
 | 日付       | GitHubコミットID | 更新内容 |

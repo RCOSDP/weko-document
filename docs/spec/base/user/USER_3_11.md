@@ -96,3 +96,8 @@
        - CAPTCHA画像の有効期限が切れていた場合、CAPTCHA画像の再生成、表示を行う。
 
      - リクエストメールの送信に成功した場合、送信者に対し通知メールを送信する。
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正）：リクエストフォームの表示可否は config `DISPLAY_REQUEST_FORM`（存在しない）ではなく AdminSettings `restricted_access.display_request_form` かつ送信先の存在で決まる。送信元は Cc ではなく**別途通知メール**（`recipients=[msg_sender]`）を受け取る。送信先テーブルは `request_mail_list`（`weko_records`）。REST は `RequestMail` / `CreateCaptchaImage` / `CaptchaAnswerValidation`（weko-records-ui）。config `WEKO_RECORDS_UI_CAPTCHA_*` / `WEKO_RECORDS_UI_REQUEST_MESSAGE` / `_NOTIFICATION_MESSAGE`。
+

@@ -55,6 +55,10 @@
 weko_theme.static.js.addthis.addthis_widgetにおいてAddThisのアイテムの共有を設定している。  
 <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-theme/weko_theme/static/js/addthis/addthis_widget.js>
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（重要な訂正）：v2.0.2 の `templates/weko_records_ui/box/share.html` には AddThis / mendeley / citeulike / 「＋」ボタンは**存在しない**。現在の共有ボタンは Facebook・Twitter(X)・Print（印刷）のみで、ネイティブの Facebook SDK / Twitter widget / `window.print()` を使用する。`weko_theme/static/js/addthis/addthis_widget.js` は残存するが share.html から読み込まれていない（孤立）。機能内容・処理概要は現行実装に合わせて要修正。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

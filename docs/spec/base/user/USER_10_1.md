@@ -284,6 +284,11 @@
 |-------------------------------|------------------|------------------------|
 | workspace_default_conditionsテーブル | ログインユーザーID | デフォルト条件JSON項目 |
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_workspace.views.get_workspace_itemlist`（route `/workspace/`、`@login_required`）。一覧ESインデックスは `{prefix}-weko`。状態テーブル `workspace_status_management`（複合PK (user_id, recid)、`is_favorited`/`is_read`）、既定条件 `workspace_default_conditions`。OAステータスは `weko_records.models.OaStatus`。
+- 実装補足（訂正）：関連モジュールに **weko-workspace**（本体）を筆頭で追加すべき（他に weko-records / weko-admin / weko-search-ui / weko-user-profiles / invenio-stats）。TSV出力はサーバではなくクライアントJS `WorkspaceExport.js`（ファイル名 `itemlist_export_YYYYMMDDhhmmss.tsv`）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

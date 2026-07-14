@@ -226,6 +226,11 @@
 
 - エリアにて表示されているトークンの名前を押下する。この操作によって、invenio_oauth2server.views.settings. token_permission_viewメソッドがGETで呼び出される。これによってoauth2server_clientテーブルからクライアント情報をoauth2server_tokenテーブルからそのトークンのスコープを取得し、画面に表示する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：blueprint `invenio_oauth2server_settings`（prefix `/account/settings/applications`）。`index` / `client_new` / `client_view` / `client_reset` / `token_new` / `token_view` / `token_permission_view`（＋ `token_revoke`）。table `oauth2server_client` / `oauth2server_token`。
+- 実装補足（訂正）：カラムは `client_secret`（`clien_secret` は誤記）、ラベルは「Confidential」（「Confidencial」は誤記）。personal/authorized の振り分けには `Token.is_internal==False` 条件もある。削除は POST＋form field `delete`（HTTP DELETE ではない）。トークン作成画面のスコープは全登録スコープを列挙する（deposit/index/item/author/file/oa_status/ranking/user:email/user:activity 等）。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

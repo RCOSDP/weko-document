@@ -127,6 +127,11 @@ RSSアイコンを押下すると、WEKO RSS配信情報を取得し、該当ア
 
 - 登録されているアイテムが非公開の場合、当該アイテム登録者もしくは管理者ユーザーがRSS出力操作を行った際にのみ、アイテム情報は出力される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- エンドポイント：インデックス一覧RSS `GET /api/rss.xml`（`weko_index_tree.views.get_rss_data`）、新着ウィジェットRSS `GET /rss/records`（`weko_gridlayout.views.get_rss_data`）。共通ビルダー `weko_gridlayout.utils.build_rss_xml`。config `WEKO_INDEX_TREE_RSS_*`（DEFAULT_COUNT=20, COUNT_LIMIT=100 等）。RSS 1.0。
+- 実装補足（訂正）：`count` が上限（100）超過または負の場合は 100 ではなく**既定値 20 にリセット**される。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

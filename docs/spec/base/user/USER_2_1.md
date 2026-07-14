@@ -164,6 +164,10 @@
 アイテムの表示順のプルダウンを選択すると、［アイテムリスト］エリアでのアイテムの表示を選択した表示順に変更する処理を行う。また、表示数のプルダウンを選択すると、選択した表示数に変更する処理を行う。表示数変更の処理はページリロードを伴う。  
 weko-search-ui.weko_search_ui.templates.weko_search_ui.body_contentsを参照すること。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 表示形式はインデックス単位（`weko_index_tree.models.Index.display_format`。値は '1'＝一覧 / '2'＝目次 の2値）。表示順・表示数の既定は `weko_admin.models.SearchManagement`（無ければ `WEKO_ADMIN_MANAGEMENT_OPTIONS`）を `weko_search_ui.api.SearchSetting.get_results_setting` で取得。結果整形 `weko_records.utils.sort_meta_data_by_options`（改行制御は render の `crtf`）。テンプレートは `itemlist.html`（一覧）/`itemtablecontents.html`（目次）。関連モジュール（追記）：weko-records / weko-admin / weko-theme。
+
 #### 更新履歴
 
 |日付|GitHubコミットID|更新内容|

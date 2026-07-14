@@ -100,6 +100,10 @@ utils.sort_meta_data_by_options:
 
 アイテムの表示順、表示数のプルダウンを選択すると、検索結果エリアでのアイテムの表示を選択した表示順、表示数に変更する処理を行う。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_search_ui.views.search`（route `/search/index`）。検索ファクトリは `weko_search_ui.query.default_search_factory`（＝`es_search_factory`、`/api/records`）。公開範囲の絞り込みは `query.get_permission_filter`。結果の整形 `weko_records.utils.sort_meta_data_by_options`（v2.0.2 では **async**）。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

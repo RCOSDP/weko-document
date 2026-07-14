@@ -86,6 +86,11 @@
 - ファイルアップロード処理についてはそれぞれの項目に記述する(./user/USER_4_5.md)。
 - インデックス選択処理についてはそれぞれの項目に記述する(./user/USER_1_3.md)。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_workspace.views.item_register`（route `/workspace/item_registration`）/ `item_register_save`（`/workspace/workflow_registration`）。DB/ES 保存は `weko_search_ui.utils.import_items_to_activity` / `import_items_to_system` 経由。DOI取得は `/workspaceAPI` 配下（CiNii/JaLC/DataCite/医中誌 は weko-workspace、CrossRef のみ weko-items-ui `/api/autofill/get_auto_fill_record_data`）。
+- 実装補足：DOI未一致時のメッセージは未翻訳英語「No metadata was found that matches the DOI!」。医中誌ソースの選択UIは未実装。関連モジュール（追記）：weko-workspace / weko-search-ui / weko-admin。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容 |

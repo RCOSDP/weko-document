@@ -58,6 +58,10 @@ Item Registrationの一部として、登録先インデックスを指定する
 
 ワークフローで登録先インデックスを指定している場合には、画面にてweko_items_uiのiframe_items_indexメソッドを呼び出し→iframe_items_indexメソッド中でupdate_index_tree_for_recordメソッドを呼び出し→update_index_tree_for_recordメソッド中でweko_depositのcommitメソッドを呼び出してESとrecords_metadataテーブルへの登録を行う
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- インデックス確定は `weko_workflow.utils.get_pid_and_record`、`weko_items_ui.views.iframe_items_index`、`weko_items_ui.utils.update_index_tree_for_record`、保存 `weko_deposit.api.WekoDeposit.commit`。「少なくとも1つのインデックスを選択」等のエラーはクライアントJS（`main.bundle.js`）。※v2.0.2 では weko-workspace による登録経路も存在する。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容 |

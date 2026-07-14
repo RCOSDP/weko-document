@@ -397,6 +397,11 @@ CNRIハンドルをregister_handleメソッドで付与する
 
    入力された場合、次の画面に遷移する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- Identifier Grant は action_id **7**（endpoint `identifier_grant`、`views.next_action`）。DOI検証 `weko_workflow.utils.check_doi_validation_not_pass` 等、実DOI付与は `saving_doi_pidstore`（Approval時）、CNRIは `register_hdl`→`weko_handle.api.Handle.register_handle`。config `IDENTIFIER_GRANT_LIST` / `IDENTIFIER_GRANT_SUFFIX_METHOD` / `WEKO_SERVER_CNRI_HOST_LINK` / `DOI_VALIDATION_INFO*`。
+- 実装補足（追記）：Prefix/Suffix/Enable の設定テーブル `doi_identifier`（model `Identifier`）は **weko-admin** にある（`repository` 列で判定）。`IdentifierHandle` は `weko_workflow.utils`。
+
 #### 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容   |

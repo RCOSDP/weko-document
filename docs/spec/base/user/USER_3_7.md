@@ -497,6 +497,10 @@ Elasticsearch の利用
     
       - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oaiserver/invenio_oaiserver/query.py#L192>
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- エクスポートは `weko_records_ui.views.export`（route `/records/<pid_value>/export/<format>`）。XML生成は `weko_schema_ui.schema.SchemaTree(record, schema_name)`、BIBTEX は `weko_schema_ui.serializers.WekoBibTexSerializer`。OAI-PMH 側のエラーは `invenio_oaiserver.response.get_error_code_msg`／config `OAISERVER_CODE_NO_RECORDS_MATCH`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

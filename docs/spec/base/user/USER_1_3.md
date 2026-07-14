@@ -143,6 +143,10 @@
 
 - アイテムリストについての処理概要は一覧形式表示の際はUSER-2-1一覧形式表示を、目次形式表示の際はUSER-2-2 目次形式表示を参照してください。デフォルトでは一覧形式表示で表示されます。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面：`weko_theme.views.index` → `weko_theme.utils.get_weko_contents` → `weko_index_tree.utils.get_index_link_list`。ツリー取得 REST は `weko_index_tree.rest.IndexTreeActionResource.get`（`get_browsing_tree` / `get_more_browsing_tree`）。インデックス検索ファクトリは `weko_search_ui.query.item_path_search_factory`。`get_journal_info` は `weko_search_ui.utils`。
+
 #### 更新履歴
 
 |日付|GitHubコミットID|更新内容|

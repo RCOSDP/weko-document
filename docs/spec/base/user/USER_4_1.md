@@ -406,6 +406,10 @@ TSVファイルに書き込まれる件数は、以下の定数によって制�
         - 一括エクスポートファイルの形式は「.tsv」であり、「"」を「""」文字に変換して出力する。  
         - JSON出力ファイルの形式は「.json」であり、出力時の処理は上記のDB保存の処理と同様。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- `weko_workflow.api.WorkActivity.get_activity_list` / `filter_conditions`。ログのダウンロード/削除は `weko_workflow.views.download_activitylog` / `clear_activitylog`（`DELETE_ACTIVITY_LOG_ENABLE`、instance.cfg 既定 True）。サーバ日時は `/api/admin/get_server_date`。config `WEKO_WORKFLOW_TODO_TAB`/`WAIT_TAB`/`ALL_TAB`, `WEKO_WORKFLOW_ACTIVITYLOG_BULK_MAX`。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容   |

@@ -116,6 +116,10 @@ record_viewedに閲覧回数を送り出し、ESに回数を登録する。
 
   - invenio_stats.views.QueryFileStatsCountにおいてダウンロード回数と再生回数を取得する。weko-admin.models.AdminSettings.getから【Administration > stas (統計情報)】で設定した統計情報の表示を読み取り、display_statsがtrueの場合に統計情報を表示する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 表示回数は `default_view_method` が `record_viewed` を送出、`invenio_stats.views.QueryRecordViewCount` / `QueryFileStatsCount` で取得。`file_downloaded` は `weko_records_ui.views.get_uri` と `invenio_files_rest.views.ObjectResource.send_object` の2箇所で送出。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

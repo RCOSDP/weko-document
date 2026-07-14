@@ -71,6 +71,10 @@
     2. 該当のワークフローがない場合は登録先インデックスが設定されていないワークフローを選択される。
     3. 同じく存在していない時に"Workflow setting does not exist."のエラーメッセージが表示される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- ワークフロー未設定時のエラー「Workflow setting does not exist.」は `weko_items_ui.views`（および weko_workflow）で発生。編集時のワークフロー選択はここで分岐する。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容   |

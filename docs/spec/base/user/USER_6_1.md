@@ -252,6 +252,11 @@
 
 - アイテムの公開日が「未来日」のものについてランキング表示対象外とする
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_items_ui.views.ranking`（route `/items/ranking`）。設定は `weko_admin.models.RankingSettings`（table `ranking_settings`）、取得 `weko_items_ui.utils.get_ranking` / `get_permission_record`。
+- 実装補足（訂正）：ランキング集計モジュールは `invenio_stats.utils`（`.util` は誤り）の `QueryRankingHelper` / `WekoQueryRankingHelper`。ランキングは**リクエスト毎に Elasticsearch からライブ算出**され、日次バッチによる事前集計値を参照するわけではない（ES の統計インデックスは `invenio_stats` の process/aggregate タスクが populate）。範囲 1-30/1-3650/1-100 はUIのみ。config `WEKO_ITEMS_UI_RANKING_*`。
+
 #### 更新履歴
 
 | 日付       | GitHubコミットID | 更新内容                 |

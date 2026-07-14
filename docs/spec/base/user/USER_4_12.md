@@ -51,6 +51,10 @@
 
 ## 処理概要
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足：OA Policy Confirmation は action_id **6**（endpoint `oa_policy`）として config `WEKO_WORKFLOW_ACTION_OA_POLICY_CONFIRMATION` と `cli.init_action` のシードに定義されるのみで、`WEKO_WORKFLOW_ACTIONS` に含まれず `views.py` に処理分岐が無い（＝現在非対応）。残存は上記シードと `WEKO_WORKFLOW_OAPOLICY_SEARCH` キャッシュキーのみ。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容 |

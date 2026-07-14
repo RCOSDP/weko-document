@@ -182,6 +182,10 @@ celaryタスクでフィードバックメールを送信するかどうか、�
 celery -A invenio_app.celery call weko_admin.tasks.send_feedback_mail
 ```
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 送信は Celery `weko_admin.tasks.send_feedback_mail`、再送 `weko_admin.views.resend_failed_mail`。テーブル `feedback_email_setting` / `feedback_mail_history` / `feedback_mail_failed`（weko-admin）と `feedback_mail_list`（**weko-records** の `FeedbackMailList`）。config `WEKO_ADMIN_NUMBER_OF_SEND_MAIL_HISTORY`(20)/`_FAILED_MAIL`(10)、`WEKO_SEARCH_MAX_FEEDBACK_MAIL`(10000)。
+
 #### 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容           |

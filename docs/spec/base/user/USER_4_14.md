@@ -112,6 +112,10 @@
 
           - リンクはランダムなURLとトークン値から構成し、両者が一致した場合に利用登録ワークフローへのリンクとして機能する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 制限公開ファイルのメール入力→ダウンロードは `weko_records_ui.fd.file_download_onetime` → `_download_file`。権限は `permissions.check_file_download_permission` → `check_open_restricted_permission`。文言「Could not download file.」「Please input email address.」。関連モジュール：weko-records-ui（＋ guest activity は weko-workflow）。
+
 ### 更新履歴
 
 | 日付    | 更新内容 |

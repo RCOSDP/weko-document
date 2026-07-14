@@ -83,6 +83,10 @@ Item Registrationの一部として、画面上の設定エリアで代理投稿
   - 代理投稿を複数登録可能な機能の有効無効を切り替える。
   - scripts/instance.cfg で定義されている場合は、そちらの設定を優先する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 代理投稿は config `WEKO_ITEMS_UI_PROXY_POSTING`（既定 False）。サーバ側 `weko_items_ui.views.get_search_data` / `validate_user_info`、権限判定 `weko_workflow.views.check_authority_action`。`autocomplete` / `get_autofill_data` はブラウザ側JS（`app.js`）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容                             |

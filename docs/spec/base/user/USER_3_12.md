@@ -148,6 +148,10 @@
             -   入力したパスワードはPOSTリクエストのBodyとして送信され、設定されたパスワードと等しい場合にダウンロードを行う。
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正）：ワンタイムDLは `weko_records_ui.fd.file_download_onetime` → `process_onetime_file_download` → `_download_file`。メールアドレス／パスワードは**クエリパラメータではなく POST リクエストボディ**（`mail_address` / `input_password`）で受け取り、`FileOnetimeDownload`（table `file_onetime_download`）の `user_mail` / `extra_info.password_for_download` と照合する（パスワード確認は `restricted_access.password_enable` 時）。
+
 #### 更新履歴
 
 |日付|更新内容|

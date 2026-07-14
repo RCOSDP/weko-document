@@ -138,6 +138,10 @@
 
   - バージョン欄の時刻は pidstore_pid の pid_type: recid の updated カラムの日時を表示している。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- バージョン一覧は `weko_records_ui.views.default_view_method` が `PIDVersioning`（`active_versions`/`all_versions`）から構築し、`_deposit.status == 'draft'` のバージョンを `active_versions` から除外。テンプレート `box/versions.html`。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

@@ -78,6 +78,10 @@
 
 - 画面で入力したメールアドレスとパスワードが、ログイン時のemailとpasswordになる
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正）：サインアップの画面・エラー文言は invenio-accounts ではなく依存ライブラリ **Flask-Security**（`SECURITY_MSG_*` 既定、`flask_security.views.register`、route `/signup/`）に由来する。invenio-accounts はフォーム拡張とユーザーデータストアを提供。確認メールは `invenio_accounts.tasks.send_security_email`（`ACCOUNTS_USE_CELERY=True` 時のみ Celery 経由）。パスワード最小6文字は Flask-Security のハードコード（制御 config なし）。table `accounts_user`。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

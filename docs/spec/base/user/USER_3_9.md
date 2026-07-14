@@ -92,6 +92,10 @@ jpcoarマッピングとGoogle Dataset meta tagとの対応:
 
 resリストをgoogle_dataset_metaで受け取り、templating.render_templateを呼び出してアイテムメタデータを作成する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正）：関数名は `weko_records_ui.utils.get_google_detaset_meta`（ソースの綴りが "detaset"。`get_google_dataset_meta` は存在しない）。出力は dict（`@context`/`@type`:Dataset ...）。config `WEKO_RECORDS_UI_GOOGLE_DATASET_RESOURCE_TYPE`/`_DESCRIPTION_MIN`(50)/`_MAX`(5000)。`WEKO_RECORDS_UI_GOOGLE_DATASET_DISP_FLG` は定義のみで未使用。出力可否は Scholar 用 resource_type config を参照する。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

@@ -197,6 +197,10 @@
 
 メールアドレスの変更は、flask_loginのグローバル変数current_user.emailを更新することで保存される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_user_profiles.forms.ProfileForm` ＋ `weko_user_profiles.views.profile`（route `/account/settings/profile/`）。保存処理は `weko_user_profiles.utils.handle_profile_form` / `handle_verification_form`（views ではなく utils）。table `userprofiles_userprofile`（「Username」列は `displayname`）。表示項目・ラベルの既定は `WEKO_USERPROFILES_DEFAULT_FIELDS_SETTINGS`（DB `AdminSettings 'profiles_items_settings'` で上書き、`WEKO_USERPROFILES_CUSTOMIZE_ENABLED` 時のみ有効）。S3系4項目は `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED` 時のみ表示。username のフォーマット検証（`validators.validate_username`）は import のみで未強制。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

@@ -280,6 +280,10 @@
     * アイテムタイプのJPCOARマッピングに応じた項目にメタデータを設定する
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- メタデータ自動補完：CrossRef=`weko_items_autofill.api.CrossRefOpenURL`、CiNii/JaLC/DataCite/医中誌=`weko_workspace.api`（`CiNiiURL`/`JALCURL`/`DATACITEURL`/`JamasURL`）。外部URLは config `WEKO_WORKSPACE_*_API_URL`。CrossRef は API 証明書（`weko_admin.models.ApiCertificate`、code `"crf"`）が無い場合はリクエストしない。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

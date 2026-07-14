@@ -412,6 +412,10 @@ WEKO_DEPOSIT_FILESIZE_LIMIT = 2 * 1024 * 1024
 
 ### 実装方法
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正）：多重（マルチパート）アップロードの config `FILES_REST_USE_MULTIPART_UPLOAD` / `FILES_REST_RESUME_CHUNK_SIZE` は v2.0.2 に存在しない。実在するのは `invenio_files_rest.config` の `FILES_REST_MULTIPART_CHUNKSIZE_MIN`（5MiB）/ `_CHUNKSIZE_MAX`（5GiB）/ `_MAX_PARTS`（10000）/ `FILES_REST_MULTIPART_EXPIRES`（4日）。ES抽出対象は `WEKO_MIMETYPE_WHITELIST_FOR_ES` 等、サイズ上限 `WEKO_DEPOSIT_FILESIZE_LIMIT`（2MB）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容   |

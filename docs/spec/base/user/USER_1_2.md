@@ -227,6 +227,10 @@
 
 アイテムの表示順、表示数のプルダウンを選択すると、検索結果エリアでのアイテムの表示を選択した表示順、表示数に変更する処理を行う。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 詳細検索は `weko_search_ui.query.default_search_factory._get_detail_keywords_query`。検索キーと内部フィールドの対応は config `WEKO_SEARCH_KEYWORDS_DICT`。`exact_title_match`（タイトル完全一致）の分岐あり。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

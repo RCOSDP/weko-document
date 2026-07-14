@@ -126,6 +126,10 @@ invenio_records_rest.serializers.citeprocにおいてciteproc_stylesを取得す
 
 Cite asの情報での表示言語の優先度は以下の通りです。画面表示言語＞英語＞アイテム登録時のタイトルの言語
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 引用情報は `invenio_records_rest.serializers.citeproc.CiteprocSerializer`＋`weko_records.serializers.schemas.csl.RecordSchemaCSLJSON`。既定スタイル `aapg-bulletin`。レンダリングは Jinja フィルタ `weko_records_ui.views.citation`。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

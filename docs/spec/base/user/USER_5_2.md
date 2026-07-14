@@ -48,6 +48,10 @@
 
   - テンプレート中でweko_themeのwidget.jsを読み込んでおり、そのgetWidgetDesignSetting()関数でwidget_design_pageテーブルからページレイアウト情報を取得している
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_communities.views.ui.content_policy`（route `/c/<community_id>/content_policy/`、`@pass_community`）。model `Community`（table `communities_community`、列 `content_policy`）。
+
 #### 更新履歴
 
 | 日付       | GitHubコミットID | 更新内容 |

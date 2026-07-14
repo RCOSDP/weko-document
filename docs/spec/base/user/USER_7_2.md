@@ -48,6 +48,10 @@
 
 リストに無い言語コードが指定された場合は 404 を返す。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正）：言語切替の実ルートは `/lang/<lang_code>` ではなく **`/accounts/settings/lang/<lang_code>`**（`weko_admin.views.custom_set_lang`、blueprint prefix `/accounts/settings`）。無効な言語コードは GET で 404 / POST で 400。セッション保存は `session[I18N_SESSION_KEY]`、`?next=` でリダイレクト。登録言語は model `AdminLangSettings`（table `admin_lang_settings`）、既定言語は `weko_admin.ext.set_default_language`。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

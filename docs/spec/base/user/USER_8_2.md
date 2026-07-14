@@ -123,6 +123,10 @@
 | device | デバイス |
 | organization_name | shibboleth認証を行った機関の名称<br> 本項目には、Shibboleth認証時にレスポンスのボディで返却されるJaOrganizationName(jao)の値を設定する。 <br> ローカル認証およびJaOrganizationNameが返却されなかった場合はNullとする。 |
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正）：ログイン画面・文言は **Flask-Security**（`flask_security.views.login`、route `/login/`）由来。セッション記録は `invenio_accounts.sessions`（`login_listener`→`add_session`、table `accounts_user_session_activity`）。所属機関名は invenio-accounts 側の列 `orgniazation_name`（綴りママ。ローカル認証時は Null）で weko-accounts ではない。Shibboleth 関連の実ビューは weko-accounts（`shib_login` / `shib_sp_login` 等）。config `WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED`（既定 False）/ `_SHIB_IDP_LOGIN_ENABLED` / `_SHIB_INST_LOGIN_DIRECTLY_ENABLED` / `_SHIB_DP_LOGIN_DIRECTLY_ENABLED`。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

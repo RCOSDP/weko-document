@@ -90,6 +90,10 @@ weko/modules/weko-records-ui/weko_records_ui/api.py
         メタデータの更新/アイテムのバージョンアップのみを行う。
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装：`weko_records_ui.api.get_file_place_info` / `replace_file_bucket` / `copy_bucket_to_s3`。HTTPルート（`weko_records_ui.views`）：`/get_file_place`（`get_file_place`）/ `/replace_file`（`replace_file`）/ `/get_bucket_list`（`get_bucket_list`）/ `/copy_bucket`（`copy_bucket`）。クライアントJS `bucket.js`。
+
 #### 更新履歴
 
 |日付|GitHubコミットID|更新内容|

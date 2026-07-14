@@ -116,6 +116,10 @@ JPCOARの索引定義（/weko-schema-ui/weko_schema_ui/mappings/v6/weko/item-v1.
 
 アイテムの表示順のプルダウンを選択すると、検索結果エリアでのアイテムの表示を選択した表示順に変更する処理を行う。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足（訂正）：ファセットの集計定義は config `RECORDS_REST_FACETS`（v2.0.2 では空 dict）ではなく、カスタマイズされた `invenio_records_rest.facets.default_facets_factory` → `weko_admin.utils.get_facet_search_query`（Redis キャッシュ、元データは model `FacetSearchSetting`）から取得される。権限有無で別クエリを使用。7種のデフォルトファセットはDBシードのレコード。config `WEKO_ADMIN_FACET_SEARCH_SETTING_BUCKET_SIZE`（1000）。
+
 #### 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
