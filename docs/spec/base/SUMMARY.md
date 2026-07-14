@@ -215,7 +215,7 @@
     * [RESTRICTED_ACCESS-13-3: ワークフロー管理（制限公開） 378](./restricted_access/RESTRICTED_ACCESS_03.md)
     * [RESTRICTED_ACCESS-13-4: メールテンプレート 381](./restricted_access/RESTRICTED_ACCESS_04.md)
 * [ツール](./tools/README.md)
-    * [TOOL-1: システムプロパティマッピング 390](./tools/TOOL_01.md)
+    * [TOOL-1: Render](./tools/TOOL_01.md)
 * [アクセスコントロール](./access_control/README.md)
     * ユーザ画面
         * [アイテム詳細画面](USER_ITEM_DETAIL_01.md)
