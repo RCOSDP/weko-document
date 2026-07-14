@@ -545,6 +545,49 @@
 - 画面/ハンドラ：`weko_authors.admin.ImportView`（`check_import_file`/`check_pagination`/`check_file_download`/`import_authors`/`check_import_status`/`result_file_download`）＋ Celery `import_author`/`import_id_prefix`/`import_affiliation_id`/`import_author_over_max`。1行目のテーブル名（`authors_prefix_settings`/`authors_affiliation_settings`/無記載＝著者）で対象を判定。
 - 補足：対象値は `author_db` / `id_prefix` / `affiliation_id`。取り込み情報は Redis `author_import_cache`（group_task_id/tasks/records）に保持。強制変更モードあり。所属期間ヘッダは `periodStart` / `periodEnd`。24時間クリーンアップは `tasks.check_tmp_file_time_for_author`。
 
+## 詳細リファレンス（v2.0.2 実装：検証エラー・分岐・データモデル）
+
+対象：`weko-authors`（`utils.py` / `contrib/validation.py` / `admin.py`(ImportView) / `tasks.py` / `config.py` / `models.py` / `api.py`）。
+
+### 1. 取込対象の判定と処理分岐
+
+対象（`target`）はファイル1行目（テーブル名行）で判定する。
+
+| 1行目 | 対象 | 検証関数 | Celeryタスク | 登録関数 | 反映先 |
+| --- | --- | --- | --- | --- | --- |
+| `#author_prefix_settings` | id_prefix | `check_import_data_for_prefix` | `import_id_prefix` | `import_id_prefix_to_system`→`AuthorsPrefixSettings.create/update/delete` | authors_prefix_settings |
+| `#author_affiliation_settings` | affiliation_id | `check_import_data_for_prefix` | `import_affiliation_id` | `import_affiliation_id_to_system`→`AuthorsAffiliationSettings.*` | authors_affiliation_settings |
+| 上記以外 | author_db | `check_import_data`（行検証 `validate_import_data`） | `import_author` | `import_author_to_system`→`WekoAuthors.create/update` | Authors + ES |
+
+- 著者DBは `WEKO_AUTHORS_IMPORT_BATCH_SIZE`（100件）単位で JSON パートに分割し検証。画面表示上限 `WEKO_AUTHORS_IMPORT_MAX_NUM_OF_DISPLAYS`（1000件）まで `prepare_import_data`→`import_author`、超過分は `import_author_over_max`。
+- 状態 `status`（`set_record_status`）：`is_deleted='D'`→deleted、`pk_id` あり既存→update、`pk_id` なし→new、`pk_id` あり未存在→エラー。
+
+### 2. 検証エラー種別（代表例）と結果記録
+
+著者DB（`validate_import_data` / `contrib/validation`。定義は `WEKO_AUTHORS_FILE_MAPPING`）：
+
+- 必須欠落（`validate_required`）：条件付き必須（`authorId`⇔`idType`、所属は `affiliationId`⇔`affiliationIdType`）。「{} is required item.」
+- 識別子スキーム（`validate_identifier_scheme`／`validate_affiliation_identifier_scheme`）：`authors_prefix_settings`/`authors_affiliation_settings` に無ければ「Specified Identifier Scheme '{}' does not exist.」等。所属期間は `yyyy-MM-dd` 形式・`periodStart>periodEnd` 逆転チェック。
+- WEKO（内部 `idType='1'`）は入力スキームとして使用不可（`create`/`update` が WEKO ID エントリを自動先頭挿入）。
+- 許容値（`validate_map`）：language／nameFormat／表示フラグ（Y/N）／`is_deleted`（D）。範囲外は「{} should be set by one of {}.」
+- コミュニティ権限（`validate_community_ids`）：形式（`^[a-zA-Z0-9_-]+$`）・存在（無ければ「Community ID(s) {} does not exist.」）・権限（スーパーロール以外は自管理コミュニティに限定、最低1つ包含必須）。
+- 重複：同一 `pk_id` が2回で「There is duplicated data in the {} file.」。
+- 無効行・削除不可：`is_deleted='D'` で `pk_id` 未指定/未存在は「Specified WEKO ID does not exist.」。アイテムリンクあり（`get_count_item_link>0`）は「The author is linked to items and cannot be deleted.」。
+- ヘッダ整合（`unpackage_and_check_import_file`）：キー重複・DB不整合（`handle_check_consistence_with_mapping`）・0件・UTF-8不可。
+- 警告：既存外部著者IDと一致（`validate_external_author_identifier`）「External author identifier exists in DB.」等（登録は阻止しない）。
+
+Prefix/所属機関（`validate_import_data_for_prefix`）：`scheme`/`name` 必須、`url` は http 始まり必須（空可）、id_prefix で `scheme=="WEKO"` 禁止（「The scheme WEKO cannot be used.」）、scheme 重複・削除時の未存在/使用中チェック。
+
+結果ファイル：チェック結果 `import_author_check_result_YYYYMMDDHHMM.tsv`（No./WEKO ID/full_name/MailAddress/Check Result。Result は Error:… または Register/Update/Delete）。実行結果 `import_author_result_YYYYMMDDHHMM.tsv`（No./Start Date/End Date/WEKO ID/full_name/Status）。一時ファイルはキャッシュ（`WEKO_AUTHORS_IMPORT_CACHE_*_KEY`、TTL=`WEKO_AUTHORS_CACHE_TTL`＝1日）で受け渡し、`check_tmp_file_time_for_author` が定期削除。
+
+### 3. データモデル
+
+- 主テーブル：`authors`（`Authors`。`id` / `gather_flg` / `is_deleted` / `json`(JSONB)。氏名・外部ID・メール・所属は `json`）／`authors_prefix_settings`（`name`/`scheme`(unique)/`url`）／`authors_affiliation_settings`（同）。
+- 中間テーブル（コミュニティ多対多、FK CASCADE）：`author_community_relations`／`author_prefix_community_relations`／`author_affiliation_community_relations`。各モデルは `add_communities`/`update_communities` を持つ。
+- Elasticsearch：index `WEKO_AUTHORS_ES_INDEX_NAME`（`{prefix}-authors`）、doc type `author-v1.0.0`。`create` は DB追加後 `RecordIndexer().client.index`、`update` は `pk_id` で検索し `client.update`/`index`。更新後は `weko_deposit.tasks.update_items_by_authorInfo` でアイテム側メタデータへ反映。
+- 論理削除：著者は `Authors.is_deleted=True`（ES も同期）。アイテムリンクありは削除不可。Prefix/所属スキームは物理削除だが使用中は不可。
+
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

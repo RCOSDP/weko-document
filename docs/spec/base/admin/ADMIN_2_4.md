@@ -1322,6 +1322,53 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 - 実メソッド名：チェック入口は `check_tsv_import_items`、取り込みタスクは `import_item`、統計ファイル生成は `make_stats_file`。重複チェックは weko-items-ui の `check_duplicate` / `is_duplicate_item`（DOI→タイトル→リソースタイプ→著者。公開かつ非バージョンのみ対象）。メタデータ補完は weko-items-autofill の `fetch_metadata_by_doi`（CrossRef/DataCite/CiNii/JaLC/医中誌）。
 - 関連モジュール（追記）：weko-search-ui / weko-admin / weko-items-autofill に加え、weko-deposit（永続化）・weko-items-ui（重複/スキーマ）・weko-workflow・weko-index-tree・weko-authors・invenio-pidstore。出力/取込形式は `WEKO_ADMIN_OUTPUT_FORMAT`（tsv/csv）。
 
+## 詳細リファレンス（v2.0.2 実装：チェック分岐・エラー・処理フロー）
+
+TSV/CSV/ZIP インポートは「チェック（check）」と「登録（import）」の二段階で、いずれも Celery で非同期実行される。中核は `weko-search-ui`（`utils.py` / `tasks.py` / `admin.py`）。
+
+### 1. チェック処理の分岐（check_tsv_import_items）
+
+`POST /admin/items/import/check`（`ItemImportView.check`）→ Celery `check_import_items_task` → `check_tsv_import_items`。非スーパーロールには編集可能インデックス `can_edit_indexes` を算出して渡す。
+
+- ファイル形式：ZIP を `zipfile.ZipFile` で展開（プレフィックス `WEKO_SEARCH_UI_IMPORT_TMP_PREFIX="weko_import_"`）。文字化けは `chardet` で判定し cp437→cp932 再デコード。`data/` 直下の `.csv`/`.tsv` を列挙。無い場合 `FileNotFoundError`、ZIP不正は `BadZipFile`。各ファイルを `unpackage_import_file(..., 'csv'|'tsv', ...)` で集約（XML/RO-Crate は別関数）。
+- ヘッダ検査（`read_stats_file`）：1行目は列数3未満/アイテムタイプID非数値でエラー。アイテムタイプ不存在・非最新版でエラー。2行目はキー重複（`handle_check_duplication_item_id`）・マッピング不整合（`handle_check_consistence_with_mapping`）・存在しないキー（`handle_check_metadata_not_existed`＝warning）。6行目以降を `parse_to_json_form` で JSON 化（UTF-8 でなければ `UnicodeDecodeError`）。続けて `handle_set_change_identifier_flag`・`handle_fill_system_item`・`handle_validate_item_import`（Draft4Validator。和訳は `WEKO_IMPORT_VALIDATE_MESSAGE`）。
+- 集約後に順次適用：`handle_check_duplicate_record`（重複=warning）／`handle_check_exist_record`（new/keep/upgrade/None 判定）／`handle_item_title`／`handle_check_date`／`handle_check_id`／`handle_check_and_prepare_index_tree`（インデックス整合・権限）／`handle_check_and_prepare_publish_status`（public/private 必須）／feedback/request/item_application 各チェック／`handle_check_file_metadata`／`handle_check_restricted_access_property`／`handle_shared_ids`／著者 prefix/affiliation ／CNRI・DOI 関連（`handle_check_cnri`/`handle_check_doi_indexes`/`handle_check_doi_ra`/`handle_check_doi`）。結果は各レコードの `errors`/`warnings` に追記。
+- new/update 判定（`handle_check_exist_record`）：ID未指定=`new`。ID指定時、システムURI不一致・PID不存在・削除済み・`edit_mode` 不正で `None`（不合格）、正しければ `keep`（同版更新）/`upgrade`（新版作成）。
+- インデックス整合（`handle_check_and_prepare_index_tree`）：IndexID/POS_INDEX 双方未設定・不存在でエラー、不一致は warning、`can_edit_indexes` 外は権限エラー。
+- 可否判定（`check_import_items_task`）：**1件でもエラーがあればインポート不可**（2023/08/26 仕様変更。旧「全件エラー時のみ不可」から変更）。チェック結果DLは `make_stats_file`（見出し `WEKO_IMPORT_CHECK_LIST_NAME`）。
+
+### 2. 主なエラー種別（代表例）
+
+| カテゴリ | 代表メッセージ（原文） | 発生箇所 |
+| --- | --- | --- |
+| ファイル形式 | The format of the specified file ... does not support import ... | check_tsv_import_items(BadZipFile) |
+| ファイル未検出 | The csv/tsv file was not found ... | check_tsv_import_items(FileNotFoundError) |
+| エンコーディング | The {} file could not be read. ... UTF-8 ... | read_stats_file(UnicodeDecodeError) |
+| ヘッダ書式 | There is an error in the format of the first line ... | read_stats_file |
+| アイテムタイプ | The item type ID ... does not exist. / ... not the latest version. | read_stats_file |
+| キー重複 | The following metadata keys are duplicated. | handle_check_duplication_item_id |
+| マッピング不整合 | The item does not consistent with the specified item type. | handle_check_consistence_with_mapping |
+| スキーマ/必須 | (schema由来, 和訳) / Please specify item ID by half-width number. | handle_validate_item_import |
+| 公開状態 | PUBLISH_STATUS is required item. / Please set "public" or "private" ... | handle_check_and_prepare_publish_status |
+| 既存レコード | Item does not exist in the system. / Item already DELETED ... / Please specify either "Keep" or "Upgrade". | handle_check_exist_record |
+| インデックス | Both of IndexID and POS_INDEX are not being set. / ... does not exist in system. | handle_check_and_prepare_index_tree |
+| 権限 | Your role cannot register items in this index. | handle_check_and_prepare_index_tree |
+| CNRI | Please specify CNRI. / ... exceeds the maximum length. / Specified Prefix ... is incorrect. | handle_check_cnri |
+| DOI | You cannot keep an item private because it has a DOI. / Specified DOI has been used already ... / Specified DOI was withdrawn. | handle_check_doi_indexes / handle_check_doi |
+| DOI_RA | Please specify DOI_RA. / DOI_RA should be set by one of JaLC, Crossref, DataCite, NDL JaLC. | handle_check_doi_ra |
+| 重複(警告) | The same item may have been registered.（リンク付き warning） | handle_check_duplicate_record → is_duplicate_item |
+
+### 3. 登録処理フロー（import → 永続化）
+
+- `POST /admin/items/import/import`（`ItemImportView.import_items`）：`errors` の無いレコードのみ抽出、`create_flow_define`/`handle_workflow` でWF準備、DOI補完対象は `handle_metadata_by_doi`、`import_item.s(item, request_info)` を Celery chord でまとめ完了後に一時ディレクトリ削除。監査ログ `ITEM_IMPORT`/`ITEM_BULK_CREATE`。進捗は `/check_status` でポーリング。
+- `import_item` → `import_items_to_system`：new は `create_deposit`、keep/upgrade は `handle_check_item_is_locked` でロック確認＋ES退避。`register_item_metadata` で永続化（weko-deposit）、CNRI/DOI 登録、公開状態を `WEKO_IMPORT_PUBLISH_STATUS`（public=0/private=1）で反映、new は ES へ `item_created`。1トランザクションで commit 後、`call_external_system`・監査ログ（ITEM_CREATE/UPDATE）・researchmap 連携。
+- バージョン管理（`register_item_metadata`）：`upgrade`/`new` は `deposit.newversion(pid)`、`keep` は `merge_data_to_record_without_version(keep_version=True, is_import=True)`。FeedbackMailList/RequestMailList/ItemApplication を制限公開設定に応じ更新。
+- Change Identifier Mode（`handle_set_change_identifier_flag`）：ON なら CSV/TSV 記載の CNRI/DOI をそのまま登録し、プレフィックス整合・重複・取り下げ済み検査が働く。OFF は既存識別子との整合確認が中心。
+- 成功時 `{"success": True, "recid": ...}`。失敗時は `SQLAlchemyError`/`ElasticsearchException`/`RedisError`/一般例外で `handle_remove_es_metadata` によりロールバックし監査ログ error 記録。登録結果一覧は `make_stats_file`（見出し `WEKO_IMPORT_LIST_NAME`、形式 `WEKO_ADMIN_OUTPUT_FORMAT`）。
+
+主な設定キー：`WEKO_SEARCH_UI_IMPORT_TMP_PREFIX` / `WEKO_IMPORT_PUBLISH_STATUS`（["public","private"]）/ `WEKO_IMPORT_DOI_TYPE`（JaLC/Crossref/DataCite/NDL JaLC）/ `WEKO_IMPORT_CHECK_LIST_NAME` / `WEKO_IMPORT_LIST_NAME` / `WEKO_IMPORT_VALIDATE_MESSAGE` / `WEKO_ITEMS_UI_ENABLE_DUPLICATE_CHECK` / `WEKO_ADMIN_OUTPUT_FORMAT` / `WEKO_HANDLE_ALLOW_REGISTER_CNRI`。
+
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                       | 更新内容          |

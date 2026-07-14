@@ -796,6 +796,60 @@
 - 権限判定：`weko_records_ui.permissions.check_file_download_permission`（内部ヘルパー `__check_user_permission`）/ `check_open_restricted_permission` / `check_user_group_permission`。ダウンロード処理は `weko_records_ui.fd`（`file_download_ui` / `file_preview_ui` / `_download_file`）。ワンタイム／シークレットURLモデルは `file_onetime_download` / `file_secret_download` / `file_url_download_log`。`WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` は weko-admin、プレビューサイズ上限 `WEKO_ITEMS_UI_FILE_SISE_PREVIEW_LIMIT` は weko-items-ui（形式別 dict）。
 - 大容量（マルチパート）ダウンロードの閾値・パートサイズは S3 サーバ側転送用の `WEKO_RECORDS_UI_S3_TRANSFER_MULTIPART_THRESHOLD` / `_CHUNKSIZE` で設定する。
 
+## 詳細リファレンス（v2.0.2 実装：エラー処理・分岐・データモデル）
+
+判定の起点は `weko_records_ui.permissions.check_file_download_permission`、URL 型ダウンロードの検証は `weko_records_ui.utils.validate_url_download`。
+
+### 1. アクセス権限の分岐（accessrole 別）
+
+`check_file_download_permission(record, fjson, is_display_file_info, item_type)` は `fjson['accessrole']` で分岐する。分岐前に以下の「無条件許可」が先に評価される。
+
+- 登録者系：`current_user.id` が `user_id_list`（`record._deposit.created_by` / `record.owner` / `record.weko_shared_ids`。`WEKO_ITEMS_UI_PROXY_POSTING` が True なら全共有者、False なら最後の1件）に含まれれば許可。
+- スーパーユーザー系：`current_user` のロール名が `WEKO_PERMISSION_SUPER_ROLE_USER` + `WEKO_PERMISSION_ROLE_COMMUNITY` に含まれれば許可。
+- 上記に該当しない場合のみ accessrole 別判定へ進む。処理中の例外は `abort(500)`。
+
+| accessrole | ダウンロード可否の条件 |
+| --- | --- |
+| `open_access` | ファイル情報表示は常に可。実DLは `fjson.date[0].dateValue` が未来日でなければ可（未設定は可）。 |
+| `open_date` | 情報表示は常に可。実DLは (a) 公開日 `fjson.accessdate`（無ければ `date[0].dateValue`）が未来でない、(b) `record.publish_date` が未来でない、(c) ロール条件（`fjson.roles` 一致、未指定は可）の AND。不可でも `site_license_check`（アイテムタイプ `has_site_license` かつ IP 判定 or `check_user_group_permission`）が真なら可。 |
+| `open_login` | 情報表示は常に可。実DLは (a) ログイン済み、(b) ロール条件、(c) 課金/グループ条件の AND。`fjson.groupsprice` があれば該当グループ所属、無ければ `fjson.groups` 所属（未設定は可）、不可なら `site_license_check` にフォールバック。 |
+| `open_no` | 情報表示は原則可だが未ログイン・非許可・サイトライセンス該当時は非表示。実DLは `current_user.email` が登録者メール一覧に含まれる場合のみ可。 |
+| `open_restricted` | `check_open_restricted_permission` に委譲。承認済み `FilePermission`（`status==1`）が存在し、かつ `WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` が True の場合のみ `check_permission_period`（有効なワンタイムDLの有無）を評価。DISPLAY_FLAG が False または未承認は不可。 |
+
+補足：`fd.py` の実DL時、`open_restricted` で所有者・スーパーユーザーでなければ有効なワンタイムDLを取得（無ければ `abort(403)`）し token を生成して `validate_onetime_token` に委譲する。ファイル未存在は `abort(404)`、未ログインはログイン要求。
+
+### 2. ワンタイム／シークレットURL のエラー・分岐
+
+中核は `validate_url_download`。`(bool, error_message)` を返し、呼び出し元が `error_response(msg, 403|404|500)` で応答する。主なエラー（EN原文、`_()` で i18n）と条件：
+
+| メッセージ | 条件 | HTTP |
+| --- | --- | --- |
+| The type of URL is not specified. | URL 種別未指定 | 403 |
+| The provided token is invalid. | トークン不正・改ざん | 403 |
+| This feature is currently disabled. | シークレットURL機能が無効 | 403 |
+| This file is currently not available for this feature. | 対象外ファイル/レコード | 403 |
+| This URL has been deactivated. | `is_deleted is True`（論理削除） | 403 |
+| The download limit has been exceeded. | `download_count >= download_limit` | 403 |
+| The expiration date for download has been exceeded. | `expiration_date < 現在(UTC)` | 403 |
+| Restricted access is disabled. | `WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` が False | 403 |
+| The file "%s" does not exist. | ファイルオブジェクト取得不可 | 404 |
+| Invalid token. | 非ゲストで未ログイン or `current_user.email != user_mail`／セッション token 不一致 | 403 |
+| Could not download file. | 入力 `mail_address` が `user_mail` と不一致 | 403 |
+| Invalid verification info. | パスワード保護有効（`restricted_access.password_enable` かつ `extra_info.password_for_download`）で入力パスワード不正 | 403 |
+| Unexpected error occurred. | ログ保存/カウント加算/`extra_info` 更新中の例外 | 500 |
+
+分岐：ゲスト作成 token（`is_guest`）は `validate_onetime_guest` でメール確認画面へリダイレクトし、確認後 `file_download_onetime` でメール・パスワード照合。利用報告が必要な場合は `process_onetime_file_download` 内で `check_and_send_usage_report` を実行。正常時は `save_download_log`（`FileUrlDownloadLog` 追加）→ `increment_download_count` → `_download_file` の順。
+
+### 3. データモデル（テーブル／主要カラム）
+
+共通 mixin `DownloadMixin` を `FileOnetimeDownload` と `FileSecretDownload` が継承。共通メソッド：`increment_download_count`（+1。上限到達で `ValueError`）／`delete_logically`（`is_deleted=True`）／`fetch_active_urls`（未失効・未達・未削除の有効URL取得）。
+
+- `FileOnetimeDownload`（`file_onetime_download`）：`id` / `approver_id`(FK accounts_user) / `record_id` / `file_name` / `expiration_date` / `download_limit` / `download_count`(既定0) / `user_mail` / `is_guest`(既定False) / `is_deleted`(既定False) / `extra_info`(JSON。`password_for_download`・利用報告関連) ＋ `created`/`updated`。制約：`created < expiration_date` / `download_limit > 0` / `download_count <= download_limit`。
+- `FileSecretDownload`（`file_secret_download`）：`id` / `creator_id`(FK, NOT NULL) / `record_id` / `file_name` / `label_name` / `expiration_date` / `download_limit` / `download_count` / `is_deleted` ＋ `created`/`updated`。
+- `FileUrlDownloadLog`（`file_url_download_log`）：`id` / `url_type`(Enum SECRET/ONETIME) / `secret_url_id`(FK) / `onetime_url_id`(FK) / `ip_address`(INET) / `access_status`(Enum OPEN_NO/OPEN_DATE/OPEN_RESTRICTED) / `used_token` ＋ `created`/`updated`。CHECK制約：SECRET は `secret_url_id` 必須・`ip_address` 必須・status は OPEN_NO/OPEN_DATE；ONETIME は `onetime_url_id` 必須・`ip_address` NULL・status は OPEN_RESTRICTED。
+- 関連：`file_permission`（`FilePermission`）は制限公開の申請・承認状態（`status`：-1 初期 / 0 処理中 / 1 承認）を保持し `open_restricted` 判定で参照される。
+
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

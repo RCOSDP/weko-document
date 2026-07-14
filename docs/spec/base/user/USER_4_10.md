@@ -402,6 +402,35 @@ CNRIハンドルをregister_handleメソッドで付与する
 - Identifier Grant は action_id **7**（endpoint `identifier_grant`、`views.next_action`）。DOI検証 `weko_workflow.utils.check_doi_validation_not_pass` 等、実DOI付与は `saving_doi_pidstore`（Approval時）、CNRIは `register_hdl`→`weko_handle.api.Handle.register_handle`。config `IDENTIFIER_GRANT_LIST` / `IDENTIFIER_GRANT_SUFFIX_METHOD` / `WEKO_SERVER_CNRI_HOST_LINK` / `DOI_VALIDATION_INFO*`。
 - 実装補足（追記）：Prefix/Suffix/Enable の設定テーブル `doi_identifier`（model `Identifier`）は **weko-admin** にある（`repository` 列で判定）。`IdentifierHandle` は `weko_workflow.utils`。
 
+## 詳細リファレンス（v2.0.2 実装：DOI検証の分岐・エラー・データモデル）
+
+対象：`weko-workflow`（`views.py` / `utils.py` / `config.py` / `models.py`）、`weko-handle`、`weko-admin`。Identifier Grant アクション（`action_endpoint == 'identifier_grant'`）の DOI 付与を扱う。
+
+### 1. DOI種別と付与条件
+
+- DOI種別（`IDENTIFIER_GRANT_LIST`、値/表示名/リンクベースURL）：0 Not Grant ／ 1 JaLC DOI ／ 2 JaLC CrossRef DOI ／ 3 JaLC DataCite DOI ／ 4 NDL JaLC DOI。内部種別は `IDENTIFIER_GRANT_SELECT_DICT`（NotGrant='0'/JaLC='1'/Crossref='2'/DataCite='3'/NDL JaLC='4'）。
+- Prefix はリポジトリ単位で `weko_admin.models.Identifier`（table `doi_identifier`）に保持。`get_identifier_setting(community_id)` が `repository=community_id`（無ければ `Root Index`）で1件取得し、`jalc_doi` / `jalc_crossref_doi` / `jalc_datacite_doi` / `ndl_jalc_doi` を用いる。
+- Suffix 入力方式 `IDENTIFIER_GRANT_SUFFIX_METHOD`（既定0）：0 自動採番 / 1 半自動 / 2 自由入力。
+- 一時保存（`temporary_save==1`）は `ActionIdentifier`（`workflow_action_identifier`）へ入力を保存するのみ。本登録は `saving_doi_pidstore` が PIDStore（`pid_type='doi'`）へ登録し、`IdentifierHandle.update_idt_registration_metadata` でメタデータに値/種別を書く。
+
+### 2. DOI検証の分岐・エラー
+
+- 検証入口 `check_doi_validation_not_pass(item_id, activity_id, identifier_select[, without_ver_id])` → `item_metadata_validation`。戻り値：文字列＝致命メッセージ（`code:-1`/500）、True＝検証NG（error_list を Redis `updated_json_schema_{activity_id}`（TTL300秒）に保存し `previous_action(req=-1)` で差戻し）、False＝OK。差戻し後は `weko_items_ui.views.check_validation_error_msg` が Redis を読み該当項目を赤枠表示。
+- `item_metadata_validation` の事前分岐：`identifier_type=='0'` は検証スキップ／資源タイプ取得不可は `error_list['mapping']=['dc:type']`／item_type・resource_type 欠落は `required`／`without_ver_id` 指定で旧版と資源タイプの分類が異なる場合「You cannot change the resource type of items that have been grant a DOI.」／NDL JaLC は資源タイプ `doctoral thesis` 限定。
+- 必須プロパティ（種別×資源タイプ分類）：JaLC=title/type（ジャーナルは pageStart 追加）／Crossref=ジャーナルで title/type/sourceIdentifier/sourceTitle、書籍・学位論文で title/type／DataCite=研究データで title/type／NDL JaLC=title/type。本文URL(`fileURI`)はアイテムタイプ名 DDI ではスキップ、新規で `file_path` があれば追加しない、他は必須追加。必須が空なら「Cannot register selected DOI for current Item Type of this item.」。
+- プロパティ検証は `validation_item_property` → `validattion_item_property_required` ／ `...either_required`。参照定義は種別で切替：Crossref→`DOI_VALIDATION_INFO_CROSSREF`、DataCite→`DOI_VALIDATION_INFO_DATACITE`、他→`DOI_VALIDATION_INFO`（CROSSREF/DATACITE は publisher/creator 等で `xml:lang='en'` を要求）。エラー種別：`required`/`required_key`/`pattern`/`either`/`either_key`/`mapping`/`other`。
+- 取り下げ（`/withdraw`、`withdraw_confirm`）：パスワード欄に固定文字列 `DELETE` 入力が必要（不一致は500）。成功で `action_identifier_select` を `WEKO_WORKFLOW_IDENTIFIER_GRANT_IS_WITHDRAWING`(-2) に更新。差戻し時 -2 を検知すると `..._CAN_WITHDRAW`(-1) に戻す。
+- CNRI/Handle 付与：`action_endpoint` が `item_login`/`item_login_application` かつ `record.pid_cnri is None` かつ `WEKO_HANDLE_ALLOW_REGISTER_CNRI`（既定False）が真のとき `register_hdl` → `weko_handle.api.Handle.register_handle`。handle を `WEKO_SERVER_CNRI_HOST_LINK`（`http://hdl.handle.net/`）で前置し `IdentifierHandle.register_pidstore('hdl', handle)`。
+- 本登録 `saving_doi_pidstore`：`identifier_val`（完全DOI URL）と `doi_register_val` を切り出し、`register_pidstore('doi', ...)` ＋メタデータ更新、監査ログ `ITEM_ASSIGN_DOI`。値が空なら「Identifier datas are empty!」。
+
+### 3. データモデル
+
+- `workflow_action_identifier`（`ActionIdentifier`）：`id` / `activity_id` / `action_id`(FK) / `action_identifier_select`(既定0。取り下げ中 -2 / 取り下げ可 -1) / `action_identifier_jalc_doi` / `action_identifier_jalc_cr_doi` / `action_identifier_jalc_dc_doi` / `action_identifier_ndl_jalc_doi` ＋ created/updated。
+- `doi_identifier`（`Identifier`、weko-admin）：`id` / `repository`（既定 Root Index）/ `jalc_flag` / `jalc_crossref_flag` / `jalc_datacite_flag` / `ndl_jalc_flag`（各既定True）/ `jalc_doi` / `jalc_crossref_doi` / `jalc_datacite_doi` / `ndl_jalc_doi`（Prefix）/ `suffix` / 作成・更新者/日時。
+
+補足：`either_properties`（いずれか必須）は現行コードで全分岐コメントアウトされ実質無効。`DOI_VALIDATION_INFO_JALC` は定義のみで JaLC/NDL は既定 `DOI_VALIDATION_INFO` を参照。DOI付与済みは資源タイプの分類跨ぎ変更が禁止。検証NG状態は Redis（`updated_json_schema_{activity_id}`、TTL300秒）で保持。
+
+
 #### 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容   |
