@@ -56,6 +56,15 @@ OAI-PMHのアクセスコントロールについて記述します。
 | -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 利用可否 | ○                  | ○                    | ○                      | ×            | ×            | ×                        |
 
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本画面のロール別アクセス可否は、`weko_admin/ext.py` の `WekoAdmin.role_has_access`（`@app.before_request` の `is_accessible_to_role` が全 Flask-Admin ビューの `is_accessible`/`is_visible` を上書き）で判定される。判定は `weko_admin/config.py` の `WEKO_ADMIN_ACCESS_TABLE`（System Administrator は全許可、Repository Administrator は `WEKO_ADMIN_REPOSITORY_ACCESS_LIST`、Community Administrator は `WEKO_ADMIN_COMMUNITY_ACCESS_LIST`）に、当該ビューの endpoint 名が含まれるかで行う。ロールを持たないユーザー（登録／一般）およびゲストは全画面 ×。画面内の作成・編集・削除（CRUD）や一覧の絞り込みは各 ModelView の `can_create`/`can_edit`/`can_delete`/`get_query` による別レイヤで、コミュニティ範囲の絞り込みは `Community.get_repositories_by_user`／`WEKO_PERMISSION_SUPER_ROLE_USER`（System＋Repository）で行われる。
+
+### 実装上の訂正（v2.0.2）
+
+- ハーベスト設定の「作成済み設定値の一覧表示・編集・削除」の絞り込み条件は、実装（`HarvestSettingView.get_query` / `_index_filter`）では **設定の作成者ロールではなく、対象インデックスが当該ユーザーの管理対象コミュニティに属するか** で判定される（System＋Repository は全件表示）。判別条件のラベル「作成者ロール：コミュニティ管理者」は「対象インデックスが管理対象コミュニティに属する」に読み替えるのが正確。
+- ハーベスト（`harvestsettings`）・set（`oaiset`）はコミュニティリストにあり System ○ / Repository ○ / Community ○、Identify（`identify`）は repository リストのみで System ○ / Repository ○ / Community × と整合。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |

@@ -176,6 +176,16 @@
 
 ※ [インデックス閲覧権限](USER_ITEM_SEARCH_01.md#インデックス閲覧権限)を参照ください。
 
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本APIの認可は OAuth2 を基本とし、`require_api_auth(allow_anonymous=…)`（未認証許可可否）、`require_oauth_scopes(<scope>)`（トークン使用時のみスコープ検証）、`roles_required([...])`（未認証かつ guest_token 無しは 401）の組み合わせで判定される。ゲスト（未ログイン）可否は主に `allow_anonymous` と `roles_required` の有無で決まり、公開範囲は検索系では `weko_search_ui.query.get_permission_filter` で絞り込まれる。各エンドポイントの実ハンドラ・スコープは [API仕様（api カテゴリ）](../api/README.md) を参照。
+
+### 実装上の訂正（v2.0.2）
+
+- **`GET /api/records/`（バージョン無し）** は invenio-records-rest の recid エンドポイント（`list_route='/records/'`）であり、`item:read` スコープは**強制されない**（権限ファクトリ＋ES権限フィルタのみ）。「item:read スコープの有無」で可否が変わる記述はこのエンドポイントには当てはまらない。
+- **`PUT /api/records/`** に対応する実ハンドラは存在しない（invenio recid の PUT は `deny_all`）。アイテム編集の実経路は `PUT /deposits/redirect/<pid_value>`（`weko_deposit.rest.ItemResource.put`、`weko_items_ui.permissions.edit_permission_factory`）であり、意図するエンドポイントの再確認が必要。
+- バージョン付きの `GET /api/<version>/records`・`/records/<pid_value>`・`/records/<pid_value>/stats`・`POST /records/list` は `require_api_auth(allow_anonymous=True)`＋`item:read` で整合。`GET /api/index/` はデコレータ無し（権限フィルタのみ）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |

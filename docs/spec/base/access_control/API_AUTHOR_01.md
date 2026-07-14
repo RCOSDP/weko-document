@@ -54,6 +54,15 @@
 | -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 利用可否 | ○                 | ○                   | ○                      | ○            | ○            | ○                        |
 
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本APIの認可は OAuth2 を基本とし、`require_api_auth(allow_anonymous=…)`（未認証許可可否）、`require_oauth_scopes(<scope>)`（トークン使用時のみスコープ検証）、`roles_required([...])`（未認証かつ guest_token 無しは 401）の組み合わせで判定される。ゲスト（未ログイン）可否は主に `allow_anonymous` と `roles_required` の有無で決まり、公開範囲は検索系では `weko_search_ui.query.get_permission_filter` で絞り込まれる。各エンドポイントの実ハンドラ・スコープは [API仕様（api カテゴリ）](../api/README.md) を参照。
+
+### 実装上の訂正（v2.0.2）
+
+- 検索・追加・編集・削除の4エンドポイント（`author:search`/`create`/`update`/`delete`）の `roles_required` は System Administrator・Repository Administrator に加え **Community Administrator も含む**。したがってコミュニティ管理者を × とする記述は実装と異なり、正しくは System ○ / Repository ○ / Community ○（該当スコープ保有が前提）。
+- `GET /api/<version>/authors/count` はデコレータ無し（公開）で、スコープ・ロールを問わず取得可能。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
