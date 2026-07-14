@@ -453,6 +453,11 @@
         >
          block_user_list = str(new_eppn_list).replace('"', '\\"')
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_accounts.admin.ShibSettingView` ＋ `weko_accounts.views._adjust_shib_admin_DB`。
+- 実装補足（訂正）：Shibboleth ログインの有効/無効は config だけでなく `AdminSettings`（name=`shib_login_enable`、`{"shib_flg": bool}`）に永続化される（config 値はフォールバック）。デフォルトロール／属性マッピング／ブロックユーザーはそれぞれ `AdminSettings` の `default_role_settings` / `attribute_mapping` / `blocked_user_settings`。属性マッピングCLIは weko-admin の `admin_settings mapping_update`。config：`WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED` / `WEKO_ACCOUNTS_ATTRIBUTE_MAP` / `WEKO_ACCOUNTS_ROLE_LIST` 等。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

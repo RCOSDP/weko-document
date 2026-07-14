@@ -103,6 +103,10 @@ OAuth情報は以下のようなデータベースに保存する。
   ・「_redirect_uris」
   ・「_default_scopes」
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ（訂正）：`invenio_oauth2server.admin.ClientView`（model `Client`、テーブル `oauth2server_client`、`can_create=False`、`column_display_all_relations=True`）。処理概要中の `invenio_files_rest.admin.ClientView` はコピペ誤りで、正しくは `invenio_oauth2server.admin.ClientView`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

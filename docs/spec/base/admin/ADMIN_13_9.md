@@ -149,6 +149,10 @@
       - 「workflow_id」：workflow_workflowテーブルから取得した各レコードの「id」フィールドの値。１レコードにつき１idを設定する。
       - 「role_id」：それぞれのレコードに、accounts_roleテーブルに新規作成したレコードの「id」フィールドの値を設定する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_accounts.admin.RoleView`（model `Role`、テーブル `accounts_role`）。Users は Email によるAjax選択。`after_model_change` で `ACCOUNTS_WORKFLOW_ROLE_HIDE_FILTER`（既定 False）が True のとき `workflow_userrole` にレコードを追加。処理概要の「`access_actionssystemroles` に保存」は誤りで、保存先は `accounts_role`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

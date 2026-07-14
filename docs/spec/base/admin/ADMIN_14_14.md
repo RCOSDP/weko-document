@@ -40,6 +40,11 @@
 
 > 任意の設定値入力後、[保存（Save）]ボタンを押下することで、weko_admin.admin.SiteLicenseSettingsView.indexが呼び出され、そこで入力項目に問題がなければdb内のsitelicense_infoに入力した情報と更新時間（最初の一回は作成時間）が保存され、「Site license was successfully updated」というメッセージが上部に表示され、入力内容を保持した画面に遷移する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.SiteLicenseSettingsView.index`（GET/POST）→ `weko_records.api.SiteLicense.update`。成功メッセージ「Site license was successfully updated.」。サブリポジトリ対応（`SiteLicense.get_records(user=...)`）。
+- 実装補足（追記）：IP アドレス範囲は `sitelicense_info` ではなく別テーブル `sitelicense_ip_address`（`SiteLicenseIpAddress`、`start_ip_address` / `finish_ip_address` / `organization_id`）に保存。除外アイテムタイプは `ItemTypeNames.update` により `item_type_name.has_site_license` を設定。IP は `ipaddress.ip_address()` で検証。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

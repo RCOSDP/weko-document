@@ -248,6 +248,10 @@
   - sitemap_<page>.xml.gz  
     weko_sitemap.ext.pageでURLに入力しているページ番号に応じて、該当「page_number」から取得するデータを出力、weko_sitemap.ext.gzip_responseでデータを「gz」ファイルに圧力する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_sitemap.admin.SitemapSettingView`（endpoint 由来）。[Run] は `POST /update_sitemap`（`SitemapSettingView.update_sitemap`）で Celery タスク `weko_sitemap.tasks.update_sitemap` を `apply_async`（実際のDBクエリ・gz生成はタスク側）。状態表示は `get_task_status`（`/task_status/<task_id>`）。config：`WEKO_SITEMAP_ADMIN_TEMPLATE` / `WEKO_SITEMAP_TOTAL_MAX_URL_COUNT` / `WEKO_SITEMAP_CACHE_TIMEOUT` 等。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

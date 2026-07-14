@@ -263,6 +263,10 @@
                     
                       - 「is_restricted」に、is_restricted_user関数が返却する真偽値を設定する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.LogAnalysisSettings.index`（GET/POST）。保存は `LogAnalysisRestrictedIpAddress.update_table` ＋ `LogAnalysisRestrictedCrawlerList.update_or_insert_list`（テーブル `loganalysis_restricted_ip_address` / `loganalysis_restricted_crawler_list`）。制限判定は `weko_admin.api.is_restricted_user` → `_is_crawler`（`CRAWLER_REDIS_DB` / `CRAWLER_REDIS_TTL`）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

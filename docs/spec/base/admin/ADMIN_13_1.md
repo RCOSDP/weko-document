@@ -146,6 +146,10 @@
   - 「role_id」フィールド：accounts_roleテーブルで、画面上の「Role」で選択されたものと「name」が一致するレコードの「id」フィールド
 - 各actionは、関数へのアノテーションでアクセス制御に利用する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_access.admin.ActionRolesView`（model `ActionRoles`、テーブル `access_actionsroles`、カテゴリ User Management）。flask-admin ModelView。Action の選択肢は登録済みアクション（`current_access.actions`）から生成される（テーブルの列由来ではない）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

@@ -120,6 +120,10 @@
   - 「updated_userId」：上述のon_model_changeメソッドで作成したもの
   - 「updated_date」：上述のon_model_changeメソッドで作成したもの
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.IdentifierSettingView`（flask-admin ModelView、`can_delete=False`）。model `Identifier`（テーブル `doi_identifier`）。全角入力チェック（「Only allow half with 1-bytes character in input」）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

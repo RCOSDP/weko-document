@@ -102,6 +102,10 @@
     - カバーページ付きのPDFファイルは、以下の場所に作成される
       - tempfile.gettempdir関数の返り値+「/comb_pdfs/」
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：表示は `weko_records_ui.admin.PdfCoverPageSettingView.index`（GET のみ）。**保存は `weko_records_ui.views.set_pdfcoverpage_header`（`POST /admin/pdfcoverpage`）** が担い、`PDFCoverPageSettings.update(1, ...)` を実行。model `PDFCoverPageSettings`（テーブル `pdfcoverpage_set`、id=1）。ダウンロード時の合成は `fd._download_file` / `pdf.make_combined_pdf`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

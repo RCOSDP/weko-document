@@ -42,6 +42,10 @@
 > Google Scholar向けメタデータの出力の際は、weko_records_ui.utils.get_google_scholar_metaからweko_records_ui.models.InstitutionName.get_institution_nameを呼び出して  
 > institution_nameテーブルから機関名を取得する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_records_ui.admin.InstitutionNameSettingView`。model `InstitutionName`（テーブル `institution_name`、`set_institution_name` / `get_institution_name`）。テンプレート `INSTITUTION_NAME_SETTING_TEMPLATE`。機関名は `weko_records_ui.utils.get_google_scholar_meta` で使用される。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

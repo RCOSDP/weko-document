@@ -40,7 +40,7 @@
 
 -   メールテンプレート編集機能の有効・無効をコンフィグにて制御できるようにする。
 
-    -   制御に使用するコンフィグ値は、weko_admin/config.py内のWEKO_ADMIN_USE_MAIL_TEMPLATE_EDITである。デフォルトではTrueとなる。
+    -   ※実装(v2.0.2)では、`WEKO_ADMIN_USE_MAIL_TEMPLATE_EDIT`（既定 False）は定義のみでどこからも参照されていない。実際の画面／サイドメニュー表示は AdminSettings の `restricted_access.edit_mail_templates_enable` で制御される（下記「実装補足」参照）。
 
     -   メールテンプレート機能が無効の場合、サイドメニューから非表示にする。
 
@@ -112,3 +112,9 @@
  | [secret_url]                        | 非公開、エンバーゴデータ向けシークレットURL |
  | [landing_url]                       | 申請対象のランディングページURL             |
  | [restricted_research_plan]          | 研究計画（利用申請/二段階利用申請アイテム） |
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ（追記）：本画面の実体は **invenio-mail** の `MailTemplatesView`（endpoint `mailtemplates`。`index` / `save_mail_template` / `delete_mail_template`）。model `MailTemplates` / `MailTemplateUsers`（送信元は `MailConfig`）。テンプレート `INVENIO_MAIL_TEMPLATES_TEMPLATE`。
+- 実装補足（訂正）：有効化フラグは `WEKO_ADMIN_USE_MAIL_TEMPLATE_EDIT`（既定 False）ではない。当該 config は定義のみで**どこからも参照されていない**。実際の画面／サイドメニュー表示は `AdminSettings` の `restricted_access.edit_mail_templates_enable`（`ext.py` が endpoint `mailtemplates` を非表示化）で制御される。
+

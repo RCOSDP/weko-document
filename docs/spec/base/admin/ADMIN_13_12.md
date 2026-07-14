@@ -134,6 +134,10 @@
     - 「language」：画面上の「Language」で選択されたもの
   - 送信されたフォームデータによって、userprofiles_userprofileテーブルの内容が更新される
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_user_profiles.admin.UserProfileView`（model `UserProfile`、テーブル `userprofiles_userprofile`。`_displayname`＝`displayname`、`_username`＝`username`）。`can_edit`/`can_delete` は System Administrator 専用（property）、`can_create=False`。一覧・フォームは実行時に `WEKO_USERPROFILES_FORM_COLUMN` で列を絞り込む。`edit_view` は position 設定時に `get_role_by_position` でロールを再割当（`USERPROFILES_EMAIL_ENABLED` 等）。言語選択肢は `USERPROFILES_LANGUAGE_LIST`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

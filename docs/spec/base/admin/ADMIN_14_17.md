@@ -71,6 +71,11 @@
     
       - 接続確認に成功した場合に、api_certificateテーブルに「入力タイプ」（Input Type）の選択値のvalueと「api_code」フィールドが一致するレコードがあるかどうか確認して、あった場合にそのレコードを更新する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.WebApiAccount`（endpoint `webapiaccount`）＋ API `weko_admin.views.get_curr_api_cert`（`/get_curr_api_cert/<api_code>`）/ `save_api_cert_data`（POST）/ `get_api_cert_type`。model `ApiCertificate`（テーブル `api_certificate`、PK `api_code`）。
+- 実装補足（訂正）：接続確認関数は `weko_admin.utils.validate_certification`（「calidate_certification」は誤り）で、確認を行うのは `api_code=='crf'`（CrossRef）のみ。OA Assist（`oaa`）は接続確認なしで保存。保存は `utils.save_api_certification`（`update_api_cert`/`insert_new_api_cert`）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

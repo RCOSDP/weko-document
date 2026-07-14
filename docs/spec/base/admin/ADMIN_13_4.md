@@ -22,6 +22,10 @@
 
 ## 処理概要
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ（訂正）：連結アカウント識別子の実体は **invenio-oauthclient** の `UserIdentityView`（model `UserIdentity`、テーブル `oauthclient_useridentity`、`can_create=False`）。旧記述の `invenio_accounts` / `accounts_useridentity` は当バージョンでは誤り。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

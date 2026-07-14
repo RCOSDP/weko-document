@@ -64,7 +64,11 @@ Elasticsearchのマッピング変更や検索設定の変更を反映するた�
 {"has_errored": false}
 ```
 
-#### 更新履歴
+#### 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.ReindexElasticSearchView`（endpoint `reindex_es`、`@superuser_access.require` によりシステム管理者専用）。`index` / `reindex`（`POST /reindex`、`is_db_to_es` パラメータで「DBから再インデックス」/「ESから再作成」を切替）/ `check_reindex_is_running`（`/is_reindex_running`）。実処理は Celery タスク `reindex`（`weko_admin.tasks`）→ `weko_admin.utils.elasticsearch_reindex`。実行状態は `AdminSettings`（name=`elastic_reindex_settings`、`has_errored`）。
+
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

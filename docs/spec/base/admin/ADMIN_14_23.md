@@ -91,6 +91,10 @@ celery -A invenio_app.celery call weko_items_ui.tasks.bulk_post_item_to_research
 
 - weko-items-ui
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ（追記）：CRIS連携の**設定画面**は weko-admin の `CrisLinkageSettingView`（endpoint `cris_linkage`）。設定は `AdminSettings`（name=`researchmap_linkage_settings`。`researchmap_cidkey_contents` / `researchmap_pkey_contents` / `merge_mode`）。保存は `/save_keys` / `/save_merge_mode`。マージモード選択肢は `WEKO_ADMIN_SETTINGS_RESEARCHMAP_MERGE_MODES`。連携タスクは `weko_items_ui.tasks.bulk_post_item_to_researchmap`、config は `WEKO_ITEMS_UI_CRIS_LINKAGE_RESEARCHMAP_*`（weko-items-ui）。関連モジュール：weko-admin（画面）/ weko-items-ui（連携・config）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

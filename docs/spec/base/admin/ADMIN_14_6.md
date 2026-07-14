@@ -70,6 +70,10 @@
 - weko_admin.models.AdminSettings.getで「display_stats_settings」を取得して、「WEKO_ADMIN_STATS_SETTINGS_TEMPLATE」に沿って、flask_admin.base.BaseView.renderで更新した状態の統計情報表示設定画面を表示する。「WEKO_ADMIN_STATS_SETTINGS_TEMPLATE」：weko_admin.config
   - 'weko_admin/admin/stats_settings.html'
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.StatsSettingsView.index`（GET/POST）。保存先は `AdminSettings`（name=`display_stats_settings`、値 `{'display_stats': bool}`）。「admin_settings のカラム」ではなくレコード名＋サブキー `display_stats`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

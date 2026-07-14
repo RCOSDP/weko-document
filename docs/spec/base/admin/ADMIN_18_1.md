@@ -166,6 +166,12 @@ SAVEボタンがクリックされたときにエラーチェックを行い、A
 
 プロフィールの設定は、admin_settingsテーブルにJsonデータとして保存される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：表示 `weko_admin.admin.ProfileSettingView`（カテゴリ Advanced、メニュー名 "Profile Settings"）、保存 `weko_admin.views.send_profile_settings_save`（`POST /api/admin/profile_settings/save`、`@roles_required([System, Repository])`）。設定は `AdminSettings`（name=`profiles_items_settings`）。入力方式は `USERPROFILES_FORMAT_OPTION_LIST`（`text` / `select` / `identifier` / `phonenumber` / `position(other)`）、既定値は `WEKO_USERPROFILES_DEFAULT_FIELDS_SETTINGS`（各項目に `order` キーあり）。
+- 実装補足（訂正）：初期入力方式は item1=`position(other)`（`otherPosition` は誤り）、item2=`phonenumber`（`identifier` は誤り）。position の初期オプションは `WEKO_USERPROFILES_POSITION_LIST[1:]`。item13〜item16 の初期表示フラグは `False`（True は誤り）。university の初期ラベルは「大学・機関名」。
+- メニュー自体は `WEKO_USERPROFILES_CUSTOMIZE_ENABLED`（既定 **False**、`ext.py`）で表示制御される。関連モジュール：weko-admin（画面）/ weko-user-profiles（config・消費側）。本機能は [制限公開 RESTRICTED_ACCESS_05](../access_control/RESTRICTED_ACCESS_05.md) と重複する。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

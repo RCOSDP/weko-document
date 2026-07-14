@@ -44,6 +44,10 @@
 
 - 任意の設定をした後、「保存」ボタンを押下する。この操作によって、weko_admin.admin.ItemExportSettingsView.indexメソッドがPUTで呼び出され、AdminSettings.updateでadmin_settingsテーブルのキーitem_export_settingsに設定が保存される。そして、更新された設定と"Successfully Changed Settings"を画面に表示する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.ItemExportSettingsView.index`（GET/POST）。保存先は `AdminSettings`（name=`item_export_settings`、`{'allow_item_exporting': bool, 'enable_contents_exporting': bool}`）。既定 `WEKO_ADMIN_DEFAULT_ITEM_EXPORT_SETTINGS`。最大出力件数は `weko_items_ui.config.WEKO_ITEMS_UI_DEFAULT_MAX_EXPORT_NUM`（既定100、ロール別上限 `WEKO_ITEMS_UI_MAX_EXPORT_NUM_PER_ROLE`）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

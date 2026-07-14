@@ -86,6 +86,10 @@
     
       - admi）："の場所にある各ファイルについて、最終更新日時から（"pdf_ttl"の値）秒以上経過していた場合に、invenio_files_rest.storage.pyfs. remove_dir_with_file関数によって削除する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.FilePreviewSettingsView`。保存先は `AdminSettings`（name=`convert_pdf_settings`）。config：`FILES_REST_DEFAULT_PDF_SAVE_PATH`（既定 `tempfile.gettempdir()`。通常 `/tmp`）/ `FILES_REST_DEFAULT_PDF_TTL`（3600秒）。期限切れ削除は Celery `invenio_files_rest.tasks.check_file_storage_time`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

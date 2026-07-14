@@ -43,6 +43,10 @@
 - 色を選択し、「保存」ボタンを押下する。この操作によって、weko_admin.admin.StyleSettingView.indexがPUTで呼び出され、背景１で選択されている色の数値を変数WEKO_THEME_INSTANCE_DATA_DIRに保存されているディレクトリの_variables.scssに保存する。
 - なお、変数WEKO_THEME_INSTANCE_DATA_DIRはweko_theme.config.pyに保存されている変数である。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.StyleSettingView.index`。**保存は POST**（`@expose('/', methods=['GET','POST'])`。PUT ではない）。`WEKO_THEME_INSTANCE_DATA_DIR` 配下の `_variables.scss` の `$body-bg` を書き換え、成功メッセージ「Successfully update color.」。権限 `update-style-action`。関連モジュール：weko-admin（画面実体）/ weko-theme（データ配置）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

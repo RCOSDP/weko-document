@@ -37,6 +37,10 @@
   - 「user_id」フィールド：画面上の「User」で選択されたユーザーのid
 - 各actionは、関数へのアノテーションでアクセス制御に利用する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_access.admin.ActionUsersView`（model `ActionUsers`、テーブル `access_actionsusers`）。一覧の「Email」は `user.email` リレーションによる表示で、当テーブルの列ではない。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

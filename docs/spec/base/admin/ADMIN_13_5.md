@@ -22,6 +22,10 @@
 
 ## 処理概要
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_oauthclient.admin.RemoteTokenView`（model `RemoteToken`、テーブル `oauthclient_remotetoken`）。列：`id_remote_account` / `token_type` / `access_token` / `secret`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

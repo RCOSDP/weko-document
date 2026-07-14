@@ -110,6 +110,10 @@ docker-compose exec web invenio language create --active "言語コード" "言�
     - lang_name：言語名
     - sequence：表示順（対象言語リストにある場合は0固定）
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：画面は `weko_admin.admin.LanguageSettingView.index`、取得/保存は API `weko_admin.views.get_lang_list` / `save_lang_list`。model `AdminLangSettings`（テーブル `admin_lang_settings`、列 `lang_code` / `lang_name` / `is_registered` / `sequence` / `is_active`）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

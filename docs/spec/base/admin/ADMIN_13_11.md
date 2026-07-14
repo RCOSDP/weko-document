@@ -180,6 +180,11 @@
 
 - 送信されたフォームデータによって、accounts_userテーブルとaccounts_userroleテーブルの内容が更新される
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_accounts.admin.UserView`（model `User`、テーブル `accounts_user` / `accounts_user_role`）。パスワードは `pwd.genword(12)` を既定とし `on_model_change` でハッシュ化（二重ハッシュ回避）。作成時に通知チェックでパスワードリセット案内を送信。
+- 権限：編集・削除・有効化／無効化は `_admin_roles=[System Administrator]` により **System Administrator 専用**（`can_edit`/`can_delete`/`can_activate`/`can_inactivate`）。一覧の絞り込みは `get_query`/`get_count_query` で、`WEKO_PERMISSION_SUPER_ROLE_USER`（System＋Repository）は全件、Community/サブリポジトリ管理者は `Community.get_repositories_by_user` の範囲に限定。フォームには Roles とは別に **Groups**（`_groups_` ロール）欄があり、Roles ドロップダウンは `_groups_` ロールを除外する。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

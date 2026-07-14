@@ -67,6 +67,10 @@ E-mailの表示/非表示を設定する
     - 現在の設定値：
       - EMAIL_DISPLAY_FLG = True
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_records_ui.admin.ItemSettingView.index`（GET/POST）。保存先は `AdminSettings`（name=`items_display_settings`、サブキー `items_display_email` / `item_display_open_date`）。メール表示判定は `weko_records_ui.utils.is_show_email_of_creator`。config：`EMAIL_DISPLAY_FLG` / `OPEN_DATE_DISPLAY_FLG` / `OPEN_DATE_DISPLAY_VALUE` / `OPEN_DATE_HIDE_VALUE`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

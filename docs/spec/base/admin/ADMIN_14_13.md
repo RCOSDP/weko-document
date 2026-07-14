@@ -169,6 +169,11 @@
   - 登録するサイト情報を入力後に[保存（Save）]ボタン押下すると、weko_admin.views.update_site_infoが呼び出され、その中でweko_admin.utils.validation_site_infoを使用し、入力値のエラーチェックを行う。  
     > 入力値に問題がなければ、db内のsite_infoテーブルに情報が保存される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：表示 `weko_admin.admin.SiteInfoView.index`、保存 `weko_admin.views.update_site_info`（`utils.validation_site_info` → `SiteInfo.update`、テーブル `site_info`。`roles_required([System, Repository])`）。保存後 `overwrite_the_memory_config_with_db` で in-memory config を更新。
+- 実装補足（訂正）：Google トラッキングIDは admin_setting ではなく `site_info` テーブルの列 `google_tracking_id_user` に保存（`GOOGLE_TRACKING_ID_USER` は config フォールバック）。AddThis（`addthis_user_id`）列は非推奨・未使用。OGP 画像は `invenio_files_rest.utils.update_ogp_image`（`/api/admin/ogp_image`）、ファビコンは `favicon`/`favicon_name`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

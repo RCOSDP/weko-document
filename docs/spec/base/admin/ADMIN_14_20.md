@@ -578,6 +578,11 @@
 
           - scripts/instance.cfg で定義されている場合は、そちらの設定を優先する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.RestrictedAccessSettingView`（endpoint `restricted_access`）。保存は `views.save_restricted_access`（`/restricted_access/save`）→ `utils.update_restricted_access`。設定は `AdminSettings`（name=`restricted_access`。フィールド：`item_application` / `preview_workflow_approval_enable` / `edit_mail_templates_enable` / `display_request_form` / `password_enable` / `secret_URL_file_download` / `content_file_download` / `usage_report_workflow_access` / `terms_and_conditions` / `error_msg`）。
+- 実装補足（追記）：画面（メニュー）の表示可否は `WEKO_ADMIN_DISPLAY_RESTRICTED_SETTINGS`（既定 **True**、`ext.py`）で制御され、各セクションの表示は `WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG`（既定 **False**）で制御される（両者は別物）。「無期限」は `WEKO_ADMIN_RESTRICTED_ACCESS_MAX_INTEGER`（9999999）。`edit_mail_templates_enable=False` で保存すると `reset_flow_action_roles_restricted_access` が走る。error_msg 既定は `WEKO_ADMIN_RESTRICTED_ACCESS_ERROR_MESSAGE`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

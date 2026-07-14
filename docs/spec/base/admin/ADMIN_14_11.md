@@ -220,6 +220,11 @@
 > 
 > 検索項目設定から新規の検索項目を作成した場合は、search_managementテーブルのsearch_conditionsが変更される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.SearchSettingsView.index`。表示件数・ソート・検索条件・表示制御は model `SearchManagement`（テーブル `search_management`、`search_setting_all` JSON 集約列あり）。インデックスツリーの Width/Height は `IndexStyle`。
+- 実装補足（訂正）：「Search Author Setting（著者検索設定）」は `search_management` ではなく `AdminSettings`（name=`items_display_settings`、フィールド `items_search_author`）に保存される。既定は config `ITEM_SEARCH_FLG`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

@@ -104,6 +104,10 @@ OAuthアプリケーショントークン画面の処理について（以下ト
   ・「is_personal」
   ・「is_internal」
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ（訂正）：`invenio_oauth2server.admin.TokenView`（model `Token`、テーブル `oauth2server_token`、`can_create=False`）。処理概要中の `invenio_files_rest.admin.TokenView` はコピペ誤りで、正しくは `invenio_oauth2server.admin.TokenView`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

@@ -44,6 +44,10 @@
 
 - 「更新」ボタンを押下すると、weko_index_tree.admin.IndexLinkSettingView.indexメソッドがPOSTで呼び出され、ウェブ上で選択した「有効」または「無効」に応じて、index_styleテーブルの列「index_link_enabled」を設定する。成功したらweb上側に「IndexLink flag was updated」と表示する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_index_tree.admin.IndexLinkSettingView.index`（GET/POST）。保存先は model `IndexStyle`（テーブル `index_style`、列 `index_link_enabled`。固定 id を取得、無ければ `IndexStyle.create`）。成功メッセージ「IndexLink flag was updated.」。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

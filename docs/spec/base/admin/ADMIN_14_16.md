@@ -113,6 +113,10 @@
 
 デフォルト送信元は「X-Google-Original-From: 」ヘッダに設定される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_mail.admin.MailSettingView`（クラス名は `MailSettingView`。「MailSettingVIew」は綴り誤り）。`index`（GET/POST）と `send_test_mail`。設定は `MailConfig.get_config` / `set_config`（テーブル `mail_config`）。「ドメイン（Domain）」欄は DB 列 `mail_local_hostname`（SMTP HELO）に対応。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|Version|更新内容|

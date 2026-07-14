@@ -34,8 +34,12 @@
   - 「action」フィールド：画面上の「Action」で選択されたもの
   - 「exclude」フィールド：画面上の「Deny」にチェックが入っていたらTrue、そうでなければFalse
   - 「argument」フィールド：画面上の「Argument」の入力値
-  - 「role」フィールド：画面上の「System Role」で選択されたもの
+  - 「role_name」フィールド：画面上の「System Role」で選択されたもの（実カラム名は `role_name`）
 - 各actionは、関数へのアノテーションでアクセス制御に利用する。
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_access.admin.ActionSystemRolesView`（テーブル `access_actionssystemroles`）。実カラムは `role_name`（`role` ではない）で、登録済みシステムロール（`any_user` / `authenticated_user` 等）に対して検証される。
 
 ## 更新履歴
 

@@ -54,7 +54,11 @@
     - 出力されるtsvファイルのファイル名: `user_activity_logs_yyMMddhhmmss.tsv`
   - エクスポート中にcheck_celery_is_runメソッド、get_export_statusメソッドでエクスポートに必要な情報がとれない場合、ダウンロードURLは表示されない。
 
-#### 更新履歴
+#### 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_logging.admin.ExportLogAdminView`（endpoint `logs/export`）。`index` / `export_user_activity_log`（`POST /export`）/ `check_export_status` / `cancel_export` / `download_user_activity_log`（`/download`、`export_log.zip`）。エクスポートは Celery `export_all_user_activity_logs`（`weko_logging.tasks`）。ステータスは `UserActivityLogUtils.get_export_task_status`（`get_export_status` は誤り）。Celery 稼働確認は `weko_search_ui.tasks.check_celery_is_run`。
+
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

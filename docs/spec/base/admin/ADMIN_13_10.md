@@ -76,6 +76,10 @@
 - 「Delete selected sessions」によってレコードを削除する場合は、invenio_accounts.admin.SessionActivityView.action_deleteメソッドが呼び出される
   - 現在のセッションのID（session.sid_s）と選択した各レコードのSession IDとを比較して、同じであるレコードがあった場合には削除せずエラーメッセージを表示する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_accounts.admin.SessionActivityView`（model `SessionActivity`、テーブル `accounts_user_session_activity`、`can_create/can_edit/can_view_details=False`）。一覧と削除のみ。現在のセッションは削除不可（「You could not remove your current session」）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
