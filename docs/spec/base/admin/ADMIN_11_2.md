@@ -101,6 +101,11 @@
   - 該当レコードのJSONが「null」だった場合は処理を終了する
   - invenio_records.api Record.deleteメソッドによって、該当レコードのJSONを「null」にする
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_records.admin.RecordMetadataModelView`（テーブル `records_metadata`、`record_adminview`、カテゴリ Records）。`can_create=False` / `can_edit=False` / `can_delete=True` / `can_view_details=True`。`status` は `PersistentIdentifier`（pid_type='recid'）を参照する hybrid property。
+- 実装補足（訂正）：論理削除・復元は **`weko_records_ui.utils`** の `soft_delete` / `restore` を呼ぶ（weko-records ではない）。詳細画面の Delete/Restore ボタンは v2.0.2 では正常に機能する（旧 v0.9.22 の「必ずエラー」記述は古い）。ロック時は `code=-1, is_locked=True` を返す。`delete_model` は `json is None` を早期 return、それ以外は `Record.delete()`（`json=None` 化のソフト削除）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

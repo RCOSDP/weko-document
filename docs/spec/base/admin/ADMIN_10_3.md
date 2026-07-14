@@ -180,6 +180,11 @@ resyncを利用して外部機関からデータを収集する
   - handleGetLogs関数の中で、invenio_resourcesyncclient.admin.AdminResyncClient.get_logsメソッドによってresync_logsテーブルからログを取得する
   - 取得したテーブルのend_timeフィールドが空だった場合には、3000ミリ秒後に再度handleGetLogs関数を実行する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ（訂正）：Resync の実体は **invenio-resourcesyncclient** の `AdminResyncClient`（endpoint `resync`）。`create_resync`（`/create`、重複チェック無しで作成）/ `update_resync` / `delete_resync` / `get_list` / `get_logs`。Sync=`run_sync`、Import=`run_import`、実行ON/OFF=`toggle_auto`、リポジトリ取得=`get_repository`。同期は Celery `resync_sync`（`run_sync_import`/`run_sync_auto`）。
+- 実装補足：テーブル `resync_indexes` / `resync_logs`。config：`INVENIO_RESYNC_SAVE_PATH`（既定 `/tmp/resync/`）/ `INVENIO_RESYNC_LOGS_STATUS` / `INVENIO_RESYNC_MODE` ほか。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

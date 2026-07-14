@@ -52,6 +52,11 @@
 
 - .query.pyにてget_custom_sortメソッドが呼び出され、Elasticsearch用のscriptを作成し、それをElasticsearchインスタンスに渡すことで、カスタムソートの設定どおりに検索結果をソートする。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_search_ui.admin.ItemManagementCustomSort`（endpoint `items/custom_sort`）＋ `ItemManagementBulkSearch`。保存は `POST /admin/items/custom_sort/save`（`save_sort`）→ `weko_index_tree.api.Indexes.set_item_sort_custom`。ソート適用時は `weko_search_ui.api.SearchSetting.get_custom_sort`（`query.py` ではない）が ES painless スクリプトソートを生成。
+- 実装補足（訂正）：非数値・0以下の値は None 変換ではなくマップから除外される。保存時の ES 同期はコメントアウトされており、カスタムソートはクエリ時に DB 列（`Index.item_custom_sort`、JSONB）を読んで適用する。画面テンプレートは weko-theme の `WEKO_THEME_ADMIN_ITEM_MANAGEMENT_TEMPLATE`。専用のロールガードは無い。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

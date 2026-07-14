@@ -86,6 +86,11 @@ Affiliation ID画面のテンプレートを設定する。
 - 追加時は、追加したい情報を最下部のテキストボックスに入力後に[追加（Add）]ボタンを押すことで、weko_authors.views.create_affiliationが呼び出され、db内のauthors_affiliation_settingsテーブル内に情報が追加される。
 - Affiliation IDとコミュニティとの関連付けは、中間テーブル`author_affiliation_community_relations`により多対多の関係で管理される。各操作時には、ログインユーザーが所属するコミュニティに紐づくAffiliation IDのみを対象として処理が行われる。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_authors.views`（`/authors/search_affiliation`（GET）,`/edit_affiliation`（POST）,`/delete_affiliation/<id>`（DELETE）,`/add_affiliation`（PUT））。テーブル `authors_affiliation_settings`（`AuthorsAffiliationSettings`）＋中間 `author_affiliation_community_relations`。テンプレート `WEKO_AUTHORS_ADMIN_AFFILIATION_TEMPLATE`。
+- config（訂正）：`WEKO_AUTHORS_LIST_SCHEME_AFFILIATION` は `['ISNI','GRID','Ringgold','kakenhi','ROR','Other']`（ROR 追加）、`WEKO_AUTHORS_AFFILIATION_IDENTIFIER_ITEM_OTHER` は `5`。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

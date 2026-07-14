@@ -127,6 +127,11 @@ WEKO3の必須項目である「公開日」についてもマッピングする
           'weko_itemtypes_ui/admin/create_mapping.html'  
           """Mapping template for the item type page."""
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_itemtypes_ui.admin.ItemTypeMappingView`（endpoint `itemtypesmapping`）。メソッド：`index` / `mapping_register` / `schema_list`。既定スキーマは `jpcoar_mapping`。
+- テーブル：`item_type_mapping`（+ SQLAlchemy-Continuum による `item_type_mapping_version`）。重複マッピングは `check_duplicate_mapping`（utils）で検出。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容      |

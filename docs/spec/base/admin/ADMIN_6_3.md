@@ -120,6 +120,11 @@
       - 自動送信設定：
         - `auto_send_flag` の値に基づき、ラジオボタンの選択状態を更新する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.SiteLicenseSendMailSettingsView`（endpoint `sitelicensesendmail`、`GET/POST /`）。手動送信は `weko_admin.views.manual_send_site_license_mail`（`POST /api/admin/sitelicensesendmail/send/<start_month>/<end_month>`）。設定取得は `GET /api/admin/get_site_license_send_mail_settings`。集計は `QueryCommonReportsHelper.get(event='site_access')`。
+- 実装補足（訂正）：自動送信設定は `AdminSettings`（`site_license_mail_settings`）に **repo_id をキーとするネスト dict** で保存される（サブリポジトリ対応）。テーブル `sitelicense_info`。画面テンプレート `WEKO_ADMIN_SITE_LICENSE_SEND_MAIL_TEMPLATE`。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

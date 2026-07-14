@@ -82,6 +82,11 @@
 
 本画面は、flaskのModelViewでFeaturedCommunityモデル（コミュニティと開始日を保持するモデル）のメンテナンスを行う機能である。設定された内容は、トップページの表示設定が「コミュニティ」表示の場合に、コミュニティ一覧画面の表示に使用される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_communities.admin.FeaturedCommunityModelView`（テーブル `communities_featured_community`、カテゴリ Communities）。`can_create`/`can_edit`/`can_delete`/`can_view_details=True`。`column_list=('community','start_date')`。
+- 実装補足：本 ModelView にロール絞り込み（`get_query` 等）は無く、アクセス制御は invenio-admin の権限機構（`role_has_access` / `WEKO_ADMIN_ACCESS_TABLE`）に依存する。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

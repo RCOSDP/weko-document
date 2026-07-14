@@ -104,6 +104,11 @@ ID Prefix画面のテンプレートを設定する
 - 追加時は、追加したい情報を最下部のテキストボックスに入力後に[追加（Add）]ボタンを押すことで、weko_authors.views.create_prefixが呼び出され、db内のauthors_prefix_settingsテーブル内に情報が追加される。
 - 外部著者ID Prefixとコミュニティとの関連付けは、中間テーブル`author_prefix_community_relations`により多対多の関係で管理される。各操作時には、ログインユーザーが所属するコミュニティに紐づくPrefixのみを対象として処理が行われる。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_authors.views`（`/authors/search_prefix`（GET）,`/edit_prefix`（POST）,`/delete_prefix/<id>`（DELETE）,`/add_prefix`（PUT））。テーブル `authors_prefix_settings`（`AuthorsPrefixSettings`）＋中間 `author_prefix_community_relations`。scheme は一意制約。URL の `#` は識別子で置換（`views.mapping`）。WEKO（idType=1）は編集不可。
+- config（訂正）：`WEKO_AUTHORS_LIST_SCHEME` に `e-Rad_Researcher` と `researchmap` が追加（全13）、`WEKO_AUTHORS_INDEX_ITEM_OTHER` は `12`。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

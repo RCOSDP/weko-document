@@ -411,6 +411,11 @@
 - [restricted_download_link]：データファイルのURL
 - [restricted_expiration_date]：利用申請アイテムタイプ項目の承認日から【Administration>設定（Setting）>Restricted Access】のExpiration Date経過した日付
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_workflow.admin.FlowSettingView`（endpoint `flowsetting`）。`index` / `flow_detail` / `new_flow`（flow_id='0' で作成、それ以外は `update_flow`）/ `del_flow` / `upt_flow_action`。アクション保存成功「Updated flow action successfully」。使用中フローは削除不可「Cannot be deleted because flow is used.」。名称重複は「Flow name is already in use.」（400）。
+- 実装補足：アイテム登録者 value=`WEKO_WORKFLOW_ITEM_REGISTRANT_ID`（-2）、リクエスト送信先 value=`WEKO_WORKFLOW_REQUEST_MAIL_ID`（-3）。選択可能アクションは `WEKO_WORKFLOW_ACTIONS`（Start/End/Item Registration/Approval/Item Link/Identifier Grant）、削除可能は `WEKO_WORKFLOW_DELETION_ACTIONS`（Start/End/Approval）。制限公開フローの編集は `_check_auth` によりシステム管理者限定。「プロパティを指定」候補は `get_specified_properties`（`"approval":true` プロパティ）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

@@ -223,6 +223,11 @@ OAI-PMHハーベスト実行履歴の表示件数を設定
 - 作成タブ・編集タブ  
   invenio.oaiharvester.admin.HarvestSettingView.edit_viewが呼び出され、作成画面もしくは編集画面へと遷移する。必須項目を入力後、保存処理をすることでdb内のharvester_settingsが更新される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_oaiharvester.admin.HarvestSettingView`（endpoint `harvestsettings`、テーブル `harvest_settings` / `harvest_logs`）。実行は `run`（`run_harvesting.apply_async`）、`pause`（Celery revoke、ステータス Suspended）、`clear`（status=Cancel）、`get_logs` / `get_log_detail` / `set_schedule`。作成タブは既定 `create_view`、編集は `edit_view`。
+- 実装補足（訂正）：操作ボタンは Run / Resume / Pause / Clear（「Suspected」は誤記＝Pause）。Resume は専用エンドポイントを持たず `run` を再利用する。`repository_name` は unique・最大20文字。履歴表示件数は `OAIHARVESTER_NUMBER_OF_HISTORIES`（20）。一覧はサブリポジトリ権限で絞り込み（`get_query`/`_index_filter`）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

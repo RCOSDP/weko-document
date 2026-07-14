@@ -143,6 +143,10 @@
   ・「created」
   ・「updated」
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_files_rest.admin.ObjectModelView`（モデル `ObjectVersion`、テーブル `files_object`、endpoint `objectversion`）。`can_create/can_edit/can_delete=False`・`can_view_details=True`（閲覧のみ）。`column_searchable_list=('key',)`。詳細では `file_id` / `file.checksum` / `file.storage_class` / `is_deleted` も表示。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

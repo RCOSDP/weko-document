@@ -90,6 +90,11 @@
   ・「size」
   ・「completed」
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_files_rest.admin.MultipartObjectModelView`（テーブル `files_multipartobject`、endpoint `multipartobject`）。`can_create/can_edit/can_delete=False`・`can_view_details=True`（閲覧のみ）。`column_default_sort=('upload_id', True)`。
+- 実装補足（要検証）：本 ModelView には `can_*` のロール上書きも `get_query` のロール絞り込みも無く、リポジトリ管理者アクセス（更新履歴 W2023-42）はコード上の裏付けが無い。アクセスは invenio-admin の権限機構に依存する。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

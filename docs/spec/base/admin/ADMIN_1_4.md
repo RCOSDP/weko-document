@@ -295,6 +295,11 @@
         - 設定キー: WEKO_ITEMTYPES_UI_DEFAULT_PROPERTIES_ATT = 'system_prop'  
           """Attribute to detect property is default property which is not shown at properties screen."""
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_itemtypes_ui.admin.ItemTypePropertiesView`（endpoint `itemtypesproperties`）。`index` / `get_property`（`/<property_id>`）/ `custom_property_new`（POST）。保存成功「Saved property successfully.」失敗「Failed to save property.」。
+- テーブル：`item_type_property`（`ItemTypeProperty`、`weko_records.models`）。システムプロパティ（`system_prop`）は一覧非表示、課金ファイルプロパティ（`billing_file_prop`）は `BillingPermission` が有効な場合のみ表示。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容    |

@@ -313,6 +313,11 @@ Author ID編集画面のテンプレートを設定する。
 - 検索テキストボックスに、任意の文字列を入力し検索ボタンを押下すると、weko_authors.views.getが呼び出され、同メソッド内のsearch_keyに入力した文字列が代入され、検索が行われたのち、検索対象のみがauthorテーブルから取り出されて出力される。
 - 著者の統合時は、weko_authors.views.gatherByIdが呼び出され、統合元(Origin)にチェックを入れた著者のauthorテーブル内のgather_flgが1に変更される。また、統合の際にweko_deposit.tasks.items_by_authorInfoが呼び出され、db内のitem_metadataテーブルのjsonカラム内の、統合元（Origin）に選択された著者に紐付いていたアイテムのWEKO著者IDと外部著者IDを統合先（Target）に選択された著者の情報で更新し、それに関連するES内のメタデータのマッピングの情報も更新する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_authors.admin.AuthorManagementView`（画面描画）＋ `weko_authors.views`（`/authors/search`,`/add`,`/edit`,`/delete`,`/gather`,`/search_edit`。いずれも POST）。初期表示・検索は Elasticsearch（`WEKO_AUTHORS_ES_INDEX_NAME`＝`{prefix}-authors`）を参照する（DB 直読ではない）。
+- 実装補足（訂正）：WEKO 著者IDの採番は DB シーケンス `authors_id_seq`（max+1 ではない）で、作成時に `idType:"1"`（WEKO）を自動付与。名寄せ（統合）タスクは `weko_deposit.tasks.update_items_by_authorInfo`。論理削除カラムは `is_deleted`。中間テーブル `author_community_relations`。アイテムにリンク済みは削除不可（`get_count_item_link`）。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

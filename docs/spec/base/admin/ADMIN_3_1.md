@@ -400,6 +400,12 @@
   - キャッシュについて
       - インデックスを作成、編集、削除、移動した際に、weko_index_tree.utils.save_index_trees_to_redisメソッドを用いて、インデックスツリーの日英の親子関係をredisに保存している。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_index_tree.admin.IndexEditSettingView.index`（画面）＋ REST。追加/編集/削除は `weko_index_tree.rest.IndexActionResource.post/put/delete`（→ `Indexes.create/update`、`utils.perform_delete_index` は論理削除 `is_deleted`）、移動は `IndexTreeActionResource.put`（→ `Indexes.move`、`parent`/`position` 更新）。キャッシュ更新は `save_index_trees_to_redis`。
+- 再帰フラグ（訂正）：再帰対象は #10 `recursive_public_state` / #18 `recursive_coverpage_check` / #21 `biblio_flag` / #23 `recursive_browsing_role` / #25 `recursive_browsing_group` / #27 `recursive_contribute_role` / #29 `recursive_contribute_group`（#8 public_state・#16 rss_status には再帰なし）。カラム名は `recursive_coverpage_check`（`recursive_coverpage_state` は誤り）。テーブルには `is_deleted` / `owner_user_id` / `cnri` / `index_url` / `harvest_spec` 等の列もある。
+- config（訂正）：`WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING/CONTRIBUTE_PERMISSION` は **weko-accounts/config.py** に定義。関連モジュール（追記）：weko-accounts / weko-handle / weko-workflow / weko-logging。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

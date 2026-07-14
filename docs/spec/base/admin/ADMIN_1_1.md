@@ -322,6 +322,12 @@
           False: 強制インポートを無効にする
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_itemtypes_ui.admin.ItemTypeMetaDataView`（endpoint `itemtypesregister`、`/admin/itemtypes`）。主なメソッド：`index` / `render_itemtype` / `delete_itemtype` / `register` / `restore_itemtype` / `get_property_list` / `export` / `item_type_import`。
+- モデル/テーブル：`ItemType`（`item_type`）/ `ItemTypeName`（`item_type_name`）/ `ItemTypeMapping`（`item_type_mapping`）/ `ItemTypeProperty`（`item_type_property`）/ `ItemTypeEditHistory`（`item_type_edit_history`）（いずれも `weko_records.models`）。エクスポートは上記4種のJSONを含むZIP（`ItemType_export.zip`）。
+- 実装の実メッセージ：登録成功「Successfuly registered Item type.」（コードのタイプミスのまま）、インポート成功「The item type imported successfully.」、インポート失敗「Failed to import the item type.」。強制インポートは「未登録プロパティ検出時に `Unregistered properties detected.`」で、ID重複は `updated` 時刻の比較でスキップ（`duplicated_props` として返却）。「The property name already exists.」というチェックは存在しない。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                |

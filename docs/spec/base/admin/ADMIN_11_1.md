@@ -89,6 +89,10 @@
   - パス：<https://github.com/inveniosoftware/invenio-pidstore/blob/v1.0.0/invenio_pidstore/admin.py#L46-L75>
 - pidstore_pidテーブルのstatusフィールドについては、値のかわりにinvenio_pidstore.models.PIDStatusクラスで関連付けられた文字列を表示する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足：invenio-pidstore（本リポジトリには vendoring されておらず、upstream 依存）の Flask-Admin `ModelView`（テーブル `pidstore_pid`、endpoint `persistentidentifier`）。`status` は `invenio_pidstore.models.PIDStatus`。WEKO で使用される pid_type：`oai` / `depid` / `recid` / `parent` / `actid` / `doi` / `hdl` / `hvstid`。※モジュールが同梱されないためソース照合は upstream 前提。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

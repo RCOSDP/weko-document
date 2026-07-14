@@ -39,6 +39,11 @@
 - 情報の入力後に[保存（Save）]ボタン押下で、weko_workflow.admin.WorkSpaceWorkFlowSettingView.indexが呼び出される。
   - 入力された設定値は admin_settingsテーブルの nameカラムの値が「workspace_workflow_settings」であるレコードに保存される。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_workflow.admin.WorkSpaceWorkFlowSettingView.index`（endpoint `workspaceworkflowsetting`、GET 表示・POST 保存とも `index`）。成功メッセージ「WorkSpace WorkFlow Setting was updated.」。
+- 実装補足：保存先は `AdminSettings`（`workspace_workflow_settings`、`item_type_id` / `work_flow_id` / `workFlow_select_flg`）。ラジオ `registrationRadio` の '1' が「直接登録」（`workFlow_select_flg='1'`）、それ以外が「ワークフロー経由」。アイテムタイプ一覧は harvesting を除外。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

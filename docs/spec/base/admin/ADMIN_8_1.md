@@ -204,6 +204,11 @@
   - 編集（Edit）タブでの保存時はidを編集できないため、作成（Create）タブでの保存時のみにバリデーションチェックしている
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_communities.admin.CommunityModelView`（テーブル `communities_community`）。`create_view`（`/new/`）/ `edit_view`（`/edit/<id>/`）/ `get_json_schema` / `get_schema_form` を上書き。作成可否は `min(role_ids) <= COMMUNITIES_LIMITED_ROLE_ACCESS_PERMIT`（=2、System/Repository）。一覧絞り込みは `get_query`（super-role は全件、他は `role_query_cond`）。
+- 実装補足（訂正）：ID 等のバリデーション（`validate_community_id` / `_validate_input_id`）は作成・編集の両方で実行される（`validate_input_id` というメソッドは存在しない）。`id_user` は作成時のみ設定され、編集保存では書き換えない。Catalog 入力は `/admin/community/jsonschema`・`/schemaform`（`item_type_property` id=1057）から取得。CNRI 有効時はハンドル登録を行う。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                        |

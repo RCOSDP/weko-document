@@ -467,6 +467,11 @@ session[lock_key] = locked_value
   - 多言語設定があれば、widget_multi_lang_dataテーブルに該当ウィジェットについてのレコードを作成する
   - それぞれの設定内容は、編集時と同様
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_gridlayout.admin.WidgetSettingView`（endpoint `widgetitem`）。一覧/詳細/編集/作成（`index_view`/`details_view`/`edit_view`/`create_view`）。編集保存の DB 書込は `WidgetItemServices.update_by_id`。削除は論理削除（`is_deleted`）で `is_used_in_widget_design` をチェック。編集ロックは `WidgetItemServices.get_locked_widget_info`（セッションキー `locked_widget_key_{}`、`WEKO_ADMIN_DEFAULT_LIFETIME` 分で失効）。一覧はリポジトリ権限でスコープ（`get_query`、super-role のみ全件）。
+- 実装補足：ウィジェット種別は DB 駆動（テーブル `widget_type`、`WidgetType.get_all_widget_types`、CLI `insert_widget_type_to_db`）でコード定数ではない。関連モジュール（追記）：invenio-communities / weko-admin / weko-index-tree / weko-items-ui / weko-theme。config：`WEKO_GRIDLAYOUT_WIDGET_DEFAULT_COLOR`（`#4169E1`）ほか。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

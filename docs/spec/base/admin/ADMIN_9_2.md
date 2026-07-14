@@ -50,6 +50,11 @@
   [鉛筆]ボタン押下時、invenio_oaiserver.admin.IdentifyModelViewが継承しているModelViewからflask_admin.model.base.edit_viewが呼び出され、db内のoaiserver_identifyテーブルより情報を取得し編集画面へ遷移する。
   - 編集画面で[保存（Save）]ボタンもしくは[保存して編集を続ける（Save and Continue Editing）]を押下時、flask_admin.model.base.edit_viewが呼び出され、編集内容をdb内のoaiserver_identifyテーブルに保存し、更新する。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_oaiserver.admin.IdentifyModelView`（endpoint はモデル名由来 `identify`、テーブル `oaiserver_identify`、カテゴリ OAI-PMH）。1リポジトリ1件のみ（`can_create` は既存レコードがあると False）。`can_edit=True` / `can_delete=False` / `can_view_details=False`。
+- 実装補足：`form_columns=('outPutSetting','emails','repositoryName','earliestDatastamp')`。Identify レスポンス生成には `api.OaiIdentify` が関与。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

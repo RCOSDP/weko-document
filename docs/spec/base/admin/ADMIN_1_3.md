@@ -61,6 +61,12 @@
 - 全ての設定はconfig.pyに定義される。
     - <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-schema-ui/weko_schema_ui/config.py>
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 目的・用途（補記）：OAI-PMH 出力等に用いるメタデータスキーマ（xsd）を登録・管理する機能。
+- 画面/ハンドラ：`weko_schema_ui.admin.OAISchemaSettingView`（endpoint `schemasettings`）。`list` / `add` / `delete`。スキーマの保存は REST `weko_schema_ui.rest.SchemaFilesResource.post`（`/api/schemas/`）で行い、`SchemaConverter` が xsd を解析、`WekoSchema.create` が永続化する。root_name 必須（空は400「Root Name is empty.」）、Schema Name は空なら root_name を採用し `_mapping` を付与、同名は400。
+- モデル/テーブル：`OAIServerSchema`（`oaiserver_schema`）。config：`WEKO_SCHEMA_UI_ADMIN_LIST` / `WEKO_SCHEMA_UI_ADMIN_UPLOAD`、スキーマ名 `WEKO_SCHEMA_DDI_SCHEMA_NAME`（`ddi_mapping`）/ `WEKO_SCHEMA_JPCOAR_V1_SCHEMA_NAME`（`jpcoar_v1_mapping`）/ `WEKO_SCHEMA_JPCOAR_V2_SCHEMA_NAME`（`jpcoar_mapping`）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容  |

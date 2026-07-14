@@ -101,11 +101,16 @@
 
 |設定値名|説明|デフォルト値|
 |:---:|:---|:---|
-|WEKO_SEARCH_UI_BULK_EXPORT_EXPIRED_TIME|一括エクスポート結果の保存期間（日）|7|
+|WEKO_SEARCH_UI_BULK_EXPORT_EXPIRED_TIME|一括エクスポート結果の保存期間（分）|1440|
 |WEKO_SEARCH_UI_FILE_DOWNLOAD_TTL_BUFFER|一括エクスポート結果ダウンロードの際のバッファ（秒）|3600|
 |WEKO_SEARCH_UI_BULK_EXPORT_LIMIT|1ファイルあたりの出力件数。500件以上の場合エラーが発生する恐れあり|300|
 |WEKO_SEARCH_UI_BULK_EXPORT_RETRY|一括エクスポート中でエラーが発生した際のリトライ数|5|
 |WEKO_SEARCH_UI_BULK_EXPORT_RETRY_INTERVAL|一括エクスポート中のエラーの際におけるリトライ間のインターバル（秒）|1|
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_search_ui.admin.ItemBulkExport`（`index` / `export_all`（POST）/ `cancel_export` / `download` / `check_export_status`）。エクスポートは Celery `export_all_task` / `write_files_task`。DL は `/download`（`FileInstance.get_by_uri`、`export-all.zip`、メタデータのみ・ファイル本体なし）。Celery 未起動時および session lifetime<86400 の場合はボタン非活性。状態は Redis にユーザー単位で保持。
+- config（訂正）：`WEKO_SEARCH_UI_BULK_EXPORT_EXPIRED_TIME` の既定値は **1440**（分）。旧記述の「7」はエクスポートファイル保持日数 `WEKO_SEARCH_UI_EXPORT_FILE_RETENTION_DAYS`（日）に相当。`WEKO_SEARCH_UI_*` は weko-search-ui/config.py で定義（`WEKO_ADMIN_CACHE_PREFIX` のみ weko-admin）。`get_last_item_id` は `weko_search_ui.views`、`get_itemtypes` は `weko_itemtypes_ui.views`（`/api/itemtypes/lastest`）。出力形式は `WEKO_ADMIN_OUTPUT_FORMAT`（既定 tsv）。
 
 ## 更新履歴
 

@@ -47,6 +47,11 @@
 - アイテムを削除したいインデックスを「インデックスツリー」エリアから選び、「削除」ボタンを押下する。この操作によって、weko_search_ui.admin.ItemManagementBulkDelete.indexにてdelete_recordsメソッドが呼び出され、論理削除を行う。なお、その際、チェックボックスにチェックを入れていた場合、削除するインデックスの子インデックス以下のアイテムも論理削除する。
 - 論理削除はrecords_metadataテーブルのキーpublish_statusを-1に設定することによってweko3上で表示されなくなる。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_search_ui.admin.ItemManagementBulkDelete`（endpoint `items/bulk/delete`、**GET/PUT**。削除は PUT）。確認ダイアログ・警告は `/check`（`check`）で生成し、DOI 付与済み・編集中アイテムは削除対象から除外（`get_doi_items_in_index` + `get_editing_items_in_index`）。再帰削除は view の `recursively` パラメータで制御。
+- 削除処理：`delete_records`（`weko_search_ui.utils`）→ `soft_delete`（`weko_records_ui.utils`）。`publish_status` を `PublishStatus.DELETE.value`（文字列 `"-1"`、enum は weko-schema-ui）に設定し、全バージョンの `PersistentIdentifier.status` を DELETED にする。複数インデックス所属アイテムは当該インデックスからのアンリンクのみ。副作用：FeedbackMailList/RequestMailList 削除、バケット削除、ES 更新、`ITEM_BULK_DELETE` ログ。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

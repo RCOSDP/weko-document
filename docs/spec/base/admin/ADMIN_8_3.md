@@ -26,6 +26,11 @@
 
 - 【仕様の確認中】
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_communities.admin.InclusionRequestModelView`（テーブル `communities_community_record`）。`can_create=False` / `can_edit=False` / `can_delete=True` / `can_view_details=True`（一覧確認・詳細・削除のみ）。`column_list=('id_community','id_record','expires_at','id_user')`。
+- 実装補足：flask-admin 既定の一覧/詳細/削除ビューを使用（独自オーバーライドなし）。中間テーブルは Community–Record（`communities_community_record`）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

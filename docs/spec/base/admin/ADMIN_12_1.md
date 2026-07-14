@@ -129,6 +129,11 @@
     ・「locked」
     ・「deleted」
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_files_rest.admin.BucketModelView`（テーブル `files_bucket`、endpoint `bucket`）。`can_create=True` / `can_edit=True` / `can_delete=False` / `can_view_details=True`。`form_columns` に Location フィールドが無いため作成タブからの新規作成は成立しない（既知）。
+- 実装補足：`default_storage_class` の選択肢は config `FILES_REST_STORAGE_CLASS_LIST`（`{'S':'Standard','A':'Archive'}`）、既定 `FILES_REST_DEFAULT_STORAGE_CLASS`（`S`）。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

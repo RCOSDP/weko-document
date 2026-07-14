@@ -371,6 +371,11 @@ JSON-LDのメタデータの階層的な深さは、アイテムタイプのプ�
     - is_delete：論理削除フラグ
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ（訂正）：JSON-LDマッピング画面の実体は **weko-admin** の `JsonldMappingView`（endpoint `jsonld-mapping`、カテゴリ Item Types）。マッピング定義は `weko_records` の `ItemTypeJsonldMapping`（API `JsonldMapping`）、整合性検証は `weko_search_ui.mapper.JsonLdMapper` が担う。RO-Crate Mapping（`weko_itemtypes_ui.admin.ItemTypeRocrateMappingView`）とは別機能。
+- モデル/テーブル（訂正）：テーブル名は `jsonld_mappings`（+ `jsonld_mappings_version`）、論理削除カラムは `is_deleted`。編集/削除は承認待ちアクティビティ有りで不可（`_is_editable`）、SWORD API JSON-LD設定に使用中はアイテムタイプ変更不可。関連モジュール：weko-admin（画面）/ weko-records（モデル・API）/ weko-search-ui（検証）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                        |

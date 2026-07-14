@@ -486,6 +486,11 @@ Example:
   - 例）QueryFileReportsHelper.get_file_stats_reportでリポジトリIDからサブリポジトリの配下のインデックスを取得する。
 - 取得した情報をESTermsQueryクラスのrequired_filtersで指定してtermsによる絞り込みを行う。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.ReportView`（endpoint `report`）。画面は `index`。実処理メソッド：`get_file_stats_output`（`POST /admin/report/stats_file_output`、定型レポートZIP生成 `package_reports` ＋メール送信）/ `set_email_schedule` / `get_email_address` / `get_user_report_data`。集計は `PublishStatus.PUBLIC.value` かつ `publish_date <= now/d` で公開件数を算出（private = 総数 − 公開）。
+- モデル/設定：受信メールは `StatisticsEmail`（`stats_email_address`、リポジトリ別）。メールスケジュールは `AdminSettings`（`report_email_schedule_settings`、repo_id をキーとする dict）。集計データは invenio-stats の `QueryItemRegReportHelper`。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

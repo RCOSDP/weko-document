@@ -521,6 +521,11 @@ WEKO3では、アイテムの全文検索に使用するのために本文ファ
 
 - jsonld_mapping：マッピング定義を格納するテーブル
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_search_ui.admin.ItemRocrateImportView`（endpoint `items/rocrate_import`、テンプレート `weko_search_ui/admin/rocrate_import.html`、`/all_mappings`）。`ro-crate-metadata.json` と `sword.json` の双方に対応（`@context` で判定）。`wk:` 語彙は `weko_search_ui.mapper.JsonLdMapper` で解析（キーはハードコード。export 側に `wk:metadaAutoFill` のタイプミスあり）。`wk:textExtraction` 指定で ES 抽出をスキップ。チェック入口は `check_jsonld_import_items`。
+- モデル/テーブル（訂正）：`jsonld_mappings`（単数 `jsonld_mapping` は誤り。+ `jsonld_mappings_version`）、モデル `ItemTypeJsonldMapping`（weko-records）、API `JsonldMapping`、管理画面は weko-admin `SwordAPIJsonldSettingsView`（`swordapi/jsonld`）。関連モジュール（追記）：weko-records / weko-admin / weko-items-autofill / weko-swordserver（同じマッピング機構を共有）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                        |

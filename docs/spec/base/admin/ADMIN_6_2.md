@@ -142,7 +142,7 @@
 フィードバックメールの送信件数を設定
 
 - パス：modules/weko-search-ui/weko_search_ui/config.py
-- 設定値：WEKO_SEARCH_MAX_FEEDBACK_MAIL = 100
+- 設定値：WEKO_SEARCH_MAX_FEEDBACK_MAIL = 10000
 
 １メールアドレスで送信できるアイテムの数： 最大10,000件を取得(ESの制限値)
 
@@ -193,6 +193,11 @@
      送信失敗行にて、送信できなかった件数（「エラー」カラム）をアンカーで表示する
 - フィードバックメールを再送信する処理に対して「resend_failed_mail」のAPIを実施する  
   再送信結果をデータベースでの該当レコードに更新する
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.FeedbackMailView`（endpoint `feedbackmail`、画面描画）＋ API（`weko_admin.views`：`update_feedback_mail` / `get_feedback_mail` / `get_send_mail_history` / `get_failed_mail` / `resend_failed_mail`）。送信は Celery `weko_admin.tasks.send_feedback_mail`（crontab：毎月1日 0:00、スケジュールキー `send-feedback-mail-schedules`）。
+- config（訂正）：最大送信件数 `WEKO_SEARCH_MAX_FEEDBACK_MAIL` は **10000**（旧記述の 100 は誤り）。テーブル `feedback_email_setting`（`account_author`（NOT NULL）・`root_url` 列を含む）/ `feedback_mail_history` / `feedback_mail_failed` / `feedback_mail_list`（weko-records）。関連モジュール（追記）：weko-search-ui / weko-records / invenio-stats。
 
 ## 更新履歴
 

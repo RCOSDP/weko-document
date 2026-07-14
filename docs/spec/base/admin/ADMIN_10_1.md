@@ -194,6 +194,11 @@
     - 「List」タブにて「Resource Dump Url」列のURLを押すと、invenio_resourcesyncserver.views.resource_dump関数が呼び出される
       - この中で、invenio_resourcesyncserver.api.ResourceListHandler.get_resource_dump_xmlメソッドによってresourcedump.xmlを出力する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_resourcesyncserver.admin.AdminResourceListView`（endpoint `resource_list`）。`index`（テンプレート `INVENIO_RESOURCESYNCSERVER_ADMIN_TEMPLATE`）/ `get_list`（`ResourceListHandler.get_list_resource`、user 絞り込み）/ `create` / `update` / `delete`（物理削除）。テーブル `resourcelist_indexes`（`ResourceListIndexes`）。
+- 実装補足：XML 出力は `views.resource_list`（`/resync/<index_id>/resourcelist.xml`）/ `resource_dump`。同 blueprint に `capability.xml` / `source.xml` / `.well-known/resourcesync` 等も存在。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

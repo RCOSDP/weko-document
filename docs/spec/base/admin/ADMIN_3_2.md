@@ -91,6 +91,11 @@
   - 雑誌情報画面にてインデックスを開いた際に、weko_indextree_journal.admin.get_json_schemaが呼び出され、weko_indextree_journal.schemas.jsonschemaの情報をページ上に渡す。  
     その情報のパターンにあっているかでバリデーションチェックを行っている。
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_indextree_journal.admin.IndexJournalSettingView`（endpoint `indexjournal`）＋ REST `JournalActionResource.post/put/delete`（→ `Journals.create/update/delete`）。スキーマは `/admin/indexjournal/jsonschema` を fetch。更新は index_id ベースで対象行を検索する。
+- 関連モジュール（追記）：weko-indextree-journal に加え weko-index-tree（`Indexes.get_index`、削除は index の CASCADE）・weko-records（アイテムタイプ）。テーブル `journal`（`Journal`）。仕様未記載列：`is_output` / `title_url` / `title_id` / `owner_user_id` / `first_author` / `date_monograph_published_*` / `monograph_*` / `deleted` 等。エクスポート用に `Journal_export_processing` モデルあり。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

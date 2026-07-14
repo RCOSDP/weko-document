@@ -335,6 +335,11 @@ modules/weko-authors/weko_authors/config.py
                   - 発生したエラーに関わらず、以下のリソースを削除する。  
                       - 一時ファイル (weko_authors_export_temp_file_path_keyに保存されたパスのファイル) 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_authors.admin.ExportView`（`index`/`export`/`download`/`check_status`/`cancel`/`resume`）＋ Celery `tasks.export_all`。ダウンロードは単一ルート `/admin/authors/export/download/Creator_export_all`（対象別 URL は存在せず、送出ファイル名のみ切替）。
+- 実装補足（訂正）：エクスポート対象値は `author_db` / `id_prefix` / `affiliation_id`。ファイル名定数は `WEKO_AUTHORS_EXPORT_FILE_NAME`（`Creator_export_all`）/ `WEKO_AUTHORS_ID_PREFIX_EXPORT_FILE_NAME` / `WEKO_AUTHORS_AFFILIATION_EXPORT_FILE_NAME`。Affiliation の TSV ヘッダ（json_id パス）は実マッピング `WEKO_AUTHORS_FILE_MAPPING_FOR_AFFILIATION`（`affiliationInfo` / `identifierInfo` / `affiliationIdType` / `affiliationNameLang` / `affiliationPeriodInfo.periodStart`・`periodEnd` 等）に従う。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

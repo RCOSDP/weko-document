@@ -245,6 +245,11 @@
     - 「List」タブにて「Change Dump Url」列のURLを押すと、invenio_resourcesyncserver.views.change_dump_index関数が呼び出される
       - この中で、invenio_resourcesyncserver.api.ChangeListHandler.get_change_dump_indexメソッドによってchangedump.xmlを出力する
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_resourcesyncserver.admin.AdminChangeListView`（endpoint `change_list`、テーブル `changelist_indexes`）。一覧は `/get_all`（`get_list` → `ChangeListHandler.get_all`）。作成・更新はいずれも `ChangeListHandler(**data).save()`（`create`/`update` メソッドは無い）。削除は `/delete/<repo_id>`。
+- 実装補足：XML 出力は `views.change_list_index`（`.../changelist.xml`）/ `change_dump_index`。日次 `change_list`/`change_dump`（`.../<from_date>/...`）や `changedump_manifest.xml` 等も存在。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

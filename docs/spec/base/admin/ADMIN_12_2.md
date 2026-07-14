@@ -181,6 +181,11 @@
   ・「created」
   ・「updated」
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_files_rest.admin.FileInstanceModelView`（テーブル `files_files`、endpoint `fileinstance`）。`can_create/can_edit/can_delete=False`・`can_view_details=True`（閲覧のみ）。`@action('verify_checksum')` → `verify_checksum.delay(file_id)`（「Fixity check(s) sent to queue.」）。チェック不一致時は `last_check=False`（Fixity フラグ）を設定。
+- 実装補足：詳細に表示される多数の「Files Object / …」フィルタは `column_filters` に `objects`（リレーション）を含めたことによる展開。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |

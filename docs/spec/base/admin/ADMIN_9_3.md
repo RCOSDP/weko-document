@@ -2,7 +2,7 @@
 
 ## 目的・用途
 
-本機能は、setの作成・編集・削除を行う機能である。Setとは、選択的ハーベスティングを行う目的でアイテムをグループ化するための任意の構成隊のことを示す。
+本機能は、setの作成・編集を行う機能である（実装上、削除は不可＝`can_delete=False`）。Setとは、選択的ハーベスティングを行う目的でアイテムをグループ化するための任意の構成隊のことを示す。
 
 ## 利用方法
 
@@ -64,6 +64,11 @@
 - 作成タブ  
   作成タブに遷移時、invenio_oaiserver.admin.OAISetModelViewが継承しているModelViewからflask_admin.model.base.create_viewが呼び出される。
   - 情報の入力後に[保存（Save）]ボタン押下すると、invenio_oaiserver.admin.OAISetModelViewが継承しているModelViewからflask_admin.model.base.create_viewが呼び出され、新しいSetの情報をdb内のoaiserverテーブルに保存する。
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_oaiserver.admin.OAISetModelView`（endpoint `oaiset`、テーブル `oaiserver_set`、カテゴリ OAI-PMH）。`column_default_sort=('updated', True)`（更新日時降順）。
+- 実装補足（訂正）：`can_delete=False`（**削除不可**。目的の「削除」記述は要修正）。`can_create=True` / `can_edit=True`。`edit_form` で `del form.spec`（Spec は作成後編集不可）。本 ModelView にリポジトリ絞り込みは無く、アクセス制御は権限機構に依存。
 
 ## 更新履歴
 

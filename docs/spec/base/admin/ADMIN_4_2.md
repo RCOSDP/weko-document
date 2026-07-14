@@ -170,6 +170,11 @@ if (!/\/[a-z0-9?&/=]*/.test(this.state.url)) {
       - 「repository_id」：選択中のリポジトリのid
       - 「settings」：「Preview」エリアのウィジェット配置情報
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_gridlayout.admin.WidgetDesign.index`（endpoint `widgetdesign`）。ページ保存は `views.save_widget_design_page` → `WidgetDesignPageServices.add_or_update_page` → `WidgetDesignPage.create_or_update`。
+- 実装補足（訂正）：レイアウト保存は `views.save_widget_layout_setting` → **`WidgetDesignServices.update_widget_design_setting`**（`WidgetDesignPageServices` ではない）。モデル：`WidgetDesignSetting` / `WidgetDesignPage` / `WidgetDesignPageMultiLangData`（後者は物理削除 `delete_by_page_id`）。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

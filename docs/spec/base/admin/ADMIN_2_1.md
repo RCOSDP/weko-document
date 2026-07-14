@@ -117,6 +117,11 @@ WEKO_RECORDS_UI_BULK_UPDATE_FIELDS = {
   - ポップアップ画面上の「閉じる」ボタンを押下すると、キャンセルされポップアップ画面は閉じる。
   - 「Continue」ボタンを押下した場合、weko_deposit.rest.publishメソッドが複数回呼ばれ、item_metadataテーブル、item_metadata_versionテーブル、records_metadataテーブルにそれぞれ更新内容を登録する。（アクセスタイプならキーaccessroleを、ライセンスならキーlicensetypeを変更して登録する。）
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装（訂正）：一括更新は `weko-bulkupdate` モジュール（スタブ）ではなく、**weko-records-ui**（画面 `ItemManagementBulkUpdate`、endpoint `items/bulk/update`）+ **weko-search-ui**（検索画面）+ **weko-deposit**（REST更新）で実現される。画面テンプレートは `WEKO_THEME_ADMIN_ITEM_MANAGEMENT_TEMPLATE`（`management_type='update'`）。
+- 更新処理：JS から対象アイテムごとに `PUT /api/deposits/redirect/<pid>` →（`ItemResource.put`）`/api/deposits/items/<pid>` → `/api/deposits/publish/<pid>`（`weko_deposit.rest.publish`）を順に呼ぶ。`accessrole` / `licensetype` を変更。新バージョン作成（`edit_mode='upgrade'`）となる場合がある。テーブル `item_metadata`（+ `item_metadata_version`）。`WEKO_RECORDS_UI_LICENSE_DICT` は実体はリスト。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

@@ -540,6 +540,11 @@
               - リトライ回数をログに記録
               - リトライ失敗時にはエラーログにエラー内容を出力
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_authors.admin.ImportView`（`check_import_file`/`check_pagination`/`check_file_download`/`import_authors`/`check_import_status`/`result_file_download`）＋ Celery `import_author`/`import_id_prefix`/`import_affiliation_id`/`import_author_over_max`。1行目のテーブル名（`authors_prefix_settings`/`authors_affiliation_settings`/無記載＝著者）で対象を判定。
+- 実装補足（訂正）：対象値は `author_db` / `id_prefix` / `affiliation_id`。取り込み情報は Redis `author_import_cache`（group_task_id/tasks/records）に保持。強制変更モードあり。所属期間ヘッダは `periodStart` / `periodEnd`。24時間クリーンアップは `tasks.check_tmp_file_time_for_author`。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|

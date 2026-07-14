@@ -362,6 +362,11 @@ jctest/jctest/b6/a5/1012-dea5-4ca0-82e1-ee6c9fed8908/data
 ```
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_files_rest.admin.LocationModelView`（テーブル `files_location`、endpoint `location`）。`can_create`/`can_edit`/`can_delete` はいずれも System Administrator **と** Repository Administrator の両ロールに許可（環境変数 `INVENIO_ROLE_SYSTEM`/`INVENIO_ROLE_REPOSITORY`）。Repository 管理者は既定ロケーション（`default=True`）を操作不可（`get_query` が `default=False` に限定）。
+- 実装補足（訂正）：「URI は https:// で始まること」の検証は **S3 Virtual Host 型のときのみ**適用される。`s3_signature_version` は作成時に None にされる（フォーム選択値は破棄）。Type の選択肢は config `FILES_REST_LOCATION_TYPE_LIST`（`s3` / `s3_vh`）。`slug` は `^[a-z][a-z0-9-]+$`。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
