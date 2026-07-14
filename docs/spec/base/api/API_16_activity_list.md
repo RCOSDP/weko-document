@@ -101,14 +101,25 @@
 
 -   異常系
 
-    -   リクエストで与えたパラメータに不正があった場合、エラーコード400を返す
+    -   リクエストで与えたパラメータに不正があった場合、エラーコード400を返す（`InvalidParameterValueError`）
 
     -   Bearer認証に失敗した場合、エラーコード401を返す
 
-    -   APIを利用できないロールだった場合、エラーコード403を返す
+    -   APIを利用できないロールだった場合、エラーコード403を返す（`PermissionError`）
+
+    -   バージョンが未知の場合、エラーコード400を返す（`VersionNotFoundRESTError`）。サーバー内部エラー時は500（`InternalServerError`）
+
+> 実装補足（v2.0.2）：
+> - 実ハンドラは `weko_workflow.rest.GetActivities.get_v1`。認可は `@require_api_auth()` ＋ `@require_oauth_scopes(activity_scope.id)`（`user:activity`）＋ `@limiter.limit`。
+> - ロール判定 `utils.check_role`（`WEKO_PERMISSION_ROLE_USER` に属するロールが対象。一般ユーザー・ゲスト不可）。全ユーザー分／自身担当分の切替は `api.WorkActivity.get_activity_list` 内の管理者判定による。
+> - `Accept-Language` は `WEKO_WORKFLOW_API_ACCEPT_LANGUAGES`（`en` / `ja`）に含まれる場合のみ適用。`If-None-Match` 一致時は 304 を返す。
+> - レスポンスボディの主フィールド：`total` / `condition{status,limit,page}` / `activities[{created,updated,activity_id,item_name,workflow_type,action,status,user}]`。
+> - `status` 有効値：`todo` / `wait` / `all`（`WEKO_WORKFLOW_TODO_TAB` / `WAIT_TAB` / `ALL_TAB`）。
+> - 関連config：`WEKO_WORKFLOW_REST_ENDPOINTS`、`WEKO_WORKFLOW_API_ACCEPT_LANGUAGES`、`WEKO_WORKFLOW_API_LIMIT_RATE_DEFAULT`、`WEKO_PERMISSION_ROLE_USER`。
 
 -   更新履歴
 
 | 日付      | 更新内容 |
 |----------|----------|
 |2023/06/15|初版作成   |
+|2026/07/14|実装(v2.0.2)と突き合わせ。スコープ(user:activity)・ハンドラ`GetActivities.get_v1`・応答フィールド・追加エラー・configキーを追記|

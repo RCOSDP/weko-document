@@ -2,24 +2,26 @@
 
   - 目的・用途
 
-インデックスIDを指定しての検索機能を提供する。
+指定したアイテムタイプの入力フォーム用 JSON Schema（スキーマ定義）を取得する機能を提供する。
 
   - 利用方法
 
 | **Method** | **HTTP request**                         | **Description** |
 | ---------- | ---------------------------------------- | --------------- |
-|            | **GET /items/jsonschema/**{ITEMTYPE_ID} | アイテムを検索する       |
+| GET        | **/items/jsonschema/**{ITEMTYPE_ID}      | アイテムタイプのJSON Schemaを取得する |
 
 パスパラメータ
 
 | **GET /items/jsonschema/**{ITEMTYPE_ID} |     |             |
 | ---------------------------------------- | --- | ----------- |
 | パラメータ                                    | 値   | 説明          |
-| ITEMTYPE_ID                             | int | インデックスIDを指定 |
+| ITEMTYPE_ID                             | int | アイテムタイプID（item_type_id）を指定 |
+
+（アクティビティ別スキーマを取得する `GET /items/jsonschema/{ITEMTYPE_ID}/{activity_id}` も存在する）
 
 レスポンス例：
 
-/api/index/?q=9
+`GET /items/jsonschema/9`
 
 ```json
 {
@@ -1149,7 +1151,17 @@
 
   - 関連モジュール
 
+  - 関連モジュール
+
+- weko-items-ui（ハンドラ `views.get_json_schema`、Blueprint `weko_items_ui`（`url_prefix='/items'`））
+- weko-records（`ItemTypes.get_by_id(item_type_id).schema`＝`ItemType.schema` カラム）
+- weko-accounts（`utils.login_required_customize`）
+
   - 処理概要
+
+1. エンドポイント `GET /items/jsonschema/<int:item_type_id>`（ハンドラ `weko_items_ui.views.get_json_schema`）。権限は `@login_required_customize`（ログイン必須。専用のロールチェックやOAuthスコープは無い。専用のconfig/REST定義も無く通常のFlask blueprintルート）。
+2. `ItemTypes.get_by_id(item_type_id)` でアイテムタイプを取得し、その `schema` を JSON で返す。取得失敗時は `abort(400)`、該当なしは `'{}'`。
+3. `filemeta` を含む場合はグループ一覧で `enum` を差し替え、`activity_id` 付き（`/jsonschema/<id>/<activity_id>`）ならアクティビティ別スキーマで上書き、除外項目・著者テーブルを反映して返す。
 
   - 更新履歴
 
@@ -1157,3 +1169,4 @@
 | ---- | ---- | ---- |
 | 2023/11/14 | V0.9.27 | 初版作成 |
 | 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。目的・用途とパラメータ説明の誤り（インデックス検索→アイテムタイプのJSON Schema取得）を修正、レスポンス例パス修正、関連モジュール・ハンドラ・権限・処理概要を追記 |

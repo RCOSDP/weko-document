@@ -32,7 +32,8 @@ curl https://ホスト/api/depositactivity/アクティビティID -H "Authoriza
 
 - 関連モジュール
 
-- weko_workflow
+- weko-workflow（ハンドラ `views.ActivityActionResource`（Blueprint `weko_activity_rest`、`url_prefix='/depositactivity'`）、スコープ `scopes.activity_scope`（`user:activity`）、エラー `errors.py`、`api.WorkActivity`（`init_activity` / `get_activity_by_id` / `quit_activity`））
+- weko-search-ui（インポート処理 `utils.check_tsv_import_items` / `utils.import_items_to_system`）
 
 - 処理概要
 
@@ -73,8 +74,15 @@ curl https://ホスト/api/depositactivity/アクティビティID -H "Authoriza
 
 - エラー発生時にはlogging_errorメソッドを呼び出して、ログレベルをINFOとしてログを出力する
 
+> 実装補足（v2.0.2）：
+> - 各エラーのHTTPコード：`InvalidInputRESTError`＝405、`ActivityBaseRESTError`＝400、`ActivityNotFoundRESTError`／`RegisteredActivityNotFoundRESTError`／`DeleteActivityFailedRESTError`＝404。
+> - `activity_information` の応答フィールドは `activityId` / `email` / `status`。
+> - 認可は `@require_api_auth()` ＋ `@require_oauth_scopes(activity_scope.id)`（`user:activity`）のみで判定され、「利用可能なロール」表はコードでは担保されない（トークンとスコープを持つ認証ユーザーが実行可能）。
+> - 関連config：`WEKO_WORKFLOW_GAKUNINRDM_DATA`（flow_id/workflow_id取得）、`WEKO_WORKFLOW_GAKUNINRDM_PREFIX`（ログ接頭辞）。
+
 - 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。関連モジュール（Blueprint/scope/errors/api）、各エラーのHTTPコード、応答フィールド、認可がscope依存でありロール表非担保である点、configキーを追記 |

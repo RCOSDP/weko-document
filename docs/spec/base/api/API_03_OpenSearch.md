@@ -23,15 +23,16 @@ https://[host]/api/opensearch/search?クエリパラメータ=値&クエリパ�
 
 | パラメータ | 必須 | 値 | 説明 |
 | ---- | ---- | ---- | ---- |
+| q | | string | 主検索語（searchTerms）。値が指定された場合はインデックスIDとして扱い `item_path_search_factory` に委譲する（description.xml のUrlテンプレートも `q={searchTerms}`） |
 | format | | atom / rss / jpcoar | レスポンス結果のフォーマット。デフォルトはjson形式。 |
-| size | | int | レスポンスに含めるフィード件数 |
-| page | | Int | 表示するページ番号 |
-| 以下は設定ファイルやアイテムタイプマッピングにより定義が変化する | | | |
+| size | | int | レスポンスに含めるフィード件数（別名 `list_view_num`、既定10） |
+| page | | Int | 表示するページ番号（別名 `page_no`、既定1） |
+| 以下は設定ファイルやアイテムタイプマッピングにより定義が変化する（`WEKO_SEARCH_KEYWORDS_DICT`） | | | |
 | title | | string | dc:titleにマッピングされた項目の検索 |
 | des | | string | datacite:descriptionにマッピングされた項目の検索 |
 | type | | string | dc:typeにマッピングされた項目の検索 |
-| wid | | Int | アイテムIDを指定して検索 |
-| Iid | | Int | インデックスIDを指定して検索 |
+| wid | | Int | 作成者（著者）識別子（`creator.nameIdentifier`）で検索。※「アイテムIDを指定」ではない |
+| iid | | Int | インデックスID（`path.tree`）で検索 |
 
 レスポンス例：
 
@@ -395,9 +396,23 @@ WEKO_OPENSEARCH_IMAGE_URL = 'static/favicon.ico'
     - 「rss」「atom」の場合は、weko_records.serializers.utils.OpenSearchDetailDataクラスのインスタンスをoutput_type=（指定したformatを表す値）として作成して、output_open_search_detail_dataメソッドによってレスポンスを作成する
     - 「それ以外」の場合は、json形式のレスポンスを作成する
 
+- 関連モジュール
+
+  - invenio-records-rest（実ハンドラ `views.RecordsListResource.get`、レスポンス生成 `oepnsearch_responsify`）
+  - weko-search-ui（検索ファクトリ `query.opensearch_factory`、権限フィルタ `query.get_permission_filter`、description.xml `views.opensearch_description`、REST定義 `config.RECORDS_REST_ENDPOINTS["opensearch"]`）
+  - weko-records（シリアライザ `serializers.OpenSearchSerializer` / `AtomSerializer` / `RssSerializer` / `JpcoarSerializer`、`serializers.utils.OpenSearchDetailData`）
+
+- 主要設定値
+
+  - `WEKO_SEARCH_KEYWORDS_DICT`（検索キーの内部フィールド対応）
+  - `WEKO_OPENSEARCH_SYSTEM_SHORTNAME` / `WEKO_OPENSEARCH_SYSTEM_DESCRIPTION` / `WEKO_OPENSEARCH_SYSTEM_IMAGE_URL`（description.xml）
+
+> 実装補足（v2.0.2）：エンドポイントは `GET /api/opensearch/search`（description は `GET /api/opensearch/description.xml`）。ログイン状態・ロールに応じ `get_permission_filter` で公開範囲を自動的に絞り込む（非管理者は公開かつ公開日到来分のみ）。
+
 - 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2023/11/14 | V0.9.27 | |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。`q`パラメータ追加、`wid`（作成者識別子）・`iid`の説明修正、size/pageの別名・既定値、関連モジュール・設定値・権限フィルタを追記 |

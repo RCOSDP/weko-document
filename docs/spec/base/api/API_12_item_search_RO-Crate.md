@@ -21,9 +21,13 @@
 
 #### 関連モジュール
 
-  - weko_search_ui:query.py
+  - weko-search-ui（実ハンドラ `rest.IndexSearchResourceAPI.get_v1`、検索ファクトリ `query.weko_search_factory` / `query.default_search_factory`、REST定義 `config.WEKO_SEARCH_REST_ENDPOINTS` の `search_api_route`）
 
-  - invenio_records_rest:views.py
+  - weko-records-ui（RO-Crate変換 `utils.RoCrateConverter`、変換定義モデル `models.RocrateMapping`）
+
+  - weko-admin（ファセット集計 `utils.get_facet_search_query`、`config.WEKO_ADMIN_FACET_SEARCH_SETTING_BUCKET_SIZE`＝1000）
+
+> エンドポイントは `GET /api/v1/records`（`@require_api_auth(allow_anonymous=True)` ＋ `@require_oauth_scopes(item_read_scope.id)`）。RocrateMapping が登録されたアイテムタイプのみが検索対象となる（未登録は `match_none`）。
 
 #### 処理概要
 
@@ -243,6 +247,7 @@
   | 2023/02/13 | 初版作成                                   |
   | 2024/07/31 | ユーザーが設定できるkeyの変換形式を変更    |
   | 2025/02/14 | OR検索機能、タイトル完全一致検索機能、集計機能の追加 |
+  | 2026/07/14 | 実装(v2.0.2)と突き合わせ。各APIの関連モジュール（実ハンドラ・RoCrateConverter/RocrateMapping・facet集計）を修正・追記 |
 
 ### アイテム詳細情報取得用API
 
@@ -264,7 +269,9 @@ APIを実行する。
 
 #### 関連モジュール
 
-  - weko_index_tree.rest.py:GetIndex
+  - weko-records-ui（実ハンドラ `rest.WekoRecordsResource.get_v1`、RO-Crate変換 `utils.RoCrateConverter`、変換定義モデル `models.RocrateMapping`、リクエストメール宛先 `models.RequestMailList`、REST定義 `config.WEKO_RECORDS_UI_CITES_REST_ENDPOINTS` の `item_route`）
+
+> エンドポイントは `GET /api/v1/records/<id>`。`weko_index_tree.rest.GetIndex` は無関係（旧記述の誤り）。権限は `page_permission_factory` で判定し、ETag / Last-Modified に対応。レスポンスの `metadata.hasRequestmailAddress` は `RequestMailList` から取得する。
 
 #### 処理概要
 

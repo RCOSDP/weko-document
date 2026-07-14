@@ -24,8 +24,8 @@
 | title |  | string | dc:titleにマッピングされた項目の検索 |
 | des |  | strin | datacite:descriptionにマッピングされた項目の検索 |
 | type |  | string | dc:typeにマッピングされた項目の検索 |
-| wid |  | Int | アイテムIDを指定して検索 |
-| Iid |  | Int | インデックスIDを指定して検索 |
+| wid |  | Int | 作成者（著者）識別子（`creator.nameIdentifier`）を指定して検索。※「アイテムIDを指定」ではない点に注意 |
+| iid |  | Int | インデックスID（`path.tree`）を指定して検索 |
 | date_range1_from<br>date_range1_to |  | yyymmdd | dte_range1 に対して期間の範囲を指定して検索 |
 
 レスポンス例：
@@ -1220,12 +1220,30 @@
 
   - 機能内容
 
+- キーワード・各種条件でアイテムメタデータ（および `search_type=0` の場合は本文抽出テキスト）を検索し、`hits` / `aggregations` / `links` 形式のJSONで返す。
+- ログイン状態・ロールに応じて閲覧可能なアイテムのみを返す（権限フィルタ）。
+- 本APIはInvenio標準形式のメタデータ検索であり、RO-Crate形式の検索（[API-12](./API_12_item_search_RO-Crate.md)）とは別物である。
+
   - 関連モジュール
 
+- invenio-records-rest（実ハンドラ `views.RecordsListResource.get`、レスポンス生成）
+- weko-search-ui（検索ファクトリ `query.es_search_factory`（`/api/records/` 用）/ `query.opensearch_factory`、権限フィルタ `query.get_permission_filter` / `query.check_permission_user`、`config.RECORDS_REST_ENDPOINTS` 上書き）
+- weko-records（レスポンスシリアライザ `serializers.json_v1_search` / `opensearch_v1_search`、`record_class = api.WekoRecord`）
+
   - 処理概要
+
+1. エンドポイント `GET /api/records/`（`RECORDS_REST_ENDPOINTS["recid"]` の `list_route`）。ハンドラは `invenio_records_rest.views.RecordsListResource.get`。
+2. 検索ファクトリ（`es_search_factory`）が `search_type`（`WEKO_SEARCH_TYPE_DICT`＝FULL_TEXT:0 / KEYWORD:1 / INDEX:2）・`q`・`size`・`page`・`sort` 等からESクエリを構築する。
+3. `get_permission_filter` により公開範囲を絞り込む。
+4. レスポンスは JSON（`hits` / `aggregations` / `links`）。`search_index="{prefix}-weko"`、`max_result_window = WEKO_SEARCH_MAX_RESULT`（10000）。
+
+  - 主要設定値
+
+`RECORDS_REST_ENDPOINTS`（weko-search-ui で上書き）、`SEARCH_UI_SEARCH_INDEX`、`WEKO_SEARCH_TYPE_DICT`、`WEKO_SEARCH_MAX_RESULT`（10000）
 
   - 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2023/11/14 | V0.9.27 | 初版作成 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。機能内容・関連モジュール・処理概要・主要設定値を追記。`wid`（作成者識別子）・`iid` の説明を修正、API-12との違いを明記 |

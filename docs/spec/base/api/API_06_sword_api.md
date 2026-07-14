@@ -442,7 +442,7 @@ DELETE /sword/deposit/\<recid\>
 
 
 #### レスポンス
-成功時 : 空のレスポンスを返す。 アクティビティを使用している場合、アクティビティ詳細画面のURLをLinkヘッダーに含める。
+成功時 : 空のレスポンスを返す。 アクティビティを使用している場合、アクティビティ詳細画面のURLを **Location** ヘッダーに含める。
 失敗時 : [エラードキュメント](#エラードキュメント)を返す。
 
 
@@ -966,7 +966,7 @@ DELETE /sword/deposit/\<recid\>
 
     サーバーが異なるフォーマットでパッケージを送信した場合、サーバーはそれをバイナリファイルとして扱うことができる。  
     ```python
-    WEKO_SWORDSERVER_SERVICEDOCUMENT_ACCEPT_ARCHIVE_FORMAT = ["application/zip"]
+    WEKO_SWORDSERVER_SERVICEDOCUMENT_ACCEPT_ARCHIVE_FORMAT = ['application/zip', 'multipart/form-data']
     ```
 
 5. ファイルの登録を受け付けるかどうか<span id="conf05">
@@ -987,10 +987,12 @@ DELETE /sword/deposit/\<recid\>
 7. サーバーで受け入れられるパッケージ形式のリスト<span id="conf07">
 
     ```python
-    WEKO_SWORDSERVER_SERVICEDOCUMENT_ACCEPT_PACKAGING = ["*"]
+    WEKO_SWORDSERVER_SERVICEDOCUMENT_ACCEPT_PACKAGING = [
+        "http://purl.org/net/sword/3.0/package/SimpleZip",
+        "http://purl.org/net/sword/3.0/package/SWORDBagIt",
+    ]
     """
-    ["*"] or List of Packaging Formats URI
-    - http://purl.org/net/sword/3.0/package/Binary
+    List of Packaging Formats URI（v2.0.2 実装では上記2形式。旧記述の ["*"] は現行では不正確）
     - http://purl.org/net/sword/3.0/package/SimpleZip
     - http://purl.org/net/sword/3.0/package/SWORDBagIt
     """
@@ -1092,9 +1094,25 @@ DELETE /sword/deposit/\<recid\>
     ```python
     WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE = [
         "System Administrator",
-        "Repository Administrator"
+        "Repository Administrator",
+        "Community Administrator",
+        "Contributor"
     ]
     ```
+
+23. BagIt整合性検証の有効化<span id="conf23">
+
+    ```python
+    WEKO_SWORDSERVER_BAGIT_VERIFICATION = True
+    ```
+
+## 実装補足（v2.0.2）
+
+- 中核実装モジュールは **weko-swordserver**（`invenio-sword` は同梱されず、SWORD処理は自作の weko-swordserver に集約）。エンドポイント（`views.py`、Blueprint `url_prefix="/sword"`）：`get_service_document` / `post_service_document`（GET/POST `/sword/service-document`）、`get_status_document` / `put_object` / `delete_object`（GET/PUT/DELETE `/sword/deposit/<recid>`）。
+- 認証は Bearer/OAuth2（`before_request` の `verify_oauth_token_and_set_current_user` ＋ `@oauth2.require_oauth()`）。スコープ：`deposit:write` / `deposit:actions`（invenio-deposit）、`item:create` / `item:update` / `item:delete`（weko-items-ui）、Workflow登録時は `user:activity`（weko-workflow）。POST/PUT/DELETE は `@roles_required(WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE)`。
+- 関連モジュール：weko-swordserver（本体）、weko-search-ui（`import_items_to_system` / `import_items_to_activity` / `delete_items_with_activity`、BagIt `bagit>=1.7.0`）、weko-records（`ItemTypeJsonldMapping` ＝ `jsonld_mappings`）、weko-items-ui、weko-admin（一時ディレクトリ `TempDirInfo`）、weko-accounts（`roles_required` / `limiter`）、weko-logging、weko-notifications、invenio-files-rest、invenio-oaiserver（`OaiIdentify`）。
+- DELETE 成功時、アクティビティ使用時のURLは **Location** ヘッダーに含まれる（本文「Linkヘッダー」記述は実装では Location）。
+- レート制限（`@limiter.limit`）により超過時は 429（`TooManyRequests`）。
 
 ## 更新履歴
 
@@ -1105,3 +1123,4 @@ DELETE /sword/deposit/\<recid\>
 | 2025/02/12 | 91e291b7bdb24c0f6cbc65d603f2f9427cd0f031   | JSON-LD形式のメタデータ登録機能を追加                    |
 | 2025/03/07 | 6918f05b5dccb52126c36afb5f9b180e847c958f   | アイテムの分割機能について追記                           |
 | 2025/06/03 | c145ed4a8052597a2e552a628c92f3fa60b878d4   | 更新・削除機能およびメタデータのみ置換フラグについて記載 |
+| 2026/07/14 |                                            | 実装(v2.0.2)と突き合わせ。ACCEPT_PACKAGING/ACCEPT_ARCHIVE_FORMAT/DEPOSIT_ROLE_ENABLEの実値へ修正、BAGIT_VERIFICATION追加、実装補足（weko-swordserver・エンドポイント・スコープ・関連モジュール・DELETE Locationヘッダー）を追記 |

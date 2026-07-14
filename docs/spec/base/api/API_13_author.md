@@ -44,6 +44,9 @@
 |2|著者DB著者追加|POST  |/api/{version}/authors|author:create|
 |3|著者DB著者編集|PUT   |/api/{version}/authors/{identifier}|author:update|
 |4|著者DB著者削除|DELETE|/api/{version}/authors/{identifier}|author:delete|
+|5|著者DB件数取得|GET   |/api/{version}/authors/count|author:search|
+
+- 実ハンドラは `weko_authors.rest.AuthorDBManagementAPI`（検索/追加/編集/削除）および `weko_authors.rest.Authors`（件数取得 `count_authors`）。Blueprint生成は `rest.create_blueprint`、REST定義は `config.WEKO_AUTHORS_REST_ENDPOINTS`。`{identifier}` は整数IDまたはUUIDを受理する。
 
 ## 4. スコープと利用可能なロールの関係
 
@@ -1058,6 +1061,15 @@ DELETE /api/{version}/authors/{identifier}
     - エラーが発生した場合は、ロールバックして500エラーを返す。
 
 
+## 実装補足（v2.0.2）
+
+- 関連モジュール：weko-authors（`rest.py`：`AuthorDBManagementAPI` / `Authors`、`scopes.py`、`config.py`：`WEKO_AUTHORS_REST_ENDPOINTS` / `WEKO_AUTHORS_ES_INDEX_NAME`、`schema.py`：`AuthorCreateRequestSchema` / `AuthorUpdateRequestSchema`、`api.py`：`WekoAuthors.create` / `update`、`utils.py`：`validate_community_ids` / `check_delete_author` / `get_author_prefix_obj`、`models.py`：`Authors` / `AuthorsPrefixSettings` / `AuthorsAffiliationSettings`）
+- 各メソッドは `@roles_required([WEKO_ADMIN_PERMISSION_ROLE_SYSTEM, _REPO, _COMMUNITY])`。検索・登録は Elasticsearch の `{prefix}-authors`（`WEKO_AUTHORS_ES_INDEX_NAME`）インデックスを使用する。
+- 削除は論理削除（`is_deleted=True`。DB・ES 双方を更新）。
+- 検索の `idtype` は scheme 文字列で受け取りDBでID変換し、レスポンスでID→schemeへ逆変換する。`idtype` と `authorid` は両方指定または両方省略が必要。
+- POST時、`idType='1'`（WEKO）の `authorIdInfo` は除去される。
+- レート制限は 1分あたり 100回（超過時 429）。
+
 ## 9. 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
@@ -1065,3 +1077,4 @@ DELETE /api/{version}/authors/{identifier}
 |2025/2/17||初版作成|
 |2025/5/30||REST対応|
 | 2025/11/27|-|WEKO ID対応|
+| 2026/07/14|-|実装(v2.0.2)と突き合わせ。未記載の件数取得API(/authors/count)追加、関連モジュール・ESインデックス・論理削除・configキーを追記|

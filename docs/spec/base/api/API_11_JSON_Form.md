@@ -2,20 +2,22 @@
 
   - 目的・用途
 
-インデックスIDを指定しての検索機能を提供する。
+指定したアイテムタイプの画面描画用 JSON Form（スキーマフォーム定義）を取得する機能を提供する。
 
   - 利用方法
 
 | **Method** | **HTTP request**                         | **Description** |
 | ---------- | ---------------------------------------- | --------------- |
-|            | **GET /items/schemaform/**{ITEMTYPE_ID} | アイテムを検索する       |
+| GET        | **/items/schemaform/**{ITEMTYPE_ID}      | アイテムタイプのJSON Formを取得する |
 
 パスパラメータ
 
 | **GET /items/schemaform/**{ITEMTYPE_ID} |     |             |
 | ---------------------------------------- | --- | ----------- |
 | パラメータ                                    | 値   | 説明          |
-| ITEMTYPE_ID                             | int | インデックスIDを指定 |
+| ITEMTYPE_ID                             | int | アイテムタイプID（item_type_id）を指定 |
+
+（アクティビティ別フォームを取得する `GET /items/schemaform/{ITEMTYPE_ID}/{activity_id}` も存在する）
 
 レスポンス例：
 
@@ -7595,7 +7597,16 @@
 
   - 関連モジュール
 
+  - 関連モジュール
+
+- weko-items-ui（ハンドラ `views.get_schema_form`、Blueprint `weko_items_ui`（`url_prefix='/items'`））
+- weko-records（`ItemTypes.get_by_id(item_type_id).form`＝`ItemType.form` カラム）
+- weko-accounts（`utils.login_required_customize`）、weko-groups（グループ `titleMap`）
+
   - 処理概要
+
+1. エンドポイント `GET /items/schemaform/<int:item_type_id>`（ハンドラ `weko_items_ui.views.get_schema_form`）。権限は `@login_required_customize`（ログイン必須。専用のconfig/REST/OAuthスコープ定義は無い）。
+2. `ItemTypes.get_by_id(item_type_id)` の `form` を JSON で返す。先頭要素が `filemeta` の場合はグループ一覧を `titleMap` に設定し、ユーザーロール別入力制御・多言語名設定・著者テーブル反映を行う。`activity_id` 付きならアクティビティ別フォームで上書き。該当なしは `'["*"]'`、失敗時 `abort(400)`。
 
   - 更新履歴
 
@@ -7603,3 +7614,4 @@
 | ---- | ---- | ---- |
 | 2023/11/14 | V0.9.27 | 初版作成 |
 | 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。目的・用途とパラメータ説明の誤り（インデックス検索→アイテムタイプのJSON Form取得）を修正、関連モジュール・ハンドラ・権限・処理概要を追記 |

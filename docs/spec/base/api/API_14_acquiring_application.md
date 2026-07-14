@@ -18,6 +18,8 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
 -   指定されたファイルの利用規約情報を返却する。
 
+> 実装補足（v2.0.2）：エンドポイントは `GET /api/<version>/records/<pid_value>/files/<file_name>/terms`（`WEKO_RECORDS_UI_REST_ENDPOINTS['get_file_terms']`）、ハンドラは `weko_records_ui.rest.GetFileTerms`。認可は `@require_api_auth(True)` ＋ `@require_oauth_scopes(activity_scope.id)`。`WEKO_RECORDS_UI_RESTRICTED_API` が False の場合は403（既定 False）。ETag は `md5([ファイル名]_[利用規約テキスト])` で生成し、`Accept-Language`（`WEKO_RECORDS_UI_API_ACCEPT_LANGUAGES`＝`en`/`ja`）で多言語対応。取得不可時は404（`ContentsNotFoundError`）。関連モジュール：weko-records-ui。
+
 -   利用規約情報には以下の内容を含める。
 
     -   取得時点の利用規約のテキスト
@@ -87,6 +89,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 |----------|----------|
 |2023/7/14 |初版作成   |
 |2025/10/31|APIの利用条件を記載|
+|2026/07/14|実装(v2.0.2)と突き合わせ。エンドポイント・ハンドラ(GetFileTerms/FileApplication)・スコープ・configキー・エラーを追記|
 
 # 利用申請開始API
 
@@ -105,6 +108,8 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 | 利用可否           | ○             | ○               | ○                  | ○           | ○           | ○                |
 
 -   機能内容
+
+> 実装補足（v2.0.2）：エンドポイントは `POST /api/<version>/records/<pid_value>/files/<file_name>/application`（`WEKO_RECORDS_UI_REST_ENDPOINTS['file_application']`）、ハンドラは `weko_records_ui.rest.FileApplication`。認可は `@require_api_auth(True)` ＋ `@require_oauth_scopes(activity_scope.id)`。ゲストは `init_activity_for_guest_user`、認証ユーザは `WorkActivity.init_activity` でアクティビティを作成する。レスポンスは `activity_id` / `activity_url` / `item_type_schema`（`ItemType.schema`）、ゲストは `token` を含む。エラー：`terms_token` 不一致は400（`InvalidTokenError`）、ワークフロー未設定は403（`InvalidWorkflowError`）、ゲストのメール不正は400。関連モジュール：weko-records-ui。
 
 -   指定された制限公開ファイルの利用申請ワークフローアクティビティを作成する。
 
@@ -205,6 +210,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 |----------|----------|
 |2023/7/14 |初版作成   |
 |2025/10/31|APIの利用条件を記載|
+|2026/07/14|実装(v2.0.2)と突き合わせ。エンドポイント・ハンドラ(GetFileTerms/FileApplication)・スコープ・configキー・エラーを追記|
 
 # 利用申請API
 
@@ -300,3 +306,4 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 |----------|----------|
 |2023/7/14 |初版作成   |
 |2025/10/31|APIの利用条件を記載|
+|2026/07/14|実装(v2.0.2)と突き合わせ。エンドポイント・ハンドラ(GetFileTerms/FileApplication)・スコープ・configキー・エラーを追記|

@@ -38,8 +38,10 @@
 
 - 関連モジュール
 
-  - weko_records_ui/captcha.py
-  - weko_records_ui/api.py
+  - weko-records-ui（ハンドラ `rest.CreateCaptchaImage` / `rest.CaptchaAnswerValidation`、生成・検証 `api.create_captcha_image` / `api.validate_captcha_answer`、画像生成 `captcha.py`）
+  - weko-redis（`redis.RedisConnection`。Redis DBは `CACHE_REDIS_DB`）
+
+> 実装補足（v2.0.2）：エンドポイントは `GET /api/v1/captcha/image`（`CreateCaptchaImage`）、`POST /api/v1/captcha/validate`（`CaptchaAnswerValidation`）。キーは `sha1(画像生成日時+ソルト)`、認証トークンは `sha256`（64桁）。Redis有効期限は `WEKO_RECORDS_UI_CAPTCHA_EXPIRATION_SECONDS`（900）、レスポンスTTLは `min(有効期限, WEKO_RECORDS_UI_CAPTCHA_TTL_SECONDS(600))`。
 
 - 処理概要
 
@@ -82,3 +84,4 @@
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2025/10/10 |  | 初版作成 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。ハンドラクラス(rest.py)・エンドポイント・キー/トークン生成方式・configキー(有効期限/TTL)・Redis接続を追記 |

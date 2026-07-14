@@ -10,11 +10,14 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 
 #### 機能内容
 
-/admin/itemtypes/{item type id}/render
+`GET /admin/itemtypes/{item_type_id}/render`
 
-
+- 指定したアイテムタイプの描画（render）用定義を返す。
+- 本エンドポイントは管理画面（`/admin`）配下のFlask-Adminビューであり、OAuthを用いるREST API（`/api/...`）ではない。パスパラメータ `item_type_id`（int）、HTTPメソッドはGET。
 
 #### 関連モジュール
+
+- weko-itemtypes-ui（`admin.py` の `render_itemtype`。Flask-Admin の `@expose('/<int:item_type_id>/render', methods=['GET'])`）
 
 #### 更新履歴
 
@@ -22,3 +25,4 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。ハンドラ`weko_itemtypes_ui.admin.render_itemtype`、管理画面ビュー（RESTでない）である旨・メソッド・パラメータを追記 |

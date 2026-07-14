@@ -361,10 +361,21 @@ resumptionToken：リポジトリが応答する際に不完全リストとセ�
 
 ## 関連モジュール
 
-* Invenio_oaiserver
+* invenio-oaiserver（エンドポイント `/oai`（GET/POST）、`views.server.response` によるverbディスパッチ、`response.py` の各verb処理、`verbs.py` の引数検証、`query.py` のES検索、`resumption_token.py`）
+* weko-schema-ui（metadataPrefix一覧と各フォーマットのシリアライザ `schema.get_oai_metadata_formats` / `dumps_etree`）
+* weko-index-tree（set＝インデックスの公開・ハーベスト公開判定 `Indexes`）
+* weko-deposit / weko-records（レコード本体取得とアイテムタイプマッピング `WekoRecord.get_record_by_uuid`）
+
+> 実装補足（v2.0.2）：
+> - metadataPrefixの一覧は固定ではなく、管理画面で登録されたスキーマ（`WekoSchema` / `OAIServerSchema`）から `get_oai_metadata_formats` が動的生成する。コード上の既定値は `oai_dc` / `marc21` のみで、`jpcoar` / `jpcoar_2.0` / `ddi` / `lom` 等はスキーマ登録に依存する。
+> - ListRecords / ListIdentifiers が実際に検索するESインデックスは `INDEXER_DEFAULT_INDEX` である（`OAISERVER_RECORD_INDEX` はこの経路では未使用）。
+> - resumptionToken は ES scroll ベースで、ページサイズは `OAISERVER_PAGE_SIZE`（100）。
+> - エラーは marshmallow の `ValidationError` 等を HTTP 422 でXML返却する。`noSetHierarchy` はインデックスを常にsetとして扱うため実装上発行されない。
+> - 主なconfig：`OAISERVER_PAGE_SIZE` / `OAISERVER_GRANULARITY` / `OAISERVER_PROTOCOL_VERSION` / `OAISERVER_RESUMPTION_TOKEN_EXPIRE_TIME` / `OAISERVER_METADATA_FORMATS` / `OAISERVER_CODE_NO_RECORDS_MATCH` / `OAISERVER_MESSAGE_NO_RECORDS_MATCH`、`INDEXER_DEFAULT_INDEX`。
 
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。関連モジュール・エンドポイント・metadataFormatの動的生成・ESインデックス・resumptionToken・configキー・noSetHierarchy未発行を追記 |

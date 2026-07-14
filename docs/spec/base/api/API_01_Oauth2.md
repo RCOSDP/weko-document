@@ -232,7 +232,15 @@ url, headers, body = oauth.prepare_token_request('https://dev.ir.rcos.nii.ac.jp/
 
 - 関連モジュール
 
-invenio_oauth2server
+- invenio-oauth2server（OAuth2プロバイダ本体。エンドポイント `views.server.authorize`（`/oauth/authorize`、GET/POST両対応）・`views.server.access_token`（`/oauth/token`、POST）、トークン発行UI `views.settings.token_new`（`/account/settings/applications/tokens/new/`）、`provider.save_token`、`decorators.require_oauth_scopes`）
+- スコープ提供モジュール（各 `scopes.py` を `invenio_oauth2server.scopes` エントリポイントで登録）：invenio-oauth2server（`user:email`）、invenio-deposit（`deposit:write` / `deposit:actions`）、weko-index-tree（`index:create/read/update/delete`）、weko-items-ui（`item:read/create/update/delete` / `ranking:read`）、weko-authors（`author:search/create/update/delete`）、weko-records（`oa_status:update`）、weko-workflow（`user:activity`）、weko-records-ui（`file:read`）
+
+> 実装補足（v2.0.2）：
+> - `/oauth/authorize` は `methods=['GET','POST']`（GET/POST両対応）。
+> - `grant_type` は `authorization_code` / `client_credentials` / `refresh_token`（`OAUTH2SERVER_ALLOWED_GRANT_TYPES`）、`response_type` は `code` / `token`（`OAUTH2SERVER_ALLOWED_RESPONSE_TYPES`）。
+> - トークン有効期限は `OAUTH2_PROVIDER_TOKEN_EXPIRES_IN`（3600秒）。
+> - エラー時挙動：クライアントID不在は 404、未ログイン時は `@login_required` により 302 リダイレクト、`client_credentials` を非機密クライアントで用いると `InvalidClientError`。
+> - `weko-accounts` にはOAuth関連の実装は無い（認証基盤としての間接関与のみ）。
 
 - 更新履歴
 
@@ -241,3 +249,4 @@ invenio_oauth2server
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
 | 2025/06/11 |  | レスポンスコードを追記 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。authorizeのGET/POST両対応、grant_type/response_type、scope提供モジュール一覧・現行scope、configキー、エラーコードを追記 |

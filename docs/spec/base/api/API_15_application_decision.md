@@ -20,9 +20,9 @@ APIを実行する。
 
 -   関連モジュール
 
--   weko_records_ui/permissions.py
+-   weko-records-ui（ハンドラ `rest.NeedRestrictedAccess`（`get_v1`）、権限判定 `permissions.check_file_download_permission` / `permissions.check_content_clickable`、ファイル一覧 `utils.get_file_info_list`）
 
--   weko_records_ui/utils.py
+> 実装補足（v2.0.2）：エンドポイントは `GET /api/<version>/records/<pid_value>/need-restricted-access`（`WEKO_RECORDS_UI_REST_ENDPOINTS['need_restricted_access']`）。認可は `@require_api_auth(True)`（allow_anonymous）＋ `@require_oauth_scopes(item_read_scope.id)`（`item:read`、weko-items-ui）。レスポンスは各ファイルの `{need_restricted_access, filename}` の配列。
 
 -   処理概要
 
@@ -59,3 +59,4 @@ APIを実行する。
 | 日付      | 更新内容 |
 |----------|----------|
 |2023/7/14 |初版作成   |
+|2026/07/14 |実装(v2.0.2)と突き合わせ。ハンドラ`NeedRestrictedAccess`・エンドポイント・スコープ(item:read)・レスポンス形式を追記|
