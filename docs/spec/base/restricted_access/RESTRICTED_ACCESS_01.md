@@ -67,7 +67,7 @@
 | 制限公開（デフォルト） | `open_restricted` |
 
 - 「提供方法」プロパティは内部的に `provide[]{role, workflow}` の配列構造で保持される。
-- 「利用規約」で「自由入力」を選択した場合の内部値は `term_free`（`modules/weko-records-ui/weko_records_ui/utils.py:1592`）。
+- 「利用規約」で「自由入力」を選択した場合の内部値は `term_free`（`modules/weko-records-ui/weko_records_ui/utils.py`）。
 
 #### 関連モジュール
 
