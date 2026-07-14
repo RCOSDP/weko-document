@@ -60,7 +60,7 @@
 - 「リクエストボタンを表示」チェックボックスにチェックを付いている状態で、リクエストメール送信先が未入力の場合、エラーメッセージを表示して次のアクションには進めない。
 
   - メールアドレスが未入力の場合、以下のエラーメッセージを表示する。  
-    エラーメッセージ: 「Request Email Addresses do not exist.」
+    エラーメッセージ: 「Request Email Addresses do not exist.」（※この文言は v2.0.2 のソース上に存在しないため、実際の表示文言は要確認）
 
 - リクエストメール送信先は、承認者が承認をした時点から有効となる。
 
@@ -87,7 +87,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - リクエストメール機能は weko-items-ui（`request_maillist.js`、`edit.html`）。表示可否は AdminSettings `restricted_access.display_request_form`（既定 False）。送信先テーブルは `request_mail_list`（**weko-records** の `RequestMailList`、承認時に `update_by_list_item_id`）。文言「Duplicate Email Addresses.」「Invalid email format.」は実在。
-- 実装補足（要確認）：「Request Email Addresses do not exist.」は v2.0.2 ソース上に見当たらない（実文言の再確認が必要）。
+- 実装補足：「Request Email Addresses do not exist.」は v2.0.2 の modules 全体を検索しても存在しない（確認済み）。一方「Duplicate Email Addresses.」「Invalid email format.」は実在する。未入力時の実際の表示文言は特定が必要。
 
 #### 更新履歴
 

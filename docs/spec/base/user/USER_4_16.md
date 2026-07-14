@@ -26,7 +26,7 @@
 
 - 利用申請が設定されており、かつコンテンツファイルが登録されている場合、エラーメッセージを表示して次のアクションには進めない。
 
-  - エラーメッセージ: 「Request Email Addresses do not exist.」
+  - エラーメッセージ: 「Request Email Addresses do not exist.」（※この文言は v2.0.2 のソース上に存在しないため、実際の表示文言は要確認）
 
 - アイテムの利用申請方法は、承認者が承認をした時点から有効となる。
 
@@ -37,7 +37,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - コンテンツ未登録時の利用申請は weko-items-ui（JS `no_file_approval.js`、テンプレート `iframe/item_edit.html` の `is_no_content_item_application`、API `/workflow/get_item_application/<activity_id>`）。永続化は `weko_records.models.ItemApplication`。設定は AdminSettings `restricted_access.display_request_form` と連動。
-- 実装補足（要確認）：エラーメッセージ「Request Email Addresses do not exist.」は v2.0.2 ソース上に見当たらない（実文言の再確認が必要）。
+- 実装補足：エラーメッセージ「Request Email Addresses do not exist.」は v2.0.2 の modules 全体を検索しても存在しない（確認済み）。実際に表示される文言は別の実装文言と考えられるため、正しい表示文言の特定が必要。
 
 #### 更新履歴
 
