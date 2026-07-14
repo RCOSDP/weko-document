@@ -18,10 +18,8 @@
 - weko-itemtypes-ui（ハンドラ `admin.ItemTypeMetaDataView.render_itemtype`、Flask-Admin `@expose('/<int:item_type_id>/render')`）
 - weko-records（`ItemType.render` カラムに格納）
 
-> 注：`tool/` と `tools/` は同一内容（Render）の重複ディレクトリ。[tool/TOOL_01.md](../tool/TOOL_01.md) と同じ。
-
 #### 更新履歴
 
 | 日付 | GithubコミットID | 更新内容 |
 | :--- | :---: | :---: |
-| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。Renderエンドポイント・ハンドラ・データ構造・関連モジュールを記入。tool/ との重複を注記 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。Renderエンドポイント・ハンドラ・データ構造・関連モジュールを記入。重複していた `tool/` を `tools/` に統合 |
