@@ -68,11 +68,14 @@
 
 #### 関連モジュール
 
-- invenio_accounts
+- Flask-Security（サインアップ画面・エラー文言を提供）
+- invenio_accounts（フォーム拡張・ユーザーデータストアを提供）
 
 #### 処理概要
 
-［サインアップ（Sign Up）］ボタンを押すと、invenio_accounts.tasks.send_security_emailにて、celeryタスクでメールを送信する
+サインアップ画面・エラー文言は依存ライブラリ Flask-Security（`flask_security.views.register`、route `/signup/`、`SECURITY_MSG_*` 既定）に由来する。パスワード最小6文字は Flask-Security のハードコードで、制御用のconfigは存在しない。
+
+［サインアップ（Sign Up）］ボタンを押すと、invenio_accounts.tasks.send_security_emailにてメールを送信する（`ACCOUNTS_USE_CELERY=True` の場合のみCeleryタスク経由）
 
 アカウント登録によって、accounts_userテーブルにレコードが作成される
 
@@ -80,7 +83,7 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（訂正）：サインアップの画面・エラー文言は invenio-accounts ではなく依存ライブラリ **Flask-Security**（`SECURITY_MSG_*` 既定、`flask_security.views.register`、route `/signup/`）に由来する。invenio-accounts はフォーム拡張とユーザーデータストアを提供。確認メールは `invenio_accounts.tasks.send_security_email`（`ACCOUNTS_USE_CELERY=True` 時のみ Celery 経由）。パスワード最小6文字は Flask-Security のハードコード（制御 config なし）。table `accounts_user`。
+- 実装補足：サインアップの画面・エラー文言は依存ライブラリ **Flask-Security**（`SECURITY_MSG_*` 既定、`flask_security.views.register`、route `/signup/`）に由来する。invenio-accounts はフォーム拡張とユーザーデータストアを提供。確認メールは `invenio_accounts.tasks.send_security_email`（`ACCOUNTS_USE_CELERY=True` 時のみ Celery 経由）。パスワード最小6文字は Flask-Security のハードコード（制御 config なし）。table `accounts_user`。
 
 #### 更新履歴
 

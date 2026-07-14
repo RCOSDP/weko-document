@@ -60,12 +60,12 @@
 
 - 【Administration >Setting (設定) >Ranking (ランキング表示)】 からランキングの条件を入力し、【保存(Save)】を押下すると、weko_admin.models.RankingSettings.updateが呼び出される。ranking_settingsテーブルを入力された情報をもとに更新する。
 
-- [Administration >Setting (設定) >Ranking (ランキング表示)] からランキングの条件を入力したあと【削除(Delete)】を押下すると、weko_admin.models.RankingSettings.deleteが呼び出され、ranking_settingsテーブルから入力中の値を削除し、入力前の保存された設定情報を取得する。
+- [Administration >Setting (設定) >Ranking (ランキング表示)] からランキングの条件を入力したあと【削除(Delete)】を押下すると、weko_admin.models.RankingSettings.deleteは呼び出されず、入力中の値をクライアント側で破棄し、保存済みの設定情報を再表示する。ranking_settingsテーブルからの削除は発生しない。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_admin.admin.RankingSettingsView.index`（POST、`submit=='save_ranking_settings'`）→ `RankingSettings.update`（テーブル `ranking_settings`、`rankings` は JSON）。範囲チェック（表示件数1-30 / 集計期間1-3650 / 新着1-100）。
-- 実装補足（訂正）：[Delete] ボタンは `RankingSettings.delete` を呼ばず、入力値をクライアント側で破棄して保存済み設定を再表示するのみ（DB からの削除は発生しない）。
+- 実装補足：[Delete] ボタンは `RankingSettings.delete` を呼ばず、入力値をクライアント側で破棄して保存済み設定を再表示するのみ（DB からの削除は発生しない）。
 
 ## 更新履歴
 

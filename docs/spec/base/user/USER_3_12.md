@@ -131,7 +131,7 @@
 
                     -   メールに添付されたワンタイムアドレス押下時に、weko_records_ui.fd.file_download_onetimeを呼び出して使用する。
 
-                    -   モーダルに入力されたメールアドレスをクエリパラメータとして付与し、weko_records_ui.fd.file_download_onetimeに渡す。tokenから取得したメールアドレスとクエリパラメータから取得したものが一致した場合、weko_records_ui.fd._download_fileを呼び出してダウンロードを行う。
+                    -   モーダルに入力されたメールアドレスはPOSTリクエストのBodyとしてweko_records_ui.fd.file_download_onetimeに渡され、process_onetime_file_downloadを経由して処理される。tokenから取得したメールアドレスと入力されたメールアドレスが一致した場合、weko_records_ui.fd._download_fileを呼び出してダウンロードを行う。
 
                     -   リンクはランダムなURLとトークン値から構成し、両者が一致した場合に利用登録ワークフローへのリンクとして機能する
 
@@ -150,7 +150,7 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（訂正）：ワンタイムDLは `weko_records_ui.fd.file_download_onetime` → `process_onetime_file_download` → `_download_file`。メールアドレス／パスワードは**クエリパラメータではなく POST リクエストボディ**（`mail_address` / `input_password`）で受け取り、`FileOnetimeDownload`（table `file_onetime_download`）の `user_mail` / `extra_info.password_for_download` と照合する（パスワード確認は `restricted_access.password_enable` 時）。
+- 実装補足：ワンタイムDLは `weko_records_ui.fd.file_download_onetime` → `process_onetime_file_download` → `_download_file`。メールアドレス／パスワードは POST リクエストボディ（`mail_address` / `input_password`）で受け取り、`FileOnetimeDownload`（table `file_onetime_download`）の `user_mail` / `extra_info.password_for_download` と照合する（パスワード確認は `restricted_access.password_enable` 時）。
 
 #### 更新履歴
 

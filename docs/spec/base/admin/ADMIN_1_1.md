@@ -246,17 +246,14 @@
 - 以下の場合、エラーメッセージが表示されインポートが開始しない。
   - ファイルが選択されていない場合：「Please select Zipfile.」
   - アイテムタイプ名が入力されていない場合：「Please input Type Name.」
-- インポート開始後に何らかのエラーが生じた場合、「Error: Failed to import Item type.」に続けて原因を示すメッセージを表示し、インポートが中断される。
-- インポートに成功した場合、「Successfully import Item type.」メッセージが表示される。
+- インポート開始後に何らかのエラーが生じた場合、「Failed to import the item type.」に続けて原因を示すメッセージを表示し、インポートが中断される。
+- インポートに成功した場合、「The item type imported successfully.」メッセージが表示される。
 - 「強制インポート機能」について
 - システム管理者は、環境設定ファイル(instance.cfg)に記された定数("WEKO_ITEMTYPES_UI_FORCED_IMPORT_ENABLED")を編集することで、デフォルトでは無効化されている本機能を有効化することができる。
 - デフォルトの設定では、当該WEKOに登録されているプロパティだけで構成されたアイテムタイプのみインポート可能だが、本機能を有効化することで未登録のプロパティを含むアイテムタイプもインポートできるようになる。
-- ただし以下の場合、インポートが中断もしくは一部スキップされる。
-  - 未登録のプロパティの名前が既存のプロパティと重複する場合
-    - インポートが中断され、エラーメッセージ「The property name already exists.」が表示されインポートが中断される
-  - 未登録のプロパティのIDが既存のプロパティと重複する場合
-    - そのプロパティのみ既存のプロパティに置き換えられ、インポートは継続される
-    - この場合、インポート終了後に問題のあるプロパティがモーダルに表示される
+- 未登録のプロパティが検出された場合は、確認のためのメッセージ「Unregistered properties detected.」が表示される。
+- 未登録のプロパティのIDが既存のプロパティと重複する場合は、そのプロパティのインポートはスキップされ、既存のプロパティデータが用いられたうえでインポートは継続される。
+  - スキップされたプロパティは `duplicated_props` として返却され、インポート終了後に問題のあるプロパティがモーダルに表示される。
 - プロパティID重複の識別処理について
   - 既存のプロパティと同じIDを持つプロパティがインポートデータに含まれる場合、両者の更新日時(updated)が比較される
   - 値が同一である場合は同じプロパティであると認識される
@@ -326,7 +323,7 @@
 
 - 画面/ハンドラ：`weko_itemtypes_ui.admin.ItemTypeMetaDataView`（endpoint `itemtypesregister`、`/admin/itemtypes`）。主なメソッド：`index` / `render_itemtype` / `delete_itemtype` / `register` / `restore_itemtype` / `get_property_list` / `export` / `item_type_import`。
 - モデル/テーブル：`ItemType`（`item_type`）/ `ItemTypeName`（`item_type_name`）/ `ItemTypeMapping`（`item_type_mapping`）/ `ItemTypeProperty`（`item_type_property`）/ `ItemTypeEditHistory`（`item_type_edit_history`）（いずれも `weko_records.models`）。エクスポートは上記4種のJSONを含むZIP（`ItemType_export.zip`）。
-- 実装の実メッセージ：登録成功「Successfuly registered Item type.」（コードのタイプミスのまま）、インポート成功「The item type imported successfully.」、インポート失敗「Failed to import the item type.」。強制インポートは「未登録プロパティ検出時に `Unregistered properties detected.`」で、ID重複は `updated` 時刻の比較でスキップ（`duplicated_props` として返却）。「The property name already exists.」というチェックは存在しない。
+- 実装の実メッセージ：登録成功「Successfuly registered Item type.」（コードのタイプミスのまま）、インポート成功「The item type imported successfully.」、インポート失敗「Failed to import the item type.」。強制インポートは未登録プロパティ検出時に `Unregistered properties detected.` を表示し、ID重複は `updated` 時刻の比較でスキップ（`duplicated_props` として返却）。
 
 ## 更新履歴
 

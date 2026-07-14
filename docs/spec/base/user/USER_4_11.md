@@ -115,7 +115,7 @@
   「action_endpoint 'item_link'」の場合、及び該当アイテムのメタデータにアイテム間リンクの情報が存在している場合、「get_item_link_info」メソッドで設定されたアイテム間リンクの情報を取得する
   - 「get_item_link_info」メソッドは、画面表示時とインデックス選択時に呼び出される
     - 「get_item_link_info」メソッドは、item_referenceテーブルからsrc_item_pidフィールドと引数recidが一致するレコードをあるだけ取得して、加工したものを返す。
-    - src_item_pidフィールドは整数で保存されている。
+    - src_item_pidフィールドは文字列型（String(255)）で保存されている。
     - 画面表示時には、recidに使用する値が小数であってもそのまま「get_item_link_info」メソッドを呼び出す。
     - インデックス選択時には、recidに使用する値は小数点以下を切り捨てて「get_item_link_info」メソッドを呼び出す。
 - 「送信」（Next）または「保存」（Save）ボタンを押すときの処理は、新規アイテム登録時の処理と同じである
@@ -130,5 +130,5 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - Item Link は action_id **5**（endpoint `item_link`）。関連情報取得は `weko_records.api.ItemLink.get_item_link_info`。テーブル `item_reference`（`ItemReference`）。
-- 実装補足（訂正）：`src_item_pid` / `dst_item_pid` の実カラム型は `String(255)`（複合主キー）で整数型ではない。
+- `src_item_pid` / `dst_item_pid` の実カラム型は `String(255)`（複合主キー）である。
 

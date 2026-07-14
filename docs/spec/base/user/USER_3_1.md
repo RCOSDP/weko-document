@@ -173,7 +173,7 @@
 
   - weko_records_ui
   - weko_deposit
-  - weko_detail
+  - invenio_records_ui（ルーティング）
   - weko_itemtypes_ui
 
 #### 処理概要
@@ -333,7 +333,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_records_ui.views.default_view_method`。config `WEKO_DEPOSIT_SYS_CREATOR_KEY`（v2.0.2 で `creator_type`/`creator_name_type` 追加）、`WEKO_RECORDS_UI_DEFAULT_MAX_WIDTH_THUMBNAIL`（100）。編集ロックは Redis `pid_{}_will_be_edit`（`weko_items_ui.utils.lock_item_will_be_edit`）。
-- 実装補足（訂正）：関連モジュールの `weko_detail` は存在しない。詳細表示は weko-records-ui（＋ weko-deposit、ルーティングは invenio-records-ui）が担う。
+- 詳細表示は weko-records-ui（＋ weko-deposit、ルーティングは invenio-records-ui）が担う。
 
 #### 更新履歴
 

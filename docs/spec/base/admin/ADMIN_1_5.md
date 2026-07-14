@@ -82,7 +82,7 @@
 
 - **マッピング定義**：  
   登録先アイテムタイプと、JSON-LD形式のメタデータのスキーマの対応をJSON形式で記したもの。  
-  データベースの"_public.jsonld_mappings"テーブルに以下のフィールドで保存される。
+  データベースの`jsonld_mappings`テーブルに以下のフィールドで保存される。
 
   - マッピング定義ID: int
   - マッピング定義: json
@@ -342,21 +342,23 @@ JSON-LDのメタデータの階層的な深さは、アイテムタイプのプ�
 
 ## 関連モジュール
 
-- weko_search_ui：マッピング処理を実行する
+- weko_admin：JSON-LDマッピング画面を提供する
 
-- weko_records：マッピング定義を管理する
+- weko_records：マッピング定義（`ItemTypeJsonldMapping`）を管理する
+
+- weko_search_ui：マッピング処理・整合性検証を実行する
 
 
 ## 関連テーブル
 
-  - jsond_mapping：アイテムタイプとjpcoar語彙のマッピング情報を保持する
+  - jsonld_mappings：アイテムタイプとjpcoar語彙のマッピング情報を保持する
 
     - id：マッピング定義ID
     - name：マッピング定義名
     - mapping：マッピング定義(JSON)
     - item_type_id：アイテムタイプID
     - version_id：バージョンID
-    - is_delete：論理削除フラグ
+    - is_deleted：論理削除フラグ
 
   - item_type：アイテムタイプの情報を保持する
 
@@ -373,8 +375,8 @@ JSON-LDのメタデータの階層的な深さは、アイテムタイプのプ�
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ（訂正）：JSON-LDマッピング画面の実体は **weko-admin** の `JsonldMappingView`（endpoint `jsonld-mapping`、カテゴリ Item Types）。マッピング定義は `weko_records` の `ItemTypeJsonldMapping`（API `JsonldMapping`）、整合性検証は `weko_search_ui.mapper.JsonLdMapper` が担う。RO-Crate Mapping（`weko_itemtypes_ui.admin.ItemTypeRocrateMappingView`）とは別機能。
-- モデル/テーブル（訂正）：テーブル名は `jsonld_mappings`（+ `jsonld_mappings_version`）、論理削除カラムは `is_deleted`。編集/削除は承認待ちアクティビティ有りで不可（`_is_editable`）、SWORD API JSON-LD設定に使用中はアイテムタイプ変更不可。関連モジュール：weko-admin（画面）/ weko-records（モデル・API）/ weko-search-ui（検証）。
+- 画面/ハンドラ：JSON-LDマッピング画面の実体は **weko-admin** の `JsonldMappingView`（endpoint `jsonld-mapping`、カテゴリ Item Types）。マッピング定義は `weko_records` の `ItemTypeJsonldMapping`（API `JsonldMapping`）、整合性検証は `weko_search_ui.mapper.JsonLdMapper` が担う。RO-Crate Mapping（`weko_itemtypes_ui.admin.ItemTypeRocrateMappingView`）とは別機能。
+- モデル/テーブル：テーブル名は `jsonld_mappings`（+ `jsonld_mappings_version`）、論理削除カラムは `is_deleted`。編集/削除は承認待ちアクティビティ有りで不可（`_is_editable`）、SWORD API JSON-LD設定に使用中はアイテムタイプ変更不可。関連モジュール：weko-admin（画面）/ weko-records（モデル・API）/ weko-search-ui（検証）。
 
 ## 更新履歴
 

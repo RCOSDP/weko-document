@@ -86,11 +86,11 @@
   - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/admin.py>
   - SiteLicenseSendMailSettingsViewクラスのindexメソッド
     - ［保存（Save）］ボタンを押したときは、画面からPOSTで呼び出される。POSTで呼ばれたときに限り、データの更新を行う。
-      - 「Automatic Send」ラジオボタンの選択状態によって、admin_settingsテーブルの、nameが「site_license_mail_settings」であるレコードを更新する。
+      - 「Automatic Send」ラジオボタンの選択状態によって、admin_settingsテーブルの、nameが「site_license_mail_settings」であるレコード（repo_id をキーとするネスト dict）の該当リポジトリ分を更新する。
       - サイトライセンス機関のチェック状態によって、sitelicense_infoテーブル各行のreceive_mail_flagカラムを更新する。
     - POSTで呼ばれたときのデータ更新後、およびGETで呼ばれたとき、以下の情報を取得する。
       - サイトライセンス機関の情報として、sitelicense_infoテーブルのレコード全件（organization_id昇順）
-      - 自動送信設定として、admin_settingsテーブルの、nameが「site_license_mail_settings」であるレコード
+      - 自動送信設定として、admin_settingsテーブルの、nameが「site_license_mail_settings」であるレコード（repo_id をキーとするネスト dict）の該当リポジトリ分
       - メール手動送信の集計月の初期値として、「現在のUTC日付のdayを1にした日付の前日」のdayを1にした日付
     - 呼び出し元の画面では、POSTの結果にかかわらず、画面を更新する。
 
@@ -123,7 +123,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_admin.admin.SiteLicenseSendMailSettingsView`（endpoint `sitelicensesendmail`、`GET/POST /`）。手動送信は `weko_admin.views.manual_send_site_license_mail`（`POST /api/admin/sitelicensesendmail/send/<start_month>/<end_month>`）。設定取得は `GET /api/admin/get_site_license_send_mail_settings`。集計は `QueryCommonReportsHelper.get(event='site_access')`。
-- 実装補足（訂正）：自動送信設定は `AdminSettings`（`site_license_mail_settings`）に **repo_id をキーとするネスト dict** で保存される（サブリポジトリ対応）。テーブル `sitelicense_info`。画面テンプレート `WEKO_ADMIN_SITE_LICENSE_SEND_MAIL_TEMPLATE`。
+- 補足：自動送信設定は `AdminSettings`（`site_license_mail_settings`）に repo_id をキーとするネスト dict で保存される（サブリポジトリ対応）。テーブル `sitelicense_info`。画面テンプレート `WEKO_ADMIN_SITE_LICENSE_SEND_MAIL_TEMPLATE`。
 
 ## 更新履歴
 

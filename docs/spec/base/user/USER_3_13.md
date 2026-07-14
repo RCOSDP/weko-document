@@ -65,11 +65,11 @@
 
 - 実装方法
 
-  - アイテム詳細画面を表示する際、DBテーブルから、当該アイテムのリクエスト送信先が登録されているか確認する。もし、利用申請方法が設定されている場合、申請ボタンを表示する。
+  - アイテム詳細画面を表示する際、アイテム利用申請テーブル（item_application）に当該アイテムの利用申請方法が登録されているか確認する。もし、利用申請方法が設定されている場合、申請ボタンを表示する。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（訂正）：アイテム利用申請の表示可否は「リクエスト送信先」ではなく、アイテム利用申請テーブル `item_application`（`weko_records`）＋ AdminSettings `restricted_access.item_application`（`item_application_enable` / `application_item_types`）で判定する。取得は `weko_records_ui.api.get_item_provide_list`、ワークフロー解決は `weko_records_ui.views.get_item_usage_workflow`。
+- 実装補足：アイテム利用申請の表示可否は、アイテム利用申請テーブル `item_application`（`weko_records`）＋ AdminSettings `restricted_access.item_application`（`item_application_enable` / `application_item_types`）で判定する。取得は `weko_records_ui.api.get_item_provide_list`、ワークフロー解決は `weko_records_ui.views.get_item_usage_workflow`。
 
 #### 更新履歴
 

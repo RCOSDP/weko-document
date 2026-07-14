@@ -214,7 +214,7 @@
       日本語：「他のロケーションがすでにデフォルトに設定されているため、保存できません。」
       英語：「Cannot save because another location is already set as default.」
 
-  - 「uri」が「https://」から始まらない場合エラーメッセージを表示する  
+  - 「Type」が「S3 Virtual Host」の場合に、「uri」が「https://」から始まらないとエラーメッセージを表示する  
       メッセージ：「Invalid URL. It should start with https://」
 
   - 「保存してもう一つ追加」（Save and Add Another）ボタンを押すと、設定されたロケーション内容をロケーション一覧に追加させ、他のロケーションを追加設定可能とする  
@@ -365,7 +365,7 @@ jctest/jctest/b6/a5/1012-dea5-4ca0-82e1-ee6c9fed8908/data
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`invenio_files_rest.admin.LocationModelView`（テーブル `files_location`、endpoint `location`）。`can_create`/`can_edit`/`can_delete` はいずれも System Administrator **と** Repository Administrator の両ロールに許可（環境変数 `INVENIO_ROLE_SYSTEM`/`INVENIO_ROLE_REPOSITORY`）。Repository 管理者は既定ロケーション（`default=True`）を操作不可（`get_query` が `default=False` に限定）。
-- 実装補足（訂正）：「URI は https:// で始まること」の検証は **S3 Virtual Host 型のときのみ**適用される。`s3_signature_version` は作成時に None にされる（フォーム選択値は破棄）。Type の選択肢は config `FILES_REST_LOCATION_TYPE_LIST`（`s3` / `s3_vh`）。`slug` は `^[a-z][a-z0-9-]+$`。
+- 実装補足：「URI は https:// で始まること」の検証は **S3 Virtual Host 型のときのみ**適用される。`s3_signature_version` は作成時に None にされる（フォーム選択値は破棄）。Type の選択肢は config `FILES_REST_LOCATION_TYPE_LIST`（`s3` / `s3_vh`）。`slug` は `^[a-z][a-z0-9-]+$`。
 
 ## 更新履歴
 

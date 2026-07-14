@@ -50,11 +50,11 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
   - ダウンロードURL(Download URL)
       - 全件エクスポートが完了すると、出力ファイル(tsv形式)をダウンロードできるURLが表示される
       - 最後に出力されたダウンロードURLが表示される（初期の全件エクスポート実行前は何も表示されない）  
-          Export targetの値に応じて著者情報(Author)、著者識別子(ID_Prefix)、機関識別子(Affiliation_ID)のダウンロードURLが1つ表示される。
-      - ダウンロードのURLの例(初期値)としては以下の通り（出力ファイル名はConfigで設定できるものとする）
-          - 著者情報：　https://{Domain_Name}/admin/authors/export/download/Creator_export_all_{yyyyMMddhhmm}.tsv
-          - 著者識別子：https://{Domain_Name}/admin/authors/export/download/Id_prefix_export_all_{yyyyMMddhhmm}.tsv
-          - 機関識別子：https://{Domain_Name}/admin/authors/export/download/Affiliation_export_all_{yyyyMMddhhmm}.tsv
+          ダウンロードURLは対象によらず単一のルートを使用し、Export targetの値に応じて送出されるファイル名のみが切り替わる。
+      - ダウンロードURL(初期値)は対象によらず単一ルート `https://{Domain_Name}/admin/authors/export/download/Creator_export_all` を使用する（出力ファイル名はConfigで設定できるものとする）。送出されるファイル名の例は以下の通り。
+          - 著者情報：　Creator_export_all_{yyyyMMddhhmm}.tsv
+          - 著者識別子：Id_prefix_export_all_{yyyyMMddhhmm}.tsv
+          - 機関識別子：Affiliation_id_export_all_{yyyyMMddhhmm}.tsv
 
 (2) 出力ファイル
 
@@ -196,9 +196,9 @@ modules/weko-authors/weko_authors/config.py
           - 引数として `Export target` の値を渡し、この値でエクスポート対象を決定する。
       3. **エクスポート対象テーブルの特定**
           - `Export target` の値に応じて、以下のテーブルをエクスポート対象とする。
-              - 著者（authors） → `authors` テーブル
-              - 著者識別子（authors_prefix） → `authors_prefix_settings` テーブル
-              - 機関識別子（authors_affiliation） → `authors_affiliation_settings` テーブル
+              - 著者（author_db） → `authors` テーブル
+              - 著者識別子（id_prefix） → `authors_prefix_settings` テーブル
+              - 機関識別子（affiliation_id） → `authors_affiliation_settings` テーブル
       4. **RedisにファイルURIを保存**
           - キーを使ってredisに `file_uri` を保存。
               - 定数`WEKO_AUTHORS_EXPORT_CACHE_URL_KEY`の値を使う。
@@ -211,8 +211,8 @@ modules/weko-authors/weko_authors/config.py
           - リンクのファイル名は `_{yyyyMMddhhmm}` を付加。
           - `Export target` に応じて、ファイル名を以下の定数から取得。
               - 著者 → `WEKO_AUTHORS_EXPORT_FILE_NAME`
-              - 著者識別子 → `WEKO_ID_PREFIX_EXPORT_FILE_NAME`
-              - 機関識別子 → `WEKO_AFFILIATION_ID_EXPORT_FILE_NAME`
+              - 著者識別子 → `WEKO_AUTHORS_ID_PREFIX_EXPORT_FILE_NAME`
+              - 機関識別子 → `WEKO_AUTHORS_AFFILIATION_EXPORT_FILE_NAME`
       7. **ダウンロード処理**
         - ダウンロードリンクを押下すると、 `weko_authors.admin.ExportView.download` が呼び出され、ファイルをダウンロードする。
 
@@ -338,7 +338,7 @@ modules/weko-authors/weko_authors/config.py
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_authors.admin.ExportView`（`index`/`export`/`download`/`check_status`/`cancel`/`resume`）＋ Celery `tasks.export_all`。ダウンロードは単一ルート `/admin/authors/export/download/Creator_export_all`（対象別 URL は存在せず、送出ファイル名のみ切替）。
-- 実装補足（訂正）：エクスポート対象値は `author_db` / `id_prefix` / `affiliation_id`。ファイル名定数は `WEKO_AUTHORS_EXPORT_FILE_NAME`（`Creator_export_all`）/ `WEKO_AUTHORS_ID_PREFIX_EXPORT_FILE_NAME` / `WEKO_AUTHORS_AFFILIATION_EXPORT_FILE_NAME`。Affiliation の TSV ヘッダ（json_id パス）は実マッピング `WEKO_AUTHORS_FILE_MAPPING_FOR_AFFILIATION`（`affiliationInfo` / `identifierInfo` / `affiliationIdType` / `affiliationNameLang` / `affiliationPeriodInfo.periodStart`・`periodEnd` 等）に従う。
+- 補足：エクスポート対象値は `author_db` / `id_prefix` / `affiliation_id`。ファイル名定数は `WEKO_AUTHORS_EXPORT_FILE_NAME`（`Creator_export_all`）/ `WEKO_AUTHORS_ID_PREFIX_EXPORT_FILE_NAME` / `WEKO_AUTHORS_AFFILIATION_EXPORT_FILE_NAME`。Affiliation の TSV ヘッダ（json_id パス）は実マッピング `WEKO_AUTHORS_FILE_MAPPING_FOR_AFFILIATION`（`affiliationInfo` / `identifierInfo` / `affiliationIdType` / `affiliationNameLang` / `affiliationPeriodInfo.periodStart`・`periodEnd` 等）に従う。
 
 ## 更新履歴
 

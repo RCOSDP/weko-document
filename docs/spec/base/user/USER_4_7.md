@@ -67,8 +67,8 @@ Item Registrationの一部として、画面上の設定エリアで代理投稿
 - アイテム登録/編集画面で「Contributor」エリアのテキストボックスにクリックすると、「get_search_data」メソッドでデータを以下の情報から取得する
   - 「Username」：「userprofiles_userprofile.username」
   - 「Email」：「accounts_user.email」
-- 「Contributor」エリアのテキストボックスに任意の文字列を入力すると、「autocomplete」メソッドで入力したテキストにヒットするデータを候補一覧に表示する
-- ユーザ候補一覧よりユーザを選択すると、「validate_user_info」メソッドで選択したユーザー情報をチェックし、「get_autofill_data」メソッドで「Username」と「Email」テキストにユーザー情報を表示させる
+- 「Contributor」エリアのテキストボックスに任意の文字列を入力すると、ブラウザ側JS（app.js）の「autocomplete」処理で入力したテキストにヒットするデータを候補一覧に表示する
+- ユーザ候補一覧よりユーザを選択すると、「validate_user_info」メソッドで選択したユーザー情報をチェックし、ブラウザ側JS（app.js）の「get_autofill_data」処理で「Username」と「Email」テキストにユーザー情報を表示させる
 - ［次へ（Next）］または［保存（Save）］ボタンを押すと、代理投稿としてユーザー情報を再度チェックする、問題なければ、入力したユーザーが「shared_user_ids」としてメタデータに保存する
 
 アイテム編集の権限を確認する処理

@@ -113,16 +113,16 @@
 
 設定値
 
-- WEKO_ADMIN_DISPLAY_RESTRICTED_SETTINGS（v2.0.2 実装の初期値は True。下記「初期値：False」は旧版の記述）
+- WEKO_ADMIN_DISPLAY_RESTRICTED_SETTINGS
   - パス：<https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/weko-admin/weko_admin/config.py#L1380>
-  - 初期値：False
+  - 初期値：True
   - 利用申請フラグの表示非表示を切り替える。
   - scripts/instance.cfg で定義されている場合は、そちらの設定を優先する。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_workflow.admin.WorkFlowSettingView`（endpoint `workflowsetting`）。`index` / `workflow_detail`（workflow_id='0' で新規、`flows_id` は `uuid4()`）/ `update_workflow` / `delete_workflow`（`is_deleted` 更新、使用中は「Cannot be deleted because workflow is used.」）。表示/非表示ロールは `WorkflowRole` に保存。
-- config（訂正）：`WEKO_ADMIN_DISPLAY_RESTRICTED_SETTINGS` の初期値は **True**（旧記述の False は誤り）。利用申請フラグのチェックボックス表示はシステム管理者かつ `WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` 有効時。成功メッセージはフロントJS で付与される。
+- config：`WEKO_ADMIN_DISPLAY_RESTRICTED_SETTINGS` の初期値は True。利用申請フラグのチェックボックス表示はシステム管理者かつ `WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` 有効時。成功メッセージはフロントJS で付与される。
 
 ## 更新履歴
 

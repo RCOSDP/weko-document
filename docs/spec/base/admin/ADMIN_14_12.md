@@ -500,12 +500,12 @@
 
 > 選択
 
-  - 一つ以上のファセット項目を選択した状態で、選択タブから削除を選択することで、weko_gridlayout.admin.WidgetSettingView.action_deleteが呼び出され、db内のfacet_search_settingテーブルから選択した情報が削除される。
+  - 一つ以上のファセット項目を選択した状態で、選択タブから削除を選択することで、weko_admin.admin.FacetSearchSettingView.action_deleteが呼び出され、db内のfacet_search_settingテーブルから選択した情報が削除される。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_admin.admin.FacetSearchSettingView`（flask-admin ModelView、`create_view`/`edit_view`/`details_view`/`delete`）＋ `views.save_facet_search` / `remove_facet_search`。model `FacetSearchSetting`（テーブル `facet_search_setting`、`is_open` / `aggregations` 列）。保存・削除時に `store_facet_search_query_in_redis` で Redis キャッシュを更新。重複判定は `is_exits_facet`。
-- 実装補足（訂正）：「選択して削除」は `FacetSearchSettingView` 自身の `action_delete` によるもので、`weko_gridlayout` のウィジェット削除とは無関係（旧記述はコピペ誤り）。
+- 「選択して削除」は `FacetSearchSettingView` 自身の `action_delete` によるもので、`weko_gridlayout` のウィジェット削除とは無関係。
 
 ## 更新履歴
 

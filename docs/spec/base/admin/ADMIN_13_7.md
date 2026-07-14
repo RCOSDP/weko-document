@@ -83,11 +83,11 @@
 OAuthアプリケーショントークン画面の処理について（以下トークン画面とする）
 
 - トークン画面を表示する。この操作によって、invenio_oauth2server.admin.TokenViewが継承したModelViewよりflask_admin.model.base.index_viewメソッドを呼び出す。このメソッドでoauth2server_tokenテーブルよりトークン情報を取得し、TokenViewcolumn_listにあるキーに対応する情報を画面に表示する。
-  - トークン詳細画面を表示する。この操作によって、invenio_files_rest.admin.TokenViewが継承したModelViewよりflask_admin.model.base.details_viewメソッドを呼び出す。このメソッド下でoauth2server_tokenテーブルよりトークン情報を取得し、TokenViewのcolumn_details_listにあるキーに対応する情報を画面に表示する。
-- トークン編集画面を表示する。この操作によって、invenio_files_rest.admin.TokenViewが継承したModelViewよりflask_admin.model.base.edit_viewメソッドをGETで呼び出す。このメソッド下で開いたid列を用いて、oauth2server_tokenテーブルよりトークン情報を取得し、表示する。
+  - トークン詳細画面を表示する。この操作によって、invenio_oauth2server.admin.TokenViewが継承したModelViewよりflask_admin.model.base.details_viewメソッドを呼び出す。このメソッド下でoauth2server_tokenテーブルよりトークン情報を取得し、TokenViewのcolumn_details_listにあるキーに対応する情報を画面に表示する。
+- トークン編集画面を表示する。この操作によって、invenio_oauth2server.admin.TokenViewが継承したModelViewよりflask_admin.model.base.edit_viewメソッドをGETで呼び出す。このメソッド下で開いたid列を用いて、oauth2server_tokenテーブルよりトークン情報を取得し、表示する。
   - トークン編集画面で「保存」ボタンを押下する。この操作によって、flask_admin.model.base.edit_viewメソッドをPOSTで呼び出す。このメソッド下で、get_save_return_urlメソッドが呼ばれ、編集内容をoauth2server_tokenテーブルに保存し、更新する。
-- トークン画面に表示される表の左から２列目のゴミ箱マークを押下する。この操作によって、invenio_files_rest.admin.TokenViewが継承したModelViewよりflask_admin.model.base.delete_viewメソッドを呼び出す。このメソッド下でdelete_modelメソッドが呼ばれ、押下したゴミ箱の行のトークンをoauth2server_tokenテーブルから削除する。
-- トークン画面に表示される表の左端のチェックボックスにチェックを入れ、選択タブから「削除」を押下する。この操作によってinvenio_files_rest.admin.TokenViewが継承したModelViewよりflask_admin.model.base.action_viewメソッドを呼び出す。ここでDeleteRowActionが呼ばれ、チェックを入れた行のトークンをoauth2server_tokenテーブルから削除する。
+- トークン画面に表示される表の左から２列目のゴミ箱マークを押下する。この操作によって、invenio_oauth2server.admin.TokenViewが継承したModelViewよりflask_admin.model.base.delete_viewメソッドを呼び出す。このメソッド下でdelete_modelメソッドが呼ばれ、押下したゴミ箱の行のトークンをoauth2server_tokenテーブルから削除する。
+- トークン画面に表示される表の左端のチェックボックスにチェックを入れ、選択タブから「削除」を押下する。この操作によってinvenio_oauth2server.admin.TokenViewが継承したModelViewよりflask_admin.model.base.action_viewメソッドを呼び出す。ここでDeleteRowActionが呼ばれ、チェックを入れた行のトークンをoauth2server_tokenテーブルから削除する。
 
 トークン情報は以下のようなデータベースに保存する。
 
@@ -106,7 +106,7 @@ OAuthアプリケーショントークン画面の処理について（以下ト
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ（訂正）：`invenio_oauth2server.admin.TokenView`（model `Token`、テーブル `oauth2server_token`、`can_create=False`）。処理概要中の `invenio_files_rest.admin.TokenView` はコピペ誤りで、正しくは `invenio_oauth2server.admin.TokenView`。
+- 画面/ハンドラ：`invenio_oauth2server.admin.TokenView`（model `Token`、テーブル `oauth2server_token`、`can_create=False`）。
 
 ## 更新履歴
 

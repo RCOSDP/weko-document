@@ -82,11 +82,11 @@
 OAuthアプリケーション画面の処理について
 
 - OAuthアプリケーション画面を表示する。その場合、invenio_oauth2server.admin.ClientViewが継承したModelViewよりflask_admin.model.base.index_viewメソッドを呼び出す。このメソッドでoauth2server_clientテーブルよりOAuth情報を取得し、ClientViewのcolumn_listにあるキーに対応する情報を画面に表示する。
-  - OAuthアプリケーション詳細画面を表示する。この操作によって、invenio_files_rest.admin.ClientViewが継承したModelViewよりflask_admin.model.base.details_viewメソッドを呼び出す。このメソッド下でoauth2server_clientテーブルよりOAuth情報を取得し、ClientViewのcolumn_details_listにあるキーに対応する情報を画面に表示する。
-- OAuthアプリケーション編集画面を表示する。この操作によって、invenio_files_rest.admin.ClientViewが継承したModelViewよりflask_admin.model.base.edit_viewメソッドをGETで呼び出す。このメソッド下で開いたoauth2server_clientテーブルよりOAuth情報を取得し、表示する。
+  - OAuthアプリケーション詳細画面を表示する。この操作によって、invenio_oauth2server.admin.ClientViewが継承したModelViewよりflask_admin.model.base.details_viewメソッドを呼び出す。このメソッド下でoauth2server_clientテーブルよりOAuth情報を取得し、ClientViewのcolumn_details_listにあるキーに対応する情報を画面に表示する。
+- OAuthアプリケーション編集画面を表示する。この操作によって、invenio_oauth2server.admin.ClientViewが継承したModelViewよりflask_admin.model.base.edit_viewメソッドをGETで呼び出す。このメソッド下で開いたoauth2server_clientテーブルよりOAuth情報を取得し、表示する。
   - OAuthアプリケーション編集画面で「保存」ボタンを押下する。この操作によって、flask_admin.model.base.edit_viewメソッドをPOSTで呼び出す。このメソッド下で、get_save_return_urlメソッドが呼ばれ、編集内容をoauth2server_clientテーブルに保存し、更新する。
-- OAuthアプリケーション画面に表示される表の左から２列目のゴミ箱マークを押下する。この操作によって、invenio_files_rest.admin.ClientViewが継承したModelViewよりflask_admin.model.base.delete_viewメソッドを呼び出す。このメソッド下でdelete_modelメソッドが呼ばれ、押下したゴミ箱の行のトークンをoauth2server_clientテーブルから削除する。
-- OAuthアプリケーション画面に表示される表の左端のチェックボックスにチェックを入れ、選択タブから「削除」を押下し、OKを押下する。この操作によって、invenio_files_rest.admin.ClientViewが継承したModelViewよりflask_admin.model.base.action_viewメソッドを呼び出す。ここでDeleteRowActionが呼ばれ、チェックを入れた行のトークンをoauth2server_clientテーブルから削除する。
+- OAuthアプリケーション画面に表示される表の左から２列目のゴミ箱マークを押下する。この操作によって、invenio_oauth2server.admin.ClientViewが継承したModelViewよりflask_admin.model.base.delete_viewメソッドを呼び出す。このメソッド下でdelete_modelメソッドが呼ばれ、押下したゴミ箱の行のトークンをoauth2server_clientテーブルから削除する。
+- OAuthアプリケーション画面に表示される表の左端のチェックボックスにチェックを入れ、選択タブから「削除」を押下し、OKを押下する。この操作によって、invenio_oauth2server.admin.ClientViewが継承したModelViewよりflask_admin.model.base.action_viewメソッドを呼び出す。ここでDeleteRowActionが呼ばれ、チェックを入れた行のトークンをoauth2server_clientテーブルから削除する。
 
 OAuth情報は以下のようなデータベースに保存する。
 
@@ -105,7 +105,7 @@ OAuth情報は以下のようなデータベースに保存する。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ（訂正）：`invenio_oauth2server.admin.ClientView`（model `Client`、テーブル `oauth2server_client`、`can_create=False`、`column_display_all_relations=True`）。処理概要中の `invenio_files_rest.admin.ClientView` はコピペ誤りで、正しくは `invenio_oauth2server.admin.ClientView`。
+- 画面/ハンドラ：`invenio_oauth2server.admin.ClientView`（model `Client`、テーブル `oauth2server_client`、`can_create=False`、`column_display_all_relations=True`）。
 
 ## 更新履歴
 

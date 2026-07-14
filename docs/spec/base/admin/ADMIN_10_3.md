@@ -135,7 +135,7 @@ resyncを利用して外部機関からデータを収集する
     - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py#L22>
     - 設定キー：INVENIO_RESOURCESYNCCLIENT_ADMIN_TEMPLATE
   - 「List」タブの表示時に、同クラスのget_listメソッドによってテーブルの情報をid昇順で取得する
-  - 「Create」タブで［Create］ボタンを押したとき、同クラスのcreateメソッドによって、テーブルに対象インデックスについてのレコードがない場合に、新たにレコードを作成する
+  - 「Create」タブで［Create］ボタンを押したとき、同クラスのcreate_resyncメソッドによって、重複チェックを行わずに新たにレコードを作成する
     - 「resync_save_dir」フィールドの値は、以下のコンフィグで指定する文字列にレコードのidを加えた文字列を設定する
       - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py#L51>
       - 設定キー：INVENIO_RESYNC_SAVE_PATH
@@ -182,7 +182,7 @@ resyncを利用して外部機関からデータを収集する
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ（訂正）：Resync の実体は **invenio-resourcesyncclient** の `AdminResyncClient`（endpoint `resync`）。`create_resync`（`/create`、重複チェック無しで作成）/ `update_resync` / `delete_resync` / `get_list` / `get_logs`。Sync=`run_sync`、Import=`run_import`、実行ON/OFF=`toggle_auto`、リポジトリ取得=`get_repository`。同期は Celery `resync_sync`（`run_sync_import`/`run_sync_auto`）。
+- 画面/ハンドラ：Resync の実体は **invenio-resourcesyncclient** の `AdminResyncClient`（endpoint `resync`）。`create_resync`（`/create`、重複チェック無しで作成）/ `update_resync` / `delete_resync` / `get_list` / `get_logs`。Sync=`run_sync`、Import=`run_import`、実行ON/OFF=`toggle_auto`、リポジトリ取得=`get_repository`。同期は Celery `resync_sync`（`run_sync_import`/`run_sync_auto`）。
 - 実装補足：テーブル `resync_indexes` / `resync_logs`。config：`INVENIO_RESYNC_SAVE_PATH`（既定 `/tmp/resync/`）/ `INVENIO_RESYNC_LOGS_STATUS` / `INVENIO_RESYNC_MODE` ほか。
 
 ## 更新履歴

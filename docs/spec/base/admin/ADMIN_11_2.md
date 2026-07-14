@@ -72,17 +72,16 @@
   - 表示項目：UUID、Status、Revision、Updated、Created、JSON
   - ［削除（Delete）］ボタンは以下のようにふるまう
     - このボタンは、StatusがDELETED以外のときに押すことができる
-    - このボタンを押すと、以下のメッセージがポップアップで表示される
-      - 日本語：「サーバ内部エラー」
-      - 英語：「Internal server error」
+    - このボタンを押すと、該当レコードメタデータを論理削除する
+      - 対象がロックされている場合は削除されず、code=-1・is_locked=Trueが返る
   - ［復元（Restore）］ボタンは以下のようにふるまう
     - このボタンは、StatusがDELETEDのときに押すことができる
-    - このボタンを押すと、ページ未検出エラーの画面に遷移する
+    - このボタンを押すと、該当レコードメタデータを復元する
 
 ## 関連モジュール
 
 - invenio_records：画面を定義
-- weko_records：soft_delete処理と復元処理を定義
+- weko_records_ui：soft_delete処理と復元処理（`weko_records_ui.utils`）を定義
 
 ## 処理概要
 
@@ -90,13 +89,10 @@
 - 画面で表示されるstatusはテーブルに含まれない項目で、情報取得時にpidstore_pidテーブルから以下の条件を満たすレコードのstatusを取得している
   - pid_typeが「recid」
   - object_uuidがrecords_metadataテーブルでのidと一致する
-- v0.9.22では、詳細（Details）タブでの操作は必ずエラーが発生するようになっている
-  - ［削除（Delete）］ボタンを押したときには'/soft_delete/<string:id>'の形で、［復元（Restore）］ボタンを押したときには'/restore/<string:id>'の形でリクエストのURLを作成するが、適切に作成できていない
-    - ModelViewでDetailsを表示すると、URL末尾に「&url=...」が入るようになっている
-    - リクエストのURLは、ボタンを押したときの画面のURLから「detail」を置換して「id=」を取り除いて作成しており、末尾の「&url=...」がそのままになっているため不正なidを指定した状態になる
-    - これによって、soft_delete関数やrestore関数に到達しない
-      - テンプレートにて、［削除（Delete）］ボタンを押してエラーが発生した場合にメッセージを表示するようになっているが、［復元（Restore）］ボタンの場合にはエラー発生時の記述がないためページ未検出エラーの画面に遷移する
-  - DetailsタブのURLから末尾の「&url=...」を取り除いたものでも同様の画面を表示できるため、その状態でボタンを押すことで各関数に到達することができる
+- 詳細（Details）タブでの操作は、以下のように処理される
+  - ［削除（Delete）］ボタンを押したときには'/soft_delete/<string:id>'の形で、［復元（Restore）］ボタンを押したときには'/restore/<string:id>'の形でリクエストのURLを作成する
+    - ［削除（Delete）］ボタンではweko_records_ui.utils.soft_delete関数、［復元（Restore）］ボタンではweko_records_ui.utils.restore関数が呼び出される
+    - 対象レコードがロックされている場合は、削除されずにcode=-1・is_locked=Trueが返る
 - 一覧（List）タブにて、レコードをチェックして「選択▼」（With selected▼）タブの［削除（Delete）］ボタンを押すと、チェックしたレコードごとにinvenio_records.admin.RecordMetadataModelView.delete_modelメソッドが呼び出される
   - 該当レコードのJSONが「null」だった場合は処理を終了する
   - invenio_records.api Record.deleteメソッドによって、該当レコードのJSONを「null」にする
@@ -104,7 +100,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`invenio_records.admin.RecordMetadataModelView`（テーブル `records_metadata`、`record_adminview`、カテゴリ Records）。`can_create=False` / `can_edit=False` / `can_delete=True` / `can_view_details=True`。`status` は `PersistentIdentifier`（pid_type='recid'）を参照する hybrid property。
-- 実装補足（訂正）：論理削除・復元は **`weko_records_ui.utils`** の `soft_delete` / `restore` を呼ぶ（weko-records ではない）。詳細画面の Delete/Restore ボタンは v2.0.2 では正常に機能する（旧 v0.9.22 の「必ずエラー」記述は古い）。ロック時は `code=-1, is_locked=True` を返す。`delete_model` は `json is None` を早期 return、それ以外は `Record.delete()`（`json=None` 化のソフト削除）。
+- 実装補足：論理削除・復元は **`weko_records_ui.utils`** の `soft_delete` / `restore` を呼ぶ。ロック時は `code=-1, is_locked=True` を返す。`delete_model` は `json is None` を早期 return、それ以外は `Record.delete()`（`json=None` 化のソフト削除）。
 
 ## 更新履歴
 

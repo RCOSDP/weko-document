@@ -82,6 +82,8 @@
 
 - weko_index_tree
 - weko_records_ui
+- weko_search_ui
+- weko_deposit
 
 ## 処理概要
 
@@ -119,7 +121,7 @@ WEKO_RECORDS_UI_BULK_UPDATE_FIELDS = {
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装（訂正）：一括更新は `weko-bulkupdate` モジュール（スタブ）ではなく、**weko-records-ui**（画面 `ItemManagementBulkUpdate`、endpoint `items/bulk/update`）+ **weko-search-ui**（検索画面）+ **weko-deposit**（REST更新）で実現される。画面テンプレートは `WEKO_THEME_ADMIN_ITEM_MANAGEMENT_TEMPLATE`（`management_type='update'`）。
+- 実装：一括更新は **weko-records-ui**（画面 `ItemManagementBulkUpdate`、endpoint `items/bulk/update`）+ **weko-search-ui**（検索画面）+ **weko-deposit**（REST更新）で実現される。画面テンプレートは `WEKO_THEME_ADMIN_ITEM_MANAGEMENT_TEMPLATE`（`management_type='update'`）。
 - 更新処理：JS から対象アイテムごとに `PUT /api/deposits/redirect/<pid>` →（`ItemResource.put`）`/api/deposits/items/<pid>` → `/api/deposits/publish/<pid>`（`weko_deposit.rest.publish`）を順に呼ぶ。`accessrole` / `licensetype` を変更。新バージョン作成（`edit_mode='upgrade'`）となる場合がある。テーブル `item_metadata`（+ `item_metadata_version`）。`WEKO_RECORDS_UI_LICENSE_DICT` は実体はリスト。
 
 ## 更新履歴

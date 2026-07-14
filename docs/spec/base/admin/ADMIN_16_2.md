@@ -128,5 +128,5 @@ SWORD APIを利用してメタデータがJSON-LD形式で記述されたZIPフ�
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ：`weko_admin.admin.SwordAPIJsonldSettingsView`（flask-admin ModelView、endpoint `swordapi/jsonld`、一覧からの閲覧・編集・削除可）。model `SwordClientModel`（テーブル `sword_clients`（複数形。`sword_client` は誤り）、weko-swordserver）。WebAPI 優先順位の候補は config `WEKO_ITEMS_AUTOFILL_API_LIST`（＋ `Original`）。作成時は OAuth クライアント（`invenio_oauth2server` の `Client`）を参照。
+- 画面/ハンドラ：`weko_admin.admin.SwordAPIJsonldSettingsView`（flask-admin ModelView、endpoint `swordapi/jsonld`、一覧からの閲覧・編集・削除可）。model `SwordClientModel`（テーブル `sword_clients`、weko-swordserver）。WebAPI 優先順位の候補は config `WEKO_ITEMS_AUTOFILL_API_LIST`（＋ `Original`）。作成時は OAuth クライアント（`invenio_oauth2server` の `Client`）を参照。
 

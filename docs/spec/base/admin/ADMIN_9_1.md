@@ -64,7 +64,7 @@
        - ハーベスト後にWEKOリポジトリで編集されたアイテムは、次回ハーベスト実行時に対象リポジトリのアイテムで上書き更新される。
        - ハーベスト後にWEKOリポジトリで削除されたアイテムでも、次回ハーベスト実行時に対象であった場合は、復活して上書き更新される。
        - harvest_settings テーブルの task_idカラムにnullを格納する。
-   - ハーベストの実行中に[中断（Suspected）]ボタンを表示させる。[中断（Suspected）]ボタンを押すと、ハーベスト処理を中断する。
+   - ハーベストの実行中に[中断（Pause）]ボタンを表示させる。[中断（Pause）]ボタンを押すと、ハーベスト処理を中断する。
    - 中断したハーベスト処理に対して、中断した箇所から再開できる。
    - ハーベストの処理結果をメール通知できる。
      - 当該メールの宛先は、リポジトリ管理者 及び コミュニティ管理者 とする。
@@ -121,7 +121,7 @@
      - 終了日時（End Time）フォーマット：YYYY-MM-DDThh:mm:ss.sTZD
        - ハーベスト処理が完了した時点の日時を記録する。  
          エラーで終了した場合は、その日時を記録する。  
-         また、管理者が[中止（Cancel）]ボタンを押下した際には、そのときの日時を記録する。
+         また、管理者が[Clear]ボタンを押下した際には、そのときの日時を記録する。
      - ステータス（Status）
        - ：現在ハーベストの処理を実施している状態。この状態のとき、終了日時は記録されない。
        - Successful：ハーベストの処理がエラー無く正常に終了した状態。
@@ -220,13 +220,15 @@ OAI-PMHハーベスト実行履歴の表示件数を設定
   invenio_oaiharvester.admin.HarvestSettingViewが継承しているModelViewにより、flask_admin.model.base.index_view が呼び出され、db内のharvest_settingsの情報を取得し表示している。  
   [run]ボタン：詳細画面から押下可能。押下時にinvenio_oaiharvester.admin.runが呼び出され、ハーベストが実行される。  
   [Pause]ボタン：ハーベスト実行中にのみ押下可能。押下時にinvenio_oaiharvester.admin.pauseが呼び出され、ハーベストを中断する。その後[Resume]ボタン押下で処理を再開する。
-- 作成タブ・編集タブ  
-  invenio.oaiharvester.admin.HarvestSettingView.edit_viewが呼び出され、作成画面もしくは編集画面へと遷移する。必須項目を入力後、保存処理をすることでdb内のharvester_settingsが更新される。
+- 作成タブ  
+  invenio_oaiharvester.admin.HarvestSettingView.create_viewが呼び出され、作成画面へと遷移する。必須項目を入力後、保存処理をすることでdb内のharvest_settingsにレコードが追加される。
+- 編集タブ  
+  invenio_oaiharvester.admin.HarvestSettingView.edit_viewが呼び出され、編集画面へと遷移する。必須項目を入力後、保存処理をすることでdb内のharvest_settingsが更新される。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`invenio_oaiharvester.admin.HarvestSettingView`（endpoint `harvestsettings`、テーブル `harvest_settings` / `harvest_logs`）。実行は `run`（`run_harvesting.apply_async`）、`pause`（Celery revoke、ステータス Suspended）、`clear`（status=Cancel）、`get_logs` / `get_log_detail` / `set_schedule`。作成タブは既定 `create_view`、編集は `edit_view`。
-- 実装補足（訂正）：操作ボタンは Run / Resume / Pause / Clear（「Suspected」は誤記＝Pause）。Resume は専用エンドポイントを持たず `run` を再利用する。`repository_name` は unique・最大20文字。履歴表示件数は `OAIHARVESTER_NUMBER_OF_HISTORIES`（20）。一覧はサブリポジトリ権限で絞り込み（`get_query`/`_index_filter`）。
+- 実装補足：操作ボタンは Run / Resume / Pause / Clear。Resume は専用エンドポイントを持たず `run` を再利用する。`repository_name` は unique・最大20文字。履歴表示件数は `OAIHARVESTER_NUMBER_OF_HISTORIES`（20）。一覧はサブリポジトリ権限で絞り込み（`get_query`/`_index_filter`）。
 
 ## 更新履歴
 

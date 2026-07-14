@@ -31,7 +31,7 @@
 
     - Redirect URIs:必須入力
 
-    - Client type :プルダウンより「Confidencial」、「Public」から選択する。
+    - Client type :プルダウンより「Confidential」、「Public」から選択する。
 
 - エリアを表示した際、ログインしているアカウントに登録されているクライアントの名前と説明を表示する。
 
@@ -114,6 +114,8 @@
 
       - user:activity　ワークフロー作成の許可
 
+    - 上記は主なスコープであり、実際の作成画面には登録済みの全スコープが列挙される（deposit / index / item / author / file / oa_status / ranking / user:email / user:activity 系など）。
+
 - エリアを表示した際、ログインしているアカウントに登録されているまだ承認されていないトークンの名前と説明を表示する。
 
 - 表示されているクライアントの名前を押下するとその詳細情報が表示される。
@@ -191,10 +193,10 @@
   - 「Application/[名前]」エリア
 
     - 「Reset client secret」ボタンを押下する。  
-      この操作によって、invenio_oauth2server.views.settings.client_resetメソッドがPOSTで呼び出され、Client Secretを再生成し、oauth2server_clientテーブルのclien_secret列に保存する。
+      この操作によって、invenio_oauth2server.views.settings.client_resetメソッドがPOSTで呼び出され、Client Secretを再生成し、oauth2server_clientテーブルのclient_secret列に保存する。
 
     - 「削除」ボタンを押下する。  
-      この操作によって、invenio_oauth2server.views.settings.client_viewメソッドがPOST,deleteで呼び出され、表示されていたクライアント情報をoauth2server_clientテーブルから削除する。
+      この操作によって、invenio_oauth2server.views.settings.client_viewメソッドがPOST（form field `delete` 付き）で呼び出され、表示されていたクライアント情報をoauth2server_clientテーブルから削除する。
 
   - 「OAuth 2.0 Endpoints」エリア
 
@@ -217,7 +219,7 @@
   - 「Personal access token/[名前]」エリア
 
     - 「削除」ボタンを押下する。  
-      この操作によって、invenio_oauth2server.views.settings.token_viewメソッドがPOST,deleteで呼び出され、表示されていたトークン情報をoauth2server_tokenテーブルから削除する。
+      この操作によって、invenio_oauth2server.views.settings.token_viewメソッドがPOST（form field `delete` 付き）で呼び出され、表示されていたトークン情報をoauth2server_tokenテーブルから削除する。
 
     - 表示されているトークン情報を編集後、「保存」ボタンを押下する。  
       この操作によって、invenio_oauth2server.views.settings.token_viewメソッドがPOSTで呼び出され、編集した情報をoauth2server_tokenテーブルに保存する。
@@ -229,7 +231,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：blueprint `invenio_oauth2server_settings`（prefix `/account/settings/applications`）。`index` / `client_new` / `client_view` / `client_reset` / `token_new` / `token_view` / `token_permission_view`（＋ `token_revoke`）。table `oauth2server_client` / `oauth2server_token`。
-- 実装補足（訂正）：カラムは `client_secret`（`clien_secret` は誤記）、ラベルは「Confidential」（「Confidencial」は誤記）。personal/authorized の振り分けには `Token.is_internal==False` 条件もある。削除は POST＋form field `delete`（HTTP DELETE ではない）。トークン作成画面のスコープは全登録スコープを列挙する（deposit/index/item/author/file/oa_status/ranking/user:email/user:activity 等）。
+- 実装補足：カラムは `client_secret`、ラベルは「Confidential」。personal/authorized の振り分けには `Token.is_internal==False` 条件もある。削除は POST＋form field `delete`（HTTP DELETE ではない）。トークン作成画面のスコープは全登録スコープを列挙する（deposit/index/item/author/file/oa_status/ranking/user:email/user:activity 等）。
 
 #### 更新履歴
 

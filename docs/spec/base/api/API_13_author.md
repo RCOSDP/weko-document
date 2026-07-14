@@ -608,7 +608,7 @@ POST /api/{version}/authors
      - 管理対象外コミュニティのIDを指定した場合
 
 6. 著者情報を登録する
-    - `authorIdInfo.idType`が`WEKO`の`authorIdInfo.authorId`に既存のWEKO IDの最大値+1の数字を`authorIdInfo.authorId`として登録する。
+    - リクエストに含まれる`idType`が`WEKO`（`'1'`）の`authorIdInfo`は除去し、WEKO IDは既存のWEKO IDの最大値+1を新規に採番して登録する。
     - `authorIdInfo.idType`、`affiliationInfo.identifierInfo.affiliationIdType`は与えられた値で検索しIDを引っ張ってくる。
     - DBとElasticsearchに著者情報を登録する。
     - エラーが発生した場合は、ロールバックして500エラーを返す。
@@ -1078,3 +1078,4 @@ DELETE /api/{version}/authors/{identifier}
 |2025/5/30||REST対応|
 | 2025/11/27|-|WEKO ID対応|
 | 2026/07/14|-|実装(v2.0.2)と突き合わせ。未記載の件数取得API(/authors/count)追加、関連モジュール・ESインデックス・論理削除・configキーを追記|
+| 2026/07/14||本文を実装準拠に修正|

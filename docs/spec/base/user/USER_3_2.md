@@ -773,7 +773,7 @@
 
   - 閾値を超えるサイズのファイルについては、マルチパートダウンロードを行う。マルチパートダウンロードは、本文URLとは異なるURLからファイルをダウンロードできる。
 
-  - 閾値は、定数「MAX_DOWNLOAD_SIZE_AT_ONE_TIME」にて設定できる。1パートあたりのサイズは、定数「 DOWNLOAD_SIZE_IN_ONE_PART」にて設定できる。
+  - 閾値は、定数「WEKO_RECORDS_UI_S3_TRANSFER_MULTIPART_THRESHOLD」にて設定できる。1パートあたりのサイズは、定数「WEKO_RECORDS_UI_S3_TRANSFER_MULTIPART_CHUNKSIZE」にて設定できる（いずれもS3サーバ側転送用）。
 
   - ダウンロードのボタン・リンクを押下すると、大容量ファイルダウンロードを開始する旨のメッセージが表示される。
 
@@ -794,7 +794,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 権限判定：`weko_records_ui.permissions.check_file_download_permission`（内部ヘルパー `__check_user_permission`）/ `check_open_restricted_permission` / `check_user_group_permission`。ダウンロード処理は `weko_records_ui.fd`（`file_download_ui` / `file_preview_ui` / `_download_file`）。ワンタイム／シークレットURLモデルは `file_onetime_download` / `file_secret_download` / `file_url_download_log`。`WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` は weko-admin、プレビューサイズ上限 `WEKO_ITEMS_UI_FILE_SISE_PREVIEW_LIMIT` は weko-items-ui（形式別 dict）。
-- 実装補足（訂正）：大容量ダウンロードの定数 `MAX_DOWNLOAD_SIZE_AT_ONE_TIME` / `DOWNLOAD_SIZE_IN_ONE_PART` は v2.0.2 に存在しない。実在するのは S3 サーバ側転送用の `WEKO_RECORDS_UI_S3_TRANSFER_MULTIPART_THRESHOLD` / `_CHUNKSIZE`。
+- 大容量（マルチパート）ダウンロードの閾値・パートサイズは S3 サーバ側転送用の `WEKO_RECORDS_UI_S3_TRANSFER_MULTIPART_THRESHOLD` / `_CHUNKSIZE` で設定する。
 
 ## 更新履歴
 

@@ -92,7 +92,7 @@ JPCOARの索引定義（/weko-schema-ui/weko_schema_ui/mappings/v6/weko/item-v1.
 各ファセット項目エリア内のプルダウンに表示されている選択肢を押下することで、選択した内容を検索条件として以下の検索処理を実行する。
 
 - 「invenio-records-rest」モジュールの「/api/records」APIを呼び出す。
-- 上記のAPIでは、「RECORDS_REST_FACETS[SEARCH_UI_SEARCH_INDEX]」コンフィグを元にマッピング情報を取得し、条件を満たすアイテムを検索する。
+- 上記のAPIでは、カスタマイズされた `invenio_records_rest.facets.default_facets_factory` から `weko_admin.utils.get_facet_search_query`（Redisキャッシュ、元データは `FacetSearchSetting` モデル）を呼び出して集計定義を取得し、条件を満たすアイテムを検索する。権限の有無に応じて別のクエリを使用する。
 
 各ファセット項目の選択を解除した際にも同様に検索処理を行う。
 
@@ -118,7 +118,7 @@ JPCOARの索引定義（/weko-schema-ui/weko_schema_ui/mappings/v6/weko/item-v1.
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（訂正）：ファセットの集計定義は config `RECORDS_REST_FACETS`（v2.0.2 では空 dict）ではなく、カスタマイズされた `invenio_records_rest.facets.default_facets_factory` → `weko_admin.utils.get_facet_search_query`（Redis キャッシュ、元データは model `FacetSearchSetting`）から取得される。権限有無で別クエリを使用。7種のデフォルトファセットはDBシードのレコード。config `WEKO_ADMIN_FACET_SEARCH_SETTING_BUCKET_SIZE`（1000）。
+- ファセットの集計定義は、カスタマイズされた `invenio_records_rest.facets.default_facets_factory` → `weko_admin.utils.get_facet_search_query`（Redis キャッシュ、元データは model `FacetSearchSetting`）から取得される。権限有無で別クエリを使用。7種のデフォルトファセットはDBシードのレコード。config `WEKO_ADMIN_FACET_SEARCH_SETTING_BUCKET_SIZE`（1000）。
 
 #### 更新履歴
 

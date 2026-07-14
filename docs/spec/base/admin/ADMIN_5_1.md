@@ -124,7 +124,7 @@
       - 外部著者IDテキストボックス：外部著者IDを入力する。  
         クリーンビルド環境の場合、初期に表示される選択肢は「ORCID, CiNii, KAKEN2,ROR」とする。
       - 「ID Prefix」画面にはリスト上に "WEKO" が存在する(WEKO3で著者を一意に決定するWEKO著者ID)が、「著者ID」のプルダウンのリストには表示されない。
-        "WEKO"は著者登録時に自動付番(初期値のWEKO著者IDは1, 以降は2, 3, ...と付番されている max(authors.id)＋１)される。
+        "WEKO"は著者登録時にDBシーケンス`authors_id_seq`により自動付番される。
       - [確認（Confirm）]ボタンを押すと、選択された外部著者IDに応じたランディングページが表示される。
         - 別ウィンドウで表示させる。
         - 著者IDを入力しない場合、「確認」（Confirm）ボタンが非活性とする。
@@ -299,8 +299,8 @@ Author ID編集画面のテンプレートを設定する。
 
 **3. 処理内容**
 
-- 【Administration>著者DB管理（Author Management）>編集（edit）】で開かれる編集画面は、初期状態としてweko_authors.views.getが呼び出され、db内のauthorsテーブルからgather_flgが0でかつis_deleteにチェックがついていないものが取り出されて表示されている。
-- 著者追加ボタンを押すと著者追加画面へ遷移し、任意の項目を入力後に[保存（Save）]ボタン押下で、weko_authors.views.createが呼び出され、db内のauthorテーブルに情報が追加される。このとき、同メソッド内でidは自動作番され、gather_flgは０、is_deleteはFalseの状態で追加される。
+- 【Administration>著者DB管理（Author Management）>編集（edit）】で開かれる編集画面は、初期状態としてweko_authors.views.getが呼び出され、Elasticsearch（著者インデックス）からgather_flgが0でかつis_deletedが付いていない著者が取得されて表示されている。
+- 著者追加ボタンを押すと著者追加画面へ遷移し、任意の項目を入力後に[保存（Save）]ボタン押下で、weko_authors.views.createが呼び出され、db内のauthorテーブルに情報が追加される。このとき、idはDBシーケンス`authors_id_seq`で自動付番され、gather_flgは０、is_deletedはFalseの状態で追加される。
 - 著者追加時は、各々の項目に対して入力テキストボックスを追加することができる。  
   それぞれのテキストボックスには以下のような初期値が、あらかじめ入力されている。
   - 氏名→言語入力欄に「ja-Kana」
@@ -309,14 +309,14 @@ Author ID編集画面のテンプレートを設定する。
   - [表示/非表示（Display/Hide）]チェックボタンは、初期値として[表示（Display）]にチェックが付いた状態となっている。
 - 編集ボタンを押すと編集画面に遷移し、任意の項目を変更後に[保存（Save）]ボタン押下で、weko_authors.views.update_authorが呼び出され、エンコードされたのちにdb内のauthorテーブルに保存される。編集画面も追加時の画面と同様に、各々の項目に対してテキストボックスの追加が可能となっており、初期値も追加画面のものと同様になっている。
 - 著者とコミュニティの関連付けは中間テーブルで行い、dbのauthorsテーブルのjsonカラムにはコミュニティ情報を保存しない。また、Elasticsearchへのデータ登録時には著者に関連づいているコミュニティにのIDを"communityIds"に配列として格納する。
-- 著者の削除の際は、編集画面下部の[削除（delete）]ボタンを押下することで、weko_authors.views.delete_authorが呼び出され、選択した著者のdb内のis_deleteカラムをTrueへ変更する。
-- 検索テキストボックスに、任意の文字列を入力し検索ボタンを押下すると、weko_authors.views.getが呼び出され、同メソッド内のsearch_keyに入力した文字列が代入され、検索が行われたのち、検索対象のみがauthorテーブルから取り出されて出力される。
-- 著者の統合時は、weko_authors.views.gatherByIdが呼び出され、統合元(Origin)にチェックを入れた著者のauthorテーブル内のgather_flgが1に変更される。また、統合の際にweko_deposit.tasks.items_by_authorInfoが呼び出され、db内のitem_metadataテーブルのjsonカラム内の、統合元（Origin）に選択された著者に紐付いていたアイテムのWEKO著者IDと外部著者IDを統合先（Target）に選択された著者の情報で更新し、それに関連するES内のメタデータのマッピングの情報も更新する。
+- 著者の削除の際は、編集画面下部の[削除（delete）]ボタンを押下することで、weko_authors.views.delete_authorが呼び出され、選択した著者のdb内のis_deletedカラムをTrueへ変更する。
+- 検索テキストボックスに、任意の文字列を入力し検索ボタンを押下すると、weko_authors.views.getが呼び出され、同メソッド内のsearch_keyに入力した文字列が代入され、検索が行われたのち、検索対象のみがElasticsearchから取り出されて出力される。
+- 著者の統合時は、weko_authors.views.gatherByIdが呼び出され、統合元(Origin)にチェックを入れた著者のauthorテーブル内のgather_flgが1に変更される。また、統合の際にweko_deposit.tasks.update_items_by_authorInfoが呼び出され、db内のitem_metadataテーブルのjsonカラム内の、統合元（Origin）に選択された著者に紐付いていたアイテムのWEKO著者IDと外部著者IDを統合先（Target）に選択された著者の情報で更新し、それに関連するES内のメタデータのマッピングの情報も更新する。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ：`weko_authors.admin.AuthorManagementView`（画面描画）＋ `weko_authors.views`（`/authors/search`,`/add`,`/edit`,`/delete`,`/gather`,`/search_edit`。いずれも POST）。初期表示・検索は Elasticsearch（`WEKO_AUTHORS_ES_INDEX_NAME`＝`{prefix}-authors`）を参照する（DB 直読ではない）。
-- 実装補足（訂正）：WEKO 著者IDの採番は DB シーケンス `authors_id_seq`（max+1 ではない）で、作成時に `idType:"1"`（WEKO）を自動付与。名寄せ（統合）タスクは `weko_deposit.tasks.update_items_by_authorInfo`。論理削除カラムは `is_deleted`。中間テーブル `author_community_relations`。アイテムにリンク済みは削除不可（`get_count_item_link`）。
+- 画面/ハンドラ：`weko_authors.admin.AuthorManagementView`（画面描画）＋ `weko_authors.views`（`/authors/search`,`/add`,`/edit`,`/delete`,`/gather`,`/search_edit`。いずれも POST）。初期表示・検索は Elasticsearch（`WEKO_AUTHORS_ES_INDEX_NAME`＝`{prefix}-authors`）を参照する。
+- 補足：WEKO 著者IDの採番は DB シーケンス `authors_id_seq`。作成時に `idType:"1"`（WEKO）を自動付与。名寄せ（統合）タスクは `weko_deposit.tasks.update_items_by_authorInfo`。論理削除カラムは `is_deleted`。中間テーブル `author_community_relations`。アイテムにリンク済みは削除不可（`get_count_item_link`）。
 
 ## 更新履歴
 

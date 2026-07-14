@@ -32,6 +32,7 @@
     - GRID(URL: https://www.grid.ac/institutes/##)
     - Ringgold
     - Kakenhi
+    - ROR
   - [追加（Add）]ボタンを押すと、入力内容をチェックする。
     - 問題があれば、Affiliation IDを追加せず、エラーメッセージを表示する。
       - 何かの項目を入力しない場合、またはURL形式が不正場合は以下のメッセージを表示する。  
@@ -66,13 +67,13 @@ IDスキーマ名（Scheme）プルダウンに表示するScheme一覧の設定
 
 - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L32>
 - 設定キー：WEKO_AUTHORS_LIST_SCHEME_AFFILIATION
-- 現在の設定値：`WEKO_AUTHORS_LIST_SCHEME_AFFILIATION = ['ISNI', 'GRID', 'Ringgold', 'kakenhi', 'Other']`
+- 現在の設定値：`WEKO_AUTHORS_LIST_SCHEME_AFFILIATION = ['ISNI', 'GRID', 'Ringgold', 'kakenhi', 'ROR', 'Other']`
 
 「Other」のインデックスを設定する。
 
 - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L36>
 - 設定キー：WEKO_AUTHORS_AFFILIATION_IDENTIFIER_ITEM_OTHER
-- 現在の設定値：`WEKO_AUTHORS_AFFILIATION_IDENTIFIER_ITEM_OTHER = 4`
+- 現在の設定値：`WEKO_AUTHORS_AFFILIATION_IDENTIFIER_ITEM_OTHER = 5`
 
 Affiliation ID画面のテンプレートを設定する。
 
@@ -89,7 +90,7 @@ Affiliation ID画面のテンプレートを設定する。
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_authors.views`（`/authors/search_affiliation`（GET）,`/edit_affiliation`（POST）,`/delete_affiliation/<id>`（DELETE）,`/add_affiliation`（PUT））。テーブル `authors_affiliation_settings`（`AuthorsAffiliationSettings`）＋中間 `author_affiliation_community_relations`。テンプレート `WEKO_AUTHORS_ADMIN_AFFILIATION_TEMPLATE`。
-- config（訂正）：`WEKO_AUTHORS_LIST_SCHEME_AFFILIATION` は `['ISNI','GRID','Ringgold','kakenhi','ROR','Other']`（ROR 追加）、`WEKO_AUTHORS_AFFILIATION_IDENTIFIER_ITEM_OTHER` は `5`。
+- config：`WEKO_AUTHORS_LIST_SCHEME_AFFILIATION` は `['ISNI','GRID','Ringgold','kakenhi','ROR','Other']`、`WEKO_AUTHORS_AFFILIATION_IDENTIFIER_ITEM_OTHER` は `5`。
 
 ## 更新履歴
 

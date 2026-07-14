@@ -117,6 +117,9 @@
 ## 関連モジュール
 
 - weko-admin
+- weko-search-ui
+- weko-records
+- invenio-stats
 
 ## 処理概要
 
@@ -197,7 +200,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_admin.admin.FeedbackMailView`（endpoint `feedbackmail`、画面描画）＋ API（`weko_admin.views`：`update_feedback_mail` / `get_feedback_mail` / `get_send_mail_history` / `get_failed_mail` / `resend_failed_mail`）。送信は Celery `weko_admin.tasks.send_feedback_mail`（crontab：毎月1日 0:00、スケジュールキー `send-feedback-mail-schedules`）。
-- config（訂正）：最大送信件数 `WEKO_SEARCH_MAX_FEEDBACK_MAIL` は **10000**（旧記述の 100 は誤り）。テーブル `feedback_email_setting`（`account_author`（NOT NULL）・`root_url` 列を含む）/ `feedback_mail_history` / `feedback_mail_failed` / `feedback_mail_list`（weko-records）。関連モジュール（追記）：weko-search-ui / weko-records / invenio-stats。
+- config：最大送信件数 `WEKO_SEARCH_MAX_FEEDBACK_MAIL` は 10000。テーブル `feedback_email_setting`（`account_author`（NOT NULL）・`root_url` 列を含む）/ `feedback_mail_history` / `feedback_mail_failed` / `feedback_mail_list`（weko-records）。
 
 ## 更新履歴
 

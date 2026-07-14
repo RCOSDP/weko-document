@@ -20,7 +20,7 @@
 
 - コンフィグで機能が有効化されているとき、画面フッタに「Change consent settings」が表示される。これをクリックすると、Cookie利用の同意画面がポップアップで表示される。
 
-- Addthis および Google Analystics の利用について、Cookie利用の同意をとることで利用可能とする。
+- Facebook および X(Twitter) の利用について、Cookie利用の同意をとることで利用可能とする。
 
 - Googleアナリティクス(システム)については、サービス利用の必須としている。
 
@@ -47,7 +47,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 有効化 config は `ENABLE_COOKIE_CONSENT`（`weko_theme`、既定 False。`weko_theme.ext` で登録）。同意UIは Klaro（v0.7.16）を `base.html` で使用。
-- 実装補足（訂正）：同意で制御される任意サービスは AddThis ではなく Facebook と X(Twitter)（＋必須の Google Analytics）。
+- 実装補足：同意で制御される任意サービスは Facebook と X(Twitter)（＋必須の Google Analytics）。
 
 #### 更新履歴
 

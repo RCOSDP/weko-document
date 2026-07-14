@@ -69,8 +69,8 @@
 
 ## 処理概要
 
-      - 画面表示時に、weko_accounts.admin.ShibSettingView.index 関数を GET で呼び出して、instance.cfg または weko-accounts で以下のコンフィグから Shibbolethの許可設定を読み込む。<br>
-      両方で設定されている場合、instance.cfgの設定が優先される。また、画面で設定を変更した場合は、その変更が最優先される。
+      - 画面表示時に、weko_accounts.admin.ShibSettingView.index 関数を GET で呼び出して、AdminSettings（name=shib_login_enable）から Shibbolethの許可設定を読み込む。<br>
+      AdminSettings に値がない場合は、instance.cfg または weko-accounts の以下のコンフィグをフォールバックとして参照する（両方で設定されている場合、instance.cfgの設定が優先される）。
 
           - パス（instance.cfg）：  
             <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L436>
@@ -80,7 +80,7 @@
 
           - 設定キー：WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED
 
-      - ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index関数をPOSTで呼び出して、以下のようにしてコンテキストに設定を保存する。
+      - ［保存（Save）］ボタンを押すと、weko_accounts.admin.ShibSettingView.index関数をPOSTで呼び出して、Shibbolethの有効/無効設定を AdminSettings（name=shib_login_enable、{"shib_flg": bool}）に永続化する（config 値はフォールバック）。あわせて以下のように in-memory config も更新する。
 
 > _app = LocalProxy(lambda: current_app.extensions['weko-admin'].app)
 >
@@ -456,7 +456,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_accounts.admin.ShibSettingView` ＋ `weko_accounts.views._adjust_shib_admin_DB`。
-- 実装補足（訂正）：Shibboleth ログインの有効/無効は config だけでなく `AdminSettings`（name=`shib_login_enable`、`{"shib_flg": bool}`）に永続化される（config 値はフォールバック）。デフォルトロール／属性マッピング／ブロックユーザーはそれぞれ `AdminSettings` の `default_role_settings` / `attribute_mapping` / `blocked_user_settings`。属性マッピングCLIは weko-admin の `admin_settings mapping_update`。config：`WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED` / `WEKO_ACCOUNTS_ATTRIBUTE_MAP` / `WEKO_ACCOUNTS_ROLE_LIST` 等。
+- Shibboleth ログインの有効/無効は `AdminSettings`（name=`shib_login_enable`、`{"shib_flg": bool}`）に永続化される（config 値はフォールバック）。デフォルトロール／属性マッピング／ブロックユーザーはそれぞれ `AdminSettings` の `default_role_settings` / `attribute_mapping` / `blocked_user_settings`。属性マッピングCLIは weko-admin の `admin_settings mapping_update`。config：`WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED` / `WEKO_ACCOUNTS_ATTRIBUTE_MAP` / `WEKO_ACCOUNTS_ROLE_LIST` 等。
 
 ## 更新履歴
 

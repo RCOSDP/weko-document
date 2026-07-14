@@ -6,7 +6,7 @@
 
 #### 利用方法
 
-ユーザ画面のLarge File Uploadタブからファイルをアップロードする。
+アイテム登録の投稿フォーム画面のファイルアップロード機能から、大容量ファイルをアップロードする。
 
 #### 利用可能なロール
 
@@ -50,7 +50,7 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（訂正）：大容量（マルチパート）アップロードは weko-items-ui のタブ機能ではなく、**invenio-files-rest** のマルチパートREST（`ObjectResource` の `multipart_init`/`multipart_uploadpart`/`multipart_complete` 等）を、投稿フォームUI（ng-file-upload / weko-deposit）が駆動する。`weko_items_ui.views.index_upload`（`/items/upload`）はメタデータ一括インポート画面で大容量アップローダではない。モデル `FileInstance`/`MultipartObject`/`Part`、config `FILES_REST_MULTIPART_*`、完了タスク `merge_multipartobject`。
+- 実装補足：大容量（マルチパート）アップロードは **invenio-files-rest** のマルチパートREST（`ObjectResource` の `multipart_init`/`multipart_uploadpart`/`multipart_complete` 等）を、投稿フォームUI（ng-file-upload / weko-deposit）が駆動する。`weko_items_ui.views.index_upload`（`/items/upload`）はメタデータ一括インポート画面である。モデル `FileInstance`/`MultipartObject`/`Part`、config `FILES_REST_MULTIPART_*`、完了タスク `merge_multipartobject`。
 
 #### 更新履歴
 

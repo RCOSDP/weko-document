@@ -393,7 +393,7 @@ DELETE /api/<version>/tree/index/<index_id>
 
 #### レスポンスボディ
 **正常終了**
-レスポンスボディは空。
+レスポンスボディには `{"status": 204}` を返す。
 
 **異常終了**
 | 項目名      | 説明                     |
@@ -415,7 +415,7 @@ DELETE /api/<version>/tree/index/<index_id>
 > 実装補足（v2.0.2）：
 > - 書込系（POST/PUT/DELETE）はシステム/リポジトリ/コミュニティ管理者に限定（`@roles_required`）。コミュニティ管理者は自身の管理下インデックスのみ操作可（`utils.can_admin_access_index`）。GET は認証済みなら全ロール可、ゲスト不可。
 > - バージョンは `v1` のみ（他は 400 `VersionNotFoundRESTError`）。Content-Type は application/json 必須（400）。`index_id=0`（ルート）への PUT/DELETE 不可（400）。
-> - POST 成功は 201、PUT 成功は 200、いずれもレスポンスはDB全カラム＋`created`/`updated`/`public_date` を含む。DELETE 成功は 204 だがボディは空でなく `{"status":204}` を返す。
+> - POST 成功は 201、PUT 成功は 200、いずれもレスポンスはDB全カラム＋`created`/`updated`/`public_date` を含む。DELETE 成功は 204、レスポンスボディは `{"status":204}` を返す。
 > - GET `/tree` は日英ツリーをマージした結果（`index_name` / `index_name_english` / `value_english` 等）を返す。
 
 ## 更新履歴
@@ -425,4 +425,5 @@ DELETE /api/<version>/tree/index/<index_id>
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | 初版作成                                                 |
 | 2025/06/06 | 34a972ec2f7a26b92cb55cb4524b20bdde180f39   | インデックス管理APIについて追記                          |
 | 2026/07/14 |                                            | 実装(v2.0.2)と突き合わせ。レガシーcreateの返却値記述（NoneType）を修正、管理APIの関連モジュール・スキーマ・エラー・DELETEレスポンス`{"status":204}`・各種制約を追記、typo（tru→true）修正 |
+| 2026/07/14 |                                            | 本文を実装準拠に修正（DELETEレスポンスボディ）           |
 

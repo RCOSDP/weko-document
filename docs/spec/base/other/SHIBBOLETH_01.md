@@ -14,17 +14,15 @@
 
       - ロール：wekoSocietyAffiliation
 
-    - IdP属性値に対するロール割り当ては以下とする
+    - IdP属性値に対するロール割り当ては以下とする（WEKO_ACCOUNTS_SHIB_ROLE_RELATION）
 
       - 「管理者」→システム管理者ロール'System Administrator'
 
-      - 「学認 IdP 経由」→ 一般利用者ロール'Contributor' 
+      - 「図書館員」→ リポジトリ管理者ロール'Repository Administrator'
 
-      - 「機関内の Orthros 経由」→ リポジトリ管理者ロール'Repository Administrator'
+      - 「教員」→ 一般利用者ロール'Contributor'
 
-      - 「機関外の Orthros 経由」→ コミュニティ管理者ロール'Community Administrator'
-
-      - 「その他」→ ロール無'None'
+      - 「教官」→ 一般利用者ロール'Contributor'
 
     - 上記のIdP属性値とロールとの対応は、以下のコンフィグで設定する
 
@@ -42,11 +40,11 @@
 
         - 「jc_roles_sysadm」→ システム管理者ロール'System Administrator'
 
-        - 「jc_<entityid>_roles_repoadm」→ リポジトリ管理者ロール'Repository Administrator'
+        - 「jc_<fqdn>_ro_radm」→ リポジトリ管理者ロール'Repository Administrator'
 
-        - 「jc_<entityid>_roles_comadm」→ コミュニティ管理者ロール'Community Administrator'
+        - 「jc_<fqdn>_ro_cadm」→ コミュニティ管理者ロール'Community Administrator'
 
-        - 「jc_<entityid>_roles_contributor」→ 一般利用者ロール'Contributor'
+        - 「jc_<fqdn>_ro_cont」→ 一般利用者ロール'Contributor'
 
 2\. Shibboleth IdPからの属性情報に基づき、サイトライセンス機能を制御する
 
@@ -113,11 +111,11 @@
 >      WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT = {
 >          "prefix": "jc",                             # Prefix
 >          "sysadm_group": "jc_roles_sysadm",          # システム管理者のグループ名
->          "role_keyword": "roles",                    # ロールグループを表すキーワード
+>          "role_keyword": "ro",                    # ロールグループを表すキーワード
 >          "role_mapping": {
->              "repoadm": "Repository Administrator",  # リポジトリ管理者グループ
->              "comadm": "Community Administrator",    # コミュニティ管理者グループ
->              "contributor": "Contributor"            # コントリビュータグループ
+>              "radm": "Repository Administrator",  # リポジトリ管理者グループ
+>              "cadm": "Community Administrator",    # コミュニティ管理者グループ
+>              "cont": "Contributor"            # コントリビュータグループ
 >          }
 >      }
 
@@ -143,7 +141,7 @@
 
     - 現在の設定値：
 
-> WEKO_ACCOUNTS_IDP_ENTITY_ID = "https://weko3.example.org/idp/simplesamlphp"
+> WEKO_ACCOUNTS_IDP_ENTITY_ID = ""
 
   - 学認mAPのグループ情報を取得するキー値のsuffix
 
@@ -239,7 +237,7 @@
 
         - レコード作成の有無にかかわらず、weko_accounts.api.ShibUser.check_inメソッドの中で、ロールの割り当てを行う
 
-        - レコード作成の有無にかかわらず、weko_accounts.api.ShibUser.gakunin_check_inメソッドの中で、学認mAPグループを更新する。
+        - 学認mAPグループの更新（isMemberOf属性値に基づく割り当て）は、weko_accounts.api.ShibUser.check_inメソッド内でインラインに行われる。
 
           - shibboleth_userroleテーブルでisMemberOf属性の値を基に、ユーザの学認mAPグループを割り当てる。
 
@@ -275,11 +273,11 @@
 
               - 「jc_roles_sysadm」→ システム管理者ロール'System Administrator'
 
-              - 「jc_<entityid>_roles_repoadm」→ リポジトリ管理者ロール'Repository Administrator'
+              - 「jc_<fqdn>_ro_radm」→ リポジトリ管理者ロール'Repository Administrator'
 
-              - 「jc_<entityid>_roles_comadm」→ コミュニティ管理者ロール'Community Administrator'
+              - 「jc_<fqdn>_ro_cadm」→ コミュニティ管理者ロール'Community Administrator'
 
-              - 「jc_<entityid>_roles_contributor」→ 一般利用者ロール'Contributor'
+              - 「jc_<fqdn>_ro_cont」→ 一般利用者ロール'Contributor'
 
       - ログインする
 
@@ -303,11 +301,11 @@
 
               - 「jc_roles_sysadm」→ システム管理者ロール'System Administrator'
 
-              - 「jc_<entityid>_roles_repoadm」→ リポジトリ管理者ロール'Repository Administrator'
+              - 「jc_<fqdn>_ro_radm」→ リポジトリ管理者ロール'Repository Administrator'
 
-              - 「jc_<entityid>_roles_comadm」→ コミュニティ管理者ロール'Community Administrator'
+              - 「jc_<fqdn>_ro_cadm」→ コミュニティ管理者ロール'Community Administrator'
 
-              - 「jc_<entityid>_roles_contributor」→ 一般利用者ロール'Contributor'
+              - 「jc_<fqdn>_ro_cont」→ 一般利用者ロール'Contributor'
 
   - shibboleth_userテーブルにレコードを作成する場合は、あわせてユーザ関連テーブルも上書きする
 
@@ -336,9 +334,10 @@
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2025/02/03 | a62f7a5ea350ec1a811cb053dd27c54f284705a4 | 学認mAP対応 |
 | 2025/03/12 | 407a511f757c1991078dc69f4560a2f64a42b615 | ユーザープロビジョニング自動化追記、ロール情報修正 |
+| 2026/07/14 |  | 本文を実装準拠に修正 |
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 実装補足（訂正、v2.0.2）：Shibboleth ログインの実エンドポイントは `POST /weko/shib/login`（`weko_accounts.views.shib_sp_login`）。ロール付与は `ShibUser.check_in`（`gakunin_check_in` というメソッドは存在せず、mAPグループ処理は check_in 内にインライン）→ `_find_organization_name`（organizationName判定。真なら mAPグループ判定 `_assign_roles_to_user` をスキップ）。
-- config 実値：`WEKO_ACCOUNTS_SHIB_ROLE_RELATION = {'管理者':'System Administrator','図書館員':'Repository Administrator','教員':'Contributor','教官':'Contributor'}`（本文のコメントアウト旧版とは異なる）。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` は `role_keyword='ro'`、`role_mapping={'radm':'Repository Administrator','cadm':'Community Administrator','cont':'Contributor'}`（グループ名例は `jc_<fqdn>_ro_radm` 等）。`WEKO_ACCOUNTS_IDP_ENTITY_ID` の既定は空文字。
+- config 実値：`WEKO_ACCOUNTS_SHIB_ROLE_RELATION = {'管理者':'System Administrator','図書館員':'Repository Administrator','教員':'Contributor','教官':'Contributor'}`。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` は `role_keyword='ro'`、`role_mapping={'radm':'Repository Administrator','cadm':'Community Administrator','cont':'Contributor'}`（グループ名例は `jc_<fqdn>_ro_radm` 等）。`WEKO_ACCOUNTS_IDP_ENTITY_ID` の既定は空文字。
 - table `shibboleth_user`（`ShibbolethUser`）＋中間表 `shibboleth_userrole`。紐づけキーは `shib_eppn`。ブロックユーザーは AdminSettings `blocked_user_settings.blocked_ePPNs` で拒否。関連：[AMS Shibboleth対応](../ams/AMS_SHIBBOLETH_01.md)。

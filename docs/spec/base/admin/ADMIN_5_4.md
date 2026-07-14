@@ -84,13 +84,13 @@ IDスキーマ名（Scheme）プルダウンに表示するScheme一覧を設定
 
 - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L25>
 - 設定キー：WEKO_AUTHORS_LIST_SCHEME
-- 現在の設定値：`WEKO_AUTHORS_LIST_SCHEME = ['e-Rad', 'NRID', 'ORCID', 'ISNI', 'VIAF', 'AID', 'kakenhi', 'Ringgold', 'GRID', 'ROR', 'Other']`
+- 現在の設定値：`WEKO_AUTHORS_LIST_SCHEME = ['e-Rad', 'NRID', 'ORCID', 'ISNI', 'VIAF', 'AID', 'kakenhi', 'Ringgold', 'GRID', 'ROR', 'e-Rad_Researcher', 'researchmap', 'Other']`
 
 インデックスを設定する
 
 - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L29>
 - 設定キー：WEKO_AUTHORS_INDEX_ITEM_OTHER
-- 現在の設定値：`WEKO_AUTHORS_INDEX_ITEM_OTHER = 10`
+- 現在の設定値：`WEKO_AUTHORS_INDEX_ITEM_OTHER = 12`
 
 ID Prefix画面のテンプレートを設定する
 
@@ -107,7 +107,7 @@ ID Prefix画面のテンプレートを設定する
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_authors.views`（`/authors/search_prefix`（GET）,`/edit_prefix`（POST）,`/delete_prefix/<id>`（DELETE）,`/add_prefix`（PUT））。テーブル `authors_prefix_settings`（`AuthorsPrefixSettings`）＋中間 `author_prefix_community_relations`。scheme は一意制約。URL の `#` は識別子で置換（`views.mapping`）。WEKO（idType=1）は編集不可。
-- config（訂正）：`WEKO_AUTHORS_LIST_SCHEME` に `e-Rad_Researcher` と `researchmap` が追加（全13）、`WEKO_AUTHORS_INDEX_ITEM_OTHER` は `12`。
+- config：`WEKO_AUTHORS_LIST_SCHEME` は `e-Rad_Researcher` と `researchmap` を含む全13件、`WEKO_AUTHORS_INDEX_ITEM_OTHER` は `12`。
 
 ## 更新履歴
 

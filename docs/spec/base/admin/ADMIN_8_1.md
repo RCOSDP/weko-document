@@ -199,15 +199,15 @@
 
 編集（Edit）タブ表示時に、edit_viewメソッドが呼び出される
 
-作成（Create）、で［保存（Save）］ボタンを押すと、validate_input_idメソッドでidのバリデーションチェックを行い、レコードのid_userカラムを操作ユーザのidで更新する
+作成（Create）・編集（Edit）で［保存（Save）］ボタンを押すと、`validate_community_id`メソッド（内部で`_validate_input_id`）でidのバリデーションチェックを行う。id_userカラムは作成時のみ操作ユーザのidで設定し、編集保存時は書き換えない
 
-  - 編集（Edit）タブでの保存時はidを編集できないため、作成（Create）タブでの保存時のみにバリデーションチェックしている
+  - idのバリデーションチェックは作成・編集の両方の保存時に実行される。なお、編集（Edit）タブでの保存時はidを編集できない
 
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`invenio_communities.admin.CommunityModelView`（テーブル `communities_community`）。`create_view`（`/new/`）/ `edit_view`（`/edit/<id>/`）/ `get_json_schema` / `get_schema_form` を上書き。作成可否は `min(role_ids) <= COMMUNITIES_LIMITED_ROLE_ACCESS_PERMIT`（=2、System/Repository）。一覧絞り込みは `get_query`（super-role は全件、他は `role_query_cond`）。
-- 実装補足（訂正）：ID 等のバリデーション（`validate_community_id` / `_validate_input_id`）は作成・編集の両方で実行される（`validate_input_id` というメソッドは存在しない）。`id_user` は作成時のみ設定され、編集保存では書き換えない。Catalog 入力は `/admin/community/jsonschema`・`/schemaform`（`item_type_property` id=1057）から取得。CNRI 有効時はハンドル登録を行う。
+- 補足：ID 等のバリデーション（`validate_community_id` / `_validate_input_id`）は作成・編集の両方で実行される。`id_user` は作成時のみ設定され、編集保存では書き換えない。Catalog 入力は `/admin/community/jsonschema`・`/schemaform`（`item_type_property` id=1057）から取得。CNRI 有効時はハンドル登録を行う。
 
 ## 更新履歴
 

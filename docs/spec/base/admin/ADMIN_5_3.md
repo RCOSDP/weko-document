@@ -198,7 +198,7 @@
 | 16 | authorAffiliationInfo[0...n].affiliationNameInfo[0...n].language | 言語 | Language | 外部所属機関名の言語を入力する |
 | 17 | authorAffiliationInfo[0...n].affiliationNameInfo[0...n].nameShowFlg | 外部所属機関名・言語 表示／非表示 | Affiliation Name Display | 外部所属機関名と言語の表示／非表示を入力する<br />表示する: "Y"<br />表示しない: "N" |
 | 18 | authorAffiliationInfo[0...n].affiliationPeriodInfo[0...n].periodStart | 外部所属機関 所属期間 | Affiliation Period |  |
-| 19 | authorAffiliationInfo[0...n].affiliationPeriodInfo[0...n].periodStart | 外部所属機関 所属期間 | Affiliation Period |  |
+| 19 | authorAffiliationInfo[0...n].affiliationPeriodInfo[0...n].periodEnd | 外部所属機関 所属期間 | Affiliation Period |  |
 | 20 | communityIds[0...n] | コミュニティID | Community ID |  |
 
 　【補足】  
@@ -336,7 +336,7 @@
       「次へ」を押した際、`check_import_file` メソッドを実行し、以下のチェックを行う。
 
       **(1) Import target の検証**
-      - **TSV の 1行目** が `Import target`(Author, ID_Prefix, Affiliation_ID) に対応するものかを確認。
+      - **TSV の 1行目** が `Import target`(author_db, id_prefix, affiliation_id) に対応するものかを確認。
       - 一致しない場合、エラーメッセージを表示し、選択タブに戻す。
 
       **(2) Redis キーの確認**
@@ -365,15 +365,15 @@
 
   - **インポート処理**  
   チェックを通過し、インポートボタンを押下するとインポートタスクが非同期で実行される。
-      1. `check_import_data` メソッドを実行し、Redisに定数WEKO_AUTHORS_IMPORT_CACHE_KEYの値に `import_type` を保存する。
+      1. `check_import_data` メソッドを実行し、Redisのキー `author_import_cache`（定数WEKO_AUTHORS_IMPORT_CACHE_KEYの値）に取り込み情報（group_task_id / tasks / records）を保存する。
       2. **「インポート」ボタン** を押すと、非同期タスク (`Celery`) が開始する。
       3. `import_type` に応じて、適切なインポートメソッドを呼び出す。
 
           | **import_type の値** | **実行する処理** |
           |----------------|----------------|
-          | `Author` | 著者DB用のインポート (`authors` テーブル) |
-          | `ID_Prefix` | 著者識別子用のインポート (`authors_prefix_settings` テーブル) |
-          | `Affiliation_ID` | 機関識別子用のインポート (`authors_affiliation_settings` テーブル) |
+          | `author_db` | 著者DB用のインポート (`authors` テーブル) |
+          | `id_prefix` | 著者識別子用のインポート (`authors_prefix_settings` テーブル) |
+          | `affiliation_id` | 機関識別子用のインポート (`authors_affiliation_settings` テーブル) |
 
   - **インポートステータスの管理**
       - 各インポートタスクの ID を Redis (`WEKO_AUTHORS_IMPORT_CACHE_KEY`) に保存。
@@ -543,7 +543,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_authors.admin.ImportView`（`check_import_file`/`check_pagination`/`check_file_download`/`import_authors`/`check_import_status`/`result_file_download`）＋ Celery `import_author`/`import_id_prefix`/`import_affiliation_id`/`import_author_over_max`。1行目のテーブル名（`authors_prefix_settings`/`authors_affiliation_settings`/無記載＝著者）で対象を判定。
-- 実装補足（訂正）：対象値は `author_db` / `id_prefix` / `affiliation_id`。取り込み情報は Redis `author_import_cache`（group_task_id/tasks/records）に保持。強制変更モードあり。所属期間ヘッダは `periodStart` / `periodEnd`。24時間クリーンアップは `tasks.check_tmp_file_time_for_author`。
+- 補足：対象値は `author_db` / `id_prefix` / `affiliation_id`。取り込み情報は Redis `author_import_cache`（group_task_id/tasks/records）に保持。強制変更モードあり。所属期間ヘッダは `periodStart` / `periodEnd`。24時間クリーンアップは `tasks.check_tmp_file_time_for_author`。
 
 ## 更新履歴
 

@@ -35,17 +35,16 @@
 
 #### 関連モジュール
 
-  - 対応しているモジュール：「weko_records_ui」
+  - 対応しているモジュール：「weko_records_ui」「weko_workflow」「invenio_communities」「weko_index_tree」
 
 #### 処理概要
 
-アイテムの属するインデックスのIDから、紐づくコミュニティ情報を取得する。  
-communities_communityテーブルのroot_node_idカラムがインデックスのIDとなっているため、  
-紐づくコミュニティのレコードを特定し、同テーブルから表示情報を取得する。
+`weko_records_ui.views.default_view_method` が `record.navi` の各インデックスから `weko_workflow.api.GetCommunity.get_community_by_root_node_id`（内部で `invenio_communities.models.Community.get_by_root_node_id` を呼び出す）を用いて、紐づくコミュニティ情報を取得する。  
+communities_communityテーブルのroot_node_idカラムがインデックスのIDに一致するレコードを特定し、同テーブルから表示情報を取得する。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- `default_view_method` が `record.navi` の各インデックスから `weko_workflow.api.GetCommunity.get_community_by_root_node_id`（→ `invenio_communities.models.Community.get_by_root_node_id`、table `communities_community`）でコミュニティを解決する。関連モジュール（追記）：weko-workflow / invenio-communities / weko-index-tree。
+- `default_view_method` が `record.navi` の各インデックスから `weko_workflow.api.GetCommunity.get_community_by_root_node_id`（→ `invenio_communities.models.Community.get_by_root_node_id`、table `communities_community`）でコミュニティを解決する。
 
 #### 更新履歴
 

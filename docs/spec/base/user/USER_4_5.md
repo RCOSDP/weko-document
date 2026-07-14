@@ -68,8 +68,8 @@ Item Registrationの一部として、ファイルをアップロードしてそ
       ファイルが複数の場合は、ファイル情報入力エリアをその数分追加した上でそれぞれ設定する  
       ［Start upload］ボタンは非活性化する
   - マルチパートファイルアップロード
-    - 定数「 FILES_REST_USE_MULTIPART_UPLOAD 」によって、マルチパートアップロード機能を有効にする。
-    - 定数「 FILES_REST_RESUME_CHUNK_SIZE 」によって、マルチパートアップロード機能が用いられるファイルサイズの閾値を設定する。（閾値を下回る場合は、通常のファイルアップロードとなる）
+    - マルチパートアップロードのチャンクサイズは、定数「FILES_REST_MULTIPART_CHUNKSIZE_MIN」（5MiB）以上「FILES_REST_MULTIPART_CHUNKSIZE_MAX」（5GiB）以下で扱う。
+    - 1ファイルあたりのパート数の上限は、定数「FILES_REST_MULTIPART_MAX_PARTS」（10000）で定義される。
     - 「Start upload」ボタンを押すと、追加しているファイルのアップロードを行う
       - 「Cancel」ボタンを「Start upload」ボタンの左側に表示する  
         「Cancel」ボタンを押すと、アップロードが強制中止する
@@ -414,7 +414,7 @@ WEKO_DEPOSIT_FILESIZE_LIMIT = 2 * 1024 * 1024
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（訂正）：多重（マルチパート）アップロードの config `FILES_REST_USE_MULTIPART_UPLOAD` / `FILES_REST_RESUME_CHUNK_SIZE` は v2.0.2 に存在しない。実在するのは `invenio_files_rest.config` の `FILES_REST_MULTIPART_CHUNKSIZE_MIN`（5MiB）/ `_CHUNKSIZE_MAX`（5GiB）/ `_MAX_PARTS`（10000）/ `FILES_REST_MULTIPART_EXPIRES`（4日）。ES抽出対象は `WEKO_MIMETYPE_WHITELIST_FOR_ES` 等、サイズ上限 `WEKO_DEPOSIT_FILESIZE_LIMIT`（2MB）。
+- 実装補足：多重（マルチパート）アップロードの config は `invenio_files_rest.config` の `FILES_REST_MULTIPART_CHUNKSIZE_MIN`（5MiB）/ `_CHUNKSIZE_MAX`（5GiB）/ `_MAX_PARTS`（10000）/ `FILES_REST_MULTIPART_EXPIRES`（4日）。ES抽出対象は `WEKO_MIMETYPE_WHITELIST_FOR_ES` 等、サイズ上限 `WEKO_DEPOSIT_FILESIZE_LIMIT`（2MB）。
 
 ## 更新履歴
 

@@ -26,7 +26,6 @@
 ## 処理概要
 
 - Flask-Admin の ModelView（`invenio_oauthclient.admin.UserIdentityView`）でテーブル `oauthclient_useridentity` を保守する。`can_create=False` のため新規作成タブは表示されず、一覧・編集・削除のみ。
-- ※旧記述の関連モジュール `invenio_accounts` ／テーブル `accounts_useridentity` は当バージョンでは誤り（実体は invenio-oauthclient / `oauthclient_useridentity`）。
 
 ## 更新履歴
 

@@ -80,7 +80,7 @@
 - 登録された雑誌情報は、  
   ERDB（Electronic Resources Database = 電子リソース管理データベース）が  
   取り込めるKBART2拡張形式で出力可能とする　【参考情報】 [ERDB-JP連携マニュアル.pdf](https://redmine.devops.rcos.nii.ac.jp/attachments/download/4308/ERDB-JP%E9%80%A3%E6%90%BA%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB.pdf)
-  - 出力対象は、インデックスの雑誌出力設定が "出力する（Output）" となっているもの全てとする
+  - 出力対象は、登録されている全ての雑誌情報（Journal）とする。なお、雑誌出力設定（is_output）はKBART出力の対象をフィルタせず、画面表示の有無にのみ作用する
   - 出力項目は、「 [WEKO_KBART出力項目一覧_v1.17.xlsx](https://redmine.devops.rcos.nii.ac.jp/attachments/download/4677/WEKO_KBART%E5%87%BA%E5%8A%9B%E9%A0%85%E7%9B%AE%E4%B8%80%E8%A6%A7_v1.17.xlsx) 」に記載される下記 34項目 とする
   - 出力形式は、tsv形式とする。
   - 出力は自動で行われる。デフォルトでは1日おきに出力される。間隔の変更、手動での出力方法については処理概要を参照すること
@@ -89,7 +89,8 @@
     URL:「自機関のリポジトリURL」＋「/static/weko/kbart/filelist.txt」  
     に出力され、確認できる。  
     「自機関のリポジトリURL」＋「/static/weko/kbart/”確認したいファイルの名前”」で出力されたファイルを確認できる。  
-    例https://192.168.56.103/static/weko/kbart/WEKO_AllTitles_2023-07-25.txt
+    例https://192.168.56.103/static/weko/kbart/WEKO_AllTitles_2023-07-25.txt  
+    なお、ファイル名のプレフィックス（例では「WEKO」）は `OAISERVER_REPOSITORY_NAME` に由来する。
   - 出力順序は、下記項目を上から順に出力する
     1. publication_title
     2. print_identifier
@@ -201,7 +202,7 @@ docker-compose exec -u root web celery -A invenio_app.celery call weko_indextree
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 表示は `weko_search_ui.views.search` が `weko_search_ui.utils.get_journal_info`（`is_output` が False なら None を返し非表示）を呼ぶ。KBART出力は Celery `weko_indextree_journal.tasks.export_journal_task`（出力先 `weko/kbart`、beat は instance.cfg）。table `journal`（`Journal`）。
-- 実装補足（訂正）：KBARTファイル名のプレフィックスは `WEKO` 固定ではなく `OAISERVER_REPOSITORY_NAME` 由来。`is_output` は KBART 出力をフィルタせず画面表示のみに作用する（出力は全 Journal）。
+- KBARTファイル名のプレフィックスは `OAISERVER_REPOSITORY_NAME` 由来。`is_output` は KBART 出力をフィルタせず画面表示のみに作用する（出力は全 Journal）。
 
 #### 更新履歴
 

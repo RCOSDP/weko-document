@@ -2,11 +2,11 @@
 
 ## 目的・用途
 
-他のウェブアプリがweko3のリソースにアクセスできるようAPI利用を承認することを目的としている。
+アイテムタイプごとのメタデータ構造を定義する JSON Schema（draft-04）である。当該アイテムタイプに登録するアイテムが保持できる項目・データ型・必須項目などを規定し、メタデータ入力値の検証等に用いられる。
 
 ## 利用方法
 
-API-8-5の機能を用いて、OAuthアプリケーション、またはトークンを登録する。その後、設定された値を利用してAPI接続の設定を行う。
+`GET /items/jsonschema/{item type id}`（weko-items-ui の `views.get_json_schema`）で対象アイテムタイプの JSON Schema を取得する。スキーマ定義の実体は `weko_records.models.ItemType.schema` カラムに格納されている。
 
 ## 機能内容
 
@@ -17,7 +17,7 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 - weko-records（アイテムタイプ定義の格納。本ダンプは `weko_records.models.ItemType.schema` カラム＝JSON Schema draft-04）
 - weko-items-ui（取得エンドポイント `GET /items/jsonschema/<item_type_id>` → `views.get_json_schema`）
 
-> 補足：本ファイルは特定アイテムタイプ（デフォルトアイテムタイプ相当、例では `item_type.id=16`）の `schema` カラムのサンプルダンプである。旧記述の「関連モジュール: Invenio_oaiserver」および冒頭のOAuth向け目的・用途はコピペ誤り。
+> 補足：本ファイルは特定アイテムタイプ（デフォルトアイテムタイプ相当、例では `item_type.id=16`）の `schema` カラムのサンプルダンプである。関連モジュールは weko-records / weko-items-ui。
 
 ## 構造
 
@@ -5355,3 +5355,4 @@ es", "zh-cn", "zh-tw", "ru", "la", "ms", "eo", "ar", "el", "ko"], "type": ["null
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/07/14 |  | 本文を実装準拠に修正 |

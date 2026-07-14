@@ -163,7 +163,7 @@ if (!/\/[a-z0-9?&/=]*/.test(this.state.url)) {
 - 以下のパスの部分でウィジェット配置情報を取得して、空だった場合はエラーメッセージ「Please add Widget to Preview panel.」を表示する。
   - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/static/js/weko_gridlayout/widget.design.js#L1027-L1054>
 - エラーがなければ、weko_gridlayout.views.save_widget_layout_settingメソッドがajaxで呼び出される。
-  - このメソッド中でweko_gridlayout.services.WidgetDesignPageServices.update_widget_design_settingメソッドを呼び出し、その中で以下のテーブルのレコードを作成または更新する。
+  - このメソッド中でweko_gridlayout.services.WidgetDesignServices.update_widget_design_settingメソッドを呼び出し、その中で以下のテーブルのレコードを作成または更新する。
     - widget_design_page（デフォルトページ以外。更新のみ）
       - 「settings」：「Preview」エリアのウィジェット配置情報
     - widget_design_setting（デフォルトページ）
@@ -173,7 +173,7 @@ if (!/\/[a-z0-9?&/=]*/.test(this.state.url)) {
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_gridlayout.admin.WidgetDesign.index`（endpoint `widgetdesign`）。ページ保存は `views.save_widget_design_page` → `WidgetDesignPageServices.add_or_update_page` → `WidgetDesignPage.create_or_update`。
-- 実装補足（訂正）：レイアウト保存は `views.save_widget_layout_setting` → **`WidgetDesignServices.update_widget_design_setting`**（`WidgetDesignPageServices` ではない）。モデル：`WidgetDesignSetting` / `WidgetDesignPage` / `WidgetDesignPageMultiLangData`（後者は物理削除 `delete_by_page_id`）。
+- レイアウト保存：`views.save_widget_layout_setting` → **`WidgetDesignServices.update_widget_design_setting`**。モデル：`WidgetDesignSetting` / `WidgetDesignPage` / `WidgetDesignPageMultiLangData`（後者は物理削除 `delete_by_page_id`）。
 
 ## 更新履歴
 

@@ -73,9 +73,9 @@ jpcoarマッピングとGoogle Dataset meta tagとの対応:
 
 2. 実装方法
 
-アイテムリストから特定のアイテムを選択し、アイテム詳細画面を表示する際に、get_google_dataset_metaを使用して、画面を構成する要素として、Google Dataset meta tagをheaderのテンプレートに埋め込む。
+アイテムリストから特定のアイテムを選択し、アイテム詳細画面を表示する際に、get_google_detaset_metaを使用して、画面を構成する要素として、Google Dataset meta tagをheaderのテンプレートに埋め込む。
 
-  - weko_records_ui.views.default_view_methodからweko_records_ui.utils.get_google_dataset_metaを呼び出して使用する。
+  - weko_records_ui.views.default_view_methodからweko_records_ui.utils.get_google_detaset_metaを呼び出して使用する。
 
   - アイテムの識別子としてoaiが含まれているかを確認する。
 
@@ -90,11 +90,11 @@ jpcoarマッピングとGoogle Dataset meta tagとの対応:
 
   - メタデータに含まれるjpcoarタグの種類に対応するGoogle Dataset meta tagをres_dataリストに追加する。
 
-resリストをgoogle_dataset_metaで受け取り、templating.render_templateを呼び出してアイテムメタデータを作成する。
+`get_google_detaset_meta` は Google Dataset メタデータを dict（`@context`／`@type`:Dataset 等）として返し、これを受け取って templating.render_template を呼び出してアイテムメタデータを作成する。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（訂正）：関数名は `weko_records_ui.utils.get_google_detaset_meta`（ソースの綴りが "detaset"。`get_google_dataset_meta` は存在しない）。出力は dict（`@context`/`@type`:Dataset ...）。config `WEKO_RECORDS_UI_GOOGLE_DATASET_RESOURCE_TYPE`/`_DESCRIPTION_MIN`(50)/`_MAX`(5000)。`WEKO_RECORDS_UI_GOOGLE_DATASET_DISP_FLG` は定義のみで未使用。出力可否は Scholar 用 resource_type config を参照する。
+- 関数名は `weko_records_ui.utils.get_google_detaset_meta`（ソースの綴りが "detaset"）。出力は dict（`@context`/`@type`:Dataset ...）。config `WEKO_RECORDS_UI_GOOGLE_DATASET_RESOURCE_TYPE`/`_DESCRIPTION_MIN`(50)/`_MAX`(5000)。`WEKO_RECORDS_UI_GOOGLE_DATASET_DISP_FLG` は定義のみで未使用。出力可否は Scholar 用 resource_type config を参照する。
 
 #### 更新履歴
 

@@ -63,12 +63,12 @@
   - 編集画面で[保存（Save）]ボタンもしくは[保存して編集を続ける（Save and Continue Editing）]を押下時、flask_admin.model.base.edit_viewが呼び出され、編集内容をdb内のoaiserver_setテーブルに保存し、更新する。
 - 作成タブ  
   作成タブに遷移時、invenio_oaiserver.admin.OAISetModelViewが継承しているModelViewからflask_admin.model.base.create_viewが呼び出される。
-  - 情報の入力後に[保存（Save）]ボタン押下すると、invenio_oaiserver.admin.OAISetModelViewが継承しているModelViewからflask_admin.model.base.create_viewが呼び出され、新しいSetの情報をdb内のoaiserverテーブルに保存する。
+  - 情報の入力後に[保存（Save）]ボタン押下すると、invenio_oaiserver.admin.OAISetModelViewが継承しているModelViewからflask_admin.model.base.create_viewが呼び出され、新しいSetの情報をdb内のoaiserver_setテーブルに保存する。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`invenio_oaiserver.admin.OAISetModelView`（endpoint `oaiset`、テーブル `oaiserver_set`、カテゴリ OAI-PMH）。`column_default_sort=('updated', True)`（更新日時降順）。
-- 実装補足（訂正）：`can_delete=False`（**削除不可**。目的の「削除」記述は要修正）。`can_create=True` / `can_edit=True`。`edit_form` で `del form.spec`（Spec は作成後編集不可）。本 ModelView にリポジトリ絞り込みは無く、アクセス制御は権限機構に依存。
+- 実装補足：`can_delete=False`（**削除不可**）。`can_create=True` / `can_edit=True`。`edit_form` で `del form.spec`（Spec は作成後編集不可）。本 ModelView にリポジトリ絞り込みは無く、アクセス制御は権限機構に依存。
 
 ## 更新履歴
 

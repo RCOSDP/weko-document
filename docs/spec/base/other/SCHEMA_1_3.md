@@ -2,11 +2,11 @@
 
 ## 目的・用途
 
-他のウェブアプリがweko3のリソースにアクセスできるようAPI利用を承認することを目的としている。
+アイテムタイプごとのメタデータ入力画面を構成するフォーム定義（schema form 配列）である。各項目の表示ラベル・入力形式・並び順などを規定し、アイテム登録・編集画面の描画に用いられる。
 
 ## 利用方法
 
-API-8-5の機能を用いて、OAuthアプリケーション、またはトークンを登録する。その後、設定された値を利用してAPI接続の設定を行う。
+`GET /items/schemaform/{item type id}`（weko-items-ui の `views.get_schema_form`）で対象アイテムタイプのフォーム定義を取得する。フォーム定義の実体は `weko_records.models.ItemType.form` カラムに格納されている。
 
 ## 機能内容
 
@@ -17,7 +17,7 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 - weko-records（アイテムタイプ定義の格納。本ダンプは `weko_records.models.ItemType.form` カラム＝schema form 配列）
 - weko-items-ui（取得エンドポイント `GET /items/schemaform/<item_type_id>` → `views.get_schema_form`）
 
-> 補足：本ファイルは特定アイテムタイプ（デフォルトアイテムタイプ相当）の `form` カラムのサンプルダンプである。旧記述の「関連モジュール: Invenio_oaiserver」および冒頭のOAuth向け目的・用途はコピペ誤り。
+> 補足：本ファイルは特定アイテムタイプ（デフォルトアイテムタイプ相当）の `form` カラムのサンプルダンプである。関連モジュールは weko-records / weko-items-ui。
 
 #### 構造
 
@@ -12339,3 +12339,4 @@ API-8-5の機能を用いて、OAuthアプリケーション、またはトー�
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/07/14 |  | 本文を実装準拠に修正 |

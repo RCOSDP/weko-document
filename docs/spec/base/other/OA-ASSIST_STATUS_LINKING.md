@@ -117,8 +117,8 @@ old_item_reference_listとnew_item_reference_listのうち、片方がNoneの場
      - 削除: deleted
    - アイテム情報
      - 公開ステータス
-       - 公開: 0
-       - 非公開: 1
+       - 公開: 1
+       - 非公開: 0
        - 削除: -1
      - 公開日(YYYY-MM-DD形式)
    - ファイルの公開状態ごとのファイル数
@@ -202,10 +202,11 @@ call_external_systemと同じ
 | 日付 | 更新内容 |
 | ---- | ---- |
 | 2025/3/21 | 初版作成 |
+| 2026/07/14 | 本文を実装準拠に修正 |
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（訂正）：`weko_records_ui.external.call_external_system(old_record, new_record, old_item_reference_list, new_item_reference_list, request_info=None)`（第5引数 `request_info` は監査ログ用）。
-- **公開ステータス値（重要な訂正）**：外部連携で送る `publish_status` は実装 `OAPublishStatus` に基づき **DRAFT=0（非公開）/ PUBLISHED=1（公開）/ DELETED=-1（削除）**。旧記述の「公開:0 / 非公開:1」は**公開・非公開が逆**（削除=-1 のみ一致）。
+- 実際のシグネチャは `weko_records_ui.external.call_external_system(old_record, new_record, old_item_reference_list, new_item_reference_list, request_info=None)`（第5引数 `request_info` は監査ログ用）。
+- 公開ステータス値：外部連携で送る `publish_status` は実装 `OAPublishStatus` に基づき **PUBLISHED=1（公開）/ DRAFT=0（非公開）/ DELETED=-1（削除）**。
 - 受信側（登録元からの状態受信）は weko-records の REST `OaStatusCallback`（route `/<version>/oa_status/callback`、スコープ `oa_status:update`、model `OaStatus`）で、article_id↔weko_item_pid の対応を upsert する。
 - config `WEKO_RECORDS_UI_OA_GET_TOKEN_URL` / `_UPDATE_STATUS_URL` / `_API_RETRY_COUNT`(3) / `_API_CODE`(`"oaa"`)。監査ログは operation `ITEM_EXTERNAL_LINK`。呼び出し元は workflow(handle_finish_workflow)/records-ui(publish/soft_delete/delete_version)/search-ui(import)/deposit(ItemResource.put)/bulk-delete。

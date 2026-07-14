@@ -43,7 +43,7 @@
 
         - コミュニティのカタログ情報-主題
 
-        - コミュニティのカタログ情報-提供機関
+        - コミュニティのカタログ情報-寄与者
 
       - 「Sort By」プルダウンで、コミュニティの表示順次を選択できる  
         選択肢は「title」、「ranking」とする
@@ -86,7 +86,7 @@
 
 コミュニティのリンクを押すと、invenio_communities.views.ui.view関数が呼び出される
 
-- コミュニティのリンクは「/コミュニティID/?view=weko」となっており、コミュニティIDがview関数の引数となる
+- コミュニティのリンクは「/c/コミュニティID/?view=weko」となっており、コミュニティIDがview関数の引数となる
 
 - 「?view=weko」の情報は使用しない（ソースの該当箇所がコメントアウトされている）
 
@@ -103,7 +103,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`invenio_communities.views.ui.community_list`（route `/c/list/`）、詳細 `view`（`/c/<community_id>/`。`?view=weko` は未使用で `THEME_FRONTPAGE_TEMPLATE` を表示）。並び順 `COMMUNITIES_SORTING_OPTIONS`（title/ranking、既定 ranking）、`Community.filter_communities`。model `Community`（table `communities_community`）。サムネイル上限 `COMMUNITIES_LIST_THUMBNAIL_WIDTH/HEIGHT`（256）。
-- 実装補足（訂正）：カタログの2項目めは提供機関ではなく寄与者（catalog_contributors）。
+- カタログの2項目めは寄与者（catalog_contributors）。
 
 #### 更新履歴
 

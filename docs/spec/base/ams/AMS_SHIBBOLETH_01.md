@@ -69,29 +69,26 @@
 
   - ログイン画面
 
-    | エラー原因 | ステータスコード | レスポンス | エラーメッセージ（日/英） |
-    | --------- | --------------- | --------- | ----------------------- |
-    | WEKOでログインブロックされている | 403 | Login is blocked. | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator. |
-    | 登録ユーザー情報がない | 403 | There is no user information. | ユーザー情報がありません。<br>/There is no user information. |
-    | Redisにcache_keyがない | 400 | Missing SHIB_CACHE_PREFIX! | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
-    | Shibboleth-Session-IDが取得出来ない | 400 | Missing Shib-Session-ID! | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
-    | shib_eppnが取得出来ない | 400 | Missing SHIB_ATTRs! | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
+    「レスポンス（バックエンド実挙動）」列は WEKO バックエンド（`weko_accounts.views`）の実際の応答、「エラーメッセージ（日/英）」列はフロントのログイン画面での表示文言である。
 
-    > 実装補足（WEKOバックエンド `weko_accounts.views`、v2.0.2）：エラーメッセージ（日/英）はフロントのログイン画面での表示文言である。バックエンド側の実挙動は以下のとおりで、上表の「レスポンス」列と一部異なる。
-    > - 「WEKOでログインブロックされている」：ブロック判定は AdminSettings `blocked_user_settings.blocked_ePPNs`（ワイルドカード対応）で行い、実際には `flash("Failed to login.")` の上でリダイレクトする（レスポンス文字列「Login is blocked.」および403の直接応答はバックエンドには存在しない）。
-    > - 「登録ユーザー情報がない」：バックエンドに「There is no user information.」という文字列は存在しない（フロント側判定・表示）。
-    > - 「Missing SHIB_CACHE_PREFIX!」「Missing Shib-Session-ID!」「Missing SHIB_ATTRs!」：これらの文字列は `shib_sp_login` / `shib_login` に存在するが、通常は `flash()`＋リダイレクトで処理され、HTTP 400 の直接応答は例外時（`abort(400)`）に限られる。なお `shib_login` 側の属性欠落文言は単数形「Missing SHIB_ATTR!」である。
+    | エラー原因 | ステータスコード | レスポンス（バックエンド実挙動） | エラーメッセージ（日/英） |
+    | --------- | --------------- | --------- | ----------------------- |
+    | WEKOでログインブロックされている | リダイレクト | `flash("Failed to login.")`＋ログイン画面へリダイレクト（ブロック判定は AdminSettings `blocked_user_settings.blocked_ePPNs`、ワイルドカード対応） | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator. |
+    | 登録ユーザー情報がない | - | フロント側で判定・表示（バックエンドに該当文字列なし） | ユーザー情報がありません。<br>/There is no user information. |
+    | Redisにcache_keyがない | 400（`abort(400)` 時。通常は `flash()`＋リダイレクト） | Missing SHIB_CACHE_PREFIX! | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
+    | Shibboleth-Session-IDが取得出来ない | 400（`abort(400)` 時。通常は `flash()`＋リダイレクト） | Missing Shib-Session-ID! | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
+    | shib_eppnが取得出来ない | 400（`abort(400)` 時。通常は `flash()`＋リダイレクト） | Missing SHIB_ATTRs!（`shib_login` 側は単数形 Missing SHIB_ATTR!） | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
 
   - OAuth認証画面
 
-    | エラー原因 | ステータスコード | レスポンス | エラーメッセージ（日/英） |
-    | --------- | --------------- | --------- | ----------------------- |
-    | レスポンスタイプ誤り | 400 | This response type is not supported. | このレスポンスタイプはサポートされていません。<br>/This response type is not supported. |
-    | クライアントID誤り | 400 | The client ID is incorrect. | クライアントIDに誤りがあります。<br>/The client ID is incorrect. |
-    | スコープ誤り | 400 | The scope is incorrect. | スコープに誤りがあります。<br>/The scope is incorrect. |
-    | ユーザーが【Reject】を選択 | 200 | Access has been denied. | アクセスが拒否されました。<br>/Access has been denied. |
+    OAuth認証はバックエンドでは invenio-oauth2server（`invenio_oauth2server.views.server.authorize` ＋ oauthlib）が処理し、「レスポンス（バックエンド実挙動）」列は oauthlib 標準のエラーコードである。「エラーメッセージ（日/英）」列はフロント（`weko-frontend`）側でエラーコードから生成・表示する文言である。
 
-    > 実装補足（WEKOバックエンド、v2.0.2）：OAuth認証はバックエンドでは invenio-oauth2server（`invenio_oauth2server.views.server.authorize` ＋ oauthlib）が処理し、上表の「レスポンス」列の文字列（This response type is not supported. / The client ID is incorrect. / The scope is incorrect. / Access has been denied.）はバックエンドには存在しない。バックエンドは oauthlib 標準のエラーコード（`unsupported_response_type` / `invalid_client` / `invalid_scope` / `access_denied`）を返し、これらの日本語/英語メッセージはフロント（`weko-frontend`）側でエラーコードから生成・表示している。なおクライアントID不在時はバックエンドは 404 を返す（400ではない）。
+    | エラー原因 | ステータスコード | レスポンス（バックエンド実挙動） | エラーメッセージ（日/英） |
+    | --------- | --------------- | --------- | ----------------------- |
+    | レスポンスタイプ誤り | 400 | `unsupported_response_type` | このレスポンスタイプはサポートされていません。<br>/This response type is not supported. |
+    | クライアントID誤り | 400（クライアントID不在時は 404） | `invalid_client` | クライアントIDに誤りがあります。<br>/The client ID is incorrect. |
+    | スコープ誤り | 400 | `invalid_scope` | スコープに誤りがあります。<br>/The scope is incorrect. |
+    | ユーザーが【Reject】を選択 | 200 | `access_denied` | アクセスが拒否されました。<br>/Access has been denied. |
 
 ### 4. 目標2ユーザ以外が閲覧権限が必要なアイテム詳細画面にアクセスした場合
 

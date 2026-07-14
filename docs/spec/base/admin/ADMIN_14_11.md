@@ -191,7 +191,7 @@
 
 > 検索設定を一度も行っていない状態では、weko_admin.config内のWEKO_ADMIN_MANAGEMENT_OPTIONSで設定された値がデフォルト表示されている。
 > 
-> Search Author Settingのラジオボタンを変更すると、weko_admin.admin.SearchSettingsView.indexが呼び出され、設定の変更が反映される。
+> Search Author Settingのラジオボタンを変更すると、weko_admin.admin.SearchSettingsView.indexが呼び出され、その設定はAdminSettings（name=items_display_settings、フィールドitems_search_author）に保存される。既定値はconfigのITEM_SEARCH_FLGである。
 > 
 > 検索設定の変更はweko_admin.models.SearchManagement.updateを呼び出してDB上に反映され、それ以降の画面表示はDBの値を参照するものとする。  
 > (weko_admin.config内の設定値はDB内に設定されていない時のみ参照されている。)
@@ -223,7 +223,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_admin.admin.SearchSettingsView.index`。表示件数・ソート・検索条件・表示制御は model `SearchManagement`（テーブル `search_management`、`search_setting_all` JSON 集約列あり）。インデックスツリーの Width/Height は `IndexStyle`。
-- 実装補足（訂正）：「Search Author Setting（著者検索設定）」は `search_management` ではなく `AdminSettings`（name=`items_display_settings`、フィールド `items_search_author`）に保存される。既定は config `ITEM_SEARCH_FLG`。
+- 「Search Author Setting（著者検索設定）」は `AdminSettings`（name=`items_display_settings`、フィールド `items_search_author`）に保存される。既定は config `ITEM_SEARCH_FLG`。
 
 ## 更新履歴
 

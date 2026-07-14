@@ -271,7 +271,7 @@ APIを実行する。
 
   - weko-records-ui（実ハンドラ `rest.WekoRecordsResource.get_v1`、RO-Crate変換 `utils.RoCrateConverter`、変換定義モデル `models.RocrateMapping`、リクエストメール宛先 `models.RequestMailList`、REST定義 `config.WEKO_RECORDS_UI_CITES_REST_ENDPOINTS` の `item_route`）
 
-> エンドポイントは `GET /api/v1/records/<id>`。`weko_index_tree.rest.GetIndex` は無関係（旧記述の誤り）。権限は `page_permission_factory` で判定し、ETag / Last-Modified に対応。レスポンスの `metadata.hasRequestmailAddress` は `RequestMailList` から取得する。
+> エンドポイントは `GET /api/v1/records/<id>`。権限は `page_permission_factory` で判定し、ETag / Last-Modified に対応。レスポンスの `metadata.hasRequestmailAddress` は `RequestMailList` から取得する。
 
 #### 処理概要
 

@@ -1128,13 +1128,13 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
       -   ログインユーザーの権限チェックを行う。
 
-      -   check_import_itemsを呼び出し、インポートファイルを1件ずつチェックする。
+      -   check_tsv_import_itemsを呼び出し、インポートファイルを1件ずつチェックする。
 
       -   1件でもチェックがNGの場合、インポートをキャンセルする。
 
 -   /weko-search-ui/weko_search_ui/utils.py
 
-    -   check_import_items
+    -   check_tsv_import_items
 
         -   インポートファイルのファイル名にセパレータが入っていた場合、"/"に置換し、ファイルの拡張子がcsvまたはtsvであるかチェックする。
 
@@ -1319,7 +1319,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_search_ui.admin.ItemImportView`（endpoint `items/import`、テンプレート `weko_search_ui/admin/import.html`。3画面は単一SPA）。
-- 実メソッド名（訂正）：チェック入口は `check_tsv_import_items`（`check_import_items` ではない）、取り込みタスクは `import_item`（`import_items` ではない）、統計ファイル生成は `make_stats_file`（`make_stats_tsv` ではない）。重複チェックは weko-items-ui の `check_duplicate` / `is_duplicate_item`（DOI→タイトル→リソースタイプ→著者。公開かつ非バージョンのみ対象）。メタデータ補完は weko-items-autofill の `fetch_metadata_by_doi`（CrossRef/DataCite/CiNii/JaLC/医中誌）。
+- 実メソッド名：チェック入口は `check_tsv_import_items`、取り込みタスクは `import_item`、統計ファイル生成は `make_stats_file`。重複チェックは weko-items-ui の `check_duplicate` / `is_duplicate_item`（DOI→タイトル→リソースタイプ→著者。公開かつ非バージョンのみ対象）。メタデータ補完は weko-items-autofill の `fetch_metadata_by_doi`（CrossRef/DataCite/CiNii/JaLC/医中誌）。
 - 関連モジュール（追記）：weko-search-ui / weko-admin / weko-items-autofill に加え、weko-deposit（永続化）・weko-items-ui（重複/スキーマ）・weko-workflow・weko-index-tree・weko-authors・invenio-pidstore。出力/取込形式は `WEKO_ADMIN_OUTPUT_FORMAT`（tsv/csv）。
 
 ## 更新履歴

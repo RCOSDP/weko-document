@@ -115,26 +115,34 @@
 
 | ロール   | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
 | -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
-| 利用可否 | ○                  | ×                    | ×                      | ×            | ×            | ×                        |
+| 利用可否 | ○                  | ○                    | ×                      | ×            | ×            | ×                        |
 
 ## ユーザー
 
 エンドポイント：/admin/user/
 
-○に合致すれば、ユーザーページの閲覧、およびレコードの閲覧・削除を行うことが出来ます。
+○に合致すれば、ユーザーページの閲覧、およびレコードの閲覧を行うことが出来ます。
 
 | ロール   | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
 | -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 利用可否 | ○                  | ○                    | ○                      | ×            | ×            | ×                        |
 
-#### ユーザーの閲覧・編集・削除
+#### ユーザーの閲覧
 
-いずれかの○に合致すれば、ユーザーの閲覧・編集・削除を行うことが出来ます。
+いずれかの○に合致すれば、ユーザーの閲覧を行うことが出来ます。コミュニティ管理者は自身が管理するコミュニティに所属するユーザに限定され、システム管理者・リポジトリ管理者は全ユーザを閲覧できます。
 
 | 条件/ロール                                        | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
 | -------------------------------------------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 自身が管理する<br>コミュニティに<br>所属するユーザ | ○                  | ○                    | ○                      | ×            | ×            | ×                        |
 | 上記以外                                           | ○                  | ○                    | ×                      | ×            | ×            | ×                        |
+
+#### ユーザーの編集・削除・有効化／無効化
+
+○に合致すれば、ユーザーの編集・削除・有効化／無効化を行うことが出来ます。これらの操作はシステム管理者専用です。
+
+| ロール   | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
+| -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
+| 利用可否 | ○                  | ×                    | ×                      | ×            | ×            | ×                        |
 
 #### ユーザーの作成
 
@@ -166,14 +174,15 @@
 
 （2026/07/14 実装 v2.0.2 と突き合わせ）本画面のロール別アクセス可否は、`weko_admin/ext.py` の `WekoAdmin.role_has_access`（`@app.before_request` の `is_accessible_to_role` が全 Flask-Admin ビューの `is_accessible`/`is_visible` を上書き）で判定される。判定は `weko_admin/config.py` の `WEKO_ADMIN_ACCESS_TABLE`（System Administrator は全許可、Repository Administrator は `WEKO_ADMIN_REPOSITORY_ACCESS_LIST`、Community Administrator は `WEKO_ADMIN_COMMUNITY_ACCESS_LIST`）に、当該ビューの endpoint 名が含まれるかで行う。ロールを持たないユーザー（登録／一般）およびゲストは全画面 ×。画面内の作成・編集・削除（CRUD）や一覧の絞り込みは各 ModelView の `can_create`/`can_edit`/`can_delete`/`get_query` による別レイヤで、コミュニティ範囲の絞り込みは `Community.get_repositories_by_user`／`WEKO_PERMISSION_SUPER_ROLE_USER`（System＋Repository）で行われる。
 
-### 実装上の訂正（v2.0.2）
+### 実装補足（v2.0.2）
 
-- **セッションアクティビティ（sessionactivity）**：endpoint `sessionactivity` は `WEKO_ADMIN_REPOSITORY_ACCESS_LIST` に含まれるため、Repository Administrator も閲覧可能。したがって Repository 管理者 × とする記述は誤りで、正しくは System ○ / Repository ○ / Community ×。
-- **ユーザーの編集・削除・有効化／無効化**：`UserView` の `can_edit` / `can_delete` / `can_activate` / `can_inactivate`（`is_action_allowed`）は `_admin_roles = [System Administrator]` のみを許可する。したがってこれらの操作を Repository 管理者 ○ / Community 管理者 ○ とする記述は誤りで、**System Administrator 専用**。Repository／Community 管理者ができるのは「閲覧」のみ（`UserView.get_query` により、Community 管理者は自身が管理するコミュニティのユーザーに限定、System＋Repository は全件）。
-- ユーザーの「作成」は System Administrator 専用（`can_create`）で整合。ユーザープロファイル（userprofile）画面は System ○ / Repository ○ / Community ×（`userprofile` は repository リストのみ）、編集は System 専用で整合。
+- **セッションアクティビティ（sessionactivity）**：endpoint `sessionactivity` は `WEKO_ADMIN_REPOSITORY_ACCESS_LIST` に含まれるため、Repository Administrator も閲覧可能（System ○ / Repository ○ / Community ×）。
+- **ユーザーの編集・削除・有効化／無効化**：`UserView` の `can_edit` / `can_delete` / `can_activate` / `can_inactivate`（`is_action_allowed`）は `_admin_roles = [System Administrator]` のみを許可する（System Administrator 専用）。Repository／Community 管理者ができるのは「閲覧」のみ（`UserView.get_query` により、Community 管理者は自身が管理するコミュニティのユーザーに限定、System＋Repository は全件）。
+- ユーザーの「作成」は System Administrator 専用（`can_create`）。ユーザープロファイル（userprofile）画面は System ○ / Repository ○ / Community ×（`userprofile` は repository リストのみ）、編集は System 専用。
 
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |     6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3     | 初版作成                                                 |
+| 2026/07/14 |                                                | 本文を実装準拠に修正                                     |

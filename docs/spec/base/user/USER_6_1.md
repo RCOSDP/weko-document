@@ -155,7 +155,7 @@
 
   - weko_items_ui.utils.get_rankingを呼び出す。
 
-    - invenio_stats.util.QueryRankingHelper.getを呼び出してログ集計した結果を取得する。
+    - invenio_stats.utils.QueryRankingHelper.getを呼び出して、Elasticsearchから集計結果を取得する。
 
     - weko_items_ui.utils.get_permission_recordを呼び出して、「公開」となっているアイテムをランキングリストとして取得する。
 
@@ -169,11 +169,11 @@
 
   - 集計期間はAdmin側の集計期間で設定した日数とする
 
-  - 集計するタイミングは定期バッチ（日次）で収集する
+  - アクセスログやダウンロードログは、invenio-statsのprocess/aggregateタスクによりElasticsearchの統計インデックスに集約される
 
-  - 事前集計を定期的に実行するタイミングは、Config設定で変更可能とする
+  - 統計インデックスへの集約タスクを実行するタイミングは、Config設定で変更可能とする
 
-  - 「Ranking」タブを表示したタイミングで、事前に集計しておいたランキング情報を参照して表示する
+  - 「Ranking」タブを表示したタイミングで、Elasticsearchの統計インデックスからリクエスト毎にランキングをライブ算出して表示する
 
   - 最も閲覧されたアイテムランキングの集計方法について
 
@@ -255,7 +255,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_items_ui.views.ranking`（route `/items/ranking`）。設定は `weko_admin.models.RankingSettings`（table `ranking_settings`）、取得 `weko_items_ui.utils.get_ranking` / `get_permission_record`。
-- 実装補足（訂正）：ランキング集計モジュールは `invenio_stats.utils`（`.util` は誤り）の `QueryRankingHelper` / `WekoQueryRankingHelper`。ランキングは**リクエスト毎に Elasticsearch からライブ算出**され、日次バッチによる事前集計値を参照するわけではない（ES の統計インデックスは `invenio_stats` の process/aggregate タスクが populate）。範囲 1-30/1-3650/1-100 はUIのみ。config `WEKO_ITEMS_UI_RANKING_*`。
+- ランキング集計モジュールは `invenio_stats.utils` の `QueryRankingHelper` / `WekoQueryRankingHelper`。ランキングはリクエスト毎に Elasticsearch からライブ算出される（ES の統計インデックスは `invenio_stats` の process/aggregate タスクが populate）。範囲 1-30/1-3650/1-100 はUIのみ。config `WEKO_ITEMS_UI_RANKING_*`。
 
 #### 更新履歴
 

@@ -8,7 +8,7 @@
 
 画面のヘッダ部分にある表示言語切替のプルダウンを操作する。
 
-または、「[トップページURL]/lang/<lang_code>」のURLでアクセスする。
+または、「[トップページURL]/accounts/settings/lang/<lang_code>」のURLでアクセスする。
 
 #### 利用可能なロール
 
@@ -32,25 +32,25 @@
 
 - URLに ?next=<リダイレクト先のパス> を付加することで、直接言語のページに遷移することができる
 
-  - 例：[トップページURL]/lang/en?next=/workflow/
+  - 例：[トップページURL]/accounts/settings/lang/en?next=/workflow/
 
 #### 関連モジュール
 
-- invenio-i18n（WEKOソース内にforkされていない）
+- weko-admin
 
 #### 処理概要
 
-<lang_code> で指定された言語コードが instance.config の BABEL_DEFAULT_LOCALE または I18N_LANGUAGES で定義されたリストのキーに合致した場合、その言語が選択されたことをSessionに保存して言語切替を行ったページにリダイレクトしている。
+weko_admin.views.custom_set_lang（blueprint prefix `/accounts/settings`）にて、<lang_code> で指定された言語コードが登録言語（model AdminLangSettings）に合致した場合、その言語が選択されたことをSessionに保存して言語切替を行ったページにリダイレクトしている。
 
 - 保存先のSessionは、session[current_app.config["I18N_SESSION_KEY"]]である。
 
 - コンフィグI18N_SESSION_KEYのデフォルト値は"language"である。
 
-リストに無い言語コードが指定された場合は 404 を返す。
+登録言語に無い言語コードが指定された場合は、GET では 404、POST では 400 を返す。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（訂正）：言語切替の実ルートは `/lang/<lang_code>` ではなく **`/accounts/settings/lang/<lang_code>`**（`weko_admin.views.custom_set_lang`、blueprint prefix `/accounts/settings`）。無効な言語コードは GET で 404 / POST で 400。セッション保存は `session[I18N_SESSION_KEY]`、`?next=` でリダイレクト。登録言語は model `AdminLangSettings`（table `admin_lang_settings`）、既定言語は `weko_admin.ext.set_default_language`。
+- 実装補足：言語切替の実ルートは `/accounts/settings/lang/<lang_code>`（`weko_admin.views.custom_set_lang`、blueprint prefix `/accounts/settings`）。無効な言語コードは GET で 404 / POST で 400。セッション保存は `session[I18N_SESSION_KEY]`、`?next=` でリダイレクト。登録言語は model `AdminLangSettings`（table `admin_lang_settings`）、既定言語は `weko_admin.ext.set_default_language`。
 
 #### 更新履歴
 

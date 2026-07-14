@@ -371,7 +371,7 @@
 |15| |display_no|5|表示数|
 |16|RSSアイコン|rss_status|false| |
 |17|PDFCoverPage|coverpage_state|false| |
-|18| |recursive_coverpage_state|None| |
+|18| |recursive_coverpage_check|None| |
 |19|ハーベスト公開|harvest_public_state|true| |
 |20|ONLINE_ISSN|online_issn|None| |
 |21| |biblio_flag|None| |
@@ -388,7 +388,7 @@
 
   - インデックス編集について
       - 【Administration > インデックスツリー管理(Index Tree) > ツリー編集（Edit Tree）】画面にてインデックスを編集後、「送信」ボタンを押下することでweko_index_tree.rest.putメソッドを呼び出し、同フォルダのapi.pyのupdateメソッドでテーブルを更新する。それによって編集した箇所が上記の表の対応するテーブルキーでindexテーブルの値を更新する。
-      - なおweko_index_tree.api.updateメソッド実行時、表の#8,16,21,23,25,27がtrueの場合、それに対応するメソッドが呼び出される。それによって対応する設定が編集されたインデックスの子以下で同じように適用され、indexテーブルを更新する。
+      - なおweko_index_tree.api.updateメソッド実行時、表の#10,18,21,23,25,27,29がtrueの場合、それに対応するメソッドが呼び出される。それによって対応する設定が編集されたインデックスの子以下で同じように適用され、indexテーブルを更新する。
 
   - インデックス削除について
       - 【Administration > インデックスツリー管理(Index Tree) > ツリー編集（Edit Tree）】画面にてインデックスを選択後、「削除」ボタンを押し、ポップアップの選択肢「すべて削除」を押下する。この操作によってweko_index_tree.rest.deleteにて同フォルダのutil.pyのperform_delete_indexメソッドが呼び出される。このメソッドによってindexテーブルから該当インデックスとその子インデックスを論理削除する。
@@ -403,8 +403,8 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_index_tree.admin.IndexEditSettingView.index`（画面）＋ REST。追加/編集/削除は `weko_index_tree.rest.IndexActionResource.post/put/delete`（→ `Indexes.create/update`、`utils.perform_delete_index` は論理削除 `is_deleted`）、移動は `IndexTreeActionResource.put`（→ `Indexes.move`、`parent`/`position` 更新）。キャッシュ更新は `save_index_trees_to_redis`。
-- 再帰フラグ（訂正）：再帰対象は #10 `recursive_public_state` / #18 `recursive_coverpage_check` / #21 `biblio_flag` / #23 `recursive_browsing_role` / #25 `recursive_browsing_group` / #27 `recursive_contribute_role` / #29 `recursive_contribute_group`（#8 public_state・#16 rss_status には再帰なし）。カラム名は `recursive_coverpage_check`（`recursive_coverpage_state` は誤り）。テーブルには `is_deleted` / `owner_user_id` / `cnri` / `index_url` / `harvest_spec` 等の列もある。
-- config（訂正）：`WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING/CONTRIBUTE_PERMISSION` は **weko-accounts/config.py** に定義。関連モジュール（追記）：weko-accounts / weko-handle / weko-workflow / weko-logging。
+- 再帰フラグ：再帰対象は #10 `recursive_public_state` / #18 `recursive_coverpage_check` / #21 `biblio_flag` / #23 `recursive_browsing_role` / #25 `recursive_browsing_group` / #27 `recursive_contribute_role` / #29 `recursive_contribute_group`（#8 public_state・#16 rss_status には再帰なし）。カラム名は `recursive_coverpage_check`。テーブルには `is_deleted` / `owner_user_id` / `cnri` / `index_url` / `harvest_spec` 等の列もある。
+- config：`WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING/CONTRIBUTE_PERMISSION` は **weko-accounts/config.py** に定義。関連モジュール（追記）：weko-accounts / weko-handle / weko-workflow / weko-logging。
 
 ## 更新履歴
 

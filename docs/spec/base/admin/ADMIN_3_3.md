@@ -46,16 +46,16 @@
 カスタムソート編集について
 
 - 「対象インデックス」にて編集ボタンを押下すると、「Display Priority」列のテキストボックス全てが活性化し、入力可能になる。並び替えを指定したいテキストボックスに表示順位を入力し、保存ボタンを押下する。そのとき、weko_search_ui.static.js.weko_search_ui.app.searchResCtrl.itemManagementSaveが動き、weko_search_ui.admin.ItemManagementCustomSort.save_sortメソッドが呼び出される。これによってset_item_sort_customメソッドが呼び出され、編集したカスタムソートの順番をindexテーブルのキーitem_custom_sortの値に保存する。
-- 数字(半角、全角許容)以外の文字を入力した場合、set_item_sort_customでNoneと変換され、そのアイテムのカスタムソート設定はなくなる。
+- 数字(半角、全角許容)以外、または0以下の値を入力した場合、set_item_sort_customでそのアイテムはカスタムソートのマップから除外され、カスタムソート設定はなくなる。
 
 検索結果にてカスタムソートを選んだ際の処理
 
-- .query.pyにてget_custom_sortメソッドが呼び出され、Elasticsearch用のscriptを作成し、それをElasticsearchインスタンスに渡すことで、カスタムソートの設定どおりに検索結果をソートする。
+- weko_search_ui.api.SearchSettingのget_custom_sortメソッドが呼び出され、Elasticsearch用のscriptを作成し、それをElasticsearchインスタンスに渡すことで、カスタムソートの設定どおりに検索結果をソートする。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_search_ui.admin.ItemManagementCustomSort`（endpoint `items/custom_sort`）＋ `ItemManagementBulkSearch`。保存は `POST /admin/items/custom_sort/save`（`save_sort`）→ `weko_index_tree.api.Indexes.set_item_sort_custom`。ソート適用時は `weko_search_ui.api.SearchSetting.get_custom_sort`（`query.py` ではない）が ES painless スクリプトソートを生成。
-- 実装補足（訂正）：非数値・0以下の値は None 変換ではなくマップから除外される。保存時の ES 同期はコメントアウトされており、カスタムソートはクエリ時に DB 列（`Index.item_custom_sort`、JSONB）を読んで適用する。画面テンプレートは weko-theme の `WEKO_THEME_ADMIN_ITEM_MANAGEMENT_TEMPLATE`。専用のロールガードは無い。
+- 補足：非数値・0以下の値はマップから除外される。保存時の ES 同期はコメントアウトされており、カスタムソートはクエリ時に DB 列（`Index.item_custom_sort`、JSONB）を読んで適用する。画面テンプレートは weko-theme の `WEKO_THEME_ADMIN_ITEM_MANAGEMENT_TEMPLATE`。専用のロールガードは無い。
 
 ## 更新履歴
 

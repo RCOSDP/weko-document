@@ -39,6 +39,7 @@
 
 - weko_logging
 - weko_admin
+- weko_search_ui: Celery稼働確認（check_celery_is_run）に使用
 - invenio_files_rest: ダウンロードファイル生成のみに使用
 
 #### 処理概要
@@ -52,11 +53,11 @@
     - エクスポートして、URLが表示されるまでの間に、「キャンセル」ボタンを押し、「execute」ボタンを押す。その場合、weko_logging.admin.ExportLogAdminView.cancel_export メソッドが呼び出され、ダウンロードURLの生成、表示をキャンセルする。
   - 画面上に表示されたダウンロードURLを押下する。その場合、weko_logging.admin.ExportLogAdminView.download_user_activity_log メソッドにて、FileInstance.get_by_uriメソッドが呼び出され、ダウンロードファイルを生成し、ダウンロードする。なお、ダウンロードされるファイル形式はzipであり、基本監査ログのファイル形式はtsv形式である。
     - 出力されるtsvファイルのファイル名: `user_activity_logs_yyMMddhhmmss.tsv`
-  - エクスポート中にcheck_celery_is_runメソッド、get_export_statusメソッドでエクスポートに必要な情報がとれない場合、ダウンロードURLは表示されない。
+  - エクスポート中にcheck_celery_is_runメソッド、get_export_task_statusメソッドでエクスポートに必要な情報がとれない場合、ダウンロードURLは表示されない。
 
 #### 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ：`weko_logging.admin.ExportLogAdminView`（endpoint `logs/export`）。`index` / `export_user_activity_log`（`POST /export`）/ `check_export_status` / `cancel_export` / `download_user_activity_log`（`/download`、`export_log.zip`）。エクスポートは Celery `export_all_user_activity_logs`（`weko_logging.tasks`）。ステータスは `UserActivityLogUtils.get_export_task_status`（`get_export_status` は誤り）。Celery 稼働確認は `weko_search_ui.tasks.check_celery_is_run`。
+- 画面/ハンドラ：`weko_logging.admin.ExportLogAdminView`（endpoint `logs/export`）。`index` / `export_user_activity_log`（`POST /export`）/ `check_export_status` / `cancel_export` / `download_user_activity_log`（`/download`、`export_log.zip`）。エクスポートは Celery `export_all_user_activity_logs`（`weko_logging.tasks`）。ステータスは `UserActivityLogUtils.get_export_task_status`。Celery 稼働確認は `weko_search_ui.tasks.check_celery_is_run`。
 
 ## 更新履歴
 

@@ -134,7 +134,7 @@
     - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/docker-compose.yml#L57-L60>
 
 - 本画面では、accounts_roleテーブルのデータを作成、編集、削除する。
-  - 作成、編集時は、画面の設定をもとに、以下のようにaccess_actionssystemrolesテーブルに保存する。
+  - 作成、編集時は、画面の設定をもとに、以下のようにaccounts_roleテーブルに保存する。
     - 「id」フィールド：画面上の入力によらない
     - 「name」フィールド：画面上の「Name」で入力されたもの
     - 「description」フィールド：画面上の「Description」で入力されたもの
@@ -151,7 +151,7 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ：`invenio_accounts.admin.RoleView`（model `Role`、テーブル `accounts_role`）。Users は Email によるAjax選択。`after_model_change` で `ACCOUNTS_WORKFLOW_ROLE_HIDE_FILTER`（既定 False）が True のとき `workflow_userrole` にレコードを追加。処理概要の「`access_actionssystemroles` に保存」は誤りで、保存先は `accounts_role`。
+- 画面/ハンドラ：`invenio_accounts.admin.RoleView`（model `Role`、テーブル `accounts_role`）。Users は Email によるAjax選択。`after_model_change` で `ACCOUNTS_WORKFLOW_ROLE_HIDE_FILTER`（既定 False）が True のとき `workflow_userrole` にレコードを追加。ロールの保存先は `accounts_role`。
 
 ## 更新履歴
 
