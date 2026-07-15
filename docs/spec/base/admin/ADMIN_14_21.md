@@ -1,49 +1,22 @@
 ### その他
 
-  - > 目的・用途
+## 目的・用途
 
 本機能は、その他の運用設定を設定する機能である
 
-  - > 利用方法
+## 利用方法
 
-【Administration \> Setting (設定) \> Others (その他)】において、機関名を入力し、【Save (保存)】を押下することで、GoogleScholar向けメタデータのひとつの「学位授与機関名」として入力した機関名を付与する。
+【Administration > Setting (設定) > Others (その他)】において、機関名を入力し、【Save (保存)】を押下することで、GoogleScholar向けメタデータのひとつの「学位授与機関名」として入力した機関名を付与する。
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 利用可否 | ○ | ○ |  |  |  |  |
 
-  - > 機能内容
+## 機能内容
 
-<!-- end list -->
-
-  - 【Administration \> Setting (設定)\> Others (その他) 画面】での「Institution Name」エリアに機関名を設定する  
+  - 【Administration > Setting (設定)> Others (その他) 画面】での「Institution Name」エリアに機関名を設定する  
     ※設定された機関名がGoogleScholar向けにアイテムメタデータとあわせて、「学位授与機関名」として出力される
     
       - デフォルト：空白
@@ -51,47 +24,30 @@
       - 「機関名」（Institution Name）テキストボックスに機関名を入力してから、「保存」（Save）ボタンを押すと、設定内容を保存し、メッセージを画面上部に表示する  
         メッセージ：「Institution Name was updated.」
 
-<!-- end list -->
+## 関連モジュール
 
-  - > 関連モジュール
+  - weko_records_ui
 
-<!-- end list -->
+## 処理概要
 
-  - > weko\_records\_ui
+> 機関名を入力し、【Save (保存)】を押下した際に、weko_records_ui.admin.InstitutionNameSettingViewが呼び出される。
 
-<!-- end list -->
+  - weko_records_ui.models.InstitutionName.set_institution_nameが呼び出され、  
+    > 入力した機関名をinstitution_nameテーブルに設定する。
 
-  - > 処理概要
+> 「INSTITUTION_NAME_SETTING_TEMPLATE」：weko_records_ui.config
 
-> 機関名を入力し、【Save (保存)】を押下した際に、weko\_records\_ui.admin.InstitutionNameSettingが呼び出される。
+  - 'weko_records_ui/admin/institution_name_setting.html'
 
-  - > weko\_records\_ui.models.InstitutionName.set\_institution\_nameが呼び出され、  
-    > 入力した機関名をinstitution\_nameテーブルに設定する。
+> Google Scholar向けメタデータの出力の際は、weko_records_ui.utils.get_google_scholar_metaからweko_records_ui.models.InstitutionName.get_institution_nameを呼び出して  
+> institution_nameテーブルから機関名を取得する。
 
-> 「INSTITUTION\_NAME\_SETTING\_TEMPLATE」：weko\_records\_ui.config
+## 実装補足（v2.0.2 実装との突き合わせ）
 
-  - > 'weko\_records\_ui/admin/institution\_name\_setting.html'
+- 画面/ハンドラ：`weko_records_ui.admin.InstitutionNameSettingView`。model `InstitutionName`（テーブル `institution_name`、`set_institution_name` / `get_institution_name`）。テンプレート `INSTITUTION_NAME_SETTING_TEMPLATE`。機関名は `weko_records_ui.utils.get_google_scholar_meta` で使用される。
 
-> Google Scholar向けメタデータの出力の際は、weko\_records\_ui.utils.get\_google\_scholar\_metaからweko\_records\_ui.models.InstitutionName.get\_institution\_nameを呼び出して  
-> intitution\_nameテーブルから機関名を取得する。
+## 更新履歴
 
-  - > 更新履歴
-
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |

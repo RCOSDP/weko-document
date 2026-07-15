@@ -11,34 +11,9 @@
 
 #### 利用可能なロール
 
-  <table>
-  <thead>
-  <tr>
-  <th>ロール</th>
-  <th>システム<br />
-  管理者</th>
-  <th>リポジトリ<br />
-  管理者</th>
-  <th>コミュニティ<br />
-  管理者</th>
-  <th>登録ユーザー</th>
-  <th>一般ユーザー</th>
-  <th>ゲスト<br />
-  (未ログイン)</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td>利用可否</td>
-  <td>○</td>
-  <td>○</td>
-  <td>○</td>
-  <td>○</td>
-  <td>○</td>
-  <td>○</td>
-  </tr>
-  </tbody>
-  </table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|----|----|----|----|----|----|----|
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
 #### 機能内容
 
@@ -46,9 +21,13 @@
 
 #### 関連モジュール
 
-  - weko_search_ui:query.py
+  - weko-search-ui（実ハンドラ `rest.IndexSearchResourceAPI.get_v1`、検索ファクトリ `query.weko_search_factory` / `query.default_search_factory`、REST定義 `config.WEKO_SEARCH_REST_ENDPOINTS` の `search_api_route`）
 
-  - invenio_records_rest:views.py
+  - weko-records-ui（RO-Crate変換 `utils.RoCrateConverter`、変換定義モデル `models.RocrateMapping`）
+
+  - weko-admin（ファセット集計 `utils.get_facet_search_query`、`config.WEKO_ADMIN_FACET_SEARCH_SETTING_BUCKET_SIZE`＝1000）
+
+> エンドポイントは `GET /api/v1/records`（`@require_api_auth(allow_anonymous=True)` ＋ `@require_oauth_scopes(item_read_scope.id)`）。RocrateMapping が登録されたアイテムタイプのみが検索対象となる（未登録は `match_none`）。
 
 #### 処理概要
 
@@ -110,263 +89,58 @@
 
 - リクエスト  
   - ヘッダ
-    <table>
-    <thead>
-    <tr>
-    <th>キー名</th>
-    <th>値</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>Accept-Language</td>
-    <td>言語設定<br>
-    デフォルトはen</td>
-    </tr>
-    <tr>
-    <td>Authorization</td>
-    <td>認可情報</td>
-    </tr>
-    </tbody>
-    </table>
+    | キー名 | 値 |
+    |----|----|
+    | Accept-Language | 言語設定<br>デフォルトはen |
+    | Authorization | 認可情報 |
 
   - クエリ
-    <table>
-    <thead>
-    <tr>
-    <th>パラメータ</th>
-    <th>型</th>
-    <th>説明</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>q</td>
-    <td>string</td>
-    <td>検索するキーワード</td>
-    </tr>
-    <tr>
-    <td>search_type</td>
-    <td>int</td>
-    <td>検索形式 (0: 全文検索、1: キーワード検索)</td>
-    </tr>
-    <tr>
-    <td>pretty</td>
-    <td>bool</td>
-    <td>レスポンスの整形の有無 (デフォルト: false)</td>
-    </tr>
-    <tr>
-    <td>page</td>
-    <td>int</td>
-    <td>取得するページ番号</td>
-    </tr>
-    <tr>
-    <td>cursor</td>
-    <td>int</td>
-    <td>ページネーションのカーソル</td>
-    </tr>
-    <tr>
-    <td>size</td>
-    <td>int</td>
-    <td>取得する検索結果の最大数</td>
-    </tr>
-    <tr>
-    <td>sort</td>
-    <td>string</td>
-    <td>ソートキー</td>
-    </tr>
-    <tr>
-    <td colspan="3">以下、メタデータ項目</td>
-    </tr>
-    <tr>
-    <td>title</td>
-    <td>string</td>
-    <td>タイトル</td>
-    </tr>
-    <tr>
-    <td>exact_title_match</td>
-    <td>bool</td>
-    <td>タイトル完全一致検索を指定する (デフォルト: false)</td>
-    </tr>
-    <tr>
-    <td>creator</td>
-    <td>string</td>
-    <td>著者名</td>
-    </tr>
-    <tr>
-    <td>subject</td>
-    <td>string</td>
-    <td>件名</td>
-    </tr>
-    <tr>
-    <td>sbjscheme</td>
-    <td>int (候補から選択)</td>
-    <td>件名種別</td>
-    </tr>
-    <tr>
-    <td>spatial</td>
-    <td>string</td>
-    <td>地域</td>
-    </tr>
-    <tr>
-    <td>des</td>
-    <td>string</td>
-    <td>内容記述</td>
-    </tr>
-    <tr>
-    <td>publisher</td>
-    <td>string</td>
-    <td>出版者</td>
-    </tr>
-    <tr>
-    <td>cname</td>
-    <td>string</td>
-    <td>寄与者</td>
-    </tr>
-    <tr>
-    <td>fd_attr</td>
-    <td>string (候補から選択)</td>
-    <td>日付種別</td>
-    </tr>
-    <tr>
-    <td>filedate_from</td>
-    <td>date (YYYYMMDD形式)</td>
-    <td>日付下限を指定</td>
-    </tr>
-    <tr>
-    <td>filedate_to</td>
-    <td>date (YYYYMMDD形式)</td>
-    <td>日付上限を指定</td>
-    </tr>
-    <tr>
-    <td>mimetype</td>
-    <td>string</td>
-    <td>フォーマット</td>
-    </tr>
-    <tr>
-    <td>id</td>
-    <td>string</td>
-    <td>識別子</td>
-    </tr>
-    <tr>
-    <td>id_attr</td>
-    <td>string (候補から選択)</td>
-    <td>識別子種別</td>
-    </tr>
-    <tr>
-    <td>srctitle</td>
-    <td>string</td>
-    <td>雑誌名</td>
-    </tr>
-    <tr>
-    <td>type</td>
-    <td>int (候補から選択)</td>
-    <td>資源タイプ</td>
-    </tr>
-    <tr>
-    <td>lang</td>
-    <td>string (候補から選択)</td>
-    <td>言語</td>
-    </tr>
-    <tr>
-    <td>temporal</td>
-    <td>string</td>
-    <td>期間</td>
-    </tr>
-    <tr>
-    <td>dategranted_from</td>
-    <td>date (YYYYMMDD形式)</td>
-    <td>学位取得日下限を指定</td>
-    </tr>
-    <tr>
-    <td>dategranted_to</td>
-    <td>date (YYYYMMDD形式)</td>
-    <td>学位取得日上限を指定</td>
-    </tr>
-    <tr>
-    <td>version</td>
-    <td>string (候補から選択)</td>
-    <td>著者版フラグ</td>
-    </tr>
-    <tr>
-    <td>dissno</td>
-    <td>string</td>
-    <td>学位番号</td>
-    </tr>
-    <tr>
-    <td>degreename</td>
-    <td>string</td>
-    <td>学位名</td>
-    </tr>
-    <tr>
-    <td>dgname</td>
-    <td>string</td>
-    <td>学位授与機関</td>
-    </tr>
-    <tr>
-    <td>wid</td>
-    <td>int</td>
-    <td>作成者識別子</td>
-    </tr>
-    <tr>
-    <td>iid</td>
-    <td>int</td>
-    <td>インデックスID</td>
-    </tr>
-    <tr>
-    <td>license</td>
-    <td>string (候補から選択)</td>
-    <td>ライセンス</td>
-    </tr>
-    <tr>
-    <td>textX<br>
-    (Xは1~10の整数)</td>
-    <td>string</td>
-    <td>詳細検索条件設定でtextXに割り当てた項目の値</td>
-    </tr>
-    <tr>
-    <td>integer_rangeX_from<br>
-    (Xは1~5の整数)</td>
-    <td>int</td>
-    <td>詳細検索条件設定でinteger_rangeXに割り当てた項目の値の下限</td>
-    </tr>
-    <tr>
-    <td>integer_rangeX_to<br>
-    (Xは1~5の整数)</td>
-    <td>int</td>
-    <td>詳細検索条件設定でinteger_rangeXに割り当てた項目の値の上限</td>
-    </tr>
-    <tr>
-    <td>float_rangeX_from<br>
-    (Xは1~5の整数)</td>
-    <td>float</td>
-    <td>詳細検索条件設定でfloat_rangeXに割り当てた項目の値の下限</td>
-    </tr>
-    <tr>
-    <td>float_rangeX_to<br>
-    (Xは1~5の整数)</td>
-    <td>float</td>
-    <td>詳細検索条件設定でfloat_rangeXに割り当てた項目の値の上限</td>
-    </tr>
-    <tr>
-    <td>date_rangeX_from<br>
-    (Xは1~5の整数)</td>
-    <td>date</td>
-    <td>詳細検索条件設定でdate_rangeXに割り当てた項目の値の下限 (YYYYMMDD形式)</td>
-    </tr>
-    <tr>
-    <td>date_rangeX_to<br>
-    (Xは1=5の整数)</td>
-    <td>date</td>
-    <td>詳細検索条件設定でdate_rangeXに割り当てた項目の値の上限 (YYYYMMDD形式)</td>
-    </tr>
-    <tr>
-    <td >ファセット検索項目</td>
-    <td ></td>
-    <td >ファセット検索の設定でActiveとした項目</td>
-    </tr>
-    </tbody>
-    </table>
+    | パラメータ | 型 | 説明 |
+    |----|----|----|
+    | q | string | 検索するキーワード |
+    | search_type | int | 検索形式 (0: 全文検索、1: キーワード検索) |
+    | pretty | bool | レスポンスの整形の有無 (デフォルト: false) |
+    | page | int | 取得するページ番号 |
+    | cursor | int | ページネーションのカーソル |
+    | size | int | 取得する検索結果の最大数 |
+    | sort | string | ソートキー |
+    | 以下、メタデータ項目 |  |  |
+    | title | string | タイトル |
+    | exact_title_match | bool | タイトル完全一致検索を指定する (デフォルト: false) |
+    | creator | string | 著者名 |
+    | subject | string | 件名 |
+    | sbjscheme | int (候補から選択) | 件名種別 |
+    | spatial | string | 地域 |
+    | des | string | 内容記述 |
+    | publisher | string | 出版者 |
+    | cname | string | 寄与者 |
+    | fd_attr | string (候補から選択) | 日付種別 |
+    | filedate_from | date (YYYYMMDD形式) | 日付下限を指定 |
+    | filedate_to | date (YYYYMMDD形式) | 日付上限を指定 |
+    | mimetype | string | フォーマット |
+    | id | string | 識別子 |
+    | id_attr | string (候補から選択) | 識別子種別 |
+    | srctitle | string | 雑誌名 |
+    | type | int (候補から選択) | 資源タイプ |
+    | lang | string (候補から選択) | 言語 |
+    | temporal | string | 期間 |
+    | dategranted_from | date (YYYYMMDD形式) | 学位取得日下限を指定 |
+    | dategranted_to | date (YYYYMMDD形式) | 学位取得日上限を指定 |
+    | version | string (候補から選択) | 著者版フラグ |
+    | dissno | string | 学位番号 |
+    | degreename | string | 学位名 |
+    | dgname | string | 学位授与機関 |
+    | wid | int | 作成者識別子 |
+    | iid | int | インデックスID |
+    | license | string (候補から選択) | ライセンス |
+    | textX<br>(Xは1~10の整数) | string | 詳細検索条件設定でtextXに割り当てた項目の値 |
+    | integer_rangeX_from<br>(Xは1~5の整数) | int | 詳細検索条件設定でinteger_rangeXに割り当てた項目の値の下限 |
+    | integer_rangeX_to<br>(Xは1~5の整数) | int | 詳細検索条件設定でinteger_rangeXに割り当てた項目の値の上限 |
+    | float_rangeX_from<br>(Xは1~5の整数) | float | 詳細検索条件設定でfloat_rangeXに割り当てた項目の値の下限 |
+    | float_rangeX_to<br>(Xは1~5の整数) | float | 詳細検索条件設定でfloat_rangeXに割り当てた項目の値の上限 |
+    | date_rangeX_from<br>(Xは1~5の整数) | date | 詳細検索条件設定でdate_rangeXに割り当てた項目の値の下限 (YYYYMMDD形式) |
+    | date_rangeX_to<br>(Xは1=5の整数) | date | 詳細検索条件設定でdate_rangeXに割り当てた項目の値の上限 (YYYYMMDD形式) |
+    | ファセット検索項目 |  | ファセット検索の設定でActiveとした項目 |
 
   - リクエスト例  
     `curl <WEKO3のURL>/api/v1/records?title=jumps`
@@ -473,6 +247,7 @@
   | 2023/02/13 | 初版作成                                   |
   | 2024/07/31 | ユーザーが設定できるkeyの変換形式を変更    |
   | 2025/02/14 | OR検索機能、タイトル完全一致検索機能、集計機能の追加 |
+  | 2026/07/14 | 実装(v2.0.2)と突き合わせ。各APIの関連モジュール（実ハンドラ・RoCrateConverter/RocrateMapping・facet集計）を修正・追記 |
 
 ### アイテム詳細情報取得用API
 
@@ -484,34 +259,9 @@ APIを実行する。
 
 #### 利用可能なロール
 
-  <table>
-  <thead>
-  <tr>
-  <th>ロール</th>
-  <th>システム<br />
-  管理者</th>
-  <th>リポジトリ<br />
-  管理者</th>
-  <th>コミュニティ<br />
-  管理者</th>
-  <th>登録ユーザー</th>
-  <th>一般ユーザー</th>
-  <th>ゲスト<br />
-  (未ログイン)</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td>利用可否</td>
-  <td>○</td>
-  <td>○</td>
-  <td>○</td>
-  <td>○</td>
-  <td>○</td>
-  <td>○</td>
-  </tr>
-  </tbody>
-  </table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|----|----|----|----|----|----|----|
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
 #### 機能内容
 
@@ -519,7 +269,9 @@ APIを実行する。
 
 #### 関連モジュール
 
-  - weko_index_tree.rest.py:GetIndex
+  - weko-records-ui（実ハンドラ `rest.WekoRecordsResource.get_v1`、RO-Crate変換 `utils.RoCrateConverter`、変換定義モデル `models.RocrateMapping`、リクエストメール宛先 `models.RequestMailList`、REST定義 `config.WEKO_RECORDS_UI_CITES_REST_ENDPOINTS` の `item_route`）
+
+> エンドポイントは `GET /api/v1/records/<id>`。権限は `page_permission_factory` で判定し、ETag / Last-Modified に対応。レスポンスの `metadata.hasRequestmailAddress` は `RequestMailList` から取得する。
 
 #### 処理概要
 
@@ -539,33 +291,12 @@ APIを実行する。
 
 - リクエスト
   - ヘッダ
-    <table>
-    <thead>
-    <tr>
-    <th>キー名</th>
-    <th>値</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>Accept-Language</td>
-    <td>言語設定<br>
-    デフォルトはen</p></td>
-    </tr>
-    <tr>
-    <td>If-None-Match</td>
-    <td>1回目のレスポンスヘッダーETagに設定された値</td>
-    </tr>
-    <tr>
-    <td>If-Modified-Since</td>
-    <td>1回目のレスポンスヘッダーLast-Modifiedに設定された値</td>
-    </tr>
-    <tr>
-    <td>Authorization</td>
-    <td>認可情報</td>
-    </tr>
-    </tbody>
-    </table>
+    | キー名 | 値 |
+    |----|----|
+    | Accept-Language | 言語設定<br>デフォルトはen |
+    | If-None-Match | 1回目のレスポンスヘッダーETagに設定された値 |
+    | If-Modified-Since | 1回目のレスポンスヘッダーLast-Modifiedに設定された値 |
+    | Authorization | 認可情報 |
 
   - クエリ
     | パラメータ | 値                     |
@@ -670,34 +401,9 @@ APIを実行する。
 
 #### 利用可能なロール
 
-<table>
-<thead>
-<tr>
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|----|----|----|----|----|----|----|
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
 #### 機能内容
 
@@ -730,33 +436,12 @@ APIを実行する。
 
 - リクエスト
   - ヘッダ
-    <table>
-    <thead>
-    <tr>
-    <th>キー名</th>
-    <th>値</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>Accept-Language</td>
-    <td>言語設定<br>
-    デフォルトはen</td>
-    </tr>
-    <tr>
-    <td>If-None-Match</td>
-    <td>1回目のレスポンスヘッダーETagに設定された値</td>
-    </tr>
-    <tr>
-    <td>If-Modified-Since</td>
-    <td>1回目のレスポンスヘッダーLast-Modifiedに設定された値</td>
-    </tr>
-    <tr>
-    <td>Authorization</td>
-    <td>認可情報</td>
-    </tr>
-    </tbody>
-    </table>
+    | キー名 | 値 |
+    |----|----|
+    | Accept-Language | 言語設定<br>デフォルトはen |
+    | If-None-Match | 1回目のレスポンスヘッダーETagに設定された値 |
+    | If-Modified-Since | 1回目のレスポンスヘッダーLast-Modifiedに設定された値 |
+    | Authorization | 認可情報 |
 
   - クエリ
 

@@ -8,8 +8,6 @@
 - [POST /api/\<version>/captcha/validate](#post-apiversioncaptchavalidate)
 - [POST /api/\<version>/records/\<pid_value>/request-mail](#post-apiversionrecordspid_valuerequest-mail)
 
-
-
 ## GET /api/\<version>/captcha/image
 
 表内のいずれかの○に合致すれば、CAPTCHA画像を取得することが出来ます。
@@ -17,9 +15,6 @@
 | ロール   | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
 | -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 利用可否 | ○                 | ○                   | ○                      | ○            | ○            | ○                        |
-
-
-
 
 ## POST /api/\<version>/captcha/validate
 
@@ -36,8 +31,6 @@
 | calculation_result<br>が正しい | ○                  | ○                    | ○                      | ○            | ○            | ○                       |
 | calculation_result<br>が誤り                                 | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-
-
 ## POST /api/\<version>/records/\<pid_value>/request-mail
 
 表内のいずれかの○に合致すれば、リクエストメール送信APIへアクセスすることが出来ます。
@@ -53,7 +46,9 @@
 | authorization_token<br>が正しい | ○                  | ○                    | ○                      | ○            | ○            | ○                       |
 | authorization_token<br>が誤り                                 | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
+## 実装（アクセス制御の担保）
 
+（2026/07/14 実装 v2.0.2 と突き合わせ）本APIの認可は OAuth2 を基本とし、`require_api_auth(allow_anonymous=…)`（未認証許可可否）、`require_oauth_scopes(<scope>)`（トークン使用時のみスコープ検証）、`roles_required([...])`（未認証かつ guest_token 無しは 401）の組み合わせで判定される。ゲスト（未ログイン）可否は主に `allow_anonymous` と `roles_required` の有無で決まり、公開範囲は検索系では `weko_search_ui.query.get_permission_filter` で絞り込まれる。各エンドポイントの実ハンドラ・スコープは [API仕様（api カテゴリ）](../api/README.md) を参照。
 
 ## 更新履歴
 

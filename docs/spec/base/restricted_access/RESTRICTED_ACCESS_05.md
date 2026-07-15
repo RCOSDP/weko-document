@@ -1,140 +1,76 @@
 ### プロフィール表示設定
 
-  - > 目的・用途
+#### 目的・用途
 
-本機能は、プロフィール画面にて表示される項目の表示、非表示を設定する機能である
+本機能は、プロフィール画面にて表示される項目の表示・非表示、ラベル名、入力方式を設定する機能である。
 
-  - > 利用方法
+#### 利用方法
 
-【Administration＞アドバンスド（Advanced）＞プロフィール表示設定（Profile Item Settings）】の順でプロフィール表示設定画面へ遷移して利用する。
+【Administration＞アドバンスド（Advanced）＞プロフィール表示設定（Profile Settings）】の順で画面へ遷移して利用する。
 
-  - > 利用可能なロール
+#### 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 利用可否 | ○ | ○ |  |  |  |  |
 
-  - > 機能内容
+保存APIは `@roles_required(['System Administrator', 'Repository Administrator'])` で保護される。画面表示は Flask-Admin の標準管理者アクセス制御に従う。
 
-  - 各項目で表示・非表示の設定
+#### 機能内容
 
-      - 各項目に設置されている表示フラグを設定するチェックボックスにチェックが入った状態で保存　することで、プロフィール画面に表示される。
-          - 項目が非表示である場合、その項目を自動入力機能の対象外とする
+- 各項目で表示・非表示の設定
+  - 各項目に設置されている表示フラグ（visible）のチェックボックスにチェックが入った状態で保存することで、プロフィール画面に表示される。
+    - 表示フラグがOFFの項目は自動入力機能の対象外となる（ただし後述の `WEKO_USERPROFILES_CUSTOMIZE_ENABLED` が True の場合）。
 
-  - 各項目で、ラベル名の編集
+- 各項目でラベル名の編集
+  - 各項目のラベル名テキストボックスを編集することで、ラベル名を変更でき、プロフィール編集画面に反映される。
 
-      - 各項目に設置されているラベル名のテキストボックスを編集することで、ラベル名を自由に変更でき、プロフィール編集画面に反映される。
+- 各項目の入力方式の編集
+  - 各項目の入力方式プルダウンで入力方式を変更できる。入力方式は `USERPROFILES_FORMAT_OPTION_LIST` により `text` / `select` / `identifier` / `phonenumber` / `position(other)` の5種類。`select` を選択した場合、項目下部にオプション記入テキストボックスが表示されるので記入する。
 
-  - 各項目の入力方式の編集
+- 自動入力機能への項目反映
+  - `WEKO_USERPROFILES_CUSTOMIZE_ENABLED` が True の場合、表示フラグ（visible）がONの項目のみを自動入力の対象とし、OFFの項目は対象外とする。既定（False）では全項目が従来通り自動入力に用いられる。
 
-      - 各項目に設置されている入力方式の変更プルダウンを編集することで、項目の入力方式を変更することができる。\[select\]を選択した場合、項目の下部にオプション記入テキストボックスが出てくるので、記入すること。
+#### 関連モジュール
 
-  - 自動登録機能ヘの項目追加
+- weko-admin（設定画面・保存処理の実体：`ProfileSettingView`、保存API `send_profile_settings_save`、React画面 `user-profile-settings.js`）
+- weko-user-profiles（設定値の消費側：プロフィールフォーム生成 `forms.py`、自動入力データ生成 `utils.py` の `get_user_profile_info` / `models.py` の `get_institute_data`、デフォルト設定値の定義 `config.py`）
+- weko-workflow / weko-workspace（自動入力でプロフィール情報を利用する呼び出し元）
 
-      - 既存の自動登録機能に項目を追加。プロフィール表示設定画面にて表示フラグを設定するチェックボックスにチェックが入っている項目を自動入力の対象とし、表示フラグのチェックボックスにチェックされていないものを自動登録の対象外とする。
+#### 設定の格納・デフォルト
 
-<!-- end list -->
+- 設定は `AdminSettings` テーブルの name=`profiles_items_settings`（JSON）に格納される。
+- デフォルト値は `weko-user-profiles/weko_user_profiles/config.py` の `WEKO_USERPROFILES_DEFAULT_FIELDS_SETTINGS`（対象：fullname / university / department / position / item1〜item16）。
+- 各項目の構造：`{order:int, visible:bool, label_name:str, format:str, options:list}`
 
-  - > 関連モジュール
+#### 主要設定値（config）
 
-<!-- end list -->
+| キー | 既定値 | 用途 |
+| --- | --- | --- |
+| `WEKO_USERPROFILES_CUSTOMIZE_ENABLED` | False | プロフィール表示設定（visible／label／format）の有効化スイッチ。False（既定）では表示制御・自動入力対象制御が効かず全項目が従来通り出力される |
+| `USERPROFILES_FORMAT_OPTION_LIST` | `['text','select','identifier','phonenumber','position(other)']` | 入力方式の選択肢 |
+| `WEKO_USERPROFILES_DEFAULT_FIELDS_SETTINGS` | （項目デフォルト定義） | 設定の初期値 |
+| `WEKO_ADMIN_PROFILE_SETTING_TEMPLATE` | `'weko_admin/admin/profiles_settings.html'` | 画面テンプレート |
 
-  - > weko-user-profiles
+#### 処理概要
 
-<!-- end list -->
+- プロフィール表示設定画面 初期表示（`ProfileSettingView.index`、`GET /admin/profile_settings/`）
+  - `AdminSettings` の `profiles_items_settings`（無ければデフォルト）を画面に渡し、React（`ProfilesList`／`user-profile-settings.js`）で order 順に描画する。
+  - 各項目の項目名（固定キー、表示のみ）、表示フラグ（チェックボックス）、ラベル名（テキスト）、入力方式（プルダウン）を表示する。
+    - 入力方式で `select` を選択した場合、オプション記入ボックスを表示する。プレースホルダ文言は英語固定「separate option with the | character」（`user-profile-settings.js` にハードコードされておりi18n化されていない）。
 
-  - > 処理概要
+- 設定内容を保存（`send_profile_settings_save`、`POST /api/admin/profile_settings/save`）
+  - クライアント側（`user-profile-settings.js` の `handleSave`）で以下を検証する。
+    - ラベル名（label_name）が未入力
+    - 入力方式が `select` で options に空要素がある
+  - 検証エラー時は汎用メッセージ「Failed to update settings.」（英語、赤アラート）を表示し保存を中止する（項目個別の文言・入力欄の赤表示は行わない）。
+  - 検証を通過した場合、`AdminSettings.update("profiles_items_settings", ...)` で保存し、成功メッセージ「Settings updated successfully」（青のinfo表示）を表示する。
+  - AJAX通信失敗時は「Profile Settings Update Failed.」を表示する。
+  - 保存された設定はプロフィール編集画面・自動入力の生成時に参照される。
 
-  - プロフィール表示設定画面 初期表示表示
+#### 更新履歴
 
-      - プロフィール画面に表示できる各項目の項目名、表示フラグ、ラベル名、入力方式をすべて表示する。
-
-          - 表示フラグ：チェックボックス。チェックが入っている場合、True。チェックナシの場合はFalse
-
-          - 入力方式プルダウン：プルダウンメニュー、selectが選択された場合オプション記入ボックスを表示する。(テキスト、セレクト（例：a\|b\|c）、識別子)
-
-              - オプション記入ボックス内メッセージ
-
-                  - 日本語：「\| で区切り、オプションを入力してください」
-
-                  - 英語： 「separate option with the \| character」
-
-  - 設定内容を保存
-
-      - 未入力項目がないことをチェック
-
-          - 未入力項目がある場合、項目のボックスを赤く表示し、以下のエラーメッセージを表示し、保存をキャンセルする
-
-              - 項目名未記入
-
-                  - 日本語：「項目名が未入力です」
-
-                  -  英語：「Item name has not been entered. 」
-
-              - ラベル名未記入
-
-                  - 日本語：「ラベル名が未記入です」
-
-                  - 英語：「label name has not been entered. 」
-
-              - オプション項目未記入
-
-                  - 日本語：「オプションが未記入です」
-
-                  - 英語：「Option has not been entered. 」
-
-      - 必須入力項目がすべて入力済みの場合、保存し以下メッセージを表示
-
-          - 保存完了
-
-              - 日本語：「変更が保存されました」
-
-              - 英語： 「Saved successfully. 」
-
-      - 保存された結果をプロフィール画面に渡す。
-
-  - > 更新履歴
-
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2024/8/27</p>
-</blockquote></td>
-<td></td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2024/8/27 |  | 初版作成 |
+| 2026/07/14 |  | 実装(v2.0.2)準拠に更新。画面・保存の実体をweko-adminと明記、メニュー名・入力方式5種・設定格納/デフォルト・configキー・保存ルート/権限・自動入力の前提フラグ・実際のメッセージ／バリデーションに書き換え |

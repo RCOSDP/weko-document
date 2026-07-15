@@ -1,45 +1,20 @@
 ### リクエスト機能
 
-- 目的・用途
+#### 目的・用途
 
 本機能は、アイテムに紐づいたリクエスト送信先にメールを送信する。
 
-- 利用方法
+#### 利用方法
 
 アイテム詳細画面の左側にある、「リクエスト」ボタンを押下することで、リクエストメールフォームがダイアログとして表示される。必要な項目を入力することでリクエストメールが送信される。
 
-- 利用可能なロール
+#### 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-- 機能内容
+#### 機能内容
 
   - アイテム詳細画面に「リクエスト」ボタンを表示する。
 
@@ -57,21 +32,19 @@
 
     - リクエスト送信先が複数設定されている場合、すべてのメールアドレスに一斉送信される。
 
-    - 差出人に記載したメールアドレスがCc:として自動的に設定される。
+    - 差出人に記載したメールアドレス宛に、別途通知メールが送信される。
 
-- 関連モジュール
+#### 関連モジュール
 
   - weko_records_ui
 
-- 処理概要
+#### 処理概要
 
   1. 設定
 
-     - リクエストフォーム表示の既定値
+     - リクエストフォーム表示の判定
 
-       - パス：modules/weko-records-ui/weko_records_ui/config.py
-
-       - 設定値：DISPLAY_REQUEST_FORM = False
+       - 管理設定（AdminSettings）の `restricted_access.display_request_form` が有効、かつ当該アイテムにリクエスト送信先が登録されている場合に表示する
 
      - CAPTCHA画像生成から認証までの有効期間(秒)
 
@@ -121,3 +94,8 @@
        - CAPTCHA画像の有効期限が切れていた場合、CAPTCHA画像の再生成、表示を行う。
 
      - リクエストメールの送信に成功した場合、送信者に対し通知メールを送信する。
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足：リクエストフォームの表示可否は AdminSettings `restricted_access.display_request_form` と送信先の存在で決まる。差出人には別途通知メール（`recipients=[msg_sender]`）が送信される。送信先テーブルは `request_mail_list`（`weko_records`）。REST は `RequestMail` / `CreateCaptchaImage` / `CaptchaAnswerValidation`（weko-records-ui）。config `WEKO_RECORDS_UI_CAPTCHA_*` / `WEKO_RECORDS_UI_REQUEST_MESSAGE` / `_NOTIFICATION_MESSAGE`。
+

@@ -114,7 +114,7 @@
         * [ADMIN-10-1: Resource List 277](./admin/ADMIN_10_1.md)
         * [ADMIN-10-2: Change List 283](./admin/ADMIN_10_2.md)
         * [ADMIN-10-3: Resync 291](./admin/ADMIN_10_3.md)
-    * 11 SWQRD API
+    * 11 SWORD API
         * [ADMIN-16-1: TSV/XML](admin/ADMIN_16_1.md)
         * [ADMIN-16-2: JSON-LD](admin/ADMIN_16_2.md)
     * レコード管理 296
@@ -127,9 +127,9 @@
         * [ADMIN-12-4: マルチパートオブジェクト 317](./admin/ADMIN_12_4.md)
         * [ADMIN-12-5: オブジェクトバージョン 320](./admin/ADMIN_12_5.md)
     * ユーザ管理 324
-        * [ADMIN-13-1: アクセス\_ロール 324](./admin/ADMIN_13_1.md)
-        * [ADMIN-13-2: アクセス\_システムロール 328](./admin/ADMIN_13_2.md)
-        * [ADMIN-13-3: アクセス\_ユーザー 329](./admin/ADMIN_13_3.md)
+        * [ADMIN-13-1: アクセス_ロール 324](./admin/ADMIN_13_1.md)
+        * [ADMIN-13-2: アクセス_システムロール 328](./admin/ADMIN_13_2.md)
+        * [ADMIN-13-3: アクセス_ユーザー 329](./admin/ADMIN_13_3.md)
         * [ADMIN-13-4: 連結アカウント識別子 330](./admin/ADMIN_13_4.md)
         * [ADMIN-13-5: 連結アカウントトークン 331](./admin/ADMIN_13_5.md)
         * [ADMIN-13-6: 連結アカウント 332](./admin/ADMIN_13_6.md)
@@ -215,7 +215,7 @@
     * [RESTRICTED_ACCESS-13-3: ワークフロー管理（制限公開） 378](./restricted_access/RESTRICTED_ACCESS_03.md)
     * [RESTRICTED_ACCESS-13-4: メールテンプレート 381](./restricted_access/RESTRICTED_ACCESS_04.md)
 * [ツール](./tools/README.md)
-    * [TOOL-1: システムプロパティマッピング 390](./tools/TOOL_01.md)
+    * [TOOL-1: Render](./tools/TOOL_01.md)
 * [アクセスコントロール](./access_control/README.md)
     * ユーザ画面
         * [アイテム詳細画面](USER_ITEM_DETAIL_01.md)

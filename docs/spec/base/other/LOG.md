@@ -1,6 +1,6 @@
 ## ログ
 
-  - > ログレベルの定義
+- ログレベルの定義
 
 | **レベル**  | **内容例**                      | **発生時に必要な対処例**                          |
 | -------- | ---------------------------- | --------------------------------------- |
@@ -15,25 +15,12 @@
 | DEBUG    | ・基本的に本番運用では出力しなくて良い情報。       | ・対処不要                                   |
 |          | ・開発、運用テスト時に必要な情報             |                                         |
 
- 
+- 更新履歴
 
-  - > 更新履歴
+| 日付 | GitHubコミットID | 更新内容 |
+| ---- | ---- | ---- |
+| 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="even">
-<td><blockquote>
-<p>2024/07/1</p>
-</blockquote></td>
-<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
-<td>v1.0.7対応</td>
-</tr>
-</tbody>
-</table>
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 実装補足：ログ出力の設定は `weko_logging.config`（`WEKO_LOGGING_FS_LOGFILE`＝`{instance_path}/weko-logging.log`、`WEKO_LOGGING_FS_LEVEL`＝既定 ERROR、`WEKO_LOGGING_FS_BACKUPCOUNT`＝31）および Sentry 連携（instance.cfg）。基本監査ログは別途 [基本監査ログ](./USER_ACTIVITY_LOG.md) を参照。

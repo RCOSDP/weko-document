@@ -1,79 +1,34 @@
-
 ### 連結アカウントトークン
 
-  - > 目的・用途
+## 目的・用途
 
-本機能は、invenioデフォルト機能を使用してoauthclient\_remotetokenテーブルをメンテナンスする際に使用する機能であるが、WEKO v0.9.22ではこのテーブルを使用していない。
+本機能は、invenio デフォルト機能（Flask-Admin）を使用して外部認証との連結アカウントトークン（`oauthclient_remotetoken` テーブル）をメンテナンスする際に使用する機能である。WEKO では通常このテーブルを使用しない。
 
-  - > 利用方法
+## 利用方法
 
-【Administration \> ユーザー管理（User Management） \> 連結アカウントトークン（Linked account tokens）画面】にて操作を行う。
+【Administration > ユーザー管理（User Management） > 連結アカウントトークン（Linked account tokens）画面】にて操作を行う。
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 利用可否 | ○ | | | | | |
 
-  - > 機能内容
+## 機能内容
 
-<!-- end list -->
+- 連結アカウントトークン（`RemoteToken`）の一覧表示・編集・削除を行う。
+- 各レコードは `id_remote_account`（連結アカウントへの参照）・`token_type`・`access_token`・`secret` を持つ。
 
-  - 
-<!-- end list -->
+## 関連モジュール
 
-  - > 関連モジュール
+- invenio-oauthclient（`admin.RemoteTokenView`、model `RemoteToken`、テーブル `oauthclient_remotetoken`。WEKO ソースにはフォークされていない外部依存）
 
-<!-- end list -->
+## 処理概要
 
-  - invenio\_oauthclient（WEKOソース内にforkされていない）
+- Flask-Admin の ModelView（`invenio_oauthclient.admin.RemoteTokenView`）でテーブル `oauthclient_remotetoken` を保守する。一覧列は `id_remote_account` / `token_type`、フォームは `remote_account` / `token_type`。
 
-<!-- end list -->
+## 更新履歴
 
-  - > 処理概要
-
-  - > 更新履歴
-
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+|:---:|:---:|:---:|
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |

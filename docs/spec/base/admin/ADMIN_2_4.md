@@ -85,18 +85,18 @@
 > Japanese:
 >
 > 免責事項：  
-> \- 本機能は設定にかかわらずDOIを強制的に変更します。  
-> \- 本機能は内容及び自機関で登録されているDOIについて十分に理解した上で作業を行なってください。  
-> \- 本機能の利用は、自機間の責任で行なってください。  
-> \- 本機能の利用により負った損害などについては、国立情報学研究所は一切の責任を追いません。
+> - 本機能は設定にかかわらずDOIを強制的に変更します。  
+> - 本機能は内容及び自機関で登録されているDOIについて十分に理解した上で作業を行なってください。  
+> - 本機能の利用は、自機間の責任で行なってください。  
+> - 本機能の利用により負った損害などについては、国立情報学研究所は一切の責任を追いません。
 
 > English:
 >
 > Disclaimer:  
-> \- This function forcibly changes the DOI regardless of the setting.  
-> \- Before starting this operation, you need fully understand the contents and DOI registered at your institution.  
-> \- Use this function on your own responsibility.  
-> \- National Institute of Informatics (NII) does not take any responsibility for damages caused by using this function.
+> - This function forcibly changes the DOI regardless of the setting.  
+> - Before starting this operation, you need fully understand the contents and DOI registered at your institution.  
+> - Use this function on your own responsibility.  
+> - National Institute of Informatics (NII) does not take any responsibility for damages caused by using this function.
 
 ④［次へ（Next）］ボタン
 
@@ -108,7 +108,7 @@
 ⑤Item Type セレクタ―
 
   - TSVファイルテンプレートをダウンロードする際、対象とするアイテムタイプを選択する。  
-    【Administration \> アイテムタイプ管理（Item Types） \> メタデータ（Metadata）】画面で確認できる標準アイテムタイプ（Standard Item Type）を表示。  
+    【Administration > アイテムタイプ管理（Item Types） > メタデータ（Metadata）】画面で確認できる標準アイテムタイプ（Standard Item Type）を表示。  
     表示形式は「Item Type name(Item Type ID)」。
 
 ⑥Download ボタン
@@ -125,7 +125,7 @@
 ①Message ラベル
 
   - ※名称は要検討  
-    Select画面の「③Change Identifier Mode チェックボックス」にチェックを入れた場合。メッセージ「識別子変更モードで登録します(Register with \[Change Identigier Mode\].)」を表示する。
+    Select画面の「③Change Identifier Mode チェックボックス」にチェックを入れた場合。メッセージ「識別子変更モードで登録します(Register with [Change Identigier Mode].)」を表示する。
 
 ②Import ボタン
 
@@ -284,10 +284,10 @@
 
 ##### 1行目：インポートするアイテムタイプの情報
 
-| 1列目 | 「\#ItemType」固定                                                                       |
+| 1列目 | 「#ItemType」固定                                                                       |
 | ----- | ---------------------------------------------------------------------------------------- |
 | 2列目 | アイテムタイプ名                                                                         |
-| 3列目 | アイテムタイプのjsonschemaのURI。形式は「https://FQDN/items/jsonschema/<ItemType ID\>」 |
+| 3列目 | アイテムタイプのjsonschemaのURI。形式は「https://FQDN/items/jsonschema/<ItemType ID>」 |
 
 ##### 2行目：各項目のJSONパス。各種処理に使用される項目。
 
@@ -297,7 +297,7 @@
     → 項目ごとにラベルの内容を定義。
 
 - アイテムタイプ項目  
-    → 【Administration \> アイテムタイプ管理（ItemTypes） \> メタデータ（Metadata）画面】のLocalization Settingで設定している内容を出力。設定がない場合は項目名を出力。
+    → 【Administration > アイテムタイプ管理（ItemTypes） > メタデータ（Metadata）画面】のLocalization Settingで設定している内容を出力。設定がない場合は項目名を出力。
 
 ##### 4行目：インポート実行時に値を自動で設定する項目について「System」を出力 。対象はプロパティ定義内で「"readonly":true」を設定している項目。
 
@@ -307,7 +307,7 @@
     → 項目ごとにラベルの内容を定義。
 
 - アイテムタイプ項目  
-    → 【Administration \> アイテムタイプ管理（ItemTypes） \> メタデータ（Metadata）画面】のOptionの設定内容がチェックありの項目について出力
+    → 【Administration > アイテムタイプ管理（ItemTypes） > メタデータ（Metadata）画面】のOptionの設定内容がチェックありの項目について出力
 
 #### (2) アイテムタイプ項目以外の項目
 
@@ -329,7 +329,7 @@
 | .edit_mode        | Keep/Upgrade Version | 対象のアイテムのバージョン更新可否を指定する。新規登録の場合は空、更新の場合は必須でKeep/Upgradeのいずれかを指定する。<br>※インポートファイル（zip）に既存アイテムの元ファイルが同名、ファイルパスも同一で含まれていた場合（元ファイルを変更しない） <br>・Keep: 重複登録されない <br>・Upgrade: 重複登録する。ファイル名だけでは、同名同ファイルなのか同名異ファイルなのかが判断できない |
 
 #### ※2) CNRIハンドルサーバの使用について  
-CNRIハンドルの使用状態は「WEKO\_HANDLE\_ALLOW\_REGISTER\_CRNI」(modules/weko-handle/weko\_handle/config.py)の設定値で判断している
+CNRIハンドルの使用状態は「WEKO_HANDLE_ALLOW_REGISTER_CRNI」(modules/weko-handle/weko_handle/config.py)の設定値で判断している
     
 - 「False」：初期値。CNRIハンドルサーバを使用しない
 - 「True」：CNRIハンドルサーバを使用する
@@ -346,9 +346,9 @@ CNRIハンドルの使用状態は「WEKO\_HANDLE\_ALLOW\_REGISTER\_CRNI」(modu
   - インポートファイルにdoiやprefixが含まれている場合　(「prefix」もしくは「prefix/」を指定した場合）  
     「DOI suffixを設定してください。」／「Please specify DOI suffix.」
 - Not 識別子変更モード        
-  - Admin \> Setting \> Identifier でprefixの設定があること
+  - Admin > Setting > Identifier でprefixの設定があること
     - DOI：空欄であること
-    - DOI\_RA：JaLC, Crossref, DataCite のいずれかであること
+    - DOI_RA：JaLC, Crossref, DataCite のいずれかであること
     - DOI_RA：NDL JaLCの場合、自動採番は行われない。
       インポートファイルにdoiやprefixが含まれている場合はエラーメッセージを表示する。
     - DOIが空欄の場合
@@ -364,59 +364,13 @@ DOI RA：NDL JaLCの場合、資源タイプは「doctoral thesis」である必
 
 CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の通り。
 
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>識別子変更モード</th>
-<th></th>
-<th>Not 識別子変更モード</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>登録時のモード</td>
-<td>新規</td>
-<td>更新</td>
-<td>新規</td>
-<td>更新</td>
-</tr>
-<tr class="even">
-<td>CNRI<br />
-（CNRIハンドル未設定ユーザー）</td>
-<td>空欄</td>
-<td>空欄</td>
-<td>空欄</td>
-<td>空欄</td>
-</tr>
-<tr class="odd">
-<td>CNRI<br />
-（CNRIハンドル設定ユーザー）</td>
-<td>必須。「prefix」または「prefix/」を指定すると自動採番。「prefix/suffix」を指定すると指定された形式でCNRIハンドルを発行。</td>
-<td>変更可能</td>
-<td>空欄</td>
-<td>変更不可</td>
-</tr>
-<tr class="even">
-<td>DOI_RA</td>
-<td>設定可能</td>
-<td>DOI付与前は設定可能<br />
-DOI付与後は変更不可</td>
-<td>設定可能</td>
-<td>DOI付与前は設定可能<br />
-DOI付与後は変更不可</td>
-</tr>
-<tr class="odd">
-<td>DOI</td>
-<td>設定可能</td>
-<td>変更可能</td>
-<td>空欄</td>
-<td>DOI付与前は空欄<br />
-DOI付与後は変更不可</td>
-</tr>
-</tbody>
-</table>
+| | 識別子変更モード | | Not 識別子変更モード | |
+|:---|:---|:---|:---|:---|
+| 登録時のモード | 新規 | 更新 | 新規 | 更新 |
+| CNRI（CNRIハンドル未設定ユーザー） | 空欄 | 空欄 | 空欄 | 空欄 |
+| CNRI（CNRIハンドル設定ユーザー） | 必須。「prefix」または「prefix/」を指定すると自動採番。「prefix/suffix」を指定すると指定された形式でCNRIハンドルを発行。 | 変更可能 | 空欄 | 変更不可 |
+| DOI_RA | 設定可能 | DOI付与前は設定可能<br>DOI付与後は変更不可 | 設定可能 | DOI付与前は設定可能<br>DOI付与後は変更不可 |
+| DOI | 設定可能 | 変更可能 | 空欄 | DOI付与前は空欄<br>DOI付与後は変更不可 |
 
 ##### (3) アイテムタイプ項目
 
@@ -431,134 +385,32 @@ DOI付与後は変更不可</td>
 プロパティID：  
 項目：
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>JSONパス</strong></th>
-<th><strong>初期設定ラベル</strong></th>
-<th><strong>System(自動設定)</strong></th>
-<th><strong>説明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>.file_path[0]</td>
-<td>.ファイルパス[0]</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>.upload_id[0]</td>
-<td>. ファイルアップロードID[0]</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>.metadata.item_files[0].accessrole</td>
-<td>ファイル情報[0].アクセス</td>
-<td>空欄で「オープンアクセス」を自動設定／手入力</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>.metadata.item_files[0].date[0].dateType</td>
-<td>ファイル情報[0].公開日[0].タイプ</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>.metadata.item_files[0].date[0].dateValue</td>
-<td>ファイル情報[0].公開日[0].公開日</td>
-<td>「アクセス」＝オープンアクセス日を指定 の際に手入力可／それ以外は空白</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>.metadata.item_files[0].displaytype</td>
-<td>ファイル情報[0].表示形式</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>.metadata.item_files[0].fileDate[0].fileDateType</td>
-<td>ファイル情報[0].日付[0].日付タイプ</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>.metadata.item_files[0].fileDate[0].fileDateValue</td>
-<td>ファイル情報[0].日付[0].日付</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>.metadata.item_files[0].filename</td>
-<td>ファイル情報[0].ファイル名</td>
-<td></td>
-<td>ファイルパス[0] が空欄ではない時に、空欄、ファイルパス[0] のファイル名と一致しない場合、
-登録できない</td>
-</tr>
-<tr class="even">
-<td>.metadata.item_files[0].filesize[0].value</td>
-<td>ファイル情報[0].サイズ[0].サイズ</td>
-<td>空欄で自動設定／手入力</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>.metadata.item_files[0].format</td>
-<td>ファイル情報[0].フォーマット</td>
-<td>
-<p>ファイルアップロードIDを入力の場合、必須</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>.metadata.item_files[0].groups</td>
-<td>ファイル情報[0].グループ</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>.metadata.item_files[0].licensefree</td>
-<td>ファイル情報[0].自由ライセンス</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>.metadata.item_files[0].licensetype</td>
-<td>ファイル情報[0].ライセンス</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>.metadata.item_files[0].url.label</td>
-<td>ファイル情報[0].本文URL.ラベル</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>.metadata.item_files[0].url.objectType</td>
-<td>ファイル情報[0].本文URL.オブジェクトタイプ</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>.metadata.item_files[0].url.url</td>
-<td>ファイル情報[0].本文URL.本文URL</td>
-<td>空欄で自動設定(※1)／手入力</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>.metadata.item_files[0].version</td>
-<td>ファイル情報[0].バージョン情報</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| **JSONパス** | **初期設定ラベル** | **System(自動設定)** | **説明** |
+| ---- | ---- | ---- | ---- |
+| .file_path[0] | .ファイルパス[0] | | |
+| .upload_id[0] | . ファイルアップロードID[0] | | |
+| .metadata.item_files[0].accessrole | ファイル情報[0].アクセス | 空欄で「オープンアクセス」を自動設定／手入力 | |
+| .metadata.item_files[0].date[0].dateType | ファイル情報[0].公開日[0].タイプ | | |
+| .metadata.item_files[0].date[0].dateValue | ファイル情報[0].公開日[0].公開日 | 「アクセス」＝オープンアクセス日を指定 の際に手入力可／それ以外は空白 | |
+| .metadata.item_files[0].displaytype | ファイル情報[0].表示形式 | | |
+| .metadata.item_files[0].fileDate[0].fileDateType | ファイル情報[0].日付[0].日付タイプ | | |
+| .metadata.item_files[0].fileDate[0].fileDateValue | ファイル情報[0].日付[0].日付 | | |
+| .metadata.item_files[0].filename | ファイル情報[0].ファイル名 | | ファイルパス[0] が空欄ではない時に、空欄、ファイルパス[0] のファイル名と一致しない場合、登録できない |
+| .metadata.item_files[0].filesize[0].value | ファイル情報[0].サイズ[0].サイズ | 空欄で自動設定／手入力 | |
+| .metadata.item_files[0].format | ファイル情報[0].フォーマット | ファイルアップロードIDを入力の場合、必須 | |
+| .metadata.item_files[0].groups | ファイル情報[0].グループ | | |
+| .metadata.item_files[0].licensefree | ファイル情報[0].自由ライセンス | | |
+| .metadata.item_files[0].licensetype | ファイル情報[0].ライセンス | | |
+| .metadata.item_files[0].url.label | ファイル情報[0].本文URL.ラベル | | |
+| .metadata.item_files[0].url.objectType | ファイル情報[0].本文URL.オブジェクトタイプ | | |
+| .metadata.item_files[0].url.url | ファイル情報[0].本文URL.本文URL | 空欄で自動設定(※1)／手入力 | |
+| .metadata.item_files[0].version | ファイル情報[0].バージョン情報 | | |
 
-※1: 本文URLは「THEME\_SITEURL」(/home/invenio/.virtualenvs/invenio/var/instance/invenio.cfg") を利用して生成している。ルールは以下の通り。
+※1: 本文URLは「THEME_SITEURL」(/home/invenio/.virtualenvs/invenio/var/instance/invenio.cfg") を利用して生成している。ルールは以下の通り。
 
-  - file\_path & 本文URLの両方を指定された場合、本文URLを無視し、システムがURLを生成し上書きする。
+  - file_path & 本文URLの両方を指定された場合、本文URLを無視し、システムがURLを生成し上書きする。
 
-  - file\_path のみ指定された場合、URLを生成し登録する。
+  - file_path のみ指定された場合、URLを生成し登録する。
 
   - 本文URLのみ指定された場合、URLを使って登録する。
 
@@ -569,9 +421,9 @@ DOI付与後は変更不可</td>
 
 | **JSONパス**                                                                  | **初期設定ラベル**                       | **System(自動設定)** | **説明**                                               |
 | --------------------------------------------------------------------------- | --------------------------------- | ---------------- | ---------------------------------------------------- |
-| .thumbnail\_path\[0\]                                                       | .サムネイルパス\[0\]                     |                  | 設定値ありで登録、設定値なしで削除する。指定したパスに該当ファイルがあれば常にアップロードして登録する。 |
-| .metadata.item\_1568286766453\[0\].subitem\_thumbnail\[0\].thumbnail\_label | Thumbnail\[0\].URI\[0\].URI Label | 〇                | インポート時に設定されても無視する                                    |
-| .metadata.item\_1568286766453\[0\].subitem\_thumbnail\[0\].thumbnail\_url   | Thumbnail\[0\].URI\[0\].URI       | 〇                | インポート時に設定されても無視する                                    |
+| .thumbnail_path[0]                                                       | .サムネイルパス[0]                     |                  | 設定値ありで登録、設定値なしで削除する。指定したパスに該当ファイルがあれば常にアップロードして登録する。 |
+| .metadata.item_1568286766453[0].subitem_thumbnail[0].thumbnail_label | Thumbnail[0].URI[0].URI Label | 〇                | インポート時に設定されても無視する                                    |
+| .metadata.item_1568286766453[0].subitem_thumbnail[0].thumbnail_url   | Thumbnail[0].URI[0].URI       | 〇                | インポート時に設定されても無視する                                    |
 
 ### 3.3 自動設定の項目
 
@@ -579,30 +431,30 @@ DOI付与後は変更不可</td>
     プロパティID：  
     項目：
 
-| **JSONパス**                                           | **初期設定ラベル**         | **JPCOAR\[※\]**           | **System(自動設定)** | **説明** |
+| **JSONパス**                                           | **初期設定ラベル**         | **JPCOAR[※]**           | **System(自動設定)** | **説明** |
 | ---------------------------------------------------- | ------------------- | ------------------------- | ---------------- | ------ |
-| .metadata.item\_1531978917933.subitem\_1522305645492 | 出版タイプ.出版タイプ         | versiontype               |                  |        |
-| .metadata.item\_1531978917933.subitem\_1600292170262 | 出版タイプ.出版タイプResource | versiontype.@rdf:resource | 〇                |        |
+| .metadata.item_1531978917933.subitem_1522305645492 | 出版タイプ.出版タイプ         | versiontype               |                  |        |
+| .metadata.item_1531978917933.subitem_1600292170262 | 出版タイプ.出版タイプResource | versiontype.@rdf:resource | 〇                |        |
 
   - **アクセス権** （JPCOARスキーマ「アクセス権」：<https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/5> の統制語彙に基づく）  
     プロパティID：  
     項目：
 
-| **JSONパス**                                           | **初期設定ラベル**           | **JPCOAR\[※\]**            | **System(自動設定)** | **説明** |
+| **JSONパス**                                           | **初期設定ラベル**           | **JPCOAR[※]**            | **System(自動設定)** | **説明** |
 | ---------------------------------------------------- | --------------------- | -------------------------- | ---------------- | ------ |
-| .metadata.item\_1531978848664.subitem\_1522299639480 | Access Right.アクセス権    | accessRights               |                  |        |
-| .metadata.item\_1531978848664.subitem\_1600958577026 | Access Right.アクセス権URI | accessRights.@rdf:resource | 〇                |        |
+| .metadata.item_1531978848664.subitem_1522299639480 | Access Right.アクセス権    | accessRights               |                  |        |
+| .metadata.item_1531978848664.subitem_1600958577026 | Access Right.アクセス権URI | accessRights.@rdf:resource | 〇                |        |
 
   - **資源タイプ** （JPCOARスキーマ「資源タイプ」：https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/14 の統制語彙に基づく）  
     プロパティID：  
     項目：
 
-| **JSONパス**                                 | **初期設定ラベル**            | **JPCOAR\[※\]**    | **System(自動設定)** | **説明** |
+| **JSONパス**                                 | **初期設定ラベル**            | **JPCOAR[※]**    | **System(自動設定)** | **説明** |
 | ------------------------------------------ | ---------------------- | ------------------ | ---------------- | ------ |
-| .metadata.item\_1569380275317.resourcetype | Resource Type.Type     | type               |                  |        |
-| .metadata.item\_1569380275317.resourceuri  | Resource Type.Resource | type.@rdf:resource | 〇                |        |
+| .metadata.item_1569380275317.resourcetype | Resource Type.Type     | type               |                  |        |
+| .metadata.item_1569380275317.resourceuri  | Resource Type.Resource | type.@rdf:resource | 〇                |        |
 
-\[※\]各Resource項目の自動設定機能は、【Administration \> アイテムタイプ管理（ItemTypes） \> マッピング（Mapping）画面】で対象のアイテムタイプについてJPCOARスキーマのマッピングが設定されている必要があります。  
+[※]各Resource項目の自動設定機能は、【Administration > アイテムタイプ管理（ItemTypes） > マッピング（Mapping）画面】で対象のアイテムタイプについてJPCOARスキーマのマッピングが設定されている必要があります。  
 　「出版タイプ」と「アクセス権」については、移行ツール作成のアイテムタイプに含まれていない項目なので、該当環境で項目を追加した際は必ずマッピング設定をしてください。
 
 ### 4. チェック仕様
@@ -610,111 +462,21 @@ DOI付与後は変更不可</td>
 ### 4.1. インポートファイル、TSVファイルの形式チェック<span id="形式チェック">
 
 最初に実施。  
-エラーの場合は、Select（選択）画面の\#Message Area\#にメッセージを出力する。ただし、\#2はImport（インポート）画面の表/Check Resultに出力。
+エラーの場合は、Select（選択）画面の#Message Area#にメッセージを出力する。ただし、#2はImport（インポート）画面の表/Check Resultに出力。
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>#</strong></th>
-<th><strong>条件</strong></th>
-<th><strong>処理</strong></th>
-<th><strong>メッセージ(日本語)</strong></th>
-<th><strong>メッセージ(英語)</strong></th>
-<th><strong>備考</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>指定された項目が一括登録対象のアイテムタイプと一致しない（項目不足）</td>
-<td>エラー</td>
-<td>指定されたアイテムタイプと項目が一致しません。</td>
-<td>The item does not consistent with the specified item type.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>指定された項目が一括登録対象のアイテムタイプと一致しない（項目追加）</td>
-<td>警告</td>
-<td>次の項目指定されたアイテムタイプに存在しないため登録されません。{}</td>
-<td>The following items are not registered because they do not exist in the specified item type. {}</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>指定された圧縮ファイルの形式がzip以外</td>
-<td>エラー</td>
-<td>指定されたファイル{}の形式はインポートに対応していません。zip ,tar,gztar,bztar,xztarいずれかの形式を指定してください。</td>
-<td>The format of the specified file {} does not support import. Please specify one of the following formats: zip, tar, gztar, bztar, xztar.</td>
-<td><p>対応している圧縮形式がzipのみで、</p>
-<p>ファイル選択時のバリデーションチェックでzip以外のファイルでは［次へ（Next）］ボタンが活性化しないためこのチェックに到達しない。</p></td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>指定された圧縮ファイル内でTSVファイルが見つからない（フォルダ構成誤り）</td>
-<td>エラー</td>
-<td>指定されたファイル{}にtsv/csvファイルが見つかりませんでした。ディレクトリ構成が正しいか確認してください。</td>
-<td>The tsv/csv file was not found in the specified file {}. Check if the directory structure is correct.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>UTF-8でエンコードされていない</td>
-<td>エラー</td>
-<td>{}ファイルを読み込めませんでした。ファイル形式が{}であること、またそのファイルがUTF-8でエンコードされているかを確認してください。</td>
-<td>The {} file could not be read. Make sure the file format is {} and that the file is UTF-8 encoded.</td>
-<td>{}に拡張子が入る</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>ファイルの１行目のフォーマットが正しくない（3列名にアイテムタイプIDが指定されていない など）</td>
-<td>エラー</td>
-<td>{}ファイルのヘッダ１行目の形式に誤りがあります。</td>
-<td>There is an error in the format of the first line of the header of the {} file.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>指定したアイテムタイプが存在しない</td>
-<td>エラー</td>
-<td>{}ファイルで指定されたアイテムタイプIDは存在しません。</td>
-<td>The item type ID specified in the {} file does not exist.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>TSV ファイルに改行が含まれている場合</td>
-<td>エラー</td>
-<td>{}ファイルが正しく読み込めません。</td>
-<td>Cannot read {} file correctly.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>指定したアイテムタイプが一括登録可能（最新版）でない場合</td>
-<td>エラー</td>
-<td>指定されたアイテムタイプが最新のバージョンでないため登録できません。</td>
-<td>Cannot register because the specified item type is not the latest version.</td>
-<td>現在はアイテムタイプのバージョン管理はしていないため使用していない</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>Runtimeエラー（ElasticSearchがロックされた、サーバ接続不可、ネットワーク接続不可など）</td>
-<td>エラー</td>
-<td>サーバ内部エラー</td>
-<td>Internal server error</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td>エラー</td>
-<td></td>
-<td>The specified {} does not exist in system.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| **#** | **条件** | **処理** | **メッセージ(日本語)** | **メッセージ(英語)** | **備考** |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| 1 | 指定された項目が一括登録対象のアイテムタイプと一致しない（項目不足） | エラー | 指定されたアイテムタイプと項目が一致しません。 | The item does not consistent with the specified item type. | |
+| 2 | 指定された項目が一括登録対象のアイテムタイプと一致しない（項目追加） | 警告 | 次の項目指定されたアイテムタイプに存在しないため登録されません。{} | The following items are not registered because they do not exist in the specified item type. {} | |
+| 3 | 指定された圧縮ファイルの形式がzip以外 | エラー | 指定されたファイル{}の形式はインポートに対応していません。zip ,tar,gztar,bztar,xztarいずれかの形式を指定してください。 | The format of the specified file {} does not support import. Please specify one of the following formats: zip, tar, gztar, bztar, xztar. | 対応している圧縮形式がzipのみで、<br>ファイル選択時のバリデーションチェックでzip以外のファイルでは［次へ（Next）］ボタンが活性化しないためこのチェックに到達しない。 |
+| 4 | 指定された圧縮ファイル内でTSVファイルが見つからない（フォルダ構成誤り） | エラー | 指定されたファイル{}にtsv/csvファイルが見つかりませんでした。ディレクトリ構成が正しいか確認してください。 | The tsv/csv file was not found in the specified file {}. Check if the directory structure is correct. | |
+| 5 | UTF-8でエンコードされていない | エラー | {}ファイルを読み込めませんでした。ファイル形式が{}であること、またそのファイルがUTF-8でエンコードされているかを確認してください。 | The {} file could not be read. Make sure the file format is {} and that the file is UTF-8 encoded. | {}に拡張子が入る |
+| 6 | ファイルの１行目のフォーマットが正しくない（3列名にアイテムタイプIDが指定されていない など） | エラー | {}ファイルのヘッダ１行目の形式に誤りがあります。 | There is an error in the format of the first line of the header of the {} file. | |
+| 7 | 指定したアイテムタイプが存在しない | エラー | {}ファイルで指定されたアイテムタイプIDは存在しません。 | The item type ID specified in the {} file does not exist. | |
+| 8 | TSV ファイルに改行が含まれている場合 | エラー | {}ファイルが正しく読み込めません。 | Cannot read {} file correctly. | |
+| 9 | 指定したアイテムタイプが一括登録可能（最新版）でない場合 | エラー | 指定されたアイテムタイプが最新のバージョンでないため登録できません。 | Cannot register because the specified item type is not the latest version. | 現在はアイテムタイプのバージョン管理はしていないため使用していない |
+| 10 | Runtimeエラー（ElasticSearchがロックされた、サーバ接続不可、ネットワーク接続不可など） | エラー | サーバ内部エラー | Internal server error | |
+| | | エラー | | The specified {} does not exist in system. | |
 
 ### 4.2. メタデータ項目以外のチェック
 
@@ -724,7 +486,7 @@ DOI付与後は変更不可</td>
 
   - .id（ID）
 
-| **\#** | **条件**                          | **処理** | **メッセージ(日本語)**                       | **メッセージ(英語)**                                                              | **備考**                 |
+| **#** | **条件**                          | **処理** | **メッセージ(日本語)**                       | **メッセージ(英語)**                                                              | **備考**                 |
 | ------ | ------------------------------- | ------ | ------------------------------------ | -------------------------------------------------------------------------- | ---------------------- |
 | 1      | 半角数字以外                          | エラー    | アイテムIDは半角数字で指定してください。                | Please specify item ID by half-width number.                               |                        |
 | 2      | 指定されたアイテムIDをpidとしてもつアイテムが存在しない  | エラー    |                                      | Item does not exits in the system                                          | 多言語対応ができていない           |
@@ -733,146 +495,84 @@ DOI付与後は変更不可</td>
 
   - .id（ID）と.uri（URI）
 
-| **\#** | **条件**                 | **処理** | **メッセージ(日本語)**           | **メッセージ(英語)**                              | **備考** |
+| **#** | **条件**                 | **処理** | **メッセージ(日本語)**           | **メッセージ(英語)**                              | **備考** |
 | ------ | ---------------------- | ------ | ------------------------ | ------------------------------------------ | ------ |
 | 1      | アイテムIDとURIの組み合わせが一致しない | エラー    | 指定されたURIとシステムURIが一致しません。 | Specified URI and system URI do not match. |        |
 
-  - .metadata.path\[0\]（.IndexID\[0\]）
+  - .metadata.path[0]（.IndexID[0]）
 
-| **\#** | **条件**        | **処理** | **メッセージ(日本語)**       | **メッセージ(英語)**                                  | **備考**          |
+| **#** | **条件**        | **処理** | **メッセージ(日本語)**       | **メッセージ(英語)**                                  | **備考**          |
 | ------ | ------------- | ------ | -------------------- | ---------------------------------------------- | --------------- |
 | 1      | 指定された内容が存在しない | エラー    | 指定された{}はシステムに存在しません。 | The specified {} does not exist in the system. | {}に「IndexID」が入る |
 
-  - .pos\_index\[0\]（.POS\_INDEX\[0\]）
+  - .pos_index[0]（.POS_INDEX[0]）
 
-| **\#** | **条件**                                 | **処理** | **メッセージ(日本語)**       | **メッセージ(英語)**                                | **備考**             |
+| **#** | **条件**                                 | **処理** | **メッセージ(日本語)**       | **メッセージ(英語)**                                | **備考**             |
 | ------ | -------------------------------------- | ------ | -------------------- | -------------------------------------------- | ------------------ |
-| 1      | IndexIDが指定されていない際、指定したPOS\_INDEXが存在しない | エラー    | 指定された{}はシステムに存在しません。 | The specified {}does not exist in the system | {}に「POS\_INDEX」が入る |
+| 1      | IndexIDが指定されていない際、指定したPOS_INDEXが存在しない | エラー    | 指定された{}はシステムに存在しません。 | The specified {}does not exist in the system | {}に「POS_INDEX」が入る |
 
-  - .metadata.path\[0\]（.IndexID\[0\]）と.pos\_index\[0\]（.POS\_INDEX\[0\]）
+  - .metadata.path[0]（.IndexID[0]）と.pos_index[0]（.POS_INDEX[0]）
 
-| **\#** | **条件**                                                | **処理** | **メッセージ(日本語)**                    | **メッセージ(英語)**                                     | **備考**                     |
+| **#** | **条件**                                                | **処理** | **メッセージ(日本語)**                    | **メッセージ(英語)**                                     | **備考**                     |
 | ------ | ----------------------------------------------------- | ------ | --------------------------------- | ------------------------------------------------- | -------------------------- |
-| 1      | 組合せチェック（IndexID→存在している、POS\_INDEX→指定されたIndexIDと一致しない） | 警告     | 指定された{}はシステムのものと一致していません。         | Specified {} does not match with existing index.  | {}に「POS\_INDEX」が入る         |
-| 2      | 組合せチェック（IndexID→存在していない、POS\_INDEX→存在している）            | エラー    | 指定された{}はシステムに存在しません。              | The specified {} does not exist in system.        | {}に「IndexID」が入る            |
-| 3      | 組合せチェック（指定されたIndexIDとPOS\_INDEXがどちらも存在しない）            | エラー    | 指定された{}はシステムに存在しません。              | The specified {} does not exist in system.        | {}に「IndexID,POS\_INDEX」が入る |
-| 4      | 組合せチェック（IndexIDとPOS\_INDEXIDがどちらも指定されていない）            | エラー    | IndexID,POS\_INDEXがどちらも設定されていません。 | Both of Index ID and POS INDEX are not being set. |                            |
+| 1      | 組合せチェック（IndexID→存在している、POS_INDEX→指定されたIndexIDと一致しない） | 警告     | 指定された{}はシステムのものと一致していません。         | Specified {} does not match with existing index.  | {}に「POS_INDEX」が入る         |
+| 2      | 組合せチェック（IndexID→存在していない、POS_INDEX→存在している）            | エラー    | 指定された{}はシステムに存在しません。              | The specified {} does not exist in system.        | {}に「IndexID」が入る            |
+| 3      | 組合せチェック（指定されたIndexIDとPOS_INDEXがどちらも存在しない）            | エラー    | 指定された{}はシステムに存在しません。              | The specified {} does not exist in system.        | {}に「IndexID,POS_INDEX」が入る |
+| 4      | 組合せチェック（IndexIDとPOS_INDEXIDがどちらも指定されていない）            | エラー    | IndexID,POS_INDEXがどちらも設定されていません。 | Both of Index ID and POS INDEX are not being set. |                            |
 
-  - .publish\_status（.PUBLISH\_STATUS）
+  - .publish_status（.PUBLISH_STATUS）
 
-| **\#** | **条件**                     | **処理** | **メッセージ(日本語)**                   | **メッセージ(英語)**                            | **備考**                  |
+| **#** | **条件**                     | **処理** | **メッセージ(日本語)**                   | **メッセージ(英語)**                            | **備考**                  |
 | ------ | -------------------------- | ------ | -------------------------------- | ---------------------------------------- | ----------------------- |
-| 1      | 指定されていない                   | エラー    | {}は必須項目です。                       | {} is required item.                     | {}に「PUBLISH\_STATUS」が入る |
-| 2      | 指定された内容が不正（public/private） | エラー    | {}はpublic,privateのいずれかを設定してください。 | Please set "public" or "private" for {}. | {}に「PUBLISH\_STATUS」が入る |
+| 1      | 指定されていない                   | エラー    | {}は必須項目です。                       | {} is required item.                     | {}に「PUBLISH_STATUS」が入る |
+| 2      | 指定された内容が不正（public/private） | エラー    | {}はpublic,privateのいずれかを設定してください。 | Please set "public" or "private" for {}. | {}に「PUBLISH_STATUS」が入る |
 
-  - .feedback\_mail\[0\]（.FEEDBACK\_MAIL\[0\]）と.request_mail[0]（.REQUEST_MAIL[0]）
+  - .feedback_mail[0]（.FEEDBACK_MAIL[0]）と.request_mail[0]（.REQUEST_MAIL[0]）
 
-| **\#** | **条件**               | **処理** | **メッセージ(日本語)** | **メッセージ(英語)**            | **備考**        |
+| **#** | **条件**               | **処理** | **メッセージ(日本語)** | **メッセージ(英語)**            | **備考**        |
 | ------ | -------------------- | ------ | -------------- | ------------------------ | ------------- |
 | 1      | 形式チェック（メールアドレスの形式不正） | エラー    | 指定された{}が不正です。  | Specified {} is invalid. | {}にメールアドレスが入る |
 
   - .item_application.workflow(.ITEM_APPLICATION.WORKFLOW)と.item_application.terms(.ITEM_APPLICATION.TERMS)と.item_application.terms_description(.ITEM_APPLICATION.TERMS_DESCRIPTION)
 
-| **\#** | **条件**                                                               | **処理** | **メッセージ(日本語)**                                       | **メッセージ(英語)**                                          | **備考** |
+| **#** | **条件**                                                               | **処理** | **メッセージ(日本語)**                                       | **メッセージ(英語)**                                          | **備考** |
 | ------ | ---------------------------------------------------------------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------- | -------- |
 | 1      | 利用規約系に入力があるときにコンテンツファイルがアップロードされている | エラー   | コンテンツファイル情報がある場合、利用規約は設定できません。 | If there is info of content file, terms of use cannot be set. |          |
 
   - .cnri（.CNRI）
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>#</strong></th>
-<th><strong>条件</strong></th>
-<th><strong>処理</strong></th>
-<th><strong>メッセージ(日本語)</strong></th>
-<th><strong>メッセージ(英語)</strong></th>
-<th><strong>備考</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>CNRI使用フラグが「False」の時にCNRIを設定した</td>
-<td>エラー</td>
-<td>{}は設定できません。</td>
-<td>{} cannot be set.</td>
-<td>{}に「CNRI」が入る</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>通常モードで新規登録時に指定</td>
-<td>エラー</td>
-<td>{}は設定できません。</td>
-<td>{} cannot be set.</td>
-<td>{}に「CNRI」が入る</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>通常モードで更新時に登録内容から変更</td>
-<td>エラー</td>
-<td>指定されたCNRIは登録しているCNRIと異なっています。</td>
-<td>Specified {} is different from existing {}.</td>
-<td>両方の{}に「CNRI」が入る</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>識別子変更モードで新規／更新時にCNRIを設定しない</td>
-<td>エラー</td>
-<td>{}を設定してください。</td>
-<td>Please specify {}.</td>
-<td>{}に「CNRI」が入る</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>形式チェック（管理画面で登録されているPrefixと一致しない)</td>
-<td>エラー</td>
-<td>指定された{}のPrefixが誤っています。</td>
-<td>Specified Prefix of {} is incorrect.</td>
-<td>{}に「CNRI」が入る</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>形式チェック（Suffixに半角英数字、半角記号「_-.;()/」以外を使用）</td>
-<td>エラー</td>
-<td>CNRIのSuffixは半角英数字、半角記号「_-.;()/」以外使用できません。</td>
-<td>Suffix of CNRI can only be used with half-width alphanumeric characters and half-width symbols “_-.; () /”.</td>
-<td>エラーチェックが存在しない</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>形式チェック（最大長超え）</td>
-<td>エラー</td>
-<td>指定された{}が最大長を超えています。</td>
-<td>The specified {} exceeds the maximum length.</td>
-<td><p>{}に「CNRI」が入る</p>
-<p>pidstoreの上限が255のため、http://～とprefix/を含めて255が上限となるようにチェックする</p></td>
-</tr>
-</tbody>
-</table>
+| **#** | **条件** | **処理** | **メッセージ(日本語)** | **メッセージ(英語)** | **備考** |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| 1 | CNRI使用フラグが「False」の時にCNRIを設定した | エラー | {}は設定できません。 | {} cannot be set. | {}に「CNRI」が入る |
+| 2 | 通常モードで新規登録時に指定 | エラー | {}は設定できません。 | {} cannot be set. | {}に「CNRI」が入る |
+| 3 | 通常モードで更新時に登録内容から変更 | エラー | 指定されたCNRIは登録しているCNRIと異なっています。 | Specified {} is different from existing {}. | 両方の{}に「CNRI」が入る |
+| 4 | 識別子変更モードで新規／更新時にCNRIを設定しない | エラー | {}を設定してください。 | Please specify {}. | {}に「CNRI」が入る |
+| 5 | 形式チェック（管理画面で登録されているPrefixと一致しない) | エラー | 指定された{}のPrefixが誤っています。 | Specified Prefix of {} is incorrect. | {}に「CNRI」が入る |
+| 6 | 形式チェック（Suffixに半角英数字、半角記号「_-.;()/」以外を使用） | エラー | CNRIのSuffixは半角英数字、半角記号「_-.;()/」以外使用できません。 | Suffix of CNRI can only be used with half-width alphanumeric characters and half-width symbols “_-.; () /”. | エラーチェックが存在しない |
+| 7 | 形式チェック（最大長超え） | エラー | 指定された{}が最大長を超えています。 | The specified {} exceeds the maximum length. | {}に「CNRI」が入る<br>pidstoreの上限が255のため、http://～とprefix/を含めて255が上限となるようにチェックする |
 
-  - .doi\_ra（.DOI\_RA）と.doi（.DOI）
+  - .doi_ra（.DOI_RA）と.doi（.DOI）
 
-| **\#** | **条件**                              | **処理** | **メッセージ(日本語)**              | **メッセージ(英語)**                                 | **備考**                     |
+| **#** | **条件**                              | **処理** | **メッセージ(日本語)**              | **メッセージ(英語)**                                 | **備考**                     |
 | ------ | ----------------------------------- | ------ | --------------------------- | --------------------------------------------- | -------------------------- |
 | 1      | 組合せチェック（通常モードで新規登録時にどちらも指定）         | エラー    | {}は設定できません。                 | {} cannot be set.                             | {}に「DOI」が入る                |
-| 2      | 組合せチェック（通常モードで更新時に登録内容から変更）         | エラー    | 指定された{ }が登録している{ }と異なっています。 | Specified { } is different from existing { }. | 両方の{}に「DOI\_RA」または「DOI」が入る |
-| 3      | 組合せチェック（識別子変更モードで新規登録時にDOIのみ指定）     | エラー    | DOI\_RAを設定してください。           | Please specify DOI\_RA.                       |                            |
-| 4      | 組合せチェック（識別子変更モードで新規登録時にDOI\_RAのみ指定） | エラー    | {}を設定してください。                | Please specify {}.                            | {}に「DOI」が入る                |
+| 2      | 組合せチェック（通常モードで更新時に登録内容から変更）         | エラー    | 指定された{ }が登録している{ }と異なっています。 | Specified { } is different from existing { }. | 両方の{}に「DOI_RA」または「DOI」が入る |
+| 3      | 組合せチェック（識別子変更モードで新規登録時にDOIのみ指定）     | エラー    | DOI_RAを設定してください。           | Please specify DOI_RA.                       |                            |
+| 4      | 組合せチェック（識別子変更モードで新規登録時にDOI_RAのみ指定） | エラー    | {}を設定してください。                | Please specify {}.                            | {}に「DOI」が入る                |
 
-  - .doi\_ra（.DOI\_RA）
+  - .doi_ra（.DOI_RA）
 
-| **\#** | **条件**                                                               | **処理** | **メッセージ(日本語)**                                          | **メッセージ(英語)**                                                                          | **備考**       |
+| **#** | **条件**                                                               | **処理** | **メッセージ(日本語)**                                          | **メッセージ(英語)**                                                                          | **備考**       |
 | ------ | -------------------------------------------------------------------- | ------ | ------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------ |
-| 1      | 指定された内容が不正（DOI\_RAが設定されており、JaLC,Crrossref,DataCite,NDL JaLCのいずれでもない） | エラー    | DOI\_RAはJaLC,Crrossref,DataCite,NDL JaLCのいずれかを設定してください。 | DOI\_RA should be set by one of JaLC, Crossref, DataCite, NDL JaLC.                    |              |
+| 1      | 指定された内容が不正（DOI_RAが設定されており、JaLC,Crrossref,DataCite,NDL JaLCのいずれでもない） | エラー    | DOI_RAはJaLC,Crrossref,DataCite,NDL JaLCのいずれかを設定してください。 | DOI_RA should be set by one of JaLC, Crossref, DataCite, NDL JaLC.                    |              |
 | 2      | 通常モードで更新時に登録内容から変更                                                   | ワーニング  |                                                         | The specified DOI RA is wrong and fixed with the correct DOI RA of the registered DOI. | 多言語対応ができていない |
 
   - .doi（.DOI）
        
-| **\#** | **条件**                                                          | **処理**   | **メッセージ(日本語)**                                                           | **メッセージ(英語)**                                                                                       | **備考**                                                                               |
+| **#** | **条件**                                                          | **処理**   | **メッセージ(日本語)**                                                           | **メッセージ(英語)**                                                                                       | **備考**                                                                               |
 | ------ | ----------------------------------------------------------------- | ---------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | 1      | 形式チェック（管理画面で登録されているPrefixと一致しない）        | エラー     | 指定されたDOIのPrefixが誤っています。                                            | Specified Prefix of DOI is incorrect.                                                                      |                                                                                        |
-| 2      | 形式チェック（Suffixに半角英数字、半角記号「\_-.;()/」以外を使用）| エラー     | DOIのSuffixは半角英数字、半角記号「\_-.;()/」以外使用できません。                | Suffix of {} can only be used with half-width alphanumeric characters and half-width symbols "\_-.; () /". | エラーチェックがなく、このメッセージは表示されない                                     |
+| 2      | 形式チェック（Suffixに半角英数字、半角記号「_-.;()/」以外を使用）| エラー     | DOIのSuffixは半角英数字、半角記号「_-.;()/」以外使用できません。                | Suffix of {} can only be used with half-width alphanumeric characters and half-width symbols "_-.; () /". | エラーチェックがなく、このメッセージは表示されない                                     |
 | 3      | 形式チェック（最大長超え）                                        | エラー     | 指定されたDOIが最大長を超えています                                              | The specified DOI exceeds the maximum length.                                                              | pidstoreの上限が255のため、http://～とprefix/を含めて255が上限となるようにチェックする |
 | 4      | 指定された内容が不正（通常モードで更新時に登録内容から変更）      | ワーニング |                                                                                  | The specified DOI is wrong and fixed with the registered DOI.                                              | 多言語対応ができていない                                                               |
 | 5      | 識別子変更モードでDOIが指定されていない                           | エラー     |                                                                                  | Please specify DOI prefix/suffix.                                                                          | 多言語対応ができていない                                                               |
@@ -881,268 +581,84 @@ DOI付与後は変更不可</td>
 | 8      | 識別子変更モードでDOIがすでに取り下げられている                   | エラー     | 指定されたDOIは取り下げられました。別のDOIを指定してください。                   | Specified DOI was withdrawn. Please specify another DOI.                                                   |                                                                                        |
 | 9      | 識別子変更モードでDOIがインポートファイル内で重複する             | エラー     | 指定されたDOIはインポートファイル内で重複しています。別のDOIを指定してください。 | Specified DOI is duplicated with another import item. Please specify another DOI.                          |                                                                                        |
 
-  - .edit\_mode（Keep/Upgrade Version）
+  - .edit_mode（Keep/Upgrade Version）
 
-| **\#** | **条件**                                            | **処理** | **メッセージ(日本語)**              | **メッセージ(英語)**                              | **備考** |
+| **#** | **条件**                                            | **処理** | **メッセージ(日本語)**              | **メッセージ(英語)**                              | **備考** |
 | ------ | ------------------------------------------------- | ------ | --------------------------- | ------------------------------------------ | ------ |
-| 1      | 指定されていない、指定された内容が不正（edit\_modeがKeepでもUpgradeでもない） | エラー    | Keep、Upgradeのいずれかを指定してください。 | Please specify either “Keep” or “Upgrade”. |        |
+| 1      | 指定されていない、指定された内容が不正（edit_modeがKeepでもUpgradeでもない） | エラー    | Keep、Upgradeのいずれかを指定してください。 | Please specify either “Keep” or “Upgrade”. |        |
 
-  - .file\_path\[0\]（.ファイルパス\[\#\]）または.thumbnail\_path\[\#\]（.サムネイルパス\[\#\]）
+  - .file_path[0]（.ファイルパス[#]）または.thumbnail_path[#]（.サムネイルパス[#]）
 
-| **\#** | **条件**                      | **処理** | **メッセージ(日本語)**                                                         | **メッセージ(英語)**                                                                                                                           | **備考**                                              |
+| **#** | **条件**                      | **処理** | **メッセージ(日本語)**                                                         | **メッセージ(英語)**                                                                                                                           | **備考**                                              |
 | ------ | --------------------------- | ------ | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| 1      | 新規登録時に指定したパスに該当するファイルが存在しない | エラー    | （.file\_path\[\#\]）に指定したファイルが存在しません。                                   | The file specified in (.file\_path \[\#\]) does not exist.                                                                              | 複数ファイルの場合は（.file\_path\[0\],.file\_path\[1\]…）と表示する |
-| 2      | 更新時に指定したパスに該当するファイルが存在しない   | ワーニング  | file\_path\[\#\]）に指定したファイルが存在しません。ファイルの更新はしません。csv/tsv内容でメタデータのみ更新します。 | The file specified in (.file\_path \[\#\]) does not exist.The file will not be updated. Update only the metadata with csv/tsv contents. | 複数ファイルの場合は（.file\_path\[0\],.file\_path\[1\]…）と表示する |
+| 1      | 新規登録時に指定したパスに該当するファイルが存在しない | エラー    | （.file_path[#]）に指定したファイルが存在しません。                                   | The file specified in (.file_path [#]) does not exist.                                                                              | 複数ファイルの場合は（.file_path[0],.file_path[1]…）と表示する |
+| 2      | 更新時に指定したパスに該当するファイルが存在しない   | ワーニング  | file_path[#]）に指定したファイルが存在しません。ファイルの更新はしません。csv/tsv内容でメタデータのみ更新します。 | The file specified in (.file_path [#]) does not exist.The file will not be updated. Update only the metadata with csv/tsv contents. | 複数ファイルの場合は（.file_path[0],.file_path[1]…）と表示する |
 
-  - .file\_path\[0\]（.ファイルパス\[\#\]）とメタデータのファイル名／表示名 ※メタデータ項目の関連チェックだがここに記載
+  - .file_path[0]（.ファイルパス[#]）とメタデータのファイル名／表示名 ※メタデータ項目の関連チェックだがここに記載
 
-| **\#** | **条件**                                  | **処理** | **メッセージ(日本語)**            | **メッセージ(英語)**                                       | **備考**                                                 |
+| **#** | **条件**                                  | **処理** | **メッセージ(日本語)**            | **メッセージ(英語)**                                       | **備考**                                                 |
 | ------ | --------------------------------------- | ------ | ------------------------- | --------------------------------------------------- | ------------------------------------------------------ |
-| 1      | ファイルパスで指定したファイル名とメタデータに設定されたファイル名が一致しない | エラー    | {}に指定されたファイル名と{ }が一致しません。 | The file name specified in {} and { } do not match. | ひとつ目の{}には.file\_path\[\#\]、ふたつ目の{}にはファイル名のJSON Pathが入る |
+| 1      | ファイルパスで指定したファイル名とメタデータに設定されたファイル名が一致しない | エラー    | {}に指定されたファイル名と{ }が一致しません。 | The file name specified in {} and { } do not match. | ひとつ目の{}には.file_path[#]、ふたつ目の{}にはファイル名のJSON Pathが入る |
 
-  - .thumbnail\_path\[\#\]（.サムネイルパス\[\#\]）
+  - .thumbnail_path[#]（.サムネイルパス[#]）
 
-| **\#** | **条件**      | **処理** | **メッセージ(日本語)**                                                   | **メッセージ(英語)**                                                                              | **備考** |
+| **#** | **条件**      | **処理** | **メッセージ(日本語)**                                                   | **メッセージ(英語)**                                                                              | **備考** |
 | ------ | ----------- | ------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------ |
 | 1      | 画像ファイル以外を指定 | エラー    | サムネイルは画像ファイル（gif, jpg, jpe, jpeg, png, bmp, tiff, tif）を指定してください。 | Please specify the image file(gif, jpg, jpe, jpeg, png, bmp, tiff, tif) for the thumbnail. |        |
 
-  - .upload\_id\[\#\]（.ファイルアップロードID\[\#\]）
+  - .upload_id[#]（.ファイルアップロードID[#]）
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>#</strong></th>
-<th><strong>条件</strong></th>
-<th><strong>処理</strong></th>
-<th><strong>メッセージ(日本語)</strong></th>
-<th><strong>メッセージ(英語)</strong></th>
-<th><strong>備考</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>1</strong></td>
-<td>アップロードIDがUUID型でない</td>
-<td>エラー</td>
-<td>アップロードIDを正しく入力してください</td>
-<td>Upload_id is invalid format</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>アップロードIDが見つからない</td>
-<td>エラー</td>
-<td>指定されたアップロードIDが見つかりません</td>
-<td>Specified upload_id is not found</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>未完了かすでにアイテムのバケットに紐づいているアップロードIDを指定している</td>
-<td>エラー</td>
-<td>指定されたアップロードIDは完了していないか、すでにアイテムに紐づけられています</td>
-<td>Specified upload_id not completed or already linked to the item</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>アップロードIDがファイル内で被っている</td>
-<td>エラー</td>
-<td>アップロードIDが重複しています</td>
-<td>Duplicate upload_id</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>クォータサイズ超過</td>
-<td>エラー</td>
-<td>ファイルの合計サイズがバケットのサイズを超えています</td>
-<td>Total file size exceeds bucket size</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td><p>ファイルパス[0],</p>
-<p>.ファイルアップロードID[0]が同時に入力</p></td>
-<td>エラー</td>
-<td>ファイルパスかアップロードIDのみ入力してください</td>
-<td>Please enter only file_path or upload_id</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td><p>.ファイルアップロードID[0]が入力されているが、</p>
-<p>File[0].フォーマットが未入力または正しくない場合</p></td>
-<td>エラー</td>
-<td>ファイル形式を正しく設定してください</td>
-<td>Please set the file format corrctly</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>アップロードIDで指定されているファイルと、ロケーションが異なる。</td>
-<td>エラー</td>
-<td>ファイルとアイテムのロケーションが異なります</td>
-<td>Files and Items have different locations</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| **#** | **条件** | **処理** | **メッセージ(日本語)** | **メッセージ(英語)** | **備考** |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| 1 | アップロードIDがUUID型でない | エラー | アップロードIDを正しく入力してください | Upload_id is invalid format | |
+| 2 | アップロードIDが見つからない | エラー | 指定されたアップロードIDが見つかりません | Specified upload_id is not found | |
+| 3 | 未完了かすでにアイテムのバケットに紐づいているアップロードIDを指定している | エラー | 指定されたアップロードIDは完了していないか、すでにアイテムに紐づけられています | Specified upload_id not completed or already linked to the item | |
+| 4 | アップロードIDがファイル内で被っている | エラー | アップロードIDが重複しています | Duplicate upload_id | |
+| 5 | クォータサイズ超過 | エラー | ファイルの合計サイズがバケットのサイズを超えています | Total file size exceeds bucket size | |
+| 6 | ファイルパス[0],<br>.ファイルアップロードID[0]が同時に入力 | エラー | ファイルパスかアップロードIDのみ入力してください | Please enter only file_path or upload_id | |
+| 7 | .ファイルアップロードID[0]が入力されているが、<br>File[0].フォーマットが未入力または正しくない場合 | エラー | ファイル形式を正しく設定してください | Please set the file format corrctly | |
+| 8 | アップロードIDで指定されているファイルと、ロケーションが異なる。 | エラー | ファイルとアイテムのロケーションが異なります | Files and Items have different locations | |
 
 ### 4.3. メタデータ項目のチェック
 
-基本的なチェックはライブラリを使用している。(\#1～3が該当)  
+基本的なチェックはライブラリを使用している。(#1～3が該当)  
 4～8はそれぞれ実装。  
 エラーメッセージはImport（インポート）画面の表/Check Resultに出力。
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>#</strong></th>
-<th><strong>対象項目</strong></th>
-<th><strong>条件</strong></th>
-<th><strong>処理</strong></th>
-<th><strong>メッセージ(日本語)</strong></th>
-<th><strong>メッセージ(英語)</strong></th>
-<th><strong>備考</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>入力形式がselect,checkboxes,radiosの項目</td>
-<td>プロパティに定義されている選択肢以外を指定した</td>
-<td>エラー</td>
-<td>{}は次の決められた選択肢に含まれていません。{}</td>
-<td>"%r is not one of %r"</td>
-<td>英語はライブラリ出力メッセージ。日本語はマッピングして出力。</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Optoinで「Required」を指定している項目</td>
-<td>指定されていない</td>
-<td>エラー</td>
-<td>{}は必須項目です。</td>
-<td>"%r is a required property"</td>
-<td>英語はライブラリ出力メッセージ。日本語はマッピングして出力。</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Multipleで繰り返しの上限数が指定されている</td>
-<td>上限数を超えている</td>
-<td>エラー</td>
-<td>{} の数が上限数を超えています。</td>
-<td>{} is too long</td>
-<td>英語はライブラリ出力メッセージ。日本語はマッピングして出力。</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>項目</td>
-<td>メタデータキーが重複指定している場合</td>
-<td>エラー</td>
-<td><p>以下のメタデータキーが重複しています。</p>
-<p>｛｝</p></td>
-<td><p>The following metadata keys are duplicated.</p>
-<p>{}</p></td>
-<td>重複するメタデータは改行で区切って出力</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>タイトル</td>
-<td>指定されていない</td>
-<td>エラー</td>
-<td>{}は必須項目です。</td>
-<td>Title is required item.</td>
-<td><p>2のエラーメッセージも同時に出力</p>
-<p>日本語ではフォーマットできずに｛｝のまま表示される</p></td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>日付項目</td>
-<td>日付形式チェック（YYYY/MM/DDで指定）</td>
-<td>ワーニング</td>
-<td>日付はYYYY-MM-DD、YYYY-MM、YYYYのいずれかで指定してください。</td>
-<td>Please specify the date with any format of YYYY-MM-DD, YYYY-MM, YYYY.</td>
-<td>YYYY-MM-DD 形式で解釈できないときのエラーメッセージは設定されているが、YYYY-MM-DD 形式でYYYY/MM/DDを解釈できるため実際には出力されない</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>日付項目</td>
-<td>日付形式チェック（YYYY-MM-DD、YYYY-MM、YYYY以外で指定）</td>
-<td>エラー</td>
-<td>日付はYYYY-MM-DD、YYYY-MM、YYYYのいずれかで指定してください。</td>
-<td>Please specify the date with any format of YYYY-MM-DD, YYYY-MM, YYYY.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>.metadata.pubdate（公開日）</td>
-<td>形式チェック（YYYY-MM-DD以外で指定）</td>
-<td>エラー</td>
-<td>公開日はYYYY-MM-DDで指定してください。</td>
-<td>Please specify PubDate with YYYY-MM-DD.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>.metadata.pubdate（公開日）</td>
-<td>指定されていない</td>
-<td>エラー</td>
-<td>%rは必須項目です。</td>
-<td>%r is a required property</td>
-<td>%rが「’pubdate’」 と置き換わる</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>コンテンツファイルのオープンアクセスの日付</td>
-<td>形式チェック（YYYY-MM-DD以外で指定）</td>
-<td>エラー</td>
-<td>オープンアクセスの日付はYYYY-MM-DDで指定してください。</td>
-<td>Please specify Open Access Date with YYYY-MM-DD.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>マッピングによって必須になっている項目</td>
-<td>設定されていない</td>
-<td>エラー</td>
-<td>{}は必須項目です。</td>
-<td><p>The following metadata are required.</p>
-<p>{}</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td>マッピングによって必須になっている項目（複数のうちいずれか１つを設定するもの）</td>
-<td>１つも設定されていない</td>
-<td>エラー</td>
-<td>{}のいずれかを設定してください。</td>
-<td><p>One of the following metadata is required.</p>
-<p>{}</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| **#** | **対象項目** | **条件** | **処理** | **メッセージ(日本語)** | **メッセージ(英語)** | **備考** |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 1 | 入力形式がselect,checkboxes,radiosの項目 | プロパティに定義されている選択肢以外を指定した | エラー | {}は次の決められた選択肢に含まれていません。{} | "%r is not one of %r" | 英語はライブラリ出力メッセージ。日本語はマッピングして出力。 |
+| 2 | Optoinで「Required」を指定している項目 | 指定されていない | エラー | {}は必須項目です。 | "%r is a required property" | 英語はライブラリ出力メッセージ。日本語はマッピングして出力。 |
+| 3 | Multipleで繰り返しの上限数が指定されている | 上限数を超えている | エラー | {} の数が上限数を超えています。 | {} is too long | 英語はライブラリ出力メッセージ。日本語はマッピングして出力。 |
+| 4 | 項目 | メタデータキーが重複指定している場合 | エラー | 以下のメタデータキーが重複しています。<br>｛｝ | The following metadata keys are duplicated.<br>{} | 重複するメタデータは改行で区切って出力 |
+| 5 | タイトル | 指定されていない | エラー | {}は必須項目です。 | Title is required item. | 2のエラーメッセージも同時に出力<br>日本語ではフォーマットできずに｛｝のまま表示される |
+| 6 | 日付項目 | 日付形式チェック（YYYY/MM/DDで指定） | ワーニング | 日付はYYYY-MM-DD、YYYY-MM、YYYYのいずれかで指定してください。 | Please specify the date with any format of YYYY-MM-DD, YYYY-MM, YYYY. | YYYY-MM-DD 形式で解釈できないときのエラーメッセージは設定されているが、YYYY-MM-DD 形式でYYYY/MM/DDを解釈できるため実際には出力されない |
+| 7 | 日付項目 | 日付形式チェック（YYYY-MM-DD、YYYY-MM、YYYY以外で指定） | エラー | 日付はYYYY-MM-DD、YYYY-MM、YYYYのいずれかで指定してください。 | Please specify the date with any format of YYYY-MM-DD, YYYY-MM, YYYY. | |
+| 8 | .metadata.pubdate（公開日） | 形式チェック（YYYY-MM-DD以外で指定） | エラー | 公開日はYYYY-MM-DDで指定してください。 | Please specify PubDate with YYYY-MM-DD. | |
+| 9 | .metadata.pubdate（公開日） | 指定されていない | エラー | %rは必須項目です。 | %r is a required property | %rが「’pubdate’」 と置き換わる |
+| 10 | コンテンツファイルのオープンアクセスの日付 | 形式チェック（YYYY-MM-DD以外で指定） | エラー | オープンアクセスの日付はYYYY-MM-DDで指定してください。 | Please specify Open Access Date with YYYY-MM-DD. | |
+| 11 | マッピングによって必須になっている項目 | 設定されていない | エラー | {}は必須項目です。 | The following metadata are required.<br>{} | |
+| 12 | マッピングによって必須になっている項目（複数のうちいずれか１つを設定するもの） | １つも設定されていない | エラー | {}のいずれかを設定してください。 | One of the following metadata is required.<br>{} | |
 
 ### 4.4. DOI付与アイテムの項目チェック
 
 DOIを指定したアイテムについて、指定された項目が各DOI付与の要件を見ているかを確認。  
 当該処理は個別登録のチェック処理を呼び出し実施している。
 
-| **\#** | **対象項目** | **条件**                                                        | **処理** | **メッセージ(日本語)**                                                   | **メッセージ(英語)**                                                                                                                          | **備考**      |
+| **#** | **対象項目** | **条件**                                                        | **処理** | **メッセージ(日本語)**                                                   | **メッセージ(英語)**                                                                                                                          | **備考**      |
 | ------ | -------- | ------------------------------------------------------------- | ------ | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | 1      | 各項目      | DOIを指定した際に入力項目が不足している                                         | エラー    | PID付与の条件を満たしていません。                                               | PID does not meet the conditions.                                                                                                      |             |
-| 2      | \-       | DOI が付与されているアイテムに対して、アイテムを非公開として更新しようとした場合                    | エラー    | アイテムにDOIが付与されているため、アイテムを非公開にすることはできません。                          | You cannot keep an item private because it has a DOI.                                                                                  |             |
-| 3      | \-       | インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに紐づいていないアイテムにDOIを付与しようとした場合 | エラー    | アイテムにDOIが付与されているため、インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに関連付けが必要です。 | Since the item has a DOI, it must be associated with an index whose index status is "Public" and whose Harvest Publishing is "Public". |             |
-| 4      | \-       | 既存アイテムに付与されているDOIとインポートファイルで指定されたDOIの値が異なる場合                  | エラー    | 指定された{}が登録している{}と異なっています。                                        | Specified {} is different from existing {}.                                                                                            | {}に「DOI」が入る |
+| 2      | -       | DOI が付与されているアイテムに対して、アイテムを非公開として更新しようとした場合                    | エラー    | アイテムにDOIが付与されているため、アイテムを非公開にすることはできません。                          | You cannot keep an item private because it has a DOI.                                                                                  |             |
+| 3      | -       | インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに紐づいていないアイテムにDOIを付与しようとした場合 | エラー    | アイテムにDOIが付与されているため、インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに関連付けが必要です。 | Since the item has a DOI, it must be associated with an index whose index status is "Public" and whose Harvest Publishing is "Public". |             |
+| 4      | -       | 既存アイテムに付与されているDOIとインポートファイルで指定されたDOIの値が異なる場合                  | エラー    | 指定された{}が登録している{}と異なっています。                                        | Specified {} is different from existing {}.                                                                                            | {}に「DOI」が入る |
 
 ### 4.5. ファイル以外のチェック
 
 操作アカウントの権限チェックを行う。
 
-| **\#** | **対象** | **条件**                                                      | **処理** | **メッセージ(日本語)**                   | **メッセージ(英語)**                                  | **備考** |
+| **#** | **対象** | **条件**                                                      | **処理** | **メッセージ(日本語)**                   | **メッセージ(英語)**                                  | **備考** |
 | ------ | ------ | ----------------------------------------------------------- | ------ | -------------------------------- | ---------------------------------------------- | ------ |
-| 1      | \-     | 操作アカウントが、アイテムの登録先インデックス（またはその親インデックス）へのインポートに必要な権限を持っていない場合 | エラー    | ロールの権限が足りずこのインデックスにアイテム登録ができません。 | Your role cannot register items in this index. |        |
+| 1      | -     | 操作アカウントが、アイテムの登録先インデックス（またはその親インデックス）へのインポートに必要な権限を持っていない場合 | エラー    | ロールの権限が足りずこのインデックスにアイテム登録ができません。 | Your role cannot register items in this index. |        |
 
 ### 4.6 アイテム重複チェック
 同一のメタデータを持つアイテムがすでに登録されていないかをチェックする。  
@@ -1172,38 +688,38 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 ◆出力イメージ
 
-> \#ItemType 紀要論文（出版者版、オープンアクセス、JaLC\_DOI\_登録あり）(16) https://FQDN/items/jsonschema/16
+> #ItemType 紀要論文（出版者版、オープンアクセス、JaLC_DOI_登録あり）(16) https://FQDN/items/jsonschema/16
 > 
-> \#.id .uri .metadata.path\[0\] .pos\_index\[0\] .publish\_status .feedback\_mail\[0\] .request\_mail\[0\] .item_application.workflow .item_application.terms .item_application.terms_description .cnri .doi\_ra .doi .edit\_mode .metadata.pubdate　 …
+> #.id .uri .metadata.path[0] .pos_index[0] .publish_status .feedback_mail[0] .request_mail[0] .item_application.workflow .item_application.terms .item_application.terms_description .cnri .doi_ra .doi .edit_mode .metadata.pubdate　 …
 > 
-> \#ID URI .IndexID\[0\] .POS\_INDEX\[0\] .PUBLISH\_STATUS .FEEDBACK\_MAIL\[0\] .REQUEST\_MAIL\[0\] .ITEM_APPLICATION.WORKFLOW .ITEM_APPLICATION.TERMS .ITEM_APPLICATION.TERMS_DESCRIPTION .CNRI .DOI\_RA .DOI Keep/Upgrade Version PubDate …
+> #ID URI .IndexID[0] .POS_INDEX[0] .PUBLISH_STATUS .FEEDBACK_MAIL[0] .REQUEST_MAIL[0] .ITEM_APPLICATION.WORKFLOW .ITEM_APPLICATION.TERMS .ITEM_APPLICATION.TERMS_DESCRIPTION .CNRI .DOI_RA .DOI Keep/Upgrade Version PubDate …
 > 
-> \# …
+> # …
 > 
-> \# Allow Multiple Allow Multiple Required Allow Multiple Allow Multiple Required Required …
+> # Allow Multiple Allow Multiple Required Allow Multiple Allow Multiple Required Required …
 
 #### 4.2 インポート前チェック結果ファイル
 
   - Import（インポート）画面でダウンロードできる。同画面の表に表示されているチェック結果をTSV形式で出力したファイル。
 
-  - ファイル名は「Check\_ダウンロード日付.tsv」で、2.2⑧～⑫の項目を出力。
+  - ファイル名は「Check_ダウンロード日付.tsv」で、2.2⑧～⑫の項目を出力。
 
  ◆出力イメージ
 
->\#No. Item Type Item ID Title Check Result
+>#No. Item Type Item ID Title Check Result
 
 
 #### 4.3 インポート実行結果ファイル
 
   - Result（結果）画面でダウンロードできる。同画面の表に表示されているインポート実行結果をTSV形式で出力したファイル。
 
-  - ファイル名は「List\_ダウンロード日付.tsv」で、2.3②～⑦の項目を出力。
+  - ファイル名は「List_ダウンロード日付.tsv」で、2.3②～⑦の項目を出力。
 
   - TSV形式で文字コードはBOM無しUTF-8、改行コードはLF
 
  ◆出力イメージ
 
->\#No. Start Date End Date Item Id Action WorkFlow Status
+>#No. Start Date End Date Item Id Action WorkFlow Status
 
 
 #### 4.4. 「インポート」（Import）タブで一括登録のアイテムを確認・登録する
@@ -1215,7 +731,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
           - ［Import］ボタンの上に赤字で以下のメッセージを表示する  
             メッセージ：  
             日本語：「 識別子で登録します」  
-            英語：「Register with \[Change Identifier Mode\].」
+            英語：「Register with [Change Identifier Mode].」
           - 「Import」タブから「Selectタブ」に遷移した場合、「識別子変更モード」チェックボックスはチェックありで非活性となっている
       - 「サマリー」(Summary)  
         読み込んだファイルのアイテム情報について、以下の件数を表示する
@@ -1245,15 +761,15 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
             読み込んだファイルの各アイテムについて、インポートが可能かバリデートチェックを実施する  
             エリアに表示する内容は以下の通りである
               - エラーが無く、新規のアイテムの場合：「登録」（Register）と表示する
-              - エラーが無く、アイテムの「.edit\_mode」が「Upgrade」の場合：「バージョンの変更」（Upgrade Version）と表示する
-              - エラーが無く、アイテムの「.edit\_mode」が「Keep」の場合：「バージョンの維持」（Keep Version）と表示する
+              - エラーが無く、アイテムの「.edit_mode」が「Upgrade」の場合：「バージョンの変更」（Upgrade Version）と表示する
+              - エラーが無く、アイテムの「.edit_mode」が「Keep」の場合：「バージョンの維持」（Keep Version）と表示する
               - バリデーションエラーがある場合：「エラー: XXXXX」（Error: XXXXX）とエラー内容を表示する
               - バリデーションワーニングがある場合：「警告: XXXXX」（Warning: XXXXX）とワーニング内容を表示する
       - インポートファイルのバリデーションチェックは以下とする
           - Bagit形式の仕様に従っていること
           - メタデータの必須項目が入力されていること
           - メタデータの入力内容が、入力制約に合致していること
-              - DOI付与：DOI\_RA の設定に従い、資源タイプ、必須、いずれか必須のチェックを行うこと  
+              - DOI付与：DOI_RA の設定に従い、資源タイプ、必須、いずれか必須のチェックを行うこと  
                 <https://redmine.devops.rcos.nii.ac.jp/attachments/download/6107/JPCOAR_JaLC_Guideline_appendix_v1.pdf>
               - dc:titleのxml:langは必須としない。
               - 日付項目：ISO-8601で規定する3 形式（YYYY-MM-DD、YYYY-MM、YYYY）のチェックを行うこと
@@ -1263,27 +779,27 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
           - 更新の場合、更新前のアイテムタイプが変更後のアイテムタイプと一致していること
           - WEKOに登録されていないアイテムタイプがインポートファイルに含まれる場合はエラーとすること
           - TSVファイルの項目のバリデーションチェックは以下とする
-              - POS\_INDEX\[n\]：インデックス名
+              - POS_INDEX[n]：インデックス名
                   - インデックス名が指定されていること
                   - 指定したインデックス名が存在していること
-              - FEEDBACK\_MAIL：フィードバックメール送信先メールアドレス
+              - FEEDBACK_MAIL：フィードバックメール送信先メールアドレス
                   - 指定されたメールアドレスはメールアドレスの形式チェックをすること
-              - REQUEST\_MAIL：リクエスト送信先メールアドレス
+              - REQUEST_MAIL：リクエスト送信先メールアドレス
                   - 指定されたメールアドレスはメールアドレスの形式チェックをすること
               - ITEM_APPLICATION.…：コンテンツファイル非所持時の利用申請設定
                   - この列のデータ行に値が存在するとき、コンテンツファイルがないことをチェックすること
-              - PUBLISH\_STATUS：アイテムの公開／非公開設定
-                  - 指定されたPUBLISH\_STATUSがprivate, publicのいずれかであること
+              - PUBLISH_STATUS：アイテムの公開／非公開設定
+                  - 指定されたPUBLISH_STATUSがprivate, publicのいずれかであること
               - CNRI：CNRIハンドル
                   - 「 識別子 変更モード」を指定している場合  
                     ・CNRIの値が空白になること
                   - 「 識別子 変更モード」を指定していない場合  
                     ・新規アイテム登録の場合、CNRIが指定されること  
                     ・既存アイテムへの更新の場合、指定されたCNRIが登録内容と同一であること
-              - DOI\_RA：DOI付与の種類
-                  - DOIが指定されている場合、DOI\_RAが指定していることは必須である
-                  - DOI\_RAが空白になること
-                  - 指定されたDOI\_RAがJaLC, Crossref, DataCite, NDL JaLC のいずれかであること
+              - DOI_RA：DOI付与の種類
+                  - DOIが指定されている場合、DOI_RAが指定していることは必須である
+                  - DOI_RAが空白になること
+                  - 指定されたDOI_RAがJaLC, Crossref, DataCite, NDL JaLC のいずれかであること
                   - 「 識別子 変更モード」を指定している場合  
                     ・指定した形式に応じてメタデータの項目チェックを行うこと  
                     ・既存アイテムへの更新の場合、指定された内容が登録内容と同一であること
@@ -1302,206 +818,60 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
               - 格納先の書き込み権限が無かった場合
               - 格納先の容量が不足している場合
           - 一括登録の実行時に他端末から実行した場合エラーメッセージを出力する。エラーメッセージが200文字を超える場合は以降の文字を省略する。
-              - 一括登録を実行中に他の端末が【Administration \> アイテム管理（Items） \> （Import）画面を開いた場合
-              - 一括登録を実行している端末が【Administration \> アイテム管理（Items） \> インポート（Import）画面を開いた場合（他のブラウザで開いたとき，"Result"タブから再度"Import"タブに遷移したとき等）
+              - 一括登録を実行中に他の端末が【Administration > アイテム管理（Items） > （Import）画面を開いた場合
+              - 一括登録を実行している端末が【Administration > アイテム管理（Items） > インポート（Import）画面を開いた場合（他のブラウザで開いたとき，"Result"タブから再度"Import"タブに遷移したとき等）
               - 個別のアイテム編集中に、一括登録を実施した場合
               - 個別のアイテム削除後に、一括登録を実施した場合
       - バリデーションのエラーメッセージ及びワーニングメッセージは以下の通りである
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>No.</strong></th>
-<th><strong>タイプ</strong></th>
-<th><strong>英語</strong></th>
-<th><strong>日本語</strong></th>
-<th><strong>利用場合</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>エラー</td>
-<td>Specified item type does not exist.</td>
-<td>指定されたアイテムタイプが存在していません。</td>
-<td>指定されたアイテムタイプがシステムに存在しない場合</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>エラー</td>
-<td>Please specify item ID by half-width number.</td>
-<td>アイテムIDは半角数字で指定してください。</td>
-<td>アイテムIDが不正な形式で指定した場合</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>エラー</td>
-<td>Item ID does not match the specified URI information.</td>
-<td>アイテムIDが指定されたURIの情報と一致しません</td>
-<td>アイテムIDが指定されたURIの情報と一致しない場合</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>エラー</td>
-<td>Specified URI and system URI do not match.</td>
-<td>指定されたURIとシステムURIが一致しません。</td>
-<td>指定されたURIとシステムURIが一致しない場合</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>エラー</td>
-<td>Please specify {}.</td>
-<td>{}を設定してください。</td>
-<td>PUBLISH_STATUS, CNRI, DOI_RA, DOI, POS_INDEX, IndexIDが空白の場合</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>エラー</td>
-<td>{} is required item.</td>
-<td>{}は必須項目です。</td>
-<td>DOI_RA, DOI, PUBLISH_STATUSが指定されない場合</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>エラー</td>
-<td>{} cannot be set.</td>
-<td>{}は設定できません。</td>
-<td>指定できない識別子（CNRI, DOI_RA, DOI）を指定した場合</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>エラー</td>
-<td>{} must be one of JaLC, Crossref, DataCite.</td>
-<td>{}は JaLC, Crossref, DataCiteのいずれかである必須があります。</td>
-<td>DOI_RAにJaLC, Crossref, DataCite以外のものを指定した場合</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>エラー</td>
-<td>Specified {} is different from existing {}.</td>
-<td>指定された{}は登録している{}と異なっています。</td>
-<td>CNRI, DOI_RA, DOIに指定された内容が登録内容と異なる場合</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>エラー</td>
-<td>Specified {} is invalid.</td>
-<td>指定された{}は不正です。</td>
-<td>FEEDBACK_MAIL, REQUEST_MAIL, DOI, PUBLISH_STATUSが不正な形式で指定した場合</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>エラー</td>
-<td>PID does not meet the conditions.</td>
-<td>PID付与の条件を満たしていません。</td>
-<td>DOIバリデーションチェックの場合</td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td>エラー</td>
-<td>The storage path is incorrect.{} Please contact the administrator.</td>
-<td>格納先のパスが正しくありません。{} 管理者へお問い合わせください。</td>
-<td><p>格納先のパスが無かった場合</p>
-<p>※v0.9.22ではエラーチェックがないため出力されない</p></td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td>エラー</td>
-<td>The storage location cannot be accessed.{} Please contact the administrator.</td>
-<td>格納先にアクセスできません。{} 管理者へお問い合わせください。</td>
-<td><p>格納先の書き込み権限が無かった場合</p>
-<p>※v0.9.22ではエラーチェックがないため出力されない</p></td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td>エラー</td>
-<td>There is not enough storage space. Please contact the administrator.</td>
-<td>格納先の容量が不足しています。管理者へお問い合わせください。</td>
-<td><p>格納先の容量が不足している場合</p>
-<p>※v0.9.22ではエラーチェックがないため出力されない</p></td>
-</tr>
-<tr class="odd">
-<td>15</td>
-<td>エラー</td>
-<td>Import is in progress on another device.</td>
-<td>他の端末でインポートを実行中です。</td>
-<td>一括登録を実行中に他の端末が Admin&gt;Items&gt;Import 画面を開いた場合</td>
-</tr>
-<tr class="even">
-<td>16</td>
-<td>エラー</td>
-<td>Import is in progress.</td>
-<td>インポートを実行中です。</td>
-<td>一括登録を実行している端末が Admin&gt;Items&gt;Import 画面を開いた場合（他のブラウザで開いたとき，"Result"タブから再度"Import"タブに遷移したとき等）</td>
-</tr>
-<tr class="odd">
-<td>17</td>
-<td>エラー</td>
-<td>Cannot update because the corresponding item is being edited.</td>
-<td>該当アイテムが編集中のため更新できません。</td>
-<td>個別のアイテム編集中に、一括登録を実施した場合</td>
-</tr>
-<tr class="even">
-<td>18</td>
-<td>エラー</td>
-<td>The corresponding item has been deleted.</td>
-<td>該当アイテムは削除済です。</td>
-<td>個別のアイテム削除後に、一括登録を実施した場合</td>
-</tr>
-<tr class="odd">
-<td>19</td>
-<td>ワーニング</td>
-<td>The specified {} does not exist in system.</td>
-<td>指定された{}はシステムに存在しません。</td>
-<td>指定したPOS_INDEXなどの指定した１つの項目がシステムに存在しない場合</td>
-</tr>
-<tr class="even">
-<td>20</td>
-<td>ワーニング</td>
-<td>Specified {} and {} do not exist in system.</td>
-<td>指定された{}と{}はシステムに存在していません。</td>
-<td>指定したPOS_INDEX、INDEX_IDなどの複数項目がシステムに存在しない場合</td>
-</tr>
-<tr class="odd">
-<td>21</td>
-<td>ワーニング</td>
-<td>Specified {} does not match with existing index.</td>
-<td>指定された{}はシステムのものと一致していません。</td>
-<td>指定したPOS_INDEXはシステムのものと一致していない場合</td>
-</tr>
-<tr class="even">
-<td>22</td>
-<td>エラー</td>
-<td>If there is a info of content file, terms of use cannot be set</td>
-<td>コンテンツファイルがある場合、「利用申請」は設定できません。</td>
-<td>コンテンツファイルのアップロードとともに「利用申請」を設定している場合</td>
-</tr>
-</tbody>
-</table>
+| **No.** | **タイプ** | **英語** | **日本語** | **利用場合** |
+| ---- | ---- | ---- | ---- | ---- |
+| 1 | エラー | Specified item type does not exist. | 指定されたアイテムタイプが存在していません。 | 指定されたアイテムタイプがシステムに存在しない場合 |
+| 2 | エラー | Please specify item ID by half-width number. | アイテムIDは半角数字で指定してください。 | アイテムIDが不正な形式で指定した場合 |
+| 3 | エラー | Item ID does not match the specified URI information. | アイテムIDが指定されたURIの情報と一致しません | アイテムIDが指定されたURIの情報と一致しない場合 |
+| 4 | エラー | Specified URI and system URI do not match. | 指定されたURIとシステムURIが一致しません。 | 指定されたURIとシステムURIが一致しない場合 |
+| 5 | エラー | Please specify {}. | {}を設定してください。 | PUBLISH_STATUS, CNRI, DOI_RA, DOI, POS_INDEX, IndexIDが空白の場合 |
+| 6 | エラー | {} is required item. | {}は必須項目です。 | DOI_RA, DOI, PUBLISH_STATUSが指定されない場合 |
+| 7 | エラー | {} cannot be set. | {}は設定できません。 | 指定できない識別子（CNRI, DOI_RA, DOI）を指定した場合 |
+| 8 | エラー | {} must be one of JaLC, Crossref, DataCite. | {}は JaLC, Crossref, DataCiteのいずれかである必須があります。 | DOI_RAにJaLC, Crossref, DataCite以外のものを指定した場合 |
+| 9 | エラー | Specified {} is different from existing {}. | 指定された{}は登録している{}と異なっています。 | CNRI, DOI_RA, DOIに指定された内容が登録内容と異なる場合 |
+| 10 | エラー | Specified {} is invalid. | 指定された{}は不正です。 | FEEDBACK_MAIL, REQUEST_MAIL, DOI, PUBLISH_STATUSが不正な形式で指定した場合 |
+| 11 | エラー | PID does not meet the conditions. | PID付与の条件を満たしていません。 | DOIバリデーションチェックの場合 |
+| 12 | エラー | The storage path is incorrect.{} Please contact the administrator. | 格納先のパスが正しくありません。{} 管理者へお問い合わせください。 | 格納先のパスが無かった場合<br>※v0.9.22ではエラーチェックがないため出力されない |
+| 13 | エラー | The storage location cannot be accessed.{} Please contact the administrator. | 格納先にアクセスできません。{} 管理者へお問い合わせください。 | 格納先の書き込み権限が無かった場合<br>※v0.9.22ではエラーチェックがないため出力されない |
+| 14 | エラー | There is not enough storage space. Please contact the administrator. | 格納先の容量が不足しています。管理者へお問い合わせください。 | 格納先の容量が不足している場合<br>※v0.9.22ではエラーチェックがないため出力されない |
+| 15 | エラー | Import is in progress on another device. | 他の端末でインポートを実行中です。 | 一括登録を実行中に他の端末が Admin>Items>Import 画面を開いた場合 |
+| 16 | エラー | Import is in progress. | インポートを実行中です。 | 一括登録を実行している端末が Admin>Items>Import 画面を開いた場合（他のブラウザで開いたとき，"Result"タブから再度"Import"タブに遷移したとき等） |
+| 17 | エラー | Cannot update because the corresponding item is being edited. | 該当アイテムが編集中のため更新できません。 | 個別のアイテム編集中に、一括登録を実施した場合 |
+| 18 | エラー | The corresponding item has been deleted. | 該当アイテムは削除済です。 | 個別のアイテム削除後に、一括登録を実施した場合 |
+| 19 | ワーニング | The specified {} does not exist in system. | 指定された{}はシステムに存在しません。 | 指定したPOS_INDEXなどの指定した１つの項目がシステムに存在しない場合 |
+| 20 | ワーニング | Specified {} and {} do not exist in system. | 指定された{}と{}はシステムに存在していません。 | 指定したPOS_INDEX、INDEX_IDなどの複数項目がシステムに存在しない場合 |
+| 21 | ワーニング | Specified {} does not match with existing index. | 指定された{}はシステムのものと一致していません。 | 指定したPOS_INDEXはシステムのものと一致していない場合 |
+| 22 | エラー | If there is a info of content file, terms of use cannot be set | コンテンツファイルがある場合、「利用申請」は設定できません。 | コンテンツファイルのアップロードとともに「利用申請」を設定している場合 |
 
 - 「ダウンロード」（Download）ボタン  
   画面に表示されているアイテムのリストをTSV形式でダウンロードできる
     - 文字コードはBOM無しUTF-8、改行コードはLFとする
     - タイトル等トリミングされている場合は、ファイルにはすべて出力されるようにする
-    - ファイル名は「Check\_ダウンロード日付.tsv」とする
+    - ファイル名は「Check_ダウンロード日付.tsv」とする
 
 - 「インポート」（Import）ボタン  
   読み込んだTSVファイルのアイテムを登録する
 
     - 処理途中に問題があるアイテムがあっても、一括登録処理は中断させず、次のアイテムの処理に進む
     - 大量登録時のセッションタイムアウトを防ぐように、処理は非同期処理とする
-    - インデックスにはインデックスID及びPOS\_INDEX\[n\]を元に指定する
-      - POS\_INDEX\#nnが複数指定されている場合はそれぞれに登録する
-      - インデックスIDとPOS\_INDEX\[n\]が不整合の場合は、ワーニングメッセージを出力して、IndexID\[n\]で指定したインデックスに登録する
+    - インデックスにはインデックスID及びPOS_INDEX[n]を元に指定する
+      - POS_INDEX#nnが複数指定されている場合はそれぞれに登録する
+      - インデックスIDとPOS_INDEX[n]が不整合の場合は、ワーニングメッセージを出力して、IndexID[n]で指定したインデックスに登録する
     - DOI/CNRI付与には（「識別子変更モード」（Change Identifier Mode.）チェックボックスにチェックを入れる場合）
-      - 新規で一括登録するアイテムに、DOI\_RAの設定に従い、指定したDOI（JaLC, Crossref, DataCite, NDL JaLC）及びCNRIをpidstoreに登録できる
-      - 既存のアイテムに、DOI\_RAの設定に従い、登録されているDOI（JaLC, Crossref, DataCite, NDL JaLC）及びCNRIを変更できる  
+      - 新規で一括登録するアイテムに、DOI_RAの設定に従い、指定したDOI（JaLC, Crossref, DataCite, NDL JaLC）及びCNRIをpidstoreに登録できる
+      - 既存のアイテムに、DOI_RAの設定に従い、登録されているDOI（JaLC, Crossref, DataCite, NDL JaLC）及びCNRIを変更できる  
         pidstoreに存在する該当レコードを論理削除して指定したDOIを登録する
       - DOI/CNRI付与の処理はワークフローのIdentifier Grantで指定した時と同じ処理である
 
     - 該当アイテムタイプのワークフローが存在しない場合、新しいワークフローを作成する
         - デフォルトフロー名：「Registration Flow」  
-          アクション：Start -\> Item registration -\> End
+          アクション：Start -> Item registration -> End
         - デフォルトワークフロー名：該当アイテムタイプ名
 
     - アイテム公開／非公開は、一括登録用ファイルの内容に合わせる
@@ -1558,7 +928,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 その他
 
-  - インポートのtsvファイルでファイル情報が無いにもかかわらず、「ファイル情報 \[1\] 」や「ファイル情報 \[2\] 」のヘッダがインポートファイルの中に存在している（ファイル情報 \[0\] は存在している）場合であっても、エラーとならないように対応
+  - インポートのtsvファイルでファイル情報が無いにもかかわらず、「ファイル情報 [1] 」や「ファイル情報 [2] 」のヘッダがインポートファイルの中に存在している（ファイル情報 [0] は存在している）場合であっても、エラーとならないように対応
 
   - DOIの自動採番ルールは以下の通り
       - 識別子変更モード
@@ -1570,14 +940,14 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
                 　「DOI suffixを設定してください。」／「Please specify DOI suffix.」
       - Not 識別子変更モード
           - 以下の条件をすべて満たしたときにDOIを付与する
-              - Admin \> Setting \> Identifier でprefixの設定があること
+              - Admin > Setting > Identifier でprefixの設定があること
               - DOI：空欄であること
-              - DOI\_RA：JaLC, Crossref, DataCite, NDL JalC のいずれかであること
+              - DOI_RA：JaLC, Crossref, DataCite, NDL JalC のいずれかであること
 
   - 「Not 識別子変更モード」で、既存アイテム(DOI付与無し)に自由記述でDOIをインポートしようとした際にエラーメッセージを出す
       - 「指定された{DOI}が登録済みの{DOI}と異なっています」
 
-  - DOIの付与はPID付与の制約条件表 ( JPCOAR\_JaLC\_Guideline\_appendix\_v1.pdf ) に従って、「必須」と「いずれか必須」の条件をもとにDOI付与可否を決定している。  
+  - DOIの付与はPID付与の制約条件表 ( JPCOAR_JaLC_Guideline_appendix_v1.pdf ) に従って、「必須」と「いずれか必須」の条件をもとにDOI付与可否を決定している。  
     なお、必須のマッピング項目がひとつのアイテムタイプ内に複数ある場合、複数あるうちのひとつだけ入力されていれば、DOI付与の条件を満たすものとする。
 
   - DOI付与済みアイテムを新規登録後、更新時に必須項目の値の削除や必須項目のプロパティの削除はできない。  
@@ -1625,11 +995,11 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
   - 登録されたインポートファイルのチェックをする際に作成するテンポラリファイルは以下のように生成する
     
-      - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_import\_xxxxxxxx
+      - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_import_xxxxxxxx
 
   - アイテムをインポートする際に作成するテンポラリファイルは以下のように生成する
     
-      - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_import\_YYYYMMDDhhmmss
+      - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_import_YYYYMMDDhhmmss
 
 ### 3. 設定
 
@@ -1753,18 +1123,18 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 - /weko-search-ui/weko_search_ui/admin.py
 
-  -   ItemImportView:check(/admin/items/import/check method=\[post\])\
+  -   ItemImportView:check(/admin/items/import/check method=[post])\
       インポートアイテムのバリデーションを行う。
 
       -   ログインユーザーの権限チェックを行う。
 
-      -   check_import_itemsを呼び出し、インポートファイルを1件ずつチェックする。
+      -   check_tsv_import_itemsを呼び出し、インポートファイルを1件ずつチェックする。
 
       -   1件でもチェックがNGの場合、インポートをキャンセルする。
 
 -   /weko-search-ui/weko_search_ui/utils.py
 
-    -   check_import_items
+    -   check_tsv_import_items
 
         -   インポートファイルのファイル名にセパレータが入っていた場合、"/"に置換し、ファイルの拡張子がcsvまたはtsvであるかチェックする。
 
@@ -1846,11 +1216,11 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
   - 登録されたインポートファイルのチェックをする際に作成するテンポラリファイルは以下のように生成する
     
-      - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_import\_xxxxxxxx
+      - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_import_xxxxxxxx
 
   - アイテムをインポートする際に作成するテンポラリファイルは以下のように生成する
     
-      - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_import\_YYYYMMDDhhmmss
+      - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_import_YYYYMMDDhhmmss
 
   - テンポラリファイルの格納先は環境変数(docker-compose.yml) で設定できるようにする  
     <https://docs.python.org/3/library/tempfile.html#tempfile.gettempdir>
@@ -1879,7 +1249,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 （Wikiより）
 
   - 「System」としている項目（"資源タイプResource", "出版タイプResource", "アクセス権Resource"）を一括登録時に自動で設定する機能に関して、  
-    自動設定の前提として、対象のアイテムタイプについて各項目がAdmin\>ItemTypes\>MappingでJPCOARスキーマのマッピングが設定されている必要があります
+    自動設定の前提として、対象のアイテムタイプについて各項目がAdmin>ItemTypes>MappingでJPCOARスキーマのマッピングが設定されている必要があります
 
   - インポート更新時にに資源タイプ（dc:type）の変更は同じコンテンツ種類内でのみ許可される。それ以外の資源タイプにを変更した場合、インポートタブのチェック処理で以下のようにエラーメッセージが表示される。
     
@@ -1891,7 +1261,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     
       - Upgrade: ファイルは新しく格納される
 
-  - インポートのtsvファイル内のメタデータにおける"\<br/\>"は、インポートの際に"\\n"に置換する
+  - インポートのtsvファイル内のメタデータにおける"<br/>"は、インポートの際に"\\n"に置換する
 
 - 「リクエスト送信先」の情報を保存するため、request_mail_listテーブルを追加する。  
   カラムは以下の表のものとする。
@@ -1945,6 +1315,59 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
         英語：「ERROR:The specified provinding user policy does not exist in the system」  
         日本語：「エラー：指定する利用規約はシステムに存在しません。」
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_search_ui.admin.ItemImportView`（endpoint `items/import`、テンプレート `weko_search_ui/admin/import.html`。3画面は単一SPA）。
+- 実メソッド名：チェック入口は `check_tsv_import_items`、取り込みタスクは `import_item`、統計ファイル生成は `make_stats_file`。重複チェックは weko-items-ui の `check_duplicate` / `is_duplicate_item`（DOI→タイトル→リソースタイプ→著者。公開かつ非バージョンのみ対象）。メタデータ補完は weko-items-autofill の `fetch_metadata_by_doi`（CrossRef/DataCite/CiNii/JaLC/医中誌）。
+- 関連モジュール（追記）：weko-search-ui / weko-admin / weko-items-autofill に加え、weko-deposit（永続化）・weko-items-ui（重複/スキーマ）・weko-workflow・weko-index-tree・weko-authors・invenio-pidstore。出力/取込形式は `WEKO_ADMIN_OUTPUT_FORMAT`（tsv/csv）。
+
+## 詳細リファレンス（v2.0.2 実装：チェック分岐・エラー・処理フロー）
+
+TSV/CSV/ZIP インポートは「チェック（check）」と「登録（import）」の二段階で、いずれも Celery で非同期実行される。中核は `weko-search-ui`（`utils.py` / `tasks.py` / `admin.py`）。
+
+### 1. チェック処理の分岐（check_tsv_import_items）
+
+`POST /admin/items/import/check`（`ItemImportView.check`）→ Celery `check_import_items_task` → `check_tsv_import_items`。非スーパーロールには編集可能インデックス `can_edit_indexes` を算出して渡す。
+
+- ファイル形式：ZIP を `zipfile.ZipFile` で展開（プレフィックス `WEKO_SEARCH_UI_IMPORT_TMP_PREFIX="weko_import_"`）。文字化けは `chardet` で判定し cp437→cp932 再デコード。`data/` 直下の `.csv`/`.tsv` を列挙。無い場合 `FileNotFoundError`、ZIP不正は `BadZipFile`。各ファイルを `unpackage_import_file(..., 'csv'|'tsv', ...)` で集約（XML/RO-Crate は別関数）。
+- ヘッダ検査（`read_stats_file`）：1行目は列数3未満/アイテムタイプID非数値でエラー。アイテムタイプ不存在・非最新版でエラー。2行目はキー重複（`handle_check_duplication_item_id`）・マッピング不整合（`handle_check_consistence_with_mapping`）・存在しないキー（`handle_check_metadata_not_existed`＝warning）。6行目以降を `parse_to_json_form` で JSON 化（UTF-8 でなければ `UnicodeDecodeError`）。続けて `handle_set_change_identifier_flag`・`handle_fill_system_item`・`handle_validate_item_import`（Draft4Validator。和訳は `WEKO_IMPORT_VALIDATE_MESSAGE`）。
+- 集約後に順次適用：`handle_check_duplicate_record`（重複=warning）／`handle_check_exist_record`（new/keep/upgrade/None 判定）／`handle_item_title`／`handle_check_date`／`handle_check_id`／`handle_check_and_prepare_index_tree`（インデックス整合・権限）／`handle_check_and_prepare_publish_status`（public/private 必須）／feedback/request/item_application 各チェック／`handle_check_file_metadata`／`handle_check_restricted_access_property`／`handle_shared_ids`／著者 prefix/affiliation ／CNRI・DOI 関連（`handle_check_cnri`/`handle_check_doi_indexes`/`handle_check_doi_ra`/`handle_check_doi`）。結果は各レコードの `errors`/`warnings` に追記。
+- new/update 判定（`handle_check_exist_record`）：ID未指定=`new`。ID指定時、システムURI不一致・PID不存在・削除済み・`edit_mode` 不正で `None`（不合格）、正しければ `keep`（同版更新）/`upgrade`（新版作成）。
+- インデックス整合（`handle_check_and_prepare_index_tree`）：IndexID/POS_INDEX 双方未設定・不存在でエラー、不一致は warning、`can_edit_indexes` 外は権限エラー。
+- 可否判定（`check_import_items_task`）：**1件でもエラーがあればインポート不可**（2023/08/26 仕様変更。旧「全件エラー時のみ不可」から変更）。チェック結果DLは `make_stats_file`（見出し `WEKO_IMPORT_CHECK_LIST_NAME`）。
+
+### 2. 主なエラー種別（代表例）
+
+| カテゴリ | 代表メッセージ（原文） | 発生箇所 |
+| --- | --- | --- |
+| ファイル形式 | The format of the specified file ... does not support import ... | check_tsv_import_items(BadZipFile) |
+| ファイル未検出 | The csv/tsv file was not found ... | check_tsv_import_items(FileNotFoundError) |
+| エンコーディング | The {} file could not be read. ... UTF-8 ... | read_stats_file(UnicodeDecodeError) |
+| ヘッダ書式 | There is an error in the format of the first line ... | read_stats_file |
+| アイテムタイプ | The item type ID ... does not exist. / ... not the latest version. | read_stats_file |
+| キー重複 | The following metadata keys are duplicated. | handle_check_duplication_item_id |
+| マッピング不整合 | The item does not consistent with the specified item type. | handle_check_consistence_with_mapping |
+| スキーマ/必須 | (schema由来, 和訳) / Please specify item ID by half-width number. | handle_validate_item_import |
+| 公開状態 | PUBLISH_STATUS is required item. / Please set "public" or "private" ... | handle_check_and_prepare_publish_status |
+| 既存レコード | Item does not exist in the system. / Item already DELETED ... / Please specify either "Keep" or "Upgrade". | handle_check_exist_record |
+| インデックス | Both of IndexID and POS_INDEX are not being set. / ... does not exist in system. | handle_check_and_prepare_index_tree |
+| 権限 | Your role cannot register items in this index. | handle_check_and_prepare_index_tree |
+| CNRI | Please specify CNRI. / ... exceeds the maximum length. / Specified Prefix ... is incorrect. | handle_check_cnri |
+| DOI | You cannot keep an item private because it has a DOI. / Specified DOI has been used already ... / Specified DOI was withdrawn. | handle_check_doi_indexes / handle_check_doi |
+| DOI_RA | Please specify DOI_RA. / DOI_RA should be set by one of JaLC, Crossref, DataCite, NDL JaLC. | handle_check_doi_ra |
+| 重複(警告) | The same item may have been registered.（リンク付き warning） | handle_check_duplicate_record → is_duplicate_item |
+
+### 3. 登録処理フロー（import → 永続化）
+
+- `POST /admin/items/import/import`（`ItemImportView.import_items`）：`errors` の無いレコードのみ抽出、`create_flow_define`/`handle_workflow` でWF準備、DOI補完対象は `handle_metadata_by_doi`、`import_item.s(item, request_info)` を Celery chord でまとめ完了後に一時ディレクトリ削除。監査ログ `ITEM_IMPORT`/`ITEM_BULK_CREATE`。進捗は `/check_status` でポーリング。
+- `import_item` → `import_items_to_system`：new は `create_deposit`、keep/upgrade は `handle_check_item_is_locked` でロック確認＋ES退避。`register_item_metadata` で永続化（weko-deposit）、CNRI/DOI 登録、公開状態を `WEKO_IMPORT_PUBLISH_STATUS`（public=0/private=1）で反映、new は ES へ `item_created`。1トランザクションで commit 後、`call_external_system`・監査ログ（ITEM_CREATE/UPDATE）・researchmap 連携。
+- バージョン管理（`register_item_metadata`）：`upgrade`/`new` は `deposit.newversion(pid)`、`keep` は `merge_data_to_record_without_version(keep_version=True, is_import=True)`。FeedbackMailList/RequestMailList/ItemApplication を制限公開設定に応じ更新。
+- Change Identifier Mode（`handle_set_change_identifier_flag`）：ON なら CSV/TSV 記載の CNRI/DOI をそのまま登録し、プレフィックス整合・重複・取り下げ済み検査が働く。OFF は既存識別子との整合確認が中心。
+- 成功時 `{"success": True, "recid": ...}`。失敗時は `SQLAlchemyError`/`ElasticsearchException`/`RedisError`/一般例外で `handle_remove_es_metadata` によりロールバックし監査ログ error 記録。登録結果一覧は `make_stats_file`（見出し `WEKO_IMPORT_LIST_NAME`、形式 `WEKO_ADMIN_OUTPUT_FORMAT`）。
+
+主な設定キー：`WEKO_SEARCH_UI_IMPORT_TMP_PREFIX` / `WEKO_IMPORT_PUBLISH_STATUS`（["public","private"]）/ `WEKO_IMPORT_DOI_TYPE`（JaLC/Crossref/DataCite/NDL JaLC）/ `WEKO_IMPORT_CHECK_LIST_NAME` / `WEKO_IMPORT_LIST_NAME` / `WEKO_IMPORT_VALIDATE_MESSAGE` / `WEKO_ITEMS_UI_ENABLE_DUPLICATE_CHECK` / `WEKO_ADMIN_OUTPUT_FORMAT` / `WEKO_HANDLE_ALLOW_REGISTER_CNRI`。
+
 
 ## 更新履歴
 

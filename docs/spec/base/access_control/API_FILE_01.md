@@ -4,14 +4,14 @@
 
 ## 目次
 
-- [GET /api/\<version>/ranking/<pid_value>/files](#get-apiversionrankingpid_valuefiles)
-- [GET /api/\<version>/records/<pid_value>/files/\<filename>](#get-apiversionrecordspid_valuefilesfilename)
-- [GET /api/\<version>/records/<pid_value>/files/\<filename>/stats](#get-apiversionrecordspid_valuefilesfilenamestats)
-- [GET /api/\<version>/records/<pid_value>/files/all](#get-apiversionrecordspid_valuefilesall)
-- [POST /api/\<version>/records/<pid_value>/files/selected](#post-apiversionrecordspid_valuefilesselected)
-- [GET /api/\<version>/ranking/<ranking_type>](#get-apiversionrankingranking_type)
+- [GET /api/\<version>/ranking/\<pid_value>/files](#get-apiversionrankingpid_valuefiles)
+- [GET /api/\<version>/records/\<pid_value>/files/\<filename>](#get-apiversionrecordspid_valuefilesfilename)
+- [GET /api/\<version>/records/\<pid_value>/files/\<filename>/stats](#get-apiversionrecordspid_valuefilesfilenamestats)
+- [GET /api/\<version>/records/\<pid_value>/files/all](#get-apiversionrecordspid_valuefilesall)
+- [POST /api/\<version>/records/\<pid_value>/files/selected](#post-apiversionrecordspid_valuefilesselected)
+- [GET /api/\<version>/ranking/\<ranking_type>](#get-apiversionrankingranking_type)
 
-## GET /api/\<version>/ranking/<pid_value>/files
+## GET /api/\<version>/ranking/\<pid_value>/files
 
 #### APIの使用
 
@@ -31,7 +31,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ○                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/records/<pid_value>/files/\<filename>
+## GET /api/\<version>/records/\<pid_value>/files/\<filename>
 
 #### APIの使用
 
@@ -39,7 +39,7 @@
 
 | 条件/ロール                             | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
 | --------------------------------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
-| トークンのスコープに<br>user:readがある | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
+| トークンのスコープに<br>file:readがある | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 上記以外                                | ×                  | ×                    | ×                      | ×            | ×            | ○                        |
 
 #### ファイル取得可否
@@ -51,7 +51,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ○                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/records/<pid_value>/files/\<filename>/stats
+## GET /api/\<version>/records/\<pid_value>/files/\<filename>/stats
 
 #### APIの使用
 
@@ -71,7 +71,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ○                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/records/<pid_value>/files/all
+## GET /api/\<version>/records/\<pid_value>/files/all
 
 #### APIの使用
 
@@ -91,7 +91,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ○                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## POST /api/\<version>/records/<pid_value>/files/selected
+## POST /api/\<version>/records/\<pid_value>/files/selected
 
 #### APIの使用
 
@@ -111,7 +111,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/ranking/<ranking_type>
+## GET /api/\<version>/ranking/\<ranking_type>
 
 #### APIの使用
 
@@ -175,6 +175,10 @@
 | ------------ | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 自分         | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 自分以外     | ○                  | ○                    | ×                      | ×            | ×            | ×                        |
+
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本APIの認可は OAuth2 を基本とし、`require_api_auth(allow_anonymous=…)`（未認証許可可否）、`require_oauth_scopes(<scope>)`（トークン使用時のみスコープ検証）、`roles_required([...])`（未認証かつ guest_token 無しは 401）の組み合わせで判定される。ゲスト（未ログイン）可否は主に `allow_anonymous` と `roles_required` の有無で決まり、公開範囲は検索系では `weko_search_ui.query.get_permission_filter` で絞り込まれる。各エンドポイントの実ハンドラ・スコープは [API仕様（api カテゴリ）](../api/README.md) を参照。
 
 ## 更新履歴
 

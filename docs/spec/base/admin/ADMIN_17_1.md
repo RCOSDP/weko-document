@@ -16,68 +16,50 @@
 
 #### 機能内容
 
-  - 「エクスポート」（Export）ボタン  
-    Exportボタンを押すと、全件出力を実行してよいかの確認ダイアログを表示する。確認ダイアログで実行/キャンセルを選択する。
-
-      - 「Execute」ボタン
-
-          - 「実行」ボタンを押すと、確認用ダイアログを閉じて基本監査ログの全件エクスポートを行う。
-
-          - 実行後はダウンロードのURLを画面上に表示する。
-
-          - URLをクリックするとzipファイル(export\_log.zip)をダウンロードする。  
-            なお、このzipファイルにコンテンツファイルは含まれていない。
-
-          - 他のユーザーがエクスポート実行中の場合、Exportボタンを非活性化する。
-
-          - Celeryが起動していない場合は「実行」ボタンを非活性化する．「Celery is not running.」のエラーメッセージを表示する．
-
-      - 「キャンセル」ボタン
-
-          - 「キャンセル」ボタンを押すと、基本監査ログの全件エクスポートを行なわずわ、確認用ダイアログを閉じる。
-
-  - 「キャンセル」（Cancel）ボタン  
-    初期状態は非活性とし、Exportを実行している時に活性とする。  
-    Exportを実行している時に、キャンセルボタンを押すと、Export処理のキャンセルを行う。  
-    ボタンを押すと、全件エクスポートの処理をキャンセルしてよいかの確認ダイアログを表示する。
-
-      - 「実行」ボタン
-
-          - 「実行」ボタンを押すと、基本監査ログの全件エクスポートを行わず、確認用ダイアログを閉じる。
-
-      - 「キャンセル」ボタン
-
-          - 「キャンセル」ボタンを押すと、全件エクスポート処理のキャンセルを行わず、確認用ダイアログを閉じる。
+- 「エクスポート」（Export）ボタン
+  Exportボタンを押すと、全件出力を実行してよいかの確認ダイアログを表示する。確認ダイアログで実行/キャンセルを選択する。
+  - 「Execute」ボタン
+    - 「実行」ボタンを押すと、確認用ダイアログを閉じて基本監査ログの全件エクスポートを行う。
+    - 実行後はダウンロードのURLを画面上に表示する。
+    - URLをクリックするとzipファイル(export_log.zip)をダウンロードする。なお、このzipファイルにコンテンツファイルは含まれていない。
+    - 他のユーザーがエクスポート実行中の場合、Exportボタンを非活性化する。
+    - Celeryが起動していない場合は「実行」ボタンを非活性化する。「Celery is not running.」のエラーメッセージを表示する。
+  - 「キャンセル」ボタン
+    - 「キャンセル」ボタンを押すと、基本監査ログの全件エクスポートを行わず、確認用ダイアログを閉じる。
+- 「キャンセル」（Cancel）ボタン
+  初期状態は非活性とし、Exportを実行している時に活性とする。
+  Exportを実行している時に、キャンセルボタンを押すと、Export処理のキャンセルを行う。
+  ボタンを押すと、全件エクスポートの処理をキャンセルしてよいかの確認ダイアログを表示する。
+  - 「実行」ボタン
+    - 「実行」ボタンを押すと、基本監査ログの全件エクスポートを行わず、確認用ダイアログを閉じる。
+  - 「キャンセル」ボタン
+    - 「キャンセル」ボタンを押すと、全件エクスポート処理のキャンセルを行わず、確認用ダイアログを閉じる。
 
 #### 関連モジュール
 
-  - weko\_logging
-  - weko\_admin
-  - invenio\_files\_rest:ダウンロードファイル生成のみに使用
+- weko_logging
+- weko_admin
+- weko_search_ui: Celery稼働確認（check_celery_is_run）に使用
+- invenio_files_rest: ダウンロードファイル生成のみに使用
 
 #### 処理概要
 
-  - 一括出力（一括エクスポート）画面表示時に以下の処理が行われる。
+- 一括出力（一括エクスポート）画面表示時に以下の処理が行われる。
+  - weko_logging.admin.ExportLogAdminView.index メソッドが呼び出され画面を表示する。
+- 一括出力（一括エクスポート）画面
+  - 一括出力画面を表示している間、３秒ごとに weko_logging.static.js.weko_logging.export.js の checkExportStatus メソッドが呼び出される。このメソッド下でcheck_export_statusメソッドが呼び出され、これによってceleryが起動しているか、エクスポートできるかを確認する。
+  - celeryが起動していない、uri_statusがfalseの場合は「エクスポート」ボタンを不活性化する。
+  - 「エクスポート」ボタンを押し、更にポップアップの「Excute」ボタンを押下する。その場合、weko_logging.static.js.weko_logging.export.js の handleExport メソッドによって export_user_activity_log メソッドが呼び出され、更に export_all_user_activity_logs メソッドを呼び出す。これらによってエクスポートする基本監査ログを集め、ダウンロードURLを生成し、表示させる。
+    - エクスポートして、URLが表示されるまでの間に、「キャンセル」ボタンを押し、「execute」ボタンを押す。その場合、weko_logging.admin.ExportLogAdminView.cancel_export メソッドが呼び出され、ダウンロードURLの生成、表示をキャンセルする。
+  - 画面上に表示されたダウンロードURLを押下する。その場合、weko_logging.admin.ExportLogAdminView.download_user_activity_log メソッドにて、FileInstance.get_by_uriメソッドが呼び出され、ダウンロードファイルを生成し、ダウンロードする。なお、ダウンロードされるファイル形式はzipであり、基本監査ログのファイル形式はtsv形式である。
+    - 出力されるtsvファイルのファイル名: `user_activity_logs_yyMMddhhmmss.tsv`
+  - エクスポート中にcheck_celery_is_runメソッド、get_export_task_statusメソッドでエクスポートに必要な情報がとれない場合、ダウンロードURLは表示されない。
 
-      - weko\_logging.admin.ExportLogAdminView.index メソッドが呼び出され画面を表示する。
+#### 実装補足（v2.0.2 実装との突き合わせ）
 
-  - 一括出力（一括エクスポート）画面
+- 画面/ハンドラ：`weko_logging.admin.ExportLogAdminView`（endpoint `logs/export`）。`index` / `export_user_activity_log`（`POST /export`）/ `check_export_status` / `cancel_export` / `download_user_activity_log`（`/download`、`export_log.zip`）。エクスポートは Celery `export_all_user_activity_logs`（`weko_logging.tasks`）。ステータスは `UserActivityLogUtils.get_export_task_status`。Celery 稼働確認は `weko_search_ui.tasks.check_celery_is_run`。
 
-      - 一括出力画面を表示している間、３秒ごとに weko\_logging.static.js.weko\_logging.export.js の checkExportStatus メソッドが呼び出される。このメソッド下でcheck\_export\_statusメソッドが呼び出され、これによってceleryが起動しているか、エクスポートできるかを確認する。
-
-      - celeryが起動していない、uri\_statusがfalseの場合は「エクスポート」ボタンを不活性化する。
-
-      - 「エクスポート」ボタンを押し、更にポップアップの「Excute」ボタンを押下する。その場合、 weko\_logging.static.js.weko\_logging.export.js の handleExport メソッドによって export\_user\_activity\_log メソッドが呼び出され、更に export\_all\_user\_activity\_logs メソッドを呼び出す。これらによってエクスポートする基本監査ログを集め、ダウンロードURLを生成し、表示させる。
-
-          - エクスポートして、URLが表示されるまでの間に、「キャンセル」ボタンを押し、「execute」ボタンを押す。その場合、 weko\_logging.admin.ExportLogAdminView.cancel\_export メソッドが呼び出され、ダウンロードURLの生成、表示をキャンセルする。
-
-      - 画面上に表示されたダウンロードURLを押下する。その場合、 weko\_logging.admin.ExportLogAdminView.download\_user\_activity\_log メソッドにて、 FileInstance.get\_by\_uriメソッドが呼び出され、ダウンロードファイルを生成し、ダウンロードする。なお、ダウンロードされるファイル形式はzipであり、基本監査ログのファイル形式はtsv形式である。
-
-          - 出力されるtsvファイルのファイル名: `user_activity_logs_yyMMddhhmmss.tsv`
-
-      - エクスポート中にcheck\_celery\_is\_runメソッド、get\_export\_statusメソッドでエクスポートに必要な情報がとれない場合、ダウンロードURLは表示されない。
-
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

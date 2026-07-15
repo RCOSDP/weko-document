@@ -12,34 +12,9 @@
 
 ## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール   | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|:--------:|:--------------:|:----------------:|:------------------:|:------------:|:------------:|:-------------------:|
+| 利用可否 | ○              | ○                | ○                  | ○            | ○            |                      |
 
 ## 機能内容
 
@@ -304,6 +279,10 @@
     * 取得したAPIレスポンスを解析し、辞書型に整形する
     * アイテムタイプのJPCOARマッピングに応じた項目にメタデータを設定する
 
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- メタデータ自動補完：CrossRef=`weko_items_autofill.api.CrossRefOpenURL`、CiNii/JaLC/DataCite/医中誌=`weko_workspace.api`（`CiNiiURL`/`JALCURL`/`DATACITEURL`/`JamasURL`）。外部URLは config `WEKO_WORKSPACE_*_API_URL`。CrossRef は API 証明書（`weko_admin.models.ApiCertificate`、code `"crf"`）が無い場合はリクエストしない。
 
 ## 更新履歴
 

@@ -1675,7 +1675,7 @@ SWORD APIの管理に関する操作手順を説明しています。
 
 1.  管理者のアカウントでログインしてください。
     
-    ログインの方法については、「データ登録ガイド」を参照してください。
+    ログインの方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%BE%E3%81%9F%E3%81%AF%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88%E3%81%99%E3%82%8B)」を参照してください。
 
 2.  画面右上のユーザカウントのプルダウンメニューから［Administration］を選択します。
     
@@ -2307,6 +2307,17 @@ SWORD APIの管理に関する操作手順を説明しています。
 
 - 既存のプロパティと名前が重複するプロパティがインポートファイルに含まれている場合、エラーメッセージが表示されインポートは中断されます。
 
+#### トラブルシューティング
+
+##### アップデート後、アイテムタイプ編集画面の上部に緑色のメッセージ領域が表示される
+
+アップデート後以下画面例のように、緑色のメッセージ領域が表示される場合があります。
+メッセージ内容はアイテムタイプや環境によって異なります。
+本メッセージは動作に影響しないデータ不整合が生じている場合に表示されます。
+アイテムタイプの保存を行うと、データ不整合が解消し、メッセージが表示されなくなります。
+
+![アイテムタイプ編集画面に表示された緑色の領域例](media/media/image493.jpeg)
+
 ## OAI Schemaを設定する
 
 OAI Schema画面は、［アイテムタイプ管理］をクリックして［OAIスキーマ］をクリックすると表示されます。この画面は、マッピングに使用するスキーマ一覧を表示し、スキーマを追加または削除できます。
@@ -2433,8 +2444,6 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 50. 複数の(子)プロパティを1つの子要素にマッピングさせる場合は［Join］をクリックします。
     
-    入力欄に「,」(半角カンマ)を入れることで、複数の(子)プロパティを1つの子要素にマッピングさせることができます。
-    
     ![](media/media/image60.png)
 
 51. \[Add static value\]をクリックすると、指定した値を子要素に出力させることができます。
@@ -2503,6 +2512,8 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 #### マッピング例
 
+デフォルトアイテムタイプ（フル）：
+
 ```
 {
     "APC": "rioxxterms:apc",
@@ -2510,7 +2521,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
     "ID登録": "jpcoar:identifierRegistration",
     "ID登録.ID登録": "jpcoar:identifierRegistration.value",
     "ID登録.ID登録タイプ": "jpcoar:identifierRegistration.identifierType",
-    "PubDate": "datePublished",
+    "公開日": "datePublished",
     "その他のタイトル": "dcterms:alternative",
     "その他のタイトル.その他のタイトル": "dcterms:alternative.value",
     "その他のタイトル.言語": "dcterms:alternative.language",
@@ -2831,7 +2842,6 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 }
 ```
 
-
 ### JSON－LD Mappingを編集/削除する
 1. ［一覧］から編集、削除したいマッピング定義の編集ボタンを選択します。
    ![JSON-LD Mapping一覧画面](media/media/image455.png)
@@ -2842,8 +2852,363 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 ※起動しているアクティビティがある場合は変更できません。起動しているアクティビティをすべて終了してください。
 
+![アクティビティが起動している場合に表示されるメッセージ](media/media/image493.png)
 
 ### トラブルシューティング
+
+#### 「公開日」に対応するマッピングが必要です
+
+デフォルトアイテムタイプ（フル）のJSON-LDマッピングを保存しようとすると、
+以下画面例のように「公開日」に対応するマッピングが必要です、を含むエラーメッセージが表示される環境があります。
+
+![JSON-LDマッピングエラー画面](media/media/image489.png)
+
+その場合、JSON-LDマッピングに下記箇所が存在します。
+
+![JSON-LDマッピング（修正前）](media/media/image490.png)
+
+それを下記のように書き換え、変更を保存してください。
+
+![JSON-LDマッピング（修正後）](media/media/image491.png)
+
+エラーが表示されなくなります。
+
+#### 「Title」に対応するマッピングが必要です等が大量のエラーメッセージが表示される
+
+デフォルトアイテムタイプ（フル）のJSON-LDマッピングを保存しようとすると、
+以下画面例のように「Title」に対応するマッピングが必要です等の
+大量のエラーメッセージが表示されることがあります。
+
+![JSON-LDマッピングエラー画面](media/media/image492.png)
+
+その場合は、以下JSON-LDマッピングをコピーして保存すると、
+エラーメッセージが減少する可能性があります。
+
+```
+{
+    "APC": "rioxxterms:apc",
+    "版": "dcndl:edition",
+    "Date": "datacite:date",
+    "File": "hasPart",
+    "Title": "dc:title",
+    "Rights": "dc:rights",
+    "APC.APC": "rioxxterms:apc.value",
+    "Creator": "jpcoar:creator",
+    "Heading": "headline",
+    "PubDate": "datePublished",
+    "Subject": "jpcoar:subject",
+    "Version": "datacite:version",
+    "版.版": "dcndl:edition.value",
+    "Language": "dc:language",
+    "Page End": "jpcoar:pageEnd",
+    "Relation": "jpcoar:relation",
+    "Temporal": "dcterms:temporal",
+    "Publisher": "dc:publisher",
+    "大きさ": "dcterms:extent",
+    "部編名": "dcndl:volumeTitle",
+    "Conference": "jpcoar:conference",
+    "Identifier": "jpcoar:identifier",
+    "Page Start": "jpcoar:pageStart",
+    "版.言語": "dcndl:edition.language",
+    "Contributor": "jpcoar:contributor",
+    "Date.日付": "datacite:date.value",
+    "Degree Name": "dcndl:degreeName",
+    "Description": "datacite:description",
+    "File.日付": "hasPart.datacite:date",
+    "Date Granted": "dcndl:dateGranted",
+    "Geo Location": "datacite:geoLocation",
+    "Issue Number": "jpcoar:issue",
+    "Source Title": "jpcoar:sourceTitle",
+    "Title.言語": "dc:title.language",
+    "Version Type": "oaire:version",
+    "カタログ": "jpcoar:catalog",
+    "所蔵機関": "jpcoar:holdingAgent",
+    "Access Rights": "dcterms:accessRights",
+    "Resource Type": "dc:type",
+    "Rights Holder": "jpcoar:rightsHolder",
+    "Rights.言語": "dc:rights.language",
+    "Volume Number": "jpcoar:volume",
+    "Degree Grantor": "jpcoar:degreeGrantor",
+    "File.サイズ": "hasPart.jpcoar:extent",
+    "File.本文URL": "hasPart.jpcoar:URI",
+    "Heading.言語": "headline.language",
+    "Subject.主題": "jpcoar:subject.value",
+    "Subject.言語": "jpcoar:subject.language",
+    "Language.言語": "dc:language.value",
+    "Number of Pages": "jpcoar:numPages",
+    "Temporal.言語": "dcterms:temporal.language",
+    "出版者情報": "jpcoar:publisher",
+    "原文の言語": "dcndl:originalLanguage",
+    "物理的形態": "jpcoar:format",
+    "Issue Number.号": "jpcoar:issue.value",
+    "Publisher.言語": "dc:publisher.language",
+    "大きさ.Extent": "dcterms:extent.value",
+    "Alternative Title": "dcterms:alternative",
+    "Conference.回次": "jpcoar:conference.jpcoar:conferenceSequence",
+    "File.アクセス": "hasPart.dcterms:accessRights",
+    "File.グループ": "hasPart.department",
+    "File.表示形式": "hasPart.jpcoar:format",
+    "Funding Reference": "jpcoar:fundingReference",
+    "Source Identifier": "jpcoar:sourceIdentifier",
+    "Subject.主題URI": "jpcoar:subject.subjectURI",
+    "Volume Number.巻": "jpcoar:volume.value",
+    "カタログ.Thumbnail": "jpcoar:catalog.jpcoar:file",
+    "Degree Name.言語": "dcndl:degreeName.language",
+    "Description.言語": "datacite:description.language",
+    "File.日付.日付": "hasPart.datacite:date.value",
+    "Title.タイトル": "dc:title.value",
+    "カタログ.Title": "jpcoar:catalog.dc:title",
+    "大きさ.Language": "dcterms:extent.language",
+    "部編名.Language": "dcndl:volumeTitle.language",
+    "Dissertation Number": "dcndl:dissertationNumber",
+    "Publisher.出版者": "dc:publisher.value",
+    "Rights.権利情報": "dc:rights.value",
+    "Source Title.言語": "jpcoar:sourceTitle.language",
+    "カタログ.Rights": "jpcoar:catalog.dc:rights",
+    "部編名.部編名": "dcndl:volumeTitle.value",
+    "Conference.会議名": "jpcoar:conference.jpcoar:conferenceName",
+    "Conference.開催国": "jpcoar:conference.jpcoar:conferenceCountry",
+    "Conference.開催地": "jpcoar:conference.jpcoar:conferencePlace",
+    "Creator.作成者名": "jpcoar:creator.jpcoar:givenName",
+    "Creator.作成者姓": "jpcoar:creator.jpcoar:familyName",
+    "Date.日付タイプ": "datacite:date.dateType",
+    "File.ファイル名": "hasPart.name",
+    "File.ライセンス": "hasPart.license",
+    "Heading.大見出し": "headline.value",
+    "Heading.小見出し": "headline.alternativeHeadline",
+    "Identifier.識別子": "jpcoar:identifier.value",
+    "Subject.主題Scheme": "jpcoar:subject.subjectScheme",
+    "カタログ.License": "jpcoar:catalog.jpcoar:license",
+    "カタログ.Subject": "jpcoar:catalog.jpcoar:subject",
+    "Degree Name.学位名": "dcndl:degreeName.value",
+    "Relation.関連名称": "jpcoar:relation.jpcoar:relatedTitle",
+    "Conference.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor",
+    "Conference.開催会場": "jpcoar:conference.jpcoar:conferenceVenue",
+    "Conference.開催期間": "jpcoar:conference.jpcoar:conferenceDate.language",
+    "Creator.作成者別名": "jpcoar:creator.jpcoar:creatorAlternative",
+    "Creator.作成者姓名": "jpcoar:creator.jpcoar:creatorName",
+    "Creator.作成者所属": "jpcoar:creator.jpcoar:affiliation",
+    "File.フォーマット": "hasPart.jpcoar:mimeType",
+    "Identifier Registration": "jpcoar:identifierRegistration",
+    "カタログ.Identifier": "jpcoar:catalog.jpcoar:identifier",
+    "Alternative Title.言語": "dcterms:alternative.language",
+    "Contributor.寄与者名": "jpcoar:contributor.jpcoar:givenName",
+    "Contributor.寄与者姓": "jpcoar:contributor.jpcoar:familyName",
+    "Creator.作成者名.名": "jpcoar:creator.jpcoar:givenName.value",
+    "Creator.作成者姓.姓": "jpcoar:creator.jpcoar:familyName.value",
+    "Description.内容記述": "datacite:description.value",
+    "File.サイズ.サイズ": "hasPart.jpcoar:extent.value",
+    "File.公開日.タイプ": "$Available",
+    "File.公開日.公開日": "hasPart.datePublished",
+    "File.本文URL.ラベル": "hasPart.@id",
+    "File.本文URL.本文URL": "hasPart.jpcoar:URI.value",
+    "Page End.終了ページ": "jpcoar:pageEnd.value",
+    "Relation.関連タイプ": "jpcoar:relation.relationType",
+    "Relation.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier",
+    "Temporal.時間的範囲": "dcterms:temporal.value",
+    "カタログ.Hosting Institution": "jpcoar:catalog.jpcoar:contributor",
+    "カタログ.Descriptions": "jpcoar:catalog.datacite:description",
+    "カタログ.Title.Title": "jpcoar:catalog.dc:title.value",
+    "原文の言語.Original Language": "dcndl:originalLanguage.language",
+    "日付（リテラル）": "dcterms:date",
+    "物理的形態.Language": "jpcoar:format.language",
+    "Bibliographic Information": "dcterms:medium",
+    "Source Title.収録物名": "jpcoar:sourceTitle.value",
+    "出版者情報.出版地": "jpcoar:publisher.dcndl:location",
+    "Creator.作成者タイプ": "jpcoar:creator.creatorType",
+    "Creator.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier",
+    "File.バージョン情報": "hasPart.datacite:version",
+    "Page Start.開始ページ": "jpcoar:pageStart.value",
+    "Rights Holder.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName",
+    "カタログ.Access Rights": "jpcoar:catalog.dcterms:accessRights",
+    "カタログ.Thumbnail.Thumbnail URI.Thumbnail URI": "jpcoar:catalog.jpcoar:file.jpcoar:URI",
+    "カタログ.Rights.Rights": "jpcoar:catalog.dc:rights.value",
+    "Conference.会議名.言語": "jpcoar:conference.jpcoar:conferenceName.language",
+    "Conference.開催地.言語": "jpcoar:conference.jpcoar:conferencePlace.language",
+    "Contributor.寄与者別名": "jpcoar:contributor.jpcoar:contributorAlternative",
+    "Contributor.寄与者姓名": "jpcoar:contributor.jpcoar:contributorName",
+    "Contributor.寄与者所属": "jpcoar:contributor.jpcoar:affiliation",
+    "Creator.作成者名.言語": "jpcoar:creator.jpcoar:givenName.language",
+    "Creator.作成者姓.言語": "jpcoar:creator.jpcoar:familyName.language",
+    "File.日付.日付タイプ": "hasPart.datacite:date.dateType",
+    "Rights.権利情報Resource": "dc:rights.rdf:resource",
+    "カタログ.Title.Language": "jpcoar:catalog.dc:title.language",
+    "Contributor.寄与者名.名": "jpcoar:contributor.jpcoar:givenName.value",
+    "Contributor.寄与者姓.姓": "jpcoar:contributor.jpcoar:familyName.value",
+    "Number of Pages.ページ数": "jpcoar:numPages.value",
+    "Relation.関連名称.言語": "jpcoar:relation.jpcoar:relatedTitle.language",
+    "Version Type.出版タイプ": "oaire:version.value",
+    "Version Type.査読の有無": "oaire:version.itemReviewed",
+    "カタログ.License.License": "jpcoar:catalog.jpcoar:license.value",
+    "カタログ.Rights.Language": "jpcoar:catalog.dc:rights.language",
+    "カタログ.Subject.Subject": "jpcoar:catalog.jpcoar:subject.value",
+    "出版者情報.出版者名": "jpcoar:publisher.jpcoar:publisherName",
+    "所蔵機関.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName",
+    "Access Rights.アクセス権": "dcterms:accessRights.value",
+    "Bibliographic Information.号": "dcterms:medium.issueNumber",
+    "Bibliographic Information.巻": "dcterms:medium.volumeNumber",
+    "Identifier.識別子タイプ": "jpcoar:identifier.identifierType",
+    "Resource Type.資源タイプ": "dc:type.value",
+    "Version.バージョン情報": "datacite:version.value",
+    "カタログ.Thumbnail.Thumbnail URI.Object Type": "jpcoar:catalog.jpcoar:file.objectType",
+    "カタログ.License.Language": "jpcoar:catalog.jpcoar:license.language",
+    "カタログ.Subject.Language": "jpcoar:catalog.jpcoar:subject.language",
+    "Conference.主催機関.言語": "jpcoar:conference.jpcoar:conferenceSponsor.language",
+    "Conference.会議名.会議名": "jpcoar:conference.jpcoar:conferenceName.value",
+    "Conference.開催会場.言語": "jpcoar:conference.jpcoar:conferenceVenue.language",
+    "Conference.開催地.開催地": "jpcoar:conference.jpcoar:conferencePlace.value",
+    "Conference.開催期間.言語": "jpcoar:conference.jpcoar:conferenceDate",
+    "Contributor.寄与者タイプ": "jpcoar:contributor.contributorType",
+    "Contributor.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier",
+    "Creator.作成者別名.別名": "jpcoar:creator.jpcoar:creatorAlternative.value",
+    "Creator.作成者別名.言語": "jpcoar:creator.jpcoar:creatorAlternative.language",
+    "Creator.作成者姓名.姓名": "jpcoar:creator.jpcoar:creatorName.value",
+    "Creator.作成者姓名.言語": "jpcoar:creator.jpcoar:creatorName.language",
+    "データセットシリーズ": "jpcoar:datasetSeries",
+    "Contributor.寄与者名.言語": "jpcoar:contributor.jpcoar:givenName.language",
+    "Contributor.寄与者姓.言語": "jpcoar:contributor.jpcoar:familyName.language",
+    "出版者情報.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription",
+    "日付（リテラル）.言語": "dcterms:date.language",
+    "物理的形態.物理的形態": "jpcoar:format.value",
+    "Access Rights.アクセス権URI": "dcterms:accessRights.rdf:resource",
+    "Identifier Registration.ID登録": "jpcoar:identifierRegistration.value",
+    "Rights Holder.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier",
+    "カタログ.Rights.RDF Resource": "jpcoar:catalog.dc:rights.rdf:resource",
+    "カタログ.Subject.Subject URI": "jpcoar:catalog.jpcoar:subject.subjectURI",
+    "Conference.開催期間.終了年": "jpcoar:conference.jpcoar:conferenceDate.endYear",
+    "Conference.開催期間.終了日": "jpcoar:conference.jpcoar:conferenceDate.endDay",
+    "Conference.開催期間.終了月": "jpcoar:conference.jpcoar:conferenceDate.endMonth",
+    "Conference.開催期間.開始年": "jpcoar:conference.jpcoar:conferenceDate.startYear",
+    "Conference.開催期間.開始日": "jpcoar:conference.jpcoar:conferenceDate.startDay",
+    "Conference.開催期間.開始月": "jpcoar:conference.jpcoar:conferenceDate.startMonth",
+    "Description.内容記述タイプ": "datacite:description.descriptionType",
+    "Funding Reference.助成機関名": "jpcoar:fundingReference.jpcoar:funderName",
+    "Funding Reference.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle",
+    "Rights Holder.権利者名.言語": "jpcoar:rightsHolder.jpcoar:rightsHolderName.value",
+    "カタログ.Descriptions.Language": "jpcoar:catalog.datacite:description.language",
+    "カタログ.License.License Type": "jpcoar:catalog.jpcoar:license.licenseType",
+    "カタログ.License.RDF Resource": "jpcoar:catalog.jpcoar:license.rdf:resource",
+    "原文の言語.Original Language": "dcndl:originalLanguage.value",
+    "Contributor.寄与者別名.別名": "jpcoar:contributor.jpcoar:contributorAlternative.value",
+    "Contributor.寄与者別名.言語": "jpcoar:contributor.jpcoar:contributorAlternative.language",
+    "Contributor.寄与者姓名.姓名": "jpcoar:contributor.jpcoar:contributorName.value",
+    "Contributor.寄与者姓名.言語": "jpcoar:contributor.jpcoar:contributorName.language",
+    "Date Granted.学位授与年月日": "dcndl:dateGranted.value",
+    "Geo Location.位置情報（点）": "datacite:geoLocation.datacite:geoLocationPoint",
+    "Relation.関連名称.関連名称": "jpcoar:relation.jpcoar:relatedTitle.value",
+    "カタログ.Identifier.Identifier": "jpcoar:catalog.jpcoar:identifier.value",
+    "所蔵機関.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier",
+    "Bibliographic Information.発行日": "dcterms:medium.datePublished",
+    "Bibliographic Information.雑誌名": "dcterms:medium.name",
+    "カタログ.Subject.Subject Scheme": "jpcoar:catalog.jpcoar:subject.subjectScheme",
+    "出版者情報.出版地.出版地": "jpcoar:publisher.dcndl:location.value",
+    "出版者情報.出版者名.言語": "jpcoar:publisher.jpcoar:publisherName.language",
+    "Conference.主催機関.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor.value",
+    "Conference.開催会場.開催会場": "jpcoar:conference.jpcoar:conferenceVenue.value",
+    "Conference.開催期間.開催期間": "jpcoar:conference.jpcoar:conferenceDate.value",
+    "Degree Grantor.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName",
+    "Funding Reference.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber",
+    "Source Identifier.収録物識別子": "jpcoar:sourceIdentifier.value",
+    "Version Type.出版タイプResource": "oaire:version.rdf:resource",
+    "カタログ.Descriptions.Description": "jpcoar:catalog.datacite:description.value",
+    "Geo Location.位置情報（空間）": "datacite:geoLocation.datacite:geoLocationBox",
+    "所蔵機関.所蔵機関名.Language": "jpcoar:holdingAgent.jpcoar:holdingAgentName.language",
+    "Bibliographic Information.ページ数": "dcterms:medium.numberOfPages",
+    "Creator.作成者メールアドレス": "jpcoar:creator.email",
+    "Dissertation Number.学位授与番号": "dcndl:dissertationNumber.value",
+    "Resource Type.資源タイプ識別子": "dc:type.rdf:resource",
+    "出版者情報.出版者注記.言語": "jpcoar:publisher.jpcoar:publisherDescription.language",
+    "Creator.作成者姓名.名前タイプ": "jpcoar:creator.jpcoar:creatorName.nameType",
+    "Creator.作成者所属.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName",
+    "Funding Reference.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream",
+    "Funding Reference.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier",
+    "Rights Holder.権利者名.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName.language",
+    "カタログ.Access Rights.アクセス権URI": "jpcoar:catalog.dcterms:accessRights.rdf:resource",
+    "カタログ.Identifier.Identifier Type": "jpcoar:catalog.jpcoar:identifier.identifierType",
+    "Funding Reference.助成機関名.言語": "jpcoar:fundingReference.jpcoar:funderName.language",
+    "Funding Reference.研究課題名.言語": "jpcoar:fundingReference.jpcoar:awardTitle.language",
+    "Relation.関連識別子.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier.value",
+    "カタログ.Access Rights.アクセス権": "jpcoar:catalog.dcterms:accessRights.value",
+    "Bibliographic Information.終了ページ": "dcterms:medium.pageEnd",
+    "Bibliographic Information.開始ページ": "dcterms:medium.pageStart",
+    "Geo Location.位置情報（点）.経度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLongitude",
+    "Geo Location.位置情報（点）.緯度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLatitude",
+    "Identifier Registration.ID登録タイプ": "jpcoar:identifierRegistration.identifierType",
+    "カタログ.Hosting Institution.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName",
+    "カタログ.Hosting Institution.Hosting Institution Type": "jpcoar:catalog.jpcoar:contributor.contributorType",
+    "カタログ.Descriptions.Description Type": "jpcoar:catalog.datacite:description.descriptionType",
+    "出版者情報.出版者名.出版者名": "jpcoar:publisher.jpcoar:publisherName.value",
+    "Alternative Title.その他のタイトル": "dcterms:alternative.value",
+    "Bibliographic Information.発行日.日付": "dcterms:medium.datePublished.value",
+    "Bibliographic Information.雑誌名.言語": "dcterms:medium.name.language",
+    "Contributor.寄与者メールアドレス": "jpcoar:contributor.email",
+    "Degree Grantor.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier",
+    "File.本文URL.オブジェクトタイプ": "hasPart.jpcoar:URI.objectType",
+    "Contributor.寄与者姓名.名前タイプ": "jpcoar:contributor.jpcoar:contributorName.nameType",
+    "Contributor.寄与者所属.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName",
+    "Degree Grantor.学位授与機関名.言語": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.language",
+    "Geo Location.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace",
+    "Relation.関連識別子.識別子タイプ": "jpcoar:relation.jpcoar:relatedIdentifier.identifierType",
+    "所蔵機関.所蔵機関名.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName.value",
+    "Creator.作成者所属.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "Creator.作成者識別子.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier.value",
+    "Source Identifier.収録物識別子タイプ": "jpcoar:sourceIdentifier.identifierType",
+    "データセットシリーズ.Dataset Series": "jpcoar:datasetSeries.value",
+    "Creator.作成者所属.所属機関名.言語": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.language",
+    "Funding Reference.プログラム情報.言語": "jpcoar:fundingReference.jpcoar:fundingStream.language",
+    "出版者情報.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace",
+    "出版者情報.出版者注記.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription.value",
+    "Bibliographic Information.雑誌名.タイトル": "dcterms:medium.name.value",
+    "Creator.作成者識別子.作成者識別子URI": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Funding Reference.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier",
+    "Contributor.寄与者所属.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "Contributor.寄与者識別子.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier.value",
+    "Funding Reference.助成機関名.助成機関名": "jpcoar:fundingReference.jpcoar:funderName.value",
+    "Funding Reference.研究課題名.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle.value",
+    "日付（リテラル）.日付（リテラル）": "dcterms:date.value",
+    "Contributor.寄与者所属.所属機関名.言語": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.language",
+    "Geo Location.位置情報（空間）.北部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:northBoundLatitude",
+    "Geo Location.位置情報（空間）.南部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:southBoundLatitude",
+    "Geo Location.位置情報（空間）.東部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:eastBoundLongitude",
+    "Geo Location.位置情報（空間）.西部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:westBoundLongitude",
+    "カタログ.Hosting Institution.Hosting Institution Name.Language": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.language",
+    "Bibliographic Information.発行日.日付タイプ": "dcterms:medium.datePublished.dateType",
+    "Creator.作成者識別子.作成者識別子Scheme": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Rights Holder.権利者識別子.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier.value",
+    "Contributor.寄与者識別子.寄与者識別子URI": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Rights Holder.権利者識別子.権利者識別子URI": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Contributor.寄与者識別子.寄与者識別子Scheme": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Creator.作成者所属.所属機関名.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.value",
+    "Funding Reference.研究課題番号.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.value",
+    "Rights Holder.権利者識別子.権利者識別子Scheme": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Degree Grantor.学位授与機関名.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.value",
+    "Funding Reference.助成機関識別子.助成機関識別子タイプ": "jpcoar:fundingReference.jpcoar:funderIdentifier.funderIdentifierType",
+    "Funding Reference.研究課題番号.研究課題番号URI": "jpcoar:fundingReference.jpcoar:awardNumber.awardURI",
+    "カタログ.Hosting Institution.Hosting Institution Name.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.value",
+    "Contributor.寄与者所属.所属機関名.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子URI": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierURI",
+    "Creator.作成者メールアドレス.メールアドレス": "jpcoar:creator.email.value",
+    "Funding Reference.プログラム情報.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream.value",
+    "Funding Reference.助成機関識別子.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier.value",
+    "Contributor.寄与者メールアドレス.メールアドレス": "jpcoar:contributor.email.value",
+    "Funding Reference.研究課題番号.研究課題番号タイプ": "jpcoar:fundingReference.jpcoar:awardNumber.awardNumberType",
+    "Creator.作成者所属.所属機関識別子.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子スキーマ": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierScheme",
+    "Creator.作成者所属.所属機関識別子.所属機関識別子URI": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Degree Grantor.学位授与機関識別子.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.value",
+    "Contributor.寄与者所属.所属機関識別子.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "Creator.作成者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Contributor.寄与者所属.所属機関識別子.所属機関識別子URI": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Geo Location.位置情報（自由記述）.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace.value",
+    "Degree Grantor.学位授与機関識別子.学位授与機関識別子Scheme": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Contributor.寄与者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "出版者情報.出版地（国名コード）.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace.value",
+    "Funding Reference.プログラム情報識別子.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.value",
+    "Funding Reference.プログラム情報識別子.プログラム情報識別子タイプ": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierType",
+    "Funding Reference.プログラム情報識別子.プログラム情報識別子タイプURI": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierTypeURI"
+}
+```
 
 #### 「xxxx」に対応するマッピングが必要です
 
@@ -2884,7 +3249,6 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 "タイトルa.言語": "dc:title.language",
 "タイトルa.タイトル": "dc:title.value",   
 ```
-
 
 ## アイテム管理
 
@@ -7440,6 +7804,8 @@ URLについて
 #### 定型レポートのタイプ一覧
 
 TSV形式でダウンロードすることができる定型レポートを次に示します。
+※サイトライセンス認可ユーザは設定 > サイトライセンス で設定したIPアドレスの範囲からアクセスしたユーザーのことを指します。
+
 
 表 7‑1定型レポート一覧
 
@@ -8163,6 +8529,8 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 148. ワークフローの名前を入力、フローを選択、そしてアイテムタイプを選択します。
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image259.png)
+
+※ 対象のワークフローが使用されていた場合、アイテムタイプの変更ができません。
 
 149. ［保存］をクリックします。
      
@@ -9672,7 +10040,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 3. デフォルト設定を除く、ロケーションの一覧が表示されます。
 
-![ロケーション一覧](pics/storage/storage000.png)
+![ロケーション一覧](media/storage/storage000.png)
 
 4. 「作成」タブをクリックします。
 
@@ -9686,13 +10054,13 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 |URI|s3://jctest/|
 |Type|S3 Path|
 
-![ロケーション作成画面](pics/storage/storage001.png)
+![ロケーション作成画面](media/storage/storage001.png)
 
 6. 保存ボタンをクリックします。
 
 7. すると、より詳細な設定が可能な画面が表示されます。
 
-![ロケーション設定画面（詳細）](pics/storage/storage002.png)
+![ロケーション設定画面（詳細）](media/storage/storage002.png)
 
 8. 機関ストレージのaccess_key, secret_key, endpoint_url, region_nameを設定します。
 
@@ -9713,7 +10081,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 4. 「ストレージロケーション」に機関ストレージを設定します。
 
-![ワークフロー設定画面](pics/storage/storage003.png)
+![ワークフロー設定画面](media/storage/storage003.png)
 
 5. 「保存」をクリックします。
 
@@ -11617,6 +11985,15 @@ $.item_30002_title0.attribute_value_mlt[*].subitem_title
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image409.png)
 
+
+【注意事項】
+・ここで設定するメールアドレスはAdministration > 統計 > サイトライセンスでメールの送信先として利用されるため、設定値には充分注意する必要があります。
+![](media/media/image486.png)
+
+
+![](media/media/image487.png)
+
+
 324. サイトライセンスを追加する場合、［+その他の入力行］をクリックします。
      
      複数のサイトライセンスを設定して表示順序を変更する場合、右側の上下の矢印をクリックして順序を調節します。
@@ -12634,24 +13011,25 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 ### WebAPIのアカウントを設定する
 
 Web APIのアカウントを設定する方法を説明します。
+Crossref API（メイルアドレス）およびOA Assist API（OAuth2 Client ID、シークレット）の設定が可能です。
 
 1.  ［設定］をクリックして［WebAPIアカウント］をクリックします。
     
     設定画面が表示されます。
 
-<!-- end list -->
-
-332. ［入力タイプ］で、項目を選択します。
+2. ［入力タイプ］で、項目を選択します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image415.png)
 
-333. 選択したときに表示される項目を入力します。
+3. 選択したときに表示される項目を入力します。
 
 ![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image416.png)
 
-334. ［保存］をクリックします。
-     
-     設定が保存されます。
+4. ［保存］をクリックします。
+
+    設定が保存されます。
+
+
      
 ### File Previewを設定する
 
@@ -13070,19 +13448,19 @@ ElasticSearch Indexを参照する方法を説明します。
 
 ### プロフィールを更新する
 
-ユーザプロフィールを更新する方法については、「データ登録ガイド」をご覧ください。
+ユーザプロフィールを更新する方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%97%E3%81%9F%E3%81%84)」をご覧ください。
 
 ### パスワードを変更する
 
-パスワードを変更する方法については、「データ登録ガイド」をご覧ください。
+パスワードを変更する方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B)」をご覧ください。
 
 ### アカウントにログインしたデバイスを確認する
 
-アカウントにログインしたデバイスを確認する方法については、「データ登録ガイド」をご覧ください。
+アカウントにログインしたデバイスを確認する方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%97%E3%81%9F%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%81%9F%E3%81%84)」をご覧ください。
 
 ### アプリケーションを管理する
 
-アプリケーションを管理する方法については、「データ登録ガイド」をご覧ください。
+アプリケーションを管理する方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E7%AE%A1%E7%90%86%E3%81%97%E3%81%9F%E3%81%84)」をご覧ください。
 
 ### グループを管理する
 

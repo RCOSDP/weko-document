@@ -1,275 +1,183 @@
-
 ### ページレイアウト
 
-  - > 目的・用途
+## 目的・用途
 
 システムにて、各ページに作成されたウィジェットをデザインする機能である
 
-  - > 利用方法
+## 利用方法
 
-【Administration \> ウェブデザイン管理（Web Design） \> ページレイアウト（Page Layout）画面】：ページを管理（追加・編集・削除）し、 各リポジトリでのページごとにウィジェット位置を設定する
+【Administration > ウェブデザイン管理（Web Design） > ページレイアウト（Page Layout）画面】：ページを管理（追加・編集・削除）し、 各リポジトリでのページごとにウィジェット位置を設定する
 
-  - > 利用可能なロール
+## 利用可能なロール
 
 |ロール|システム<br>管理者|リポジトリ<br>管理者|サブリポジトリ<br>管理者|登録ユーザー|一般ユーザー|ゲスト<br>(未ログイン)|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |利用可否|○|○|○| | | |
 
-  - > 機能内容
+## 機能内容
 
 1\. リポジトリ毎にページ定義ができる
 
-  - 【ページレイアウト（Page Layout）画面】に以下の表示項目を設ける
-    
-      - 「Repository」プルダウンリスト
-        
-          - 選択肢：
-            - システム管理者、リポジトリ管理者の場合、システムに登録しているリポジトリ一覧である
-            - サブリポジトリ管理者の場合、管理対象のリポジトリ一覧である
-    
-      - 「Page」プルダウンリスト
-        
-          - 選択肢：選択しているリポジトリに属するページ一覧である
-    
-      - 「Widget List」エリア
-        
-          - 選択しているリポジトリに属するウィジェットが表示されるエリアである
-    
-      - 「Preview」エリア
-        
-          - 選択しているページにウィジェットを設定するエリアである
+- 【ページレイアウト（Page Layout）画面】に以下の表示項目を設ける
+  - 「Repository」プルダウンリスト
+    - 選択肢：
+      - システム管理者、リポジトリ管理者の場合、システムに登録しているリポジトリ一覧である
+      - サブリポジトリ管理者の場合、管理対象のリポジトリ一覧である
+  - 「Page」プルダウンリスト
+    - 選択肢：選択しているリポジトリに属するページ一覧である
+  - 「Widget List」エリア
+    - 選択しているリポジトリに属するウィジェットが表示されるエリアである
+  - 「Preview」エリア
+    - 選択しているページにウィジェットを設定するエリアである
 
-  - Pages領域にて、ページの追加・編集・削除ボタンを設ける
-    
-      - 「Main Layout」はデフォルトページとし、削除不可とする
-        
-          - デフォルトページは、リポジトリごとに存在する
-        
-          - 初期状態ではデータベース上に存在しないが、後述のページ編集ダイアログで保存することでwidget\_design\_pageテーブルにレコードが追加される
-        
-          - デフォルトページのみ、widget\_design\_pageテーブルでis\_main\_layoutフィールドがtrueである
-    
-      - 「+」ボタンを押すと、ページ追加のダイアログを表示する
-        
-          - 設定内容：
-            
-              - 「URL」：ページのURL
-                
-                  - 必須入力とする
-                
-                  - 入力欄には、初期値として「/」が入っている  
-                    初期値を削除して、外部URLを設定することも可能  
-                    ⇒外部URLを設定したページを"Menu"ウィジェットにセットすることで、  
-                      外部ページへのリンクとして機能する  
-                
-                  - 選択リポジトリがコミュニティである場合、  
-                    入力URLの前に"/c/{community_id}/page"の形式でプレフィックスを自動的に付与する  
-                    これにより、リポジトリごとに同じ入力URLでのページ作成が行える  
-            
-              - 「Title」  
-                デフォルト値：「Page Title」
-            
-              - 言語プルダウンリスト
-                
-                  - 選択肢：【Administration \> 設定（Setting） \> 言語表示（Language）画面】に表示する言語を使用する
-                
-                  - 表示順序について、【言語表示（Language）画面】での「登録言語」の言語を一覧の上部に表示し、「対応言語」の言語一覧を次に表示する
-        
-          - ［Save］ボタンを押すと、入力内容をチェックする
-            
-              - チェックに問題がなければ、ページを追加して、メッセージを画面上部に表示する  
-                メッセージ：「Successfully saved page.」
-            
-              - チェックに問題がある場合、エラーメッセージをモーダルダイアログの上部に表示する
-                
-                  - 「Repository」プルダウンリストで、初期状態の「Please select the Repository」を選択した状態である場合  
-                    　エラーメッセージ：「Please select the repository.」
-                
-                  - 設定済みのURLを指定する場合  
-                    　エラーメッセージ：「Unable to save page: URL already exists.」
-                
-                  - 入力値に「/」が含まれない場合  
-                    　エラーメッセージ：「Not a valid URL.」
-        
-          - 「Close」ボタンを押すと、ページを追加せずにモーダルダイアログを閉じる
-    
-      - 鉛筆ボタンを押すと、ページ編集のダイアログを表示する
-        
-          - ページの情報を編集した後、［Save］ボタンを押すことで、ページの情報を更新できる
-        
-          - ［Close］ボタンを押すと、編集内容を反映せずにダイアログを閉じる
-    
-      - ゴミ箱ボタンを押すと、削除確認用のダイアログを表示する  
-        確認内容：「Are you sure you want to delete the page?」  
-        ※「Main Layout」ページは削除不可のため、ゴミ箱のアイコンを非表示とする
-        
-          - 「Submit」ボタンを押すと、該当ページを削除し、メッセージを表示する  
-            メッセージ：「Successfully deleted page.」
-        
-          - 「Close」ボタンを押すと、モーダルダイアログを閉じる
-    
-      - 歯車ボタンを押すと、【ウィジェット（Widget）画面】を別ウィンドウで表示する
-        
-          - 【ウィジェット（Widget）画面】の詳細は[ADMIN-4-1: ウィジェット](\\l)を参照
-        
-          - 編集中のウィジェットはロックされる
-            
-              - ［Save］［Cancel］ボタンではなく［×］ボタンによって別ウィンドウを閉じた場合はロックが解除されず、再度表示した場合には、他のユーザーにロックされた場合と同様にロック解除の確認ダイアログを表示する
-        
-          - 【ウィジェット（Widget）画面】を別ウィンドウで表示している状態で、新たに同画面の別ウィンドウを表示する場合は、表示中の別ウィンドウで新たな【ウィジェット（Widget）画面】に遷移する
-            
-              - 別ウィンドウでは、ブラウザの操作によって遷移前に戻ることはできない
-        
-          - 【ウィジェット（Widget）画面】中で［Save］または［Cancel］ボタンを押すと、別ウィンドウは閉じる
-        
-          - 【ウィジェット（Widget）画面】中で［Delete］ボタンを押した場合は、別ウィンドウは閉じない
-        
-          - 「Widget List」「Preview」どちらからでも【ウィジェット（Widget）画面】を表示できる
+- Pages領域にて、ページの追加・編集・削除ボタンを設ける
+  - 「Main Layout」はデフォルトページとし、削除不可とする
+    - デフォルトページは、リポジトリごとに存在する
+    - 初期状態ではデータベース上に存在しないが、後述のページ編集ダイアログで保存することでwidget_design_pageテーブルにレコードが追加される
+    - デフォルトページのみ、widget_design_pageテーブルでis_main_layoutフィールドがtrueである
+  - 「+」ボタンを押すと、ページ追加のダイアログを表示する
+    - 設定内容：
+      - 「URL」：ページのURL
+        - 必須入力とする
+        - 入力欄には、初期値として「/」が入っている  
+          初期値を削除して、外部URLを設定することも可能  
+          ⇒外部URLを設定したページを"Menu"ウィジェットにセットすることで、  
+            外部ページへのリンクとして機能する
+        - 選択リポジトリがコミュニティである場合、  
+          入力URLの前に"/c/{community_id}/page"の形式でプレフィックスを自動的に付与する  
+          これにより、リポジトリごとに同じ入力URLでのページ作成が行える
+      - 「Title」  
+        デフォルト値：「Page Title」
+      - 言語プルダウンリスト
+        - 選択肢：【Administration > 設定（Setting） > 言語表示（Language）画面】に表示する言語を使用する
+        - 表示順序について、【言語表示（Language）画面】での「登録言語」の言語を一覧の上部に表示し、「対応言語」の言語一覧を次に表示する
+    - ［Save］ボタンを押すと、入力内容をチェックする
+      - チェックに問題がなければ、ページを追加して、メッセージを画面上部に表示する  
+        メッセージ：「Successfully saved page.」
+      - チェックに問題がある場合、エラーメッセージをモーダルダイアログの上部に表示する
+        - 「Repository」プルダウンリストで、初期状態の「Please select the Repository」を選択した状態である場合  
+          　エラーメッセージ：「Please select the repository.」
+        - 設定済みのURLを指定する場合  
+          　エラーメッセージ：「Unable to save page: URL already exists.」
+        - 入力値に「/」が含まれない場合  
+          　エラーメッセージ：「Not a valid URL.」
+    - 「Close」ボタンを押すと、ページを追加せずにモーダルダイアログを閉じる
+  - 鉛筆ボタンを押すと、ページ編集のダイアログを表示する
+    - ページの情報を編集した後、［Save］ボタンを押すことで、ページの情報を更新できる
+    - ［Close］ボタンを押すと、編集内容を反映せずにダイアログを閉じる
+  - ゴミ箱ボタンを押すと、削除確認用のダイアログを表示する  
+    確認内容：「Are you sure you want to delete the page?」  
+    ※「Main Layout」ページは削除不可のため、ゴミ箱のアイコンを非表示とする
+    - 「Submit」ボタンを押すと、該当ページを削除し、メッセージを表示する  
+      メッセージ：「Successfully deleted page.」
+    - 「Close」ボタンを押すと、モーダルダイアログを閉じる
+  - 歯車ボタンを押すと、【ウィジェット（Widget）画面】を別ウィンドウで表示する
+    - 【ウィジェット（Widget）画面】の詳細は[ADMIN-4-1: ウィジェット](./ADMIN_4_1.md)を参照
+    - 編集中のウィジェットはロックされる
+      - ［Save］［Cancel］ボタンではなく［×］ボタンによって別ウィンドウを閉じた場合はロックが解除されず、再度表示した場合には、他のユーザーにロックされた場合と同様にロック解除の確認ダイアログを表示する
+    - 【ウィジェット（Widget）画面】を別ウィンドウで表示している状態で、新たに同画面の別ウィンドウを表示する場合は、表示中の別ウィンドウで新たな【ウィジェット（Widget）画面】に遷移する
+      - 別ウィンドウでは、ブラウザの操作によって遷移前に戻ることはできない
+    - 【ウィジェット（Widget）画面】中で［Save］または［Cancel］ボタンを押すと、別ウィンドウは閉じる
+    - 【ウィジェット（Widget）画面】中で［Delete］ボタンを押した場合は、別ウィンドウは閉じない
+    - 「Widget List」「Preview」どちらからでも【ウィジェット（Widget）画面】を表示できる
 
-  - ウィジェットデザインに以下の項目を表示する
-    
-      - 「Widget List」エリア：【Administration \> ウェブデザイン管理（Web Design） \> ウィジェット（Widget）画面】にて有効なウィジェットを表示する
-        
-          - 各ウィジェットに［Add Widget］ボタンを設ける。
-        
-          - > ボタンを押すと、該当ウィジェットが「Preview」エリアに追加される
-    
-      - 「Preview」エリア：ウィジェットの位置を整理する
-        
-          - ドラッグアンドドロップすることで、ウィジェットの位置を移動できる
-        
-          - ウィジェットの幅を変更できる
-        
-          - ウィジェットの高さを画面描画時は自動調整する
-        
-          - 各ウィジェットに［X］ボタンを設ける
-        
-          - > ボタンを押すと、「Preview」エリアからウィジェットを削除する
-    
-      - 注意事項
-        
-          - 「Main Contents」、「Header」、「Footer」はページ内に複数設定不可とする
-        
-          - 「Preview」エリアに追加された「Main Contents」、「Header」、「Footer」のウィジェットがある場合に、同じ種類のウィジェットの「Add Widget」ボタンを不活性化する
-        
-          - 「Main Contents」ウィジェットは、一つリポジトリに１つだけ設定できる
-    
-      - ［Save］ボタンを押すと、設定した内容をチェックする
-        
-          - 「Repository」プルダウンリストで、初期状態の「Please select the Repository」が選択されているときは、［Save］［Cancel］ボタンは非活性である
-        
-          - チェックに問題がなければ、設定内容を保存して、メッセージを画面上部に表示する  
-            メッセージ：「Widget design has been saved successfully.」
-        
-          - チェックに問題がある場合、エラーメッセージを表示する
-            
-              - ［Main Contents］のウィジェットを複数ページに設定する場合  
-                エラーメッセージ：「Failed to save design: Main contents may only be set to one layout.」
-            
-              - ページにウィジェットをひとつも配置していない場合  
-                エラーメッセージ：「Please add Widget to Preview panel.」
+- ウィジェットデザインに以下の項目を表示する
+  - 「Widget List」エリア：【Administration > ウェブデザイン管理（Web Design） > ウィジェット（Widget）画面】にて有効なウィジェットを表示する
+    - 各ウィジェットに［Add Widget］ボタンを設ける。
+    - ボタンを押すと、該当ウィジェットが「Preview」エリアに追加される
+  - 「Preview」エリア：ウィジェットの位置を整理する
+    - ドラッグアンドドロップすることで、ウィジェットの位置を移動できる
+    - ウィジェットの幅を変更できる
+    - ウィジェットの高さを画面描画時は自動調整する
+    - 各ウィジェットに［X］ボタンを設ける
+    - ボタンを押すと、「Preview」エリアからウィジェットを削除する
+  - 注意事項
+    - 「Main Contents」、「Header」、「Footer」はページ内に複数設定不可とする
+    - 「Preview」エリアに追加された「Main Contents」、「Header」、「Footer」のウィジェットがある場合に、同じ種類のウィジェットの「Add Widget」ボタンを不活性化する
+    - 「Main Contents」ウィジェットは、一つリポジトリに１つだけ設定できる
+  - ［Save］ボタンを押すと、設定した内容をチェックする
+    - 「Repository」プルダウンリストで、初期状態の「Please select the Repository」が選択されているときは、［Save］［Cancel］ボタンは非活性である
+    - チェックに問題がなければ、設定内容を保存して、メッセージを画面上部に表示する  
+      メッセージ：「Widget design has been saved successfully.」
+    - チェックに問題がある場合、エラーメッセージを表示する
+      - ［Main Contents］のウィジェットを複数ページに設定する場合  
+        エラーメッセージ：「Failed to save design: Main contents may only be set to one layout.」
+      - ページにウィジェットをひとつも配置していない場合  
+        エラーメッセージ：「Please add Widget to Preview panel.」
 
-<!-- end list -->
+## 関連モジュール
 
-  - > 関連モジュール
+- weko-gridlayout
+- 関連ライブラリ：Gridstack.js 0.2.7-dev（https://gridstackjs.com/）
 
-<!-- end list -->
+## 処理概要
 
-  - > weko-gridlayout
+画面表示時は、weko_gridlayout.admin.WidgetDesign.indexメソッドにより、以下のコンフィグで定められたテンプレートを用いる。
 
-  - > 関連ライブラリ：Gridstack.js 0.2.7-dev（https://gridstackjs.com/）
+- パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L20>
+- 設定キー：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L20>
 
-<!-- end list -->
+「Repository」プルダウンの選択を変更したとき、以下のメソッドが呼び出される。
 
-  - > 処理概要
+- weko_gridlayout.views.load_widget_list_design_settingメソッドの中で、widget_itemsから選択したリポジトリに属するウィジェット群を、widget_multi_lang_dataテーブルからそれらのウィジェットの多言語設定を、widget_design_settingテーブルから選択したリポジトリのデフォルトページに配置されたウィジェットの情報を取得する。
+- weko_gridlayout.views.load_widget_design_pagesメソッドで、widget_design_pageテーブルから選択したリポジトリに属するページ群を取得する。
 
-> 画面表示時は、weko\_gridlayout.admin.WidgetDesign.indexメソッドにより、以下のコンフィグで定められたテンプレートを用いる。
+「Pages」プルダウンの選択を変更したとき、変更先によって異なるメソッドが呼び出される。
 
-  - > パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L20>
+- デフォルトページに変更した場合は、weko_gridlayout.views.load_widget_design_settingメソッドの中で、widget_design_settingテーブルからデフォルトページに配置されたウィジェットの情報を取得する。
+- デフォルトページ以外に変更した場合は、weko_gridlayout.views.load_widget_design_page_settingメソッドの中で、widget_design_pageテーブルからページに配置されたウィジェットの情報を取得する。
 
-  - > 設定キー：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L20>
+鉛筆アイコンを押してページ編集のダイアログを出すとき、weko_gridlayout.views.load_widget_design_pageメソッドが呼び出される。
 
-> 「Repository」プルダウンの選択を変更したとき、以下のメソッドが呼び出される。
+- その中で呼ばれるweko_gridlayout.services.WidgetDesignPageServices.get_pageメソッドで、widget_design_pageテーブルから情報を取得する。
+  - 画面に表示しているのがデフォルトページで、テーブルに情報がなかった場合、デフォルトページの内容を以下の内容で作成して返す。
+    - 「title」：「Main Layout」
+    - 「url」：「/community=リポジトリ名」
+    - 「is_main_layout」：true
 
-  - > weko\_gridlayout.views. load\_widget\_list\_design\_settingメソッドの中で、widget\_itemsから選択したリポジトリに属するウィジェット群を、widget\_multi\_lang\_dataテーブルからそれらのウィジェットの多言語設定を、widget\_design\_settingテーブルから選択したリポジトリのデフォルトページに配置されたウィジェットの情報を取得する。
+ページ追加のダイアログで［Save］ボタンを押すと、widget.design.jsのvalidateInputメソッドによって入力内容のチェックを行う。
 
-  - > weko\_gridlayout.views. load\_widget\_design\_pagesメソッドで、widget\_design\_pageテーブルから選択したリポジトリに属するページ群を取得する。
+- URLの入力値は、以下のようにチェックする。
 
-> 「Pages」プルダウンの選択を変更したとき、変更先によって異なるメソッドが呼び出される。
+```javascript
+if (!/\/[a-z0-9?&/=]*/.test(this.state.url)) {
+    this.setState({'errorMessage': 'Not a valid URL.'});
+    return false;
+}
+```
 
-  - > デフォルトページに変更した場合は、o weko\_gridlayout.views.load\_widget\_design\_settingメソッドの中で、widget\_design\_settingテーブルからデフォルトページに配置されたウィジェットの情報を取得する。
+- チェックを通過すると、weko_gridlayout.views.save_widget_design_pageメソッドが呼び出される。
+- weko_gridlayout.views.save_widget_design_pageメソッドの中で、widget_design_pageテーブルでレコード作成または更新を行う。
+  - widget_design_pageテーブルの操作はweko_gridlayout.models.WidgetDesignPage.create_or_updateメソッドで行う。
+    - 以下の内容で保存する。
+      - 「id」：作成時に自動採番
+      - 「title」：「Title」の入力値
+      - 「repository_id」選択中のリポジトリのid
+      - 「is_main_layout」：ページ作成時はfalseを設定、そうでなければもともとの値
+    - このメソッド中で、多言語設定をwidget_design_page_multi_lang_dataテーブルに保存する。
 
-  - > デフォルトページ以外に変更した場合は、weko\_gridlayout.views.load\_widget\_design\_page\_settingメソッドの中で、widget\_design\_pageテーブルからページに配置されたウィジェットの情報を取得する。
+ウィジェットデザインエリアは、Gridstack.js 0.2.7-devによって実装している。
 
-> 鉛筆アイコンを押してページ編集のダイアログを出すとき、weko\_gridlayout.views.load\_widget\_design\_pageメソッドが呼び出される。
+ページ本体で［Save］ボタンを押すと、widget.design.jsのsaveWidgetDesignSettingメソッドでエラーチェックを行う。
 
-  - > その中で呼ばれるweko\_gridlayout.services.WidgetDesignPageServices.get\_pageメソッドで、widget\_design\_pageテーブルから情報を取得する。
-    
-      - > 画面に表示しているのがデフォルトページで、テーブルに情報がなかった場合、デフォルトページの内容を以下の内容で作成して返す。
-        
-          - > 「title」：「Main Layout」
-        
-          - > 「url」：「/community=リポジトリ名」
-        
-          - > 「is\_main\_layout」：true
+- 以下のパスの部分でウィジェット配置情報を取得して、空だった場合はエラーメッセージ「Please add Widget to Preview panel.」を表示する。
+  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/static/js/weko_gridlayout/widget.design.js#L1027-L1054>
+- エラーがなければ、weko_gridlayout.views.save_widget_layout_settingメソッドがajaxで呼び出される。
+  - このメソッド中でweko_gridlayout.services.WidgetDesignServices.update_widget_design_settingメソッドを呼び出し、その中で以下のテーブルのレコードを作成または更新する。
+    - widget_design_page（デフォルトページ以外。更新のみ）
+      - 「settings」：「Preview」エリアのウィジェット配置情報
+    - widget_design_setting（デフォルトページ）
+      - 「repository_id」：選択中のリポジトリのid
+      - 「settings」：「Preview」エリアのウィジェット配置情報
 
-> ページ追加のダイアログで［Save］ボタンを押すと、widget.design.jsのvalidateInputメソッドによって入力内容のチェックを行う。
+## 実装補足（v2.0.2 実装との突き合わせ）
 
-  - > URLの入力値は、以下のようにチェックする。
+- 画面/ハンドラ：`weko_gridlayout.admin.WidgetDesign.index`（endpoint `widgetdesign`）。ページ保存は `views.save_widget_design_page` → `WidgetDesignPageServices.add_or_update_page` → `WidgetDesignPage.create_or_update`。
+- レイアウト保存：`views.save_widget_layout_setting` → **`WidgetDesignServices.update_widget_design_setting`**。モデル：`WidgetDesignSetting` / `WidgetDesignPage` / `WidgetDesignPageMultiLangData`（後者は物理削除 `delete_by_page_id`）。
 
-> if (\!/\\/\[a-z0-9?&/=\]\*/.test(this.state.url)) {
-> 
-> this.setState({'errorMessage': 'Not a valid URL.'});
-> 
-> return false;
-> 
-> }
-
-  - > チェックを通過すると、weko\_gridlayout.views.save\_widget\_design\_pageメソッドが呼び出される。
-
-  - > weko\_gridlayout.views.save\_widget\_design\_pageメソッドの中で、widget\_design\_pageテーブルでレコード作成または更新を行う。
-    
-      - > widget\_design\_pageテーブルの操作はweko\_gridlayout.models.WidgetDesignPage.create\_or\_updateメソッドで行う。
-        
-          - > 以下の内容で保存する。
-            
-              - > 「id」：作成時に自動採番
-            
-              - > 「title」：「Title」の入力値
-            
-              - > 「repository\_id」選択中のリポジトリのid
-            
-              - > 「is\_main\_layout」：ページ作成時はfalseを設定、そうでなければもともとの値
-        
-          - > このメソッド中で、多言語設定をwidget\_design\_page\_multi\_lang\_dataテーブルに保存する。
-
-> ウィジェットデザインエリアは、Gridstack.js 0.2.7-devによって実装している。
-> 
-> ページ本体で［Save］ボタンを押すと、widget.design.jsのsaveWidgetDesignSettingメソッドでエラーチェックを行う。
-
-  - > 以下のパスの部分でウィジェット配置情報を取得して、空だった場合はエラーメッセージ「Please add Widget to Preview panel.」を表示する。
-    
-      - > パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/static/js/weko_gridlayout/widget.design.js#L1027-L1054>
-
-  - > エラーがなければ、weko\_gridlayout.views. save\_widget\_layout\_settingメソッドがajaxで呼び出される。
-    
-      - > このメソッド中でweko\_gridlayout.services.WidgetDesignPageServices. update\_widget\_design\_settingメソッドを呼び出し、その中で以下のテーブルのレコードを作成または更新する。
-        
-          - > widget\_design\_page（デフォルトページ以外。更新のみ）
-            
-              - > 「settings」：「Preview」エリアのウィジェット配置情報
-        
-          - > widget\_design\_setting（デフォルトページ）
-            
-              - > 「repository\_id」：選択中のリポジトリのid
-            
-              - > 「settings」：「Preview」エリアのウィジェット配置情報
-
-<!-- end list -->
-
-  - > 更新履歴
+## 更新履歴
 
 |日付|GitHubコミットID|更新内容|
 |:---:|:---:|:---:|
-|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
-|> 2025/01/23|-|サブリポジトリ対応|
+|2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|2025/01/23|-|サブリポジトリ対応|

@@ -1,147 +1,103 @@
-
 ### Google Dataset メタデータ出力
 
-  - > 目的・用途
+#### 目的・用途
 
 本機能は、Google Dataset Search向けのメタデータを出力する機能である。
 
-  - > 利用方法
+#### 利用方法
 
-  - > アイテムリストから特定のアイテムを選択することで、アイテム詳細画面を構成する要素、構造化データのheaderのタグの一つとして、Google Dataset meta tagが付与されたアイテムメタデータが表示される。利用可能なロール
+アイテムリストから特定のアイテムを選択することで、アイテム詳細画面を構成する要素、構造化データのheaderのタグの一つとして、Google Dataset meta tagが付与されたアイテムメタデータが表示される。
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-</tr>
-</tbody>
-</table>
+#### 利用可能なロール
 
-  - > 機能内容
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-<!-- end list -->
+#### 機能内容
 
   - Google Dataset meta tagを利用することで、データ検索に特化したGoogle Dataset Searchにメタデータ を登録することが出来る。
-    
-      - > meta tagはSchema.orgを利用する。  
-        > <https://schema.org/>
 
-  - \- 当該アイテムがOAIPMH出力されること
-    
-      - > Google Dataset の実装にはGoogle Dataset meta tagが必要である。meta tag はOAI-PMHのXML出力と同じ機能を用いて出力される。
-        
-          - > そのため、OAI-PMH出力をしなければ、Google Scholar meta tagは出力されない。OAI-PMH出力時に、メタデータをXMLに出力すると、該当の情報もGoogle Scholarのmeta tagに出力される。  
-            > OAI-PMH出力時に、メタデータをXMLに出力すると、該当の情報もGoogle Scholarのmeta tagに出力される。
+      - meta tagはSchema.orgを利用する。  
+        <https://schema.org/>
 
-  - \- 当該アイテムのアイテムタイプがJPCOARスキーマにマッピングされていること
+  - 当該アイテムがOAIPMH出力されること
 
-  - \- dc:typeがdatasetであること
+      - Google Dataset の実装にはGoogle Dataset meta tagが必要である。meta tag はOAI-PMHのXML出力と同じ機能を用いて出力される。
 
-  - \- dc:titleが入力されていること
+          - そのため、OAI-PMH出力をしなければ、Google Scholar meta tagは出力されない。OAI-PMH出力時に、メタデータをXMLに出力すると、該当の情報もGoogle Scholarのmeta tagに出力される。
 
-  - \- datacite:descriptionが50字以上であること
+  - 当該アイテムのアイテムタイプがJPCOARスキーマにマッピングされていること
 
-<!-- end list -->
+  - dc:typeがdatasetであること
 
-  - > 関連モジュール
+  - dc:titleが入力されていること
 
-<!-- end list -->
+  - datacite:descriptionが50字以上であること
 
-  - > weko\_records\_ui
+#### 関連モジュール
 
-<!-- end list -->
+  - weko_records_ui
 
-  - > 処理概要
+#### 処理概要
 
-1\. 設定
+1. 設定
 
-> Google Dataaset出力をすることのできるリソースタイプ
+Google Dataaset出力をすることのできるリソースタイプ
 
-  - > パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L577>
+  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L577>
 
-  - > 設定キー：  
-    > 「WEKO\_RECORDS\_UI\_GOOGLE\_DATASET\_RESOURCE\_TYPE = \[“dataset”\]」
+  - 設定キー：  
+    「WEKO_RECORDS_UI_GOOGLE_DATASET_RESOURCE_TYPE = [“dataset”]」
 
-> Google Dataset descriptionの最小文字数
+Google Dataset descriptionの最小文字数
 
-  - > パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L580>
+  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L580>
 
-  - > 設定キー：  
-    > 「WEKO\_RECORDS\_UI\_GOOGLE\_DATASET\_DESCRIPTION\_MIN = 50」
+  - 設定キー：  
+    「WEKO_RECORDS_UI_GOOGLE_DATASET_DESCRIPTION_MIN = 50」
 
-> Google Dataset descriptionの最大文字数
+Google Dataset descriptionの最大文字数
 
-  - > パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L582>
+  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L582>
 
-  - > 設定キー：  
-    > 「WEKO\_RECORDS\_UI\_GOOGLE\_DATASET\_DESCRIPTION\_MAX = 5000」
+  - 設定キー：  
+    「WEKO_RECORDS_UI_GOOGLE_DATASET_DESCRIPTION_MAX = 5000」
 
-> 「WEKO\_RECORDS\_UI\_GOOGLE\_DATASET\_DISTRIBUTION\_BUNDLE」
+「WEKO_RECORDS_UI_GOOGLE_DATASET_DISTRIBUTION_BUNDLE」
 
-  - > パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L585-L592>
+  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L585-L592>
 
-> jpcoarマッピングとGoogle Dataset meta tagとの対応:  
-> 別紙「jpcoarスキーマ、schema.org対応表」参照。
+jpcoarマッピングとGoogle Dataset meta tagとの対応:  
+別紙「jpcoarスキーマ、schema.org対応表」参照。
 
-2\. 実装方法
+2. 実装方法
 
-> アイテムリストから特定のアイテムを選択し、アイテム詳細画面を表示する際に、get\_google\_dataset\_metaを使用して、画面を構成する要素として、Google Dataset meta tagをheaderのテンプレートに埋め込む。
+アイテムリストから特定のアイテムを選択し、アイテム詳細画面を表示する際に、get_google_detaset_metaを使用して、画面を構成する要素として、Google Dataset meta tagをheaderのテンプレートに埋め込む。
 
-  - > weko\_records\_ui.views.default\_view\_methodからweko\_records\_ui.utils.get\_google\_dataset\_metaを呼び出して使用する。
+  - weko_records_ui.views.default_view_methodからweko_records_ui.utils.get_google_detaset_metaを呼び出して使用する。
 
-  - > アイテムの識別子としてoaiが含まれているかを確認する。
-    
-      - > OAI-PMH出力で使用されるjpcoarマッピングと置き換える形でGoogle Dataset meta tagを付与するため、OAI-PMH出力が出来る状態でなければGoogle Dateset meta tagを出力することは出来ない。
-        
-          - > 【前提条件】  
-            > USER3-7「1. OAI-PMHスキーマを管理」及び「2. OAI-PMHスキーマをマッピング」が設定済み
+  - アイテムの識別子としてoaiが含まれているかを確認する。
 
-  - > リソースタイプがdatasetか確認する。
+      - OAI-PMH出力で使用されるjpcoarマッピングと置き換える形でGoogle Dataset meta tagを付与するため、OAI-PMH出力が出来る状態でなければGoogle Dateset meta tagを出力することは出来ない。
 
-  - > Google Datasetにおけるデータの説明部分であるdescriptionが50字以上か確認する。5000字よりも多い場合、5000字以降は切り捨てて登録する。
+          - 【前提条件】  
+            USER3-7「1. OAI-PMHスキーマを管理」及び「2. OAI-PMHスキーマをマッピング」が設定済み
 
-  - > メタデータに含まれるjpcoarタグの種類に対応するGoogle Dataset meta tagをres\_dataリストに追加する。
+  - リソースタイプがdatasetか確認する。
 
-> resリストをgoogle\_dataset\_metaで受け取り、templating.render\_templateを呼び出してアイテムメタデータを作成する。
+  - Google Datasetにおけるデータの説明部分であるdescriptionが50字以上か確認する。5000字よりも多い場合、5000字以降は切り捨てて登録する。
 
-  - > 更新履歴
+  - メタデータに含まれるjpcoarタグの種類に対応するGoogle Dataset meta tagをres_dataリストに追加する。
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+`get_google_detaset_meta` は Google Dataset メタデータを dict（`@context`／`@type`:Dataset 等）として返し、これを受け取って templating.render_template を呼び出してアイテムメタデータを作成する。
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 関数名は `weko_records_ui.utils.get_google_detaset_meta`（ソースの綴りが "detaset"）。出力は dict（`@context`/`@type`:Dataset ...）。config `WEKO_RECORDS_UI_GOOGLE_DATASET_RESOURCE_TYPE`/`_DESCRIPTION_MIN`(50)/`_MAX`(5000)。`WEKO_RECORDS_UI_GOOGLE_DATASET_DISP_FLG` は定義のみで未使用。出力可否は Scholar 用 resource_type config を参照する。
+
+#### 更新履歴
+
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
