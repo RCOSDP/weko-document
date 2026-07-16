@@ -1,10 +1,10 @@
-### アイテムタイプ管理（制限公開）
+# アイテムタイプ管理（制限公開）
 
-#### 目的・用途
+## 目的・用途
 
 制限公開機能で用いるアイテムタイプと、制限公開用コンテンツファイルのプロパティ構成について定義する。制限公開機能を利用するには、対応するアイテムタイプ（利用申請系・利用報告）と、アクセス制御用のオプション（アクセス／提供方法／利用規約）を持つファイル情報プロパティが必要である。
 
-#### 対応アイテムタイプ
+## 対応アイテムタイプ
 
 - 制限公開機能に対して対応しているアイテムタイプは以下の通りである（日立納品時）
   - 「利用申請」（アイテムタイプID: 31001）
@@ -23,7 +23,7 @@
 
 - これらアイテムタイプの初期データは、Pythonのアイテムタイプ定義ではなくSQL直挿入形式で管理されている（「関連ファイル」節参照）。
 
-#### 制限公開用のコンテンツファイル情報
+## 制限公開用のコンテンツファイル情報
 
 制限公開機能を利用するには、「制限公開用のコンテンツファイル」プロパティが必要である
 
@@ -56,7 +56,7 @@
 | | | ワークフロー | Select | Administration＞WorkFlow＞WorkFlow Listで管理しているワークフローのうち「制限公開フラグ」（`workflow.open_restricted`、関連ストーリー：[#24080](https://redmine.devops.rcos.nii.ac.jp/issues/24080)）が有効なものをリストに表示する |
 | 利用規約 | Select | - | - | "アクセス"で"制限公開"を選択したときに登録する。管理画面で登録した利用規約をリストで表示する。選択肢に「自由入力」を設ける（内部値 `term_free`） |
 
-#### アクセス選択肢の内部値マッピング
+## アクセス選択肢の内部値マッピング
 
 | 表示名 | 内部値 |
 | --- | --- |
@@ -69,7 +69,7 @@
 - 「提供方法」プロパティは内部的に `provide[]{role, workflow}` の配列構造で保持される。
 - 「利用規約」で「自由入力」を選択した場合の内部値は `term_free`（`modules/weko-records-ui/weko_records_ui/utils.py`）。
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko-workflow（制限公開フラグ `open_restricted`・ワークフロー／アイテムタイプID分類）
 - weko-records / weko-records-ui（ファイルアクセス制御・利用規約 `term_free`）
@@ -77,7 +77,7 @@
 - weko-items-ui（アイテム登録画面のアップロード・ファイル名／フォーマット／サイズ自動設定）
 - weko-deposit（フォーマット・サイズ等のDB格納）
 
-#### 処理概要
+## 処理概要
 
 1. アイテム登録画面で制限公開用ファイルをアップロードすると、`weko-items-ui` のJS（`static/js/weko_items_ui/app.js`）が以下を自動設定する
    - ファイル名（`fileInfo['filename'] = fileData.key`。表示名の選択肢連動）
@@ -86,14 +86,14 @@
 3. 保存時、フォーマット・サイズ・ファイル名等が記録メタデータとしてDBに格納される（`weko-deposit/weko_deposit/api.py`）
 4. 「アクセス」で「制限公開（open_restricted）」を選択した場合に「提供方法」「利用規約」が有効となり、詳細画面でのアクセス制御・利用申請の入口となる（詳細は [RESTRICTED-ACCESS-2: アイテム詳細(制限公開)](./RESTRICTED_ACCESS_02.md) 参照）
 
-#### 関連ファイル（初期データ／定義）
+## 関連ファイル（初期データ／定義）
 
 - `scripts/demo/resticted_access.sql`：31001／31002／31003 のアイテムタイプ定義（item_type_name、schema／form／render JSON）
 - `scripts/demo/item_type_usage_apply.sql`：派生アイテムタイプ（31004〜31008）
 - `scripts/demo/restricted_access_upgrade.sql` / `scripts/demo/disable_restricted_access.sql`：更新・無効化用
 - `scripts/demo/properties/files.py`：標準ファイル情報プロパティ（制限公開版の基礎）
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

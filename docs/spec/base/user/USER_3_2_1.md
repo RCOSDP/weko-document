@@ -1,20 +1,20 @@
-### ファイル管理機能
+# ファイル管理機能
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、アイテムのファイル詳細画面からファイルのコピーや置き換えを行う機能である。
 
-#### 利用方法
+## 利用方法
 
 該当アイテムの編集権限を持つ場合、ファイル詳細画面のファイル名リンク欄に表示されるボタンから実行する。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 |ロール|システム管理者|リポジトリ管理者|サブリポジトリ管理者|登録ユーザー|一般ユーザー|ゲスト(未ログイン)|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |利用可否|○|○|○|○|○||
 
-#### 機能内容
+## 機能内容
 
   - 該当アイテムの編集権限を持つアカウントでファイル詳細画面を表示した際、  
     ファイル名リンク欄に「ファイルを置き換え」「公開バケットにファイルをコピー」ボタンが表示される。
@@ -62,7 +62,7 @@
 
   - 対応しているモジュール：「weko_records_ui」
 
-#### 処理概要
+## 処理概要
 
 処理の実態部分は以下で実装している。  
 weko/modules/weko-records-ui/weko_records_ui/api.py
@@ -94,7 +94,7 @@ weko/modules/weko-records-ui/weko_records_ui/api.py
 
 - 実装：`weko_records_ui.api.get_file_place_info` / `replace_file_bucket` / `copy_bucket_to_s3`。HTTPルート（`weko_records_ui.views`）：`/get_file_place`（`get_file_place`）/ `/replace_file`（`replace_file`）/ `/get_bucket_list`（`get_bucket_list`）/ `/copy_bucket`（`copy_bucket`）。クライアントJS `bucket.js`。
 
-#### 更新履歴
+## 更新履歴
 
 |日付|GitHubコミットID|更新内容|
 |:---:|:---:|:---:|

@@ -1,4 +1,4 @@
-### アイテム詳細(制限公開)
+# アイテム詳細(制限公開)
 
 - コンテンツのアクセスを「制限公開」とした場合のアイテム詳細画面、ファイル詳細画面の処理
   - アクセスしているユーザーが管理者権限があるかどうかは、「__check_user_permission」のメソッド（`weko-records-ui/weko_records_ui/permissions.py` の `check_file_download_permission` 内）でチェックする。管理者権限ありとして扱われるロールは、`WEKO_PERMISSION_SUPER_ROLE_USER`（`['System Administrator', 'Repository Administrator']`）と `WEKO_PERMISSION_ROLE_COMMUNITY`（`['Community Administrator']`）の合算である（システム管理者・リポジトリ管理者・コミュニティ管理者）。加えてアイテム登録者本人（`created_by` / `owner` / `weko_shared_ids`）も権限ありとして扱われる。
@@ -70,14 +70,14 @@
   - 利用申請が承認された制限公開コンテンツファイルを最初にダウンロードした際(=各ワンタイムURLの初回利用時)に、利用申請を行ったユーザーに向けて「利用報告の登録のお願い」メールを送信する。メールには利用報告ワークフローアクティビティの登録URLリンクが掲載されており、URLリンクから遷移する登録画面から利用報告を登録できる。
     - ゲストユーザーの利用報告WFに対して、リンクの有効期限は【Administration > Setting > Restricted Access画面】での「利用報告ワークフローへのアクセス」(Usage Report Workflow Access)エリアで設定できる
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko-records-ui（アクセス判定 `permissions.py`、ファイルダウンロード処理 `fd.py`、モデル `models.py`、共通処理 `utils.py`、ルート定義 `config.py`）
 - weko-workflow（利用申請ワークフロー・ゲストアクティビティ `GuestActivity`、利用報告ワークフロー自動生成、`DISPLAY_FLAG` 連動）
 - weko-admin（Restricted Access 設定、警告文言／`DISPLAY_FLAG` の既定値、AdminSettings `restricted_access`）
 - 補助：invenio-files-rest（`ObjectVersion`）、weko-deposit（`WekoRecord`）、invenio-mail
 
-#### 処理概要
+## 処理概要
 
 - 表示／ダウンロード権限判定
   - `page_permission_factory` → `file_permission_factory` → `check_file_download_permission` →（内部）`__check_user_permission` / `check_open_restricted_permission` → `check_permission_period`
@@ -94,7 +94,7 @@
   - 上記の他、公開設定変更・ファイル／アイテム削除・`DISPLAY_FLAG` が False の場合も不許可
   - ※旧実装 `validate_onetime_download_token` が併存するが、現行のワンタイムDL経路は `validate_url_download` 側
 
-#### モデル / テーブルスキーマ
+## モデル / テーブルスキーマ
 
 - `FileOnetimeDownload`（テーブル `file_onetime_download`、`weko-records-ui/weko_records_ui/models.py`）
   - `id` / `approver_id`（FK accounts_user＝承認者） / `record_id` / `file_name`（ファイル） / `expiration_date` / `download_limit` / `download_count` / `user_mail`（利用申請者メールアドレス） / `is_guest` / `is_deleted`（論理削除） / `extra_info`（JSON。`send_usage_report` 等） / `created` / `updated`
@@ -103,7 +103,7 @@
   - ※本テーブルはシークレットURLと共用のため、仕様本文に未記載の `url_type` / `secret_url_id` / `ip_address` 列を持つ
   - ダウンロード回数加算・論理削除・有効URL取得の共通処理は `DownloadMixin` に集約
 
-#### 主要設定値（config / AdminSettings）
+## 主要設定値（config / AdminSettings）
 
 | キー | 既定値 | 用途 |
 | --- | --- | --- |
@@ -114,14 +114,14 @@
 | `WEKO_PERMISSION_REQUIRED_TEMPLATE` | `'weko_workflow/permission_required.html'` | Permission required 画面 |
 | AdminSettings `restricted_access.usage_report_workflow_access.expiration_date_access` | 500 | ゲスト利用報告ワークフローリンクの有効期限（日） |
 
-#### 主要ルート（RECORDS_UI_ENDPOINTS）
+## 主要ルート（RECORDS_UI_ENDPOINTS）
 
 - `recid_files` `/record/<pid_value>/files/<path:filename>`（通常DL・権限判定）
 - `recid_file_details` `/records/<pid_value>/file_details/<path:filename>`
 - `recid_guest_onetime_validation`（GET）/ `recid_guest_file_download`（POST）`/record/<pid_value>/file/onetime/<filename>`
 - `recid_copy_onetime_url` / `delete_onetime_url` `/records/<pid_value>/onetime/<filename>/<onetime_url_id>`
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

@@ -1,4 +1,4 @@
-## セッション管理
+# セッション管理
 
 - invenioモジュールを利用しており、サーバ側のセッション管理、セッションアクティビティの追跡が可能。詳細なドキュメントは[invenio-accounts](https://github.com/inveniosoftware/invenio-accounts#invenio-accounts) で入手可能。
 - 一括登録画面のセッション維持期間のみカスタマイズ可能。設定WEKO_ADMIN_IMPORT_PAGE_LIFETIMEに秒数を設定する（デフォルトは12時間）。

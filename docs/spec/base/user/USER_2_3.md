@@ -1,10 +1,10 @@
-### 雑誌情報
+# 雑誌情報
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、インデックスの雑誌情報を管理（追加・編集・削除）、エクスポート時の出力を設定する機能である
 
-#### 利用方法
+## 利用方法
 
 1.【Administration > インデックスツリー管理(Index Tree) > ツリー編集(Edit Tree)】で編集するインデックスツリーを選ぶ。
 
@@ -16,13 +16,13 @@
 
 5. インデックス検索を行う。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 |ロール|システム管理者|リポジトリ管理者|サブリポジトリ管理者|登録ユーザー|一般ユーザー|ゲスト(未ログイン)|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |利用可否|○|○|○|○|○|○|
 
-#### 機能内容
+## 機能内容
 
 1 インデックスの雑誌情報を追加する
 
@@ -140,12 +140,12 @@
 | 4 | ERROR | 100 | データ取得エラー(DBエラー) |
 | 5 | ERROR | 101 | 設定ファイル不正エラー |
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko_search_ui
 - weko-indextree-journal
 
-#### 処理概要
+## 処理概要
 
 雑誌情報の表示
 
@@ -204,7 +204,7 @@ docker-compose exec -u root web celery -A invenio_app.celery call weko_indextree
 - 表示は `weko_search_ui.views.search` が `weko_search_ui.utils.get_journal_info`（`is_output` が False なら None を返し非表示）を呼ぶ。KBART出力は Celery `weko_indextree_journal.tasks.export_journal_task`（出力先 `weko/kbart`、beat は instance.cfg）。table `journal`（`Journal`）。
 - KBARTファイル名のプレフィックスは `OAISERVER_REPOSITORY_NAME` 由来。`is_output` は KBART 出力をフィルタせず画面表示のみに作用する（出力は全 Journal）。
 
-#### 更新履歴
+## 更新履歴
 
 |日付|GitHubコミットID|更新内容|
 |:---:|:---:|:---:|

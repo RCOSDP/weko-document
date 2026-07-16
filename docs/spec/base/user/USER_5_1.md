@@ -1,22 +1,22 @@
-### コミュニティ
+# コミュニティ
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、コミュニティの一覧表示と個別のコミュニティの表示を行う機能である
 
-#### 利用方法
+## 利用方法
 
 管理画面でコミュニティを表示する設定にした状態で、トップページの「コミュニティ(Communities)」タブを選択する
 
 ※管理画面での設定は、[ADMIN-14-11: 検索設定](#検索設定)を参照
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | サブリポジトリ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-#### 機能内容
+## 機能内容
 
 - トップページから「コミュニティ(Communities)」タブを押すと、【コミュニティ(Communities)画面】に移動する
 
@@ -66,12 +66,12 @@
   - コミュニティページからアイテム検索を行う場合、  
     検索対象はコミュニティ配下のアイテム(コミュニティに紐づくインデックス配下のアイテム)のみとなる。
 
-#### 関連モジュール
+## 関連モジュール
 
 - invenio_communities：画面表示を管理するモジュール
 - weko_theme：ページレイアウトを管理するモジュール
 
-#### 処理概要
+## 処理概要
 
 「コミュニティ(Communities)」タブを押すと、invenio_communities.views.ui.community_list関数が呼び出される
 
@@ -105,7 +105,7 @@
 - 画面/ハンドラ：`invenio_communities.views.ui.community_list`（route `/c/list/`）、詳細 `view`（`/c/<community_id>/`。`?view=weko` は未使用で `THEME_FRONTPAGE_TEMPLATE` を表示）。並び順 `COMMUNITIES_SORTING_OPTIONS`（title/ranking、既定 ranking）、`Community.filter_communities`。model `Community`（table `communities_community`）。サムネイル上限 `COMMUNITIES_LIST_THUMBNAIL_WIDTH/HEIGHT`（256）。
 - カタログの2項目めは寄与者（catalog_contributors）。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

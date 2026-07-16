@@ -1,4 +1,4 @@
-### Resync
+# Resync
 
 ## 目的・用途
 

@@ -1,4 +1,4 @@
-### OpenSearch
+# OpenSearch
 
 - 目的・用途
 

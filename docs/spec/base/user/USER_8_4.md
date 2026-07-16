@@ -1,20 +1,20 @@
-### ユーザープロファイル設定
+# ユーザープロファイル設定
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、ユーザーとして、ユーザープロファイルを閲覧・編集できる機能である。
 
-#### 利用方法
+## 利用方法
 
 画面ヘッダで、ログインユーザのメールアドレスが表示されている部分またはその右側の［▼］ボタンをクリックすると、【プロフィール（Profile）画面】に遷移する。画面上で操作を行う。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | --- | --- | --- | --- | --- | --- | --- |
 | 利用可否 | ○ | ○ | ○ | ○ | ○ |  |
 
-#### 機能内容
+## 機能内容
 
 1. ユーザープロファイルを閲覧・編集する
 
@@ -122,11 +122,11 @@
 
   - この画面では「ユーザー名」（Username）は入力必須だが、データベース上は必須ではない。空にする場合は、管理者機能で設定する。（[ADMIN-13-12: ユーザープロファイル](../admin/ADMIN_13_12.md)を参照）
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko-user-profiles
 
-#### 処理概要
+## 処理概要
 
 プロフィール入力フォームとその入力内容チェックは、以下で定義している。
 
@@ -201,7 +201,7 @@
 
 - 画面/ハンドラ：`weko_user_profiles.forms.ProfileForm` ＋ `weko_user_profiles.views.profile`（route `/account/settings/profile/`）。保存処理は `weko_user_profiles.utils.handle_profile_form` / `handle_verification_form`（views ではなく utils）。table `userprofiles_userprofile`（「Username」列は `displayname`）。表示項目・ラベルの既定は `WEKO_USERPROFILES_DEFAULT_FIELDS_SETTINGS`（DB `AdminSettings 'profiles_items_settings'` で上書き、`WEKO_USERPROFILES_CUSTOMIZE_ENABLED` 時のみ有効）。S3系4項目は `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED` 時のみ表示。username のフォーマット検証（`validators.validate_username`）は import のみで未強制。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

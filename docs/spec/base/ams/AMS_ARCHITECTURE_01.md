@@ -1,10 +1,10 @@
-## 未病データベースとWEKOの構成
+# 未病データベースとWEKOの構成
 
 未病データベースとWEKOの構成を記述する。
 
 > 注：本書で「フロント」と呼ぶ Nuxt アプリケーション（`weko-frontend` / `nginx/ams/weko-frontend/`）は WEKO バックエンドとは**別リポジトリ**で管理されており、本仕様書リポジトリおよび WEKO バックエンドリポジトリ（`/home/mhaya/weko`）には含まれない。以下のフロントのパス・ページ・サーバーサイドAPIの定義はそのフロントリポジトリ側にある。
 
-### 用語説明
+## 用語説明
 
 本書では以下の用語で統一する。
 
@@ -13,7 +13,7 @@
 | フロント | 未病データベースのフロントエンド                    |
 | WEKO     | 未病データベース用のWEKO3リポジトリ（バックエンド） |
 
-### フロントのパス一覧
+## フロントのパス一覧
 
 以下はNuxtアプリケーションで動作する画面のパスであり、 各ページの動作は `weko-frontend/pages` ディレクトリ内のファイルで定義されている。
 
@@ -50,12 +50,12 @@
 - リクエストメール／CAPTCHA の WEKO 直APIは `WEKO_RECORDS_UI_REST_ENDPOINTS`（weko-records-ui `config.py`）で定義される。関連config：`WEKO_RECORDS_UI_CAPTCHA_EXPIRATION_SECONDS`（既定900）、`WEKO_RECORDS_UI_CAPTCHA_TTL_SECONDS`（既定600）。
 
 
-### フロントとWEKOの共存
+## フロントとWEKOの共存
 
 フロントとWEKOを同一オリジンで動作させる。
 フロントとWEKOの画面の両方を表示、またはフロントの画面のみを表示可能とする。
 
-#### フロントとWEKOの両方の画面を表示
+### フロントとWEKOの両方の画面を表示
 
 nginxの設定により、リクエストされたパスに応じてアクセス先のアプリケーションを振り分ける。
 これにより、フロントとWEKOの両方の画面を表示できる。
@@ -74,7 +74,7 @@ nginxコンテナの`/etc/nginx/conf.d/weko.conf`に`weko/nginx/weko-ams.conf`�
 >
 > また `~ /api/v1/(captcha|records/[0-9]*/request-mail)` には **IPアドレス制限（`allow` 内部ネットワーク / `deny all`）** が設定されており、リクエストメール・CAPTCHA の WEKO 直APIは内部ネットワーク（＝フロントのサーバーサイド経由）からのみ許可される。
 
-#### フロントの画面のみを表示
+### フロントの画面のみを表示
 
 nginxの設定を変更することで、WEKOへのアクセスを制限する。
 フロントの動作に必要なものを除き、WEKOの画面やAPIへのアクセスを制限し、フロントの画面のみにアクセスできるようにする。
@@ -82,7 +82,7 @@ nginxコンテナの`/etc/nginx/conf.d/weko.conf`に`weko/nginx/weko-ams-restric
 
 > 実装補足（v2.0.2）：`weko-ams-restricted.conf` はバックエンドリポジトリ（`/home/mhaya/weko/nginx/`）には**未収録**である（`weko-ams.conf` のみ存在）。本モード（フロントの画面のみを表示）を利用する場合は当該 conf を別途用意する必要がある。
 
-### 更新履歴
+## 更新履歴
 
 | 日付         | GitHubコミットID | 更新内容   |
 |--------------|------------------|------------|

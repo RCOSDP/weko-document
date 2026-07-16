@@ -1,19 +1,21 @@
-#### 目的・用途
+# USER-1-1: 簡易検索（全文検索・キーワード検索）
+
+## 目的・用途
 
 本機能は、ユーザーがアイテムを検索する際に用いる機能である。  
 タイトルや著者名等の項目を指定せず、全ての項目を対象に検索を行うことで、目的のアイテムを見つけることができる。
 
-#### 利用方法
+## 利用方法
 
 「メインコンテンツ」ウィジェットの［トップ（Top）］タブにある検索テキストボックスに文字列を入力し、入力エリア右隣の［検索（Search）］ボタンを押下することで、検索結果が表示される。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | --- | --- | --- | --- | --- | --- | --- |
 | 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-#### 機能内容
+## 機能内容
 
 - 「メインコンテンツ」ウィジェットの「トップ」タブ画面の上部にアイテム検索エリアを設ける。
 - アイテム検索エリア
@@ -60,21 +62,21 @@
   - ページング機能を設ける。
     - ページングナビゲーションを操作することで、表示内容が切り替わる。
 
-#### 関連モジュール
+## 関連モジュール
 
-##### weko_search_ui：検索結果をUIに表示する
+### weko_search_ui：検索結果をUIに表示する
 
 config.WEKO_SEARCH_UI_JSTEMPLATE_LIST_RESULTS : アイテム一覧のテンプレート
 
-##### weko_records
+### weko_records
 
 utils.sort_meta_data_by_options:
 
-##### weko_items_ui
+### weko_items_ui
 
-##### weko_theme
+### weko_theme
 
-#### 処理概要
+## 処理概要
 
 「メインコンテンツ」ウィジェットの、［トップ（Top）］タブ上部にアイテム検索エリアを表示する。
 
@@ -104,7 +106,7 @@ utils.sort_meta_data_by_options:
 
 - 画面/ハンドラ：`weko_search_ui.views.search`（route `/search/index`）。検索ファクトリは `weko_search_ui.query.default_search_factory`（＝`es_search_factory`、`/api/records`）。公開範囲の絞り込みは `query.get_permission_filter`。結果の整形 `weko_records.utils.sort_meta_data_by_options`（v2.0.2 では **async**）。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

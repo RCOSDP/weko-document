@@ -1,4 +1,4 @@
-### CAPTCHA
+# CAPTCHA
 
 - 目的・用途
 

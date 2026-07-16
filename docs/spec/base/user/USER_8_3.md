@@ -1,20 +1,20 @@
-### パスワードリセット
+# パスワードリセット
 
-#### 目的・用途
+## 目的・用途
 
 当機能は、パスワードを忘れてログインできないユーザーが再設定できるようにする機能である。
 
-#### 利用方法
+## 利用方法
 
 ログイン画面で、「パスワードをお忘れの方はこちら」リンクを押す。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | --- | --- | --- | --- | --- | --- | --- |
 | 利用可否 | ○ | ○ | ○ | ○ | ○ |  |
 
-#### 機能内容
+## 機能内容
 
 - リセットパスワード画面を以下のように設ける
 
@@ -74,12 +74,12 @@
   - アクセスリンクが送信されたリンクと統一しない場合、リセットパスワード画面にエラーメッセージを表示する  
     エラーメッセージ：「Invalid reset password token.」
 
-#### 関連モジュール
+## 関連モジュール
 
 - Flask-Security（パスワードリセット画面・文言を提供）
 - invenio_accounts（メール送信タスクを提供）
 
-#### 処理概要
+## 処理概要
 
 パスワードリセットの画面・文言は依存ライブラリ Flask-Security（`flask_security.views.forgot_password`（route `/lost-password/`）/ `reset_password`（route `/reset/<token>`）、`SECURITY_MSG_*` 既定）に由来する。
 
@@ -89,7 +89,7 @@
 
 - 実装補足：パスワードリセットの画面・文言は **Flask-Security**（`flask_security.views.forgot_password`（`/lost-password/`）/ `reset_password`（`/reset/<token>`）、`SECURITY_MSG_*`）由来。メール送信は `invenio_accounts.tasks.send_security_email`（Celery、`ACCOUNTS_USE_CELERY` 依存）。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

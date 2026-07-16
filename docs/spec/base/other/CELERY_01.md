@@ -1,4 +1,4 @@
-## celery タスク
+# celery タスク
 
 - 定期実行するCeleryタスクはinstance.cfg(invenio.cfg)のCELERY_BEAT_SCHEDULE にて定義する。
 

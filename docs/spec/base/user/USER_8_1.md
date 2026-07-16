@@ -1,20 +1,20 @@
-### サインアップ
+# サインアップ
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、ゲストが登録してユーザーになるための機能である。
 
-#### 利用方法
+## 利用方法
 
 ユーザー画面のヘッダから「サインアップ」（Sign up）ボタンを押す。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 利用可否 |  |  |  |  |  | ○ |
 
-#### 機能内容
+## 機能内容
 
 - ユーザー画面から［サインアップ（Sign up）］ボタンを押すと、サインアップ画面に移動する
 
@@ -66,12 +66,12 @@
 
     - メールアドレスを入力して、［確認を送信する（Send Confirmation）］ボタンを押すと、確認用のメールを再送信する
 
-#### 関連モジュール
+## 関連モジュール
 
 - Flask-Security（サインアップ画面・エラー文言を提供）
 - invenio_accounts（フォーム拡張・ユーザーデータストアを提供）
 
-#### 処理概要
+## 処理概要
 
 サインアップ画面・エラー文言は依存ライブラリ Flask-Security（`flask_security.views.register`、route `/signup/`、`SECURITY_MSG_*` 既定）に由来する。パスワード最小6文字は Flask-Security のハードコードで、制御用のconfigは存在しない。
 
@@ -85,7 +85,7 @@
 
 - 実装補足：サインアップの画面・エラー文言は依存ライブラリ **Flask-Security**（`SECURITY_MSG_*` 既定、`flask_security.views.register`、route `/signup/`）に由来する。invenio-accounts はフォーム拡張とユーザーデータストアを提供。確認メールは `invenio_accounts.tasks.send_security_email`（`ACCOUNTS_USE_CELERY=True` 時のみ Celery 経由）。パスワード最小6文字は Flask-Security のハードコード（制御 config なし）。table `accounts_user`。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

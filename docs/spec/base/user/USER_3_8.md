@@ -1,20 +1,20 @@
-### Google Scholar メタデータ出力
+# Google Scholar メタデータ出力
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、アイテム詳細画面から特定のアイテム情報をGoogle Scholar向けにGoogle Scholar meta tagを付与した状態でアイテムメタデータを出力する機能である
 
-#### 利用方法
+## 利用方法
 
 アイテムリストから特定のアイテムを選択することで、アイテム詳細画面を構成する要素、構造化データのheaderのタグの一つとして、Google Scholar meta tagが付与されたアイテムメタデータが表示される。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | --- | --- | --- | --- | --- | --- | --- |
 | 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-#### 機能内容
+## 機能内容
 
   - Google Scholar meta tagを利用することで、論文検索に特化したGoogle Scholarにメタデータを登録することが出来る。
 
@@ -22,11 +22,11 @@
 
   - そのため、OAI-PMH出力をしなければ、Google Scholar meta tagは出力されない。OAI-PMH出力時に、メタデータをXMLに出力すると、該当の情報もGoogle Scholarのmeta tagに出力される。
 
-#### 関連モジュール
+## 関連モジュール
 
   - weko_records_ui
 
-#### 処理概要
+## 処理概要
 
 1. 設定
 
@@ -78,7 +78,7 @@ resリストをgoogle_scholar_metaで受け取り、templating.render_template�
 
 - `weko_records_ui.utils.get_google_scholar_meta`（`default_view_method` から `record_tree` 付きで呼ぶ）。config `WEKO_RECORDS_UI_GOOGLE_SCHOLAR_OUTPUT_RESOURCE_TYPE`。`target_map` のほか citation_doi / citation_issn / citation_pdf_url / citation_dissertation_institution（`InstitutionName`）等も出力する。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

@@ -1,22 +1,22 @@
-### 一覧形式表示
+# 一覧形式表示
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、検索結果を「一覧形式表示」の形式で表示する機能である。
 
-#### 利用方法
+## 利用方法
 
 1.【Administration > インデックスツリー管理(Index Tree) > ツリー編集(Edit Tree) 】の編集するインデックスツリーを選択する。
 
 2.「表示形式(検索結果)」の選択肢から「一覧形式」を設定する。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 |ロール|システム管理者|リポジトリ管理者|サブリポジトリ管理者|登録ユーザー|一般ユーザー|ゲスト(未ログイン)|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |利用可否|○|○|○|○|○|○|
 
-#### 機能内容
+## 機能内容
 
 1検索結果を表示する
 
@@ -137,14 +137,14 @@
 |検索結果|日本語|表示順に従ってタイトルが1回表示されること|タイトルは表示されないこと|表示順に従ってタイトルが1回表示されること|
 | |English|表示順に従ってタイトルが1回表示されること|タイトルは表示されないこと|表示順に従ってタイトルが1回表示されること|
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko_search_ui
 - weko_items_ui
 - weko_records_ui
   - invenio_records_rest
 
-#### 処理概要
+## 処理概要
 
 ［アイテムリスト］エリアの表示
 
@@ -168,7 +168,7 @@ weko-search-ui.weko_search_ui.templates.weko_search_ui.body_contentsを参照す
 
 - 表示形式はインデックス単位（`weko_index_tree.models.Index.display_format`。値は '1'＝一覧 / '2'＝目次 の2値）。表示順・表示数の既定は `weko_admin.models.SearchManagement`（無ければ `WEKO_ADMIN_MANAGEMENT_OPTIONS`）を `weko_search_ui.api.SearchSetting.get_results_setting` で取得。結果整形 `weko_records.utils.sort_meta_data_by_options`（改行制御は render の `crtf`）。テンプレートは `itemlist.html`（一覧）/`itemtablecontents.html`（目次）。関連モジュール（追記）：weko-records / weko-admin / weko-theme。
 
-#### 更新履歴
+## 更新履歴
 
 |日付|GitHubコミットID|更新内容|
 |:---:|:---:|:---:|

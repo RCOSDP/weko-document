@@ -1,15 +1,15 @@
-### Item Registration：リクエストメール機能
+# Item Registration：リクエストメール機能
 
-#### 目的・用途
+## 目的・用途
 
 リクエストメールの送信有無をアイテム単位で設定する。
 
-#### 利用方法
+## 利用方法
 
 【Administration > 設定（Settings） > 制限公開（Restricted Access）画面】で、リクエストメールを送信する設定になっていること。  
 リクエストメールの送信が有効の場合、Item Registration画面に「リクエストボタンを表示」チェックボックスが表示される。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール   | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | -------- | :------------: | :--------------: | :----------------: | :----------: | :----------: | :-----------------: |
@@ -17,7 +17,7 @@
 
 ※一般ユーザーは、ロールとして利用可能に設定することはできないが、個別のユーザーをAction Userとして設定することはできる。
 
-#### 機能内容
+## 機能内容
 
 - Item Registration画面にて、「リクエストボタンを表示」チェックボックスにチェックを付けることで、リクエスト送信先を設定する。
 
@@ -66,11 +66,11 @@
 
   - このとき、リクエストフォームの表示設定が無効化されている(display_request_form=false)の場合、登録されたアイテムにリクエスト送信先を設定しない。
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko_items_ui
 
-#### 処理概要
+## 処理概要
 
 実装モジュール：weko-admin  
 設定情報を保存する
@@ -89,7 +89,7 @@
 - リクエストメール機能は weko-items-ui（`request_maillist.js`、`edit.html`）。表示可否は AdminSettings `restricted_access.display_request_form`（既定 False）。送信先テーブルは `request_mail_list`（**weko-records** の `RequestMailList`、承認時に `update_by_list_item_id`）。文言「Duplicate Email Addresses.」「Invalid email format.」は実在。
 - 実装補足：「Request Email Addresses do not exist.」は v2.0.2 の modules 全体を検索しても存在しない（確認済み）。一方「Duplicate Email Addresses.」「Invalid email format.」は実在する。未入力時の実際の表示文言は特定が必要。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付       | GitHubコミットID | 更新内容 |
 | ---------- | ---------------- | -------- |

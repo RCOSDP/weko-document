@@ -1,20 +1,20 @@
-### メタデータ表示
+# メタデータ表示
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、登録されたアイテムの詳細情報を閲覧できる機能である。
 
-#### 利用方法
+## 利用方法
 
 アイテムのメタデータは、アイテムリストにおいて表示されているアイテムを押下することで表示される。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | --- | --- | --- | --- | --- | --- | --- |
 | 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-#### 機能内容
+## 機能内容
 
 1. アイテムの詳細情報を表示する。
 
@@ -169,14 +169,14 @@
 
       - そのため、OAI-PMH出力をしなければ、Google Scholar meta tagは出力されない。OAI-PMH出力時に、メタデータをXMLに出力すると、該当の情報もGoogle Scholarのmeta tagに出力される。
 
-#### 関連モジュール
+## 関連モジュール
 
   - weko_records_ui
   - weko_deposit
   - invenio_records_ui（ルーティング）
   - weko_itemtypes_ui
 
-#### 処理概要
+## 処理概要
 
 1. 設定
 
@@ -335,7 +335,7 @@
 - 画面/ハンドラ：`weko_records_ui.views.default_view_method`。config `WEKO_DEPOSIT_SYS_CREATOR_KEY`（v2.0.2 で `creator_type`/`creator_name_type` 追加）、`WEKO_RECORDS_UI_DEFAULT_MAX_WIDTH_THUMBNAIL`（100）。編集ロックは Redis `pid_{}_will_be_edit`（`weko_items_ui.utils.lock_item_will_be_edit`）。
 - 詳細表示は weko-records-ui（＋ weko-deposit、ルーティングは invenio-records-ui）が担う。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

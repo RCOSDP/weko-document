@@ -1,6 +1,6 @@
-### Identifier Grant
+# Identifier Grant
 
-#### 目的・用途
+## 目的・用途
 
 - DOI未付与、かつDOI取り下げ済みではないアイテムに対してはDOIを付与する事が可能である
 
@@ -22,7 +22,7 @@
   JaLCに対してDOI付与を申請する事が可能である  
   　WEKO -> IRDB -> JaLC
 
-#### 利用方法
+## 利用方法
 
 ワークフロー一覧にて、ワークフローを選択後、「Identifier Grant」アクションが表示される。
 
@@ -32,7 +32,7 @@
 
 「Identifier Grant」アクションで必要な情報を選択／入力後、[次へ]ボタンを押下することで、次のアクションに進む。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール   | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | :------: | :------------: | :--------------: | :----------------: | :----------: | :----------: | :----------------: |
@@ -40,7 +40,7 @@
 
 ※一般ユーザーは、ロールとして利用可能に設定することはできないが、個別のユーザーをAction Userとして設定することはできる。
 
-#### 機能内容
+## 機能内容
 
 DOI付与の種類
 
@@ -224,12 +224,12 @@ DOI付与の種類
 
 - アイテムに対してDOIを1つのみ付与できる制御について、CNRIを対象から外す
 
-#### 関連モジュール
+## 関連モジュール
 
 - 「weko_workflow」識別子付与全般を管理する
 - 「weko_handle」：register_handleメソッドでCNRIハンドルを付与する
 
-#### 処理概要
+## 処理概要
 
 1. 使用しているライブラリ
 
@@ -406,14 +406,14 @@ CNRIハンドルをregister_handleメソッドで付与する
 
 対象：`weko-workflow`（`views.py` / `utils.py` / `config.py` / `models.py`）、`weko-handle`、`weko-admin`。Identifier Grant アクション（`action_endpoint == 'identifier_grant'`）の DOI 付与を扱う。
 
-### 1. DOI種別と付与条件
+## 1. DOI種別と付与条件
 
 - DOI種別（`IDENTIFIER_GRANT_LIST`、値/表示名/リンクベースURL）：0 Not Grant ／ 1 JaLC DOI ／ 2 JaLC CrossRef DOI ／ 3 JaLC DataCite DOI ／ 4 NDL JaLC DOI。内部種別は `IDENTIFIER_GRANT_SELECT_DICT`（NotGrant='0'/JaLC='1'/Crossref='2'/DataCite='3'/NDL JaLC='4'）。
 - Prefix はリポジトリ単位で `weko_admin.models.Identifier`（table `doi_identifier`）に保持。`get_identifier_setting(community_id)` が `repository=community_id`（無ければ `Root Index`）で1件取得し、`jalc_doi` / `jalc_crossref_doi` / `jalc_datacite_doi` / `ndl_jalc_doi` を用いる。
 - Suffix 入力方式 `IDENTIFIER_GRANT_SUFFIX_METHOD`（既定0）：0 自動採番 / 1 半自動 / 2 自由入力。
 - 一時保存（`temporary_save==1`）は `ActionIdentifier`（`workflow_action_identifier`）へ入力を保存するのみ。本登録は `saving_doi_pidstore` が PIDStore（`pid_type='doi'`）へ登録し、`IdentifierHandle.update_idt_registration_metadata` でメタデータに値/種別を書く。
 
-### 2. DOI検証の分岐・エラー
+## 2. DOI検証の分岐・エラー
 
 - 検証入口 `check_doi_validation_not_pass(item_id, activity_id, identifier_select[, without_ver_id])` → `item_metadata_validation`。戻り値：文字列＝致命メッセージ（`code:-1`/500）、True＝検証NG（error_list を Redis `updated_json_schema_{activity_id}`（TTL300秒）に保存し `previous_action(req=-1)` で差戻し）、False＝OK。差戻し後は `weko_items_ui.views.check_validation_error_msg` が Redis を読み該当項目を赤枠表示。
 - `item_metadata_validation` の事前分岐：`identifier_type=='0'` は検証スキップ／資源タイプ取得不可は `error_list['mapping']=['dc:type']`／item_type・resource_type 欠落は `required`／`without_ver_id` 指定で旧版と資源タイプの分類が異なる場合「You cannot change the resource type of items that have been grant a DOI.」／NDL JaLC は資源タイプ `doctoral thesis` 限定。
@@ -423,7 +423,7 @@ CNRIハンドルをregister_handleメソッドで付与する
 - CNRI/Handle 付与：`action_endpoint` が `item_login`/`item_login_application` かつ `record.pid_cnri is None` かつ `WEKO_HANDLE_ALLOW_REGISTER_CNRI`（既定False）が真のとき `register_hdl` → `weko_handle.api.Handle.register_handle`。handle を `WEKO_SERVER_CNRI_HOST_LINK`（`http://hdl.handle.net/`）で前置し `IdentifierHandle.register_pidstore('hdl', handle)`。
 - 本登録 `saving_doi_pidstore`：`identifier_val`（完全DOI URL）と `doi_register_val` を切り出し、`register_pidstore('doi', ...)` ＋メタデータ更新、監査ログ `ITEM_ASSIGN_DOI`。値が空なら「Identifier datas are empty!」。
 
-### 3. データモデル
+## 3. データモデル
 
 - `workflow_action_identifier`（`ActionIdentifier`）：`id` / `activity_id` / `action_id`(FK) / `action_identifier_select`(既定0。取り下げ中 -2 / 取り下げ可 -1) / `action_identifier_jalc_doi` / `action_identifier_jalc_cr_doi` / `action_identifier_jalc_dc_doi` / `action_identifier_ndl_jalc_doi` ＋ created/updated。
 - `doi_identifier`（`Identifier`、weko-admin）：`id` / `repository`（既定 Root Index）/ `jalc_flag` / `jalc_crossref_flag` / `jalc_datacite_flag` / `ndl_jalc_flag`（各既定True）/ `jalc_doi` / `jalc_crossref_doi` / `jalc_datacite_doi` / `ndl_jalc_doi`（Prefix）/ `suffix` / 作成・更新者/日時。
@@ -431,7 +431,7 @@ CNRIハンドルをregister_handleメソッドで付与する
 補足：`either_properties`（いずれか必須）は現行コードで全分岐コメントアウトされ実質無効。`DOI_VALIDATION_INFO_JALC` は定義のみで JaLC/NDL は既定 `DOI_VALIDATION_INFO` を参照。DOI付与済みは資源タイプの分類跨ぎ変更が禁止。検証NG状態は Redis（`updated_json_schema_{activity_id}`、TTL300秒）で保持。
 
 
-#### 更新履歴
+## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容   |
 | ---------- | ---------------------------------------- | ---------- |

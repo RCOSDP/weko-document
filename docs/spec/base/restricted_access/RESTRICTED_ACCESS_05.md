@@ -1,14 +1,14 @@
-### プロフィール表示設定
+# プロフィール表示設定
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、プロフィール画面にて表示される項目の表示・非表示、ラベル名、入力方式を設定する機能である。
 
-#### 利用方法
+## 利用方法
 
 【Administration＞アドバンスド（Advanced）＞プロフィール表示設定（Profile Settings）】の順で画面へ遷移して利用する。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -16,7 +16,7 @@
 
 保存APIは `@roles_required(['System Administrator', 'Repository Administrator'])` で保護される。画面表示は Flask-Admin の標準管理者アクセス制御に従う。
 
-#### 機能内容
+## 機能内容
 
 - 各項目で表示・非表示の設定
   - 各項目に設置されている表示フラグ（visible）のチェックボックスにチェックが入った状態で保存することで、プロフィール画面に表示される。
@@ -31,19 +31,19 @@
 - 自動入力機能への項目反映
   - `WEKO_USERPROFILES_CUSTOMIZE_ENABLED` が True の場合、表示フラグ（visible）がONの項目のみを自動入力の対象とし、OFFの項目は対象外とする。既定（False）では全項目が従来通り自動入力に用いられる。
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko-admin（設定画面・保存処理の実体：`ProfileSettingView`、保存API `send_profile_settings_save`、React画面 `user-profile-settings.js`）
 - weko-user-profiles（設定値の消費側：プロフィールフォーム生成 `forms.py`、自動入力データ生成 `utils.py` の `get_user_profile_info` / `models.py` の `get_institute_data`、デフォルト設定値の定義 `config.py`）
 - weko-workflow / weko-workspace（自動入力でプロフィール情報を利用する呼び出し元）
 
-#### 設定の格納・デフォルト
+## 設定の格納・デフォルト
 
 - 設定は `AdminSettings` テーブルの name=`profiles_items_settings`（JSON）に格納される。
 - デフォルト値は `weko-user-profiles/weko_user_profiles/config.py` の `WEKO_USERPROFILES_DEFAULT_FIELDS_SETTINGS`（対象：fullname / university / department / position / item1〜item16）。
 - 各項目の構造：`{order:int, visible:bool, label_name:str, format:str, options:list}`
 
-#### 主要設定値（config）
+## 主要設定値（config）
 
 | キー | 既定値 | 用途 |
 | --- | --- | --- |
@@ -52,7 +52,7 @@
 | `WEKO_USERPROFILES_DEFAULT_FIELDS_SETTINGS` | （項目デフォルト定義） | 設定の初期値 |
 | `WEKO_ADMIN_PROFILE_SETTING_TEMPLATE` | `'weko_admin/admin/profiles_settings.html'` | 画面テンプレート |
 
-#### 処理概要
+## 処理概要
 
 - プロフィール表示設定画面 初期表示（`ProfileSettingView.index`、`GET /admin/profile_settings/`）
   - `AdminSettings` の `profiles_items_settings`（無ければデフォルト）を画面に渡し、React（`ProfilesList`／`user-profile-settings.js`）で order 順に描画する。
@@ -68,7 +68,7 @@
   - AJAX通信失敗時は「Profile Settings Update Failed.」を表示する。
   - 保存された設定はプロフィール編集画面・自動入力の生成時に参照される。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

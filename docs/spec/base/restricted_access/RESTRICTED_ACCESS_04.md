@@ -1,10 +1,10 @@
-### メールテンプレート
+# メールテンプレート
 
-#### 目的・用途
+## 目的・用途
 
 制限公開ワークフロー（利用申請〜承認〜ダウンロード〜利用報告）で用いる自動送信メールの件名・本文・追加宛先（Recipients／CC／BCC）を管理者が編集する機能である。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 システム管理者のみ（`weko-admin/ext.py` の endpoint `mailtemplates` に対するアクセス制御による）。
 
@@ -42,7 +42,7 @@
 上記2点の条件がどちらか片方でも満たされない場合、エラーメッセージが表示される  
 なお「Subject（メールタイトル）」と「メール内容」以外の項目についての入力の有無は任意である
 
-#### メールテンプレート拡張機能
+## メールテンプレート拡張機能
 
 システム管理者は、環境設定ファイル(instance.cfg)に記された定数("INVENIO_MAIL_ADDITIONAL_RECIPIENTS_ENABLED")を編集することで、デフォルトでは無効化されている本機能を有効化することができる
 
@@ -376,19 +376,19 @@ Also, if you received this message in error, please notify [restricted_site_name
 *[restricted_site_name_en]：[restricted_site_url]  
 E-mail：[restricted_site_mail]*
 
-#### 関連モジュール
+## 関連モジュール
 
 - invenio-mail（メールテンプレート編集画面・保存・宛先検証：`admin.py` / `models.py` / `static/js/invenio_mail/mail_template.js`）
 - weko-admin（`edit_mail_templates_enable` による画面ゲート：`config.py` / `ext.py` / `utils.py`）
 - weko-workflow（送信時のプレースホルダ置換・宛先確定：`utils.py`）
 
-#### 処理概要
+## 処理概要
 
 - 保存フロー：JS側で Subject・本文の必須チェック（未入力時「Please input the Mail Subject and Mail Body.」）→ `/save` → `get_invalid_emails` でメールアドレス検証（`User.query.filter_by(email, active=True)` に一致しないアドレスは「Invalid email addresses (...) detected. Please correct them to match the addresses which are registered in WEKO.」）→ `MailTemplates.save_and_update` ＋ `MailTemplateUsers.save_and_update`
 - 送信フロー：`get_mail_data` → 無効化ユーザーの宛先を自動削除（`MailTemplateUsers.delete_by_user_id`）→ `INVENIO_MAIL_ADDITIONAL_RECIPIENTS_ENABLED` 判定（無効時は subject/body のみ、有効時のみ recipients/cc/bcc を付加）→ プレースホルダ置換（`replace_characters`）→ 送信
 - 宛先は**メールアドレス文字列ではなく user_id で永続化**される（テーブル `mail_template_users`）。これが「WEKO登録済みユーザー限定」「削除・無効化ユーザーの自動除外」「機能再有効化時の復活」の根拠である。
 
-#### 主要設定値（config / AdminSettings）
+## 主要設定値（config / AdminSettings）
 
 | キー | 既定値 | 用途 |
 | --- | --- | --- |
@@ -399,7 +399,7 @@ E-mail：[restricted_site_mail]*
 | `WEKO_WORKFLOW_REQUEST_FOR_REGISTER_USAGE_REPORT` | `'7'` | 利用報告登録依頼メールの固定テンプレートID |
 | `INVENIO_MAIL_DEFAULT_TEMPLATE_CATEGORY_ID` | `3` | デフォルトテンプレートのカテゴリID |
 
-#### モデル / テーブル
+## モデル / テーブル
 
 - `admin_settings`（`AdminSettings`）：制限公開設定JSONを格納（`edit_mail_templates_enable` 等）
 - `mail_templates`（`MailTemplates`）：`mail_subject` / `mail_body` / `default_mail` / `genre_id`
@@ -407,7 +407,7 @@ E-mail：[restricted_site_mail]*
 - `mail_template_genres`（`MailTemplateGenres`）：テンプレートのジャンル
 - `MailType` Enum：`recipient` / `cc` / `bcc`
 
-#### プレースホルダ（置換変数）
+## プレースホルダ（置換変数）
 
 置換の権威定義は `weko-workflow/weko_workflow/utils.py` の `replace_characters`（`replace_list`）。ヘルプ画面の一覧は `invenio-mail/config.py` の `INVENIO_MAIL_VARIABLE_HELP`。主なプレースホルダは以下（本文で使用しているものを含む）。
 
@@ -415,7 +415,7 @@ E-mail：[restricted_site_mail]*
 
 > 注：ヘルプ一覧（`INVENIO_MAIL_VARIABLE_HELP`）には `[resricted_download_count]`（`restricted` のtypo）が含まれるが、実際の置換キーは `[restricted_download_count]` であり、ヘルプ表示と実置換キーが不一致（バグ疑い）。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

@@ -1,20 +1,20 @@
-### 統計情報表示
+# 統計情報表示
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、アイテムの利用統計情報を閲覧する機能である
 
-#### 利用方法
+## 利用方法
 
 アイテムの利用統計情報は、アイテム詳細画面の右端にあるViewsエリア、ファイル詳細画面(information)のstatsにおいて閲覧する。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | --- | --- | --- | --- | --- | --- | --- |
 | 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-#### 機能内容
+## 機能内容
 
 1. アイテムの利用統計情報を表示する
 
@@ -96,13 +96,13 @@
 },
 ```
 
-#### 関連モジュール
+## 関連モジュール
 
   - weko_records_ui
   - invenio_stats
   - invenio_files_rest
 
-#### 処理概要
+## 処理概要
 
 アイテム詳細画面を開く際に、weko_records_ui.views.default_view_methodを呼び出して  
 record_viewedに閲覧回数を送り出し、ESに回数を登録する。
@@ -120,7 +120,7 @@ record_viewedに閲覧回数を送り出し、ESに回数を登録する。
 
 - 表示回数は `default_view_method` が `record_viewed` を送出、`invenio_stats.views.QueryRecordViewCount` / `QueryFileStatsCount` で取得。`file_downloaded` は `weko_records_ui.views.get_uri` と `invenio_files_rest.views.ObjectResource.send_object` の2箇所で送出。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

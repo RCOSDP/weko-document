@@ -1,4 +1,4 @@
-#### 外部著者ID Prefix
+# 外部著者ID Prefix
 
 ## 目的・用途
 

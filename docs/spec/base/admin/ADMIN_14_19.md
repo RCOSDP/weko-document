@@ -1,4 +1,4 @@
-### Shibboleth
+# Shibboleth
 
 ## 目的・用途
 

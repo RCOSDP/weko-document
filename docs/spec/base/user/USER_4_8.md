@@ -1,12 +1,12 @@
-### Item Registration：フィードバックメール機能
+# Item Registration：フィードバックメール機能
 
-#### 目的・用途
+## 目的・用途
 
 フィードバックメールの送信有無をアイテム単位で設定する。
 
-#### 利用方法
+## 利用方法
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール   | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | :------: | :------------: | :--------------: | :----------------: | :----------: | :----------: | :----------------: |
@@ -14,7 +14,7 @@
 
 ※一般ユーザーは、ロールとして利用可能に設定することはできないが、個別のユーザーをAction Userとして設定することはできる。
 
-#### 機能内容
+## 機能内容
 
 【前提条件】
 
@@ -67,13 +67,13 @@
 
 - フィードバックメール送信先は、承認者が承認をした時点から有効となる
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko-workflow（Item Registration 画面でのフィードバックメール設定、承認時の送信先確定）
 - weko-records（送信先テーブル `feedback_mail_list`＝`FeedbackMailList`、承認時 `update_by_list_item_id`）
 - weko-admin（フィードバックメール送信タスク `tasks.send_feedback_mail`、設定 `feedback_email_setting`）
 
-#### 処理概要
+## 処理概要
 
 1. 設定
 
@@ -190,7 +190,7 @@ celery -A invenio_app.celery call weko_admin.tasks.send_feedback_mail
 
 - 送信は Celery `weko_admin.tasks.send_feedback_mail`、再送 `weko_admin.views.resend_failed_mail`。テーブル `feedback_email_setting` / `feedback_mail_history` / `feedback_mail_failed`（weko-admin）と `feedback_mail_list`（**weko-records** の `FeedbackMailList`）。config `WEKO_ADMIN_NUMBER_OF_SEND_MAIL_HISTORY`(20)/`_FAILED_MAIL`(10)、`WEKO_SEARCH_MAX_FEEDBACK_MAIL`(10000)。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容           |
 | :--------: | :--------------------------------------: | :----------------: |

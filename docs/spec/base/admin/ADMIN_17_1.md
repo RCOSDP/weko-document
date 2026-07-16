@@ -1,20 +1,20 @@
-### エクスポート (基本監査ログ)
+# エクスポート (基本監査ログ)
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、管理者として、基本監査ログの全件エクスポートを行う機能である。
 
-#### 利用方法
+## 利用方法
 
 管理画面の「ログ管理」にある「エクスポート」メニューから、基本監査ログのエクスポートを実行できる。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 |ロール|システム管理者|リポジトリ管理者|サブリポジトリ管理者|登録ユーザー|一般ユーザー|ゲスト(未ログイン)|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |利用可否|○|○|||||
 
-#### 機能内容
+## 機能内容
 
 - 「エクスポート」（Export）ボタン
   Exportボタンを押すと、全件出力を実行してよいかの確認ダイアログを表示する。確認ダイアログで実行/キャンセルを選択する。
@@ -35,14 +35,14 @@
   - 「キャンセル」ボタン
     - 「キャンセル」ボタンを押すと、全件エクスポート処理のキャンセルを行わず、確認用ダイアログを閉じる。
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko_logging
 - weko_admin
 - weko_search_ui: Celery稼働確認（check_celery_is_run）に使用
 - invenio_files_rest: ダウンロードファイル生成のみに使用
 
-#### 処理概要
+## 処理概要
 
 - 一括出力（一括エクスポート）画面表示時に以下の処理が行われる。
   - weko_logging.admin.ExportLogAdminView.index メソッドが呼び出され画面を表示する。
@@ -55,7 +55,7 @@
     - 出力されるtsvファイルのファイル名: `user_activity_logs_yyMMddhhmmss.tsv`
   - エクスポート中にcheck_celery_is_runメソッド、get_export_task_statusメソッドでエクスポートに必要な情報がとれない場合、ダウンロードURLは表示されない。
 
-#### 実装補足（v2.0.2 実装との突き合わせ）
+## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_logging.admin.ExportLogAdminView`（endpoint `logs/export`）。`index` / `export_user_activity_log`（`POST /export`）/ `check_export_status` / `cancel_export` / `download_user_activity_log`（`/download`、`export_log.zip`）。エクスポートは Celery `export_all_user_activity_logs`（`weko_logging.tasks`）。ステータスは `UserActivityLogUtils.get_export_task_status`。Celery 稼働確認は `weko_search_ui.tasks.check_celery_is_run`。
 

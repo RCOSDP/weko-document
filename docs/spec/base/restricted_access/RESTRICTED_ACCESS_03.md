@@ -1,4 +1,4 @@
-### ワークフロー管理（制限公開）
+# ワークフロー管理（制限公開）
 
 > 補足（実装）：フロー名や段数（アクションの構成）はコードで固定されておらず、`FlowDefine` / `FlowAction` として管理者がDBに登録するデータである。以下の構成は「動作が保証されている運用上の推奨構成」であり、コードによる強制ではない。選択可能なアクションは `WEKO_WORKFLOW_ACTIONS`（Start / End / Item Registration / Approval / Item Link / Identifier Grant）で、各アクション名は `WEKO_WORKFLOW_ACTION_*`（`weko-workflow/config.py`）で定義される。承認(Approval)の段数は `FlowAction.action_order` で管理される（二段階＝Approval が2レコード）。
 
@@ -102,12 +102,12 @@
         　表示：System Administrator, Repository Administrator  
         　非表示：Contributor,Community Administrator
 
-#### 関連モジュール
+## 関連モジュール
 
 - weko-workflow（フロー／ワークフロー管理、承認処理、通知メール送信）
 - weko-admin（AdminSettings `restricted_access`、`edit_mail_templates_enable` による表示制御）
 
-#### データモデル / テーブルスキーマ
+## データモデル / テーブルスキーマ
 
 - `workflow_flow_define`（`FlowDefine`）：`flow_id`(UUID) / `flow_name`(unique) / `flow_status` / `flow_type` / `repository_id` / `is_deleted`
 - `workflow_flow_action`（`FlowAction`）：`flow_id` / `action_id` / `action_order` / `action_status` / `send_mail_setting`(JSON)
@@ -115,7 +115,7 @@
 - `workflow_workflow`（`WorkFlow`）：`flows_name` / `itemtype_id` / `flow_id` / `index_tree_id` / `open_restricted`（制限公開フラグ, Boolean, **default True**） / `is_gakuninrdm` / `location_id` / `repository_id`
 - `workflow_userrole`（`WorkflowRole`）：ワークフローの表示／非表示ロール設定の実体
 
-#### 処理概要
+## 処理概要
 
 - フロー（アクション）保存：`FlowSettingView.upt_flow_action`（`POST /action/<flow_id>`）→ `Flow.upt_flow_action`（`FlowActionRole` を全削除後、`action_user` の値により role／アイテム登録者(`-2`)／Request mail(`-3`)／プロパティ指定(`-1`) に振り分けて再作成）→ 成功時「Updated flow action successfully」
 - フロー本体保存：`update_flow`（`POST /<flow_id>`）→ 成功時「Updated flow successfully.」（アクション保存とはメッセージが異なる）
@@ -123,7 +123,7 @@
 - 通知メール送信：承認遷移時に `process_send_approval_mails` を呼び出す（`edit_mail_templates_enable` が True のときのみ有効）
 - 「Specify Property」候補：プロパティ定義に `"approval":true` を持つプロパティ名を `get_specified_properties`（`recursive_get_specified_properties`）で収集してモーダルに表示
 
-#### 通知メールと send_mail_setting の対応
+## 通知メールと send_mail_setting の対応
 
 `FlowAction.send_mail_setting`（JSON）に `previous` / `next` として構成され、各キーは `{send: bool, mail: テンプレートキー}` を持つ。UIの3種は以下に対応する。
 
@@ -133,7 +133,7 @@
 | 承認却下通知メール（Approval Rejection Notification Email） | `inform_reject` / `inform_reject_for_guest` | 登録者へ却下を通知 |
 | 承認通知メール（Approval Notification Email） | `inform_approval` / `inform_approval_for_guest` | 登録者へ承認を通知 |
 
-#### 主要設定値（config）
+## 主要設定値（config）
 
 | キー | 値 | 用途 |
 | --- | --- | --- |
@@ -147,7 +147,7 @@
 > - `WorkFlow.open_restricted` の既定値は True（本文の推奨設定「利用報告＝チェックしない」と混同しないこと）。
 > - 「アイテム登録者」選択時に承認依頼通知メールが発行されないのは、仕様上の明示的スキップではなく、`action_user` が未設定（宛先id `-1`）で宛先解決不能となり未送信になるためである。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

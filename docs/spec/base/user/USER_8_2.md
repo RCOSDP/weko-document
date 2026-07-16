@@ -1,20 +1,20 @@
-### ログイン
+# ログイン
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、サインアップ済みのユーザーがログインするための機能である。
 
-#### 利用方法
+## 利用方法
 
 ユーザー画面のヘッダから［ログイン（Log in）］ボタンを押す。
 
-#### 利用可能なロール
+## 利用可能なロール
 
 | ロール | システム管理者 | リポジトリ管理者 | サブリポジトリ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-#### 機能内容
+## 機能内容
 
 - ユーザー画面のヘッダから［ログイン（Log in）］ボタンを押すと、ログイン画面に移動する
 
@@ -77,18 +77,18 @@
 
     - 「パスワードをお忘れの方はこちら」（Forgot password?）リンクを押すと、リセットパスワード画面に移動する
 
-#### 関連モジュール
+## 関連モジュール
 
 - Flask-Security（ログイン画面・文言を提供）
 - invenio_accounts（セッション記録・ユーザーデータストアを提供）
 - weko-accounts（Shibboleth関連ビューを提供）
 
-#### 関連テーブル
+## 関連テーブル
 
 - accounts_user_session_activity
 - accounts_user
 
-#### 処理概要
+## 処理概要
 
 ログイン画面の種類を決定するコンフィグは、instance.cfgまたはweko-accountsのconfig.pyで設定する。両方で設定されている場合、instance.cfgの設定が優先される。
 
@@ -130,7 +130,7 @@
 
 - 実装補足：ログイン画面・文言は **Flask-Security**（`flask_security.views.login`、route `/login/`）由来。セッション記録は `invenio_accounts.sessions`（`login_listener`→`add_session`、table `accounts_user_session_activity`）。所属機関名は invenio-accounts 側の列 `orgniazation_name`（綴りママ。ローカル認証時は Null）。Shibboleth 関連の実ビューは weko-accounts（`shib_login` / `shib_sp_login` 等）。config `WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED`（既定 False）/ `_SHIB_IDP_LOGIN_ENABLED` / `_SHIB_INST_LOGIN_DIRECTLY_ENABLED` / `_SHIB_DP_LOGIN_DIRECTLY_ENABLED`。
 
-#### 更新履歴
+## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |

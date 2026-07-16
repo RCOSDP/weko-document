@@ -1,4 +1,4 @@
-### JSON Schema
+# JSON Schema
 
   - 目的・用途
 

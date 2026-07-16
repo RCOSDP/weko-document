@@ -1,6 +1,6 @@
-## 未病データベース Shibboleth対応
+# 未病データベース Shibboleth対応
 
-### 用語説明
+## 用語説明
 
 - 本書では以下の用語で統一する
 
@@ -10,7 +10,7 @@
   | WEKO | 未病データベース用のWEKO3リポジトリ（バックエンド） |
   | Shibbolethログイン | 学認IdPやOrthrosアカウントによるログイン |
 
-### 1. Shibbolethログイン時のロール付与
+## 1. Shibbolethログイン時のロール付与
 
 - WEKOの処理に変更を加えず使用する
 
@@ -27,7 +27,7 @@
   - WEKO実装（関連モジュール：weko-accounts）：ロール同期は `WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPS` が有効なとき `sync_shib_gakunin_map_groups` → `ShibUser.check_in` → `_get_roles_to_add` → `_assign_roles_to_user` の順で処理される。属性のパースは `weko_accounts.utils.parse_attributes`、fqdn は `create_fqdn_from_entity_id`（`WEKO_ACCOUNTS_IDP_ENTITY_ID` の netloc から生成）で得る。
 
 
-### 2. Shibbolethログインの実装
+## 2. Shibbolethログインの実装
 
 - nginx/ams/weko-frontend/pages/login.vueのonMounted関数でEmbedded DSを導入する
 
@@ -62,7 +62,7 @@
 
   - ユーザがトークン発行を許可することで認可コードを受け取ることが出来る
 
-### 3. Shibbolethログイン、OAuth認証時のエラー
+## 3. Shibbolethログイン、OAuth認証時のエラー
 
 - Shibbolethログイン、およびトークン取得時のエラー内容は以下の通り  
   検知したエラーはログイン画面、OAuth認証画面でそれぞれ表示する
@@ -90,7 +90,7 @@
     | スコープ誤り | 400 | `invalid_scope` | スコープに誤りがあります。<br>/The scope is incorrect. |
     | ユーザーが【Reject】を選択 | 200 | `access_denied` | アクセスが拒否されました。<br>/Access has been denied. |
 
-### 4. 目標2ユーザ以外が閲覧権限が必要なアイテム詳細画面にアクセスした場合
+## 4. 目標2ユーザ以外が閲覧権限が必要なアイテム詳細画面にアクセスした場合
 
 - 未ログインユーザが閲覧権限が必要なアイテム詳細画面にアクセスした場合
 

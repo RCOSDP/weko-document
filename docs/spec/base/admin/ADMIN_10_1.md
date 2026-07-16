@@ -1,4 +1,4 @@
-### Resource List
+# Resource List
 
 ## 目的・用途
 

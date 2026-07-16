@@ -1,4 +1,4 @@
-#### ADMIN-5-1-3:Affiliation ID
+# ADMIN-5-1-3:Affiliation ID
 
 ## 目的・用途
 

@@ -1,4 +1,4 @@
-## Shibboleth対応
+# Shibboleth対応
 
 1\. Shibboleth IdPからの属性情報に基づき、ユーザへのロール割り当てをする
 
