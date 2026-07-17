@@ -33,6 +33,7 @@ https://[host]/api/opensearch/search?クエリパラメータ=値&クエリパ�
 | type | | string | dc:typeにマッピングされた項目の検索 |
 | wid | | Int | 作成者（著者）識別子（`creator.nameIdentifier`）で検索。※「アイテムIDを指定」ではない |
 | iid | | Int | インデックスID（`path.tree`）で検索 |
+| accessrights | | string（カンマ区切り） | アクセス権（`open access` / `embargoed access` / `restricted access` / `metadata only access`＝`WEKO_ACCESS_RIGHTS_CHOICES`）で絞り込む。`WEKO_SEARCH_FIX_ACCESSRIGHTS`=True の環境ではエンバーゴ状態（ファイルの `accessrole`・公開日・現在日）を考慮して出し分ける（[API-07](./API_07_item_search.md) と共通）。既定（`WEKO_SEARCH_FIX_ACCESSRIGHTS`=False）は素の term/terms 一致による従来動作。 |
 
 レスポンス例：
 
@@ -409,6 +410,8 @@ WEKO_OPENSEARCH_IMAGE_URL = 'static/favicon.ico'
 
 > 実装補足（v2.0.2）：エンドポイントは `GET /api/opensearch/search`（description は `GET /api/opensearch/description.xml`）。ログイン状態・ロールに応じ `get_permission_filter` で公開範囲を自動的に絞り込む（非管理者は公開かつ公開日到来分のみ）。
 
+> 実装補足（v2.1.0）：OpenSearch の絞り込みは `weko_search_ui/query.py` の `opensearch_factory` が `q`（インデックスID）未指定時に `default_search_factory` を呼ぶため、`accessrights` パラメータによるアクセス権フィルタ（`__get_accessrights_query`）が OpenSearch にも適用される。`WEKO_SEARCH_FIX_ACCESSRIGHTS`（`weko_search_ui/config.py`、既定 `False`）が `True` の場合、`embargoed access` のアイテムをファイルの `content.accessrole.raw`・公開日（`content.date.dateValue.raw`）・現在日で open/restricted/embargoed に振り分けて絞り込む（[API-07](./API_07_item_search.md) と共通）。`False`（既定）では素の term/terms 一致による従来動作。
+
 - 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
@@ -416,3 +419,4 @@ WEKO_OPENSEARCH_IMAGE_URL = 'static/favicon.ico'
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2023/11/14 | V0.9.27 | |
 | 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。`q`パラメータ追加、`wid`（作成者識別子）・`iid`の説明修正、size/pageの別名・既定値、関連モジュール・設定値・権限フィルタを追記 |
+| 2026/07/17 |  | v2.1.0差分反映：`accessrights` パラメータ（`opensearch_factory`→`default_search_factory` 経由）とエンバーゴ考慮（`WEKO_SEARCH_FIX_ACCESSRIGHTS`、既定False）を追記 |

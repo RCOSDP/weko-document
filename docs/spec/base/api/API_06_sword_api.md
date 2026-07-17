@@ -510,7 +510,7 @@ DELETE /sword/deposit/\<recid\>
 | fileSet                      | object  | ファイルセットを示すオブジェクト。  現時点では空オブジェクトを返す。                                                                   |
 | fileSet.@id                  | string  | ファイルセットのURL。                                                                                                                  |
 | fileSet.eTag                 | string  | ファイルセットのeTag。                                                                                                                 |
-| links                        | array   | アイテムのリンクを示すオブジェクト。  現時点ではアイテム詳細ページのURLを出力する。またDOIやCNRIハンドルを持つ場合も同様に出力する。   |
+| links                        | array   | アイテムのリンクを示すオブジェクト。  アイテム詳細ページのURL（`rel:["alternate"]`）を出力する。DOIやCNRIハンドル（permalink/DOI）を持つ場合も同様に出力する。加えて、アイテムの各ファイルへのリンク（`rel:["http://purl.org/net/sword/3.0/terms/fileSetFile"]`、`derivedFrom` にレコードURL。生成は `_get_file_info`）を出力する。ワークフロー経由の複数アイテム登録時は、アクティビティ詳細画面URL（`rel:["alternate"]`）とレコード間参照の `log` も出力する。並び順は `_sort_links_for_status`（activity→record→file→other）で整列する。 |
 | links[].@id                  | string  | リソースのURL。                                                                                                                        |
 | links[].byReference          | string  | byReference deposit の際の参照元URL。                                                                                                  |
 | links[].contentType          | string  | リソースのコンテンツタイプ。                                                                                                           |
@@ -524,7 +524,7 @@ DELETE /sword/deposit/\<recid\>
 | links[].eTag                 | string  | リソースのeTag。                                                                                                                       |
 | links[].log                  | string  | クライアントが知っておくべきデポジットに関連する情報。                                                                                 |
 | links[].packaging            | string  | リソースがパッケージである場合、パッケージ形式の識別子を示す。                                                                         |
-| links[].rel                  | string  | リソースとオブジェクトの関係。  以下の何れかの文字列を持つ。<ul><li>alternate</li><li>packaging</li><li>depositedOn</li><li>depositedOnBehalfOf</li><li>status</li><li>log</li><li>dcterms:relation</li><li>dcterms:replaces</li><li>dcterms:isReplacedBy</li><li>versionReplaced</li><li>eTag</li><li>byReference</li><li>derivedFrom</li><li>metadataFormat</li></ul> |
+| links[].rel                  | string  | リソースとオブジェクトの関係。  以下の何れかの文字列を持つ。<ul><li>alternate</li><li>packaging</li><li>depositedOn</li><li>depositedOnBehalfOf</li><li>status</li><li>log</li><li>dcterms:relation</li><li>dcterms:replaces</li><li>dcterms:isReplacedBy</li><li>versionReplaced</li><li>eTag</li><li>byReference</li><li>derivedFrom</li><li>metadataFormat</li><li>http://purl.org/net/sword/3.0/terms/fileSetFile</li></ul>（`fileSetFile` は `WEKO_SWORDSERVER_SWORD_VERSION` と `WEKO_SWORDSERVER_FILE_SET_FILE` の連結で生成する） |
 | links[].status               | string  | 取り込みに関するリソースのステータス。                                                                                                 |
 | links[].versionReplacedOn    | string  | 現在のリソースが新しいリソースに置き換えられた日付。                                                                                   |
 | metadata                     | object  | メタデータを示すオブジェクト。  現時点では空オブジェクトを返す。                                                                       |
@@ -532,7 +532,7 @@ DELETE /sword/deposit/\<recid\>
 | metadata.eTag                | string  | メタデータのeTag。                                                                                                                     |
 | service                      | string  | サービスドキュメントのURL。                                                                                                            |
 | state                        | array   | アイテムがサーバー上にある状態のリスト。                                                                                               |
-| state[].@id                  | string  | 状態の識別子。現状では"http://purl.org/net/sword/3.0/state/ingested"を固定で出力。                                                     |
+| state[].@id                  | string  | 状態の識別子。直接登録の場合は"http://purl.org/net/sword/3.0/state/ingested"（`_get_status_document`、eTag=リビジョン番号）、ワークフロー経由登録の場合は"http://purl.org/net/sword/3.0/state/inWorkflow"（`_get_status_workflow_document`）を出力する。複数アイテム登録時は `_get_status_multi_document` が登録方式に応じて状態を決定する。従来は ingested 固定であった。 |
 | state[].description          | string  | 状態の説明                                                                                                                             |
 
 ### エラードキュメント
@@ -714,6 +714,7 @@ DELETE /sword/deposit/\<recid\>
       登録するようにメタデータを作成する。
     - マッピング先が無いメタデータはテキストエリアに保存する。
     - メタデータ自動補完フラグ（[wk:metadataAutoFill](../admin/ADMIN_2_5.md#wkmetadataautofillメタデータ自動補完フラグ)）が有効で、補完にもちいるDOIが指定されていれば、メタデータ補完APIを呼び出し、メタデータを補完する。
+    - researchmap連携フラグ（`wk:researchmapLinkage`）が有効な場合、ワークフロー経由での登録時にresearchmap業績連携（`cris_linkage.researchmap`）を有効化する。フラグは `JsonLdMapper` が `system_info["researchmap_linkage"]`（既定 `False`）として取得し、`weko_swordserver/views.py`（`post_service_document` / `put_object`）が `item["metadata"]["researchmap"]` に設定、`weko_workflow/headless/activity.py`（`HeadlessActivity`）がアクティビティ登録データの `cris_linkage.researchmap` へ引き渡す。
     - ファイルが階層化されている場合、weko3のストレージでは階層を維持できないため、あらかじめ相対パスをURLエンコードしてファイル名を改め、`/data/`フォルダ直下に配置する。  
       例：`/data/20230101/sample.pdf` → `/data/20230101%2Fsample.pdf`
 
@@ -863,6 +864,7 @@ DELETE /sword/deposit/\<recid\>
   ```python
   "Item check error: [エラーメッセージ]"
   ```
+  当該アイテムに警告（warnings）が存在する場合は、エラーメッセージに `, 'warnings': [...]` を連結して併記する（`weko_swordserver/views.py` の `post_service_document` / `put_object`）。
 
 12. アイテムが既に登録されている場合<span id="err12">
   ```python
@@ -1108,6 +1110,13 @@ DELETE /sword/deposit/\<recid\>
     WEKO_SWORDSERVER_BAGIT_VERIFICATION = True
     ```
 
+24. ファイルリンク（fileSetFile）の rel を生成するためのパス<span id="conf24">
+
+    `WEKO_SWORDSERVER_SWORD_VERSION`（[設定値:1](#conf01)）と連結して、ステータスドキュメントの各ファイルリンク（`links[].rel`）を生成する。
+    ```python
+    WEKO_SWORDSERVER_FILE_SET_FILE = "/terms/fileSetFile"
+    ```
+
 ## 実装補足（v2.0.2）
 
 - 中核実装モジュールは **weko-swordserver**（`invenio-sword` は同梱されず、SWORD処理は自作の weko-swordserver に集約）。エンドポイント（`views.py`、Blueprint `url_prefix="/sword"`）：`get_service_document` / `post_service_document`（GET/POST `/sword/service-document`）、`get_status_document` / `put_object` / `delete_object`（GET/PUT/DELETE `/sword/deposit/<recid>`）。
@@ -1127,3 +1136,4 @@ DELETE /sword/deposit/\<recid\>
 | 2025/06/03 | c145ed4a8052597a2e552a628c92f3fa60b878d4   | 更新・削除機能およびメタデータのみ置換フラグについて記載 |
 | 2026/07/14 |                                            | 実装(v2.0.2)と突き合わせ。ACCEPT_PACKAGING/ACCEPT_ARCHIVE_FORMAT/DEPOSIT_ROLE_ENABLEの実値へ修正、BAGIT_VERIFICATION追加、実装補足（weko-swordserver・エンドポイント・スコープ・関連モジュール・DELETE Locationヘッダー）を追記 |
 | 2026/07/14 |                                            | 本文を実装準拠に修正（サービスドキュメントのacceptPackaging/acceptArchiveFormat、利用可能ロール）           |
+| 2026/07/17 |                                            | v2.1.0差分反映：`wk:researchmapLinkage`連携（`cris_linkage.researchmap`）・checkエラー時warnings併記、ステータスドキュメントの`links`（fileSetFile/derivedFrom・複数登録時Activityリンク/log）・`state`のinWorkflow・設定値conf24（`WEKO_SWORDSERVER_FILE_SET_FILE`）を追記 |

@@ -25,4 +25,5 @@ WEKO3 が提供する各種 WEB API の仕様をまとめる。REST API はAPI�
 | [API-17: 承認API](./API_17_approval_activity.md) | `/api/<v>/workflow/activities/<id>/approve`,`/throw-out`（weko-workflow） |
 | [API-18: CAPTCHA](./API_18_CAPTCHA.md) | `/api/v1/captcha/image`,`/validate`（weko-records-ui） |
 | [API-19: リクエストメール送信API](./API_19_reqest_mail.md) | `/api/v1/records/<pid>/request-mail`（weko-records-ui） |
+| [API-20: 一括インポートAPI](./API_20_bulk_import.md) | `/api/items/import-task`, `/api/items/import-task/get_bulk_import_task_status/<task_id>`（weko-items-ui） |
 | [API Endpoint](./API_ENDPOINT_01.md) | エンドポイント一覧の入口 |

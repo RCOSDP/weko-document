@@ -373,9 +373,15 @@ resumptionToken：リポジトリが応答する際に不完全リストとセ�
 > - エラーは marshmallow の `ValidationError` 等を HTTP 422 でXML返却する。`noSetHierarchy` はインデックスを常にsetとして扱うため実装上発行されない。
 > - 主なconfig：`OAISERVER_PAGE_SIZE` / `OAISERVER_GRANULARITY` / `OAISERVER_PROTOCOL_VERSION` / `OAISERVER_RESUMPTION_TOKEN_EXPIRE_TIME` / `OAISERVER_METADATA_FORMATS` / `OAISERVER_CODE_NO_RECORDS_MATCH` / `OAISERVER_MESSAGE_NO_RECORDS_MATCH`、`INDEXER_DEFAULT_INDEX`。
 
+> 実装補足（v2.1.0：エンバーゴ考慮）：
+> - `weko_search_ui/config.py` の `WEKO_SEARCH_FIX_ACCESSRIGHTS`（既定 `False`）が `True` の環境では、ListRecords/ListIdentifiers の from/until 絞り込みが `invenio_oaiserver/query.py` の `range_query`（`get_records` から呼び出し）に切り替わり、エンバーゴ解除（公開日到来）アイテムを収集対象に含める。`range_query` はエンバーゴアイテム（accessRights=embargoed access）について `content.accessrole.raw`=open_date とその公開日（`content.date.dateValue.raw`）および `_updated` の双方で期間内外を判定する。
+> - 併せて `invenio_records/api.py` の `Record.updated` プロパティが、エンバーゴ解除（open access 化）と判定されたアイテムの更新日時（datestamp）を `max(元のupdated, 最新の公開日)` に繰り上げる。
+> - `WEKO_SEARCH_FIX_ACCESSRIGHTS`=False（既定）の場合は素の `_updated` レンジ・素の更新日時による従来動作。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。関連モジュール・エンドポイント・metadataFormatの動的生成・ESインデックス・resumptionToken・configキー・noSetHierarchy未発行を追記 |
+| 2026/07/17 |  | v2.1.0差分反映：from/until のエンバーゴ考慮（`range_query`）・datestamp繰り上げ（`Record.updated`）を追記（`WEKO_SEARCH_FIX_ACCESSRIGHTS`、既定False） |
