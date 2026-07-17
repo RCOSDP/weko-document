@@ -44,3 +44,12 @@
 - 237ファイル全てを実装(tag v2.0.2)と突き合わせ整備。カテゴリ単位で9コミット。
 - 未コミット変更なし（docs/spec/base）。行番号本文混入なし。
 - ブランチ develop_v2.0.1、未push。
+
+## フェーズ2: v2.0.2→develop_v2.1.0 差分反映（2026-07-17 完了）
+- 実装差分 427コミット/409ファイルをテーマA〜Hに整理（5並列調査エージェント）。findings は findings_v2.1.0.md ＋ scratchpad/find_{A,B,D,E,F}_*.md。
+- 機能仕様書を **変更差分のみ実装突合** で更新（5並列編集エージェント）。27ファイル（新規 api/API_20_bulk_import.md 含む）。
+  - api(7) commit 63852a6 / access_control(4) 71e9c52 / admin(9) 2d76fcc / user(5) bf05562 / other+ams(3) e15136e
+  - SCHEMA_1_2/1_3 は #58215(JPCOAR nameIdentifierScheme置換)の受け皿として主題不一致のためスキップ（別ページが適切）。
+- マニュアルは編集せず **変更点一覧のみ** 作成 → manual_changes_v2.1.0.md（USER 6件/ADMIN 11件/GUIDE 2件）。
+- 実装側の要確認: postgresql/ddl/sp72-createindex.sql が item_type_mapping の旧btree 2本＋GIN を作る記述のまま（新規構築とマイグレーション後で不整合の懸念）。
+- 全編集で行番号本文混入なし・更新履歴行(2026/07/17)追加済み。ブランチ develop_v2.1.0、未push。

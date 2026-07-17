@@ -1,5 +1,36 @@
 # Task Plan: 機能仕様書を weko 実装で整備
 
+---
+## ▼ フェーズ2: v2.0.2 → develop_v2.1.0 差分反映（2026-07-17 開始）
+
+### Goal
+実装 `/home/mhaya/weko`（現在 branch `develop_v2.1.0`, `v2.0.2-427-gb19e39d8a`）の v2.0.2 からの差分（427コミット/409ファイル）を機能仕様書へ反映する。
+
+### Settings（ユーザー確定 2026-07-17）
+- **仕様書 = 変更差分のみ・実装突合**: v2.0.2→v2.1.0 で実際に変わった機能に関係する仕様書ファイルだけを実ソース突合で更新（全カテゴリ再突合はしない）。前フェーズと同じ粒度・impl準拠・カテゴリ単位コミット。
+- **マニュアル = 変更点一覧のまとめのみ**: docs/manuals は編集せず、変更が必要な箇所を一覧化して提示。
+
+### 変更テーマ（差分棚卸し）
+| # | テーマ | 主モジュール | 対象spec |
+|---|--------|------------|---------|
+| A | エンバーゴ機能の刷新（accessRights判定/検索クエリ/OAI-PMH/ResourceSync） | weko-search-ui, weko-records, invenio-oaiserver, invenio-resourcesyncserver, invenio-records, weko-records-ui | access_control, api, user, other |
+| B | AMS 一括インポートAPI 新規 | weko-search-ui, weko-swordserver | api, ams |
+| C | AMS JSON-LDインポート | weko-search-ui, weko-schema-ui | ams, api |
+| D | AMSワークスペース/GRDM連携/OAuthログイン/SWORDv3 Links | weko-workspace, weko-swordserver, weko-accounts, invenio-oauth2server, weko-notifications | ams, access_control, api |
+| E | item_type_mapping制約 & DBマイグレーション刷新(#61275) | weko-records, weko-itemtypes-ui | admin, other |
+| F | ファイルDL権限修正(open_login/open_restricted/サイトライセンス) | weko-records-ui | access_control, restricted_access |
+| G | AMSロール/ロールグループ/インデックス権限(61a) | weko-index-tree, weko-gridlayout, invenio-communities, weko-authors | access_control, admin |
+| H | その他fix（多言語・location・redis TTL・notifications等） | 各種 | 個別 |
+
+### 手順
+1. テーマ別に並列調査エージェントで diff×実ソース突合 → findings_v2.1.0.md へ「更新すべきspecファイル＋修正内容」「影響マニュアル箇所」を記録
+2. specを差分反映（テーマ/カテゴリ単位コミット）
+3. マニュアル変更点一覧をまとめて提示
+- findings: `findings_v2.1.0.md`
+
+---
+## ▼ フェーズ1: v2.0.2 突合整備（完了）
+
 ## Goal
 `/home/mhaya/weko-document/docs/spec/base` 配下の機能仕様書を、実装 `/home/mhaya/weko`（現在 tag `v2.0.2`）の実際のソースコードと突き合わせて整備する。実装と食い違う記述を修正し、機能仕様書として足りていない情報（処理フロー・分岐・エラー処理・設定値・DBスキーマ・API仕様・権限判定など）を追記する。
 
