@@ -56,6 +56,8 @@
 
   - ログイン処理後のリダイレクト先はフロントのTOPページを指定する
 
+  - WEKO実装（AMSログイン経路）：フロント login.vue は returnURL に `?next=ams` を付与する。`shib_sp_login`（`POST /weko/shib/login`）は `next=ams`（`ams_login`）を判定して後続処理（`shib_auto_login` / `confirm_user_without_page` / `confirm_user` / `shib_login`）へ `next=ams` を伝播する。AMS経路では失敗時に WEKO ログイン画面へ flash せず、`generate_ams_login_url` ／ `_redirect_method(..., ams_error=...)` により外部 AMS ログイン画面（config `WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`、既定 `'{}ams/login'`）へ `?error=<訳文をquote_plus>` 付きでリダイレクトする。成功時は `/?next=ams` へ遷移し、index.vue から OAuth2 API を実行する。
+
 - ログイン処理後、nginx/ams/weko-frontend/pages/index.vueからOAuth2 APIを実行する
 
   - 参考： [OAuth2 API](../api/API_01_Oauth2.md)
@@ -70,6 +72,8 @@
   - ログイン画面
 
     「レスポンス（バックエンド実挙動）」列は WEKO バックエンド（`weko_accounts.views`）の実際の応答、「エラーメッセージ（日/英）」列はフロントのログイン画面での表示文言である。
+
+    AMSログイン経路（`next=ams`）では、下表の各エラーで WEKO ログイン画面へ flash せず、外部 AMS ログイン画面 `{url_root}ams/login?error=<訳文>`（config `WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`、既定 `'{}ams/login'`）へエラー文言付きでリダイレクトする（`generate_ams_login_url` ／ `_redirect_method(..., ams_error=...)`）。AMS経路のエラー文言は、ログインブロック時は "Login is blocked."、登録ユーザー情報がない場合は "There is no user information."（いずれも `_()` で翻訳可能）。
 
     | エラー原因 | ステータスコード | レスポンス（バックエンド実挙動） | エラーメッセージ（日/英） |
     | --------- | --------------- | --------- | ----------------------- |
@@ -132,3 +136,4 @@
 |--------------|------------------|------------|
 | 2025/08/29   |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3    | 初版作成   |
 | 2026/07/14   |  | 実装(v2.0.2)と突き合わせ。実エンドポイント`POST /weko/shib/login`・ロール同期の実関数・mAPグループ形式のconfig駆動・エラー文言のバックエンド実挙動（flash+redirect、OAuthはoauthlib標準）を追記 |
+| 2026/07/17   |  | v2.1.0差分反映：AMSログイン経路（`next=ams`）のフローと、エラー時の外部AMSログイン画面リダイレクト（`WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`、"Login is blocked." / "There is no user information."）を追記 |
