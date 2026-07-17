@@ -74,8 +74,17 @@ Resource Syncのアクセスコントロールについて記述します。
 - Resource List / Change List の実体は **invenio-resourcesyncserver**（`AdminResourceListView` / `AdminChangeListView`、endpoint `resource_list` / `change_list`）、Resync の実体は **invenio-resourcesyncclient**（`AdminResyncClient`、endpoint `resync`）にある。
 - `resource_list` / `change_list` / `resync` はいずれもコミュニティ・リポジトリ両リストに含まれ、上位アクセスは System ○ / Repository ○ / Community ○。サブ表（対象インデックスが自身の管理コミュニティに属するか）は `WEKO_PERMISSION_SUPER_ROLE_USER`＋`Community.get_repositories_by_user` による絞り込みで担保される。
 
+### 実装上の変更（v2.1.0：ChangeListのエンバーゴ考慮）
+
+`WEKO_SEARCH_FIX_ACCESSRIGHTS`（`weko_search_ui/config.py`、既定 `False`）がTrueの環境では、ResourceSync の変更差分（ChangeList）生成がエンバーゴ状態を考慮する。
+
+- `invenio_resourcesyncserver/query.py` の `item_changes_search_factory` は、更新日ウィンドウ（from/until）による `_updated` レンジ絞り込みを、`invenio_oaiserver.query.range_query`（OAI-PMHと共通のエンバーゴ考慮クエリ）へ切り替える。エンバーゴ解除（公開日到来）アイテムを差分に反映するため、公開日と `_updated` の双方でウィンドウ内外を判定する。
+- レコードの更新日時（datestamp）自体の繰り上げは `invenio_records/api.py` の `Record.updated` プロパティが担う（OAI-PMHと共通）。
+- Falseの場合は素の `_updated` レンジによる従来動作。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3    | 初版作成                                                 |
+| 2026/07/17 |                                            | v2.1.0差分反映：エンバーゴ考慮のaccessRights             |

@@ -65,8 +65,17 @@ OAI-PMHのアクセスコントロールについて記述します。
 - ハーベスト設定の「作成済み設定値の一覧表示・編集・削除」の絞り込み条件は、実装（`HarvestSettingView.get_query` / `_index_filter`）では **設定の作成者ロールではなく、対象インデックスが当該ユーザーの管理対象コミュニティに属するか** で判定される（System＋Repository は全件表示）。判別条件のラベル「作成者ロール：コミュニティ管理者」は「対象インデックスが管理対象コミュニティに属する」に読み替えるのが正確。
 - ハーベスト（`harvestsettings`）・set（`oaiset`）はコミュニティリストにあり System ○ / Repository ○ / Community ○、Identify（`identify`）は repository リストのみで System ○ / Repository ○ / Community × と整合。
 
+### 実装上の変更（v2.1.0：ハーベスト応答のエンバーゴ考慮）
+
+`WEKO_SEARCH_FIX_ACCESSRIGHTS`（`weko_search_ui/config.py`、既定 `False`）がTrueの環境では、OAI-PMH のハーベスト応答がエンバーゴ状態を考慮する。
+
+- `invenio_oaiserver/query.py` の `get_records` は、from/until による期間絞り込みを新設関数 `range_query`（同ファイル）に委譲する。`range_query` はエンバーゴアイテム（accessRights=embargoed access）について、ファイルの `content.accessrole.raw`=open_date とその公開日（`content.date.dateValue.raw`）および `_updated` の双方で期間内外を判定するため、公開日がウィンドウ内に入ったエンバーゴ解除アイテムを収集対象に含める。
+- `invenio_records/api.py` の `Record.updated` プロパティは、エンバーゴ解除（open access 化）と判定されたアイテムについて `max(元のupdated, 最新のopen_date)` を返し、レコードの更新日時（datestamp）を公開日基準へ繰り上げる。
+- Falseの場合は素の `_updated` レンジ・素の更新日時による従来動作。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3     | 初版作成                                                 |
+| 2026/07/17 |                                            | v2.1.0差分反映：エンバーゴ考慮のaccessRights             |
