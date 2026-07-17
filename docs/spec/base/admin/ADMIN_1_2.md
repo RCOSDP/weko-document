@@ -131,6 +131,8 @@ WEKO3の必須項目である「公開日」についてもマッピングする
 
 - 画面/ハンドラ：`weko_itemtypes_ui.admin.ItemTypeMappingView`（endpoint `itemtypesmapping`）。メソッド：`index` / `mapping_register` / `schema_list`。既定スキーマは `jpcoar_mapping`。
 - テーブル：`item_type_mapping`（+ SQLAlchemy-Continuum による `item_type_mapping_version`）。重複マッピングは `check_duplicate_mapping`（utils）で検出。
+- 保存（`mapping_register`）は `weko_records.api.Mapping.create_or_update` を呼び、`item_type_id` を一意キーとして既存行があれば `mapping` を更新、無ければ新規作成する（upsert、`db.session.merge`）。従来の毎回 INSERT 方式は廃止され、1アイテムタイプにつき `item_type_mapping` は1行に統一される。`Mapping.get` は `item_type_id` で1件を取得する（`first()`）。
+- `item_type_mapping.item_type_id` には一意制約（`uq_item_type_mapping_item_type_id`）と `item_type.id` への外部キー（`fk_item_type_mapping_item_type_id_item_type`, ON DELETE CASCADE）が設定される。`mapping` 列には GIN インデックス `idx_mapping_item_type_mapping` を持つ。
 
 ## 更新履歴
 
@@ -138,3 +140,4 @@ WEKO3の必須項目である「公開日」についてもマッピングする
 | ---------- | ----------------------------------------- | ------------- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成      |
 | 2024/07/1  | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応    |
+| 2026/07/17 |                                          | v2.1.0差分反映：`Mapping.create_or_update`（upsert・1タイプ1行）、一意制約/外部キー/GINインデックスを追記 |

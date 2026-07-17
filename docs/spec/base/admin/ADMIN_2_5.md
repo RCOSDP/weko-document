@@ -221,6 +221,7 @@ RO-Crateには、アイテムのメタデータを記述するための語彙が
 | wk:isSplited                               | -                    | 真偽値             | false        |      |      | アイテム分割フラグ （SWORD経由のみ）     |
 | wk:metadataAutoFill                        | -                    | 真偽値             | false        |      |      | メタデータ自動補完フラグ                 |
 | wk:metadataReplace                         | -                    | 真偽値             | false        |      |      | メタデータのみ置換フラグ（SWORD経由のみ）|
+| wk:researchmapLinkage                      | -                    | 真偽値             | false        |      |      | researchmap連携フラグ（SWORD経由のみ）    |
 
 ※ 登録用ファイル保存フラグとアイテム分割フラグが両方`true`の場合、アイテム分割フラグが優先され、ファイルは展開されて保存される。
 
@@ -469,6 +470,19 @@ SWORD APIを利用してアイテムを更新する際に、メタデータの�
 }
 ```
 
+### wk:researchmapLinkage：researchmap連携フラグ
+
+researchmapへの業績連携を行うかどうかを指定する。ルートデータセット直下に記述する。デフォルト値は`false`である。  
+このフラグはSWORD APIを利用してワークフロー経由でアイテムを登録する場合にのみ有効であり、`true`のとき、登録アクティビティに研究者情報連携（`cris_linkage.researchmap`）が引き渡され、researchmapへの業績連携が実行される。  
+`JsonLdMapper`が`wk:researchmapLinkage`を解析して`system_info["researchmap_linkage"]`に格納し、SWORD側（`weko_swordserver`）で`metadata["researchmap"]`に反映、`weko_workflow` の `HeadlessActivity` が `cris_linkage.researchmap` としてアクティビティ登録データに設定する。
+
+```json
+{
+  "@id": "./",
+  "wk:researchmapLinkage": true
+}
+```
+
 
 ## マッピング機能
 JSON-LD形式のメタデータファイルを読み込み、あらかじめ設定されたマッピング定義に基づいてWEKO3のアイテムタイプにマッピングする機能を提供する。  
@@ -539,3 +553,4 @@ WEKO3では、アイテムの全文検索に使用するのために本文ファ
 | 日付       | GitHubコミットID                           | 更新内容                                        |
 | ---------- | ------------------------------------------ | ----------------------------------------------- |
 | 2024/03/07 | 111d579dc68943b810918b2ccd46939f0208f4ba   | 初版作成                                        |
+| 2026/07/17 |                                            | v2.1.0差分反映：カスタム語彙 `wk:researchmapLinkage`（researchmap連携フラグ）を追記 |

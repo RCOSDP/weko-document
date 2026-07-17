@@ -323,6 +323,7 @@
 
 - 画面/ハンドラ：`weko_itemtypes_ui.admin.ItemTypeMetaDataView`（endpoint `itemtypesregister`、`/admin/itemtypes`）。主なメソッド：`index` / `render_itemtype` / `delete_itemtype` / `register` / `restore_itemtype` / `get_property_list` / `export` / `item_type_import`。
 - モデル/テーブル：`ItemType`（`item_type`）/ `ItemTypeName`（`item_type_name`）/ `ItemTypeMapping`（`item_type_mapping`）/ `ItemTypeProperty`（`item_type_property`）/ `ItemTypeEditHistory`（`item_type_edit_history`）（いずれも `weko_records.models`）。エクスポートは上記4種のJSONを含むZIP（`ItemType_export.zip`）。
+- `item_type_mapping` は `item_type_id` で `item_type` を参照する外部キー（`fk_item_type_mapping_item_type_id_item_type`、ON DELETE CASCADE）と一意制約（`uq_item_type_mapping_item_type_id`）を持ち、アイテムタイプ1件に対しマッピング1行が対応する。アイテムタイプ実体の削除時にはマッピング行が連動削除される。マッピング保存は `Mapping.create_or_update`（upsert）。
 - 実装の実メッセージ：登録成功「Successfuly registered Item type.」（コードのタイプミスのまま）、インポート成功「The item type imported successfully.」、インポート失敗「Failed to import the item type.」。強制インポートは未登録プロパティ検出時に `Unregistered properties detected.` を表示し、ID重複は `updated` 時刻の比較でスキップ（`duplicated_props` として返却）。
 
 ## 更新履歴
@@ -332,3 +333,4 @@
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | 初版作成                                                |
 | 2024/07/01 | 7733de131da9ad59ab591b2df1c70ddefcfcad98   | v1.0.7対応                                              |
 | 2025/10/07 |                                            | アイテムタイプ削除不可条件追加(ワークフロー、SWORD API) |
+| 2026/07/17 |                                            | v2.1.0差分反映：item_type_mapping の外部キー(ON DELETE CASCADE)・一意制約を追記 |

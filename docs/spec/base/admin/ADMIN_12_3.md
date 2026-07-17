@@ -14,7 +14,7 @@
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 利用可否 | ○ | ○※ | | | | |
 
-- リポジトリ管理者はデフォルトに指定されたロケーションの操作ができない。
+- ロケーションの作成/編集/削除はシステム管理者のみ可能。リポジトリ管理者は一覧・詳細の閲覧のみ（デフォルトロケーションを含め表示できるが操作は不可）。
 
 ## 画面内容
 
@@ -85,7 +85,7 @@
     - 「Buckets」リンク  
         リンクをクリックすると、【Admin > Files > Bucket画面】に移動し、当該ロケーションが属するバケット一覧がフィルターされる
 
-- システム管理者以外はデフォルト指定されたロケーションを表示および操作することができない。
+- デフォルト指定されたロケーションは、システム管理者およびリポジトリ管理者が表示できる（`get_query`）。作成/編集/削除はシステム管理者のみ可能。
 
 ### ロケーション一覧をフィルタ表示する。
 
@@ -364,7 +364,7 @@ jctest/jctest/b6/a5/1012-dea5-4ca0-82e1-ee6c9fed8908/data
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ：`invenio_files_rest.admin.LocationModelView`（テーブル `files_location`、endpoint `location`）。`can_create`/`can_edit`/`can_delete` はいずれも System Administrator **と** Repository Administrator の両ロールに許可（環境変数 `INVENIO_ROLE_SYSTEM`/`INVENIO_ROLE_REPOSITORY`）。Repository 管理者は既定ロケーション（`default=True`）を操作不可（`get_query` が `default=False` に限定）。
+- 画面/ハンドラ：`invenio_files_rest.admin.LocationModelView`（テーブル `files_location`、endpoint `location`）。`can_create`/`can_edit`/`can_delete` は System Administrator（環境変数 `INVENIO_ROLE_SYSTEM`）のみに許可。`get_query` は System / Repository 管理者以外を `default=False` に限定するため、リポジトリ管理者は既定ロケーション（`default=True`）を閲覧できる（操作は不可）。
 - 実装補足：「URI は https:// で始まること」の検証は **S3 Virtual Host 型のときのみ**適用される。`s3_signature_version` は作成時に None にされる（フォーム選択値は破棄）。Type の選択肢は config `FILES_REST_LOCATION_TYPE_LIST`（`s3` / `s3_vh`）。`slug` は `^[a-z][a-z0-9-]+$`。
 
 ## 更新履歴
@@ -372,3 +372,4 @@ jctest/jctest/b6/a5/1012-dea5-4ca0-82e1-ee6c9fed8908/data
 | 日付 | GitHubコミットID | 更新内容 |
 |:---:|:---:|:---:|
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/07/17 | | v2.1.0差分反映：作成/編集/削除はシステム管理者のみ・リポジトリ管理者は閲覧のみ（デフォルトロケーションも表示可）に訂正 |

@@ -162,7 +162,7 @@
       - グループ権限の設定には、  
         「グループ権限あり」（Group Authorized）と「権限なし」（Unauthorized）エリアを設ける。
         
-          - 「グループ権限あり」（Group Authorized）は、デフォルトとして、登録されているグループが表示される。
+          - 「グループ権限あり」（Group Authorized）は、デフォルトとして、登録されているグループが表示される。デフォルトのグループ一覧には仮想グループ「No Group」（内部ID `-89`）が含まれ、新規インデックスの既定グループ権限にも付与される。いずれのグループにも所属しないユーザー及びゲストは「No Group」として扱われる。
         
           - 「子インデックスのグループ権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定される。
 
@@ -208,7 +208,7 @@
       - グループ権限の設定には、  
         「グループ権限あり」（Group Authorized）と「権限なし」（Unauthorized）エリアを設ける。
         
-          - 「グループ権限あり」（Group Authorized）は、デフォルトとして、登録されているグループが表示される。
+          - 「グループ権限あり」（Group Authorized）は、デフォルトとして、登録されているグループが表示される。デフォルトのグループ一覧には仮想グループ「No Group」（内部ID `-89`）が含まれ、新規インデックスの既定グループ権限にも付与される。いずれのグループにも所属しないユーザー及びゲストは「No Group」として扱われる。
         
           - 「子インデックスのグループ権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定される。
 
@@ -405,6 +405,8 @@
 - 画面/ハンドラ：`weko_index_tree.admin.IndexEditSettingView.index`（画面）＋ REST。追加/編集/削除は `weko_index_tree.rest.IndexActionResource.post/put/delete`（→ `Indexes.create/update`、`utils.perform_delete_index` は論理削除 `is_deleted`）、移動は `IndexTreeActionResource.put`（→ `Indexes.move`、`parent`/`position` 更新）。キャッシュ更新は `save_index_trees_to_redis`。
 - 再帰フラグ：再帰対象は #10 `recursive_public_state` / #18 `recursive_coverpage_check` / #21 `biblio_flag` / #23 `recursive_browsing_role` / #25 `recursive_browsing_group` / #27 `recursive_contribute_role` / #29 `recursive_contribute_group`（#8 public_state・#16 rss_status には再帰なし）。カラム名は `recursive_coverpage_check`。テーブルには `is_deleted` / `owner_user_id` / `cnri` / `index_url` / `harvest_spec` 等の列もある。
 - config：`WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING/CONTRIBUTE_PERMISSION` は **weko-accounts/config.py** に定義。関連モジュール（追記）：weko-accounts / weko-handle / weko-workflow / weko-logging。
+- 既定グループとNo Group：`Indexes.get_account_group`（`weko_index_tree.api`）が既定のグループ一覧に仮想グループ「No Group」（内部ID `-89`）を含め、新規インデックスの既定 `browsing_group`/`contribute_group` に `-89` を設定する。既存インデックスへは `postgresql/ddl/W2025-61a.sql` で `-89` を追記する。
+- アクセス可否判定：閲覧・投稿いずれのアクセス可否も `weko_index_tree.utils.check_index_permission_by_role_and_group` により、ロール権限の一致（`check_roles`。認証済みユーザーに `-98`、ゲストに `-99` を自動付与し、いずれか1つでも一致すれば許可＝ANY 一致）とグループ権限の一致（`check_groups`。グループ未所属の認証ユーザー／ゲストは `-89`（No Group）扱い。名前に `_groups_` を含むロールグループを含めて ANY 一致）の **両方**（AND）を満たす場合に許可される。管理者ロールは常に許可。GakuNin mAP ロール（`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` の `role_keyword`/`prefix` に一致）は判定対象から除外される。呼び出しは `filter_index_list_by_role` / `reduce_index_by_role` / `check_index_permissions`。
 
 ## 更新履歴
 
@@ -417,5 +419,6 @@
 | 2025/01/30|3530eae9075af6afc57b777d8c3137f038523610|学認mAP連携対応|
 | 2025/10/10|3581747ebfbda5f623e7b8da759293d2090c4112|インデックス公開ロック機能追加|
 | 2025/11/12|5254da1cf9caafb27a27f361ae36099da4f2c042|キャッシュ機能の改善|
+| 2026/07/17|-|v2.1.0差分反映：No Group(-89)既定・閲覧/投稿の「ロールAND グループ」判定・mAPロール除外を追記|
 
 

@@ -327,6 +327,7 @@
 | .doi_ra           | .DOI_RA              | DOIの種類を指定する。JaLC/Crossref/DataCite(※4)/NDL JaLC (※5)のいずれかを設定する。                                                     |
 | .doi              | .DOI                 | DOIを「prefix/suffix」の形式で設定する。通常モードの時は自動採番(※3)される。識別子変更モードの時は手入力で変更可能。                     |
 | .edit_mode        | Keep/Upgrade Version | 対象のアイテムのバージョン更新可否を指定する。新規登録の場合は空、更新の場合は必須でKeep/Upgradeのいずれかを指定する。<br>※インポートファイル（zip）に既存アイテムの元ファイルが同名、ファイルパスも同一で含まれていた場合（元ファイルを変更しない） <br>・Keep: 重複登録されない <br>・Upgrade: 重複登録する。ファイル名だけでは、同名同ファイルなのか同名異ファイルなのかが判断できない |
+| .bulk_doi         | .BULK_DOI            | メタデータ補完に用いるDOIを「prefix/suffix」の形式で指定する。インポート（Import）画面のDOI入力欄（内部キー `bulk_doi`）に保持され、`handle_metadata_by_doi` による補完対象DOIとして使用される。設定キー `WEKO_EXPORT_TEMPLATE_BASIC_ID`（`.bulk_doi`）/ `WEKO_EXPORT_TEMPLATE_BASIC_NAME`（`.BULK_DOI`）。 |
 
 #### ※2) CNRIハンドルサーバの使用について  
 CNRIハンドルの使用状態は「WEKO_HANDLE_ALLOW_REGISTER_CRNI」(modules/weko-handle/weko_handle/config.py)の設定値で判断している
@@ -1377,3 +1378,4 @@ TSV/CSV/ZIP インポートは「チェック（check）」と「登録（import
 | 2024/07/01 |7733de131da9ad59ab591b2df1c70ddefcfcad98|v1.0.7対応         |
 | 2025/01/23 |-                                       |サブリポジトリ対応 |
 | 2025/06/05 |218410fd51f7dce1ca7df00cdbe851033e936f2d|メタデータ補完機能 |
+| 2026/07/17 |                                        |v2.1.0差分反映：テンプレート列 `.bulk_doi`/`.BULK_DOI`（DOI補完用）を追記 |
