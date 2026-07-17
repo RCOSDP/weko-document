@@ -126,11 +126,12 @@
     図形マーク▶がクリックされた場合、表示エリアを展開し、図形を▼に変化させる。  
     再度図形▼がクリックされた場合、表示エリアを折り畳む。
   - 閲覧権限のないインデックスはweko_index_tree.utils. reduce_index_by_roleメソッドにてroleにアクセス権限がないインデックスを非表示とする。
+    - 閲覧可否は `weko_index_tree.utils.check_index_permission_by_role_and_group` により、ロール権限（認証ユーザーは `-98`、ゲストは `-99` を自動付与し ANY 一致）とグループ権限（グループ未所属の認証ユーザー／ゲストは `No Group`(内部ID `-89`) を付与し ANY 一致。名前に `_groups_` を含むロールグループを含む）の**両方一致**（AND）で判定される。GakuNin mAP ロール（`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` の `role_keyword`/`prefix` に一致）は判定対象から除外される。
   - インデックスが子インデックスを持つ場合、インデックスの左の図形▶をクリックすると、子インデックスへのリンクを当該インデックスの下に表示し、図形を▼に変化させる。再度図形▼をクリックすると子インデックスを非表示とする。
 
 「メインコンテンツ」ウィジェットの［トップ（Top）］タブ内に表示される、［インデックスツリー］エリア内のインデックスのリンクを押下する、または、[インデックスリンク]エリアのプルダウンからインデックスを選択する。この操作によって以下の処理をする。
 
-- weko_search_ui.static.js.weko_search_ui.app getPathNameメソッドを呼び出す。そして、get_path_name_dictメソッドによってindexテーブルより選択したインデックスのパンくずリストを取得する。なお、権限がないインデックスはfilter_index_list_by_roleメソッドで非表示になる。
+- weko_search_ui.static.js.weko_search_ui.app getPathNameメソッドを呼び出す。そして、get_path_name_dictメソッドによってindexテーブルより選択したインデックスのパンくずリストを取得する。なお、権限がないインデックスはfilter_index_list_by_roleメソッドで非表示になる。`filter_index_list_by_role` / `reduce_index_by_role` はいずれも `check_index_permission_by_role_and_group`（ロール ANY 一致 AND グループ ANY 一致。認証ユーザー `-98`／ゲスト `-99`／No Group `-89`）で閲覧可否を判定する。
 - 選択したインデックスに登録されている公開設定の雑誌情報をweko_search_ui.views.searchメソッドにてget_journal_infoを使って取得し、表示する。処理の詳細についてはUSER-2-3雑誌情報を参照すること
 - weko_search_ui.static.js.weko_search_ui.app.getChildListメソッドを呼び出す。そして、get_child_listメソッドによってindexテーブルより選択したインデックスに所属する子インデックスのデータを取得し、表示する。
 - weko_search_ui.static.js.weko_search_ui.app.dispaly_comment_journalメソッドにて、format_commentを呼び出し、コメントを整形し表示する。
@@ -153,3 +154,4 @@
 |:---:|:---:|:---:|
 |2022/05/10|57247ecce9b5e0879a2538687e446e0ea310129c|初版作成|
 |2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|v0.9.22対応|
+|2026/07/17||v2.1.0差分反映：インデックス閲覧判定を `check_index_permission_by_role_and_group`（ロール ANY 一致 AND グループ ANY 一致、認証 -98／ゲスト -99／No Group -89、mAP ロール除外）で補足|

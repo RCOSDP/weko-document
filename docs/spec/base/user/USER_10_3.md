@@ -218,6 +218,38 @@
       | 収録誌のISSN  | prism:issn                                          | jpcoar:sourceIdentifier             |
       | 関連識別子  | prism:doi                                             | jpcoar:relatedIdentifier(identifierType="DOI")             |
 
+### arXiv APIからのメタデータ取得
+
+  - WEB API リクエスト  
+    ※ API仕様： https://info.arxiv.org/help/api/index.html
+    - リクエストURL  
+      https://export.arxiv.org/api/query?search_query=doi:{doi}
+    - method  
+      GET
+    - パラメータ  
+      | パラメーター名 | 説明 | 値 |
+      | ----- | ----- | ----- |
+      | search_query | 検索するDOI | `doi:{doi}` の形式（{doi}: 入力されたDOI）
+
+    - リクエストURLは config `WEKO_WORKSPACE_ARXIV_API_URL`（既定 `https://export.arxiv.org/api/query?search_query=doi:`）に DOI を連結して生成する。レスポンスは XML 形式で返却され、`xmltodict` で辞書に変換して解析する。
+    - 抽出対象のフィールドは config `WEKO_WORKSPACE_ARXIV_REQUIRED_ITEM`（title / identifier / date / description / creator / relation / subject）で制御される。
+    - 取得したデータは、アイテムの対応項目および対応するJPCOARマッピング(jpcoar_v2_mapping)が設定されたメタデータ項目に自動入力される
+
+      取得データの入力先メタデータ項目
+      | **データ** | **パス** | **対応するJPCOARマッピング** |
+      | --------- | -------- | --------------------------- |
+      | タイトル      | title                                        | dc:title                              |
+      | 識別子       | id                                           | jpcoar:identifier                     |
+      | 日付（登録日）  | published（"T"で分割した日付）                    | datacite:date(dateType="Submitted")   |
+      | 日付（更新日）  | updated（"T"で分割した日付）                      | datacite:date(dateType="Updated")     |
+      | 抄録本文      | summary                                      | dc:description(descriptionType="Abstract") |
+      | 注記        | arxiv:comment                                | dc:description(descriptionType="Other") |
+      | 著者名       | author.name                                  | jpcoar:creatorName                    |
+      | 著者所属名     | author.arxiv:affiliation                     | jpcoar:affiliationName                |
+      | 関連識別子（URI） | link.@href                                 | jpcoar:relatedIdentifier(relationType="isFormatOf") |
+      | 関連識別子（DOI） | arxiv:doi                                  | jpcoar:relatedIdentifier(identifierType="DOI", relationType="isVersionOf") |
+      | 主題        | category.@term / arxiv:primary_category.@term（primaryを先頭） | jpcoar:subject |
+
 
 ## 関連モジュール
 
@@ -279,14 +311,25 @@
     * 取得したAPIレスポンスを解析し、辞書型に整形する
     * アイテムタイプのJPCOARマッピングに応じた項目にメタデータを設定する
 
+### arXiv APIからのメタデータ取得
+
+  * arXiv API からDOIに紐づくメタデータを取得する
+    * `weko_workspace.api.arXivURL.get_data()` を呼び出し、arXiv API からデータを取得する
+      * arXiv API からはXML形式でレスポンスが返却される
+    * 取得したAPIレスポンス（XML）を `xmltodict` で辞書型に整形する
+    * アイテムタイプのJPCOARマッピングに応じた項目にメタデータを設定する（設定対象は `WEKO_WORKSPACE_ARXIV_REQUIRED_ITEM` に従う）
+
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- メタデータ自動補完：CrossRef=`weko_items_autofill.api.CrossRefOpenURL`、CiNii/JaLC/DataCite/医中誌=`weko_workspace.api`（`CiNiiURL`/`JALCURL`/`DATACITEURL`/`JamasURL`）。外部URLは config `WEKO_WORKSPACE_*_API_URL`。CrossRef は API 証明書（`weko_admin.models.ApiCertificate`、code `"crf"`）が無い場合はリクエストしない。
+- メタデータ自動補完：CrossRef=`weko_items_autofill.api.CrossRefOpenURL`、CiNii/JaLC/DataCite/医中誌/arXiv=`weko_workspace.api`（`CiNiiURL`/`JALCURL`/`DATACITEURL`/`JamasURL`/`arXivURL`）。外部URLは config `WEKO_WORKSPACE_*_API_URL`。CrossRef は API 証明書（`weko_admin.models.ApiCertificate`、code `"crf"`）が無い場合はリクエストしない。
+- arXiv 取得は weko-workspace で完結する。エンドポイントは `weko_workspace.views.get_auto_fill_record_data_arXivapi`（route `/get_auto_fill_record_data_arXivapi`）、取得ロジックは `weko_workspace.api.arXivURL` と `weko_workspace.utils.get_arXiv_record_data`（`get_arXiv_title_data` / `get_arXiv_identifier_data` / `get_arXiv_date_data` / `get_arXiv_description_data` / `get_arXiv_creator_data` / `get_arXiv_relation_data` / `get_arXiv_subject_data` ほか）。config は `WEKO_WORKSPACE_ARXIV_API_URL`（既定 `https://export.arxiv.org/api/query?search_query=doi:`）と `WEKO_WORKSPACE_ARXIV_REQUIRED_ITEM`（title/identifier/date/description/creator/relation/subject）。
+- 各外部ソース（CiNii/JaLC/DataCite/arXiv）が生成する DOI 識別子には `relationType='isVersionOf'` が付与される（JaLC は併せて `type='DOI'` を付与）。
 
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|
 |---|---|---|
 |2025/03/27|057e4d8985a4b5526c0db7f07f717a4bb45bc984|初版作成|
+|2026/07/17||v2.1.0差分反映：arXiv メタデータ自動補完ソースを追加（`arXivURL`／`get_arXiv_*`／endpoint `get_auto_fill_record_data_arXivapi`／config `WEKO_WORKSPACE_ARXIV_API_URL`・`_REQUIRED_ITEM`）、DOI識別子への `relationType='isVersionOf'` 付与を追記|
 

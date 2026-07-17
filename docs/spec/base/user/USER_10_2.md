@@ -25,6 +25,7 @@
     - 「JaLC MetaData」：Radioの形式で表示される。
     - 「CiNii MetaData」：Radioの形式で表示される。
     - 「DataCite MetaData」：Radioの形式で表示される。
+    - 「arXiv MetaData」：Radioの形式で表示される。
     - 「メタデータ」（Metadata）：Titleの形式で表示される。
     - 「ファイル名」（File Name）：Inputの形式で表示される。
     - 「公開日」（PubDate）：Inputの形式で表示される。
@@ -41,7 +42,7 @@
     - 「ファイル」（File）：Titleの形式で表示される。
     - 「インデックス」（Index）：CheckBoxの形式で表示される。
 
-  - [取得（Get）]ボタンを押すと、CrossRef MetaData、JaLC MetaData、CiNii MetaData、DataCite MetaDataラジオボタンを非活性から活性に変更する。DOIに該当するメタデータが見つかりませんでした場合は下記のメッセージが表示される。
+  - [取得（Get）]ボタンを押すと、CrossRef MetaData、JaLC MetaData、CiNii MetaData、DataCite MetaData、arXiv MetaDataラジオボタンを非活性から活性に変更する。DOIに該当するメタデータが見つかりませんでした場合は下記のメッセージが表示される。
     メッセージ：「DOIに該当するメタデータが見つかりませんでした。」
 
   - [登録（Register）]ボタンを押すと、weko_workspace.views.item_register_saveが呼び出され、入力された情報がDBとESに保存される。保存が正常終了の場合は下記のメッセージが表示される。
@@ -66,6 +67,7 @@
     - 「JaLC MetaData」：非活性。
     - 「CiNii MetaData」：非活性。
     - 「DataCite MetaData」：非活性。
+    - 「arXiv MetaData」：非活性。
     - 「ファイル名」（File Name）：空欄。
     - 「公開日」（PubDate）：デフォルト(当日)。
     - 「タイトル」（Title）：空欄。
@@ -88,7 +90,7 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ：`weko_workspace.views.item_register`（route `/workspace/item_registration`）/ `item_register_save`（`/workspace/workflow_registration`）。DB/ES 保存は `weko_search_ui.utils.import_items_to_activity` / `import_items_to_system` 経由。DOI取得は `/workspaceAPI` 配下（CiNii/JaLC/DataCite/医中誌 は weko-workspace、CrossRef のみ weko-items-ui `/api/autofill/get_auto_fill_record_data`）。
+- 画面/ハンドラ：`weko_workspace.views.item_register`（route `/workspace/item_registration`）/ `item_register_save`（`/workspace/workflow_registration`）。DB/ES 保存は `weko_search_ui.utils.import_items_to_activity` / `import_items_to_system` 経由。DOI取得は `/workspaceAPI` 配下（CiNii/JaLC/DataCite/医中誌/arXiv は weko-workspace、CrossRef のみ weko-items-ui `/api/autofill/get_auto_fill_record_data`）。arXiv 用エンドポイントは `weko_workspace.views.get_auto_fill_record_data_arXivapi`（route `/get_auto_fill_record_data_arXivapi`）。画面ラジオ `arXiv MetaData` は `value="arXivMetaData"`（id `metaDataSelectarXiv`）。
 - 実装補足：DOI未一致時のメッセージは未翻訳英語「No metadata was found that matches the DOI!」。医中誌ソースの選択UIは未実装。関連モジュール（追記）：weko-workspace / weko-search-ui / weko-admin。
 
 ## 更新履歴
@@ -96,3 +98,4 @@
 | 日付       | GitHubコミットID                         | 更新内容 |
 |------------|-------------------------------------------|----------|
 | 2025/03/27 | 057e4d8985a4b5526c0db7f07f717a4bb45bc984 | 初版作成 |
+| 2026/07/17 |  | v2.1.0差分反映：メタデータ取得ソースに arXiv MetaData ラジオ（`value="arXivMetaData"`）と DOI取得エンドポイント `get_auto_fill_record_data_arXivapi` を追記 |

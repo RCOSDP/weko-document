@@ -30,6 +30,7 @@
 
     - 「DOIラベル」
       - リンク付けありで表示され、DOI情報を確認すると該当アイテムを既読に更新する
+      - DOI（リンク）は、関連情報(relation)の relatedIdentifier のうち `identifierType=="DOI"` かつ `relationType==isVersionOf` のものを DOI として採用し、`OAIHARVESTER_DOI_PREFIX` を前置して導出する
 
     - 「リソースタイプ」
       - リソースタイプを表示する
@@ -138,8 +139,11 @@
 
   - アイテム出力カラムフォーマット
 
+出力ヘッダー（列見出し）はサーバ側の config `WEKO_WORKSPACE_EXPORT_HEADERS` で定義され、`weko_workspace.views.get_workspace_itemlist` が `export_header` としてフロントへ提供する。先頭には「No.」（連番）列が付与される。
+
 | 論理名 | 物理名 | 出力フォーマット |
 |------------------------------|-------------------------------|----------------------|
+| 連番 | No. | 数字 |
 | お気に入りステータス | favoriteSts | 0または1 |
 | 既読未読ステータス | readSts | 0または1 |
 | 査読チェック状況 | peerReviewSts | 0または1 |
@@ -291,9 +295,12 @@
 
 - 画面/ハンドラ：`weko_workspace.views.get_workspace_itemlist`（route `/workspace/`、`@login_required`）。一覧ESインデックスは `{prefix}-weko`。状態テーブル `workspace_status_management`（複合PK (user_id, recid)、`is_favorited`/`is_read`）、既定条件 `workspace_default_conditions`。OAステータスは `weko_records.models.OaStatus`。
 - 実装補足：関連モジュールは **weko-workspace**（本体）を筆頭に weko-records / weko-admin / weko-search-ui / weko-user-profiles / invenio-stats。TSV出力はサーバではなくクライアントJS `WorkspaceExport.js`（ファイル名 `itemlist_export_YYYYMMDDhhmmss.tsv`）。
+- 出力ヘッダー（列見出し）はサーバ側 config `WEKO_WORKSPACE_EXPORT_HEADERS`（先頭 `'No.'` を含む約28列）で定義され、`get_workspace_itemlist` が `export_header` としてフロント（`WorkspaceExport.js` / `WorkspaceItemList.js`）へ渡す。フロントはこれを用いて出力する。
+- 一覧の DOI リンクは `source["relation"]["relatedIdentifier"]` を走査し、`identifierType=="DOI"` かつ `relationType==['isVersionOf']` のものを採用して `OAIHARVESTER_DOI_PREFIX` を前置して生成する（従来の identifier 先頭値起点から変更）。
 
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |
 | 2025/06/06 | 057e4d8985a4b5526c0db7f07f717a4bb45bc984 | 初版作成 |
+| 2026/07/17 |  | v2.1.0差分反映：出力ヘッダーのサーバ定義化（`WEKO_WORKSPACE_EXPORT_HEADERS`、先頭「No.」列）、DOIリンク導出を relation(relatedIdentifier, DOI, relationType=isVersionOf) ベースへ変更 |

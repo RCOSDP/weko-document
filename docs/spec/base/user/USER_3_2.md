@@ -812,11 +812,11 @@
 | --- | --- |
 | `open_access` | ファイル情報表示は常に可。実DLは `fjson.date[0].dateValue` が未来日でなければ可（未設定は可）。 |
 | `open_date` | 情報表示は常に可。実DLは (a) 公開日 `fjson.accessdate`（無ければ `date[0].dateValue`）が未来でない、(b) `record.publish_date` が未来でない、(c) ロール条件（`fjson.roles` 一致、未指定は可）の AND。不可でも `site_license_check`（アイテムタイプ `has_site_license` かつ IP 判定 or `check_user_group_permission`）が真なら可。 |
-| `open_login` | 情報表示は常に可。実DLは (a) ログイン済み、(b) ロール条件、(c) 課金/グループ条件の AND。`fjson.groupsprice` があれば該当グループ所属、無ければ `fjson.groups` 所属（未設定は可）、不可なら `site_license_check` にフォールバック。 |
+| `open_login` | 情報表示は常に可。実DLは (a) ログイン済み、(b) ロール条件、(c) 課金/グループ条件（`fjson.groupsprice` があれば該当グループ所属、無ければ `fjson.groups` 所属、未設定は可）の AND。**AND の結果が偽でも `site_license_check`（アイテムタイプ `has_site_license` が真、かつ IP 判定 or グループ課金）が真ならサイトライセンス利用者として可**。 |
 | `open_no` | 情報表示は原則可だが未ログイン・非許可・サイトライセンス該当時は非表示。実DLは `current_user.email` が登録者メール一覧に含まれる場合のみ可。 |
-| `open_restricted` | `check_open_restricted_permission` に委譲。承認済み `FilePermission`（`status==1`）が存在し、かつ `WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` が True の場合のみ `check_permission_period`（有効なワンタイムDLの有無）を評価。DISPLAY_FLAG が False または未承認は不可。 |
+| `open_restricted` | `check_open_restricted_permission` に委譲。承認済み `FilePermission`（`status==1`）が存在し、かつ `WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` が True の場合のみ `check_permission_period`（有効なワンタイムDLの有無）を評価。DISPLAY_FLAG が False または未承認は不可。**ただし判定が偽でも `site_license_check` が真ならサイトライセンス利用者として可**。 |
 
-補足：`fd.py` の実DL時、`open_restricted` で所有者・スーパーユーザーでなければ有効なワンタイムDLを取得（無ければ `abort(403)`）し token を生成して `validate_onetime_token` に委譲する。ファイル未存在は `abort(404)`、未ログインはログイン要求。
+補足：`fd.py` の `file_ui` の実DL時、`open_restricted` で所有者・スーパーユーザーでなければ有効なワンタイムDLを取得（無ければ `abort(403)`）し token を生成して `validate_onetime_token` に委譲する。ファイル未存在は `abort(404)`、未ログインはログイン要求。**ただしサイトライセンス利用者（`weko_records_ui.ipaddr.check_site_license_permission()` が真）は、この open_restricted のワンタイムDL強制フローをスキップして直接DLする。**
 
 ### 2. ワンタイム／シークレットURL のエラー・分岐
 
@@ -860,3 +860,4 @@
 |2024/07/1|7733de131da9ad59ab591b2df1c70ddefcfcad98|v1.0.7対応|
 |2025/09/15|c387c0a978c9eb318044b3d17d72838872012370|Import to GakuNin RDM機能を追加|
 |2025/10/31|160a811eed2c61492558905db34fa0619da6b18f|設定値による機能制御を記載|
+|2026/07/17||v2.1.0差分反映：サイトライセンス利用者は open_login/open_restricted で実DL可（`check_file_download_permission` のフォールバック）、および open_restricted のワンタイムDL強制フローをスキップ（`fd.py file_ui`）する点を追記|
