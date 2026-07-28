@@ -46,9 +46,9 @@ $ kubectl exec -n weko3 ${WEB_POD} -c web -- bash -c "
 ```sh
 $ LOG_DIR=/usr/local/share/operation/${WORK_DIR}
 $ mkdir -p ${LOG_DIR}
-$ kubectl exec -n weko3 ${WEB_POD} -c web -- invenio shell tools/verify_restricted_records.py enable &> ${LOG_DIR}/verify_restricted_records_${REPO//[.-]/_}.log
+$ kubectl exec -n weko3 ${WEB_POD} -c web -- invenio shell tools/verify_restricted_records.py enable &> ${LOG_DIR}/verify_restricted_records_${REPO//[.-]/_}_before.log
 # ログの確認
-cat ${LOG_DIR}/verify_restricted_records_${REPO//[.-]/_}.log | python3 -c 'import sys,re,ast; s=sys.stdin.read(); expected={"all":["mail_template_genres","mail_templates"],"some":[],"no":["item_type_name","item_type","item_type_mapping","item_type_property","index","workflow_flow_define","workflow_flow_action","workflow_workflow","workflow_userrole","admin_settings"]}; patterns={"all":r"Tables with all records correct:\s*(\[[^\]]*\])","some":r"Tables with some records correct:\s*(\[[^\]]*\])","no":r"Tables with no records correct:\s*(\[[^\]]*\])"}; matches={k:re.search(p,s) for k,p in patterns.items()}; actual={k:ast.literal_eval(m.group(1)) for k,m in matches.items() if m}; errors=[k+": result not found" for k,m in matches.items() if not m]; errors += [k+": expected="+str(sorted(expected[k]))+", actual="+str(sorted(actual[k])) for k in expected if k in actual and set(actual[k]) != set(expected[k])]; print("OK: 検証結果は期待値と一致しています" if not errors else "ERROR:\n"+"\n".join(errors)); sys.exit(0 if not errors else 1)'
+cat ${LOG_DIR}/verify_restricted_records_${REPO//[.-]/_}_before.log | python3 -c 'import sys,re,ast; s=sys.stdin.read(); expected={"all":["mail_template_genres","mail_templates"],"some":[],"no":["item_type_name","item_type","item_type_mapping","item_type_property","index","workflow_flow_define","workflow_flow_action","workflow_workflow","workflow_userrole","admin_settings"]}; patterns={"all":r"Tables with all records correct:\s*(\[[^\]]*\])","some":r"Tables with some records correct:\s*(\[[^\]]*\])","no":r"Tables with no records correct:\s*(\[[^\]]*\])"}; matches={k:re.search(p,s) for k,p in patterns.items()}; actual={k:ast.literal_eval(m.group(1)) for k,m in matches.items() if m}; errors=[k+": result not found" for k,m in matches.items() if not m]; errors += [k+": expected="+str(sorted(expected[k]))+", actual="+str(sorted(actual[k])) for k in expected if k in actual and set(actual[k]) != set(expected[k])]; print("OK: 検証結果は期待値と一致しています" if not errors else "ERROR:\n"+"\n".join(errors)); sys.exit(0 if not errors else 1)'
 ```
 
 OK: 検証結果は期待値と一致しています と出力されれば、成功である。
@@ -142,7 +142,7 @@ $ sudo cp /fs-config/${REPO}/instance.cfg /fs-config/${REPO}/instance.cfg_$(date
 $ sudo mkdir -p /fs-pgbackup/${WORK_DIR}
 
 # バックアップ実行
-$ kubectl exec -n weko3pg ${PG_MASTER} -c postgres -- pg_dump -d ${DB} -U invenio -t 'item_type_name' -t 'item_type' -t 'item_type_mapping' -t 'item_type_property' -t 'accounts_role' -t 'index' -t 'workflow_flow_define' -t 'workflow_flow_action' -t 'workflow_workflow' -t 'workflow_userrole' -t 'mail_template_genres' -t 'mail_templates' -t 'admin_settings' -t 'item_type_edit_history' -t 'jsonld_mappings' -t 'rocrate_mapping' -t 'access_actionsroles' -t 'accounts_userrole' -t 'communities_community' -t 'shibboleth_userrole' -t 'workflow_flow_action_role' -t 'harvest_settings' -t 'journal' -t 'resync_indexes' -t 'workflow_activity' -t 'sword_clients' -t 'mail_template_users' -t 'author_affiliation_community_relations' -t 'author_community_relations' -t 'author_prefix_community_relations' -t 'communities_community_record' -t 'communities_featured_community' -t 'user_activity_logs' -t 'resync_logs' -t 'workflow_activity_action' -f /var/lib/postgresql/backup/${WORK_DIR}/disable_dump.sql --clean
+$ kubectl exec -n weko3pg ${PG_MASTER} -c postgres -- pg_dump -d ${DB} -U invenio -t 'item_type_name' -t 'item_type' -t 'item_type_mapping' -t 'item_type_property' -t 'accounts_role' -t 'index' -t 'workflow_flow_define' -t 'workflow_flow_action' -t 'workflow_workflow' -t 'workflow_userrole' -t 'mail_template_genres' -t 'mail_templates' -t 'admin_settings' -t 'item_type_edit_history' -t 'jsonld_mappings' -t 'rocrate_mapping' -t 'access_actionsroles' -t 'accounts_userrole' -t 'communities_community' -t 'shibboleth_userrole' -t 'workflow_flow_action_role' -t 'harvest_settings' -t 'journal' -t 'resync_indexes' -t 'workflow_activity' -t 'sword_clients' -t 'mail_template_users' -t 'author_affiliation_community_relations' -t 'author_community_relations' -t 'author_prefix_community_relations' -t 'communities_community_record' -t 'communities_featured_community' -t 'user_activity_logs' -t 'resync_logs' -t 'workflow_activity_action' -f /var/lib/postgresql/backup/${WORK_DIR}/${REPO}_dump.sql --clean
 ```
 
 #### 2-4. スクリプトの実行準備
@@ -217,10 +217,10 @@ $ grep -i -e error -e fail ${LOG_DIR}/restricted_update_${REPO//[.-]/_}.log
 
 ```sh
 # 確認スクリプトの実行
-$ kubectl exec -n weko3 ${WEB_POD} -c web -- invenio shell tools/verify_restricted_records.py enable &> ${LOG_DIR}/verify_restricted_records_${REPO//[.-]/_}.log.log
+$ kubectl exec -n weko3 ${WEB_POD} -c web -- invenio shell tools/verify_restricted_records.py enable &> ${LOG_DIR}/verify_restricted_records_${REPO//[.-]/_}_after.log
 
 # 実行結果を確認する
-cat ${LOG_DIR}/verify_restricted_records_${REPO//[.-]/_}.log.log | python3 -c 'import sys,re,ast; s=sys.stdin.read(); expected={"all":["item_type_name","item_type","item_type_mapping","item_type_property","index","workflow_flow_define","workflow_flow_action","workflow_workflow","workflow_userrole","mail_template_genres","mail_templates","admin_settings"],"some":[],"no":[]}; patterns={"all":r"Tables with all records correct:\s*(\[[^\]]*\])","some":r"Tables with some records correct:\s*(\[[^\]]*\])","no":r"Tables with no records correct:\s*(\[[^\]]*\])"}; matches={k:re.search(p,s) for k,p in patterns.items()}; actual={k:ast.literal_eval(m.group(1)) for k,m in matches.items() if m}; errors=[k+": result not found" for k,m in matches.items() if not m]; errors += [k+": expected="+str(sorted(expected[k]))+", actual="+str(sorted(actual[k])) for k in expected if k in actual and set(actual[k]) != set(expected[k])]; print("OK: 検証結果は期待値と一致しています" if not errors else "ERROR:\n"+"\n".join(errors)); sys.exit(0 if not errors else 1)'
+cat ${LOG_DIR}/verify_restricted_records_${REPO//[.-]/_}_after.log | python3 -c 'import sys,re,ast; s=sys.stdin.read(); expected={"all":["item_type_name","item_type","item_type_mapping","item_type_property","index","workflow_flow_define","workflow_flow_action","workflow_workflow","workflow_userrole","mail_template_genres","mail_templates","admin_settings"],"some":[],"no":[]}; patterns={"all":r"Tables with all records correct:\s*(\[[^\]]*\])","some":r"Tables with some records correct:\s*(\[[^\]]*\])","no":r"Tables with no records correct:\s*(\[[^\]]*\])"}; matches={k:re.search(p,s) for k,p in patterns.items()}; actual={k:ast.literal_eval(m.group(1)) for k,m in matches.items() if m}; errors=[k+": result not found" for k,m in matches.items() if not m]; errors += [k+": expected="+str(sorted(expected[k]))+", actual="+str(sorted(actual[k])) for k in expected if k in actual and set(actual[k]) != set(expected[k])]; print("OK: 検証結果は期待値と一致しています" if not errors else "ERROR:\n"+"\n".join(errors)); sys.exit(0 if not errors else 1)'
 ```
 
 「OK: 検証結果は期待値と一致しています」と出力された場合は成功である。
@@ -247,7 +247,7 @@ WEB_POD=$(kubectl get po -n weko3 | grep ^$(echo ${DEPLOYMENT} | tr ._ -)-web | 
 $ kubectl logs -n weko3 ${WEB_POD} -c web | less
 
 # 問題なければサービスを再開する
-$ kubectl apply -f /usr/local/share/deploy_logs/weko-manifests/${rEPO}$/manifests/ingress.yaml
+$ kubectl apply -f /usr/local/share/deploy_logs/weko-manifests/${REPO}$/manifests/ingress.yaml
 ```
 
 ブラウザで対象機関にアクセスし、問題ないか確認する。
@@ -292,7 +292,7 @@ $ kubectl delete deployment -n weko3 ${DEPLOYMENT}
 1. バックアップからレストアする。
 
 ```sh
-$ kubectl exec -n weko3pg ${PG_MASTER} -c postgres -- psql -d ${DB} -U invenio -f /var/lib/postgresql/backup/${WORK_DIR}/disable_dump.sql
+$ kubectl exec -n weko3pg ${PG_MASTER} -c postgres -- psql -d ${DB} -U invenio -f /var/lib/postgresql/backup/${WORK_DIR}/${REPO}_dump.sql
 ```
 
 #### 3-4. WEB PODデプロイ
