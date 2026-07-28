@@ -243,7 +243,7 @@ $ kubectl rollout restart -n weko3 deployment/${DEPLOYMENT}
 $ kubectl get po -n weko3 | grep ${DEPLOYMENT}
 
 # エラーがないかログを確認する
-WEB_POD=$(kubectl get po -n weko3 | grep ^$(echo ${DEPLOYMENT} | tr ._ -)-web | awk '{ print $1;}')
+WEB_POD=$(kubectl get po -n weko3 | grep ^$(echo ${DEPLOYMENT} | tr ._ -) | awk '{ print $1;}')
 $ kubectl logs -n weko3 ${WEB_POD} -c web | less
 
 # 問題なければサービスを再開する
