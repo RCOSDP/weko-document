@@ -72,7 +72,7 @@ NII担当者はログファイルを確認し、利用申請機能の有効化�
 ```sh
 $ REPO=xxxx.repo.nii.ac.jp             # 機関リポジトリ名
 $ WORK_DIR=WEKO3_OPE-xxxxx             # ワークディレクトリ
-$ BRANCH=fix/restricted_update_202606  # githubのブランチ(NII担当者に確認)
+$ BRANCH=fix/issue60615                # githubのブランチ(NII担当者に確認)
 
 $ GITHUB_PATH=https://raw.githubusercontent.com/RCOSDP/weko/refs/heads/${BRANCH}
 $ DEPLOYMENT=$(kubectl get deployment -n weko3 | grep ^$(echo ${REPO} | tr ._ -)-web | awk '{ print $1;}')
