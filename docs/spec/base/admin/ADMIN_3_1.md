@@ -153,34 +153,38 @@
             
               - Contributor
             
-              - Authenticated User
+              - Authenticated User : -98
             
-              - Guest
+              - Guest : -99
         
           - 「子インデックスのロール権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属するすべての子インデックスと子孫インデックスにロール権限の設定が再帰的に設定される。
     
       - グループ権限の設定には、  
         「グループ権限あり」（Group Authorized）と「権限なし」（Unauthorized）エリアを設ける。
-        
-          - 「グループ権限あり」（Group Authorized）は、デフォルトとして、登録されているグループが表示される。デフォルトのグループ一覧には仮想グループ「No Group」（内部ID `-89`）が含まれ、新規インデックスの既定グループ権限にも付与される。いずれのグループにも所属しないユーザー及びゲストは「No Group」として扱われる。
+
+          - 「グループ権限あり」（Group Authorized）は、デフォルトとして、以下の権限が表示される。
+
+            - 登録されている全てのグループ
+
+            - No Group : -89
         
           - 「子インデックスのグループ権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定される。
 
       - 学認mAP連携機能が有効な場合、閲覧権限の設定に学認mAPのグループ情報を利用できる。
 
-         - グループIDのフォーマットが「jc_<institution_fqdn>_roles_<role_keyword>」に従っている学認グループは、ロール権限として表示され閲覧権限を変更できる。
+         - グループIDのフォーマットが「jc\_<institution_fqdn>\_roles\_<role_keyword>」に従っている学認グループは非表示となり、閲覧権限の判定時に無視される。
 
               - <institution_fqdn>には機関のFQDNから".","-"を"_"に置換した値が設定される。
 
                   - 例: abc-u.ac.jp → abc_u_ac_jp
 
-              - 例外的に「jc_roles_sysadm」もロール権限として表示され閲覧権限を変更できる。
+              - 例外的に「jc_roles_sysadm」も非表示となり、閲覧権限の判定時に無視される。
 
               - ロール権限に設定できるグループIDのフォーマット（プレフィックス、システム管理者用グループID）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで、フォーマットを変更できる。
 
          - 上記以外のグループIDの場合はグループ権限として表示され、閲覧権限を変更できる。
 
-              - ただし、学認mAPのグループ情報は内部的には全てロールとして扱われる。
+              - 学認mAPのグループ情報は内部的にはロールだが、グループとして扱われる。
 
          - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの閲覧権限のデフォルト値は、WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING_PERMISSIONの真偽値から権限有無を決定する。
 
@@ -204,29 +208,33 @@
               - Guest : -99
         
           - 「子インデックスのロール権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属するすべての子インデックスと子孫インデックスにロール権限の設定が再帰的に設定される。
-    
+
       - グループ権限の設定には、  
         「グループ権限あり」（Group Authorized）と「権限なし」（Unauthorized）エリアを設ける。
         
-          - 「グループ権限あり」（Group Authorized）は、デフォルトとして、登録されているグループが表示される。デフォルトのグループ一覧には仮想グループ「No Group」（内部ID `-89`）が含まれ、新規インデックスの既定グループ権限にも付与される。いずれのグループにも所属しないユーザー及びゲストは「No Group」として扱われる。
+          - 「グループ権限あり」（Group Authorized）は、デフォルトとして、以下の権限が表示される。
+
+            - 登録されている全てのグループ
+
+            - No Group : -89
         
           - 「子インデックスのグループ権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定される。
 
       - 学認mAP連携機能が有効な場合、投稿権限の設定に学認mAPのグループ情報を利用できる。
 
-         - グループIDのフォーマットが「jc_<institution_fqdn>_roles_<role_keyword>」に従っている学認グループは、ロール権限として表示され投稿権限を変更できる。
+         - グループIDのフォーマットが「jc\_<institution_fqdn>\_roles\_<role_keyword>」に従っている学認グループは非表示となり、投稿権限の判定時に無視される。
 
               - <institution_fqdn>には機関のFQDNから".","-"を"_"に置換した値が設定される。
 
                   - 例: abc-u.ac.jp → abc_u_ac_jp
 
-              - 例外的に「jc_roles_sysadm」もロール権限として表示され投稿権限を変更できる。
+              - 例外的に「jc_roles_sysadm」も非表示となり、投稿権限の判定時に無視される。
 
               - ロール権限に設定できるグループIDのフォーマット（プレフィックス、システム管理者グループID）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで、フォーマットを変更できる。
 
          - ロール権限として利用できない学認グループは、すべてグループ権限として表示され、投稿権限を変更できる。
 
-              - ただし、学認mAPのグループ情報は内部的には全てロールとして扱われる。
+              - 学認mAPのグループ情報は内部的にはロールだが、グループとして扱われる。
 
          - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの投稿権限のデフォルト値は、WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_CONTRIBUTE_PERMISSIONの真偽値から権限有無を決定する。
 
@@ -377,11 +385,11 @@
 |21| |biblio_flag|None| |
 |22|閲覧権限|browsing_role|3,-98,-99|ロールID|
 |23| |recursive_browsing_role|false| |
-|24| |browsing_group|(現在存在するすべてのグループを許可)| |
+|24| |browsing_group|(現在存在するすべてのグループを許可),-89| |
 |25| |recursive_browsing_group|false| |
 |26|投稿権限|contribute_role|1,2,3,4,-98,-99| |
 |27| |recursive_contribute_role|false| |
-|28| |contribute_group|(現在存在するすべてのグループを許可)| |
+|28| |contribute_group|(現在存在するすべてのグループを許可),-89| |
 |29| |recursive_contribute_group|false| |
 |30|表示形式|display_format|1(一覧形式を表す)|1:一覧形式, 2:目次形式| |
 |31|サムネイル|image_name|None|値に入るのはサムネイル画像のパスを表す文字列|
@@ -419,6 +427,6 @@
 | 2025/01/30|3530eae9075af6afc57b777d8c3137f038523610|学認mAP連携対応|
 | 2025/10/10|3581747ebfbda5f623e7b8da759293d2090c4112|インデックス公開ロック機能追加|
 | 2025/11/12|5254da1cf9caafb27a27f361ae36099da4f2c042|キャッシュ機能の改善|
+| 2025/11/14|213e1edb08782bee732b86d55c34240bc9758867|インデックス権限判定の修正|
 | 2026/07/17|-|v2.1.0差分反映：No Group(-89)既定・閲覧/投稿の「ロールAND グループ」判定・mAPロール除外を追記|
-
 
