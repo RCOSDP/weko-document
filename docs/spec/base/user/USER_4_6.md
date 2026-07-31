@@ -32,6 +32,11 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
         - 公開日（PubDate）
         - フィードバックメール送信先（Feedback Mail Destination）
 
+- researchmap連携フラグ
+  - アイテム登録を行う際に、「researchmapデータ連携フラグ」の設定エリアを表示する。
+  - researchmapデータ連携フラグの登録データを、temp_metadataに登録して管理する。
+  - チェックボックスによりフラグを表示する。
+
 - 日付のフォーマットで定義されるプロパティまたは属性に対して、3つのフォーマット（YYYY-MM-DD、YYYY-MM、YYYY）が入力できる
     - 入力方法はカレンダー入力、または手入力である
     - デフォルト値はサーバ日付（/api/admin/get_server_date）を利用する
@@ -47,6 +52,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     - 「検索」ボタンを押すと、【Administration > 著者DB管理（Author Management） > 編集（Edit）】で登録された著者DB一覧を表示する
     - ［入力（import）］ ボタンを押すと、選択した著者情報をメタデータの各エリアに入力する
     - 「Add Author」ボタンを押すと、著者登録画面が表示され著者情報を登録することができる（登録すると著者DB管理画面にも反映される）
+      - 作成者識別子の選択肢にresearchmapを追加し、会員と１対１のID(parmalink)のデータを管理する。
     - コミュニティ管理者、登録ユーザーの場合は著者登録画面のコミュニティ選択欄の選択肢にアクティビティを作成したコミュニティを加える。
     - アイテム作成時、作成者識別子は編集不可となる。
     - アイテム編集時、作成者識別子"WEKO"のデータ部分はユーザーでの編集は不可とする（作成者識別子Scheme, 作成者識別子URI, 作成者識別子はグレーアウトする）。それ以外の識別子は変更可能となる。
@@ -54,6 +60,15 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     - アイテムとの紐づけを行わない(解除する)場合は、「作成者」パネル内の各入力エリアの右上にある[×]で紐づけを解除する
     - アイテムで個別に編集した作成者の項目は、Adminの著者DBには反映されない。  
     なお、アイテムで個別に編集した後に著者DBから著者を取り込むと、個別編集した項目は上書きされる
+  
+- weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueに設定されている場合
+  - 入力したメタデータが以下のaccessRigthsの修正条件に該当する場合、修正後のAccess Rightsの値でアイテムが登録される
+    - Access Rights:embargoed accessの場合
+      1. ファイルのアクセスにopen_restrictredが存在する場合、restricted accessに修正される
+      2. 1を満たさずファイルのアクセスがopen_date、日付が未来である場合embargoed accessに修正される
+      3. 1,2を満たさずファイルのアクセスがopen_loginが存在する場合、restricted accessに修正される
+      4. すべてのファイルが「open_access」または「アクセスがopen_date,日付が処理日以前」である場合open accessに修正される
+      5. 1~4を満たさない場合、embargoed accessのままとなる
 
 ### 2. アイテムのメタデータを自動入力できる
 
@@ -281,4 +296,3 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 |2025/01/01|09c6391d2ed1bae053fee9f8dfc98e95e1e1b87f|v1.0.7a2|
 |2024/04/14|cd0183f59a16928be2511e33e4495a3376f143c9|v1.0.6  |
 |2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
-

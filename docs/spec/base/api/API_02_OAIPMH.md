@@ -65,6 +65,8 @@ https://[host]/oai?verb=GetRecord&metadataPrefix=jpcoar_2.0&identifier=https://d
 </GetRecord>
 </OAI-PMH>
 ```
+- WEKO_SEARCH_ACCESSRIGHTがTrueの場合、エンバーゴ期間が終了した日付とレコードの更新日を比較して新しい日付がdatestampに出力される。
+- 上記以外はrecords_metadataテーブルのupdatedが出力される。
 
 idDoesNotExist　の例。
 
@@ -277,6 +279,8 @@ identifier：アイテムに利用可能なメタデータフォーマットが�
 </ListRecords>
 </OAI-PMH>
 ```
+- WEKO_SEARCH_ACCESSRIGHTがTrueの場合、エンバーゴ期間が終了した日付とレコードの更新日を比較して新しい日付がdatestampに出力される。
+- 上記以外はrecords_metadataテーブルのupdatedが出力される。
 
 #### 処理概要
 

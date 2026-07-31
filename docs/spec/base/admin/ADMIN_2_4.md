@@ -320,6 +320,7 @@
 | .publish_status   | .PUBLISH_STATUS      | アイテムの公開／非公開を指定する。public/privateのいずれかを設定する。必須項目。                                                          |
 | .feedback_mail[0] | .FEEDBACK_MAIL[0]    | フィードバックメールの送信先メールアドレスを指定する。複数指定可。                                                                        |
 | .request_mail[0]  | .REQUEST_MAIL[0]     | リクエストメールの送信先メールアドレスを指定する。複数指定可。                                                                            |
+| .researchmap_linkage  | .RESEAECHMAP_LINKAGE | Researchmapへの連携フラグ |
 | .item_application.workflow | .ITEM_APPLICATION<br>.WORKFLOW | コンテンツファイルがない場合の利用申請のワークフローIDを指定する。                                                     |
 | .item_application.terms | .ITEM_APPLICATION.TERMS |コンテンツファイルがない場合の利用規約IDを指定する。この列のデータ行にterm_freeが入力された場合、利用規約を自由入力として.item_application.terms_descriptionが表示される。 |
 | .item_application<br>.terms_description | .ITEM_APPLICATION<br>.TERMS_DESCRIPTION | コンテンツファイルがない場合の利用規約（自由入力）を指定する。                                   |
@@ -1317,6 +1318,14 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         英語：「ERROR:The specified provinding user policy does not exist in the system」  
         日本語：「エラー：指定する利用規約はシステムに存在しません。」
 
+  - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueに設定されている場合
+    - accessRigthsの修正条件にインポートするメタデータ情報が該当する場合、修正後のAccess Rightsの値でアイテムが登録される
+      - Access Rights:embargoed accessの場合
+        1. コンテンツファイルのアクセスにopen_restrictredが存在する場合、restricted accessに修正される
+        2. 1を満たさずコンテンツファイルのアクセスがopen_date、日付が未来である場合embargoed accessに修正される
+        3. 1,2を満たさずコンテンツファイルのアクセスがopen_loginが存在する場合、restricted accessに修正される
+        4. すべてのコンテンツファイルが「open_access」または「アクセスがopen_date,日付が処理日以前」である場合open accessに修正される
+        5. 1~4を満たさない場合、embargoed accessのままとなる
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_search_ui.admin.ItemImportView`（endpoint `items/import`、テンプレート `weko_search_ui/admin/import.html`。3画面は単一SPA）。

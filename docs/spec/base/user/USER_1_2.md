@@ -82,6 +82,7 @@
 | 24 | テキスト1 (text1) | テキストボックス |
 | 25 | float_JA_1 | 数値範囲入力 |
 | 26 | geopoint_JA_1 | geo_distance |
+| 27 | アクセス権 (Access Rights) | チェックボックス |
 
 検索項目ごとにある「X」ボタンを押すことで、検索条件を削除できる。
 
@@ -226,6 +227,36 @@
 アイテムタイトルのリンクをクリックすると、該当アイテムの詳細画面に遷移する。
 
 アイテムの表示順、表示数のプルダウンを選択すると、検索結果エリアでのアイテムの表示を選択した表示順、表示数に変更する処理を行う。
+
+| **No.** | **検索項目** | **検索方式** | **検索用のキー** | **備考** |
+| --- | --- | --- | --- | --- |
+| 1 | タイトル (Title) | FullText | search_title, search_title.ja | |
+| 2 | 著者名 (Author Name) | FullText | search_creator, search_creator.ja | |
+| 3 | 件名 (Subject) | Keyword | subject.subjectScheme | |
+| 4 | 地域 (Region) | Keyword | geoLocation.geoLocationPlace | |
+| 5 | 内容記述 (Description) | FullText | search_des, search_des.ja | |
+| 6 | 出版者 (Publisher) | FullText | search_publisher, search_publisher.ja | |
+| 7 | 寄与者 (Contributor) | FullText | search_contributor, search_contributor.ja | |
+| 8 | コンテンツ作成日 (Contents Created Date) | Keyword | date.dateType, file.date.dateType | date.dateTypeが'file.date.dateType'キーで検索される |
+| 9 | フォーマット (Format) | Keyword | file.mimeType | |
+| 10 | ID | FullText | | ※表 1-2‑3参照。追加検索用のキーはKeyword方式 |
+| 11 | 雑誌名 (Journal Title) | FullText | sourceTitle, sourceTitle.ja | |
+| 12 | 資源タイプ (ResourceType) | | type.raw | |
+| 13 | アイテムタイプ (ItemType) | FullText | itemtype | |
+| 14 | 言語 (Language) | Keyword | language | |
+| 15 | 期間 (Period) | Keyword | temporal | |
+| 16 | 学位取得日 (Academic Degree Date) | | dateGranted | |
+| 17 | 著者版フラグ (Author Version Flag) | FullText | versionType | |
+| 18 | 学位番号 (Academic Degree Number) | FullText | dissertationNumber | |
+| 19 | 学位名 (Degree Name) | FullText | degreeName, degreeName.ja | |
+| 20 | 学位授与機関 (Institution For Academic Degree) | FullText | degreeGrantor.degreeGrantorName, dgName, dgName.ja | degreeGrantorNameが'dgName, dgName.ja'キーで検索される。degreeGrantorNameはキーワード方式 |
+| 21 | 著者ID (Author ID) | Keyword | creator.nameIdentifier | |
+| 22 | Index | FullText | path.tree | 入力したIndex IDに所属するアイテムを検索。※入力したIndex ID下にある子インデックスに所属するアイテムの検索まではしない |
+| 23 | License | | content.licensetype.raw | ファイル情報プロパティのライセンス情報を検索。※権利情報プロパティ(dc:rights)の検索は実施しない |
+| 24 | テキスト1 (text1) | Keyword | Text1 | |
+| 25 | float_JA_1 | float_range | float_range1 | |
+| 26 | geopoint_JA_1 | geo_point | geo_point1 | |
+| 27 | アクセス権 (Access Right) | Keyword | Access Right | |
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

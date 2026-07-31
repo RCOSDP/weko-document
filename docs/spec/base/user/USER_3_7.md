@@ -80,6 +80,9 @@
             <https://schema.irdb.nii.ac.jp/ja/schema/35>  
               
             updatedの日付のマッピングは、Getrecord、ListRecord、ListIdentifierのheaderにおいて、「datestamp=record.updated,」が使用されており、invenio_records.api.get_recordからDBのupdatedを取得している。  
+            
+            設定値WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueの場合、エンバーゴを考慮したupdatedが出力される。
+            AccessRightsがembargoed accessからopen accessに修正される場合、ファイルの公開日とDBのupdatedを比較して、新しい日付がupdatedとして出力される。
               
             jpcoarスキーマガイドラインに記載されている以下の項目は不要となる
             
@@ -123,6 +126,7 @@
 | ListMetadataFormats | 出力 | 出力 | 出力 |
 | ListSets | 出力† | 出力† | 出力 |
 | Identify | 出力 | 出力 | 出力 |
+
 
 ※非公開状態にある**アイテム**は出力しない  
 †ただし、非公開インデックス（非公開、OAI-PMH非公開）は出力しない

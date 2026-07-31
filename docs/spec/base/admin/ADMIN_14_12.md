@@ -399,6 +399,10 @@
 
   - 入力できる内容やボタン押下時の動作は 新規作成 の記載内容を参照
 
+  - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueの場合
+    - 作成・編集を実行時に、修正表示されるAccess Rightsに合わせた集計クエリに切り替わる
+    - access Rightsの修正表示については[メタデータ表示](../user/USER_3_1.md#メタデータ表示)の「Access Rightsの表示について」参照
+
 エラーメッセージ
 
   - ファセット登録・編集時において、[保存（Save）]ボタン押下時にエラーチェックを行い、不適切なデータ登録をしないように制御を行う。
