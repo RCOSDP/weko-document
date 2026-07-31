@@ -1,4 +1,3 @@
-
 # 一括出力
 
 ## 目的・用途
@@ -7,15 +6,15 @@
 
 ## 利用方法
 
-本画面にある \[エクスポート(Export)\] ボタンを押下することで、著者DBに登録されている著者情報をtsvファイルで出力する。
+本画面にある [エクスポート(Export)] ボタンを押下することで、著者DBに登録されている著者情報をtsvファイルで出力する。
 
 tsvファイルのダウンロードURLにアクセスすることでtsvファイルを取得することができる。
 
 ## 利用可能なロール
 
-|ロール|システム<br>管理者|リポジトリ<br>管理者|コミュニティ<br>管理者|登録ユーザー|一般ユーザー|ゲスト<br>(未ログイン)|
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|利用可否|○|○|○※| | | |
+| 利用可否 | ○ | ○ | ○※ | | | |
 
 ※コミュニティ管理者は自身の管理するコミュニティに関連づいている著者のみ出力される。
 
@@ -50,235 +49,71 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
                   　[キャンセル(Cancel)] ボタン：中断はせずに自画面に戻る(全件エクスポート処理を継続する)。
   - ダウンロードURL(Download URL)
       - 全件エクスポートが完了すると、出力ファイル(tsv形式)をダウンロードできるURLが表示される
-
       - 最後に出力されたダウンロードURLが表示される（初期の全件エクスポート実行前は何も表示されない）  
-          Export targetの値に応じて著者情報(Author)、著者識別子(ID_Prefix)、機関識別子(Affiliation_ID)のダウンロードURLが1つ表示される。
-
-      - ダウンロードのURLの例(初期値)としては以下の通り（出力ファイル名はConfigで設定できるものとする）
-          - 著者情報：　https://{Domain_Name}/admin/authors/export/download/Creator_export_all_{yyyyMMddhhmm}.tsv
-          - 著者識別子：https://{Domain_Name}/admin/authors/export/download/Id_prefix_export_all_{yyyyMMddhhmm}.tsv
-          - 機関識別子：https://{Domain_Name}/admin/authors/export/download/Affiliation_export_all_{yyyyMMddhhmm}.tsv
+          ダウンロードURLは対象によらず単一のルートを使用し、Export targetの値に応じて送出されるファイル名のみが切り替わる。
+      - ダウンロードURL(初期値)は対象によらず単一ルート `https://{Domain_Name}/admin/authors/export/download/Creator_export_all` を使用する（出力ファイル名はConfigで設定できるものとする）。送出されるファイル名の例は以下の通り。
+          - 著者情報：　Creator_export_all_{yyyyMMddhhmm}.tsv
+          - 著者識別子：Id_prefix_export_all_{yyyyMMddhhmm}.tsv
+          - 機関識別子：Affiliation_id_export_all_{yyyyMMddhhmm}.tsv
 
 (2) 出力ファイル
 
   - 全件エクスポートされたファイルはtsv形式で出力される。
 
   - 著者情報のtsvファイルの構成、各ヘッダについては以下の通り
-
-> ヘッダ行
-> 
-> ラベル(英語)
-> 
-> ラベル(日本語)
-> 
-> データ行（著者１）
-> 
-> データ行（著者２）
-> 
-> …
+    - ヘッダ行
+    - ラベル(英語)
+    - ラベル(日本語)
+    - データ行（著者１）
+    - データ行（著者２）
+    - …
 
   - 文字コードはUTF-8(BOM付き)，改行コードはCR+LFとする。
 
-  - １行目はヘッダ行とし、システム管理するものである。先頭に"\#"が付いている。
+  - １行目はヘッダ行とし、システム管理するものである。先頭に"#"が付いている。
 
-  - ２行目と３行目はラベルを表示し、TSV入力の補助をする。先頭に"\#"が付いている。
+  - ２行目と３行目はラベルを表示し、TSV入力の補助をする。先頭に"#"が付いている。
 
   - ４行目以降に著者の情報を出力する。１著者の情報を1行で出力する。
 
-<!-- end list -->
-
   - 各ヘッダの情報は以下の通り
 
-    <table>
-    <thead>
-    <tr class="header">
-    <th >#</th> <th>ヘッダ項目</th> <th>ラベル(日本語)</th> <th>ラベル(英語)</th> <th>概要</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr  >
-    <td>1</td>
-    <td>pk_id</td>
-    <td >著者ID</td>
-    <td >Author ID</td>
-    <td >このリポジトリ内でのpk_idを出力する</td>
-    </tr>
-    <tr >
-    <td>2</td>
-    <td>weko_id</td>
-    <td>WEKO ID</td>
-    <td>WEKO ID</td>
-    <td>WEKO IDを出力する</td>
-    </tr>
-    <tr >
-    <td>3</td>
-    <td>authorNameInfo[0...n].familyName</td>
-    <td>姓</td>
-    <td>Family Name</td>
-    <td>著者の姓を出力する</td>
-    </tr>
-    <tr >
-    <td>4</td>
-    <td>authorNameInfo[0...n].firstName</td>
-    <td>名</td>
-    <td>Given name</td>
-    <td>著者の名を出力する</td>
-    </tr>
-    <tr >
-    <td>5</td>
-    <td>authorNameInfo[0...n].language</td>
-    <td>言語</td>
-    <td>Language</td>
-    <td>著者の言語を出力する</td>
-    </tr>
-    <tr >
-    <td>6</td>
-    <td>authorNameInfo[0...n].nameFormat</td>
-    <td>フォーマット</td>
-    <td>name Format</td>
-    <td>著者の姓名のフォーマットを出力する<br />
-    ※現状(SP67時点)は「familyNmAndNm」固定</td>
-    </tr>
-    <tr >
-    <td>7</td>
-    <td>authorNameInfo[0...n].nameShowFlg</td>
-    <td>姓名・言語 表示／非表示</td>
-    <td>Name Display</td>
-    <td>著者の姓名と言語の表示／非表示を出力する<br />
-    表示する: "Y"<br />
-    表示しない: "N"</td>
-    </tr>
-    <tr >
-    <td>8</td>
-    <td>authorIdInfo[0...n].idType</td>
-    <td>外部著者ID 識別子</td>
-    <td>Identifier Scheme</td>
-    <td>外部著者IDの識別子を出力する</td>
-    </tr>
-    <tr >
-    <td>9</td>
-    <td>authorIdInfo[0...n].authorId</td>
-    <td>外部著者ID URI</td>
-    <td>Identifier URI</td>
-    <td>外部著者IDの値を出力する</td>
-    </tr>
-    <tr >
-    <td>10</td>
-    <td>authorIdInfo[0...n].authorIdShowFlg</td>
-    <td>外部著者ID 表示／非表示</td>
-    <td>Identifier Display</td>
-    <td>外部著者IDの表示／非表示を出力する<br />
-    表示する: "Y"<br />
-    表示しない: "N"</td>
-    </tr>
-    <tr >
-    <td>11</td>
-    <td>emailInfo[0...n].email</td>
-    <td>メールアドレス</td>
-    <td>Mail Address</td>
-    <td>著者のメールアドレスを出力する</td>
-    </tr>
-    <tr >
-    <td>12</td>
-    <td>is_deleted</td>
-    <td>削除フラグ</td>
-    <td>Delete Flag</td>
-    <td>著者を削除する場合に "D" と出力する<br />
-    ※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる</td>
-    </tr>
-    <tr  >
-    <td>13</td>
-    <td>authorAffiliationInfo[0...n].affiliationId[0...n].idtype</td>
-    <td>外部所属機関ID 識別子</td>
-    <td>Affiliation Identifier Scheme</td>
-    <td>外部所属機関IDの識別子を出力する</td>
-    </tr>
-    <tr  >
-    <td>14</td>
-    <td>authorAffiliationInfo[0...n].affiliationId[0...n].uri</td>
-    <td>外部所属機関ID URI</td>
-    <td>Affiliation Identifier URI</td>
-    <td>外部所属機関IDの値を出力する</td>
-    </tr>
-    <tr  >
-    <td>15</td>
-    <td>authorAffiliationInfo[0...n].authorIdShowFlg</td>
-    <td>外部所属機関ID 表示／非表示</td>
-    <td>Affiliation Identifier Display</td>
-    <td>外部所属機関IDの表示／非表示を出力する<br />
-    表示する: "Y"<br />
-    表示しない: "N"</td>
-    </tr>
-    <tr  >
-    <td>16</td>
-    <td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].affiliationName</td>
-    <td>外部所属機関名</td>
-    <td>Affiliation Name</td>
-    <td>外部所属機関名を出力する</td>
-    </tr>
-    <tr  >
-    <td>17</td>
-    <td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].language</td>
-    <td>言語</td>
-    <td>Language</td>
-    <td>外部所属機関名の言語を出力する</td>
-    </tr>
-    <tr  >
-    <td>18</td>
-    <td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].nameShowFlg</td>
-    <td>外部所属機関名・言語 表示／非表示</td>
-    <td>Affiliation Name Display</td>
-    <td>外部所属機関名と言語の表示／非表示を出力する<br />
-    表示する: "Y"<br />
-    表示しない: "N"</td>
-    </tr>
-    <tr  >
-    <td>19</td>
-    <td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].period</td>
-    <td>外部所属機関 所属期間</td>
-    <td>Affiliation Period</td>
-    <td>外部所属機関所属期間を出力する。<br/>
-    所属開始のみ："20250127"<br/>
-    所属開始・終了："20250127-20250317"</td>
-    </tr>
-    <tr  >
-    <td>20</td>
-    <td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].nameShowFlg</td>
-    <td>外部所属機関 所属期間 表示/非表示</td>
-    <td>Affiliation Period Display</td>
-    <td>外部所属機関 所属期間の表示／非表示を出力する<br />
-    表示する: "Y"<br />
-    表示しない: "N"</td>
-    </tr>
-    <tr>
-    <td>21</td>
-    <td>communityIds[0...n]</td>
-    <td>コミュニティID</td>
-    <td>Community ID</td>
-    <td>著者に紐づけられたコミュニティのIDを出力する</td>
-    </tr>
-    </tbody>
-    </table>
+| #   | ヘッダ項目 | ラベル(日本語) | ラベル(英語) | 概要 |
+|:---:|---|---|---|---|
+| 1 | pk_id | WEKO ID | WEKO ID | WEKO3の著者ID(author_link)を出力する |
+| 2 | authorNameInfo[0...n].familyName | 姓 | Family Name | 著者の姓を出力する |
+| 3 | authorNameInfo[0...n].firstName | 名 | Given name | 著者の名を出力する |
+| 4 | authorNameInfo[0...n].language | 言語 | Language | 著者の言語を出力する |
+| 5 | authorNameInfo[0...n].nameFormat | フォーマット | name Format | 著者の姓名のフォーマットを出力する<br />※現状(SP67時点)は「familyNmAndNm」固定 |
+| 6 | authorNameInfo[0...n].nameShowFlg | 姓名・言語 表示／非表示 | Name Display | 著者の姓名と言語の表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 7 | authorIdInfo[0...n].idType | 外部著者ID 識別子 | Identifier Scheme | 外部著者IDの識別子を出力する |
+| 8 | authorIdInfo[0...n].authorId | 外部著者ID URI | Identifier URI | 外部著者IDの値を出力する |
+| 9 | authorIdInfo[0...n].authorIdShowFlg | 外部著者ID 表示／非表示 | Identifier Display | 外部著者IDの表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 10 | emailInfo[0...n].email | メールアドレス | Mail Address | 著者のメールアドレスを出力する |
+| 11 | is_deleted | 削除フラグ | Delete Flag | 著者を削除する場合に "D" と出力する<br />※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる |
+| 12 | authorAffiliationInfo[0...n].affiliationId[0...n].idtype | 外部所属機関ID 識別子 | Affiliation Identifier Scheme | 外部所属機関IDの識別子を出力する |
+| 13 | authorAffiliationInfo[0...n].affiliationId[0...n].uri | 外部所属機関ID URI | Affiliation Identifier URI | 外部所属機関IDの値を出力する |
+| 14 | authorAffiliationInfo[0...n].authorIdShowFlg | 外部所属機関ID 表示／非表示 | Affiliation Identifier Display | 外部所属機関IDの表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 15 | authorAffiliationInfo[0...n].affiliationNameInfo[0...n].affiliationName | 外部所属機関名 | Affiliation Name | 外部所属機関名を出力する |
+| 16 | authorAffiliationInfo[0...n].affiliationNameInfo[0...n].language | 言語 | Language | 外部所属機関名の言語を出力する |
+| 17 | authorAffiliationInfo[0...n].affiliationNameInfo[0...n].nameShowFlg | 外部所属機関名・言語 表示／非表示 | Affiliation Name Display | 外部所属機関名と言語の表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 18 | authorAffiliationInfo[0...n].affiliationPeriod[0...n].period | 外部所属機関 所属期間 | Affiliation Period | 外部所属機関所属期間を出力する。<br />所属開始のみ："20250127"<br />所属開始・終了："20250127-20250317" |
+| 19 | authorAffiliationInfo[0...n].affiliationPeriod[0...n].nameShowFlg | 外部所属機関 所属期間 表示/非表示 | Affiliation Period Display | 外部所属機関 所属期間の表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 20 | communityIds[0...n] | コミュニティID | Community ID | 著者に紐づけられたコミュニティのIDを出力する |
 
 　【補足】  
-　　・同じ項目名を複数持つ場合は、各項目名の後ろに\[0\],\[1\],…,\[N\]と記載された状態で出力される。  
-　　　※1つ目の項目名には \[0\] が記載されている。  
-　　・Author ID, WEKO ID, Delete Flagは繰り返し記載することはできない。
+　　・同じ項目名を複数持つ場合は、各項目名の後ろに[0],[1],…,[N]と記載された状態で出力される。  
+　　　※1つ目の項目名には [0] が記載されている。  
+　　・WEKO ID, Delete Flagは繰り返し記載することはできない。
 
   - 著者識別子、機関識別子のtsvファイルの構成は以下の通り
-      > テーブル情報
-      > 
-      > ヘッダ行
-      > 
-      > ラベル(英語)
-      > 
-      > ラベル(日本語)
-      > 
-      > データ行（識別子1）
-      > 
-      > データ行（識別子2）
-      > 
-      > …
+    - テーブル情報
+    - ヘッダ行
+    - ラベル(英語)
+    - ラベル(日本語)
+    - データ行（識別子1）
+    - データ行（識別子2）
+    - …
 
       - 文字コードはUTF-8(BOM付き)，改行コードはCR+LFとする。
       - 1行目はテーブルを表す文字列とする。先頭に"#"が付いている。
@@ -288,52 +123,14 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
       - 5行目以降に情報を出力する。
 
   - 著者識別子、機関識別子の各ヘッダの情報は以下の通り
-      <table>
-      <thead>
-      <tr class="header">
-      <th >#</th> <th>ヘッダ項目</th> <th>ラベル(日本語)</th> <th>ラベル(英語)</th> <th>概要</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr >
-      <td>1</td>
-      <td>scheme</td>
-      <td>スキーマ</td>
-      <td>Scheme</td>
-      <td>スキーマを入力する</td>
-      </tr>
-      <tr >
-      <td>2</td>
-      <td>name</td>
-      <td>名前</td>
-      <td>Name</td>
-      <td>スキーマに対応する識別子名を入力する</td>
-      </tr>
-      <tr >
-      <td>3</td>
-      <td>url</td>
-      <td>URL</td>
-      <td>URL</td>
-      <td>スキーマに応じるURLを入力する</td>
-      </tr>
-      <tr >
-      <td>4</td>
-      <td>is_deleted</td>
-      <td>削除フラグ</td>
-      <td>Delete Flag</td>
-      <td>識別子を削除する場合に "D" と出力する<br />
-          エクスポートの場合は全て空欄である。</td>
-      </tr>
-      <tr>
-      <td>5</td>
-      <td>community_ids[0...n]</td>
-      <td>コミュニティID</td>
-      <td>Community Id</td>
-      <td>識別子に関連づくコミュニティのIDを出力する</td>
-      </tr>
-      </tbody>
-      </table>
 
+| #   | ヘッダ項目 | ラベル(日本語) | ラベル(英語) | 概要 |
+|:---:|---|---|---|---|
+| 1 | scheme | スキーマ | Scheme | スキーマを入力する |
+| 2 | name | 名前 | Name | スキーマに対応する識別子名を入力する |
+| 3 | url | URL | URL | スキーマに応じるURLを入力する |
+| 4 | is_deleted | 削除フラグ | Delete Flag | 識別子を削除する場合に "D" と出力する<br />エクスポートの場合は全て空欄である。 |
+| 5 | community_ids[0...n] | コミュニティID | Community Id | 識別子に関連づくコミュニティのIDを出力する |
 
 (3) エラーメッセージ
 
@@ -363,31 +160,25 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
 
   - 著者情報, 著者識別子, 機関識別子は1つのファイルインスタンスに保存される。
 
-<!-- end list -->
+## 関連モジュール
 
-  - > 関連モジュール
+- weko-authors
 
-<!-- end list -->
+## 処理概要
 
-  - > weko-authors
+modules/weko-authors/weko_authors/config.py
 
-<!-- end list -->
-
-- 処理概要
-
-> modules/weko-authors/weko\_authors/config.py
-    
   - **出力対象テーブルの設定**
       - **著者DB（Author DB）**
           - エクスポート画面のプルダウンで「Author DB」を選択した場合、出力対象は `authors` テーブル。
-  
+
       - **著者識別子（ID Prefix）**
           - エクスポート画面のプルダウンで「ID Prefix」を選択した場合、出力対象は `authors_prefix_settings` テーブル。
           - 1行目には `authors_prefix_settings` の文字列を出力。
 
       - **機関識別子（Affiliation ID）**
-          - エクスポート画面のプルダウンで「Affiliation ID」を選択した場合、出力対象は `author_affiliation_settings` テーブル。
-          - 1行目には `author_affiliation_settings` の文字列を出力。
+          - エクスポート画面のプルダウンで「Affiliation ID」を選択した場合、出力対象は `authors_affiliation_settings` テーブル。
+          - 1行目には `authors_affiliation_settings` の文字列を出力。
 
   - **全件エクスポートのファイル名の設定値（デフォルト値）**
       - 著者DB
@@ -405,9 +196,9 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
           - 引数として `Export target` の値を渡し、この値でエクスポート対象を決定する。
       3. **エクスポート対象テーブルの特定**
           - `Export target` の値に応じて、以下のテーブルをエクスポート対象とする。
-              - 著者（authors） → `authors` テーブル
-              - 著者識別子（authors_prefix） → `authors_prefix_settings` テーブル
-              - 機関識別子（authors_affiliation） → `author_affiliation_settings` テーブル
+              - 著者（author_db） → `authors` テーブル
+              - 著者識別子（id_prefix） → `authors_prefix_settings` テーブル
+              - 機関識別子（affiliation_id） → `authors_affiliation_settings` テーブル
       4. **RedisにファイルURIを保存**
           - キーを使ってredisに `file_uri` を保存。
               - 定数`WEKO_AUTHORS_EXPORT_CACHE_URL_KEY`の値を使う。
@@ -420,8 +211,8 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
           - リンクのファイル名は `_{yyyyMMddhhmm}` を付加。
           - `Export target` に応じて、ファイル名を以下の定数から取得。
               - 著者 → `WEKO_AUTHORS_EXPORT_FILE_NAME`
-              - 著者識別子 → `WEKO_ID_PREFIX_EXPORT_FILE_NAME`
-              - 機関識別子 → `WEKO_AFFILIATION_ID_EXPORT_FILE_NAME`
+              - 著者識別子 → `WEKO_AUTHORS_ID_PREFIX_EXPORT_FILE_NAME`
+              - 機関識別子 → `WEKO_AUTHORS_AFFILIATION_EXPORT_FILE_NAME`
       7. **ダウンロード処理**
         - ダウンロードリンクを押下すると、 `weko_authors.admin.ExportView.download` が呼び出され、ファイルをダウンロードする。
 
@@ -490,7 +281,6 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
                       - stop_pointが在する場合、ボタンの表示を「Resume」に変える。
                       - ダウンロードURLが空の場合、フロントエンド側では何も処理を行わない。  
                       - ダウンロードURLが存在する場合、フロントエンドに表示する。 
-                  
 
       2. **エクスポート処理の一時停止・再開・キャンセル機能**
 
@@ -520,7 +310,7 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
                       - Redisの `weko_authors_export_temp_file_path_key`から一時ファイルのパスを取得する。
                           - 一時ファイルのパスが存在すれば一時ファイルを削除する。
                           - キー`weko_authors_export_temp_file_path_key`の値は削除する。
-                  
+
       3. **エラー時のリトライ機能**
 
           - リトライ対象のエラー
@@ -545,9 +335,15 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
                   - 発生したエラーに関わらず、以下のリソースを削除する。  
                       - 一時ファイル (weko_authors_export_temp_file_path_keyに保存されたパスのファイル) 
 
-  - > 更新履歴
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_authors.admin.ExportView`（`index`/`export`/`download`/`check_status`/`cancel`/`resume`）＋ Celery `tasks.export_all`。ダウンロードは単一ルート `/admin/authors/export/download/Creator_export_all`（対象別 URL は存在せず、送出ファイル名のみ切替）。
+- 補足：エクスポート対象値は `author_db` / `id_prefix` / `affiliation_id`。ファイル名定数は `WEKO_AUTHORS_EXPORT_FILE_NAME`（`Creator_export_all`）/ `WEKO_AUTHORS_ID_PREFIX_EXPORT_FILE_NAME` / `WEKO_AUTHORS_AFFILIATION_EXPORT_FILE_NAME`。Affiliation の TSV ヘッダ（json_id パス）は実マッピング `WEKO_AUTHORS_FILE_MAPPING_FOR_AFFILIATION`（`affiliationInfo` / `identifierInfo` / `affiliationIdType` / `affiliationNameLang` / `affiliationPeriodInfo.periodStart`・`periodEnd` 等）に従う。
+
+## 更新履歴
 
 |日付|GitHubコミットID|更新内容|
 |:---:|:---:|:---:|
-|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
-|> 2025/03/27|-|v1.1.0対応|
+|2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|2025/03/27|-|v1.1.0対応|
+|2025/11/27|-|WEKO ID対応|

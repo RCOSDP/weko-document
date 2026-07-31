@@ -68,7 +68,8 @@ $ curl -X GET https://192.168.56.101/sword/service-document \
     "*/*"
   ],
   "acceptArchiveFormat": [
-    "application/zip"
+    "application/zip",
+    "multipart/form-data"
   ],
   "acceptDeposits": true,
   "acceptMetadata": [
@@ -76,7 +77,8 @@ $ curl -X GET https://192.168.56.101/sword/service-document \
     "https://w3id.org/ro/crate/1.1/"
   ],
   "acceptPackaging": [
-    "*"
+    "http://purl.org/net/sword/3.0/package/SimpleZip",
+    "http://purl.org/net/sword/3.0/package/SWORDBagIt"
   ],
   "authentication": [
     "OAuth"
@@ -112,7 +114,10 @@ $ curl -X POST -s -k https://192.168.56.101/sword/service-document -F "file=@imp
     -H "Content-Disposition:attachment; filename=import.zip" -H "Packaging:http://purl.org/net/sword/3.0/package/SimpleZip"
 ```
 
-##### レスポンス
+##### レスポンス（直接登録の場合）
+
+ワークフローを経由して登録する設定の場合はレスポンスが異なる。
+[ワークフロー有無によるレスポンスの違い](#ワークフロー有無によるレスポンスの違い) を参照。
 
 ```json
 {
@@ -225,7 +230,7 @@ curl -X DELETE https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer D
 
 ※ 〇：利用可能、△：一部機能のみ利用可能、×：利用不可
 
-- アイテムを操作可能なAPIは、システム管理者、リポジトリ管理者が利用可能。
+- アイテムを操作可能なAPIは、システム管理者、リポジトリ管理者、コミュニティ管理者、および Contributor ロールを持つ登録ユーザーが利用可能（[設定値:22](#conf22) `WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE`）。
 
 ## 機能内容
 
@@ -442,8 +447,424 @@ DELETE /sword/deposit/\<recid\>
 
 
 #### レスポンス
-成功時 : 空のレスポンスを返す。 アクティビティを使用している場合、アクティビティ詳細画面のURLをLinkヘッダーに含める。
+成功時 : 空のレスポンスを返す。 アクティビティを使用している場合、アクティビティ詳細画面のURLを **Location** ヘッダーに含める。
 失敗時 : [エラードキュメント](#エラードキュメント)を返す。
+
+
+### ワークフロー有無によるレスポンスの違い
+
+アイテムの登録・更新・削除を直接行うか、ワークフロー（アクティビティ）を経由して行うかは、
+クライアント（アクセストークン）ごとのSWORD API設定（`sword_clients.registration_type_id`、1:直接登録／2:ワークフロー登録。
+[ADMIN_16_1](../admin/ADMIN_16_1.md)、[ADMIN_16_2](../admin/ADMIN_16_2.md)）で決定される。
+リクエストの内容によって切り替わるものではなく、同一のリクエストでも設定によって返却されるステータスドキュメントが異なる。
+
+> 本節に記載するレスポンス例は、v2.1.0（`develop_v2.1.0`）の実装に対して実際にリクエストを実行し、
+> 得られたレスポンスをそのまま採録したものである。ホスト名のみ `https://weko3.example.org` に統一している。
+
+#### 差分一覧
+
+| 観点                 | 直接登録（Direct）                                                                     | ワークフロー登録（Workflow）                                                                                                                                       |
+| -------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ドキュメント生成処理 | `_get_status_document`<br/>（複数アイテム時 `_get_status_multi_document(register_type="Direct")`） | `_get_status_workflow_document`<br/>（複数アイテム時 `_get_status_multi_document(register_type="Workflow")`）                                                       |
+| 必要スコープ         | `deposit:write`、`deposit:actions`、`item:create`／`item:update`／`item:delete`        | 上記に加えて `user:activity` が必須。付与されていない場合は 403（`Forbidden`）を返す。                                                                             |
+| POST のレスポンスコード | 201                                                                                   | 承認アクションで停止した場合：**202**<br/>承認不要のワークフローで最後（`end_action`）まで完了した場合：**201**                                                    |
+| PUT のレスポンスコード  | 200                                                                                   | 承認アクションで停止した場合：**202**<br/>承認不要のワークフローで完了した場合：**200**                                                                            |
+| DELETE のレスポンスコード | 204（ボディなし）                                                                    | 承認アクションで停止した場合：**202**<br/>承認不要で削除が完了した場合：**204**<br/>いずれもアクティビティ詳細画面のURLを **Location** ヘッダーに含む（ボディなし） |
+| `@type`              | `Status`                                                                                | 単一アイテム時は **`ServiceDocument`**（実装上そのように出力される）<br/>複数アイテム時は `Status`                                                                  |
+| `state[].@id`        | `http://purl.org/net/sword/3.0/state/ingested`                                          | `http://purl.org/net/sword/3.0/state/inWorkflow`                                                                                                                       |
+| `eTag`               | 出力する（レコードのリビジョン番号）                                                    | **出力しない**（単一・複数いずれの場合も）                                                                                                                          |
+| `links`              | レコード詳細画面URL → DOI/CNRIハンドル（permalink） → 各ファイル                       | **先頭にアクティビティ詳細画面URL** → レコード詳細画面URL → 各ファイル<br/>DOI/CNRIハンドルのリンクは出力しない（単一アイテム時）                                   |
+| ファイルのリンク元   | レコードのメタデータ（`_get_file_info`）                                                | アクティビティの一時データ（`workflow_activity.temp_data`）。URLは `https://[INVENIO_WEB_HOST_NAME]/record/[recid]/files/[ファイル名]` 形式となる。一時データが無い場合はレコードのメタデータを参照する。 |
+| アクティビティID     | －                                                                                      | 登録・更新のアクティビティは `A-YYYYMMDD-NNNNN`、削除のアクティビティは `D-YYYYMMDD-NNNNN` 形式となる。                                                             |
+
+`links` に出力されるURLは項目ごとに生成元が異なる（実装上、下記の3系統が混在する）。
+リバースプロキシ配下などで各設定値が一致していない場合、1つのレスポンス内でホスト名が揃わないことがある。
+
+- アクティビティ詳細画面URL・ステータスドキュメントの `@id`：`url_for(..., _external=True)`（`SERVER_NAME`）
+- レコード詳細画面URL（`links[].@id`、`derivedFrom`）：`request.url_root`（リクエストのホスト）
+- ファイルURL：ワークフロー経由時は環境変数 `INVENIO_WEB_HOST_NAME`、直接登録時（およびレコード参照時）はレコードのメタデータに保存されたURL
+
+また、階層を持つファイル（例 `data/sample.rst`）はインポート時にファイル名がURLエンコードされて
+フラット化されるため、ファイルURLは `.../files/data%2Fsample.rst` のような形になる。
+
+#### レスポンス例：POST /sword/service-document（直接登録・201）
+
+[CURLでのリクエスト実行例](#post-swordservice-document)に記載のレスポンスと同じ。
+`state` は `ingested` となり、`eTag` を出力する。
+
+#### レスポンス例：POST /sword/service-document（ワークフロー登録・承認待ち・202）
+
+承認アクションを含むワークフローで、ファイル2件を含む単一アイテムを登録した場合の実測値。
+
+```http
+HTTP/1.1 202 ACCEPTED
+Content-Type: application/json
+```
+
+```json
+{
+  "@context": "https://swordapp.github.io/swordv3/swordv3.jsonld",
+  "@id": "https://weko3.example.org/sword/deposit/1",
+  "@type": "ServiceDocument",
+  "actions": {
+    "appendFiles": false,
+    "appendMetadata": false,
+    "deleteFiles": false,
+    "deleteMetadata": false,
+    "deleteObject": true,
+    "getFiles": false,
+    "getMetadata": false,
+    "replaceFiles": false,
+    "replaceMetadata": false
+  },
+  "fileSet": {},
+  "links": [
+    {
+      "@id": "https://weko3.example.org/workflow/activity/detail/A-20260728-00001",
+      "contentType": "text/html",
+      "rel": [
+        "alternate"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/records/1",
+      "contentType": "text/html",
+      "rel": [
+        "alternate"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/record/1/files/data%2Fsample.rst",
+      "contentType": "application/octet-stream",
+      "derivedFrom": "https://weko3.example.org/records/1",
+      "rel": [
+        "http://purl.org/net/sword/3.0/terms/fileSetFile"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/record/1/files/data%2Fdata.csv",
+      "contentType": "text/csv",
+      "derivedFrom": "https://weko3.example.org/records/1",
+      "rel": [
+        "http://purl.org/net/sword/3.0/terms/fileSetFile"
+      ]
+    }
+  ],
+  "metadata": {},
+  "service": "/sword/service-document",
+  "state": [
+    {
+      "@id": "http://purl.org/net/sword/3.0/state/inWorkflow",
+      "description": ""
+    }
+  ]
+}
+```
+
+- 先頭の `links` がアクティビティ詳細画面のURLであり、クライアントはこのURLから承認状況を確認する。
+- `eTag` は出力されない。また `@type` は `Status` ではなく `ServiceDocument` となる。
+- ファイルのリンクはアクティビティの一時データ（`workflow_activity.temp_data`）から生成されるため、
+  この時点ではファイルURLのホストが環境変数 `INVENIO_WEB_HOST_NAME` に基づく。
+- 承認不要のワークフローで最後まで実行された場合も、レスポンスコードが 201 になるだけでボディの `state` は `inWorkflow` のままとなる（次の例を参照）。
+
+#### レスポンス例：POST /sword/service-document（ワークフロー登録・アイテム分割）
+
+[アイテム分割機能](#アイテム分割機能)により複数アイテムが登録された場合は `_get_status_multi_document` が使用され、
+アクティビティ詳細画面URL、レコード詳細画面URL、ファイルの順に整列した `links` を返す。
+アイテムリンクが設定されている場合、リンク先アイテムの情報を `log` に出力する。
+
+以下は承認アクションを含まないワークフローで論文アイテム（recid=3）と論拠データアイテム（recid=4）を
+登録した場合の実測値。承認を経ずに完了しているためレスポンスコードは 201 だが、`state` は `inWorkflow` のままである。
+
+```http
+HTTP/1.1 201 CREATED
+Content-Type: application/json
+```
+
+```json
+{
+  "@context": "https://swordapp.github.io/swordv3/swordv3.jsonld",
+  "@id": "https://weko3.example.org/sword/deposit/4",
+  "@type": "Status",
+  "actions": {
+    "appendFiles": false,
+    "appendMetadata": false,
+    "deleteFiles": false,
+    "deleteMetadata": false,
+    "deleteObject": true,
+    "getFiles": false,
+    "getMetadata": false,
+    "replaceFiles": false,
+    "replaceMetadata": false
+  },
+  "fileSet": {},
+  "links": [
+    {
+      "@id": "https://weko3.example.org/workflow/activity/detail/A-20260728-00001",
+      "contentType": "text/html",
+      "rel": [
+        "alternate"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/workflow/activity/detail/A-20260728-00002",
+      "contentType": "text/html",
+      "rel": [
+        "alternate"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/records/3",
+      "contentType": "text/html",
+      "log": "[{\"type\": \"isSupplementedBy\", \"url\": \"https://weko3.example.org/records/4\"}]",
+      "rel": [
+        "alternate"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/records/4",
+      "contentType": "text/html",
+      "log": "[{\"type\": \"isSupplementTo\", \"url\": \"https://weko3.example.org/records/3\"}]",
+      "rel": [
+        "alternate"
+      ]
+    }
+  ],
+  "metadata": {},
+  "service": "/sword/service-document",
+  "state": [
+    {
+      "@id": "http://purl.org/net/sword/3.0/state/inWorkflow",
+      "description": ""
+    }
+  ]
+}
+```
+
+- 複数アイテム時は `@type` が `Status` となる（単一アイテム時の `ServiceDocument` と異なる）。
+- `@id` は最後に処理したアイテムの recid を用いる。
+- DOI・CNRIハンドルが付与されている場合は、permalink のリンクが `links` の末尾に追加される。
+
+#### レスポンス例：POST /sword/service-document（直接登録・アイテム分割・201）
+
+同じリクエストを直接登録の設定で実行した場合の実測値。
+アクティビティのリンクが出力されず、`state` は `ingested`、`eTag`（最後に登録したアイテムのリビジョン番号）が出力される。
+
+```http
+HTTP/1.1 201 CREATED
+Content-Type: application/json
+```
+
+```json
+{
+  "@context": "https://swordapp.github.io/swordv3/swordv3.jsonld",
+  "@id": "https://weko3.example.org/sword/deposit/2",
+  "@type": "Status",
+  "actions": {
+    "appendFiles": false,
+    "appendMetadata": false,
+    "deleteFiles": false,
+    "deleteMetadata": false,
+    "deleteObject": true,
+    "getFiles": false,
+    "getMetadata": false,
+    "replaceFiles": false,
+    "replaceMetadata": false
+  },
+  "eTag": "5",
+  "fileSet": {},
+  "links": [
+    {
+      "@id": "https://weko3.example.org/records/1",
+      "contentType": "text/html",
+      "log": "[{\"type\": \"isSupplementedBy\", \"url\": \"https://weko3.example.org/records/2\"}]",
+      "rel": [
+        "alternate"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/records/2",
+      "contentType": "text/html",
+      "log": "[{\"type\": \"isSupplementTo\", \"url\": \"https://weko3.example.org/records/1\"}]",
+      "rel": [
+        "alternate"
+      ]
+    }
+  ],
+  "metadata": {},
+  "service": "/sword/service-document",
+  "state": [
+    {
+      "@id": "http://purl.org/net/sword/3.0/state/ingested",
+      "description": ""
+    }
+  ]
+}
+```
+
+#### レスポンス例：DELETE /sword/deposit/\<recid\>（ワークフロー削除・202）
+
+削除の場合はボディを返さず、**Location** ヘッダーにアクティビティ詳細画面のURLを含める。
+削除アクティビティのIDは `D-` で始まる。実測値は以下のとおり。
+
+```http
+HTTP/1.1 202 ACCEPTED
+Location: https://weko3.example.org/workflow/activity/detail/D-20260728-00002
+Content-Type: text/html; charset=utf-8
+```
+
+直接削除の場合は 204 となり、**Location** ヘッダーも付与されない。
+
+#### ワークフロー承認後のレスポンス
+
+**ワークフローが承認されても、SWORD APIが返すステータスドキュメントの `state` は変化しない。**
+
+- POST / PUT / DELETE のレスポンスはリクエスト受付時に同期的に返却されるものであり、
+  承認完了後にクライアントへ通知やレスポンスを再送する仕組み（コールバック）は無い。
+- 承認後の状態を確認する手段は `GET /sword/deposit/<recid>` だが、この機能は登録方式によらず常に `_get_status_document` を使用しており、
+  `state` は `http://purl.org/net/sword/3.0/state/ingested`、`@type` は `Status` を固定で出力する。  
+  そのため、**アクティビティが承認待ちの状態であっても `ingested` を返し、承認後も同じ値を返す**。
+  `state` の値から承認状況を判別することはできない。
+- 承認の前後で変化しうるのは以下の項目のみである。
+    - `eTag`：アイテムのリビジョン番号。ワークフローの進行によりレコードが更新されると値が増加する（実測では承認前 `3` → 承認後 `7`）。
+    - `links`：DOI・CNRIハンドルが付与された後は permalink のリンクが追加される。
+      また、レコードにファイル情報が反映されるとファイルのリンク（`rel:["http://purl.org/net/sword/3.0/terms/fileSetFile"]`）が増減する。
+- ファイルのリンクは承認前から出力される。アイテム登録アクションの時点でメタデータとファイル情報が
+  レコード（デポジット）に保存されるため、承認待ちの状態でもレコードのメタデータからファイルのリンクが生成される。
+- アクティビティ詳細画面のURLは POST / PUT のレスポンスにのみ含まれ、`GET /sword/deposit/<recid>` のレスポンスには含まれない。
+- ただし、**削除をワークフロー経由で行った場合のみ**、承認によってアイテムが削除されるため、
+  以降の `GET /sword/deposit/<recid>` は 404（`NotFound` の[エラードキュメント](#エラードキュメント)）となる。
+  これが承認によってレスポンスが明確に変化する唯一のケースである。
+- 以上より、承認状況の確認にはレスポンスの `links` に含まれるアクティビティ詳細画面のURL、あるいは
+  [API_16：アクティビティ一覧](./API_16_activity_list.md)、[API_17：承認](./API_17_approval_activity.md) を使用する必要がある。
+
+##### 承認前後の GET /sword/deposit/\<recid\> の比較
+
+承認待ちの状態（アイテム登録用アクティビティが承認アクションで停止中）でも、
+recid は登録時点で採番・登録済み（PIDのステータスは `REGISTERED`）であるため、ステータスドキュメントを取得できる。
+以下は前掲の「ワークフロー登録・承認待ち・202」で登録したアイテム（recid=1）に対する実測値である。
+`actions`、`fileSet`、`metadata`、`service` は承認前後で変化しないため省略している。
+
+**承認前（アクティビティが承認アクションで停止中）**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+```
+
+```json
+{
+  "@context": "https://swordapp.github.io/swordv3/swordv3.jsonld",
+  "@id": "https://weko3.example.org/sword/deposit/1",
+  "@type": "Status",
+  "eTag": "3",
+  "links": [
+    {
+      "@id": "https://weko3.example.org/records/1",
+      "contentType": "text/html",
+      "rel": [
+        "alternate"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/record/1/files/data%2Fsample.rst",
+      "contentType": "application/octet-stream",
+      "derivedFrom": "https://weko3.example.org/records/1",
+      "rel": [
+        "http://purl.org/net/sword/3.0/terms/fileSetFile"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/record/1/files/data%2Fdata.csv",
+      "contentType": "text/csv",
+      "derivedFrom": "https://weko3.example.org/records/1",
+      "rel": [
+        "http://purl.org/net/sword/3.0/terms/fileSetFile"
+      ]
+    }
+  ],
+  "state": [
+    {
+      "@id": "http://purl.org/net/sword/3.0/state/ingested",
+      "description": ""
+    }
+  ]
+}
+```
+
+**承認後（アクティビティが `end_action` まで進行して完了）**
+
+`eTag` のみが `3` から `7` へ変化し、`state`・`@type`・`links` は同一である。
+DOI/CNRIハンドルが付与された場合は permalink のリンクが追加される。
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+```
+
+```json
+{
+  "@context": "https://swordapp.github.io/swordv3/swordv3.jsonld",
+  "@id": "https://weko3.example.org/sword/deposit/1",
+  "@type": "Status",
+  "eTag": "7",
+  "links": [
+    {
+      "@id": "https://weko3.example.org/records/1",
+      "contentType": "text/html",
+      "rel": [
+        "alternate"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/record/1/files/data%2Fsample.rst",
+      "contentType": "application/octet-stream",
+      "derivedFrom": "https://weko3.example.org/records/1",
+      "rel": [
+        "http://purl.org/net/sword/3.0/terms/fileSetFile"
+      ]
+    },
+    {
+      "@id": "https://weko3.example.org/record/1/files/data%2Fdata.csv",
+      "contentType": "text/csv",
+      "derivedFrom": "https://weko3.example.org/records/1",
+      "rel": [
+        "http://purl.org/net/sword/3.0/terms/fileSetFile"
+      ]
+    }
+  ],
+  "state": [
+    {
+      "@id": "http://purl.org/net/sword/3.0/state/ingested",
+      "description": ""
+    }
+  ]
+}
+```
+
+**削除ワークフローの承認後**
+
+削除アクティビティが承認されるとアイテムのPID（recid・depid・oai）が削除状態となり、
+`GET /sword/deposit/<recid>` は 404 を返す。これが承認によってレスポンスが変化する唯一のケースである。
+
+```http
+HTTP/1.1 404 NOT FOUND
+Content-Type: application/json
+```
+
+```json
+{
+  "@context": "https://swordapp.github.io/swordv3/swordv3.jsonld",
+  "@type": "NotFound",
+  "error": "Item not found. (recid=1)",
+  "timestamp": "2026-07-28T10:44:47Z"
+}
+```
+
+> **注記（要検討事項）**  
+> SWORD v3プロトコルでは、承認待ちなどワークフロー処理中のオブジェクトに対しては `inWorkflow` を返すことが想定されるが、
+> 現在の実装では `GET /sword/deposit/<recid>` が常に `ingested` を返すため、
+> ワークフロー処理中のアイテムの状態を正しく表現できていない。
 
 
 ## ドキュメント仕様
@@ -457,10 +878,10 @@ DELETE /sword/deposit/\<recid\>
 | @id                          | string  | "[WEKO3のURL]/sword/service-document"を出力。                                                                                                              |
 | @type                        | string  | "ServiceDocument"を固定で出力。                                                                                                                            |
 | accept                       | array   | サーバーに受け入れられるコンテンツタイプのリスト。"\*/\*"を出力する。[設定値:3](#conf03)                                                                   |
-| acceptArchiveFormat          | array   | サーバーが解凍できるアーカイブ形式のリスト。現状"application/zip"のみ対応。[設定値:4](#conf04)                                                             |
+| acceptArchiveFormat          | array   | サーバーが解凍できるアーカイブ形式のリスト。"application/zip" および "multipart/form-data" を出力する。[設定値:4](#conf04)                                  |
 | acceptDeposits               | boolean | サーバーがデポジットを受け入れるか否か。[設定値:5](#conf05)                                                                                                |
 | acceptMetadata               | array   | サーバーで受け入れ可能なメタデータ形式のリスト。[設定値:6](#conf06)                                                                                        |
-| acceptPackaging              | array   | サーバーで受け入れ可能なパッケージ形式のリスト。<br/>現状すべての形式を受け入れるが、アイテム登録はSimpleZip/SWORDBagIt形式でのみ可能。[設定値:9](#conf07) |
+| acceptPackaging              | array   | サーバーで受け入れ可能なパッケージ形式のリスト。<br/>SimpleZip および SWORDBagIt 形式を出力し、アイテム登録もこの2形式でのみ可能。[設定値:7](#conf07) |
 | authentication               | Array   | サーバーでサポートされている認証スキームのリスト。現状”OAuth”のみ対応。[設定値:15](#conf15)                                                              |
 | byReferenceDeposit           | boolean | サーバーがbyReferenceDepositをサポートしているか否か。現状未対応のためFalseを出力。[設定値:12](#conf12)                                                    |
 | collectionPolicy             | object  | コレクションポリシーを示すオブジェクト。[設定値:8](#conf08)                                                                                               |
@@ -508,7 +929,7 @@ DELETE /sword/deposit/\<recid\>
 | fileSet                      | object  | ファイルセットを示すオブジェクト。  現時点では空オブジェクトを返す。                                                                   |
 | fileSet.@id                  | string  | ファイルセットのURL。                                                                                                                  |
 | fileSet.eTag                 | string  | ファイルセットのeTag。                                                                                                                 |
-| links                        | array   | アイテムのリンクを示すオブジェクト。  現時点ではアイテム詳細ページのURLを出力する。またDOIやCNRIハンドルを持つ場合も同様に出力する。   |
+| links                        | array   | アイテムのリンクを示すオブジェクト。  アイテム詳細ページのURL（`rel:["alternate"]`）を出力する。DOIやCNRIハンドル（permalink/DOI）を持つ場合も同様に出力する。加えて、アイテムの各ファイルへのリンク（`rel:["http://purl.org/net/sword/3.0/terms/fileSetFile"]`、`derivedFrom` にレコードURL。生成は `_get_file_info`）を出力する。ワークフロー経由の複数アイテム登録時は、アクティビティ詳細画面URL（`rel:["alternate"]`）とレコード間参照の `log` も出力する。並び順は `_sort_links_for_status`（activity→record→file→other）で整列する。 |
 | links[].@id                  | string  | リソースのURL。                                                                                                                        |
 | links[].byReference          | string  | byReference deposit の際の参照元URL。                                                                                                  |
 | links[].contentType          | string  | リソースのコンテンツタイプ。                                                                                                           |
@@ -522,7 +943,7 @@ DELETE /sword/deposit/\<recid\>
 | links[].eTag                 | string  | リソースのeTag。                                                                                                                       |
 | links[].log                  | string  | クライアントが知っておくべきデポジットに関連する情報。                                                                                 |
 | links[].packaging            | string  | リソースがパッケージである場合、パッケージ形式の識別子を示す。                                                                         |
-| links[].rel                  | string  | リソースとオブジェクトの関係。  以下の何れかの文字列を持つ。<ul><li>alternate</li><li>packaging</li><li>depositedOn</li><li>depositedOnBehalfOf</li><li>status</li><li>log</li><li>dcterms:relation</li><li>dcterms:replaces</li><li>dcterms:isReplacedBy</li><li>versionReplaced</li><li>eTag</li><li>byReference</li><li>derivedFrom</li><li>metadataFormat</li></ul> |
+| links[].rel                  | string  | リソースとオブジェクトの関係。  以下の何れかの文字列を持つ。<ul><li>alternate</li><li>packaging</li><li>depositedOn</li><li>depositedOnBehalfOf</li><li>status</li><li>log</li><li>dcterms:relation</li><li>dcterms:replaces</li><li>dcterms:isReplacedBy</li><li>versionReplaced</li><li>eTag</li><li>byReference</li><li>derivedFrom</li><li>metadataFormat</li><li>http://purl.org/net/sword/3.0/terms/fileSetFile</li></ul>（`fileSetFile` は `WEKO_SWORDSERVER_SWORD_VERSION` と `WEKO_SWORDSERVER_FILE_SET_FILE` の連結で生成する） |
 | links[].status               | string  | 取り込みに関するリソースのステータス。                                                                                                 |
 | links[].versionReplacedOn    | string  | 現在のリソースが新しいリソースに置き換えられた日付。                                                                                   |
 | metadata                     | object  | メタデータを示すオブジェクト。  現時点では空オブジェクトを返す。                                                                       |
@@ -530,7 +951,7 @@ DELETE /sword/deposit/\<recid\>
 | metadata.eTag                | string  | メタデータのeTag。                                                                                                                     |
 | service                      | string  | サービスドキュメントのURL。                                                                                                            |
 | state                        | array   | アイテムがサーバー上にある状態のリスト。                                                                                               |
-| state[].@id                  | string  | 状態の識別子。現状では"http://purl.org/net/sword/3.0/state/ingested"を固定で出力。                                                     |
+| state[].@id                  | string  | 状態の識別子。直接登録の場合は"http://purl.org/net/sword/3.0/state/ingested"（`_get_status_document`、eTag=リビジョン番号）、ワークフロー経由登録の場合は"http://purl.org/net/sword/3.0/state/inWorkflow"（`_get_status_workflow_document`）を出力する。複数アイテム登録時は `_get_status_multi_document` が登録方式に応じて状態を決定する。従来は ingested 固定であった。 |
 | state[].description          | string  | 状態の説明                                                                                                                             |
 
 ### エラードキュメント
@@ -712,6 +1133,7 @@ DELETE /sword/deposit/\<recid\>
       登録するようにメタデータを作成する。
     - マッピング先が無いメタデータはテキストエリアに保存する。
     - メタデータ自動補完フラグ（[wk:metadataAutoFill](../admin/ADMIN_2_5.md#wkmetadataautofillメタデータ自動補完フラグ)）が有効で、補完にもちいるDOIが指定されていれば、メタデータ補完APIを呼び出し、メタデータを補完する。
+    - researchmap連携フラグ（`wk:researchmapLinkage`）が有効な場合、ワークフロー経由での登録時にresearchmap業績連携（`cris_linkage.researchmap`）を有効化する。フラグは `JsonLdMapper` が `system_info["researchmap_linkage"]`（既定 `False`）として取得し、`weko_swordserver/views.py`（`post_service_document` / `put_object`）が `item["metadata"]["researchmap"]` に設定、`weko_workflow/headless/activity.py`（`HeadlessActivity`）がアクティビティ登録データの `cris_linkage.researchmap` へ引き渡す。
     - ファイルが階層化されている場合、weko3のストレージでは階層を維持できないため、あらかじめ相対パスをURLエンコードしてファイル名を改め、`/data/`フォルダ直下に配置する。  
       例：`/data/20230101/sample.pdf` → `/data/20230101%2Fsample.pdf`
 
@@ -719,7 +1141,7 @@ DELETE /sword/deposit/\<recid\>
     - `On-Behalf-Of`ヘッダーが存在する場合、その値を取得しアイテムの代理投稿者情報とする。
     - 読み込まれたメタデータのバリデーションチェックや必須項目のチェックを行い、問題があればエラー（[メッセージ:11](#err11)）とする。
     - 登録先インデックスの状態やアイテムの公開ステータスのチェックを行い、問題があればエラーとする。
-    - 設定されたアイテム重複チェック（[設定値:27](#conf27)）が有効であれば、アイテムの重複チェックを行う。  
+    - SWORD API設定（[ADMIN_16_1](../admin/ADMIN_16_1.md)、[ADMIN_16_2](../admin/ADMIN_16_2.md)）でアイテム重複チェックが有効であれば、[アイテムの重複チェック](../user/USER_4_6.md#4-アイテム重複チェック機能)を行う。  
       重複している場合はエラー（）とする。
 
 4. 登録処理を行う
@@ -747,7 +1169,7 @@ DELETE /sword/deposit/\<recid\>
    - アイテムの登録が完了していない場合は、アクティビティのURLをステータスドキュメントに含めて返却する。
    - 一連の登録処理に問題がありエラーが発生した場合は、エラードキュメントを返却する。
 
-### アイテム状態取得機能：GET /sword/deposit/\<recid\>
+### アイテム状態取得機能：GET /sword/deposit/&lt;recid&gt;
 
 - リクエストをチェックする
     - Authorizationヘッダーに記載されたOAuth認証情報を使用しWEKOにログインする
@@ -756,7 +1178,9 @@ DELETE /sword/deposit/\<recid\>
 - 取得したアイテム情報からステータスドキュメントを生成する
 - ステータスドキュメントを返却する
 
-### アイテム更新機能：PUT /sword/deposit/\<recid\>
+### アイテム更新機能：PUT /sword/deposit/&lt;recid&gt;
+
+- 更新の場合は、アイテムIDとアイテムのURLが必要である。詳細は[使用語彙](../admin/ADMIN_2_5.html#usedvocabraries)を参照。
 
 ほとんどの処理はアイテム状態取得機能と同様であるが、以下の点が異なる。
 
@@ -859,6 +1283,7 @@ DELETE /sword/deposit/\<recid\>
   ```python
   "Item check error: [エラーメッセージ]"
   ```
+  当該アイテムに警告（warnings）が存在する場合は、エラーメッセージに `, 'warnings': [...]` を連結して併記する（`weko_swordserver/views.py` の `post_service_document` / `put_object`）。
 
 12. アイテムが既に登録されている場合<span id="err12">
   ```python
@@ -964,7 +1389,7 @@ DELETE /sword/deposit/\<recid\>
 
     サーバーが異なるフォーマットでパッケージを送信した場合、サーバーはそれをバイナリファイルとして扱うことができる。  
     ```python
-    WEKO_SWORDSERVER_SERVICEDOCUMENT_ACCEPT_ARCHIVE_FORMAT = ["application/zip"]
+    WEKO_SWORDSERVER_SERVICEDOCUMENT_ACCEPT_ARCHIVE_FORMAT = ['application/zip', 'multipart/form-data']
     ```
 
 5. ファイルの登録を受け付けるかどうか<span id="conf05">
@@ -985,10 +1410,12 @@ DELETE /sword/deposit/\<recid\>
 7. サーバーで受け入れられるパッケージ形式のリスト<span id="conf07">
 
     ```python
-    WEKO_SWORDSERVER_SERVICEDOCUMENT_ACCEPT_PACKAGING = ["*"]
+    WEKO_SWORDSERVER_SERVICEDOCUMENT_ACCEPT_PACKAGING = [
+        "http://purl.org/net/sword/3.0/package/SimpleZip",
+        "http://purl.org/net/sword/3.0/package/SWORDBagIt",
+    ]
     """
-    ["*"] or List of Packaging Formats URI
-    - http://purl.org/net/sword/3.0/package/Binary
+    List of Packaging Formats URI（v2.0.2 実装では上記2形式を出力）
     - http://purl.org/net/sword/3.0/package/SimpleZip
     - http://purl.org/net/sword/3.0/package/SWORDBagIt
     """
@@ -1090,9 +1517,32 @@ DELETE /sword/deposit/\<recid\>
     ```python
     WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE = [
         "System Administrator",
-        "Repository Administrator"
+        "Repository Administrator",
+        "Community Administrator",
+        "Contributor"
     ]
     ```
+
+23. BagIt整合性検証の有効化<span id="conf23">
+
+    ```python
+    WEKO_SWORDSERVER_BAGIT_VERIFICATION = True
+    ```
+
+24. ファイルリンク（fileSetFile）の rel を生成するためのパス<span id="conf24">
+
+    `WEKO_SWORDSERVER_SWORD_VERSION`（[設定値:1](#conf01)）と連結して、ステータスドキュメントの各ファイルリンク（`links[].rel`）を生成する。
+    ```python
+    WEKO_SWORDSERVER_FILE_SET_FILE = "/terms/fileSetFile"
+    ```
+
+## 実装補足（v2.0.2）
+
+- 中核実装モジュールは **weko-swordserver**（`invenio-sword` は同梱されず、SWORD処理は自作の weko-swordserver に集約）。エンドポイント（`views.py`、Blueprint `url_prefix="/sword"`）：`get_service_document` / `post_service_document`（GET/POST `/sword/service-document`）、`get_status_document` / `put_object` / `delete_object`（GET/PUT/DELETE `/sword/deposit/<recid>`）。
+- 認証は Bearer/OAuth2（`before_request` の `verify_oauth_token_and_set_current_user` ＋ `@oauth2.require_oauth()`）。スコープ：`deposit:write` / `deposit:actions`（invenio-deposit）、`item:create` / `item:update` / `item:delete`（weko-items-ui）、Workflow登録時は `user:activity`（weko-workflow）。POST/PUT/DELETE は `@roles_required(WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE)`。
+- 関連モジュール：weko-swordserver（本体）、weko-search-ui（`import_items_to_system` / `import_items_to_activity` / `delete_items_with_activity`、BagIt `bagit>=1.7.0`）、weko-records（`ItemTypeJsonldMapping` ＝ `jsonld_mappings`）、weko-items-ui、weko-admin（一時ディレクトリ `TempDirInfo`）、weko-accounts（`roles_required` / `limiter`）、weko-logging、weko-notifications、invenio-files-rest、invenio-oaiserver（`OaiIdentify`）。
+- DELETE 成功時、アクティビティ使用時のURLは **Location** ヘッダーに含まれる。
+- レート制限（`@limiter.limit`）により超過時は 429（`TooManyRequests`）。
 
 ## 更新履歴
 
@@ -1103,3 +1553,7 @@ DELETE /sword/deposit/\<recid\>
 | 2025/02/12 | 91e291b7bdb24c0f6cbc65d603f2f9427cd0f031   | JSON-LD形式のメタデータ登録機能を追加                    |
 | 2025/03/07 | 6918f05b5dccb52126c36afb5f9b180e847c958f   | アイテムの分割機能について追記                           |
 | 2025/06/03 | c145ed4a8052597a2e552a628c92f3fa60b878d4   | 更新・削除機能およびメタデータのみ置換フラグについて記載 |
+| 2026/07/14 |                                            | 実装(v2.0.2)と突き合わせ。ACCEPT_PACKAGING/ACCEPT_ARCHIVE_FORMAT/DEPOSIT_ROLE_ENABLEの実値へ修正、BAGIT_VERIFICATION追加、実装補足（weko-swordserver・エンドポイント・スコープ・関連モジュール・DELETE Locationヘッダー）を追記 |
+| 2026/07/14 |                                            | 本文を実装準拠に修正（サービスドキュメントのacceptPackaging/acceptArchiveFormat、利用可能ロール）           |
+| 2026/07/17 |                                            | v2.1.0差分反映：`wk:researchmapLinkage`連携（`cris_linkage.researchmap`）・checkエラー時warnings併記、ステータスドキュメントの`links`（fileSetFile/derivedFrom・複数登録時Activityリンク/log）・`state`のinWorkflow・設定値conf24（`WEKO_SWORDSERVER_FILE_SET_FILE`）を追記 |
+| 2026/07/28 |                                            | 「ワークフロー有無によるレスポンスの違い」を追加（直接登録／ワークフロー登録の差分一覧、POST・DELETEのレスポンス例、ワークフロー承認後のレスポンスの挙動とGETの承認前後比較）。レスポンス例はv2.1.0実装に対する実測値を採録                                                     |

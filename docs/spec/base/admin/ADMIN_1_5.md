@@ -4,7 +4,7 @@
 本機能は、アイテムタイプとJSON-LDのマッピングを設定する機能である。
 
 ## 利用方法
-管理者は、【Administration > アイテム管理（Items） > JSON-LD マッピング（JSON-LD Mapping）】を開き、アイテムタイプのプロパティとJSON-LDのマッピング定義を設定する。
+管理者は、【Administration > アイテムタイプ管理（Item Types） > JSON-LD マッピング（JSON-LD Mapping）】を開き、アイテムタイプのプロパティとJSON-LDのマッピング定義を設定する。
 
 ## 利用可能なロール
 
@@ -82,7 +82,7 @@
 
 - **マッピング定義**：  
   登録先アイテムタイプと、JSON-LD形式のメタデータのスキーマの対応をJSON形式で記したもの。  
-  データベースの"_public.jsonld_mappings"テーブルに以下のフィールドで保存される。
+  データベースの`jsonld_mappings`テーブルに以下のフィールドで保存される。
 
   - マッピング定義ID: int
   - マッピング定義: json
@@ -340,23 +340,43 @@ JSON-LDのメタデータの階層的な深さは、アイテムタイプのプ�
   マッピング定義の検証では1対1対応であることをチェックしない。
 
 
+## インポート時メタデータ置換ルール
+
+JSON-LDインポート時に、マッピング結果のメタデータ値に対して文字列置換を適用する機能である。  
+マッピング定義ごとに置換ルールを紐付けておくことで、特定のマッピング定義を使用したインポート時のみ置換が適用される。  
+置換は `weko_search_ui.mapper.JsonLdMapper.apply_import_replace_rules` により、マッピング直後（`to_item_metadata` 内）に実行される。
+
+- **置換ルール定義**：設定キー `WEKO_SEARCH_UI_IMPORT_REPLACE_RULES`（`weko_search_ui/config.py`、既定は空 dict）。  
+  形式は `{rule_id: {"from": <置換前>, "to": <置換後>, "is_regex": <真偽値>, "target_path": [<メタデータキー>, ...]}}`。  
+  `is_regex` が `true` の場合は `from` を正規表現として扱う。
+
+- **適用対象の指定**：設定キー `WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP`（既定は空 dict）。  
+  形式は `{"<jsonld_mappings.id（文字列）>": [rule_id, ...]}` で、当該マッピング定義IDを使用したインポート時に、指定した置換ルールが適用される。
+
+- **挙動**：`target_path` に一致するメタデータキー（配列の添字は無視）の値に対し、`from`→`to` の置換を行う。  
+  ルールの欠落、`rules`/`rule_map`/`rule_keys` が dict/list でない、`is_regex` が真偽値でない等の型不正・不正定義は、`system_info["warnings"]` に警告として記録され、インポート処理は継続される（失敗時もメタデータを返す）。
+
+- **設定例**：`scripts/instance.cfg` に、半角 `|` を全角 `｜` へ置換する `pipe_full_width`（`is_regex=False`）をマッピング定義ID `"32001"` に適用するサンプルが定義されている。
+
 ## 関連モジュール
 
-- weko_search_ui：マッピング処理を実行する
+- weko_admin：JSON-LDマッピング画面を提供する
 
-- weko_records：マッピング定義を管理する
+- weko_records：マッピング定義（`ItemTypeJsonldMapping`）を管理する
+
+- weko_search_ui：マッピング処理・整合性検証を実行する
 
 
 ## 関連テーブル
 
-  - jsond_mapping：アイテムタイプとjpcoar語彙のマッピング情報を保持する
+  - jsonld_mappings：アイテムタイプとjpcoar語彙のマッピング情報を保持する
 
     - id：マッピング定義ID
     - name：マッピング定義名
     - mapping：マッピング定義(JSON)
     - item_type_id：アイテムタイプID
     - version_id：バージョンID
-    - is_delete：論理削除フラグ
+    - is_deleted：論理削除フラグ
 
   - item_type：アイテムタイプの情報を保持する
 
@@ -371,8 +391,14 @@ JSON-LDのメタデータの階層的な深さは、アイテムタイプのプ�
     - is_delete：論理削除フラグ
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：JSON-LDマッピング画面の実体は **weko-admin** の `JsonldMappingView`（endpoint `jsonld-mapping`、カテゴリ Item Types）。マッピング定義は `weko_records` の `ItemTypeJsonldMapping`（API `JsonldMapping`）、整合性検証は `weko_search_ui.mapper.JsonLdMapper` が担う。RO-Crate Mapping（`weko_itemtypes_ui.admin.ItemTypeRocrateMappingView`）とは別機能。
+- モデル/テーブル：テーブル名は `jsonld_mappings`（+ `jsonld_mappings_version`）、論理削除カラムは `is_deleted`。編集/削除は承認待ちアクティビティ有りで不可（`_is_editable`）、SWORD API JSON-LD設定に使用中はアイテムタイプ変更不可。関連モジュール：weko-admin（画面）/ weko-records（モデル・API）/ weko-search-ui（検証）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                        |
 | ---------- | ------------------------------------------ | ----------------------------------------------- |
 | 2024/06/05 | 81c37b544bd0d561183447be220d543d911d5bb7   | 初版作成                                        |
+| 2026/07/17 |                                            | v2.1.0差分反映：インポート時メタデータ置換ルール（REPLACE_RULES/RULE_MAP）を追記 |

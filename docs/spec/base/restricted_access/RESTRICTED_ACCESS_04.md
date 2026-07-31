@@ -1,17 +1,25 @@
-### メールテンプレート
+# メールテンプレート
+
+## 目的・用途
+
+制限公開ワークフロー（利用申請〜承認〜ダウンロード〜利用報告）で用いる自動送信メールの件名・本文・追加宛先（Recipients／CC／BCC）を管理者が編集する機能である。
+
+## 利用可能なロール
+
+システム管理者のみ（`weko-admin/ext.py` の endpoint `mailtemplates` に対するアクセス制御による）。
 
 - admin_settings テーブルの name が restricted_access のレコードの settings.edit_mail_templates_enable が true の場合のみ有効
 
   - 使用している画面  
-    【Admin \> Setting \> メールテンプレート】：自動送信メールのタイトル、文面を設定する画面である
+    【Admin > Setting > メールテンプレート】：自動送信メールのタイトル、文面を設定する画面である
 
   - 自動送信メールの内容を設定する
 
-  - 【Admin \> Setting \> メールテンプレート】に送信元の情報を設定する
+  - 【Admin > Setting > メールテンプレート】に送信元の情報を設定する
     
       - 「Mail Template」にてメール文面の設定をする
     
-      - 送信者は「設定」-\[メール送信\]-\[Mail Setting\]で設定したユーザー
+      - 送信者は「設定」-[メール送信]-[Mail Setting]で設定したユーザー
 
 設定項目は以下の5つである
 
@@ -34,7 +42,7 @@
 上記2点の条件がどちらか片方でも満たされない場合、エラーメッセージが表示される  
 なお「Subject（メールタイトル）」と「メール内容」以外の項目についての入力の有無は任意である
 
-#### メールテンプレート拡張機能
+## メールテンプレート拡張機能
 
 システム管理者は、環境設定ファイル(instance.cfg)に記された定数("INVENIO_MAIL_ADDITIONAL_RECIPIENTS_ENABLED")を編集することで、デフォルトでは無効化されている本機能を有効化することができる
 
@@ -74,329 +82,344 @@
 
 デフォルトで以下のメールが設定されており、それぞれ制限公開機能で用いる自動送信メールに関係している
 
+> 実装（v2.0.2）の補足：デフォルトメールテンプレートの実体は `scripts/demo/restricted_mail_template.sql`（テーブル `mail_templates`）に投入され、現行では **id=1〜15 の15種**が定義されている（以下①〜⑦に加え、ゲストユーザー向けの承認依頼／承認／審査結果、シークレットURL提供、利用申請のお知らせ、利用報告受付／承認／審査結果 等）。また③④⑤の件名は現行実装では「（ログインユーザー向け）／(for logged in users)」が付く（以下の①〜⑦は初版時点の短縮形＝テンプレートファイル `.tpl` の件名に対応）。
+
 *① 非ログインユーザに利用申請ワークフローURLを送信する  
 Subject: 利用申請登録のご案内／Register Application for Use  
 本文:  
-\[restricted\_site\_name\_ja\]です。  
+[restricted_site_name_ja]です。  
 下記のリンクにアクセスしていただき、利用申請の登録を行ってください。*
 
-*\[url\_guest\_user\]*
+*[url_guest_user]*
 
 *このメールは自動送信されているので返信しないでください。  
-お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、\[restricted\_site\_name\_ja\]までご連絡ください。*
+お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。*
 
-*\[restricted\_site\_name\_ja\]：\[restricted\_site\_url\]  
-問い合わせ窓口：\[restricted\_site\_mail\]*
+*[restricted_site_name_ja]：[restricted_site_url]  
+問い合わせ窓口：[restricted_site_mail]*
 
-*This is a message from \[restricted\_site\_name\_en\].  
+*This is a message from [restricted_site_name_en].  
 Please access the link below and register your Application.*
 
-*\[url\_guest\_user\]*
+*[url_guest_user]*
 
 *Please do not reply to this email as it has been sent automatically.  
 Please direct all inquiries to the following address.  
-Also, if you received this message in error, please notify \[restricted\_site\_name\_en\].*
+Also, if you received this message in error, please notify [restricted_site_name_en].*
 
-*\[restricted\_site\_name\_en\]：\[restricted\_site\_url\]  
-E-mail：\[restricted\_site\_mail\]*
+*[restricted_site_name_en]：[restricted_site_url]  
+E-mail：[restricted_site_mail]*
 
 *② 利用者に対して、利用申請登録のリマインドを行う  
 Subject: データ利用申請の受付のお知らせ／Your Application was Received  
 本文:  
-\[restricted\_institution\_name\_ja\]です。  
-\[restricted\_site\_name\_ja\]をご利用いただいて、ありがとうございます。*
+[restricted_institution_name_ja]です。  
+[restricted_site_name_ja]をご利用いただいて、ありがとうございます。*
 
 *下記の利用申請を受け付けました。*
 
-*申請番号： \[restricted\_activity\_id\]  
-登録者名： \[restricted\_fullname\]  
-メールアドレス： \[restricted\_mail\_address\]  
-所属機関：\[restricted\_university\_institution\]  
-研究題目：\[restricted\_research\_title\]  
-申請データ：\[restricted\_data\_name\]  
-申請年月日：\[restricted\_application\_date\]*
+*申請番号： [restricted_activity_id]  
+登録者名： [restricted_fullname]  
+メールアドレス： [restricted_mail_address]  
+所属機関：[restricted_university_institution]  
+研究題目：[restricted_research_title]  
+申請データ：[restricted_data_name]  
+申請年月日：[restricted_application_date]*
 
-*\[restricted\_institution\_name\_ja\]で審査しますので、結果の連絡をお待ちください。*
+*[restricted_institution_name_ja]で審査しますので、結果の連絡をお待ちください。*
 
 *このメールは自動送信されているので返信しないでください。  
-お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、\[restricted\_institution\_name\_ja\]までご連絡ください。*
+お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_institution_name_ja]までご連絡ください。*
 
-*\[restricted\_site\_name\_ja\]：\[restricted\_site\_url\]  
-問い合わせ窓口：\[restricted\_site\_mail\]*
+*[restricted_site_name_ja]：[restricted_site_url]  
+問い合わせ窓口：[restricted_site_mail]*
 
-*Dear \[restricted\_fullname\],*
+*Dear [restricted_fullname],*
 
-*This is a message from \[restricted\_institution\_name\_en\].  
-Thank you for using \[restricted\_site\_name\_en\].*
+*This is a message from [restricted_institution_name_en].  
+Thank you for using [restricted_site_name_en].*
 
 *We received the below application:*
 
-*Application No.：\[restricted\_activity\_id\]  
-Name：\[restricted\_fullname\]  
-E-mail：\[restricted\_mail\_address\]  
-Affiliation：\[restricted\_university\_institution\]  
-Title of research：\[restricted\_research\_title\]  
-Dataset requested ：\[restricted\_data\_name\]  
-Application date：\[restricted\_application\_date\]*
+*Application No.：[restricted_activity_id]  
+Name：[restricted_fullname]  
+E-mail：[restricted_mail_address]  
+Affiliation：[restricted_university_institution]  
+Title of research：[restricted_research_title]  
+Dataset requested ：[restricted_data_name]  
+Application date：[restricted_application_date]*
 
 *You will be notified once the application is approved.*
 
 *Please do not reply to this email as it has been sent automatically.  
 Please direct all inquiries to the following address.  
-Also, if you received this message in error, please notify \[restricted\_institution\_name\_en\].*
+Also, if you received this message in error, please notify [restricted_institution_name_en].*
 
-*\[restricted\_site\_name\_en\]：\[restricted\_site\_url\]  
-E-mail：\[restricted\_site\_mail\]*
+*[restricted_site_name_en]：[restricted_site_url]  
+E-mail：[restricted_site_mail]*
 
 *③ 承認者に対して、利用申請の承認の依頼を行う  
 Subject: 利用申請の承認のお願い／Request for Approval of Application for Use  
 本文:  
-\[restricted\_site\_name\_ja\]です。下記の方から利用申請がありました。*
+[restricted_site_name_ja]です。下記の方から利用申請がありました。*
 
-*申請番号： \[restricted\_activity\_id\]  
-登録者名： \[restricted\_fullname\]  
-メールアドレス： \[restricted\_mail\_address\]  
-所属機関：\[restricted\_university\_institution\]  
-研究題目：\[restricted\_research\_title\]  
-申請データ：\[restricted\_data\_name\]  
-申請年月日：\[restricted\_application\_date\]*
+*申請番号： [restricted_activity_id]  
+登録者名： [restricted_fullname]  
+メールアドレス： [restricted_mail_address]  
+所属機関：[restricted_university_institution]  
+研究題目：[restricted_research_title]  
+申請データ：[restricted_data_name]  
+申請年月日：[restricted_application_date]*
 
-*\[restricted\_site\_name\_ja\]（\[restricted\_site\_url\]）にアクセスしていただき、画面左上からログインしていただけますと、「ワークフロー」タブが現れます。ここから上記の申請内容をご確認ください。「承認」または「却下」のボタンをクリックしてください。*
+*[restricted_site_name_ja]（[restricted_site_url]）にアクセスしていただき、画面左上からログインしていただけますと、「ワークフロー」タブが現れます。ここから上記の申請内容をご確認ください。「承認」または「却下」のボタンをクリックしてください。*
 
-*このメールに心当たりのない方は、\[restricted\_site\_name\_ja\] までご連絡ください。*
+*このメールに心当たりのない方は、[restricted_site_name_ja] までご連絡ください。*
 
-*\[restricted\_site\_name\_ja\]：\[restricted\_site\_url\]  
-問い合わせ窓口：\[restricted\_site\_mail\]*
+*[restricted_site_name_ja]：[restricted_site_url]  
+問い合わせ窓口：[restricted_site_mail]*
 
-*This is a message from \[restricted\_site\_name\_en\].  
+*This is a message from [restricted_site_name_en].  
 We received the below application.*
 
-*Application No.：\[restricted\_activity\_id\]  
-Name：\[restricted\_fullname\]  
-E-mail：\[restricted\_mail\_address\]  
-Affiliation：\[restricted\_university\_institution\]  
-Title of research：\[restricted\_research\_title\]  
-Dataset requested ：\[restricted\_data\_name\]  
-Application date：\[restricted\_application\_date\]*
+*Application No.：[restricted_activity_id]  
+Name：[restricted_fullname]  
+E-mail：[restricted_mail_address]  
+Affiliation：[restricted_university_institution]  
+Title of research：[restricted_research_title]  
+Dataset requested ：[restricted_data_name]  
+Application date：[restricted_application_date]*
 
-*Please access \[restricted\_site\_name\_en\]（\[restricted\_site\_url\]） and log in from the upper left corner of the screen, and the \[Workflow\] tab will appear. From here, please confirm the above application by clicking on “approve” or “reject”.*
+*Please access [restricted_site_name_en]（[restricted_site_url]） and log in from the upper left corner of the screen, and the [Workflow] tab will appear. From here, please confirm the above application by clicking on “approve” or “reject”.*
 
-*If you received this message in error, please notify the \[restricted\_site\_name\_en\]*
+*If you received this message in error, please notify the [restricted_site_name_en]*
 
-*\[restricted\_site\_name\_en\]：\[restricted\_site\_url\]  
-E-mail：\[restricted\_site\_mail\]*
+*[restricted_site_name_en]：[restricted_site_url]  
+E-mail：[restricted_site_mail]*
 
 *④ 申請者に対して、利用申請が承認されたことを伝え、ダウンロードリンクを送付する  
 Subject: 利用申請の承認のお知らせ／Your application was approved  
 本文:  
-\[restricted\_site\_name\_ja\]です。*
+[restricted_site_name_ja]です。*
 
 *下記の利用申請を承認しました。*
 
-*申請番号： \[restricted\_activity\_id\]  
-登録者名： \[restricted\_fullname\]  
-メールアドレス： \[restricted\_mail\_address\]  
-所属機関：\[restricted\_university\_institution\]  
-研究題目：\[restricted\_research\_title\]  
-申請データ：\[restricted\_data\_name\]  
-申請年月日：\[restricted\_application\_date\]*
+*申請番号： [restricted_activity_id]  
+登録者名： [restricted_fullname]  
+メールアドレス： [restricted_mail_address]  
+所属機関：[restricted_university_institution]  
+研究題目：[restricted_research_title]  
+申請データ：[restricted_data_name]  
+申請年月日：[restricted_application_date]*
 
 *データは、下記アドレスよりダウンロードすることができます。*
 
-*\[restricted\_download\_link\]*
+*[restricted_download_link]*
 
-*当日より\[restricted\_expiration\_date\]\[restricted\_expiration\_date\_ja\]日後まで有効です。ダウンロード期限を過ぎると、再申請が必要です。*
+*当日より[restricted_expiration_date][restricted_expiration_date_ja]日後まで有効です。ダウンロード期限を過ぎると、再申請が必要です。*
 
 *このメールは自動送信されているので返信しないでください。  
-このメールに心当たりのない方は、\[restricted\_site\_name\_ja\]までご連絡ください。*
+このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。*
 
-*\[restricted\_site\_name\_ja\]：\[restricted\_site\_url\]  
-問い合わせ窓口：\[restricted\_site\_mail\]*
+*[restricted_site_name_ja]：[restricted_site_url]  
+問い合わせ窓口：[restricted_site_mail]*
 
-*This is a message from \[restricted\_site\_name\_en\].  
+*This is a message from [restricted_site_name_en].  
 Your application below has been approved.*
 
-*Application No.：\[restricted\_activity\_id\]  
-Name：\[restricted\_fullname\]  
-E-mail：\[restricted\_mail\_address\]  
-Affiliation：\[restricted\_university\_institution\]  
-Title of research：\[restricted\_research\_title\]  
-Dataset requested ：\[restricted\_data\_name\]  
-Application date：\[restricted\_application\_date\]*
+*Application No.：[restricted_activity_id]  
+Name：[restricted_fullname]  
+E-mail：[restricted_mail_address]  
+Affiliation：[restricted_university_institution]  
+Title of research：[restricted_research_title]  
+Dataset requested ：[restricted_data_name]  
+Application date：[restricted_application_date]*
 
 *The data can be downloaded from the address below.*
 
-*\[restricted\_download\_link\]*
+*[restricted_download_link]*
 
-*It is valid from that day until the day after \[restricted\_expiration\_date\]\[restricted\_expiration\_date\_en\]. You will need to resubmit your application once the link becomes unavailable.*
+*It is valid from that day until the day after [restricted_expiration_date][restricted_expiration_date_en]. You will need to resubmit your application once the link becomes unavailable.*
 
 *Please do not reply to this email as it has been sent automatically.  
-If you received this message in error, please notify the \[restricted\_site\_name\_en\].*
+If you received this message in error, please notify the [restricted_site_name_en].*
 
-*\[restricted\_site\_name\_en\]：\[restricted\_site\_url\]  
-E-mail：\[restricted\_site\_mail\]*
+*[restricted_site_name_en]：[restricted_site_url]  
+E-mail：[restricted_site_mail]*
 
 *⑤ 申請者に対して、利用申請が却下されたことを伝える  
 Subject: 利用申請の審査結果について／The results of the review of your application  
 本文:  
-\[restricted\_site\_name\_ja\]です。*
+[restricted_site_name_ja]です。*
 
 *下記の利用申請を却下しました。*
 
-*申請番号： \[restricted\_activity\_id\]  
-登録者名： \[restricted\_fullname\]  
-メールアドレス： \[restricted\_mail\_address\]  
-所属機関：\[restricted\_university\_institution\]  
-研究題目：\[restricted\_research\_title\]  
-申請データ：\[restricted\_data\_name\]  
-申請年月日：\[restricted\_application\_date\]*
+*申請番号： [restricted_activity_id]  
+登録者名： [restricted_fullname]  
+メールアドレス： [restricted_mail_address]  
+所属機関：[restricted_university_institution]  
+研究題目：[restricted_research_title]  
+申請データ：[restricted_data_name]  
+申請年月日：[restricted_application_date]*
 
 *このメールは自動送信されているので返信しないでください。  
-お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、\[restricted\_site\_name\_ja\] までご連絡ください。*
+お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_site_name_ja] までご連絡ください。*
 
-*\[restricted\_site\_name\_ja\]：\[restricted\_site\_url\]  
-問い合わせ窓口：\[restricted\_site\_mail\]*
+*[restricted_site_name_ja]：[restricted_site_url]  
+問い合わせ窓口：[restricted_site_mail]*
 
-*This is a message from \[restricted\_site\_name\_en\].  
+*This is a message from [restricted_site_name_en].  
 Your application below has been rejected.*
 
-*Application No.：\[restricted\_activity\_id\]  
-Name：\[restricted\_fullname\]  
-E-mail：\[restricted\_mail\_address\]  
-Affiliation：\[restricted\_university\_institution\]  
-Title of research：\[restricted\_research\_title\]  
-Dataset requested ：\[restricted\_data\_name\]  
-Application date：\[restricted\_application\_date\]*
+*Application No.：[restricted_activity_id]  
+Name：[restricted_fullname]  
+E-mail：[restricted_mail_address]  
+Affiliation：[restricted_university_institution]  
+Title of research：[restricted_research_title]  
+Dataset requested ：[restricted_data_name]  
+Application date：[restricted_application_date]*
 
 *Please do not reply to this email as it has been sent automatically.  
 Please direct all inquiries to the following address.  
-Also, if you received this message in error, please notify \[restricted\_site\_name\_en\].*
+Also, if you received this message in error, please notify [restricted_site_name_en].*
 
-*\[restricted\_site\_name\_en\]：\[restricted\_site\_url\]  
-E-mail：\[restricted\_site\_mail\]*
+*[restricted_site_name_en]：[restricted_site_url]  
+E-mail：[restricted_site_mail]*
 
 *⑥ DLリンクをクリックし、DLした申請者に対して利用報告のアドレスが送付される  
 Subject: 利用報告の登録のお願い／Request for register Data Usage Report  
 本文:  
-\[restricted\_site\_name\_ja\]です。  
+[restricted_site_name_ja]です。  
 下記で申請いただいデータについてダウンロードされたことを確認しました。*
 
-*申請番号： \[restricted\_usage\_activity\_id\]  
-登録者名： \[restricted\_fullname\]  
-メールアドレス： \[restricted\_mail\_address\]  
-所属機関：\[restricted\_university\_institution\]  
-研究題目：\[restricted\_research\_title\]  
-申請データ：\[restricted\_data\_name\]  
-申請年月日：\[restricted\_application\_date\]*
+*申請番号： [restricted_usage_activity_id]  
+登録者名： [restricted_fullname]  
+メールアドレス： [restricted_mail_address]  
+所属機関：[restricted_university_institution]  
+研究題目：[restricted_research_title]  
+申請データ：[restricted_data_name]  
+申請年月日：[restricted_application_date]*
 
 *ダウンロードしたデータについて、下記のリンクから利用報告の登録をお願いします。*
 
-*\[usage\_report\_url\]*
+*[usage_report_url]*
 
 *このメールは自動送信されているので返信しないでください。  
-お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、\[restricted\_site\_name\_ja\]までご連絡ください。*
+お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。*
 
-*\[restricted\_site\_name\_ja\]：\[restricted\_site\_url\]  
-問い合わせ窓口：\[restricted\_site\_mail\]*
+*[restricted_site_name_ja]：[restricted_site_url]  
+問い合わせ窓口：[restricted_site_mail]*
 
-*This is a message from \[restricted\_site\_name\_en\].  
+*This is a message from [restricted_site_name_en].  
 We have confirmed that the dataset which you registered at below has been downloaded.*
 
-*Application No.：\[restricted\_usage\_activity\_id\]  
-Name：\[restricted\_fullname\]  
-E-mail：\[restricted\_mail\_address\]  
-Affiliation：\[restricted\_university\_institution\]  
-Title of research：\[restricted\_research\_title\]  
-Dataset requested ：\[restricted\_data\_name\]  
-Application date：\[restricted\_application\_date\]*
+*Application No.：[restricted_usage_activity_id]  
+Name：[restricted_fullname]  
+E-mail：[restricted_mail_address]  
+Affiliation：[restricted_university_institution]  
+Title of research：[restricted_research_title]  
+Dataset requested ：[restricted_data_name]  
+Application date：[restricted_application_date]*
 
 *For the downloaded data, please register the Data Usage Report by the link below.*
 
-*\[usage\_report\_url\]*
+*[usage_report_url]*
 
 *Please do not reply to this email as it has been sent automatically.  
 Please direct all inquiries to the following address.  
-Also, if you received this message in error, please notify \[restricted\_site\_name\_en\].*
+Also, if you received this message in error, please notify [restricted_site_name_en].*
 
-*\[restricted\_site\_name\_en\]：\[restricted\_site\_url\]*
+*[restricted_site_name_en]：[restricted_site_url]*
 
-*E-mail：\[restricted\_site\_mail\]*
+*E-mail：[restricted_site_mail]*
 
 *⑦ 管理者画面より、申請者に対して利用報告のリマインドを行う  
 Subject: 利用報告の登録のお願い／Request for register Data Usage Report  
 本文:  
-\[restricted\_site\_name\_ja\]です。  
+[restricted_site_name_ja]です。  
 現時点で、下記の利用報告が登録されていません*
 
-*報告番号：\[restricted\_activity\_id\]  
-登録者名：\[restricted\_fullname\]  
-メールアドレス：\[restricted\_mail\_address\]  
-所属機関：\[restricted\_university\_institution\]  
-利用データ：\[restricted\_data\_name\]  
-データダウンロード日：\[data\_download\_date\]*
+*報告番号：[restricted_activity_id]  
+登録者名：[restricted_fullname]  
+メールアドレス：[restricted_mail_address]  
+所属機関：[restricted_university_institution]  
+利用データ：[restricted_data_name]  
+データダウンロード日：[data_download_date]*
 
 *下記のリンクから利用報告の登録をお願いします。*
 
-*\[usage\_report\_url\]*
+*[usage_report_url]*
 
 *このメールは自動送信されているので返信しないでください。  
-お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、\[restricted\_site\_name\_ja\]までご連絡ください。*
+お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。*
 
-*\[restricted\_site\_name\_ja\]：\[restricted\_site\_url\]  
-問い合わせ窓口：\[restricted\_site\_mail\]*
+*[restricted_site_name_ja]：[restricted_site_url]  
+問い合わせ窓口：[restricted_site_mail]*
 
-*This is a message from \[restricted\_site\_name\_en\].  
+*This is a message from [restricted_site_name_en].  
 At this time, the Data Usage Report below has not been registered.*
 
-*Usage Report No.：\[restricted\_activity\_id\]  
-Name：\[restricted\_fullname\]  
-E-mail：\[restricted\_mail\_address\]  
-Affiliation：\[restricted\_university\_institution\]  
-Usage Dataset：\[restricted\_data\_name\]  
-Download date：\[data\_download\_date\]*
+*Usage Report No.：[restricted_activity_id]  
+Name：[restricted_fullname]  
+E-mail：[restricted_mail_address]  
+Affiliation：[restricted_university_institution]  
+Usage Dataset：[restricted_data_name]  
+Download date：[data_download_date]*
 
 *Please register the Data Usage Report from the link below.*
 
-*\[usage\_report\_url\]*
+*[usage_report_url]*
 
 *Please do not reply to this email as it has been sent automatically.  
 Please direct all inquiries to the following address.  
-Also, if you received this message in error, please notify \[restricted\_site\_name\_en\].*
+Also, if you received this message in error, please notify [restricted_site_name_en].*
 
-*\[restricted\_site\_name\_en\]：\[restricted\_site\_url\]  
-E-mail：\[restricted\_site\_mail\]*
+*[restricted_site_name_en]：[restricted_site_url]  
+E-mail：[restricted_site_mail]*
 
-  - > 更新履歴
+## 関連モジュール
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>2024/10/31</p>
-</blockquote></td>
-<td>edd6d1f14e0f8344cec7552ed8a02bd2bccf68b7</td>
-<td>メールテンプレート拡張機能を追加</td>
-</tr>
-<tr class="odd">
-<td><blockquote>
-<p>2025/10/31</p>
-</blockquote></td>
-<td>160a811eed2c61492558905db34fa0619da6b18f</td>
-<td>設定値による表示制御を記載</td>
-</tr>
-</tbody>
-</table>
+- invenio-mail（メールテンプレート編集画面・保存・宛先検証：`admin.py` / `models.py` / `static/js/invenio_mail/mail_template.js`）
+- weko-admin（`edit_mail_templates_enable` による画面ゲート：`config.py` / `ext.py` / `utils.py`）
+- weko-workflow（送信時のプレースホルダ置換・宛先確定：`utils.py`）
+
+## 処理概要
+
+- 保存フロー：JS側で Subject・本文の必須チェック（未入力時「Please input the Mail Subject and Mail Body.」）→ `/save` → `get_invalid_emails` でメールアドレス検証（`User.query.filter_by(email, active=True)` に一致しないアドレスは「Invalid email addresses (...) detected. Please correct them to match the addresses which are registered in WEKO.」）→ `MailTemplates.save_and_update` ＋ `MailTemplateUsers.save_and_update`
+- 送信フロー：`get_mail_data` → 無効化ユーザーの宛先を自動削除（`MailTemplateUsers.delete_by_user_id`）→ `INVENIO_MAIL_ADDITIONAL_RECIPIENTS_ENABLED` 判定（無効時は subject/body のみ、有効時のみ recipients/cc/bcc を付加）→ プレースホルダ置換（`replace_characters`）→ 送信
+- 宛先は**メールアドレス文字列ではなく user_id で永続化**される（テーブル `mail_template_users`）。これが「WEKO登録済みユーザー限定」「削除・無効化ユーザーの自動除外」「機能再有効化時の復活」の根拠である。
+
+## 主要設定値（config / AdminSettings）
+
+| キー | 既定値 | 用途 |
+| --- | --- | --- |
+| `INVENIO_MAIL_ADDITIONAL_RECIPIENTS_ENABLED` | False | Recipients／CC／BCC の表示・送信の有効化（メールテンプレート拡張機能） |
+| AdminSettings `restricted_access.edit_mail_templates_enable` | False | メールテンプレート編集機能／画面の有効化 |
+| `WEKO_WORKFLOW_MAIL_TEMPLATE_FOLDER_PATH` | （テンプレートフォルダ） | 件名フォールバック用 `.tpl` の格納先 |
+| `WEKO_WORKFLOW_USAGE_REPORT_REMINDER_MAIL_TEMPLATE_ID` | `'6'` | 利用報告リマインドメールの固定テンプレートID |
+| `WEKO_WORKFLOW_REQUEST_FOR_REGISTER_USAGE_REPORT` | `'7'` | 利用報告登録依頼メールの固定テンプレートID |
+| `INVENIO_MAIL_DEFAULT_TEMPLATE_CATEGORY_ID` | `3` | デフォルトテンプレートのカテゴリID |
+
+## モデル / テーブル
+
+- `admin_settings`（`AdminSettings`）：制限公開設定JSONを格納（`edit_mail_templates_enable` 等）
+- `mail_templates`（`MailTemplates`）：`mail_subject` / `mail_body` / `default_mail` / `genre_id`
+- `mail_template_users`（`MailTemplateUsers`）：`template_id` / `user_id` / `mail_type`（複合PK）。追加宛先を user_id で保持
+- `mail_template_genres`（`MailTemplateGenres`）：テンプレートのジャンル
+- `MailType` Enum：`recipient` / `cc` / `bcc`
+
+## プレースホルダ（置換変数）
+
+置換の権威定義は `weko-workflow/weko_workflow/utils.py` の `replace_characters`（`replace_list`）。ヘルプ画面の一覧は `invenio-mail/config.py` の `INVENIO_MAIL_VARIABLE_HELP`。主なプレースホルダは以下（本文で使用しているものを含む）。
+
+`[restricted_site_name_ja]` `[restricted_site_name_en]` `[restricted_institution_name_ja]` `[restricted_institution_name_en]` `[restricted_site_url]` `[restricted_site_mail]` `[url_guest_user]` `[usage_report_url]` `[restricted_download_link]` `[restricted_activity_id]` `[restricted_usage_activity_id]` `[restricted_fullname]` `[restricted_mail_address]` `[restricted_university_institution]` `[restricted_research_title]` `[restricted_research_plan]` `[restricted_data_name]` `[restricted_application_date]` `[restricted_expiration_date]` `[restricted_expiration_date_ja]` `[restricted_expiration_date_en]` `[restricted_download_count]` `[restricted_download_count_ja]` `[restricted_download_count_en]` `[restricted_approver_name]` `[data_download_date]` `[file_name]` `[secret_url]` `[terms_of_use_jp]` `[terms_of_use_en]` `[landing_url]` `[register_date]` `[advisor_fullname]` `[guarantor_fullname]` ほか
+
+> 注：ヘルプ一覧（`INVENIO_MAIL_VARIABLE_HELP`）には `[resricted_download_count]`（`restricted` のtypo）が含まれるが、実際の置換キーは `[restricted_download_count]` であり、ヘルプ表示と実置換キーが不一致（バグ疑い）。
+
+## 更新履歴
+
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2024/10/31 | edd6d1f14e0f8344cec7552ed8a02bd2bccf68b7 | メールテンプレート拡張機能を追加 |
+| 2025/10/31 | 160a811eed2c61492558905db34fa0619da6b18f | 設定値による表示制御を記載 |
+| 2026/07/13 |  | 実装(v2.0.2)と突き合わせ、目的・利用可能ロール・関連モジュール・処理概要・configキー・モデル・権威プレースホルダ一覧を追記。デフォルトメールが現行15種である旨、宛先のuser_id永続化挙動を注記 |

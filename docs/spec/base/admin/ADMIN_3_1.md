@@ -9,7 +9,7 @@
 
 1\. システム管理者、リポジトリ管理者、サブリポジトリ管理者でログインする。
 
-2.【Administration\>インデックスツリー管理(Index Tree)\>ツリー編集(Edit Tree)】画面を開く。
+2.【Administration>インデックスツリー管理(Index Tree)>ツリー編集(Edit Tree)】画面を開く。
 
 ## 利用可能なロール
 
@@ -24,7 +24,7 @@
 ## 機能内容
 
 1\. インデックスツリーを追加する  
-【Administration \> インデックスツリー管理 \> ツリー編集（Edit Tree）】画面に移動する。  
+【Administration > インデックスツリー管理 > ツリー編集（Edit Tree）】画面に移動する。  
 その後新しく作成するインデックスの親となるインデックスをRootIndex以下から選択する。  
 そして、Edit Treeエリア左上にある「追加」（Add）ボタンを押すことで、インデックスが新規登録される。
 
@@ -32,7 +32,7 @@
     「Root Index」を選択している場合、インデックス一覧の最下行に配置する。
 
 2\. インデックスツリーを編集する  
-【Administration \> インデックスツリー管理 \> ツリー編集（Edit Tree）】画面にて編集したいインデックスを押下することでそのインデックスの編集画面が右に表示される。  
+【Administration > インデックスツリー管理 > ツリー編集（Edit Tree）】画面にて編集したいインデックスを押下することでそのインデックスの編集画面が右に表示される。  
 なお、Root Indexは選択することができるが、編集することはできない。
 
 インポート中はインデックスツリーの編集ができない。
@@ -66,7 +66,7 @@
           - URLを表示する場合、次の形式で入力する。  
             形式：
 
-\[\[URL|表示名\]\]
+[[URL|表示名]]
 
 上記のように入力すると、表示名をリンクで表示する。「|表示名」を省略した場合、URLをリンク形式で表示する。
 
@@ -79,8 +79,8 @@
         - ポップアップの「公開設定を有効化する（Open to public）」チェックボックスにチェックを入れ、「有効にする（Enable）」ボタンを押下することで、「公開する」チェックボックスにチェックが入る。
 
         - ポップアップの表示制御を以下のコンフィグファイルで行っている。下記変数の値をTrueに変更することで表示することができる。(初期値はFalseになっている)
-          - > パス：/root/weko/modules/weko-index-tree/weko_index_tree/config.py
-          - > 変数：WEKO_INDEX_TREE_SHOW_MODAL
+          - パス：/root/weko/modules/weko-index-tree/weko_index_tree/config.py
+          - 変数：WEKO_INDEX_TREE_SHOW_MODAL
     
       - チェックを入れた場合
         
@@ -114,7 +114,7 @@
 
   - 「PDF Cover Page (JA)」（PDF Cover Page）  
     「Enable」チェックボックスを設ける。  
-    このチェックボックスは【Administration\>設定(Setting)\>PDFカバーページ表示】画面にて「PDF Cover Page」エリアで「Enable」を選んでいると編集が可能になる。設定の詳細は[ADMIN-14-4 PDFカバーページ表示](\\l)を参照すること。
+    このチェックボックスは【Administration>設定(Setting)>PDFカバーページ表示】画面にて「PDF Cover Page」エリアで「Enable」を選んでいると編集が可能になる。設定の詳細は[ADMIN-14-4 PDFカバーページ表示](\\l)を参照すること。
     
       - チェックを入れる場合、PDFカバーページが作成される。
     
@@ -129,8 +129,8 @@
 
       - ポップアップの「公開設定を有効化する（Open to public）」チェックボックスにチェックを入れ、「有効にする（Enable）」ボタンを押下することで、「公開する」チェックボックスにチェックが入る。
       - ポップアップの表示制御を以下のコンフィグファイルで行っている。下記変数の値をTrueに変更することで表示することができる。(初期値はFalseになっている)
-        - > パス：/root/weko/modules/weko-index-tree/weko_index_tree/config.py
-        - > 変数：WEKO_INDEX_TREE_SHOW_MODAL
+        - パス：/root/weko/modules/weko-index-tree/weko_index_tree/config.py
+        - 変数：WEKO_INDEX_TREE_SHOW_MODAL
 
       - チェックを入れた場合、インデックスへのハーベスト要求に対して、所属するデータを提供できる。
 
@@ -139,7 +139,7 @@
     「このインデックス直下のアイテムの利用統計を集計する」（Aggregate usage statistics of items belonging to this index.)チェックボックスを設ける。
     
       - チェックを入れた場合、子インデックスへの再帰的な設定値反映および利用統計集計する。  
-        \[注意！\]  
+        [注意！]  
         ただし、WEKO3側で、ONLINE ISSN ごとに集計する機能は存在しない。  
         利用統計通常は、インデックス単位でとる仕様である。  
         将来的にONLINE ISSN ごとに集計するようになった場合に備えて移行をしておく。
@@ -180,13 +180,13 @@
 
               - 例外的に「jc_roles_sysadm」も非表示となり、閲覧権限の判定時に無視される。
 
-              - ロール権限に設定できるグループIDのフォーマット（プレフィックス、システム管理者用グループID）は、設定値 WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_PATTERN\_DICT を変更することで、フォーマットを変更できる。
+              - ロール権限に設定できるグループIDのフォーマット（プレフィックス、システム管理者用グループID）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで、フォーマットを変更できる。
 
          - 上記以外のグループIDの場合はグループ権限として表示され、閲覧権限を変更できる。
 
               - 学認mAPのグループ情報は内部的にはロールだが、グループとして扱われる。
 
-         - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの閲覧権限のデフォルト値は、WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_BROWSING\_PERMISSIONの真偽値から権限有無を決定する。
+         - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの閲覧権限のデフォルト値は、WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING_PERMISSIONの真偽値から権限有無を決定する。
 
   - 「投稿権限」（Deposit Privilege）
     
@@ -230,13 +230,13 @@
 
               - 例外的に「jc_roles_sysadm」も非表示となり、投稿権限の判定時に無視される。
 
-              - ロール権限に設定できるグループIDのフォーマット（プレフィックス、システム管理者グループID）は、設定値 WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_PATTERN\_DICT を変更することで、フォーマットを変更できる。
+              - ロール権限に設定できるグループIDのフォーマット（プレフィックス、システム管理者グループID）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで、フォーマットを変更できる。
 
          - ロール権限として利用できない学認グループは、すべてグループ権限として表示され、投稿権限を変更できる。
 
               - 学認mAPのグループ情報は内部的にはロールだが、グループとして扱われる。
 
-         - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの投稿権限のデフォルト値は、WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSIONの真偽値から権限有無を決定する。
+         - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの投稿権限のデフォルト値は、WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_CONTRIBUTE_PERMISSIONの真偽値から権限有無を決定する。
 
   - 「表示形式(検索結果)」（Display Format(Search Results)）  
     検索結果の表示形式を選択する。
@@ -251,7 +251,6 @@
 
   - インデックスサムネイル画像のアップロードエリア
 
-<!-- end list -->
 
   - 「送信」（Send）ボタンを押すと、編集したインデックスが保存される。
 
@@ -265,7 +264,6 @@
 
   - サムネイル画像は表示時の画面サイズに応じて縮小される。画像を拡大表示することはしない。
 
-<!-- end list -->
 
   - 必須項目を入力しない場合、インデックスが追加されずに、エラーメッセージがポップアップアラートで表示される。また、必須項目の直下にエラーメッセージも表示される。  
     ポップアップアラートで表示されるエラーメッセージ：「必須入力項目を入力してください」  
@@ -284,7 +282,7 @@
 3\. インデックスツリーを削除する
 
   - 削除したいインデックスを選択した状態で、「削除」（Delete）ボタンを押すと、確認ダイヤログを表示させる。  
-    削除処理中はインデックス操作ができなくなる。(\[追加\]ボタン，\[削除\]ボタン，\[送信\]ボタンが非活性となる)  
+    削除処理中はインデックス操作ができなくなる。([追加]ボタン，[削除]ボタン，[送信]ボタンが非活性となる)  
     確認メッセージ：  
     日本語：「DELETEインデックス以下のインデックスおよびアイテムに対する処理を選択してください」  
     英語：「Please choose processing about index and items\!」
@@ -312,17 +310,17 @@
 
 
   -  関連モジュール
-     - weko\_index\_tree
-     - weko\_search\_ui
-     - weko\_admin
+     - weko_index_tree
+     - weko_search_ui
+     - weko_admin
 
   - インデックスツリー編集画面表示について
     
-      - 【Administration\>インデックスツリー管理\>ツリー編集】画面を開く。そのとき、weko\_index\_tree.admin.indexメソッドを呼び出し、indexテーブルよりインデックスツリー情報を取得し、表示する。
+      - 【Administration>インデックスツリー管理>ツリー編集】画面を開く。そのとき、weko_index_tree.admin.indexメソッドを呼び出し、indexテーブルよりインデックスツリー情報を取得し、表示する。
 
   - インデックス追加について
     
-      - 【Administration \> インデックスツリー管理(Index Tree) \> ツリー編集（Edit Tree）】画面にて追加ボタンを押下すると、weko\_index\_tree.rest.postメソッドにてweko\_index\_tree.api.createが呼び出される。  
+      - 【Administration > インデックスツリー管理(Index Tree) > ツリー編集（Edit Tree）】画面にて追加ボタンを押下すると、weko_index_tree.rest.postメソッドにてweko_index_tree.api.createが呼び出される。  
         それによって初期値が以下の表であるインデックスを生成され、indexテーブルに登録される。
         インデックス作成時、識別可能なエンドポイントを作成する。
         CNRIが有効である場合は、ハンドルを発行し、当該のエンドポイントの名前解決が可能な状態にする。
@@ -344,26 +342,26 @@
 
       - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L96>
 
-      - 設定キー：WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_BROWSING\_PERMISSION
+      - 設定キー：WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING_PERMISSION
 
       - 現在の設定値：
 
-> WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_BROWSING\_PERMISSION = False
+> WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING_PERMISSION = False
 
   - GakuNin mAPから連携されたグループ情報の投稿権限初期値を設定する。（Trueの場合、投稿権限ありとして初期値を設定する。）
 
       - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L99>
 
-      - 設定キー：WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSION
+      - 設定キー：WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_CONTRIBUTE_PERMISSION
 
       - 現在の設定値：
 
-> WEKO\_INDEXTREE\_GAKUNIN\_GROUP\_DEFAULT\_CONTRIBUTE\_PERMISSION = False
+> WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_CONTRIBUTE_PERMISSION = False
 
 
 |インデックスツリー設定値| | | | |
 |:---:|:---:|:---:|:---:|:---:|
-|\#|項目(日本語)|DBキー|デフォルト値|備考|
+|#|項目(日本語)|DBキー|デフォルト値|備考|
 |1|なし|id|(現在の時間を元にしたもの)|time.timeメソッドに1000を掛けた値|
 |2|なし|parent|(親インデックスのID)|rootindex下なら初期値0|
 |3|インデックス|index_name|New Index| |
@@ -381,7 +379,7 @@
 |15| |display_no|5|表示数|
 |16|RSSアイコン|rss_status|false| |
 |17|PDFCoverPage|coverpage_state|false| |
-|18| |recursive_coverpage_state|None| |
+|18| |recursive_coverpage_check|None| |
 |19|ハーベスト公開|harvest_public_state|true| |
 |20|ONLINE_ISSN|online_issn|None| |
 |21| |biblio_flag|None| |
@@ -397,18 +395,26 @@
 |31|サムネイル|image_name|None|値に入るのはサムネイル画像のパスを表す文字列|
 
   - インデックス編集について
-      - 【Administration \> インデックスツリー管理(Index Tree) \> ツリー編集（Edit Tree）】画面にてインデックスを編集後、「送信」ボタンを押下することでweko\_index\_tree.rest.putメソッドを呼び出し、同フォルダのapi.pyのupdateメソッドでテーブルを更新する。それによって編集した箇所が上記の表の対応するテーブルキーでindexテーブルの値を更新する。
-      - なおweko\_index\_tree.api.updateメソッド実行時、表の\#8,16,21,23,25,27がtrueの場合、それに対応するメソッドが呼び出される。それによって対応する設定が編集されたインデックスの子以下で同じように適用され、indexテーブルを更新する。
+      - 【Administration > インデックスツリー管理(Index Tree) > ツリー編集（Edit Tree）】画面にてインデックスを編集後、「送信」ボタンを押下することでweko_index_tree.rest.putメソッドを呼び出し、同フォルダのapi.pyのupdateメソッドでテーブルを更新する。それによって編集した箇所が上記の表の対応するテーブルキーでindexテーブルの値を更新する。
+      - なおweko_index_tree.api.updateメソッド実行時、表の#10,18,21,23,25,27,29がtrueの場合、それに対応するメソッドが呼び出される。それによって対応する設定が編集されたインデックスの子以下で同じように適用され、indexテーブルを更新する。
 
   - インデックス削除について
-      - 【Administration \> インデックスツリー管理(Index Tree) \> ツリー編集（Edit Tree）】画面にてインデックスを選択後、「削除」ボタンを押し、ポップアップの選択肢「すべて削除」を押下する。この操作によってweko\_index\_tree.rest.deleteにて同フォルダのutil.pyのperform\_delete\_indexメソッドが呼び出される。このメソッドによってindexテーブルから該当インデックスとその子インデックスを論理削除する。
+      - 【Administration > インデックスツリー管理(Index Tree) > ツリー編集（Edit Tree）】画面にてインデックスを選択後、「削除」ボタンを押し、ポップアップの選択肢「すべて削除」を押下する。この操作によってweko_index_tree.rest.deleteにて同フォルダのutil.pyのperform_delete_indexメソッドが呼び出される。このメソッドによってindexテーブルから該当インデックスとその子インデックスを論理削除する。
       また、インデックス追加時に作成したハンドルはインデックスの削除と同時に削除を実施する。
 
   - インデックス移動について
-      - 【Administration \> インデックスツリー管理(Index Tree) \> ツリー編集（Edit Tree）】画面にてインデックスをドラッグアンドドロップすることで親インデックスの変更、または表示する順番の変更ができる。その変更をした際に、weko\_index\_tree.rest.putメソッドにて同フォルダのapi.pyのmoveメソッドが呼び出される。このメソッドによってindexテーブルのキー「parent」、「position」の値を変更する。
+      - 【Administration > インデックスツリー管理(Index Tree) > ツリー編集（Edit Tree）】画面にてインデックスをドラッグアンドドロップすることで親インデックスの変更、または表示する順番の変更ができる。その変更をした際に、weko_index_tree.rest.putメソッドにて同フォルダのapi.pyのmoveメソッドが呼び出される。このメソッドによってindexテーブルのキー「parent」、「position」の値を変更する。
 
   - キャッシュについて
-      - インデックスを作成、編集、削除、移動した際に、weko\_index\_tree.utils.save\_index\_trees\_to\_redisメソッドを用いて、インデックスツリーの日英の親子関係をredisに保存している。
+      - インデックスを作成、編集、削除、移動した際に、weko_index_tree.utils.save_index_trees_to_redisメソッドを用いて、インデックスツリーの日英の親子関係をredisに保存している。
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_index_tree.admin.IndexEditSettingView.index`（画面）＋ REST。追加/編集/削除は `weko_index_tree.rest.IndexActionResource.post/put/delete`（→ `Indexes.create/update`、`utils.perform_delete_index` は論理削除 `is_deleted`）、移動は `IndexTreeActionResource.put`（→ `Indexes.move`、`parent`/`position` 更新）。キャッシュ更新は `save_index_trees_to_redis`。
+- 再帰フラグ：再帰対象は #10 `recursive_public_state` / #18 `recursive_coverpage_check` / #21 `biblio_flag` / #23 `recursive_browsing_role` / #25 `recursive_browsing_group` / #27 `recursive_contribute_role` / #29 `recursive_contribute_group`（#8 public_state・#16 rss_status には再帰なし）。カラム名は `recursive_coverpage_check`。テーブルには `is_deleted` / `owner_user_id` / `cnri` / `index_url` / `harvest_spec` 等の列もある。
+- config：`WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING/CONTRIBUTE_PERMISSION` は **weko-accounts/config.py** に定義。関連モジュール（追記）：weko-accounts / weko-handle / weko-workflow / weko-logging。
+- 既定グループとNo Group：`Indexes.get_account_group`（`weko_index_tree.api`）が既定のグループ一覧に仮想グループ「No Group」（内部ID `-89`）を含め、新規インデックスの既定 `browsing_group`/`contribute_group` に `-89` を設定する。既存インデックスへは `postgresql/ddl/W2025-61a.sql` で `-89` を追記する。
+- アクセス可否判定：閲覧・投稿いずれのアクセス可否も `weko_index_tree.utils.check_index_permission_by_role_and_group` により、ロール権限の一致（`check_roles`。認証済みユーザーに `-98`、ゲストに `-99` を自動付与し、いずれか1つでも一致すれば許可＝ANY 一致）とグループ権限の一致（`check_groups`。グループ未所属の認証ユーザー／ゲストは `-89`（No Group）扱い。名前に `_groups_` を含むロールグループを含めて ANY 一致）の **両方**（AND）を満たす場合に許可される。管理者ロールは常に許可。GakuNin mAP ロール（`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` の `role_keyword`/`prefix` に一致）は判定対象から除外される。呼び出しは `filter_index_list_by_role` / `reduce_index_by_role` / `check_index_permissions`。
 
 ## 更新履歴
 
@@ -422,3 +428,5 @@
 | 2025/10/10|3581747ebfbda5f623e7b8da759293d2090c4112|インデックス公開ロック機能追加|
 | 2025/11/12|5254da1cf9caafb27a27f361ae36099da4f2c042|キャッシュ機能の改善|
 | 2025/11/14|213e1edb08782bee732b86d55c34240bc9758867|インデックス権限判定の修正|
+| 2026/07/17|-|v2.1.0差分反映：No Group(-89)既定・閲覧/投稿の「ロールAND グループ」判定・mAPロール除外を追記|
+

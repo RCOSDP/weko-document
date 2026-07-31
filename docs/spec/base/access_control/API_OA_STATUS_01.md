@@ -6,8 +6,6 @@ OAステータスに関するAPIのアクセスコントロールについて記
 
 - [POST /api/\<version>/oa_status/callback](#post-apiversionoa_statuscallback)
 
-
-
 ## POST /api/\<version>/oa_status/callback
 
 表内のいずれかの○に合致すれば、OAステータスの更新が出来ます。
@@ -17,6 +15,9 @@ OAステータスに関するAPIのアクセスコントロールについて記
 | トークンのスコープに<br>oa_status:update<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ×                       |
 | トークンのスコープに<br>oa_status:update<br>なし                                 | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本APIの認可は OAuth2 を基本とし、`require_api_auth(allow_anonymous=…)`（未認証許可可否）、`require_oauth_scopes(<scope>)`（トークン使用時のみスコープ検証）、`roles_required([...])`（未認証かつ guest_token 無しは 401）の組み合わせで判定される。ゲスト（未ログイン）可否は主に `allow_anonymous` と `roles_required` の有無で決まり、公開範囲は検索系では `weko_search_ui.query.get_permission_filter` で絞り込まれる。各エンドポイントの実ハンドラ・スコープは [API仕様（api カテゴリ）](../api/README.md) を参照。
 
 ## 更新履歴
 

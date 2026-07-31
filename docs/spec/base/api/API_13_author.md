@@ -44,6 +44,9 @@
 |2|著者DB著者追加|POST  |/api/{version}/authors|author:create|
 |3|著者DB著者編集|PUT   |/api/{version}/authors/{identifier}|author:update|
 |4|著者DB著者削除|DELETE|/api/{version}/authors/{identifier}|author:delete|
+|5|著者DB件数取得|GET   |/api/{version}/authors/count|author:search|
+
+- 実ハンドラは `weko_authors.rest.AuthorDBManagementAPI`（検索/追加/編集/削除）および `weko_authors.rest.Authors`（件数取得 `count_authors`）。Blueprint生成は `rest.create_blueprint`、REST定義は `config.WEKO_AUTHORS_REST_ENDPOINTS`。`{identifier}` は整数IDまたはUUIDを受理する。
 
 ## 4. スコープと利用可能なロールの関係
 
@@ -590,7 +593,6 @@ POST /api/{version}/authors
 
 5. 著者情報を確認する
     - `authorIdInfo.idType`、`authorNameInfo.language`、`affiliationInfo.identifierInfo.affiliationIdType`、`affiliationInfo.affiliationNameInfo.affiliationNameLang`の値が選択肢に無い値の場合、400エラーを返す。
-    - `authorIdInfo.idType`が`WEKO`の場合、`authorId`に半角数字以外の文字が含まれている場合または既に存在する値は場合は400エラーにする。入力された値が既に使用されている場合のエラーメッセージは「`The value is already in use as WEKO ID`」とする。
     - `authorIdInfo`について、`idType`と`authorId`の片方のみが送られた場合は400エラーを返す。
     - `authorNameInfo`について、`firstName`または`familyName`が指定されたとき、`language`が指定されていなければ400エラーを返す。
     - `identifierInfo`について、`affiliationIdType`と`affiliationId`の片方のみが送られた場合は400エラーを返す。
@@ -606,7 +608,7 @@ POST /api/{version}/authors
      - 管理対象外コミュニティのIDを指定した場合
 
 6. 著者情報を登録する
-    - `authorIdInfo.idType`が`WEKO`の`authorIdInfo.authorId`が指定されていない場合、既存のWEKO IDの最大値+1の数字を`authorIdInfo.authorId`として登録する。
+    - リクエストに含まれる`idType`が`WEKO`（`'1'`）の`authorIdInfo`は除去し、WEKO IDは既存のWEKO IDの最大値+1を新規に採番して登録する。
     - `authorIdInfo.idType`、`affiliationInfo.identifierInfo.affiliationIdType`は与えられた値で検索しIDを引っ張ってくる。
     - DBとElasticsearchに著者情報を登録する。
     - エラーが発生した場合は、ロールバックして500エラーを返す。
@@ -741,7 +743,6 @@ PUT /api/{version}/authors/{identifier}
     |authorIdShowFlg|boolean|✕|true|［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。|
 
     ※ idTypeとauthorIdの片方のみが送られた場合はエラーにする
-    ※ WEKO IDは必須
 
     **authorNameInfo**
 
@@ -951,7 +952,6 @@ PUT /api/{version}/authors/{identifier}
 
 6. 著者情報を確認する
     - `authorIdInfo.idType`、`authorNameInfo.language`、`affiliationInfo.identifierInfo.affiliationIdType`、`affiliationInfo.affiliationNameInfo.affiliationNameLang`の値が選択肢に無い値の場合、400エラーを返す。
-    - `authorIdInfo.idType`が`WEKO`の場合、`authorId`に半角数字以外の文字が含まれている場合または既に存在する値は場合は400エラーにする。入力された値が既に使用されている場合のエラーメッセージは「`The value is already in use as WEKO ID`」とする。
     - `authorIdInfo`について、`idType`と`authorId`の片方のみが送られた場合は400エラーを返す。
     - `authorNameInfo`について、`firstName`または`familyName`が指定されたとき、`language`が指定されていなければ400エラーを返す。
     - `identifierInfo`について、`affiliationIdType`と`affiliationId`の片方のみが送られた場合は400エラーを返す。
@@ -976,7 +976,6 @@ PUT /api/{version}/authors/{identifier}
 8. 著者情報の更新をアイテムのメタデータに反映する
     - pk_idでauthor_linkを検索し、著者名以外の著者情報の変更をアイテムのメタデータに反映する。
     - `force_change`がTrueの場合は、著者名の変更もアイテムのメタデータに反映する。
-    - WEKO IDに変更がある場合、"weko_link"のweko_idを更新する。
 
 9.  レスポンスを返す
     - 変更した著者情報の内容をjson形式にエンコードしたものをレスポンスボディに入れ、レスポンスコード200を返す。
@@ -1062,9 +1061,21 @@ DELETE /api/{version}/authors/{identifier}
     - エラーが発生した場合は、ロールバックして500エラーを返す。
 
 
+## 実装補足（v2.0.2）
+
+- 関連モジュール：weko-authors（`rest.py`：`AuthorDBManagementAPI` / `Authors`、`scopes.py`、`config.py`：`WEKO_AUTHORS_REST_ENDPOINTS` / `WEKO_AUTHORS_ES_INDEX_NAME`、`schema.py`：`AuthorCreateRequestSchema` / `AuthorUpdateRequestSchema`、`api.py`：`WekoAuthors.create` / `update`、`utils.py`：`validate_community_ids` / `check_delete_author` / `get_author_prefix_obj`、`models.py`：`Authors` / `AuthorsPrefixSettings` / `AuthorsAffiliationSettings`）
+- 各メソッドは `@roles_required([WEKO_ADMIN_PERMISSION_ROLE_SYSTEM, _REPO, _COMMUNITY])`。検索・登録は Elasticsearch の `{prefix}-authors`（`WEKO_AUTHORS_ES_INDEX_NAME`）インデックスを使用する。
+- 削除は論理削除（`is_deleted=True`。DB・ES 双方を更新）。
+- 検索の `idtype` は scheme 文字列で受け取りDBでID変換し、レスポンスでID→schemeへ逆変換する。`idtype` と `authorid` は両方指定または両方省略が必要。
+- POST時、`idType='1'`（WEKO）の `authorIdInfo` は除去される。
+- レート制限は 1分あたり 100回（超過時 429）。
+
 ## 9. 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 |2025/2/17||初版作成|
 |2025/5/30||REST対応|
+| 2025/11/27|-|WEKO ID対応|
+| 2026/07/14|-|実装(v2.0.2)と突き合わせ。未記載の件数取得API(/authors/count)追加、関連モジュール・ESインデックス・論理削除・configキーを追記|
+| 2026/07/14||本文を実装準拠に修正|

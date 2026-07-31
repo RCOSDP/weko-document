@@ -686,6 +686,18 @@
 | 代理投稿者：自分 | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 上記以外         | ○                  | ○                    | ×                      | ×            | ×            | ×                        |
 
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本画面／操作のアクセス可否は、対応するビューの権限ファクトリ・`@login_required`・所有者/ロール判定で担保される。閲覧系は `weko_records_ui.permissions.page_permission_factory` / `check_file_download_permission`、検索系は `weko_search_ui.query.get_permission_filter`、所有者判定は `check_created_id`（`created_by`/`owner`/`weko_shared_ids` のいずれか一致。ロール非依存のため「作成者:自分＝一般ユーザー×」はコード強制でなく実務上の前提）を用いる。
+
+### 実装上の注記（v2.0.2）
+
+- **公開ステータス変更**（`recid_publish` → `weko_items_ui.permissions.edit_permission_factory`）：`edit_permission_factory` は `flg='Edit'` を参照せず `page_permission_factory` と等価に動作するため、実質「閲覧権限」と同一。公開済みアイテムを閲覧できる非所有者（登録／一般ユーザー、場合によりゲスト）でもバックエンドの `POST /record/<id>/publish` を通過し得る（**バックエンドでの所有者/管理者限定は未強制**。UI 表示に依存）。
+- **リクエストメール**（`weko_records_ui.rest.RequestMail.post_v1`）：この POST エンドポイントには `@login_required`・権限ファクトリ・公開ステータスチェックが無く、誰でも（ゲスト含む）任意アイテムに送信可能（UI 依存）。
+- **アイテム編集**（`weko_items_ui.views.prepare_edit_item`）：内部で `get_user_roles(is_super_role=True)` を用いるため、**任意の Community Administrator が任意のアイテムを編集可能**（管理コミュニティ範囲外・非所有でも）。仕様の「上記以外＝コミュニティ管理者 ×」とは異なる。
+- **閲覧・削除**：`check_created_id` → `has_comadmin_permission` により、Community Administrator は自身の管理コミュニティ配下インデックスに属する非公開・他者作成アイテムも閲覧・削除できる。
+- 「作成者:自分」で一般ユーザー × 等の区別は `check_created_id` がロール非依存のためコード強制ではない（実務上の前提）。OAI-PMH の所有者向け行は匿名ハーベストのため実挙動と一致しない可能性がある。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |

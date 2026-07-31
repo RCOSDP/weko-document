@@ -167,9 +167,22 @@
 
 ※2 自身が管理するインデックスに限ります。
 
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本画面／操作のアクセス可否は、対応するビューの権限ファクトリ・`@login_required`・所有者/ロール判定で担保される。閲覧系は `weko_records_ui.permissions.page_permission_factory` / `check_file_download_permission`、検索系は `weko_search_ui.query.get_permission_filter`、所有者判定は `check_created_id`（`created_by`/`owner`/`weko_shared_ids` のいずれか一致。ロール非依存のため「作成者:自分＝一般ユーザー×」はコード強制でなく実務上の前提）を用いる。
+
+### 実装上の変更（v2.1.0：エンバーゴ考慮のaccessRights）
+
+新設configマスタースイッチ `weko_search_ui/config.py` の `WEKO_SEARCH_FIX_ACCESSRIGHTS`（既定 `False`）がTrueの環境では、アクセス権（accessRights）ファセット・アクセス権指定検索がエンバーゴ状態を考慮する。
+
+- アクセス権の実効値は、`weko_records/utils.py` の `check_embargo_rights` / `update_embargo_rights` が、アイテム各ファイルの `accessrole`（open_access / open_date / open_login / open_restricted）と公開日（open_date）を現在日と比較して判定する（embargoed access のうち、公開日到来かつ全ファイルが公開相当なら open access、open_login/open_restricted を含むなら restricted access 等）。判定に用いる区分は `WEKO_ACCESS_RIGHTS_CHOICES`、書き換え時のURIは `ACCESS_RIGHT_TYPE_URI` を参照する。
+- 検索時の絞り込みは `weko_search_ui/query.py` の `default_search_factory.__get_accessrights_query`（リクエストパラメータ `accessrights`）、ファセット集計は `weko_admin/utils.py` の `create_facet_search_query`（`new_accessRights` 集計と `ACCESS_RIGHTS_QUERY_TEMPLATE`）・`invenio_records_rest/facets.py` の `_create_filter_dsl`・`weko_search_ui/utils.py` の `fix_aggregations_accessrights` が担う。ES索引側の accessRights 実効値は `weko_records/utils.py` `json_loader` が索引フィールド `accessRights` として付与する。
+- `WEKO_SEARCH_FIX_ACCESSRIGHTS` がFalse（既定）の場合は、accessRights の素値一致による従来動作。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3      | 初版作成                                                 |
 | 2025/11/14|213e1edb08782bee732b86d55c34240bc9758867|インデックス権限判定の修正|
+| 2026/07/17 |                                            | v2.1.0差分反映：エンバーゴ考慮のaccessRights             |

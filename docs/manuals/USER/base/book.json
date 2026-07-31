@@ -10,5 +10,10 @@
         "collapsible-chapters",
         "hide-published-with",
         "plantuml-cloud"
-    ]
+    ],
+    "pluginsConfig": {
+        "search": {
+            "maxIndexSize": 1000000000
+        }
+    }
 }

@@ -21,7 +21,7 @@
 
 ## 機能内容
 
-- 【Administration \> 設定(Setting) \> アイテム一括出力(Item Export)画面】に「Allow/Disallow Item Exporting」及び「Export File Contents」がOnに設定している場合
+- 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】に「Allow/Disallow Item Exporting」及び「Export File Contents」がOnに設定している場合
 
     - 検索結果一覧画面に「エクスポート」（Export）ボタンを押下すると、アイテム一括出力画面に遷移する。
     - アイテム一括出力画面にボタンを押下したときの検索結果一覧画面のアイテム名を全てリストとして表示する。  
@@ -71,10 +71,10 @@
     - 「エクスポート」（Export）ボタン  
       チェックボックスにチェックがついているアイテムに関してExportできる
 
-- 【Administration \> 設定(Setting) \> アイテム一括出力(Item Export)画面】の「Allow/Disallow Item Exporting」がOffに設定している場合、  
+- 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】の「Allow/Disallow Item Exporting」がOffに設定している場合、  
   検索結果一覧画面に「エクスポート(Export)」ボタンを表示しない。
 
-- 【Administration \> 設定(Setting) \> アイテム一括出力(Item Export)画面】に「Allow/Disallow Item Exporting」がOnに設定している、かつ「Export File Contents」がOffに設定している場合
+- 【Administration > 設定(Setting) > アイテム一括出力(Item Export)画面】に「Allow/Disallow Item Exporting」がOnに設定している、かつ「Export File Contents」がOffに設定している場合
 
     - 検索結果一覧画面に「エクスポート(Export)」ボタンを表示する。
     - 「File Contents」エリアにコンテンツファイルを出力するかどうかのラジオボタンを非活性にする。
@@ -101,7 +101,7 @@
           ├── tagmanifest-sha512.txt
           └── data/
                   ├──[アイテムタイプ名(アイテムタイプバージョン)].tsv or .bib
-                  └──recid_[recidの値]/
+                  └──recid_[record_idの値]/
                   　　    └── ファイル（コンテンツファイルがある場合）
         ```
 
@@ -109,7 +109,7 @@
 
         ```
         export.zip
-          └── recod_[recidの値].zip/
+          └── recid_[record_idの値].zip/
                 ├── bag-info.txt
                 ├── bagit.txt
                 ├── manifest-sha256.txt
@@ -124,15 +124,9 @@
     - 「公開しない」に設定したファイル情報はItems to ExportのNo. of Filesにはカウントされない
     - 「公開しない」に設定したファイル情報はItems to Exportでも出力されない
 
-- エクスポートの処理は以下の通り
+- エクスポート（TSV出力）時のテキスト処理は以下の通り
 
-    - Unicode正規化（NFKD）を実施する。
-    - 特別な文字（\&EMPTY&）を変換する（ [~~\#23229~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229) ）
-    - メタデータをエスケープして出力する（ MarkupSafeライブラリ による処理）
-    - 改行コード（\\n）→\<br/\> に変換する（ [~~\#23229\#note-6~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229#note-6) ）
-
-  - エクスポートできるファイルサイズは定数「 WEKO\_ITEMS\_UI\_EXPORT\_MAX\_FILE\_SIZE 」にて制限できる。
-
+    - 改行コード（\\n）→<br/> に変換する（`escape_newline`）（ [~~\#23229\#note-6~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229#note-6) ）
 
 
 ## 関連モジュール
@@ -146,8 +140,8 @@
  後者のメソッドでは、アイテムエクスポートの設定、検索結果ロード時の検索設定を取得し、  
  それらが反映したアイテムリストを表示する。
 
-「エクスポート」ボタンを押下するとweko_search_ui.static.js.weko_search_ui.app.exportItemsメソッドが呼び出され、同ファイルのgetExportItemsMetadataを呼び出し選択したアイテムのメタデータを取得する。  
-その取得したメタデータに不足した必須項目があるかを同ファイルのvalidateBibtexExportメソッドで確認し、足りなかったらエラーメッセージをウェブ上に表示する。  
+「エクスポート」ボタンを押下するとweko_search_ui.static.js.weko_search_ui.app.exportItemsメソッドが呼び出され、選択したアイテムのメタデータを取得する。  
+その取得したメタデータに不足した必須項目があるかを `/items/validate_bibtext_export` エンドポイント（bibtex検証）で確認し、足りなかったらエラーメッセージをウェブ上に表示する。  
  問題ない場合、weko_items.ui.views.exportメソッドにてexport_itemsメソッドを呼び出し、zipファイルを出力する。  
 
 以下は出力するファイルごとの処理を記述する。
@@ -231,7 +225,7 @@ tsvの形式についてはweko_items_ui.utils.make_stats_fileメソッドを参
          file_path[n]は、ファイルプロパティのnと連番を合わせて対応する
 
    - メタデータファイル(tsv)サンプル  
-     別紙「weko3\_tsvformat.xlsx」を参照
+     別紙「weko3_tsvformat.xlsx」を参照
 
 ### ダウンロードするアイテム情報 BIBTEX形式
 
@@ -271,25 +265,30 @@ RO-Crateの形式については[ADMIN_2.5 RO-Crateインポート](../admin/ADM
   weko_search_ui.mapper.JsonLdMapper.to_rocrate_metadataメソッドでRO-Crateのメタデータを作成する。  
 - RO-CrateのメタデータはJsonldMappingより取得したマッピング定義をもとに、アイテムタイプから変換される。
 - 作成したRO-Crateのメタデータはro-crate-metadata.jsonとして出力される。
-- 出力するアイテムが複数ある場合は、recidごとにzipファイルを作成する。  
-  zipファイル名は「recod_[recidの値].zip」とする。
+- 出力するアイテムが複数ある場合は、record_idごとにzipファイルを作成する。  
+  zipファイル名は「recid_[record_idの値].zip」とする。
 
 
 ### その他
 
 - エクスポートの最大アイテム数は以下で設定する  
-  /modules/weko-items-ui/weko\_items\_ui/config.py  
- 　WEKO\_ITEMS\_UI\_DEFAULT\_MAX\_EXPORT\_NUM = 100
+  /modules/weko-items-ui/weko_items_ui/config.py  
+ 　WEKO_ITEMS_UI_DEFAULT_MAX_EXPORT_NUM = 100
 
-- エクスポート処理実行時、weko\_items\_ui.utils.export\_itemsメソッドにてtempfile.TemporaryDirectoryによってtmpファイルが生成される。  
+- エクスポート処理実行時、weko_items_ui.utils.export_itemsメソッドにてtempfile.TemporaryDirectoryによってtmpファイルが生成される。  
  テンポラリディレクトリのファイル名を以下のように設定する。  
  なお、tmpファイルはエクスポート処理実行後に自動的に削除される。
 
-   - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_export\_xxxxxxxx
+   - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_export_xxxxxxxx
 
-- weko\_items\_ui.utils.export\_items  
+- weko_items_ui.utils.export_items  
  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/utils.py#L1423-L1507>
 
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_items_ui.views.export`（route `/items/export`）。出力は `weko_items_ui.utils.export_items`（`bagit.make_bag` / `write_files`(TSV) / `write_bibtex_files` / `write_rocrate` / `make_stats_file`）。RO-Crate 変換は `weko_search_ui.mapper.JsonLdMapper.to_rocrate_metadata`、マッピングは `weko_records.api.JsonldMapping`（table `jsonld_mappings`）。管理設定は AdminSettings `item_export_settings`（`allow_item_exporting` / `enable_contents_exporting`）。上限 `WEKO_ITEMS_UI_DEFAULT_MAX_EXPORT_NUM`（100、ロール別 `_PER_ROLE`）。
+- 出力ファイル名は `recid_{record_id}.zip`（外側は `export.zip`）。`WEKO_ITEMS_UI_EXPORT_MAX_FILE_SIZE` および JS `getExportItemsMetadata` は実装されていない。TSV 出力で有効なテキスト処理は `escape_newline`（`\n`→`<br/>`）のみ（NFKD 正規化・MarkupSafe エスケープ・`&EMPTY&` 置換はコメントアウトで無効）。bibtex 検証は `/items/validate_bibtext_export`。
 
 ## 更新履歴
 

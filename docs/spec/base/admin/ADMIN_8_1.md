@@ -5,7 +5,7 @@
 
 ## 利用方法
 
-【Administration\>コミュニティ管理(Communities)\>コミュニティ(Community)】画面にて操作を行う
+【Administration>コミュニティ管理(Communities)>コミュニティ(Community)】画面にて操作を行う
 
 ## 利用可能なロール
 
@@ -46,7 +46,7 @@
       - 「Title」  
       設定されたコミュニティタイトルである
       - 「Owner.Name」  
-      指定された所有者のロール名を表示する
+      指定された所有者のロールを表示する。GakuNin mAP 由来のロール名は表示用名称に変換される（`jc_roles_sysadm`→System Administrator、`role_mapping` に定義された `radm`/`cadm`/`cont` は対応する表示名）。変換は `Community.owner_display` による。
       - 「Index」  
       選択されたコミュニティを設定しているインデックス名である
       - 「Deleted At」
@@ -87,27 +87,26 @@
     - 入力項目は以下の通りである
         - 「Id」テキストボックス
             - コミュニティIdを入力する。必須項目である。最大文字数は100文字とする。
-            - 入力可能な形式はアルファベットの小文字、「-」、 「\_」、数字となる
+            - 入力可能な形式はアルファベットの小文字、「-」、 「_」、数字となる
             - 最初の1文字には数字を使うことはできない
             - 最初の1文字に「-」を使うことができるが、その直後に数字を使うことはできない
             - アルファベットの大文字が入力された場合、作成時に小文字に直す。
             - 入力不可な形式を入力する場合、エラーメッセージを「Id」テキストボックスの直下に表示する
-                - 最初の1文字についてのエラーメッセージ：「The first character cannot be a number or special character. It should be an alphabet character, "-" or "\_"」
-                - 2文字目以降についてのエラーメッセージ：「Don't use space or special character except \`-\` and \`\_\`.」
+                - 最初の1文字についてのエラーメッセージ：「The first character cannot be a number or special character. It should be an alphabet character, "-" or "_"」
+                - 2文字目以降についてのエラーメッセージ：「Don't use space or special character except `-` and `_`.」
             - 最初の文字が「-」+数字だった場合のエラーメッセージ：「Cannot set negative number to ID.」
             - Idに入力したものがが既に存在している場合、作成時エラーメッセージ「Id」テキストボックスの直下に表示する。  
             エラーメッセージ：「既に存在しています。」
         - 「Owner」プルダウン
             - 所有者のロールを選択する。必須項目である。デフォルトは1番目の項目とする
-            - 「Owner」プルダウンの選択肢はシステムに登録されたロールの一覧である
-                
+            - 「Owner」プルダウンの選択肢は、システムに登録されたロールのうち、GakuNin mAP ロール（`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` の `role_keyword` を含み `prefix` で始まる名前）を除いた一覧である
             - 表示形式は以下の通りである  
             ロール - ロール説明(description)
         - 「Index」プルダウン
             - コミュニティを設定するインデックスを選択する。必須項目である。デフォルトは1番目の項目とする
             - 「Index」プルダウンの選択肢は自身の関連しているコミュニティに限定されたインデックス一覧である
             - 各インデックスの表示形式は以下の通りである  
-            Index<id=インデックスId, index\_name=インデックス名>
+            Index<id=インデックスId, index_name=インデックス名>
         - 「Group」プルダウン
             - コミュニティを設定するグループを選択する。
             - 「Group」プルダウンの選択肢は、mAPグループを意味するプレフィックスが付いたロール一覧である。
@@ -183,27 +182,33 @@
 
 ## 処理概要
 
-本画面は、flaskのModelViewでcommunities\_communityテーブルのメンテナンスを行う機能である
-本画面を操作すると、ModelView を継承するinvenio\_communities.admin. CommunityModelViewクラスのメソッドが呼び出される
+本画面は、flaskのModelViewでcommunities_communityテーブルのメンテナンスを行う機能である
+本画面を操作すると、ModelView を継承するinvenio_communities.admin. CommunityModelViewクラスのメソッドが呼び出される
 
 一覧（List）タブ表示時、編集（Edit）タブ表示時に、操作するユーザのロールを確認して、それらのidで最小のものが以下のコンフィグで指定する値より大きい場合にはModelViewとは異なる処理を行う
 
   - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio_communities/config.py#L165>
-  - 設定キー：COMMUNITIES\_LIMITED\_ROLE\_ACCESS\_PERMIT
+  - 設定キー：COMMUNITIES_LIMITED_ROLE_ACCESS_PERMIT
 
-一覧（List）タブ表示時に、index\_viewメソッド（WEKOソースでオーバーライドされていない）が呼び出される
+一覧（List）タブ表示時に、index_viewメソッド（WEKOソースでオーバーライドされていない）が呼び出される
 
-  - この中で呼び出されるget\_queryメソッドとget\_count\_queryメソッドでは、上記の分岐によるModelViewと異なる処理として、取得するコミュニティの絞り込みを行う
-      - id\_roleが操作するユーザのロールのidに含まれるものか、group\_idが操作するユーザのロールのidに含まれるものだけに絞り込む
+  - この中で呼び出されるget_queryメソッドとget_count_queryメソッドでは、上記の分岐によるModelViewと異なる処理として、取得するコミュニティの絞り込みを行う
+      - id_roleが操作するユーザのロールのidに含まれるものか、group_idが操作するユーザのロールのidに含まれるものだけに絞り込む
 
 作成（Create）タブ表示時に、create_viewメソッドが呼び出される
 
 編集（Edit）タブ表示時に、edit_viewメソッドが呼び出される
 
-作成（Create）、で［保存（Save）］ボタンを押すと、\validate\_input\_idメソッドでidのバリデーションチェックを行い、レコードのid\_userカラムを操作ユーザのidで更新する
+作成（Create）・編集（Edit）で［保存（Save）］ボタンを押すと、`validate_community_id`メソッド（内部で`_validate_input_id`）でidのバリデーションチェックを行う。id_userカラムは作成時のみ操作ユーザのidで設定し、編集保存時は書き換えない
 
-  - 編集（Edit）タブでの保存時はidを編集できないため、作成（Create）タブでの保存時のみにバリデーションチェックしている
+  - idのバリデーションチェックは作成・編集の両方の保存時に実行される。なお、編集（Edit）タブでの保存時はidを編集できない
 
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_communities.admin.CommunityModelView`（テーブル `communities_community`）。`create_view`（`/new/`）/ `edit_view`（`/edit/<id>/`）/ `get_json_schema` / `get_schema_form` を上書き。作成可否は `min(role_ids) <= COMMUNITIES_LIMITED_ROLE_ACCESS_PERMIT`（=2、System/Repository）。一覧絞り込みは `get_query`（super-role は全件、他は `role_query_cond`）。
+- 補足：ID 等のバリデーション（`validate_community_id` / `_validate_input_id`）は作成・編集の両方で実行される。`id_user` は作成時のみ設定され、編集保存では書き換えない。Catalog 入力は `/admin/community/jsonschema`・`/schemaform`（`item_type_property` id=1057）から取得。CNRI 有効時はハンドル登録を行う。
+- Owner 表示・選択肢：一覧/詳細の owner 表示は `Community.owner_display`（`invenio_communities.models`）を使用し、`jc_roles_sysadm`→`System Administrator`、`role_keyword` を含むロール名は `role_mapping`（`radm`/`cadm`/`cont`）で表示名へ変換する（`column_formatters`、`edit_view` の `form.owner.data`）。「Owner」プルダウン（`CommunityModelView.form_args['owner']` の `query_factory`）は GakuNin mAP ロール（`role_keyword` を含み `prefix` で始まる名前）を除外した Role 一覧を返す。いずれも `WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` 由来。
 
 ## 更新履歴
 
@@ -211,3 +216,4 @@
 | ---------- | ------------------------------------------ | ----------------------------------------------- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | 初版作成                                        |
 | 2025/01/23 | 1601602fe7ad9e606569f9e67c0b20654c82761d   | サブリポジトリ対応                              |
+| 2026/07/17 |                                            | v2.1.0差分反映：Owner表示名変換（owner_display）・OwnerプルダウンからのmAPロール除外を追記 |

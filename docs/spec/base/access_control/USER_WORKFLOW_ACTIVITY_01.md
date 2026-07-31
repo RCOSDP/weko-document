@@ -354,6 +354,10 @@
 
 ※1 「権限あり」とは、管理画面のインデックスツリー管理 ＞ ツリー編集 でインデックスごとに設定出来る「投稿権限」の値です。
 
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本画面／操作のアクセス可否は、対応するビューの権限ファクトリ・`@login_required`・所有者/ロール判定で担保される。閲覧系は `weko_records_ui.permissions.page_permission_factory` / `check_file_download_permission`、検索系は `weko_search_ui.query.get_permission_filter`、所有者判定は `check_created_id`（`created_by`/`owner`/`weko_shared_ids` のいずれか一致。ロール非依存のため「作成者:自分＝一般ユーザー×」はコード強制でなく実務上の前提）を用いる。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
