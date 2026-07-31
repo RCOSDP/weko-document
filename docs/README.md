@@ -1,18 +1,64 @@
+# WEKO3 documents
 
-npx honkit init admin_manual
-npx honkit serve
-npx honkit build
+## ビルド環境の構築
 
-sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin version=4.23.0
-
-npx honkit pdf . ../ADMIN.pdf
-
+動作確認環境は以下の通り。
 
 ```
-npx honkit pdf spec/base spec/pdf/spec.pdf
-npx honkit build spec/base spec/html
-npx honkit pdf manuals/ADMIN/base manuals/ADMIN/pdf/admin.pdf
-npx honkit html manuals/ADMIN/base manuals/ADMIN/html
-npx honkit pdf manuals/USER/base manuals/ADMIN/pdf/admin.pdf
-npx honkit html manuals/USER/base manuals/ADMIN/html
+$ node --version
+v24.6.0
+$ npm --version
+11.5.2
+$ calibre --version
+calibre (calibre 4.23)
 ```
+
+nvmをインストールする。
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+```
+
+calibreをインストールする。
+
+```
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh
+```
+
+関連パッケージをインストールする。
+
+```
+npm install
+```
+
+## ドキュメントのビルド
+
+### ユーザ操作マニュアル
+
+```
+bash build_user_manual.sh
+```
+
+### システム管理マニュアル
+
+```
+bash build_admin_manual.sh
+```
+
+### 機能仕様書のビルド
+
+```
+bash build_spec.sh
+```
+
+
+### JAIRO Cloud（WEKO3）登録ガイドのビルド
+
+```
+bash build_guide.sh
+```
+
+
+
+
+

@@ -1,10 +1,24 @@
 {
-    "title":"機能仕様書",
-    "description":"",
-    "author":"Research Center for Open Science and Data Platform, National Institute of Informatics",
-    "language":"ja",
-    "plugins":[
+    "title": "機能仕様書",
+    "description": "",
+    "author": "Research Center for Open Science and Data Platform, National Institute of Informatics",
+    "language": "ja",
+    "plugins": [
         "intopic-toc",
-        "back-to-top-button"
-    ]
+        "back-to-top-button",
+        "anchors",
+        "collapsible-chapters",
+        "hide-published-with",
+        "plantuml-cloud",
+        "prism",
+        "-highlight"
+    ],
+    "output": {
+        "name": "website"
+    },
+    "pluginsConfig": {
+        "search": {
+            "maxIndexSize": 100000000000000
+        }
+    }
 }

@@ -1,305 +1,219 @@
-### コミュニティ
-
-<!-- end list -->
-
-  - > 目的・用途
+# コミュニティ
+## 目的・用途
 
 本機能は、コミュニティの作成、編集、詳細情報及び一覧の閲覧の為の機能である。
 
-  - > 利用方法
+## 利用方法
 
-【Administration\>コミュニティ管理(Communities)\>コミュニティ(Community)】画面にて操作を行う
+【Administration>コミュニティ管理(Communities)>コミュニティ(Community)】画面にて操作を行う
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+|  ロール  | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| -------- | :------------: | :--------------: | :----------------: | :----------: | :----------: | :----------------: |
+| 利用可否 |       〇       |        〇        |         〇         |      ×      |      ×      |        ×          |
 
-  - > 機能内容
+## 機能内容
 
-<!-- end list -->
+【コミュニティ（Community）画面】には以下のタブが表示される
 
-  - 【コミュニティ（Community）画面】には以下のタブが表示される
-    
-      - 一覧（List）
-    
-      - 作成（Create）
-    
-      - 編集（Edit）
-        
-          - > 一覧（List）タブ選択中は非表示
-        
-          - 一覧（List）タブの操作によって表示される
-        
-          - 編集（Edit）タブまたは詳細（Details）タブ選択中に表示
-    
-      - 詳細（Details）
-        
-          - > 一覧（List）タブ選択中は非表示
-        
-          - 一覧（List）タブの操作によって表示される
-        
-          - 編集（Edit）タブまたは詳細（Details）タブ選択中に表示
+- 一覧（List）
+- 作成（Create）
+- サブリポジトリ管理者の場合は非表示
+- 編集（Edit）
+    - 一覧（List）タブ選択中は非表示
+    - 一覧（List）タブの操作によって表示される
+    - 編集（Edit）タブまたは詳細（Details）タブ選択中に表示
+- 詳細（Details）
+    - 一覧（List）タブ選択中は非表示
+    - 一覧（List）タブの操作によって表示される
+    - 編集（Edit）タブまたは詳細（Details）タブ選択中に表示
 
-  - 一覧（List）タブにて現在登録されているコミュニティを表示する
-    
-      - コミュニティが登録されていない場合、登録されたアイテムがない旨のメッセージが一覧に表示される  
-        メッセージ：  
-        日本語：「表にはアイテムがありません。」  
-        英語：「There are no items in the table.」
-    
+### 一覧（List）タブ
+
+一覧（List）タブにて現在登録されているコミュニティを表示する
+  - サブリポジトリ管理者の場合は、管理対象のサブリポジトリのみが一覧に表示される。
+  - コミュニティが登録されていない場合、登録されたアイテムがない旨のメッセージが一覧に表示される  
+  メッセージ：  
+  日本語：「表にはアイテムがありません。」  
+  英語：「There are no items in the table.」
+  - 表示項目は以下の通りである
+      - アクション  
+      - システム管理者、リポジトリ管理者の場合は、目アイコン、鉛筆アイコン及びゴミ箱アイコンである
+      - サブリポジトリ管理者の場合は、目アイコン及び鉛筆アイコンである
+      - 「Id」  
+      設定されたコミュニティIdである
+      - 「Title」  
+      設定されたコミュニティタイトルである
+      - 「Owner.Name」  
+      指定された所有者のロールを表示する。GakuNin mAP 由来のロール名は表示用名称に変換される（`jc_roles_sysadm`→System Administrator、`role_mapping` に定義された `radm`/`cadm`/`cont` は対応する表示名）。変換は `Community.owner_display` による。
+      - 「Index」  
+      選択されたコミュニティを設定しているインデックス名である
+      - 「Deleted At」
+      - 「Last Record Accepted」
+      - 「Ranking」  
+      ユーザ画面にてRanking順で表示する際は、ここで設定した値の降順となる
+      - 「Fixed Points」  
+      設定された固定点である
+  - 検索テキストボックスでコミュニティを検索する
+      - プレースホルダー：「Search: id, title, description」
+      - 任意テキストを入力し、キーボードでの「Enter」を押すと、Id、タイトル、説明での検索を行う
+      - テキストボックスの右端での「X」ボタンを押すと、検索条件がクリアーされる
+  - コミュニティ行にて目アイコンを押すと、該当コミュニティの詳細情報を「詳細」（Details）タブに表示する
       - 表示項目は以下の通りである
-        
-          - アクション  
-            目アイコン及び鉛筆アイコンである
-        
-          - 「Id」  
-            設定されたコミュニティIdである
-        
-          - 「Title」  
-            設定されたコミュニティタイトルである
-        
-          - 「Owner.Name」  
-            指定された所有者のロール名を表示する
-        
-          - 「Index」  
-            選択されたコミュニティを設定しているインデックス名である
-        
-          - 「Deleted At」
-        
+          - 「Owner」
+          - 「Index」
+          - 「Group」
+          - 「Created」
+          - 「Updated」
+          - 「Title」
+          - 「Description」
+          - 「Page」
+          - 「Curation Policy」
+          - 「Content Policy」
+          - 「Community Header」
+          - 「Community Footer」
           - 「Last Record Accepted」
-        
-          - 「Ranking」  
-            ユーザ画面にてRanking順で表示する際は、ここで設定した値の降順となる
-        
-          - 「Fixed Points」  
-            設定された固定点である
-    
-      - 検索テキストボックスでコミュニティを検索する
-        
-          - プレースホルダー：「Search: id, title, description」
-        
-          - 任意テキストを入力し、キーボードでの「Enter」を押すと、Id、タイトル、説明での検索を行う
-        
-          - テキストボックスの右端での「X」ボタンを押すと、検索条件がクリアーされる
-    
-      - コミュニティ行にて目アイコンを押すと、該当コミュニティの詳細情報を「詳細」（Details）タブに表示する
-        
-          - 表示項目は以下の通りである
-            
-              - 「Owner」
-            
-              - 「Index」
-            
-              - 「Created」
-            
-              - 「Updated」
-            
-              - 「Title」
-            
-              - 「Description」
-            
-              - 「Page」
-            
-              - 「Curation Policy」
-            
-              - 「Community Header」
-            
-              - 「Community Footer」
-            
-              - 「Last Record Accepted」
-            
-              - 「Logo Ext」
-            
-              - 「Ranking」
-            
-              - 「Fixed Points」
-            
-              - 「Deleted At」
-            
-              - 「Inclusion Requests」
-            
-              - 「Featuredcommunity」
-    
-      - コミュニティ行にて鉛筆アイコンを押すと、該当コミュニティを「編集」（Edit）タブに表示し、コミュニティの情報が編集できる
-    
-      - 「作成」（Create）ボタンを押すと、コミュニティの作成画面に移動する
-        
-          - 入力項目は以下の通りである
-            
-              - 「Id」テキストボックス
-                
-                  - コミュニティIdを入力する。必須項目である
-                
-                  - 入力可能な形式はアルファベットの小文字、「-」、 「\_」、数字となる
-                
-                  - 最初の1文字には数字を使うことはできない
-                
-                  - 最初の1文字に「-」を使うことができるが、その直後に数字を使うことはできない
-                
-                  - アルファベットの大文字が入力された場合、作成時に小文字に直す。
-                
-                  - 入力不可な形式を入力する場合、エラーメッセージを「Id」テキストボックスの直下に表示する
-                    
-                      - 最初の1文字についてのエラーメッセージ：「The first character cannot be a number or special character. It should be an alphabet character, "-" or "\_"」
-                    
-                      - 2文字目以降についてのエラーメッセージ：「Don't use space or special character except \`-\` and \`\_\`.」
-                
-                  - > 最初の文字が「-」+数字だった場合のエラーメッセージ：「Cannot set negative number to ID.」
-                
-                  - Idに入力したものがが既に存在している場合、作成時エラーメッセージ「Id」テキストボックスの直下に表示する。  
-                    エラーメッセージ：「既に存在しています。」
-            
-              - 「Owner」プルダウン
-                
-                  - 所有者のロールを選択する。必須項目である。デフォルトは1番目の項目とする
-                
-                  - 「Owner」プルダウンの選択肢はシステムに登録されたロールの一覧である
-                
-                  - 表示形式は以下の通りである
+          - 「Logo Ext」
+          - 「Ranking」
+          - 「Fixed Points」
+          - 「Deleted At」
+          - 「Inclusion Requests」
+          - 「Featuredcommunity」
+  - コミュニティ行にて鉛筆アイコンを押すと、該当コミュニティを「編集」（Edit）タブに表示し、コミュニティの情報が編集できる
 
-> ロール - ロール説明(description)
-
-  - 「Index」プルダウン
-    
-      - コミュニティを設定するインデックスを選択する。必須項目である。デフォルトは1番目の項目とする
-    
-      - 「Index」プルダウンの選択肢は自身の関連しているコミュニティに限定されたインデックス一覧である
-    
-      - 各インデックスの表示形式は以下の通りである
-
-> Index\<id=インデックスId, index\_name=インデックス名\>
-
-  - 「Title」テキストボックス  
-    コミュニティのタイトルを入力する
-
-  - 「Description」テキストボックス  
-    説明を入力する
-
-  - 「Page」テキストボックス  
-    ページ数を入力する
-
-  - 「Curation Policy」テキストボックス  
-    ポリシーを入力する
-
-  - 「Ranking」テキストボックス  
-    ランキングの表示件数を入力する。デフォルトの値は「0」とする  
-    数字のみ入力可能である。
-    
-      - 全角数字を入れた場合、作成時に半角になる。
-    
-      - 数字以外を入れて、作成した場合、作成時エラーメッセージを「Ranking」テキストボックスの下に表示する。  
-        エラーメッセージ：無効な整数です。
-
-  - 「Fixed Points」テキストボックス  
-    固定点を入力する。デフォルトの値は「0」とする  
-    数字のみ入力可能である。
-    
-      - 全角数字を入れた場合、作成時に半角になる。
-    
-      - 数字以外を入れて、作成した場合、作成時エラーメッセージを「Ranking」テキストボックスの下に表示する。  
-        エラーメッセージ：無効な整数です。
-
-<!-- end list -->
-
-  - ［保存（Save）］ボタンを押すと、設定されたコミュニティの内容をコミュニティ一覧に追加させ、メッセージをコミュニティ一覧に表示させる  
+### 作成（Create）タブ
+- 「作成」（Create）ボタンを押すと、コミュニティの作成画面に移動する
+    - 入力項目は以下の通りである
+        - 「Id」テキストボックス
+            - コミュニティIdを入力する。必須項目である。最大文字数は100文字とする。
+            - 入力可能な形式はアルファベットの小文字、「-」、 「_」、数字となる
+            - 最初の1文字には数字を使うことはできない
+            - 最初の1文字に「-」を使うことができるが、その直後に数字を使うことはできない
+            - アルファベットの大文字が入力された場合、作成時に小文字に直す。
+            - 入力不可な形式を入力する場合、エラーメッセージを「Id」テキストボックスの直下に表示する
+                - 最初の1文字についてのエラーメッセージ：「The first character cannot be a number or special character. It should be an alphabet character, "-" or "_"」
+                - 2文字目以降についてのエラーメッセージ：「Don't use space or special character except `-` and `_`.」
+            - 最初の文字が「-」+数字だった場合のエラーメッセージ：「Cannot set negative number to ID.」
+            - Idに入力したものがが既に存在している場合、作成時エラーメッセージ「Id」テキストボックスの直下に表示する。  
+            エラーメッセージ：「既に存在しています。」
+        - 「Owner」プルダウン
+            - 所有者のロールを選択する。必須項目である。デフォルトは1番目の項目とする
+            - 「Owner」プルダウンの選択肢は、システムに登録されたロールのうち、GakuNin mAP ロール（`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` の `role_keyword` を含み `prefix` で始まる名前）を除いた一覧である
+            - 表示形式は以下の通りである  
+            ロール - ロール説明(description)
+        - 「Index」プルダウン
+            - コミュニティを設定するインデックスを選択する。必須項目である。デフォルトは1番目の項目とする
+            - 「Index」プルダウンの選択肢は自身の関連しているコミュニティに限定されたインデックス一覧である
+            - 各インデックスの表示形式は以下の通りである  
+            Index<id=インデックスId, index_name=インデックス名>
+        - 「Group」プルダウン
+            - コミュニティを設定するグループを選択する。
+            - 「Group」プルダウンの選択肢は、mAPグループを意味するプレフィックスが付いたロール一覧である。
+            - 表示形式は以下の通りである  
+                ロール - ロール説明(description)
+            - 「Title」テキストボックス  
+            コミュニティのタイトルを入力する。最大文字数は255文字とする。
+            - 「Login Menu Enabled」ラジオボタン  
+                コミュニティ画面上でのログインメニューの利用可否を設定する。  
+                Disabledでメニュー非表示。Enabledでメニュー表示。  
+                初期値はDisabled。  
+            - 「Thumbnail」ファイルフィールド  
+                コミュニティのサムネイル画像を登録する。  
+                設定可能なファイル拡張子はPNG、JPG、JPEG。  
+            - 「Catalog」  
+                JPCOARスキーマ2.0の"カタログ"スキーマのうち、下記に当たる情報を設定可能にする。  
+                ・提供機関  
+                ・識別子  
+                ・主題  
+                ・ライセンス  
+                ・権利情報  
+                ・アクセス権  
+                各項目は"カタログ"プロパティと同期する。  
+                コミュニティの検索時、カタログ情報でも検索可能にする。  
+                また、コミュニティ検索結果の表示時、"主題"と"提供機関"を各コミュニティの情報として表示する。  
+            - 「Description」テキストボックス  
+            説明を入力する
+            - 「Page」テキストボックス  
+            ページ数を入力する
+            - 「Curation Policy」テキストボックス  
+            ポリシーを入力する
+            - 「Ranking」テキストボックス  
+            ランキングの表示件数を入力する。デフォルトの値は「0」とする  
+            数字のみ入力可能である。
+                - 全角数字を入れた場合、作成時に半角になる。
+                - 数字以外を入れて、作成した場合、作成時エラーメッセージを「Ranking」テキストボックスの下に表示する。  
+                エラーメッセージ：無効な整数です。
+            - 「Fixed Points」テキストボックス  
+            固定点を入力する。デフォルトの値は「0」とする  
+            数字のみ入力可能である。
+                - 全角数字を入れた場合、作成時に半角になる。
+                - 数字以外を入れて、作成した場合、作成時エラーメッセージを「Ranking」テキストボックスの下に表示する。  
+                エラーメッセージ：無効な整数です。
+    - ［保存（Save）］ボタンを押すと、設定されたコミュニティの内容をコミュニティ一覧に追加させ、メッセージをコミュニティ一覧に表示させる  
     メッセージ：  
     　日本語：「レコードが正常に作成されました。」  
     　英語：「Record was successfully created.」
-
-  - ［保存してもう一つ追加（Save and Add Another）］ボタンを押すと、設定されたコミュニティの内容をコミュニティ一覧に追加させ、他のコミュニティを追加設定可能とする。メッセージを画面上部に表示させる  
+    - ［保存してもう一つ追加（Save and Add Another）］ボタンを押すと、設定されたコミュニティの内容をコミュニティ一覧に追加させ、他のコミュニティを追加設定可能とする。メッセージを画面上部に表示させる  
     メッセージ：  
     　日本語：「レコードが正常に作成されました。」  
     　英語：「Record was successfully created.」
-
-  - ［保存して編集を続ける（Save and Continute Editing）］ボタンを押すと、設定されたコミュニティの内容をコミュニティ一覧に追加させ、該当コミュニティの編集を続けることを可能とする。メッセージを画面上部に表示させる  
+    - ［保存して編集を続ける（Save and Continute Editing）］ボタンを押すと、設定されたコミュニティの内容をコミュニティ一覧に追加させ、該当コミュニティの編集を続けることを可能とする。メッセージを画面上部に表示させる  
     メッセージ：  
     　日本語：「レコードが正常に作成されました。」  
     　英語：「Record was successfully created.」
+    - ［キャンセル（Cancel）］ボタンを押すと、設定されたコミュニティ内容をロール一覧に追加せず、「一覧」（List）タブに戻る
 
-  - ［キャンセル（Cancel）］ボタンを押すと、設定されたコミュニティ内容をロール一覧に追加せず、「一覧」（List）タブに戻る
+- コミュニティ作成時のページ追加
+  - コミュニティを新規作成した際に、ページレイアウト機能から作成できるコミュニティ配下のページが  
+    自動で作成される。  
+    ページレイアウト（Page Layout）画面】の詳細は[ADMIN-4-2: ページレイアウト](\\l)を参照  
+    作成されるページは以下の通り。  
+      - Title：About、 URL：/c/{community_id}/page/about  
+      - Title：Editorial board、 URL：/c/{community_id}/page/eb  
+      - Title：OA Policy、 URL：/c/{community_id}/page/oapolicy  
+        ※作成されるページの内容編集、メニューへの配置等はユーザーが行う。
 
-<!-- end list -->
+## 関連モジュール
+-  invenio_communities
 
-  - > 関連モジュール
+## 関連テーブル
+- communities_community
 
-<!-- end list -->
+## 処理概要
 
-  - > invenio\_communities
+本画面は、flaskのModelViewでcommunities_communityテーブルのメンテナンスを行う機能である
+本画面を操作すると、ModelView を継承するinvenio_communities.admin. CommunityModelViewクラスのメソッドが呼び出される
 
-<!-- end list -->
+一覧（List）タブ表示時、編集（Edit）タブ表示時に、操作するユーザのロールを確認して、それらのidで最小のものが以下のコンフィグで指定する値より大きい場合にはModelViewとは異なる処理を行う
 
-  - > 処理概要
+  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio_communities/config.py#L165>
+  - 設定キー：COMMUNITIES_LIMITED_ROLE_ACCESS_PERMIT
 
-> 本画面は、flaskのModelViewでcommunities\_communityテーブルのメンテナンスを行う機能である
-> 
-> 本画面を操作すると、ModelView を継承するinvenio\_communities.admin. CommunityModelViewクラスのメソッドが呼び出される
-> 
-> 一覧（List）タブ表示時、編集（Edit）タブ表示時に、操作するユーザのロールを確認して、それらのidで最小のものが以下のコンフィグで指定する値より大きい場合にはModelViewとは異なる処理を行う
+一覧（List）タブ表示時に、index_viewメソッド（WEKOソースでオーバーライドされていない）が呼び出される
 
-  - > パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio_communities/config.py#L165>
+  - この中で呼び出されるget_queryメソッドとget_count_queryメソッドでは、上記の分岐によるModelViewと異なる処理として、取得するコミュニティの絞り込みを行う
+      - id_roleが操作するユーザのロールのidに含まれるものか、group_idが操作するユーザのロールのidに含まれるものだけに絞り込む
 
-  - > 設定キー：COMMUNITIES\_LIMITED\_ROLE\_ACCESS\_PERMIT
+作成（Create）タブ表示時に、create_viewメソッドが呼び出される
 
-> 一覧（List）タブ表示時に、index\_viewメソッド（WEKOソースでオーバーライドされていない）が呼び出される
+編集（Edit）タブ表示時に、edit_viewメソッドが呼び出される
 
-  - > この中で呼び出されるget\_queryメソッドとget\_count\_queryメソッドでは、上記の分岐によるModelViewと異なる処理として、取得するコミュニティの絞り込みを行う
-    
-      - > id\_roleが操作するユーザのロールのidに含まれるものか、id\_userが操作するユーザのユーザidと一致するものだけに絞り込む
+作成（Create）・編集（Edit）で［保存（Save）］ボタンを押すと、`validate_community_id`メソッド（内部で`_validate_input_id`）でidのバリデーションチェックを行う。id_userカラムは作成時のみ操作ユーザのidで設定し、編集保存時は書き換えない
 
-> 編集（Edit）タブ表示時に、edit\_viewメソッド（WEKOソースでオーバーライドされていない）が呼び出される
+  - idのバリデーションチェックは作成・編集の両方の保存時に実行される。なお、編集（Edit）タブでの保存時はidを編集できない
 
-  - > この中で呼び出されるedit\_formメソッドでは、上記の分岐によるModelViewと異なる処理として、CommunityModelViewのインスタンスにindex\_id属性を追加して、入力フォームに「action」「edit」を追加する
 
-> 作成（Create）、編集（Edit）タブで［保存（Save）］ボタンを押すと、\_validate\_input\_idメソッドでidのバリデーションチェックを行い、保存処理中のon\_model\_changeメソッドでレコードのid\_userカラムを操作ユーザのidで更新する
+## 実装補足（v2.0.2 実装との突き合わせ）
 
-  - > 編集（Edit）タブでの保存時はidを編集できないため、実質的には作成（Create）タブでの保存時のみにバリデーションチェックしている
+- 画面/ハンドラ：`invenio_communities.admin.CommunityModelView`（テーブル `communities_community`）。`create_view`（`/new/`）/ `edit_view`（`/edit/<id>/`）/ `get_json_schema` / `get_schema_form` を上書き。作成可否は `min(role_ids) <= COMMUNITIES_LIMITED_ROLE_ACCESS_PERMIT`（=2、System/Repository）。一覧絞り込みは `get_query`（super-role は全件、他は `role_query_cond`）。
+- 補足：ID 等のバリデーション（`validate_community_id` / `_validate_input_id`）は作成・編集の両方で実行される。`id_user` は作成時のみ設定され、編集保存では書き換えない。Catalog 入力は `/admin/community/jsonschema`・`/schemaform`（`item_type_property` id=1057）から取得。CNRI 有効時はハンドル登録を行う。
+- Owner 表示・選択肢：一覧/詳細の owner 表示は `Community.owner_display`（`invenio_communities.models`）を使用し、`jc_roles_sysadm`→`System Administrator`、`role_keyword` を含むロール名は `role_mapping`（`radm`/`cadm`/`cont`）で表示名へ変換する（`column_formatters`、`edit_view` の `form.owner.data`）。「Owner」プルダウン（`CommunityModelView.form_args['owner']` の `query_factory`）は GakuNin mAP ロール（`role_keyword` を含み `prefix` で始まる名前）を除外した Role 一覧を返す。いずれも `WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` 由来。
 
-<!-- end list -->
+## 更新履歴
 
-  - > 更新履歴
-
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付       | GitHubコミットID                           | 更新内容                                        |
+| ---------- | ------------------------------------------ | ----------------------------------------------- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | 初版作成                                        |
+| 2025/01/23 | 1601602fe7ad9e606569f9e67c0b20654c82761d   | サブリポジトリ対応                              |
+| 2026/07/17 |                                            | v2.1.0差分反映：Owner表示名変換（owner_display）・OwnerプルダウンからのmAPロール除外を追記 |

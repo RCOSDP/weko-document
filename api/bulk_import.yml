@@ -1,0 +1,299 @@
+openapi: 3.0.3
+info:
+  title: 一括インポートタスク登録API
+  version: "1.0"
+tags:
+    - name: 一括インポートタスク登録
+paths:
+    /api/items/import-task:
+        post:
+            tags:
+                - bulk_import
+            summary: 一括インポートタスク登録機能
+            description: |-
+                メタデータ(tsv/csv)を含むzipファイルを受け取り、非同期で一括インポートタスク(インポート可否の事前チェック、およびアイテムの登録・更新)を実行する。
+                |ロール            |動作    |
+                | ---------------- | ------ |
+                |システム管理者    |使用可能|
+                |リポジトリ管理者  |使用可能|
+                |コミュニティ管理者|使用不可|
+                |登録ユーザー      |使用不可|
+                |一般ユーザー      |使用不可|
+                |ゲストユーザー    |使用不可|
+            parameters:
+                - name: Authorization
+                  in: header
+                  required: true
+                  description: Bearer アクセストークン
+                  schema:
+                    type: string
+                - name: mode
+                  in: query
+                  required: false
+                  description: モード指定。<br>importの場合、非同期でインポートタスクを登録する。<br>checkの場合、インポート可否の確認のためのチェックタスクを登録する。
+                  schema:
+                    type: string
+                    enum: 
+                        - import
+                        - check
+                    default: import
+                - name: is_change_identifier
+                  in: query
+                  required: false
+                  description: 識別子変更モード可否。<br>trueの場合、識別子変更を行う。<br>falseの場合、識別子の変更を行わない。
+                  schema:
+                    type: boolean
+                    default: false
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            properties:
+                                file:
+                                    type: string
+                                    format: binary
+                                    description: メタデータ(tsv/csv)を含むzipファイル
+            responses:
+                "200":
+                    description: タスクの登録に成功した場合／タスクの登録可否の確認に成功した場合
+                    content:
+                        application/json:
+                            examples:
+                                インポートモード タスク登録成功:
+                                    value:
+                                        can_import: true
+                                        check_status: "SUCCESS"
+                                        expire: "YYYY-MM-DD HH:mm:ss"
+                                        summary: {
+                                            total: <総件数>,
+                                            new_item: <新規件数>,
+                                            update_item: <更新件数>,
+                                            check_error: <エラー件数>,
+                                            warning: <警告件数>
+                                        }
+                                        tasks: [
+                                            {
+                                                item_task_id: <アイテムタスクID>,
+                                                task_status: "PENDING",
+                                                task_result: {}
+                                            }
+                                        ]
+                                        task_id: <タスクID>
+                                チェックモード タスク登録可否確認成功:
+                                    value:
+                                        can_import: true
+                                        check_status: "SUCCESS"
+                                        expire: "YYYY-MM-DD HH:mm:ss"
+                                        summary: {
+                                            total: <総件数>,
+                                            new_item: <新規件数>,
+                                            update_item: <更新件数>,
+                                            check_error: <エラー件数>,
+                                            warning: <警告件数>
+                                        }
+                                        task_id: <タスクID>
+                "400":
+                    description: リクエスト内容に不備がある場合、
+                                またはzipファイル形式でない場合
+                    content:
+                        application/json:
+                            examples:
+                                リクエスト内容不備:
+                                    value:
+                                        can_import: false
+                                        check_status: "ERROR"
+                                        expire: "YYYY-MM-DD HH:mm:ss"
+                                        error_details: ["エラーメッセージ"]
+                                        summary: {
+                                            total: <総件数>,
+                                            new_item: <新規件数>,
+                                            update_item: <更新件数>,
+                                            check_error: <エラー件数>,
+                                            warning: <警告件数>
+                                        }
+                                        tasks: []
+                                        task_id: ""
+                                リクエストヘッダー不備:
+                                    value:
+                                        result: "NG"
+                                        error: "Cannot get filename by Content-Disposition."
+                                指定ファイルが存在しない場合:
+                                    value:
+                                        result: "NG"
+                                        error: "Not found {filename} in request body."
+                                ZIPファイル形式でない場合:
+                                    value:
+                                        result: "NG"
+                                        error: "Uploaded file is not a valid ZIP file."
+                                チェックタスクが失敗、強制終了した場合:
+                                    value:
+                                        can_import: false
+                                        check_status: "ERROR"
+                                        error_details: ["Check task failed."]
+                                        summary: {}
+                                        tasks: []
+                                        task_id: ""
+                                チェックタスクがタイムアウトした場合:
+                                    value:
+                                        can_import: false
+                                        check_status: "TIMEOUT"
+                                        error_details: ["Check task timeout."]
+                                        summary: {}
+                                        tasks: []
+                                        task_id: ""
+                                アイテムにエラーがある場合:
+                                    value:
+                                        can_import: false
+                                        check_status: "ERROR"
+                                        error_details: ["<エラーメッセージ>"]
+                                        summary: {}
+                                        tasks: []
+                                        task_id: ""
+                "401":
+                    description: リクエストでAuthorizationヘッダーが提供されていない、または無効なアクセストークンが提供された場合
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/401ErrorResponse"
+                "403":
+                    description: 認証に失敗した場合、認証したOAuthトークンが必須スコープを持っていない場合
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/403ErrorResponse"
+                "500":
+                    description: 例外が発生した場合
+                    content:
+                        application/json:
+                            example:
+                                result: "NG"
+                                error: "Internal Server Error"
+
+    /api/items/import-task/get_bulk_import_task_status/{task_id}:
+        get:
+            tags:
+                - bulk_import
+            summary: 一括インポートステータス取得機能
+            description: |-
+                タスクIDを指定し、インポートタスクの登録状況や実行結果を取得する
+                |ロール            |動作    |
+                | ---------------- | ------ |
+                |システム管理者    |使用可能|
+                |リポジトリ管理者  |使用可能|
+                |コミュニティ管理者|使用不可|
+                |登録ユーザー      |使用不可|
+                |一般ユーザー      |使用不可|
+                |ゲストユーザー    |使用不可|
+            parameters:
+                - name: Authorization
+                  in: header
+                  required: true
+                  description: Bearer アクセストークン
+                  schema:
+                    type: string
+                - name: task_id
+                  in: path
+                  required: true
+                  description: タスクID
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: タスクの登録状況の取得に成功した場合
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    can_import:
+                                        type: boolean
+                                        example: true
+                                    check_status:
+                                        type: string
+                                        example: "SUCCESS"
+                                    expire:
+                                        type: string
+                                        example: "YYYY-MM-DD HH:mm:ss"
+                                    tasks:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                item_task_id:
+                                                    type: string
+                                                task_status:
+                                                    type: string
+                                                task_result:
+                                                    type: object
+                                                    properties:
+                                                        recid:
+                                                            type: string
+                                                        start_date:
+                                                            type: string
+                                                            example: "YYYY-MM-DD HH:mm:ss"
+                                                        success:
+                                                            type: boolean
+
+                                    task_id:
+                                        type: string
+                "400":
+                    description: デコード失敗や、エラーが発生した場合
+                    content:
+                        application/json:
+                            examples:
+                                デコード失敗:
+                                    value:
+                                        result: "NG"
+                                        error: "Task data decode error."
+                                チェック失敗:
+                                    value:
+                                        result: "NG"
+                                        error: "Task check failed.: {error_message}"
+                "401":
+                    description: リクエストでAuthorizationヘッダーが提供されていない、または無効なアクセストークンが提供された場合
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/401ErrorResponse"
+                "403":
+                    description: 認証に失敗した場合、認証したOAuthトークンが必須スコープを持っていない場合、別ユーザーがタスクを参照しようとした場合
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/403ErrorResponse"
+                "404":        
+                    description: タスクが見つからない場合
+                    content:
+                        application/json:
+                            example:
+                                    result: "NG"
+                                    error: "Task not found."   
+
+
+components:
+  schemas:
+    401ErrorResponse:
+      type: object
+      properties:
+        result:
+          type: string
+          default: "NG"
+        error:
+            type: array
+            items:
+                type: string
+                default: "Authentication is required."
+    403ErrorResponse:
+      type: object
+      properties:
+        result:
+          type: string
+          default: "NG"
+        error:
+            type: array
+            items:
+                type: string
+                default: "Permission required."
+

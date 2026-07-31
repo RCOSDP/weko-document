@@ -1,0 +1,453 @@
+openapi: 3.0.3
+info:
+  title: 著者DBを操作するためのWEB API
+  version: "1.0"
+tags:
+  - name: author
+    description: 著者DB操作
+
+paths:
+  /api/{version}/authors:
+    get:
+      tags:
+        - author
+      summary: 著者DB検索
+      description: |
+        指定された検索キーで著者DBを検索する。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|著者DBを検索可能|
+        |リポジトリ管理者|著者DBを検索可能|
+        |コミュニティ管理者|著者DBを検索可能|
+        |登録ユーザー|著者DBを検索不可|
+        |一般ユーザー|著者DBを検索不可|
+        |ゲストユーザー|著者DBを検索不可|
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          description: APIのバージョン
+        - name: fullname
+          in: query
+          schema:
+            type: string
+          description: 著者姓名
+        - name: firstname
+          in: query
+          schema:
+            type: string
+          description: 著者名
+        - name: familyname
+          in: query
+          schema:
+            type: string
+          description: 著者姓
+        - name: idtype
+          in: query
+          schema:
+            type: string
+          description: 著者識別子の種類
+        - name: authorid
+          in: query
+          schema:
+            type: string
+          description: 著者識別子
+        - name: communityid
+          in: query
+          schema:
+            type: string
+          description: コミュニティID
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          description: Bearer アクセストークン
+      responses:
+        '200':
+          description: 正常終了
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorsResponse'
+        '400':
+          description: リクエストに不備がある
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '401':
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '403':
+          description: 該当ユーザに必要なロールが付与されていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '500':
+          description: 内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+
+    post:
+      tags:
+        - author
+      summary: 著者DB著者登録
+      description: |
+        渡された内容で著者を登録する。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|著者を登録可能|
+        |リポジトリ管理者|著者を登録可能|
+        |コミュニティ管理者|著者を登録可能|
+        |登録ユーザー|著者を登録不可|
+        |一般ユーザー|著者を登録不可|
+        |ゲストユーザー|著者を登録不可|
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          description: APIのバージョン
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorRequest'
+      responses:
+        '200':
+          description: 正常終了
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorCreateResponse'
+        '400':
+          description: リクエストに不備がある
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '401':
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '403':
+          description: 該当ユーザに必要なロールが付与されていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '500':
+          description: 内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+
+  /api/{version}/authors/{identifier}:
+    put:
+      tags:
+        - author
+      summary: 著者DB著者変更
+      description: |
+        指定された著者の情報を送られてきた情報で置き換える。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|著者を変更可能|
+        |リポジトリ管理者|著者を変更可能|
+        |コミュニティ管理者|著者を変更可能|
+        |登録ユーザー|著者を変更不可|
+        |一般ユーザー|著者を変更不可|
+        |ゲストユーザー|著者を変更不可|
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          description: APIのバージョン
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 著者の識別子（ElasticSearchのuuidまたはauthorsテーブルのid）
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorUpdateRequest'
+      responses:
+        '200':
+          description: 正常終了
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorUpdateResponse'
+        '400':
+          description: リクエストに不備がある
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '401':
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '403':
+          description: 該当ユーザに必要なロールが付与されていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '404':
+          description: 指定された著者が存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '500':
+          description: 内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+
+    delete:
+      tags:
+        - author
+      summary: 著者DB著者削除
+      description: |
+        指定された著者情報を削除する。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|著者を削除可能|
+        |リポジトリ管理者|著者を削除可能|
+        |コミュニティ管理者|著者を削除可能|
+        |登録ユーザー|著者を削除不可|
+        |一般ユーザー|著者を削除不可|
+        |ゲストユーザー|著者を削除不可|
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+          description: APIのバージョン
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 著者の識別子（ElasticSearchのuuidまたはauthorsテーブルのid）
+      responses:
+        '200':
+          description: 正常終了
+        '400':
+          description: リクエストに不備がある
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '401':
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '403':
+          description: 該当ユーザに必要なロールが付与されていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '404':
+          description: 指定された著者が存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        '500':
+          description: 内部のエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+
+components:
+  schemas:
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+    AuthorsResponse:
+      type: object
+      properties:
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Author'
+    AuthorRequest:
+      type: object
+      properties:
+        author:
+          $ref: '#/components/schemas/Author'
+    AuthorUpdateRequest:
+      type: object
+      properties:
+        force_change:
+          type: boolean
+          description: 著者名の変更をアイテムに反映するかどうか
+        author:
+          $ref: '#/components/schemas/Author'
+    AuthorCreateResponse:
+      type: object
+      properties:
+        author:
+          allOf:
+            - type: object
+            - description: 登録された著者情報
+            - $ref: '#/components/schemas/Author'
+        message:
+          type: string
+          description: 登録結果メッセージ
+          example: Author successfully registered.
+    AuthorUpdateResponse:
+      type: object
+      properties:
+        author:
+          allOf:
+            - type: object
+            - description: 更新された著者情報
+            - $ref: '#/components/schemas/Author'
+        message:
+          type: string
+          description: 更新結果メッセージ
+          example: Author successfully updated.
+    Author:
+      type: object
+      properties:
+        emailInfo:
+          type: array
+          items:
+            type: object
+            properties:
+              email:
+                type: string
+                description: 著者のメールアドレス
+        authorIdInfo:
+          type: array
+          items:
+            type: object
+            properties:
+              idType:
+                type: string
+                description: 著者識別子の種類（例:weko, orcid）
+              authorId:
+                type: string
+                description: 著者識別子
+              authorIdShowFlg:
+                type: boolean
+                description: 外部著者IDを自動入力するかどうか
+        authorNameInfo:
+          type: array
+          items:
+            type: object
+            properties:
+              language:
+                type: string
+                description: 著者姓名の記述言語（例:ja, en）
+              firstName:
+                type: string
+                description: 著者名
+              familyName:
+                type: string
+                description: 著者姓
+              nameFormat:
+                type: string
+                description: 著者名と著者姓の組み合わせ方
+              nameShowFlg:
+                type: boolean
+                description: 氏名が自動入力されるかどうか
+        affiliationInfo:
+          type: array
+          items:
+            type: object
+            properties:
+              identifierInfo:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    affiliationId:
+                      type: string
+                      description: 所属機関識別子
+                    affiliationIdType:
+                      type: string
+                      description: 所属機関識別子の種類（例:ISNI, ROR）
+                    identifierShowFlg:
+                      type: boolean
+                      description: 所属機関識別子が自動入力されるかどうか
+              affiliationNameInfo:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    affiliationName:
+                      type: string
+                      description: 所属機関名
+                    affiliationNameLang:
+                      type: string
+                      description: 所属機関の記述言語（例:ja, en）
+                    affiliationNameShowFlg:
+                      type: boolean
+                      description: 所属機関名が自動入力されるかどうか
+              affiliationPeriodInfo:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    periodStart:
+                      type: string
+                      format: date
+                      description: 所属開始日（yyyy-MM-dd形式）
+                    periodEnd:
+                      type: string
+                      format: date
+                      description: 所属終了日（yyyy-MM-dd形式）
+        communityIds:
+          type: array
+          items:
+            type: string
+          description: 著者が所属するコミュニティIDのリスト
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "author:search": Grants access to search authors
+            "author:create": Grants access to create authors
+            "author:update": Grants access to update authors
+            "author:delete": Grants access to delete authors

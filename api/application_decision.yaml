@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: 制限公開機能のためのWEB API
+  version: "1.0"
+tags:
+  - name: items
+    description: アイテム情報
+paths:
+  /api/{version}/records/{pid}/need-restricted-access:
+    get:
+      tags:
+        - items
+      summary: 利用申請が必要かどうかを判断するAPI
+      description: |-
+        当該アイテムのコンテンツダウンロードに利用申請が必要かどうかを判断する。  
+        |アクセス|ユーザー|利用申請|判定結果|
+        |----|----|----|----|
+        |利用申請以外|-|-|不要|
+        |利用申請|管理者|-|不要|
+        |利用申請|登録ユーザー|-|不要|
+        |利用申請|その他|申請、承認済み|不要|
+        |利用申請|その他|未承認|必要|
+        |利用申請|その他|未申請|必要|
+        |利用申請|その他|申請権限なし|必要|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: pid
+          in: path
+          description: アイテムを一意に識別するID
+          required: true
+          schema:
+            type: number
+          example: 1
+        - name: Authorization
+          in: header
+          description: |-
+            認可情報  
+            指定なしの場合は未ログインユーザーで実行されたと判断する。
+          schema:
+            type: string
+            example: Bearer アクセストークン
+      responses:
+        "200":
+          description: |-
+            処理成功  
+            ファイルごとに利用申請が必要かどうかの情報を返す。
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestrictedAccessInfo"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: |-
+            存在しない  
+            ・アイテムが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["item:read"]
+
+components:
+  schemas:
+    RestrictedAccessInfo:
+      type: object
+      properties:
+        files:
+          description: ファイルごとの情報
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                description: ファイル名
+                type: string
+                example: File.pdf
+              need_restricted_access:
+                description: 利用申請が必要かどうか
+                type: boolean
+                example: true
+    ErrorBody:
+      type: object
+      properties:
+        status:
+          description: HTTPステータスコード
+          type: string
+        message:
+          description: エラーメッセージ
+          type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "item:read": Grants access to read item

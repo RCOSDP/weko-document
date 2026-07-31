@@ -984,7 +984,8 @@ Table 3‑2. The elements in the simple search screen
 <td><p>You can enter a keyword for searching for items.</p>
 <p>You can use the following characters with searches:</p>
 <p>+ - = &amp;&amp; || ! ( ) { } [ ] ^ " ~ * ? : \ /</p>
-<p>Note that you cannot use the "&lt;" and "&gt;" characters in searches.</p></td>
+<p>Note that you cannot use the "&lt;" and "&gt;" characters in searches.</p>
+<p>You can perform an OR search by separating keywords with " OR " or " | " (both require spaces before and after).</p></td>
 </tr>
 <tr class="even">
 <td>2</td>
@@ -1061,6 +1062,8 @@ The advanced search screen appears where you can specify more details.
 The button has a label replaced, showing ![](media/media/image52.png).
 
 Clicking ![](media/media/image52.png) will collapse the advanced search area. The button has a label replaced, showing ![](media/media/image7.png).
+
+You can perform an OR search by separating text with " OR " or " | " (both require spaces before and after).
 
 You can perform an AND search using a combination of the simple search text field and any element of the advanced search.
 

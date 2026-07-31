@@ -1,0 +1,230 @@
+@startuml
+
+entity access_actionsroles{
+    *id: integer
+    action: character varying(80) 
+    *exclude: boolean
+    argument: character varying(255)
+    *role_id: integer
+}
+
+entity access_actionssystemroles{
+    *id: integer
+    action: character varying(80)
+    *exclude: boolean
+    argument: character varying(255)
+    *role_name: character varying(40)
+}
+
+
+entity access_actionsusers{
+ *id:integer
+ action: character varying(80)
+ *exclude: boolean
+ argument: character varying(255)
+ *user_id: integer
+}
+
+entity accounts_group{
+ *id: integer
+ *name: character varying(255)
+ description:text
+ *is_managed: boolean
+ *privacy_policy: character varying(1)
+ *subscription_policy:character varying(1)
+ *created:timestamp without time zone
+ *modified:timestamp without time zone
+}
+
+entity accounts_group_admin{
+ *id:integer
+ *group_id:integer
+ admin_type:character varying(255)
+ *admin_id:integer
+}
+
+entity accounts_group_members{
+ *user_id: integer
+ *group_id: integer
+ *state: character varying(1)
+ *created: timestamp without time zone
+ *modified: timestamp without time zone
+}
+
+entity accounts_role{
+ id: integer
+ name: character varying(80)  
+ description: character varying(255) 
+}
+
+entity accounts_user{
+ *id: integer
+ email: character varying(255)
+ password: character varying(255)
+ active: boolean
+ confirmed_at: timestamp without time zone
+ last_login_at: timestamp without time zone
+ current_login_at: timestamp without time zone
+ last_login_ip:  character varying(50)
+ current_login_ip: character varying(50)
+ login_count: integer
+}
+
+entity accounts_user_session_activity{
+ *created: timestamp without time zone
+ *updated: timestamp without time zone
+ sid_s           | character varying(255)      |           | not null | 
+ user_id         | integer                     |           |          | 
+ ip              | character varying(80)       |           |          | 
+ country         | character varying(3)        |           |          | 
+ browser         | character varying(80)       |           |          | 
+ browser_version | character varying(30)       |           |          | 
+ os              | character varying(80)       |           |          | 
+ device          | character varying(80)       |           |          | 
+}
+
+entity accounts_userrole{}
+entity admin_lang_settings{}
+entity admin_settings{}
+entity alembic_version{}
+entity api_certificate{}
+entity authors{}
+entity authors_affiliation_settings{}
+entity authors_prefix_settings{}
+entity billing_permission{}
+entity changelist_indexes{}
+entity communities_community{}
+entity communities_community_record{}
+entity communities_featured_community{}
+entity doi_identifier{}
+entity facet_search_setting{}
+entity feedback_email_setting{}
+entity feedback_mail_failed{}
+entity feedback_mail_history{}
+entity feedback_mail_list{}
+entity file_metadata{}
+entity file_metadata_version{}
+entity file_onetime_download{}
+entity file_permission{}
+entity file_secret_download{}
+entity files_bucket{}
+entity files_buckettags{}
+entity files_files{}
+entity files_location{}
+entity files_multipartobject{}
+entity files_multipartobject_part{}
+entity files_object{}
+entity files_objecttags{}
+entity guest_activity{}
+entity harvest_logs{}
+entity harvest_settings{}
+entity index{}
+entity index_style{}
+entity institution_name{}
+
+entity item_metadata {
+ *created: timestamp without time zone
+ *updated: timestamp without time zone
+ *id: uuid
+ item_type_id: integer
+ json: jsonb
+ *version_id: integer
+}
+entity item_metadata_version{}
+entity item_reference{}
+entity item_type{}
+entity item_type_edit_history{}
+entity item_type_mapping{}
+entity item_type_mapping_version{}
+entity item_type_name{}
+entity item_type_property{}
+entity item_type_version{}
+entity journal{}
+entity journal_export_processing{}
+entity loganalysis_restricted_crawler_list{}
+entity loganalysis_restricted_ip_address{}
+entity mail_config{}
+entity oaiharvester_configs{}
+entity oaiserver_identify{}
+entity oaiserver_schema{}
+entity oaiserver_schema_version{}
+entity oaiserver_set{}
+entity oauth2server_client{}
+entity oauth2server_token{}
+entity oauthclient_remoteaccount{}
+entity oauthclient_remotetoken{}
+entity oauthclient_useridentity{}
+entity pdfcoverpage_set{}
+entity pidrelations_pidrelation{}
+entity pidstore_pid{}
+entity pidstore_recid{}
+entity pidstore_redirect{}
+entity ranking_settings{}
+entity records_buckets{}
+entity records_metadata{}
+entity records_metadata_version{}
+entity resourcelist_indexes{}
+entity resync_indexes{}
+entity resync_logs{}
+entity search_management{}
+entity session_lifetime{}
+entity shibboleth_user{}
+entity shibboleth_userrole{}
+entity site_info{}
+entity sitelicense_info{}
+entity sitelicense_ip_address{}
+entity stats_aggregation{}
+entity stats_bookmark{}
+entity stats_email_address{}
+entity stats_events{}
+entity stats_events_202401{}
+entity stats_events_202402{}
+entity stats_events_202403{}
+entity stats_events_202404{}
+entity stats_events_202405{}
+entity stats_events_202406{}
+entity stats_events_202407{}
+entity stats_events_202408{}
+entity stats_events_202409{}
+entity stats_events_202410{}
+entity stats_events_202411{}
+entity stats_events_202412{}
+entity stats_events_202501{}
+entity stats_events_202502{}
+entity stats_events_202503{}
+entity stats_events_202504{}
+entity stats_events_202505{}
+entity stats_events_202506{}
+entity stats_events_202507{}
+entity stats_events_202508{}
+entity stats_events_202509{}
+entity stats_events_202510{}
+entity stats_events_202511{}
+entity stats_events_202512{}
+entity stats_report_target{}
+entity stats_report_unit{}
+entity transaction{}
+entity userprofiles_userprofile{}
+entity widget_design_page{}
+entity widget_design_page_multi_lang_data{}
+entity widget_design_setting{}
+entity widget_items{}
+entity widget_multi_lang_data{}
+entity widget_type{}
+entity workflow_action{}
+entity workflow_action_feedbackmail{}
+entity workflow_action_history{}
+entity workflow_action_identifier{}
+entity workflow_action_journal{}
+entity workflow_action_status{}
+entity workflow_activity{}
+entity workflow_activity_action{}
+entity workflow_activity_count{}
+entity workflow_flow_action{}
+entity workflow_flow_action_role{}
+entity workflow_flow_define{}
+entity workflow_userrole{}
+entity workflow_workflow{}
+
+
+@enduml

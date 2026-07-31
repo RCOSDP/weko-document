@@ -7371,6 +7371,7 @@ This section explains how to bulk export items.
         ![テキスト, 手紙 自動的に生成された説明](media/media/image74.png)
         
         A tsv file will be generated for each item type in the \<ItemTypeName (ItemTypeID)\> format. The content file for each item will not be generated.
+        If the number of items to be exported within an item type exceeds a certain threshold, the TSV file will be split accordingly. In such cases, the file name will follow the format \<ItemTypeName (ItemTypeID).part(partNo)\>.
     
     2.  #### If you select "Cancel":
         

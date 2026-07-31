@@ -1,4 +1,3 @@
-
 # 一括出力
 
 ## 目的・用途
@@ -7,221 +6,131 @@
 
 ## 利用方法
 
-本画面にある \[エクスポート(Export)\] ボタンを押下することで、著者DBに登録されている著者情報をtsvファイルで出力する。
+本画面にある [エクスポート(Export)] ボタンを押下することで、著者DBに登録されている著者情報をtsvファイルで出力する。
 
 tsvファイルのダウンロードURLにアクセスすることでtsvファイルを取得することができる。
 
 ## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 利用可否 | ○ | ○ | ○※ | | | |
+
+※コミュニティ管理者は自身の管理するコミュニティに関連づいている著者のみ出力される。
 
 ## 機能内容
 
 (1) 一括出力画面の画面構成
 
-  - 【Administration \> 著者DB管理(Author Management) \> 一括出力(Export)】 を選択すると表示される。
+  - 出力対象テーブル(Export target)
+      - プルダウンの選択肢としては以下のもの
+          - 著者情報(Author)
+          - 著者識別子(ID_Prefix)
+          - 機関識別子(Affiliation_ID)
+      - デフォルトでは「著者情報(Author)」が選択されている。
+      - このプルダウンで選択されている情報がエクスポートの対象となる。
 
-  - 画面構成は以下の通り
-    
-      - 全件エクスポート(Export all creator)
-    
-      - ダウンロードURL(Download URL)
-
-  - 全件エクスポート(Export all creator)
-    
+  - 全件エクスポート(Export all)
       - 全件エクスポートを実行する。以下の2種類のボタンがある。
-        
-          - \[エクスポート(Export)\] ボタン
-            
+          - [エクスポート(Export)] ボタン
               - ボタンを押下すると、以下のポップアップのメッセージとボタンが表示される
-                
-                  - 「著者DBの全件エクスポートを実行してよいですか？(Are you sure you want to export all creator?)」  
-                    　　\[実行(Execute)\] ボタン：著者DBの全件エクスポートを実行し、自画面に戻る  
-                    　　\[キャンセル(Cancel)\] ボタン：何も処理はせずに自画面に戻る
-            
-              - 著者DBの全件エクスポート実行中は、ボタンは非活性となる
-        
-        <!-- end list -->
-        
-          - \[キャンセル(Cancel)\] ボタン
-            
-              - 著者DBの全件エクスポートを中断する。エクスポート実行中以外は非活性である。
-
-  - 著者DBの全件エクスポート実行中にボタンが活性化される。ボタンを押下すると、以下のポップアップのメッセージとボタンが表示される。  
-    「メッセージ」  
-    　日本語：著者DBの全件エクスポートの処理をキャンセルしてよいです　　か？  
-    　英語：Are you sure you want to cancel process of exporting all creator?  
-    「ボタン」  
-    　\[実行(Execute)\] ボタン：著者DBの全件エクスポートを中断し、自画面に戻る。  
-    　\[キャンセル(Cancel)\] ボタン：中断はせずに自画面に戻る(全件エクスポート処理を継続する)。ダウンロードURL(Download URL)
-    
+                  - 「対象の全件エクスポートを実行してよいですか？(Are you sure you want to export all?)」  
+                      - [実行(Execute)] ボタン：対象の全件エクスポートを実行し、自画面に戻る  
+                      - [キャンセル(Cancel)] ボタン：何も処理はせずに自画面に戻る
+              - 対象の全件エクスポート実行中は、ボタンは非活性となる
+          - [キャンセル(Cancel)] ボタン
+              - 対象の全件エクスポートを中断する。エクスポート実行中以外は非活性である。
+              - 対象の全件エクスポート実行中にボタンが活性化される。ボタンを押下すると、以下のポップアップのメッセージとボタンが表示される。  
+                  「メッセージ」  
+                  　日本語：全件エクスポートの処理をキャンセルしてよいですか？  
+                  　英語：Are you sure you want to cancel process of exporting all ?  
+                  「ボタン」  
+                  　[実行(Execute)] ボタン：全件エクスポートを中断し、自画面に戻る。  
+                  　[キャンセル(Cancel)] ボタン：中断はせずに自画面に戻る(全件エクスポート処理を継続する)。
+  - ダウンロードURL(Download URL)
       - 全件エクスポートが完了すると、出力ファイル(tsv形式)をダウンロードできるURLが表示される
-    
-      - 最後に出力されたダウンロードURLが表示される（初期の全件エクスポート実行前は何も表示されない）
-    
-      - ダウンロードのURLの例(初期値)としては以下の通り（出力ファイル名はConfigで設定できるものとする）
-        
-          - 
+      - 最後に出力されたダウンロードURLが表示される（初期の全件エクスポート実行前は何も表示されない）  
+          ダウンロードURLは対象によらず単一のルートを使用し、Export targetの値に応じて送出されるファイル名のみが切り替わる。
+      - ダウンロードURL(初期値)は対象によらず単一ルート `https://{Domain_Name}/admin/authors/export/download/Creator_export_all` を使用する（出力ファイル名はConfigで設定できるものとする）。送出されるファイル名の例は以下の通り。
+          - 著者情報：　Creator_export_all_{yyyyMMddhhmm}.tsv
+          - 著者識別子：Id_prefix_export_all_{yyyyMMddhhmm}.tsv
+          - 機関識別子：Affiliation_id_export_all_{yyyyMMddhhmm}.tsv
+
 (2) 出力ファイル
 
   - 全件エクスポートされたファイルはtsv形式で出力される。
 
-  - tsvファイルの構成は以下の通り
-
-> ヘッダ行
-> 
-> ラベル(英語)
-> 
-> ラベル(日本語)
-> 
-> データ行（著者１）
-> 
-> データ行（著者２）
-> 
-> …
+  - 著者情報のtsvファイルの構成、各ヘッダについては以下の通り
+    - ヘッダ行
+    - ラベル(英語)
+    - ラベル(日本語)
+    - データ行（著者１）
+    - データ行（著者２）
+    - …
 
   - 文字コードはUTF-8(BOM付き)，改行コードはCR+LFとする。
 
-  - １行目はヘッダ行とし、システム管理するものである。先頭に"\#"が付いている。
+  - １行目はヘッダ行とし、システム管理するものである。先頭に"#"が付いている。
 
-  - ２行目と３行目はラベルを表示し、TSV入力の補助をする。先頭に"\#"が付いている。
+  - ２行目と３行目はラベルを表示し、TSV入力の補助をする。先頭に"#"が付いている。
 
   - ４行目以降に著者の情報を出力する。１著者の情報を1行で出力する。
 
-<!-- end list -->
-
   - 各ヘッダの情報は以下の通り
 
-<table>
-<thead>
-<tr class="header">
-<th>#</th>
-<th>ヘッダ項目</th>
-<th>ラベル(日本語)</th>
-<th>ラベル(英語)</th>
-<th>概要</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>pk_id</td>
-<td>WEKO ID</td>
-<td>WEKO ID</td>
-<td>WEKO3の著者ID(author_link)を出力する</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>authorNameInfo[0...n].familyName</td>
-<td>姓[0...n]</td>
-<td>Family Name[0...n]</td>
-<td>著者の姓を出力する</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>authorNameInfo[0...n].firstName</td>
-<td>名[0...n]</td>
-<td>Given name[0...n]</td>
-<td>著者の名を出力する</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>authorNameInfo[0...n].language</td>
-<td>言語[0...n]</td>
-<td>Language[0...n]</td>
-<td>著者の言語を出力する</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>authorNameInfo[0...n].nameFormat</td>
-<td>フォーマット[0...n]</td>
-<td>name Format[0...n]</td>
-<td>著者の姓名のフォーマットを出力する<br />
-※現状(SP67時点)は「familyNmAndNm」固定</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>authorNameInfo[0...n].nameShowFlg</td>
-<td><p>姓名・言語</p>
-<p>表示／非表示[0...n]</p></td>
-<td>Name Display[0...n]</td>
-<td>著者の姓名と言語の表示／非表示を出力する<br />
-表示する: "Y"<br />
-表示しない: "N"</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>authorNameInfo[0...n].idType</td>
-<td>外部著者ID 識別子[0...n]</td>
-<td>Identifier Scheme[0...n]</td>
-<td>外部著者IDの識別子を出力する</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>authorNameInfo[0...n].authorId</td>
-<td>外部著者ID URI[0...n]</td>
-<td>Identifier URI[0...n]</td>
-<td>外部著者IDの値を出力する</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>authorNameInfo[0...n].authorIdShowFlg</td>
-<td><p>外部著者ID</p>
-<p>表示／非表示[0...n]</p></td>
-<td>Identifier Display[0...n]</td>
-<td>外部著者IDの表示／非表示を出力する<br />
-表示する: "Y"<br />
-表示しない: "N"</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>emailInfo[0...n].email</td>
-<td>メールアドレス[0...n]</td>
-<td>Mail Address[0...n]</td>
-<td>著者のメールアドレスを出力する</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>is_deleted</td>
-<td>削除フラグ</td>
-<td>Delete Flag</td>
-<td>著者を削除する場合に "D" と出力する<br />
-※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる</td>
-</tr>
-</tbody>
-</table>
+| #   | ヘッダ項目 | ラベル(日本語) | ラベル(英語) | 概要 |
+|:---:|---|---|---|---|
+| 1 | pk_id | WEKO ID | WEKO ID | WEKO3の著者ID(author_link)を出力する |
+| 2 | authorNameInfo[0...n].familyName | 姓 | Family Name | 著者の姓を出力する |
+| 3 | authorNameInfo[0...n].firstName | 名 | Given name | 著者の名を出力する |
+| 4 | authorNameInfo[0...n].language | 言語 | Language | 著者の言語を出力する |
+| 5 | authorNameInfo[0...n].nameFormat | フォーマット | name Format | 著者の姓名のフォーマットを出力する<br />※現状(SP67時点)は「familyNmAndNm」固定 |
+| 6 | authorNameInfo[0...n].nameShowFlg | 姓名・言語 表示／非表示 | Name Display | 著者の姓名と言語の表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 7 | authorIdInfo[0...n].idType | 外部著者ID 識別子 | Identifier Scheme | 外部著者IDの識別子を出力する |
+| 8 | authorIdInfo[0...n].authorId | 外部著者ID URI | Identifier URI | 外部著者IDの値を出力する |
+| 9 | authorIdInfo[0...n].authorIdShowFlg | 外部著者ID 表示／非表示 | Identifier Display | 外部著者IDの表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 10 | emailInfo[0...n].email | メールアドレス | Mail Address | 著者のメールアドレスを出力する |
+| 11 | is_deleted | 削除フラグ | Delete Flag | 著者を削除する場合に "D" と出力する<br />※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる |
+| 12 | authorAffiliationInfo[0...n].affiliationId[0...n].idtype | 外部所属機関ID 識別子 | Affiliation Identifier Scheme | 外部所属機関IDの識別子を出力する |
+| 13 | authorAffiliationInfo[0...n].affiliationId[0...n].uri | 外部所属機関ID URI | Affiliation Identifier URI | 外部所属機関IDの値を出力する |
+| 14 | authorAffiliationInfo[0...n].authorIdShowFlg | 外部所属機関ID 表示／非表示 | Affiliation Identifier Display | 外部所属機関IDの表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 15 | authorAffiliationInfo[0...n].affiliationNameInfo[0...n].affiliationName | 外部所属機関名 | Affiliation Name | 外部所属機関名を出力する |
+| 16 | authorAffiliationInfo[0...n].affiliationNameInfo[0...n].language | 言語 | Language | 外部所属機関名の言語を出力する |
+| 17 | authorAffiliationInfo[0...n].affiliationNameInfo[0...n].nameShowFlg | 外部所属機関名・言語 表示／非表示 | Affiliation Name Display | 外部所属機関名と言語の表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 18 | authorAffiliationInfo[0...n].affiliationPeriod[0...n].period | 外部所属機関 所属期間 | Affiliation Period | 外部所属機関所属期間を出力する。<br />所属開始のみ："20250127"<br />所属開始・終了："20250127-20250317" |
+| 19 | authorAffiliationInfo[0...n].affiliationPeriod[0...n].nameShowFlg | 外部所属機関 所属期間 表示/非表示 | Affiliation Period Display | 外部所属機関 所属期間の表示／非表示を出力する<br />表示する: "Y"<br />表示しない: "N" |
+| 20 | communityIds[0...n] | コミュニティID | Community ID | 著者に紐づけられたコミュニティのIDを出力する |
 
 　【補足】  
-　　・同じ項目名を複数持つ場合は、各項目名の後ろに\[0\],\[1\],…,\[N\]と記載された状態で出力される。  
-　　　※1つ目の項目名には \[0\] が記載されている。  
+　　・同じ項目名を複数持つ場合は、各項目名の後ろに[0],[1],…,[N]と記載された状態で出力される。  
+　　　※1つ目の項目名には [0] が記載されている。  
 　　・WEKO ID, Delete Flagは繰り返し記載することはできない。
+
+  - 著者識別子、機関識別子のtsvファイルの構成は以下の通り
+    - テーブル情報
+    - ヘッダ行
+    - ラベル(英語)
+    - ラベル(日本語)
+    - データ行（識別子1）
+    - データ行（識別子2）
+    - …
+
+      - 文字コードはUTF-8(BOM付き)，改行コードはCR+LFとする。
+      - 1行目はテーブルを表す文字列とする。先頭に"#"が付いている。
+          authors_prefix_settings、または、authors_affiliation_settingsが入る。
+      - 2行目はヘッダ行とし、システム管理するものである。先頭に"#"が付いている。
+      - 3行目と4行目はラベルを表示し、TSV入力の補助をする。先頭に"#"が付いている。
+      - 5行目以降に情報を出力する。
+
+  - 著者識別子、機関識別子の各ヘッダの情報は以下の通り
+
+| #   | ヘッダ項目 | ラベル(日本語) | ラベル(英語) | 概要 |
+|:---:|---|---|---|---|
+| 1 | scheme | スキーマ | Scheme | スキーマを入力する |
+| 2 | name | 名前 | Name | スキーマに対応する識別子名を入力する |
+| 3 | url | URL | URL | スキーマに応じるURLを入力する |
+| 4 | is_deleted | 削除フラグ | Delete Flag | 識別子を削除する場合に "D" と出力する<br />エクスポートの場合は全て空欄である。 |
+| 5 | community_ids[0...n] | コミュニティID | Community Id | 識別子に関連づくコミュニティのIDを出力する |
 
 (3) エラーメッセージ
 
@@ -231,33 +140,11 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
 
   - 本画面でチェックしているエラー内容は以下の通り。
 
-<table>
-<thead>
-<tr class="header">
-<th>エラー発生条件</th>
-<th>表示されるエラーメッセージ</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>エクスポートのキャンセルに失敗した場合<br />
-（キャンセル中にエラーが発生した、またはキャンセルが実行される前にエクスポートが完了した場合）</td>
-<td>エクスポートのキャンセルに失敗しました。<br />
-（Failed to cancel export.）</td>
-</tr>
-<tr class="even">
-<td>他のユーザが全件エクスポート処理を実行中の場合</td>
-<td>他の端末でエクスポートを実行中です。<br />
-（Export is in progress on another device.）</td>
-</tr>
-<tr class="odd">
-<td>予期せぬエラーが発生した場合<br />
-（ネットワークに問題があった場合など）</td>
-<td>サーバ内部エラー<br />
-（Internal server error）</td>
-</tr>
-</tbody>
-</table>
+| エラー発生条件                                                                 | 表示されるエラーメッセージ                                                                 |
+|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| エクスポートのキャンセルに失敗した場合<br />（キャンセル中にエラーが発生した、またはキャンセルが実行される前にエクスポートが完了した場合） | エクスポートのキャンセルに失敗しました。<br />（Failed to cancel export.）                |
+| 他のユーザが全件エクスポート処理を実行中の場合                               | 他の端末でエクスポートを実行中です。<br />（Export is in progress on another device.）    |
+| 予期せぬエラーが発生した場合<br />（ネットワークに問題があった場合など）     | サーバ内部エラー<br />（Internal server error）                                          |
 
 (4) その他
 
@@ -269,46 +156,194 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
 
   - 実行結果をサーバ上（オブジェクトストレージのファイルインスタンス）に配置することで、管理者がダウンロードできるようにする。
 
-<!-- end list -->
+  - 既に実行結果がファイルインスタンスに保存されている場合は上書きする。
 
-  - > 関連モジュール
+  - 著者情報, 著者識別子, 機関識別子は1つのファイルインスタンスに保存される。
 
-<!-- end list -->
+## 関連モジュール
 
-  - > weko-authors
+- weko-authors
 
-<!-- end list -->
+## 処理概要
 
-  - > 処理概要
+modules/weko-authors/weko_authors/config.py
 
-> modules/weko-authors/weko\_authors/config.py
+  - **出力対象テーブルの設定**
+      - **著者DB（Author DB）**
+          - エクスポート画面のプルダウンで「Author DB」を選択した場合、出力対象は `authors` テーブル。
 
-  - > 全件エクスポートのファイル名の設定値
-    
-      - > WEKO\_AUTHORS\_EXPORT\_FILE\_NAME = 'Creator\_export\_all.tsv'
+      - **著者識別子（ID Prefix）**
+          - エクスポート画面のプルダウンで「ID Prefix」を選択した場合、出力対象は `authors_prefix_settings` テーブル。
+          - 1行目には `authors_prefix_settings` の文字列を出力。
 
-> \[（Export）\]ボタンを押下すると、weko\_authors.admin.ExportView.exportが呼び出され、著者情報のファイルのURIのidをdb内のfilies\_filesテーブルのidカラムから取得する。（URIがない場合は、invenio\_files\_rest.models.FileInstance.createが呼び出され作成される。）  
-> 次に、weko\_authors.admin.ExportView.check\_statusが呼び出され、Download URLが作成される。
-> 
-> Download URLを押下することで、weko\_authors.admin.ExportView.downloadが呼び出されてファイルがダウンロードされる。
+      - **機関識別子（Affiliation ID）**
+          - エクスポート画面のプルダウンで「Affiliation ID」を選択した場合、出力対象は `authors_affiliation_settings` テーブル。
+          - 1行目には `authors_affiliation_settings` の文字列を出力。
 
-  - > 更新履歴
+  - **全件エクスポートのファイル名の設定値（デフォルト値）**
+      - 著者DB
+          - `WEKO_AUTHORS_EXPORT_FILE_NAME = 'Creator_export_all'`
+      - 著者識別子
+          - `WEKO_AUTHORS_ID_PREFIX_EXPORT_FILE_NAME = 'Id_prefix_export_all'`
+      - 機関識別子
+          - `WEKO_AUTHORS_AFFILIATION_EXPORT_FILE_NAME = 'Affiliation_id_export_all'`
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+  - **エクスポート処理の流れ**
+      1. **[エクスポート] ボタン押下**
+        - `weko_authors.admin.ExportView.export` が呼び出される。 
+      2. **非同期処理の開始**
+          - `export_all` メソッドが非同期で実行される。
+          - 引数として `Export target` の値を渡し、この値でエクスポート対象を決定する。
+      3. **エクスポート対象テーブルの特定**
+          - `Export target` の値に応じて、以下のテーブルをエクスポート対象とする。
+              - 著者（author_db） → `authors` テーブル
+              - 著者識別子（id_prefix） → `authors_prefix_settings` テーブル
+              - 機関識別子（affiliation_id） → `authors_affiliation_settings` テーブル
+      4. **RedisにファイルURIを保存**
+          - キーを使ってredisに `file_uri` を保存。
+              - 定数`WEKO_AUTHORS_EXPORT_CACHE_URL_KEY`の値を使う。
+      5. **エクスポート状態の確認**
+          - `check_status` メソッドが定期的に実行され、エクスポートの状態を確認。
+          - キーが存在する場合、 `WEKO_AUTHORS_EXPORT_CACHE_URL_KEY` を使用して `file_uri` を取得し、次の6へ進む。
+          - キーが存在しない場合、check_statusの処理を終了する。
+      6. **ダウンロードリンクの表示**
+          - 取得した `file_uri` を基に、ダウンロードリンクを画面に表示。
+          - リンクのファイル名は `_{yyyyMMddhhmm}` を付加。
+          - `Export target` に応じて、ファイル名を以下の定数から取得。
+              - 著者 → `WEKO_AUTHORS_EXPORT_FILE_NAME`
+              - 著者識別子 → `WEKO_AUTHORS_ID_PREFIX_EXPORT_FILE_NAME`
+              - 機関識別子 → `WEKO_AUTHORS_AFFILIATION_EXPORT_FILE_NAME`
+      7. **ダウンロード処理**
+        - ダウンロードリンクを押下すると、 `weko_authors.admin.ExportView.download` が呼び出され、ファイルをダウンロードする。
+
+  - **著者DBのエクスポートについて**
+      - 著者DBのエクスポートについては著者の量によっては処理が重くなるためバッチ処理を行う。
+      - 定数は以下 =右はデフォルト値
+          - `WEKO_AUTHORS_EXPORT_CACHE_TEMP_FILE_PATH_KEY` = 'weko_authors_export_temp_file_path_key'
+              - exportを行うための一時ファイルのパスをredisに保存する目的
+          - `WEKO_AUTHORS_EXPORT_CACHE_STOP_POINT_KEY` = "weko_authors_export_stop_point"
+              - exportが一時停止した際に止まった位置をredisに記録する目的
+          - `WEKO_AUTHORS_EXPORT_TMP_PREFIX` = 'authors_export_'
+              - export時の一時ファイルの命名が目的
+          - `WEKO_AUTHORS_EXPORT_BATCH_SIZE` = 1000
+              - export時のバッチサイズ
+          - `WEKO_AUTHORS_BULK_EXPORT_MAX_RETRY` = 5
+              - export時のコネクションエラー用の最大リトライ回数
+          - `WEKO_AUTHORS_BULK_EXPORT_RETRY_INTERVAL` = 5
+              - export時のコネクションエラー用のリトライインターバル
+          - `WEKO_AUTHORS_CACHE_TTL` = 60 * 60 * 24
+              - キャッシュの維持時間
+
+      1. **DB接続処理のバッチ処理化**
+          1. エクスポート開始時の処理
+              - 一時ファイルを作成する。
+              -  Redisのキー `weko_authors_export_temp_file_path_key` に以下の情報を書き込む。
+                  - **値:** 一時ファイルのパス  
+                      `/var/tmp/authors_export/authors_export_xxxxxxxx.tsv`
+          2. バッチ処理の実行（非同期処理）
+              Celeryで以下の処理をタスク化し、非同期で実行する。
+              1. 定数 `WEKO_AUTHORS_EXPORT_BATCH_SIZE` をバッチサイズとして、  
+              `authors` テーブルから `id` カラムの昇順でレコードを取得する。  
+              2. `folder_path` で指定された一時ファイル（TSV）に取得したレコードを書き込む。  
+                  - バッチごとに追記する形式とする。  
+              3. 2を繰り返し、authorsテーブルの全てのレコードを書き終えた後、以下を実行する。  
+                  - 完成したTSVファイルを**ファイルインスタンス**に保存する。  
+                  - Redisのキー `weko_author_export_cache_key` に `status: success` を設定する。  
+                  - **ファイルインスタンスの保存ルール:**  
+                      - 既存のファイルがある場合は上書きする。  
+                      - 保存時のファイル名は、定数 `WEKO_AUTHORS_EXPORT_FILE_NAME` に `yyyyMMddhhmm` を付加した形式とする。  
+                      （例: `Creator_export_all_{yyyyMMddhhmm}`）  
+              4. ファイルインスタンスへの保存後、一時ファイルを削除する。  
+
+          3. フロントエンド側の処理
+              フロントエンドは定期的に Redis のキー `weko_authors_export_status` の `status` をチェックし、エクスポートの状態を取得する。
+
+              - **3.1 エクスポートステータスの取得**
+                  1. `get_export_status()` を呼び出し、現在のエクスポートステータスを取得する。  
+                  2. ステータスが存在しない場合、 `get_export_url()` を呼び出して新しいステータスを取得する。  
+
+              - **3.2 タスクの状態確認**
+                  1. ステータスに `task_id` が含まれている場合、非同期タスクの状態を確認する。  
+                  2. タスクの状態が **成功・失敗・キャンセル** のいずれかであれば、  
+                  `delete_export_status()` を呼び出してステータスを削除し、新しいステータスを取得する。  
+                  3. タスク結果が存在せず、stop_pointがredisに存在しない場合、ステータスに `export_fail` のエラーメッセージを追加する。  
+
+              - **3.3 stop_pointの確認**
+                  1. redisのキー`weko_authors_export_stop_point`の値(stop_point)が存在する場合、ステータスにstop_pointを追加する。
+
+              - **3.4 ダウンロードリンクの設定**
+                  1. `url_for('authors/export.download', _external=True)` を使用してダウンロードURLを設定する。  
+                  2. ステータスに `file_uri` が含まれていない場合、ダウンロードURLを空とする。  
+                  3. 最終的に、ステータスから `file_uri` を削除する。  
+
+              - **3.5 フロントエンドへのレスポンス**
+                  1. **ダウンロードURLとエラー情報**などのステータスをフロントエンドに返す。  
+                      - stop_pointが在する場合、ボタンの表示を「Resume」に変える。
+                      - ダウンロードURLが空の場合、フロントエンド側では何も処理を行わない。  
+                      - ダウンロードURLが存在する場合、フロントエンドに表示する。 
+
+      2. **エクスポート処理の一時停止・再開・キャンセル機能**
+
+          - 一時停止機能
+              - 一時停止の条件  
+                  - リトライ機能が最大回数を超えた場合  
+              - 処理内容  
+                  1. 処理途中のデータを破棄する。  
+                  2. Redisの `weko_authors_export_stop_point` に以下を設定する。  
+                      - **値:** 定数`WEKO_AUTHORS_EXPORT_BATCH_SIZE` の倍数で一時ファイルに書き込まれているレコード数  
+                  3. Celeryタスクを停止・削除する。  
+              - **エクスポートの制限**  
+                  - `stop_point` が存在する間、新規エクスポートは不可とする。  
+                  - フロントのExportボタンがResumeボタンに変わる。  
+
+          -  再開機能
+              - 再開の流れ 
+                  1. **再開ボタン** 押下時に Redis から `stop_point` と `tmp_file_path` を取得する。  
+                  2. `authors` テーブルの `id` カラム順に`stop_point`の行からデータ取得を再開する。  
+                      - 処理再開時に Redis の `stop_point` を削除する。  
+                  3. `tmp_file_path` のTSVファイルに続きのデータを書き込む。  
+
+          - キャンセル機能
+              - 一時停止時のキャンセルについて
+                  - Redisの `weko_authors_export_stop_point`に値が存在する場合、以下の処理を行う。
+                      - Redisの `weko_authors_export_stop_point`を削除する。
+                      - Redisの `weko_authors_export_temp_file_path_key`から一時ファイルのパスを取得する。
+                          - 一時ファイルのパスが存在すれば一時ファイルを削除する。
+                          - キー`weko_authors_export_temp_file_path_key`の値は削除する。
+
+      3. **エラー時のリトライ機能**
+
+          - リトライ対象のエラー
+              - **以下のエラー発生時にリトライを行う**  
+                  - `SQLAlchemyError`（接続エラー・タイムアウトエラー）  
+                  - `RedisError`（接続エラー・タイムアウトエラー）  
+                  - `TimeoutError`（システムタイムアウトエラー）  
+
+          - リトライの設定
+              - 最大リトライ回数: 定数`WEKO_AUTHORS_BULK_EXPORT_MAX_RETRY`（デフォルト: 5回）  
+              - リトライ間隔: 定数`WEKO_AUTHORS_BULK_EXPORT_RETRY_INTERVAL`（デフォルト: 5秒）  
+
+          - リトライの流れ
+              1. エラーが発生した場合、リトライ処理を行う。  
+              2. 最大リトライ回数を超えた場合、一時停止状態とする。
+                  - Redisの `weko_authors_export_stop_point` に以下を設定する。  
+                      - **値:** 定数`WEKO_AUTHORS_EXPORT_BATCH_SIZE` の倍数で一時ファイルに書き込まれているレコード数を記録する。   
+                  - Celeryタスクを停止・削除する。  
+
+          - その他のエラー発生時の処理
+              - **リトライ対象外のエラー発生時**（例: データ整合性エラー、権限エラー など） 
+                  - 発生したエラーに関わらず、以下のリソースを削除する。  
+                      - 一時ファイル (weko_authors_export_temp_file_path_keyに保存されたパスのファイル) 
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_authors.admin.ExportView`（`index`/`export`/`download`/`check_status`/`cancel`/`resume`）＋ Celery `tasks.export_all`。ダウンロードは単一ルート `/admin/authors/export/download/Creator_export_all`（対象別 URL は存在せず、送出ファイル名のみ切替）。
+- 補足：エクスポート対象値は `author_db` / `id_prefix` / `affiliation_id`。ファイル名定数は `WEKO_AUTHORS_EXPORT_FILE_NAME`（`Creator_export_all`）/ `WEKO_AUTHORS_ID_PREFIX_EXPORT_FILE_NAME` / `WEKO_AUTHORS_AFFILIATION_EXPORT_FILE_NAME`。Affiliation の TSV ヘッダ（json_id パス）は実マッピング `WEKO_AUTHORS_FILE_MAPPING_FOR_AFFILIATION`（`affiliationInfo` / `identifierInfo` / `affiliationIdType` / `affiliationNameLang` / `affiliationPeriodInfo.periodStart`・`periodEnd` 等）に従う。
+
+## 更新履歴
+
+|日付|GitHubコミットID|更新内容|
+|:---:|:---:|:---:|
+|2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+|2025/03/27|-|v1.1.0対応|
+|2025/11/27|-|WEKO ID対応|

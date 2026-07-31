@@ -1,143 +1,112 @@
+# コミュニティ
 
-### コミュニティ
-
-  - > 目的・用途
+## 目的・用途
 
 本機能は、コミュニティの一覧表示と個別のコミュニティの表示を行う機能である
 
-  - > 利用方法
+## 利用方法
 
 管理画面でコミュニティを表示する設定にした状態で、トップページの「コミュニティ(Communities)」タブを選択する
 
 ※管理画面での設定は、[ADMIN-14-11: 検索設定](#検索設定)を参照
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | サブリポジトリ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-  - > 機能内容
+## 機能内容
 
-<!-- end list -->
+- トップページから「コミュニティ(Communities)」タブを押すと、【コミュニティ(Communities)画面】に移動する
 
-  - トップページから「コミュニティ(Communities)」タブを押すと、【コミュニティ(Communities)画面】に移動する
-    
-      - 表示項目は以下の通りである
-        
-          - コミュニティ検索のエリア  
-            検索条件を入力して、キーボードでの「Enter」を押すと、コミュニティを検索し、検索結果が表示される
-            
-              - 初期表示では全件取得する
-        
-          - コミュニティ一覧のエリア
-            
-              - 【Administration \> コミュニティ管理（Communinites） \> コミュニティ（Community）画面】に作成されたコミュニティ一覧を表示する
-            
-              - デフォルトとして、コミュニティをランキングの順次で表示する
-            
-              - 各コミュニティに以下の表示項目を表示する
-                
-                  - コミュニティのタイトル（そのコミュニティへのリンク）
-                
-                  - コミュニティの説明
-            
-              - 「Sort By」プルダウンで、コミュニティの表示順次を選択できる  
-                選択肢は「title」、「ranking」とする
-            
-              - ページングエリア
+  - 表示項目は以下の通りである
 
-<!-- end list -->
+    - コミュニティ検索のエリア  
+      検索条件を入力して、キーボードでの「Enter」を押すと、コミュニティを検索し、検索結果が表示される
 
-  - コミュニティを表示する  
-    コミュニティ名のリンクを押すと、該当コミュニティのページに移動する
-    
-      - 【Administration \> ウェブデザイン管理（Web Design） \> ページレイアウト（Page Layout）画面】に選択しているコミュニティのページレイアウトが登録されている場合、その設定通りにコミュニティが表示される
-    
-      - 選択しているコミュニティのページレイアウトが登録されていない場合、コミュニティは「Main contents」ウィジェットが配置されたページが表示される
-    
-      - ページレイアウトについては[ADMIN-4-2: ページレイアウト](\\l)を参照
+      - 初期表示では全件取得する
 
-<!-- end list -->
+    - コミュニティ一覧のエリア
 
-  - > 関連モジュール
+      - 【Administration > コミュニティ管理（Communinites） > コミュニティ（Community）画面】に作成されたコミュニティ一覧を表示する
 
-<!-- end list -->
+      - デフォルトとして、コミュニティをランキングの順次で表示する
 
-  - > invenio\_communities：画面表示を管理するモジュール
+      - 各コミュニティに以下の表示項目を表示する
 
-  - > weko\_theme：ページレイアウトを管理するモジュール
+        - コミュニティのサムネイル画像(設定値のサイズにリサイズして表示。デフォルトは256x256px)
 
-<!-- end list -->
+        - コミュニティのタイトル（そのコミュニティへのリンク）
 
-  - > 処理概要
+        - コミュニティの説明
 
-> 「コミュニティ(Communities)」タブを押すと、invenio\_communities.views.ui.community\_list関数が呼び出される
-> 
-> 画面表示には以下のテンプレートを使用する
+        - コミュニティのカタログ情報-主題
 
-  - > パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio\_communities/templates/invenio\_communities/communities\_list.html
+        - コミュニティのカタログ情報-寄与者
 
-> 「コミュニティ(Communities)」タブを押すと、invenio\_communities.views.ui.community\_list関数が呼び出される
+      - 「Sort By」プルダウンで、コミュニティの表示順次を選択できる  
+        選択肢は「title」、「ranking」とする
 
-  - > 検索条件とソート条件に基づいてコミュニティを取得して表示する
+      - ページングエリア
 
-> コミュニティのリンクを押すと、invenio\_communities.views.ui.view関数が呼び出される
+- コミュニティを表示する  
+  コミュニティ名のリンクを押すと、該当コミュニティのページに移動する
 
-  - > コミュニティのリンクは「/コミュニティID/?view=weko」となっており、コミュニティIDがview関数の引数となる
+  - 【Administration > ウェブデザイン管理（Web Design） > ページレイアウト（Page Layout）画面】に選択しているコミュニティのページレイアウトが登録されている場合、その設定通りにコミュニティが表示される
 
-  - > 「?view=weko」の情報は使用しない（ソースの該当箇所がコメントアウトされている）
+  - 選択しているコミュニティのページレイアウトが登録されていない場合、コミュニティは「Main contents」ウィジェットが配置されたページが表示される
 
-  - > 画面表示には以下のテンプレートを使用する
-    
-      - > パス：<https://github.com/RCOSDP/weko/blob/13c305a3048309dbda87a614ffedac18423820aa/modules/weko-theme/weko_theme/config.py#L76>
+  - ページレイアウトについては[ADMIN-4-2: ページレイアウト](\\l)を参照
 
-  - > テンプレート中でweko\_themeのwidget.jsを読み込んでおり、そのgetWidgetDesignSetting()関数でwidget\_design\_pageテーブルからページレイアウト情報を取得している
+  - コミュニティページにおいては、ヘッダー部右上に表示されるログインメニューの表示/非表示が制御される。  
+    Administration > コミュニティ管理（Communinites） > コミュニティ（Community）画面】にて  
+    コミュニティを選択することで、「Login Menu」項目のラジオボタンをDisabled(非表示)/Enabled(表示)から制御できる。
 
-<!-- end list -->
+  - コミュニティページからアイテム検索を行う場合、  
+    検索対象はコミュニティ配下のアイテム(コミュニティに紐づくインデックス配下のアイテム)のみとなる。
 
-  - > 更新履歴
+## 関連モジュール
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+- invenio_communities：画面表示を管理するモジュール
+- weko_theme：ページレイアウトを管理するモジュール
+
+## 処理概要
+
+「コミュニティ(Communities)」タブを押すと、invenio_communities.views.ui.community_list関数が呼び出される
+
+画面表示には以下のテンプレートを使用する
+
+- パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio_communities/templates/invenio_communities/communities_list.html
+
+「コミュニティ(Communities)」タブを押すと、invenio_communities.views.ui.community_list関数が呼び出される
+
+- 検索条件とソート条件に基づいてコミュニティを取得して表示する。  
+  検索条件としてコミュニティのid、タイトル、説明、カタログ情報によるフィルタが行える。
+
+コミュニティのリンクを押すと、invenio_communities.views.ui.view関数が呼び出される
+
+- コミュニティのリンクは「/c/コミュニティID/?view=weko」となっており、コミュニティIDがview関数の引数となる
+
+- 「?view=weko」の情報は使用しない（ソースの該当箇所がコメントアウトされている）
+
+- 画面表示には以下のテンプレートを使用する
+
+  - パス：<https://github.com/RCOSDP/weko/blob/13c305a3048309dbda87a614ffedac18423820aa/modules/weko-theme/weko_theme/config.py#L76>
+
+- テンプレート中でweko_themeのwidget.jsを読み込んでおり、そのgetWidgetDesignSetting()関数でwidget_design_pageテーブルからページレイアウト情報を取得している
+
+- トップページおよびページレイアウトにて追加されたページにおいては、  
+  URLに "c=[コミュニティid]"の形式でオプションが付与される。  
+  外部ページリンクについてはパラメータを付与しない。
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_communities.views.ui.community_list`（route `/c/list/`）、詳細 `view`（`/c/<community_id>/`。`?view=weko` は未使用で `THEME_FRONTPAGE_TEMPLATE` を表示）。並び順 `COMMUNITIES_SORTING_OPTIONS`（title/ranking、既定 ranking）、`Community.filter_communities`。model `Community`（table `communities_community`）。サムネイル上限 `COMMUNITIES_LIST_THUMBNAIL_WIDTH/HEIGHT`（256）。
+- カタログの2項目めは寄与者（catalog_contributors）。
+
+## 更新履歴
+
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |

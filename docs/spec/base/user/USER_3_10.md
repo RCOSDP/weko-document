@@ -1,0 +1,53 @@
+# 所属コミュニティ情報表示
+
+## 目的・用途
+
+本機能は、アイテムが所属するコミュニティ情報を表示する機能である。
+
+## 利用方法
+
+コミュニティ情報表示は、アイテム詳細画面の右端のcommunityエリアに表示される。
+
+## 利用可能なロール
+
+|ロール|システム管理者|リポジトリ管理者|サブリポジトリ管理者|登録ユーザー|一般ユーザー|ゲスト(未ログイン)|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|利用可否|○|○|○|○|○|○|
+
+## 機能内容
+
+  - アイテム詳細画面の右端のcommunityエリアに情報を表示する。
+  - アイテムの属するインデックスに紐づいているコミュニティが存在する場合、  
+    communityエリア内に該当のコミュニティ情報を表示する。 
+    属するコミュニティが存在しない場合、communityエリア内は空の状態となる
+
+  - 表示情報  
+    表示情報は以下となる。  
+    複数のコミュニティに属する場合、件数分の情報を表示する。
+
+      - コミュニティロゴ  
+        ロゴが設定されている場合は、設定値で設定したサイズで表示する。デフォルトサイズは、50x50px  
+        元の画像サイズがそれより大きい場合、縮小して表示する。  
+
+      - コミュニティタイトル  
+        コミュニティTOPページへのリンク形式で表示する。  
+        コミュニティタイトルの設定がない場合、コミュニティIDを同様のリンク形式で表示する。
+
+## 関連モジュール
+
+  - 対応しているモジュール：「weko_records_ui」「weko_workflow」「invenio_communities」「weko_index_tree」
+
+## 処理概要
+
+`weko_records_ui.views.default_view_method` が `record.navi` の各インデックスから `weko_workflow.api.GetCommunity.get_community_by_root_node_id`（内部で `invenio_communities.models.Community.get_by_root_node_id` を呼び出す）を用いて、紐づくコミュニティ情報を取得する。  
+communities_communityテーブルのroot_node_idカラムがインデックスのIDに一致するレコードを特定し、同テーブルから表示情報を取得する。
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- `default_view_method` が `record.navi` の各インデックスから `weko_workflow.api.GetCommunity.get_community_by_root_node_id`（→ `invenio_communities.models.Community.get_by_root_node_id`、table `communities_community`）でコミュニティを解決する。
+
+## 更新履歴
+
+|日付|GitHubコミットID|更新内容|
+|:---:|:---:|:---:|
+|2024/12/18|**********|初版作成|

@@ -2,7 +2,12 @@
 
 （コミュニティ管理者、リポジトリ管理者、およびシステム管理者）
 
-v1.0.10
+v2.0.0
+
+|バージョン|改定内容|
+| -------- | ------ |
+| v2.0.0   | |
+| v1.0.8   | 「詳細検索をカスタマイズする」にjson pathについて追記 |
 
 
 ## はじめに
@@ -61,25 +66,41 @@ OAI-PMHの管理に関する操作手順を説明しています。
 
 Resource Syncの管理に関する操作手順を説明しています。
 
-第12章　レコード管理
+第12章　SWORD API設定
+
+SWORD APIの管理に関する操作手順を説明しています。
+
+第13章　レコード管理
 
 レコードの管理に関する操作手順を説明しています。
 
-第13章　ファイル管理
+第14章　ファイル管理
 
 ファイルの管理に関する操作手順を説明しています。
 
-第14章　ユーザ管理
+第15章　ユーザ管理
 
 ユーザの管理に関する操作手順を説明しています。
 
-第15章　システム設定
+第16章　システム設定
 
 システム設定に関する操作手順を説明しています。
 
-第16章　ユーザカウントの管理
+第17章　ログ管理
+
+ログの管理に関する操作手順を説明しています。
+
+第18章　メンテナンス
+
+メンテナンスに関する操作手順を説明しています。
+
+第19章　ユーザカウントの管理
 
 ユーザカウントの管理に関する操作手順を説明しています。
+
+第17章　アドバンスドメニュー
+
+ユーザープロフィール設定編集機能に関する操作手順を説明しています。
 
   - このマニュアルで使用する書式
 
@@ -158,6 +179,8 @@ Resource Syncの管理に関する操作手順を説明しています。
 [2.4.1 アイテムタイプをマッピングする 55](#アイテムタイプをマッピングする)
 
 [2.4.2 システムが付与したアイテムタイプをマッピングする 58](#システムが付与したアイテムタイプをマッピングする)
+
+[2.5 JSON-LDのマッピングを設定する](#json-ldのマッピングを設定する)
 
 [3. アイテム管理 61](#アイテム管理)
 
@@ -257,6 +280,8 @@ Resource Syncの管理に関する操作手順を説明しています。
 
 [8.1.1 フローを追加する 195](#フローを追加する)
 
+[8.1.1.1 削除フローを追加する](#削除フローを追加する)
+
 [8.1.2 フローのアクションを編集する 197](#フローのアクションを編集する)
 
 [8.1.3 フローを削除する 203](#フローを削除する)
@@ -355,255 +380,283 @@ Resource Syncの管理に関する操作手順を説明しています。
 
 [11.3.4 Resyncを削除する 258](#resyncを削除する)
 
-[12. レコード管理 259](#レコード管理)
+[12. SWORD API 500](#swordapi設定)
 
-[12.1 Persistent Identifierを参照する 260](#persistent-identifierを参照する)
+[12.1 TSV/CSV用の設定を行う](#tsvcsv用の設定を行う)
 
-[12.2 Record Metadataを管理する 261](#record-metadataを管理する)
+[12.2 XML用の設定を行う](#xml用の設定を行う)
 
-[12.2.1 Record Metadataを参照する 261](#record-metadataを参照する)
+[12.3 JSON-LD用設定を作成する 501](#json-ld用の設定を作成する)
 
-[12.2.2 Record Metadataを削除する 261](#record-metadataを削除する)
+[12.4 JSON-LD用設定を編集する 502](#json-ld用設定を編集する)
 
-[13. ファイル管理 263](#ファイル管理)
+[12.5 JSON-LD用設定を削除する 503](#json-ld用設定を削除する)
 
-[13.1 Bucketを管理する 264](#bucketを管理する)
+[13. レコード管理 259](#レコード管理)
 
-[13.1.1 Bucketを参照する 264](#bucketを参照する)
+[13.1 Persistent Identifierを参照する 260](#persistent-identifierを参照する)
 
-[13.1.2 Bucketを作成する 264](#bucketを作成する)
+[13.2 Record Metadataを管理する 261](#record-metadataを管理する)
 
-[13.1.3 Bucketを編集する 266](#bucketを編集する)
+[13.2.1 Record Metadataを参照する 261](#record-metadataを参照する)
 
-[13.2 File Instanceを管理する 267](#file-instanceを管理する)
+[13.2.2 Record Metadataを削除する 261](#record-metadataを削除する)
 
-[13.2.1 File Instanceを参照する 267](#file-instanceを参照する)
+[14. ファイル管理 263](#ファイル管理)
 
-[13.2.2 ファイルの固定性をチェックする 268](#ファイルの固定性をチェックする)
+[14.1 Bucketを管理する 264](#bucketを管理する)
 
-[13.3 Locationを管理する 269](#locationを管理する)
+[14.1.1 Bucketを参照する 264](#bucketを参照する)
 
-[13.3.1 Locationを参照する 269](#locationを参照する)
+[14.1.2 Bucketを作成する 264](#bucketを作成する)
 
-[13.3.2 Locationを作成する 270](#locationを作成する)
+[14.1.3 Bucketを編集する 266](#bucketを編集する)
 
-[13.3.3 Locationを編集する 271](#locationを編集する)
+[14.2 File Instanceを管理する 267](#file-instanceを管理する)
 
-[13.3.4 Locationを削除する 272](#locationを削除する)
+[14.2.1 File Instanceを参照する 267](#file-instanceを参照する)
 
-[13.4 Multipart Objectを管理する 273](#multipart-objectを管理する)
+[14.2.2 ファイルの固定性をチェックする 268](#ファイルの固定性をチェックする)
 
-[13.4.1 Multipart Objectを参照する 273](#multipart-objectを参照する)
+[14.3 Locationを管理する 269](#locationを管理する)
 
-[13.5 Object Versionを管理する 274](#object-versionを管理する)
+[14.3.1 Locationを参照する 269](#locationを参照する)
 
-[13.5.1 Object Versionを参照する 274](#object-versionを参照する)
+[14.3.2 Locationを作成する 270](#locationを作成する)
 
-[14. ユーザ管理 275](#ユーザ管理)
+[14.3.3 Locationを編集する 271](#locationを編集する)
 
-[14.1 Access: Roles 276](#access-roles)
+[14.3.4 Locationを削除する 272](#locationを削除する)
 
-[14.1.1 ロールのアクションを参照する 276](#ロールのアクションを参照する)
+[14.4 Multipart Objectを管理する 273](#multipart-objectを管理する)
 
-[14.1.2 ロールにアクションを追加する 277](#ロールにアクションを追加する)
+[14.4.1 Multipart Objectを参照する 273](#multipart-objectを参照する)
 
-[14.1.3 ロールのアクションを変更する 278](#ロールのアクションを変更する)
+[14.5 Object Versionを管理する 274](#object-versionを管理する)
 
-[14.1.4 ロールのアクションを削除する 279](#ロールのアクションを削除する)
+[14.5.1 Object Versionを参照する 274](#object-versionを参照する)
 
-[14.2 Access: System Roles 281](#access-system-roles)
+[14.5.2 機関ストレージ機能の使い方](#機関ストレージ機能の使い方)
 
-[14.2.1 システムロールのアクションを参照する 281](#システムロールのアクションを参照する)
+[15. ユーザ管理 275](#ユーザ管理)
 
-[14.2.2 システムロールにアクションを追加する 282](#システムロールにアクションを追加する)
+[15.1 Access: Roles 276](#access-roles)
 
-[14.2.3 システムロールのアクションを変更する 283](#システムロールのアクションを変更する)
+[15.1.1 ロールのアクションを参照する 276](#ロールのアクションを参照する)
 
-[14.2.4 システムロールのアクションを削除する 284](#システムロールのアクションを削除する)
+[15.1.2 ロールにアクションを追加する 277](#ロールにアクションを追加する)
 
-[14.3 Access: Users 286](#access-users)
+[15.1.3 ロールのアクションを変更する 278](#ロールのアクションを変更する)
 
-[14.3.1 ユーザのアクションを参照する 286](#ユーザのアクションを参照する)
+[15.1.4 ロールのアクションを削除する 279](#ロールのアクションを削除する)
 
-[14.3.2 ユーザにアクションを追加する 287](#ユーザにアクションを追加する)
+[15.2 Access: System Roles 281](#access-system-roles)
 
-[14.3.3 ユーザのアクションを変更する 288](#ユーザのアクションを変更する)
+[15.2.1 システムロールのアクションを参照する 281](#システムロールのアクションを参照する)
 
-[14.3.4 ユーザのアクションを削除する 289](#ユーザのアクションを削除する)
+[15.2.2 システムロールにアクションを追加する 282](#システムロールにアクションを追加する)
 
-[14.4 Linked account identitiesを管理する 291](#linked-account-identitiesを管理する)
+[15.2.3 システムロールのアクションを変更する 283](#システムロールのアクションを変更する)
 
-[14.4.1 identityを参照する 291](#identityを参照する)
+[15.2.4 システムロールのアクションを削除する 284](#システムロールのアクションを削除する)
 
-[14.4.2 identityを削除する 292](#identityを削除する)
+[15.3 Access: Users 286](#access-users)
 
-[14.5 Linked account tokensを管理する 293](#linked-account-tokensを管理する)
+[15.3.1 ユーザのアクションを参照する 286](#ユーザのアクションを参照する)
 
-[14.5.1 Linked accountのトークンを参照する 293](#linked-accountのトークンを参照する)
+[15.3.2 ユーザにアクションを追加する 287](#ユーザにアクションを追加する)
 
-[14.5.2 Linked accountのトークンを作成する 294](#linked-accountのトークンを作成する)
+[15.3.3 ユーザのアクションを変更する 288](#ユーザのアクションを変更する)
 
-[14.5.3 Linked accountのトークンを編集する 295](#linked-accountのトークンを編集する)
+[15.3.4 ユーザのアクションを削除する 289](#ユーザのアクションを削除する)
 
-[14.5.4 Linked accountのトークンを削除する 295](#linked-accountのトークンを削除する)
+[15.4 Linked account identitiesを管理する 291](#linked-account-identitiesを管理する)
 
-[14.6 Linked accountsを管理する 296](#linked-accountsを管理する)
+[15.4.1 identityを参照する 291](#identityを参照する)
 
-[14.6.1 Linked accountを参照する 296](#linked-accountを参照する)
+[15.4.2 identityを削除する 292](#identityを削除する)
 
-[14.6.2 Linked accountを作成する 297](#linked-accountを作成する)
+[15.5 Linked account tokensを管理する 293](#linked-account-tokensを管理する)
 
-[14.6.3 Linked accountを編集する 298](#linked-accountを編集する)
+[15.5.1 Linked accountのトークンを参照する 293](#linked-accountのトークンを参照する)
 
-[14.6.4 Linked accountを削除する 299](#linked-accountを削除する)
+[15.5.2 Linked accountのトークンを作成する 294](#linked-accountのトークンを作成する)
 
-[14.7 OAuth Application Tokensを管理する 301](#oauth-application-tokensを管理する)
+[15.5.3 Linked accountのトークンを編集する 295](#linked-accountのトークンを編集する)
 
-[14.7.1 OAuth Application Tokensを参照する 301](#oauth-application-tokensを参照する)
+[15.5.4 Linked accountのトークンを削除する 295](#linked-accountのトークンを削除する)
 
-[14.7.2 OAuth Application Tokensを削除する 302](#oauth-application-tokensを削除する)
+[15.6 Linked accountsを管理する 296](#linked-accountsを管理する)
 
-[14.8 OAuth Applicationを管理する 303](#oauth-applicationを管理する)
+[15.6.1 Linked accountを参照する 296](#linked-accountを参照する)
 
-[14.8.1 OAuth Applicationを参照する 303](#oauth-applicationを参照する)
+[15.6.2 Linked accountを作成する 297](#linked-accountを作成する)
 
-[14.8.2 OAuth Applicationを削除する 304](#oauth-applicationを削除する)
+[15.6.3 Linked accountを編集する 298](#linked-accountを編集する)
 
-[14.9 ロールを管理する 305](#ロールを管理する)
+[15.6.4 Linked accountを削除する 299](#linked-accountを削除する)
 
-[14.9.1 ロールを参照する 305](#ロールを参照する)
+[15.7 OAuth Application Tokensを管理する 301](#oauth-application-tokensを管理する)
 
-[14.9.2 ロールを作成する 306](#ロールを作成する)
+[15.7.1 OAuth Application Tokensを参照する 301](#oauth-application-tokensを参照する)
 
-[14.9.3 ロールを編集する 307](#ロールを編集する)
+[15.7.2 OAuth Application Tokensを削除する 302](#oauth-application-tokensを削除する)
 
-[14.9.4 ロールを削除する 308](#ロールを削除する)
+[15.8 OAuth Applicationを管理する 303](#oauth-applicationを管理する)
 
-[14.10 Session Activityを管理する 310](#session-activityを管理する)
+[15.8.1 OAuth Applicationを参照する 303](#oauth-applicationを参照する)
 
-[14.10.1 Session Activityを参照する 310](#session-activityを参照する)
+[15.8.2 OAuth Applicationを削除する 304](#oauth-applicationを削除する)
 
-[14.10.2 Session Activityを削除する 310](#session-activityを削除する)
+[15.9 ロールを管理する 305](#ロールを管理する)
 
-[14.11 ユーザを管理する 311](#ユーザを管理する)
+[15.9.1 ロールを参照する 305](#ロールを参照する)
 
-[14.11.1 ユーザを参照する 311](#ユーザを参照する)
+[15.9.2 ロールを作成する 306](#ロールを作成する)
 
-[14.11.2 ユーザを追加する 312](#ユーザを追加する)
+[15.9.3 ロールを編集する 307](#ロールを編集する)
 
-[14.11.3 ユーザを編集する 313](#ユーザを編集する)
+[15.9.4 ロールを削除する 308](#ロールを削除する)
 
-[14.11.4 ユーザを無効または有効にする 314](#ユーザを無効または有効にする)
+[15.10 Session Activityを管理する 310](#session-activityを管理する)
 
-[14.12 User Profileを管理する 315](#user-profileを管理する)
+[15.10.1 Session Activityを参照する 310](#session-activityを参照する)
 
-[14.12.1 User Profileを参照する 315](#user-profileを参照する)
+[15.10.2 Session Activityを削除する 310](#session-activityを削除する)
 
-[14.12.2 User Profileを削除する 316](#user-profileを削除する)
+[15.11 ユーザを管理する 311](#ユーザを管理する)
 
-[15. 設定 317](#設定)
+[15.11.1 ユーザを参照する 311](#ユーザを参照する)
 
-[15.1 著者表示の設定を変更する 318](#著者表示の設定を変更する)
+[15.11.2 ユーザを追加する 312](#ユーザを追加する)
 
-[15.2 インデックスリンクを表示する 319](#インデックスリンクを表示する)
+[15.11.3 ユーザを編集する 313](#ユーザを編集する)
 
-[15.3 言語を設定する 320](#言語を設定する)
+[15.11.4 ユーザを無効または有効にする 314](#ユーザを無効または有効にする)
 
-[15.4 PDFのカバーページを表示する 321](#pdfのカバーページを表示する)
+[15.12 User Profileを管理する 315](#user-profileを管理する)
 
-[15.5 ランキング表示を設定する 325](#ランキング表示を設定する)
+[15.12.1 User Profileを参照する 315](#user-profileを参照する)
 
-[15.6 統計設定を変更する 326](#統計設定を変更する)
+[15.12.2 User Profileを削除する 316](#user-profileを削除する)
 
-[15.7 Webページのスタイルを変更する 327](#webページのスタイルを変更する)
+[16. 設定 317](#設定)
 
-[15.8 Identifierを設定する 330](#identifierを設定する)
+[16.1 著者表示の設定を変更する 318](#著者表示の設定を変更する)
 
-[15.8.1 Identifierを参照する 330](#identifierを参照する)
+[16.2 インデックスリンクを表示する 319](#インデックスリンクを表示する)
 
-[15.8.2 Identifierを作成する 331](#identifierを作成する)
+[16.3 言語を設定する 320](#言語を設定する)
 
-[15.8.3 Identifierを編集する 333](#identifierを編集する)
+[16.4 PDFのカバーページを表示する 321](#pdfのカバーページを表示する)
 
-[15.9 アイテムをエクスポートするときの設定を変更する 335](#アイテムをエクスポートするときの設定を変更する)
+[16.5 ランキング表示を設定する 325](#ランキング表示を設定する)
 
-[15.10 ログ解析時の設定をする 336](#ログ解析時の設定をする)
+[16.6 統計設定を変更する 326](#統計設定を変更する)
 
-[15.11 検索条件、結果表示件数及び初期表示を設定する 337](#検索条件結果表示件数及び初期表示を設定する)
+[16.7 Webページのスタイルを変更する 327](#webページのスタイルを変更する)
 
-[15.11.1 著者検索を設定する 337](#著者検索を設定する)
+[16.8 Identifierを設定する 330](#identifierを設定する)
 
-[15.11.2 検索結果の表示内容を設定する 338](#検索結果の表示内容を設定する)
+[16.8.1 Identifierを参照する 330](#identifierを参照する)
 
-[15.11.3 詳細検索時の表示項目を設定する 339](#詳細検索時の表示項目を設定する)
+[16.8.2 Identifierを作成する 331](#identifierを作成する)
 
-[15.11.4 詳細検索のラベルを変更する 341](#詳細検索のラベルを変更する)
+[16.8.3 Identifierを編集する 333](#identifierを編集する)
 
-[15.11.5 詳細検索をカスタマイズする 342](#詳細検索をカスタマイズする)
+[16.9 アイテムをエクスポートするときの設定を変更する 335](#アイテムをエクスポートするときの設定を変更する)
 
-[15.11.6 インデックスツリー/ファセットの表示を設定する 343](#インデックスツリーファセットの表示を設定する)
+[16.10 ログ解析時の設定をする 336](#ログ解析時の設定をする)
 
-[15.11.7 汎用詳細検索項目を設定する 345](#汎用詳細検索項目を設定する)
+[16.11 検索条件、結果表示件数及び初期表示を設定する 337](#検索条件結果表示件数及び初期表示を設定する)
 
-[15.11.8 初期表示を設定する 346](#初期表示を設定する)
+[16.11.1 著者検索を設定する 337](#著者検索を設定する)
 
-[15.12 ファセット検索機能を管理する 349](#ファセット検索機能を管理する)
+[16.11.2 検索結果の表示内容を設定する 338](#検索結果の表示内容を設定する)
 
-[15.12.1 ファセット検索機能を設定する 349](#ファセット検索機能を設定する)
+[16.11.3 詳細検索時の表示項目を設定する 339](#詳細検索時の表示項目を設定する)
 
-[15.13 サイトの情報を設定する 353](#サイトの情報を設定する)
+[16.11.4 詳細検索のラベルを変更する 341](#詳細検索のラベルを変更する)
 
-[15.14 サイトライセンスを設定する 355](#サイトライセンスを設定する)
+[16.11.5 詳細検索をカスタマイズする 342](#詳細検索をカスタマイズする)
 
-[15.15 サイトマップを作成する 357](#サイトマップを作成する)
+[16.11.6 インデックスツリー/ファセットの表示を設定する 343](#インデックスツリーファセットの表示を設定する)
 
-[15.16 メール送信を設定する 358](#メール送信を設定する)
+[16.11.7 汎用詳細検索項目を設定する 345](#汎用詳細検索項目を設定する)
 
-[15.17 WebAPIのアカウントを設定する 360](#webapiのアカウントを設定する)
+[16.11.8 初期表示を設定する 346](#初期表示を設定する)
 
-[15.18 File Previewを設定する 361](#file-previewを設定する)
+[16.12 ファセット検索機能を管理する 349](#ファセット検索機能を管理する)
 
-[15.19 Shibbolethユーザを許可する 362](#shibbolethユーザを許可する)
+[16.12.1 ファセット検索機能を設定する 349](#ファセット検索機能を設定する)
 
-[15.20 制限公開機能を管理する 363](#制限公開機能を管理する)
+[16.13 サイトの情報を設定する 353](#サイトの情報を設定する)
 
-[15.20.1 制限公開機能を設定する 363](#制限公開機能を設定する)
+[16.14 サイトライセンスを設定する 355](#サイトライセンスを設定する)
 
-[15.20.2 制限公開機能の承認メール内容 367](#_Toc137111756)
+[16.15 サイトマップを作成する 357](#サイトマップを作成する)
 
-[15.20.3 制限公開機能の通知メール内容 367](#_Toc137111757)
+[16.16 メール送信を設定する 358](#メール送信を設定する)
 
-[15.21 機関名を設定する 368](#_Toc137111758)
+[16.17 WebAPIのアカウントを設定する 360](#webapiのアカウントを設定する)
 
-[16. メンテナンス 369](#メンテナンス)
+[16.18 File Previewを設定する 361](#file-previewを設定する)
 
-[16.1 ElasticSearchインデックスを設定する 370](#elasticsearchインデックスを設定する)
+[16.19 Shibbolethユーザを許可する 362](#shibbolethユーザを許可する)
 
-[17. ユーザカウントの管理 371](#ユーザカウントの管理)
+[16.20 制限公開機能を管理する 363](#制限公開機能を管理する)
 
-[17.1 プロフィールを更新する 372](#プロフィールを更新する)
+[16.20.1 制限公開機能を設定する 363](#制限公開機能を設定する)
+<!--
+[16.20.2 制限公開機能の承認メール内容 367](#_Toc137111756)
 
-[17.2 パスワードを変更する 373](#パスワードを変更する)
+[16.20.3 制限公開機能の通知メール内容 367](#_Toc137111757)
+-->
+[16.21 機関名を設定する 368](#_Toc137111758)
 
-[17.3 アカウントにログインしたデバイスを確認する 374](#アカウントにログインしたデバイスを確認する)
+[16.22 メールテンプレートを編集する](#メールテンプレートを編集する)
 
-[17.4 アプリケーションを管理する 375](#アプリケーションを管理する)
+[16.22.1 デフォルトメールテンプレート](#デフォルトメールテンプレート)
 
-[17.5 グループを管理する 376](#グループを管理する)
+[17. ログ管理](#ログ管理)
 
-[17.5.1 グループへの参加要求および招待を許可する 376](#グループへの参加要求および招待を許可する)
+[17.1 基本監査ログをエクスポートする 370](#基本監査ログをエクスポートする)
 
-[17.5.2 グループを作成する 377](#グループを作成する)
+[18. メンテナンス 369](#メンテナンス)
 
-[17.5.3 グループにメンバーを招待する 378](#グループにメンバーを招待する)
+[18.1 ElasticSearchインデックスを設定する 370](#elasticsearchインデックスを設定する)
 
-[17.5.4 グループを編集する 380](#グループを編集する)
+[19. ユーザカウントの管理 371](#ユーザカウントの管理)
 
-[17.5.5 グループを削除する 381](#グループを削除する)
+[19.1 プロフィールを更新する 372](#プロフィールを更新する)
 
-[17.6 セッションの有効時間を変更する 383](#セッションの有効時間を変更する)
+[19.2 パスワードを変更する 373](#パスワードを変更する)
 
-[17.7 管理画面を表示する 384](#管理画面を表示する-1)
+[19.3 アカウントにログインしたデバイスを確認する 374](#アカウントにログインしたデバイスを確認する)
+
+[19.4 アプリケーションを管理する 375](#アプリケーションを管理する)
+
+[19.5 グループを管理する 376](#グループを管理する)
+
+[19.5.1 グループへの参加要求および招待を許可する 376](#グループへの参加要求および招待を許可する)
+
+[19.5.2 グループを作成する 377](#グループを作成する)
+
+[19.5.3 グループにメンバーを招待する 378](#グループにメンバーを招待する)
+
+[19.5.4 グループを編集する 380](#グループを編集する)
+
+[19.5.5 グループを削除する 381](#グループを削除する)
+
+[19.6 セッションの有効時間を変更する 383](#セッションの有効時間を変更する)
+
+[19.7 管理画面を表示する 384](#管理画面を表示する-1)
+
+[20. アドバンスドメニュー 385](#アドバンスドメニュー)
+
+[20.1 ユーザープロフィール設定編集画面 386](#ユーザープロフィール設定編集画面)
+
+[20.2 ユーザープロフィール設定を編集する 387](#ユーザープロフィール設定を編集する)
 
 ## システムの概要
 
@@ -672,20 +725,13 @@ Resource Syncの管理に関する操作手順を説明しています。
 <p>各アイテムにはWEKO3リポジトリ内で一意となるアイテムIDが割り当てられます。アイテムは1つのアイテムタイプに紐付いており、複数のアイテムタイプと紐付けることはできません。</p>
 <p>異なるメタデータで構成させるアイテムを登録したい場合、新たなアイテムタイプを作成することで対応できます。</p></td>
 </tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr class="header">
-<th>アイテムタイプ</th>
-<th><p>アイテムに登録するメタデータのデータ型を定義します。アイテムタイプは、JPCOARなどのメタデータスキーマで規定される要素から構成されます。</p>
+<tr>
+<td>アイテムタイプ</td>
+<td><p>アイテムに登録するメタデータのデータ型を定義します。アイテムタイプは、JPCOARなどのメタデータスキーマで規定される要素から構成されます。</p>
 <p>リポジトリ管理者はアイテムに必要なメタデータを検討し、アイテムタイプを独自に作成します。</p>
 <p>例）</p>
-<p>紀要論文と研究データをリポジトリに保管する場合、紀要論文のメタデータ項目と研究データのメタデータ項目は異なります。このような場合に、紀要論文向けのアイテムタイプと、研究データ向けのアイテムタイプをそれぞれ作成できます。</p></th>
+<p>紀要論文と研究データをリポジトリに保管する場合、紀要論文のメタデータ項目と研究データのメタデータ項目は異なります。このような場合に、紀要論文向けのアイテムタイプと、研究データ向けのアイテムタイプをそれぞれ作成できます。</p></td>
 </tr>
-</thead>
-<tbody>
 <tr class="odd">
 <td>インデックス</td>
 <td>WEKO3リポジトリに登録したアイテムをまとめる単位（カテゴリ）です。WEKO3リポジトリに登録したアイテムは必ず1つ以上のインデックスに所属します。インデックスは複数の子インデックスとアイテムを持つことができます。</td>
@@ -751,17 +797,10 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>リポジトリ管理者</td>
 <td>リポジトリを管理するロールを持つユーザです。WEKO3モジュールの設定、インデックスツリー設定、アイテムタイプ設定ができます。</td>
 </tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr class="header">
-<th>ログイン</th>
-<th>コンピュータやインターネット上の様々なサービスを利用する際に、予め登録しておいたアカウント情報を用いて個々人のデータにアクセスする認証行為を指します。</th>
+<tr>
+<td>ログイン</td>
+<td>コンピュータやインターネット上の様々なサービスを利用する際に、予め登録しておいたアカウント情報を用いて個々人のデータにアクセスする認証行為を指します。</td>
 </tr>
-</thead>
-<tbody>
 <tr class="odd">
 <td>ログアウト</td>
 <td>ログインによって認証された個々人のデータにアクセスするための権限を失効することです。</td>
@@ -813,18 +852,18 @@ Resource Syncの管理に関する操作手順を説明しています。
 <tbody>
 <tr class="odd">
 <td>機能</td>
+<td></td>
 <td>管理者ロール</td>
 <td>参照先</td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
+<td></td>
 <td>システム</td>
 <td>リポジトリ</td>
 <td>コミュニティ</td>
-<td></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -968,21 +1007,14 @@ Resource Syncの管理に関する操作手順を説明しています。
 <p>(*2)</p></td>
 <td></td>
 </tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr class="header">
-<th>著者DB管理</th>
-<th>-</th>
-<th>-</th>
-<th>-</th>
-<th>6. 著者DB管理</th>
-<th></th>
+<tr class="even">
+<td>著者DB管理</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>6. 著者DB管理</td>
+<td></td>
 </tr>
-</thead>
-<tbody>
 <tr class="odd">
 <td></td>
 <td>編集</td>
@@ -1029,7 +1061,8 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>フィードバックメール</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td><p>〇</p>
+<p>(*2)</p></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1037,7 +1070,8 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>サイトライセンス</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td><p>〇</p>
+<p>(*2)</p></td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1053,12 +1087,22 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>フロー</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td><p>〇</p>
+<p>(*2)</p></td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>ワークフロー</td>
+<td>〇</td>
+<td>〇</td>
+<td><p>〇</p>
+<p>(*2)</p></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ワークスペース設定</td>
 <td>〇</td>
 <td>〇</td>
 <td>×</td>
@@ -1126,8 +1170,8 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td></td>
 <td>Sets</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
+<td>〇</td>
+<td>〇</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1142,24 +1186,51 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td></td>
 <td>Resource List</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
+<td>〇</td>
+<td><p>〇</p>
+<p>(*2)</p></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>Change List</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
+<td>〇</td>
+<td><p>〇</p>
+<p>(*2)</p></td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>Resync</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
+<td>〇</td>
+<td><p>〇</p>
+<p>(*2)</p></td>
+<td></td>
+</tr>
+<tr>
+<td>SWORD API</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>12. SWORD API設定</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>TSV/XML</td>
+<td>〇</td>
+<td>〇</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>JSON-LD</td>
+<td>〇</td>
+<td>〇</td>
+<td>-</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1167,7 +1238,7 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>12. レコード管理</td>
+<td>13. レコード管理</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1191,7 +1262,7 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>3. ファイル管理</td>
+<td>14. ファイル管理</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1235,21 +1306,14 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>×</td>
 <td></td>
 </tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr class="header">
-<th>ユーザ管理</th>
-<th>-</th>
-<th>-</th>
-<th>-</th>
-<th>14. ユーザ管理</th>
-<th></th>
+<tr class="even">
+<td>ユーザ管理</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>15. ユーザ管理</td>
+<td></td>
 </tr>
-</thead>
-<tbody>
 <tr class="odd">
 <td></td>
 <td>アクセス: ロール</td>
@@ -1335,7 +1399,8 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>ユーザ</td>
 <td>〇</td>
 <td>〇(*1)</td>
-<td>×</td>
+<td><p>〇</p>
+<p>(*2)</p></td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1351,7 +1416,7 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>15. システム設定</td>
+<td>165. システム設定</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1473,7 +1538,8 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>サイトライセンス</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td><p>〇</p>
+<p>(*2)</p></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1494,13 +1560,21 @@ Resource Syncの管理に関する操作手順を説明しています。
 </tr>
 <tr class="odd">
 <td></td>
+<td>メールテンプレート</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
 <td>WebAPIアカウント</td>
 <td>〇</td>
 <td>×</td>
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>ファイルプレビュー</td>
 <td>〇</td>
@@ -1508,7 +1582,7 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Shibboleth</td>
 <td>〇</td>
@@ -1516,7 +1590,7 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>制限公開</td>
 <td>〇</td>
@@ -1524,7 +1598,7 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>その他</td>
 <td>〇</td>
@@ -1532,23 +1606,39 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
-<td>ユーザカウント管理</td>
+<tr class="odd">
+<td>ユーザアカウント管理</td>
 <td>〇</td>
 <td>〇</td>
 <td>〇</td>
-<td>16. ユーザカウントの管理</td>
+<td>19. ユーザアカウントの管理</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr>
+<td>ログ管理</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>17. ログ管理</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>エクスポート</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="even">
 <td>メンテナンス</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td></td>
+<td>18.メンテナンス</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Elasticsearchインデックス</td>
 <td>〇</td>
@@ -1556,12 +1646,28 @@ Resource Syncの管理に関する操作手順を説明しています。
 <td>×</td>
 <td></td>
 </tr>
+<tr class="even">
+<td>アドバンスド</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>20.アドバンスドメニュー</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>プロフィール設定編集</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 
 (\*1) 読み込み権限のみ可能
 
-(\*2) 管理者の管理対象となるインデックスのみ可能とするように対応予定
+(\*2) 管理者の管理対象のみ可能
 
 ### 管理画面を表示する
 
@@ -1569,7 +1675,7 @@ Resource Syncの管理に関する操作手順を説明しています。
 
 1.  管理者のアカウントでログインしてください。
     
-    ログインの方法については、「データ登録ガイド」を参照してください。
+    ログインの方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%BE%E3%81%9F%E3%81%AF%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88%E3%81%99%E3%82%8B)」を参照してください。
 
 2.  画面右上のユーザカウントのプルダウンメニューから［Administration］を選択します。
     
@@ -1766,7 +1872,7 @@ Resource Syncの管理に関する操作手順を説明しています。
 
 <!-- end list -->
 
-10. メタデータの項目を編集します。
+2. メタデータの項目を編集します。
     
     テキストエリアに項目名を入力し、ドロップダウンリストから入力形式を選択します。入力形式の設定内容については、「表 2-1メタデータ属性の入力形式の項目」を参照してください。
     
@@ -1829,14 +1935,14 @@ Resource Syncの管理に関する操作手順を説明しています。
 
 ・　デフォルトアイテムタイプ（フル）
 
-制限公開用のアイテムタイプとして、以下の２種類が用意されています。
+利用申請機能先行利用機関向けのアイテムタイプとして、以下の２種類が用意されています。
 
 ・利用申請
 
 ・利用報告
-
+<!--
 また、DDIのアイテムタイプが１つ用意されています。
-
+-->
 それぞれ詳細は、「【別紙】アイテムタイプ.docx」を参照してください。
 
 #### アイテムタイプを追加する
@@ -1995,7 +2101,7 @@ Resource Syncの管理に関する操作手順を説明しています。
     
     また、子項目のオプションは該当子項目の直下に表示されている［Required］、［Show List］、［Specify Newline］、［Hide］にチェックを入れることで設定できます。
 
-表 2‑3［オプション］の項目
+    表 2‑3［オプション］の項目
 
 | オプション           | 説明                                                         |
 | --------------- | ---------------------------------------------------------- |
@@ -2005,19 +2111,19 @@ Resource Syncの管理に関する操作手順を説明しています。
 | Specify Newline | アイテム一覧画面にメタデータを改行で表示されます。                                  |
 | Hide            | インデックス、キーワードサーチ結果およびアイテム詳細にメタデータの詳細を表示しないようにできます。          |
 
-![](media/media/image44.png)
+    ![](media/media/image44.png)
 
-親要素と子要素のオプションの優先度は、「表 2-4オプションの優先度」を参照してください。
+    親要素と子要素のオプションの優先度は、「表 2-4オプションの優先度」を参照してください。
 
-表 2-4オプションの優先度
+    表 2-4オプションの優先度
 
-> （凡例：〇 チェックあり、- チェックなし）
+    > （凡例：〇 チェックあり、- チェックなし）
 
-| 親要素 | 子要素 | オプション                 |
-| --- | --- | --------------------- |
-| 〇   | \-  | 子要素全体に適用します。          |
-| \-  | 〇   | 指定された子要素のみ適用します。      |
-| 〇   | 〇   | 親要素のみ選択された状況と同様になります。 |
+    | 親要素 | 子要素 | オプション                 |
+    | --- | --- | --------------------- |
+    | 〇   | \-  | 子要素全体に適用します。          |
+    | \-  | 〇   | 指定された子要素のみ適用します。      |
+    | 〇   | 〇   | 親要素のみ選択された状況と同様になります。 |
 
 30. 項目の表示位置を編集します。
     
@@ -2101,19 +2207,37 @@ Resource Syncの管理に関する操作手順を説明しています。
     
     削除確認用のダイアログが表示されます。![](media/media/image48.png)
     
-    【注意事項】
-    
-    ハーベスト用アイテムタイプは削除できません。［削除］をクリックした場合、ハーベスト用アイテムは削除できない旨のメッセージ「Cannot delete item type for harvesting.」が表示されます。
 
 35. ［継続］をクリックします。
     
     アイテムタイプが削除されます。
     
-    【注意事項】
-    
-    標準アイテムタイプのうち、登録されているアイテムに使用しているアイテムタイプは削除できません。［継続］をクリックすると、該当するアイテムが存在するため削除できない旨のメッセージが表示されます。
-    
-    ![](media/media/image49.png)
+    一括インポート機能でインポート中、あるいは予約済みのタスクが存在する場合、No.1のメッセージが表示される。
+
+    削除対象がハーベスト用のアイテムタイプの場合、No.2のメッセージが表示される。
+
+    削除対象のアイテムタイプで既に登録済みのアイテムが存在する場合、No.3のメッセージが表示される。
+
+    削除対象のアイテムタイプがワークフローに設定されている場合、No.4のメッセージが表示される。
+
+    削除対象のアイテムタイプがSWORD API設定のJSON-LDインポート機能で使用されている場合、No.5のメッセージが表示される。
+
+    アイテムタイプが見つからない等の予期せぬ状況が発生した場合は処理を中断され、No.6,7のメッセージが表示される。
+
+    上記のチェックをすべて通過した場合、アイテムタイプが削除され、No.8のメッセージが表示される。
+
+    表 2-5削除時のメッセージ
+
+| No. | 種別    | 英語                                                        | 日本語                                                         |
+|-----|---------|-------------------------------------------------------------|----------------------------------------------------------------|
+| 1   | ERROR   | Cannot delete item type. Import is in progress.              | アイテムをインポート中はアイテムタイプを削除できません。        |
+| 2   | ERROR   | Cannot delete item type. It is used for harvesting.          | ハーベスト用のアイテムタイプは削除できません。                  |
+| 3   | ERROR   | Cannot delete item type. Item of this type already exists.   | このアイテムタイプのアイテムが既に存在するため、アイテムタイプを削除できません。 |
+| 4   | ERROR   | Cannot delete item type. It is used in some workflows.       | ワークフローで使用されているため、アイテムタイプを削除できません。|
+| 5   | ERROR   | Cannot delete item type. It is used in SWORD API JSON-LD import settings. | SWORD API設定のJSON-LDインポート機能で使用されているため、アイテムタイプを削除できません。 |
+| 6   | ERROR   | Item type not found.                                         | アイテムタイプが見つかりません。                               |
+| 7   | ERROR   | Unexpected error. Failed to delete item type.                | アイテムタイプの削除に失敗しました。                           |
+| 8   | SUCCESS | Deleted Item type successfully.                              | アイテムタイプを削除しました。                                 |
 
 #### アイテムタイプを復元する
 
@@ -2143,11 +2267,9 @@ Resource Syncの管理に関する操作手順を説明しています。
 
 1.  ［標準アイテムタイプ］を選択します。
 
-<!-- end list -->
+2.  ［エクスポート］をクリックします。
 
-38. ［エクスポート］をクリックします。
-
-39. アイテムタイプの定義を含んだZIPファイルがダウンロードされます。
+3.  アイテムタイプの定義を含んだZIPファイルがダウンロードされます。
 
 #### アイテムタイプをインポートする
 
@@ -2155,19 +2277,46 @@ Resource Syncの管理に関する操作手順を説明しています。
 
 1.  ［標準アイテムタイプ］を選択します。
 
-<!-- end list -->
-
-40. ［インポート］をクリックします。
+2.  ［インポート］をクリックします。
     
     ![](media/media/image52.png)
 
-41. ［ファイルを開く］をクリックし、エクスポートされたアイテムタイプのZIPファイルを読み込みます。
+3.  ［ファイルを開く］をクリックし、エクスポートされたアイテムタイプのZIPファイルを読み込みます。
 
-42. ［Item Type］にインポートするアイテムタイプの名称を入力します。
+4.  ［Item Type］にインポートするアイテムタイプの名称を入力します。
 
-43. ［Execute Import］をクリックすると、入力した名称でアイテムタイプが取り込まれます。
-    
-    ※本機能を利用する場合は、事前にアイテムタイプと同じプロパティが定義されている必要があります。
+5.  ［Execute Import］をクリックすると、入力した名称でアイテムタイプが取り込まれます。
+
+【注意事項】
+
+- デフォルトの設定では、当該WEKOに登録されているプロパティだけで構成されたアイテムタイプのみインポート可能です。
+
+- 未登録のプロパティがインポートファイルに含まれる場合、エラーメッセージが表示されインポートは中断されます。
+
+##### 強制インポート機能について
+
+・本機能は、試験的な機能です。JAIRO Cloud環境で提供しておりません
+
+管理者は、環境設定ファイル(instance.cfg)を手動で設定することで、未登録のプロパティが含まれていてもインポートを実行する「強制インポート」機能を有効化することができます。
+
+この機能を使用するとアイテムタイプのインポート時、未登録のプロパティも同時にWEKOに登録されます。
+
+【注意事項】
+
+- 強制インポート機能が有効化されている場合であっても、既存のプロパティとIDが重複するプロパティはインポートされません。その場合、同じIDを持つ既存のプロパティに置き換えられる形でアイテムタイプがインポートされます。
+
+- 既存のプロパティと名前が重複するプロパティがインポートファイルに含まれている場合、エラーメッセージが表示されインポートは中断されます。
+
+#### トラブルシューティング
+
+##### アップデート後、アイテムタイプ編集画面の上部に緑色のメッセージ領域が表示される
+
+アップデート後以下画面例のように、緑色のメッセージ領域が表示される場合があります。
+メッセージ内容はアイテムタイプや環境によって異なります。
+本メッセージは動作に影響しないデータ不整合が生じている場合に表示されます。
+アイテムタイプの保存を行うと、データ不整合が解消し、メッセージが表示されなくなります。
+
+![アイテムタイプ編集画面に表示された緑色の領域例](media/media/image493.jpeg)
 
 ## OAI Schemaを設定する
 
@@ -2243,7 +2392,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 <!-- end list -->
 
-45. ［保存］をクリックします。
+3. ［保存］をクリックします。
     
     スキーマが追加されます。
 
@@ -2295,8 +2444,6 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 50. 複数の(子)プロパティを1つの子要素にマッピングさせる場合は［Join］をクリックします。
     
-    入力欄に「,」(半角カンマ)を入れることで、複数の(子)プロパティを1つの子要素にマッピングさせることができます。
-    
     ![](media/media/image60.png)
 
 51. \[Add static value\]をクリックすると、指定した値を子要素に出力させることができます。
@@ -2345,6 +2492,764 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 ・異なるプロパティに対して同じスキーマをマッピングさせる場合は、Schema (子)含めて全て同じようにマッピングさせる必要があります。同じマッピングではない場合は、保存時に「Duplicate mapping as below」とメッセージが表示され、マッピング情報を保存できません。
 
+## JSON-LDのマッピングを設定する
+
+外部から連携されるメタデータ（JSON-LD形式）をアイテムタイプスキーマにマッピングする方法を説明します。事前にマッピングするアイテムタイプが定義されている必要があります。
+
+マッピングの編集画面は、［アイテムタイプ管理］をクリックして［JSON-LD Mapping］をクリックすると表示されます。
+
+本画面で設定したマッピングの情報は、SWORD API機能で登録する［JSON-LD設定］で利用します。
+
+### JSON－LD Mappingを新規作成する
+1. ［作成］タブを選択します。
+   ![JSON-LD Mapping一覧画面](media/media/image453.png)
+
+2. 任意の［名前］を入力し、対象となるアイテムタイプを選択します。
+   また、マッピングのテキストを入力しますが、現段階ではエディターは存在しないので手元で作成したマッピング定義テキストを直接テキストエリアに貼り付けしてください。
+   ![JSON-LD Mapping作成画面](media/media/image454.png)
+   入力が完了したら［保存］をクリックします。設定した内容が保存されます。
+
+
+#### マッピング例
+
+デフォルトアイテムタイプ（フル）：
+
+```
+{
+    "APC": "rioxxterms:apc",
+    "APC.APC": "rioxxterms:apc.value",
+    "ID登録": "jpcoar:identifierRegistration",
+    "ID登録.ID登録": "jpcoar:identifierRegistration.value",
+    "ID登録.ID登録タイプ": "jpcoar:identifierRegistration.identifierType",
+    "公開日": "datePublished",
+    "その他のタイトル": "dcterms:alternative",
+    "その他のタイトル.その他のタイトル": "dcterms:alternative.value",
+    "その他のタイトル.言語": "dcterms:alternative.language",
+    "アクセス権": "dcterms:accessRights",
+    "アクセス権.アクセス権": "dcterms:accessRights.value",
+    "アクセス権.アクセス権URI": "dcterms:accessRights.rdf:resource",
+    "カタログ": "jpcoar:catalog",
+    "カタログ.Access Rights": "jpcoar:catalog.dcterms:accessRights",
+    "カタログ.Access Rights.アクセス権": "jpcoar:catalog.dcterms:accessRights.value",
+    "カタログ.Access Rights.アクセス権URI": "jpcoar:catalog.dcterms:accessRights.rdf:resource",
+    "カタログ.Descriptions": "jpcoar:catalog.datacite:description",
+    "カタログ.Descriptions.Description Type": "jpcoar:catalog.datacite:description.descriptionType",
+    "カタログ.Descriptions.Description": "jpcoar:catalog.datacite:description.value",
+    "カタログ.Descriptions.Language": "jpcoar:catalog.datacite:description.language",
+    "カタログ.Hosting Institution": "jpcoar:catalog.jpcoar:contributor",
+    "カタログ.Hosting Institution.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName",
+    "カタログ.Hosting Institution.Hosting Institution Name.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.value",
+    "カタログ.Hosting Institution.Hosting Institution Name.Language": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.language",
+    "カタログ.Hosting Institution.Hosting Institution Type": "jpcoar:catalog.jpcoar:contributor.contributorType",
+    "カタログ.Identifier": "jpcoar:catalog.jpcoar:identifier",
+    "カタログ.Identifier.Identifier Type": "jpcoar:catalog.jpcoar:identifier.identifierType",
+    "カタログ.Identifier.Identifier": "jpcoar:catalog.jpcoar:identifier.value",
+    "カタログ.License": "jpcoar:catalog.jpcoar:license",
+    "カタログ.License.Language": "jpcoar:catalog.jpcoar:license.language",
+    "カタログ.License.License Type": "jpcoar:catalog.jpcoar:license.licenseType",
+    "カタログ.License.License": "jpcoar:catalog.jpcoar:license.value",
+    "カタログ.License.RDF Resource": "jpcoar:catalog.jpcoar:license.rdf:resource",
+    "カタログ.Rights": "jpcoar:catalog.dc:rights",
+    "カタログ.Rights.Language": "jpcoar:catalog.dc:rights.language",
+    "カタログ.Rights.RDF Resource": "jpcoar:catalog.dc:rights.rdf:resource",
+    "カタログ.Rights.Rights": "jpcoar:catalog.dc:rights.value",
+    "カタログ.Subject": "jpcoar:catalog.jpcoar:subject",
+    "カタログ.Subject.Language": "jpcoar:catalog.jpcoar:subject.language",
+    "カタログ.Subject.Subject Scheme": "jpcoar:catalog.jpcoar:subject.subjectScheme",
+    "カタログ.Subject.Subject URI": "jpcoar:catalog.jpcoar:subject.subjectURI",
+    "カタログ.Subject.Subject": "jpcoar:catalog.jpcoar:subject.value",
+    "カタログ.Thumbnail": "jpcoar:catalog.jpcoar:file",
+    "カタログ.Thumbnail.Thumbnail URI": "jpcoar:catalog.jpcoar:file.jpcoar:URI",
+    "カタログ.Thumbnail.Thumbnail URI.Object Type": "jpcoar:catalog.jpcoar:file.jpcoar:URI.objectType",
+    "カタログ.Thumbnail.Thumbnail URI.Thumbnail URI": "jpcoar:catalog.jpcoar:file.jpcoar:URI.value",
+    "カタログ.Title": "jpcoar:catalog.dc:title",
+    "カタログ.Title.Language": "jpcoar:catalog.dc:title.language",
+    "カタログ.Title.Title": "jpcoar:catalog.dc:title.value",
+    "タイトル": "dc:title",
+    "タイトル.タイトル": "dc:title.value",
+    "タイトル.言語": "dc:title.language",
+    "データセットシリーズ": "jpcoar:datasetSeries",
+    "データセットシリーズ.Dataset Series": "jpcoar:datasetSeries.value",
+    "バージョン情報": "datacite:version",
+    "バージョン情報.バージョン情報": "datacite:version.value",
+    "ファイル情報": "hasPart",
+    "ファイル情報.アクセス": "hasPart.dcterms:accessRights",
+    "ファイル情報.グループ": "hasPart.department",
+    "ファイル情報.サイズ": "hasPart.jpcoar:extent",
+    "ファイル情報.サイズ.サイズ": "hasPart.jpcoar:extent.value",
+    "ファイル情報.バージョン情報": "hasPart.datacite:version",
+    "ファイル情報.ファイル名": "hasPart.name",
+    "ファイル情報.フォーマット": "hasPart.jpcoar:mimeType",
+    "ファイル情報.ライセンス": "hasPart.license",
+    "ファイル情報.公開日.タイプ": "$Available",
+    "ファイル情報.公開日.公開日": "hasPart.datePublished",
+    "ファイル情報.日付": "hasPart.datacite:date",
+    "ファイル情報.日付.日付": "hasPart.datacite:date.value",
+    "ファイル情報.日付.日付タイプ": "hasPart.datacite:date.dateType",
+    "ファイル情報.本文URL": "hasPart.jpcoar:URI",
+    "ファイル情報.本文URL.オブジェクトタイプ": "hasPart.jpcoar:URI.objectType",
+    "ファイル情報.本文URL.ラベル": "hasPart.@id",
+    "ファイル情報.本文URL.本文URL": "hasPart.jpcoar:URI.value",
+    "ファイル情報.表示形式": "hasPart.jpcoar:format",
+    "ページ数": "jpcoar:numPages",
+    "ページ数.ページ数": "jpcoar:numPages.value",
+    "主題": "jpcoar:subject",
+    "主題.主題": "jpcoar:subject.value",
+    "主題.主題Scheme": "jpcoar:subject.subjectScheme",
+    "主題.主題URI": "jpcoar:subject.subjectURI",
+    "主題.言語": "jpcoar:subject.language",
+    "会議記述": "jpcoar:conference",
+    "会議記述.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor",
+    "会議記述.主催機関.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor.value",
+    "会議記述.主催機関.言語": "jpcoar:conference.jpcoar:conferenceSponsor.language",
+    "会議記述.会議名": "jpcoar:conference.jpcoar:conferenceName",
+    "会議記述.会議名.会議名": "jpcoar:conference.jpcoar:conferenceName.value",
+    "会議記述.会議名.言語": "jpcoar:conference.jpcoar:conferenceName.language",
+    "会議記述.回次": "jpcoar:conference.jpcoar:conferenceSequence",
+    "会議記述.開催会場": "jpcoar:conference.jpcoar:conferenceVenue",
+    "会議記述.開催会場.言語": "jpcoar:conference.jpcoar:conferenceVenue.language",
+    "会議記述.開催会場.開催会場": "jpcoar:conference.jpcoar:conferenceVenue.value",
+    "会議記述.開催国": "jpcoar:conference.jpcoar:conferenceCountry",
+    "会議記述.開催地": "jpcoar:conference.jpcoar:conferencePlace",
+    "会議記述.開催地.言語": "jpcoar:conference.jpcoar:conferencePlace.language",
+    "会議記述.開催地.開催地": "jpcoar:conference.jpcoar:conferencePlace.value",
+    "会議記述.開催期間": "jpcoar:conference.jpcoar:conferenceDate.language",
+    "会議記述.開催期間.終了年": "jpcoar:conference.jpcoar:conferenceDate.endYear",
+    "会議記述.開催期間.終了日": "jpcoar:conference.jpcoar:conferenceDate.endDay",
+    "会議記述.開催期間.終了月": "jpcoar:conference.jpcoar:conferenceDate.endMonth",
+    "会議記述.開催期間.言語": "jpcoar:conference.jpcoar:conferenceDate",
+    "会議記述.開催期間.開催期間": "jpcoar:conference.jpcoar:conferenceDate.value",
+    "会議記述.開催期間.開始年": "jpcoar:conference.jpcoar:conferenceDate.startYear",
+    "会議記述.開催期間.開始日": "jpcoar:conference.jpcoar:conferenceDate.startDay",
+    "会議記述.開催期間.開始月": "jpcoar:conference.jpcoar:conferenceDate.startMonth",
+    "位置情報": "datacite:geoLocation",
+    "位置情報.位置情報（点）": "datacite:geoLocation.datacite:geoLocationPoint",
+    "位置情報.位置情報（点）.経度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLongitude",
+    "位置情報.位置情報（点）.緯度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLatitude",
+    "位置情報.位置情報（空間）": "datacite:geoLocation.datacite:geoLocationBox",
+    "位置情報.位置情報（空間）.北部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:northBoundLatitude",
+    "位置情報.位置情報（空間）.南部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:southBoundLatitude",
+    "位置情報.位置情報（空間）.東部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:eastBoundLongitude",
+    "位置情報.位置情報（空間）.西部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:westBoundLongitude",
+    "位置情報.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace",
+    "位置情報.位置情報（自由記述）.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace.value",
+    "作成者": "jpcoar:creator",
+    "作成者.作成者タイプ": "jpcoar:creator.creatorType",
+    "作成者.作成者メールアドレス": "jpcoar:creator.email",
+    "作成者.作成者メールアドレス.メールアドレス": "jpcoar:creator.email.value",
+    "作成者.作成者別名": "jpcoar:creator.jpcoar:creatorAlternative",
+    "作成者.作成者別名.別名": "jpcoar:creator.jpcoar:creatorAlternative.value",
+    "作成者.作成者別名.言語": "jpcoar:creator.jpcoar:creatorAlternative.language",
+    "作成者.作成者名": "jpcoar:creator.jpcoar:givenName",
+    "作成者.作成者名.名": "jpcoar:creator.jpcoar:givenName.value",
+    "作成者.作成者名.言語": "jpcoar:creator.jpcoar:givenName.language",
+    "作成者.作成者姓": "jpcoar:creator.jpcoar:familyName",
+    "作成者.作成者姓.姓": "jpcoar:creator.jpcoar:familyName.value",
+    "作成者.作成者姓.言語": "jpcoar:creator.jpcoar:familyName.language",
+    "作成者.作成者姓名": "jpcoar:creator.jpcoar:creatorName",
+    "作成者.作成者姓名.名前タイプ": "jpcoar:creator.jpcoar:creatorName.nameType",
+    "作成者.作成者姓名.姓名": "jpcoar:creator.jpcoar:creatorName.value",
+    "作成者.作成者姓名.言語": "jpcoar:creator.jpcoar:creatorName.language",
+    "作成者.作成者所属": "jpcoar:creator.jpcoar:affiliation",
+    "作成者.作成者所属.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName",
+    "作成者.作成者所属.所属機関名.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.value",
+    "作成者.作成者所属.所属機関名.言語": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.language",
+    "作成者.作成者所属.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "作成者.作成者所属.所属機関識別子.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "作成者.作成者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "作成者.作成者所属.所属機関識別子.所属機関識別子URI": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "作成者.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier",
+    "作成者.作成者識別子.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier.value",
+    "作成者.作成者識別子.作成者識別子Scheme": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "作成者.作成者識別子.作成者識別子URI": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierURI",
+    "内容記述": "datacite:description",
+    "内容記述.内容記述": "datacite:description.value",
+    "内容記述.内容記述タイプ": "datacite:description.descriptionType",
+    "内容記述.言語": "datacite:description.language",
+    "出版タイプ": "oaire:version",
+    "出版タイプ.出版タイプ": "oaire:version.value",
+    "出版タイプ.出版タイプResource": "oaire:version.rdf:resource",
+    "出版タイプ.査読の有無": "oaire:version.itemReviewed",
+    "出版者": "jpcoar:publisher",
+    "出版者.出版者": "dc:publisher.value",
+    "出版者.言語": "dc:publisher.language",
+    "出版者情報.出版地": "jpcoar:publisher.dcndl:location",
+    "出版者情報.出版地.出版地": "jpcoar:publisher.dcndl:location.value",
+    "出版者情報.出版地.言語": "jpcoar:publisher.dcndl:location.language",
+    "出版者情報.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace",
+    "出版者情報.出版地（国名コード）.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace.value",
+    "出版者情報.出版地（国名コード）.言語": "jpcoar:publisher.dcndl:publicationPlace.language",
+    "出版者情報.出版者名": "jpcoar:publisher.jpcoar:publisherName",
+    "出版者情報.出版者名.出版者名": "jpcoar:publisher.jpcoar:publisherName.value",
+    "出版者情報.出版者名.言語": "jpcoar:publisher.jpcoar:publisherName.language",
+    "出版者情報.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription",
+    "出版者情報.出版者注記.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription.value",
+    "出版者情報.出版者注記.言語": "jpcoar:publisher.jpcoar:publisherDescription.language",
+    "助成情報": "jpcoar:fundingReference",
+    "助成情報.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream",
+    "助成情報.プログラム情報.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream.value",
+    "助成情報.プログラム情報.言語": "jpcoar:fundingReference.jpcoar:fundingStream.language",
+    "助成情報.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier",
+    "助成情報.プログラム情報識別子.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.value",
+    "助成情報.プログラム情報識別子.プログラム情報識別子タイプ": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierType",
+    "助成情報.プログラム情報識別子.プログラム情報識別子タイプURI": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierTypeURI",
+    "助成情報.助成機関名": "jpcoar:fundingReference.jpcoar:funderName",
+    "助成情報.助成機関名.助成機関名": "jpcoar:fundingReference.jpcoar:funderName.value",
+    "助成情報.助成機関名.言語": "jpcoar:fundingReference.jpcoar:funderName.language",
+    "助成情報.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier",
+    "助成情報.助成機関識別子.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier.value",
+    "助成情報.助成機関識別子.助成機関識別子URI": "jpcoar:fundingReference.jpcoar:funderIdentifier.funderIdentifierTypeURI",
+    "助成情報.助成機関識別子.助成機関識別子タイプ": "jpcoar:fundingReference.jpcoar:funderIdentifier.funderIdentifierType",
+    "助成情報.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle",
+    "助成情報.研究課題名.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle.value",
+    "助成情報.研究課題名.言語": "jpcoar:fundingReference.jpcoar:awardTitle.language",
+    "助成情報.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber",
+    "助成情報.研究課題番号.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber.value",
+    "助成情報.研究課題番号.研究課題番号URI": "jpcoar:fundingReference.jpcoar:awardNumber.awardURI",
+    "助成情報.研究課題番号.研究課題番号タイプ": "jpcoar:fundingReference.jpcoar:awardNumber.awardNumberType",
+    "原文の言語": "dcndl:originalLanguage",
+    "原文の言語.Original Language": "dcndl:originalLanguage.value",
+    "収録物名": "jpcoar:sourceTitle",
+    "収録物名.収録物名": "jpcoar:sourceTitle.value",
+    "収録物名.言語": "jpcoar:sourceTitle.language",
+    "収録物識別子": "jpcoar:sourceIdentifier",
+    "収録物識別子.収録物識別子": "jpcoar:sourceIdentifier.value",
+    "収録物識別子.収録物識別子タイプ": "jpcoar:sourceIdentifier.identifierType",
+    "号": "jpcoar:issue",
+    "号.号": "jpcoar:issue.value",
+    "大きさ": "dcterms:extent",
+    "大きさ.Extent": "dcterms:extent.value",
+    "大きさ.Language": "dcterms:extent.language",
+    "学位名": "dcndl:degreeName",
+    "学位名.学位名": "dcndl:degreeName.value",
+    "学位名.言語": "dcndl:degreeName.language",
+    "学位授与年月日": "dcndl:dateGranted",
+    "学位授与年月日.学位授与年月日": "dcndl:dateGranted.value",
+    "学位授与機関": "jpcoar:degreeGrantor",
+    "学位授与機関.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName",
+    "学位授与機関.学位授与機関名.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.value",
+    "学位授与機関.学位授与機関名.言語": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.language",
+    "学位授与機関.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier",
+    "学位授与機関.学位授与機関識別子.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.value",
+    "学位授与機関.学位授与機関識別子.学位授与機関識別子Scheme": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "学位授与番号": "dcndl:dissertationNumber",
+    "学位授与番号.学位授与番号": "dcndl:dissertationNumber.value",
+    "寄与者": "jpcoar:contributor",
+    "寄与者.寄与者タイプ": "jpcoar:contributor.contributorType",
+    "寄与者.寄与者メールアドレス": "jpcoar:contributor.email",
+    "寄与者.寄与者メールアドレス.メールアドレス": "jpcoar:contributor.email.value",
+    "寄与者.寄与者別名": "jpcoar:contributor.jpcoar:contributorAlternative",
+    "寄与者.寄与者別名.別名": "jpcoar:contributor.jpcoar:contributorAlternative.value",
+    "寄与者.寄与者別名.言語": "jpcoar:contributor.jpcoar:contributorAlternative.language",
+    "寄与者.寄与者名": "jpcoar:contributor.jpcoar:givenName",
+    "寄与者.寄与者名.名": "jpcoar:contributor.jpcoar:givenName.value",
+    "寄与者.寄与者名.言語": "jpcoar:contributor.jpcoar:givenName.language",
+    "寄与者.寄与者姓": "jpcoar:contributor.jpcoar:familyName",
+    "寄与者.寄与者姓.姓": "jpcoar:contributor.jpcoar:familyName.value",
+    "寄与者.寄与者姓.言語": "jpcoar:contributor.jpcoar:familyName.language",
+    "寄与者.寄与者姓名": "jpcoar:contributor.jpcoar:contributorName",
+    "寄与者.寄与者姓名.名前タイプ": "jpcoar:contributor.jpcoar:contributorName.nameType",
+    "寄与者.寄与者姓名.姓名": "jpcoar:contributor.jpcoar:contributorName.value",
+    "寄与者.寄与者姓名.言語": "jpcoar:contributor.jpcoar:contributorName.language",
+    "寄与者.寄与者所属": "jpcoar:contributor.jpcoar:affiliation",
+    "寄与者.寄与者所属.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName",
+    "寄与者.寄与者所属.所属機関名.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.value",
+    "寄与者.寄与者所属.所属機関名.言語": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.language",
+    "寄与者.寄与者所属.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "寄与者.寄与者所属.所属機関識別子.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "寄与者.寄与者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "寄与者.寄与者所属.所属機関識別子.所属機関識別子URI": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "寄与者.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier",
+    "寄与者.寄与者識別子.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier.value",
+    "寄与者.寄与者識別子.寄与者識別子Scheme": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "寄与者.寄与者識別子.寄与者識別子URI": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierURI",
+    "巻": "jpcoar:volume",
+    "巻.巻": "jpcoar:volume.value",
+    "所蔵機関": "jpcoar:holdingAgent",
+    "所蔵機関.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName",
+    "所蔵機関.所蔵機関名.Language": "jpcoar:holdingAgent.jpcoar:holdingAgentName.language",
+    "所蔵機関.所蔵機関名.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName.value",
+    "所蔵機関.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子URI": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierURI",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子スキーマ": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierScheme",
+    "日付": "datacite:date",
+    "日付.日付": "datacite:date.value",
+    "日付.日付タイプ": "datacite:date.dateType",
+    "日付（リテラル）": "dcterms:date",
+    "日付（リテラル）.日付（リテラル）": "dcterms:date.value",
+    "日付（リテラル）.言語": "dcterms:date.language",
+    "時間的範囲": "dcterms:temporal",
+    "時間的範囲.時間的範囲": "dcterms:temporal.value",
+    "時間的範囲.言語": "dcterms:temporal.language",
+    "書誌情報": "dcterms:medium",
+    "書誌情報.ページ数": "dcterms:medium.numberOfPages",
+    "書誌情報.号": "dcterms:medium.issueNumber",
+    "書誌情報.巻": "dcterms:medium.volumeNumber",
+    "書誌情報.発行日": "dcterms:medium.datePublished",
+    "書誌情報.発行日.日付": "dcterms:medium.datePublished.value",
+    "書誌情報.発行日.日付タイプ": "dcterms:medium.datePublished.dateType",
+    "書誌情報.終了ページ": "dcterms:medium.pageEnd",
+    "書誌情報.開始ページ": "dcterms:medium.pageStart",
+    "書誌情報.雑誌名": "dcterms:medium.name",
+    "書誌情報.雑誌名.タイトル": "dcterms:medium.name.value",
+    "書誌情報.雑誌名.言語": "dcterms:medium.name.language",
+    "権利情報": "dc:rights",
+    "権利情報.権利情報": "dc:rights.value",
+    "権利情報.権利情報Resource": "dc:rights.rdf:resource",
+    "権利情報.言語": "dc:rights.language",
+    "権利者情報": "jpcoar:rightsHolder",
+    "権利者情報.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName",
+    "権利者情報.権利者名.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName.language",
+    "権利者情報.権利者名.言語": "jpcoar:rightsHolder.jpcoar:rightsHolderName.value",
+    "権利者情報.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier",
+    "権利者情報.権利者識別子.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier.value",
+    "権利者情報.権利者識別子.権利者識別子Scheme": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "権利者情報.権利者識別子.権利者識別子URI": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierURI",
+    "版": "dcndl:edition",
+    "版.版": "dcndl:edition.value",
+    "版.言語": "dcndl:edition.language",
+    "物理的形態": "jpcoar:format",
+    "物理的形態.Language": "jpcoar:format.language",
+    "物理的形態.物理的形態": "jpcoar:format.value",
+    "終了ページ": "jpcoar:pageEnd",
+    "終了ページ.終了ページ": "jpcoar:pageEnd.value",
+    "見出し": "headline",
+    "見出し.大見出し": "headline.value",
+    "見出し.小見出し": "headline.alternativeHeadline",
+    "見出し.言語": "headline.language",
+    "言語": "dc:language",
+    "言語.言語": "dc:language.value",
+    "識別子": "jpcoar:identifier",
+    "識別子.識別子": "jpcoar:identifier.value",
+    "識別子.識別子タイプ": "jpcoar:identifier.identifierType",
+    "資源タイプ": "dc:type",
+    "資源タイプ.資源タイプ": "dc:type.value",
+    "資源タイプ.資源タイプ識別子": "dc:type.rdf:resource",
+    "部編名": "dcndl:volumeTitle",
+    "部編名.Language": "dcndl:volumeTitle.language",
+    "部編名.部編名": "dcndl:volumeTitle.value",
+    "開始ページ": "jpcoar:pageStart",
+    "開始ページ.開始ページ": "jpcoar:pageStart.value",
+    "関連情報": "jpcoar:relation",
+    "関連情報.関連タイプ": "jpcoar:relation.relationType",
+    "関連情報.関連名称": "jpcoar:relation.jpcoar:relatedTitle",
+    "関連情報.関連名称.言語": "jpcoar:relation.jpcoar:relatedTitle.language",
+    "関連情報.関連名称.関連名称": "jpcoar:relation.jpcoar:relatedTitle.value",
+    "関連情報.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier",
+    "関連情報.関連識別子.識別子タイプ": "jpcoar:relation.jpcoar:relatedIdentifier.identifierType",
+    "関連情報.関連識別子.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier.value"
+}
+```
+
+### JSON－LD Mappingを編集/削除する
+1. ［一覧］から編集、削除したいマッピング定義の編集ボタンを選択します。
+   ![JSON-LD Mapping一覧画面](media/media/image455.png)
+
+2. 登録済の内容が表示されますので、編集したい場合は必要に応じて内容を編集してください。
+   ![JSON-LD Mapping編集画面](media/media/image456.png)
+   編集した内容を保存する場合は［保存］、削除したい場合は［削除］をクリックします。
+
+※起動しているアクティビティがある場合は変更できません。起動しているアクティビティをすべて終了してください。
+
+![アクティビティが起動している場合に表示されるメッセージ](media/media/image493.png)
+
+### トラブルシューティング
+
+#### 「公開日」に対応するマッピングが必要です
+
+デフォルトアイテムタイプ（フル）のJSON-LDマッピングを保存しようとすると、
+以下画面例のように「公開日」に対応するマッピングが必要です、を含むエラーメッセージが表示される環境があります。
+
+![JSON-LDマッピングエラー画面](media/media/image489.png)
+
+その場合、JSON-LDマッピングに下記箇所が存在します。
+
+![JSON-LDマッピング（修正前）](media/media/image490.png)
+
+それを下記のように書き換え、変更を保存してください。
+
+![JSON-LDマッピング（修正後）](media/media/image491.png)
+
+エラーが表示されなくなります。
+
+#### 「Title」に対応するマッピングが必要です等が大量のエラーメッセージが表示される
+
+デフォルトアイテムタイプ（フル）のJSON-LDマッピングを保存しようとすると、
+以下画面例のように「Title」に対応するマッピングが必要です等の
+大量のエラーメッセージが表示されることがあります。
+
+![JSON-LDマッピングエラー画面](media/media/image492.png)
+
+その場合は、以下JSON-LDマッピングをコピーして保存すると、
+エラーメッセージが減少する可能性があります。
+
+```
+{
+    "APC": "rioxxterms:apc",
+    "版": "dcndl:edition",
+    "Date": "datacite:date",
+    "File": "hasPart",
+    "Title": "dc:title",
+    "Rights": "dc:rights",
+    "APC.APC": "rioxxterms:apc.value",
+    "Creator": "jpcoar:creator",
+    "Heading": "headline",
+    "PubDate": "datePublished",
+    "Subject": "jpcoar:subject",
+    "Version": "datacite:version",
+    "版.版": "dcndl:edition.value",
+    "Language": "dc:language",
+    "Page End": "jpcoar:pageEnd",
+    "Relation": "jpcoar:relation",
+    "Temporal": "dcterms:temporal",
+    "Publisher": "dc:publisher",
+    "大きさ": "dcterms:extent",
+    "部編名": "dcndl:volumeTitle",
+    "Conference": "jpcoar:conference",
+    "Identifier": "jpcoar:identifier",
+    "Page Start": "jpcoar:pageStart",
+    "版.言語": "dcndl:edition.language",
+    "Contributor": "jpcoar:contributor",
+    "Date.日付": "datacite:date.value",
+    "Degree Name": "dcndl:degreeName",
+    "Description": "datacite:description",
+    "File.日付": "hasPart.datacite:date",
+    "Date Granted": "dcndl:dateGranted",
+    "Geo Location": "datacite:geoLocation",
+    "Issue Number": "jpcoar:issue",
+    "Source Title": "jpcoar:sourceTitle",
+    "Title.言語": "dc:title.language",
+    "Version Type": "oaire:version",
+    "カタログ": "jpcoar:catalog",
+    "所蔵機関": "jpcoar:holdingAgent",
+    "Access Rights": "dcterms:accessRights",
+    "Resource Type": "dc:type",
+    "Rights Holder": "jpcoar:rightsHolder",
+    "Rights.言語": "dc:rights.language",
+    "Volume Number": "jpcoar:volume",
+    "Degree Grantor": "jpcoar:degreeGrantor",
+    "File.サイズ": "hasPart.jpcoar:extent",
+    "File.本文URL": "hasPart.jpcoar:URI",
+    "Heading.言語": "headline.language",
+    "Subject.主題": "jpcoar:subject.value",
+    "Subject.言語": "jpcoar:subject.language",
+    "Language.言語": "dc:language.value",
+    "Number of Pages": "jpcoar:numPages",
+    "Temporal.言語": "dcterms:temporal.language",
+    "出版者情報": "jpcoar:publisher",
+    "原文の言語": "dcndl:originalLanguage",
+    "物理的形態": "jpcoar:format",
+    "Issue Number.号": "jpcoar:issue.value",
+    "Publisher.言語": "dc:publisher.language",
+    "大きさ.Extent": "dcterms:extent.value",
+    "Alternative Title": "dcterms:alternative",
+    "Conference.回次": "jpcoar:conference.jpcoar:conferenceSequence",
+    "File.アクセス": "hasPart.dcterms:accessRights",
+    "File.グループ": "hasPart.department",
+    "File.表示形式": "hasPart.jpcoar:format",
+    "Funding Reference": "jpcoar:fundingReference",
+    "Source Identifier": "jpcoar:sourceIdentifier",
+    "Subject.主題URI": "jpcoar:subject.subjectURI",
+    "Volume Number.巻": "jpcoar:volume.value",
+    "カタログ.Thumbnail": "jpcoar:catalog.jpcoar:file",
+    "Degree Name.言語": "dcndl:degreeName.language",
+    "Description.言語": "datacite:description.language",
+    "File.日付.日付": "hasPart.datacite:date.value",
+    "Title.タイトル": "dc:title.value",
+    "カタログ.Title": "jpcoar:catalog.dc:title",
+    "大きさ.Language": "dcterms:extent.language",
+    "部編名.Language": "dcndl:volumeTitle.language",
+    "Dissertation Number": "dcndl:dissertationNumber",
+    "Publisher.出版者": "dc:publisher.value",
+    "Rights.権利情報": "dc:rights.value",
+    "Source Title.言語": "jpcoar:sourceTitle.language",
+    "カタログ.Rights": "jpcoar:catalog.dc:rights",
+    "部編名.部編名": "dcndl:volumeTitle.value",
+    "Conference.会議名": "jpcoar:conference.jpcoar:conferenceName",
+    "Conference.開催国": "jpcoar:conference.jpcoar:conferenceCountry",
+    "Conference.開催地": "jpcoar:conference.jpcoar:conferencePlace",
+    "Creator.作成者名": "jpcoar:creator.jpcoar:givenName",
+    "Creator.作成者姓": "jpcoar:creator.jpcoar:familyName",
+    "Date.日付タイプ": "datacite:date.dateType",
+    "File.ファイル名": "hasPart.name",
+    "File.ライセンス": "hasPart.license",
+    "Heading.大見出し": "headline.value",
+    "Heading.小見出し": "headline.alternativeHeadline",
+    "Identifier.識別子": "jpcoar:identifier.value",
+    "Subject.主題Scheme": "jpcoar:subject.subjectScheme",
+    "カタログ.License": "jpcoar:catalog.jpcoar:license",
+    "カタログ.Subject": "jpcoar:catalog.jpcoar:subject",
+    "Degree Name.学位名": "dcndl:degreeName.value",
+    "Relation.関連名称": "jpcoar:relation.jpcoar:relatedTitle",
+    "Conference.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor",
+    "Conference.開催会場": "jpcoar:conference.jpcoar:conferenceVenue",
+    "Conference.開催期間": "jpcoar:conference.jpcoar:conferenceDate.language",
+    "Creator.作成者別名": "jpcoar:creator.jpcoar:creatorAlternative",
+    "Creator.作成者姓名": "jpcoar:creator.jpcoar:creatorName",
+    "Creator.作成者所属": "jpcoar:creator.jpcoar:affiliation",
+    "File.フォーマット": "hasPart.jpcoar:mimeType",
+    "Identifier Registration": "jpcoar:identifierRegistration",
+    "カタログ.Identifier": "jpcoar:catalog.jpcoar:identifier",
+    "Alternative Title.言語": "dcterms:alternative.language",
+    "Contributor.寄与者名": "jpcoar:contributor.jpcoar:givenName",
+    "Contributor.寄与者姓": "jpcoar:contributor.jpcoar:familyName",
+    "Creator.作成者名.名": "jpcoar:creator.jpcoar:givenName.value",
+    "Creator.作成者姓.姓": "jpcoar:creator.jpcoar:familyName.value",
+    "Description.内容記述": "datacite:description.value",
+    "File.サイズ.サイズ": "hasPart.jpcoar:extent.value",
+    "File.公開日.タイプ": "$Available",
+    "File.公開日.公開日": "hasPart.datePublished",
+    "File.本文URL.ラベル": "hasPart.@id",
+    "File.本文URL.本文URL": "hasPart.jpcoar:URI.value",
+    "Page End.終了ページ": "jpcoar:pageEnd.value",
+    "Relation.関連タイプ": "jpcoar:relation.relationType",
+    "Relation.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier",
+    "Temporal.時間的範囲": "dcterms:temporal.value",
+    "カタログ.Hosting Institution": "jpcoar:catalog.jpcoar:contributor",
+    "カタログ.Descriptions": "jpcoar:catalog.datacite:description",
+    "カタログ.Title.Title": "jpcoar:catalog.dc:title.value",
+    "原文の言語.Original Language": "dcndl:originalLanguage.language",
+    "日付（リテラル）": "dcterms:date",
+    "物理的形態.Language": "jpcoar:format.language",
+    "Bibliographic Information": "dcterms:medium",
+    "Source Title.収録物名": "jpcoar:sourceTitle.value",
+    "出版者情報.出版地": "jpcoar:publisher.dcndl:location",
+    "Creator.作成者タイプ": "jpcoar:creator.creatorType",
+    "Creator.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier",
+    "File.バージョン情報": "hasPart.datacite:version",
+    "Page Start.開始ページ": "jpcoar:pageStart.value",
+    "Rights Holder.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName",
+    "カタログ.Access Rights": "jpcoar:catalog.dcterms:accessRights",
+    "カタログ.Thumbnail.Thumbnail URI.Thumbnail URI": "jpcoar:catalog.jpcoar:file.jpcoar:URI",
+    "カタログ.Rights.Rights": "jpcoar:catalog.dc:rights.value",
+    "Conference.会議名.言語": "jpcoar:conference.jpcoar:conferenceName.language",
+    "Conference.開催地.言語": "jpcoar:conference.jpcoar:conferencePlace.language",
+    "Contributor.寄与者別名": "jpcoar:contributor.jpcoar:contributorAlternative",
+    "Contributor.寄与者姓名": "jpcoar:contributor.jpcoar:contributorName",
+    "Contributor.寄与者所属": "jpcoar:contributor.jpcoar:affiliation",
+    "Creator.作成者名.言語": "jpcoar:creator.jpcoar:givenName.language",
+    "Creator.作成者姓.言語": "jpcoar:creator.jpcoar:familyName.language",
+    "File.日付.日付タイプ": "hasPart.datacite:date.dateType",
+    "Rights.権利情報Resource": "dc:rights.rdf:resource",
+    "カタログ.Title.Language": "jpcoar:catalog.dc:title.language",
+    "Contributor.寄与者名.名": "jpcoar:contributor.jpcoar:givenName.value",
+    "Contributor.寄与者姓.姓": "jpcoar:contributor.jpcoar:familyName.value",
+    "Number of Pages.ページ数": "jpcoar:numPages.value",
+    "Relation.関連名称.言語": "jpcoar:relation.jpcoar:relatedTitle.language",
+    "Version Type.出版タイプ": "oaire:version.value",
+    "Version Type.査読の有無": "oaire:version.itemReviewed",
+    "カタログ.License.License": "jpcoar:catalog.jpcoar:license.value",
+    "カタログ.Rights.Language": "jpcoar:catalog.dc:rights.language",
+    "カタログ.Subject.Subject": "jpcoar:catalog.jpcoar:subject.value",
+    "出版者情報.出版者名": "jpcoar:publisher.jpcoar:publisherName",
+    "所蔵機関.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName",
+    "Access Rights.アクセス権": "dcterms:accessRights.value",
+    "Bibliographic Information.号": "dcterms:medium.issueNumber",
+    "Bibliographic Information.巻": "dcterms:medium.volumeNumber",
+    "Identifier.識別子タイプ": "jpcoar:identifier.identifierType",
+    "Resource Type.資源タイプ": "dc:type.value",
+    "Version.バージョン情報": "datacite:version.value",
+    "カタログ.Thumbnail.Thumbnail URI.Object Type": "jpcoar:catalog.jpcoar:file.objectType",
+    "カタログ.License.Language": "jpcoar:catalog.jpcoar:license.language",
+    "カタログ.Subject.Language": "jpcoar:catalog.jpcoar:subject.language",
+    "Conference.主催機関.言語": "jpcoar:conference.jpcoar:conferenceSponsor.language",
+    "Conference.会議名.会議名": "jpcoar:conference.jpcoar:conferenceName.value",
+    "Conference.開催会場.言語": "jpcoar:conference.jpcoar:conferenceVenue.language",
+    "Conference.開催地.開催地": "jpcoar:conference.jpcoar:conferencePlace.value",
+    "Conference.開催期間.言語": "jpcoar:conference.jpcoar:conferenceDate",
+    "Contributor.寄与者タイプ": "jpcoar:contributor.contributorType",
+    "Contributor.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier",
+    "Creator.作成者別名.別名": "jpcoar:creator.jpcoar:creatorAlternative.value",
+    "Creator.作成者別名.言語": "jpcoar:creator.jpcoar:creatorAlternative.language",
+    "Creator.作成者姓名.姓名": "jpcoar:creator.jpcoar:creatorName.value",
+    "Creator.作成者姓名.言語": "jpcoar:creator.jpcoar:creatorName.language",
+    "データセットシリーズ": "jpcoar:datasetSeries",
+    "Contributor.寄与者名.言語": "jpcoar:contributor.jpcoar:givenName.language",
+    "Contributor.寄与者姓.言語": "jpcoar:contributor.jpcoar:familyName.language",
+    "出版者情報.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription",
+    "日付（リテラル）.言語": "dcterms:date.language",
+    "物理的形態.物理的形態": "jpcoar:format.value",
+    "Access Rights.アクセス権URI": "dcterms:accessRights.rdf:resource",
+    "Identifier Registration.ID登録": "jpcoar:identifierRegistration.value",
+    "Rights Holder.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier",
+    "カタログ.Rights.RDF Resource": "jpcoar:catalog.dc:rights.rdf:resource",
+    "カタログ.Subject.Subject URI": "jpcoar:catalog.jpcoar:subject.subjectURI",
+    "Conference.開催期間.終了年": "jpcoar:conference.jpcoar:conferenceDate.endYear",
+    "Conference.開催期間.終了日": "jpcoar:conference.jpcoar:conferenceDate.endDay",
+    "Conference.開催期間.終了月": "jpcoar:conference.jpcoar:conferenceDate.endMonth",
+    "Conference.開催期間.開始年": "jpcoar:conference.jpcoar:conferenceDate.startYear",
+    "Conference.開催期間.開始日": "jpcoar:conference.jpcoar:conferenceDate.startDay",
+    "Conference.開催期間.開始月": "jpcoar:conference.jpcoar:conferenceDate.startMonth",
+    "Description.内容記述タイプ": "datacite:description.descriptionType",
+    "Funding Reference.助成機関名": "jpcoar:fundingReference.jpcoar:funderName",
+    "Funding Reference.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle",
+    "Rights Holder.権利者名.言語": "jpcoar:rightsHolder.jpcoar:rightsHolderName.value",
+    "カタログ.Descriptions.Language": "jpcoar:catalog.datacite:description.language",
+    "カタログ.License.License Type": "jpcoar:catalog.jpcoar:license.licenseType",
+    "カタログ.License.RDF Resource": "jpcoar:catalog.jpcoar:license.rdf:resource",
+    "原文の言語.Original Language": "dcndl:originalLanguage.value",
+    "Contributor.寄与者別名.別名": "jpcoar:contributor.jpcoar:contributorAlternative.value",
+    "Contributor.寄与者別名.言語": "jpcoar:contributor.jpcoar:contributorAlternative.language",
+    "Contributor.寄与者姓名.姓名": "jpcoar:contributor.jpcoar:contributorName.value",
+    "Contributor.寄与者姓名.言語": "jpcoar:contributor.jpcoar:contributorName.language",
+    "Date Granted.学位授与年月日": "dcndl:dateGranted.value",
+    "Geo Location.位置情報（点）": "datacite:geoLocation.datacite:geoLocationPoint",
+    "Relation.関連名称.関連名称": "jpcoar:relation.jpcoar:relatedTitle.value",
+    "カタログ.Identifier.Identifier": "jpcoar:catalog.jpcoar:identifier.value",
+    "所蔵機関.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier",
+    "Bibliographic Information.発行日": "dcterms:medium.datePublished",
+    "Bibliographic Information.雑誌名": "dcterms:medium.name",
+    "カタログ.Subject.Subject Scheme": "jpcoar:catalog.jpcoar:subject.subjectScheme",
+    "出版者情報.出版地.出版地": "jpcoar:publisher.dcndl:location.value",
+    "出版者情報.出版者名.言語": "jpcoar:publisher.jpcoar:publisherName.language",
+    "Conference.主催機関.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor.value",
+    "Conference.開催会場.開催会場": "jpcoar:conference.jpcoar:conferenceVenue.value",
+    "Conference.開催期間.開催期間": "jpcoar:conference.jpcoar:conferenceDate.value",
+    "Degree Grantor.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName",
+    "Funding Reference.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber",
+    "Source Identifier.収録物識別子": "jpcoar:sourceIdentifier.value",
+    "Version Type.出版タイプResource": "oaire:version.rdf:resource",
+    "カタログ.Descriptions.Description": "jpcoar:catalog.datacite:description.value",
+    "Geo Location.位置情報（空間）": "datacite:geoLocation.datacite:geoLocationBox",
+    "所蔵機関.所蔵機関名.Language": "jpcoar:holdingAgent.jpcoar:holdingAgentName.language",
+    "Bibliographic Information.ページ数": "dcterms:medium.numberOfPages",
+    "Creator.作成者メールアドレス": "jpcoar:creator.email",
+    "Dissertation Number.学位授与番号": "dcndl:dissertationNumber.value",
+    "Resource Type.資源タイプ識別子": "dc:type.rdf:resource",
+    "出版者情報.出版者注記.言語": "jpcoar:publisher.jpcoar:publisherDescription.language",
+    "Creator.作成者姓名.名前タイプ": "jpcoar:creator.jpcoar:creatorName.nameType",
+    "Creator.作成者所属.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName",
+    "Funding Reference.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream",
+    "Funding Reference.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier",
+    "Rights Holder.権利者名.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName.language",
+    "カタログ.Access Rights.アクセス権URI": "jpcoar:catalog.dcterms:accessRights.rdf:resource",
+    "カタログ.Identifier.Identifier Type": "jpcoar:catalog.jpcoar:identifier.identifierType",
+    "Funding Reference.助成機関名.言語": "jpcoar:fundingReference.jpcoar:funderName.language",
+    "Funding Reference.研究課題名.言語": "jpcoar:fundingReference.jpcoar:awardTitle.language",
+    "Relation.関連識別子.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier.value",
+    "カタログ.Access Rights.アクセス権": "jpcoar:catalog.dcterms:accessRights.value",
+    "Bibliographic Information.終了ページ": "dcterms:medium.pageEnd",
+    "Bibliographic Information.開始ページ": "dcterms:medium.pageStart",
+    "Geo Location.位置情報（点）.経度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLongitude",
+    "Geo Location.位置情報（点）.緯度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLatitude",
+    "Identifier Registration.ID登録タイプ": "jpcoar:identifierRegistration.identifierType",
+    "カタログ.Hosting Institution.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName",
+    "カタログ.Hosting Institution.Hosting Institution Type": "jpcoar:catalog.jpcoar:contributor.contributorType",
+    "カタログ.Descriptions.Description Type": "jpcoar:catalog.datacite:description.descriptionType",
+    "出版者情報.出版者名.出版者名": "jpcoar:publisher.jpcoar:publisherName.value",
+    "Alternative Title.その他のタイトル": "dcterms:alternative.value",
+    "Bibliographic Information.発行日.日付": "dcterms:medium.datePublished.value",
+    "Bibliographic Information.雑誌名.言語": "dcterms:medium.name.language",
+    "Contributor.寄与者メールアドレス": "jpcoar:contributor.email",
+    "Degree Grantor.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier",
+    "File.本文URL.オブジェクトタイプ": "hasPart.jpcoar:URI.objectType",
+    "Contributor.寄与者姓名.名前タイプ": "jpcoar:contributor.jpcoar:contributorName.nameType",
+    "Contributor.寄与者所属.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName",
+    "Degree Grantor.学位授与機関名.言語": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.language",
+    "Geo Location.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace",
+    "Relation.関連識別子.識別子タイプ": "jpcoar:relation.jpcoar:relatedIdentifier.identifierType",
+    "所蔵機関.所蔵機関名.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName.value",
+    "Creator.作成者所属.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "Creator.作成者識別子.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier.value",
+    "Source Identifier.収録物識別子タイプ": "jpcoar:sourceIdentifier.identifierType",
+    "データセットシリーズ.Dataset Series": "jpcoar:datasetSeries.value",
+    "Creator.作成者所属.所属機関名.言語": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.language",
+    "Funding Reference.プログラム情報.言語": "jpcoar:fundingReference.jpcoar:fundingStream.language",
+    "出版者情報.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace",
+    "出版者情報.出版者注記.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription.value",
+    "Bibliographic Information.雑誌名.タイトル": "dcterms:medium.name.value",
+    "Creator.作成者識別子.作成者識別子URI": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Funding Reference.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier",
+    "Contributor.寄与者所属.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "Contributor.寄与者識別子.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier.value",
+    "Funding Reference.助成機関名.助成機関名": "jpcoar:fundingReference.jpcoar:funderName.value",
+    "Funding Reference.研究課題名.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle.value",
+    "日付（リテラル）.日付（リテラル）": "dcterms:date.value",
+    "Contributor.寄与者所属.所属機関名.言語": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.language",
+    "Geo Location.位置情報（空間）.北部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:northBoundLatitude",
+    "Geo Location.位置情報（空間）.南部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:southBoundLatitude",
+    "Geo Location.位置情報（空間）.東部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:eastBoundLongitude",
+    "Geo Location.位置情報（空間）.西部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:westBoundLongitude",
+    "カタログ.Hosting Institution.Hosting Institution Name.Language": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.language",
+    "Bibliographic Information.発行日.日付タイプ": "dcterms:medium.datePublished.dateType",
+    "Creator.作成者識別子.作成者識別子Scheme": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Rights Holder.権利者識別子.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier.value",
+    "Contributor.寄与者識別子.寄与者識別子URI": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Rights Holder.権利者識別子.権利者識別子URI": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Contributor.寄与者識別子.寄与者識別子Scheme": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Creator.作成者所属.所属機関名.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.value",
+    "Funding Reference.研究課題番号.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.value",
+    "Rights Holder.権利者識別子.権利者識別子Scheme": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Degree Grantor.学位授与機関名.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.value",
+    "Funding Reference.助成機関識別子.助成機関識別子タイプ": "jpcoar:fundingReference.jpcoar:funderIdentifier.funderIdentifierType",
+    "Funding Reference.研究課題番号.研究課題番号URI": "jpcoar:fundingReference.jpcoar:awardNumber.awardURI",
+    "カタログ.Hosting Institution.Hosting Institution Name.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.value",
+    "Contributor.寄与者所属.所属機関名.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子URI": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierURI",
+    "Creator.作成者メールアドレス.メールアドレス": "jpcoar:creator.email.value",
+    "Funding Reference.プログラム情報.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream.value",
+    "Funding Reference.助成機関識別子.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier.value",
+    "Contributor.寄与者メールアドレス.メールアドレス": "jpcoar:contributor.email.value",
+    "Funding Reference.研究課題番号.研究課題番号タイプ": "jpcoar:fundingReference.jpcoar:awardNumber.awardNumberType",
+    "Creator.作成者所属.所属機関識別子.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子スキーマ": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierScheme",
+    "Creator.作成者所属.所属機関識別子.所属機関識別子URI": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Degree Grantor.学位授与機関識別子.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.value",
+    "Contributor.寄与者所属.所属機関識別子.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "Creator.作成者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Contributor.寄与者所属.所属機関識別子.所属機関識別子URI": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Geo Location.位置情報（自由記述）.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace.value",
+    "Degree Grantor.学位授与機関識別子.学位授与機関識別子Scheme": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Contributor.寄与者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "出版者情報.出版地（国名コード）.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace.value",
+    "Funding Reference.プログラム情報識別子.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.value",
+    "Funding Reference.プログラム情報識別子.プログラム情報識別子タイプ": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierType",
+    "Funding Reference.プログラム情報識別子.プログラム情報識別子タイプURI": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierTypeURI"
+}
+```
+
+#### 「xxxx」に対応するマッピングが必要です
+
+![image483](media/media/image483.png)
+
+マッピングが必須の以下アイテムタイプ項目への設定がないまたは誤っている場合に表示されるエラーメッセージです。
+
+- PubDate
+- 資源タイプ
+- 資源タイプ.資源タイプ識別子
+- 資源タイプ.資源タイプ
+
+エラーメッセージに従い、「xxxx」に対するマッピング設定を追加してください。
+
+#### 「xxxx」はアイテムタイプに存在しません
+
+![image484](media/media/image484.png)
+
+マッピング設定にあるアイテムタイプ項目が存在しない場合に表示されるエラーメッセージです。
+類似するアイテムタイプ項目が存在する場合は、ヒントが表示されます。
+
+例えば、タイトルプロパティのラベルを「タイトルa」としている場合、
+
+![image485](media/media/image485.png)
+
+下記マッピング設定はエラーとなります。
+
+```
+"タイトル": "dc:title",
+"タイトル.言語": "dc:title.language",
+"タイトル.タイトル": "dc:title.value",   
+```
+
+この場合は以下のように修正するとエラーを解消することができます。
+
+```
+"タイトルa": "dc:title",
+"タイトルa.言語": "dc:title.language",
+"タイトルa.タイトル": "dc:title.value",   
+```
+
 ## アイテム管理
 
 この章では、アイテムを管理する方法について説明します。
@@ -2360,7 +3265,9 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 <!-- end list -->
 
 56. ［インデックスツリー］でアイテムを一括更新するインデックスを選択します。
-    
+
+    コミュニティ管理者の場合は［インデックスツリー］には管理対象のインデックスのみが表示されます。
+
     ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール, Web サイト 自動的に生成された説明](media/media/image66.png)
 
 57. ［更新用のフィールド］で［Access Type］または［Licence］を選択します。
@@ -2399,6 +3306,8 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
     
     アイテムを一括削除する画面が表示されます。
 
+    コミュニティ管理者の場合は［インデックスツリー］には管理対象のインデックスのみが表示されます。
+
 <!-- end list -->
 
 62. ［インデックスツリー］でアイテムを一括削除するインデックスを選択します。
@@ -2423,32 +3332,34 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
     
     ファイルをエクスポートする画面が表示されます。
 
+    コミュニティ管理者の場合は［The last item ID］には管理対象のコミュニティに属する最後に登録されたアイテムIDが表示されます。
+
 <!-- end list -->
 
 64. ［アイテムタイプ］を選択すると指定したアイテムタイプのアイテムをエクスポートします。アイテムIDを指定すると、指定したアイテムID範囲のアイテムをエクスポートできます。
-
-![](media/media/image74.png)
+    ![](media/media/image74.png)
 
 65. 処理を行う場合は、［エクスポート］をクリックします。
     
     ［エクスポート］をクリックすると、全件出力を実行してよいかの確認ダイアログが表示されます。表示されたダイアログのボタンを操作します。
 
-![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image75.png)
+    ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image75.png)
 
 66. ［実行］を選択します。全件エクスポート処理が実行されます。
     
+    コミュニティ管理者の場合は、管理対象のコミュニティに属するアイテムのみエクスポートされます。
+
     正常に処理が完了するとダウンロードのURLが画面上に表示されます。
     
     URLをクリックするとzipファイル(export-all.zip)がダウンロード出来ます。
     
     エクスポートファイルの構成は以下の通りです。
-
 ![テキスト, 手紙 自動的に生成された説明](media/media/image76.png)
-
-**出力されるtsvファイルは、「アイテムタイプ名（アイテムタイプID）」の形でアイテムタイプ毎にtsvファイルが出力されます。各アイテムのコンテンツファイルは出力されません。**
+    **出力されるtsvファイルは、「アイテムタイプ名（アイテムタイプID）」の形でアイテムタイプ毎にtsvファイルが出力されます。各アイテムのコンテンツファイルは出力されません。**
+    アイテムタイプ内のエクスポート対象となるアイテム数が一定値を超える場合、tsvファイルは一定値ごとに分割されます。
+    その場合「アイテムタイプ名（アイテムタイプID）.part(パート数)」の形式のファイル名になります
 
 67. 処理を行わない場合は、［キャンセル］をクリックします。
-    
     ボタンの初期状態は非活性です。エクスポートを実行中は活性となり、クリックすることが出来ます。
     
     **［キャンセル］をクリックすると、全件エクスポートの処理をキャンセルしてよいかの確認ダイアログを表示します。表示されたダイアログのボタンを操作します。**
@@ -2468,110 +3379,111 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 1.  ［アイテム管理］をクリックして［インポート］をクリックします。
     
     ［選択］タブにファイルをインポートする画面が表示されます。
+    ![グラフィカル ユーザー インターフェイス, テキスト, メール 自動的に生成された説明](media/media/image78.png)
 
-![グラフィカル ユーザー インターフェイス, テキスト, メール 自動的に生成された説明](media/media/image78.png)
+    一括登録を実行中に他の端末が Admin\>Items\>Import 画面を開いた場合、メッセージ日本語は［他の端末でインポートを実行中です。］、英語は［Import is in progress on another device. ］が表示されます。
 
-一括登録を実行中に他の端末が Admin\>Items\>Import 画面を開いた場合、メッセージ日本語は［他の端末でインポートを実行中です。］、英語は［Import is in progress on another device. ］が表示されます。
+    一括登録を実行している端末が Admin\>Items\>Import 画面を開いた場合（他のブラウザで開いたとき，"Result"タブから再度"Import"タブに遷移したとき等）、メッセージ日本語は［インポートを実行中です。］、英語は［Import is in progress. ］が表示されます。
 
-一括登録を実行している端末が Admin\>Items\>Import 画面を開いた場合（他のブラウザで開いたとき，"Result"タブから再度"Import"タブに遷移したとき等）、メッセージ日本語は［インポートを実行中です。］、英語は［Import is in progress. ］が表示されます。
-
-インポート中はアイテムタイプ削除やインデックス操作ができないようにする。
+    インポート中はアイテムタイプ削除やインデックス操作ができないようにする。
 
 
 68. ［アイテムタイプ］を選択して［ダウンロード］をクリックします。  
     選択したアイテムタイプのヘッダ情報をTSV形式でダウンロードします。ファイル名は「*アイテムタイプ名(アイテムタイプID).tsv*」です。
 
-![グラフィカル ユーザー インターフェイス, テキスト 自動的に生成された説明](media/media/image79.png)
+    ![グラフィカル ユーザー インターフェイス, テキスト 自動的に生成された説明](media/media/image79.png)
 
-注
+    注
 
-アイテムタイプリストが取得できない場合、エラーメッセージ「アイテムタイプリストの取得に失敗しました。」が表示されます。
+    アイテムタイプリストが取得できない場合、エラーメッセージ「アイテムタイプリストの取得に失敗しました。」が表示されます。
 
-アイテムタイプのダウンロード時にエラーが発生した場合、エラーメッセージ「ダウンロードに失敗しました。」が表示されます。
+    アイテムタイプのダウンロード時にエラーが発生した場合、エラーメッセージ「ダウンロードに失敗しました。」が表示されます。
 
-表 3‑1ダウンロードされるアイテムタイプのテンプレートの項目
+    表 3‑1ダウンロードされるアイテムタイプのテンプレートの項目
 
-<table>
-<thead>
-<tr class="header">
-<th>行目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1行目</td>
-<td><p>アイテムタイプの名称を記載します。</p>
-<ul>
-<li><p>1カラム目 ： #ItemType(固定)</p></li>
-<li><p>2カラム目 ： アイテムタイプの名称を記載します。</p></li>
-<li><p>3カラム目 ： アイテムタイプのjsonschemaのURLを記載します。</p></li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>2行目</td>
-<td><p>各メタデータ項目の内部キーを記載します。</p>
-<p>出力される項目は以下の通りです。</p>
-<ul>
-<li><p>ID</p></li>
-<li><p>URI</p></li>
-<li><p>IndexID##</p></li>
-<li><p>POS_INDEX##</p></li>
-<li><p>FEEDBACK_MAIL</p></li>
-<li><p>PUBLISH_STATUS</p></li>
-<li><p>CNRI</p></li>
-<li><p>DOI_RA</p></li>
-<li><p>DOI</p></li>
-<li><p>EDIT_MODE</p></li>
-<li><p>アイテムタイプに定義されているメタデータ</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+    <table>
+    <thead>
+    <tr class="header">
+    <th>行目</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td>1行目</td>
+    <td><p>アイテムタイプの名称を記載します。</p>
+    <ul>
+    <li><p>1カラム目 ： #ItemType(固定)</p></li>
+    <li><p>2カラム目 ： アイテムタイプの名称を記載します。</p></li>
+    <li><p>3カラム目 ： アイテムタイプのjsonschemaのURLを記載します。</p></li>
+    </ul></td>
+    </tr>
+    <tr class="even">
+    <td>2行目</td>
+    <td><p>各メタデータ項目の内部キーを記載します。</p>
+    <p>出力される項目は以下の通りです。</p>
+    <ul>
+    <li><p>ID</p></li>
+    <li><p>URI</p></li>
+    <li><p>IndexID##</p></li>
+    <li><p>POS_INDEX##</p></li>
+    <li><p>FEEDBACK_MAIL</p></li>
+    <li><p>REQUEST_MAIL</p></li>
+    <li><p>RESEAECHMAP_LINKAGE</p></li>
+    <li><p>PUBLISH_STATUS</p></li>
+    <li><p>CNRI</p></li>
+    <li><p>DOI_RA</p></li>
+    <li><p>DOI</p></li>
+    <li><p>EDIT_MODE</p></li>
+    <li><p>アイテムタイプに定義されているメタデータ</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
 
-<table>
-<thead>
-<tr class="header">
-<th>3行目</th>
-<th><p>各メタデータ項目のラベルを記載します。</p>
-<ul>
-<li><p>メタデータの階層に応じて、各階層のラベルを"."で連結します。</p></li>
-<li><p>繰り返し可能な項目については、ラベルのサフィックスとして"#"+連番(1〜)を記載します。</p></li>
-</ul></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>4行目</td>
-<td>アイテム登録画面でユーザが編集できない（自動で設定される）項目について「System」が出力されています。例外的に、ファイルのサイズ、本文URLはファイルがあり、指定がない場合は自動設定されます。</td>
-</tr>
-<tr class="even">
-<td>5行目</td>
-<td><p>各アイテムタイプ項目に設定されているオプション情報を記載します。</p>
-<p>オプションは［Required］、［Hide］、［Allow Multiple］です。</p></td>
-</tr>
-</tbody>
-</table>
+    <table>
+    <thead>
+    <tr class="header">
+    <th>3行目</th>
+    <th><p>各メタデータ項目のラベルを記載します。</p>
+    <ul>
+    <li><p>メタデータの階層に応じて、各階層のラベルを"."で連結します。</p></li>
+    <li><p>繰り返し可能な項目については、ラベルのサフィックスとして"#"+連番(1〜)を記載します。</p></li>
+    </ul></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td>4行目</td>
+    <td>アイテム登録画面でユーザが編集できない（自動で設定される）項目について「System」が出力されています。例外的に、ファイルのサイズ、本文URLはファイルがあり、指定がない場合は自動設定されます。</td>
+    </tr>
+    <tr class="even">
+    <td>5行目</td>
+    <td><p>各アイテムタイプ項目に設定されているオプション情報を記載します。</p>
+    <p>オプションは［Required］、［Hide］、［Allow Multiple］です。</p></td>
+    </tr>
+    </tbody>
+    </table>
 
-「アイテムタイプに定義されているメタデータファイル」以外の項目については、章末の【補足資料】を参照してください。
+    「アイテムタイプに定義されているメタデータファイル」以外の項目については、章末の【補足資料】を参照してください。
 
 69. ［ファイル選択］をクリックしてZIPファイルを指定します。
     
     ファイル名が表示されます。
 
-![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image80.png)
+    ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image80.png)
 
-一括登録用のファイル形式は以下の二つの形式です。
+    一括登録用のファイル形式は以下の二つの形式です。
 
-  - > Bagit形式
+    - > Bagit形式
 
-![テキスト, 手紙 自動的に生成された説明](media/media/image81.png)
+    ![テキスト, 手紙 自動的に生成された説明](media/media/image81.png)
 
-  - > Bagit無し形式
+    - > Bagit無し形式
 
-![テキスト 自動的に生成された説明](media/media/image82.png)
+    ![テキスト 自動的に生成された説明](media/media/image82.png)
 
-アイテムタイプの異なるTSVファイルを複数配置して登録することができます。
+    アイテムタイプの異なるTSVファイルを複数配置して登録することができます。
 
 70. ［識別子変更モード］を指定してインポートする場合
 
@@ -2593,6 +3505,22 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
     ［利用規約に同意します］をクリックして［OK］をクリックします。  
     ファイルの読み込みとチェックが実行されて、［インポート］タブが表示されます。［インポート］タブには、読み込んだファイルのチェック結果が表示されます。  
     ![](media/media/image85.png)
+     
+    識別子変更モードが有効である場合、アイテムにDOIが指定されていると、そのDOIが登録済みDOIに存在するかをチェックします。
+
+    指定されたDOIと一致するレコードが登録済みDOIに存在する場合は、表3-2のNo.1のエラーメッセージが表示されます。
+    取り下げられたDOIが指定されている場合は、表3-2のNo.2のエラーメッセージが表示されます。
+    指定されたDOIがインポートファイル内で重複している場合は、表3-2のNo.3のエラーメッセージが表示されます。
+
+表 3-2DOI重複チェックのエラーメッセージ
+
+| No. | 種別  | 英語                                                                 | 日本語                                                         |
+|-----|-------|----------------------------------------------------------------------|----------------------------------------------------------------|
+| 1   | ERROR | Specified DOI has been used already for another item. Please specify another DOI. | 指定されたDOIは既に別のアイテムに付与されています。別のDOIを指定してください。 |
+| 2   | ERROR | Specified DOI was withdrawn. Please specify another DOI.              | 指定されたDOIは取り下げられました。別のDOIを指定してください。           |
+| 3   | ERROR | Specified DOI is duplicated with another import item. Please specify another DOI. | 指定されたDOIはインポートファイル内で重複しています。別のDOIを指定してください。 |
+
+
 
 3)  > ［チェック結果］が［Register］または［Update］であることを確認します。
     
@@ -2602,7 +3530,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 ![](media/media/image86.png)
 
-表 3‑2［インポート］タブの項目
+表 3‑3［インポート］タブの項目
 
 <table>
 <thead>
@@ -2671,7 +3599,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 ダウンロード時にエラーが発生する場合、エラーメッセージ「ダウンロードに失敗しました。」が表示されます。
 
-表 3‑3TSVフォーマット不正のバリデーションチェック
+表 3‑4TSVフォーマット不正のバリデーションチェック
 
 <table>
 <thead>
@@ -2829,7 +3757,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 </tbody>
 </table>
 
-表 3‑4メタデータ項目以外の不正のバリデーションチェック
+表 3‑5メタデータ項目以外の不正のバリデーションチェック
 
 <table>
 <thead>
@@ -2915,7 +3843,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 </tr>
 <tr class="odd">
 <td>エラー</td>
-<td>[.FEEDBACK_MAIL#n]</td>
+<td>[.FEEDBACK_MAIL#n], [.REQUEST_MAIL#n]</td>
 <td>Specified {} is invalid.</td>
 <td>指定された{}が不正です。</td>
 <td><p>以下の値が不正な形式で指定された場合</p>
@@ -2964,7 +3892,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 | エラー | \[公開日\]      | 'pubdate' is a required property.                                                                          | 'pubdate'は必須項目です。                                      | 'pubdate'が指定されていない場合                     |
 | エラー | \[サムネイルパス\]  | Please specify the image file(gif, jpg, jpe, jpeg, png, bmp) for the thumbnail.                            | サムネイルは画像ファイル（gif, jpg, jpe, jpeg, png, bmp）を指定してください   | 画像ファイル以外を指定する場合                          |
 
-表 3‑5メタデータ項目不正のバリデーションチェック
+表 3‑6メタデータ項目不正のバリデーションチェック
 
 | タイプ | 対象                               | 英語                                                                                                                                     | 日本語                                                              | 説明                                                            |
 | --- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------- |
@@ -2987,12 +3915,25 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
     新規で一括登録するアイテムに指定したDOI、CNRIの登録を行います。
     
     既存のアイテムに登録しているDOI、CNRIの変更を行います。
+
+    指定したDOIが別アイテムで用いられている場合、表3-7のNo.1のメッセージが表示されます。
+
+    指定したDOIが無効かされている場合、表3-7のNo.2のメッセージが表示されます。
     
-    個別のアイテム編集中に、一括登録を実施した場合、メッセージ日本語は［該当アイテムが編集中のため更新できません。］、英語は［Cannot update because the corresponding item is being edited. ］ が表示されます。
-    
-    個別のアイテム削除後に、一括登録を実施した場合、メッセージ日本語は［該当アイテムは削除済です。］、英語は［The corresponding item has been deleted. ］ が表示されます。
-    
+    個別のアイテム削除後に、一括登録を実施した場合、表3-7のNo.3のメッセージが表示されます
+
+    個別のアイテム編集中に、一括登録を実施した場合、表3-7のNo.4のメッセージが表示されます。
+
     ユーザのセッション有効時間を超過した場合でもインポート処理は実行されます。
+
+表 3‑7インポート結果エラーメッセージ
+
+| No. | 英語                                                                 | 日本語                                               |
+|-----|----------------------------------------------------------------------|------------------------------------------------------|
+| 1   | This DOI has been already grant for another item. Please specify another DOI. | このDOIは既に別のアイテムに付与されています。別のDOIを指定してください。 |
+| 2   | This DOI was withdrawn. Please input another DOI.                    | このDOIは取り下げられました。別のDOIを指定してください。           |
+| 3   | The corresponding item has been deleted.                             | 該当アイテムは削除済です。                                 |
+| 4   | Cannot update because the corresponding item is being edited.        | 該当アイテムが編集中のため更新できません。                      |
 
 <!-- end list -->
 
@@ -3010,8 +3951,8 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 
 ![](media/media/image87.png)
 
-［インポート］タブの項目は、「表 3-2［インポート］タブの項目」の説明に参照します。  
-インポートファイルのバリデーションチェックは、「表 3-3 TSVフォーマット不正のバリデーションチェック」、「表 3-4 メタデータ項目以外の不正のバリデーションチェック」、「表 3-5 メタデータ項目不正のバリデーションチェック」の説明に参照します。
+［インポート］タブの項目は、「表 3-3［インポート］タブの項目」の説明に参照します。  
+インポートファイルのバリデーションチェックは、「表 3-4 TSVフォーマット不正のバリデーションチェック」、「表 3-5 メタデータ項目以外の不正のバリデーションチェック」、「表 3-6 メタデータ項目不正のバリデーションチェック」の説明に参照します。
 
 3)  > ［インポート］をクリックします。
     
@@ -3030,7 +3971,7 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
     
     ![](media/media/image88.png)
 
-表 3‑6［結果］タブの項目
+表 3‑8［結果］タブの項目
 
 <table>
 <thead>
@@ -3065,12 +4006,12 @@ WEKO3システムは、JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, lomのス
 <td>各アイテムのアイテムIDが表示されます。</td>
 </tr>
 <tr class="even">
-<td>アクション</td>
-<td>各アイテムのワークフローのアクションが表示されます。</td>
+<td>ステータス</td>
+<td>アイテムのワークフローのステータスが表示されます。</td>
 </tr>
 <tr class="odd">
-<td>ワークフローステータス</td>
-<td>アイテムのワークフローのステータスが表示されます。</td>
+<td>インポート結果</td>
+<td>アイテムのインポート結果が表示されます</td>
 </tr>
 </tbody>
 </table>
@@ -3514,6 +4455,16 @@ CNRIハンドル設定ユーザ
 <p>英語：サイトの表示言語が日本語以外の時に表示されます。</p></td>
 </tr>
 <tr class="even">
+<td>インデックスURL</td>
+<td><p>インデックスのエンドポイントURLが表示されます。</p>
+<p>編集できません</p></td>
+</tr>
+<tr class="odd">
+<td>CNRI</td>
+<td><p>インデックスのCNRIが存在する場合表示されます。</p>
+<p>編集できません</p></td>
+</tr>
+<tr class="even">
 <td>コメント</td>
 <td><p>インデックスのコメントを入力します。コメントは下記項目で表示されます。</p>
 <ul>
@@ -3529,7 +4480,11 @@ CNRIハンドル設定ユーザ
 <td>公開</td>
 <td><p>インデックスの公開または非公開を設定します。</p>
 <p>［公開する］にチェックがある場合、インデックスの公開日を設定できます。</p>
-<p>［子インデックスの公開日にも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてに公開日の設定が再帰的に設定されます。</p></td>
+<p>［子インデックスの公開日にも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてに公開日の設定が再帰的に設定されます。</p>
+<p><b>以下インデックス公開ロック機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。</b><p>
+<p>インデックス公開ロック機能が有効になり、［公開する］にチェックをした場合ポップアップが表示されるようになります。</p>
+<p>上記ポップアップ内のメッセージを確認後「公開設定を有効化する」チェックボックスをチェックし「有効化する」ボタンをクリック後、ポップアップが閉じ、公開するチェックボックスにチェックが入ります。ポップアップを閉じる場合は「閉じる」ボタンをクリックすると、ポップアップが閉じられます。</p>
+<p>図 1-3 インデックス公開ロック機能ポップアップを参照</p></td>
 </tr>
 <tr class="even">
 <td>インデックスリンク</td>
@@ -3554,49 +4509,50 @@ CNRIハンドル設定ユーザ
 </tr>
 <tr class="even">
 <td>ハーベスト公開</td>
-<td>インデックスへのハーベスト要求に対して、所属するデータの提供または非提供を設定します。</td>
+<td><p>インデックスへのハーベスト要求に対して、所属するデータの提供または非提供を設定します。</p>
+<p><b>以下インデックス公開ロック機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。</b><p>
+<p>インデックス公開ロック機能が有効になり、［公開する］にチェックをした場合ポップアップが表示されるようになります。</p>
+<p>上記ポップアップ内のメッセージを確認後「公開設定を有効化する」チェックボックスをチェックし「有効化する」ボタンをクリック後、ポップアップが閉じ、公開するチェックボックスにチェックが入ります。ポップアップを閉じる場合は「閉じる」ボタンをクリックすると、ポップアップが閉じられます。</p>
+<p>図 1-3 インデックス公開ロック機能ポップアップを参照</p></td>
 </tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr class="header">
-<th>ONLINE ISSN</th>
-<th><p>インデックスにオンラインISSNの値を設定します。</p>
-<p>（注）「このインデックス直下のアイテムの利用統計を集計する」のチェックボックスにチェックを入れても、子インデックスへの再帰的な設定値反映および利用統計集計は現在機能しません。</p></th>
-</tr>
-</thead>
-<tbody>
 <tr class="odd">
+<td>ONLINE ISSN</td>
+<td><p>インデックスにオンラインISSNの値を設定します。</p>
+<p>（注）「このインデックス直下のアイテムの利用統計を集計する」のチェックボックスにチェックを入れても、子インデックスへの再帰的な設定値反映および利用統計集計は現在機能しません。</p></td>
+</tr>
+<tr class="even">
 <td>閲覧権限</td>
 <td><p>インデックスの閲覧権限を設定します。</p>
-<p>［ロール権限あり］および［グループ権限あり］に表示されているロールおよびグループに所属しているユーザが、そのインデックスを閲覧できます。</p>
+<p>［ロール権限あり］に表示されているロールの中から1つ以上のロールを持ち、さらに［グループ権限あり］に表示されているグループから1つ以上のグループに所属しているユーザが、そのインデックスを閲覧できます。</p>
+<p>"Authenticated User"はログインユーザ、"Guest"は未ログインユーザを指すロールであり、"No Group"は未ログインユーザとグループに所属しないログインユーザを指すグループです。</p>
 <ul>
 <li><p>ロール権限</p></li>
 </ul>
-<p>ユーザロールごとの閲覧権限を設定します。［子インデックスのベース権限にも再帰的に反映させる］にチェックがある場合、所属するすべての子インデックスと子孫インデックスにロール権限の設定が再帰的に設定されます。</p>
+<p>ユーザロールごとの閲覧権限を設定します。［子インデックスのロール権限にも再帰的に反映させる］にチェックがある場合、所属するすべての子インデックスと子孫インデックスにロール権限の設定が再帰的に設定されます。</p>
 <ul>
 <li><p>グループ</p></li>
 </ul>
-<p>ユーザが所属しているグループごとの閲覧権限を設定します。［子インデックスのグループにも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定されます。</p></td>
+<p>ユーザが所属しているグループごとの閲覧権限を設定します。［子インデックスのグループ権限にも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定されます。</p>
+<p>学認経由でのログイン時にGakuNin mAPからの情報に従って付与されたグループの閲覧権限に設定ファイルを用いてデフォルトの権限を付与できます。</p></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>投稿権限</td>
 <td><p>インデックスにアイテムを投稿する権限を設定します。</p>
-<p>［ロール権限あり］および［グループ権限あり］に表示されているロールおよびグループに所属しているユーザが、そのインデックスにアイテムを登録できます。</p>
+<p>［ロール権限あり］に表示されているロールの中から1つ以上のロールを持ち、さらに［グループ権限あり］に表示されているグループから1つ以上のグループに所属しているユーザが、そのインデックスにアイテムを登録できます。</p>
+<p>"Authenticated User"はログインユーザ、"Guest"は未ログインユーザを指すロールであり、"No Group"は未ログインユーザとグループに所属しないログインユーザを指すグループです。</p>
 <ul>
 <li><p>ロール権限</p></li>
 </ul>
-<p>ユーザ情報のベース権限ごとの投稿権限を設定します。</p>
-<p>［子インデックスのベース権限にも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにロール権限の設定が再帰的に設定されます。</p>
+<p>ユーザロールごとの投稿権限を設定します。</p>
+<p>［子インデックスのロール権限にも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにロール権限の設定が再帰的に設定されます。</p>
 <ul>
 <li><p>グループ</p></li>
 </ul>
 <p>ユーザが所属しているグループごとの投稿権限を設定します。</p>
-<p>［子インデックスのグループにも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定されます。</p></td>
+<p>［子インデックスのグループ権限にも再帰的に反映させる］にチェックがある場合、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定されます。</p>
+<p>学認経由でのログイン時にGakuNin mAPからの情報に従って付与されたグループの投稿権限に設定ファイルを用いてデフォルトの権限を付与できます。</p></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>表示形式(検索結果)</td>
 <td><p>検索結果の表示形式を選択します。</p>
 <ul>
@@ -3608,7 +4564,7 @@ CNRIハンドル設定ユーザ
 </ul>
 <p>検索結果を見出しの一覧で表示します。</p></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>サムネイル</td>
 <td><p>インデックスにサムネイルを設定します。</p>
 <p>設定可能なファイルの形式は「gif, jpg, jpe, jpeg, png, bmp」です。</p>
@@ -3617,7 +4573,10 @@ CNRIハンドル設定ユーザ
 </tbody>
 </table>
 
-74. ［送信］をクリックします。
+図 1-3 インデックス公開ロック機能ポップアップ  
+![](media/media/image469.png)
+
+1. ［送信］をクリックします。
     
     入力した情報がインデックスに追加されます。
     
@@ -3731,6 +4690,17 @@ CNRIハンドル設定ユーザ
 <td>publication_title</td>
 <td><p>雑誌情報のタイトルを入力します。</p>
 <p>必ず入力してください。</p></td>
+</tr>
+<tr class="even">
+<td>概要</td>
+<td></td>
+<td>概要を入力します。</td>
+</tr>
+<tr class="even">
+<td>ISSN-L</td>
+<td></td>
+<td><p>ISSN-Lを入力します。</p>
+<p>フォーマット：^[0-9]{4}-[0-9]{3}[0-9X]</p></td>
 </tr>
 <tr class="even">
 <td><strong>プリント版ISSN/プリント版ISBN</strong></td>
@@ -3877,20 +4847,13 @@ CNRIハンドル設定ユーザ
 <td>ndl_bibid</td>
 <td><strong>NDL書誌IDを入力します。</strong></td>
 </tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr class="header">
-<th><strong>J-STAGE資料コード（雑誌名の略称）</strong></th>
-<th>jstage_code</th>
-<th><p><strong>J-STAGE資料コードを入力します。</strong></p>
+<tr class="even">
+<td><strong>J-STAGE資料コード（雑誌名の略称）</strong></td>
+<td>jstage_code</td>
+<td><p><strong>J-STAGE資料コードを入力します。</strong></p>
 <p><strong>長さ：20文字以内</strong></p>
-<p><strong>使用可能文字：半角英数字記号</strong></p></th>
+<p><strong>使用可能文字：半角英数字記号</strong></p></td>
 </tr>
-</thead>
-<tbody>
 <tr class="odd">
 <td><strong>医中誌ジャーナルコード</strong></td>
 <td>ichushi_code</td>
@@ -3915,7 +4878,7 @@ CNRIハンドル設定ユーザ
 
 図 4‑2入力した文字数が超えている場合
 
-80. ［保存］をクリックします。
+1.  ［保存］をクリックします。
     
     入力した情報がインデックスに追加されます。
 
@@ -3946,6 +4909,7 @@ CNRIハンドル設定ユーザ
 1.  ［インデックスツリー管理］をクリックして［カスタムソート］をクリックします。
     
     アイテムの並び順を一括更新する画面が表示されます。
+    ※コミュニティ管理者の場合は管理対象のインデックスのみが表示されます。
 
 <!-- end list -->
 
@@ -3983,6 +4947,8 @@ CNRIハンドル設定ユーザ
     
     作成されたウィジェット一覧が表示されます。
 
+    コミュニティ管理者の場合は管理対象のコミュニティに属するウィジェットのみ表示されます。
+
 ![](media/media/image110.png)
 
 84. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
@@ -4019,7 +4985,8 @@ CNRIハンドル設定ユーザ
 <tbody>
 <tr class="odd">
 <td>Repository<sup>※</sup></td>
-<td>ウィジェットを追加するリポジトリを設定します。</td>
+<td><p>ウィジェットを追加するリポジトリを設定します。</p>
+<p>コミュニティ管理者の場合は管理対象のコミュニティのみ選択可能です。</p></td>
 </tr>
 <tr class="even">
 <td>Type<sup>※</sup></td>
@@ -4067,41 +5034,32 @@ CNRIハンドル設定ユーザ
 <td>Label Text Color</td>
 <td>ラベルの文字色を設定します。</td>
 </tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr class="header">
-<th>Border Style</th>
-<th><p>以下からウィジェットの枠線のスタイルを設定します。詳細は、「(3) Border Styleの設定内容」を参照してください。</p>
+<tr class="odd">
+<td>Border Style</td>
+<td><p>以下からウィジェットの枠線のスタイルを設定します。詳細は、「(3) Border Styleの設定内容」を参照してください。</p>
 <ul>
 <li><p>None</p></li>
 <li><p>Solid</p></li>
 <li><p>Dotted</p></li>
 <li><p>Double</p></li>
-</ul></th>
+</ul></td>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
+<tr class="even">
 <td>Border Color</td>
 <td>ウィジェットの枠線の色を設定します。</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Background Color</td>
 <td>ウィジェットの背景色を設定します。</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Enable</td>
 <td>ウィジェットデザインにてウィジェットの有効または無効を設定します。デフォルトは、有効（チェックあり）です。</td>
 </tr>
 </tbody>
 </table>
 
-注※
-
-入力必須項目です。
+注※入力必須項目です。
 
 86. ［Save］をクリックします。
     
@@ -4568,6 +5526,8 @@ Main contentsの設定は、「表 5-1ウィジェットの作成画面の項目
 
 1.  Repositoryのプルダウンリストで、リポジトリを選択します。
     
+    コミュニティ管理者の場合は管理対象のコミュニティのみ選択可能です。
+
     選択したリポジトリのMain Layoutのページが表示されます。また、Widget Listには、ウィジェットが表示されます。
     
     ウィジェット画面で有効（Enableがチェックあり）が設定されているウィジェットがWidget Listに表示されます。
@@ -4636,7 +5596,15 @@ Main contentsの設定は、「表 5-1ウィジェットの作成画面の項目
     
     URLを入力しない場合、エラーメッセージ「Not a valid URL.」が表示されます。  
     ![](media/media/image179.png)
-    
+
+    選択しているリポジトリがコミュニティの場合は、入力したURLの前に「/c/{community_id}/page」の形式でプレフィックスを自動的に付与します。
+
+    ![](media/media/image447.png)
+
+    初期値「/」を削除して、外部URLを設定することも可能です。外部URLを設定したページを"Menu"ウィジェットにセットすることで、外部ページへのリンクとして機能します。
+
+    ![](media/media/image442.png)
+
     【補足】
     
     追加したページは、ウィジェットの「メニュー」を配置することで、各ページのリンクを表示し、各ページへ遷移することができます。メニューに表示するページは「メニュー」ウィジェットの編集時に指定することができます。
@@ -4764,7 +5732,8 @@ Author IDの表示について説明します。
 </tr>
 <tr class="even">
 <td>［編集］</td>
-<td>クリックすると、Author IDの編集画面が表示されます。</td>
+<td>クリックすると、Author IDの編集画面が表示されます。<br>
+※コミュニティ管理者は、管理対象コミュニティに関連付けられた著者のみ「編集」ボタンが有効です。その他の著者のボタンは押せません。</td>
 </tr>
 </tbody>
 </table>
@@ -4914,6 +5883,10 @@ Author IDを追加する方法を説明します。
 </tbody>
 </table>
 
+（補足）著者IDにresearchmapを指定した際は、parmalink*を入力していただく必要があります。
+
+*parmalinkとは：researchmapでの新規登録の際にご入力いただくリンク識別子のことを言います。「マイポータル」（researchmapの公開用ウェブページ）にアクセスするための研究者詳細ページURL末尾に付く文字列です。英数字記号混合で3～20文字の文字列です。
+
 103. ［確認］をクリックします。
      
      選択された外部著者IDに応じたランディングページが別ウィンドウで表示されます。
@@ -4960,6 +5933,18 @@ Author IDを追加する方法を説明します。
 </tbody>
 </table>
 
+105. コミュニティ情報を入力します。
+
+表 6-5［コミュニティ］の項目
+
+![](media/media/image474.png)
+
+| 項目                    | 説明                                                                                                               |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| ［コミュニティ］        | 著者を管理するコミュニティを選択します。                                                                           |
+| ［+コミュニティを追加］ | クリックするとコミュニティの入力欄が追加されます。                                                                 |
+| ［X］                   | クリックすると、コミュニティの入力欄が削除されます。<br>表示されている入力エリアが１つのみの場合、削除できません。 |
+
 105. 組織情報を入力します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image192.png)
@@ -4986,9 +5971,17 @@ Author IDを編集する方法を説明します。
      
      入力項目については、「（3）Author IDを追加する」を参照してください。
 
-109. ［保存］をクリックします。
+109. ［保存］をクリックします。  
      
      変更内容が保存されます。
+
+     ※ 変更内容が反映される際に、この著者DBに紐づいているメタデータを更新します。
+     更新対象は強制変更フラグによって変わります。
+     
+![グラフィカル ユーザー インターフェイス 中程度の精度で自動的に生成された説明](media/media/image475.png)
+
+    強制変更フラグがオフの場合：著者ID
+    強制変更フラグオンの場合：名前、著者ID、E-mail、機関識別子
      
 ##### Author IDを削除する
 
@@ -5063,6 +6056,10 @@ ID Prefixの表示について説明します。
 <td>ID PrefixのURLが表示されます。</td>
 </tr>
 <tr class="even">
+<td>［Community］</td>
+<td>ID Prefixの管理権限があるコミュニティが表示されます。</td>
+</tr>
+<tr class="odd">
 <td>［Control］</td>
 <td><p>コントロールのボタンが表示されます。</p>
 <p>コントロールのボタンは［Edit］、［Add］です。</p></td>
@@ -5127,6 +6124,12 @@ ID Prefixの表示について説明します。
 <p>GRID</p>
 </blockquote></li>
 <li><blockquote>
+<p>ROR</p>
+</blockquote></li>
+<li><blockquote>
+<p>researchmap</p>
+</blockquote></li>
+<li><blockquote>
 <p>Other</p>
 </blockquote></li>
 </ul>
@@ -5137,6 +6140,10 @@ ID Prefixの表示について説明します。
 <tr class="odd">
 <td>URL<sup>※</sup></td>
 <td>著者IDのアクセス先URLを入力します。</td>
+</tr>
+<tr>
+<td>Community</td>
+<td>ID Prefixを管理するコミュニティを選択してください。</td>
 </tr>
 </tbody>
 </table>
@@ -5158,6 +6165,8 @@ URLについて
      ［Name］、［Scheme］は必須項目です。それらを入力しない場合、［+Add］をクリックすると、エラーメッセージ「Please enter the correct + 項目名」が表示されます。
      
      ［Scheme］は複数設定できません。設定されたSchemeを選択する場合、［+Add］をクリックすると、エラーメッセージ「Specified scheme is already exist.」が表示されます。
+
+     ［Community］はコミュニティ管理者の場合必須項目です。管理対象のコミュニティを選択しない場合、［+Add］をクリックすると、エラーメッセージ「You must include at least one managed community.」が表示されます。
      
 ##### 外部著者ID Prefixを編集する
 
@@ -5230,6 +6239,10 @@ URLについて
 <td>ID PrefixのURLが表示されます。</td>
 </tr>
 <tr class="even">
+<td>［Community］</td>
+<td>ID Prefixの管理権限があるコミュニティが表示されます。</td>
+</tr>
+<tr class="odd">
 <td>［Control］</td>
 <td><p>コントロールのボタンが表示されます。</p>
 <p>コントロールのボタンは［Edit］、［Add］です。</p></td>
@@ -5288,6 +6301,10 @@ URLについて
 <td>URL<sup>※</sup></td>
 <td>所属機関IDのアクセス先URLを入力します。</td>
 </tr>
+<tr>
+<td>Community</td>
+<td>ID Prefixを管理するコミュニティを選択してください。</td>
+</tr>
 </tbody>
 </table>
 
@@ -5308,6 +6325,8 @@ URLについて
     ［Name］、［Scheme］は必須項目です。それらを入力しない場合、［+Add］をクリックすると、エラーメッセージ「Please enter the correct + 項目名」が表示されます。
     
     ［Scheme］が複数設定できません。設定されたSchemeを選択する場合、［+Add］をクリックすると、エラーメッセージ「Specified scheme is already exist.」が表示されます。
+
+    ［Community］はコミュニティ管理者の場合必須項目です。管理対象のコミュニティを選択しない場合、［+Add］をクリックすると、エラーメッセージ「You must include at least one managed community.」が表示されます。
     
 ##### 組織ID Prefixを編集する
 
@@ -5333,8 +6352,10 @@ URLについて
 
 ![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image206.png)
 
-117. 処理を行う場合は、［エクスポート］をクリックします。
-     
+![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image441.png)
+
+117. 処理を行う場合は、エクスポート対象を選択後、［エクスポート］をクリックします。
+     エクスポート対象は著者DB、著者識別子、機関識別子から選択できます。
      ［エクスポート］をクリックすると、全件出力を実行してよいかの確認ダイアログが表示されます。表示されたダイアログのボタンを操作します。
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション 自動的に生成された説明](media/media/image207.png)
@@ -5349,111 +6370,227 @@ URLについて
 
 表 6‑9ダウンロードされる著者情報の項目
 
+
 <table>
 <thead>
 <tr class="header">
-<th>項番</th>
-<th><p>1行目</p>
-<p>ヘッダ項目（内部キー）</p></th>
-<th><p>2行目</p>
-<p>ラベル（英語）</p></th>
-<th><p>3行目</p>
-<p>ラベル</p>
-<p>（日本語）</p></th>
-<th>概要</th>
+<th >#</th> <th>ヘッダ項目</th> <th>ラベル(日本語)</th> <th>ラベル(英語)</th> <th>概要</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr  >
 <td>1</td>
 <td>pk_id</td>
 <td>WEKO ID</td>
 <td>WEKO ID</td>
 <td>WEKO3の著者ID( pk_id author_link)を出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>2</td>
 <td>authorNameInfo[0...n].familyName</td>
-<td>Family Name</td>
 <td>姓</td>
+<td>Family Name</td>
 <td>著者の姓を出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>3</td>
 <td>authorNameInfo[0...n].firstName</td>
-<td>Given name</td>
 <td>名</td>
+<td>Given name</td>
 <td>著者の名を出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>4</td>
 <td>authorNameInfo[0...n].language</td>
-<td>Language</td>
 <td>言語</td>
+<td>Language</td>
 <td>著者の言語を出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>5</td>
 <td>authorNameInfo[0...n].nameFormat</td>
-<td>name Format</td>
 <td>フォーマット</td>
-<td>「familyNmAndNm」を固定で出力する</td>
+<td>name Format</td>
+<td>著者の姓名のフォーマットを出力する<br />
+※現状(SP67時点)は「familyNmAndNm」固定</td>
 </tr>
-<tr class="even">
+<tr >
 <td>6</td>
 <td>authorNameInfo[0...n].nameShowFlg</td>
-<td>Name Display</td>
 <td>姓名・言語 表示／非表示</td>
-<td><p>著者の姓名と言語の表示／非表示を出力する</p>
-<p>表示：Y</p>
-<p>非表示：N</p></td>
+<td>Name Display</td>
+<td>著者の姓名と言語の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>7</td>
-<td>authorNameInfo[0...n].idType</td>
-<td>Identifier Scheme</td>
+<td>authorIdInfo[0...n].idType</td>
 <td>外部著者ID 識別子</td>
+<td>Identifier Scheme</td>
 <td>外部著者IDの識別子を出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>8</td>
-<td>authorNameInfo[0...n].authorId</td>
-<td>Identifier URI</td>
+<td>authorIdInfo[0...n].authorId</td>
 <td>外部著者ID URI</td>
+<td>Identifier URI</td>
 <td>外部著者IDの値を出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>9</td>
-<td>authorNameInfo[0...n].authorIdShowFlg</td>
-<td>Identifier Display</td>
+<td>authorIdInfo[0...n].authorIdShowFlg</td>
 <td>外部著者ID 表示／非表示</td>
-<td><p>外部著者IDの表示／非表示を出力する</p>
-<p>表示：Y</p>
-<p>非表示：N</p></td>
+<td>Identifier Display</td>
+<td>外部著者IDの表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
 </tr>
-<tr class="even">
+<tr >
 <td>10</td>
 <td>emailInfo[0...n].email</td>
-<td>Mail Address</td>
 <td>メールアドレス</td>
+<td>Mail Address</td>
 <td>著者のメールアドレスを出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>11</td>
 <td>is_deleted</td>
-<td>Delete Flag</td>
 <td>削除フラグ</td>
-<td>全件エクスポートでは論理削除された著者情報は出力しないため、ヘッダ項目とラベルのみ出力する</td>
+<td>Delete Flag</td>
+<td>著者を削除する場合に "D" と出力する<br />
+※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる</td>
+</tr>
+<tr  >
+<td>12</td>
+<td>authorAffiliationInfo[0...n].affiliationId[0...n].idtype</td>
+<td>外部所属機関ID 識別子</td>
+<td>Affiliation Identifier Scheme</td>
+<td>外部所属機関IDの識別子を出力する</td>
+</tr>
+<tr  >
+<td>13</td>
+<td>authorAffiliationInfo[0...n].affiliationId[0...n].uri</td>
+<td>外部所属機関ID URI</td>
+<td>Affiliation Identifier URI</td>
+<td>外部所属機関IDの値を出力する</td>
+</tr>
+<tr  >
+<td>14</td>
+<td>authorAffiliationInfo[0...n].authorIdShowFlg</td>
+<td>外部所属機関ID 表示／非表示</td>
+<td>Affiliation Identifier Display</td>
+<td>外部所属機関IDの表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr  >
+<td>15</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].affiliationName</td>
+<td>外部所属機関名</td>
+<td>Affiliation Name</td>
+<td>外部所属機関名を出力する</td>
+</tr>
+<tr  >
+<td>16</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].language</td>
+<td>言語</td>
+<td>Language</td>
+<td>外部所属機関名の言語を出力する</td>
+</tr>
+<tr  >
+<td>17</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].nameShowFlg</td>
+<td>外部所属機関名・言語 表示／非表示</td>
+<td>Affiliation Name Display</td>
+<td>外部所属機関名と言語の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr  >
+<td>18</td>
+<td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].period</td>
+<td>外部所属機関 所属期間</td>
+<td>Affiliation Period</td>
+<td>外部所属機関所属期間を出力する。<br/>
+所属開始のみ："20250127"<br/>
+所属開始・終了："20250127-20250317"</td>
+</tr>
+<tr  >
+<td>19</td>
+<td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].nameShowFlg</td>
+<td>外部所属機関 所属期間 表示/非表示</td>
+<td>Affiliation Period Display</td>
+<td>外部所属機関 所属期間の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr>
+<td>20</td>
+<td>communityIds[0...n]</td>
+<td>コミュニティ ID</td>
+<td>Community ID</td>
+<td>著者の管理権限を持つコミュニティのIDを出力する</td>
 </tr>
 </tbody>
 </table>
+
+  - 著者識別子、機関識別子の各ヘッダの情報は以下の通り
+  
+<table>
+<thead>
+<tr class="header">
+<th >#</th> <th>ヘッダ項目</th> <th>ラベル(日本語)</th> <th>ラベル(英語)</th> <th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr >
+<td>1</td>
+<td>scheme</td>
+<td>スキーマ</td>
+<td>Scheme</td>
+<td>スキーマを入力する</td>
+</tr>
+<tr >
+<td>2</td>
+<td>name</td>
+<td>名前</td>
+<td>Name</td>
+<td>スキーマに対応する識別子名を入力する</td>
+</tr>
+<tr >
+<td>3</td>
+<td>url</td>
+<td>URL</td>
+<td>URL</td>
+<td>スキーマに応じるURLを入力する</td>
+</tr>
+<tr >
+<td>4</td>
+<td>is_deleted</td>
+<td>削除フラグ</td>
+<td>Delete Flag</td>
+<td>識別子を削除する場合に "D" と出力する<br />
+    エクスポートの場合は全て空欄である。</td>
+</tr>
+<tr >
+<td>5</td>
+<td>community_ids</td>
+<td>コミュニティID</td>
+<td>Community ID</td>
+<td>識別子の管理権限を持つコミュニティのIDを出力する。</td>
+</tr>
+</tbody>
+</table>
+
+
 
 > 【注意事項】
 > 
 > ・繰り返し項目とする場合はヘッダ行の各項目名の後ろに \[1\], \[2\], ..., \[N\] と出力されます（1つ目の項目名には \[0\] が記載されています）。
 > 
 > ・WEKO ID, Delete Flag は繰り返し項目ではありません。
-> 
+
 > (2)［キャンセル］を選択します。
 > 
 > 全件エクスポートを行なわず、確認用ダイアログを閉じます。
@@ -5482,6 +6619,8 @@ URLについて
 
 ・著者情報に紐づいた組織情報はエクスポートされません。
 
+・コミュニティ管理者の場合、管理対象のコミュニティに紐づかない著者はエクスポートされません。
+
 ### 著者情報を一括登録する
 
 ファイルを指定して著者情報をインポートする方法を説明します。インポートするファイルはtsvファイルです。
@@ -5496,11 +6635,36 @@ URLについて
 
 一括登録を実行している端末が Admin\>Author Management\>Import 画面を開いた場合（他のブラウザで開いたとき，"Result"タブから再度"Import"タブに遷移したとき等）、メッセージ日本語は［インポートを実行中です。］、英語は［Import is in progress. ］ が表示されます。
 
-119. ［ファイル選択］をクリックしてtsvファイルを指定します。
-     
-     ファイル名が表示されます。
-     
-     tsvファイルの入力内容を表6-8に記載します。
+119. Selectタブでの操作  
+- [インポート対象]よりインポートする対象を選択します。
+    - 著者DB
+    - 著者識別子
+    - 機関識別子
+
+- ［ファイル選択］をクリックしてtsvファイルを指定します。
+
+    この際、インポート対象で選んだ対象とファイル形式が違う場合、エラーがでます。
+    
+    著者DBインポート時のtsvファイルの入力内容を表6-8に記載します。  
+    識別子情報インポート時のtsvファイルの入力内容を表6-8-1に記載します。  
+    識別子情報の1行目はテーブルを表す文字列が入ります。  
+    - \#authors_prefix_settings（著者識別子）
+    - \#authors_affiliation_settings（機関識別子）  
+
+- [インポート対象]で著者DBを選んでおり、ファイル選択で著者DBに対応したtsvファイルを入れている場合、  
+強制変更モードチェックボックスが使えるようになります。
+
+    ![グラフィカル](media/media/image444.png)
+
+    - このチェックボックスをONにした場合次のモーダルがでます。  
+    ![グラフィカル](media/media/image445.png)
+
+    - 「利用規約に同意します。」左のチェックボックスをクリックし、  
+    OKボタンを押すと強制変更モードがONになります。  
+    このモードをONにして著者DBの更新を行った場合、著者DBに関連づいているアイテムのメタデータを強制的に変更します。  
+    免責事項をよく読み、注意して利用してください。
+        - これ以外の操作でモーダルを閉じた場合、強制変更モードはOFFになります。
+
 
 表 6‑8インポートする著者情報の項目
 
@@ -5518,7 +6682,7 @@ URLについて
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr  >
 <td>1</td>
 <td>pk_id</td>
 <td>WEKO ID</td>
@@ -5526,83 +6690,211 @@ URLについて
 <td><p>WEKO3の著者ID( pk_id author_link)を入力する。</p>
 <p>著者の編集をする際は必須項目となります。</p></td>
 </tr>
-<tr class="even">
+<tr >
 <td>2</td>
 <td>authorNameInfo[0...n].familyName</td>
-<td>Family Name</td>
 <td>姓</td>
-<td>著者の姓を入力する</td>
+<td>Family Name</td>
+<td>著者の姓を出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>3</td>
 <td>authorNameInfo[0...n].firstName</td>
-<td>Given name</td>
 <td>名</td>
-<td>著者の名を入力する</td>
+<td>Given name</td>
+<td>著者の名を出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>4</td>
 <td>authorNameInfo[0...n].language</td>
-<td>Language</td>
 <td>言語</td>
-<td>著者の言語を入力する</td>
+<td>Language</td>
+<td>著者の言語を出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>5</td>
 <td>authorNameInfo[0...n].nameFormat</td>
-<td>name Format</td>
 <td>フォーマット</td>
-<td><p>著者の姓名のフォーマットを入力する。</p>
-<p>現在は固定で「familyNmAndNm」を入れる</p></td>
+<td>name Format</td>
+<td>著者の姓名のフォーマットを出力する<br />
+※現状(SP67時点)は「familyNmAndNm」固定</td>
 </tr>
-<tr class="even">
+<tr >
 <td>6</td>
 <td>authorNameInfo[0...n].nameShowFlg</td>
-<td>Name Display</td>
 <td>姓名・言語 表示／非表示</td>
-<td><p>著者の姓名と言語の表示／非表示を入力する</p>
-<p>表示：Y</p>
-<p>非表示：N</p></td>
+<td>Name Display</td>
+<td>著者の姓名と言語の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>7</td>
-<td>authorNameInfo[0...n].idType</td>
-<td>Identifier Scheme</td>
+<td>authorIdInfo[0...n].idType</td>
 <td>外部著者ID 識別子</td>
-<td>外部著者IDの識別子を入力する</td>
+<td>Identifier Scheme</td>
+<td>外部著者IDの識別子を出力する</td>
 </tr>
-<tr class="even">
+<tr >
 <td>8</td>
-<td>authorNameInfo[0...n].authorId</td>
-<td>Identifier URI</td>
+<td>authorIdInfo[0...n].authorId</td>
 <td>外部著者ID URI</td>
-<td>外部著者IDの値を入力する</td>
+<td>Identifier URI</td>
+<td>外部著者IDの値を出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>9</td>
-<td>authorNameInfo[0...n].authorIdShowFlg</td>
-<td>Identifier Display</td>
+<td>authorIdInfo[0...n].authorIdShowFlg</td>
 <td>外部著者ID 表示／非表示</td>
-<td><p>外部著者IDの表示／非表示を入力する</p>
-<p>表示：Y</p>
-<p>非表示：N</p></td>
+<td>Identifier Display</td>
+<td>外部著者IDの表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
 </tr>
-<tr class="even">
+<tr >
 <td>10</td>
 <td>emailInfo[0...n].email</td>
-<td>Mail Address</td>
 <td>メールアドレス</td>
-<td>著者のメールアドレスを入力する</td>
+<td>Mail Address</td>
+<td>著者のメールアドレスを出力する</td>
 </tr>
-<tr class="odd">
+<tr >
 <td>11</td>
 <td>is_deleted</td>
-<td>Delete Flag</td>
 <td>削除フラグ</td>
-<td>著者を削除する場合に"D"と入力する</td>
+<td>Delete Flag</td>
+<td>著者を削除する場合に "D" と出力する<br />
+※論理削除された著者情報は出力しないため、全件エクスポートではすべて空欄となる</td>
+</tr>
+<tr  >
+<td>12</td>
+<td>authorAffiliationInfo[0...n].affiliationId[0...n].idtype</td>
+<td>外部所属機関ID 識別子</td>
+<td>Affiliation Identifier Scheme</td>
+<td>外部所属機関IDの識別子を出力する</td>
+</tr>
+<tr  >
+<td>13</td>
+<td>authorAffiliationInfo[0...n].affiliationId[0...n].uri</td>
+<td>外部所属機関ID URI</td>
+<td>Affiliation Identifier URI</td>
+<td>外部所属機関IDの値を出力する</td>
+</tr>
+<tr  >
+<td>14</td>
+<td>authorAffiliationInfo[0...n].authorIdShowFlg</td>
+<td>外部所属機関ID 表示／非表示</td>
+<td>Affiliation Identifier Display</td>
+<td>外部所属機関IDの表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr  >
+<td>15</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].affiliationName</td>
+<td>外部所属機関名</td>
+<td>Affiliation Name</td>
+<td>外部所属機関名を出力する</td>
+</tr>
+<tr  >
+<td>16</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].language</td>
+<td>言語</td>
+<td>Language</td>
+<td>外部所属機関名の言語を出力する</td>
+</tr>
+<tr  >
+<td>17</td>
+<td>authorAffiliationInfo[0...n].affiliationNameInfo[0...n].nameShowFlg</td>
+<td>外部所属機関名・言語 表示／非表示</td>
+<td>Affiliation Name Display</td>
+<td>外部所属機関名と言語の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr  >
+<td>18</td>
+<td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].period</td>
+<td>外部所属機関 所属期間</td>
+<td>Affiliation Period</td>
+<td>外部所属機関所属期間を出力する。<br/>
+所属開始のみ："20250127"<br/>
+所属開始・終了："20250127-20250317"</td>
+</tr>
+<tr  >
+<td>19</td>
+<td>authorAffiliationInfo[0...n].affiliationPeriod[0...n].nameShowFlg</td>
+<td>外部所属機関 所属期間 表示/非表示</td>
+<td>Affiliation Period Display</td>
+<td>外部所属機関 所属期間の表示／非表示を出力する<br />
+表示する: "Y"<br />
+表示しない: "N"</td>
+</tr>
+<tr>
+<td>20</td>
+<td>communityIds[0...n]</td>
+<td>コミュニティ ID</td>
+<td>Community ID</td>
+<td>著者の管理権限を持つコミュニティのIDを出力する</td>
 </tr>
 </tbody>
 </table>
+
+表 6-8-1 インポートする識別子情報の項目
+<table>
+<thead>
+<tr class="header">
+<th>項番</th>
+<th><p>2行目</p>
+<p>ヘッダ項目（内部キー）</p></th>
+<th><p>3行目</p>
+<p>ラベル（英語）</p></th>
+<th><p>4行目</p>
+<p>ラベル（日本語）</p></th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr >
+<td>1</td>
+<td>scheme</td>
+<td>スキーマ</td>
+<td>Scheme</td>
+<td>スキーマを入力する</td>
+</tr>
+<tr >
+<td>2</td>
+<td>name</td>
+<td>名前</td>
+<td>Name</td>
+<td>スキーマに対応する識別子名を入力する</td>
+</tr>
+<tr >
+<td>3</td>
+<td>url</td>
+<td>URL</td>
+<td>URL</td>
+<td>スキーマに応じるURLを入力する</td>
+</tr>
+<tr >
+<td>4</td>
+<td>is_deleted</td>
+<td>削除フラグ</td>
+<td>Delete Flag</td>
+<td>識別子を削除する場合に "D" と出力する<br />
+    エクスポートの場合は全て空欄である。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>communityIds[0...n]</td>
+<td>コミュニティ ID</td>
+<td>Community ID</td>
+<td>識別子の管理権限を持つコミュニティのIDを入力する</td>
+</tr>
+</tbody>
+</table>
+
+
 
 【注意事項】
 
@@ -5622,7 +6914,8 @@ URLについて
 
 ［チェック結果］が［Register］または［Update］であることを確認します。
 
-［エラー］が表示されている場合、インポートできません。ファイルを確認して、再度手順2.から操作してください。
+［エラー］が表示されている場合、そのデータはインポートできません。  
+問題がある場合、ファイルを確認して、再度手順2.から操作してください。
 
 ［インポート］タブの項目は、「表 6-9［インポート］タブの項目」の説明を参照してください。
 
@@ -5647,39 +6940,100 @@ URLについて
 <td><p>画面に表示されている著者情報のリストをTSV形式でダウンロードします。</p>
 <ul>
 <li><p>文字コードはBOM無しUTF-8、改行コードはCR+LFです。</p></li>
-<li><p>ファイル名には、ダウンロードした日付が、「Creator_check_<em>YYYYMMDD</em>.tsv」で表示されます。</p></li>
+<li><p>ファイル名には、ダウンロードした日付が、「(インポート対象))_check_<em>YYYYMMDD</em>.tsv」で表示されます。</p></li>
 </ul></td>
-</tr>
-<tr class="odd">
-<td>No.</td>
-<td>読み込んだファイルの著者の通し番号が表示されます。</td>
-</tr>
-<tr class="even">
-<td>WEKO著者ID</td>
-<td><p>読み込んだファイルのWEKO著者IDが表示されます。</p>
-<p>新規登録の場合は空欄となります。</p></td>
-</tr>
-<tr class="odd">
-<td>姓名</td>
-<td>読み込んだファイルの著者名が表示されます。</td>
-</tr>
-<tr class="even">
-<td>メールアドレス</td>
-<td>読み込んだファイルのメールアドレスが表示されます。</td>
-</tr>
-<tr class="odd">
-<td>チェック結果</td>
-<td><p>読み込んだファイルの各著者情報について、インポートが可能かどうかをチェックした結果が表示されます。</p>
-<ul>
-<li><p>エラー(ERROR): XXXXX：バリデーションエラーがあります。</p></li>
-<li><p>警告(Warning): XXXXX：バリデーション警告があります。</p></li>
-<li><p>登録(Register)：新規の著者です。</p></li>
-<li><p>更新(Update)：内容を更新する著者です。</p></li>
-<li><p>削除(Delete)：削除する著者です。</p></li>
-</ul></td>
-</tr>
 </tbody>
 </table>
+
+  - 画面に表示される著者DBの詳細情報は以下の通り
+
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>項目名</th>
+    <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>No.</td>
+    <td>読み込んだファイルの著者の通し番号を表示する。</td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>WEKO ID</td>
+    <td><p>読み込んだファイルのWEKO著者IDが表示されます。</p>
+    <p>新規登録の場合は空欄となります。</p></td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>Full_Name</td>
+    <td>読み込んだ著者の姓と名を表示する。<br />
+    姓と名の間はカンマ＋スペース「姓, 名」で表示する。</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>Mail Address</td>
+    <td>読み込んだ著者のメールアドレスを表示する。</td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>チェック結果(Check Result)</td>
+    <td><p>読み込んだファイルの各著者について、インポートが可能かバリデーションチェックを実施する。<br />
+    ・エラーが無く、新規の著者の場合：「登録(Register)」と表示する<br />
+    ・エラーが無く、更新の著者の場合：「更新(Update)」と表示する<br />
+    ・削除する著者の場合：「削除(Delete)」と表示する<br />
+    ・バリデーションエラーがある場合：「エラー: XXXXX (ERROR: XXXXX)」とエラー内容を表示する</p>
+    <p>・登録は可能であるが、何らかの問題があるときは「警告（Warning）」と表示する。</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+  - 画面に表示される識別子の詳細情報は以下の通り
+
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>項目名</th>
+    <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>No.</td>
+    <td>読み込んだファイルのデータの通し番号を表示する。</td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>Scheme</td>
+    <td>読み込んだデータのスキーマを表示する。</td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>Scheme_Name</td>
+    <td>読み込んだデータのスキーマ名を表示する。</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>url</td>
+    <td>読み込んだデータのスキーマurlを表示する。
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>チェック結果(Check Result)</td>
+    <td><p>読み込んだファイルの各データについて、インポートが可能かバリデーションチェックを実施する。<br />
+    ・エラーが無く、新規の識別子スキーマの場合：「登録(Register)」と表示する<br />
+    ・エラーが無く、既存の識別子スキーマの場合：「更新(Update)」と表示する<br />
+    ・削除する識別子の場合：「削除(Delete)」と表示する<br />
+    ・バリデーションエラーがある場合：「エラー: XXXXX (ERROR: XXXXX)」とエラー内容を表示する</p>
+    <p>・登録は可能であるが、何らかの問題があるときは「警告（Warning）」と表示する。</p></td>
+    </tr>
+    </tbody>
+    </table>
 
 注※
 
@@ -5702,48 +7056,133 @@ URLについて
 <table>
 <thead>
 <tr class="header">
-<th>項目</th>
+<th>#</th>
+<th>内容</th>
 <th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>ダウンロード<sup>※</sup></td>
-<td><p>画面に表示されている著者情報のリストをTSV形式でダウンロードします。</p>
-<ul>
-<li><p>文字コードは日本語(Shift-JIS)、改行コードはCR+LFです。</p></li>
-<li><p>ファイル名には、ダウンロードした日付が、「Creator_List_Download_<em>YYYYMMDD</em>.tsv」で表示されます。</p></li>
-</ul></td>
+<td>1</td>
+<td>サマリー(Summary)</td>
+<td>
+  ・ 著者DBの場合のみ表示される。<br />
+  ・ 表示されるのは以下の4つ<br />
+  　　・「総計」<br />
+  　　・「成功」<br />
+  　　・「失敗」<br />
+  　　・「処理待ち」<br />
+</td>
 </tr>
 <tr class="even">
-<td>No.</td>
-<td>読み込んだファイルの著者の通し番号が表示されます。</td>
-</tr>
-<tr class="odd">
-<td>開始日</td>
-<td>［インポート］をクリックした後、著者の登録処理を開始した日時が表示されます。</td>
-</tr>
-<tr class="even">
-<td>終了日</td>
-<td>著者の登録処理が完了した日時が表示されます。</td>
-</tr>
-<tr class="odd">
-<td>WEKO著者ID</td>
-<td><p>読み込んだファイルのWEKO著者IDが表示されます。</p>
-<p>新規登録の場合は空欄となります。</p></td>
-</tr>
-<tr class="even">
-<td>ステータス</td>
-<td><p>著者の処理結果が表示されます。</p>
-<ul>
-<li><p>エラー(ERROR): XXXXX：登録処理でエラーが発生した場合です。</p></li>
-<li><p>登録成功(Register Success)：新規の著者を正常に登録しました。</p></li>
-<li><p>更新成功(Update Success)：著者情報の更新が正常に完了しました。</p></li>
-<li><p>削除成功(Delete Success)：著者を正常に削除しました。</p></li>
-</ul></td>
+<td>2</td>
+<td>ダウンロード(Download)</td>
+<td>ボタンを押下すると、画面に表示されている著者のリストをTSV形式でダウンロードできる。<br />
+・文字コードはBOM無しUTF-8、改行コードはCR+LFとする<br />
+・ファイル名は「{target}_List_Download_yyyymmdd.tsv」とする</td>
 </tr>
 </tbody>
 </table>
+
+  - 画面に表示される著者のインポート結果は以下の通り
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>項目名</th>
+    <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>No.</td>
+    <td>読み込んだファイルの著者の通し番号を表示する。</td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>開始日(Start Date)</td>
+    <td>1著者に対して登録処理を開始した日時を表示する。<br />
+    フォーマット：YYYY-MM-DD hh:mm:ss</td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>終了日(End Date)</td>
+    <td>１著者に対して登録処理が完了した日時を表示する。<br />
+    フォーマット：YYYY-MM-DD hh:mm:ss</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>WEKO ID</td>
+    <td><p>読み込んだファイルのWEKO著者IDが表示されます。</p>
+    <p>新規登録の場合は空欄となります。</p></td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>Full_name</td>
+    <td>読み込んだ著者の姓と名を表示する。<br />
+    姓と名の間はカンマ＋スペース「姓, 名」で表示する。</td>
+    </tr>
+    <tr >
+    <td>6</td>
+    <td>ステータス(Status)</td>
+    <td>登録した結果を表示する。<br />
+    ・「Register Success」：新規登録が完了した場合に表示<br />
+    ・「Update Success」：変更・更新登録が完了した場合に表示<br />
+    ・「Delete Success」：削除が完了した場合に表示<br />
+    ・「ERROR: XXXXX」：エラーが発生した場合に表示</td>
+    </tr>
+    </tbody>
+    </table>
+
+  - 画面に表示される識別子インポート結果は以下の通り
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>項目名</th>
+    <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>No.</td>
+    <td>読み込んだファイルのデータの通し番号を表示する。</td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>開始日(Start Date)</td>
+    <td>１データに対して登録処理を開始した日時を表示する。<br />
+    フォーマット：YYYY-MM-DD hh:mm:ss</td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>終了日(End Date)</td>
+    <td>１データデータに対して登録処理が完了した日時を表示する。<br />
+    フォーマット：YYYY-MM-DD hh:mm:ss</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>Scheme</td>
+    <td>読み込んだデータのスキーマを表示する。</td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>Scheme_Name</td>
+    <td>読み込んだデータのスキーマ名を表示する。</td>
+    </tr>
+    <tr >
+    <td>6</td>
+    <td>ステータス(Status)</td>
+    <td>登録した結果を表示する。<br />
+    「Register Success」：新規登録が完了した場合に表示<br />
+    「Update Success」：変更・更新登録が完了した場合に表示<br />
+    「Delete Success」：削除が完了した場合に表示<br />
+    「ERROR: XXXXX」：エラーが発生した場合に表示</td>
+    </tr>
+    </tbody>
+    </table>
 
 注※
 
@@ -5758,162 +7197,559 @@ URLについて
 
 表 6‑11 バリデーションチェック
 
-<table>
-<thead>
-<tr class="header">
-<th>タイプ</th>
-<th>チェックするタブ</th>
-<th>英語</th>
-<th>日本語</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>エラー</td>
-<td>選択(Select)</td>
-<td>The TSV file could not be read. Make sure the file format is TSV and that the file is UTF-8 encoded.</td>
-<td>TSVファイルを読み込めませんでした。ファイル形式がTSVであること、またそのファイルがUTF-8でエンコードされているかを確認してください。</td>
-<td><p>tsvファイルの形式のチェック</p>
-<p>・選択したファイルがtsvファイルでは無い、またはtsvファイルの文字コードがUTF-8では無い</p>
-<p>・tsvファイルの形式のエラー(タブ無し, ヘッダ行無し)</p></td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>選択(Select)</td>
-<td>There is no data to import.</td>
-<td>インポートのデータがありません。</td>
-<td>ヘッダ行だけの空レコードになっている</td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>選択(Select)</td>
-<td><p>The following metadata keys are duplicated.</p>
-<p>{1}</p></td>
-<td><p>以下のメタデータキーが重複しています。</p>
-<p>{1}</p></td>
-<td><p>ヘッダの間違いで内部キー(メタデータキー)が重複している</p>
-<p>{1}: メタデータキー名</p></td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>選択(Select)</td>
-<td><p>Specified item does not consistency with DB item.</p>
-<p>{1}</p></td>
-<td><p>指定された項目とDBの項目が一致しません。</p>
-<p>{1}</p></td>
-<td><p>tsvに指定された項目とDBの項目が一致していない</p>
-<p>{1}: 項目名</p></td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>選択/インポート(Select/Import)</td>
-<td>Celery is not running.</td>
-<td>Celeryは動いていません。</td>
-<td>Celeryが動いていない状態</td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>選択/インポート(Select/Import)</td>
-<td>Import is in progress.</td>
-<td>インポートを実行中です。</td>
-<td>自分の端末でインポートを実行中に、インポートを実行する</td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>選択/インポート(Select/Import)</td>
-<td>Import is in progress on another device.</td>
-<td>他の端末でインポートを実行中です。</td>
-<td>他の端末でインポートを実行している</td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>{} is required item.</td>
-<td>{}は必須項目です。</td>
-<td>著者更新時にWEKO著者IDが入力されていない状態</td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>Specified WEKO ID does not exist.</td>
-<td>指定されたWEKO IDが存在していません。</td>
-<td><p>・著者が一意に定まらない(存在しないWEKO著者ID)</p>
-<p>・削除対象の著者がDBに存在しない</p></td>
-</tr>
-</tbody>
-</table>
 
-<table>
-<thead>
-<tr class="header">
-<th>エラー</th>
-<th>インポート(Import)</th>
-<th>{1} should be set by one of {2}.</th>
-<th>{1}は{2}のいずれかを設定してください。</th>
-<th><p>・言語の指定でDBに存在しない言語を入力する</p>
-<p>・姓名・言語 表示／非表示で"Y","N"以外を入力する</p>
-<p>・外部著者識別子 表示／非表示で"Y","N"以外を入力する</p>
-<p>{1}: language, nameShowFlg, authorIdShowFlg</p>
-<p>{2}: 言語の一覧、"Y","N"</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>{1} should be set by one of {2}.</td>
-<td>{1}は{2}を設定してください。</td>
-<td><p>・削除フラグで"D"以外を入力する</p>
-<p>・姓名のフォーマットの値が「familyNmAndNm」以外の値</p>
-<p>{1}: is_deleted, nameFormat</p>
-<p>{2}: "D"、"familyNmAndNm"</p></td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>Specified Identifier Scheme '{1}' does not exist.</td>
-<td>指定された外部著者ID 識別子'{1}'が存在していません。</td>
-<td><p>ID PrefixでDBに存在しない識別子を入力する</p>
-<p>{1}:外部著者ID 識別子</p></td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>インポート(Import)</td>
-<td>There is duplicated data in the TSV file.</td>
-<td>TSVファイルの中に重複するデータがあります。</td>
-<td>TSVファイルの中に重複するデータがある</td>
-</tr>
-<tr class="even">
-<td>ワーニング</td>
-<td>インポート(Import)</td>
-<td><p>External author identifier exists in DB.</p>
-<p>{1}</p></td>
-<td><p>外部著者識別子がDBに存在しています。</p>
-<p>{1}</p></td>
-<td><p>外部著者識別子がDBに存在している</p>
-<p>{1}:外部著者識別子</p></td>
-</tr>
-<tr class="odd">
-<td>エラー</td>
-<td>選択/インポート/結果(Select/Import/Result)</td>
-<td>Internal server error</td>
-<td>サーバ内部エラー</td>
-<td>サーバ内部エラー（ネットワークの問題、予期しない例外など）が発生した</td>
-</tr>
-<tr class="even">
-<td>エラー</td>
-<td>結果(Result)</td>
-<td>Failed to import.</td>
-<td>インポートに失敗しました。</td>
-<td>エラーが発生したため、インポートに失敗した</td>
-</tr>
-</tbody>
-</table>
+  - 本画面で著者情報のチェックをしているエラー内容は以下の通り
+    <table>
+    <thead>
+    <tr class="header"> <th>#</th> <th>チェックするタブ</th> <th>チェック内容</th> <th>処理</th> <th>エラーメッセージ(日)</th> <th>エラーメッセージ(英)</th> <th>備考</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr > <td>1</td>
+    <td>選択(Select)</td>
+    <td>tsvファイルの形式のチェック<br />
+    #1: 選択したファイルがtsvファイルでは無い、またはtsvファイルの文字コードがUTF-8では無い<br />
+    #3: tsvファイルの形式のエラー(タブ無し, ヘッダ行無し)</td>
+    <td>ERROR</td>
+    <td>TSVファイルを読み込めませんでした。ファイル形式がTSVであること、またそのファイルがUTF-8でエンコードされているかを確認してください。</td>
+    <td>The TSV file could not be read. Make sure the file format is TSV and that the file is UTF-8 encoded.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>選択(Select)</td>
+    <td>ヘッダ行だけの空レコードになっている</td>
+    <td>ERROR</td>
+    <td>インポートのデータがありません。</td>
+    <td>There is no data to import.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>選択(Select)</td>
+    <td>ヘッダの間違いからメタデータキーが重複している</td>
+    <td>ERROR</td>
+    <td>以下のメタデータキーが重複しています。<br />
+    {1}</td>
+    <td>The following metadata keys are duplicated.<br />
+    {1}</td>
+    <td>{1}: メタデータキー名</td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>選択(Select)</td>
+    <td>tsvに指定された項目とDBの項目が一致していない</td>
+    <td>ERROR</td>
+    <td>指定された項目とDBの項目が一致しません。<br />
+    {1}</td>
+    <td>Specified item does not consistency with DB item.<br />
+    {1}</td>
+    <td>{1}: 項目名</td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>Celeryが動いていない状態</td>
+    <td>ERROR</td>
+    <td>Celeryは動いていません。</td>
+    <td>Celery is not running.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>6</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>自分の端末にインポートを実行しているうちに、インポートを実行する</td>
+    <td>ERROR</td>
+    <td>インポートを実行中です。</td>
+    <td>Import is in progress.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>7</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>他の端末でインポートを実行している</td>
+    <td>ERROR</td>
+    <td>他の端末でインポートを実行中です。</td>
+    <td>Import is in progress on another device.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>8</td>
+    <td>インポート(Import)</td>
+    <td >著者情報、機関情報で他の情報を入力されたが、idTypeとauthorIdのいずれかを入力されていない状態</td>
+    <td>ERROR</td>
+    <td>{}は必須項目です。</td>
+    <td>{} is required item.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>9</td>
+    <td>インポート(Import)</td>
+    <td >#4 著者が一意に定まらない(存在しないAuthor ID (author_link))<br />
+    #5 削除対象の著者がDBに存在しない</td>
+    <td>ERROR</td>
+    <td >指定されたAuthor IDが存在していません。</td>
+    <td >Specified Author ID does not exist.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>10</td>
+    <td>インポート(Import)</td>
+    <td >#6 言語の指定でDBに存在しない言語を入力する<br />
+    #8 ヘッダ項目#7の姓名・言語 表示／非表示で"Y","N"以外を入力する<br />
+    #9 ヘッダ項目#10の外部著者識別子 表示／非表示で"Y","N"以外を入力する<br />
+    ヘッダ項目#13の外部所属機関識別子 表示／非表示で"Y","N"以外を入力する<br />
+    ヘッダ項目#16の外部所属機関名・言語 表示／非表示で"Y","N"以外を入力する
+    </td>
+    <td>ERROR</td>
+    <td>{1}は{2}のいずれかを設定してください。</td>
+    <td>{1} should be set by one of {2}.</td>
+    <td>{1}: language, nameShowFlg, authorIdShowFlg<br />
+    {2}: 言語の一覧、"Y","N"</td>
+    </tr>
+    <tr >
+    <td>11</td>
+    <td>インポート(Import)</td>
+    <td >#10 ヘッダ項目#20の削除フラグで"D"以外を入力する<br />
+    #13 姓名のフォーマットの値が「familyNmAndNm」以外の値</td>
+    <td>ERROR</td>
+    <td>{1}は{2}を設定してください。</td>
+    <td>{1} should be set by one of {2}.</td>
+    <td>{1}: is_deleted, nameFormat<br />
+    {2}: "D"、"familyNmAndNm"</td>
+    </tr>
+    <tr >
+    <td>12</td>
+    <td>インポート(Import)</td>
+    <td>ID PrefixでDBに存在しない識別子を入力する</td>
+    <td>ERROR</td>
+    <td>指定された外部著者ID 識別子'{1}'が存在していません。</td>
+    <td>Specified Identifier Scheme '{1}' does not exist.</td>
+    <td>{1}:外部著者ID 識別子</td>
+    </tr>
+    <tr  >
+    <td>13</td>
+    <td>インポート(Import)</td>
+    <td>Affiliation IDでDBに存在しない識別子を入力する</td>
+    <td>ERROR</td>
+    <td>指定された外部所属機関ID 識別子'{1}'が存在していません。</td>
+    <td>Specified Affiliation Identifier Scheme '{1}' does not exist.</td>
+    <td>{1}:外部所属機関ID 識別子</td>
+    </tr>
+    <tr >
+    <td>14</td>
+    <td>インポート(Import)</td>
+    <td>TSVファイルの中に重複するデータがある</td>
+    <td>ERROR</td>
+    <td>TSVファイルの中に重複するデータがあります。</td>
+    <td>There is duplicated data in the TSV file.</td>
+    <td>各レコードがマルチタスクで実行されているので、後勝ちで2番目のデータを上書きするのが難しい(重複する場合にどのレコードで更新されるか定まらない)。WARNING→ERRORに変更し、2つ目以降は更新されないようにする</td>
+    </tr>
+    <tr >
+    <td>15</td>
+    <td>インポート(Import)</td>
+    <td>外部著者識別子がDBに存在している</td>
+    <td>WARNING</td>
+    <td>外部著者識別子がDBに存在しています。<br />
+    {1}</td>
+    <td>External author identifier exists in DB.<br />
+    {1}</td>
+    <td>{1}:外部著者識別子</td>
+    </tr>
+    <tr  >
+    <td>16</td>
+    <td>インポート(Import)</td>
+    <td>外部所属機関所属期間が日付の形式になっていない</td>
+    <td>ERROR</td>
+    <td>外部所属機関所属期間が形式にあっていません。<br />
+     yyyy-MM-dd、または空白であるようにしてください。<br />
+     {1}</td>
+    <td>Affiliation Period must be in the format:<br />
+     yyyy-MM-dd, blank<br />
+     {1}</td>
+    <td>{1}:外部所属期間</td>
+    </tr>
+    <tr >
+    <td>17</td>
+    <td>インポート(Import)</td>
+    <td>所属期間終了日が開始日より早い</td>
+    <td>ERROR</td>
+    <td>所属期間終了日は開始日より後の日付にしてください</td>
+    <td>Period end must be after Period start.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>18</td>
+    <td>選択/インポート/結果<br />
+    (Select/Import/Result)</td>
+    <td>サーバ内部エラー（ネットワークの問題、予期しない例外など）が発生した</td>
+    <td>ERROR</td>
+    <td>サーバ内部エラー</td>
+    <td>Internal server error</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>19</td>
+    <td>結果(Result)</td>
+    <td>登録成功</td>
+    <td>INFO</td>
+    <td>登録成功</td>
+    <td>Register Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>20</td>
+    <td>結果(Result)</td>
+    <td>更新成功</td>
+    <td>INFO</td>
+    <td>更新成功</td>
+    <td>Update Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>21</td>
+    <td>結果(Result)</td>
+    <td>削除成功</td>
+    <td>INFO</td>
+    <td>削除成功</td>
+    <td>Delete Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>22</td>
+    <td>結果(Result)</td>
+    <td>エラーが発生したため、インポートに失敗した</td>
+    <td>ERROR</td>
+    <td>インポートに失敗しました。</td>
+    <td>Failed to import.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>23</td>
+    <td>インポート(Import)</td>
+    <td>削除済みの著者について、tsvに該当の著者情報を指定して更新した</td>
+    <td>WARNING</td>
+    <td>指定された著者は削除済です。tsvの内容で著者情報を更新しますが、著者は削除されたままです。</td>
+    <td>The specified author has been deleted. Update author information with tsv content, but author remains deleted as it is.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>24</td>
+    <td>インポート/結果<br />
+    (Import/Result)</td>
+    <td>アイテムに紐づいている著者を削除した</td>
+    <td>ERROR</td>
+    <td>アイテムがリンクしているため、指定された著者は削除できません。</td>
+    <td>The author is linked to items and cannot be deleted.</td>
+    <td>英語のメッセージが既存<br />
+    日本語のメッセージを新規追加</td>
+    </tr>
+    <tr>
+    <td>25</td>
+    <td>インポート(Import)</td>
+    <td>コミュニティIDに許可されていない記号や制御文字等を入力した</td>
+    <td>ERROR</td>
+    <td>無効なコミュニティID形式です。</td>
+    <td>Invalid community ID format.</td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>26</td>
+    <td>インポート(Import)</td>
+    <td>communityIdsでDBに存在しないコミュニティのIDを入力した</td>
+    <td>ERROR</td>
+    <td>指定されたコミュニティID「{1}」は存在しません。</td>
+    <td>Community ID(s) {1} does not exist.</td>
+    <td>{1}: コミュニティID</td>
+    </tr>
+    <tr>
+    <td>27</td>
+    <td>インポート(Import)</td>
+    <td>コミュニティ管理者で管理対象外のコミュニティのIDを入力した</br>
+    または、コミュニティ管理者で管理対象外のコミュニティの紐づけを解除した
+    </td>
+    <td>ERROR</td>
+    <td>著者IDに紐づく、コミュニティ「{1}」の管理権限がありません。</td>
+    <td>You do not have permission for this Author’s communities: {1}.</td>
+    <td>{1}: コミュニティID</td>
+    </tr>
+    <tr>
+    <td>28</td>
+    <td>インポート(Import)</td>
+    <td>コミュニティ管理者で管理対象外のコミュニティのみに紐づく著者のpk_idを入力した</td>
+    <td>ERROR</td>
+    <td>このレコードを操作することはできません。</td>
+    <td>You cannot manage this record.</td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>29</td>
+    <td>インポート(Import)</td>
+    <td>コミュニティ管理者でcommunityIdsが空欄</td>
+    <td>ERROR</td>
+    <td>少なくとも1つの管理対象コミュニティを含める必要があります。</td>
+    <td>You must include at least one managed community.</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
-| ワーニング | 結果(Result) | The specified author has been deleted. Update author information with tsv content, but author remains deleted as it is. | 指定された著者は削除済です。tsvの内容で著者情報を更新しますが、著者は削除されたままです。 | 削除済みの著者について、tsvに該当の著者情報を指定して更新した |
-| ----- | ---------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------------------- |
-| エラー   | 結果(Result) | The author is linked to items and cannot be deleted.                                                                    | アイテムがリンクしているため、指定された著者は削除できません。                | アイテムに紐づいている著者を削除した               |
+  - 本画面で識別子のチェックをしているエラー内容は以下の通り
+    <table>
+    <thead>
+    <tr class="header">
+    <th>#</th>
+    <th>チェックするタブ</th>
+    <th>チェック内容</th>
+    <th>処理</th>
+    <th>エラーメッセージ(日)</th>
+    <th>エラーメッセージ(英)</th>
+    <th>備考</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+    <td>1</td>
+    <td>選択(Select)</td>
+    <td>tsvファイルの形式のチェック<br />
+    #1: 選択したファイルがtsvファイルでは無い、またはtsvファイルの文字コードがUTF-8では無い<br />
+    #3: tsvファイルの形式のエラー(タブ無し, ヘッダ行無し, テーブル名の指定がない)</td>
+    <td>ERROR</td>
+    <td>TSVファイルを読み込めませんでした。ファイル形式がTSVであること、またそのファイルがUTF-8でエンコードされているかを確認してください。</td>
+    <td>The TSV file could not be read. Make sure the file format is TSV and that the file is UTF-8 encoded.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>2</td>
+    <td>選択(Select)</td>
+    <td>ヘッダ行だけの空レコードになっている</td>
+    <td>ERROR</td>
+    <td>インポートのデータがありません。</td>
+    <td>There is no data to import.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>3</td>
+    <td>選択(Select)</td>
+    <td>ヘッダの間違いからキーが重複している</td>
+    <td>ERROR</td>
+    <td>キーが重複しています。</td>
+    <td>The keys are duplicated.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>4</td>
+    <td>選択(Select)</td>
+    <td>tsvに指定された項目とDBの項目が一致していない</td>
+    <td>ERROR</td>
+    <td>指定された項目とDBの項目が一致しません。<br />
+    {1}</td>
+    <td>Specified item does not consistency with DB item.<br />
+    {1}</td>
+    <td>{1}: 項目名</td>
+    </tr>
+    <tr >
+    <td>5</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>Celeryが動いていない状態</td>
+    <td>ERROR</td>
+    <td>Celeryは動いていません。</td>
+    <td>Celery is not running.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>6</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>自分の端末にインポートを実行しているうちに、インポートを実行する</td>
+    <td>ERROR</td>
+    <td>インポートを実行中です。</td>
+    <td>Import is in progress.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>7</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>他の端末でインポートを実行している</td>
+    <td>ERROR</td>
+    <td>他の端末でインポートを実行中です。</td>
+    <td>Import is in progress on another device.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>8</td>
+    <td>選択/インポート<br />
+    (Select/Import)</td>
+    <td>自分の端末でインポートを実行しているうちに、インポートを実行する</td>
+    <td>ERROR</td>
+    <td>インポートを実行中です。</td>
+    <td>Import is in progress.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>9</td>
+    <td>インポート(Import)</td>
+    <td>Schemeが記述されていない</td>
+    <td>ERROR</td>
+    <td>schemeを設定してください。</td>
+    <td>Scheme is required item.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>10</td>
+    <td>インポート(Import)</td>
+    <td>Nameが記述されていない</td>
+    <td>ERROR</td>
+    <td>nameを設定してください。</td>
+    <td>Name is required item.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>11</td>
+    <td>インポート(Import)</td>
+    <td>urlがURLの形式でない</td>
+    <td>ERROR</td>
+    <td>urlをURLの形式にしてください。</td>
+    <td>URL is not URL format.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>12</td>
+    <td>インポート(Import)</td>
+    <td>削除対象の識別子が存在しない</td>
+    <td>ERROR</td>
+    <td>指定された識別子が存在していません。</td>
+    <td>The specified identifier does not exist.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>13</td>
+    <td>インポート(Import)</td>
+    <td>TSVファイルの中に重複するデータがある</td>
+    <td>ERROR</td>
+    <td>TSVファイルの中に重複するデータがあります。</td>
+    <td>The specified scheme is duplicated.</td>
+    <td>各レコードがマルチタスクで実行されているので、後勝ちで2番目のデータを上書きするのが難しい(重複する場合にどのレコードで更新されるか定まらない)。WARNING→ERRORに変更し、2つ目以降は更新されないようにする</td>
+    </tr>
+    <tr >
+    <td>14</td>
+    <td>インポート(Import)</td>
+    <td>schemaに「WEKO」が入力されている。</td>
+    <td>ERROR</td>
+    <td>著者識別子WEKOは編集できません。</td>
+    <td>The scheme WEKO cannot be used.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>15</td>
+    <td>選択/インポート/結果<br />
+    (Select/Import/Result)</td>
+    <td>サーバ内部エラー（ネットワークの問題、予期しない例外など）が発生した</td>
+    <td>ERROR</td>
+    <td>サーバ内部エラー</td>
+    <td>Internal server error</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>16</td>
+    <td>結果(Result)</td>
+    <td>登録成功</td>
+    <td>INFO</td>
+    <td>登録成功</td>
+    <td>Register Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>17</td>
+    <td>結果(Result)</td>
+    <td>更新成功</td>
+    <td>INFO</td>
+    <td>更新成功</td>
+    <td>Update Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>18</td>
+    <td>結果(Result)</td>
+    <td>削除成功</td>
+    <td>INFO</td>
+    <td>削除成功</td>
+    <td>Delete Success</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>19</td>
+    <td>結果(Result)</td>
+    <td>エラーが発生したため、インポートに失敗した</td>
+    <td>ERROR</td>
+    <td>インポートに失敗しました。</td>
+    <td>Failed to import.</td>
+    <td></td>
+    </tr>
+    <tr >
+    <td>20</td>
+    <td>インポート/結果<br />
+    (Import/Result)</td>
+    <td>著者DBに紐づいている識別子を削除した</td>
+    <td>ERROR</td>
+    <td>著者DBで使用されているため、指定された識別子は削除できません。</td>
+    <td>The specified scheme is used in the author ID.</td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>21</td>
+    <td>インポート(Import)</td>
+    <td>コミュニティIDに許可されていない記号や制御文字等を入力した</td>
+    <td>ERROR</td>
+    <td>無効なコミュニティID形式です。</td>
+    <td>Invalid community ID format.</td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>22</td>
+    <td>インポート(Import)</td>
+    <td>community_idsでDBに存在しないコミュニティのIDを入力した</td>
+    <td>ERROR</td>
+    <td>指定されたコミュニティID「{1}」は存在しません。</td>
+    <td>Community ID(s) {1} does not exist.</td>
+    <td>{1}: コミュニティID</td>
+    </tr>
+    <tr>
+    <td>23</td>
+    <td>インポート(Import)</td>
+    <td>コミュニティ管理者で管理対象外のコミュニティのIDを入力した</br>
+    または、コミュニティ管理者で管理対象外のコミュニティの紐づけを解除した
+    </td>
+    <td>ERROR</td>
+    <td>著者IDに紐づく、コミュニティ「{1}」の管理権限がありません。</td>
+    <td>You do not have permission for this Author’s communities: {1}.</td>
+    <td>{1}: コミュニティID</td>
+    </tr>
+    <tr>
+    <td>24</td>
+    <td>インポート(Import)</td>
+    <td>コミュニティ管理者で管理対象外のコミュニティのみに紐づく識別子のschemeを入力した</td>
+    <td>ERROR</td>
+    <td>このレコードを操作することはできません。</td>
+    <td>You cannot manage this record.</td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>25</td>
+    <td>インポート(Import)</td>
+    <td>コミュニティ管理者でcommunity_idsが空欄</td>
+    <td>ERROR</td>
+    <td>少なくとも1つの管理対象コミュニティを含める必要があります。</td>
+    <td>You must include at least one managed community.</td>
+    <td></td>
+    </tr>
+    </table>
+   
 
 ## 利用統計の設定
 
@@ -5923,9 +7759,11 @@ URLについて
 
 レポートの管理画面は、［統計］をクリックして［運用レポート］をクリックすると表示されます。
 
+画面上部にあるプルダウンからリポジトリを選択することで、そのリポジトリのレポートの管理画面を表示することができます。
+
 #### アイテム登録件数を確認する
 
-レポートの管理画面の［登録件数］にアイテムの登録件数、登録済み公開アイテム件数、そして登録済みプライベートアイテム件数が表示されます。
+レポートの管理画面の［登録件数］に選択されているリポジトリに属するアイテムの登録件数、登録済み公開アイテム件数、そして登録済みプライベートアイテム件数が表示されます。
 
 削除済みアイテム、新規アイテム登録時のワークフローが未完了のアイテムは集計対象外になります。それぞれの集計方法は以下の通りです。
 
@@ -5957,7 +7795,7 @@ URLについて
 
 123. ［ダウンロード］をクリックします。
      
-     選択されているタイプの定型レポートがダウンロードされます。ダウンロードされたファイルについては、「7.1.3定型レポートのタイプ一覧」を参照してください。
+     選択中のリポジトリを集計対象として、選択されているタイプの定型レポートがダウンロードされます。ダウンロードされたファイルについては、「7.1.3定型レポートのタイプ一覧」を参照してください。
      
      ダウンロード時にエラーが発生する場合、エラーメッセージ「予期しないエラーが発生しました」が表示されます。
 
@@ -5966,6 +7804,8 @@ URLについて
 #### 定型レポートのタイプ一覧
 
 TSV形式でダウンロードすることができる定型レポートを次に示します。
+※サイトライセンス認可ユーザは設定 > サイトライセンス で設定したIPアドレスの範囲からアクセスしたユーザーのことを指します。
+
 
 表 7‑1定型レポート一覧
 
@@ -6325,9 +8165,11 @@ TSV形式でダウンロードすることができる定型レポートを次�
     
     フィードバックメールの送信を設定する画面が表示されます。
 
-<!-- end list -->
+2. ［リポジトリ］から設定をしたいリポジトリを選択します。
+    
+    画面上の各項目に、選択したリポジトリで設定された値が表示されます。
 
-133. ［自動送信設定］で、［送信］または［送信しない］を選択します。
+3.   ［自動送信設定］で、［送信］または［送信しない］を選択します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image236.png)
 
@@ -6351,13 +8193,17 @@ TSV形式でダウンロードすることができる定型レポートを次�
 
 サイトライセンスの操作ログを集計する画面は、［統計］をクリックして［サイトライセンス］をクリックすると表示されます。
 
+画面上部にあるプルダウンからリポジトリを選択すると、画面上の設定内容や取得できる統計情報がそのリポジトリに関連するものに切り替わります。この操作により、リポジトリ毎に設定の変更や統計情報の取得をすることができます。
+
 サイトライセンスユーザによる操作ログの集計、解析を行い、その結果をフィードバックすることができます。
 
 管理画面にて除外対象にしているアイテムタイプを除いて集計されます。
 
 #### Site Licenseの統計情報を自動送信する
 
-1.  ［Automatic Send］で、［送信］のラジオボタンをクリックします。
+1. 画面上部のプルダウンから設定を変更したいリポジトリを選択します。
+
+2.  ［Automatic Send］で、［送信］のラジオボタンをクリックします。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image239.png)
 
@@ -6367,9 +8213,9 @@ TSV形式でダウンロードすることができる定型レポートを次�
      
 #### Site Licenseの統計情報を手動で送信する
 
-<!-- end list -->
+1. 画面上部のプルダウンから統計情報を取得したいリポジトリを選択します。
 
-1.  ［メール手動送信］で、ログを集計する期間を設定します。
+2.  ［メール手動送信］で、ログを集計する期間を設定します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image240.png)
 
@@ -6429,6 +8275,7 @@ TSV形式でダウンロードすることができる定型レポートを次�
 ### フローを設定する
 
 フローは、アイテムの登録処理（アクション）の流れです。フロー一覧画面は、［ワークフロー管理］をクリックして［フロー］をクリックすると表示されます。この画面は、フローの一覧を表示し、フローを追加または削除することができます。
+※コミュニティ管理者の場合は管理対象のフローのみが表示されます。
 
 #### フローを追加する
 
@@ -6440,11 +8287,15 @@ TSV形式でダウンロードすることができる定型レポートを次�
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image241.png)
 
-138. フローの名前を入力します。
+2. フローの名前を入力します。
 
 ![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image242.png)
 
-139. ［保存］をクリックします。
+3. フローを登録するリポジトリを選択します。
+
+![](media/media/image446.png)
+
+4.   ［保存］をクリックします。
      
      フローが追加されます。
      
@@ -6457,6 +8308,26 @@ TSV形式でダウンロードすることができる定型レポートを次�
 入力されたフローの名前がシステムに存在する場合、エラーメッセージが表示されます。
 
 ![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image244.png)
+
+##### 削除フローを追加する
+
+削除フローを作成する場合は、管理者画面からワークフロー管理>フローの順にメニューをクリックします。
+画面に表示された「フロー作成」ボタンをクリックします。
+
+![フロー作成画面](./media/media/image481.png)
+
+フロー定義に適当な名称を入力します（例えば、Delete Flowなど）
+
+「削除用」チェックボックスにチェックをいれます。
+
+Repositoryは「Root Index」を選択します。
+
+保存ボタンをクリックします。
+
+次にアクション「Approval」を追加し、「Start」「End」の間にもってきます。
+
+最後に「保存」ボタンをクリックします。
+
 
 #### フローのアクションを編集する
 
@@ -6472,25 +8343,47 @@ TSV形式でダウンロードすることができる定型レポートを次�
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image245.png)
 
-140. アクションを実行するロールまたはユーザを限定する場合、ドロップダウンリストで選択します。
+2. アクションを実行するロールまたはユーザを限定する場合、ドロップダウンリストで選択します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション, Web サイト 自動的に生成された説明](media/media/image246.png)
 
-Action Userには、どの承認フローでどのメールを送信するかを画面で設定することができます。
+以下メール送信機能は、＜利用申請機能 先行利用機関＞に試験的に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
 
-「Action User」の選択肢の「プロパティを指定」を選択した場合、モーダル画面を表示します。モーダル画面には、プロパティ定義に特定のキーワード（"approval":true）を持つプロパティを表示します。
+>Action Userには、どの承認フローでどのメールを送信するかを画面で設定することができます。
+
+>「Action User」の選択肢の「プロパティを指定」を選択した場合、モーダル画面を表示します。モーダル画面には、プロパティ定義に特定のキーワード（"approval":true）を持つプロパティを表示します。
 
 ![](media/media/image247.png)
 
 ![](media/media/image248.png)
 
-141. アクションを追加または削除する場合、［+More Action］をクリックします。
+
+>「登録者にメールを送信する」にチェックを入れ、直下のメール選択タブからメールを選択すると利用申請時に、申請者に対して送信するメールを設定することができます。
+
+>「利用申請時に、アイテム登録者に対しメールを送信する」にチェックを入れ、直下のメール選択タブからメールを選択すると、利用申請時に申請元のアイテムの登録者に対して送信するメールを設定することができます。
+
+>「Action User」のアイテム登録者を選択した場合、アイテム登録者が自分で作成したワークフローをapproval出来るようになります。
+
+>また、設定＞アイテム表示画面にてRequest FormでDisplay Request Formを選択していた場合、「Action User」にてリクエスト送信先が選択できるようになります。
+
+>「Action User」のリクエスト送信先を選択した場合、アイテム登録時に設定登録した「リクエスト送信先」のメールアドレスをもつのユーザーがapprovalができるようになります。
+
+>ただし、利用申請系で「リクエスト送信先」が選択されていた場合、利用申請の対象となった制限公開アイテムの「リクエスト送信先」に設定されているのユーザーがapprovalできるようになります。
+
+>また、「Approval」の「Action User」の欄にある「通知メール設定」をクリックすると、制限公開アイテムの承認/却下を通知するメールをログインユーザーと非ログインユーザー向けそれぞれに設定できる「通知メール設定」モーダル画面が表示されます。
+
+>「登録者にメールを送信する」,「利用申請時に、アイテム登録者に対しメールを送信する」チェックボックス、「通知メール設定」ボタンはメールテンプレート機能がOFFの際は、非表示となります。メールテンプレート機能については「[15.17 メールテンプレートを編集する](#メールテンプレートを編集する)」、メールの文面については、「[15.17.1 デフォルトメールテンプレート](#デフォルトメールテンプレート)」を参照してください。
+
+![](media/media/image463.png)
+
+3. アクションを追加または削除する場合、［+More Action］をクリックします。
      
      アクション一覧が表示されます。
 
 ![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image249.png)
 
-142. アクションを追加する場合、［適用］をクリックします。アクションを削除する場合、［無効］をクリックします。
+4. アクションを追加する場合、［適用］をクリックします。アクションを削除する場合、［無効］をクリックします。
      
      アクションが追加または削除されます。
      
@@ -6502,19 +8395,19 @@ Action Userには、どの承認フローでどのメールを送信するかを
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image250.png)
 
-143. アクションの順序を変更する場合、［Change Order］で上下に移動します。
+5. アクションの順序を変更する場合、［Change Order］で上下に移動します。
 
 ![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image251.png)
 
-144. 画面の下部に表示されている［保存］をクリックします。
+6. 画面の下部に表示されている［保存］をクリックします。
      
      フローが保存されます。メッセージ「Updated flow action successfully.」が表示されます。
 
 zu1101090.tif![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image252.png)
 
-【注意事項】
+【利用申請機能 先行利用機関向け 注意事項】
 
-利用申請のワークフローで使用している（利用申請フラグがONになっている）フローの場合、システム管理者のみアクセスすることができます。リポジトリ管理者が対象のフローを編集するためにクリックすると、エラーメッセージが表示されます。
+制限公開機能が有効で、利用申請のワークフローで使用している（利用申請フラグがONになっている）フローの場合、システム管理者のみアクセスすることができます。リポジトリ管理者が対象のフローを編集するためにクリックすると、エラーメッセージが表示されます。
 
 #### フローを削除する
 
@@ -6539,6 +8432,7 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 ### ワークフローを設定する
 
 ワークフローは、フローとアイテムの組み合わせです。フロー一覧画面は、［ワークフロー管理］］をクリックして［ワークフロー］をクリックすると表示されます。この画面は、ワークフローの一覧を表示し、ワークフローを追加または削除することができます。
+※コミュニティ管理者の場合は管理対象のワークフローのみが表示されます。
 
 #### ワークフローを追加する
 
@@ -6567,30 +8461,35 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 <tr class="even">
 <td>フロー</td>
 <td><p>プルダウンからフローを選択します。</p>
-<p>選択肢は、［フロー］画面で登録されたフロー一覧です。</p></td>
+<p>選択肢は、［フロー］画面で登録されたフローの一覧です。</p></td>
 </tr>
 <tr class="odd">
+<td>(For Delete)</td>
+<td><p>プルダウンから削除フローを選択します。フローが選択されると、アイテム削除時にワークフローが実行されるようになります。</p>
+<p>選択肢は、［フロー］画面で登録された削除フローの一覧です。</p></td>
+</tr>
+<tr class="even">
 <td>アイテムタイプ</td>
 <td><p>プルダウンからアイテムを選択します。</p>
 <p>選択肢は、［メタデータ］画面で登録された標準アイテムタイプ一覧及びハーベスト用アイテムタイプ一覧です。</p></td>
 </tr>
+<tr class="odd">
+<td>Repository</td>
+<td><p>ワークフローを登録するリポジトリを選択します。</p>
+<p>選択肢は、デフォルトの「Root Index」と［コミュニティ］画面で登録されたコミュニティ一覧です。</p></td>
+</tr>
 <tr class="even">
 <td>利用申請フラグ</td>
 <td><p>デフォルトではチェックは付いていません。チェックありの場合、アイテム登録画面のコンテンツファイルの「提供方法」の「ワークフロー」の選択肢として表示されます。</p>
-<p>＊システム管理者のみ表示される項目です</p></td>
+<p>＊制限公開機能が有効で、システム管理者のみ表示される項目です</p></td>
 </tr>
 <tr class="odd">
 <td>GakuNinRDM Flag</td>
 <td>GakuNinRDMからアイテムを登録するワークフローにするためのフラグです。</td>
 </tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr class="header">
-<th>登録先インデックスの指定</th>
-<th><p>デフォルトは「指定なし」です。</p>
+<tr class="even">
+<td>登録先インデックスの指定</td>
+<td><p>デフォルトは「指定なし」です。</p>
 <ul>
 <li><p>「指定なし」とした場合</p></li>
 </ul>
@@ -6602,15 +8501,13 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 </ul>
 <blockquote>
 <p>当該ワークフローで登録されるアイテムはすべて、Admin&gt;WorkFlow&gt;Flow Listで指定したインデックスに自動で登録されます。</p>
-</blockquote></th>
+</blockquote></td>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
+<tr class="even">
 <td>ストレージロケーション</td>
 <td>プルダウンからアイテムの保存先ストレージを選択します。指定なしの場合はデフォルトのロケーションを選択します。</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>表示/非表示</td>
 <td>ロールごとに当該ワークフローの表示・非表示を指定することができます。</td>
 </tr>
@@ -6619,7 +8516,7 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 
 ![](media/media/image257.png)zu1101300.tif
 
-147. ［保存］をクリックします。
+1.   ［保存］をクリックします。
      
      ワークフローが保存されます。メッセージ「Workflow created successfully.」が表示されます。
      
@@ -6649,6 +8546,10 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
      
      ワークフローが保存されます。正常に保存できた場合、メッセージ「Workflow created successfully.」が表示されます。
      
+【注意事項】
+
+制限公開機能が有効で、利用申請フラグがONになっているワークフローの場合、システム管理者のみアクセスすることができます。リポジトリ管理者が対象のワークフローを編集するためにクリックすると、エラーメッセージが表示されます。
+
 #### ワークフローを削除する
 
 <!-- end list -->
@@ -6671,6 +8572,25 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 
 ![](media/media/image262.png)
 
+### ワークスペース設定をする
+
+ワークスペースにてアイテム登録を行う際の登録方法を設定します。
+
+#### 登録方法を 直接登録 に設定する
+
+ワークスペースからアイテムを登録する場合に、ワークフローを使用せずに直接登録が行われるようになります。
+アイテム登録には選択したアイテムタイプが使用されます。
+![](media/media/image451.png)
+
+直接登録とした場合は、登録後即時公開となります。
+公開制御を行いたい場合は、ワークフロー経由としてください。
+
+#### 登録方法を ワークフロー登録 に設定する
+
+ワークスペースからアイテムを登録する場合に、指定したワークフローを使用して登録が行われるようになります。
+![](media/media/image452.png)
+
+
 ## コミュニティ管理
 
 この章では、コミュニティを管理する方法について説明します。
@@ -6690,6 +8610,7 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 1.  ［コミュニティ管理］をクリックして［コミュニティ］をクリックします。
     
     ［一覧］タブにコミュニティのリストが表示されます。
+    コミュニティ管理者の場合は管理対象のコミュニティのみが表示されます。
 
 ![](media/media/image263.png)
 
@@ -6716,18 +8637,32 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 | 項目              | 説明                                  |
 | --------------- | ----------------------------------- |
 | Id              | IDを入力します。必ず入力してください。                |
+| Cnri            | CNRIが有効な場合にハンドルが発行されます。              |
 | Owner           | コミュニティ所有者のロールを指定します。必ず入力してください。     |
 | Index           | コミュニティを設定するインデックスを選択します。必ず入力してください。 |
+| Group           | グループを指定します。     |
 | Title           | タイトルを入力します。                         |
 | Description     | 説明を入力します。                           |
 | Page            | ページ数を入力します。                         |
 | Curation Policy | ポリシーを入力します。                         |
 | Ranking         | ランキングの表示件数を入力します。                   |
 | Fixed Points    | 固定点を入力します。                          |
+| Content Policy  | コンテンツポリシーを入力します。            |
+| login_menu_enabled| コミュニティ画面にログインメニューを表示するかを設定します。  |
+| Thumbnail       | サムネイル画像ファイルを選択します。  |
+| カタログ         | コミュニティの検索に使用するタグ情報を入力します。<br>入力項目は「カタログ」プロパティから以下の項目です。詳細は［アイテムタイプ管理］>［プロパティ］を参照してください。<ul><li>Contributor</li><li>Identifier</li><li>Subject</li><li>License</li><li>Rights</li><li>Access Rights</li></ul>※初期表示では項目が折りたたまれています。|
 
-153. ［保存］をクリックします。
-     
-     コミュニティが作成されます。
+3.  ［保存］をクリックします。
+
+    コミュニティが作成されます。
+
+    ※コミュニティを新規作成すると、ページレイアウト機能から作成できるコミュニティは以下のページが自動で作成されます。詳細は［ウェブデザイン管理］>［ページレイアウト］を参照してください
+
+    | Title            | URL                                    |
+    |------------------|----------------------------------------|
+    | About            | /c/{community_id}/page/about           |
+    | Editorial board  | /c/{community_id}/page/eb              |
+    | OA Policy        | /c/{community_id}/page/oapolicy        |
 
 #### コミュニティを編集する
 
@@ -6779,7 +8714,7 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 
 ![](media/media/image267.png)
 
-表 9‑2［作成］の項目
+表 9‑3［作成］の項目
 
 | 項目         | 説明                   |
 | ---------- | -------------------- |
@@ -6893,6 +8828,8 @@ OAI-PMHを利用し、他の機関からハーベストを行うことができ�
 手動実行について、実行する方法を次に説明します。
 
 1.  ［一覧］タブをクリックすると、登録されているプランのリストが表示されます。
+
+    コミュニティ管理者の場合は管理対象のインデックスが登録先に設定されたプランのみ表示されます。
 
 ![](media/media/image274.png)
 
@@ -7194,6 +9131,8 @@ Resource List及びResource Dumpを出力する方法を説明します。
 
 1.  ［List］タブをクリックすると、登録されているResource Listのリストが表示されます。
 
+    コミュニティ管理者の場合は管理対象のインデックスのResource Listのみが表示されます。
+
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image294.png)
 
 188. ［Status］が［Publish］及び該当インデックスが公開と設定されている場合、該当インデックスのResource List及びResource Dumpが出力されます。
@@ -7254,7 +9193,8 @@ Resource Listの入力項目を次に示します。
 </tr>
 <tr class="even">
 <td>Repository</td>
-<td>リポジトリを選択します。</td>
+<td><p>リポジトリを選択します。</p>
+<p>※コミュニティ管理者の場合は管理対象のインデックスのみ選択可能です。</td>
 </tr>
 <tr class="odd">
 <td>Resource Dump Manifest</td>
@@ -7321,6 +9261,8 @@ Change Listの設定画面は［Resource Sync］をクリックして、［Chang
 Change Listの一覧及びChange Dumpの一覧を出力する方法を説明します。
 
 1.  ［List］タブをクリックすると、登録されているChange Listのリストが表示されます。
+
+    コミュニティ管理者の場合は管理対象のインデックスのChange Listのみが表示されます。
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image300.png)
 
@@ -7396,7 +9338,8 @@ Change Listの入力項目を次に示します。
 </tr>
 <tr class="even">
 <td>Repository</td>
-<td>リポジトリを選択します。</td>
+<td><p>リポジトリを選択します。</p>
+<p>※コミュニティ管理者の場合は管理対象のインデックスのみ選択可能です。</td>
 </tr>
 <tr class="odd">
 <td>Publish date</td>
@@ -7590,7 +9533,8 @@ Resyncの入力項目を次に示します。
 <tr class="odd">
 <td>Target Index<sup>※</sup></td>
 <td><p>収集されたアイテムに対して登録先インデックスを設定します。</p>
-<p>必ず設定してください。</p></td>
+<p>必ず設定してください。</p>
+<p>※コミュニティ管理者の場合は管理対象のインデックスのみ設定可能です</p></td>
 </tr>
 <tr class="even">
 <td>Resync Mode</td>
@@ -7655,6 +9599,89 @@ Resyncを削除する方法を説明します。
      ResourceSyncServerをAPIで実行する際のテンポラリファイルは以下となります。
      
      /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_resync\_xxxxxxxx
+
+## SWORDAPI設定
+
+SWORD APIを利用してアイテムを連携するための設定を行います。  
+メタデータの形式によって、設定方法が異なります。
+
+### TSV/CSV用の設定を行う
+
+1. ［SWORD API］をクリックして、［TSV/XML］をクリックします。
+
+2. 設定画面が開きます。異なるメタデータ形式の画面が開く場合は、［TSV/CSV］タブをクリックします。
+    ![TSV/CSV設定](media/media/image457.png)
+
+3. 必要な項目の設定を行います。
+
+    - 登録方式：直接登録、ワークフロー登録のどちらかを選択します。
+    ワークフローは連携時に自動的に選択されるため、指定できません。
+    - アイテム重複チェック：連携時にすでに登録されているアイテムとタイトルなどのメタデータが重複しているかをチェックする機能です。  
+    チェックボックスにチェックを入れると、重複チェックの結果、重複している可能性のあるアイテムがすでに登録されている場合、連携を中止します。
+
+4. ［保存］ボタンをクリックします。
+
+### XML用の設定を行う
+
+1. ［SWORD API］をクリックして、［TSV/XML］をクリックします。
+
+2. ［XML］タブをクリックします。設定画面が開きます。
+    ![XML設定](media/media/image458.png)
+
+3. 必要な項目の設定を行います。
+
+    - 登録方式：直接登録、ワークフロー登録のどちらかを選択します。
+    - ワークフロー：登録方式でワークフローを選択した場合はワークフローを選択します。
+    - アイテム重複チェック：連携時にすでに登録されているアイテムとタイトルなどのメタデータが重複しているかをチェックする機能です。  
+      チェックボックスにチェックを入れると、重複チェックの結果、重複している可能性のあるアイテムがすでに登録されている場合、連携を中止します。
+
+4. ［保存］ボタンをクリックします。
+
+### JSON-LD用の設定を作成する
+
+事前に作成したOAuth2のアプリケーション、マッピング定義を利用して直接登録/ワークフロー登録どちらかの登録方式を指定します。  
+また、連携実行時にDOIを使用したメタデータ補完を行う場合の優先順位を指定します。
+
+1. ［SWORD API］をクリックして、［JSON-LD］をクリックします。
+
+2. ［作成］タブを選択します。
+   ![JSON-LD一覧](media/media/image459.png)
+
+3. 事前に登録したアプリケーションを選択、登録方式の選択、登録方式でワークフローを選択した場合はワークフローを選択します。  
+   マッピング定義を選択します。※ワークフローに設定されているアイテムタイプとマッピング定義のアイテムタイプは揃えて置く必要があります。  
+   マッピング定義の整合性に問題がある場合は、マッピング欄の下部に赤字で「✘」が表示されます。  
+   Meta data APIは連携時にメタデータを外部のAPIを使って補填する場合に利用します。
+
+   - Jal C API
+   - 医中誌 Web API
+   - CrossRef
+   - DataCite
+   - CiNii Research
+   - Original（※連携時にJSON-LDで指定しているメタデータ）
+
+   から利用するAPI、優先順位を決定します。  
+   アイテム重複チェックとは、連携時にすでに登録されているアイテムとタイトルなどのメタデータが重複しているかをチェックする機能です。  
+   チェックボックスにチェックを入れると、重複チェックの結果、重複している可能性のあるアイテムがすでに登録されている場合、連携を中止します。
+
+   ![JSON-LD作成](media/media/image460.png)
+   設定が完了したら［保存］ボタンをクリックします。
+
+### JSON-LD用の編集を編集する
+1. ［一覧］タブを選択します。
+
+2. 編集したい設定の行頭にある鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+
+3. 編集画面が表示されます。
+
+4. 必要な項目を編集し、［保存］ボタンをクリックします。
+
+### JSON-LD用の編集を削除する
+
+1. ［一覧］タブを選択します。
+
+2. 削除したい設定の行頭にあるゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックします。
+
+3. 削除されます。
 
 ## レコード管理
 
@@ -7828,25 +9855,40 @@ Locationを管理する方法を説明します。Locationの管理画面は、�
 
 Locationを参照する方法を説明します。
 
-1.  ［ファイル管理］をクリックして［ロケーション］をクリックします。
+1. ［ファイル管理］をクリックして［ロケーション］をクリックします。
     
-    ［一覧］タブにLocationのリストが表示されます。［フィルターを追加］で項目を選択して値を適用すると、フィルタリングできます。
+2. ［一覧］タブにLocationのリストが表示されます。［フィルターを追加］で項目を選択して値を適用すると、フィルタリングできます。
 
 ![モニター画面に映るウェブサイトのスクリーンショット 中程度の精度で自動的に生成された説明](media/media/image325.png)
 
-214. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+3. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
-     詳細が表示されます。
+4. 詳細が表示されます。
+
+※デフォルトのロケーションを変更できるのはシステム管理者となります。リポジトリ管理者はデフォルトに設定されたロケーション以外にアクセスできます。
+
+※警告メッセージの表示
+一覧画面では、デフォルトに設定されたロケーションが 0件または2件以上 存在する場合に、画面上部に警告メッセージが表示されます。
+
+- 0件の場合
+
+  - 日本語：「デフォルトに設定されたロケーションが存在しません。いずれか1つのロケーションをデフォルトに設定してください。」
+  - 英語："No default location is set. Please configure one location as default."
+
+- 2件以上の場合
+
+  - 日本語：「複数のロケーションがデフォルトに設定されています。デフォルトのロケーションは1つのみ設定可能です。設定を修正してください。」
+  - 英語："Multiple locations are set as default. Only one default location can be configured. Please correct the settings."
      
 #### Locationを作成する
 
 Locationを作成する方法を説明します。
 
-1.  ［作成］タブをクリックします。
+1. ［作成］タブをクリックします。
     
-    Locationを作成する画面が表示されます。
+2. Locationを作成する画面が表示されます。
     
-    項目を入力します。
+3. 項目を入力します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image326.png)
 
@@ -7855,15 +9897,36 @@ Locationを作成する方法を説明します。
 | 項目         | 説明                          |
 | ---------- | --------------------------- |
 | Name       | Location名を入力します。必ず入力してください。 |
-| URI        | LocationのURIを入力します。         |
-| Type       | 種別を選択します。                   |
+| URI        | LocationのURIを入力します。 S3互換ストレージを設定する場合は「S3://バケット名」と指定します。 |
+| Type       | 種別を選択します。 種類は「空白」、「S3 Path」、「S3 Virtual Host」の3種類です。|
 | Quota Size | 容量の上限値を入力します。               |
-| Default    | デフォルトで使用する場合、チェックします。       |
+| Default    | デフォルトで使用する場合、チェックします。  <br>※すでに他のロケーションがデフォルトに設定されている場合は、当項目はグレーアウト（非活性）となり選択できません。<br>※既存のデフォルトロケーションを解除した後に、新しいロケーションをデフォルトとして設定できます。|
 
-215. ［保存］をクリックします。
+4. ［保存］をクリックします。
      
-     ロケーションが作成されます。
-     
+5. ロケーションが作成されます。
+
+#### Locationの詳細を設定する（S3互換オブジェクトストレージ用）
+
+| 項目         | 説明                          |
+| ---------- | --------------------------- |
+| Name       | Location名を入力します。必ず入力してください。 |
+| URI        | LocationのURIを入力します。 S3互換ストレージを設定する場合は「S3://バケット名」と指定します。 |
+| Type       | 種別を選択します。 種類は「空白」、「S3 Path」、「S3 Virtual Host」の3種類です。|
+|access_key | S3互換オブジェクトストレージのアクセスキー  |
+|secret_key | S3互換オブジェクトストレージのシークレットキー |
+|endpoint_url| S3互換オブジェクトストレージのエンドポイントURL |
+|send_file_directly| ストレージからの直接ダウンロードとするか、Webアプリを経由しての間接ダウンロードとするか。チェックを外すと、ストレージからの直接ダウンロードとなる。|
+|default_block_size||
+|maximum_number_of_parts||
+|region_name|s3互換オブジェクトストレージのリージョン名をいれてください。|
+|signature_version|s3, s3v4のいずれかを選択してください。特に理由がない限り、s3v4を選択します。|
+|url_expiration|DL時の署名付きURLの有効期間です。|
+| Quota Size | 容量の上限値を入力します。               |
+| Default    | デフォルトで使用する場合、チェックします。  <br>※すでに他のロケーションがデフォルトに設定されている場合は、当項目はグレーアウト（非活性）となり選択できません。<br>※既存のデフォルトロケーションを解除した後に、新しいロケーションをデフォルトとして設定できます。|
+
+![詳細設定画面](./media/storage/storage001.png)
+
 #### Locationを編集する
 
 Locationを編集する方法を説明します。
@@ -7955,6 +10018,93 @@ Object Versionを参照する方法を説明します。
 223. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
+
+#### 機関ストレージ機能の使い方
+
+機関ストレージ機能は、
+リポジトリ管理者がリポジトリのデータ保存先としてストレージを追加できる機能です。
+JAIRO Cloudであらかじめ提供されているストレージでは足りない場合の選択肢として用意されています。
+
+リポジトリ管理者は、デフォルトの保存先としてのストレージ追加はできませんが、
+ワークフローごとに保存先のストレージを選択することができますので、
+研究データ登録のワークフローでのデータ保存先は、
+機関ストレージ、それ以外はJAIRO Cloudのストレージといった使い分けが可能です。
+
+なお、アイテム登録後の保存先の変更はできません。
+保存先を変更する場合は、ファイルの再アップロードが必要となります。
+
+JAIRO Cloudの機関ストレージとして利用できるストレージ条件は以下のとおりです。
+
+- オブジェクトのURLとして「Path Style」 または 「Virtual Hosted Style」が利用できる
+- 署名付きURLが利用できる。ダウンロード時に機関ストレージから直接ダウンロードさせるために利用できる。
+
+ただし、S3互換ストレージの明確な定義はないため、上記を満たしていても利用できない場合があります。
+
+機関ストレージを利用する場合は、JAIRO Cloud窓口の方に「機関ストレージのプロダクト名称」、「エンドポイントURL」、オブジェクトURLのスタイル「Path Style」または「Virtual Hosted Style」、署名のバージョン「S3」または「S3v4」、「連絡先担当者の名前」、「メイルアドレス」をご連絡ください。
+
+##### 機関ストレージを追加する
+
+1. 機関ストレージの追加は管理画面から行います。リポジトリ管理者としてログインし、管理画面にアクセスしてください。
+
+2. メニューから「ファイル管理」＞「ロケーション」を選択します。
+
+3. デフォルト設定を除く、ロケーションの一覧が表示されます。
+
+![ロケーション一覧](media/storage/storage000.png)
+
+4. 「作成」タブをクリックします。
+
+5. ロケーション作成画面が表示されます。Name、URI、Typeを指定してください。
+
+例えば、バケット名として「jctest」を利用し、機関ストレージのオブジェクトURLとしてS3 Pathスタイルを利用する場合は、以下のように設定します。
+
+|名前|値|
+|---|---|
+|Name|s3storage|
+|URI|s3://jctest/|
+|Type|S3 Path|
+
+![ロケーション作成画面](media/storage/storage001.png)
+
+6. 保存ボタンをクリックします。
+
+7. すると、より詳細な設定が可能な画面が表示されます。
+
+![ロケーション設定画面（詳細）](media/storage/storage002.png)
+
+8. 機関ストレージのaccess_key, secret_key, endpoint_url, region_nameを設定します。
+
+9. send_file_directlyのチェックを外します。これにより、機関ストレージから直接ファイルをダウンロードすることができます。
+
+10. signature_versionは機関ストレージがサポートしている署名バージョンを指定してください。
+
+11. Quota Sizeは機関ストレージの使用量に制約をかけたい場合に設定してください。値はバイト単位となります。
+
+##### ワークフローの保存先ストレージを変更する
+
+1. ワークフローの保存先ストレージの変更は管理画面から行います。
+リポジトリ管理者としてログインし、管理画面にアクセスしてください。
+
+2. メニューから「ワークフロー管理」＞「ワークフロー」を選択します。
+
+3. ワークフローを新規作成または既存のワークフローを選択します。
+
+4. 「ストレージロケーション」に機関ストレージを設定します。
+
+![ワークフロー設定画面](media/storage/storage003.png)
+
+5. 「保存」をクリックします。
+
+6. 以上で機関ストレージの設定が完了です。次回から当該ワークフロー経由で登録したファイルは機関ストレージに保存されるようになります。
+
+##### 注意事項
+
+- ファイルが保存されたことのあるロケーションを削除することはできません。
+- ロケーション先に保存されたファイルの置き場所を登録後に変更することはできません。
+- ワークフローのストレージロケーションを変更した場合、変更後の登録時に設定したストレージロケーションが利用されます。すでに登録されているアイテムのストレージロケーションは変更されません。
+- アクティビティ起動中に当該ワークフローのストレージロケーションを変更することも可能ですが、すでにファイルをアップロードしていた場合は、以前のストレージロケーションが利用されます。
+- 機関ストレージに保存されたファイルはJAIRO Cloud側では管理できません。誤ってファイルを削除した等のトラブル対応はできませんので、機関側でバックアップ体制等を整備してください。
+
 
 ## ユーザ管理
 
@@ -8625,6 +10775,8 @@ Session activityを参照する方法を説明します。
     
     ［一覧］タブにリストが表示されます。［フィルターを追加］で項目を選択して値を適用すると、フィルタリングできます。
 
+    コミュニティ管理者の場合は管理対象のコミュニティに属するユーザのみ表示されます。
+
 ![グラフィカル ユーザー インターフェイス, アプリケーション, メール 自動的に生成された説明](media/media/image364.png)
 
 271. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
@@ -8650,7 +10802,8 @@ Session activityを参照する方法を説明します。
 | Email                  | メールアドレスを入力します。必ず入力してください。           |
 | Password               | パスワードを入力します。                        |
 | Active                 | 作成したユーザのログインを許可する場合、Activeをチェックします。 |
-| Roles                  | ユーザのロールを選択します。                      |
+| Roles                  | ユーザのロールを選択します。|
+| Groups                 | ユーザのグループを選択します。                   |
 | Send User Notification | ユーザの追加についてメール送信する場合、チェックします。        |
 
 1.  ［保存］をクリックします。
@@ -8772,6 +10925,11 @@ User Profileを１件ずつ削除する場合
 <td>Open Date</td>
 <td><p>ゲストユーザにはアイテムリスト、アイテム詳細画面に公開日を表示する、またはしないを設定します。</p>
 <p>デフォルトは「Display」（チェックあり）です。</p></td>
+</tr>
+<tr class="odd">
+<td>Request Form</td>
+<td><p>Item Registration画面に「リクエストボタンを表示」チェックボックスを表示する、またはしないを設定します。</p>
+<p>デフォルトは「表示しない」です。</p></td>
 </tr>
 </tbody>
 </table>
@@ -9422,6 +11580,36 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション 自動的に生成された説明](media/media/image398.png)
 
+##### Chrome拡張「JSONVue」を利用したjson path の取得
+
+json path は Chrome拡張の「JSONVue」を導入すると、取得しやすくなります。
+
+JSONVue を導入後、　https://FQDN/records/アイテムID/export/json にアクセスし、
+アイテムのJSONデータをブラウザで表示します。
+
+検索対象が入ったJSONキーを右クリック。
+
+![](media/media/image440.png)
+
+表示されるメニューから「JSONVue」>「Copy path」を選択すると、当該JSONキーのJSON pathが取得できます。
+
+例えば、タイトルを検索項目とする場合は、subitem_titleのところでCopy pathを実行すると、
+以下のJSON pathが取得できます。
+
+```
+metadata.item_30002_title0.attribute_value_mlt[0].subitem_title
+```
+
+\[0\] を \[*\] に置換します。metadata を $. に置換します。
+
+```
+$.item_30002_title0.attribute_value_mlt[*].subitem_title
+```
+
+上記json pathを設定すると、タイトルに対する詳細検索を実現することができます。
+
+
+
 #### インデックスツリー/ファセットの表示を設定する
 
 インデックスツリー/ファセットの表示を設定する方法を説明します。
@@ -9576,7 +11764,7 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 
 #### ファセット検索機能を設定する
 
-制限公開で使用する設定を説明します。
+人文学・社会科学総合データカタログ（JDCat）で使用する設定を説明します。
 
 デフォルトで定義されているファセット項目は以下となります。
 
@@ -9789,11 +11977,11 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 
 ### サイトライセンスを設定する
 
-サイトライセンスを認可するIPアドレスを設定する方法を説明します。サイトライセンスを認可されたIPアドレスからのアクセスであれば、課金ファイルが無料でダウンロードできます。また、サイトライセンスが認可されているIPアドレスからのアクセスであってもアイテムタイプごとに無料ダウンロード対象から除外することができます。レポート画面にてサイトライセンスユーザの利用状況をフィードバックすることができます。
-
+サイトライセンスを認可するIPアドレスを設定する方法を説明します。サイトライセンスを認可されたIPアドレスからのアクセスであれば、課金ファイルが無料でダウンロードできます。また、サイトライセンスが認可されているIPアドレスからのアクセスであってもアイテムタイプごとに無料ダウンロード対象から除外することができます。レポート画面にてサイトライセンスユーザの利用状況をフィードバックすることができます。サイトライセンスはコミュニティごとに設定することができます。
 1.  ［設定］をクリックして［サイトライセンス］をクリックします。
     
     サイトライセンス認可するための設定画面が表示されます。
+    コミュニティ管理者の場合は管理対象のコミュニティが設定したサイトライセンスのみが表示されます。
 
 <!-- end list -->
 
@@ -9806,6 +11994,15 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 323. サイトライセンスの項目を入力します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image409.png)
+
+
+【注意事項】
+・ここで設定するメールアドレスはAdministration > 統計 > サイトライセンスでメールの送信先として利用されるため、設定値には充分注意する必要があります。
+![](media/media/image486.png)
+
+
+![](media/media/image487.png)
+
 
 324. サイトライセンスを追加する場合、［+その他の入力行］をクリックします。
      
@@ -9897,28 +12094,952 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 331. ［送信］をクリックします。
      
      テストメールが送信されます。宛先でテストメールを受信できることを確認します。
-     
+
+###  メールテンプレートを編集する
+
+このメールテンプレート機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
+
+1.  システムから送信されるメールの編集方法について説明します。編集したいメールテンプレートを選択する。  
+    新規のメールテンプレートを作成したい場合は、追加ボタンを押下する。
+
+    ![](media/media/image461.png)
+
+2.  活性化した右のテキストボックスでメールテンプレートを編集する。  
+    その際に、[]で囲むことで変数として使用される文字列とその内容について以下の表15-14に示す。
+
+    表 15-14 メールテンプレート編集で使用可能な変数
+
+<table>
+<thead>
+<tr class="header">
+<th>変数名</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>url_guest_user</td>
+<td>ゲスト用の利用申請登録の案内URL</td>
+</tr>
+<tr class="even">
+<td>register_date</td>
+<td>登録年月日、報告年月日</td>
+</tr>
+<tr class="odd">
+<td>restricted_fullname</td>
+<td>登録者名</td>
+</tr>
+<tr class="even">
+<td>restricted_university_institution</td>
+<td>登録者の所属機関</td>
+</tr>
+<tr class="odd">
+<td>restricted_activity_id</td>
+<td>利用申請の申請番号</td>
+</tr>
+<tr class="even">
+<td>restricted_research_title</td>
+<td>登録者の研究題目</td>
+</tr>
+<tr class="odd">
+<td>restricted_data_name</td>
+<td>利用申請データ</td>
+</tr>
+<tr class="even">
+<td>restricted_application_date</td>
+<td>利用申請年月日</td>
+</tr>
+<tr class="odd">
+<td>restricted_mail_address</td>
+<td>登録者のメールアドレス</td>
+</tr>
+<tr class="even">
+<td>advisor_fullname</td>
+<td>指導教員の姓名</td>
+</tr>
+<tr class="odd">
+<td>advisor_university_institution</td>
+<td>指導教員の所属機関</td>
+</tr>
+<tr class="even">
+<td>guarantor_fullname</td>
+<td>保証人の姓名</td>
+</tr>
+<tr class="odd">
+<td>guarantor_university_institution</td>
+<td>保証人の所属機関</td>
+</tr>
+<tr class="even">
+<td>restricted_download_link</td>
+<td>ファイルのダウンロードリンク</td>
+</tr>
+<tr class="odd">
+<td>restricted_expiration_date</td>
+<td>ダウンロードURLの有効期限日数</td>
+</tr>
+<tr class="even">
+<td>restricted_expiration_date_ja/en</td>
+<td>ダウンロード回数説明（日/英）</td>
+</tr>
+<tr class="odd">
+<td>restricted_site_name_ja/en</td>
+<td>サイト名（日/英）</td>
+</tr>
+<tr class="even">
+<td>restricted_institution_name_ja/en</td>
+<td>サイト機関名（日/英）</td>
+</tr>
+<tr class="odd">
+<td>restricted_site_mail</td>
+<td>サイトの連絡メール</td>
+</tr>
+<tr class="even">
+<td>restricted_site_url</td>
+<td>サイトのURL</td>
+</tr>
+<tr class="odd">
+<td>data_download_date</td>
+<td>データダウンロード日</td>
+</tr>
+<tr class="even">
+<td>usage_report_url</td>
+<td>利用報告登録の案内URL</td>
+</tr>
+<tr class="odd">
+<td>restricted_usage_activity_id</td>
+<td>利用報告の申請番号</td>
+</tr>
+<tr class="even">
+<td>output_report_activity_id</td>
+<td>成果物登録の申請番号</td>
+</tr>
+<tr class="odd">
+<td>output_report_title</td>
+<td>成果物登録のタイトル</td>
+</tr>
+<tr class="even">
+<td>terms_of_use_jp/en</td>
+<td>申請対象の利用規約（日/英）</td>
+</tr>
+<tr class="odd">
+<td>secret_url</td>
+<td>非公開、エンバーゴデータ向けシークレットURL</td>
+</tr>
+<tr class="even">
+<td>landing_url</td>
+<td>申請対象のランディングページURL</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>申請者の所属機関</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>申請者の姓名</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>申請ワークフローのアクティビティID</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>申請者のメールアドレス</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>申請したアイテム名</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>URL</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>承認日</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>承認日から7日後の日付</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>その年の年度末の年月日</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>アクティビティID</td>
+</tr>
+<tr class="odd">
+<td>restricted_approver_name</td>
+<td>※</td>
+</tr>
+<tr class="even">
+<td>restricted_approver_affiliation</td>
+<td>※</td>
+</tr>
+<tr class="odd">
+<td>restricted_supervisor</td>
+<td>※</td>
+</tr>
+<tr class="even">
+<td>restricted_reference</td>
+<td>※</td>
+</tr>
+<tr class="odd">
+<td>file_name</td>
+<td>ファイル名</td>
+</tr>
+<tr class="even">
+<td>restricted_download_count</td>
+<td>ダウンロード回数</td>
+</tr>
+<tr class="odd">
+<td>restricted_download_count_ja/en</td>
+<td>ダウンロード回数説明（日/英）</td>
+</tr>
+<tr class="even">
+<td>restricted_research_plan</td>
+<td>研究計画</td>
+</tr>
+</tbody>
+</table>
+
+※ 変数として特定の意味は持たないが、[]で囲んでしまうと空欄となる文字列
+
+3.  保存ボタンを押下し、編集内容を保存する。
+
+    ![](media/media/image462.png)
+
+#### メールテンプレートの拡張機能　(本機能は、JAIROCloud環境で提供しておりません)
+
+デフォルトの設定では、メールテンプレートの編集画面には入力が必須である「件名」と「本文」の2項目のみ表示されます。
+
+システム管理者はWEKO3の環境設定ファイルを変更することで、ここに新たに以下の3つの項目を拡張表示させることができます。
+
+- Recipient（送信先）
+
+- CC
+
+- BCC
+
+この機能を用いることで、メールテンプレートが使用される際、設定したメールアドレスにも自動送信されるようになります。
+
+なおこれらの項目の入力は任意ですが、入力する際は以下の制約が課されます。
+
+- 入力されるメールアドレスはWEKOシステム上に登録されているメールアドレスであること
+
+- 上記のメールアドレスに紐づくユーザーが無効化されていないこと
+
+- 複数のメールアドレスを登録する場合は、カンマ(,)を用いること
+
+メールアドレスをテンプレートに設定した後に機能を無効化した場合、設定したメールアドレスにはメールが送信されません。
+
+また、メールテンプレートの登録後に登録されたユーザーが削除あるいは無効化された場合、テンプレートから適時自動削除されます。
+
+#### デフォルトメールテンプレート 
+初期状態で登録されているメールテンプレートは以下の12種になります。
+
+1.  利用申請登録のご案内
+
+    - 宛先：利用申請者（ゲストユーザー）
+    - 概要：制限公開アイテムに対し、利用申請を求めるゲストユーザーに利用申請の案内をするメール
+        - メール文は日英併記
+
+    - Subject：　利用申請登録のご案内／Register Application for Use
+    - 本文:
+    ```
+    [restricted_site_name_ja]です。
+    下記のリンクにアクセスしていただき、利用申請の登録を行ってください。
+
+    このメールは自動送信されているので返信しないでください。
+    お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+    [url_guest_user]
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    This is a message from [restricted_site_name_en].
+    Please access the link below and register your Application.
+
+    [url_guest_user]
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_site_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+2.  データ利用申請の受付のお知らせメール
+
+    - 宛先：利用申請者
+    - 概要：利用申請者に利用申請を受け付けたことを通知するメール
+        - メール文は日英併記
+
+    - Subject：　データ利用申請の受付のお知らせ／Your Application was Received
+    - 本文:
+    ```
+    [restricted_university_institution]
+    [restricted_fullname]　様
+
+    [restricted_institution_name_ja]です。
+    [restricted_site_name_ja]をご利用いただいて、ありがとうございます。
+
+    下記の利用申請を受け付けました。
+
+    申請番号： [restricted_activity_id]
+    登録者名： [restricted_fullname]
+    メールアドレス： [restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    研究題目：[restricted_research_title]
+    申請データ：[restricted_data_name]
+    申請年月日：[restricted_application_date]
+
+    [restricted_institution_name_ja]で審査しますので、結果の連絡をお待ちください。
+
+    このメールは自動送信されているので返信しないでください。
+    お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_institution_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    Dear [restricted_fullname],
+
+    This is a message from [restricted_institution_name_en].
+    Thank you for using [restricted_site_name_en].
+
+    We received the below application:
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    You will be notified once the application is approved.
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_institution_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+3.  承認依頼通知メール（ログインユーザーからの承認依頼）
+
+    - 宛先：承認者（Action Userに設定されたユーザ）
+    - 概要：承認者に設定されたユーザに対して、承認作業を依頼するメール
+        - メール文は日英併記
+
+    - Subject：　データ利用申請の承認のお願い（ログインユーザー向け）／Request for Approval of Application for Use （for logged in users）
+    - 本文:
+    ```
+    [advisor_university_institution]
+    [advisor_fullname]　様
+
+    [restricted_site_name_ja]です。
+    [advisor_university_institution] [advisor_fullname]様から以下のデータの利用申請がありました。
+
+    申請番号：[restricted_activity_id]
+    登録者名：[restricted_fullname]
+    メールアドレス：[restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    研究題目：[restricted_research_title]
+    申請データ：[restricted_data_name]
+    申請年月日：[restricted_application_date]
+
+    ご自身のアカウントにログインして、ワークフローより上記の申請内容をご確認ください。
+    「承認」または「却下」のボタンをクリックしてください。
+
+    このメールは自動送信されているので返信しないでください。
+    このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    Dear [advisor_fullname],
+
+    This is a message from [restricted_site_name_en].
+    We received the below application from [restricted_university_institution] [restricted_fullname]
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    Please log in your account and From [Workflow], confirm the above application by clicking on “approve” or “reject”.
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+4.  承認依頼通知メール（ゲストユーザーからの承認依頼）
+
+    - 宛先：承認者（Action Userに設定されたユーザ）
+    - 概要：承認者に設定されたユーザに対して、承認作業を依頼するメール
+        - メール文は日英併記
+
+    - Subject：　データ利用申請の承認のお願い（ゲストユーザー向け）／Request for Approval of Application for Use （for logged in users）
+    - 本文:
+    ```
+    [advisor_university_institution]
+    [advisor_fullname]　様
+
+    [restricted_site_name_ja]です。
+    [advisor_university_institution] [advisor_fullname]様から以下のデータの利用申請がありました。
+
+    申請番号：[restricted_activity_id]
+    登録者名：[restricted_fullname]
+    メールアドレス：[restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    研究題目：[restricted_research_title]
+    申請データ：[restricted_data_name]
+    申請年月日：[restricted_application_date]
+
+    ご自身のアカウントにログインして、ワークフローより上記の申請内容をご確認ください。
+    「承認」または「却下」のボタンをクリックしてください。
+
+    このメールは自動送信されているので返信しないでください。
+    このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    Dear [advisor_fullname],
+
+    This is a message from [restricted_site_name_en].
+    We received the below application from [restricted_university_institution] [restricted_fullname]
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    Please log in your account and From [Workflow], confirm the above application by clicking on “approve” or “reject”.
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+5.  申請却下通知メール（ログインユーザーへの却下）
+
+    - 宛先：利用申請者
+    - 概要：利用申請者に承認フローが却下されたことを通知するメール
+        - メール文は日英併記
+
+    - Subject：　利用申請の審査結果について（ログインユーザー向け）／The results of the review of your application （for logged in users）
+    - 本文:
+    ```
+    [restricted_university_institution]
+    [restricted_fullname]　様
+
+    この度は、[restricted_site_name_ja]をご利用いただきありがとうございます。
+    申請いただいた内容をもとに、所内で慎重な検討を重ねましたが、今回はコンテンツの提供を見送らせていただくこととなりました。
+
+    申請番号： [restricted_activity_id]
+    登録者名： [restricted_fullname]
+    メールアドレス： [restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    研究題目：[restricted_research_title]
+    申請データ：[restricted_data_name]
+    申請年月日：[restricted_application_date]
+
+    ご申請いただいたにも関わらず、このような返事となり大変申し訳ございません。
+    今後とも[restricted_site_name_ja]をよろしくお願いします。
+
+    このメールは自動送信されているので返信しないでください。
+    このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    Dear [restricted_fullname],
+
+    Thank you for using [restricted_site_name_en].
+    Based on the content of your application, after careful consideration within our office,
+    we have decided not to provide the content at this time.
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    We are very sorry for this reply despite your application.
+    Thank you for your continued support of [restricted_site_name_en].
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+6.  申請却下通知メール（ゲストユーザーへの却下）
+
+    - 宛先：利用申請者
+    - 概要：利用申請者に承認フローが却下されたことを通知するメール
+        - メール文は日英併記
+
+    - Subject：　利用申請の審査結果について（ゲストユーザー向け）／The results of the review of your application （for guest user）
+    - 本文:
+    ```
+    [restricted_university_institution]
+    [restricted_fullname]　様
+
+    この度は、[restricted_site_name_ja]をご利用いただきありがとうございます。
+    申請いただいた内容をもとに、所内で慎重な検討を重ねましたが、今回はコンテンツの提供を見送らせていただくこととなりました。
+
+    申請番号： [restricted_activity_id]
+    登録者名： [restricted_fullname]
+    メールアドレス： [restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    研究題目：[restricted_research_title]
+    申請データ：[restricted_data_name]
+    申請年月日：[restricted_application_date]
+
+    ご申請いただいたにも関わらず、このような返事となり大変申し訳ございません。
+    今後とも[restricted_site_name_ja]をよろしくお願いします。
+
+    このメールは自動送信されているので返信しないでください。
+    このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    Dear [restricted_fullname],
+
+    Thank you for using [restricted_site_name_en].
+    Based on the content of your application, after careful consideration within our office,
+    we have decided not to provide the content at this time.
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    We are very sorry for this reply despite your application.
+    Thank you for your continued support of [restricted_site_name_en].
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+7.  申請承認通知メール（ログインユーザーへの承認）
+
+    - 宛先：利用申請者
+    - 概要：登録者にワークフローが承認されたことを通知するメール
+        - メール文は日英併記
+
+    - Subject：　利用申請の承認のお知らせ（ログインユーザー向け）／Your application was approved （for logged in users）
+    - 本文:
+    ```
+    [restricted_university_institution]
+    [restricted_fullname]　様
+
+    この度は、[restricted_site_name_ja]をご利用いただきありがとうございます。
+
+    下記の利用申請を承認しました。
+
+    申請番号：[restricted_activity_id]
+    登録者名：[restricted_fullname]
+    メールアドレス：[restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    研究題目：[restricted_research_title]
+    申請データ：[restricted_data_name]
+    申請年月日：[restricted_application_date]
+
+    ご申請いただいたコンテンツは、次のページよりダウンロードすることができます。
+
+    [landing_url]
+
+    上記アドレスより[restricted_site_name_ja]にアクセスいただき、ご登録いただいたアカウントでログインをして下さい。
+    ログインしていただけますと、ダウンロードボタンより申請いただいたデータをダウンロードすることができます。
+
+    ダウンロードは[restricted_expiration_date_ja]まで可能です。
+    ダウンロード期限は[restricted_expiration_date_ja]までなので、期限内に必ず保存してください。
+    ダウンロード回数が上限を超えたり、ダウンロード期限を過ぎると、再申請が必要になります。
+
+    今後とも[restricted_site_name_ja]をよろしくお願いします。
+
+    このメールは自動送信されているので返信しないでください。
+    このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    Dear [restricted_fullname],
+
+    Thank you for using [restricted_site_name_en].
+    Your application below has been approved.
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    The data can be downloaded from the address below.
+
+    [landing_url]
+
+    Please access [restricted_site_name_en] from the above address and login with your registered account.
+    If you logged in, you will be able to download the submitted data from the download button.
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+8.  申請承認通知メール（ゲストユーザーへの承認）
+
+    - 宛先：利用申請者
+    - 概要：登録者にワークフローが承認されたことを通知するメール
+        - メール文は日英併記
+
+    - Subject：　利用申請の承認のお知らせ（ゲストユーザー向け）／Guest''s application was approved （for guest user）
+    - 本文:
+    ```
+    [restricted_university_institution]
+    [restricted_fullname]　様
+
+    この度は、[restricted_site_name_ja]をご利用いただきありがとうございます。
+
+    下記の利用申請を承認しました。
+
+    申請番号：[restricted_activity_id]
+    登録者名：[restricted_fullname]
+    メールアドレス：[restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    研究題目：[restricted_research_title]
+    申請データ：[restricted_data_name]
+    申請年月日：[restricted_application_date]
+
+    申請いただいたコンテンツは、次のリンクアドレスよりダウンロードすることができます。
+
+    [restricted_download_link]
+
+    リンクアドレスをクリックすると、メールアドレスの入力が必要となります。
+    利用申請の際に登録されたメールアドレスを入力頂きますと、申請いただいたコンテンツをダウンロードすることができます。
+
+    ダウンロードは[restricted_expiration_date_ja]まで可能です。
+    ダウンロード期限は[restricted_expiration_date_ja]までなので、期限内に必ず保存してください。
+    ダウンロード回数が上限を超えたり、ダウンロード期限を過ぎると、再申請が必要になります。
+
+    今後とも[restricted_site_name_ja]をよろしくお願いします。
+
+    このメールは自動送信されているので返信しないでください。
+    このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    Dear [restricted_fullname]
+
+    Thank you for using [restricted_site_name_en].
+    Your application below has been approved.
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    The data can be downloaded from the address below.
+
+    [restricted_download_link]
+
+    If you click the address, you will be required to enter your email address.
+    You can download the content you have applied for by entering the email address you registered when applying for use.
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+9.  利用報告ワークフロー通知メール
+
+    - 宛先：利用申請が必要なアイテムのコンテンツファイルをダウンロードしたユーザ
+    - 概要：申請者がデータをダウンロードした際に、利用報告WFのリンクを提供する通知メール
+        - メール文は日英併記
+
+    - Subject：　利用報告の登録のお願い／Request for register Data Usage Report
+    - 本文:
+    ```
+    [restricted_site_name_ja]です。
+    下記で申請いただいたデータについてダウンロードされたことを確認しました。
+
+    申請番号： [restricted_usage_activity_id]
+    登録者名： [restricted_fullname]
+    メールアドレス： [restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    研究題目：[restricted_research_title]
+    申請データ：[restricted_data_name]
+    申請年月日：[restricted_application_date]
+
+    ダウンロードしたデータについて、下記のリンクから利用報告の登録をお願いします。
+
+    [usage_report_url]
+
+    このメールは自動送信されているので返信しないでください。
+    お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    This is a message from [restricted_site_name_en].
+    We have confirmed that the dataset which you registered at below has been downloaded.
+
+    Application No.：[restricted_usage_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    For the downloaded data, please register the Data Usage Report by the link below.
+
+    [usage_report_url]
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_site_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+10. 利用報告督促メール
+
+    - 宛先：利用報告未提出者
+    - 概要：利用報告未提出者に対しての督促メール
+        - メール文は日英併記
+
+    - Subject：　利用報告の登録のお願い／Request for register Data Usage Report
+    - 本文:
+    ```
+    [restricted_site_name_ja]です。
+    現時点で、下記の利用報告が登録されていません
+
+    報告番号：[restricted_activity_id]
+    登録者名：[restricted_fullname]
+    メールアドレス：[restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    利用データ：[restricted_data_name]
+    データダウンロード日：[data_download_date]
+
+    下記のリンクから利用報告の登録をお願いします。
+
+    [usage_report_url]
+
+    このメールは自動送信されているので返信しないでください。
+    お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    This is a message from [restricted_site_name_en].
+    At this time, the Data Usage Report below has not been registered.
+
+    Usage Report No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Usage Dataset：[restricted_data_name]
+    Download date：[data_download_date]
+
+    Please register the Data Usage Report from the link below.
+
+    [usage_report_url]
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_site_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+11. シークレットURL提供メール
+
+    - 宛先：登録者
+    - 概要：シークレットURLを発行し、送付するためのメール
+        - メール文は日英併記
+        - 設定でシークレットURLダウンロード機能がONになっていない場合は、このメールは表示されません。  
+            ON/OFFの切り替えについては「15.21 制限公開機能を管理する」を参照してください。
+
+    - Subject：　シークレットURL提供のお知らせ／Notice of providing secret URL
+    - 本文
+    ```
+    [restricted_university_institution]
+    [restricted_fullname]様
+
+    [restricted_site_name_ja]です。
+
+    [restricted_data_name]に登録されている[file_name]のシークレットURLを作成しました。
+
+    下記アドレスよりダウンロードすることができます。
+
+    [secret_url]
+
+    このURLは[restricted_expiration_date][restricted_expiration_date_ja]まで有効です。ダウンロードは[restricted_download_count][restricted_download_count_ja]回まで可能です。
+
+    ＊このメールは自動送信されているので返信しないでください。
+    ＊このメールに心当たりのない方は、[restricted_site_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+
+    ----------------------------------------------------------------------------------
+
+    [restricted_university_institution]
+    [restricted_fullname]
+
+    This is a message from [restricted_site_name_en].
+    Secret URL for [file_name] registered in [restricted_data_name] is created.
+
+    The data can be downloaded from the address below.
+
+
+    [secret_url]
+
+    This URL is valid until [restricted_expiration_date][restricted_expiration_date_en]. You can download it up to [restricted_download_count][restricted_download_count_en] times.
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
+12. 利用申請のお知らせ
+
+    - 宛先：アイテム登録者（利用申請の際の申請先アイテムの登録者）
+    - 概要：利用申請の際に、申請先のアイテム登録者に対し 送信されるメール
+        - メール文は日英併記
+
+    - Subject：　利用申請登録のご案内／Register Application for Use
+    - 本文:
+    ```
+    データ提供者 様
+
+    [restricted_institution_name_ja]です。
+    [restricted_fullname]様から、ご登録いただいたコンテンツに対して、下記のデータの利用申請がありましたので報告いたします。
+
+    申請番号： [restricted_activity_id]
+    登録者名： [restricted_fullname]
+    メールアドレス： [restricted_mail_address]
+    所属機関：[restricted_university_institution]
+    研究題目：[restricted_research_title]
+    申請データ：[restricted_data_name]
+    申請年月日：[restricted_application_date]
+
+    このメールは自動送信されているので返信しないでください。
+    お問い合わせは下記までお願いします。また、このメールに心当たりのない方は、[restricted_institution_name_ja]までご連絡ください。
+
+    [restricted_site_name_ja]：[restricted_site_url]
+    問い合わせ窓口：[restricted_site_mail]
+
+    ----------------------------------------------------------------------------------
+
+    Dear Data Provider,
+
+    This is a message from [restricted_institution_name_en].
+    We received the below application from [restricted_fullname].
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_institution_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+    ```
+
 ### WebAPIのアカウントを設定する
 
 Web APIのアカウントを設定する方法を説明します。
+Crossref API（メイルアドレス）およびOA Assist API（OAuth2 Client ID、シークレット）の設定が可能です。
 
 1.  ［設定］をクリックして［WebAPIアカウント］をクリックします。
     
     設定画面が表示されます。
 
-<!-- end list -->
-
-332. ［入力タイプ］で、項目を選択します。
+2. ［入力タイプ］で、項目を選択します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image415.png)
 
-333. 選択したときに表示される項目を入力します。
+3. 選択したときに表示される項目を入力します。
 
 ![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image416.png)
 
-334. ［保存］をクリックします。
-     
-     設定が保存されます。
+4. ［保存］をクリックします。
+
+    設定が保存されます。
+
+
      
 ### File Previewを設定する
 
@@ -9967,80 +13088,112 @@ PDFファイルのプレビューを設定する方法を説明します。
      
 ### 制限公開機能を管理する
 
+システム管理者およびリポジトリ管理者は制限公開機能（シークレットURL機能、利用申請機能）の設定を変更できます。
+
 #### 制限公開機能を設定する
 
-制限公開で使用する設定を説明します。
+制限公開（シークレットURL機能、利用申請機能）で使用する設定を説明します。
 
+<!--
 \*本画面は、システム管理者のみアクセスできる画面です。この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
+-->
+*本画面は、＜利用申請機能 先行利用機関＞の設定画面です。当機能の先行利用を申請していな機関は、シークレットURLのダウンロードのみ表示されます。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
 
 ![](media/media/image419.png)
+図 制限公開の設定画面
 
-1.  シークレットURLのダウンロード
+#### シークレットURL機能
+<p>管理者画面でシークレットURL機能を有効化することで、シークレットURLを発行することができます。<br>
+シークレットURLとは、投稿者（代理投稿者を含む）及びシステム、リポジトリ管理者が発行できるワンタイムアドレスであり、このURLを知っている人は、誰でも対象のコンテンツファイルをダウンロードできます</p>
 
-<*この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください>
+**本機能は、公開コンテンツ、ならびにサイトライセンス機能を利用してサイトライセンスユーザーに対してアクセス可能になっているコンテンツに対して、<span style="color: red; ">新たにアクセス権限を付与し、シークレットURLを通じたアクセスに制限する機能ではありません<span>。**
 
-　シークレットURLの機能を有効化することで、Information画面の「シークレットURL」ボタンが表示可能になります（ユーザ操作マニュアル 4.1.8 Information画面 参照）。シークレットURLの発行機能を使用できるのは、アイテム登録者・システム管理者・リポジトリ管理者になります。この機能によりシークレットURLからダウンロードが可能になりますが、当該ダウンロードリンクに有効期限とダウンロード回数を設けることができます。
+・機能有効化チェックボックス
+シークレットURL機能を有効化/無効化することができます。
+本機能を有効化することで、権限を持つユーザーに対してのみ、ファイルのInformation画面に「シークレットURL」ボタンと「発行済みのシークレットURL一覧」が表示されるようになります（ユーザ操作マニュアル 9.8 Information画面 参照）。「シークレットURL」ボタンを押下するとURL作成フォームが表示され、新たなシークレットURLを発行できます。
+なお、機能を無効化すると、作成したシークレットURLは無効化されます。無効化、もしくはInformation画面から削除されたシークレットURLにアクセスした場合、状態に応じたエラーメッセージが表示されます。
+
+![](media/media/image473.png)
+図 無効化している、または削除されたシークレットURLにアクセスした際に表示されるエラーメッセージ画面
+
+＊無効化したシークレットURLは、機能を有効化することで有効化されます（削除されたシークレットURLは元にもどりません）。
+
+・有効期限日数初期値
+シークレットURL発行時、ユーザーは当該シークレットURLの有効期限を設定することができますが、その初期値を「1」以上、有効期限日数上限値以下の整数値で設定することができます。デフォルトでは30日に設定しております。
+なお、有効期限を超過したシークレットURLにアクセスすると、以下のエラーメッセージが表示されます。
+
+![](media/media/image420.png)
+図 有効期限を超過しているシークレットURLにアクセスした際に表示されるエラーメッセージ画面
+
+・ダウンロード回数初期値
+シークレットURL発行時、ユーザーは当該シークレットURLのダウンロード回数を設定することができますが、その初期値を「1」以上、の整数値で設定することができます。デフォルトでは10回に設定しております。
+なお、ダウンロード回数を超過したシークレットURLにアクセスすると、以下のエラーメッセージが表示されます。
+
+![](media/media/image421.png)
+図 ダウンロード回数を超過しているシークレットURLにアクセスした際に表示されるエラーメッセージ画面
+
+・有効期限日数上限値
+
+シークレットURL発行時、ユーザーは当該シークレットURLの有効期限を設定することができますが、その上限値を有効期限日数初期値以上の整数値で設定することができます。デフォルトでは30日に設定しております。
+
+・ダウンロード回数上限値
+
+シークレットURL発行時、ユーザーは当該シークレットURLのダウンロード回数を設定することができますが、その上限値をダウンロード回数初期値以上の整数値で設定することができます。デフォルトでは10回に設定しております。
+
+・シークレットURLによるダウンロード統計
+シークレットURLを通じてダウンロードされた際、利用統計のダウンロード回数に加算されます。
+
+2.  コンテンツファイルのダウンロード
+
+本機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
+
+公開設定が「制限公開」であるファイルに対して、以下のプロセスを経ることで利用者に対し一時的なダウンロードURL(以下、ワンタイムURL)を発行することができます。
+
+- 1: コンテンツファイルの利用を希望するユーザーが、アイテムの詳細画面から「申請」ボタンを押下し、利用申請ワークフローを作成する
+- 2: 管理者権限を持つユーザーが利用申請ワークフローを承認する
+- 3: ワンタイムURLが記されたメールが利用申請者に送付される
+
+ワンタイムURLの有効期限とダウンロード可能回数は、上記の利用申請が承認されたタイミングで設定されます。これらの値は管理者設定画面の制限公開タブから変更することができます。
 
 ・有効期限
 
-> 初期値は30日です。ダウンロードリンクの有効期限は<span class="underline">URLが発行</span>した時点で設定されます。有効期限を無期限に設定するには、「無制限」のチェックボックスにチェックを入れてください。（※システム上では9999999日が設定されます）
-> 
-> 有効期限が未設定かつ「無制限」チェックボックスをチェックしていない場合はエラーとなります。
+初期値・上限値ともに30日に設定されています。上限値は30日以下、初期値は上限値以下の範囲内においてのみ設定可能です。
 
 ・ダウンロード回数
 
-> 初期値は10回です。ダウンロードが途中で失敗した場合でも、1回のダウンロードとしてカウントされます。ダウンロード回数を無限に設定するには、「無制限」のチェックボックスにチェックを入れてください。（※システム上では9999999<span class="underline">回</span>が設定されます）
-> 
-> 　ダウンロード回数が未設定かつ「無制限」チェックボックスをチェックしていない場合はエラーとなります。
-> 
-> ダウンロードリンクからコンテンツファイル<span class="underline">を</span>ダウンロードした際、利用統計のダウンロード回数に加算されます。
-> 
-> 有効期限、ダウンロード回数を超過してダウンロードリンクにアクセスした場合はエラーページを表示します。
+初期値・上限値ともに10回に設定されています。上限値は10回以下、初期値は上限値以下の範囲内においてのみ設定可能です。
 
-　　　　　有効期限を超過した場合のメッセージ
+ダウンロードリンクからコンテンツファイルをダウンロードした際、利用統計のダウンロード回数に加算されます。
+
+権限を持つユーザーは発行済みのワンタイムURL一覧セクションで、現在有効であるURLの一覧を確認できます。発行済みのURLは必要に応じてここから削除・コピーすることも可能です。
+
+無効なURLにアクセスした場合、状態に応じたエラーメッセージが表示されます。
+
+- 有効期限を超過している場合
 
 ![](media/media/image420.png)
 
-　　　　　上限回数を超過した場合のメッセージ
+- 上限回数を超過している場合
 
 ![](media/media/image421.png)
 
-2.  コンテンツファイルのダウンロード
-    
-    \*この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください（2024年4月）
+- 権限を持つユーザーによりURLが削除された場合
 
-> アイテム詳細画面の「申請」ボタンから起動したワークフローが「作業済み(Done)」となった際にダウンロード用のURIがメールで通知されますが、当該ダウンロードリンクに有効期限とダウンロード回数を設けることができます。
-> 
-> ・有効期限日数
-> 
-> 初期値は30日です。ダウンロードリンクの有効期限は承認者が承認した時点で設定されます。有効期限を無期限に設定するには、「無制限にする」チェックボックスにチェックを入れてください。（※システム上では9999999日が設定されます）
-> 
-> 有効期限が未設定かつ「無期限にする」チェックボックスをチェックしていない場合はエラーとなります。
-> 
-> ・ダウンロード回数
-> 
-> 初期値は10回です。ダウンロードが途中で失敗した場合でも、1回のダウンロードとしてカウントされます。ダウンロード回数を無限に設定するには、「無制限にする」チェックボックスにチェックを入れてください。（※システム上では9999999回が設定されます）
-> 
-> 　ダウンロード回数が未設定かつ「無期限にする」チェックボックスをチェックしていな　い場合はエラーとなります。
-> 
-> 　ダウンロードリンクからコンテンツファイルをダウンロードした際、利用統計のダウンロード回数に加算されます。
-> 
-> 有効期限、ダウンロード回数を超過してダウンロードリンクにアクセスした場合はエラーページを表示します。
-> 
-> 　　　　　有効期限を超過した場合のメッセージ
-> 
-> ![](media/media/image422.png)　　　　　上限回数を超過した場合のメッセージ
+![](media/media/image473.png)
 
-![](media/media/image423.png)
+なお、登録時にアイテムを公開状態としていて、途中で非公開/削除した場合、ダウンロード期間内でもファイルはダウンロードできなくなります。また、登録時に指定したインデックスを非公開に変更した場合も、ダウンロード期間内でもファイルはダウンロードできなくなります。
 
-> なお、登録時にアイテムを公開状態としていて、途中で非公開/削除した場合、ダウンロード期間内でもファイルはダウンロードできなくなります。また、登録時に指定したインデックスを非公開に変更した場合も、ダウンロード期間内でもファイルはダウンロードできなくなります。
+3. 利用報告ワークフローへのアクセス
 
-339. 利用報告ワークフローへのアクセス
-     
+ 本機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
+   
      \*この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
 
 > 制限公開で登録したコンテンツファイルをダウンロードした際に、非ログインユーザが利用報告ワークフローにアクセスできる有効期限を設定することができます。
-> 
+>
 > ・有効期限日数
 > 
 > 　初期値は500日です。有効期限を無期限に設定するには、「無制限にする」チェックボックスにチェックを入れてください。（※システム上では9999999日が設定されます）
@@ -10049,7 +13202,60 @@ PDFファイルのプレビューを設定する方法を説明します。
 > 
 > 　設定された有効期限を超過したリンクにアクセスした場合は、エラーページを表示します。
 
-340. 利用規約
+4.  コンテンツ未登録アイテムの利用申請
+
+*本機能は、試験的な機能です。JAIRO Cloud環境で提供しておりません
+
+> コンテンツが未登録のアイテムに対して利用申請可能とする機能のON/OFFが設定できます。
+>
+> チェックをいれることで、コンテンツ未登録状態で利用申請可能なアイテムタイプを設定できるようになります。機能の詳細については「ユーザ操作マニュアル」の「4.1.10. 外部データ利用申請」および「5.1.1. アイテムを登録する (15)　アイテムの利用申請方法を設定する。」をご参照ください。
+>
+> ・「コンテンツ未登録状態で利用申請可能なアイテムタイプ」と「コンテンツ未登録状態で利用申請不可能なアイテムタイプ」
+>
+> 　初期値は全てのアイテムタイプが「コンテンツ未登録状態で利用申請不可能なアイテムタイプ」です。「コンテンツ未登録状態で利用申請可能なアイテムタイプ」に設定されたアイテムタイプのみ、本機能は有効となります。
+>
+> 　「コンテンツ未登録状態で利用申請不可能なアイテムタイプ」からアイテムタイプを選択し、左矢印ボタンを押下することで、利用申請可能なアイテムタイプに設定できます。
+>
+> 　逆に利用申請可能なアイテムタイプから外したい場合は、「コンテンツ未登録状態で利用申請可能なアイテムタイプ」からアイテムタイプを選択し、右矢印ボタンを押下することで利用申請可能なアイテムタイプから外すことが可能です。
+
+5.  承認アクションにおけるファイルプレビュー
+
+*本機能は、試験的な機能です。JAIRO Cloud環境で提供しておりません
+
+> 利用申請アクティビティの承認アクションにおけるファイルプレビュー機能のON/OFFが設定できます。
+>
+> チェックをいれることで、制限公開アイテムに対する「利用申請」、「二段階利用申請」アクティビティの承認アクションで、申請時に登録されたアイテムの表示形式に関係なくプレビュー機能が表示されます。
+
+6.  メールテンプレート編集
+
+本機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
+
+> 送信するメールのテンプレート編集のON/OFFが設定できます。
+>
+> チェックをいれ、保存した後に、管理画面を更新することでメールのテンプレートを編集するメニューを表示することができます。詳細については、「15.17　メールテンプレートを編集する」をご参照ください。
+
+7.  リクエストフォーム
+
+*本機能は、試験的な機能です。JAIRO Cloud環境で提供しておりません
+
+> リクエストメール送信フォームのON/OFFが設定できます。
+>
+> チェックをいれることで、アイテムの作成または編集時にリクエストメール送信先として設定されたメールアドレスに送信できます。詳細については、「ユーザ操作マニュアル」の「4.1.9. リクエストメール送信フォーム」をご参照ください。
+
+8.  非ログインユーザーのDLにおけるパスワードチェック機能
+
+本機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
+
+> 非ログインユーザーがコンテンツをダウンロードする際に使用されるパスワードチェック機能のON/OFFが設定できます。
+>
+> チェックをいれることで、利用申請の際のメールアドレス入力欄の下にパスワード設定欄が表示されます。また、パスワードが設定されていない申請は承認されていてもコンテンツのダウンロードができなくなります。
+
+9. 利用規約
+
+本機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
 
 > ワークフローの利用規約のプルダウンで選択できるテンプレートを設定することができます。
 > 
@@ -10077,8 +13283,26 @@ PDFファイルのプレビューを設定する方法を説明します。
 > 
 > 　登録する利用規約（英語）の文言を入力するテキストエリアです。文字数上限はありません。
 
-341. 利用報告督促メール
-     
+10. エラーメッセージ編集
+
+本機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
+
+> 制限公開アイテムに対し、申請する権限を持たないユーザーがアクセスした際に表示されるエラーメッセージを編集することができます。文字数制限はありません。
+>
+> 初期設定では、以下のエラーメッセージが入力されています。
+>
+> 日本語：「このデータは利用できません（権限がないため。）」
+>
+> 英語：「This data is not available for this user.」
+>
+> テキストエリアを空欄にした状態で保存を行うと、エラーになります。
+
+11. 利用報告督促メール
+
+本機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。
+この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
+<!--
      \*この機能の利用に興味のある方はwekosoftware@nii.ac.jpへお問い合わせください
 
 > 利用報告督促メールを送信した履歴が表示されます。アクティビティのリンクを押下すると、該当のワークフローが起動します。
@@ -10090,6 +13314,7 @@ PDFファイルのプレビューを設定する方法を説明します。
 （異なるクライアントPCから実施した場合はエラー発生しません。）
 
 承認作業でサーバエラーが発生する場合、一度作業ブラウザからログアウト、再ログインしてから承認作業を行ってください。
+-->
 
 ### 機関名を設定する
 
@@ -10108,6 +13333,100 @@ PDFファイルのプレビューを設定する方法を説明します。
 343. ［保存］をクリックします。
      
      設定が保存されます。
+
+### CRIS連携機能を管理する
+
+CRIS連携画面は、［設定］をクリックして［CRIS連携］をクリックすると表示されます。
+
+#### APIキーを設定する
+
+APIキーの設定について説明します。
+
+- 本画面では、以下の2種類のキーを設定することができます。
+
+![researchmap api key](media/media/image476.png)
+
+1.	client id キー
+こちらは、利用機関で機関毎に取得可能なクライアントIDとなっています。
+ファイルサイズが大きすぎる場合は、以下のエラーメッセージが表示されます。
+
+・ファイルサイズが大きすぎる場合のエラーメッセージ
+
+![ファイルサイズが大きすぎる場合のエラーメッセージ](media/media/image477.png)
+
+2.	private キー
+こちらは、JWTの署名に用いる秘密鍵となっています。
+ファイルサイズが大きすぎる場合は、以下のエラーメッセージが表示されます。
+
+・ファイルサイズが大きすぎる場合のエラーメッセージ
+
+![ファイルサイズが大きすぎる場合のエラーメッセージ](media/media/image478.png)
+
+また、どちらも未設定の状態で保存ボタンをクリックすると以下のエラーメッセージが表示されます。
+
+・未設定状態で[保存]ボタンクリック時のエラーメッセージ
+
+![未設定状態で\[保存\]ボタンクリック時のエラーメッセージ](media/media/image479.png)
+
+#### マージモードを設定する
+
+マージモードの設定について説明します。
+
+本画面では、researchmapとのデータ連携の際のマージモードを設定できます。選択できるマージモードは以下の4種類となります。
+
+1. 類似データマージ（類似データ優先）<br/>
+追加・更新を行おうとしている会員の業績リスト中に類似ドキュメントがあった場合、類似ドキュメントを優先させ、入力データ（または、入力データを指定ドキュメントとマージしたもの）をマージします。
+2.	類似データマージ（入力データ優先）<br/>
+追加・更新を行おうとしている会員の業績リスト中に類似ドキュメントがあった場合、入力データ（または、入力データを指定ドキュメントとマージしたもの）を優先させ、類似ドキュメントをマージします。
+3.	追加（類似データがあればエラー）<br/>
+指定ドキュメントがない場合、新規登録。追加・更新を行おうとしている会員の業績リスト中に類似ドキュメントがあればエラーとなります。
+4.	追加（入力データ強制）<br/>
+類似ドキュメントがあった場合でも、別業績として扱い強制的に新規登録を行います。ただし、類似ドキュメントが機関以外（本人相当）によって登録／更新されている場合は、追加することができません。
+
+デフォルトでは、類似データマージ（類似データ優先）が選択されています。
+
+![マージモードの設定](media/media/image480.png)
+
+
+## ログ管理
+
+この章では、ログの管理方法について説明します。
+
+### 基本監査ログをエクスポートする
+
+基本監査ログの全件エクスポートを行う方法を説明します。
+
+1.  ［ログ管理］をクリックして［エクスポート］をクリックします。
+
+    ファイルをエクスポートする画面が表示されます。
+
+![基本監査ログエクスポート画面](media/media/image448.png)
+
+<!-- end list -->
+
+2. 処理を行う場合は、［エクスポート］をクリックします。
+    
+    ［エクスポート］をクリックすると、全件出力を実行してよいかの確認ダイアログが表示されます。表示されたダイアログのボタンを操作します。
+
+![基本監査ログエクスポート実行確認ダイアログ](media/media/image449.png)
+
+3. ［実行］を選択します。全件エクスポート処理が実行されます。
+
+    正常に処理が完了するとダウンロードのURLが画面上に表示されます。
+
+    URLをクリックするとzipファイル(export\_log.zip)がダウンロード出来ます。
+
+    エクスポートファイルには基本監査ログがtsv形式で格納されます。
+
+    **出力されるtsvファイルは、「user\_activity\_logs\_yyMMddhhmmss.tsv」のファイル名で出力されます。**
+
+4. 処理を行わない場合は、［キャンセル］をクリックします。
+    
+    ボタンの初期状態は非活性です。エクスポートを実行中は活性となり、クリックすることが出来ます。
+    
+    **［キャンセル］をクリックすると、全件エクスポートの処理をキャンセルしてよいかの確認ダイアログを表示します。表示されたダイアログのボタンを操作します。**
+
+![基本監査ログエクスポートキャンセルダイアログ](media/media/image450.png)
 
 ## メンテナンス
 
@@ -10139,19 +13458,19 @@ ElasticSearch Indexを参照する方法を説明します。
 
 ### プロフィールを更新する
 
-ユーザプロフィールを更新する方法については、「データ登録ガイド」をご覧ください。
+ユーザプロフィールを更新する方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%97%E3%81%9F%E3%81%84)」をご覧ください。
 
 ### パスワードを変更する
 
-パスワードを変更する方法については、「データ登録ガイド」をご覧ください。
+パスワードを変更する方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B)」をご覧ください。
 
 ### アカウントにログインしたデバイスを確認する
 
-アカウントにログインしたデバイスを確認する方法については、「データ登録ガイド」をご覧ください。
+アカウントにログインしたデバイスを確認する方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%97%E3%81%9F%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%81%9F%E3%81%84)」をご覧ください。
 
 ### アプリケーションを管理する
 
-アプリケーションを管理する方法については、「データ登録ガイド」をご覧ください。
+アプリケーションを管理する方法については、「[ユーザ操作マニュアル](https://rcosdp.github.io/weko/user/#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E7%AE%A1%E7%90%86%E3%81%97%E3%81%9F%E3%81%84)」をご覧ください。
 
 ### グループを管理する
 
@@ -10294,3 +13613,109 @@ ElasticSearch Indexを参照する方法を説明します。
 ### 管理画面を表示する
 
 操作方法については、「1.4管理画面を表示する」を参照してください。
+
+## アドバンスドメニュー
+
+・本機能は、試験的な機能です。JAIRO Cloud環境で提供しておりません
+
+この章ではアドバンスドメニューについて説明します。
+
+### ユーザープロフィール設定編集画面
+
+1. 画面左にあるアドバンスドのプルダウンメニューから［プロフィール設定編集］をクリックします。
+
+図 12-1 管理者画面
+![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image470.png)
+
+プロフィール設定編集画面が表示されます。
+
+図 12-2 プロフィール設定編集画面
+![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image471.png)
+
+
+### ユーザープロフィール設定を編集する
+
+359. ラベル名を編集する
+
+ラベルを編集できます。
+
+図 12-3 ラベル名設定テキストボックス
+![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成された説明](media/media/image472.png)
+
+360. 入力方法を編集する
+
+入力方法を編集できます。
+
+入力方法は下記の5つです。
+
+図 12-4 入力方法設定プルダウン
+![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image443.png)
+
+表 17-1 入力方法一覧
+| 入力方法          | 説明             |
+| -------------    | --------------------------------------------------------- |
+| text             | テキスト入力          |
+| select           | プルダウンメニュー　   |
+| identifier       | 半角数字のみ       |
+| phonenumber      | ハイホン(-)入りの半角数字、または半角数字のみ        |
+| position(other)  | position項目の値がOthersまたはその他の場合にのみ入力可能 |
+
+370. 選択オプションを編集する。
+
+入力方法が"select"の場合にのみ表示される選択肢オプションを編集できます。
+
+図 12-5 選択肢オプション設定テキストボックス
+![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image464.png)
+
+371. 表示状態を編集する
+
+プロフィール画面への表示状態を編集できます。
+チェックボックスにチェックをすることで画面に項目を表示状態にできます。
+表示状態の項目は、利用申請フロー・利用報告フローの申請者プロパティの項目に自動入力されます。（非表示状態の場合、その項目は自動入力項目から除外されます。）
+
+図 12-6 項目表示設定チェックボックス
+![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image465.png)
+
+372. 状態の保存
+
+画面下部にあるSAVEボタン（![iconsave](media/media/image466.png)）を押下することで、編集内容を保存できます。
+
+図 12-7 保存成功画面
+![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image467.png)
+
+ラベル名、または選択オプションが未記入の場合は保存ができません。未記入の項目を入力し、再度保存ボタンを押下してください。
+
+図 12-8 保存失敗画面
+![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image468.png)
+
+
+373. 初期表示
+
+項目は全てで20項目あり、初期表示は以下の通りです。
+
+表 17-2 初期表示項目一覧
+| 項目名     | ラベル名           | 入力方法      | 表示状態 |
+|------------|--------------------|---------------|----------|
+| fullname   | 氏名               | text          | true     |
+| university | 大学・機関名      | text          | true     |
+| department | 所属部局・部署    | text          | true     |
+| position   | 役職               | text          | true     |
+| item1     | 役職（その他）    | text          | true     |
+| item2     | 電話番号           | identifier     | true     |
+| item3     | 所属学会名        | text          | true     |
+| item4     | 所属学会役職      | select         | true     |
+| item5     | 所属学会名        | text          | true     |
+| item6     | 所属学会役職      | select         | true     |
+| item7     | 所属学会名        | text          | true     |
+| item8     | 所属学会役職      | select         | true     |
+| item9     | 所属学会名        | text          | true     |
+| item10    | 所属学会役職      | select         | true     |
+| item11    | 所属学会名        | text          | true     |
+| item12    | 所属学会役職      | select         | true     |
+| item13    | item13            | text          | false    |
+| item14    | item14            | text          | false    |
+| item15    | item15            | text          | false    |
+| item16    | item16            | text          | false    |
+
+【補足】
+プロフィール設定編集機能のオン・オフは設定ファイルで制御ができます。

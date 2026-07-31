@@ -1,0 +1,203 @@
+openapi: 3.0.3
+info:
+  title: 制限公開機能のためのWEB API
+  version: "1.0"
+tags:
+  - name: workflow
+    description: ワークフロー
+paths:
+  /api/{version}/workflow/activities/{activity_id}/approve:
+    post:
+      tags:
+        - workflow
+      summary: 承認API
+      description: アクティビティの承認を行う。
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: activity_id
+          in: path
+          description: アクティビティID
+          required: true
+          schema:
+            type: string
+          example: A-20230101-00001
+        - name: Authorization
+          in: header
+          description: 認可情報
+          required: true
+          schema:
+            type: string
+            example: Bearer アクセストークン
+      responses:
+        "200":
+          description: 承認成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessBody"
+        "400":
+          description: |-
+            リクエスト不正  
+            ・次のアクションが承認ではない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: |-
+            権限なし  
+            ・ユーザーが承認権限を持っていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: |-
+            存在しない  
+            ・アクティビティが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["workflow:approve"]
+
+  /api/{version}/workflow/activities/{activity_id}/throw-out:
+    post:
+      tags:
+        - workflow
+      summary: 却下API
+      description: アクティビティの却下を行う。
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+          example: v1
+        - name: activity_id
+          in: path
+          description: アクティビティID
+          required: true
+          schema:
+            type: string
+          example: A-20230101-00001
+        - name: Authorization
+          in: header
+          description: 認可情報
+          required: true
+          schema:
+            type: string
+            example: Bearer アクセストークン
+      responses:
+        "200":
+          description: 却下成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessBody"
+        "400":
+          description: |-
+            リクエスト不正  
+            ・次のアクションが承認ではない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: OAuth2認証失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: |-
+            アクセス権限なし  
+            ・ユーザーが承認権限を持っていない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "404":
+          description: |-
+            存在しない  
+            ・アクティビティが存在しない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["workflow:approve"]
+
+components:
+  schemas:
+    SuccessBody:
+      type: object
+      properties:
+        next_action:
+          description: 承認/却下後のアクション
+          type: object
+          properties:
+            id:
+              description: アクションID
+              type: integer
+              example: 2
+            endpoint:
+              description: エンドポイント
+              type: string
+              example: "end_action"
+        action_info:
+          description: アクション情報
+          type: object
+          properties:
+            action_id:
+              description: アクションID(承認アクションは4固定)
+              type: integer
+              example: 4
+            action_date:
+              description: 更新日
+              type: string
+              example: "2023/7/1 14:00:00.000"
+            action_user:
+              description: 更新者のID
+              type: integer
+              example: 1
+            action_status:
+              description: 更新結果のステータス(承認:F、却下:T)
+              type: string
+              example: F
+            action_comment:
+              description: コメント(承認アクションはnull固定)
+              type: string
+              example: null
+    ErrorBody:
+      type: object
+      properties:
+        status:
+          description: HTTPステータスコード
+          type: string
+        message:
+          description: エラーメッセージ
+          type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "workflow:approve": Grants access to approve workflow

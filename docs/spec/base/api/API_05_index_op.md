@@ -1,157 +1,429 @@
-### Index操作API
+# Index操作API
 
-  - 目的・用途
+## インデックス作成API
+### 目的・用途
 
 新規インデックスを作成する際に使用するAPIである
 
-  - 利用方法
+### 利用方法
 
 Scopeに「index:create」をもつアクセストークンを使用してAPIを呼び出す
 
-| **Method**    | **HTTP request**           | **Description** |
-| ------------- | -------------------------- | --------------- |
-| create\_index | POST /api/indextree/create |                 |
+| **Method**   | **HTTP request**           | **Description** |
+| ------------ | -------------------------- | --------------- |
+| create_index | POST /api/indextree/create |                 |
 
 パラメータは以下の内容のjsonとする
 
-| **Parameter name**                 | **Value** | **Description**       |
-| ---------------------------------- | --------- | --------------------- |
-| Path parameters                    |           |                       |
-| parent\_id                         | 数値        | 親インデックスのID            |
-| index\_info                        | json      | 必須。以下の項目のうち少なくとも1つが必要 |
-| index\_info.index\_name            | 文字列       | 日本語のインデックス名           |
-| index\_info.index\_name\_english   | 文字列       | 英語のインデックス名            |
-| index\_info.comment                | 文字列       | コメント                  |
-| index\_info.public\_state          | 真偽値       | 公開設定                  |
-| index\_info.harvest\_public\_state | 真偽値       | ハーベスト公開設定             |
+| **Parameter name**               | **Value** | **Description**       |
+| -------------------------------- | --------- | --------------------- |
+| Path parameters                  |           |                       |
+| parent_id                        | 数値        | 親インデックスのID            |
+| index_info                       | json      | 必須。以下の項目のうち少なくとも1つが必要 |
+| index_info.index_name            | 文字列       | 日本語のインデックス名           |
+| index_info.index_name_english    | 文字列       | 英語のインデックス名            |
+| index_info.comment               | 文字列       | コメント                  |
+| index_info.public_state          | 真偽値       | 公開設定                  |
+| index_info.harvest_public_state  | 真偽値       | ハーベスト公開設定             |
 
 curlによるリクエスト例
 
-|                                                                                                                                                                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| curl https://ホスト/api/indextree/create -H "Authorization:Bearer アクセストークン" -H "Content-Type: application/json" -d '{"parent\_id":"0","index\_info":{"index\_name":"APIテスト","index\_name\_english":"API test","comment":"コメント","public\_state":false,"public\_state":false}}' |
+```bash
+$ curl https://ホスト/api/indextree/create -H "Authorization:Bearer アクセストークン" -H "Content-Type: application/json" \
+-d '{"parent_id":"0","index_info":{"index_name":"APIテスト","index_name_english":"API test","comment":"コメント","public_state":false,"public_state":false}}'
+```
 
-  - 利用可能なロール
+### 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | |
 
-  - 機能内容
-
-<!-- end list -->
+### 機能内容
 
   - 以下を指定してインデックスを新規作成する
-    
-      - 親インデックス
+    - 親インデックス
+  - 指定されなかった場合はRoot Index直下に作成される
+    - 日本語のインデックス名
+    - 英語のインデックス名
+  - 各インデックス名は、指定されなかった場合は「New Index」が設定される
+    - コメント
+    - 公開設定
+  - 指定されなかった場合は「False」が設定される
+    - ハーベスト公開設定
+  - 指定されなかった場合は「True」が設定される
 
-  - > 指定されなかった場合はRoot Index直下に作成される
-    
-      - 日本語のインデックス名
-    
-      - 英語のインデックス名
+### 関連モジュール
 
-  - > 各インデックス名は、指定されなかった場合は「New Index」が設定される
-    
-      - コメント
-    
-      - 公開設定
+  - weko_index_tree
 
-  - > 指定されなかった場合は「False」が設定される
-    
-      - ハーベスト公開設定
-
-  - > 指定されなかった場合は「True」が設定される
-
-<!-- end list -->
-
-  - 関連モジュール
-
-<!-- end list -->
-
-  - weko\_index\_tree
-
-<!-- end list -->
-
-  - 処理概要
-
-<!-- end list -->
+### 処理概要
 
   - Scope:
-    
-      - weko- index-tree /weko\_ index\_tree /scopes.py
-
+    - weko-index-tree/weko_index_tree/scopes.py
   - API:
-    
-      - modules/weko-index-tree/weko\_index\_tree/views.py
+    - modules/weko-index-tree/weko_index_tree/views.py
+  - create_index関数でindexテーブルに新規インデックスを作成する
+    - 以下の情報を用いてインデックスを新規作成する
+  - id：作成時のUNIX時間を1000倍したものを用いる
+  - parent_id：パラメータで指定されなかった場合には0を設定する
+  - index_name：「New Index」固定
+    - 作成したインデックスを、index_infoの内容を用いてupdateする
+    - 作成が成功すると、以下の内容のレスポンスが返却される
+  - `Indexes.update` メソッドの返却値（作成・更新された index オブジェクト）を `dict(index)` にエンコードし、HTTP 201 でレスポンスボディに入れて返す（v2.0.2 では `update` は index を返す。更新に失敗した場合のみ 400「Could not update data.」を返す）
+    - パラメータとして空のjsonを渡した場合は、400エラーとなりエラーメッセージ「No data to create.」が返却される
+    - index_infoが空だった場合は、400エラーとなりエラーメッセージ「index_info can not be null.」が返却される
 
-  - create\_index関数でindexテーブルに新規インデックスを作成する
-    
-      - 以下の情報を用いてインデックスを新規作成する
 
-  - > id：作成時のUNIX時間を1000倍したものを用いる
+## インデックス管理API
 
-  - > parent\_id：パラメータで指定されなかった場合には0を設定する
+### 目的・用途
 
-  - > index\_name：「New Index」固定
-    
-      - 作成したインデックスを、index\_infoの内容を用いてupdateする
-    
-      - 作成が成功すると、以下の内容のレスポンスが返却される
+管理者の権限を以て、インデックスを取得・作成・更新・削除する機能を提供するAPIである。
 
-  - > Indexes.updateメソッドの返却値をjson形式にエンコードしたものをレスポンスボディに入れようとする
+## 利用方法
 
-  - > しかし、updateメソッドの返却値はNoneなので、実際に入るのはエラーメッセージ「'NoneType' object is not iterable」である
-    
-      - パラメータとして空のjsonを渡した場合は、400エラーとなりエラーメッセージ「No data to create.」が返却される
-    
-      - index\_infoが空だった場合は、400エラーとなりエラーメッセージ「index\_info can not be null.」が返却される
+APIの認証にはOAuth2を利用する。  
+アクセストークンの発行は[API-1:OAuth2](./API_01_Oauth2.md#oauth2)を参照。
 
-<!-- end list -->
+### API一覧
 
-  - 更新履歴
+| 項番 | HTTP Method | エンドポイント                        | Description                          |
+| :--: | ----------- | ------------------------------------- | ------------------------------------ |
+|  1   | GET         | /api/<version>/tree                   | 全インデックスの情報を取得する       |
+|  2   | GET         | /api/<version>/tree/<index_id>        | 指定したインデックスの情報を取得する |
+|  3   | POST        | /api/<version>/tree/index             | インデックスを新規作成する           |
+|  4   | PUT         | /api/<version>/tree/index/<index_id>  | 指定したインデックスを更新する       |
+|  5   | DELETE      | /api/<version>/tree/index/<index_id>  | 指定したインデックスを削除する       |
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+### Scope
+インデックス情報を取得するためには、アクセストークンに以下のスコープを要求する。
+- index:read
+
+インデックスを新規作成するためには、アクセストークンに以下のスコープを要求する。
+- index:create
+
+インデックスを更新するためには、アクセストークンに以下のスコープを要求する。
+- index:update
+
+インデックスを削除するためには、アクセストークンに以下のスコープを要求する。
+- index:delete
+
+### 利用可能なロール
+
+|  ロール  | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| -------- | -------------- | ---------------- | ------------------ | ------------ | ------------ | ------------------ |
+| 利用可否 |       〇       |        〇        |         〇         |      △      |      △      |        ×          |
+
+※ 〇：利用可能、△：一部機能のみ利用可能、×：利用不可
+
+- インデックスを操作可能なAPIは、システム管理者、リポジトリ管理者、コミュニティ管理者のロールを持つユーザーのみが利用可能である。
+- コミュニティ管理者は、所属するコミュニティのインデックスのみを操作可能である。
+
+### CURLでのリクエスト実行例
+
+#### GET /api/v1/tree/<index_id>
+#### リクエスト
+
+```shell
+$ curl -k "https://192.168.56.200/api/v1/tree/1623632832836" -H "Authorization:Bearer MjiT81jdxgVdLRi9ENJgAkCM2AuFuDe9Ekh4ZqZuTDtCm4Mu0B7L4AYozTgY" | jq .
+```
+
+  - -H オプション
+
+    - リクエストにカスタムヘッダーを追加する
+    - Authorization は "Bearer" + " (半角スペース)" + "アクセストークン"の形式で指定する
+
+#### レスポンス
+
+```json
+{
+  "index": {
+    "pid": 0,
+    "cid": 1623632832836,
+    "position": 0,
+    "name": "サンプルインデックス",
+    "link_name": "New Index",
+    "index_link_enabled": false,
+    "public_state": true,
+    "public_date": null,
+    "browsing_role": "3,-99,-98",
+    "contribute_role": "4,3,-98",
+    "browsing_group": "",
+    "contribute_group": "",
+    "more_check": false,
+    "display_no": 5,
+    "coverpage_state": false,
+    "recursive_coverpage_check": false,
+    "is_deleted": false,
+    "id": "1623632832836",
+    "value": "サンプルインデックス",
+    "emitLoadNextLevel": false,
+    "settings": {
+      "isCollapsedOnInit": true,
+      "checked": false
+    },
+    "children": [],
+    "index_name": "サンプルインデックス",
+    "index_name_english": "Sample Index",
+    "index_link_name_english": "",
+    "value_english": "Sample Index"
+  }
+}
+```
+
+## API仕様
+
+### インデックスツリー取得機能
+全インデックスあるいは指定したインデックスの情報を取得する。
+
+#### エンドポイント
+GET /api/\<version>/tree：全インデックス  
+GET /api/\<version>/tree/<index_id>：指定したインデックス
+
+#### リクエストヘッダー
+
+| ヘッダー      | 必須 | 説明                                                                                                                  | 例                                      |
+| ------------- | ---- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Authorization |  ○  | 操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。<br/>"Bearer" + " (半角スペース)" + "トークン"の形式。 | "Bearer fVzaeTNY5PCHsNS3rZOARrYR7kPBl4" |
+
+#### パスパラメータ
+
+| キー        | 必須 | 説明                    | 例                   |
+| ----------- | ---- | ----------------------- | -------------------- |
+| version     |      | APIのバージョン         | v1                   |
+| index_id    |      | インデックスID          | 1623632832836        |
+
+#### レスポンスコード
+
+| コード | 説明                                                                   |
+| ------ | ---------------------------------------------------------------------- |
+| 200    | 正常終了                                                               |
+| 400    | リクエストに不備がある                                                 |
+| 401    | OAuth2認証失敗                                                         |
+| 403    | ユーザーのロールあるいはトークンのスコープで指定されたインデックスへのアクセスが許可されていない |
+| 404    | 指定されたインデックスが存在しない                                     |
+| 500    | サーバ内部のエラー                                                     |
+
+#### レスポンスボディ
+
+**正常終了**
+
+| 項目名                     | 型      | 説明                                           |
+| -------------------------- | ------- | ---------------------------------------------- |
+| index                      | dict    | インデックスの情報を含む辞書                   |
+| .pid                       | integer | 親インデックスのID                             |
+| .cid                       | integer | インデックスID                                 |
+| .position                  | integer | 親インデックスに紐づく子インデックスにつく連番 |
+| .name                      | string  | インデックス名                                 |
+| .link_name                 | string  | インデックスリンク名                           |
+| .index_link_enabled        | boolean | インデックスリンクに表示するかどうか           |
+| .public_state              | boolean | 公開設定                                       |
+| .public_date               | string  | 公開日                                         |
+| .browsing_role             | string  | 閲覧権限のあるロール                           |
+| .browsing_group            | string  | 閲覧権限のあるグループ                         |
+| .contribute_role           | string  | 投稿権限のあるロール                           |
+| .contribute_group          | string  | 投稿権限のあるグループ                         |
+| .more_check                | boolean | 子インデックスの初回表示個数を変更するかどうか |
+| .display_no                | integer | 子インデックスの初回表示個数                   |
+| .coverpage_state           | boolean | PDF Cover Page (JA)                            |
+| .recursive_coverpage_check | boolean | 子インデックスにPDFカバーページの設定を再帰的に設定するフラグ|
+| .is_deleted                | boolean | 削除フラグ                                     |
+| .id                        | string  | インデックスID                                 |
+| .value                     | string  | 日本語のインデックス名                         |
+| .emitLoadNextLevel         | boolean |                                                |
+| .settings                  | dict    |                                                |
+| .setting.checked           | boolean |                                                |
+| .setting.isCollapsedOnInt  | boolean |                                                |
+| .children                  | list    | 子のインデックスオブジェクト                   |
+| .index_name                | string  | 日本語のインデックス名                         |
+| .index_name_english        | string  | 英語のインデックス名                           |
+| .index_link_name_english   | string  | 英語のインデックスリンク表示名                 |
+| .value_english             | string  | 英語のインデックス名                           |
+
+**異常終了**
+
+| 項目名      | 説明                     |
+| ----------- | ------------------------ |
+| code        | HTTPステータスコード     |
+| description | エラーメッセージ         |
+
+
+### インデックス作成機能
+インデックスを新規作成する。
+
+#### エンドポイント
+POST /api/\<version>/tree/index
+
+#### リクエストヘッダー
+
+| ヘッダー      | 必須 | 説明                                                                                                                  | 例                                      |
+| ------------- | ---- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Authorization |  ○  | 操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。<br/>"Bearer" + " (半角スペース)" + "トークン"の形式。 | "Bearer fVzaeTNY5PCHsNS3rZOARrYR7kPBl4" |
+
+#### パスパラメータ
+
+| キー        | 必須 | 説明                    | 例                   |
+| ----------- | ---- | ----------------------- | -------------------- |
+| version     |  〇  | APIのバージョン         | v1                   |
+
+#### リクエストボディ
+
+| キー                | 必須 | 型      | 説明                                                                                     |
+| ------------------- | ---- | ------- | ---------------------------------------------------------------------------------------- |
+| index               | 〇   | object  | インデックスの情報を含むオブジェクト。以下の項目を含む。                                 |
+| .parent             | 〇   | integer | 親インデックスのID。0の場合はルートインデックス直下に作成される。例: 0, 1623632832836    |
+| .index_name         |      | string  | 日本語のインデックス名。例: "APIテスト"。デフォルトは "New Index"                        |
+| .index_name_english |      | string  | 英語のインデックス名。例: "API test"。デフォルトは "New Index"                           |
+| .index_link_name    |      | string  | インデックスリンク名。デフォルトは""                                                     |
+| .index_link_name_english |     | string  | 英語のインデックスリンク名。デフォルトは "New Index"                                 |
+| .index_link_enabled |      | boolean | インデックスリンクを有効にするかどうか。デフォルトは false                               |
+| .comment            |      | string  | インデックスのコメント。デフォルトは ""                                                  |
+| .more_check         |      | boolean | 子インデックスの初回表示個数を制限し、more表示するか。デフォルトは false                 |
+| .display_no         |      | integer | more表示時の子インデックスの初回表示個数。デフォルトは 5                                 |
+| .harvest_public_state |     | boolean | ハーベスト公開状態。デフォルトは true                                                    |
+| .display_format     |      | string  | インデックスの表示形式。一覧表示："1", 目次表示："2"。 デフォルトは "1"                  |
+| .public_state       |      | boolean | インデックスの公開状態。デフォルトは false                                               |
+| .public_date        |      | string  | 公開日。YYYYMMDD形式で指定。デフォルトは null                                            |
+| .rss_status         |      | boolean | RSSアイコンを表示するかどうか。デフォルトはfalse                                         |
+| .coverpage_state    |      | boolean | PDFカバーページを有効にするかどうか。デフォルトは false                                  |
+| .browsing_role      |      | string  | 閲覧権限のあるロール。複数指定する場合はカンマ区切り。例: "3,-99,-98"                    |
+| .contribute_role    |      | string  | 投稿権限のあるロール。複数指定する場合はカンマ区切り。例: "4,3,-98"                      |
+| .browsing_group     |      | string  | 閲覧権限のあるグループ。複数指定する場合はカンマ区切り。例: ""                           |
+| .contribute_group   |      | string  | 投稿権限のあるグループ。複数指定する場合はカンマ区切り。例: ""                           |
+| .online_issn        |      | string  | オンラインISSN。例: "1234-5678"                                                          |
+
+#### レスポンスコード
+
+| コード | 説明                                                                   |
+| ------ | ---------------------------------------------------------------------- |
+| 201    | 正常終了。新規インデックスが作成された                                 |
+| 400    | リクエストに不備がある                                                 |
+| 401    | OAuth2認証失敗                                                         |
+| 403    | ユーザーのロールあるいはトークンのスコープで指定されたインデックスへのアクセスが許可されていない |
+| 404    | 指定された親インデックスが存在しない                                   |
+| 500    | サーバ内部のエラー                                                     |
+
+#### レスポンスボディ
+**正常終了**
+
+リクエストボディのindexオブジェクトと同様の形式で、作成されたインデックスの情報を含む。
+
+**異常終了**
+
+| 項目名      | 説明                     |
+| ----------- | ------------------------ |
+| code        | HTTPステータスコード     |
+| description | エラーメッセージ         |
+
+### インデックス更新機能
+指定したインデックスの情報を更新する。
+
+#### エンドポイント
+PUT /api/\<version>/tree/index/<index_id>
+
+#### リクエストヘッダー
+
+| ヘッダー      | 必須 | 説明                                                                                                                  | 例                                      |
+| ------------- | ---- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Authorization |  ○  | 操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。<br/>"Bearer" + " (半角スペース)" + "トークン"の形式。 | "Bearer fVzaeTNY5PCHsNS3rZOARrYR7kPBl4" |
+
+
+#### パスパラメータ
+| キー        | 必須 | 説明                    | 例                   |
+| ----------- | ---- | ----------------------- | -------------------- |
+| version     |  〇  | APIのバージョン         | v1                   |
+| index_id    |  〇  | 更新するインデックスID  | 1623632832836        |
+
+#### リクエストボディ
+| キー                | 必須 | 型      | 説明                                                                                     |
+| ------------------- | ---- | ------- | ---------------------------------------------------------------------------------------- |
+| index               |  〇  | object  | 更新するインデックスの情報を含むオブジェクト。新規作成時に加え、以下の項目を含む。       |
+| .position           |      | integer | 親インデックス下の表示順。指定しない場合は変更されない。                                 |
+
+#### レスポンスコード
+
+| コード | 説明                                                                   |
+| ------ | ---------------------------------------------------------------------- |
+| 200    | 正常終了。インデックスが更新された                                     |
+| 400    | リクエストに不備がある                                                 |
+| 401    | OAuth2認証失敗                                                         |
+| 403    | ユーザーのロールあるいはトークンのスコープで指定されたインデックスへのアクセスが許可されていない |
+| 404    | 指定されたインデックスが存在しない                                     |
+| 500    | サーバ内部のエラー                                                     |
+
+##### レスポンスボディ
+
+**正常終了**
+リクエストボディのindexオブジェクトと同様の形式で、更新されたインデックスの情報を含む。
+
+**異常終了**
+| 項目名      | 説明                     |
+| ----------- | ------------------------ |
+| code        | HTTPステータスコード     |
+| description | エラーメッセージ         |
+
+### インデックス削除機能
+指定したインデックスを削除する。
+
+#### エンドポイント
+DELETE /api/\<version>/tree/index/<index_id>
+
+#### リクエストヘッダー
+
+| ヘッダー      | 必須 | 説明                                                                                                                  | 例                                      |
+| ------------- | ---- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Authorization |  ○  | 操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。<br/>"Bearer" + " (半角スペース)" + "トークン"の形式。 | "Bearer fVzaeTNY5PCHsNS3rZOARrYR7kPBl4" |
+
+#### パスパラメータ
+| キー        | 必須 | 説明                    | 例                   |
+| ----------- | ---- | ----------------------- | -------------------- |
+| version     |  〇  | APIのバージョン         | v1                   |
+| index_id    |  〇  | 削除するインデックスID  | 1623632832836        |
+
+#### レスポンスコード
+| コード | 説明                                                                   |
+| ------ | ---------------------------------------------------------------------- |
+| 204    | 正常終了。インデックスが削除された                                     |
+| 400    | リクエストに不備がある                                                 |
+| 401    | OAuth2認証失敗                                                         |
+| 403    | ユーザーのロールあるいはトークンのスコープで指定されたインデックスへのアクセスが許可されていない |
+| 404    | 指定されたインデックスが存在しない                                     |
+| 500    | サーバ内部のエラー                                                     |
+
+#### レスポンスボディ
+**正常終了**
+レスポンスボディには `{"status": 204}` を返す。
+
+**異常終了**
+| 項目名      | 説明                     |
+| ----------- | ------------------------ |
+| code        | HTTPステータスコード     |
+| description | エラーメッセージ         |
+
+## 関連モジュール（インデックス管理API）
+
+- weko-index-tree
+  - Blueprint生成 `rest.create_blueprint`、ハンドラ `rest.IndexManagementAPI`（HTTP `get/post/put/delete` → 実処理 `get_v1/post_v1/put_v1/delete_v1`、日英ツリーマージ `merge_index_trees`、権限確認 `check_index_accessible`）
+  - REST定義 `config.WEKO_INDEX_TREE_REST_ENDPOINTS`（ルート：`/<version>/tree`、`/<version>/tree/<index_id>`、`/<version>/tree/index`、`/<version>/tree/index/<index_id>`）
+  - スコープ `scopes.py`（`create/read/update/delete_index_scope` ＝ `index:create/read/update/delete`）
+  - リクエストスキーマ `schema.py`（`IndexCreateRequestSchema` / `IndexUpdateRequestSchema`、`validate_public_date` / `validate_role_or_group`）
+  - DBロジック `api.Indexes`（`create`（id＝UNIX時間×1000）/ `update`（indexを返す）/ `move`（親・順序変更）/ `get_index_tree`）
+  - エラー `errors.py`（`IndexBaseRESTError`(400) / `InvalidDataRESTError`(400) / `VersionNotFoundRESTError`(400) / `PermissionError`(403) / `IndexNotFound404Error`(404) / `InternalServerError`(500)）
+- weko-accounts（`utils.roles_required`）、weko-admin（`WEKO_ADMIN_PERMISSION_ROLE_SYSTEM/_REPO/_COMMUNITY`）
+
+> 実装補足（v2.0.2）：
+> - 書込系（POST/PUT/DELETE）はシステム/リポジトリ/コミュニティ管理者に限定（`@roles_required`）。コミュニティ管理者は自身の管理下インデックスのみ操作可（`utils.can_admin_access_index`）。GET は認証済みなら全ロール可、ゲスト不可。
+> - バージョンは `v1` のみ（他は 400 `VersionNotFoundRESTError`）。Content-Type は application/json 必須（400）。`index_id=0`（ルート）への PUT/DELETE 不可（400）。
+> - POST 成功は 201、PUT 成功は 200、いずれもレスポンスはDB全カラム＋`created`/`updated`/`public_date` を含む。DELETE 成功は 204、レスポンスボディは `{"status":204}` を返す。
+> - GET `/tree` は日英ツリーをマージした結果（`index_name` / `index_name_english` / `value_english` 等）を返す。
+
+## 更新履歴
+
+| 日付       | GitHubコミットID                           | 更新内容                                                 |
+| ---------- | ------------------------------------------ | -------------------------------------------------------- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | 初版作成                                                 |
+| 2025/06/06 | 34a972ec2f7a26b92cb55cb4524b20bdde180f39   | インデックス管理APIについて追記                          |
+| 2026/07/14 |                                            | 実装(v2.0.2)と突き合わせ。レガシーcreateの返却値記述（NoneType）を修正、管理APIの関連モジュール・スキーマ・エラー・DELETEレスポンス`{"status":204}`・各種制約を追記、typo（tru→true）修正 |
+| 2026/07/14 |                                            | 本文を実装準拠に修正（DELETEレスポンスボディ）           |
 

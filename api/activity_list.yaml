@@ -1,0 +1,182 @@
+openapi: 3.0.3
+info:
+  title: WEKO3制限公開機能のセルフアーカイブ対応のための改修 API
+  version: "0.0.1"
+tags:
+  - name: アクティビティ一覧取得
+paths:
+  /api/{version}/workflow/activities:
+    get:
+      tags:
+        - アクティビティ一覧取得
+      description: |-
+        システム管理者、リポジトリ管理者は全ユーザーのアクティビティ一覧を取得する。<br>
+        コミュニティ管理者、登録ユーザーは自身が担当するアクティビティ一覧を取得する。
+        |ロール|動作|
+        |----|----|
+        |システム管理者|使用可能（全ユーザーのアクティビティを取得）|
+        |リポジトリ管理者|使用可能（全ユーザーのアクティビティを取得）|
+        |コミュニティ管理者|使用可能（自身が担当するアクティビティを取得）|
+        |登録ユーザー|使用可能（自身が担当するアクティビティを取得）|
+        |一般ユーザー|使用不可能|
+        |ゲストユーザー|使用不可能|
+      parameters:
+        - name: version
+          in: path
+          description: このAPIのバージョン情報
+          required: true
+          schema:
+            type: string
+            example: v1
+        - name: Accept-Language
+          in: header
+          description: 表示する言語の指定
+          schema:
+            type: string
+            default: en
+        - name: Authorization
+          in: header
+          description: Bearer アクセストークン
+          schema:
+            type: string
+            example: token
+        - name: If-None-Match
+          in: header
+          description: 初回リクエスト時のレスポンスヘッダーに設定されているETagの値
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: アクティビティ状態
+          schema:
+            type: string
+            enum: [all, wait, todo]
+            default: todo
+        - name: limit
+          in: query
+          description: 取得するデータ件数
+          schema:
+            type: integer
+            default: 20
+        - name: page
+          in: query
+          description: 取得可能なデータ総数をlimitの数値で分割した際の取得するページ
+          schema:
+            type: integer
+            default: 1
+        - name: pretty
+          in: query
+          description: レスポンス整形フラグ
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: 取得成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResponseBody"
+        "400":
+          description: リクエストパラメータ不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "401":
+          description: 認証不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "403":
+          description: ロール不正
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+      security:
+        - OAuth2: ["user:activity"]
+
+components:
+  schemas:
+    ResponseBody:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: 指定したアクティビティ状態の取得可能総数
+          example: 100
+        condition:
+          type: object
+          properties:
+            status:
+              type: string
+              description: 取得したアクティビティの状態
+              example: todo
+            limit:
+              type: integer
+              description: 取得したデータ件数
+              example: 20
+            page:
+              type: integer
+              description: 取得したページ
+              example: 1
+        activities:
+          type: array
+          items:
+            type: object
+            $ref: "#/components/schemas/ActivityObject"
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+    ActivityObject:
+      type: object
+      properties:
+        created:
+          type: string
+          description: 作成日
+          example: "2023-01-01 00:00:00"
+        updated:
+          type: string
+          description: 更新日
+          example: "2023-12-31 00:00:00"
+        activity_id:
+          type: string
+          description: アクティビティID
+          example: A-20230101-00001
+        item_name:
+          type: string
+          description: アイテム名
+          example: メタボリックシンドロームモデルマウスの...
+        workflow_type:
+          type: string
+          description: ワークフロー種別
+          example: 利用報告
+        action:
+          type: string
+          description: アクティビティの工程
+          example: Approval
+        status:
+          type: string
+          description: アクティビティの状態
+          example: Doing
+        user:
+          type: string
+          description: ユーザー
+          example: abc@sample.co.jp
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            "user:activity": Allow create Workflow Activity
