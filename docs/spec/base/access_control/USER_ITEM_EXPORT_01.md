@@ -45,6 +45,15 @@
 ※3 Messageに「Contains restricted content」と表示され、エクスポートを実行してもファイルコンテンツはエクスポートされません。<br>
 　（アイテムのみエクスポートされます。）
 
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本画面／操作のアクセス可否は、対応するビューの権限ファクトリ・`@login_required`・所有者/ロール判定で担保される。閲覧系は `weko_records_ui.permissions.page_permission_factory` / `check_file_download_permission`、検索系は `weko_search_ui.query.get_permission_filter`、所有者判定は `check_created_id`（`created_by`/`owner`/`weko_shared_ids` のいずれか一致。ロール非依存のため「作成者:自分＝一般ユーザー×」はコード強制でなく実務上の前提）を用いる。
+
+### 実装上の補足（v2.0.2）
+
+- アイテムエクスポート画面（`weko_items_ui.views.export`、`/items/export`）は `@login_required` を持たずゲストも到達し得るが、管理設定 `export_settings.allow_item_exporting` が無効の場合は全ロール共通で `abort(403)` となる（仕様未記載）。
+- アイテム一覧の絞り込みは検索と同一の `get_permission_filter`。ファイルコンテンツ出力は `check_file_download_permission` かつ `accessrole != 'open_restricted'` のファイルのみ（`open_restricted` はダウンロード権限があってもコンテンツを除外）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |

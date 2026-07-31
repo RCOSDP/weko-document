@@ -9,34 +9,9 @@ researchmapからの流用入力およびメタデータ登録のための設定
 
 ## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 利用可否 | ○ | ○ |  |  |  |  |
 
 ## 利用方法
 
@@ -55,9 +30,8 @@ researchmapからの流用入力およびメタデータ登録のための設定
 - タイトル
 - タイトルの言語
 - researchmap情報を登録した作成者
-‐ 日付、Issued
+- 日付、Issued
 - 資源タイプ
-
 
 ### APIキーの設定
 
@@ -117,23 +91,12 @@ celery -A invenio_app.celery call weko_items_ui.tasks.bulk_post_item_to_research
 
 - weko-items-ui
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ（追記）：CRIS連携の**設定画面**は weko-admin の `CrisLinkageSettingView`（endpoint `cris_linkage`）。設定は `AdminSettings`（name=`researchmap_linkage_settings`。`researchmap_cidkey_contents` / `researchmap_pkey_contents` / `merge_mode`）。保存は `/save_keys` / `/save_merge_mode`。マージモード選択肢は `WEKO_ADMIN_SETTINGS_RESEARCHMAP_MERGE_MODES`。連携タスクは `weko_items_ui.tasks.bulk_post_item_to_researchmap`、config は `WEKO_ITEMS_UI_CRIS_LINKAGE_RESEARCHMAP_*`（weko-items-ui）。関連モジュール：weko-admin（画面）/ weko-items-ui（連携・config）。
+
 ## 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2026/01/24</p>
-</blockquote></td>
-<td>ccd8e5ad8b88f4d102fe543ab1e60f9833af6659</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2026/01/24 | ccd8e5ad8b88f4d102fe543ab1e60f9833af6659 | 初版作成 |

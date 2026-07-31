@@ -208,6 +208,16 @@
 | 代理投稿者：自分 | ×                  | ×                    | ×                        | ×            | ×            | ×                      |
 | 上記以外         | ×                  | ×                    | ×                        | ×            | ×            | ×                      |
 
+## 実装（アクセス制御の担保）
+
+（2026/07/14 実装 v2.0.2 と突き合わせ）本画面／操作のアクセス可否は、対応するビューの権限ファクトリ・`@login_required`・所有者/ロール判定で担保される。閲覧系は `weko_records_ui.permissions.page_permission_factory` / `check_file_download_permission`、検索系は `weko_search_ui.query.get_permission_filter`、所有者判定は `check_created_id`（`created_by`/`owner`/`weko_shared_ids` のいずれか一致。ロール非依存のため「作成者:自分＝一般ユーザー×」はコード強制でなく実務上の前提）を用いる。
+
+### 実装上の注記（v2.0.2）
+
+- ファイルダウンロード／プレビュー／ファイル情報は `check_file_download_permission`（accessrole 別分岐。所有者＋`WEKO_PERMISSION_SUPER_ROLE_USER`＋Community Administrator をバイパス）で担保され、仕様と整合。
+- シークレットURLの設定編集・作成済み編集は `has_permission_to_manage_secret_url`（所有者・`weko_shared_ids`・System＋Repository のみ。Community Administrator は所有者でない限り不可）で担保され、仕様と整合。
+- **ファイル置き換え**（`weko_records_ui.views.replace_file`）・**公開バケットへのコピー**（`copy_bucket`）は、対応するエンドポイントに `@login_required` も権限ファクトリも所有者チェックも無い（ゲストを含め誰でも POST 可能）。仕様（所有者／代理投稿者／管理者のみ）は**バックエンドでは強制されておらず UI 表示に依存**する。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |

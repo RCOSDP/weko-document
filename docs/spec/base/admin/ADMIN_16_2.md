@@ -14,7 +14,7 @@
 | -------- | :------------: | :--------------: | :----------------: | :----------: | :----------: | :----------------: |
 | 利用可否 |       〇       |        〇        |         ×         |      ×      |      ×      |        ×          |
 
-※ リポジトリ管理者は、自身が作成したアプリケーションに対してのみ設定を行うことができる。
+※ 実装（v2.0.2）では作成者による制限は行われない。`SwordAPIJsonldSettingsView.get_query` は並び替えのみ（作成者フィルタなし）、`create_view` は `Client.query.filter_by(is_internal=False)` で全アプリケーションを候補表示するため、当画面に到達できる管理者（システム管理者・リポジトリ管理者）は他者が作成した設定も閲覧・編集・削除できる。
 
 ## 機能内容
 
@@ -117,7 +117,7 @@ SWORD APIを利用してメタデータがJSON-LD形式で記述されたZIPフ�
 
 ## 関連テーブル
 
-  - sword_client：設定情報を保持するテーブル
+  - sword_clients：設定情報を保持するテーブル（モデル `SwordClientModel`）
 
 
 ## 変更履歴
@@ -125,3 +125,8 @@ SWORD APIを利用してメタデータがJSON-LD形式で記述されたZIPフ�
 | 日付       | GitHubコミットID                           | 更新内容                                        |
 | ---------- | ------------------------------------------ | ----------------------------------------------- |
 | 2025/06/06 | af6848b8b3da420eaaf5aa3e3a36c1786708e7cf   | 初版作成                                        |
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.SwordAPIJsonldSettingsView`（flask-admin ModelView、endpoint `swordapi/jsonld`、一覧からの閲覧・編集・削除可）。model `SwordClientModel`（テーブル `sword_clients`、weko-swordserver）。WebAPI 優先順位の候補は config `WEKO_ITEMS_AUTOFILL_API_LIST`（＋ `Original`）。作成時は OAuth クライアント（`invenio_oauth2server` の `Client`）を参照。
+

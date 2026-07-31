@@ -8,7 +8,7 @@
 
 ### 利用方法
 
-【Administration \> アイテムタイプ管理（Item Types） \> メタデータ（Metadata）画面】にて操作する。
+【Administration > アイテムタイプ管理（Item Types） > メタデータ（Metadata）画面】にて操作する。
 
 ### 利用可能なロール
 
@@ -33,111 +33,31 @@
         - 画面表示時は［標準アイテムタイプ］ラジオボタンが選択された状態である。
     - プルダウンでは、ラジオボタンの選択に応じたアイテムタイプが表示される。
         - このプルダウンで選択したアイテムタイプに対して各種操作を実施する。
-        - 各アイテムタイプ名の末尾には、item\_typeテーブルの「tag」が追加されて表示される。
+        - 各アイテムタイプ名の末尾には、item_typeテーブルの「tag」が追加されて表示される。
     - 各アイテムタイプに実施できる操作は以下の通りである。
 
-<table>
-<thead>
-<tr class="header">
-<th>（凡例）</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>〇：できる　×：できない</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>#</td>
-<td>操作</td>
-<td>標準<br />
-アイテムタイプ</td>
-<td>ハーベスト用<br />
-アイテムタイプ</td>
-<td>削除済み<br />
-アイテムタイプ</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>追加</td>
-<td>〇</td>
-<td>〇</td>
-<td>×</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>メタデータ編集</td>
-<td>〇</td>
-<td>〇</td>
-<td>×</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>マッピング設定</td>
-<td>〇</td>
-<td>〇</td>
-<td>×</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>名前の変更</td>
-<td>〇</td>
-<td>〇</td>
-<td>×</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>コピー</td>
-<td>〇</td>
-<td>〇</td>
-<td>×</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>削除</td>
-<td>〇</td>
-<td>×</td>
-<td>×</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>復元</td>
-<td>×</td>
-<td>×</td>
-<td>〇</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>エクスポート</td>
-<td>○</td>
-<td>×</td>
-<td>×</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>インポート</td>
-<td>○</td>
-<td>×</td>
-<td>×</td>
-</tr>
-</tbody>
-</table>
+（凡例）〇：できる　×：できない
 
-- マッピング設定は、マッピング画面で実施する。詳細は[ADMIN-1-2: マッピング](#マッピング)を参照。
+| # | 操作 | 標準アイテムタイプ | ハーベスト用アイテムタイプ | 削除済みアイテムタイプ |
+| - | ---- | :----------------: | :------------------------: | :---------------------: |
+| 1 | 追加 | 〇 | 〇 | × |
+| 2 | メタデータ編集 | 〇 | 〇 | × |
+| 3 | マッピング設定 | 〇 | 〇 | × |
+| 4 | 名前の変更 | 〇 | 〇 | × |
+| 5 | コピー | 〇 | 〇 | × |
+| 6 | 削除 | 〇 | × | × |
+| 7 | 復元 | × | × | 〇 |
+| 8 | エクスポート | 〇 | × | × |
+| 9 | インポート | 〇 | × | × |
+
+- マッピング設定は、マッピング画面で実施する。詳細は[ADMIN-1-2: マッピング](./ADMIN_1_2.md)を参照。
 
 - 対応している標準アイテムタイプは以下の通りである。
     - 「デフォルトアイテムタイプ（シンプル）」
     - 「デフォルトアイテムタイプ（フル）」  
       「デフォルトアイテムタイプ（シンプル）」「デフォルトアイテムタイプ（フル）」の詳細は別紙「デフォルトアイテムタイプの作成v4.xlsx」を参照。
     - 「DDI」  
-      「DDI」の詳細は別紙「DDIアイテムタイプ修正の仕様ver6\_訂正案.xlsx」を参照。
+      「DDI」の詳細は別紙「DDIアイテムタイプ修正の仕様ver6_訂正案.xlsx」を参照。
 
 - 対応している制限公開用のアイテムタイプは以下の通りである。
 
@@ -190,7 +110,7 @@
         - 項目に対して
             - メタデータ行での「オプション」（Option）カラムに表示形式を設定する。表示形式を複数設定できる
             - 設定できるオプションは以下の通りである。
-                - 「必須」（Required）：アイテム登録時に\*を表示し、必須入力のメタデータにする。
+                - 「必須」（Required）：アイテム登録時に*を表示し、必須入力のメタデータにする。
                     - 「公開日」（Publish Date）は必須項目であるため、初めからチェックが入っており、外すことができない。
                 - 「Multiple」（Allow Multiple）：アイテム登録時に［+New］を表示し、メタデータの複数入力を可能にする。
                     - 選択すると、最低限と最大限の項目を設定できる
@@ -205,7 +125,7 @@
                 - 「Hide」：ログインの有無に関わらずインデックス、キーワードサーチ結果、CiteAs、アイテム詳細、OAI-PMHを含む外部出力にメタデータの詳細を表示しない。アイテムエクスポートのみ、ログインユーザにはhide項目を出力する。
                 - 「Display on one line」:
                     - 「トピック」のような繰り返し可の項目は1つのセルにまとめて表示して、個々の値はカンマ等で区切る。
-                    - アイテムタイププロパティ「Time Period」「collDate」「H\_Time Period」等、Eventのstart、endにて範囲指定が可能な日付は、横に並べてスラッシュで結ぶ。
+                    - アイテムタイププロパティ「Time Period」「collDate」「H_Time Period」等、Eventのstart、endにて範囲指定が可能な日付は、横に並べてスラッシュで結ぶ。
                     - 「公開日」（Publish Date）の行には表示されない。
             - メタデータ行での「Notes」カラムにメモを残せる
             - メタデータ行での「置換」（Replacement）カラムに［↑］または［↓］ボタンが表示される。これらを押すことで、メタデータ属性入力エリアの表示位置が入れ替わる。
@@ -219,21 +139,21 @@
                 - 子項目ごとに、アイテム詳細画面およびアイテム登録画面（ワークフローのItem Registration）で表示する項目名を編集できる
                 - 子項目ごとに、「Required」「Show List」「Specify Newline」「Hide」「Non Display on Detail」の設定ができる
                 - 「Non Display on Detail」が指定された場合は詳細画面に当該項目を表示しない
-                - システム入力項目タイプ（S\_から始まる入力項目タイプ）をプルダウンに表示しない
+                - システム入力項目タイプ（S_から始まる入力項目タイプ）をプルダウンに表示しない
             - 「"editAble": true」が設定されていない場合、選択肢の入力エリアは非活性で表示される
         - オプションの優先度について  
           親要素と子要素のオプションの優先度は、以下の通りとする。
 
-| \[凡例\]●：チェックあり -：チェックなし |    |    |               |
+| [凡例]●：チェックあり -：チェックなし |    |    |               |
 | ----------------------- | -- | -- | ------------- |
-| \#                      | 親  | 子  | オプション         |
-| 1                       | ●  | \- | 子要素全体に適用      |
-| 2                       | \- | ●  | 指定された子要素のみ適用  |
+| #                      | 親  | 子  | オプション         |
+| 1                       | ●  | - | 子要素全体に適用      |
+| 2                       | - | ●  | 指定された子要素のみ適用  |
 | 3                       | ●  | ●  | 親のみ選択された状況と同様 |
 
   - 「保存」（Save）ボタンを押すと、アイテムタイプを保存する。  
     新規作成されたアイテムタイプは「標準アイテムタイプ」のリストの末尾に追加される。
-  - アイテムタイプIDは、item\_typeテーブルでシーケンスのnextvalによって払い出される。
+  - アイテムタイプIDは、item_typeテーブルでシーケンスのnextvalによって払い出される。
   - 新規作成されたアイテムタイプのアイテムタイプIDは、40001以降になる。
 
 
@@ -303,13 +223,13 @@
     - 作成者プロパティ「作成者識別子Scheme」
     - 寄与者プロパティ「寄与者識別子Scheme」
     - 権利者情報プロパティ「権利者識別子Scheme」
-        - アイテム登録／編集時に表示される「作成者識別子Scheme」,「寄与者識別子Scheme」,「権利者識別子Scheme」の選択肢はAuthor Management画面のID PrefixタブにあるScheme（authors\_prefix\_settingsテーブルに登録されているもの）を参照している
+        - アイテム登録／編集時に表示される「作成者識別子Scheme」,「寄与者識別子Scheme」,「権利者識別子Scheme」の選択肢はAuthor Management画面のID PrefixタブにあるScheme（authors_prefix_settingsテーブルに登録されているもの）を参照している
     - ファイル情報プロパティ「日付タイプ」「グループ」「ライセンス」
         - 「日付タイプ」はコンテンツファイル登録時の公開日として"Available"が自動設定される（Item Registration画面にはプルダウンリストが表示されない）
-        - 「グループ」は作成したユーザーアカウントの管理画面で作成したグループ（accounts\_groupテーブルに登録されているもの）を参照している
+        - 「グループ」は作成したユーザーアカウントの管理画面で作成したグループ（accounts_groupテーブルに登録されているもの）を参照している
         -  「ライセンス」はCCライセンス情報を参照している
-            - modules/weko-records-ui/weko\_records\_ui/config.pyのWEKO\_RECORDS\_UI\_LICENSE\_DICTで定義している。
-            - これを、scripts/instance.cfgのWEKO\_RECORDS\_UI\_LICENSE\_DICTで上書きしている。current\_app.config\['WEKO\_RECORDS\_UI\_LICENSE\_DICT'\]はscripts/instance.cfgの方を参照する。
+            - modules/weko-records-ui/weko_records_ui/config.pyのWEKO_RECORDS_UI_LICENSE_DICTで定義している。
+            - これを、scripts/instance.cfgのWEKO_RECORDS_UI_LICENSE_DICTで上書きしている。current_app.config['WEKO_RECORDS_UI_LICENSE_DICT']はscripts/instance.cfgの方を参照する。
 
 ### エクスポート
 
@@ -326,17 +246,14 @@
 - 以下の場合、エラーメッセージが表示されインポートが開始しない。
   - ファイルが選択されていない場合：「Please select Zipfile.」
   - アイテムタイプ名が入力されていない場合：「Please input Type Name.」
-- インポート開始後に何らかのエラーが生じた場合、「Error: Failed to import Item type.」に続けて原因を示すメッセージを表示し、インポートが中断される。
-- インポートに成功した場合、「Successfully import Item type.」メッセージが表示される。
+- インポート開始後に何らかのエラーが生じた場合、「Failed to import the item type.」に続けて原因を示すメッセージを表示し、インポートが中断される。
+- インポートに成功した場合、「The item type imported successfully.」メッセージが表示される。
 - 「強制インポート機能」について
 - システム管理者は、環境設定ファイル(instance.cfg)に記された定数("WEKO_ITEMTYPES_UI_FORCED_IMPORT_ENABLED")を編集することで、デフォルトでは無効化されている本機能を有効化することができる。
 - デフォルトの設定では、当該WEKOに登録されているプロパティだけで構成されたアイテムタイプのみインポート可能だが、本機能を有効化することで未登録のプロパティを含むアイテムタイプもインポートできるようになる。
-- ただし以下の場合、インポートが中断もしくは一部スキップされる。
-  - 未登録のプロパティの名前が既存のプロパティと重複する場合
-    - インポートが中断され、エラーメッセージ「The property name already exists.」が表示されインポートが中断される
-  - 未登録のプロパティのIDが既存のプロパティと重複する場合
-    - そのプロパティのみ既存のプロパティに置き換えられ、インポートは継続される
-    - この場合、インポート終了後に問題のあるプロパティがモーダルに表示される
+- 未登録のプロパティが検出された場合は、確認のためのメッセージ「Unregistered properties detected.」が表示される。
+- 未登録のプロパティのIDが既存のプロパティと重複する場合は、そのプロパティのインポートはスキップされ、既存のプロパティデータが用いられたうえでインポートは継続される。
+  - スキップされたプロパティは `duplicated_props` として返却され、インポート終了後に問題のあるプロパティがモーダルに表示される。
 - プロパティID重複の識別処理について
   - 既存のプロパティと同じIDを持つプロパティがインポートデータに含まれる場合、両者の更新日時(updated)が比較される
   - 値が同一である場合は同じプロパティであると認識される
@@ -352,55 +269,62 @@
 
 - HTMLテンプレート
     - パス：<https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L29-L31>
-        - 設定キー: WEKO\_ITEMTYPES\_UI\_ADMIN\_REGISTER\_TEMPLATE = \\  
-          'weko\_itemtypes\_ui/admin/create\_itemtype.html'  
+        - 設定キー: WEKO_ITEMTYPES_UI_ADMIN_REGISTER_TEMPLATE = \\  
+          'weko_itemtypes_ui/admin/create_itemtype.html'  
           """Register template for the item type page."""
 
 - デフォルトプロパティの表示・非表示
     - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L44-L45>
-        - 設定キー: WEKO\_ITEMTYPES\_UI\_SHOW\_DEFAULT\_PROPERTIES = True  
+        - 設定キー: WEKO_ITEMTYPES_UI_SHOW_DEFAULT_PROPERTIES = True  
           """Set to show or hide default properties on the item type page."""  
           デフォルト：True（表示）。False: 非表示。
 
 - デフォルトプロパティ一覧
     - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L47-L55>
-        - 設定キー: WEKO\_ITEMTYPES\_UI\_DEFAULT\_PROPERTIES = {  
-          '1': {'name': \_('Text Field'), 'value': 'text'},  
-          '2': {'name': \_('Text Area'), 'value': 'textarea'},  
-          '3': {'name': \_('Check Box'), 'value': 'checkboxes'},  
-          '4': {'name': \_('Radio Button'), 'value': 'radios'},  
-          '5': {'name': \_('List Box'), 'value': 'select'},  
-          '6': {'name': \_('Date'), 'value': 'datetime'}  
+        - 設定キー: WEKO_ITEMTYPES_UI_DEFAULT_PROPERTIES = {  
+          '1': {'name': _('Text Field'), 'value': 'text'},  
+          '2': {'name': _('Text Area'), 'value': 'textarea'},  
+          '3': {'name': _('Check Box'), 'value': 'checkboxes'},  
+          '4': {'name': _('Radio Button'), 'value': 'radios'},  
+          '5': {'name': _('List Box'), 'value': 'select'},  
+          '6': {'name': _('Date'), 'value': 'datetime'}  
           }  
           """Default properties of the item type."""
 
 - 課金ファイルをプロパティ画面に表示する・しないかの設定
     - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L57-L58>
-        - 設定キー: WEKO\_BILLING\_FILE\_ACCESS = 1  
+        - 設定キー: WEKO_BILLING_FILE_ACCESS = 1  
           """Show billing file property in list."""  
           1: システム管理者のユーザーID。  
           1のみ表示する。1以外、プロパティ画面に表示しない。
 
 - 課金ファイルのプロパティであるかどうか判断するための設定
     - パス: <https://github.com/RCOSDP/weko/blob/b81efc2b8d1b3af838c0910798050c25a19f1f41/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L60-L61>
-        - 設定キー: WEKO\_BILLING\_FILE\_PROP\_ATT = 'billing\_file\_prop'  
+        - 設定キー: WEKO_BILLING_FILE_PROP_ATT = 'billing_file_prop'  
           """Attribute to detect billing file property."""  
           （課金ファイルをプロパティ画面に表示する・しない時に合わせて利用される。）
 
 - アイテムタイプのバージョンアップ機能を有効にする・しない設定
     - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L66-L67>
-        - 設定キー: True  
+        - 設定キー: WEKO_ITEMTYPES_UI_UPGRADE_VERSION_ENABLED = True  
           """Enable Upgrade Version."""  
           True: バージョンアップを有効にする.  
           False: バージョンアップを無効にする
 
 - アイテムタイプの強制インポート機能を有効にする・しない設定
     - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L69-L70>
-        - 設定キー: =  
+        - 設定キー: WEKO_ITEMTYPES_UI_FORCED_IMPORT_ENABLED = False  
           """Enable Forced Import."""  
           True: 強制インポートを有効にする.  
           False: 強制インポートを無効にする
 
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_itemtypes_ui.admin.ItemTypeMetaDataView`（endpoint `itemtypesregister`、`/admin/itemtypes`）。主なメソッド：`index` / `render_itemtype` / `delete_itemtype` / `register` / `restore_itemtype` / `get_property_list` / `export` / `item_type_import`。
+- モデル/テーブル：`ItemType`（`item_type`）/ `ItemTypeName`（`item_type_name`）/ `ItemTypeMapping`（`item_type_mapping`）/ `ItemTypeProperty`（`item_type_property`）/ `ItemTypeEditHistory`（`item_type_edit_history`）（いずれも `weko_records.models`）。エクスポートは上記4種のJSONを含むZIP（`ItemType_export.zip`）。
+- `item_type_mapping` は `item_type_id` で `item_type` を参照する外部キー（`fk_item_type_mapping_item_type_id_item_type`、ON DELETE CASCADE）と一意制約（`uq_item_type_mapping_item_type_id`）を持ち、アイテムタイプ1件に対しマッピング1行が対応する。アイテムタイプ実体の削除時にはマッピング行が連動削除される。マッピング保存は `Mapping.create_or_update`（upsert）。
+- 実装の実メッセージ：登録成功「Successfuly registered Item type.」（コードのタイプミスのまま）、インポート成功「The item type imported successfully.」、インポート失敗「Failed to import the item type.」。強制インポートは未登録プロパティ検出時に `Unregistered properties detected.` を表示し、ID重複は `updated` 時刻の比較でスキップ（`duplicated_props` として返却）。
 
 ## 更新履歴
 
@@ -409,3 +333,4 @@
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | 初版作成                                                |
 | 2024/07/01 | 7733de131da9ad59ab591b2df1c70ddefcfcad98   | v1.0.7対応                                              |
 | 2025/10/07 |                                            | アイテムタイプ削除不可条件追加(ワークフロー、SWORD API) |
+| 2026/07/17 |                                            | v2.1.0差分反映：item_type_mapping の外部キー(ON DELETE CASCADE)・一意制約を追記 |

@@ -112,3 +112,8 @@ SWORD APIを利用してメタデータがTSVおよびXML形式で記述され�
 | ---------- | ------------------------------------------ | ----------------------------------------------- |
 | 2024/03/09 |                                            | 初版作成                                        |
 | 2025/06/05 |6a5718e870a46276869b2ad24d3f78793ca27012    | タブ分け、重複チェック設定、TSVのワークフロー選択許容 |
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_admin.admin.SwordAPISettingsView`（endpoint `swordapi`、GET/POST）。設定は `AdminSettings`（name=`sword_api_setting`。`active` / `registration_type`（Direct/Workflow）/ `workflow` / `duplicate_check`）。重複チェック項目の表示は config `WEKO_ITEMS_UI_ENABLE_DUPLICATE_CHECK` に依存。テンプレート `WEKO_ADMIN_SWORD_API_TEMPLATE`。
+
