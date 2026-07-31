@@ -199,7 +199,8 @@ RO-Crateには、アイテムのメタデータを記述するための語彙が
 [TSV形式のメタデータ項目]()とシステム向け語彙について、定義したカスタム語彙を以下に示す。  
 カスタム語彙はプレフィックスとして、`wk:`が付与されている。  
 新規登録としてインポートする際に必須である項目は、インデックスIDと公開ステータスである。  
-更新登録としてインポートする際に追加で必須になる項目は、アイテムIDとURIである。  
+更新登録としてインポートする際に追加で必要になる項目は、アイテムIDとURIである。
+アイテムIDとURIがファイル内で指定されていない場合は、リクエストURLのパスパラメータで指定されたアイテムID（recid）を用いて、アイテムIDとURIの値を自動的に補完する。（SWORD API経由のみ）
 一部の語彙は、RO-Crateインポート機能では使用できず、SWORD APIを利用してアイテムを登録・更新する際に使用される。
 
 | 使用語彙                                   | 対応するTSV項目名    | バリュータイプ     | デフォルト値 | 新規 | 更新 | 説明                                     |
@@ -221,6 +222,7 @@ RO-Crateには、アイテムのメタデータを記述するための語彙が
 | wk:isSplited                               | -                    | 真偽値             | false        |      |      | アイテム分割フラグ （SWORD経由のみ）     |
 | wk:metadataAutoFill                        | -                    | 真偽値             | false        |      |      | メタデータ自動補完フラグ                 |
 | wk:metadataReplace                         | -                    | 真偽値             | false        |      |      | メタデータのみ置換フラグ（SWORD経由のみ）|
+| wk:researchmapLinkage                      | -                    | 真偽値             | false        |      |      | researchmap連携フラグ（SWORD経由のみ）    |
 
 ※ 登録用ファイル保存フラグとアイテム分割フラグが両方`true`の場合、アイテム分割フラグが優先され、ファイルは展開されて保存される。
 
@@ -469,6 +471,19 @@ SWORD APIを利用してアイテムを更新する際に、メタデータの�
 }
 ```
 
+### wk:researchmapLinkage：researchmap連携フラグ
+
+researchmapへの業績連携を行うかどうかを指定する。ルートデータセット直下に記述する。デフォルト値は`false`である。  
+このフラグはSWORD APIを利用してワークフロー経由でアイテムを登録する場合にのみ有効であり、`true`のとき、登録アクティビティに研究者情報連携（`cris_linkage.researchmap`）が引き渡され、researchmapへの業績連携が実行される。  
+`JsonLdMapper`が`wk:researchmapLinkage`を解析して`system_info["researchmap_linkage"]`に格納し、SWORD側（`weko_swordserver`）で`metadata["researchmap"]`に反映、`weko_workflow` の `HeadlessActivity` が `cris_linkage.researchmap` としてアクティビティ登録データに設定する。
+
+```json
+{
+  "@id": "./",
+  "wk:researchmapLinkage": true
+}
+```
+
 
 ## マッピング機能
 JSON-LD形式のメタデータファイルを読み込み、あらかじめ設定されたマッピング定義に基づいてWEKO3のアイテムタイプにマッピングする機能を提供する。  
@@ -517,12 +532,26 @@ WEKO3では、アイテムの全文検索に使用するのために本文ファ
 
 - weko_deposit：アイテムのメタデータをモデル化し、永続化する。本文抽出を行い、Elasticsearchに登録する。
 
+- weko_records：マッピング定義（`ItemTypeJsonldMapping`）を管理する。
+
+- weko_admin：SWORD API向けのJSON-LDマッピング設定画面を提供する。
+
+- weko_items_autofill：DOIによるメタデータ補完を行う。
+
+- weko_swordserver：SWORD API経由で同じマッピング機構を共有する。
+
 ## 関連テーブル
 
-- jsonld_mapping：マッピング定義を格納するテーブル
+- jsonld_mappings：マッピング定義を格納するテーブル
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`weko_search_ui.admin.ItemRocrateImportView`（endpoint `items/rocrate_import`、テンプレート `weko_search_ui/admin/rocrate_import.html`、`/all_mappings`）。`ro-crate-metadata.json` と `sword.json` の双方に対応（`@context` で判定）。`wk:` 語彙は `weko_search_ui.mapper.JsonLdMapper` で解析（キーはハードコード。export 側に `wk:metadaAutoFill` のタイプミスあり）。`wk:textExtraction` 指定で ES 抽出をスキップ。チェック入口は `check_jsonld_import_items`。
+- モデル/テーブル：`jsonld_mappings`（+ `jsonld_mappings_version`）、モデル `ItemTypeJsonldMapping`（weko-records）、API `JsonldMapping`、管理画面は weko-admin `SwordAPIJsonldSettingsView`（`swordapi/jsonld`）。関連モジュール：weko-records / weko-admin / weko-items-autofill / weko-swordserver（同じマッピング機構を共有）。
 
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                        |
 | ---------- | ------------------------------------------ | ----------------------------------------------- |
 | 2024/03/07 | 111d579dc68943b810918b2ccd46939f0208f4ba   | 初版作成                                        |
+| 2026/07/17 |                                            | v2.1.0差分反映：カスタム語彙 `wk:researchmapLinkage`（researchmap連携フラグ）を追記 |

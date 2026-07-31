@@ -12,3 +12,8 @@ https://rcosdp.github.io/weko/admin/
 ## 機能仕様書
 
 https://rcosdp.github.io/weko/spec/
+
+
+## JAIRO Cloud（WEKO3）登録ガイド
+
+https://rcosdp.github.io/weko/guide/

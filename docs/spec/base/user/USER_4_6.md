@@ -32,6 +32,11 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
         - 公開日（PubDate）
         - フィードバックメール送信先（Feedback Mail Destination）
 
+- researchmap連携フラグ
+  - アイテム登録を行う際に、「researchmapデータ連携フラグ」の設定エリアを表示する。
+  - researchmapデータ連携フラグの登録データを、temp_metadataに登録して管理する。
+  - チェックボックスによりフラグを表示する。
+
 - 日付のフォーマットで定義されるプロパティまたは属性に対して、3つのフォーマット（YYYY-MM-DD、YYYY-MM、YYYY）が入力できる
     - 入力方法はカレンダー入力、または手入力である
     - デフォルト値はサーバ日付（/api/admin/get_server_date）を利用する
@@ -47,6 +52,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     - 「検索」ボタンを押すと、【Administration > 著者DB管理（Author Management） > 編集（Edit）】で登録された著者DB一覧を表示する
     - ［入力（import）］ ボタンを押すと、選択した著者情報をメタデータの各エリアに入力する
     - 「Add Author」ボタンを押すと、著者登録画面が表示され著者情報を登録することができる（登録すると著者DB管理画面にも反映される）
+      - 作成者識別子の選択肢にresearchmapを追加し、会員と１対１のID(parmalink)のデータを管理する。
     - コミュニティ管理者、登録ユーザーの場合は著者登録画面のコミュニティ選択欄の選択肢にアクティビティを作成したコミュニティを加える。
     - アイテム作成時、作成者識別子は編集不可となる。
     - アイテム編集時、作成者識別子"WEKO"のデータ部分はユーザーでの編集は不可とする（作成者識別子Scheme, 作成者識別子URI, 作成者識別子はグレーアウトする）。それ以外の識別子は変更可能となる。
@@ -54,6 +60,15 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     - アイテムとの紐づけを行わない(解除する)場合は、「作成者」パネル内の各入力エリアの右上にある[×]で紐づけを解除する
     - アイテムで個別に編集した作成者の項目は、Adminの著者DBには反映されない。  
     なお、アイテムで個別に編集した後に著者DBから著者を取り込むと、個別編集した項目は上書きされる
+  
+- weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueに設定されている場合
+  - 入力したメタデータが以下のaccessRigthsの修正条件に該当する場合、修正後のAccess Rightsの値でアイテムが登録される
+    - Access Rights:embargoed accessの場合
+      1. ファイルのアクセスにopen_restrictredが存在する場合、restricted accessに修正される
+      2. 1を満たさずファイルのアクセスがopen_date、日付が未来である場合embargoed accessに修正される
+      3. 1,2を満たさずファイルのアクセスがopen_loginが存在する場合、restricted accessに修正される
+      4. すべてのファイルが「open_access」または「アクセスがopen_date,日付が処理日以前」である場合open accessに修正される
+      5. 1~4を満たさない場合、embargoed accessのままとなる
 
 ### 2. アイテムのメタデータを自動入力できる
 
@@ -195,7 +210,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
   - 同じプロパティに対して複数のAPIからメタデータが取得された場合は、`WEKO_ITEMS_AUTOFILL_TO_BE_USED`に設定された順番で優先度をつけて最上位のAPIから取得したメタデータを入力する。
   - 上記の例だと、`Original`のメタデータに対して、`DataCite`、`CrossRef`、`医中誌 Web API`の順にメタデータを取得し、プロパティ単位で上書きする。
     `Original`は、画面に手入力したメタデータを指す。
-  - 各APIについては、[ADMIN_X_X：メタデータ補完機能](../admin/ADMIN_X_X.md)を参照のこと。
+  - 各APIについては、`WEKO_ITEMS_AUTOFILL_API_LIST` / `WEKO_ITEMS_AUTOFILL_TO_BE_USED`（`weko-items-autofill` の設定。[その他 › コンフィグ](../other/CONFIG_01.md) 参照）を参照のこと。
 
 ### 4. アイテム重複チェック機能
 メタデータの入力後に、同一のメタデータを持つアイテムがすでに登録されていないかをチェックする。  
@@ -240,6 +255,37 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 | -------------------------------- | -------------------- | ---------- | ----------------------------------------------- |
 | WEKO_ITEMS_UI_SAVE_FREQUENCY | メタデータ登録画面における自動セーブ機能 | 10分        | modules/weko-items-ui/weko_items_ui/config.py |
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 自動保存間隔 `WEKO_ITEMS_UI_SAVE_FREQUENCY`（600000ms＝10分）。自動入力対象は `WEKO_ITEMS_AUTOFILL_API_LIST`（JaLC/医中誌/CrossRef/DataCite/CiNii Research。`WEKO_ITEMS_AUTOFILL_TO_BE_USED` の既定は空で instance.cfg が全6種を設定）。重複チェックは `weko_items_ui.utils.is_duplicate_record`。
+
+## 詳細リファレンス（v2.0.2 実装：入力検証・重複チェック・自動補完）
+
+対象：weko-items-ui / weko-items-autofill / weko-records / weko-admin。
+
+### 1. 入力バリデーション（必須・型）
+
+- 検証は `weko_items_ui.utils.validate_form_input_data` がアイテムタイプの JSON Schema を基準に実行。スキーマは `ItemTypes.get_by_id(id).schema` を複製し、除外項目削除（`remove_excluded_items_in_json_schema`）・著者テーブル補正（`set_scheme_by_author_table`）後に `RecordBase(data).validate()`（jsonschema）で検証。
+- エラー整形：`required`→「Please input all required item.」、`pattern`→「Please input the correct data.」、`SchemaError`→「Schema Error:」＋詳細、他→原文。多言語サブ項目の言語重複は `validation_duplication_error_checker`、日付は `date_pattern_list`（YYYY / YYYY-MM / YYYY-MM-DD / ISO8601+TZD 等）で検査。
+- 赤枠表示の仕組み：検証で得たエラー分類（either/either_key/mapping/pattern/required/required_key）を Redis（`updated_json_schema_{activity_id}`）に保存 → `get_json_schema` → `update_json_schema_by_activity_id` が該当ノードを解析しスキーマの `required` に注入して再描画。エラー確認 API は `GET /check_validation_error_msg/<activity_id>`（存在すれば `code=1`＋`msg`/`error_list`、無ければ `code=0`）。
+
+### 2. 重複チェックの分岐
+
+- 入口：`is_duplicate_record(data, exclude_ids)`（`data['metainfo']` 対象）／`is_duplicate_item(metadata, exclude_ids)`。共通処理 `check_duplicate`。
+- 機能フラグ `WEKO_ITEMS_UI_ENABLE_DUPLICATE_CHECK`（既定 False）。無効時は即 `(False,[],[])`。
+- 判定フィールド（`get_duplicate_fields`）：resourcetype／`subitem_identifier_uri`（DOI等）／`subitem_title`／creator名／`nameIdentifierScheme=="WEKO"` の author_link。検索対象は `records_metadata` の `publish_status='0'`（公開）かつ非バージョン（recid に `.` を含まない）、`exclude_ids` は除外。
+- 判定順（短絡）：1) 識別子 AND 一致でヒットすれば即 `(True, recid_list, recid_links)`。2) タイトル（NFKC正規化＋小文字化＋空白/カンマ除去、多重集合一致）。3) リソースタイプ一致（積集合）。4) 著者（author_link を authors の fullName で解決、または creator 名を正規化して一致）。`recid_links` は `https://{host}/records/{recid}`。
+- iframe 保存（`iframe_save_model`、`POST /iframe/model/save`）は保存前に重複チェックし、重複時は保存せず `{"code":1,"msg":"The same item may have been registered.","recid_list":...,"is_duplicate":true}` を返す。
+
+### 3. メタデータ自動補完
+
+- 対応API（`WEKO_ITEMS_AUTOFILL_API_LIST`）：JaLC API / 医中誌 Web API / CrossRef / DataCite / CiNii Research。UI 入力方式は DOI/CrossRef/CiNii/WEKOID/researchmap。
+- DOI一括補完 `fetch_metadata_by_doi(doi, item_type_id, original, **kwargs)`：優先順位は `kwargs['meta_data_api']`（SWORD経由時）→ `WEKO_ITEMS_AUTOFILL_TO_BE_USED`（既定空）→ 空なら `["Original"]`。`reversed(api_priority)` で低優先から `result.update` するため高優先が後勝ち。各API呼出は try/except で失敗時スキップ。
+- CrossRef は `get_crossref_record_data_with_pid` が `weko_admin.utils.get_current_api_certification("crf")`（`ApiCertificate`、table `api_certificate`、`api_code='crf'`）の PID を要し、未設定なら空リストを返し補完しない。
+- DOI未一致時：各API該当なしは空リストを返し補完は行われない。`get_auto_fill_record_data` は例外時のみ `result['error']` を設定。
+- 自動保存：`WEKO_ITEMS_UI_SAVE_FREQUENCY`（既定 600000ms＝10分）。`iframe/item_edit.html` の hidden input を `app.js` が読み `setInterval` で下書き保存（重複チェックを伴う）。
+
+
 ## 更新履歴
 
 | 日付     | GitHubコミットID                       |更新内容|
@@ -250,4 +296,3 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 |2025/01/01|09c6391d2ed1bae053fee9f8dfc98e95e1e1b87f|v1.0.7a2|
 |2024/04/14|cd0183f59a16928be2511e33e4495a3376f143c9|v1.0.6  |
 |2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
-

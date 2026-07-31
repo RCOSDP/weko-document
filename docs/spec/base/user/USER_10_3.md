@@ -12,34 +12,9 @@
 
 ## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール   | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+|:--------:|:--------------:|:----------------:|:------------------:|:------------:|:------------:|:-------------------:|
+| 利用可否 | ○              | ○                | ○                  | ○            | ○            |                      |
 
 ## 機能内容
 
@@ -337,6 +312,20 @@
     * 取得したAPIレスポンスを解析し、辞書型に整形する
     * アイテムタイプのJPCOARマッピングに応じた項目にメタデータを設定する
 
+### arXiv APIからのメタデータ取得
+
+  * arXiv API からDOIに紐づくメタデータを取得する
+    * `weko_workspace.api.arXivURL.get_data()` を呼び出し、arXiv API からデータを取得する
+      * arXiv API からはXML形式でレスポンスが返却される
+    * 取得したAPIレスポンス（XML）を `xmltodict` で辞書型に整形する
+    * アイテムタイプのJPCOARマッピングに応じた項目にメタデータを設定する（設定対象は `WEKO_WORKSPACE_ARXIV_REQUIRED_ITEM` に従う）
+
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- メタデータ自動補完：CrossRef=`weko_items_autofill.api.CrossRefOpenURL`、CiNii/JaLC/DataCite/医中誌/arXiv=`weko_workspace.api`（`CiNiiURL`/`JALCURL`/`DATACITEURL`/`JamasURL`/`arXivURL`）。外部URLは config `WEKO_WORKSPACE_*_API_URL`。CrossRef は API 証明書（`weko_admin.models.ApiCertificate`、code `"crf"`）が無い場合はリクエストしない。
+- arXiv 取得は weko-workspace で完結する。エンドポイントは `weko_workspace.views.get_auto_fill_record_data_arXivapi`（route `/get_auto_fill_record_data_arXivapi`）、取得ロジックは `weko_workspace.api.arXivURL` と `weko_workspace.utils.get_arXiv_record_data`（`get_arXiv_title_data` / `get_arXiv_identifier_data` / `get_arXiv_date_data` / `get_arXiv_description_data` / `get_arXiv_creator_data` / `get_arXiv_relation_data` / `get_arXiv_subject_data` ほか）。config は `WEKO_WORKSPACE_ARXIV_API_URL`（既定 `https://export.arxiv.org/api/query?search_query=doi:`）と `WEKO_WORKSPACE_ARXIV_REQUIRED_ITEM`（title/identifier/date/description/creator/relation/subject）。
+- 各外部ソース（CiNii/JaLC/DataCite/arXiv）が生成する DOI 識別子には `relationType='isVersionOf'` が付与される（JaLC は併せて `type='DOI'` を付与）。
 
 ---
 
@@ -354,4 +343,5 @@
 |日付|GitHubコミットID|更新内容|
 |---|---|---|
 |2025/03/27|057e4d8985a4b5526c0db7f07f717a4bb45bc984|初版作成|
+|2026/07/17||v2.1.0差分反映：arXiv メタデータ自動補完ソースを追加（`arXivURL`／`get_arXiv_*`／endpoint `get_auto_fill_record_data_arXivapi`／config `WEKO_WORKSPACE_ARXIV_API_URL`・`_REQUIRED_ITEM`）、DOI識別子への `relationType='isVersionOf'` 付与を追記|
 

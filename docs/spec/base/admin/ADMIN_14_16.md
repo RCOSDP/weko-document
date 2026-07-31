@@ -8,7 +8,6 @@
 
 【Administration > 設定（Setting） > メール送信（Mail）画面】に送信元の情報を設定する。
 
-
 ## 利用可能なロール
 
 |ロール|システム管理者|リポジトリ管理者|コミュニティ管理者|登録ユーザー|一般ユーザー|ゲスト(未ログイン)|
@@ -65,37 +64,35 @@
   - 送信が失敗の場合、以下のメッセージ及びエラーコードを画面上部に表示する  
               メッセージ：「Failed to send mail.」
 
-
 ## 関連モジュール
 
 - invenio-mail
 
 ## 処理概要
 
-  - 画面表示時は、invenio\_mail.admin.MailSettingVIew.indexメソッドがGETで呼び出される
+  - 画面表示時は、invenio_mail.admin.MailSettingVIew.indexメソッドがGETで呼び出される
     
-      - このとき、mail\_configテーブルからメールサーバの設定を取得する
+      - このとき、mail_configテーブルからメールサーバの設定を取得する
         
-          - invenio\_mail.models.MailConfig.get\_configメソッドの中で、設定が取得できなかった場合は、デフォルトの内容のレコードを作成してからそれを取得する
+          - invenio_mail.models.MailConfig.get_configメソッドの中で、設定が取得できなかった場合は、デフォルトの内容のレコードを作成してからそれを取得する
     
       - 「Mail Setting」の内容を取得したもの、「Send Test Mail」の内容を空欄として表示する
 
-  - ［更新（Update）］ボタンを押すと、invenio\_mail.admin.MailSettingVIew.indexメソッドがPOSTで呼び出される
+  - ［更新（Update）］ボタンを押すと、invenio_mail.admin.MailSettingVIew.indexメソッドがPOSTで呼び出される
     
-      - エラーチェックを通過した場合、mail\_configテーブルのレコードを更新する
+      - エラーチェックを通過した場合、mail_configテーブルのレコードを更新する
         
-          - invenio\_mail.models.MailConfig.set\_configメソッドによって、１つのレコードを更新する
+          - invenio_mail.models.MailConfig.set_configメソッドによって、１つのレコードを更新する
     
       - その後、「Mail Setting」の内容を画面で入力したもの、「Send Test Mail」の内容を空欄として画面に表示する
 
-  - ［送信（Enable）］ボタンを押すと、invenio\_mail.admin.MailSettingVIew.send\_test\_mailメソッドが呼び出される
+  - ［送信（Enable）］ボタンを押すと、invenio_mail.admin.MailSettingVIew.send_test_mailメソッドが呼び出される
     
-      - mail\_configテーブルから取得した情報をメールサーバの各種設定として、「Send Test Mail」の各入力欄に入力したものをメッセージとしてcurrent\_app.extensions\['mail'\]に設定して、送信する
+      - mail_configテーブルから取得した情報をメールサーバの各種設定として、「Send Test Mail」の各入力欄に入力したものをメッセージとしてcurrent_app.extensions['mail']に設定して、送信する
     
       - その後、「Mail Setting」の内容をテーブルから取得したもの、「Send Test Mail」の内容を空欄として画面に表示する
 
   - 「ドメイン（Domain）」の値を持ちいて送信元ドメインを設定する。
-
 
 ## 設定例
 
@@ -112,10 +109,13 @@
 |送信元ドメイン（Domain）|ドメイン(v1.0.7追加)|空白|
 |デフォルト送信元（Default sender）|デフォルト送信元|Gmailアカウントのメールアドレス|
 
-
 ※ Gmailの場合、送信元ドメイン、デフォルト送信元は利用できない。
 
 デフォルト送信元は「X-Google-Original-From: 」ヘッダに設定される。
+
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 画面/ハンドラ：`invenio_mail.admin.MailSettingView`（クラス名は `MailSettingView`。「MailSettingVIew」は綴り誤り）。`index`（GET/POST）と `send_test_mail`。設定は `MailConfig.get_config` / `set_config`（テーブル `mail_config`）。「ドメイン（Domain）」欄は DB 列 `mail_local_hostname`（SMTP HELO）に対応。
 
 ## 更新履歴
 

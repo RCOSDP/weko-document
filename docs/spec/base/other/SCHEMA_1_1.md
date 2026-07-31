@@ -1,9 +1,13 @@
 # Render
 
-
 ## 目的・用途
 
+アイテムタイプの「render」定義（アイテムタイプ編集画面が内部的に保持する描画・入力設定の構造）のサンプルダンプ。`weko_records.models.ItemType.render` カラム（JSON）に格納され、ここから schema / form が導出される。`meta_fix`（pubdate 等のシステム項目）・`meta_list`（プロパティ毎の入力設定：input_type、option＝crtf/hidden/multiple/required/showlist、title_i18n）・`table_row` / `schemaeditor` 等を含む。
 
+## 関連モジュール
+
+- weko-records（`weko_records.models.ItemType.render` カラムに格納）
+- weko-itemtypes-ui（取得エンドポイント `GET /admin/itemtypes/<item_type_id>/render` → `admin.ItemTypeMetaDataView.render_itemtype`）
 
 ## 利用方法
 
@@ -2103,28 +2107,7 @@
 
 #### 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>2024/07/1</p>
-</blockquote></td>
-<td>7733de131da9ad59ab591b2df1c70ddefcfcad98</td>
-<td>v1.0.7対応</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| ---- | ---- | ---- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |

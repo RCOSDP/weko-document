@@ -1,437 +1,260 @@
-### Change List
+# Change List
 
-  - > 目的・用途
+## 目的・用途
 
 公開インデックスごとに「Change List」、「Change Dump」を出力する
 
-  - > 利用方法
+## 利用方法
 
-【Administration \> Resource Sync \> Change List画面】で操作を行う
+【Administration > Resource Sync > Change List画面】で操作を行う
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-|ロール|システム<br>管理者|リポジトリ<br>管理者|サブリポジトリ<br>管理者|登録ユーザー|一般ユーザー|ゲスト<br>(未ログイン)|
+| ロール | システム管理者 | リポジトリ管理者 | サブリポジトリ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|利用可否|○|○|○| | | |
+| 利用可否 | ○ | ○ | ○ | | | |
 
-  - > 機能内容
+## 機能内容
 
-<!-- end list -->
+- Change Listの仕様： <http://www.openarchives.org/rs/1.1/resourcesync#ChangeList>
+- Change Dumpの仕様： <http://www.openarchives.org/rs/1.1/resourcesync#ChangeDump>
+- 【Change List画面】で表示されるタブは、【Resource List画面】と同様である。[ADMIN-10-1: Resource List](./ADMIN_10_1.md)を参照すること
 
-  - Change Listの仕様： <http://www.openarchives.org/rs/1.1/resourcesync#ChangeList>
+- 「List」タブにて存在するChange Listを一覧表示する
+  - サブリポジトリ管理者の場合は管理対象のサブリポジトリに属するインデックスが対象となっているResource Listのみを表示する
+  - 「List」タブを表示するたびに最新の情報を取得する
+  - 表示項目は以下の通りである
+    - アクション（編集・削除を表すアイコン）
+    - Repository
+      - そのChange Listが対象とするインデックス
+      - フォーマット：「{インデックスの英語名} <ID:インデックスID>」
+    - Change List Url
+      - 「Change List」のURLを表示する
+    - Change Dump Url
+      - 「Change Dump」のURLを表示する
+    - Status
+      - Private/Publish
 
-  - Change Dumpの仕様： <http://www.openarchives.org/rs/1.1/resourcesync#ChangeDump>
+- 「Create」タブにて「Change List」、「Change Dump」レコードを作成する
+  - 入力情報は以下の通りである
+    - Status
+      - インデックスのステータスを選択する
+      - ラジオボタン：Publish、Private
+      - デフォルト：選択無し
+    - Repository
+      - 対象とするインデックスを指定する
+      - プルダウン：選択肢はシステムに登録されているインデックス。サブリポジトリ管理者の場合は管理対象のサブリポジトリに属するインデックス
+      - デフォルト：選択無し
+    - Publish date
+      - フォーマット：MM/DD/YYYY
+      - デフォルト：当日
+    - Max change list
+      - デフォルト：10000
+    - Interval by date
+      - 自動実行する日間隔を設定する
+      - デフォルト：1
+    - Change tracking state
+      - チェックボックス：Created、Updated、Deleted
+      - デフォルト：すべてのチェックボックスにチェックを入れる
+    - Change dump manifest
+      - 「Change Dump」ごとに「manifest.xml」ファイルを出力するかどうかを設定する
+      - デフォルト：チェック無し
+    - Change List uri
+      - 「Repository」で選択しているインデックスに応じて、「Change List」のURIを自動的に表示する
+      - テンプレートのURL：「https://{weko_url}/resync/{Index ID}/changelist.xml」
+      - 変更不可、無効の状態とする
+    - Change Dump uri
+      - 「Repository」で選択しているインデックスに応じて、「Change Dump」のURIを自動的に表示する
+      - テンプレートのURL：「https://{weko_url}/resync/{Index ID}/changedump.xml」
+      - 変更不可、無効の状態とする
+  - ［Create］ボタンを押すと、入力内容をチェックし、問題がなければ、「Change List」のレコードを作成し、「List」タブに移動する
+    - エラーの場合は以下の通りである
+      - 既に設定されたインデックスを選択している場合、以下のようなエラーメッセージを表示する  
+        エラーメッセージ：「Selected repository has been registered already. Please select another repository.」
+    - 「Status」がチェックなしのままでレコードを作成する場合は、Privateが設定される
+  - ［Create and Add Another］ボタンを押すと、［Create］ボタンを押したときと同様の処理によって設定された内容のレコードを作成して、タブを移動せずに他の「Change List」を作成可能とする
+  - ［Cancel］ボタンを押すと、設定された「Change List」を追加せずに、「List」タブに移動する
 
-  - 【Change List画面】で表示されるタブは、【Resource List画面】と同様である。[ADMIN-10-1: Resource List](\\l)を参照すること
+- 公開インデックスごとに「Change List」、「Change Dump」を出力する
+  - 「Status：Publish」の場合、「Change List」及び「Change Dump」を出力する
+    - 「Change List」を出力する
+      - 「List」タブより「Change List Url」列でのURLを押すと、ブラウザで該当する「Change List」を表示する
+      - 「Change List」の表示項目は以下の通りである
+        - 表示フォーマット：XML
+        - 「capability.xml」のURL
+        - Capabilityのタイプ：changelist
+        - 該当インデックスに属される更新済みアイテム一覧の「Change List」
+          - 日ごとにアイテムをまとめる
+          - テンプレートのURL：「https://{weko_url}/resync/{Index ID}/{YYYYMMDD}/changelist.xml」
+        - from-until：「Change List」ごとに対象日
+          - フォーマット：YYYY-MM-DDThh:mm:ssZ
+          - 設定値WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueの場合、エンバーゴの期間が終了した日付がupdatedの日付より新しいレコードは、エンバーゴ期間終了日が対象日に該当する。
+      - 「Change List一覧」のサンプル
 
-  - 「List」タブにて存在するChange Listを一覧表示する
-    
-      - サブリポジトリ管理者の場合は管理対象のサブリポジトリに属するインデックスが対象となっているResource Listのみを表示する
-
-      - 「List」タブを表示するたびに最新の情報を取得する
-    
-      - 表示項目は以下の通りである
-        
-          - アクション（編集・削除を表すアイコン）
-        
-          - Repository
-            
-              - そのChange Listが対象とするインデックス
-            
-              - フォーマット：「{インデックスの英語名} \<ID:インデックスID\>」
-        
-          - Change List Url
-            
-              - 「Change List」のURLを表示する
-        
-          - Change Dump Url
-            
-              - 「Change Dump」のURLを表示する
-        
-          - Status
-            
-              - Private/Publish
-
-  - 「Create」タブにて「Change List」、「Change Dump」レコードを作成する
-    
-      - 入力情報は以下の通りである
-        
-          - Status
-            
-              - インデックスのステータスを選択する
-            
-              - ラジオボタン：Publish、Private
-            
-              - デフォルト：選択無し
-        
-          - Repository
-            
-              - 対象とするインデックスを指定する
-
-              - プルダウン：選択肢はシステムに登録されているインデックス。サブリポジトリ管理者の場合は管理対象のサブリポジトリに属するインデックス
-
-              - デフォルト：選択無し
-
-          - Publish date
-            
-              - フォーマット：MM/DD/YYYY
-            
-              - デフォルト：当日
-        
-          - Max change list
-            
-              - デフォルト：10000
-        
-          - Interval by date
-            
-              - 自動実行する日間隔を設定する
-            
-              - デフォルト：1
-        
-          - Change tracking state
-            
-              - チェックボックス：Created、Updated、Deleted
-            
-              - デフォルト：すべてのチェックボックスにチェックを入れる
-        
-          - Change dump manifest
-            
-              - 「Change Dump」ごとに「manifest.xml」ファイルを出力するかどうかを設定する
-            
-              - デフォルト：チェック無し
-        
-          - Change List uri
-            
-              - 「Repository」で選択しているインデックスに応じて、「Change List」のURIを自動的に表示する
-            
-              - テンプレートのURL：「https://{weko\_url}/resync/{Index ID}/changelist.xml」
-            
-              - 変更不可、無効の状態とする
-        
-          - Change Dump uri
-            
-              - 「Repository」で選択しているインデックスに応じて、「Change Dump」のURIを自動的に表示する
-            
-              - テンプレートのURL：「https://{weko\_url}/resync/{Index ID}/changedump.xml」
-            
-              - 変更不可、無効の状態とする
-    
-      - ［Create］ボタンを押すと、入力内容をチェックし、問題がなければ、「Change List」のレコードを作成し、「List」タブに移動する
-        
-          - エラーの場合は以下の通りである
-            
-              - 既に設定されたインデックスを選択している場合、以下のようなエラーメッセージを表示する  
-                エラーメッセージ：「Selected repository has been registered already. Please select another repository.」
-        
-          - 「Status」がチェックなしのままでレコードを作成する場合は、Privateが設定される
-    
-      - ［Create and Add Another］ボタンを押すと、［Create］ボタンを押したときと同様の処理によって設定された内容のレコードを作成して、タブを移動せずに他の「Change List」を作成可能とする
-    
-      - ［Cancel］ボタンを押すと、設定された「Change List」を追加せずに、「List」タブに移動する
-
-  - 公開インデックスごとに「Change List」、「Change Dump」を出力する
-    
-      - 「Status：Publish」の場合、「Change List」及び「Change Dump」を出力する
-        
-          - 「Change List」を出力する
-            
-              - 「List」タブより「Change List Url」列でのURLを押すと、ブラウザで該当する「Change List」を表示する
-            
-              - 「Change List」の表示項目は以下の通りである
-                
-                  - 表示フォーマット：XML
-                
-                  - 「capability.xml」のURL
-                
-                  - Capabilityのタイプ：changelist
-                
-                  - 該当インデックスに属される更新済みアイテム一覧の「Change List」
-                    
-                      - 日ごとにアイテムをまとめる
-                    
-                      - テンプレートのURL：「https://{weko\_url}/resync/{Index ID}/{YYYYMMDD}/changelist.xml」
-                
-                  - from-until：「Change List」ごとに対象日
-                    
-                      - フォーマット：YYYY-MM-DDThh:mm:ssZ
-            
-              - 「Change List一覧」のサンプル
-
-> **\<urlset** xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:rs="http://www.openarchives.org/rs/terms/"**\>**
-> 
-> **\<rs:ln** href="https://18.182.214.241:8024/resync/capability.xml" rel="up"**/\>**
-> 
-> **\<rs:md** capability="changelist"**/\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/20200717/changelist.xml**\</loc\>**
-> 
-> **\<rs:md** capability="changelist" from="2020-07-17T00:00:00Z" until="2020-07-18T00:00:00Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/20200718/changelist.xml**\</loc\>**
-> 
-> **\<rs:md** capability="changelist" from="2020-07-18T00:00:00Z" until="2020-07-19T00:00:00Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/20200719/changelist.xml**\</loc\>**
-> 
-> **\<rs:md** capability="changelist" from="2020-07-19T00:00:00Z" until="2020-07-20T00:00:00Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/20200720/changelist.xml**\</loc\>**
-> 
-> **\<rs:md** capability="changelist" from="2020-07-20T00:00:00Z" until="2020-07-20T08:59:58.606915Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\</urlset\>**
+        ```xml
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:rs="http://www.openarchives.org/rs/terms/">
+          <rs:ln href="https://18.182.214.241:8024/resync/capability.xml" rel="up"/>
+          <rs:md capability="changelist"/>
+          <url>
+            <loc>https://18.182.214.241:8024/resync/1594710457918/20200717/changelist.xml</loc>
+            <rs:md capability="changelist" from="2020-07-17T00:00:00Z" until="2020-07-18T00:00:00Z"/>
+          </url>
+          <url>
+            <loc>https://18.182.214.241:8024/resync/1594710457918/20200718/changelist.xml</loc>
+            <rs:md capability="changelist" from="2020-07-18T00:00:00Z" until="2020-07-19T00:00:00Z"/>
+          </url>
+          <url>
+            <loc>https://18.182.214.241:8024/resync/1594710457918/20200719/changelist.xml</loc>
+            <rs:md capability="changelist" from="2020-07-19T00:00:00Z" until="2020-07-20T00:00:00Z"/>
+          </url>
+          <url>
+            <loc>https://18.182.214.241:8024/resync/1594710457918/20200720/changelist.xml</loc>
+            <rs:md capability="changelist" from="2020-07-20T00:00:00Z" until="2020-07-20T08:59:58.606915Z"/>
+          </url>
+        </urlset>
+        ```
 
   - 「Change List」を出力する  
     出力された「Change List一覧」より、日ごとの「Change List」を出力する
-    
-      - 「Change List」に表示項目は以下の通りである
-        
-          - 表示フォーマット：XML
-        
-          - 「capability」のURL
-        
-          - 属される「Change List一覧」のURL
-        
-          - Capabilityのタイプ：changelist
-        
-          - アイテムに登録されているファイルのURL
-        
-          - \<lastmod\>：アイテムの更新日付
-        
-          - 「change」タイプ：created、updated、deleted
-    
-      - 「Change List」のサンプル
+    - 「Change List」に表示項目は以下の通りである
+      - 表示フォーマット：XML
+      - 「capability」のURL
+      - 属される「Change List一覧」のURL
+      - Capabilityのタイプ：changelist
+      - アイテムに登録されているファイルのURL
+      - <lastmod>：アイテムの更新日付
+      - 「change」タイプ：created、updated、deleted
+    - 「Change List」のサンプル
 
-> **\<urlset** xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:rs="http://www.openarchives.org/rs/terms/"**\>**
-> 
-> **\<rs:ln** href="https://18.182.214.241:8024/resync/capability.xml" rel="up"**/\>**
-> 
-> **\<rs:ln** href="https://18.182.214.241:8024/resync/1594710457918/changelist.xml" rel="index"**/\>**
-> 
-> **\<rs:md** capability="changelist"**/\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/records/55**\</loc\>**
-> 
-> **\<lastmod\>**2020-07-22T01:17:12.177328Z**\</lastmod\>**
-> 
-> **\<rs:md** at="2020-07-22T01:17:12.177328Z" change="created"**/\>**
-> 
-> **\</url\>**
-> 
-> **\</urlset\>**
+      ```xml
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:rs="http://www.openarchives.org/rs/terms/">
+        <rs:ln href="https://18.182.214.241:8024/resync/capability.xml" rel="up"/>
+        <rs:ln href="https://18.182.214.241:8024/resync/1594710457918/changelist.xml" rel="index"/>
+        <rs:md capability="changelist"/>
+        <url>
+          <loc>https://18.182.214.241:8024/resync/1594710457918/records/55</loc>
+          <lastmod>2020-07-22T01:17:12.177328Z</lastmod>
+          <rs:md at="2020-07-22T01:17:12.177328Z" change="created"/>
+        </url>
+      </urlset>
+      ```
 
   - 「Change Dump一覧」を出力する
-    
-      - 「Change List」の「List」タブより「Change Dump Url」列でのURLを押すと、該当する「Change Dump一覧」にアクセスする
-    
-      - 「Change Dump一覧」に表示項目は以下の通りである
-        
-          - 表示フォーマット：XML
-        
-          - 「capability」のURL
-        
-          - Capabilityのタイプ：changedump
-        
-          - 該当インデックスに属されるアイテムのZipパッケージにアクセスできる「Change Dump」
-            
-              - 日ごとにアイテムをまとめる
-            
-              - テンプレートのURL：「https://{weko\_url}/resync/{Index ID}/{YYYYMMDD}/changelist.xml」
-        
-          - from-until：「Change Dump」ごとに対象日
-            
-              - フォーマット：YYYY-MM-DDThh:mm:ssZ
-    
-      - 「Change Dump一覧」のサンプル
+    - 「Change List」の「List」タブより「Change Dump Url」列でのURLを押すと、該当する「Change Dump一覧」にアクセスする
+    - 「Change Dump一覧」に表示項目は以下の通りである
+      - 表示フォーマット：XML
+      - 「capability」のURL
+      - Capabilityのタイプ：changedump
+      - 該当インデックスに属されるアイテムのZipパッケージにアクセスできる「Change Dump」
+        - 日ごとにアイテムをまとめる
+        - テンプレートのURL：「https://{weko_url}/resync/{Index ID}/{YYYYMMDD}/changelist.xml」
+      - from-until：「Change Dump」ごとに対象日
+        - フォーマット：YYYY-MM-DDThh:mm:ssZ
+        - 設定値WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueの場合、エンバーゴの期間が終了した日付がupdatedの日付より新しいレコードは、エンバーゴ期間終了日が対象日に該当する。
+    - 「Change Dump一覧」のサンプル
 
-> **\<urlset** xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:rs="http://www.openarchives.org/rs/terms/"**\>**
-> 
-> **\<rs:ln** href="https://18.182.214.241:8024/resync/capability.xml" rel="up"**/\>**
-> 
-> **\<rs:md** capability="changedump"**/\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/20200717/changedump.xml**\</loc\>**
-> 
-> **\<rs:md** capability="changedump" from="2020-07-17T00:00:00Z" until="2020-07-18T00:00:00Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/20200718/changedump.xml**\</loc\>**
-> 
-> **\<rs:md** capability="changedump" from="2020-07-18T00:00:00Z" until="2020-07-19T00:00:00Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/20200719/changedump.xml**\</loc\>**
-> 
-> **\<rs:md** capability="changedump" from="2020-07-19T00:00:00Z" until="2020-07-20T00:00:00Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/20200720/changedump.xml**\</loc\>**
-> 
-> **\<rs:md** capability="changedump" from="2020-07-20T00:00:00Z" until="2020-07-20T09:01:55.926748Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\</urlset\>**
+      ```xml
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:rs="http://www.openarchives.org/rs/terms/">
+        <rs:ln href="https://18.182.214.241:8024/resync/capability.xml" rel="up"/>
+        <rs:md capability="changedump"/>
+        <url>
+          <loc>https://18.182.214.241:8024/resync/1594710457918/20200717/changedump.xml</loc>
+          <rs:md capability="changedump" from="2020-07-17T00:00:00Z" until="2020-07-18T00:00:00Z"/>
+        </url>
+        <url>
+          <loc>https://18.182.214.241:8024/resync/1594710457918/20200718/changedump.xml</loc>
+          <rs:md capability="changedump" from="2020-07-18T00:00:00Z" until="2020-07-19T00:00:00Z"/>
+        </url>
+        <url>
+          <loc>https://18.182.214.241:8024/resync/1594710457918/20200719/changedump.xml</loc>
+          <rs:md capability="changedump" from="2020-07-19T00:00:00Z" until="2020-07-20T00:00:00Z"/>
+        </url>
+        <url>
+          <loc>https://18.182.214.241:8024/resync/1594710457918/20200720/changedump.xml</loc>
+          <rs:md capability="changedump" from="2020-07-20T00:00:00Z" until="2020-07-20T09:01:55.926748Z"/>
+        </url>
+      </urlset>
+      ```
 
   - 「Change Dump」を出力する  
     出力された「Change Dump一覧」より、日ごとの「Change Dump」を出力する
-    
-      - 「Change Dump」に表示項目は以下の通りである
-        
-          - 表示フォーマット：XML
-        
-          - 「capability」のURL
-        
-          - 属される「Change Dump一覧」のURL
-        
-          - Capabilityのタイプ：changedump
-        
-          - アイテムに登録されているファイルのZipパッケージのURL
-        
-          - \<lastmod\>：アイテムの更新日付
-    
-      - 「Change Dump」のサンプル
+    - 「Change Dump」に表示項目は以下の通りである
+      - 表示フォーマット：XML
+      - 「capability」のURL
+      - 属される「Change Dump一覧」のURL
+      - Capabilityのタイプ：changedump
+      - アイテムに登録されているファイルのZipパッケージのURL
+      - <lastmod>：アイテムの更新日付
+    - 「Change Dump」のサンプル
 
-> **\<urlset** xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:rs="http://www.openarchives.org/rs/terms/"**\>**
-> 
-> **\<rs:ln** href="https://18.182.214.241:8024/resync/capability.xml" rel="up"**/\>**
-> 
-> **\<rs:ln** href="https://18.182.214.241:8024/resync/1594710457918/changedump.xml" rel="index"**/\>**
-> 
-> **\<rs:md** capability="changedump"**/\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/49.1/change\_dump\_content.zip**\</loc\>**
-> 
-> **\<lastmod\>**2020-07-21T03:47:43.254174Z**\</lastmod\>**
-> 
-> **\<rs:md** from="2020-07-21T03:47:43.254174Z" type="application/zip" until="2020-07-21T05:44:21.697630Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\<url\>**
-> 
-> **\<loc\>**https://18.182.214.241:8024/resync/1594710457918/50.1/change\_dump\_content.zip**\</loc\>**
-> 
-> **\<lastmod\>**2020-07-21T05:43:05.066272Z**\</lastmod\>**
-> 
-> **\<rs:md** from="2020-07-21T05:43:05.066272Z" type="application/zip" until="2020-07-21T05:44:21.698327Z"**/\>**
-> 
-> **\</url\>**
-> 
-> **\</urlset\>**
+      ```xml
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:rs="http://www.openarchives.org/rs/terms/">
+        <rs:ln href="https://18.182.214.241:8024/resync/capability.xml" rel="up"/>
+        <rs:ln href="https://18.182.214.241:8024/resync/1594710457918/changedump.xml" rel="index"/>
+        <rs:md capability="changedump"/>
+        <url>
+          <loc>https://18.182.214.241:8024/resync/1594710457918/49.1/change_dump_content.zip</loc>
+          <lastmod>2020-07-21T03:47:43.254174Z</lastmod>
+          <rs:md from="2020-07-21T03:47:43.254174Z" type="application/zip" until="2020-07-21T05:44:21.697630Z"/>
+        </url>
+        <url>
+          <loc>https://18.182.214.241:8024/resync/1594710457918/50.1/change_dump_content.zip</loc>
+          <lastmod>2020-07-21T05:43:05.066272Z</lastmod>
+          <rs:md from="2020-07-21T05:43:05.066272Z" type="application/zip" until="2020-07-21T05:44:21.698327Z"/>
+        </url>
+      </urlset>
+      ```
 
   - 「Status：Private」の場合、、または対象インデックスが「公開しない」と設定する場合、「Change List」及び「Change Dump」を出力すると、以下のようなエラーメッセージを表示する  
     エラーメッセージ：  
-    　　　　　　　JP：「ページが見つかりません。」  
-    　　　　　　　EN：「Page not found」
+    　JP：「ページが見つかりません。」  
+    　EN：「Page not found」
 
-<!-- end list -->
+- 「List」タブ各行の鉛筆アイコンをクリックすると、「Edit」タブに移動してその行のレコードを表示し、内容を編集できる
+  - 入力情報は、「Create」タブと同じである
+  - ［Save］ボタンを押すと、編集内容を保存して「List」タブに移動する
+  - ［Cancel］ボタンを押すと、編集内容を保存せず「List」タブに移動する
 
-  - 「List」タブ各行の鉛筆アイコンをクリックすると、「Edit」タブに移動してその行のレコードを表示し、内容を編集できる
-    
-      - 入力情報は、「Create」タブと同じである
-    
-      - ［Save］ボタンを押すと、編集内容を保存して「List」タブに移動する
-    
-      - ［Cancel］ボタンを押すと、編集内容を保存せず「List」タブに移動する
+- 「List」タブ各行のごみ箱アイコンをクリックすると、確認ダイアログを表示する  
+  メッセージ：「Are you sure to delete it ?」
+  - ［OK］ボタンを押すと、該当レコードを削除する
+  - ［キャンセル］ボタンを押すと、確認ダイアログを閉じる
 
-  - 「List」タブ各行のごみ箱アイコンをクリックすると、確認ダイアログを表示する  
-    メッセージ：「Are you sure to delete it ?」
-    
-      - ［OK］ボタンを押すと、該当レコードを削除する
-    
-      - ［キャンセル］ボタンを押すと、確認ダイアログを閉じる
+## 関連モジュール
 
-<!-- end list -->
+- invenio_resourcesyncserver
 
-  - > 関連モジュール
+## 処理概要
 
-<!-- end list -->
+- 本画面では、changelist_indexesテーブルの情報を閲覧、作成、編集、削除する
+  - 画面表示時に、invenio_resourcesyncserver.admin.AdminChangeListView.indexメソッドによってテンプレートを指定する
+    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L25>
+    - 設定キー：INVENIO_RESOURCESYNC_CHANGE_LIST_ADMIN
+  - 「List」タブの表示時に、同クラスのget_listメソッドによってテーブルの情報を全件取得する
+    - 画面の「Change List Url」と「Change Dump Url」の表示内容は、内容の表示時にchange_list.js中でそれぞれ「url_path」フィールドの値に「/changelist.xml」「/changedump.xml」を結合して作成している
+    - 「status」フィールドは真偽値であるが、内容の表示時にchange_list.js中でフィールドの値によって「Publish」か「Private」を表示するようにしている
+  - 「Create」タブで［Create］ボタンを押したとき、同クラスのcreateメソッドによって、テーブルに対象インデックスについてのレコードがない場合に、新たにレコードを作成する
+    - 対象インデックスについてのレコードがすでにあった場合には、作成せずに以下のコンフィグで指定されたメッセージを返す
+      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L44-L45>
+      - 設定キー：VALIDATE_MESSAGE
+  - 「Edit」タブで［Save］ボタンを押したとき、同クラスのupdateメソッドによってレコードを更新する
+  - 「List」タブでごみ箱アイコンを押したとき、同クラスのdeleteメソッドによってレコードを物理削除する
+- 公開インデックスごとに「Change List」、「Change Dump」を出力する
+  - 「Change List」を出力する
+    - 「List」タブにて「Change List Url」列のURLを押すと、invenio_resourcesyncserver.views.change_list_index関数が呼び出される
+      - この中で、invenio_resourcesyncserver.api.ChangeListHandler.get_change_list_indexメソッドによってchangelist.xmlを出力する
+  - 「Change Dump」を出力する
+    - 「List」タブにて「Change Dump Url」列のURLを押すと、invenio_resourcesyncserver.views.change_dump_index関数が呼び出される
+      - この中で、invenio_resourcesyncserver.api.ChangeListHandler.get_change_dump_indexメソッドによってchangedump.xmlを出力する
 
-  - > invenio\_resourcesyncserver
+## 実装補足（v2.0.2 実装との突き合わせ）
 
-<!-- end list -->
+- 画面/ハンドラ：`invenio_resourcesyncserver.admin.AdminChangeListView`（endpoint `change_list`、テーブル `changelist_indexes`）。一覧は `/get_all`（`get_list` → `ChangeListHandler.get_all`）。作成・更新はいずれも `ChangeListHandler(**data).save()`（`create`/`update` メソッドは無い）。削除は `/delete/<repo_id>`。
+- 実装補足：XML 出力は `views.change_list_index`（`.../changelist.xml`）/ `change_dump_index`。日次 `change_list`/`change_dump`（`.../<from_date>/...`）や `changedump_manifest.xml` 等も存在。
 
-  - > 処理概要
+## 更新履歴
 
-<!-- end list -->
-
-  - 本画面では、changelist\_indexesテーブルの情報を閲覧、作成、編集、削除する
-    
-      - 画面表示時に、invenio\_resourcesyncserver.admin.AdminChangeListView.indexメソッドによってテンプレートを指定する
-        
-          - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L25>
-        
-          - 設定キー：INVENIO\_RESOURCESYNC\_CHANGE\_LIST\_ADMIN
-    
-      - 「List」タブの表示時に、同クラスのget\_listメソッドによってテーブルの情報を全件取得する
-        
-          - 画面の「Change List Url」と「Change Dump Url」の表示内容は、内容の表示時にchange\_list.js中でそれぞれ「url\_path」フィールドの値に「/changelist.xml」「/changedump.xml」を結合して作成している
-        
-          - 「status」フィールドは真偽値であるが、内容の表示時にchange\_list.js中でフィールドの値によって「Publish」か「Private」を表示するようにしている
-    
-      - 「Create」タブで［Create］ボタンを押したとき、同クラスのcreateメソッドによって、テーブルに対象インデックスについてのレコードがない場合に、新たにレコードを作成する
-        
-          - 対象インデックスについてのレコードがすでにあった場合には、作成せずに以下のコンフィグで指定されたメッセージを返す
-            
-              - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L44-L45>
-            
-              - 設定キー：VALIDATE\_MESSAGE
-    
-      - 「Edit」タブで［Save］ボタンを押したとき、同クラスのupdateメソッドによってレコードを更新する
-    
-      - 「List」タブでごみ箱アイコンを押したとき、同クラスのdeleteメソッドによってレコードを物理削除する
-
-  - 公開インデックスごとに「Change List」、「Change Dump」を出力する
-    
-      - 「Change List」を出力する
-        
-          - 「List」タブにて「Change List Url」列のURLを押すと、invenio\_resourcesyncserver.views. change\_list\_index関数が呼び出される
-            
-              - この中で、invenio\_resourcesyncserver.api. ChangeListHandler. get\_change\_list\_indexメソッドによってchangelist.xmlを出力する
-    
-      - 「Change Dump」を出力する
-        
-          - 「List」タブにて「Change Dump Url」列のURLを押すと、invenio\_resourcesyncserver.views. change\_dump\_index関数が呼び出される
-            
-              - この中で、invenio\_resourcesyncserver.api. ChangeListHandler. get\_change\_dump\_indexメソッドによってchangedump.xmlを出力する
-
-<!-- end list -->
-
-  - > 更新履歴
-
-|日付|GitHubコミットID|更新内容|
+| 日付 | GitHubコミットID | 更新内容 |
 |:---:|:---:|:---:|
-|> 2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
-|> 2025/01/23|-|サブリポジトリ対応|
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2025/01/23 | - | サブリポジトリ対応 |
