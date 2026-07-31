@@ -8,9 +8,9 @@
 
 ## 利用可能なロール
 
-|  ロール  | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| ロール   | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
 | -------- | :------------: | :--------------: | :----------------: | :----------: | :----------: | :----------------: |
-| 利用可否 |       〇       |        〇        |         〇※       |      ×      |      ×      |        ×          |
+| 利用可否 |       〇       |        〇        |        〇※         |      ×       |      ×       |         ×          |
 
 ※サブリポジトリ管理者は、自身の管理下にあるサブリポジトリに関連付けられたインデックスへのインポートのみ可能
 
@@ -104,14 +104,14 @@ RO-Crate+BagItファイルは、以下の構成である必要がある。
  └── tagmanifest-sha256.txt
 ```
 
-| ファイル or ディレクトリ | 必須 | 詳細                                                                          |
-| :----------------------- | :--: | :---------------------------------------------------------------------------- |
-| bagit.txt                |  ※  | BagItファイルの宣言                                                           |
-| bag-info.txt             |      | Bagに関するメタデータを含むファイル                                           |
-| data/                    |  ※  | ペイロードディレクトリ。 配下のファイルはマニフェストの妥当性により担保される |
-| ro-crate-metadata.json   |  ◯  | アイテムのメタデータがJSON-LD形式で記述されたファイル                         |
-| manifst-sha256.txt       |  ※  | data/内の各ファイルのSHA-256チェックサムをまとめたマニフェストファイル        |
-| tagmanifst-sha256.txt    |      | data/外の各ファイルのSHA-256チェックサムをまとめたタグマニフェストファイル    |
+| ファイル or ディレクトリ | 必須  | 詳細                                                                          |
+| :----------------------- | :---: | :---------------------------------------------------------------------------- |
+| bagit.txt                |   ※   | BagItファイルの宣言                                                           |
+| bag-info.txt             |       | Bagに関するメタデータを含むファイル                                           |
+| data/                    |   ※   | ペイロードディレクトリ。 配下のファイルはマニフェストの妥当性により担保される |
+| ro-crate-metadata.json   |   ◯   | アイテムのメタデータがJSON-LD形式で記述されたファイル                         |
+| manifst-sha256.txt       |   ※   | data/内の各ファイルのSHA-256チェックサムをまとめたマニフェストファイル        |
+| tagmanifst-sha256.txt    |       | data/外の各ファイルのSHA-256チェックサムをまとめたタグマニフェストファイル    |
 
 ただし、この機能からのインポート時には、`data/` ディレクトリ以外は無視する。  
 ※印のファイルは、SWORD APIを利用してアイテムを登録する際にはファイルの検証のため必須になる。
@@ -203,26 +203,26 @@ RO-Crateには、アイテムのメタデータを記述するための語彙が
 アイテムIDとURIがファイル内で指定されていない場合は、リクエストURLのパスパラメータで指定されたアイテムID（recid）を用いて、アイテムIDとURIの値を自動的に補完する。（SWORD API経由のみ）
 一部の語彙は、RO-Crateインポート機能では使用できず、SWORD APIを利用してアイテムを登録・更新する際に使用される。
 
-| 使用語彙                                   | 対応するTSV項目名    | バリュータイプ     | デフォルト値 | 新規 | 更新 | 説明                                     |
-| ------------------------------------------ | -------------------- | ------------------ | ------------ | :--: | :--: | ---------------------------------------- |
-| identifier                                 | ID                   | 文字列             | -            | ×   | 〇   | アイテムID                               |
-| uri                                        | URI                  | URL                | -            | ×   | 〇   | アイテムのURI                            |
-| wk:index                                   | .IndexID             | 配列               | -            | 〇   | 〇   | インデックスID                           |
-| wk:publishStatus                           | .PUBLISH_STATUS      | 文字列             | -            | 〇   | 〇   | 公開ステータス                           |
-| wk:feedbackMail                            | .FEEDBACK_MAIL       | 文字列             | -            |      |      | フィードバックメール                     |
-| wk:requestMail                             | .REQUEST_MAIL        | 文字列             | -            |      |      | リクエストメール                         |
-| wk:grant.@id                               | .CNRI                | URL                | -            |      |      | CNRI                                     |
-| wk:grant.@id                               | .DOI                 | URL                | -            |      |      | DOI                                      |
-| wk:grant<br>.jpcoar:identifierRegistration | .DOI_RA              | URL                | -            |      |      | DOI_RA                                   |
-| wk:editMode                                | Keep/Upgrade Version | 文字列             | -            |      | 〇   | Keep/Upgrade Version                     |
-| wk:itemLinks.identifier                    | -                    | 整数値 or 文字列   | -            |      |      | アイテムリンク先識別子                   |
-| wk:itemLinks.value                         | -                    | 文字列             | -            |      |      | アイテムリンクタイプ                     |
-| wk:textExtraction                          | -                    | 真偽値             | true         |      |      | 全文検索用本文抽出フラグ                 |
-| wk:saveAsIs                                | -                    | 真偽値             | false        |      |      | 登録用ファイル保存フラグ                 |
-| wk:isSplited                               | -                    | 真偽値             | false        |      |      | アイテム分割フラグ （SWORD経由のみ）     |
-| wk:metadataAutoFill                        | -                    | 真偽値             | false        |      |      | メタデータ自動補完フラグ                 |
-| wk:metadataReplace                         | -                    | 真偽値             | false        |      |      | メタデータのみ置換フラグ（SWORD経由のみ）|
-| wk:researchmapLinkage                      | -                    | 真偽値             | false        |      |      | researchmap連携フラグ（SWORD経由のみ）    |
+| 使用語彙                                   | 対応するTSV項目名    | バリュータイプ   | デフォルト値 | 新規  | 更新  | 説明                                      |
+| ------------------------------------------ | -------------------- | ---------------- | ------------ | :---: | :---: | ----------------------------------------- |
+| identifier                                 | ID                   | 文字列           | -            |   ×   |  〇   | アイテムID                                |
+| uri                                        | URI                  | URL              | -            |   ×   |  〇   | アイテムのURI                             |
+| wk:index                                   | .IndexID             | 配列             | -            |  〇   |  〇   | インデックスID                            |
+| wk:publishStatus                           | .PUBLISH_STATUS      | 文字列           | -            |  〇   |  〇   | 公開ステータス                            |
+| wk:feedbackMail                            | .FEEDBACK_MAIL       | 文字列           | -            |       |       | フィードバックメール                      |
+| wk:requestMail                             | .REQUEST_MAIL        | 文字列           | -            |       |       | リクエストメール                          |
+| wk:grant.@id                               | .CNRI                | URL              | -            |       |       | CNRI                                      |
+| wk:grant.@id                               | .DOI                 | URL              | -            |       |       | DOI                                       |
+| wk:grant<br>.jpcoar:identifierRegistration | .DOI_RA              | URL              | -            |       |       | DOI_RA                                    |
+| wk:editMode                                | Keep/Upgrade Version | 文字列           | -            |       |  〇   | Keep/Upgrade Version                      |
+| wk:researchmapLinkage                      | .RESEARCHMAP_LINKAGE | 真偽値           | false        |       |       | researchmap連携フラグ                     |
+| wk:itemLinks.identifier                    | -                    | 整数値 or 文字列 | -            |       |       | アイテムリンク先識別子                    |
+| wk:itemLinks.value                         | -                    | 文字列           | -            |       |       | アイテムリンクタイプ                      |
+| wk:textExtraction                          | -                    | 真偽値           | true         |       |       | 全文検索用本文抽出フラグ                  |
+| wk:saveAsIs                                | -                    | 真偽値           | false        |       |       | 登録用ファイル保存フラグ                  |
+| wk:isSplited                               | -                    | 真偽値           | false        |       |       | アイテム分割フラグ （SWORD経由のみ）      |
+| wk:metadataAutoFill                        | -                    | 真偽値           | false        |       |       | メタデータ自動補完フラグ                  |
+| wk:metadataReplace                         | -                    | 真偽値           | false        |       |       | メタデータのみ置換フラグ（SWORD経由のみ）
 
 ※ 登録用ファイル保存フラグとアイテム分割フラグが両方`true`の場合、アイテム分割フラグが優先され、ファイルは展開されて保存される。
 
@@ -477,13 +477,6 @@ researchmapへの業績連携を行うかどうかを指定する。ルートデ
 このフラグはSWORD APIを利用してワークフロー経由でアイテムを登録する場合にのみ有効であり、`true`のとき、登録アクティビティに研究者情報連携（`cris_linkage.researchmap`）が引き渡され、researchmapへの業績連携が実行される。  
 `JsonLdMapper`が`wk:researchmapLinkage`を解析して`system_info["researchmap_linkage"]`に格納し、SWORD側（`weko_swordserver`）で`metadata["researchmap"]`に反映、`weko_workflow` の `HeadlessActivity` が `cris_linkage.researchmap` としてアクティビティ登録データに設定する。
 
-```json
-{
-  "@id": "./",
-  "wk:researchmapLinkage": true
-}
-```
-
 
 ## マッピング機能
 JSON-LD形式のメタデータファイルを読み込み、あらかじめ設定されたマッピング定義に基づいてWEKO3のアイテムタイプにマッピングする機能を提供する。  
@@ -525,6 +518,9 @@ WEKO3では、アイテムの全文検索に使用するのために本文ファ
 この機能は、RO-Crate+BagItファイルのインポート時、あるいはSWORD APIを利用してアイテムを登録する際に使用できる。  
 現時点では、個別登録機能を用いて手動でアイテムを登録・更新するときには抽出是非の設定ができないため、対象外とするファイルを指定することはできない。
 
+## 文字列置換機能
+
+文字列置換機能を使用することができる。文字列置換機能については[JSONLDインポート文字列置換](../other/JSONLD_IMPORT_REPLACE.md) を参照。
 
 ## 関連モジュール
 
