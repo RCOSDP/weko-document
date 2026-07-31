@@ -25,25 +25,26 @@ with recursive child (depth, id, parent,index_name) as (
 			child.depth + 1,
 			index.id,
 			index.parent,
-            index.index_name
+            index.index_name,
+			is_deleted
 		from index, child
 		where index.parent = child.id)
 select depth, id,index_name from child order by depth;
 ```
 
 ```
- depth |      id       | index_name 
--------+---------------+------------
-     0 | 1733503900136 | LV1
-     1 | 1733503930431 | LV2
-     2 | 1733503950790 | LV3
+ depth |      id       | index_name | is_deleted
+-------+---------------+------------+------------
+     0 | 1733503900136 | LV1        | f
+     1 | 1733503930431 | LV2        | f
+     2 | 1733503950790 | LV3        | f
 (3 rows)
 ```
 
 1733503900136 とその子インデックスを削除する。
 
 ```
-DELETE FROM index WHERE id IN (
+UPDATE index SET is_deleted = 't' WHERE id IN (
 with recursive child (depth, id, parent,index_name) as (
 		select 0, index.id, index.parent,index.index_name from index where index.id = '1733503900136'
 	union all
