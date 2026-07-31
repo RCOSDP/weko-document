@@ -1,6 +1,6 @@
-### ワークスペース：簡易アイテム登録機能
+# ワークスペース：簡易アイテム登録機能
 
-#### 目的・用途
+## 目的・用途
 
 本機能は、WEKO3のシステム内で入力内容をDOI、ファイル本体、および最小限のメタデータのみとして、登録者の入力内容を極力減らした登録機能である。
 
@@ -59,6 +59,9 @@
       
         - 「DataCite MetaData」  
           Radioの形式で表示される。
+        
+        - 「arXiv MetaData」  
+          Radioの形式で表示される。
                                 
         - 「メタデータ」（Metadata）  
           Titleの形式で表示される。
@@ -107,7 +110,7 @@
 
     <!-- end list -->
     
-      - \[取得（Get）\]ボタンを押すと、CrossRef MetaData、JaLC MetaData、CiNii MetaData、DataCite MetaDataラジオボタンを非活性から活性に変更する。DOIに該当するメタデータが見つかりませんでした場合は下記のメッセージが表示される。
+      - \[取得（Get）\]ボタンを押すと、CrossRef MetaData、JaLC MetaData、CiNii MetaData、DataCite MetaData、arXiv MetaDataラジオボタンを非活性から活性に変更する。DOIに該当するメタデータが見つからない場合は下記のメッセージが表示される。
         メッセージ：「DOIに該当するメタデータが見つかりませんでした。」
     
       - \[登録（Register）\]ボタンを押すと、weko\_workspace.views.item_register_saveが呼び出され、入力された情報がDBとESに保存される。保存が正常終了の場合は下記のメッセージが表示される。
@@ -135,6 +138,7 @@
       - 「JaLC MetaData」：非活性。
       - 「CiNii MetaData」：非活性。
       - 「DataCite MetaData」：非活性。
+      - 「arXiv MetaData」：非活性。
       - 「ファイル名」（File Name）：空欄。
       - 「公開日」（PubDate）：デフォルト(当日)。
       - 「タイトル」（Title）：空欄。

@@ -1,10 +1,10 @@
-### ファセット検索
+# ファセット検索
 
-  - > 目的・用途
+## 目的・用途
 
 本機能は、ファセット検索機能を詳細に設定できる機能である。
 
-  - > 利用方法
+## 利用方法
 
 管理者は本画面でファセット検索として表示する項目を設定できる。
 
@@ -12,42 +12,17 @@
 
 利用者は各ファセット項目の中にあるグルーピングされた値を選択することで、絞り込まれたアイテムがアイテムリストに表示される。
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 利用可否 | ○ | ○ |  |  |  |  |
 
-  - > 機能内容
+## 機能内容
 
 (1) ファセット検索の一覧画面
 
-  - 【Administration \> 設定（Setting） \> ファセット検索（Faceted Search）】を選択すると表示される。
+  - 【Administration > 設定（Setting） > ファセット検索（Faceted Search）】を選択すると表示される。
 
   - 画面構成は以下の通り
     
@@ -79,17 +54,17 @@
             
               - ファセット項目を選択できる。選択した項目に対して削除が可能（※選択（With selected）を参照）
         
-          - \[目\]マーク
+          - [目]マーク
             
               - 選択することで該当のファセット項目の詳細画面に遷移する。　　  
                 …詳細は(2)に記載
         
-          - \[鉛筆\]マーク
+          - [鉛筆]マーク
             
               - 選択することで該当のファセット項目の編集画面に遷移する。　　  
                 …詳細は(3)に記載
         
-          - \[ゴミ箱\]マーク
+          - [ゴミ箱]マーク
             
               - 選択することで該当のファセット項目の削除画面に遷移する。　　  
                 …詳細は(4)に記載
@@ -116,21 +91,21 @@
         
           - Active
             
-              - Web画面上にファセット項目を表示しているかどうかを表す。\[レ\]マークが表示、\[－\]マークが非表示を表す。
+              - Web画面上にファセット項目を表示しているかどうかを表す。[レ]マークが表示、[－]マークが非表示を表す。
     
       - 初期値としてファセット項目を用意している。詳細は以下の通り
 
 | ID | Item Name(EN) | Item Name(JP) | Mapping                      | UI        | Active |
 | -- | ------------- | ------------- | ---------------------------- | --------- | ------ |
-| 1  | Data Language | デ一タの言語        | language                     | SelectBox | \[レ\]  |
-| 2  | Access        | アクセス制限        | accessRights                 | SelectBox | \[レ\]  |
-| 3  | Location      | 地域            | geoLocation.geoLocationPlace | SelectBox | \[レ\]  |
-| 4  | Temporal      | 時間的範囲         | temporal                     | SelectBox | \[レ\]  |
-| 5  | Topic         | トピック          | subject.value                | SelectBox | \[レ\]  |
-| 6  | Distributor   | 配布者           | contributor.contributorName  | SelectBox | \[レ\]  |
-| 7  | Data Type     | デ一タタイプ        | description.value            | SelectBox | \[レ\]  |
+| 1  | Data Language | デ一タの言語        | language                     | SelectBox | [レ]  |
+| 2  | Access        | アクセス制限        | accessRights                 | SelectBox | [レ]  |
+| 3  | Location      | 地域            | geoLocation.geoLocationPlace | SelectBox | [レ]  |
+| 4  | Temporal      | 時間的範囲         | temporal                     | SelectBox | [レ]  |
+| 5  | Topic         | トピック          | subject.value                | SelectBox | [レ]  |
+| 6  | Distributor   | 配布者           | contributor.contributorName  | SelectBox | [レ]  |
+| 7  | Data Type     | デ一タタイプ        | description.value            | SelectBox | [レ]  |
 
-　　　　　　　※\[レ\]マークは、Web画面上にファセット項目を表示する設定になっていることを表す。
+　　　　　　　※[レ]マークは、Web画面上にファセット項目を表示する設定になっていることを表す。
 
   - フィルターを追加（Add Filter）
     
@@ -252,12 +227,12 @@
                 
                   - いいえ（No）
     
-      - 各フィルターでキーワードを入力後、"Enter"キーもしくは\[適用（Apply）\]ボタンを押下すると、各フィルターの条件で絞り込み検索が行われ、検索結果が画面上に表示される。  
+      - 各フィルターでキーワードを入力後、"Enter"キーもしくは[適用（Apply）]ボタンを押下すると、各フィルターの条件で絞り込み検索が行われ、検索結果が画面上に表示される。  
         ※検索結果が無い場合は「表にはアイテムがありません。（There are no items in the table.）」と画面上に表示される
     
-      - フィルターによる絞り込み後、\[フィルターをリセット（Reset Filters）\]ボタンを表示すると全ての絞り込みが解除され、最初の一覧（List）タブの状態となる。
+      - フィルターによる絞り込み後、[フィルターをリセット（Reset Filters）]ボタンを表示すると全ての絞り込みが解除され、最初の一覧（List）タブの状態となる。
     
-      - 各フィルターは\[×\]ボタンで入力エリアから削除される。
+      - 各フィルターは[×]ボタンで入力エリアから削除される。
 
   - 選択（With selected）
     
@@ -268,13 +243,13 @@
               - 選択したファセット項目について削除処理を実行してよいかのメッセージをポップアップで表示する。
                 
                   - ポップアップのメッセージ：　「選択したレコードを削除してもよろしいですか。（Are you sure you want to delete selected records?）」  
-                    　\[OK\]:　選択したファセット項目を削除する。  
-                    　\[キャンセル\]:　削除せずに一覧画面へ戻る。
+                    　[OK]:　選択したファセット項目を削除する。  
+                    　[キャンセル]:　削除せずに一覧画面へ戻る。
             
               - ファセット項目を選択していない場合は、ファセット項目のリストから選択をする旨のメッセージをポップアップで表示する。
                 
                   - ポップアップのメッセージ：　「少なくとも1つのレコードを選択してください。（Please select at least one record.）」  
-                    　\[OK\]:　一覧画面へ戻る。
+                    　[OK]:　一覧画面へ戻る。
 
   - Searchテキストボックス
     
@@ -283,7 +258,7 @@
     
       - キーワードに対し、すべての表の項目に対して部分一致検索を行う。
     
-      - キーワードを入力して検索をした後、Searchエリア欄の\[×\]ボタンを表示すると全ての絞り込みが解除され、最初の一覧（List）タブの状態となる。
+      - キーワードを入力して検索をした後、Searchエリア欄の[×]ボタンを表示すると全ての絞り込みが解除され、最初の一覧（List）タブの状態となる。
 
   - 一覧（List）タブを表示している場合は、登録されている（表示／非表示に関わらず）ファセット項目の数を、タブ上のカッコ内の数値で表示する  
     例えば、ファセット項目が９つ登録されている場合、タブには「一覧(9)」, 「List(9)」のように表示する。
@@ -292,7 +267,7 @@
 
 (2) ファセット検索の詳細画面
 
-  - 一覧（List）タブにある各ファセット項目の\[目\]マークを選択することで、選択したファセット項目の詳細画面に遷移する。
+  - 一覧（List）タブにある各ファセット項目の[目]マークを選択することで、選択したファセット項目の詳細画面に遷移する。
 
   - 選択したファセット項目の詳細画面は 詳細（Details）タブ に表示される。
 
@@ -324,7 +299,7 @@
         
           - 選択したファセット項目のUIが開かれているかの設定を表示する。
 
-(3) ファセット検索の新規作成・編集画面このセクションを編集
+(3) ファセット検索の新規作成・編集画面
 
 新規作成
 
@@ -345,7 +320,7 @@
       - マッピング（Mapping）
         
           - ファセット項目で集計対象とするマッピング情報を選択する。プルダウン形式(いずれか１つを選択)で必須項目である。  
-            プルダウンで選択できるリストは、JPCOARの索引定義（/weko-schema-ui/weko\_schema\_ui/mappings/v6/weko/item-v1.0.0.json）に従う。
+            プルダウンで選択できるリストは、JPCOARの索引定義（/weko-schema-ui/weko_schema_ui/mappings/v6/weko/item-v1.0.0.json）に従う。
     
       - UI
         
@@ -353,7 +328,7 @@
     
       - 表示件数（Display Number）
         
-          - UIがCheckboxList時のファセット内の選択肢を設定する数値。1\~99内の整数を入力する。範囲外の整数や整数ではない数、数字以外を入力した場合、「表示件数は1以上99以下の整数値で入力する必要があります。（Display Number must be an integer value from 1 to 99.）」というメッセージがポップアップ表示される。
+          - UIがCheckboxList時のファセット内の選択肢を設定する数値。1~99内の整数を入力する。範囲外の整数や整数ではない数、数字以外を入力した場合、「表示件数は1以上99以下の整数値で入力する必要があります。（Display Number must be an integer value from 1 to 99.）」というメッセージがポップアップ表示される。
     
       - カスタム集計（Custom Aggregations）
         
@@ -376,9 +351,9 @@
 > 
 > 例１
 > 
-> 　集計マッピング（Aggregation Mapping）に"publish\_status"を、集計値（Aggregation Value）に"0"を設定した場合、
+> 　集計マッピング（Aggregation Mapping）に"publish_status"を、集計値（Aggregation Value）に"0"を設定した場合、
 > 
-> 　該当のファセット項目は、マッピングで選択した値　かつ　"publish\_status"が"0"　となっているアイテムを集計します。
+> 　該当のファセット項目は、マッピングで選択した値　かつ　"publish_status"が"0"　となっているアイテムを集計します。
 > 
 > 例２
 > 
@@ -388,39 +363,34 @@
 
   - 独自の集計対象として設定したマッピング情報は、以下のボタンで追加／削除ができる。
     
-      - \[追加（Add）\]ボタン
+      - [追加（Add）]ボタン
         
           - 設定した集計マッピング（Aggregation Mapping）と集計値（Aggregation Value）を集計一覧（Aggregations List）に登録する。
     
-    <!-- end list -->
     
-      - \[削除（Delete）\]ボタン
+      - [削除（Delete）]ボタン
         
           - 集計一覧（Aggregations List）のリストの行を選択後、ボタン押下で該当のマッピング情報を削除する。
-
-<!-- end list -->
 
   - 表示/非表示（Display/Hide）
     
       - 対象のファセット項目をWeb画面上に表示するかどうかを設定する。  
         表示の場合は「表示（Display）」, 非表示の場合は「非表示（Hide）」のラジオボタンを選択する。初期値は「表示（Display）」である。
 
-<!-- end list -->
-
   - 入力した内容で登録・更新する際は以下のボタンを押下する。
     
-      - \[保存（Save）\]ボタン
+      - [保存（Save）]ボタン
         
           - 入力した内容を保存し、一覧（List）タブに遷移する。  
             新規に登録した場合は、一覧（List）タブのリストの一番下に表示される。既存のファセット項目を更新した場合は、更新した内容が一覧（List）タブのリストに表示される。
     
-      - \[キャンセル（Cancel）\]ボタン
+      - [キャンセル（Cancel）]ボタン
         
           - 入力中の内容を破棄し、一覧（List）タブに遷移する。
 
 編集
 
-  - 一覧（List）タブにある各ファセット項目の\[鉛筆\]マークを選択することで、選択したファセット項目の編集画面に遷移する
+  - 一覧（List）タブにある各ファセット項目の[鉛筆]マークを選択することで、選択したファセット項目の編集画面に遷移する
 
   - 編集画面は 編集（Edit）タブ に表示される
 
@@ -429,12 +399,16 @@
 
   - 入力できる内容やボタン押下時の動作は 新規作成 の記載内容を参照
 
+  - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueの場合
+    - 作成・編集を実行時に、修正表示されるAccess Rightsに合わせた集計クエリに切り替わる
+    - access Rightsの修正表示については[メタデータ表示](../user/USER_3_1.md#メタデータ表示)の「Access Rightsの表示について」参照
+
 エラーメッセージ
 
-  - ファセット登録・編集時において、\[保存（Save）\]ボタン押下時にエラーチェックを行い、不適切なデータ登録をしないように制御を行う。
+  - ファセット登録・編集時において、[保存（Save）]ボタン押下時にエラーチェックを行い、不適切なデータ登録をしないように制御を行う。
 
   - エラーメッセージはポップアップで画面上に表示される。  
-    ポップアップ上の\[キャンセル（Cancel）\]ボタンを押下すると、ポップアップは消えて自画面を表示する（修正箇所は赤枠等で表示はされない）
+    ポップアップ上の[キャンセル（Cancel）]ボタンを押下すると、ポップアップは消えて自画面を表示する（修正箇所は赤枠等で表示はされない）
 
   - 本画面でチェックしているエラー内容は以下の通り。
 
@@ -446,7 +420,7 @@
 
 (4) ファセット検索の削除画面
 
-  - 一覧（List）タブにある各ファセット項目の\[ゴミ箱\]マークを選択することで、選択したファセット項目の削除画面に遷移する
+  - 一覧（List）タブにある各ファセット項目の[ゴミ箱]マークを選択することで、選択したファセット項目の削除画面に遷移する
 
   - 削除画面は 削除（Delete）タブ に表示される
 
@@ -478,123 +452,67 @@
 
   - 削除画面では削除をする際は以下のボタンを押下する
     
-      - \[削除（Delete）\]ボタン
+      - [削除（Delete）]ボタン
         
           - ボタンを押下すると、選択したファセット項目について削除処理を実行してよいかのメッセージをポップアップで表示する。
             
               - ポップアップのメッセージ：　「選択したレコードを削除してもよろしいですか。（Are you sure you want to delete selected records?）」  
-                　\[OK\]:　選択したファセット項目を削除する  
-                　\[キャンセル\]:　削除せずに削除画面へ戻る
+                　[OK]:　選択したファセット項目を削除する  
+                　[キャンセル]:　削除せずに削除画面へ戻る
     
-      - \[キャンセル（Cancel）\]ボタン
+      - [キャンセル（Cancel）]ボタン
         
           - ボタンを押下すると、一覧（List）タブへ戻る
 
   - 予期せぬエラーが発生した場合、「サーバエラーのため、削除に失敗しました（Failed to delete due to server error.）」のポップアップを表示する  
-    \[キャンセル（Cancel）\]ボタンを押下すると、自画面へ戻る
+    [キャンセル（Cancel）]ボタンを押下すると、自画面へ戻る
 
 (5) その他
 
   - 表示している画面のタブから他のタブへ遷移できるもののリストは以下の通り
 
-<table>
-<thead>
-<tr class="header">
-<th>現在のタブ</th>
-<th>→</th>
-<th>遷移できるタブ</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>一覧（List）</td>
-<td>→</td>
-<td>作成（Create）</td>
-</tr>
-<tr class="even">
-<td>作成（Create）</td>
-<td></td>
-<td>一覧（List）</td>
-</tr>
-<tr class="odd">
-<td>編集（Edit）</td>
-<td></td>
-<td>一覧（List）<br />
-作成（Create）<br />
-詳細（Details）　※編集（Edit）タブで表示しているファセット項目の詳細画面を表示する<br />
-削除（Delete）　※編集（Edit）タブで表示しているファセット項目の削除画面を表示する</td>
-</tr>
-<tr class="even">
-<td>詳細（Details）</td>
-<td></td>
-<td>一覧（List）<br />
-作成（Create）<br />
-編集（Edit）　　※詳細（Details）タブで表示しているファセット項目の編集画面を表示する<br />
-削除（Delete）　※詳細（Details）タブで表示しているファセット項目の削除画面を表示する</td>
-</tr>
-<tr class="odd">
-<td>削除（Delete）</td>
-<td></td>
-<td>一覧（List）<br />
-作成（Create）<br />
-編集（Edit）　　※削除（Delete）タブで表示しているファセット項目の編集画面を表示する<br />
-詳細（Details）　※削除（Delete）タブで表示しているファセット項目の詳細画面を表示する</td>
-</tr>
-</tbody>
-</table>
+| 現在のタブ | → | 遷移できるタブ |
+| --- | --- | --- |
+| 一覧（List） | → | 作成（Create） |
+| 作成（Create） |  | 一覧（List） |
+| 編集（Edit） |  | 一覧（List）<br />作成（Create）<br />詳細（Details）　※編集（Edit）タブで表示しているファセット項目の詳細画面を表示する<br />削除（Delete）　※編集（Edit）タブで表示しているファセット項目の削除画面を表示する |
+| 詳細（Details） |  | 一覧（List）<br />作成（Create）<br />編集（Edit）　　※詳細（Details）タブで表示しているファセット項目の編集画面を表示する<br />削除（Delete）　※詳細（Details）タブで表示しているファセット項目の削除画面を表示する |
+| 削除（Delete） |  | 一覧（List）<br />作成（Create）<br />編集（Edit）　　※削除（Delete）タブで表示しているファセット項目の編集画面を表示する<br />詳細（Details）　※削除（Delete）タブで表示しているファセット項目の詳細画面を表示する |
 
   - ファセット項目を表示する設定としているが、カスタム集計の集計マッピングが未入力のときに、Web画面でインデックスリストの選択と検索ができないため注意  
     (ファセットの表示設定ON/OFFに限らず発生)
 
-<!-- end list -->
+## 関連モジュール
 
-  - > 関連モジュール
+  - weko_admin
 
-<!-- end list -->
-
-  - > weko\_admin
-
-<!-- end list -->
-
-  - > 処理概要
+## 処理概要
 
 > 一覧表示
 
-  - > weko\_admin.model.FacetSearchSetting.get\_allが呼び出され、db内のfacet\_search\_settingテーブルの全情報が取り出され表示されている。
+  - weko_admin.models.FacetSearchSetting.get_allが呼び出され、db内のfacet_search_settingテーブルの全情報が取り出され表示されている。
 
-  - > 任意のファセット項目の目のマークを押下すると、weko\_admin.admin.FacatSearchView.details\_viewが呼び出され、クリックしたファセット項目の詳細情報が、db内のfacet\_search\_settingテーブルから取り出され表示される。
+  - 任意のファセット項目の目のマークを押下すると、weko_admin.admin.FacetSearchSettingView.details_viewが呼び出され、クリックしたファセット項目の詳細情報が、db内のfacet_search_settingテーブルから取り出され表示される。
 
-  - > 任意のファセット項目の鉛筆マークを押下すると、weko\_admin.admin.FacatSearchView.edit\_viewが呼び出され編集画面へ移行し、\[保存(Save)\]ボタンを押下すると、 weko\_admin.views.save\_facet\_searchが呼び出され、編集内容に問題がなければ、db内のfacet\_search\_settingテーブルの情報が変更される。
+  - 任意のファセット項目の鉛筆マークを押下すると、weko_admin.admin.FacetSearchSettingView.edit_viewが呼び出され編集画面へ移行し、[保存(Save)]ボタンを押下すると、 weko_admin.views.save_facet_searchが呼び出され、編集内容に問題がなければ、db内のfacet_search_settingテーブルの情報が変更される。
 
-  - > 任意のファセット項目のゴミ箱マークを押下すると、weko\_admin.admin.FacetSearchSettingView.deleteが呼び出され削除画面へ移行し、「削除（delete）」ボタンが押下されるとweko\_admin.views.remove\_facet\_searchが呼び出され、db内のfacet\_search\_settingテーブルから選択したファセット項目が削除される。
+  - 任意のファセット項目のゴミ箱マークを押下すると、weko_admin.admin.FacetSearchSettingView.deleteが呼び出され削除画面へ移行し、「削除（delete）」ボタンが押下されるとweko_admin.views.remove_facet_searchが呼び出され、db内のfacet_search_settingテーブルから選択したファセット項目が削除される。
 
 > 作成
 
-  - > 作成タブを押下すると、weko\_admin.admin.FacetSearchSettingView.create\_viewが呼び出され、作成画面へ移行する。各種項目に作成するファセット項目の情報を入力し\[保存（Save）\]ボタンを押下すると、weko\_admin.views.save\_facet\_searchが呼び出され、入力項目に問題がなければ、db内のfacet\_search\_settingテーブルに入力情報が追加される。入力項目の規制については、上記の「(3) ファセット検索の新規作成・編集画面このセクションを編集」に示した通りである。
+  - 作成タブを押下すると、weko_admin.admin.FacetSearchSettingView.create_viewが呼び出され、作成画面へ移行する。各種項目に作成するファセット項目の情報を入力し[保存（Save）]ボタンを押下すると、weko_admin.views.save_facet_searchが呼び出され、入力項目に問題がなければ、db内のfacet_search_settingテーブルに入力情報が追加される。入力項目の規制については、上記の「(3) ファセット検索の新規作成・編集画面」に示した通りである。
 
 > 選択
 
-  - > 一つ以上のファセット項目を選択した状態で、選択タブから削除を選択することで、weko\_gridlayout.admin.WidgetSettingView.action\_deleteが呼び出され、db内のfacet\_search\_settingテーブルから選択した情報が削除される。
+  - 一つ以上のファセット項目を選択した状態で、選択タブから削除を選択することで、weko_admin.admin.FacetSearchSettingView.action_deleteが呼び出され、db内のfacet_search_settingテーブルから選択した情報が削除される。
 
-<!-- end list -->
+## 実装補足（v2.0.2 実装との突き合わせ）
 
-  - > 更新履歴
+- 画面/ハンドラ：`weko_admin.admin.FacetSearchSettingView`（flask-admin ModelView、`create_view`/`edit_view`/`details_view`/`delete`）＋ `views.save_facet_search` / `remove_facet_search`。model `FacetSearchSetting`（テーブル `facet_search_setting`、`is_open` / `aggregations` 列）。保存・削除時に `store_facet_search_query_in_redis` で Redis キャッシュを更新。重複判定は `is_exits_facet`。
+- 「選択して削除」は `FacetSearchSettingView` 自身の `action_delete` によるもので、`weko_gridlayout` のウィジェット削除とは無関係。
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+## 更新履歴
+
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |

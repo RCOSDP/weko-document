@@ -8,8 +8,6 @@
 - [GET /api/depositactivity/\<activity_id>](#get-apidepositactivityactivity_id)
 - [DELETE /api/depositactivity/\<activity_id>](#delete-apidepositactivityactivity_id)
 
-
-
 ## POST /api/depositactivity
 
 表内のいずれかの○に合致すれば、ワークフローを作成することが出来ます。
@@ -18,8 +16,6 @@
 | -------------------------------------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | トークンのスコープに<br>user:activity<br>がある | ○                  | ○                    | ○                      | ○            | ○            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
-
-
 
 ## GET /api/depositactivity/\<activity_id>
 
@@ -30,8 +26,6 @@
 | トークンのスコープに<br>user:activity<br>がある | ○                  | ○                    | ○                      | ○            | ○            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-
-
 ## DELETE /api/depositactivity/\<activity_id>
 
 表内のいずれかの○に合致すれば、指定したアクティビティIDのアクティビティを中断することが出来ます。
@@ -41,7 +35,9 @@
 | トークンのスコープに<br>user:activity<br>がある | ○                  | ○                    | ○                      | ○            | ○            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
+## 実装（アクセス制御の担保）
 
+（2026/07/14 実装 v2.0.2 と突き合わせ）本APIの認可は OAuth2 を基本とし、`require_api_auth(allow_anonymous=…)`（未認証許可可否）、`require_oauth_scopes(<scope>)`（トークン使用時のみスコープ検証）、`roles_required([...])`（未認証かつ guest_token 無しは 401）の組み合わせで判定される。ゲスト（未ログイン）可否は主に `allow_anonymous` と `roles_required` の有無で決まり、公開範囲は検索系では `weko_search_ui.query.get_permission_filter` で絞り込まれる。各エンドポイントの実ハンドラ・スコープは [API仕様（api カテゴリ）](../api/README.md) を参照。
 
 ## 更新履歴
 

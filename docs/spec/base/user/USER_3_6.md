@@ -1,111 +1,49 @@
-### 共有
+# 共有
 
-  - > 目的・用途
+## 目的・用途
 
 本機能は、アイテムの詳細情報を共有する機能である。
 
-  - > 利用方法
+## 利用方法
 
 共有は、アイテム詳細画面の右端のShareエリアの共有ボタンを押下して行う。
 
-  - > 利用可能なロール
+## 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
-  - > 機能内容
-
-<!-- end list -->
-
-  - 本機能に対応していた「AddThis」は2023年5月31日にサービスを終了しているため、共有機能を使用することは出来ない。
+## 機能内容
 
   - アイテム詳細画面での「共有」（Share）エリアに共有ボタンを表示する
-    
-      - 表示しておく共有ボタンをhtmlファイルに指定する
-        
-          - パス：  
-            <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/box/share.html#L25-L33>
-        
-          - 表示される共有ボタンは以下の通りである。また、共有アイコンをマウスホバーすると、共有サイト名を表示する
-            
-              - 「mendeley」
-            
-              - 「citeulike」(2019年サービス終了により表示されない)
-            
-              - 「twitter」
-            
-              - 「facebook」
-            
-              - 「print」
-        
-          - 「+」ボタンを設ける
-            
-              - 「+」ボタンをマウスホバーすると、共有サイト名一覧を表示する
-            
-              - 「+」ボタンを押すと、共有モデルを表示する
 
-  - 共有ボタンを押すと、該当サイトに移動する
+      - 表示する共有ボタンは html ファイル（`templates/weko_records_ui/box/share.html`）に指定する
 
-<!-- end list -->
+          - 表示される共有ボタンは以下の通りである。
 
-  - > 関連モジュール
+              - 「Facebook」
 
-<!-- end list -->
+              - 「Twitter(X)」
 
-  - > 対応しているモジュール：「weko\_records\_ui」
+              - 「Print（印刷）」
 
-  - > 対応しているプラグイン：「AddThis」
+  - 「Facebook」「Twitter(X)」ボタンを押すと、該当サイトの共有画面に移動する。「Print（印刷）」ボタンを押すと、印刷ダイアログ（`window.print()`）を表示する。
 
-<!-- end list -->
+## 関連モジュール
 
-  - > 処理概要
+  - 対応しているモジュール：「weko_records_ui」
 
-> weko\_theme.static.js.addthis.addthis\_widgetにおいてAddThisのアイテムの共有を設定している。  
-> <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-theme/weko_theme/static/js/addthis/addthis_widget.js>
+## 処理概要
 
-  - > 更新履歴
+共有ボタンは `templates/weko_records_ui/box/share.html` に定義され、Facebook・Twitter(X) はそれぞれネイティブの Facebook SDK / Twitter ウィジェットを、Print（印刷）は `window.print()` を使用する。
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2023/08/31</p>
-</blockquote></td>
-<td>353ba1deb094af5056a58bb40f07596b8e95a562</td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- 共有ボタンは `templates/weko_records_ui/box/share.html` の Facebook・Twitter(X)・Print（印刷）のみで、ネイティブの Facebook SDK / Twitter widget / `window.print()` を使用する。`weko_theme/static/js/addthis/addthis_widget.js` は残存するが share.html から読み込まれていない（孤立）。
+
+## 更新履歴
+
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |

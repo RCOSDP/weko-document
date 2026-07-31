@@ -1,4 +1,4 @@
-### CAPTCHA
+# CAPTCHA
 
 - 目的・用途
 
@@ -10,42 +10,21 @@
 
     - CAPTCHA画像取得API
 
+      ```bash
       curl <WEKO3のURL>/api/v1/captcha/image
+      ```
 
     - CAPTCHA結果検証API
 
+      ```bash
       curl -X POST -H "Content-Type: application/json" <WEKO3のURL>/api/v1/captcha/validate -d '{ "key": "aaa", "calculation_result": 20 }'
+      ```
 
 - 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | ○ |
 
 - 機能内容
 
@@ -59,8 +38,10 @@
 
 - 関連モジュール
 
-  - weko_records_ui/captcha.py
-  - weko_records_ui/api.py
+  - weko-records-ui（ハンドラ `rest.CreateCaptchaImage` / `rest.CaptchaAnswerValidation`、生成・検証 `api.create_captcha_image` / `api.validate_captcha_answer`、画像生成 `captcha.py`）
+  - weko-redis（`redis.RedisConnection`。Redis DBは `CACHE_REDIS_DB`）
+
+> 実装補足（v2.0.2）：エンドポイントは `GET /api/v1/captcha/image`（`CreateCaptchaImage`）、`POST /api/v1/captcha/validate`（`CaptchaAnswerValidation`）。キーは `sha1(画像生成日時+ソルト)`、認証トークンは `sha256`（64桁）。Redis有効期限は `WEKO_RECORDS_UI_CAPTCHA_EXPIRATION_SECONDS`（900）、レスポンスTTLは `min(有効期限, WEKO_RECORDS_UI_CAPTCHA_TTL_SECONDS(600))`。
 
 - 処理概要
 
@@ -100,21 +81,7 @@
 
 - 更新履歴
 
-<table>
-<thead>
-<tr class="header">
-<th>日付</th>
-<th>GitHubコミットID</th>
-<th>更新内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>2025/10/10</p>
-</blockquote></td>
-<td></td>
-<td>初版作成</td>
-</tr>
-</tbody>
-</table>
+| 日付 | GitHubコミットID | 更新内容 |
+| ---- | ---- | ---- |
+| 2025/10/10 |  | 初版作成 |
+| 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。ハンドラクラス(rest.py)・エンドポイント・キー/トークン生成方式・configキー(有効期限/TTL)・Redis接続を追記 |

@@ -9,22 +9,22 @@
 
 Scopeに「index:create」をもつアクセストークンを使用してAPIを呼び出す
 
-| **Method**    | **HTTP request**           | **Description** |
-| ------------- | -------------------------- | --------------- |
-| create\_index | POST /api/indextree/create |                 |
+| **Method**   | **HTTP request**           | **Description** |
+| ------------ | -------------------------- | --------------- |
+| create_index | POST /api/indextree/create |                 |
 
 パラメータは以下の内容のjsonとする
 
-| **Parameter name**                 | **Value** | **Description**       |
-| ---------------------------------- | --------- | --------------------- |
-| Path parameters                    |           |                       |
-| parent\_id                         | 数値        | 親インデックスのID            |
-| index\_info                        | json      | 必須。以下の項目のうち少なくとも1つが必要 |
-| index\_info.index\_name            | 文字列       | 日本語のインデックス名           |
-| index\_info.index\_name\_english   | 文字列       | 英語のインデックス名            |
-| index\_info.comment                | 文字列       | コメント                  |
-| index\_info.public\_state          | 真偽値       | 公開設定                  |
-| index\_info.harvest\_public\_state | 真偽値       | ハーベスト公開設定             |
+| **Parameter name**               | **Value** | **Description**       |
+| -------------------------------- | --------- | --------------------- |
+| Path parameters                  |           |                       |
+| parent_id                        | 数値        | 親インデックスのID            |
+| index_info                       | json      | 必須。以下の項目のうち少なくとも1つが必要 |
+| index_info.index_name            | 文字列       | 日本語のインデックス名           |
+| index_info.index_name_english    | 文字列       | 英語のインデックス名            |
+| index_info.comment               | 文字列       | コメント                  |
+| index_info.public_state          | 真偽値       | 公開設定                  |
+| index_info.harvest_public_state  | 真偽値       | ハーベスト公開設定             |
 
 curlによるリクエスト例
 
@@ -35,106 +35,44 @@ $ curl https://ホスト/api/indextree/create -H "Authorization:Bearer アクセ
 
 ### 利用可能なロール
 
-<table>
-<thead>
-<tr class="header">
-<th>ロール</th>
-<th>システム<br />
-管理者</th>
-<th>リポジトリ<br />
-管理者</th>
-<th>コミュニティ<br />
-管理者</th>
-<th>登録ユーザー</th>
-<th>一般ユーザー</th>
-<th>ゲスト<br />
-(未ログイン)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>利用可否</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td>○</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| ロール | システム管理者 | リポジトリ管理者 | コミュニティ管理者 | 登録ユーザー | 一般ユーザー | ゲスト(未ログイン) |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 利用可否 | ○ | ○ | ○ | ○ | ○ | |
 
 ### 機能内容
 
-<!-- end list -->
-
   - 以下を指定してインデックスを新規作成する
-    
-      - 親インデックス
-
+    - 親インデックス
   - 指定されなかった場合はRoot Index直下に作成される
-    
-      - 日本語のインデックス名
-    
-      - 英語のインデックス名
-
+    - 日本語のインデックス名
+    - 英語のインデックス名
   - 各インデックス名は、指定されなかった場合は「New Index」が設定される
-    
-      - コメント
-    
-      - 公開設定
-
+    - コメント
+    - 公開設定
   - 指定されなかった場合は「False」が設定される
-    
-      - ハーベスト公開設定
-
+    - ハーベスト公開設定
   - 指定されなかった場合は「True」が設定される
-
-<!-- end list -->
 
 ### 関連モジュール
 
-<!-- end list -->
-
-  - weko\_index\_tree
-
-<!-- end list -->
+  - weko_index_tree
 
 ### 処理概要
 
-<!-- end list -->
-
   - Scope:
-    
-      - weko- index-tree /weko\_ index\_tree /scopes.py
-
+    - weko-index-tree/weko_index_tree/scopes.py
   - API:
-    
-      - modules/weko-index-tree/weko\_index\_tree/views.py
-
-  - create\_index関数でindexテーブルに新規インデックスを作成する
-    
-      - 以下の情報を用いてインデックスを新規作成する
-
+    - modules/weko-index-tree/weko_index_tree/views.py
+  - create_index関数でindexテーブルに新規インデックスを作成する
+    - 以下の情報を用いてインデックスを新規作成する
   - id：作成時のUNIX時間を1000倍したものを用いる
-
-  - parent\_id：パラメータで指定されなかった場合には0を設定する
-
-  - index\_name：「New Index」固定
-    
-      - 作成したインデックスを、index\_infoの内容を用いてupdateする
-    
-      - 作成が成功すると、以下の内容のレスポンスが返却される
-
-  - Indexes.updateメソッドの返却値をjson形式にエンコードしたものをレスポンスボディに入れようとする
-
-  - しかし、updateメソッドの返却値はNoneなので、実際に入るのはエラーメッセージ「'NoneType' object is not iterable」である
-    
-      - パラメータとして空のjsonを渡した場合は、400エラーとなりエラーメッセージ「No data to create.」が返却される
-    
-      - index\_infoが空だった場合は、400エラーとなりエラーメッセージ「index\_info can not be null.」が返却される
-
-<!-- end list -->
+  - parent_id：パラメータで指定されなかった場合には0を設定する
+  - index_name：「New Index」固定
+    - 作成したインデックスを、index_infoの内容を用いてupdateする
+    - 作成が成功すると、以下の内容のレスポンスが返却される
+  - `Indexes.update` メソッドの返却値（作成・更新された index オブジェクト）を `dict(index)` にエンコードし、HTTP 201 でレスポンスボディに入れて返す（v2.0.2 では `update` は index を返す。更新に失敗した場合のみ 400「Could not update data.」を返す）
+    - パラメータとして空のjsonを渡した場合は、400エラーとなりエラーメッセージ「No data to create.」が返却される
+    - index_infoが空だった場合は、400エラーとなりエラーメッセージ「index_info can not be null.」が返却される
 
 
 ## インデックス管理API
@@ -152,11 +90,11 @@ APIの認証にはOAuth2を利用する。
 
 | 項番 | HTTP Method | エンドポイント                        | Description                          |
 | :--: | ----------- | ------------------------------------- | ------------------------------------ |
-|  1   | GET         | /api/\<version>/tree                   | 全インデックスの情報を取得する       |
-|  2   | GET         | /api/\<version>/tree/\<index_id>        | 指定したインデックスの情報を取得する |
-|  3   | POST        | /api/\<version>/tree/index             | インデックスを新規作成する           |
-|  4   | PUT         | /api/\<version>/tree/index/\<index_id>  | 指定したインデックスを更新する       |
-|  5   | DELETE      | /api/\<version>/tree/index/\<index_id>  | 指定したインデックスを削除する       |
+|  1   | GET         | /api/<version>/tree                   | 全インデックスの情報を取得する       |
+|  2   | GET         | /api/<version>/tree/<index_id>        | 指定したインデックスの情報を取得する |
+|  3   | POST        | /api/<version>/tree/index             | インデックスを新規作成する           |
+|  4   | PUT         | /api/<version>/tree/index/<index_id>  | 指定したインデックスを更新する       |
+|  5   | DELETE      | /api/<version>/tree/index/<index_id>  | 指定したインデックスを削除する       |
 
 ### Scope
 インデックス情報を取得するためには、アクセストークンに以下のスコープを要求する。
@@ -240,8 +178,8 @@ $ curl -k "https://192.168.56.200/api/v1/tree/1623632832836" -H "Authorization:B
 全インデックスあるいは指定したインデックスの情報を取得する。
 
 #### エンドポイント
-GET /api/<version>/tree：全インデックス  
-GET /api/<version>/tree/<index_id>：指定したインデックス
+GET /api/\<version>/tree：全インデックス  
+GET /api/\<version>/tree/<index_id>：指定したインデックス
 
 #### リクエストヘッダー
 
@@ -315,7 +253,7 @@ GET /api/<version>/tree/<index_id>：指定したインデックス
 インデックスを新規作成する。
 
 #### エンドポイント
-POST /api/<version>/tree/index
+POST /api/\<version>/tree/index
 
 #### リクエストヘッダー
 
@@ -343,7 +281,7 @@ POST /api/<version>/tree/index
 | .comment            |      | string  | インデックスのコメント。デフォルトは ""                                                  |
 | .more_check         |      | boolean | 子インデックスの初回表示個数を制限し、more表示するか。デフォルトは false                 |
 | .display_no         |      | integer | more表示時の子インデックスの初回表示個数。デフォルトは 5                                 |
-| .harvest_public_state |     | boolean | ハーベスト公開状態。デフォルトは tru                                                    |
+| .harvest_public_state |     | boolean | ハーベスト公開状態。デフォルトは true                                                    |
 | .display_format     |      | string  | インデックスの表示形式。一覧表示："1", 目次表示："2"。 デフォルトは "1"                  |
 | .public_state       |      | boolean | インデックスの公開状態。デフォルトは false                                               |
 | .public_date        |      | string  | 公開日。YYYYMMDD形式で指定。デフォルトは null                                            |
@@ -382,7 +320,7 @@ POST /api/<version>/tree/index
 指定したインデックスの情報を更新する。
 
 #### エンドポイント
-PUT /api/<version>/tree/index/<index_id>
+PUT /api/\<version>/tree/index/<index_id>
 
 #### リクエストヘッダー
 
@@ -429,7 +367,7 @@ PUT /api/<version>/tree/index/<index_id>
 指定したインデックスを削除する。
 
 #### エンドポイント
-DELETE /api/<version>/tree/index/<index_id>
+DELETE /api/\<version>/tree/index/<index_id>
 
 #### リクエストヘッダー
 
@@ -455,7 +393,7 @@ DELETE /api/<version>/tree/index/<index_id>
 
 #### レスポンスボディ
 **正常終了**
-レスポンスボディは空。
+レスポンスボディには `{"status": 204}` を返す。
 
 **異常終了**
 | 項目名      | 説明                     |
@@ -463,10 +401,29 @@ DELETE /api/<version>/tree/index/<index_id>
 | code        | HTTPステータスコード     |
 | description | エラーメッセージ         |
 
+## 関連モジュール（インデックス管理API）
+
+- weko-index-tree
+  - Blueprint生成 `rest.create_blueprint`、ハンドラ `rest.IndexManagementAPI`（HTTP `get/post/put/delete` → 実処理 `get_v1/post_v1/put_v1/delete_v1`、日英ツリーマージ `merge_index_trees`、権限確認 `check_index_accessible`）
+  - REST定義 `config.WEKO_INDEX_TREE_REST_ENDPOINTS`（ルート：`/<version>/tree`、`/<version>/tree/<index_id>`、`/<version>/tree/index`、`/<version>/tree/index/<index_id>`）
+  - スコープ `scopes.py`（`create/read/update/delete_index_scope` ＝ `index:create/read/update/delete`）
+  - リクエストスキーマ `schema.py`（`IndexCreateRequestSchema` / `IndexUpdateRequestSchema`、`validate_public_date` / `validate_role_or_group`）
+  - DBロジック `api.Indexes`（`create`（id＝UNIX時間×1000）/ `update`（indexを返す）/ `move`（親・順序変更）/ `get_index_tree`）
+  - エラー `errors.py`（`IndexBaseRESTError`(400) / `InvalidDataRESTError`(400) / `VersionNotFoundRESTError`(400) / `PermissionError`(403) / `IndexNotFound404Error`(404) / `InternalServerError`(500)）
+- weko-accounts（`utils.roles_required`）、weko-admin（`WEKO_ADMIN_PERMISSION_ROLE_SYSTEM/_REPO/_COMMUNITY`）
+
+> 実装補足（v2.0.2）：
+> - 書込系（POST/PUT/DELETE）はシステム/リポジトリ/コミュニティ管理者に限定（`@roles_required`）。コミュニティ管理者は自身の管理下インデックスのみ操作可（`utils.can_admin_access_index`）。GET は認証済みなら全ロール可、ゲスト不可。
+> - バージョンは `v1` のみ（他は 400 `VersionNotFoundRESTError`）。Content-Type は application/json 必須（400）。`index_id=0`（ルート）への PUT/DELETE 不可（400）。
+> - POST 成功は 201、PUT 成功は 200、いずれもレスポンスはDB全カラム＋`created`/`updated`/`public_date` を含む。DELETE 成功は 204、レスポンスボディは `{"status":204}` を返す。
+> - GET `/tree` は日英ツリーをマージした結果（`index_name` / `index_name_english` / `value_english` 等）を返す。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | 初版作成                                                 |
 | 2025/06/06 | 34a972ec2f7a26b92cb55cb4524b20bdde180f39   | インデックス管理APIについて追記                          |
+| 2026/07/14 |                                            | 実装(v2.0.2)と突き合わせ。レガシーcreateの返却値記述（NoneType）を修正、管理APIの関連モジュール・スキーマ・エラー・DELETEレスポンス`{"status":204}`・各種制約を追記、typo（tru→true）修正 |
+| 2026/07/14 |                                            | 本文を実装準拠に修正（DELETEレスポンスボディ）           |
 

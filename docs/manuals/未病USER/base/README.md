@@ -521,7 +521,7 @@
    - 図 3-11<br>
      <img src="media/media/image18.PNG">
 
-3. コピー成功のアラートが表示されます。
+3. コピー成功のトーストが表示されます。
 
    - 図 3-12<br>
      <img src="media/media/image19.PNG">

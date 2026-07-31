@@ -158,6 +158,10 @@ def get_new_activity_id(self, for_delete=False):
 | workflow_locked_activity_<avtivity_id> | TD |cache::workflow_locked_activity_A-20241031-00004||
 
 
+## 実装補足（v2.0.2 実装との突き合わせ）
+
+- アクティビティID採番は `weko_workflow.api.WorkActivity.get_new_activity_id`（`A-{}-{}` / 削除は `D-{}-{}`）。ロックは `views.lock_activity` / `unlock_activity`（Redis `workflow_userlock_activity_<user_id>` / `workflow_locked_activity_<activity_id>`）。一覧は `new_activity` → `WorkFlow.get_workflow_list` → `get_workflows_by_roles`。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                            |

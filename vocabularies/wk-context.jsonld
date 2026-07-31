@@ -1,5 +1,5 @@
 {
-    "@id": "https://purl.org/wk/v1/context",
+    "@id": "http://purl.org/wk/v1/wk-context.jsonld",
     "@context": {
       "wk:editMode": {"@id": "wk:editMode"},
       "wk:feedbackMail": {"@id": "wk:feedbackMail"},
