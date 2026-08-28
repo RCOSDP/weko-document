@@ -9,7 +9,9 @@
 > 本書はそれをベースに、以下の 3 つの差分を補ったものである。
 >
 > 1. **起点が `feature/restricted_v1.0.7`** であること
->    （v1.0.8 / v1.0.8b を経ていないため、v1.0.7a2 / v1.0.7b のパッチが未適用。3-3 参照）
+>    （v1.0.7a2 相当の `v1_0_7a2.sql` が未適用。なお **v1.0.7b と v1.0.8b の間には
+>    マイグレーションに関係する差分が実質存在しない**ため、これを補えば
+>    `v1.0.8b_v2.0.0.md` の起点条件を満たす。2 章「本移行パスと v1.0.8b_v2.0.0.md の関係」参照）
 > 2. **終点が v2.0.3** であること
 >    （v2.0.0 → v2.0.3 で `postgresql/ddl/61660.sql` と `S3_READONLY_*` が追加。2 章末尾参照）
 > 3. **制限公開（利用申請）機能を有効のまま継続**すること
@@ -99,17 +101,75 @@ add_peer_reviewed_to_version_type_property.main()
 fix_issue_57372()                          # 詳細検索条件の更新
 ```
 
-### W2025-29.sql が**カバーしていない**もの（本移行パスでは別途適用が必要）
+### 本移行パスと v1.0.8b_v2.0.0.md の関係
 
-`feature/restricted_v1.0.7` は 2024-11 時点の枝であり、その後の v1.0.7a2 / v1.0.7b で配られた
-パッチが**当たっていない**。以下は適用要否を 3-3 で判定した上で個別に適用する。
+**`v1.0.7b` と `v1.0.8b` の間には、マイグレーションに関係する差分が実質存在しない。**
+
+```
+$ git diff --stat v1.0.7b v1.0.8b -- postgresql scripts/demo scripts/populate-instance.sh tools scripts/instance.cfg
+ scripts/populate-instance.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+```
+
+差分の中身は ES インデックス作成時の `?timeout=2m` 追加のみで、**新規構築時にしか影響しない**。
+v1.0.8 / v1.0.8b の変更（tika のメモリ改善、インデックス表示の高速化、reindex のパフォーマンス改善、
+DB 接続タイムアウトの修正など）はいずれもコード側の改善で、DB マイグレーションを伴わない。
+
+したがって本移行は次のように分解できる。
+
+```
+feature/restricted_v1.0.7
+    ↓  ← v1.0.7_to_v1.0.7b.md 相当の DB 差分（= v1_0_7a2.sql のみ。下記参照）
+v1.0.7b 相当 ≒ v1.0.8b 相当（マイグレーションに関係する範囲では同等）
+    ↓  ← v1.0.8b_v2.0.0.md をそのまま適用
+v2.0.0
+    ↓  ← v2.0.0 → v2.0.3 の追加分（下記）
+v2.0.3
+```
+
+#### v1.0.7_to_v1.0.7b.md のうち本移行で必要なのは v1_0_7a2.sql だけ
+
+[`v1.0.7_to_v1.0.7b.md`](./v1.0.7_to_v1.0.7b.md) の各ステップの扱い:
+
+| v1.0.7b 手順のステップ | 本移行での扱い |
+| --- | --- |
+| 2. `register_properties.py only_specified` | **不要**。`update_W2025-29.py` が `register_properties_only_specified()` として内包 |
+| 3. `replace_item_type_data.py <日時>` | 元手順でも括弧付き（条件付き）。アイテムタイプが破損している場合のみ |
+| 4. `tools/itemtype_fix_form_title.py` | 同上（条件付き） |
+| 5. `renew_all_item_types.py only_specified VAL` | **不要**。`update_W2025-29.py` が `renew_all_item_types()` として内包 |
+| 6. `postgresql/update/v1_0_7a2.sql` | **必要**（下記の3件が W2025-29.sql で未カバー） |
+| 10. `fix_itemtype_issue_45614.sql` | **不要**。元手順でも「新規環境構築機関のみ」 |
+| 11. アイテムタイプ 30001 / 30002 の再インデックス | **不要**（10 を適用した機関のみが対象） |
+| 7. `assets build` / `collect` | v2.0.3 側で 8-6 として実施 |
+
+> **`postgresql/update/v1.0.7b.sql` は適用しないこと。**
+> 内容は 1 行のみだが SQL 構文エラーである（カンマ欠落）。
+> ```sql
+> UPDATE authors_prefix_settings SET name='e-Rad_Researcher' scheme='e-Rad_Researcher' where scheme='e-Rad';
+> ```
+> このファイルは v1.0.7b / v1.0.8b タグには存在せず（v2.0.0 で追加）、
+> `v1.0.7_to_v1.0.7b.md` でも参照されていない。
+> さらに v1.0.7 の初期データに `e-Rad` は存在しない（後述）ため、**対象 0 件で実行の必要もない**。
+
+#### authors_prefix_settings / authors_affiliation_settings の過不足
+
+| | v1.0.7 初期データ | W2025-29.sql が追加 | v2.0.3 の期待値 | 不足 |
+| --- | --- | --- | --- | --- |
+| `authors_prefix_settings` | WEKO, ORCID, CiNii, KAKEN2, ROR（5件） | researchmap, NRID【非推奨】, ISNI, VIAF, kakenhi【非推奨】, Ringgold, GRID【非推奨】（→12件） | 14件 | **e-Rad_Researcher, AID** |
+| `authors_affiliation_settings` | ISNI, GRID, Ringgold, kakenhi（4件） | （追加なし） | 5件 | **ROR** |
+
+この 3 件を埋めるのが `v1_0_7a2.sql` の役割である
+（同 SQL の ISNI / VIAF / Ringgold / prefix の ROR は W2025-29.sql と重複するが、
+いずれも存在チェック付きなので二重実行は無害）。
+
+#### v2.0.0 で新規追加された移行用 SQL
+
+以下は v1.0.7b / v1.0.8b タグには存在せず、v2.0.0 で移行用に追加されたものである。
+「v1.0.7a2 / v1.0.7b で配られたパッチ」ではないため、v1.0.7b 手順とは独立に要否を判定する。
 
 | SQL | 内容 | 判定方法 |
 | --- | --- | --- |
-| `postgresql/update/v1_0_7a2.sql` | `authors_prefix_settings` に e-Rad_Researcher / ROR / ISNI / VIAF / AID / Ringgold、`authors_affiliation_settings` に ROR を追加 | 3-3 (a) |
-| `postgresql/update/v1.0.7b.sql` | `authors_prefix_settings` の `e-Rad` → `e-Rad_Researcher` リネーム | 3-3 (a) |
-| `postgresql/update/fix_issue45092.sql` | `subitem_record_name` → `subitem_source_title` へ一括置換（item_type / mapping / records_metadata / item_metadata） | 3-3 (b) |
-| `postgresql/ddl/61660.sql` | `files_location` に `readonly_access_key` / `readonly_secret_key` を追加 | 3-3 (c)。S3 ロケーション利用時のみ。`ADD COLUMN`（`IF NOT EXISTS` なし）なので存在確認してから実行する |
+| `postgresql/update/fix_issue45092.sql` | `subitem_record_name` → `subitem_source_title` へ一括置換（item_type / mapping / records_metadata / item_metadata） | 3-3 (b)。`W2025-29.sql` も `update_W2025-29.py` もこの置換を行わないため、残存していれば適用が必要 |
 | `postgresql/ddl/fix_itemtype_issue_45614.sql` | 新規構築機関向けのアイテムタイプ修正 | **移行機関は対象外**。適用しないこと |
 
 ### v2.0.0 → v2.0.3 の追加分
@@ -154,25 +214,29 @@ ${COMPOSE} exec postgresql psql -U invenio -d invenio -c \
 ### 3-3. 未適用パッチの判定
 
 ```sh
-# (a) authors_prefix_settings / authors_affiliation_settings
+# (a) authors_prefix_settings / authors_affiliation_settings の過不足
 ${COMPOSE} exec postgresql psql -U invenio -d invenio -c \
 "SELECT scheme FROM authors_prefix_settings ORDER BY id;"
 ${COMPOSE} exec postgresql psql -U invenio -d invenio -c \
 "SELECT scheme FROM authors_affiliation_settings ORDER BY id;"
-#   → 'e-Rad' が残っている        : v1.0.7b.sql を適用
-#   → 'ROR' / 'AID' が存在しない  : v1_0_7a2.sql を適用
-#     （v1.0.7 の初期データは 5 件、v2.0.3 は 14 件）
+#   判定: prefix に 'e-Rad_Researcher' または 'AID' が無い
+#         あるいは affiliation に 'ROR' が無い  -> v1_0_7a2.sql を適用
+#
+#   ※ 'ROR' は v1.0.7 の prefix 初期データに最初から含まれているため、
+#      prefix 側の ROR の有無で判定してはいけない。
+#   ※ 'e-Rad' は v1.0.7 の初期データに存在しないので v1.0.7b.sql は不要
+#      （かつ同 SQL は構文エラー。2章の警告を参照）
 
 # (b) subitem_record_name の残存
 ${COMPOSE} exec postgresql psql -U invenio -d invenio -c \
 "SELECT count(*) FROM item_type WHERE schema::text LIKE '%subitem_record_name%';"
-#   → 0 以外なら fix_issue45092.sql を適用
+#   -> 0 以外なら fix_issue45092.sql を適用
 
-# (c) files_location の readonly キー列
+# (c) files_location の readonly キー列（v2.0.3 で追加、S3 利用時のみ）
 ${COMPOSE} exec postgresql psql -U invenio -d invenio -c \
 "SELECT column_name FROM information_schema.columns
  WHERE table_name='files_location' AND column_name LIKE 'readonly%';"
-#   → 0 行かつ S3 ロケーション利用中なら 61660.sql を適用
+#   -> 0 行かつ S3 ロケーション利用中なら 61660.sql を適用
 ```
 
 ### 3-4. instance.cfg のカスタマイズ差分抽出
@@ -368,11 +432,16 @@ ${COMPOSE} exec postgresql pg_isready -U invenio
 
 ### 7-1. 未適用パッチの適用（3-3 で「要」と判定したもののみ）
 
+`postgresql/update/v1.0.7b.sql` は構文エラーかつ対象 0 件のため**含めない**（2 章の警告を参照）。
+
 ```sh
-for f in postgresql/update/v1_0_7a2.sql postgresql/update/v1.0.7b.sql postgresql/update/fix_issue45092.sql ; do
-  docker cp "$f" $(${COMPOSE} ps -q postgresql):/tmp/$(basename "$f")
-  ${COMPOSE} exec -T postgresql psql -U invenio -d invenio -v ON_ERROR_STOP=1 -f /tmp/$(basename "$f")
-done
+# 3-3 (a) で「要」なら
+docker cp postgresql/update/v1_0_7a2.sql $(${COMPOSE} ps -q postgresql):/tmp/v1_0_7a2.sql
+${COMPOSE} exec -T postgresql psql -U invenio -d invenio -v ON_ERROR_STOP=1 -f /tmp/v1_0_7a2.sql
+
+# 3-3 (b) で「要」なら
+docker cp postgresql/update/fix_issue45092.sql $(${COMPOSE} ps -q postgresql):/tmp/fix_issue45092.sql
+${COMPOSE} exec -T postgresql psql -U invenio -d invenio -v ON_ERROR_STOP=1 -f /tmp/fix_issue45092.sql
 ```
 
 S3 利用かつ `readonly_access_key` 列が無い場合のみ:
@@ -612,9 +681,11 @@ ${COMPOSE} exec -T web invenio index run
 communityIds マッピング / reindex）と引数の妥当性は確認済みである。
 残る未確認事項は、**起点が `feature/restricted_v1.0.7` であること**に起因するもののみ。
 
-1. **3-3 で判定した v1.0.7a2 / v1.0.7b / fix_issue45092 の適用要否と適用順序**
+1. **3-3 で判定した `v1_0_7a2.sql` / `fix_issue45092.sql` の適用要否と適用順序**
    （`v1.0.8b_v2.0.0.md` は起点が v1.0.8b のため、これらは既に当たっている前提。
-   本移行では未適用の可能性が高く、`W2025-29.sql` の**前**に適用してよいかを確認する）
+   `W2025-29.sql` の**前**に適用してよいかを確認する）
+   併せて、`postgresql/update/v1.0.7b.sql` が構文エラーで実行不能である点
+   （`SET name='...' scheme='...'` のカンマ欠落）を共有し、修正版が必要かを確認する
 2. **制限公開機能を有効のまま移行する場合の追加手順の有無**
    （`restricted_access_enable_accessRequestFunc.md` は v2.0 系で新たに有効化する機関向け。
    その検証ツール `tools/verify_restricted_records.py` / `tools/verify_restricted_update.sh` は
