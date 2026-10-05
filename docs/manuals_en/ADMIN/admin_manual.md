@@ -152,6 +152,12 @@ The format conventions used in this document are as follows:
 
 [2.4.2 Map an item type added by the System 53](#map-an-item-type-added-by-the-system)
 
+[2.5 Set up the RO-Crate mapping](#set-up-the-ro-crate-mapping)
+
+[2.5.1 Elements in the RO-Crate Mapping screen](#elements-in-the-ro-crate-mapping-screen)
+
+[2.5.2 Create or edit an RO-Crate mapping](#create-or-edit-an-ro-crate-mapping)
+
 [3. Items 57](#items)
 
 [3.1 Bulk update with a license or an embargo 58](#bulk-update-with-a-license-or-an-embargo)
@@ -161,6 +167,14 @@ The format conventions used in this document are as follows:
 [3.3 Export items 64](#export-items)
 
 [3.4 Import items 67](#import-items)
+
+[3.5 Import items in the RO-Crate format](#import-items-in-the-ro-crate-format)
+
+[3.5.1 WEKO-specific properties (wk:)](#weko-specific-properties-wk)
+
+[3.5.2 Replace metadata strings on import](#replace-metadata-strings-on-import)
+
+[3.6 Use the bulk import API](#use-the-bulk-import-api)
 
 [4. ‏Index Tree 88](#index-tree)
 
@@ -372,6 +386,8 @@ The format conventions used in this document are as follows:
 
 [13.2.2 Run a fixity check 254](#linkidcheckfixity参照先run-a-fixity-check)
 
+[13.2.3 Delete File Instances](#delete-file-instances)
+
 [13.3 Manage Locations 256](#manage-locations)
 
 [13.3.1 View Locations 256](#linkidviewlocation参照先view-locations)
@@ -498,67 +514,69 @@ The format conventions used in this document are as follows:
 
 [15.2 Display the Index Link 300](#display-the-index-link)
 
-[15.3 Set up languages 301](#set-up-languages)
+[15.3 Configure the activity list display](#configure-the-activity-list-display)
 
-[15.4 Display the PDF cover page 302](#display-the-pdf-cover-page)
+[15.4 Set up languages 301](#set-up-languages)
 
-[15.5 Configure the ranking display 305](#configure-the-ranking-display)
+[15.5 Display the PDF cover page 302](#display-the-pdf-cover-page)
 
-[15.6 Modify the statistics setting 307](#modify-the-statistics-setting)
+[15.6 Configure the ranking display 305](#configure-the-ranking-display)
 
-[15.7 Configure the Web page style 308](#configure-the-web-page-style)
+[15.7 Modify the statistics setting 307](#modify-the-statistics-setting)
 
-[15.8 Set up Identifiers 312](#set-up-identifiers)
+[15.8 Configure the Web page style 308](#configure-the-web-page-style)
 
-[15.8.1 View Identifiers 312](#linkidviewidentifier参照先view-identifiers)
+[15.9 Set up Identifiers 312](#set-up-identifiers)
 
-[15.8.2 Create an Identifier 312](#linkidcreateidentifier参照先create-an-identifier)
+[15.9.1 View Identifiers 312](#linkidviewidentifier参照先view-identifiers)
 
-[15.8.3 Edit an Identifier 315](#linkideditidentifier参照先edit-an-identifier)
+[15.9.2 Create an Identifier 312](#linkidcreateidentifier参照先create-an-identifier)
 
-[15.9 Modify the export settings 316](#modify-the-export-settings)
+[15.9.3 Edit an Identifier 315](#linkideditidentifier参照先edit-an-identifier)
 
-[15.10 Configure the log analysis settings 317](#configure-the-log-analysis-settings)
+[15.10 Modify the export settings 316](#modify-the-export-settings)
 
-[15.11 Configure the search conditions, the number of results displayed, and the initial display 318](#configure-the-search-conditions-the-number-of-results-displayed-and-the-initial-display)
+[15.11 Configure the log analysis settings 317](#configure-the-log-analysis-settings)
 
-[15.11.1 Configure the author search setting 318](#configure-the-author-search-setting)
+[15.12 Configure the search conditions, the number of results displayed, and the initial display 318](#configure-the-search-conditions-the-number-of-results-displayed-and-the-initial-display)
 
-[15.11.2 Configure the search results settings 318](#configure-the-search-results-settings)
+[15.12.1 Configure the author search setting 318](#configure-the-author-search-setting)
 
-[15.11.3 Configure detail search results settings 319](#configure-detail-search-results-settings)
+[15.12.2 Configure the search results settings 318](#configure-the-search-results-settings)
 
-[15.11.4 Configure the index tree/facet display 321](#configure-the-index-treefacet-display)
+[15.12.3 Configure detail search results settings 319](#configure-detail-search-results-settings)
 
-[15.11.5 Configure the initial display 323](#configure-the-initial-display)
+[15.12.4 Configure the index tree/facet display 321](#configure-the-index-treefacet-display)
 
-[15.12 Manage faceted searches 325](#manage-faceted-searches)
+[15.12.5 Configure the initial display 323](#configure-the-initial-display)
 
-[15.12.1 Configure faceted searches 325](#_Toc99036165)
+[15.13 Manage faceted searches 325](#manage-faceted-searches)
 
-[15.13 Configure the site information 329](#configure-the-site-information)
+[15.13.1 Configure faceted searches 325](#_Toc99036165)
 
-[15.14 Configure IP addresses permitted by the site license 331](#configure-ip-addresses-permitted-by-the-site-license)
+[15.14 Configure the site information 329](#configure-the-site-information)
 
-[15.15 Create a sitemap 334](#linkidsitemapcreating参照先create-a-sitemap)
+[15.15 Configure IP addresses permitted by the site license 331](#configure-ip-addresses-permitted-by-the-site-license)
 
-[15.16 Set up emails 335](#set-up-emails)
+[15.16 Create a sitemap 334](#linkidsitemapcreating参照先create-a-sitemap)
 
-[15.17 Set up a WebAPI Account 337](#set-up-a-webapi-account)
+[15.17 Set up emails 335](#set-up-emails)
 
-[15.18 Configure the file preview settings 339](#configure-the-file-preview-settings)
+[15.18 Set up a WebAPI Account 337](#set-up-a-webapi-account)
 
-[15.19 Allow Shibboleth users 340](#allow-shibboleth-users)
+[15.19 Configure the file preview settings 339](#configure-the-file-preview-settings)
 
-[15.20 Manage restricted access 341](#linkideditindextree参照先linkidfilepreviewsetting参照先linkididentifiersetting参照先linkidsiteinfosetting参照先linkidwidgetsetting参照先manage-restricted-access)
+[15.20 Allow Shibboleth users 340](#allow-shibboleth-users)
 
-[15.20.1 Configure restricted access 341](#configure-restricted-access)
+[15.21 Manage restricted access 341](#linkideditindextree参照先linkidfilepreviewsetting参照先linkididentifiersetting参照先linkidsiteinfosetting参照先linkidwidgetsetting参照先manage-restricted-access)
 
-[15.20.2 Email notifications on the result of the application for the restricted access 345](#email-notifications-on-the-result-of-the-application-for-the-restricted-access)
+[15.21.1 Configure restricted access 341](#configure-restricted-access)
 
-[15.20.3 Other email notifications for the restricted access 352](#other-email-notifications-for-the-restricted-access)
+[15.21.2 Email notifications on the result of the application for the restricted access 345](#email-notifications-on-the-result-of-the-application-for-the-restricted-access)
 
-[15.21 Set up an institution name 367](#set-up-an-institution-name)
+[15.21.3 Other email notifications for the restricted access 352](#other-email-notifications-for-the-restricted-access)
+
+[15.22 Set up an institution name 367](#set-up-an-institution-name)
 
 [16. User Account 368](#user-account)
 
@@ -689,6 +707,11 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 <td>&lt;INDEXWORD PRONOUNCE="こんてんつふあいる" INDEXITEM="コンテンツファイル"&gt;Content file&lt;/INDEXWORD&gt;</td>
 <td>Refers to the papers and other files that make up an item.</td>
 </tr>
+<tr class="odd">
+<td>Group</td>
+<td><p>A unit for grouping users. The browsing and contribution permissions of an index are set by combining roles and groups. Users other than system administrators and repository administrators can browse an index or contribute items to it only when they satisfy both the role condition and the group condition.</p>
+<p>Logged-in users who do not belong to any group, and users who are not logged in (guests), are treated as members of the group "No Group".</p></td>
+</tr>
 <tr class="even">
 <td>&lt;INDEXWORD PRONOUNCE="しすてむ" INDEXITEM="システム"&gt;System&lt;/INDEXWORD&gt;</td>
 <td>Refers to the WEKO3 system.</td>
@@ -765,7 +788,7 @@ Table 1‑2. Administrator roles for the System
 
 | Administrator role                                                                               | Description                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \<INDEXWORD PRONOUNCE="しすてむかんりしや" INDEXITEM="システム管理者"\>System administrator\</INDEXWORD\>        | Responsible for such tasks as managing user accounts, managing workflows and integrating OAI-PMH. Some operations, including managing communities and managing user accounts, can only be performed by system administrators.                                  |
+| \<INDEXWORD PRONOUNCE="しすてむかんりしや" INDEXITEM="システム管理者"\>System administrator\</INDEXWORD\>        | Responsible for such tasks as managing user accounts, managing workflows and integrating OAI-PMH. Some operations, including editing users and roles, configuring properties and OAI schemas, managing records, managing files, and maintenance, can only be performed by system administrators.                                  |
 | \<INDEXWORD PRONOUNCE="りほしとりかんりしや" INDEXITEM="リポジトリ管理者"\>Repository administrator\</INDEXWORD\>  | Responsible for such tasks as registering schemas in the repository, creating item types and mapping metadata.                                                                                                                                                 |
 | \<INDEXWORD PRONOUNCE="こみゆにていかんりしや" INDEXITEM="コミュニティ管理者"\>Community administrator\</INDEXWORD\> | Each research category, such as a faculty or department, represents a single index within the index tree. This administrative role is responsible for a particular index and performs harvesting, editing the index tree, registering widgets and other tasks. |
 
@@ -807,13 +830,21 @@ Legend: 〇: Feature available, ×: Feature not available
 </tr>
 <tr class="odd">
 <td></td>
-<td>Mapping</td>
+<td>Metadata</td>
 <td>〇</td>
 <td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
 <tr class="even">
+<td></td>
+<td>Mapping</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="odd">
 <td></td>
 <td>OAI Schema</td>
 <td>〇</td>
@@ -821,7 +852,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Properties</td>
 <td>〇</td>
@@ -829,7 +860,23 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
+<tr class="odd">
+<td></td>
+<td>RO-Crate Mapping</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+<td></td>
+</tr>
 <tr class="even">
+<td></td>
+<td>JSON-LD Mapping</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>&lt;INDEXWORD PRONOUNCE="あいてむそうさ" INDEXITEM="アイテム操作"&gt;Items&lt;/INDEXWORD&gt;</td>
 <td>-</td>
 <td>-</td>
@@ -837,20 +884,28 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>ANCHORID=itemmanagement【参照元】3. Items【E】</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Bulk Update</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Bulk Delete</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td>〇 (*2)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Bulk Export</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -858,10 +913,18 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>Import</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="even">
+<td></td>
+<td>RO-Crate Import</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇 (*2)</td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>Index Tree</td>
 <td>-</td>
 <td>-</td>
@@ -869,34 +932,31 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>4. Index Tree</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Edit Tree</td>
 <td>〇</td>
 <td>〇</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Journal Information</td>
-<td>〇</td>
-<td>〇</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Custom Sort</td>
+<td>Journal Information</td>
 <td>〇</td>
 <td>〇</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="even">
+<td></td>
+<td>Custom Sort</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇 (*2)</td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>Web Design</td>
 <td>-</td>
 <td>-</td>
@@ -904,25 +964,23 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>5. Web Design</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Widget</td>
 <td>〇</td>
 <td>〇</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Page Layout</td>
 <td>〇</td>
 <td>〇</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Author Management</td>
 <td>-</td>
 <td>-</td>
@@ -930,31 +988,31 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>6. Author Management</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Edit</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Export</td>
 <td>〇</td>
-<td>〇</td>
-<td>×</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>Import</td>
+<td>Export</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td></td>
 </tr>
 <tr class="odd">
+<td></td>
+<td>Import</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+</tr>
+<tr class="even">
 <td>&lt;INDEXWORD PRONOUNCE="りようとうけい" INDEXITEM="利用統計"&gt;Statistics&lt;/INDEXWORD&gt;</td>
 <td>-</td>
 <td>-</td>
@@ -962,32 +1020,31 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>7. Statistics【E】ANCHORID=statisticsmanagement【参照元】</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Statistics Report</td>
 <td>〇</td>
 <td>〇</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Feedback Mail</td>
-<td>〇</td>
-<td>〇</td>
-<td>×</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>Site License</td>
+<td>Feedback Mail</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="odd">
+<td></td>
+<td>Site License</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇 (*2)</td>
+<td></td>
+</tr>
+<tr class="even">
 <td>WorkFlowワーク風呂＾管理&lt;/INDEXWORD&gt;</td>
 <td>-</td>
 <td>-</td>
@@ -995,23 +1052,23 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>ANCHORID=workflowmanagement【参照元】8. WorkFlow【E】</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Flow</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Workflow</td>
 <td>〇</td>
 <td>〇</td>
-<td>×</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Communities</td>
 <td>-</td>
 <td>-</td>
@@ -1019,16 +1076,15 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>ANCHORID=communitymanagement【参照元】9. Communities【E】</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Community</td>
 <td>〇</td>
 <td>〇</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Featured Community</td>
 <td>〇</td>
@@ -1036,7 +1092,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Inclusion Request</td>
 <td>〇</td>
@@ -1044,7 +1100,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>&lt;INDEXWORD PRONOUNCE="oai－pmh" INDEXITEM="OAI-PMH"&gt;OAI-PMH&lt;/INDEXWORD&gt;</td>
 <td>-</td>
 <td>-</td>
@@ -1052,16 +1108,15 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>ANCHORID=oaipmhsetting【参照元】10. OAI-PMH【E】</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Harvesting</td>
 <td>〇</td>
 <td>〇</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Identify</td>
 <td>〇</td>
@@ -1069,15 +1124,15 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Sets</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
+<td>〇</td>
+<td>〇</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Resource Sync</td>
 <td>-</td>
 <td>-</td>
@@ -1085,31 +1140,31 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>11. Resource Sync【E】</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Resource List</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Change List</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Resync</td>
+<td>Change List</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
+<td>〇</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="even">
+<td></td>
+<td>Resync</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇 (*2)</td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>&lt;INDEXWORD PRONOUNCE="れこおとかんり" INDEXITEM="レコード管理"&gt;Records&lt;/INDEXWORD&gt;</td>
 <td>-</td>
 <td>-</td>
@@ -1117,7 +1172,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>ANCHORID=recordmanagement【参照元】12. Records</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Persistent Identifier</td>
 <td>〇</td>
@@ -1125,7 +1180,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Record Metadata</td>
 <td>〇</td>
@@ -1133,7 +1188,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>&lt;INDEXWORD PRONOUNCE="ふあいるかんり" INDEXITEM="ファイル管理"&gt;Files&lt;/INDEXWORD&gt;</td>
 <td>-</td>
 <td>-</td>
@@ -1141,7 +1196,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>ANCHORID=filemanagement【参照元】13. Files【E】</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Bucket</td>
 <td>〇</td>
@@ -1149,7 +1204,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>File Instance</td>
 <td>〇</td>
@@ -1157,16 +1212,15 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Location</td>
 <td>〇</td>
-<td><p>〇</p>
-<p>(*1)</p></td>
-<td></td>
+<td>〇 (*1)</td>
+<td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Multipart Object</td>
 <td>〇</td>
@@ -1174,7 +1228,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Object Version</td>
 <td>〇</td>
@@ -1182,7 +1236,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>&lt;INDEXWORD PRONOUNCE="ゆうさあかんり" INDEXITEM="ユーザー管理"&gt;User Management&lt;/INDEXWORD&gt;</td>
 <td>-</td>
 <td>-</td>
@@ -1190,7 +1244,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>ANCHORID=usermanagement【参照元】14. User Management【E】</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Access: Roles</td>
 <td>〇</td>
@@ -1198,7 +1252,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Access: System Roles</td>
 <td>〇</td>
@@ -1206,7 +1260,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Access: Users</td>
 <td>〇</td>
@@ -1214,7 +1268,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Linked account identities</td>
 <td>〇</td>
@@ -1222,7 +1276,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Linked account tokens</td>
 <td>〇</td>
@@ -1230,7 +1284,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Linked accounts</td>
 <td>〇</td>
@@ -1238,7 +1292,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>OAuth Application Tokens</td>
 <td>〇</td>
@@ -1246,7 +1300,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>OAuth Applications</td>
 <td>〇</td>
@@ -1254,7 +1308,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>Role</td>
 <td>〇</td>
@@ -1262,31 +1316,31 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>×</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Session Activity</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>User</td>
 <td>〇</td>
-<td>×</td>
 <td>×</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>User Profile</td>
+<td>User</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
+<td>〇 (*1)</td>
+<td>〇 (*1)(*2)</td>
 <td></td>
 </tr>
 <tr class="even">
+<td></td>
+<td>User Profile</td>
+<td>〇</td>
+<td>〇 (*1)</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>&lt;INDEXWORD PRONOUNCE="しすてむせつてい" INDEXITEM="システム設定"&gt;Setting&lt;/INDEXWORD&gt;</td>
 <td>-</td>
 <td>-</td>
@@ -1294,11 +1348,19 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>ANCHORID=systemsetting【参照元】15. Setting【E】</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>Items</td>
 <td>〇</td>
+<td>〇</td>
 <td>×</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Activity List</td>
+<td>〇</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1306,7 +1368,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>Index Link</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1314,7 +1376,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>Index Tree</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1322,7 +1384,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>Language</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1330,7 +1392,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>PDF Cover Page</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1338,7 +1400,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>Ranking</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1346,7 +1408,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>Stats</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1354,7 +1416,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>Style</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1362,25 +1424,23 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>Identifier</td>
 <td>〇</td>
-<td>×</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
+<td>〇</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>Item Export</td>
 <td>〇</td>
-<td>×</td>
-<td><p>〇</p>
-<p>(*2)</p></td>
+<td>〇</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>Log Analysis</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1388,39 +1448,55 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>Setting Search</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
 <tr class="odd">
+<td></td>
+<td>Faceted Search</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="even">
 <td></td>
 <td>Site Info</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Site License</td>
 <td>〇</td>
-<td>×</td>
 <td>×</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Sitemap</td>
+<td>Site License</td>
 <td>〇</td>
-<td>×</td>
-<td>×</td>
+<td>〇</td>
+<td>〇 (*2)</td>
 <td></td>
 </tr>
 <tr class="even">
+<td></td>
+<td>Sitemap</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="odd">
 <td></td>
 <td>Send Mail</td>
 <td>〇</td>
 <td>×</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Mail Templates</td>
+<td>〇 (*3)</td>
+<td>〇 (*3)</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1444,15 +1520,31 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 <td>Shibboleth</td>
 <td>〇</td>
-<td>×</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
+<td>Restricted Access</td>
+<td>〇 (*3)</td>
+<td>〇 (*3)</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
 <td>Others</td>
 <td>〇</td>
+<td>〇</td>
 <td>×</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>CRIS Linkage</td>
+<td>〇</td>
+<td>〇</td>
 <td>×</td>
 <td></td>
 </tr>
@@ -1469,7 +1561,13 @@ Legend: 〇: Feature available, ×: Feature not available
 
 \*1: Read access only.
 
-\*2: This feature is planned to be enabled only for the index to which the administrator is assigned.
+\*2: Available only for the targets (communities and their indexes) managed by the administrator.
+
+\*3: The menu appears only when the feature is enabled by a setting. "Mail Templates" appears when editing mail templates is enabled in the restricted access settings. "Restricted Access" appears when WEKO\_ADMIN\_DISPLAY\_RESTRICTED\_SETTINGS in the configuration file (instance.cfg) is True (default).
+
+  - The menu on the left side of the "Administration" screen shows only the menus available to the roles of the logged-in user. A user with multiple roles can use all the menus available to any of those roles.
+
+  - If integration with GakuNin mAP groups at academic federation (Shibboleth) login is enabled (WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPS in the configuration file; default: False), users who belong to a GakuNin mAP role group are given the corresponding WEKO role (System Administrator, Repository Administrator, Community Administrator, or Contributor) when they log in. The menus available on the Administration screen follow the given role. The GakuNin mAP role groups (roles whose names are jc\_roles\_sysadm or start with jc\_*FQDN*\_ro\_) are not shown in the role choices of User Management, WorkFlow, and Communities. GakuNin mAP groups (names starting with jc\_*FQDN*\_gr\_) are treated as groups, not as roles. *FQDN* is the host name of the entity ID set in WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID, with "." and "-" replaced by "\_".
 
 ## LINKID=adminwindow【参照先】\<INDEXWORD PRONOUNCE="かんりかめん" INDEXITEM="管理画面"\>Access the Administration screen\</INDEXWORD\>
 
@@ -1710,7 +1808,7 @@ Select "\<INDEXWORD PRONOUNCE="ひようしゆんあいてむたいふ" INDEXITE
 
 Select "\<INDEXWORD PRONOUNCE="はあへすとようあいてむたいふ" INDEXITEM="ハーベスト用アイテムタイプ"\>Item Type for Harvesting\</INDEXWORD\>" to display the item types available for harvesting only. This item type is not available for item registration and can only be used for harvesting.
 
-Select "\<INDEXWORD PRONOUNCE="さくしよすみあいてむたいふ" INDEXITEM="削除済みアイテムタイプ"\>Deleted Item Type\</INDEXWORD\>" to display the deleted item types.
+Select "\<INDEXWORD PRONOUNCE="さくしよすみあいてむたいふ" INDEXITEM="削除済みアイテムタイプ"\>Deleted Item Type\</INDEXWORD\>" to display the deleted item types. "Deleted Item Type" appears only when you are logged in as a system administrator.
 
 The following table shows the operations that are enabled for each item type.
 
@@ -1729,6 +1827,8 @@ Legend: 〇: Available, ×: Not available
 | Copy          | 〇                  | 〇                        | ×                 |
 | Delete        | 〇                  | ×                        | ×                 |
 | Restore       | ×                  | ×                        | 〇                 |
+
+> Even if you add or copy an item type while "Item Type for Harvesting" is selected, the new item type is registered as a standard item type.
 
 ### Default item types
 
@@ -6897,6 +6997,8 @@ This section explains how to copy a specified item type.
 4.  > Click "Save".
 
 > The item type is copied.
+> 
+> If you click "Save" without changing the item type name from that of the source item type, the error message "Error: Failed to register Item type. Item type name is already in use." appears.
 
 1.  ### Edit item types
     
@@ -6926,7 +7028,7 @@ zu0402060.tif![](media/media/image32.png)
     
     ![](media/media/image34.png)
 
-4.  Click "Localization Setting" in the "Attribute" column for this metadata element.
+4.  Click "Localization Settings" in the "Attribute" column for this metadata element.
     
     The input area for multilingual child element names appears.
     
@@ -7032,9 +7134,15 @@ The information you edited is saved to the item type.
 
 > Additional Information:
 > 
-> You can control whether the item type version needs to be upgraded or kept in the configuration file.
+> You can control whether the item type version needs to be upgraded or kept with WEKO\_ITEMTYPES\_UI\_UPGRADE\_VERSION\_ENABLED in the configuration file (instance.cfg) (default: True, the version is upgraded).
 > 
 > If the item type version is configured to be kept, your changes will be saved without upgrading the version.
+> 
+> When a new version is created because the version is configured to be upgraded, workflows that used the old version of the item type are automatically updated to use the new version.
+> 
+> The mapping of an item type is managed as one record per item type (version). When the mapping is saved together with the item type (when a new version is created, or when the version is configured to be kept), the existing mapping is overwritten.
+> 
+> You cannot save an item type while items are being imported with the import feature or while an import task is reserved. If you click "Save", the error message "Item type cannot be updated becase import is in progress." appears.
 > 
 > Even if the item type version is configured to be upgraded, the operations below will not be affected, and the version will be kept.
 
@@ -7098,7 +7206,7 @@ zu0402060.tif![](media/media/image47.png)
 
 > Notes:
 > 
-> You cannot delete item types for harvesting. If you click "Delete" for these item types, "Cannot delete item type for harvesting" appears.
+> You cannot delete item types for harvesting. If you click "Delete" for these item types, the confirmation dialog does not appear, and "Cannot delete item type for harvesting." appears on the screen.
 
 3.  Click "Continue".
 
@@ -7273,6 +7381,85 @@ The values appear in "Element (Parent)" and "Schema (Parent)".
 Notes:
 
 If you want to map the same schema to different properties, you need to set up the same mappings for all those properties, including the Schema (child). If the same mappings are not used, the message "Duplicate mapping as below" will be displayed, and you cannot save the mapping information.
+
+## Set up the RO-Crate mapping
+
+This section explains how to set up the mapping between an item type and RO-Crate, which is used to output the metadata of items in the RO-Crate format (JSON-LD). You set up one mapping for each item type.
+
+The mapping set up in this screen is used to convert the metadata of items into the RO-Crate format in the APIs that return items in the RO-Crate format (the item search API "GET /api/v1/records", the search result list output API "POST /api/v1/records/list", and the item detail API "GET /api/v1/records/<item ID>").
+
+  - Items of an item type for which no RO-Crate mapping is set up are not included in the search targets of the item search API and the search result list output API.
+
+  - If you retrieve an item of an item type for which no RO-Crate mapping is set up with the item detail API, an error occurs.
+
+The RO-Crate mapping in this screen is a separate setting from the JSON-LD mapping ("Item Types" \> "JSON-LD Mapping"). The JSON-LD mapping is used when items are taken in (input) through the SWORD API or "RO-Crate Import", and the RO-Crate mapping is used when items are output. The mapping you select in "Select Mapping" on the "RO-Crate Import" screen is a JSON-LD mapping; the RO-Crate mapping in this screen is not used there (see "[Import items in the RO-Crate format](#import-items-in-the-ro-crate-format)").
+
+  - Available roles: System administrator, Repository administrator
+
+### Elements in the RO-Crate Mapping screen
+
+To access the mapping screen, click "Item Types" and then click "RO-Crate Mapping". If no item type is registered, "You do not even have an itemtype." appears.
+
+Table 2‑5. The elements in the "RO-Crate Mapping" screen
+
+| Element | Description |
+|---|---|
+| "Item Type" | Select the item type for which you set up the mapping from the drop-down list. The latest version of each item type is shown in the "*item type name*(*tag*)" format. When you switch the selection, the registered mapping of the selected item type appears. |
+| "Layer" - "Number of layers" | Specify the number of layers of the tree structure. The first layer is fixed to "root". Increasing the number adds an input field for a layer name, and decreasing it removes the input field of the last layer. |
+| "Layer" - Layer name | Enter the name of each layer. The first layer name you add is output as the entity type (additionalType) of RO-Crate for the nodes in the first layer of the tree structure, the second layer name for the nodes in the second layer, and so on. |
+| "Tree structure" | The structure of the entities output to RO-Crate. "root" (the root dataset that represents the whole item) and "file" (the files of the item) are fixed nodes that cannot be renamed or deleted. Click "Add" to add a child node at that position, and enter the node name in the text box. Click "×" to delete a node. When you select the radio button of a node, you can edit the node name and the mapping of that node at the bottom of the screen. |
+| "Node name" | The name of the node selected in the tree structure. "root" and "file" cannot be edited. |
+| Localization Settings | Enter the name of the selected node for each registered language. On output, the name in the language specified in the API request is output. If the name in that language is not entered, the "Node name" is output. |
+| "Mapping" | Set up the correspondence between RO-Crate properties (left column) and item type elements (right column) for the selected node. The path of the node is shown in the header of the left column, and the item type name in the header of the right column.<br>- "Add": Adds a mapping row. Select an RO-Crate property from the drop-down list in the left column, and select an item type element (down to the child element, if any) from the drop-down list in the right column. Clicking "Add" in a row of the right column lets you map multiple item type elements to one RO-Crate property.<br>- "Add static value": Adds a row that outputs the entered fixed value regardless of the metadata of the item.<br>- "×": Deletes the row or the item type element.<br>- "Specify language": When checked, you can specify two elements, "Value" and "Language". On output, the value whose language matches the language specified in the API request is output (if there is no match, the English value; if there is no English value either, the first value).<br>- "Specify list index": Appears for repeatable elements. When checked and a number is entered, only the value with the specified number is output (numbers start from 0).<br>The choices of RO-Crate properties are properties for datasets for "root" and the added nodes, and properties for files for "file". The mapping of "file" is applied to each file of the item. |
+| "Save" | Saves the entire mapping (layers, tree structure, and the mapping of each node) of the selected item type. |
+
+### Create or edit an RO-Crate mapping
+
+1.  Click "Item Types", and then click "RO-Crate Mapping".
+
+    The "RO-Crate Mapping" screen appears.
+
+2.  From the "Item Type" drop-down list, select the item type for which you set up the mapping.
+
+    If a mapping has already been registered, the registered content appears.
+
+3.  If necessary, specify "Number of layers" and enter the name of each layer.
+
+4.  In "Tree structure", click "Add" to add nodes as necessary, and enter the node names.
+
+5.  Select the radio button of the node for which you set up the mapping.
+
+    For nodes other than "root" and "file", enter the name in "Node name" and Localization Settings.
+
+6.  Click "Add" (or "Add static value") in "Mapping" to add a row, and specify an RO-Crate property and an item type element (or a static value).
+
+7.  Repeat steps 5 and 6 for each node for which you set up the mapping.
+
+8.  Click "Save".
+
+    The input is checked, and if there is no problem, the settings are saved. "Successfully saved new mapping." appears at the top of the screen.
+
+    If the input is incomplete, a message in "Table 2‑6. Error messages of the RO-Crate mapping" appears in the corresponding input field, and the settings are not saved.
+
+Table 2‑6. Error messages of the RO-Crate mapping
+
+| No. | Message | Cause |
+|---|---|---|
+| 1 | Error : Layer name is blank. | A layer name is not entered. |
+| 2 | Error : Node name is blank. | A node name in the tree structure or the "Node name" is not entered. |
+| 3 | Error : RO-Crate property is blank. | An RO-Crate property is not selected in a mapping row. |
+| 4 | Error : Item property is blank. | An item type element is not selected in a mapping row. |
+| 5 | Error : Item property index is blank. | "Specify list index" is checked, but no number is entered. |
+| 6 | Error : Static value is blank. | No value is entered in a static value row. |
+| 7 | Error: (error details) | The save process failed. |
+
+Notes:
+
+  - If the node being edited has incomplete input, a message No. 2 to 6 in Table 2‑6 appears, and you cannot select another node.
+
+  - If you switch the "Item Type" with unsaved changes, the confirmation dialog "Would you like to cancel your changes?" appears. Click "OK" to discard the changes and switch, or click "Close" to cancel switching.
+
+  - There is no feature to delete a saved mapping.
 
 # Items
 
@@ -7454,12 +7641,16 @@ Table 3‑1. The content of the downloaded item type template
 <li><p>URI</p></li>
 <li><p>IndexID##</p></li>
 <li><p>POS_INDEX##</p></li>
-<li><p>FEEDBACK_MAIL</p></li>
 <li><p>PUBLISH_STATUS</p></li>
+<li><p>FEEDBACK_MAIL</p></li>
+<li><p>REQUEST_MAIL (only when the restricted access settings are configured to display the request form)</p></li>
+<li><p>ITEM_APPLICATION.WORKFLOW, ITEM_APPLICATION.TERMS, ITEM_APPLICATION.TERMS_DESCRIPTION (only when the usage application is enabled in the restricted access settings and the item type is a target of it)</p></li>
+<li><p>RESEAECHMAP_LINKAGE</p></li>
 <li><p>CNRI</p></li>
 <li><p>DOI_RA</p></li>
 <li><p>DOI</p></li>
-<li><p>EDIT_MODE</p></li>
+<li><p>BULK_DOI</p></li>
+<li><p>Keep/Upgrade Version</p></li>
 <li><p>Metadata defined for the item type</p></li>
 </ul></td>
 </tr>
@@ -7500,6 +7691,8 @@ For elements other than the metadata files defined for item types, see the "Supp
     ![テキスト 自動的に生成された説明](media/media/image80.png)
 
 > You can include multiple tsv files for different item types in a single import operation.zu0504020.tif
+> 
+> You can also place csv files (extension .csv) instead of tsv files directly under the data folder.
 
 4.  To import with the "Change Identifier Mode" option:
 
@@ -7988,20 +8181,24 @@ Table 3‑6. The elements in the "Result" tab
 <td>Download<sup>*</sup></td>
 <td><p>Downloads the items listed on the screen in tsv format.</p>
 <ul>
-<li><p>The character code is UTF-8 without BOM, and the line feed code is CR+LF.</p></li>
-<li><p>The filename will be "List_Download_&lt;Download_Date&gt;.tsv".</p></li>
+<li><p>The character code is UTF-8, and the line feed code is LF.</p></li>
+<li><p>The filename will be "List_Download_<em>YYYY</em>-<em>MM</em>-<em>DD</em>.tsv" (the download date).</p></li>
 </ul></td>
+</tr>
+<tr class="odd">
+<td>Success / Fail</td>
+<td>Displays the number of items that were imported successfully (Success) and the number of items that failed (Fail).</td>
 </tr>
 <tr class="even">
 <td>No.</td>
 <td>Shows the serial number of each item included in the imported file.</td>
 </tr>
 <tr class="odd">
-<td>Start Day</td>
+<td>Start Date</td>
 <td>Displays the date and time when the item registration process started after you had clicked "Import".</td>
 </tr>
 <tr class="even">
-<td>End Day</td>
+<td>End Date</td>
 <td>Displays the date and time when the item registration process finished.</td>
 </tr>
 <tr class="odd">
@@ -8009,12 +8206,24 @@ Table 3‑6. The elements in the "Result" tab
 <td>Displays the item ID of the item.</td>
 </tr>
 <tr class="even">
-<td>Action</td>
-<td>Displays the actions included in the workflow for the item.</td>
+<td>Status</td>
+<td><p>Displays the state of the import process of the item.</p>
+<ul>
+<li><p>Start: The process has not started yet.</p></li>
+<li><p>Started: The process is in progress.</p></li>
+<li><p>Success: The item was imported successfully.</p></li>
+<li><p>Error: The import of the item failed.</p></li>
+</ul></td>
 </tr>
 <tr class="odd">
-<td>Work Flow Status</td>
-<td>Displays the status of the workflow for the item.</td>
+<td>Import Result</td>
+<td><p>Displays the import result of the item.</p>
+<ul>
+<li><p>To Do: Waiting to be processed.</p></li>
+<li><p>Doing: Being processed.</p></li>
+<li><p>Done: The import is completed.</p></li>
+<li><p>Error message: If the import failed, the reason (such as "Failed to update Elasticsearch.") is displayed.</p></li>
+</ul></td>
 </tr>
 </tbody>
 </table>
@@ -8065,6 +8274,15 @@ Elements to be specified for a file
 <td>FEEDBACK_MAIL</td>
 <td>Email address assigned as the Feedback Mail Destination.</td>
 </tr>
+<tr class="odd">
+<td>REQUEST_MAIL</td>
+<td>Email address assigned as the Request Mail Destination. This element is output only when the restricted access settings are configured to display the request form.</td>
+</tr>
+<tr class="even">
+<td>RESEAECHMAP_LINKAGE</td>
+<td><p>Specifies researchmap achievement linkage. If a value is entered (not blank), the item is linked to researchmap after the registration of the imported item is completed. If it is blank, no linkage is performed.</p>
+<p>To use the linkage, the linkage with researchmap must be configured in "Setting" &gt; "CRIS Linkage". On export, this element is always output blank.</p></td>
+</tr>
 <tr class="even">
 <td>PUBLISH_STATUS</td>
 <td>The status of the item: public or private. You must set it to either public or private.</td>
@@ -8086,6 +8304,10 @@ Elements to be specified for a file
 <p>You must follow the rules below when specifying it.</p>
 <p>Length: up to 290 characters, including the prefix and suffix.</p>
 <p>Supported characters for the suffix: alphanumeric characters and a set of permitted symbols (_-. ;()/)</p></td>
+</tr>
+<tr class="odd">
+<td>BULK_DOI</td>
+<td>Used only with the bulk import API. If a DOI is specified, the metadata is complemented using that DOI before registration (see "Use the bulk import API" below). It is not used for imports from the Administration screen.</td>
 </tr>
 <tr class="even">
 <td>Keep/Upgrade Version</td>
@@ -8387,6 +8609,158 @@ You cannot modify the resource type (dc:type) when updating. If you modify one, 
 
 ‏- Upgrade: Register duplicates (\* The rationale behind this is that, based on the filename alone, it is impossible to determine whether the two files are the same or different files with the same name).
 
+## Import items in the RO-Crate format
+
+This section explains how to import items by specifying a zip file in the RO-Crate format (metadata in the JSON-LD format). The metadata is converted into the metadata of an item type according to a JSON-LD mapping, so you need to create the mapping beforehand in "Item Types" \> "JSON-LD Mapping".
+
+The zip file contains the metadata file "ro-crate-metadata.json" and the content files to be registered, organized under the data folder.
+
+```
+xxxxx.zip
+└data
+　├ro-crate-metadata.json
+　└(content files)
+```
+
+1.  Click "Items", and then click "RO-Crate Import".
+
+    The "Select" tab is where you can start importing items.
+
+    Community administrators can import items only into the indexes that belong to the communities they manage.
+
+2.  Click "Select File" to specify a zip file.
+
+3.  In "Select Mapping", select the JSON-LD mapping to be used.
+
+    If the list of JSON-LD mappings cannot be retrieved, the error message "Failed to get mapping list." appears.
+
+4.  To import with the "Change Identifier Mode" option, check "Change Identifier Mode".
+
+    The disclaimer appears in the "Change Identifier Mode" dialog. Click "I agree to the terms of use." and then click "OK".
+
+5.  Click "Next".
+
+    You cannot click "Next" until you have specified both a file and a mapping.
+
+    The file is read and checked, and the check results appear in the "Import" tab. The elements and checks in the "Import" tab are the same as those described in "Import items".
+
+    The following restrictions apply to RO-Crate import.
+
+      - Only one item can be registered with one zip file. If you describe multiple items by specifying wk:isSplited, the error "\`wk:isSplited\` flag cannot be used in RO-Crate Import." occurs.
+
+      - If you specify wk:metadataReplace, the error "'wk:metadataReplace' flag cannot be used in RO-Crate Import." occurs.
+
+      - A warning is displayed for metadata that is not defined in the mapping. If the item type has an element named "Extra", such metadata is stored together in that element; otherwise it is discarded.
+
+      - If replacement rules described in "[Replace metadata strings on import](#replace-metadata-strings-on-import)" are set, the replacement rules associated with the selected mapping are applied.
+
+6.  Click "Import".
+
+    The file is imported. The "Result" tab appears and shows the import results.
+
+    If wk:researchmapLinkage is set to true, the item is linked to researchmap after the registration of the item is completed.
+
+### WEKO-specific properties (wk:)
+
+In metadata in the JSON-LD format (JSON-LD registration through the SWORD API, and ro-crate-metadata.json imported with RO-Crate import), you can describe WEKO-specific properties (prefix "wk:") that specify how to register items, in addition to the metadata of the item type. These properties do not need to be defined in the JSON-LD mapping (no warning appears even if they are not defined in the mapping). The main properties are as follows.
+
+| Property | Description |
+|---|---|
+| wk:index | The index ID of the destination index (multiple values can be specified). |
+| wk:publishStatus | The publication status of the item (public/private). |
+| wk:editMode | How the version is handled on update (Keep/Upgrade). |
+| wk:feedbackMail | Email addresses for the feedback mail (multiple values can be specified). |
+| wk:requestMail | Email addresses for the request mail (multiple values can be specified). |
+| wk:researchmapLinkage | researchmap achievement linkage flag. If true is specified, the registered item is linked to researchmap. For direct registration, the linkage runs after the registration of the item is completed; for registration through a workflow, it runs when the workflow is completed (after approval). If not specified, it is treated as false (no linkage). To use the linkage, the linkage with researchmap must be configured in "Setting" \> "CRIS Linkage". |
+| wk:metadataReplace | A flag to keep the registered files and update only the metadata when updating an item. It cannot be used for new registration or RO-Crate import. |
+| wk:isSplited | A flag for describing multiple items in one JSON-LD. It cannot be used for RO-Crate import. |
+| wk:textExtraction | Whether to extract full text for each file (hasPart). Full text is not extracted for files for which false is specified. |
+
+### Replace metadata strings on import
+
+When metadata in the JSON-LD format is taken in (JSON-LD registration through the SWORD API, and RO-Crate import), you can replace specified strings in the metadata before registration for each JSON-LD mapping used (for example, replacing the half-width "|" with the full-width "｜"). This does not apply to imports in the TSV/CSV format.
+
+Replacement rules cannot be set on the screen. Describe the following two settings in the configuration file (such as instance.cfg).
+
+  - WEKO\_SEARCH\_UI\_IMPORT\_REPLACE\_RULES: Defines the replacement rules. For each rule name, specify the string before replacement (from), the string after replacement (to), whether to treat it as a regular expression (is\_regex; False if omitted), and the replacement targets (target\_path). For target\_path, specify the value on the right side of the JSON-LD mapping (for example, `creator.name.value` for `"Creator.Creator Name.Name": "creator.name.value"`). If target\_path is empty, the rule does not replace anything.
+
+  - WEKO\_SEARCH\_UI\_IMPORT\_REPLACE\_RULE\_MAP: The table of applied rules. Using the ID of a JSON-LD mapping as the key, specify the list of rule names to be applied.
+
+```
+WEKO_SEARCH_UI_IMPORT_REPLACE_RULES = {
+    "pipe_full_width": {
+        "from": "|",
+        "to": "｜",
+        "is_regex": False,
+        "target_path": [
+            "ams:industrialUse.value"
+        ]
+    }
+}
+WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP = {
+    "32001": [
+        "pipe_full_width"
+    ]
+}
+```
+
+By default, the rule "pipe\_full\_width" (half-width "|" to full-width "｜") is assigned to the mapping ID "32001", but no replacement is performed because target\_path is empty. To use it, specify the replacement targets in target\_path.
+
+If the replacement rules are set incorrectly (for example, a nonexistent rule name is specified, from/to is invalid, or the regular expression is wrong), the warning "Replacement failed.: ..." appears in the check results of the import, but the import process continues. The string specified in "to" is used as a literal string, not as a regular expression.
+
+## Use the bulk import API
+
+You can bulk register a zip file in the same format as in "Import items" (TSV/CSV format) through the REST API without using the Administration screen. Use this, for example, when an external system performs bulk registration periodically.
+
+  - Available roles: System administrator, Repository administrator
+
+  - Authentication: An OAuth2 access token is used. Issue the access token with the scope "item:bulkprocess" (for information on issuing access tokens, see "Manage applications" in the "User Account" chapter).
+
+  - Destination indexes: There is no restriction by community, and you can specify any index.
+
+Table 3‑7. Endpoints of the bulk import API
+
+| No. | Request | Description |
+|-----|-----------|------|
+| 1 | POST /api/items/import-task | Uploads a zip file, and checks and imports it. |
+| 2 | GET /api/items/import-task/get\_bulk\_import\_task\_status/{task\_id} | Gets the processing status and results of the import by specifying the task ID returned by No. 1. |
+
+**Registering an import (POST /api/items/import-task)**
+
+```
+curl -X POST "https://{host name}/api/items/import-task?mode=import&is_change_identifier=false" \
+  -H "Authorization: Bearer {access token}" \
+  -H "Content-Disposition: attachment; filename=import.zip" \
+  -F "file=@import.zip;type=application/zip"
+```
+
+  - mode: Specify "check" to perform only the check, or "import" (default) to import after the check.
+
+  - is\_change\_identifier: Specify "true" to import in the Change Identifier Mode (default: false).
+
+  - The file name must be specified in the Content-Disposition header. If it is not specified, an error (400) is returned.
+
+  - The check waits for up to 60 seconds. If the check does not finish within 60 seconds, an error ("Check task timeout.") is returned. You can change the waiting time with WEKO\_ITEMS\_UI\_BULK\_IMPORT\_TIMEOUT in the configuration file.
+
+  - The response includes a summary of the check results (summary: total, number of new registrations, number of updates, number of errors, and number of warnings), the details of errors and warnings, and the task ID (task\_id). If the check finds even one error, the import is not performed (can\_import is false, and 400 is returned).
+
+  - For items for which a DOI is specified in "BULK\_DOI" of the TSV/CSV file, the metadata is complemented using that DOI before registration.
+
+**Checking the processing status (GET /api/items/import-task/get\_bulk\_import\_task\_status/{task\_id})**
+
+```
+curl -X GET "https://{host name}/api/items/import-task/get_bulk_import_task_status/{task ID}" \
+  -H "Authorization: Bearer {access token}"
+```
+
+  - The processing status (tasks) and results (such as the registered item IDs) of each item are returned. For a task that resulted in an error in the check, 400 (including the error details) is returned; otherwise, 200 is returned. Check whether the import of each item succeeded with each element of tasks (task\_status and task\_result).
+
+  - Task information can be referenced for 24 hours after registration (you can change this with WEKO\_ITEMS\_UI\_EXPIRE\_TIME in the configuration file). If you specify an expired task ID, 404 is returned.
+
+  - Users other than the user who registered the task cannot reference it (403).
+
+If you are not authenticated (for example, the access token is invalid), 401 is returned. If the role or scope is insufficient, 403 is returned.
+
 # ‏Index Tree
 
 This chapter provides information on how to manage the index tree.
@@ -8399,7 +8773,7 @@ To access the screen where you can \<INDEXWORD PRONOUNCE="いんてつくすつ�
 
 You can set the display size of the index tree shown in such places as the home screen.
 
-See "Section 15.11.4. Set up the index tree/facet display" for more information.
+See "Section 15.12.4. Configure the index tree/facet display" for more information.
 
 ### Add an index
 
@@ -8488,30 +8862,39 @@ Table 4‑1. The elements in "Index Edit"
 <tr class="even">
 <td>Browsing Privilege</td>
 <td><p>Specify the browsing privileges for viewing the index.</p>
-<p>Users who belong to the roles and groups listed in "Role Authorized" and "Group Authorized" can view the index.</p>
+<p>Users who have at least one of the roles listed in "Role Authorized" and also belong to at least one of the groups listed in "Group Authorized" can view the index.</p>
+<p>"Authenticated User" is a role that refers to logged-in users, and "Guest" is a role that refers to users who are not logged in. "No Group" is a group that refers to users who are not logged in and logged-in users who do not belong to any group (including GakuNin mAP groups).</p>
+<p>Users with the system administrator or repository administrator role can view all indexes regardless of this setting. Therefore, these roles are not shown in the role list.</p>
+<p>When you add a new index, unless recursive application is set in the parent index, the index is created with privileges granted to all roles and all groups (including "No Group"). GakuNin mAP groups are granted the privilege only when the default privilege is enabled in the configuration file described below.</p>
 <ul>
 <li><p>Role</p></li>
 </ul>
-<p>Specify the browsing privilege for each user role. If you check "Set the base authorities of child indexes recursively", the base authority setting will be recursively applied to all child and descendant indexes.</p>
+<p>Specify the browsing privilege for each user role. Even if GakuNin mAP integration is configured, GakuNin mAP roles (roles created from the group information of GakuNin mAP) are not shown in the role list and are not used to determine the browsing privilege. If you check "Set the base authorities of child indexes recursively", the base authority setting will be recursively applied to all child and descendant indexes.</p>
 <ul>
 <li><p>Group</p></li>
 </ul>
-<p>Specify the browsing privilege for each group to which users belong. If you check "Set the group authorities of child indexes recursively", the group setting will be recursively applied to all child and descendant indexes.</p></td>
+<p>Specify the browsing privilege for each group to which users belong. If you check "Set the group authorities of child indexes recursively", the group setting will be recursively applied to all child and descendant indexes.</p>
+<p>If GakuNin mAP integration is configured, the group list shows, in addition to WEKO3 groups, the groups created according to the information from GakuNin mAP when users log in through the academic federation (GakuNin). A user satisfies the group condition if either a WEKO3 group or a GakuNin mAP group has the privilege.</p>
+<p>Roles and groups are treated as GakuNin mAP roles and groups when "WEKO_ACCOUNTS_IDP_ENTITY_ID" is set in the configuration file (instance.cfg) and their names start with the prefix for this repository (with the default settings, roles starting with "jc_{FQDN}_ro_", groups starting with "jc_{FQDN}_gr_", and "jc_roles_sysadm", which represents system administrators; {FQDN} is the host name of "WEKO_ACCOUNTS_IDP_ENTITY_ID" with "." and "-" replaced by "_"). Roles with prefixes for other repositories are treated as ordinary roles.</p>
+<p>To grant the browsing privilege to GakuNin mAP groups by default, set "WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING_PERMISSION = True" in the configuration file (instance.cfg) (default: False). When enabled, a newly created GakuNin mAP group is added to the browsing privileges of all indexes.</p></td>
 </tr>
 <tr class="odd">
 <td>Deposit Privilege</td>
 <td><p>Specify the deposit privileges for viewing the index.</p>
-<p>Users who belong to the roles and groups listed in "Role Authorized" and "Group Authorized" can register items to the index.</p>
+<p>Users who have at least one of the roles listed in "Role Authorized" and also belong to at least one of the groups listed in "Group Authorized" can register items to the index.</p>
+<p>"Authenticated User" is a role that refers to logged-in users, and "Guest" is a role that refers to users who are not logged in. "No Group" is a group that refers to users who are not logged in and logged-in users who do not belong to any group (including GakuNin mAP groups).</p>
+<p>As with the browsing privilege, the system administrator and repository administrator roles are not shown in the role list.</p>
 <ul>
 <li><p>Role</p></li>
 </ul>
-<p>Specify the deposit privilege for the base authority of each user role.</p>
+<p>Specify the deposit privilege for the base authority of each user role. GakuNin mAP roles are not shown in the role list and are not used to determine the deposit privilege.</p>
 <p>If you check "Set the base authorities of child indexes recursively", the base authority setting will be recursively applied to all child and descendant indexes.</p>
 <ul>
 <li><p>Group</p></li>
 </ul>
 <p>Specify the deposit privilege for each group to which users belong.</p>
-<p>If you check "Set the group authorities of child indexes recursively", the group setting will be recursively applied to all child and descendant indexes.</p></td>
+<p>If you check "Set the group authorities of child indexes recursively", the group setting will be recursively applied to all child and descendant indexes.</p>
+<p>If GakuNin mAP integration is configured, GakuNin mAP groups are also shown in the group list, as with the browsing privilege. To grant the deposit privilege to GakuNin mAP groups by default, set "WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_CONTRIBUTE_PERMISSION = True" in the configuration file (instance.cfg) (default: False).</p></td>
 </tr>
 <tr class="even">
 <td>Display Format (Search Results)</td>
@@ -8941,7 +9324,8 @@ Table 5‑1. Elements and descriptions for creating a widget
 <tbody>
 <tr class="odd">
 <td>Repository<sup>*</sup></td>
-<td>Specify the repository to which you want to add the widget from the options below.</td>
+<td><p>Specify the repository to which you want to add the widget from the options below.</p>
+<p>Community administrators can select only the communities they manage. The repository is also checked when the widget is saved, and the widget cannot be saved if the repository is not a community managed by the administrator.</p></td>
 </tr>
 <tr class="even">
 <td>Type<sup>*</sup></td>
@@ -9439,7 +9823,11 @@ See "ANCHORID=createwidgets【参照元】Section 5.1.2. Create a widget【E】"
 
 3.  Click "Save".
 
-The widget is updated. The message "Widget item updated successfully" appears at the top of the edit screen.
+The widget is updated. The message "Widget item updated successfully." appears at the top of the edit screen.
+
+Notes:
+
+For community administrators, when the widget is saved, it is checked that both the repository to which the widget currently belongs and the repository specified in "Repository" are communities managed by the administrator. You cannot modify a widget that belongs to a repository not managed by the administrator (including Root Index), or move a widget to such a repository. Likewise, you can delete only widgets that belong to the communities you manage.
 
 ### LINKID=deletewidgets【参照先】Delete a widget
 
@@ -9485,6 +9873,8 @@ To access the screen where you can manage the page layout, click "Web Design" an
 ### Add or remove widgets from a page
 
 1.  In the "Repository" pull-down list, select a repository.
+
+Community administrators can select only the communities they manage. Loading and saving page layouts, and adding, modifying, and deleting pages, can be performed only for the communities managed by the administrator.
 
 The "Main Layout" page of the selected repository appears. "Widget List" also displays widgets.
 
@@ -9753,13 +10143,52 @@ Table 6‑2. The elements in the "Name" area
 <p>You can choose from the following language options.</p>
 <ul>
 <li><blockquote>
-<p>ja-Kana</p>
-</blockquote></li>
-<li><blockquote>
 <p>ja</p>
 </blockquote></li>
 <li><blockquote>
+<p>ja-Kana</p>
+</blockquote></li>
+<li><blockquote>
 <p>en</p>
+</blockquote></li>
+<li><blockquote>
+<p>fr</p>
+</blockquote></li>
+<li><blockquote>
+<p>it</p>
+</blockquote></li>
+<li><blockquote>
+<p>de</p>
+</blockquote></li>
+<li><blockquote>
+<p>es</p>
+</blockquote></li>
+<li><blockquote>
+<p>zh-cn</p>
+</blockquote></li>
+<li><blockquote>
+<p>zh-tw</p>
+</blockquote></li>
+<li><blockquote>
+<p>ru</p>
+</blockquote></li>
+<li><blockquote>
+<p>la</p>
+</blockquote></li>
+<li><blockquote>
+<p>ms</p>
+</blockquote></li>
+<li><blockquote>
+<p>eo</p>
+</blockquote></li>
+<li><blockquote>
+<p>ar</p>
+</blockquote></li>
+<li><blockquote>
+<p>el</p>
+</blockquote></li>
+<li><blockquote>
+<p>ko</p>
 </blockquote></li>
 </ul></td>
 </tr>
@@ -10017,6 +10446,9 @@ Table 6‑6. The elements for the external author ID Prefix
 <p>e-Rad</p>
 </blockquote></li>
 <li><blockquote>
+<p>e-Rad_Researcher</p>
+</blockquote></li>
+<li><blockquote>
 <p>NRID</p>
 </blockquote></li>
 <li><blockquote>
@@ -10039,6 +10471,12 @@ Table 6‑6. The elements for the external author ID Prefix
 </blockquote></li>
 <li><blockquote>
 <p>GRID</p>
+</blockquote></li>
+<li><blockquote>
+<p>ROR</p>
+</blockquote></li>
+<li><blockquote>
+<p>researchmap</p>
 </blockquote></li>
 <li><blockquote>
 <p>Other</p>
@@ -10197,21 +10635,21 @@ Table 6‑7. The elements of author information to be downloaded
 </tr>
 <tr class="odd">
 <td>7</td>
-<td>authorNameInfo[0...n].idType</td>
+<td>authorIdInfo[0...n].idType</td>
 <td>Identifier Scheme</td>
 <td>外部著者ID 識別子</td>
-<td>Exports the identifier of the external author ID.</td>
+<td>Exports the identifier scheme of the external author ID.</td>
 </tr>
 <tr class="even">
 <td>8</td>
-<td>authorNameInfo[0...n].authorId</td>
-<td>Identifier URI</td>
-<td>外部著者ID URI</td>
+<td>authorIdInfo[0...n].authorId</td>
+<td>Identifier</td>
+<td>外部著者ID</td>
 <td>Exports the value of the external author ID.</td>
 </tr>
 <tr class="odd">
 <td>9</td>
-<td>authorNameInfo[0...n].authorIdShowFlg</td>
+<td>authorIdInfo[0...n].authorIdShowFlg</td>
 <td>Identifier Display</td>
 <td>外部著者ID 表示／非表示</td>
 <td><p>Exports the show/hide setting of the external author ID.</p>
@@ -10230,7 +10668,76 @@ Table 6‑7. The elements of author information to be downloaded
 <td>is_deleted</td>
 <td>Delete Flag</td>
 <td>削除フラグ</td>
-<td>Exports header elements and labels because logically deleted author information is not bulk exported via the Export feature.</td>
+<td>Exports "D" when the author is to be deleted. Because logically deleted author information is not exported, this element is blank in a bulk export.</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>affiliationInfo[0...n].identifierInfo[0...n].affiliationIdType</td>
+<td>Affiliation Identifier Scheme</td>
+<td>外部所属機関ID 識別子</td>
+<td>Exports the identifier scheme of the external affiliation ID.</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>affiliationInfo[0...n].identifierInfo[0...n].affiliationId</td>
+<td>Affiliation Identifier</td>
+<td>外部所属機関ID</td>
+<td>Exports the value of the external affiliation ID.</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>affiliationInfo[0...n].identifierInfo[0...n].identifierShowFlg</td>
+<td>Affiliation Identifier Display</td>
+<td>外部所属機関ID 表示／非表示</td>
+<td><p>Exports the show/hide setting of the external affiliation ID.</p>
+<p>Y: Display</p>
+<p>N: Hide</p></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>affiliationInfo[0...n].affiliationNameInfo[0...n].affiliationName</td>
+<td>Affiliation Name</td>
+<td>外部所属機関名</td>
+<td>Exports the name of the external affiliation.</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>affiliationInfo[0...n].affiliationNameInfo[0...n].affiliationNameLang</td>
+<td>Language</td>
+<td>言語</td>
+<td>Exports the language of the external affiliation name.</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>affiliationInfo[0...n].affiliationNameInfo[0...n].affiliationNameShowFlg</td>
+<td>Affiliation Name Display</td>
+<td>外部所属機関名・言語 表示／非表示</td>
+<td><p>Exports the show/hide setting of the external affiliation name and language.</p>
+<p>Y: Display</p>
+<p>N: Hide</p></td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>affiliationInfo[0...n].affiliationPeriodInfo[0...n].periodStart</td>
+<td>Affiliation Period Start</td>
+<td>外部所属機関 所属期間 開始日</td>
+<td><p>Exports the start date of the affiliation period.</p>
+<p>Format: yyyy-MM-dd (example: 2025-01-27)</p></td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>affiliationInfo[0...n].affiliationPeriodInfo[0...n].periodEnd</td>
+<td>Affiliation Period End</td>
+<td>外部所属機関 所属期間 終了日</td>
+<td><p>Exports the end date of the affiliation period.</p>
+<p>Format: yyyy-MM-dd (example: 2025-03-17)</p></td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>communityIds[0...n]</td>
+<td>Community</td>
+<td>コミュニティ</td>
+<td>Exports the IDs of the communities that have the management authority over the author.</td>
 </tr>
 </tbody>
 </table>
@@ -10240,6 +10747,10 @@ Table 6‑7. The elements of author information to be downloaded
 > ・Repetitive elements will have incremental values, \[1\], \[2\], ..., \[N\] added at the end of their element name in the header line (the first element name has \[0\] added).
 > 
 > ・"WEKO ID" and "Delete Flag" are not repetitive elements.
+> 
+> ・The elements for external affiliations are repeated in two levels, per affiliation and per element. The header element is output in the format "affiliationInfo[0].identifierInfo[0].affiliationIdType", and the label in the format "Affiliation Identifier Scheme[0][0]".
+> 
+> ・"#" is added to the first element of the header row and the label rows.
 > 
 > (2) If you select "Cancel":
 > 
@@ -10351,21 +10862,21 @@ Table 6‑8. The imported elements of author information
 </tr>
 <tr class="odd">
 <td>7</td>
-<td>authorNameInfo[0...n].idType</td>
+<td>authorIdInfo[0...n].idType</td>
 <td>Identifier Scheme</td>
 <td>外部著者ID 識別子</td>
-<td>Imports the identifier of the external author ID.</td>
+<td>Imports the identifier scheme of the external author ID.</td>
 </tr>
 <tr class="even">
 <td>8</td>
-<td>authorNameInfo[0...n].authorId</td>
-<td>Identifier URI</td>
-<td>外部著者ID URI</td>
+<td>authorIdInfo[0...n].authorId</td>
+<td>Identifier</td>
+<td>外部著者ID</td>
 <td>Imports the value of the external author ID.</td>
 </tr>
 <tr class="odd">
 <td>9</td>
-<td>authorNameInfo[0...n].authorIdShowFlg</td>
+<td>authorIdInfo[0...n].authorIdShowFlg</td>
 <td>Identifier Display</td>
 <td>外部著者ID 表示／非表示</td>
 <td><p>Imports the show/hide setting of the external author ID.</p>
@@ -10384,7 +10895,76 @@ Table 6‑8. The imported elements of author information
 <td>is_deleted</td>
 <td>Delete Flag</td>
 <td>削除フラグ</td>
-<td>Imports "D" for the author to be deleted.</td>
+<td>Enter "D" to delete the author.</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>affiliationInfo[0...n].identifierInfo[0...n].affiliationIdType</td>
+<td>Affiliation Identifier Scheme</td>
+<td>外部所属機関ID 識別子</td>
+<td>Imports the identifier scheme of the external affiliation ID.</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>affiliationInfo[0...n].identifierInfo[0...n].affiliationId</td>
+<td>Affiliation Identifier</td>
+<td>外部所属機関ID</td>
+<td>Imports the value of the external affiliation ID.</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>affiliationInfo[0...n].identifierInfo[0...n].identifierShowFlg</td>
+<td>Affiliation Identifier Display</td>
+<td>外部所属機関ID 表示／非表示</td>
+<td><p>Imports the show/hide setting of the external affiliation ID.</p>
+<p>Y: Display</p>
+<p>N: Hide</p></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>affiliationInfo[0...n].affiliationNameInfo[0...n].affiliationName</td>
+<td>Affiliation Name</td>
+<td>外部所属機関名</td>
+<td>Imports the name of the external affiliation.</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>affiliationInfo[0...n].affiliationNameInfo[0...n].affiliationNameLang</td>
+<td>Language</td>
+<td>言語</td>
+<td>Imports the language of the external affiliation name.</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>affiliationInfo[0...n].affiliationNameInfo[0...n].affiliationNameShowFlg</td>
+<td>Affiliation Name Display</td>
+<td>外部所属機関名・言語 表示／非表示</td>
+<td><p>Imports the show/hide setting of the external affiliation name and language.</p>
+<p>Y: Display</p>
+<p>N: Hide</p></td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>affiliationInfo[0...n].affiliationPeriodInfo[0...n].periodStart</td>
+<td>Affiliation Period Start</td>
+<td>外部所属機関 所属期間 開始日</td>
+<td><p>Imports the start date of the affiliation period.</p>
+<p>Format: yyyy-MM-dd (example: 2025-01-27)</p></td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>affiliationInfo[0...n].affiliationPeriodInfo[0...n].periodEnd</td>
+<td>Affiliation Period End</td>
+<td>外部所属機関 所属期間 終了日</td>
+<td><p>Imports the end date of the affiliation period.</p>
+<p>Format: yyyy-MM-dd (example: 2025-03-17)</p></td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>communityIds[0...n]</td>
+<td>Community</td>
+<td>コミュニティ</td>
+<td>Imports the IDs of the communities that have the management authority over the author.</td>
 </tr>
 </tbody>
 </table>
@@ -10969,7 +11549,7 @@ Figure 7‑11. Site Access
 
 This section explains how to send a fixed form report with a specified period to a registered email address.
 
-There are eleven different tsv (tab-separated values) formats available for downloading as the fixed form reports. This section explains how to download fixed form reports.
+The files sent as the fixed form reports are in eleven different tsv (tab-separated values) formats.
 
 1.  In the report management screen, under "Fixed Form Reports", select "Type", "Year", and "Month" for "Aggregation month".
 
@@ -11114,6 +11694,8 @@ The historical feedback mails sent are also displayed in the "Send logs" table.
 
 To access the screen where you can aggregate usage logs for the \<INDEXWORD PRONOUNCE="さいとらいせんす" INDEXITEM="サイトライセンス"\>site license\</INDEXWORD\>, click "Statistics" and then click "Site License".
 
+For community administrators, only the repositories they manage are available. You cannot manually send statistics by email for a repository that you do not manage.
+
 You can aggregate and analyze usage logs by users with the site license and send feedback on the results.
 
 You can specify certain item types to be excluded in the aggregation in the management screen.
@@ -11237,6 +11819,8 @@ A screen appears where you can edit the flow.
 
 2.  You can limit the roles or users who can perform the action by selecting them in the drop-down list.
 
+    If GakuNin mAP integration is configured, the roles given by GakuNin mAP (the system administrator group and the repository-specific roles) are not shown in the role choices.
+
 > zu1101050.tif
 
 ![](media/media/image243.png)For "Action User", you can configure which email to send in which approval flow using this screen.
@@ -11313,6 +11897,8 @@ zu1101200.tif
     
     "Restricted Access Flag" is unchecked by default. If checked, it appears as a "WorkFlow" option for the content file in the "Providing Method" section of the item registration screen.
     
+    You can specify whether the workflow is shown or hidden for each role. If GakuNin mAP integration is configured, the roles given by GakuNin mAP are not shown.
+    
     "Registration Destination Index" is set to "Undesignated" as default. If you choose to select "Undesignated", you must designate an index when registering an item after entering the elements for the workflow. If you designate an index for the "Registration Destination Index" setting, you do not need to designate an index after entering the elements for the workflow; instead, the item will be registered automatically to the index specified in "Admin" \> "WorkFlow" \> "Flow List".
 
 zu1101300.tif
@@ -11337,11 +11923,11 @@ zu1101400.tif![](media/media/image255.png)
 
 Notes:
 
-    1. Changes to the flow are possible, but
+The flow and the item type can be changed regardless of whether the workflow is in use. If you change the flow, the flow used when an existing item is edited individually is as follows.
 
-    1.1. For items with individual registration history (not canceled): open with the flow at the time of registration when editing the item individually.
+  - Items with a registration/editing history (activities) through a workflow: Editing starts with the same workflow and flow (the flow before the change) as the last executed activity.
 
-    1.2. For items without individual registration history (bulk registration, etc.): open with the modified flow when editing the item individually.
+  - Items without a registration/editing history through a workflow (items registered in bulk, for example by import): Editing starts with the changed flow of the workflow that corresponds to the item type.
 
 3.  Click "Save".
 
@@ -11363,7 +11949,7 @@ zu1101600.tif![](media/media/image258.png)
 
 Notes:
 
-You cannot delete a workflow if it is in use. In this case, clicking "Delete" displays an error message.
+You cannot delete a workflow if there are running activities (activities other than completed or canceled ones) that use the workflow. In this case, clicking "Delete" displays an error message.
 
 ![](media/media/image259.png)
 
@@ -11393,6 +11979,17 @@ zu0201010.tif![](media/media/image260.png)
 
 The details appear.
 
+If GakuNin mAP integration is configured (an IdP entity ID is set in WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID), the role names given by GakuNin mAP are converted to the following display names in "Owner" in the list, details, and edit screens.
+
+| GakuNin mAP role | Display name |
+| --- | --- |
+| System administrator group (default: jc\_roles\_sysadm) | System Administrator |
+| Repository-specific role (jc\_\<FQDN\>\_ro\_radm) | Repository Administrator |
+| Repository-specific role (jc\_\<FQDN\>\_ro\_cadm) | Community Administrator |
+| Repository-specific role (jc\_\<FQDN\>\_ro\_cont) | Contributor |
+
+\* \<FQDN\> is the host name of the IdP entity ID with "." and "-" replaced by "\_".
+
 ### LINKID=createcommunity【参照先】Create a community
 
 This section explains how to \<INDEXWORD PRONOUNCE="こみゆにていをさくせい" INDEXITEM="コミュニティを作成"\>create a community\</INDEXWORD\>.
@@ -11412,8 +12009,10 @@ Table 9‑1. The elements in the "Create" tab
 | Element         | Description                                                                           |
 | --------------- | ------------------------------------------------------------------------------------- |
 | Id              | Enter the ID. This element is required.                                               |
-| Owner           | Specifies the role of the community owner. This element is required.                  |
+| Cnri            | A handle is issued when CNRI is enabled.                                              |
+| Owner           | Specifies the role of the community owner. This element is required.<br>\* If GakuNin mAP integration is configured, the roles given by GakuNin mAP (the system administrator group and the repository-specific roles) are not shown in the choices. |
 | Index           | Select an index for which you want to set up the community. This element is required. |
+| Group           | Specify a group.<br>The choices are the GakuNin mAP groups created through GakuNin mAP integration. |
 | Title           | Enter a title.                                                                        |
 | Description     | Enter a description.                                                                  |
 | Page            | Enter the number of pages.                                                            |
@@ -11863,6 +12462,14 @@ Additional Information:
 
 † Private indexes (private or OAI-PMH private) are not included in the output.
 
+Additional Information: Handling of items whose embargo period has ended
+
+If WEKO\_SEARCH\_FIX\_ACCESSRIGHTS is enabled (True) in instance.cfg, the output takes the end of the embargo period (the arrival of the publication date) into account as follows. By default (disabled), the output is determined only by the update date and time of the item, as before.
+
+  - In period specification with from/until for ListRecords and ListIdentifiers, an item whose embargo period has ended is also output if its publication date is within the specified period, in addition to its update date and time.
+
+  - The \<datestamp\> of an item whose embargo period has ended is the later of the update date and time and the publication date of the item.
+
 #   
 Resource Sync
 
@@ -11885,6 +12492,10 @@ This section explains how to \</INDEXWORD\>output Resource Lists and Resource Du
 2.  If the "Status" is set to "Publish" and the corresponding index is set to public, Resource Lists and Resource Dumps for the index will be output.
 
 > The output will only include the latest version of the items.
+> 
+> The output also includes only public items (items whose publication status is public, whose publication date is on or before the current date, and that belong to a public index). If you access the URL of a zip file or manifest.xml of a private item, "The page you are looking for could not be found." appears.
+> 
+> The zip files and manifest.xml include only the files that the accessing user can download (the same determination as for files that can be downloaded on the item detail screen).
 
 1)  > Clicking on the link displayed in the "Resource List Url" will output the Resource Lists for the corresponding index.
 
@@ -12007,6 +12618,10 @@ This section explains how to \</INDEXWORD\>output Change Lists and Change Dumps.
 2.  > If the "Status" is set to "Publish" and the corresponding index is set to public, Change Lists and Change Dumps for the index will be output.
 
 > The output will only include the latest version of the items.
+> 
+> The output also includes only public items and deleted items (to notify the deletion). If you access the URL of a zip file or manifest.xml of a private item, "The page you are looking for could not be found." appears. The zip files and manifest.xml include only the files that the accessing user can download.
+> 
+> If WEKO\_SEARCH\_FIX\_ACCESSRIGHTS is enabled (True) in instance.cfg, an item whose embargo period has ended is output in the Change List and Change Dump of the date of its publication date (the end date of the embargo period) if the publication date is later than its update date and time. By default (disabled), it is output for the date of its update date and time.
 
 1)  > Clicking on the link displayed in the "Change List Url" will output the Change Lists for the corresponding index.
 
@@ -12314,7 +12929,7 @@ The Resync edit screen appears.
 
 2.  Modify the setting.
 
-> See "ANCHORID=createcommunity【参照元】Section 13.3.2 Create a Resync【E】" for information on the elements.
+> See "ANCHORID=createcommunity【参照元】Section 11.3.2 Create a Resync【E】" for information on the elements.
 
 ### Delete a Resync 
 
@@ -12400,6 +13015,8 @@ The records are deleted.
 # Files
 
 This chapter provides information on how to manage files.
+
+\* Among the Files menus, repository administrators can use only "Location" (read access only). The other menus can be used only by system administrators.
 
 ## LINKID=locationmanagement【参照先】 Manage Buckets
 
@@ -12499,6 +13116,36 @@ A dialog appears. A fixity check on the files is performed.
 
 zu0302030.tif![](media/media/image321.png)
 
+### Delete File Instances
+
+This section explains how to delete File Instances.
+
+When you delete a File Instance, the File Instance record is deleted, and the used capacity (Size) of each Location is recalculated. If the file exists on the server (local storage), the file itself is also deleted. Note that deleted files cannot be restored.
+
+To delete File Instances individually, do the following:
+
+1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
+    
+    You are prompted to confirm the deletion.
+
+2.  Click "OK".
+    
+    The File Instance is deleted.
+
+To delete multiple File Instances at once, do the following:
+
+1.  In the "List" tab, check the check boxes at the beginning of the lines.
+
+2.  Click on the "With selected" tab, and select "Delete".
+    
+    You are prompted to confirm the deletion.
+
+3.  Click "OK".
+    
+    The File Instances are deleted.
+
+\* A File Instance referenced by an Object Version or a Multipart Object cannot be deleted. Before deleting, use the link in "Objects" in the list to make sure that no Object Version references the File Instance.
+
 ## Manage Locations
 
 This section explains how to manage Locations.\<INDEXWORD PRONOUNCE="location" INDEXITEM="Location"\> To access the screen where you can manage \</INDEXWORD\>Locations, click "Files" and then click "Location".
@@ -12517,9 +13164,13 @@ zu0303010.tif![](media/media/image322.png)
 
 The details appear.
 
+\* Only system administrators can create, edit, and delete Locations. Repository administrators can view the list and details of Locations, including the Location set as the default, but cannot create, edit, or delete them (the "Create" tab, the pencil icon, and the trash can icon are not displayed).
+
+\* A warning message appears at the top of the list screen when there are zero or two or more Locations set as the default.
+
 ### LINKID=createlocation【参照先】Create a Location
 
-This section explains how to create a Location.
+This section explains how to create a Location. Only system administrators can create Locations.
 
 1.  Click on the "Create" tab.
 
@@ -12536,10 +13187,28 @@ Table 13‑2. The elements in the "Create" tab
 | Element    | Description                                        |
 | ---------- | -------------------------------------------------- |
 | Name       | Specify a Location name. This element is required. |
-| URI        | Specify the URI for the Location.                  |
-| Type       | Select a type.                                     |
+| URI        | Specify the URI for the Location. For an S3-compatible storage, specify "S3://*bucket name*". If Type is S3 Virtual Host, specify a URL starting with "https://". |
+| Type       | Select a type. The types are blank, "S3 Path", and "S3 Virtual Host" (shown as "S3 Virtural Host" on the screen). If you select S3 Path or S3 Virtual Host, the elements for S3-compatible object storage appear (see "Table 13‑3"). |
 | Quota Size | Specify an upper limit for the capacity.           |
-| Default    | Check if you want to use it as the default.        |
+| Default    | Check if you want to use it as the default.<br>\* If another Location is already set as the default, this element is grayed out (inactive) and cannot be selected. You can set a new Location as the default after clearing the existing default Location. |
+
+If you select "S3 Path" or "S3 Virtual Host" for Type, the following elements appear.
+
+Table 13‑3. The elements for S3-compatible object storage
+
+| Element    | Description |
+| ---------- | ----------- |
+| access\_key | Enter the access key of the S3-compatible object storage. This element is required. It is used for operations that involve writing, such as uploading, deleting, and copying files. |
+| secret\_key | Enter the secret key of the S3-compatible object storage. This element is required. |
+| readonly\_access\_key | Enter the read-only access key of the S3-compatible object storage. This element is required. It is used for read-only operations, such as downloading files and issuing presigned URLs. |
+| readonly\_secret\_key | Enter the secret key corresponding to the read-only access key. This element is required. |
+| endpoint\_url | Enter the endpoint URL of the S3-compatible object storage. If Type is S3 Virtual Host, this element is not displayed, and the URI value is used as the endpoint URL. |
+| send\_file\_directly | Specifies whether files are downloaded directly from the storage or indirectly through the Web application. If unchecked, files are downloaded directly from the storage (redirect to a presigned URL).<br>\* When a Location is created, it is saved as checked (through the Web application) regardless of the input. To use direct download, uncheck it on the edit screen after creation. |
+| default\_block\_size | The block size (bytes) used when uploading a file to the storage in parts. If left blank, 5242880 is set. |
+| maximum\_number\_of\_parts | The maximum number of parts for multipart upload. If left blank, 10000 is set. |
+| region\_name | Enter the region name of the S3-compatible object storage. This element is required. |
+| signature\_version | Select s3 or s3v4. Select s3v4 unless there is a specific reason.<br>\* The value is not saved when a Location is created. Set it on the edit screen after creation. |
+| url\_expiration | The validity period (seconds) of the presigned URL for downloading. If left blank, 60 is set. |
 
 2.  Click "Save".
 
@@ -12547,7 +13216,7 @@ The location is created.
 
 ### LINKID=editlocation【参照先】Edit a Location
 
-This section explains how to edit a Location.
+This section explains how to edit a Location. Only system administrators can edit Locations.
 
 1.  > In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
@@ -12564,6 +13233,8 @@ zu0303030.tif![](media/media/image324.png)
 The setting is saved.
 
 ### LINKID=deletelocation【参照先】Delete Locations
+
+This section explains how to delete Locations. Only system administrators can delete Locations.
 
 To delete Locations individually, do the following:
 
@@ -12603,6 +13274,8 @@ zu0304010.tif![](media/media/image327.png)
 
 The details appear.
 
+\* The Multipart Object management screen is read-only. You cannot create, edit, or delete Multipart Objects from the management screen.
+
 ## Manage Object Versions
 
 This section explains how to manage Object Versions.
@@ -12624,6 +13297,8 @@ The details appear.
 # LINKID=managemultipartobject【参照先】LINKID=managefileinstance【参照先】User Management
 
 This chapter provides information on how to manage users.
+
+\* Among the User Management menus, repository administrators can use "User", "User Profile", and "Session Activity", and community administrators can use "User". The other menus can be used only by system administrators.
 
 ## LINKID=accessrolesetting【参照先】Access: Roles
 
@@ -13117,6 +13792,12 @@ The tokens are deleted.
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="oauthapplication" INDEXITEM="OAuth Application"\>OAuth Applications\</INDEXWORD\>. To access the screen where you can manage OAuth Applications, click "User Management", and then click "OAuth Applications".
 
+In the management screen, you can only view and delete registered OAuth Applications. Each user registers OAuth Applications and issues tokens from the "Applications" screen of the account settings.
+
+\* The scopes that can be given to a token include the scopes for Web APIs such as items, indexes, and authors, as well as the scope "item:bulkprocess" for the bulk import API. The bulk import API can be used by users with the system administrator or repository administrator role.
+
+\* If the scope specified in an authorization request of an OAuth Application is invalid (it contains no valid scope), the authorization screen is not displayed, and the error screen shows "error: The scope is incorrect."
+
 ### LINKID=viewoauthappli【参照先】View OAuth Applications
 
 This section explains how to view OAuth Applications.
@@ -13253,9 +13934,15 @@ zu1010010.tif![](media/media/image359.png)
 
 This section explains how to delete sessions.
 
+\* You cannot delete your own current session. If the selected sessions include your own session, "You could not remove your current session" appears, and the session is not deleted.
+
+To delete a session individually, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line in the "List" tab.
+
+To delete multiple sessions at once, do the following:
+
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-2.  Click on the "With selected" tab, and select "Delete".
+2.  Click on the "With selected" tab, and select "Delete selected sessions".
 
 You are prompted to confirm the deletion.
 
@@ -13275,6 +13962,10 @@ This section explains how to view users.
 
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
+For community administrators, only the users who belong to the communities they manage are displayed.
+
+\* Only system administrators can add, edit, disable, and enable users. Repository administrators and community administrators can only view the list and details of users.
+
 zu1011010.tif![](media/media/image360.png)
 
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
@@ -13283,7 +13974,7 @@ The details appear.
 
 ### LINKID=createuser【参照先】Add a user
 
-This section explains how to add a user.
+This section explains how to add a user. Only system administrators can add users.
 
 1.  Click on the "Create" tab.
 
@@ -13302,7 +13993,8 @@ Table 14‑7. The elements in the "Create" tab
 | Email                  | Enter an email address. This element is required.            |
 | Password               | Enter the corresponding password.                            |
 | Active                 | Check "Active" to allow the user you create to log in.       |
-| Roles                  | Select a role for the user.                                  |
+| Roles                  | Select a role for the user.<br>\* If GakuNin mAP integration is configured (WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID is set), the GakuNin mAP roles (the system administrator group and the roles for this repository) and the GakuNin mAP groups are not shown in the choices. |
+| Groups                 | Select groups for the user.<br>The choices show the GakuNin mAP groups for this repository. If GakuNin mAP integration is not configured (WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID is not set), no choices are shown. |
 | Send User Notification | Check this box to send the user an email about this account. |
 
 2.  Click "Save".
@@ -13311,7 +14003,7 @@ The user is created.
 
 ### LINKID=edituser【参照先】Edit a user
 
-This section explains how to edit a user.
+This section explains how to edit a user. Only system administrators can edit users.
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
@@ -13329,7 +14021,7 @@ The setting is saved.
 
 ### LINKID=inacivateuser【参照先】Disable or enable users
 
-This section explains how to disable or enable users.
+This section explains how to disable or enable users. Only system administrators can disable or enable users.
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
@@ -13364,6 +14056,8 @@ zu1012010.tif![グラフィカル ユーザー インターフェイス, テキ�
 The details appear.
 
 ### LINKID=deleteuserprofile【参照先】Delete User Profiles
+
+This section explains how to delete User Profiles. Only system administrators can delete User Profiles.
 
 To delete User Profiles individually, do the following:
 
@@ -13413,16 +14107,20 @@ Table 15‑1. The elements in "Items".
 <tbody>
 <tr class="odd">
 <td>Display Email</td>
-<td><p>Specify whether or not to show the author's email address with items.</p>
-<p>The default is set to "Display Email" (checked).</p></td>
+<td><p>Select whether to show the author's email address with items ("Display Email") or not ("Hide Email").</p>
+<p>The default is "Display Email".</p></td>
 </tr>
 <tr class="even">
 <td>Open Date</td>
-<td><p>Specify whether or not to show the publish date in the item list and the item detail screen displayed for guest users.</p>
-<p>The default is set to "Display" (checked).</p></td>
+<td><p>Select whether to show the publish date in the item list and the item detail screen displayed for guest users ("Display") or not ("Hide Open Date").</p>
+<p>The default is "Display".</p></td>
 </tr>
 </tbody>
 </table>
+
+Additional Information:
+
+Whether the request mail form can be used is set not in this screen but in "Request Form" in the "Restricted Access" screen.
 
 3.  Click "Save".
 
@@ -13443,6 +14141,22 @@ zu0806010.tif![](media/media/image367.png)
 3.  Click "Update".
 
 The setting is saved. "Index Link" is set to display on the Home screen.LINKID=indextreesetting【参照先】
+
+## Configure the activity list display
+
+This section explains how to configure whether to show the column of approver email addresses in the workflow activity list.
+
+1.  Click "Setting", and then click "Activity List".
+    
+    A screen appears where you can configure the activity list.
+
+2.  In "Display Approver Email", select "Display" or "Hide".
+    
+    The default is "Display".
+
+3.  Click "Save".
+    
+    The setting is saved. The message "Activity setting was updated." appears.
 
 ## Set up languages
 
@@ -13574,20 +14288,21 @@ Table 15‑3. The elements in "Ranking"
 </tr>
 <tr class="even">
 <td>Period To Judge As New Item</td>
-<td>Specify the period that registered items are treated as new.</td>
+<td>Specify the period, in days (1 to 30), that registered items are treated as new.</td>
 </tr>
 <tr class="odd">
 <td>Statistical Period</td>
-<td>Specify the period that the log is aggregated for ranking.</td>
+<td>Specify the period, in days (1 to 3650), that the log is aggregated for ranking.</td>
 </tr>
 <tr class="even">
 <td>Display Rank</td>
-<td>Specify the number of ranks to be displayed.</td>
+<td>Specify the number of ranks to be displayed (1 to 100).</td>
 </tr>
 <tr class="odd">
 <td>Rankings</td>
 <td><p>Specify which ranking to display.</p>
-<p>Check the desired ranking you want to display.</p></td>
+<p>Check the desired ranking you want to display.</p>
+<p>Select from "Most Viewed Items", "Most Downloaded Items", "User Who Created The Most Items", "Most Searched Keywords", and "New Items".</p></td>
 </tr>
 </tbody>
 </table>
@@ -13739,7 +14454,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
     
-    See "ANCHORID=createidentifier【参照元】Section 15.8.2 Create an Identifier【E】" for information on the elements.
+    See "ANCHORID=createidentifier【参照元】Section 15.9.2 Create an Identifier【E】" for information on the elements.
 
 ![](media/media/image384.png)zu0804060.tif
 
@@ -13873,7 +14588,7 @@ Table 15‑8. The elements in "Search Results Setting"
 <tbody>
 <tr class="odd">
 <td>Default Display Number</td>
-<td>Specify the default number of search results from the select box.</td>
+<td>Specify the default number of search results (20, 50, 75, or 100) from the select box. The default is 20.</td>
 </tr>
 <tr class="even">
 <td>Default Display Sort (Index Search)</td>
@@ -14053,7 +14768,7 @@ Table 15‑9. The elements in "Index Tree/Facet Display Setting"
 </tr>
 <tr class="even">
 <td>Width (Grid)</td>
-<td>Select a value from the drop-down menu. The value you specify is the number of grids. For information on the grid, see <a href="https://getbootstrap.com/docs/4.1/layout/grid/">https://getbootstrap.com/docs/4.1/layout/grid/</a>.</td>
+<td>Select a value (1 to 11) from the drop-down menu. The value you specify is the number of grids. For information on the grid, see <a href="https://getbootstrap.com/docs/4.1/layout/grid/">https://getbootstrap.com/docs/4.1/layout/grid/</a>.</td>
 </tr>
 <tr class="odd">
 <td>Height (Pixel)</td>
@@ -14063,6 +14778,12 @@ Table 15‑9. The elements in "Index Tree/Facet Display Setting"
 <td>Facet</td>
 <td><p>Specify the facet display.</p>
 <p>Check the "Display" checkbox to display the facet.</p>
+<p>The default is set to the unchecked state.</p></td>
+</tr>
+<tr class="odd">
+<td>Community</td>
+<td><p>Specify the display of the Community tab.</p>
+<p>Check the "Display" checkbox to display the Community tab.</p>
 <p>The default is set to the unchecked state.</p></td>
 </tr>
 </tbody>
@@ -14118,7 +14839,7 @@ Table 15‑10. The elements in "Main Screen Initial Display Setting"
 </tr>
 <tr class="odd">
 <td>Initial Display Index</td>
-<td><p>Specify the facet display.</p>
+<td><p>Specify the index to be displayed initially.</p>
 <p>You can select an index from the displayed index tree.</p>
 <p>The default is set to "Root Index".</p></td>
 </tr>
@@ -14188,7 +14909,7 @@ The following facet elements are defined by default.
 | アクセス制限                   | Access                  | accessRights                 |
 | 配布者                      | Distributor             | contributor.contributorName  |
 
-The "List" tab shows a list of actions added to the role.
+The "List" tab shows a list of the registered facet elements.
 
 ![](media/media/image392.png)
 
@@ -14241,10 +14962,32 @@ The elements to configure are as follows
 <td>Display/Hide</td>
 <td>Specify whether to show or hide the facet element on the Web screen.</td>
 </tr>
+<tr class="even">
+<td>UI</td>
+<td>Specify the UI type of the facet element.</td>
+</tr>
+<tr class="odd">
+<td>Display Number</td>
+<td>Specify the number of values to display.<br />
+This element can be entered only when the UI is "CheckboxList", in which case it is required. Enter an integer from 1 to 99.</td>
+</tr>
+<tr class="even">
+<td>Open/Close</td>
+<td>Specify the open/close state.</td>
+</tr>
+<tr class="odd">
+<td>search condition</td>
+<td>Specify the search condition (OR/AND) applied when multiple values are selected in the facet.<br />
+If the UI is "RangeSlider", only "AND" can be selected.</td>
+</tr>
 </tbody>
 </table>
 
 Click on the "Create" tab, and the "Create" screen appears. You can add a facet element by specifying the elements shown.
+
+Additional Information:
+
+If "WEKO\_SEARCH\_FIX\_ACCESSRIGHTS" is enabled (True) in the configuration file (default: disabled), the facet for access restrictions (accessRights) is aggregated and filtered taking the embargo state into account. For example, an item whose access right is "embargoed access" but whose publication date has passed and all of whose files are public is treated as "open access". If disabled, the values are aggregated as the access right values registered for the items.
 
 ![](media/media/image395.png)
 
@@ -14306,14 +15049,15 @@ Table 15‑11. The elements in "Site Info"
 <td>Specify the tracking ID for Google Analytics.</td>
 </tr>
 <tr class="odd">
-<td>AddThis ID</td>
-<td>Specify the tracking ID for AddThis.</td>
-</tr>
-<tr class="even">
 <td>OGP Image</td>
 <td><p>Select an image to upload for og:image.</p>
 <p>The file must be in the JPG, PNG, WEBP, or GIF format and less than 5MB in size.</p>
 <p>The full path of the image file you specify will be included in the meta tag content in the head tab of the Web page.</p></td>
+</tr>
+<tr class="even">
+<td>Log in Instructions</td>
+<td><p>Enter the instructions displayed on the login screen for each language. Click "Add Instructions" to add an input field. Enter up to 1000 characters.</p>
+<p>This element appears only when "WEKO_ADMIN_ENABLE_LOGIN_INSTRUCTIONS" is enabled (True) in the configuration file (default: disabled).</p></td>
 </tr>
 </tbody>
 </table>
@@ -14362,7 +15106,7 @@ You can select an icon with the extension ".ico".
 
 The setting is saved. The message "Site info is saved successfully" appears.
 
-If you specify multiple site names for a single language, you will get the error message "The same language is set for many site names".
+If you specify multiple site names for a single language, you will get the error message "The same language is set for many site names."
 
 > ![](media/media/image398.png)
 
@@ -14414,6 +15158,8 @@ zu0820010.tif![](media/media/image403.png)
 
 Additional Information:
 
+Only public items are output to the sitemap: items whose publication status is "Public", whose publication date has passed, and that belong to an index that users who are not logged in can view. Private items, items whose publication date is in the future, and items that belong only to private indexes are not output.
+
 An output xml file is stored in the following place:
 
 https://{FQDN}/weko/sitemaps/sitemapindex.xml
@@ -14452,7 +15198,7 @@ Table 15.‑12. The elements in "Mail Setting"
 
 3.  Click "Update".
 
-The setting is saved.
+The setting is saved. If Server, Port, or Default sender is blank, the setting is not saved and an error message appears.
 
 4.  Enter the elements in "Send Test Mail".
 
@@ -14529,13 +15275,52 @@ This section explains how to allow \<INDEXWORD PRONOUNCE="しほれすゆうさ�
 
 A screen appears where you can configure the setting for Shibboleth users.
 
-2.  Enable or disable Shibboleth user authentication by selecting the relevant radio button.
+2.  Click either the "Allow shibboleth user" or "Deny shibboleth user" radio button.
 
 zu0817010.tif![](media/media/image409.png)
 
-3.  Click "Save".
+3.  If necessary, configure "Default Role", "Attribute Mapping", and "Block User".
+
+The following table lists the elements.
+
+<table>
+<thead>
+<tr class="header">
+<th>Element title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default Role</td>
+<td><p>Select from the drop-down lists the role given to users who log in with Shibboleth, for each IdP category. The target institutions (organization names) of each category are defined in the configuration file.</p>
+<p>- Gakunin IdP: The default is "Contributor".</p>
+<p>- Outside Orthros: The default is "Community Administrator".</p>
+<p>- Extra IdP (other IdPs): The default is "None" (no role is given).</p>
+<p>The selectable roles are "System Administrator", "Repository Administrator", "Community Administrator", "Contributor", and "None".</p></td>
+</tr>
+<tr class="even">
+<td>Attribute Mapping</td>
+<td><p>Select from the drop-down lists the Shibboleth attributes that correspond to the user information used by WEKO (shib_eppn, shib_role_authority_name, shib_mail, and shib_user_name).</p>
+<p>The defaults are shib_eppn: eppn, shib_role_authority_name: HTTP_WEKOSOCIETYAFFILIATION, shib_mail: mail, and shib_user_name: DisplayName.</p></td>
+</tr>
+<tr class="odd">
+<td>Block User</td>
+<td><p>Enter the ePPN of a user whose Shibboleth login is to be denied, and click "Add" to add it to the block user list. Select an entry in the list and click "Delete" to remove it from the list.</p>
+<p>You can use "*" (any string) in the ePPN. When a user who matches a block user tries to log in with Shibboleth, the login fails.</p></td>
+</tr>
+</tbody>
+</table>
+
+4.  Click "Save".
 
 The setting is saved.
+
+Notes:
+
+・User attributes sent from the Shibboleth SP are accepted only when sent from the SP login script (login.py) on the Web server. The accepted source addresses are specified with "WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS" in the configuration file (default: "127.0.0.1" and "::1"). Transmissions from other addresses are rejected. When you update an existing environment, update the login script (login.py) and the nginx settings at the same time. If you update only one of them, Shibboleth login will fail.
+
+・Logins to the WEKO API (/api/<version>/login) are rate-limited per source IP address. The limit is specified with "WEKO_API_LIMIT_RATE_DEFAULT" in the configuration file (default: 100 per minute).
 
 ## LINKID=editindextree【参照先】LINKID=filepreviewsetting【参照先】LINKID=identifiersetting【参照先】LINKID=siteinfosetting【参照先】LINKID=widgetsetting【参照先】Manage restricted access
 
@@ -15402,6 +16187,14 @@ See the Data Registration Guide for information on how to manage applications.
 ## LINKID=managegroup【参照先】Manage groups
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="くるうふ" INDEXITEM="グループ"\>groups\</INDEXWORD\>. To access the screen where you can manage groups, select "Groups" from the user account pull-down menu in the upper right corner of the screen.
+
+Notes:
+
+・Creating, editing (managing), and deleting groups, listing members, inviting members, approving join requests, and removing members can be performed only by users with the system administrator, repository administrator, or community administrator role. If other users try these operations, an error (403) occurs.
+
+・In addition to the roles above, editing and deleting a group, approving join requests, and removing members can be performed only by the administrator of the group (the creator of the group). Members can be invited by the administrator of the group, and also by members of the group if its join policy is "Open". Groups created on the screen have the join policy "Open with approval" (approval required), so only the administrator of the group can invite members.
+
+・Any logged-in user can accept or reject invitations and join requests, and leave a group.
 
 ### LINKID=inclusiverequest【参照先】Accept a request or invitation to join a group
 

@@ -59,6 +59,10 @@ Chapter 9: Operating tips
 
 This chapter provides tips for working with the System.
 
+Chapter 10: Workspace
+
+This chapter describes how to view and register your own items in the workspace.
+
   - Conventions
 
 The format conventions used in this document are as follows:
@@ -210,6 +214,14 @@ The format conventions used in this document are as follows:
 [9.5 Modify the session validity time 127](#linkidchangetimeout参照先modify-the-session-validity-time)
 
 [9.6 Display the Administration screen. 128](#linkidopenadminmenu参照先display-the-administration-screen.)
+
+[10. Workspace](#workspace)
+
+[10.1 View the item list](#view-the-item-list)
+
+[10.1.1 Export the item list](#export-the-item-list)
+
+[10.2 Register an item quickly](#register-an-item-quickly)
 
 #   
 System overview\</INDEXWORD\>
@@ -778,6 +790,8 @@ zu030060.tif![](media/media/image33.png)
 
 A list of child indexes belonging to the index appears in the "Index List" screen. Private indexes are not displayed for guest users.
 
+Note: Only the indexes you are allowed to view are displayed in "Index Tree" and "Index List". You can view an index when the index is public (and its publish date, if set, has passed), you have at least one of the roles specified in the browsing privileges of the index, and you belong to one of the groups specified in the browsing privileges. Logged-in users who do not belong to any group and guest users are treated as belonging to "No Group". See the System Administration Manual for details on setting browsing privileges.
+
 Each index shows the number of items it contains. Public and private items are counted as follows.
 
   - The following items are counted as public:
@@ -1195,6 +1209,14 @@ zu030030.tif![](media/media/image65.png)
 
 See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E】" for more information.
 
+Note: If `WEKO_SEARCH_FIX_ACCESSRIGHTS = True` is set in the configuration file (instance.cfg), the facet for access rights (accessRights) counts and filters items registered with the access right "embargoed access" according to the current date and the access settings of their content files, as follows (with the default setting, items are counted according to the registered access right value).
+
+  - If all content files are set to "Open access", or to "Input Open Access Date" with a publish date that has passed: "open access"
+
+  - If there is a content file set to "Restricted Access", or there is a content file set to "Registered User Only" and no content file is set to "Input Open Access Date" with a future publish date: "restricted access"
+
+  - Otherwise, if there is a content file set to "Input Open Access Date" with a future publish date or set to "Do not Publish", or if there is no content file: "embargoed access"
+
 # View item details\</INDEXWORD\>
 
 This chapter describes elements that are included in items.
@@ -1336,6 +1358,8 @@ You cannot delete an item when it has a DOI granted. If you click the "Delete" b
 
 You can check the number of views for an item in the statistics screen.
 
+The view count of an item and the download and playing counts of its content files (the "Stats" tab on the Information screen) are available only to users who can view the item details screen of the item.
+
 Figure 4-3. The statistics screen
 
 zu040020.tif![](media/media/image77.png)
@@ -1390,6 +1414,12 @@ You can view content files registered with an item in a list of file information
 > ![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image83.png)
 > 
 > The preview is not displayed, and the file information area shows that you do not have access to the file.
+> 
+> Access rights to the content file are also checked when you access the preview URL directly. If you do not have access rights, the Login screen appears when you are not logged in, and access is denied when you are logged in. Likewise, images delivered via IIIF are available only when you have permission to view the item and access rights to the content file.
+> 
+> ・For site license users:
+> 
+> For items whose item type is not excluded from the site license, users accessing from an IP address authorized by the site license can also download content files set to "Registered User Only" and "Restricted Access". Content files set to "Restricted Access" can be downloaded directly without an application or a one-time URL. See "Configure IP addresses permitted by the site license" in the System Administration Manual for details on site license settings.
 > 
 > ・If the content file's publish date is in the future, the preview will appear as follows.
 > 
@@ -1589,6 +1619,8 @@ Table 4‑8. The "Version" and "Stats" tabs on the Information screen
 | 10  |       | Plays                       | Displays the preview count of the content file.                                                                                                                  |
 | 11  |       | The "See details" pull-down | Displays the download count and the preview count of the content file for each country.                                                                          |
 
+Note: The "Stats" tab is available only to users who can view the item details screen of the item.
+
 #   
 Register items\</INDEXWORD\>
 
@@ -1713,7 +1745,8 @@ Table 5‑6. The elements in the "Automatic metadata input" screen
 <td>1</td>
 <td>Select the ID</td>
 <td><p>Select an external database.</p>
-<p>You can use <a href="http://www.crossref.org/">CrossRef</a>, CiNii and WEKOID as external databases.</p>
+<p>You can use <a href="http://www.crossref.org/">CrossRef</a>, CiNii (CiNii Research), WEKOID (the ID of an item in WEKO) and researchmap as external databases. To use CrossRef, the CrossRef API credentials must be configured on the Administration screen.</p>
+<p>If the APIs to be used (JaLC API, 医中誌 Web API (Ichushi Web), CrossRef, DataCite, CiNii Research) are set in WEKO_ITEMS_AUTOFILL_TO_BE_USED in instance.cfg, you can also select "DOI". When "DOI" is selected, metadata is retrieved from each configured API and merged, giving priority to the APIs listed earlier in the setting.</p>
 <p>* With WEKOID, you can utilize metadata by specifying the id. You cannot import elements that are not mapped with the JPCOAR schema. You also cannot import Hide elements. Your WEKOID needs to have permission to edit.</p></td>
 </tr>
 <tr class="even">
@@ -3276,7 +3309,13 @@ This chapter provides information on editing and deleting registered items.
 
 This section explains how to edit items registered in the Systems.
 
-Only the administrator, the user who registered the item, and the proxy contributor have permission to edit the item.
+The following users can edit an item: system administrators, repository administrators, community administrators of the community that manages the index to which the item belongs, the user who registered the item (the owner), and the proxy contributor.
+
+> If you have permission to edit the item, you can also open the item edit screen by directly entering the URL (/workflow/edit_item_direct/*item ID*), in addition to the procedure below. The edit screen opens only when you have permission to edit the item and the item is not being edited by another activity.
+> 
+> If you are not logged in, the Login screen appears, and the edit screen opens after you log in. If you are logged in but do not have permission to edit the item, the error "You are not allowed to edit this item." appears.
+> 
+> Users who are not logged in or who do not have permission to edit the item cannot update or publish the item without going through the screens either.
 
 You can edit items belonging to the index. Locate the item to be edited in the index tree.
 
@@ -3365,7 +3404,7 @@ After editing, the old version will inherit the previous publish status.
 
 This section explains how to delete items registered in the Systems.
 
-Only the administrator, the user who registered the item, and the proxy contributor have permission to delete the item.
+The users who can delete an item are the same as those who can edit it: system administrators, repository administrators, community administrators of the community that manages the index to which the item belongs, the user who registered the item (the owner), and the proxy contributor.
 
 You can delete items belonging to the index. Locate the item to be deleted in the index tree.
 
@@ -3432,6 +3471,8 @@ Run a search by entering keywords in the keyword search text box or run an index
 2.  The search results appear in the "Item Lists" screen.
     
     Click the icon030080.tif![](media/media/image47.png) button to display the "Items to Export" screen.
+    
+    The icon030080.tif![](media/media/image47.png) button is displayed when exporting items is permitted in the item export settings on the Administration screen.
 
 zu070010.tifFigure 7-1. The "Items to Export" screenzu030180.tif
 
@@ -3470,7 +3511,8 @@ LINKID=exportitemstable【参照先】Table 7-1. The elements in the "Items to E
 <td>4</td>
 <td>"Message"</td>
 <td><p>Displays a message from the System.</p>
-<p>If you do not have the permission to download the file, the message "Contains restricted content" will appear.</p></td>
+<p>If you do not have the permission to download the file, the message "Contains restricted content" will appear.</p>
+<p>When you export with "BIBTEX" selected in "Export Format", the message "Required item is not inputted." appears for items that lack the required BibTeX fields or that you do not have permission to view, and those items are not exported.</p></td>
 </tr>
 <tr class="odd">
 <td>5</td>
@@ -3481,19 +3523,23 @@ LINKID=exportitemstable【参照先】Table 7-1. The elements in the "Items to E
 <td>6</td>
 <td>The "File Contents" radio buttons</td>
 <td><p>Select an option for "File Contents".</p>
-<p>The choices are "Do Not Export File Contents" and "Export File Contents".</p></td>
+<p>The choices are "Do Not Export File Contents" and "Export File Contents".</p>
+<p>If exporting files is not permitted in the item export settings on the Administration screen, these options cannot be selected and the message "File contents cannot be exported." appears.</p>
+<p>If you select "RO-Crate" in "Export Format", "Export File Contents" is selected automatically.</p></td>
 </tr>
 <tr class="odd">
 <td>7</td>
 <td>The "Export Format" radio buttons</td>
 <td><p>Select an option for "Export Format".</p>
-<p>The choices are "JSON" and "BIBTEX".</p></td>
+<p>The choices are "TSV", "BIBTEX" and "RO-Crate".</p>
+<p>"RO-Crate" can be selected when exporting files is permitted in the item export settings on the Administration screen.</p></td>
 </tr>
 <tr class="even">
 <td>8</td>
 <td>The icon030080.tif<img src="media/media/image47.png" style="width:0.50858in;height:0.20833in" /> button</td>
 <td><p>Exports the items selected in the "Item" list.</p>
-<p>The button will remain inactive until you select items.</p></td>
+<p>The button will remain inactive until you select items.</p>
+<p>The maximum number of items that can be exported at once is displayed to the left of the button ("Max number of items able to export"). If the number of selected items exceeds the maximum, the message "Exceeded number of selectable items." appears and the button becomes inactive.</p></td>
 </tr>
 <tr class="odd">
 <td>9</td>
@@ -3764,3 +3810,124 @@ zu080050.tif![](media/media/image262.png)
 The Administration screen will be displayed. See the System Administration Manual for instruction.
 
 zu080060.tif![](media/media/image263.png)
+
+# Workspace
+
+This chapter provides information on the workspace, where you can view and register your own items.
+
+## View the item list
+
+This section explains how to display the item list in the workspace.
+
+1.  Log in to the System and click the pull-down icon next to the account name in the upper right corner of the Home screen.
+
+A pull-down menu appears. The workspace is available to all logged-in users.
+
+2.  Select "Workspace".
+
+The workspace item list screen appears.
+
+  - The list shows the items owned by the logged-in user and the items for which the user is set as the proxy contributor.
+
+  - If you have saved filter conditions, the list is displayed filtered by those conditions.
+
+The following table explains the main elements of the workspace item list screen.
+
+Table 10-1. The elements in the workspace item list screen
+
+| No. | Element | Description |
+| --- | ------- | ----------- |
+| 1   | The search box ("Type and press enter to search") | Searches the item list by DOI, title, journal title, conference name and funding reference (funder name and award title). Press the Enter key after typing to run the search. The search is case-insensitive. If no item matches, the message "No results found matching your search criteria." appears. |
+| 2   | User and affiliation information | Displays the user name and affiliation information. |
+| 3   | The item registration button (folder icon) | Displays the item registration screen of the workspace. See "Register an item quickly" for more information. |
+| 4   | The "Export Item List" button | Exports the item list to a TSV file. |
+| 5   | The "Grouping by year" button | Groups the items by year. |
+| 6   | The "Filter Display" button | Displays the filter condition panel. |
+| 7   | Sort conditions | Sorts the items by "Publication Date", "Title", "Number of accesses" or "Number of downloads", in ascending or descending order. |
+| 8   | Paging | Changes the number of items displayed per page to 20, 50 or 100. |
+| 9   | Check boxes | Select items to be exported. The check box in the header selects all items. |
+| 10  | Favorite and read/unread buttons | Switch the favorite status and the read/unread status of the item. |
+| 11  | Item information | Displays the title (click to display the item details screen), journal title or conference name, volume (issue), whether document files exist, authors, publication date, related links and funding references. |
+| 12  | Number of accesses and downloads | Displays the access count and download count of the item. |
+| 13  | Resource type and status | Displays the resource type and the status linked with OA Assist, and whether feedback mail is set. |
+| 14  | DOI | Displayed when a related identifier with the identifier type "DOI" and the relation type "isVersionOf" is registered in the related information of the item. Click to go to the DOI link (doi.org). |
+| 15  | Edit | Displays the item edit screen. |
+
+Table 10-2. The elements in the filter condition panel
+
+| No. | Element | Description |
+| --- | ------- | ----------- |
+| 1   | Filter conditions | Filter by "Resource Type", "Peer Review", "Related To Paper", "Related To Data", "Funding Reference - Funder Name", "Funding Reference - Award Title", "File" and "Favorite". |
+| 2   | The "Filter" button | Filters the item list by the selected conditions. |
+| 3   | The "Clear" button | Clears the filter conditions. |
+| 4   | The "Save" button | Saves the selected filter conditions. |
+| 5   | The "Reset" button | Resets the filter conditions. |
+
+### Export the item list
+
+1.  Click the "Export Item List" button.
+
+A dialog for selecting the export method appears ("Please select the following option:").
+
+Table 10-3. The elements in the export dialog
+
+| No. | Element | Description |
+| --- | ------- | ----------- |
+| 1   | "Selected Items" | Exports only the items selected with the check boxes. |
+| 2   | "All Items" | Exports all items in the workspace item list (if filter conditions are applied, the items that match the conditions). Results narrowed down by the search box are not reflected. |
+| 3   | "Cancel" | Cancels the export. |
+
+If you click "Selected Items" without selecting any items, the error message "Error: There is no Selected items. Please check the item you want to export" appears.
+
+The exported TSV file is as follows.
+
+  - The file name is in the format "itemlist_export_*YYYYMMDDhhmmss*.tsv", and the character encoding is UTF-8 (with BOM).
+
+  - The first line contains column headers in the display language. The columns are output in the following order:
+
+      - No. (the sequence number in the item list; the numbers in the list are output even for "Selected Items")
+
+      - Favorite Status, Read Status, Peer Review Status (1 if applicable, otherwise 0)
+
+      - Title, DOI Link, Resource Type, Author Name, Number of Accesses, Item Status, Journal Title, Conference Name, Volume, Issue, Funder Name, Award Title, Number of Downloads
+
+      - Feedback Mail Status (1 or 0), Publication Date
+
+      - Relation Type, Relation Title, Relation URL or DOI (comma-separated if there are multiple)
+
+      - Related to Paper Status, Related to Data Status (1 or 0)
+
+      - Number of Document Files, Number of Published Files, Number of Embargo Files, Number of Restricted Files
+
+## Register an item quickly
+
+This section explains how to register an item from the workspace.
+
+1.  Click the item registration button (folder icon) in the workspace item list screen.
+
+The item registration screen of the workspace appears.
+
+2.  Enter a DOI in the "DOI Input" field and click the "Get" button.
+
+The System tries to retrieve metadata from CrossRef, JaLC, CiNii, DataCite and arXiv. The radio buttons of the sources from which metadata was retrieved become selectable.
+
+3.  Select a metadata source ("CrossRef MetaData", "JaLC MetaData", "CiNii MetaData", "DataCite MetaData" or "arXiv MetaData") with the radio buttons.
+
+The retrieved metadata is entered automatically.
+
+4.  Upload files using the file selection button in the "File" area.
+
+5.  Select the index in which to register the item, and click the "Regist" button.
+
+Table 10-4. The elements in the item registration screen of the workspace
+
+| No. | Element | Description |
+| --- | ------- | ----------- |
+| 1   | "DOI Input" | Enter a DOI. |
+| 2   | The "Get" button | Retrieves metadata for the entered DOI from each source. The radio buttons of the sources from which metadata was retrieved become active. |
+| 3   | Metadata source radio buttons | Select the metadata source ("CrossRef MetaData", "JaLC MetaData", "CiNii MetaData", "DataCite MetaData" or "arXiv MetaData"). The metadata from the selected source is entered automatically. |
+| 4   | "File" | Displays the uploaded files. The registrant can edit the file information. |
+| 5   | "Metadata" | Set when the metadata is retrieved. You can also edit it. |
+| 6   | OA policy information | Click the button for retrieving OA policy to retrieve the OA policy of the journal. ISSN, eISSN or journal title must be entered ("Please enter ISSN, eISSN, or journal title"). |
+| 7   | "Index Tree" | Select the index in which to register the item. |
+| 8   | The "Regist" button | Registers the item, either through a workflow or directly, according to the workflow setting for the workspace on the Administration screen. |
