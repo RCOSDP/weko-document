@@ -53,3 +53,9 @@
 - マニュアルは編集せず **変更点一覧のみ** 作成 → manual_changes_v2.1.0.md（USER 6件/ADMIN 11件/GUIDE 2件）。
 - 実装側の要確認: postgresql/ddl/sp72-createindex.sql が item_type_mapping の旧btree 2本＋GIN を作る記述のまま（新規構築とマイグレーション後で不整合の懸念）。
 - 全編集で行番号本文混入なし・更新履歴行(2026/07/17)追加済み。ブランチ develop_v2.1.0、未push。
+
+## フェーズ3: release_v2.1.0 突合（2026-10-05）
+- 基準: RCOSDP/weko origin/release_v2.1.0（508030789）。b19e39d8a から 317 コミット。
+- マニュアル（ADMIN/USER は分割して並列突合→再結合、GUIDE、manuals_en）・機能仕様書（全カテゴリの差分＋7/31他者追記分）を実装準拠に修正・追記。
+- API_20 重複を API_20_bulk_import.md に統合。docs/operation/v2.0.4_v2.1.0.md 新規。
+- 結果・実装側の要確認事項・画像差し替え一覧は findings_release_v2.1.0.md。
