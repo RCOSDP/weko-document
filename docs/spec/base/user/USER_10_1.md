@@ -31,13 +31,13 @@
     - 「タイトル」
       - 押下することでアイテム詳細画面に遷移する
 
-    - 「未読バッジ」
+    - 【v2.1.0】「未読バッジ」
       - タイトルの右側に未読状態を表示する（押下で既読に更新する）
 
     - 「DOIラベル」
       - リンク付けありで表示され、DOI情報を確認すると該当アイテムを既読に更新する
-      - DOIが存在しないときは非表示
-      - DOI（リンク）は、関連情報(relation)の relatedIdentifier のうち `identifierType=="DOI"` かつ `relationType==isVersionOf` のものを DOI として採用し、`OAIHARVESTER_DOI_PREFIX` を前置して導出する
+      - 【v2.1.0】DOIが存在しないときは非表示
+      - 【v2.1.0】DOI（リンク）は、関連情報(relation)の relatedIdentifier のうち `identifierType=="DOI"` かつ `relationType==isVersionOf` のものを DOI として採用し、`OAIHARVESTER_DOI_PREFIX` を前置して導出する
 
     - 「リソースタイプ」
       - リソースタイプを表示する
@@ -143,7 +143,7 @@
 
   - アイテム出力カラムフォーマット
 
-出力ヘッダー（列見出し）はサーバ側の config `WEKO_WORKSPACE_EXPORT_HEADERS` で定義され、`weko_workspace.views.get_workspace_itemlist` が `export_header` としてフロントへ提供する。先頭には「No.」（連番）列が付与される。
+【v2.1.0】出力ヘッダー（列見出し）はサーバ側の config `WEKO_WORKSPACE_EXPORT_HEADERS` で定義され、`weko_workspace.views.get_workspace_itemlist` が `export_header` としてフロントへ提供する。先頭には「No.」（連番）列が付与される。
 
 | 論理名 | 物理名 | 出力フォーマット |
 |------------------------------|-------------------------------|----------------------|
@@ -299,8 +299,8 @@
 
 - 画面/ハンドラ：`weko_workspace.views.get_workspace_itemlist`（route `/workspace/`、`@login_required`）。一覧ESインデックスは `{prefix}-weko`。状態テーブル `workspace_status_management`（複合PK (user_id, recid)、`is_favorited`/`is_read`）、既定条件 `workspace_default_conditions`。OAステータスは `weko_records.models.OaStatus`。
 - 実装補足：関連モジュールは **weko-workspace**（本体）を筆頭に weko-records / weko-admin / weko-search-ui / weko-user-profiles / invenio-stats。TSV出力はサーバではなくクライアントJS `WorkspaceExport.js`（ファイル名 `itemlist_export_YYYYMMDDhhmmss.tsv`）。
-- 出力ヘッダー（列見出し）はサーバ側 config `WEKO_WORKSPACE_EXPORT_HEADERS`（先頭 `'No.'` を含む約28列）で定義され、`get_workspace_itemlist` が `export_header` としてフロント（`WorkspaceExport.js` / `WorkspaceItemList.js`）へ渡す。フロントはこれを用いて出力する。
-- 一覧の DOI リンクは `source["relation"]["relatedIdentifier"]` を走査し、`identifierType=="DOI"` かつ `relationType==['isVersionOf']` のものを採用して `OAIHARVESTER_DOI_PREFIX` を前置して生成する（従来の identifier 先頭値起点から変更）。
+- 【v2.1.0】出力ヘッダー（列見出し）はサーバ側 config `WEKO_WORKSPACE_EXPORT_HEADERS`（先頭 `'No.'` を含む約28列）で定義され、`get_workspace_itemlist` が `export_header` としてフロント（`WorkspaceExport.js` / `WorkspaceItemList.js`）へ渡す。フロントはこれを用いて出力する。
+- 【v2.1.0】一覧の DOI リンクは `source["relation"]["relatedIdentifier"]` を走査し、`identifierType=="DOI"` かつ `relationType==['isVersionOf']` のものを採用して `OAIHARVESTER_DOI_PREFIX` を前置して生成する（従来の identifier 先頭値起点から変更）。
 
 ## 更新履歴
 

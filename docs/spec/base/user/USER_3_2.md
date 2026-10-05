@@ -754,7 +754,7 @@
 
   - ファイルプレビューのビューアは、ファイルのアクセス権限と同様。  
     ファイルのアクセス権限がないユーザーは、ファイルプレビュー及びファイルの情報を見ることはできない
-  - プレビュー表示（`RECORDS_UI_ENDPOINTS` の `recid_preview`、`/record/<pid_value>/preview/<path:filename>`）のビュー `weko_records_ui.preview.preview` にはデコレータ `weko_records_ui.permissions.file_permission_required` が付く。プレビューアと同じ方法（`current_previewer.record_file_factory`）で対象ファイルを解決し、ダウンロードと同じ `file_permission_factory`（`check_file_download_permission`）で判定する。権限がない場合、未ログインならログイン画面へ誘導し（`weko_accounts.views._redirect_method`）、ログイン済みなら 403 を返す。ファイルが存在しない場合はビュー側で 404 とする。プレビューは iframe 内に表示されるが、未ログイン時はその iframe 内でもログイン画面へ遷移する（[ログイン](./USER_8_2.md) の実装補足を参照）。
+  - 【v2.1.0】プレビュー表示（`RECORDS_UI_ENDPOINTS` の `recid_preview`、`/record/<pid_value>/preview/<path:filename>`）のビュー `weko_records_ui.preview.preview` にはデコレータ `weko_records_ui.permissions.file_permission_required` が付く。プレビューアと同じ方法（`current_previewer.record_file_factory`）で対象ファイルを解決し、ダウンロードと同じ `file_permission_factory`（`check_file_download_permission`）で判定する。権限がない場合、未ログインならログイン画面へ誘導し（`weko_accounts.views._redirect_method`）、ログイン済みなら 403 を返す。ファイルが存在しない場合はビュー側で 404 とする。プレビューは iframe 内に表示されるが、未ログイン時はその iframe 内でもログイン画面へ遷移する（[ログイン](./USER_8_2.md) の実装補足を参照）。
 
 #### (4)マルチパートダウンロード処理について
   
@@ -795,7 +795,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 権限判定：`weko_records_ui.permissions.check_file_download_permission`（内部ヘルパー `__check_user_permission`）/ `check_open_restricted_permission` / `check_user_group_permission`。ダウンロード処理は `weko_records_ui.fd`（`file_download_ui` / `file_preview_ui` / `_download_file`）。ワンタイム／シークレットURLモデルは `file_onetime_download` / `file_secret_download` / `file_url_download_log`。`WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` は weko-admin、プレビューサイズ上限 `WEKO_ITEMS_UI_FILE_SISE_PREVIEW_LIMIT` は weko-items-ui（形式別 dict）。
-- 実装補足（v2.1.0、IIIF の権限判定）：IIIF 画像 API（`/api/iiif/v2/<bucket_id>:<version_id>:<key>/...` の画像・info.json。invenio-iiif の `handlers.protect_api`）は、対象ファイルが属するレコードについて `page_permission_factory`（詳細画面と同じ閲覧権限）と `check_file_download_permission`（ファイルのダウンロード権限）の両方を満たす場合のみ応答し、満たさない・オブジェクトが無い場合は 404 とする（`invenio_iiif.permissions.iiif_object_permission_factory`。レコードのファイルでないオブジェクトは Invenio-Files-REST の `object-read` 権限で判定）。IIIF マニフェスト（`IIIF_MANIFEST_ENDPOINTS` の `recid`、`IIIF_API_PREFIX` 配下の `records/<pid_value>/manifest.json`）は `permission_factory_imp='weko_records_ui.permissions:page_permission_factory'` によりレコードの閲覧権限を確認し（未ログインは 401、ログイン済みで権限なしは 403）、マニフェストに含める画像もファイル権限を満たすものに限る。サムネイル作成の Celery タスク `invenio_iiif.tasks.create_thumbnail` は利用者のリクエスト外の内部処理のため、利用者の権限を確かめずに対象オブジェクトを解決する（`g.obj` に設定して `image_opener` に使わせる）。
+- 【v2.1.0】実装補足（v2.1.0、IIIF の権限判定）：IIIF 画像 API（`/api/iiif/v2/<bucket_id>:<version_id>:<key>/...` の画像・info.json。invenio-iiif の `handlers.protect_api`）は、対象ファイルが属するレコードについて `page_permission_factory`（詳細画面と同じ閲覧権限）と `check_file_download_permission`（ファイルのダウンロード権限）の両方を満たす場合のみ応答し、満たさない・オブジェクトが無い場合は 404 とする（`invenio_iiif.permissions.iiif_object_permission_factory`。レコードのファイルでないオブジェクトは Invenio-Files-REST の `object-read` 権限で判定）。IIIF マニフェスト（`IIIF_MANIFEST_ENDPOINTS` の `recid`、`IIIF_API_PREFIX` 配下の `records/<pid_value>/manifest.json`）は `permission_factory_imp='weko_records_ui.permissions:page_permission_factory'` によりレコードの閲覧権限を確認し（未ログインは 401、ログイン済みで権限なしは 403）、マニフェストに含める画像もファイル権限を満たすものに限る。サムネイル作成の Celery タスク `invenio_iiif.tasks.create_thumbnail` は利用者のリクエスト外の内部処理のため、利用者の権限を確かめずに対象オブジェクトを解決する（`g.obj` に設定して `image_opener` に使わせる）。
 - 大容量（マルチパート）ダウンロードの閾値・パートサイズは S3 サーバ側転送用の `WEKO_RECORDS_UI_S3_TRANSFER_MULTIPART_THRESHOLD` / `_CHUNKSIZE` で設定する。
 
 ## 詳細リファレンス（v2.0.2 実装：エラー処理・分岐・データモデル）
@@ -807,18 +807,18 @@
 `check_file_download_permission(record, fjson, is_display_file_info, item_type)` は `fjson['accessrole']` で分岐する。分岐前に以下の「無条件許可」が先に評価される。
 
 - 登録者系：`current_user.id` が `user_id_list`（`record._deposit.created_by` / `record.owner` / `record.weko_shared_ids`。`WEKO_ITEMS_UI_PROXY_POSTING` が True なら全共有者、False なら最後の1件）に含まれれば許可。
-- スーパーユーザー系：`is_superuser_or_record_comadmin(record)` が真なら許可。`current_user` のロール名が `WEKO_PERMISSION_SUPER_ROLE_USER`（システム管理者・リポジトリ管理者）に含まれれば無条件で許可し、`WEKO_PERMISSION_ROLE_COMMUNITY`（コミュニティ管理者）の場合は `has_comadmin_permission(record)` により自コミュニティ配下のインデックスに属するアイテムに限って許可する（`check_created_id` と同じ管轄判定。v2.1.0 で変更。以前はコミュニティ管理者ロールを持てば全アイテムで許可していた）。所有者・管理者判定 `is_owners_or_superusers` も同じ判定を使う。
+- 【v2.1.0】スーパーユーザー系：`is_superuser_or_record_comadmin(record)` が真なら許可。`current_user` のロール名が `WEKO_PERMISSION_SUPER_ROLE_USER`（システム管理者・リポジトリ管理者）に含まれれば無条件で許可し、`WEKO_PERMISSION_ROLE_COMMUNITY`（コミュニティ管理者）の場合は `has_comadmin_permission(record)` により自コミュニティ配下のインデックスに属するアイテムに限って許可する（`check_created_id` と同じ管轄判定。v2.1.0 で変更。以前はコミュニティ管理者ロールを持てば全アイテムで許可していた）。所有者・管理者判定 `is_owners_or_superusers` も同じ判定を使う。
 - 上記に該当しない場合のみ accessrole 別判定へ進む。処理中の例外は `abort(500)`。
 
 | accessrole | ダウンロード可否の条件 |
 | --- | --- |
 | `open_access` | ファイル情報表示は常に可。実DLは `fjson.date[0].dateValue` が未来日でなければ可（未設定は可）。 |
 | `open_date` | 情報表示は常に可。実DLは (a) 公開日 `fjson.accessdate`（無ければ `date[0].dateValue`）が未来でない、(b) `record.publish_date` が未来でない、(c) ロール条件（`fjson.roles` 一致、未指定は可）の AND。不可でも `site_license_check`（アイテムタイプ `has_site_license` かつ IP 判定 or `check_user_group_permission`）が真なら可。 |
-| `open_login` | 情報表示は常に可。実DLは (a) ログイン済み、(b) ロール条件、(c) 課金/グループ条件（`fjson.groupsprice` があれば該当グループ所属、無ければ `fjson.groups` 所属、未設定は可）の AND。**AND の結果が偽でも `site_license_check`（アイテムタイプ `has_site_license` が真、かつ IP 判定 or グループ課金）が真ならサイトライセンス利用者として可**。 |
+| 【v2.1.0】`open_login` | 情報表示は常に可。実DLは (a) ログイン済み、(b) ロール条件、(c) 課金/グループ条件（`fjson.groupsprice` があれば該当グループ所属、無ければ `fjson.groups` 所属、未設定は可）の AND。**AND の結果が偽でも `site_license_check`（アイテムタイプ `has_site_license` が真、かつ IP 判定 or グループ課金）が真ならサイトライセンス利用者として可**。 |
 | `open_no` | 情報表示は原則可だが未ログイン・非許可・サイトライセンス該当時は非表示。実DLは `current_user.email` が登録者メール一覧に含まれる場合のみ可。 |
-| `open_restricted` | `check_open_restricted_permission` に委譲。承認済み `FilePermission`（`status==1`）が存在し、かつ `WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` が True の場合のみ `check_permission_period`（有効なワンタイムDLの有無）を評価。DISPLAY_FLAG が False または未承認は不可。**ただし判定が偽でも `site_license_check` が真ならサイトライセンス利用者として可**。 |
+| 【v2.1.0】`open_restricted` | `check_open_restricted_permission` に委譲。承認済み `FilePermission`（`status==1`）が存在し、かつ `WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` が True の場合のみ `check_permission_period`（有効なワンタイムDLの有無）を評価。DISPLAY_FLAG が False または未承認は不可。**ただし判定が偽でも `site_license_check` が真ならサイトライセンス利用者として可**。 |
 
-補足：`fd.py` の `file_ui` の実DL時、`open_restricted` で所有者・スーパーユーザーでなければ有効なワンタイムDLを取得（無ければ `abort(403)`）し token を生成して `validate_onetime_token` に委譲する。ファイル未存在は `abort(404)`、未ログインはログイン要求。**ただしサイトライセンス利用者（`weko_records_ui.ipaddr.check_site_license_permission()` が真）は、この open_restricted のワンタイムDL強制フローをスキップして直接DLする。**
+【v2.1.0】補足：`fd.py` の `file_ui` の実DL時、`open_restricted` で所有者・スーパーユーザーでなければ有効なワンタイムDLを取得（無ければ `abort(403)`）し token を生成して `validate_onetime_token` に委譲する。ファイル未存在は `abort(404)`、未ログインはログイン要求。**ただしサイトライセンス利用者（`weko_records_ui.ipaddr.check_site_license_permission()` が真）は、この open_restricted のワンタイムDL強制フローをスキップして直接DLする。**
 
 ### 2. ワンタイム／シークレットURL のエラー・分岐
 

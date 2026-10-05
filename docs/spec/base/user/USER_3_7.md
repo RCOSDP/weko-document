@@ -81,7 +81,7 @@
               
             updatedの日付のマッピングは、Getrecord、ListRecord、ListIdentifierのheaderにおいて、「datestamp=record.updated,」が使用されており、invenio_records.api.get_recordからDBのupdatedを取得している。  
             
-            設定値WEKO_SEARCH_FIX_ACCESSRIGHTS（weko_search_ui/config.py、既定 False）をTrueにしている場合、エンバーゴを考慮したupdatedが出力される（`invenio_records.api.Record.updated`）。
+            【v2.1.0】設定値WEKO_SEARCH_FIX_ACCESSRIGHTS（weko_search_ui/config.py、既定 False）をTrueにしている場合、エンバーゴを考慮したupdatedが出力される（`invenio_records.api.Record.updated`）。
             AccessRightsがembargoed accessからopen accessに読み替えられる場合（読み替え条件は[メタデータ表示](./USER_3_1.md)のAccess Rightsの表示を参照）、ファイルの公開日のうち最も新しい日付とDBのupdatedを比較して、新しい方がupdatedとして出力される。
             あわせて、ListRecords/ListIdentifiersの from/until による絞り込みも、ESの _updated だけでなくエンバーゴ期間が明けたファイルの公開日を考慮した条件（`invenio_oaiserver.query.range_query`）で行う。
               

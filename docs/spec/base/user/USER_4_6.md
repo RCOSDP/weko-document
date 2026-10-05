@@ -61,7 +61,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     - アイテムで個別に編集した作成者の項目は、Adminの著者DBには反映されない。  
     なお、アイテムで個別に編集した後に著者DBから著者を取り込むと、個別編集した項目は上書きされる
   
-- weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTS（既定 False）をTrueに設定している場合
+- 【v2.1.0】weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTS（既定 False）をTrueに設定している場合
   - 入力したメタデータが以下のAccess Rightsの修正条件に該当する場合、修正後のAccess Rightsの値（あわせて URI も `ACCESS_RIGHT_TYPE_URI` の値）でアイテムが登録される（`weko_records.utils.json_loader` から `update_embargo_rights` / `check_embargo_rights` を呼び出す）
     - Access Rights:embargoed accessの場合（ファイルのアクセス（accessrole）と公開日で判定する）
       1. ファイルのアクセスにopen_restrictedが1つでも存在する場合、restricted accessに修正される

@@ -116,7 +116,7 @@
       - 言語はアイテムリストには表示しない。
       - 【Administration > アイテムタイプ管理(ItemTypes) > メタデータ (Metadata) 画面】の言語のサブプロパティの"Show List"のチェックを非活性とする。
 
-  - Access Rightsの表示について
+  - 【v2.1.0】Access Rightsの表示について
     - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTS（既定 False）をTrueに設定している場合、Access Rights（jpcoar_mapping の accessRights.@value にマッピングされた項目）は以下の条件で表示される（レコード取得時に `weko_records.utils.update_embargo_rights` / `check_embargo_rights` で値を読み替える）
       - Access Rights:embargoed accessの場合（ファイルの accessrole と公開日（date[0].dateValue）で判定する）
         1. ファイルのアクセスにopen_restrictedが1つでも存在する場合、restricted accessで表示される
@@ -177,7 +177,7 @@
 
        4. 親PIDのアイテムリンクを更新し、外部システム連携（`call_external_system`）を呼び出す
 
-       5. （2）で取得したバージョンのインデックス情報を、親PIDのインデックス情報で更新する
+       5. 【v2.1.0】（2）で取得したバージョンのインデックス情報を、親PIDのインデックス情報で更新する
 
     4. 編集用PIDが存在し、ワークフローのアクティビティで編集中でない場合（`is_workflow_activity_work` が偽）、（2）で取得したバージョンのデータをもとに、
 
@@ -386,9 +386,9 @@
 - 詳細表示は weko-records-ui（＋ weko-deposit、ルーティングは invenio-records-ui）が担う。
 
 > 実装補足（v2.1.0）：
-> - アイテム詳細画面からの削除・バージョン削除（`/records/soft_delete/<recid>`、バージョン削除は recid に `del_ver_` 接頭辞）、復元（`/records/restore/<recid>`）、`/get_uri`、`/records/copy_bucket`・`/records/get_file_place`・`/records/replace_file` は `login_required` に加えて `weko_records_ui.permissions.record_edit_permission_required` で認可する。判定は `check_created_id`（作成者・所有者・共有者（代理投稿 `WEKO_ITEMS_UI_PROXY_POSTING` 有効時は共有者全員、無効時は最後の共有者）・当該レコードのインデックスを管轄するコミュニティのコミュニティ管理者（`has_comadmin_permission`）・`WEKO_PERMISSION_SUPER_ROLE_USER` のロール）で、権限が無い場合は 403、recid が特定できない場合は 400、未ログインは 401 を返す（issue62569）。
-> - 画面の［削除］ボタンは `POST /items/prepare_delete_item`（`weko_items_ui.views.prepare_delete_item`）から `soft_delete(del_value)` を位置引数で直接呼ぶため、デコレータは位置引数からも recid を解決する（issue62807。修正前は一律 400 となり削除できなかった）。
-> - 性能対策：`default_view_method` で Google Scholar / Google Dataset メタタグ生成用に組み立てる JPCOAR の OAI-PMH XML を、キャッシュ（キー `record_jpcoar_xml_<OAI ID>_<revision_id>`、有効期限 config `WEKO_RECORDS_UI_GOOGLE_XML_CACHE_TTL`（既定 300 秒））に保持する。アイテム編集で revision が変わると別キーになるため即時に反映される。また、パンくず（インデックスパス名）と所属コミュニティの算出で `Indexes.get_index` の結果をリクエスト内で再利用する。
+> - 【v2.1.0】アイテム詳細画面からの削除・バージョン削除（`/records/soft_delete/<recid>`、バージョン削除は recid に `del_ver_` 接頭辞）、復元（`/records/restore/<recid>`）、`/get_uri`、`/records/copy_bucket`・`/records/get_file_place`・`/records/replace_file` は `login_required` に加えて `weko_records_ui.permissions.record_edit_permission_required` で認可する。判定は `check_created_id`（作成者・所有者・共有者（代理投稿 `WEKO_ITEMS_UI_PROXY_POSTING` 有効時は共有者全員、無効時は最後の共有者）・当該レコードのインデックスを管轄するコミュニティのコミュニティ管理者（`has_comadmin_permission`）・`WEKO_PERMISSION_SUPER_ROLE_USER` のロール）で、権限が無い場合は 403、recid が特定できない場合は 400、未ログインは 401 を返す（issue62569）。
+> - 【v2.1.0】画面の［削除］ボタンは `POST /items/prepare_delete_item`（`weko_items_ui.views.prepare_delete_item`）から `soft_delete(del_value)` を位置引数で直接呼ぶため、デコレータは位置引数からも recid を解決する（issue62807。修正前は一律 400 となり削除できなかった）。
+> - 【v2.1.0】性能対策：`default_view_method` で Google Scholar / Google Dataset メタタグ生成用に組み立てる JPCOAR の OAI-PMH XML を、キャッシュ（キー `record_jpcoar_xml_<OAI ID>_<revision_id>`、有効期限 config `WEKO_RECORDS_UI_GOOGLE_XML_CACHE_TTL`（既定 300 秒））に保持する。アイテム編集で revision が変わると別キーになるため即時に反映される。また、パンくず（インデックスパス名）と所属コミュニティの算出で `Indexes.get_index` の結果をリクエスト内で再利用する。
 
 ## 更新履歴
 

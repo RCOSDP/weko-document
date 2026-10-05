@@ -290,8 +290,8 @@ RO-Crateの形式については[ADMIN_2.5 RO-Crateインポート](../admin/ADM
 - 画面/ハンドラ：`weko_items_ui.views.export`（route `/items/export`）。出力は `weko_items_ui.utils.export_items`（`bagit.make_bag` / `write_files`(TSV) / `write_bibtex_files` / `write_rocrate` / `make_stats_file`）。RO-Crate 変換は `weko_search_ui.mapper.JsonLdMapper.to_rocrate_metadata`、マッピングは `weko_records.api.JsonldMapping`（table `jsonld_mappings`）。管理設定は AdminSettings `item_export_settings`（`allow_item_exporting` / `enable_contents_exporting`）。上限 `WEKO_ITEMS_UI_DEFAULT_MAX_EXPORT_NUM`（100、ロール別 `_PER_ROLE`）。
 - 出力ファイル名は `recid_{record_id}.zip`（外側は `export.zip`）。`WEKO_ITEMS_UI_EXPORT_MAX_FILE_SIZE` および JS `getExportItemsMetadata` は実装されていない。TSV 出力で有効なテキスト処理は `escape_newline`（`\n`→`<br/>`）のみ（NFKD 正規化・MarkupSafe エスケープ・`&EMPTY&` 置換はコメントアウトで無効）。bibtex 検証は `/items/validate_bibtext_export`。
 
-- 実装補足（v2.1.0、出力対象の権限）：`export_items` は各アイテムを `_export_item` で出力する際、システム管理者・リポジトリ管理者（`weko_index_tree.utils.get_user_roles()[0]`）、当該アイテムの編集権限者（`check_created_id`）、または公開状態かつ公開日到来（`check_publish_status`）のいずれかに当たらないアイテムをスキップし、出力に含めない。
-- 実装補足（v2.1.0、BibTeX の事前検証）：`POST /items/validate_bibtext_export`（`weko_items_ui.views.validate_bibtex_export`）は本文 `record_ids` がリストでない・要素が整数／文字列でない等の不正な入力に 400 を返す。`weko_items_ui.utils.validate_bibtex` は、存在しないレコードおよび詳細画面の権限判定（`page_permission_factory`）で閲覧できないレコードを、必須項目不足と同じく「出力できないレコード」として返す。
+- 【v2.1.0】実装補足（v2.1.0、出力対象の権限）：`export_items` は各アイテムを `_export_item` で出力する際、システム管理者・リポジトリ管理者（`weko_index_tree.utils.get_user_roles()[0]`）、当該アイテムの編集権限者（`check_created_id`）、または公開状態かつ公開日到来（`check_publish_status`）のいずれかに当たらないアイテムをスキップし、出力に含めない。
+- 【v2.1.0】実装補足（v2.1.0、BibTeX の事前検証）：`POST /items/validate_bibtext_export`（`weko_items_ui.views.validate_bibtex_export`）は本文 `record_ids` がリストでない・要素が整数／文字列でない等の不正な入力に 400 を返す。`weko_items_ui.utils.validate_bibtex` は、存在しないレコードおよび詳細画面の権限判定（`page_permission_factory`）で閲覧できないレコードを、必須項目不足と同じく「出力できないレコード」として返す。
 
 ## 更新履歴
 

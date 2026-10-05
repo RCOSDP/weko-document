@@ -82,7 +82,7 @@
 | 24 | テキスト1 (text1) | テキストボックス |
 | 25 | float_JA_1 | 数値範囲入力 |
 | 26 | geopoint_JA_1 | geo_distance |
-| 27 | アクセス権 (Access Rights) | チェックボックス |
+| 【v2.1.0】27 | アクセス権 (Access Rights) | チェックボックス |
 
 検索項目ごとにある「X」ボタンを押すことで、検索条件を削除できる。
 
@@ -193,7 +193,7 @@
 | 24 | テキスト1 (text1) | Keyword | Text1 | |
 | 25 | float_JA_1 | float_range | float_range1 | |
 | 26 | geopoint_JA_1 | geo_point | geo_point1 | |
-| 27 | アクセス権 (Access Rights) | Keyword | accessRights | 検索パラメータ `accessrights`（選択肢 embargoed access / metadata only access / open access / restricted access、複数選択時は OR）。WEKO_SEARCH_FIX_ACCESSRIGHTS が True の場合はファイルのアクセス（accessrole）と公開日も考慮して検索する（下記実装補足参照） |
+| 【v2.1.0】27 | アクセス権 (Access Rights) | Keyword | accessRights | 検索パラメータ `accessrights`（選択肢 embargoed access / metadata only access / open access / restricted access、複数選択時は OR）。WEKO_SEARCH_FIX_ACCESSRIGHTS が True の場合はファイルのアクセス（accessrole）と公開日も考慮して検索する（下記実装補足参照） |
 
 表 1-2‑3　 IDの選択肢と対応するキー
 
@@ -235,8 +235,8 @@
 - 詳細検索は `weko_search_ui.query.default_search_factory._get_detail_keywords_query`。検索キーと内部フィールドの対応は config `WEKO_SEARCH_KEYWORDS_DICT`。`exact_title_match`（タイトル完全一致）の分岐あり。
 
 > 実装補足（v2.1.0）：
-> - アクセス権（Access Rights）の詳細検索条件は `weko_admin.config` の詳細検索条件（id `accessrights`、`inputType: checkbox_list`、`default_display: True`）として定義され、`weko_search_ui.query.default_search_factory` 内の `__get_accessrights_query` で ES の `accessRights` を検索する。選択値は config `WEKO_ACCESS_RIGHTS_CHOICES` に含まれるもののみ有効。
-> - config `WEKO_SEARCH_FIX_ACCESSRIGHTS`（既定 False）を True にしている場合は、アイテム詳細画面の Access Rights の読み替え（[メタデータ表示](./USER_3_1.md) 参照）と整合するよう、`embargoed access` のアイテムをファイルの accessrole（open_access / open_date / open_login / open_restricted / open_no）と公開日（`content.date.dateValue`）で open access / restricted access / embargoed access に振り分けて検索する。
+> - 【v2.1.0】アクセス権（Access Rights）の詳細検索条件は `weko_admin.config` の詳細検索条件（id `accessrights`、`inputType: checkbox_list`、`default_display: True`）として定義され、`weko_search_ui.query.default_search_factory` 内の `__get_accessrights_query` で ES の `accessRights` を検索する。選択値は config `WEKO_ACCESS_RIGHTS_CHOICES` に含まれるもののみ有効。
+> - 【v2.1.0】config `WEKO_SEARCH_FIX_ACCESSRIGHTS`（既定 False）を True にしている場合は、アイテム詳細画面の Access Rights の読み替え（[メタデータ表示](./USER_3_1.md) 参照）と整合するよう、`embargoed access` のアイテムをファイルの accessrole（open_access / open_date / open_login / open_restricted / open_no）と公開日（`content.date.dateValue`）で open access / restricted access / embargoed access に振り分けて検索する。
 
 ## 更新履歴
 
