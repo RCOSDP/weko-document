@@ -112,3 +112,6 @@ docs/manuals/USER/pdf/
 docs/manuals/USER/html/
 
 node_modules/
+
+# Temporary outputs of the documentation/implementation audit (kept locally, not tracked)
+/findings*.md
