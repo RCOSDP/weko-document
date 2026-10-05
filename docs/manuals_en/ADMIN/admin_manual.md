@@ -154,6 +154,12 @@ The format conventions used in this document are as follows:
 
 [2.2.8 Restore item types 46](#restore-item-types)
 
+[2.2.9 Export item types](#export-item-types)
+
+[2.2.10 Import item types](#import-item-types)
+
+[2.2.11 Troubleshooting item types](#troubleshooting-item-types)
+
 [2.3 Set up OAI schemas 48](#linkidsetoaischema参照先set-up-oai-schemas)
 
 [2.3.1 About schemas that support mapping 48](#about-schemas-that-support-mapping)
@@ -253,6 +259,8 @@ The format conventions used in this document are as follows:
 [6.1.1 Manage author name sources 142](#manage-author-name-sources)
 
 [6.1.2 Manage external author ID Prefixes 151](#manage-external-author-id-prefixes)
+
+[6.1.3 Manage affiliation ID Prefixes](#manage-affiliation-id-prefixes)
 
 [6.2 Export author information 156](#export-author-information)
 
@@ -456,6 +464,8 @@ The format conventions used in this document are as follows:
 
 [14.6.2 Change the storage location of a workflow](#change-the-storage-location-of-a-workflow)
 
+[14.6.3 Notes on the institutional storage feature](#notes-on-the-institutional-storage-feature)
+
 [15. User Management 262](#linkidmanagemultipartobject参照先linkidmanagefileinstance参照先user-management)
 
 [15.1 Access: Roles 263](#linkidaccessrolesetting参照先access-roles)
@@ -596,9 +606,15 @@ The format conventions used in this document are as follows:
 
 [16.12.3 Configure detail search results settings 319](#configure-detail-search-results-settings)
 
-[16.12.4 Configure the index tree/facet display 321](#configure-the-index-treefacet-display)
+[16.12.4 Change the labels of detail search items](#change-the-labels-of-detail-search-items)
 
-[16.12.5 Configure the initial display 323](#configure-the-initial-display)
+[16.12.5 Customize the detail search](#customize-the-detail-search)
+
+[16.12.6 Configure the index tree/facet display 321](#configure-the-index-treefacet-display)
+
+[16.12.7 Configure generic detail search items](#configure-generic-detail-search-items)
+
+[16.12.8 Configure the initial display 323](#configure-the-initial-display)
 
 [16.13 Manage faceted searches 325](#manage-faceted-searches)
 
@@ -628,9 +644,11 @@ The format conventions used in this document are as follows:
 
 [16.22.1 Configure restricted access 341](#configure-restricted-access)
 
-[16.22.2 Email notifications on the result of the application for the restricted access 345](#email-notifications-on-the-result-of-the-application-for-the-restricted-access)
+[16.22.2 Secret URL feature](#secret-url-feature)
 
-[16.22.3 Other email notifications for the restricted access 352](#other-email-notifications-for-the-restricted-access)
+[16.22.3 Email notifications on the result of the application for the restricted access 345](#email-notifications-on-the-result-of-the-application-for-the-restricted-access)
+
+[16.22.4 Other email notifications for the restricted access 352](#other-email-notifications-for-the-restricted-access)
 
 [16.23 Set up an institution name 367](#set-up-an-institution-name)
 
@@ -1903,6 +1921,8 @@ Legend: 〇: Available, ×: Not available
 | Copy          | 〇                  | 〇                        | ×                 |
 | Delete        | 〇                  | ×                        | ×                 |
 | Restore       | ×                  | ×                        | 〇                 |
+| Export        | 〇                  | ×                        | ×                 |
+| Import        | 〇                  | ×                        | ×                 |
 
 > Even if you add or copy an item type while "Item Type for Harvesting" is selected, the new item type is registered as a standard item type.
 
@@ -7178,7 +7198,7 @@ Table 2‑3. Elements available in "Option"
 | --------------- | -------------------------------------------------------------------------------------------------------- |
 | Required        | Displays "![](media/media/image42.png)" during item registration and makes it a required metadata entry. |
 | Allow Multiple  | Displays "+New" during item registration and allows multiple metadata entries.                           |
-| Show List       | Displays metadata elements in the item list screen in a comma-separated form.                            |
+| Show List       | Displays metadata elements in the item list screen in a comma-separated form. As exceptions, author identifiers are displayed as icons, and files are displayed as separate links for each file type. |
 | Specify Newline | Displays metadata elements in the item list screen in multiple lines with line breaks.                   |
 | Hide            | You can hide metadata details in the index, keyword search results, and item details.                    |
 
@@ -7294,6 +7314,33 @@ The item type is deleted.
 > 
 > ![](media/media/image49.png)
 
+If an import is in progress with the bulk import feature or a reserved task exists, message No. 1 appears.
+
+If the item type to be deleted is an item type for harvesting, message No. 2 appears. (The confirmation dialog does not appear, and "Cannot delete item type for harvesting." appears on the screen. On the Japanese screen, the same text as No. 2 appears.)
+
+If items registered with the item type to be deleted already exist, message No. 3 appears.
+
+If the item type to be deleted is set in a workflow, message No. 4 appears.
+
+If the item type to be deleted is used in the JSON-LD import feature of the SWORD API settings, message No. 5 appears.
+
+If an unexpected situation occurs, such as the item type not being found, the process is aborted and message No. 6 or 7 appears.
+
+If all of the above checks are passed, the item type is deleted and message No. 8 appears.
+
+Table 2‑5. Messages displayed on deletion
+
+| No. | Type    | Message |
+| --- | ------- | ------- |
+| 1   | ERROR   | Cannot delete item type. Import is in progress. |
+| 2   | ERROR   | Cannot delete item type. It is used for harvesting. |
+| 3   | ERROR   | Cannot delete item type. Item of this type already exists. |
+| 4   | ERROR   | Cannot delete item type. It is used in some workflows. |
+| 5   | ERROR   | Cannot delete item type. It is used in SWORD API JSON-LD import settings. |
+| 6   | ERROR   | Item type not found. |
+| 7   | ERROR   | Unexpected error. Failed to delete item type. |
+| 8   | SUCCESS | Deleted Item type successfully. |
+
 ### Restore item types
 
 This section explains how to restore a deleted item type. This operation can be performed only by the system administrator.
@@ -7313,6 +7360,62 @@ zu0402140.tif![](media/media/image51.png)
 The item type is restored.
 
 The restored item type is added to the "Standard Item Type" list.
+
+### Export item types
+
+You can export an item type as a ZIP file. An exported item type can be imported back.
+
+1.  Select "Standard Item Type".
+
+2.  Click "Export".
+
+3.  A ZIP file containing the definition of the item type is downloaded.
+
+### Import item types
+
+You can import an exported item type as an item type.
+
+1.  Select "Standard Item Type".
+
+2.  Click "Import".
+
+3.  In "Zipfile", click the file selection button and select the ZIP file of the exported item type.
+
+4.  In "Item Type", enter the name of the item type to be imported.
+
+5.  Click "Execute Import". The item type is imported with the name you entered.
+
+The imported item type is registered as a new standard item type. The mapping contained in the ZIP file is also registered as the mapping of that item type.
+
+If the name you entered duplicates an existing item type, the import fails.
+
+\[Notes\]
+
+  - By default, only item types consisting solely of properties registered in the WEKO system can be imported.
+
+  - If the import file contains unregistered properties, an error message appears and the import is aborted.
+
+#### About the forced import feature
+
+  - This is an experimental feature. It is not provided in the JAIRO Cloud environment.
+
+An administrator can enable the "forced import" feature, which executes the import even if unregistered properties are included, by manually setting WEKO\_ITEMTYPES\_UI\_FORCED\_IMPORT\_ENABLED = True in the configuration file (instance.cfg) (the default is False).
+
+When this feature is used, unregistered properties are also registered in WEKO when the item type is imported.
+
+\[Notes\]
+
+  - Even if the forced import feature is enabled, properties whose IDs duplicate existing properties are not imported. In that case, the item type is imported with those properties replaced by the existing properties that have the same IDs. If there are properties whose IDs are duplicated and whose contents (update dates) differ, the IDs and names of those properties are displayed in a message when the import is completed.
+
+  - If the import file contains properties whose names duplicate existing properties, an error message appears and the import is aborted.
+
+### Troubleshooting item types
+
+#### A green message area appears at the top of the item type edit screen after an update
+
+After an update, a green message area may appear at the top of the item type edit screen. The message content varies depending on the item type and the environment.
+
+This message appears when there is a data inconsistency that does not affect the operation. Saving the item type resolves the data inconsistency, and the message no longer appears.
 
 ## LINKID=setoaischema【参照先】Set up OAI schemas
 
@@ -8251,7 +8354,7 @@ The RO-Crate mapping in this screen is a separate setting from the JSON-LD mappi
 
 To access the mapping screen, click "Item Types" and then click "RO-Crate Mapping". If no item type is registered, "You do not even have an itemtype." appears.
 
-Table 2‑5. The elements in the "RO-Crate Mapping" screen
+Table 2‑6. The elements in the "RO-Crate Mapping" screen
 
 | Element | Description |
 |---|---|
@@ -8290,9 +8393,9 @@ Table 2‑5. The elements in the "RO-Crate Mapping" screen
 
     The input is checked, and if there is no problem, the settings are saved. "Successfully saved new mapping." appears at the top of the screen.
 
-    If the input is incomplete, a message in "Table 2‑6. Error messages of the RO-Crate mapping" appears in the corresponding input field, and the settings are not saved.
+    If the input is incomplete, a message in "Table 2‑7. Error messages of the RO-Crate mapping" appears in the corresponding input field, and the settings are not saved.
 
-Table 2‑6. Error messages of the RO-Crate mapping
+Table 2‑7. Error messages of the RO-Crate mapping
 
 | No. | Message | Cause |
 |---|---|---|
@@ -8306,7 +8409,7 @@ Table 2‑6. Error messages of the RO-Crate mapping
 
 Notes:
 
-  - If the node being edited has incomplete input, a message No. 2 to 6 in Table 2‑6 appears, and you cannot select another node.
+  - If the node being edited has incomplete input, a message No. 2 to 6 in Table 2‑7 appears, and you cannot select another node.
 
   - If you switch the "Item Type" with unsaved changes, the confirmation dialog "Would you like to cancel your changes?" appears. Click "OK" to discard the changes and switch, or click "Close" to cancel switching.
 
@@ -8388,9 +8491,13 @@ This section explains how to bulk export items.
     
     A screen appears where you can export items.
 
+    For community administrators, "The last item ID" shows the ID of the last registered item that belongs to the managed communities.
+
 ![](media/media/image72.png)
 
-2.  To proceed, click "Export".
+2.  If you select an item type in "Item Type", the items of the specified item type are exported. If you specify item IDs, the items in the specified item ID range are exported.
+
+3.  To proceed, click "Export".
     
     When you click "Export", a confirmation dialog box will appear asking if you want to export all items. Select a button displayed in the dialog box.
     
@@ -8399,6 +8506,8 @@ This section explains how to bulk export items.
     1.  #### If you select "Execute":
         
         Bulk export will be executed.
+        
+        For community administrators, only the items that belong to the managed communities are exported.
         
         If the process is executed successfully, the URL for the download appears on the screen.
         
@@ -8417,7 +8526,7 @@ This section explains how to bulk export items.
         
         While another user is performing the export operation, the "Export" button will be inactive, and you cannot click it.
 
-3.  If you do not want to proceed with the operation, click "Cancel".
+4.  If you do not want to proceed with the operation, click "Cancel".
     
     The initial state of the button is set to inactive. While the export operation is in progress, the button becomes active, and you can click it.
     
@@ -8438,6 +8547,8 @@ This section explains how to bulk export items.
 The following temporary file is generated when creating the export file.
 
 /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_export\_xxxxxxxx
+
+  - **It has been reported that exporting a large number of items is likely to fail. Export items in units of several hundred, for example by specifying item IDs.**
 
 ## Import items
 
@@ -8561,6 +8672,18 @@ For elements other than the metadata files defined for item types, see the "Supp
     > The file is loaded and checked, and the "Import" tab appears. The "Import" tab displays the check results on the loaded file.  
     > ![](media/media/image83.png)
 
+    When "Change Identifier Mode" is enabled and a DOI is specified for an item, the System checks whether the DOI exists in the registered DOIs.
+
+    If a record that matches the specified DOI exists in the registered DOIs, error message No. 1 in Table 3‑2 appears. If a withdrawn DOI is specified, error message No. 2 in Table 3‑2 appears. If the specified DOI is duplicated in the import file, error message No. 3 in Table 3‑2 appears.
+
+Table 3‑2. Error messages of the DOI duplication check
+
+| No. | Type  | Message |
+| --- | ----- | ------- |
+| 1   | ERROR | Specified DOI has been used already for another item. Please specify another DOI. |
+| 2   | ERROR | Specified DOI was withdrawn. Please specify another DOI. |
+| 3   | ERROR | Specified DOI is duplicated with another import item. Please specify another DOI. |
+
 4)  > Make sure that the results displayed under "Check Result" are either "Register" or "Update".
 
 The message "Register with \[Change Identifier Mode\]" appears above the "Import" button.
@@ -8571,7 +8694,7 @@ Items with "Error" results cannot be imported. Check the file and start again fr
 
 zu0504030.tif\<TBLATT POSITION="1" SCALE="151"\>
 
-Table 3‑2. The elements on the "Import" tab
+Table 3‑3. The elements on the "Import" tab
 
 <table>
 <thead>
@@ -8640,7 +8763,7 @@ Table 3‑2. The elements on the "Import" tab
 
 If an error occurs when downloading, the error message "Failed to download" will appear.
 
-Table 3‑3. Validation check results associated with the tsv format
+Table 3‑4. Validation check results associated with the tsv format
 
 <table>
 <thead>
@@ -8735,10 +8858,72 @@ Table 3‑3. Validation check results associated with the tsv format
 <td>サーバ内部エラー</td>
 <td>A runtime error occurred (e.g. ElasticSearch locked, server connection not available, or network connection not available).</td>
 </tr>
+<tr class="even">
+<td>Error</td>
+<td>The specified {} does not exist in system.</td>
+<td></td>
+<td>You tried to import into an index that does not exist.</td>
+</tr>
+<tr class="odd">
+<td>Error</td>
+<td>Your role cannot register items in this index.</td>
+<td>ロールの権限が足りずこのインデックスにアイテム登録ができません。</td>
+<td>You tried to import into an index for which you do not have the authority.</td>
+</tr>
+<tr class="even">
+<td>Error</td>
+<td>Upload_id is invalid format</td>
+<td>アップロードIDを正しく入力してください</td>
+<td>The upload ID is not in the UUID format.</td>
+</tr>
+<tr class="odd">
+<td>Error</td>
+<td>Specified upload_id is not found</td>
+<td>指定されたアップロードIDが見つかりません</td>
+<td>The upload ID is not found.</td>
+</tr>
+<tr class="even">
+<td>Error</td>
+<td>Specified upload_id not completed or already linked to the item</td>
+<td>指定されたアップロードIDは完了していないか、すでにアイテムに紐づけられています</td>
+<td>An upload ID that is not completed or is already linked to the bucket of an item is specified.</td>
+</tr>
+<tr class="odd">
+<td>Error</td>
+<td>Duplicate upload_id</td>
+<td>アップロードIDが重複していますIDが</td>
+<td>The same upload ID is used more than once in the file.</td>
+</tr>
+<tr class="even">
+<td>Error</td>
+<td>Total file size exceeds bucket size</td>
+<td>ファイルの合計サイズがバケットのサイズを超えています</td>
+<td>The quota size is exceeded.</td>
+</tr>
+<tr class="odd">
+<td>Error</td>
+<td>Please enter only file_path or upload_id</td>
+<td>ファイルパスかアップロードIDのみ入力してください</td>
+<td>Both the file path [0] and the file upload ID [0] are entered.</td>
+</tr>
+<tr class="even">
+<td>Error</td>
+<td>Please set the file format corrctly</td>
+<td>ファイル形式を正しく設定してください</td>
+<td>The file upload ID [0] is entered, but File[0].format is not entered.</td>
+</tr>
+<tr class="odd">
+<td>Error</td>
+<td>Files and Items have different locations</td>
+<td>ファイルとアイテムのロケーションが異なります</td>
+<td>The Location differs from that of the file specified by the upload ID.</td>
+</tr>
 </tbody>
 </table>
 
-Table 3‑4. Validation check results not associated with metadata elements
+\* The checks related to upload IDs in the table are for the large file upload feature, which has not been released (its release has been postponed). In the current version, you cannot specify an upload ID on import.
+
+Table 3‑5. Validation check results not associated with metadata elements
 
 <table>
 <thead>
@@ -8959,7 +9144,7 @@ Table 3‑4. Validation check results not associated with metadata elements
 </tbody>
 </table>
 
-Table 3‑5. Validation check results associated with metadata elements
+Table 3‑6. Validation check results associated with metadata elements
 
 | Type  | Element                                                                                  | English                                                                                                                                | Japanese                                                         | Description                                                                                                                                               |
 | ----- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8979,11 +9164,24 @@ Table 3‑5. Validation check results associated with metadata elements
     > Register the DOI and CNRI specified for the new item you import.  
     > Edit the DOI and CNRI registered in the existing item.
     
-    If you perform import while editing an individual item, the message "Cannot update because the corresponding item is being edited" will appear.
+    If the specified DOI is used for another item, message No. 1 in Table 3‑7 appears.
     
-    If you perform import after deleting an individual item, the message "The corresponding item has been deleted" will appear.
+    If the specified DOI has been withdrawn, message No. 2 in Table 3‑7 appears.
+    
+    If you perform import after deleting an individual item, message No. 3 in Table 3‑7 appears.
+    
+    If you perform import while editing an individual item, message No. 4 in Table 3‑7 appears.
     
     If the user's session validity time is exceeded, the import process will still be executed.
+
+Table 3‑7. Error messages of the import results
+
+| No. | Message |
+| --- | ------- |
+| 1   | This DOI has been already grant for another item. Please specify another DOI. |
+| 2   | This DOI was withdrawn. Please input another DOI. |
+| 3   | The corresponding item has been deleted. |
+| 4   | Cannot update because the corresponding item is being edited. |
 
 <!-- end list -->
 
@@ -8997,8 +9195,8 @@ Table 3‑5. Validation check results associated with metadata elements
 2)  > Make sure that the results displayed under "Check Result" are either "Register" or "Update".  
     > Items with "Error" results cannot be imported. Check the file and start again from Step 2.
     
-    ![](media/media/image85.png)For the description of the elements in the "Import" tab, see "Table 3-2. The elements on the "Import" tab".  
-    For the description of the validation check results on the imported files, see "Table 3-3. Validation check results associated with the tsv format", "Table 3-4. Validation check results not associated with metadata elements", and "Table 3-5. Validation check results associated with metadata elements".
+    ![](media/media/image85.png)For the description of the elements in the "Import" tab, see "Table 3-3. The elements on the "Import" tab".  
+    For the description of the validation check results on the imported files, see "Table 3-4. Validation check results associated with the tsv format", "Table 3-5. Validation check results not associated with metadata elements", and "Table 3-6. Validation check results associated with metadata elements".
 
 3)  > Click "Import".  
     > The files are imported. The "Result" tab appears.  
@@ -9018,7 +9216,7 @@ Table 3‑5. Validation check results associated with metadata elements
 
 zu0504040.tif\<TBLATT POSITION="1" SCALE="151"\>
 
-Table 3‑6. The elements in the "Result" tab
+Table 3‑8. The elements in the "Result" tab
 
 <table>
 <thead>
@@ -9569,7 +9767,7 @@ If the replacement rules are set incorrectly (for example, a nonexistent rule na
 
   - Destination indexes: There is no restriction by community, and you can specify any index.
 
-Table 3‑7. Endpoints of the bulk import API
+Table 3‑9. Endpoints of the bulk import API
 
 | No. | Request | Description |
 |-----|-----------|------|
@@ -9661,6 +9859,16 @@ Table 4‑1. The elements in "Index Edit"
 <td><p>Enter the index names. A name in English is required.</p>
 <p>Japanese: Displayed when the site's display language is set to Japanese.</p>
 <p>English: Displayed when the display language of the site is set to other than Japanese.</p></td>
+</tr>
+<tr class="even">
+<td>Index URL</td>
+<td><p>Displays the endpoint URL of the index.</p>
+<p>This element cannot be edited.</p></td>
+</tr>
+<tr class="odd">
+<td>CNRI</td>
+<td><p>Displays the CNRI of the index if it exists.</p>
+<p>This element cannot be edited.</p></td>
 </tr>
 <tr class="even">
 <td>Comment</td>
@@ -9892,6 +10100,17 @@ Table 4‑2. "Journal Information" elements and their corresponding KBART values
 <td>publication_title</td>
 <td><p>Enter the title of the journal information.</p>
 <p>This element is required.</p></td>
+</tr>
+<tr class="odd">
+<td>abstract</td>
+<td></td>
+<td>Enter the abstract.</td>
+</tr>
+<tr class="even">
+<td>ISSN-L</td>
+<td></td>
+<td><p>Enter the ISSN-L.</p>
+<p>Format: ^[0-9]{4}-[0-9]{3}[0-9X]</p></td>
 </tr>
 <tr class="even">
 <td>Print format identifier</td>
@@ -11156,11 +11375,23 @@ Table 6‑4. The elements in the "E-Mail" area
 </tbody>
 </table>
 
-6.  If you want to delete the entry, click "Clear".
+6.  Enter the community information.
+
+Table 6‑5. The elements in the "Community" area
+
+| Element          | Description |
+| ---------------- | ----------- |
+| "Community"      | Select the community that manages the author. |
+| "Add Community"  | Click to add a field for entering another community. |
+| "X"              | Click to remove the corresponding community field.<br>If only one input area is displayed, you cannot delete it. |
+
+7.  Enter the affiliation information.
+
+8.  If you want to delete the entry, click "Clear".
     
     The information you entered is cleared.
 
-7.  Click "Save".
+9.  Click "Save".
 
 The author ID is added.
 
@@ -11181,6 +11412,12 @@ See the section "ANCHORID=addauthor【参照元】 (3) Add an author ID【E】" 
 3.  Click "Save".
 
 The change you made is saved.
+
+\* When the change is applied, the metadata linked to this author information is updated. The elements to be updated depend on the "Force Change Flag".
+
+  - If the "Force Change Flag" is off: the author ID
+
+  - If the "Force Change Flag" is on: the name, the author ID, the email address, and the affiliation identifier
 
 #### LINKID=deleteauthor【参照先】Delete an author ID
 
@@ -11232,7 +11469,7 @@ The registered ID Prefixes appear in the list on the "ID Prefix" tab.
 
 > The following table lists the information displayed.
 
-Table 6‑5. The elements in the ID Prefix list
+Table 6‑6. The elements in the ID Prefix list
 
 <table>
 <thead>
@@ -11255,6 +11492,10 @@ Table 6‑5. The elements in the ID Prefix list
 <td>Displays the URL of the ID Prefix.</td>
 </tr>
 <tr class="even">
+<td>"Community"</td>
+<td>Displays the communities that have the authority to manage the ID Prefix.</td>
+</tr>
+<tr class="odd">
 <td>"Control"</td>
 <td><p>Displays the control button available for the ID prefix.</p>
 <p>The control button is either "Edit" or "Add".</p></td>
@@ -11274,7 +11515,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 6‑6. The elements for the external author ID Prefix
+Table 6‑7. The elements for the external author ID Prefix
 
 <table>
 <thead>
@@ -11341,6 +11582,10 @@ Table 6‑6. The elements for the external author ID Prefix
 <td>URL<sup>*</sup></td>
 <td>Enter the URL to access the author ID.</td>
 </tr>
+<tr class="even">
+<td>Community</td>
+<td>Select the communities that manage the ID Prefix.</td>
+</tr>
 </tbody>
 </table>
 
@@ -11360,7 +11605,9 @@ The external author ID Prefix is added. The message "Successfully added" appears
 
 You must enter "Name" and "Scheme". If you do not enter them, clicking "+Add" will display the error message "enter the correct \<element\_name\>".
 
-You cannot set up the same scheme multiple times in "Scheme". If you select a scheme that is already configured, clicking "+Add" will display the error message "Specified scheme already exists".
+You cannot set up the same scheme multiple times in "Scheme". If you select a scheme that is already configured, clicking "+Add" will display the error message "Specified scheme is already exist.".
+
+"Community" is required for community administrators. If you do not select a managed community, clicking "+Add" will display the error message "You must include at least one managed community.".
 
 #### LINKID=editidprefix【参照先】Edit an external author ID Prefix
 
@@ -11398,6 +11645,69 @@ Notes:
 
 　★"WEKO" in the ID Prefix indicates that it is an author ID that is managed in the repository. It is automatically assigned upon a new registration of the author. It cannot be edited or deleted on the screen displaying the external author ID Prefixes.
 
+### Manage affiliation ID Prefixes
+
+#### View affiliation ID Prefixes
+
+To display the list of affiliation ID Prefixes, click the "Affiliation ID" tab.
+
+The registered affiliation ID Prefixes appear in the list.
+
+The following table lists the information displayed.
+
+Table 6‑8. The elements in the affiliation ID Prefix list
+
+| Element     | Description |
+| ----------- | ----------- |
+| "Name"      | Displays an ID Prefix name. |
+| "Scheme"    | Displays the scheme of the ID Prefix. |
+| "URL"       | Displays the URL of the ID Prefix. |
+| "Community" | Displays the communities that have the authority to manage the ID Prefix. |
+| "Control"   | Displays the control buttons.<br>The control buttons are "Edit" and "Add". |
+
+#### Add an affiliation ID Prefix
+
+To add an affiliation ID Prefix, enter the affiliation identifier, the scheme name, and the URL in the "Affiliation ID" tab, and then click "+Add".
+
+The following table lists the information you can enter.
+
+Table 6‑9. The elements in the "Affiliation ID" tab
+
+| Element                | Description |
+| ---------------------- | ----------- |
+| Name                   | Enter an ID Prefix name. |
+| Scheme                 | Select a scheme.<br>You can select from the following schemes.<br>- ISNI<br>- GRID<br>- Ringgold<br>- kakenhi<br>- ROR<br>- Other<br>If you select "Other," enter the scheme value manually. |
+| URL<sup>*</sup>        | Enter the URL to access the affiliation ID. |
+| Community              | Select the communities that manage the ID Prefix. |
+
+Notes\*
+
+About the URL:
+
+  - If you insert "\#\#" in the URL, the identifier URI is the URL in which "\#\#" is replaced with the entered identifier.
+
+  - If you do not insert "\#\#" in the URL, the identifier URI is the specified URL as it is.
+
+<!-- end list -->
+
+1.  Click "+Add".
+
+The affiliation ID Prefix is added. The message "Successfully added" appears.
+
+You must enter "Name" and "Scheme". If you do not enter them, clicking "+Add" will display the error message "enter the correct \<element\_name\>".
+
+You cannot set up the same scheme multiple times in "Scheme". If you select a scheme that is already configured, clicking "+Add" will display the error message "Specified scheme is already exist.".
+
+"Community" is required for community administrators. If you do not select a managed community, clicking "+Add" will display the error message "You must include at least one managed community.".
+
+#### Edit an affiliation ID Prefix
+
+To edit an affiliation ID Prefix, click "Edit". Each element becomes editable. After making changes, click "Save".
+
+#### Delete an affiliation ID Prefix
+
+To delete an affiliation ID Prefix, click "Edit", and then click "Delete".
+
 ## Export author information
 
 \<INDEXWORD PRONOUNCE="ちよしやめいてんきよ" INDEXITEM="著者名典拠"\>You can export author name source information as a batch file.\</INDEXWORD\>一括出力
@@ -11410,8 +11720,10 @@ This section explains how to bulk export author information.
 > 
 > ![](media/media/image203.png)
 
-2.  To proceed, click "Export".
+2.  To proceed, select the export target in "Export target", and then click "Export".
 
+> You can select the export target from "Author DB", "ID Prefix" (author identifiers), and "Affiliation ID" (affiliation identifiers).
+> 
 > When you click "Export", a confirmation dialog box will appear asking if you want to export all items. Select a button displayed in the dialog box.
 > 
 > ![](media/media/image204.png)
@@ -11424,7 +11736,7 @@ This section explains how to bulk export author information.
 > 
 > Click on the URL to download the tsv file.
 
-Table 6‑7. The elements of author information to be downloaded
+Table 6‑10. The elements of author information to be downloaded
 
 <table>
 <thead>
@@ -11593,6 +11905,19 @@ Table 6‑7. The elements of author information to be downloaded
 </tbody>
 </table>
 
+  - The header information for author identifiers ("ID Prefix") and affiliation identifiers ("Affiliation ID") is as follows.
+
+    The first row contains a string indicating the target ("#author_prefix_settings" for author identifiers and "#author_affiliation_settings" for affiliation identifiers), the second row contains the header elements, the third row contains the English labels, and the fourth row contains the Japanese labels. The community ID is a repetitive element, and as many columns as the maximum number of managed communities (community_ids[0], community_ids[1], ...) are output.
+
+| #   | Header element        | Label (Japanese)      | Label (English)     | Description |
+| --- | --------------------- | --------------------- | ------------------- | ----------- |
+| 1   | scheme                | スキーム              | Scheme              | The scheme. |
+| 2   | name                  | 名前                  | Name                | The identifier name corresponding to the scheme. |
+| 3   | url                   | URL                   | URL                 | The URL corresponding to the scheme. |
+| 4   | is\_deleted           | 削除フラグ            | Delete Flag         | "D" is specified to delete the identifier.<br>All are blank on export. |
+| 5   | community\_ids[0...n] | コミュニティID[0...n] | Community ID[0...n] | Outputs the IDs of the communities that have the authority to manage the identifier. |
+
+
 > Notes:
 > 
 > ・Repetitive elements will have incremental values, \[1\], \[2\], ..., \[N\] added at the end of their element name in the header line (the first element name has \[0\] added).
@@ -11629,6 +11954,10 @@ Additional Information:
 
 ・When exporting, logically deleted author information will not be exported.
 
+・The organization information linked to author information is not exported.
+
+・For community administrators, authors that are not linked to the managed communities are not exported.
+
 ## Import author information
 
 This section explains how to import author information by specifying a file.著者 You import files in a tsv file.
@@ -11643,13 +11972,35 @@ This section explains how to import author information by specifying a file.著�
 > 
 > If the "Administration" \> "Author Management" \> "Import" screen opens on the same device on which you are trying to import, the message "Import is in progress" will appear. This situation happens when, for instance, the screen opens in a different browser, or you navigate from the "Result" tab back to the "Import" tab.
 
-2.  Click "Select File" to specify a tsv file.
+2.  Perform the following operations in the "Select" tab.
 
-> The filename appears.
-> 
-> Table 6-8 lists the imported elements contained in the tsv file.
+  - In "Import target", select the target to be imported.
 
-Table 6‑8. The imported elements of author information
+      - Author DB
+
+      - ID Prefix (author identifiers)
+
+      - Affiliation ID (affiliation identifiers)
+
+  - Click "Select File" to specify a tsv file. The filename appears.
+
+    If the file format does not match the target selected in "Import target", an error occurs.
+
+    Table 6-11 lists the imported elements contained in the tsv file when importing the author DB. Table 6‑11‑1 lists the elements contained in the tsv file when importing identifier information. The first row of identifier information contains a string indicating the table.
+
+      - \#author\_prefix\_settings (author identifiers)
+
+      - \#author\_affiliation\_settings (affiliation identifiers)
+
+  - If you select "Author DB" in "Import target" and specify a tsv file for the author DB, the "Force Change Mode" check box becomes available.
+
+      - If you check this check box, a dialog box with a disclaimer appears.
+
+      - Check the check box to the left of "I agree to the terms of use." and click "OK" to turn on the force change mode. If you update the author DB with this mode on, the metadata of the items linked to the author DB is forcibly changed. Read the disclaimer carefully and use this mode with caution.
+
+      - If you close the dialog box by any other operation, the force change mode is turned off.
+
+Table 6‑12. The imported elements of author information
 
 <table>
 <thead>
@@ -11820,13 +12171,24 @@ Table 6‑8. The imported elements of author information
 </tbody>
 </table>
 
+Table 6‑13. The imported elements of identifier information
+
+| #   | Row 2<br>Header element (internal key) | Row 3<br>Label (English) | Row 4<br>Label (Japanese) | Description |
+| --- | --------------------- | ------------------- | --------------------- | ----------- |
+| 1   | scheme                | Scheme              | スキーム              | Enter the scheme. |
+| 2   | name                  | Name                | 名前                  | Enter the identifier name corresponding to the scheme. |
+| 3   | url                   | URL                 | URL                   | Enter the URL corresponding to the scheme. |
+| 4   | is\_deleted           | Delete Flag         | 削除フラグ            | Enter "D" to delete the identifier. |
+| 5   | community\_ids[0...n] | Community ID[0...n] | コミュニティID[0...n] | Enter the IDs of the communities that have the authority to manage the identifier. |
+
+
 > Notes:
 > 
 > ・If you do not specify "Name Format (authorNameInfo\[0...n\].nameFormat)" for new registration, "familyNmAndNm" will be registered automatically.
 > 
 > ・Make sure you enter either "Y" or "N" for "Name Display (authorNameInfo\[0...n\].nameShowFlg" for new registration)". The corresponding author information may not be imported from the author DB for item registration if you do not specify this information. Also, make sure you enter either "Y" or "N" for "Identifier Display (authorNameInfo\[0...n\].authorIdShowFlg)".
 > 
-> See "Table 6-11 Validation checks" for information on the validation checks on tsv files.
+> See "Table 6-16 Validation checks" for information on the validation checks on tsv files.
 
 3.  Click "Next".
 
@@ -11838,11 +12200,11 @@ Table 6‑8. The imported elements of author information
 > 
 > Items with "Error" results cannot be imported. Check the file and start again from Step 2.
 > 
-> For the description of the elements in the "Import" tab, see "Table 6-9. The elements on the "Import" tab".
+> For the description of the elements in the "Import" tab, see "Table 6-14. The elements on the "Import" tab".
 > 
-> See "Table 6-11 Validation checks" for information on the validation checks on import files.
+> See "Table 6-16 Validation checks" for information on the validation checks on import files.
 
-Table 6‑9. The elements on the "Import" tab
+Table 6‑14. The elements on the "Import" tab
 
 <table>
 <thead>
@@ -11861,7 +12223,7 @@ Table 6‑9. The elements on the "Import" tab
 <td><p>Downloads the author information listed on the screen in tsv format.</p>
 <ul>
 <li><p>The character code is UTF-8 without BOM, and the line feed code is CR+LF.</p></li>
-<li><p>The filename will show the download date in the "Creator_check_YYYYMMDD.tsv" format.</p></li>
+<li><p>The filename will show the import target and the download date in the "<em>(import target)</em>_check_<em>YYYYMMDD</em>.tsv" format.</p></li>
 </ul></td>
 </tr>
 <tr class="odd">
@@ -11892,6 +12254,18 @@ Table 6‑9. The elements on the "Import" tab
 <li><p>Delete - This author will be deleted.</p></li>
 </ul></td>
 </tr>
+<tr class="even">
+<td>Scheme</td>
+<td>(Displayed when importing identifiers) Shows the scheme of the loaded data.</td>
+</tr>
+<tr class="odd">
+<td>Scheme Name</td>
+<td>(Displayed when importing identifiers) Shows the scheme name of the loaded data.</td>
+</tr>
+<tr class="even">
+<td>URL</td>
+<td>(Displayed when importing identifiers) Shows the scheme URL of the loaded data.</td>
+</tr>
 </tbody>
 </table>
 
@@ -11907,11 +12281,11 @@ When an error occurs, the error message "Failed to download" will appear.
 
 5.  Review the information in the "Result" tab.
 
-> The import results appear. See "Table 6-10. The elements in the "Result" tab" for information on the elements in the "Result" tab.
+> The import results appear. See "Table 6-15. The elements in the "Result" tab" for information on the elements in the "Result" tab.
 > 
-> See "Table 6-11 Validation checks" for information on the validation checks shown on the "Result" tab.
+> See "Table 6-16 Validation checks" for information on the validation checks shown on the "Result" tab.
 
-Table 6‑10. The elements in the "Result" tab
+Table 6‑15. The elements in the "Result" tab
 
 <table>
 <thead>
@@ -11921,12 +12295,17 @@ Table 6‑10. The elements in the "Result" tab
 </tr>
 </thead>
 <tbody>
+<tr class="even">
+<td>Summary</td>
+<td><p>Displayed only when importing the author DB.</p>
+<p>Shows the following four counts: "Total", "Success", "Failure", and "To Do".</p></td>
+</tr>
 <tr class="odd">
 <td>Download<sup>*</sup></td>
 <td><p>Downloads the author information listed on the screen in tsv format.</p>
 <ul>
 <li><p>The character code is UTF-8 without BOM, and the line feed code is CR+LF.</p></li>
-<li><p>The filename will show the download date in the "Creator_List_Download_YYYYMMDD.tsv" format.</p></li>
+<li><p>The filename will show the import target and the download date in the "<em>{target}</em>_List_Download_<em>YYYYMMDD</em>.tsv" format.</p></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -11934,11 +12313,11 @@ Table 6‑10. The elements in the "Result" tab
 <td>Shows the serial number of each author included in the file.</td>
 </tr>
 <tr class="odd">
-<td>Start Day</td>
+<td>Start Date</td>
 <td>Displays the date and time when the author registration process started after you had clicked "Import".</td>
 </tr>
 <tr class="even">
-<td>End Day</td>
+<td>End Date</td>
 <td>Displays the date and time when the author registration process finished.</td>
 </tr>
 <tr class="odd">
@@ -11956,6 +12335,14 @@ Table 6‑10. The elements in the "Result" tab
 <li><p>Delete Success - The author has been successfully deleted.</p></li>
 </ul></td>
 </tr>
+<tr class="odd">
+<td>Scheme</td>
+<td>(Displayed when importing identifiers) Shows the scheme of the loaded data.</td>
+</tr>
+<tr class="even">
+<td>Scheme Name</td>
+<td>(Displayed when importing identifiers) Shows the scheme name of the loaded data.</td>
+</tr>
 </tbody>
 </table>
 
@@ -11967,7 +12354,7 @@ When an error occurs, the error message "Failed to download" will appear.
 
 The following table lists the validation checks during the import process of author information.
 
-Table 6‑11 Validation checks
+Table 6‑16 Validation checks
 
 <table>
 <thead>
@@ -12077,6 +12464,13 @@ Table 6‑11 Validation checks
 <td><p>・The specified identifier does not exist in the defined ID Prefixes.</p>
 <p>{1}: external author ID identifier</p></td>
 </tr>
+<tr>
+<td>Error</td>
+<td>Import</td>
+<td>Specified Affiliation Identifier Scheme '{1}' does not exist.</td>
+<td>指定された外部所属機関ID 識別子'{1}'が存在していません。</td>
+<td><p>An identifier that does not exist in the DB is entered for Affiliation ID.</p><p>{1}: external affiliation ID identifier</p></td>
+</tr>
 <tr class="odd">
 <td>Error</td>
 <td>Import</td>
@@ -12091,6 +12485,20 @@ Table 6‑11 Validation checks
 <td>外部著者識別子がDBに存在しています。{1}</td>
 <td><p>External author identifiers exist in the DB.</p>
 <p>{1}: external author identifier</p></td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Import</td>
+<td>External Affiliation Period must be in the format: yyyy-MM-dd, blank. {1}</td>
+<td>(No Japanese translation. The English message is displayed.)</td>
+<td><p>The external affiliation period is not in the date format.</p><p>{1}: external affiliation period</p></td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Import</td>
+<td>Period end must be after Period start.</td>
+<td>(No Japanese translation. The English message is displayed.)</td>
+<td>The end date of the affiliation period is earlier than the start date.</td>
 </tr>
 <tr class="odd">
 <td>Error</td>
@@ -12120,8 +12528,75 @@ Table 6‑11 Validation checks
 <td>アイテムがリンクしているため、指定された著者は削除できません。</td>
 <td>Attempt was made to delete the author associated with an item.</td>
 </tr>
+<tr>
+<td>Error</td>
+<td>Import</td>
+<td>Invalid community ID format: {1}</td>
+<td>無効なコミュニティID形式です。</td>
+<td>Symbols or control characters that are not allowed are entered in a community ID.</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Import</td>
+<td>Community ID(s) {1} does not exist.</td>
+<td>指定されたコミュニティID「{1}」は存在しません。</td>
+<td><p>The ID of a community that does not exist in the DB is entered in communityIds.</p><p>{1}: community ID</p></td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Import</td>
+<td>You do not have permission for this Author’s communities: {1}.</td>
+<td>著者IDに紐づく、コミュニティ「{1}」の管理権限がありません。</td>
+<td><p>A community administrator entered the ID of a community that is not managed by the administrator, or removed the link to such a community.</p><p>{1}: community ID</p></td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Import</td>
+<td>You cannot manage this record.</td>
+<td>このレコードを操作することはできません。</td>
+<td>A community administrator entered the pk_id of an author linked only to communities that are not managed by the administrator.</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Import</td>
+<td>You must include at least one managed community.</td>
+<td>少なくとも1つの管理対象コミュニティを含める必要があります。</td>
+<td>A community administrator left communityIds blank.</td>
+</tr>
 </tbody>
 </table>
+
+The following table lists the validation checks during the import process of identifiers ("ID Prefix" and "Affiliation ID").
+
+Table 6‑17 Validation checks for identifiers
+
+| Type | Tab to be checked | English | Japanese | Description |
+| ---- | ----------------- | ------- | -------- | ----------- |
+| Error | Select | The TSV file could not be read. Make sure the file format is TSV and that the file is UTF-8 encoded. | TSVファイルを読み込めませんでした。ファイル形式がTSVであること、またそのファイルがUTF-8でエンコードされているかを確認してください。 | The selected file is not a tsv file, the character encoding is not UTF-8, or the tsv format is wrong (e.g., no tabs, no header lines, no table name specified). |
+| Error | Select | There is no data to import. | インポートのデータがありません。 | The record is empty with only a header line. |
+| Error | Select | The keys are duplicated. | キーが重複しています。 | Duplicate keys due to the wrong header. |
+| Error | Select | Specified item does not consistency with DB item.{1} | 指定された項目とDBの項目が一致しません。{1} | Specified elements in the tsv are not consistent with elements in the DB. {1}: element name |
+| Error | Select/Import | Celery is not running. | Celeryは動いていません。 | Celery is not running. |
+| Error | Select/Import | Import is in progress. | インポートを実行中です。 | Import is in progress on this device. |
+| Error | Select/Import | Import is in progress on another device. | 他の端末でインポートを実行中です。 | Import is in progress on another device. |
+| Error | Import | Scheme is required item. | schemeを設定してください。 | Scheme is not specified. |
+| Error | Import | Name is required item. | nameを設定してください。 | Name is not specified. |
+| Error | Import | URL is not URL format. | urlをURLの形式にしてください。 | The url is not in the URL format. |
+| Error | Import | The specified identifier does not exist. | 指定された識別子が存在していません。 | The identifier to be deleted does not exist. |
+| Error | Import | The specified scheme is duplicated. | TSVファイルの中に重複するデータがあります。 | Duplicated data exist in the tsv file. |
+| Error | Import | The scheme WEKO cannot be used. | 著者識別子WEKOは編集できません。 | "WEKO" is entered in the scheme. |
+| Error | Select/Import/Result | Internal server error | サーバ内部エラー | An internal server error (e.g., network problem, unexpected exception) occurred. |
+| Info | Result | Register Success | 登録成功 | The registration succeeded. |
+| Info | Result | Update Success | 更新成功 | The update succeeded. |
+| Info | Result | Delete Success | 削除成功 | The deletion succeeded. |
+| Error | Result | Failed to import. | インポートに失敗しました。 | Import failed due to an error. |
+| Error | Import/Result | The specified scheme is used in the author ID. | 著者DBで使用されているため、指定された識別子は削除できません。 | An identifier linked to the author DB was deleted. |
+| Error | Import | Invalid community ID format: {1} | 無効なコミュニティID形式です。 | Symbols or control characters that are not allowed are entered in a community ID. |
+| Error | Import | Community ID(s) {1} does not exist. | 指定されたコミュニティID「{1}」は存在しません。 | The ID of a community that does not exist in the DB is entered in community_ids. {1}: community ID |
+| Error | Import | You do not have permission for this Author’s communities: {1}. | 著者IDに紐づく、コミュニティ「{1}」の管理権限がありません。 | A community administrator entered the ID of a community that is not managed by the administrator, or removed the link to such a community. {1}: community ID |
+| Error | Import | You cannot manage this record. | このレコードを操作することはできません。 | A community administrator entered the scheme of an identifier linked only to communities that are not managed by the administrator. |
+| Error | Import | You must include at least one managed community. | 少なくとも1つの管理対象コミュニティを含める必要があります。 | A community administrator left community_ids blank. |
+
 
 # Statistics
 
@@ -12521,11 +12996,15 @@ This section explains how to configure the \<INDEXWORD PRONOUNCE="ふいいと�
 
 A screen appears where you can configure the feedback mail settings.
 
-2.  > For "Feedback email feature", select "Enable" or "Disable".
+2.  > Select the repository you want to configure from the repository pull-down (labeled "リポジトリ" on the screen regardless of the display language).
+
+The values configured for the selected repository appear in the elements on the screen.
+
+3.  > For "Feedback email feature", select "Enable" or "Disable".
 
 zu0901010.tif![](media/media/image233.png)
 
-3.  > Specify "Exclusion from sending".
+4.  > Specify "Exclusion from sending".
 
 You can specify "Exclusion from sending" by using the "Input from author DB" screen or entering manually.
 
@@ -12533,7 +13012,7 @@ You can specify "Exclusion from sending" by using the "Input from author DB" scr
 
 zu0901020.tif![](media/media/image234.png)
 
-4.  > Click "Save".
+5.  > Click "Save".
 
 The setting is saved. Feedback mails will be sent based on the specified transmission interval.
 
@@ -12549,25 +13028,31 @@ To access the screen where you can aggregate usage logs for the \<INDEXWORD PRON
 
 You can aggregate and analyze usage logs by users with the site license and send feedback on the results.
 
+When you select a repository from the pull-down at the top of the screen, the settings on the screen and the statistics that can be obtained switch to those related to the repository. This allows you to change the settings and obtain statistics for each repository.
+
 You can specify certain item types to be excluded in the aggregation in the management screen.
 
 ### LINKID=sitelicensestatisticsinfosetting【参照先】Send site license statistics automatically
 
-1.  For "Automatic Send", click the "Enable" radio button.
+1.  From the pull-down at the top of the screen, select the repository whose settings you want to change.
+
+2.  For "Automatic Send", click the "Enable" radio button.
 
 zu0903010.tif![](media/media/image236.png)
 
-2.  Click "Save".
+3.  Click "Save".
 
 See "ANCHORID=sitelicenseusage【参照元】Section 7.3.3 Site license statistics【E】" for information on the files attached to feedback mails for site license statistics.
 
 ### LINKID=manuallysendsitelicense【参照先】Send site license statistics manually
 
-1.  In "Manual Send", specify the period for which you want to aggregate logs.
+1.  From the pull-down at the top of the screen, select the repository for which you want to obtain statistics.
+
+2.  In "Manual Send", specify the period for which you want to aggregate logs.
 
 zu0903020.tif![](media/media/image237.png)
 
-2.  Click "Manual Send".
+3.  Click "Manual Send".
 
 See "ANCHORID=sitelicenseusage【参照元】Section 7.3.3 Site license statistics【E】" for information on the files attached to feedback mails for site license statistics.
 
@@ -12640,7 +13125,9 @@ zu1101010.tif![](media/media/image238.png)
 
 zu1101020.tif![](media/media/image239.png)
 
-3.  > Click "Save".
+3.  > Select the repository in which to register the flow in "Repository".
+
+4.  > Click "Save".
 
 The flow is added.
 
@@ -12653,6 +13140,26 @@ You can then add actions to the flow. See "ANCHORID=editflow【参照元】Secti
 > An error message appears when the flow name you specified already exists in the System.
 
 ![](media/media/image241.png)
+
+#### Add a deletion flow
+
+To create a deletion flow, do the following:
+
+1.  On the Administration screen, click "WorkFlow", and then click "Flow List".
+
+2.  Click "+Create Flow" on the screen.
+
+3.  Enter an appropriate name in "Name" (for example, "Delete Flow").
+
+4.  Check the "for delete" check box.
+
+5.  Select "Root Index" in "Repository".
+
+6.  Click "Save".
+
+7.  Add the "Approval" action, and move it between "Start" and "End".
+
+8.  Finally, click "Save".
 
 ### LINKID=editflow【参照先】Edit flow actions
 
@@ -12741,16 +13248,21 @@ zu1101200.tif
 ![](media/media/image253.png)
 
 2.  > Specify a name for the workflow you want to create, select a flow, and select an item type.
-    
-    The "Flow" pull-down displays the list of flows registered in the "Flow List" screen.
-    
-    The "Item Type" pull-down displays the standard item types and the item types for harvesting registered in the "Metadata" screen.
-    
-    "Restricted Access Flag" is unchecked by default. If checked, it appears as a "WorkFlow" option for the content file in the "Providing Method" section of the item registration screen.
-    
-    [v2.1.0] You can specify whether the workflow is shown or hidden for each role. If GakuNin mAP integration is configured, the roles given by GakuNin mAP are not shown.
-    
-    "Registration Destination Index" is set to "Undesignated" as default. If you choose to select "Undesignated", you must designate an index when registering an item after entering the elements for the workflow. If you designate an index for the "Registration Destination Index" setting, you do not need to designate an index after entering the elements for the workflow; instead, the item will be registered automatically to the index specified in "Admin" \> "WorkFlow" \> "Flow List".
+
+Table 8‑1. The elements for adding a workflow
+
+| Element | Description |
+| ------- | ----------- |
+| WorkFlow | Enter the workflow name. |
+| Flow | Select a flow from the pull-down.<br>The pull-down displays the list of flows registered in the "Flow List" screen. |
+| (For Delete) | Select a deletion flow from the pull-down. When a flow is selected, the workflow is executed when an item is deleted.<br>The pull-down displays the list of deletion flows registered in the "Flow List" screen. |
+| Item Type | Select an item type from the pull-down.<br>The pull-down displays the standard item types and the item types for harvesting registered in the "Metadata" screen. |
+| Repository | Select the repository in which to register the workflow.<br>The options are the default "Root Index" and the communities registered in the "Community" screen. |
+| Usage Application Flag | Unchecked by default. If checked, the workflow appears as a "WorkFlow" option for the content file in the "Providing Method" section of the item registration screen.<br>\* This element is displayed only when the restricted access feature is enabled, and only to system administrators. |
+| GakuNinRDM Flag | A flag that makes the workflow one for registering items from GakuNin RDM. |
+| Registration Destination Index Designation | The default is "Undesignated".<br>- If "Undesignated" is selected: you designate an index when registering an item after entering the elements for the workflow.<br>- If an index is designated: all items registered through the workflow are automatically registered to the designated index. |
+| Storage Location (shown as "Strage Location" on the screen) | Select the storage in which items are stored from the pull-down. If "Undesignated" is selected, the default Location is used. |
+| [v2.1.0] Display/Hide | You can specify whether the workflow is shown or hidden for each role.<br>If GakuNin mAP integration is configured, the roles given by GakuNin mAP are not shown. |
 
 zu1101300.tif
 
@@ -12882,17 +13394,29 @@ Table 9‑1. The elements in the "Create" tab
 | Cnri            | A handle is issued when CNRI is enabled.                                              |
 | [v2.1.0] Owner           | Specifies the role of the community owner. This element is required.<br>\* If GakuNin mAP integration is configured, the roles given by GakuNin mAP (the system administrator group and the repository-specific roles) are not shown in the choices. |
 | Index           | Select an index for which you want to set up the community. This element is required. |
-| Group           | Specify a group.<br>The choices are the GakuNin mAP groups created through GakuNin mAP integration. |
+| [v2.1.0] Group           | Specify a group.<br>The choices are the GakuNin mAP groups created through GakuNin mAP integration. |
 | Title           | Enter a title.                                                                        |
 | Description     | Enter a description.                                                                  |
 | Page            | Enter the number of pages.                                                            |
 | Curation Policy | Enter the policy.                                                                     |
 | Ranking         | Specify the number of ranking entries to display.                                     |
 | Fixed Points    | Enter a fixed point.                                                                  |
+| Content Policy  | Enter the content policy. |
+| login\_menu\_enabled | Specify whether to display the login menu on the community screen. |
+| Thumbnail       | Select a thumbnail image file. |
+| Catalog         | Enter the tag information used to search for communities.<br>The elements are the following elements of the "Catalog" property. For details, see "Item Types" \> "Properties".<ul><li>Contributor</li><li>Identifier</li><li>Subject</li><li>License</li><li>Rights</li><li>Access Rights</li></ul>\* The elements are collapsed in the initial display. |
 
 3.  > Click "Save".
 
 A community is created.
+
+\* When you create a new community, the following pages, which can be created from the page layout feature, are automatically created for the community. For details, see "Web Design" \> "Page Layout".
+
+| Title            | URL                                    |
+| ---------------- | -------------------------------------- |
+| About            | /c/{community\_id}/page/about           |
+| Editorial board  | /c/{community\_id}/page/eb              |
+| OA Policy        | /c/{community\_id}/page/oapolicy        |
 
 ### LINKID=editcommunity【参照先】Edit a community
 
@@ -14160,7 +14684,11 @@ The details appear.
 
 [v2.1.0] \* Only system administrators can create, edit, and delete Locations. Repository administrators can view the list and details of Locations, including the Location set as the default, but cannot create, edit, or delete them (the "Create" tab, the pencil icon, and the trash can icon are not displayed).
 
-\* A warning message appears at the top of the list screen when there are zero or two or more Locations set as the default.
+\* Warning messages: A warning message appears at the top of the list screen when there are zero or two or more Locations set as the default.
+
+  - If no Location is set as the default: "No default location is set. Please configure one location as default."
+
+  - If two or more Locations are set as the default: "Multiple locations are set as default. Only one default location can be configured. Please correct the settings."
 
 ### LINKID=createlocation【参照先】Create a Location
 
@@ -14218,7 +14746,7 @@ A screen appears where you can edit the setting.
 
 2.  > Modify the setting.
 
-See "ANCHORID=createlocation【参照元】Section 13.3.2 Create a Location【E】" for information on the elements.
+See "ANCHORID=createlocation【参照元】Section 14.3.2 Create a Location【E】" for information on the elements.
 
 zu0303030.tif![](media/media/image324.png)
 
@@ -14359,7 +14887,7 @@ Table 14‑4. Example settings for an institutional storage
 
 This completes the setup of the institutional storage. Files registered through the workflow will be stored in the institutional storage from the next registration.
 
-Notes:
+### Notes on the institutional storage feature
 
   - A Location in which files have ever been stored cannot be deleted.
 
@@ -14782,6 +15310,8 @@ Table 15‑5. The elements in the "Create" tab
 | Element       | Description                               |
 | ------------- | ----------------------------------------- |
 | User          | Select a user. This element is required.  |
+| Created       | Enter the date and time of creation.      |
+| Updated       | Enter the date and time of update.        |
 | Client ID     | Enter a client ID.                        |
 | Remote Tokens | Select this option to add a Remote Token. |
 
@@ -15503,7 +16033,8 @@ Table 16‑4. The elements in "Prefix"
 | Repository        | Specify a repository.                                                 |
 | JaLC DOI          | You can set up the Prefix ID for the JaLC DOI handle server.          |
 | JaLC CrossRef DOI | You can set up the Prefix ID for the JaLC CrossRef DOI handle server. |
-| JaLC DataCite DOI | You can set up the Prefix ID for the JaLC DataCite DOI handle server. |
+| JaLC DataCite DOI | You can set up the Prefix ID for the JaLC DataCite DOI handle server (currently, JaLC DataCite DOIs cannot be assigned). |
+| NDL JaLC DOI      | You can set up the Prefix ID for the NDL JaLC DOI handle server (currently, NDL JaLC DOIs cannot be assigned). |
 
 3.  Specify the value for "Suffix".
 
@@ -15817,6 +16348,54 @@ Informational: The items specified in the search condition will be used to searc
 </tbody>
 </table>
 
+### Change the labels of detail search items
+
+You can change the labels of the items displayed in the detail search by clicking "Edit" for a search condition.
+
+1.  Click "Edit".
+
+2.  Edit the label, and then click "Save".
+
+3.  Click "Save" at the bottom of the screen to apply the changes to the search settings.
+
+### Customize the detail search
+
+In the detail search, you can set up a detail search for specific elements of an item type.
+
+1.  Click "Search item setting".
+
+2.  In "Item Type List", select the item type to be searched.
+
+3.  Select a search item (such as "text1"), and specify the metadata element to be searched as that search item by using a json path or an xml path.
+
+    (Example of a json path: $.item\_1592405734122.attribute\_value\_mlt\[\*\].subitem\_1592369405220)
+
+    \* This setting takes effect when an item is registered or updated. It is not applied retroactively to items registered before the setting.
+
+#### Get a json path by using the Chrome extension "JSONVue"
+
+Installing the Chrome extension "JSONVue" makes it easier to get a json path.
+
+After installing JSONVue, access https://FQDN/records/*item ID*/export/json to display the JSON data of the item in the browser.
+
+Right-click the JSON key that contains the target of the search.
+
+From the menu that appears, select "JSONVue" \> "Copy path" to get the JSON path of the JSON key.
+
+For example, to use the title as a search item, execute "Copy path" on subitem\_title to get the following JSON path.
+
+```
+metadata.item_30002_title0.attribute_value_mlt[0].subitem_title
+```
+
+Replace "[0]" with "[\*]", and replace "metadata." with "$.".
+
+```
+$.item_30002_title0.attribute_value_mlt[*].subitem_title
+```
+
+By setting the above json path, you can perform a detail search on the title.
+
 ### Configure the index tree/facet display
 
 This section explains how to configure the index tree/facet display.
@@ -15869,6 +16448,46 @@ Table 16‑9. The elements in "Index Tree/Facet Display Setting"
 2.  Click "Save".
 
 > The setting is saved.
+
+### Configure generic detail search items
+
+This section explains the generic detail search items.
+
+The generic detail search items consist of the items in the following table. (The names shown are those displayed on the English screen. On the Japanese screen, they are displayed as "テキスト1", "integer\_JA\_1", and so on.)
+
+| Generic item | Description |
+| ------------ | ----------- |
+| text1 | Text-type generic detail search item |
+| text2 |  |
+| text3 |  |
+| text4 |  |
+| text5 |  |
+| text6 |  |
+| text7 |  |
+| text8 |  |
+| text9 |  |
+| text10 |  |
+| integer\_EN\_1 | Integer-type generic detail search item |
+| integer\_EN\_2 |  |
+| integer\_EN\_3 |  |
+| integer\_EN\_4 |  |
+| integer\_EN\_5 |  |
+| float\_EN\_1 | Float-type generic detail search item |
+| float\_EN\_2 |  |
+| float\_EN\_3 |  |
+| float\_EN\_4 |  |
+| float\_EN\_5 |  |
+| date\_EN\_1 | Date-type generic detail search item |
+| date\_EN\_2 |  |
+| date\_EN\_3 |  |
+| date\_EN\_4 |  |
+| date\_EN\_5 |  |
+| geopoint\_EN\_1 | Latitude and longitude |
+| geoshape\_EN\_1 | Type and coordinates |
+
+\* For information on the setting of the displayed items, see "16.12.3 Configure detail search results settings".
+
+\* For information on the setting of the labels, see "16.12.4 Change the labels of detail search items".
 
 ### Configure the initial display
 
@@ -16271,6 +16890,7 @@ Table 15.‑12. The elements in "Mail Setting"
 | Use SSL        | Check if you want to use SSL.            |
 | Username       | Enter a username.                        |
 | Password       | Enter the corresponding password.        |
+| Domain         | Enter the sender domain.                 |
 | Default sender | Enter an email address.                  |
 
 3.  Click "Update".
@@ -16285,7 +16905,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 16‑13. The elements in "Send Test Mail"
+Table 16‑12. The elements in "Send Test Mail"
 
 | Element   | Description                        |
 | --------- | ---------------------------------- |
@@ -16322,7 +16942,7 @@ A string enclosed in square brackets ([ ]) is used as a variable. The following 
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 16‑15. The variables available in mail templates
+Table 16‑13. The variables available in mail templates
 
 | Variable                                | Content                                                         |
 | --------------------------------------- | --------------------------------------------------------------- |
@@ -16791,13 +17411,41 @@ The following mail templates are registered in the initial state. The subject an
     [restricted_site_name_en]：[restricted_site_url]
     E-mail：[restricted_site_mail]
 
-In addition to the above, the following three mail templates for data usage reports are registered in the initial state. Their bodies follow the same format as the corresponding templates for applications for use.
+13. Notification of receipt of a data usage report
 
-  - 利用報告の受付のお知らせ／Your Application was Received
+<!-- end list -->
 
-  - 利用報告の承認のお知らせ／Guest's application was approved （for guest user）
+  - Recipient: The registrant of the data usage report (when this template is selected in the notification email settings of the flow)
 
-  - 利用報告の審査結果について／The results of the review of your application （for guest user）
+  - Overview: An email notifying that the data usage report has been received. The text is written in both Japanese and English.
+
+  - Subject: 利用報告の受付のお知らせ／Your Application was Received
+
+  - Body: The same text as "2. Notification of receipt of an application for data use".
+
+14. Notification of approval of a data usage report
+
+<!-- end list -->
+
+  - Recipient: The registrant of the data usage report (when this template is selected in the notification email settings of the flow)
+
+  - Overview: An email notifying that the data usage report has been approved. The text is written in both Japanese and English.
+
+  - Subject: 利用報告の承認のお知らせ／Guest's application was approved （for guest user）
+
+  - Body: Similar text to "8. Notification of approval (to a guest user)".
+
+15. Result of the review of a data usage report
+
+<!-- end list -->
+
+  - Recipient: The registrant of the data usage report (when this template is selected in the notification email settings of the flow)
+
+  - Overview: An email notifying the result (rejection) of the review of the data usage report. The text is written in both Japanese and English.
+
+  - Subject: 利用報告の審査結果について／The results of the review of your application （for guest user）
+
+  - Body: Similar text to "6. Notification of rejection (to a guest user)".
 
 ## Set up a WebAPI Account
 
@@ -16905,10 +17553,62 @@ Notes:
 
 ### Configure restricted access
 
-This section explains the setup used for restricted access.![](media/media/image410.png)
+This section explains the settings used for restricted access (the secret URL feature and the usage application feature).
 
-1.  Content File Download
+\* This screen is the setting screen for the early adopters of the usage application feature. For institutions that have not applied for early use of this feature, only "Secret URL Download" is displayed. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
 
+![](media/media/image410.png)
+
+### Secret URL feature
+
+By enabling the secret URL feature on the Administration screen, you can issue secret URLs.
+
+A secret URL is a one-time address that can be issued by the contributor (including a proxy contributor), the system administrator, and the repository administrator. Anyone who knows the URL can download the target content file.
+
+**This feature does not grant new access rights to public content or to content that is accessible to site license users through the site license feature, nor does it restrict access to such content to access through secret URLs.**
+
+The elements in "Secret URL Download" are as follows.
+
+・"Enable" check box
+
+You can enable or disable the secret URL feature. When this feature is enabled, the "Secret URL" button and the list of issued secret URLs appear on the Information screen of a file, only for users with the authority (see "The Information screen" in the User Operation Manual). Clicking the "Secret URL" button displays a form for creating a URL, from which you can issue a new secret URL.
+
+If you disable the feature, the created secret URLs are disabled. If you access a secret URL that has been disabled or deleted from the Information screen, an error message corresponding to the status is displayed.
+
+\* Disabled secret URLs become valid again when you enable the feature. (Deleted secret URLs are not restored.)
+
+・"Expiration Date Initial Value"
+
+When issuing a secret URL, the user can set the expiration date of the secret URL. You can set its initial value as an integer from 1 to the value of "Max Expiration Date". The default is 30 days. If you access a secret URL that has expired, an error message is displayed.
+
+・"Download Limit Initial Value"
+
+When issuing a secret URL, the user can set the number of downloads allowed for the secret URL. You can set its initial value as an integer of 1 or more. The default is 10 times. If you access a secret URL whose download limit has been exceeded, an error message is displayed.
+
+・"Max Expiration Date"
+
+When issuing a secret URL, the user can set the expiration date of the secret URL. You can set its upper limit as an integer equal to or greater than "Expiration Date Initial Value". The default is 30 days.
+
+・"Max Download Limit"
+
+When issuing a secret URL, the user can set the number of downloads allowed for the secret URL. You can set its upper limit as an integer equal to or greater than "Download Limit Initial Value". The default is 10 times.
+
+・Download statistics with secret URLs
+
+Downloads through secret URLs are added to the download count in the statistics.
+
+2.  Content File Download
+
+This feature is provided to the early adopters of the usage application feature. It is not available to institutions that have not applied for early use of this feature. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
+
+> For a file whose access setting is "Restricted Access", a temporary download URL (one-time URL) can be issued to a user through the following process.
+> 
+>   - 1: A user who wants to use the content file clicks the "Apply" button on the item detail screen to create a usage application workflow.
+> 
+>   - 2: A user with administrator authority approves the usage application workflow.
+> 
+>   - 3: An email containing the one-time URL is sent to the applicant.
+> 
 > When a workflow started from the "Apply" button on the item detail screen becomes "Done", a URI for downloading is notified by email. You can specify the period before the download link expires and the number of times the download can be performed.
 > 
 > ・Expiration Date
@@ -16935,9 +17635,13 @@ This section explains the setup used for restricted access.![](media/media/image
 > 
 > ![](media/media/image412.png)
 > 
+> Users with the authority can check the list of currently valid URLs in the section of issued one-time URLs. Issued URLs can also be deleted or copied there as needed. If a URL deleted by a user with the authority is accessed, an error message is displayed.
+> 
 > Note that if an item is set to public at registration but is later made private or deleted, the file will no longer be available for download even if the expiration date has not been met. The file will also become unavailable for download even within the download period if you change the index to private.
 
-2.  Usage Report Workflow Access
+3.  Usage Report Workflow Access
+
+This feature is provided to the early adopters of the usage application feature. It is not available to institutions that have not applied for early use of this feature. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
 
 > You can specify an expiration date for non-logged-in users to access the Usage Report Workflow when they download a content file registered with restricted access.
 > 
@@ -16949,7 +17653,57 @@ This section explains the setup used for restricted access.![](media/media/image
 > 
 > 　If you access a link that has exceeded the specified expiration date, an error page will be displayed.
 
-3.  Terms and Conditions
+4.  Application for use of items without content
+
+This is an experimental feature. It is not provided in the JAIRO Cloud environment.
+
+> You can turn on or off the feature that allows usage applications for items with no content registered.
+> 
+> If you check the check box, you can set the item types for which usage applications are allowed with no content registered. For details of the feature, see "The item details screen" and "Register items" in the User Operation Manual.
+> 
+> ・"Item types available for application" and "Item types not available for application"
+> 
+> 　By default, all item types are in "Item types not available for application". This feature is enabled only for the item types set in "Item types available for application".
+> 
+> 　Select an item type in "Item types not available for application" and click the left arrow button to make it available for application.
+> 
+> 　To remove an item type from the item types available for application, select the item type in "Item types available for application" and click the right arrow button.
+
+5.  File preview in approval actions
+
+This is an experimental feature. It is not provided in the JAIRO Cloud environment.
+
+> You can turn on or off the file preview feature in the approval action of usage application activities.
+> 
+> If you check the check box, the preview feature is displayed in the approval action of "usage application" and "two-step usage application" activities for restricted access items, regardless of the display format of the item registered at the time of application.
+
+6.  Edit mail templates
+
+This feature is provided to the early adopters of the usage application feature. It is not available to institutions that have not applied for early use of this feature. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
+
+> You can turn on or off the editing of the templates of the emails to be sent.
+> 
+> If you check the check box, save the setting, and then refresh the Administration screen, the menu for editing the mail templates appears. For details, see "16.18 Edit mail templates".
+
+7.  Display request form
+
+This is an experimental feature. It is not provided in the JAIRO Cloud environment.
+
+> You can turn on or off the request email sending form.
+> 
+> If you check the check box, emails can be sent to the email addresses set as the destinations of request emails when an item is created or edited. For details, see "The item details screen" in the User Operation Manual.
+
+8.  Password check function when downloading for guest user
+
+This feature is provided to the early adopters of the usage application feature. It is not available to institutions that have not applied for early use of this feature. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
+
+> You can turn on or off the password check function used when a non-logged-in user downloads content.
+> 
+> If you check the check box, a password field appears below the email address field when a usage application is made. Content cannot be downloaded with an application for which no password is set, even if the application has been approved.
+
+9.  Terms and Conditions
+
+This feature is provided to the early adopters of the usage application feature. It is not available to institutions that have not applied for early use of this feature. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
 
 > You can set up a template that can be selected for the terms and conditions pull-down for the workflow.
 > 
@@ -16977,7 +17731,23 @@ This section explains the setup used for restricted access.![](media/media/image
 > 
 > 　Use this text area to specify the English text of the terms and conditions. There is no limit to the number of characters.
 
-4.  Usage Report Reminder Email
+10. Error Message
+
+This feature is provided to the early adopters of the usage application feature. It is not available to institutions that have not applied for early use of this feature. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
+
+> You can edit the error message displayed when a user without the authority to apply accesses a restricted access item. There is no limit to the number of characters.
+> 
+> By default, the following error messages are entered.
+> 
+> Japanese: "このデータは利用できません（権限がないため）。"
+> 
+> English: "This data is not available for this user"
+> 
+> An error occurs if you save the setting with the text area left blank.
+
+11. Usage Report Reminder Email
+
+This feature is provided to the early adopters of the usage application feature. It is not available to institutions that have not applied for early use of this feature. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
 
 > Displays the history of the usage report reminder emails sent. Clicking on an activity link will launch the corresponding workflow.
 
