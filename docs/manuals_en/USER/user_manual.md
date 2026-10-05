@@ -790,7 +790,7 @@ zu030060.tif![](media/media/image33.png)
 
 A list of child indexes belonging to the index appears in the "Index List" screen. Private indexes are not displayed for guest users.
 
-Note: Only the indexes you are allowed to view are displayed in "Index Tree" and "Index List". You can view an index when the index is public (and its publish date, if set, has passed), you have at least one of the roles specified in the browsing privileges of the index, and you belong to one of the groups specified in the browsing privileges. Logged-in users who do not belong to any group and guest users are treated as belonging to "No Group". See the System Administration Manual for details on setting browsing privileges.
+[v2.1.0] Note: Only the indexes you are allowed to view are displayed in "Index Tree" and "Index List". You can view an index when the index is public (and its publish date, if set, has passed), you have at least one of the roles specified in the browsing privileges of the index, and you belong to one of the groups specified in the browsing privileges. Logged-in users who do not belong to any group and guest users are treated as belonging to "No Group". See the System Administration Manual for details on setting browsing privileges.
 
 Each index shows the number of items it contains. Public and private items are counted as follows.
 
@@ -1209,7 +1209,7 @@ zu030030.tif![](media/media/image65.png)
 
 See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E】" for more information.
 
-Note: If `WEKO_SEARCH_FIX_ACCESSRIGHTS = True` is set in the configuration file (instance.cfg), the facet for access rights (accessRights) counts and filters items registered with the access right "embargoed access" according to the current date and the access settings of their content files, as follows (with the default setting, items are counted according to the registered access right value).
+[v2.1.0] Note: If `WEKO_SEARCH_FIX_ACCESSRIGHTS = True` is set in the configuration file (instance.cfg), the facet for access rights (accessRights) counts and filters items registered with the access right "embargoed access" according to the current date and the access settings of their content files, as follows (with the default setting, items are counted according to the registered access right value).
 
   - If all content files are set to "Open access", or to "Input Open Access Date" with a publish date that has passed: "open access"
 
@@ -1358,7 +1358,7 @@ You cannot delete an item when it has a DOI granted. If you click the "Delete" b
 
 You can check the number of views for an item in the statistics screen.
 
-The view count of an item and the download and playing counts of its content files (the "Stats" tab on the Information screen) are available only to users who can view the item details screen of the item.
+[v2.1.0] The view count of an item and the download and playing counts of its content files (the "Stats" tab on the Information screen) are available only to users who can view the item details screen of the item.
 
 Figure 4-3. The statistics screen
 
@@ -1415,11 +1415,11 @@ You can view content files registered with an item in a list of file information
 > 
 > The preview is not displayed, and the file information area shows that you do not have access to the file.
 > 
-> Access rights to the content file are also checked when you access the preview URL directly. If you do not have access rights, the Login screen appears when you are not logged in, and access is denied when you are logged in. Likewise, images delivered via IIIF are available only when you have permission to view the item and access rights to the content file.
+> [v2.1.0] Access rights to the content file are also checked when you access the preview URL directly. If you do not have access rights, the Login screen appears when you are not logged in, and access is denied when you are logged in. Likewise, images delivered via IIIF are available only when you have permission to view the item and access rights to the content file.
 > 
 > ・For site license users:
 > 
-> For items whose item type is not excluded from the site license, users accessing from an IP address authorized by the site license can also download content files set to "Registered User Only" and "Restricted Access". Content files set to "Restricted Access" can be downloaded directly without an application or a one-time URL. See "Configure IP addresses permitted by the site license" in the System Administration Manual for details on site license settings.
+> [v2.1.0] For items whose item type is not excluded from the site license, users accessing from an IP address authorized by the site license can also download content files set to "Registered User Only" and "Restricted Access". Content files set to "Restricted Access" can be downloaded directly without an application or a one-time URL. See "Configure IP addresses permitted by the site license" in the System Administration Manual for details on site license settings.
 > 
 > ・If the content file's publish date is in the future, the preview will appear as follows.
 > 
@@ -1619,7 +1619,7 @@ Table 4‑8. The "Version" and "Stats" tabs on the Information screen
 | 10  |       | Plays                       | Displays the preview count of the content file.                                                                                                                  |
 | 11  |       | The "See details" pull-down | Displays the download count and the preview count of the content file for each country.                                                                          |
 
-Note: The "Stats" tab is available only to users who can view the item details screen of the item.
+[v2.1.0] Note: The "Stats" tab is available only to users who can view the item details screen of the item.
 
 #   
 Register items\</INDEXWORD\>
@@ -3315,7 +3315,7 @@ The following users can edit an item: system administrators, repository administ
 > 
 > If you are not logged in, the Login screen appears, and the edit screen opens after you log in. If you are logged in but do not have permission to edit the item, the error "You are not allowed to edit this item." appears.
 > 
-> Users who are not logged in or who do not have permission to edit the item cannot update or publish the item without going through the screens either.
+> [v2.1.0] Users who are not logged in or who do not have permission to edit the item cannot update or publish the item without going through the screens either.
 
 You can edit items belonging to the index. Locate the item to be edited in the index tree.
 
@@ -3508,7 +3508,7 @@ LINKID=exportitemstable【参照先】Table 7-1. The elements in the "Items to E
 <p>Lists items with a link. Clicking on a link will display the item details screen.</p></td>
 </tr>
 <tr class="even">
-<td>4</td>
+<td>[v2.1.0] 4</td>
 <td>"Message"</td>
 <td><p>Displays a message from the System.</p>
 <p>If you do not have the permission to download the file, the message "Contains restricted content" will appear.</p>
@@ -3841,16 +3841,16 @@ Table 10-1. The elements in the workspace item list screen
 | 2   | User and affiliation information | Displays the user name and affiliation information. |
 | 3   | The item registration button (folder icon) | Displays the item registration screen of the workspace. See "Register an item quickly" for more information. |
 | 4   | The "Export Item List" button | Exports the item list to a TSV file. |
-| 5   | The "Grouping by year" button | Groups the items by year. |
+| [v2.1.0] 5   | The "Grouping by year" button | Groups the items by year. |
 | 6   | The "Filter Display" button | Displays the filter condition panel. |
 | 7   | Sort conditions | Sorts the items by "Publication Date", "Title", "Number of accesses" or "Number of downloads", in ascending or descending order. |
 | 8   | Paging | Changes the number of items displayed per page to 20, 50 or 100. |
-| 9   | Check boxes | Select items to be exported. The check box in the header selects all items. |
+| [v2.1.0] 9   | Check boxes | Select items to be exported. The check box in the header selects all items. |
 | 10  | Favorite and read/unread buttons | Switch the favorite status and the read/unread status of the item. |
 | 11  | Item information | Displays the title (click to display the item details screen), journal title or conference name, volume (issue), whether document files exist, authors, publication date, related links and funding references. |
 | 12  | Number of accesses and downloads | Displays the access count and download count of the item. |
 | 13  | Resource type and status | Displays the resource type and the status linked with OA Assist, and whether feedback mail is set. |
-| 14  | DOI | Displayed when a related identifier with the identifier type "DOI" and the relation type "isVersionOf" is registered in the related information of the item. Click to go to the DOI link (doi.org). |
+| [v2.1.0] 14  | DOI | Displayed when a related identifier with the identifier type "DOI" and the relation type "isVersionOf" is registered in the related information of the item. Click to go to the DOI link (doi.org). |
 | 15  | Edit | Displays the item edit screen. |
 
 Table 10-2. The elements in the filter condition panel
@@ -3883,7 +3883,7 @@ The exported TSV file is as follows.
 
   - The file name is in the format "itemlist_export_*YYYYMMDDhhmmss*.tsv", and the character encoding is UTF-8 (with BOM).
 
-  - The first line contains column headers in the display language. The columns are output in the following order:
+  - [v2.1.0] The first line contains column headers in the display language. The columns are output in the following order:
 
       - No. (the sequence number in the item list; the numbers in the list are output even for "Selected Items")
 
@@ -3909,9 +3909,9 @@ The item registration screen of the workspace appears.
 
 2.  Enter a DOI in the "DOI Input" field and click the "Get" button.
 
-The System tries to retrieve metadata from CrossRef, JaLC, CiNii, DataCite and arXiv. The radio buttons of the sources from which metadata was retrieved become selectable.
+[v2.1.0] The System tries to retrieve metadata from CrossRef, JaLC, CiNii, DataCite and arXiv. The radio buttons of the sources from which metadata was retrieved become selectable.
 
-3.  Select a metadata source ("CrossRef MetaData", "JaLC MetaData", "CiNii MetaData", "DataCite MetaData" or "arXiv MetaData") with the radio buttons.
+3.  [v2.1.0] Select a metadata source ("CrossRef MetaData", "JaLC MetaData", "CiNii MetaData", "DataCite MetaData" or "arXiv MetaData") with the radio buttons.
 
 The retrieved metadata is entered automatically.
 
@@ -3925,7 +3925,7 @@ Table 10-4. The elements in the item registration screen of the workspace
 | --- | ------- | ----------- |
 | 1   | "DOI Input" | Enter a DOI. |
 | 2   | The "Get" button | Retrieves metadata for the entered DOI from each source. The radio buttons of the sources from which metadata was retrieved become active. |
-| 3   | Metadata source radio buttons | Select the metadata source ("CrossRef MetaData", "JaLC MetaData", "CiNii MetaData", "DataCite MetaData" or "arXiv MetaData"). The metadata from the selected source is entered automatically. |
+| [v2.1.0] 3   | Metadata source radio buttons | Select the metadata source ("CrossRef MetaData", "JaLC MetaData", "CiNii MetaData", "DataCite MetaData" or "arXiv MetaData"). The metadata from the selected source is entered automatically. |
 | 4   | "File" | Displays the uploaded files. The registrant can edit the file information. |
 | 5   | "Metadata" | Set when the metadata is retrieved. You can also edit it. |
 | 6   | OA policy information | Click the button for retrieving OA policy to retrieve the OA policy of the journal. ISSN, eISSN or journal title must be entered ("Please enter ISSN, eISSN, or journal title"). |

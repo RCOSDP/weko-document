@@ -708,7 +708,7 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 <td>Refers to the papers and other files that make up an item.</td>
 </tr>
 <tr class="odd">
-<td>Group</td>
+<td>[v2.1.0] Group</td>
 <td><p>A unit for grouping users. The browsing and contribution permissions of an index are set by combining roles and groups. Users other than system administrators and repository administrators can browse an index or contribute items to it only when they satisfy both the role condition and the group condition.</p>
 <p>Logged-in users who do not belong to any group, and users who are not logged in (guests), are treated as members of the group "No Group".</p></td>
 </tr>
@@ -1567,7 +1567,7 @@ Legend: 〇: Feature available, ×: Feature not available
 
   - The menu on the left side of the "Administration" screen shows only the menus available to the roles of the logged-in user. A user with multiple roles can use all the menus available to any of those roles.
 
-  - If integration with GakuNin mAP groups at academic federation (Shibboleth) login is enabled (WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPS in the configuration file; default: False), users who belong to a GakuNin mAP role group are given the corresponding WEKO role (System Administrator, Repository Administrator, Community Administrator, or Contributor) when they log in. The menus available on the Administration screen follow the given role. The GakuNin mAP role groups (roles whose names are jc\_roles\_sysadm or start with jc\_*FQDN*\_ro\_) are not shown in the role choices of User Management, WorkFlow, and Communities. GakuNin mAP groups (names starting with jc\_*FQDN*\_gr\_) are treated as groups, not as roles. *FQDN* is the host name of the entity ID set in WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID, with "." and "-" replaced by "\_".
+  - [v2.1.0] If integration with GakuNin mAP groups at academic federation (Shibboleth) login is enabled (WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPS in the configuration file; default: False), users who belong to a GakuNin mAP role group are given the corresponding WEKO role (System Administrator, Repository Administrator, Community Administrator, or Contributor) when they log in. The menus available on the Administration screen follow the given role. The GakuNin mAP role groups (roles whose names are jc\_roles\_sysadm or start with jc\_*FQDN*\_ro\_) are not shown in the role choices of User Management, WorkFlow, and Communities. GakuNin mAP groups (names starting with jc\_*FQDN*\_gr\_) are treated as groups, not as roles. *FQDN* is the host name of the entity ID set in WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID, with "." and "-" replaced by "\_".
 
 ## LINKID=adminwindow【参照先】\<INDEXWORD PRONOUNCE="かんりかめん" INDEXITEM="管理画面"\>Access the Administration screen\</INDEXWORD\>
 
@@ -7140,7 +7140,7 @@ The information you edited is saved to the item type.
 > 
 > When a new version is created because the version is configured to be upgraded, workflows that used the old version of the item type are automatically updated to use the new version.
 > 
-> The mapping of an item type is managed as one record per item type (version). When the mapping is saved together with the item type (when a new version is created, or when the version is configured to be kept), the existing mapping is overwritten.
+> [v2.1.0] The mapping of an item type is managed as one record per item type (version). When the mapping is saved together with the item type (when a new version is created, or when the version is configured to be kept), the existing mapping is overwritten.
 > 
 > You cannot save an item type while items are being imported with the import feature or while an import task is reserved. If you click "Save", the error message "Item type cannot be updated becase import is in progress." appears.
 > 
@@ -7649,7 +7649,7 @@ Table 3‑1. The content of the downloaded item type template
 <li><p>CNRI</p></li>
 <li><p>DOI_RA</p></li>
 <li><p>DOI</p></li>
-<li><p>BULK_DOI</p></li>
+<li><p>[v2.1.0] BULK_DOI</p></li>
 <li><p>Keep/Upgrade Version</p></li>
 <li><p>Metadata defined for the item type</p></li>
 </ul></td>
@@ -8186,7 +8186,7 @@ Table 3‑6. The elements in the "Result" tab
 </ul></td>
 </tr>
 <tr class="odd">
-<td>Success / Fail</td>
+<td>[v2.1.0] Success / Fail</td>
 <td>Displays the number of items that were imported successfully (Success) and the number of items that failed (Fail).</td>
 </tr>
 <tr class="even">
@@ -8206,7 +8206,7 @@ Table 3‑6. The elements in the "Result" tab
 <td>Displays the item ID of the item.</td>
 </tr>
 <tr class="even">
-<td>Status</td>
+<td>[v2.1.0] Status</td>
 <td><p>Displays the state of the import process of the item.</p>
 <ul>
 <li><p>Start: The process has not started yet.</p></li>
@@ -8216,7 +8216,7 @@ Table 3‑6. The elements in the "Result" tab
 </ul></td>
 </tr>
 <tr class="odd">
-<td>Import Result</td>
+<td>[v2.1.0] Import Result</td>
 <td><p>Displays the import result of the item.</p>
 <ul>
 <li><p>To Do: Waiting to be processed.</p></li>
@@ -8306,7 +8306,7 @@ Elements to be specified for a file
 <p>Supported characters for the suffix: alphanumeric characters and a set of permitted symbols (_-. ;()/)</p></td>
 </tr>
 <tr class="odd">
-<td>BULK_DOI</td>
+<td>[v2.1.0] BULK_DOI</td>
 <td>Used only with the bulk import API. If a DOI is specified, the metadata is complemented using that DOI before registration (see "Use the bulk import API" below). It is not used for imports from the Administration screen.</td>
 </tr>
 <tr class="even">
@@ -8652,13 +8652,13 @@ xxxxx.zip
 
       - A warning is displayed for metadata that is not defined in the mapping. If the item type has an element named "Extra", such metadata is stored together in that element; otherwise it is discarded.
 
-      - If replacement rules described in "[Replace metadata strings on import](#replace-metadata-strings-on-import)" are set, the replacement rules associated with the selected mapping are applied.
+      - [v2.1.0] If replacement rules described in "[Replace metadata strings on import](#replace-metadata-strings-on-import)" are set, the replacement rules associated with the selected mapping are applied.
 
 6.  Click "Import".
 
     The file is imported. The "Result" tab appears and shows the import results.
 
-    If wk:researchmapLinkage is set to true, the item is linked to researchmap after the registration of the item is completed.
+    [v2.1.0] If wk:researchmapLinkage is set to true, the item is linked to researchmap after the registration of the item is completed.
 
 ### WEKO-specific properties (wk:)
 
@@ -8671,14 +8671,14 @@ In metadata in the JSON-LD format (JSON-LD registration through the SWORD API, a
 | wk:editMode | How the version is handled on update (Keep/Upgrade). |
 | wk:feedbackMail | Email addresses for the feedback mail (multiple values can be specified). |
 | wk:requestMail | Email addresses for the request mail (multiple values can be specified). |
-| wk:researchmapLinkage | researchmap achievement linkage flag. If true is specified, the registered item is linked to researchmap. For direct registration, the linkage runs after the registration of the item is completed; for registration through a workflow, it runs when the workflow is completed (after approval). If not specified, it is treated as false (no linkage). To use the linkage, the linkage with researchmap must be configured in "Setting" \> "CRIS Linkage". |
+| [v2.1.0] wk:researchmapLinkage | researchmap achievement linkage flag. If true is specified, the registered item is linked to researchmap. For direct registration, the linkage runs after the registration of the item is completed; for registration through a workflow, it runs when the workflow is completed (after approval). If not specified, it is treated as false (no linkage). To use the linkage, the linkage with researchmap must be configured in "Setting" \> "CRIS Linkage". |
 | wk:metadataReplace | A flag to keep the registered files and update only the metadata when updating an item. It cannot be used for new registration or RO-Crate import. |
 | wk:isSplited | A flag for describing multiple items in one JSON-LD. It cannot be used for RO-Crate import. |
 | wk:textExtraction | Whether to extract full text for each file (hasPart). Full text is not extracted for files for which false is specified. |
 
 ### Replace metadata strings on import
 
-When metadata in the JSON-LD format is taken in (JSON-LD registration through the SWORD API, and RO-Crate import), you can replace specified strings in the metadata before registration for each JSON-LD mapping used (for example, replacing the half-width "|" with the full-width "｜"). This does not apply to imports in the TSV/CSV format.
+[v2.1.0] When metadata in the JSON-LD format is taken in (JSON-LD registration through the SWORD API, and RO-Crate import), you can replace specified strings in the metadata before registration for each JSON-LD mapping used (for example, replacing the half-width "|" with the full-width "｜"). This does not apply to imports in the TSV/CSV format.
 
 Replacement rules cannot be set on the screen. Describe the following two settings in the configuration file (such as instance.cfg).
 
@@ -8710,7 +8710,7 @@ If the replacement rules are set incorrectly (for example, a nonexistent rule na
 
 ## Use the bulk import API
 
-You can bulk register a zip file in the same format as in "Import items" (TSV/CSV format) through the REST API without using the Administration screen. Use this, for example, when an external system performs bulk registration periodically.
+[v2.1.0] You can bulk register a zip file in the same format as in "Import items" (TSV/CSV format) through the REST API without using the Administration screen. Use this, for example, when an external system performs bulk registration periodically.
 
   - Available roles: System administrator, Repository administrator
 
@@ -8862,32 +8862,32 @@ Table 4‑1. The elements in "Index Edit"
 <tr class="even">
 <td>Browsing Privilege</td>
 <td><p>Specify the browsing privileges for viewing the index.</p>
-<p>Users who have at least one of the roles listed in "Role Authorized" and also belong to at least one of the groups listed in "Group Authorized" can view the index.</p>
-<p>"Authenticated User" is a role that refers to logged-in users, and "Guest" is a role that refers to users who are not logged in. "No Group" is a group that refers to users who are not logged in and logged-in users who do not belong to any group (including GakuNin mAP groups).</p>
+<p>[v2.1.0] Users who have at least one of the roles listed in "Role Authorized" and also belong to at least one of the groups listed in "Group Authorized" can view the index.</p>
+<p>[v2.1.0] "Authenticated User" is a role that refers to logged-in users, and "Guest" is a role that refers to users who are not logged in. "No Group" is a group that refers to users who are not logged in and logged-in users who do not belong to any group (including GakuNin mAP groups).</p>
 <p>Users with the system administrator or repository administrator role can view all indexes regardless of this setting. Therefore, these roles are not shown in the role list.</p>
 <p>When you add a new index, unless recursive application is set in the parent index, the index is created with privileges granted to all roles and all groups (including "No Group"). GakuNin mAP groups are granted the privilege only when the default privilege is enabled in the configuration file described below.</p>
 <ul>
 <li><p>Role</p></li>
 </ul>
-<p>Specify the browsing privilege for each user role. Even if GakuNin mAP integration is configured, GakuNin mAP roles (roles created from the group information of GakuNin mAP) are not shown in the role list and are not used to determine the browsing privilege. If you check "Set the base authorities of child indexes recursively", the base authority setting will be recursively applied to all child and descendant indexes.</p>
+<p>[v2.1.0] Specify the browsing privilege for each user role. Even if GakuNin mAP integration is configured, GakuNin mAP roles (roles created from the group information of GakuNin mAP) are not shown in the role list and are not used to determine the browsing privilege. If you check "Set the base authorities of child indexes recursively", the base authority setting will be recursively applied to all child and descendant indexes.</p>
 <ul>
 <li><p>Group</p></li>
 </ul>
 <p>Specify the browsing privilege for each group to which users belong. If you check "Set the group authorities of child indexes recursively", the group setting will be recursively applied to all child and descendant indexes.</p>
-<p>If GakuNin mAP integration is configured, the group list shows, in addition to WEKO3 groups, the groups created according to the information from GakuNin mAP when users log in through the academic federation (GakuNin). A user satisfies the group condition if either a WEKO3 group or a GakuNin mAP group has the privilege.</p>
+<p>[v2.1.0] If GakuNin mAP integration is configured, the group list shows, in addition to WEKO3 groups, the groups created according to the information from GakuNin mAP when users log in through the academic federation (GakuNin). A user satisfies the group condition if either a WEKO3 group or a GakuNin mAP group has the privilege.</p>
 <p>Roles and groups are treated as GakuNin mAP roles and groups when "WEKO_ACCOUNTS_IDP_ENTITY_ID" is set in the configuration file (instance.cfg) and their names start with the prefix for this repository (with the default settings, roles starting with "jc_{FQDN}_ro_", groups starting with "jc_{FQDN}_gr_", and "jc_roles_sysadm", which represents system administrators; {FQDN} is the host name of "WEKO_ACCOUNTS_IDP_ENTITY_ID" with "." and "-" replaced by "_"). Roles with prefixes for other repositories are treated as ordinary roles.</p>
 <p>To grant the browsing privilege to GakuNin mAP groups by default, set "WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING_PERMISSION = True" in the configuration file (instance.cfg) (default: False). When enabled, a newly created GakuNin mAP group is added to the browsing privileges of all indexes.</p></td>
 </tr>
 <tr class="odd">
 <td>Deposit Privilege</td>
 <td><p>Specify the deposit privileges for viewing the index.</p>
-<p>Users who have at least one of the roles listed in "Role Authorized" and also belong to at least one of the groups listed in "Group Authorized" can register items to the index.</p>
-<p>"Authenticated User" is a role that refers to logged-in users, and "Guest" is a role that refers to users who are not logged in. "No Group" is a group that refers to users who are not logged in and logged-in users who do not belong to any group (including GakuNin mAP groups).</p>
+<p>[v2.1.0] Users who have at least one of the roles listed in "Role Authorized" and also belong to at least one of the groups listed in "Group Authorized" can register items to the index.</p>
+<p>[v2.1.0] "Authenticated User" is a role that refers to logged-in users, and "Guest" is a role that refers to users who are not logged in. "No Group" is a group that refers to users who are not logged in and logged-in users who do not belong to any group (including GakuNin mAP groups).</p>
 <p>As with the browsing privilege, the system administrator and repository administrator roles are not shown in the role list.</p>
 <ul>
 <li><p>Role</p></li>
 </ul>
-<p>Specify the deposit privilege for the base authority of each user role. GakuNin mAP roles are not shown in the role list and are not used to determine the deposit privilege.</p>
+<p>[v2.1.0] Specify the deposit privilege for the base authority of each user role. GakuNin mAP roles are not shown in the role list and are not used to determine the deposit privilege.</p>
 <p>If you check "Set the base authorities of child indexes recursively", the base authority setting will be recursively applied to all child and descendant indexes.</p>
 <ul>
 <li><p>Group</p></li>
@@ -9325,7 +9325,7 @@ Table 5‑1. Elements and descriptions for creating a widget
 <tr class="odd">
 <td>Repository<sup>*</sup></td>
 <td><p>Specify the repository to which you want to add the widget from the options below.</p>
-<p>Community administrators can select only the communities they manage. The repository is also checked when the widget is saved, and the widget cannot be saved if the repository is not a community managed by the administrator.</p></td>
+<p>[v2.1.0] Community administrators can select only the communities they manage. The repository is also checked when the widget is saved, and the widget cannot be saved if the repository is not a community managed by the administrator.</p></td>
 </tr>
 <tr class="even">
 <td>Type<sup>*</sup></td>
@@ -9827,7 +9827,7 @@ The widget is updated. The message "Widget item updated successfully." appears a
 
 Notes:
 
-For community administrators, when the widget is saved, it is checked that both the repository to which the widget currently belongs and the repository specified in "Repository" are communities managed by the administrator. You cannot modify a widget that belongs to a repository not managed by the administrator (including Root Index), or move a widget to such a repository. Likewise, you can delete only widgets that belong to the communities you manage.
+[v2.1.0] For community administrators, when the widget is saved, it is checked that both the repository to which the widget currently belongs and the repository specified in "Repository" are communities managed by the administrator. You cannot modify a widget that belongs to a repository not managed by the administrator (including Root Index), or move a widget to such a repository. Likewise, you can delete only widgets that belong to the communities you manage.
 
 ### LINKID=deletewidgets【参照先】Delete a widget
 
@@ -9874,7 +9874,7 @@ To access the screen where you can manage the page layout, click "Web Design" an
 
 1.  In the "Repository" pull-down list, select a repository.
 
-Community administrators can select only the communities they manage. Loading and saving page layouts, and adding, modifying, and deleting pages, can be performed only for the communities managed by the administrator.
+[v2.1.0] Community administrators can select only the communities they manage. Loading and saving page layouts, and adding, modifying, and deleting pages, can be performed only for the communities managed by the administrator.
 
 The "Main Layout" page of the selected repository appears. "Widget List" also displays widgets.
 
@@ -11694,7 +11694,7 @@ The historical feedback mails sent are also displayed in the "Send logs" table.
 
 To access the screen where you can aggregate usage logs for the \<INDEXWORD PRONOUNCE="さいとらいせんす" INDEXITEM="サイトライセンス"\>site license\</INDEXWORD\>, click "Statistics" and then click "Site License".
 
-For community administrators, only the repositories they manage are available. You cannot manually send statistics by email for a repository that you do not manage.
+[v2.1.0] For community administrators, only the repositories they manage are available. You cannot manually send statistics by email for a repository that you do not manage.
 
 You can aggregate and analyze usage logs by users with the site license and send feedback on the results.
 
@@ -11819,7 +11819,7 @@ A screen appears where you can edit the flow.
 
 2.  You can limit the roles or users who can perform the action by selecting them in the drop-down list.
 
-    If GakuNin mAP integration is configured, the roles given by GakuNin mAP (the system administrator group and the repository-specific roles) are not shown in the role choices.
+    [v2.1.0] If GakuNin mAP integration is configured, the roles given by GakuNin mAP (the system administrator group and the repository-specific roles) are not shown in the role choices.
 
 > zu1101050.tif
 
@@ -11897,7 +11897,7 @@ zu1101200.tif
     
     "Restricted Access Flag" is unchecked by default. If checked, it appears as a "WorkFlow" option for the content file in the "Providing Method" section of the item registration screen.
     
-    You can specify whether the workflow is shown or hidden for each role. If GakuNin mAP integration is configured, the roles given by GakuNin mAP are not shown.
+    [v2.1.0] You can specify whether the workflow is shown or hidden for each role. If GakuNin mAP integration is configured, the roles given by GakuNin mAP are not shown.
     
     "Registration Destination Index" is set to "Undesignated" as default. If you choose to select "Undesignated", you must designate an index when registering an item after entering the elements for the workflow. If you designate an index for the "Registration Destination Index" setting, you do not need to designate an index after entering the elements for the workflow; instead, the item will be registered automatically to the index specified in "Admin" \> "WorkFlow" \> "Flow List".
 
@@ -11979,7 +11979,7 @@ zu0201010.tif![](media/media/image260.png)
 
 The details appear.
 
-If GakuNin mAP integration is configured (an IdP entity ID is set in WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID), the role names given by GakuNin mAP are converted to the following display names in "Owner" in the list, details, and edit screens.
+[v2.1.0] If GakuNin mAP integration is configured (an IdP entity ID is set in WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID), the role names given by GakuNin mAP are converted to the following display names in "Owner" in the list, details, and edit screens.
 
 | GakuNin mAP role | Display name |
 | --- | --- |
@@ -12010,7 +12010,7 @@ Table 9‑1. The elements in the "Create" tab
 | --------------- | ------------------------------------------------------------------------------------- |
 | Id              | Enter the ID. This element is required.                                               |
 | Cnri            | A handle is issued when CNRI is enabled.                                              |
-| Owner           | Specifies the role of the community owner. This element is required.<br>\* If GakuNin mAP integration is configured, the roles given by GakuNin mAP (the system administrator group and the repository-specific roles) are not shown in the choices. |
+| [v2.1.0] Owner           | Specifies the role of the community owner. This element is required.<br>\* If GakuNin mAP integration is configured, the roles given by GakuNin mAP (the system administrator group and the repository-specific roles) are not shown in the choices. |
 | Index           | Select an index for which you want to set up the community. This element is required. |
 | Group           | Specify a group.<br>The choices are the GakuNin mAP groups created through GakuNin mAP integration. |
 | Title           | Enter a title.                                                                        |
@@ -12462,7 +12462,7 @@ Additional Information:
 
 † Private indexes (private or OAI-PMH private) are not included in the output.
 
-Additional Information: Handling of items whose embargo period has ended
+[v2.1.0] Additional Information: Handling of items whose embargo period has ended
 
 If WEKO\_SEARCH\_FIX\_ACCESSRIGHTS is enabled (True) in instance.cfg, the output takes the end of the embargo period (the arrival of the publication date) into account as follows. By default (disabled), the output is determined only by the update date and time of the item, as before.
 
@@ -12493,9 +12493,9 @@ This section explains how to \</INDEXWORD\>output Resource Lists and Resource Du
 
 > The output will only include the latest version of the items.
 > 
-> The output also includes only public items (items whose publication status is public, whose publication date is on or before the current date, and that belong to a public index). If you access the URL of a zip file or manifest.xml of a private item, "The page you are looking for could not be found." appears.
+> [v2.1.0] The output also includes only public items (items whose publication status is public, whose publication date is on or before the current date, and that belong to a public index). If you access the URL of a zip file or manifest.xml of a private item, "The page you are looking for could not be found." appears.
 > 
-> The zip files and manifest.xml include only the files that the accessing user can download (the same determination as for files that can be downloaded on the item detail screen).
+> [v2.1.0] The zip files and manifest.xml include only the files that the accessing user can download (the same determination as for files that can be downloaded on the item detail screen).
 
 1)  > Clicking on the link displayed in the "Resource List Url" will output the Resource Lists for the corresponding index.
 
@@ -12619,9 +12619,9 @@ This section explains how to \</INDEXWORD\>output Change Lists and Change Dumps.
 
 > The output will only include the latest version of the items.
 > 
-> The output also includes only public items and deleted items (to notify the deletion). If you access the URL of a zip file or manifest.xml of a private item, "The page you are looking for could not be found." appears. The zip files and manifest.xml include only the files that the accessing user can download.
+> [v2.1.0] The output also includes only public items and deleted items (to notify the deletion). If you access the URL of a zip file or manifest.xml of a private item, "The page you are looking for could not be found." appears. The zip files and manifest.xml include only the files that the accessing user can download.
 > 
-> If WEKO\_SEARCH\_FIX\_ACCESSRIGHTS is enabled (True) in instance.cfg, an item whose embargo period has ended is output in the Change List and Change Dump of the date of its publication date (the end date of the embargo period) if the publication date is later than its update date and time. By default (disabled), it is output for the date of its update date and time.
+> [v2.1.0] If WEKO\_SEARCH\_FIX\_ACCESSRIGHTS is enabled (True) in instance.cfg, an item whose embargo period has ended is output in the Change List and Change Dump of the date of its publication date (the end date of the embargo period) if the publication date is later than its update date and time. By default (disabled), it is output for the date of its update date and time.
 
 1)  > Clicking on the link displayed in the "Change List Url" will output the Change Lists for the corresponding index.
 
@@ -13016,7 +13016,7 @@ The records are deleted.
 
 This chapter provides information on how to manage files.
 
-\* Among the Files menus, repository administrators can use only "Location" (read access only). The other menus can be used only by system administrators.
+[v2.1.0] \* Among the Files menus, repository administrators can use only "Location" (read access only). The other menus can be used only by system administrators.
 
 ## LINKID=locationmanagement【参照先】 Manage Buckets
 
@@ -13118,7 +13118,7 @@ zu0302030.tif![](media/media/image321.png)
 
 ### Delete File Instances
 
-This section explains how to delete File Instances.
+[v2.1.0] This section explains how to delete File Instances.
 
 When you delete a File Instance, the File Instance record is deleted, and the used capacity (Size) of each Location is recalculated. If the file exists on the server (local storage), the file itself is also deleted. Note that deleted files cannot be restored.
 
@@ -13164,13 +13164,13 @@ zu0303010.tif![](media/media/image322.png)
 
 The details appear.
 
-\* Only system administrators can create, edit, and delete Locations. Repository administrators can view the list and details of Locations, including the Location set as the default, but cannot create, edit, or delete them (the "Create" tab, the pencil icon, and the trash can icon are not displayed).
+[v2.1.0] \* Only system administrators can create, edit, and delete Locations. Repository administrators can view the list and details of Locations, including the Location set as the default, but cannot create, edit, or delete them (the "Create" tab, the pencil icon, and the trash can icon are not displayed).
 
 \* A warning message appears at the top of the list screen when there are zero or two or more Locations set as the default.
 
 ### LINKID=createlocation【参照先】Create a Location
 
-This section explains how to create a Location. Only system administrators can create Locations.
+[v2.1.0] This section explains how to create a Location. Only system administrators can create Locations.
 
 1.  Click on the "Create" tab.
 
@@ -13216,7 +13216,7 @@ The location is created.
 
 ### LINKID=editlocation【参照先】Edit a Location
 
-This section explains how to edit a Location. Only system administrators can edit Locations.
+[v2.1.0] This section explains how to edit a Location. Only system administrators can edit Locations.
 
 1.  > In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
@@ -13234,7 +13234,7 @@ The setting is saved.
 
 ### LINKID=deletelocation【参照先】Delete Locations
 
-This section explains how to delete Locations. Only system administrators can delete Locations.
+[v2.1.0] This section explains how to delete Locations. Only system administrators can delete Locations.
 
 To delete Locations individually, do the following:
 
@@ -13794,9 +13794,9 @@ This section explains how to manage \<INDEXWORD PRONOUNCE="oauthapplication" IND
 
 In the management screen, you can only view and delete registered OAuth Applications. Each user registers OAuth Applications and issues tokens from the "Applications" screen of the account settings.
 
-\* The scopes that can be given to a token include the scopes for Web APIs such as items, indexes, and authors, as well as the scope "item:bulkprocess" for the bulk import API. The bulk import API can be used by users with the system administrator or repository administrator role.
+[v2.1.0] \* The scopes that can be given to a token include the scopes for Web APIs such as items, indexes, and authors, as well as the scope "item:bulkprocess" for the bulk import API. The bulk import API can be used by users with the system administrator or repository administrator role.
 
-\* If the scope specified in an authorization request of an OAuth Application is invalid (it contains no valid scope), the authorization screen is not displayed, and the error screen shows "error: The scope is incorrect."
+[v2.1.0] \* If the scope specified in an authorization request of an OAuth Application is invalid (it contains no valid scope), the authorization screen is not displayed, and the error screen shows "error: The scope is incorrect."
 
 ### LINKID=viewoauthappli【参照先】View OAuth Applications
 
@@ -13993,8 +13993,8 @@ Table 14‑7. The elements in the "Create" tab
 | Email                  | Enter an email address. This element is required.            |
 | Password               | Enter the corresponding password.                            |
 | Active                 | Check "Active" to allow the user you create to log in.       |
-| Roles                  | Select a role for the user.<br>\* If GakuNin mAP integration is configured (WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID is set), the GakuNin mAP roles (the system administrator group and the roles for this repository) and the GakuNin mAP groups are not shown in the choices. |
-| Groups                 | Select groups for the user.<br>The choices show the GakuNin mAP groups for this repository. If GakuNin mAP integration is not configured (WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID is not set), no choices are shown. |
+| [v2.1.0] Roles                  | Select a role for the user.<br>\* If GakuNin mAP integration is configured (WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID is set), the GakuNin mAP roles (the system administrator group and the roles for this repository) and the GakuNin mAP groups are not shown in the choices. |
+| [v2.1.0] Groups                 | Select groups for the user.<br>The choices show the GakuNin mAP groups for this repository. If GakuNin mAP integration is not configured (WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID is not set), no choices are shown. |
 | Send User Notification | Check this box to send the user an email about this account. |
 
 2.  Click "Save".
@@ -14985,7 +14985,7 @@ If the UI is "RangeSlider", only "AND" can be selected.</td>
 
 Click on the "Create" tab, and the "Create" screen appears. You can add a facet element by specifying the elements shown.
 
-Additional Information:
+[v2.1.0] Additional Information:
 
 If "WEKO\_SEARCH\_FIX\_ACCESSRIGHTS" is enabled (True) in the configuration file (default: disabled), the facet for access restrictions (accessRights) is aggregated and filtered taking the embargo state into account. For example, an item whose access right is "embargoed access" but whose publication date has passed and all of whose files are public is treated as "open access". If disabled, the values are aggregated as the access right values registered for the items.
 
@@ -15158,7 +15158,7 @@ zu0820010.tif![](media/media/image403.png)
 
 Additional Information:
 
-Only public items are output to the sitemap: items whose publication status is "Public", whose publication date has passed, and that belong to an index that users who are not logged in can view. Private items, items whose publication date is in the future, and items that belong only to private indexes are not output.
+[v2.1.0] Only public items are output to the sitemap: items whose publication status is "Public", whose publication date has passed, and that belong to an index that users who are not logged in can view. Private items, items whose publication date is in the future, and items that belong only to private indexes are not output.
 
 An output xml file is stored in the following place:
 
@@ -15318,7 +15318,7 @@ The setting is saved.
 
 Notes:
 
-・User attributes sent from the Shibboleth SP are accepted only when sent from the SP login script (login.py) on the Web server. The accepted source addresses are specified with "WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS" in the configuration file (default: "127.0.0.1" and "::1"). Transmissions from other addresses are rejected. When you update an existing environment, update the login script (login.py) and the nginx settings at the same time. If you update only one of them, Shibboleth login will fail.
+・[v2.1.0] User attributes sent from the Shibboleth SP are accepted only when sent from the SP login script (login.py) on the Web server. The accepted source addresses are specified with "WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS" in the configuration file (default: "127.0.0.1" and "::1"). Transmissions from other addresses are rejected. When you update an existing environment, update the login script (login.py) and the nginx settings at the same time. If you update only one of them, Shibboleth login will fail.
 
 ・Logins to the WEKO API (/api/<version>/login) are rate-limited per source IP address. The limit is specified with "WEKO_API_LIMIT_RATE_DEFAULT" in the configuration file (default: 100 per minute).
 
@@ -16190,9 +16190,9 @@ This section explains how to manage \<INDEXWORD PRONOUNCE="くるうふ" INDEXIT
 
 Notes:
 
-・Creating, editing (managing), and deleting groups, listing members, inviting members, approving join requests, and removing members can be performed only by users with the system administrator, repository administrator, or community administrator role. If other users try these operations, an error (403) occurs.
+・[v2.1.0] Creating, editing (managing), and deleting groups, listing members, inviting members, approving join requests, and removing members can be performed only by users with the system administrator, repository administrator, or community administrator role. If other users try these operations, an error (403) occurs.
 
-・In addition to the roles above, editing and deleting a group, approving join requests, and removing members can be performed only by the administrator of the group (the creator of the group). Members can be invited by the administrator of the group, and also by members of the group if its join policy is "Open". Groups created on the screen have the join policy "Open with approval" (approval required), so only the administrator of the group can invite members.
+・[v2.1.0] In addition to the roles above, editing and deleting a group, approving join requests, and removing members can be performed only by the administrator of the group (the creator of the group). Members can be invited by the administrator of the group, and also by members of the group if its join policy is "Open". Groups created on the screen have the join policy "Open with approval" (approval required), so only the administrator of the group can invite members.
 
 ・Any logged-in user can accept or reject invitations and join requests, and leave a group.
 
