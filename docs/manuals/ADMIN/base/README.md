@@ -5238,7 +5238,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
     
     ![](media/media/image105.png)
 
-  - 雑誌情報は、「自機関のリポジトリURL」＋「/static /weko/kbart/\[ファイル名\]」で閲覧できます。ファイルには、KBART2拡張形式でTSV出力されています。
+  - 雑誌情報は、「自機関のリポジトリURL」＋「/static/weko/kbart/\[ファイル名\]」で閲覧できます。ファイルには、KBART2拡張形式でTSV出力されています。
     
     ![](media/media/image106.png)
 
