@@ -88,7 +88,7 @@
           - テンプレートのURL：「https://{weko_url}/resync/{Index ID}/{YYYYMMDD}/changelist.xml」
         - from-until：「Change List」ごとに対象日
           - フォーマット：YYYY-MM-DDThh:mm:ssZ
-          - 設定値WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueの場合、エンバーゴの期間が終了した日付がupdatedの日付より新しいレコードは、エンバーゴ期間終了日が対象日に該当する。
+          - 設定値WEKO_SEARCH_FIX_ACCESSRIGHTS（weko_search_ui/config.py、既定 False）がTrueの場合、エンバーゴの期間が終了した日付がupdatedの日付より新しいレコードは、エンバーゴ期間終了日が対象日に該当する。具体的には、accessRights が embargoed access で全ファイルが open_access または公開日到来済みの open_date であるレコードについて、ファイルの公開日（content.date.dateValue）が対象期間内であれば対象となる（`invenio_oaiserver.query.range_query` を `invenio_resourcesyncserver.query` から使用。until は1秒前に補正される）。
       - 「Change List一覧」のサンプル
 
         ```xml
@@ -150,7 +150,7 @@
         - テンプレートのURL：「https://{weko_url}/resync/{Index ID}/{YYYYMMDD}/changelist.xml」
       - from-until：「Change Dump」ごとに対象日
         - フォーマット：YYYY-MM-DDThh:mm:ssZ
-        - 設定値WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueの場合、エンバーゴの期間が終了した日付がupdatedの日付より新しいレコードは、エンバーゴ期間終了日が対象日に該当する。
+        - 設定値WEKO_SEARCH_FIX_ACCESSRIGHTS（weko_search_ui/config.py、既定 False）がTrueの場合、エンバーゴの期間が終了した日付がupdatedの日付より新しいレコードは、エンバーゴ期間終了日が対象日に該当する。具体的には、accessRights が embargoed access で全ファイルが open_access または公開日到来済みの open_date であるレコードについて、ファイルの公開日（content.date.dateValue）が対象期間内であれば対象となる（`invenio_oaiserver.query.range_query` を `invenio_resourcesyncserver.query` から使用。until は1秒前に補正される）。
     - 「Change Dump一覧」のサンプル
 
       ```xml
@@ -258,3 +258,4 @@
 |:---:|:---:|:---:|
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2025/01/23 | - | サブリポジトリ対応 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：WEKO_SEARCH_FIX_ACCESSRIGHTS 有効時の対象日判定（range_query・ファイル公開日）を具体化 |

@@ -225,9 +225,16 @@
 - 画面/ハンドラ：`weko_admin.admin.SearchSettingsView.index`。表示件数・ソート・検索条件・表示制御は model `SearchManagement`（テーブル `search_management`、`search_setting_all` JSON 集約列あり）。インデックスツリーの Width/Height は `IndexStyle`。
 - 「Search Author Setting（著者検索設定）」は `AdminSettings`（name=`items_display_settings`、フィールド `items_search_author`）に保存される。既定は config `ITEM_SEARCH_FLG`。
 
+> 実装補足（v2.1.0）：
+>
+> - 「初期表示インデックス」のツリー取得 API `GET /api/admin/search/init_display_index/<selected_index>`（`weko_admin.views.get_search_init_display_index`）は、本画面と同じく login_required ＋ System/Repository Administrator のみに制限された（未ログインは 401、他ロールは 403）。
+> - 設定値のキャッシュ（v2.0.3/v2.0.4 の 502 対策）：`weko_admin.utils.get_search_setting()` の結果は invenio-cache（Redis）に `WEKO_ADMIN_SETTINGS_CACHE_TTL`（既定 300 秒、0 で無期限）の間キャッシュされる。本画面の保存（`SearchManagement.create` / `update`）時に `delete_search_setting_cache()` で即時に破棄されるため、画面からの変更は即時に反映される。DB を直接更新した場合は最大で TTL の間、旧設定が使われる。
+> - 詳細検索条件（`weko_search_ui.api.get_search_detail_keyword`）も `WEKO_SEARCH_DETAIL_KEYWORD_CACHE_TTL`（既定 300 秒）の間キャッシュされる。キャッシュキーにホスト・言語・ユーザーのロール/グループ・`search_conditions` の署名を含むため検索条件設定の変更は即時に反映されるが、アイテムタイプやインデックスの追加・変更が詳細検索の選択肢に反映されるまで最大で TTL の遅延がある。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：初期表示インデックス取得 API の管理者限定、検索設定・詳細検索条件のキャッシュ（TTL）と反映タイミングを追記 |

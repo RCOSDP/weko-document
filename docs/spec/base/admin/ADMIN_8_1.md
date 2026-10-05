@@ -46,7 +46,7 @@
       - 「Title」  
       設定されたコミュニティタイトルである
       - 「Owner.Name」  
-      指定された所有者のロールを表示する。GakuNin mAP 由来のロール名は表示用名称に変換される（`jc_roles_sysadm`→System Administrator、`role_mapping` に定義された `radm`/`cadm`/`cont` は対応する表示名）。変換は `Community.owner_display` による。
+      指定された所有者のロールを表示する。GakuNin mAP 由来のロール名は表示用名称に変換される（`sysadm_group`＝`jc_roles_sysadm`→`WEKO_ADMIN_PERMISSION_ROLE_SYSTEM`（System Administrator）、`<prefix>_<FQDN>_<role_keyword>_<radm/cadm/cont>`→`role_mapping` の表示名）。変換は WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT と WEKO_ACCOUNTS_IDP_ENTITY_ID の両方が設定されている場合のみ行われる。変換は `Community.owner_display` による。
       - 「Index」  
       選択されたコミュニティを設定しているインデックス名である
       - 「Deleted At」
@@ -99,7 +99,7 @@
             エラーメッセージ：「既に存在しています。」
         - 「Owner」プルダウン
             - 所有者のロールを選択する。必須項目である。デフォルトは1番目の項目とする
-            - 「Owner」プルダウンの選択肢は、システムに登録されたロールのうち、GakuNin mAP ロール（`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` の `role_keyword` を含み `prefix` で始まる名前）を除いた一覧である
+            - 「Owner」プルダウンの選択肢は、システムに登録されたロールのうち、GakuNin mAP ロール（`weko_accounts.api.map_role_condition`：`sysadm_group` と一致、または `<prefix>_<FQDN>_<role_keyword>_` で始まる名前。FQDN は WEKO_ACCOUNTS_IDP_ENTITY_ID から生成）を除いた一覧である
             - 表示形式は以下の通りである  
             ロール - ロール説明(description)
         - 「Index」プルダウン
@@ -109,7 +109,7 @@
             Index<id=インデックスId, index_name=インデックス名>
         - 「Group」プルダウン
             - コミュニティを設定するグループを選択する。
-            - 「Group」プルダウンの選択肢は、mAPグループを意味するプレフィックスが付いたロール一覧である。
+            - 「Group」プルダウンの選択肢は、mAPグループを意味するプレフィックスが付いたロール一覧である（`weko_accounts.api.map_group_condition`：`<prefix>_<FQDN>_<group_keyword>_` で始まる名前。既定値では `jc_<FQDN>_gr_`）。WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT または WEKO_ACCOUNTS_IDP_ENTITY_ID が未設定の場合は選択肢が空になる。
             - 表示形式は以下の通りである  
                 ロール - ロール説明(description)
             - 「Title」テキストボックス  
@@ -208,7 +208,7 @@
 
 - 画面/ハンドラ：`invenio_communities.admin.CommunityModelView`（テーブル `communities_community`）。`create_view`（`/new/`）/ `edit_view`（`/edit/<id>/`）/ `get_json_schema` / `get_schema_form` を上書き。作成可否は `min(role_ids) <= COMMUNITIES_LIMITED_ROLE_ACCESS_PERMIT`（=2、System/Repository）。一覧絞り込みは `get_query`（super-role は全件、他は `role_query_cond`）。
 - 補足：ID 等のバリデーション（`validate_community_id` / `_validate_input_id`）は作成・編集の両方で実行される。`id_user` は作成時のみ設定され、編集保存では書き換えない。Catalog 入力は `/admin/community/jsonschema`・`/schemaform`（`item_type_property` id=1057）から取得。CNRI 有効時はハンドル登録を行う。
-- Owner 表示・選択肢：一覧/詳細の owner 表示は `Community.owner_display`（`invenio_communities.models`）を使用し、`jc_roles_sysadm`→`System Administrator`、`role_keyword` を含むロール名は `role_mapping`（`radm`/`cadm`/`cont`）で表示名へ変換する（`column_formatters`、`edit_view` の `form.owner.data`）。「Owner」プルダウン（`CommunityModelView.form_args['owner']` の `query_factory`）は GakuNin mAP ロール（`role_keyword` を含み `prefix` で始まる名前）を除外した Role 一覧を返す。いずれも `WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` 由来。
+- Owner 表示・選択肢：一覧/詳細の owner 表示は `Community.owner_display`（`invenio_communities.models`）を使用し、`is_map_sysadm_role` に一致するロール名→`WEKO_ADMIN_PERMISSION_ROLE_SYSTEM`、`<prefix>_<FQDN>_<role_keyword>_<suffix>` と完全一致するロール名は `role_mapping`（`radm`/`cadm`/`cont`）で表示名へ変換する（`column_formatters`、`edit_view` の `form.owner.data`）。「Owner」プルダウン（`CommunityModelView.form_args['owner']` の `query_factory`）は `not_(map_role_condition())`、「Group」プルダウンは `map_group_condition()` で絞り込む（#1891 で map conditions に統一。従来の `_groups_` を含む名前による判定は廃止）。いずれも `WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT`（`group_keyword` 既定 `gr` を追加）と `WEKO_ACCOUNTS_IDP_ENTITY_ID` 由来で、どちらかが未設定なら mAP 判定は常に偽。
 
 ## 更新履歴
 
@@ -217,3 +217,4 @@
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | 初版作成                                        |
 | 2025/01/23 | 1601602fe7ad9e606569f9e67c0b20654c82761d   | サブリポジトリ対応                              |
 | 2026/07/17 |                                            | v2.1.0差分反映：Owner表示名変換（owner_display）・OwnerプルダウンからのmAPロール除外を追記 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：Owner/Group プルダウンと Owner 表示名変換の mAP 判定を map conditions（#1891）準拠に修正 |

@@ -97,18 +97,22 @@
 - ［メール手動送信（Manual Send）］ボタンを押したときの処理は、以下で行う。
   - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/views.py>
   - manual_send_site_license_mailメソッド
-    - sitelicense_infoテーブルから、receive_mail_flagの値が「T」であるレコード全件を取得する。
+    - 画面で選択中のリポジトリIDがフォームの `repo_id` として送信される。
+    - 権限確認：login_required ＋ System/Repository/Community Administrator のロール確認に加え、`_form_repository_scope_required` により、フォームの `repo_id` が操作者の担当範囲であることを確認する（System/Repository Administrator は全リポジトリ、それ以外は `Community.get_repositories_by_user` で得た担当コミュニティのみ。`repo_id` が空、または担当外の場合は 403）。内部呼び出しで引数 `repo_id` を渡した場合はこの確認は行わない。
+    - sitelicense_infoテーブルから、receive_mail_flagの値が「T」かつ repository_id が `repo_id` であるレコード全件を取得する。
     - レコードが取得できたら、以下の処理を行う。
       - 集計月の入力値より、fromの月の1日を「start_date」、toの月の最終日を「end_date」とする。
-      - QueryCommonReportsHelper.getメソッドによって、サイトアクセスレポートを取得する。
+      - QueryCommonReportsHelper.getメソッド（`repository_id` 指定）によって、サイトアクセスレポートを取得する。
       - 取得したサイトアクセスレポートを用いて、send_site_license_mailメソッドでサイトライセンス機関のメールアドレスに対してメールを送信する。
         - サイトライセンス機関のアクセスレポートが取得できなかった場合は、各項目を０件とする。
-      - 送信が失敗した場合は、エラーログを出力する。送信結果にかかわらず、'finish'を返す。
+      - 送信が失敗した場合は、エラーログを出力する。送信結果にかかわらず、'finished'を返す。
+    - 対象レコードが無い場合は何も返さない（ビューの戻り値が None となる）。
 
 - ［リポジトリ選択］プルダウンを選択したときの処理は、以下で行う。
   - get_site_license_send_mail_settings メソッド
     - フロントエンドで選択されたリポジトリ ID を取得し、バックエンド API にリクエストを送信する。
-      - エンドポイント: /get_site_license_send_mail_settings
+      - エンドポイント: /api/admin/get_site_license_send_mail_settings
+      - release_v2.1.0 では本 API に login_required ＋ System/Repository Administrator のロール制限が付いている（issue62569）。このため Community Administrator がプルダウンを変更すると 403 となり、表と自動送信設定が更新されない（画面初期表示は `SiteLicenseSendMailSettingsView` が担当リポジトリ分を描画する）。
     - サーバー側では、以下の処理を行う。
       - `sitelicense_info` テーブルおよび関連する設定データ（例：`auto_send_flag`）をリポジトリ ID を基に取得する。
       - 取得したデータを JSON 形式で返却する。
@@ -131,3 +135,4 @@
 |:---:|:---:|:---:|
 |2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
 |2025/01/23|-|サブリポジトリ対応|
+| 2026/10/05 | 508030789 | release_v2.1.0突合：手動送信の対象リポジトリ権限確認（_form_repository_scope_required）・repo_id による対象絞り込み・戻り値、設定取得 API のロール制限を追記 |

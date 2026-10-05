@@ -226,19 +226,24 @@
 
   - 処理対処のアイテムIDを表示する。新規登録の場合は空欄。
 
-⑥表/アクション
+⑥表/ステータス（Status）
 
-  - 以下の形式でインポート処理の状態を表示する。
-      - 「待機中」：インポート処理がキューに登録され、処理待ちの状態である。
-      - 「処理中」：インポート処理が実行中である。
-      - 「完了」：インポート処理が完了している。
-      - 「エラー」：実行中にエラーが発生。
+  - Celeryタスクの結果（task_result）に応じて以下を表示する。
+      - タスク結果が未取得→「Start」
+      - 登録成功（task_result.success が真）→「成功」（Success）
+      - 実行中（task_status が STARTED）→「Started」
+      - 上記以外（登録失敗）→「Error」（太字）
 
-⑦表/ワークフローステータス
+⑦表/インポート結果（Import Result）
 
-  - 以下の形式でインポート結果を表示する。
-      - 登録成功→「成功」
-      - エラー→「<エラーメッセージ>」
+  - Celeryタスクの状態（task_status）に応じて以下を表示する。
+      - PENDING→「To Do」（日本語訳なし）
+      - STARTED→「Doing」（日本語訳なし）
+      - SUCCESS かつ登録成功→「完了」（Done）
+      - SUCCESS かつ登録失敗→エラーメッセージ。error_id が is_duplicated_doi / is_withdraw_doi / item_is_deleted / item_is_being_edit / failed_to_update_elasticsearch の場合は「Error msg : <翻訳済みメッセージ>」、それ以外は error_id をそのまま表示する
+      - FAILURE→「FAILURE」
+
+> 実装補足（v2.1.0）：#61684 で列見出しが「Status」「Import Result」に戻された（一時的に存在した「Action」「Work Flow Status」「Processing」「Waiting」のラベルは削除）。終了日（④）は `/check_status`（`ItemImportView.get_status`）でタスクの完了（成功／失敗）を検知した時点の **UTC** 日時（`datetime.utcnow()`）であり、開始日（③）は Celery ワーカーの `datetime.now()`（サーバーのローカル時刻）である。
 
 ## インポートファイル／TSVファイルについて
 
@@ -321,7 +326,7 @@
 | .publish_status   | .PUBLISH_STATUS      | アイテムの公開／非公開を指定する。public/privateのいずれかを設定する。必須項目。                                                          |
 | .feedback_mail[0] | .FEEDBACK_MAIL[0]    | フィードバックメールの送信先メールアドレスを指定する。複数指定可。                                                                        |
 | .request_mail[0]  | .REQUEST_MAIL[0]     | リクエストメールの送信先メールアドレスを指定する。複数指定可。                                                                            |
-| .researchmap_linkage  | .RESEAECHMAP_LINKAGE | Researchmapへの連携フラグ |
+| .researchmap_linkage  | .RESEAECHMAP_LINKAGE | researchmapへの業績連携フラグ。値が空でない場合（文字列の真偽判定のため「false」等も含む）、インポート完了後に `cris_researchmap_linkage_request` シグナルで当該アイテムの連携を要求する。エクスポート時は常に空欄。見出しラベルの綴り（RESEAECHMAP）は実装どおり。 |
 | .item_application.workflow | .ITEM_APPLICATION<br>.WORKFLOW | コンテンツファイルがない場合の利用申請のワークフローIDを指定する。                                                     |
 | .item_application.terms | .ITEM_APPLICATION.TERMS |コンテンツファイルがない場合の利用規約IDを指定する。この列のデータ行にterm_freeが入力された場合、利用規約を自由入力として.item_application.terms_descriptionが表示される。 |
 | .item_application<br>.terms_description | .ITEM_APPLICATION<br>.TERMS_DESCRIPTION | コンテンツファイルがない場合の利用規約（自由入力）を指定する。                                   |
@@ -391,7 +396,7 @@ CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の�
 | **JSONパス** | **初期設定ラベル** | **System(自動設定)** | **説明** |
 | ---- | ---- | ---- | ---- |
 | .file_path[0] | .ファイルパス[0] | | |
-| .upload_id[0] | . ファイルアップロードID[0] | | |
+| .upload_id[0] | . ファイルアップロードID[0] | | 未リリース（大容量ファイルアップロード機能のリリース見送りにより未実装） |
 | .metadata.item_files[0].accessrole | ファイル情報[0].アクセス | 空欄で「オープンアクセス」を自動設定／手入力 | |
 | .metadata.item_files[0].date[0].dateType | ファイル情報[0].公開日[0].タイプ | | |
 | .metadata.item_files[0].date[0].dateValue | ファイル情報[0].公開日[0].公開日 | 「アクセス」＝オープンアクセス日を指定 の際に手入力可／それ以外は空白 | |
@@ -611,6 +616,8 @@ CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の�
 
   - .upload_id[#]（.ファイルアップロードID[#]）
 
+    > 未リリース：大容量ファイルアップロード機能（[USER-7-1](../user/USER_7_1.md)）のリリース見送りにより、release_v2.1.0 時点で以下のチェックは実装されていない（`weko_search_ui` に `upload_id` の処理は存在しない）。
+
 | **#** | **条件** | **処理** | **メッセージ(日本語)** | **メッセージ(英語)** | **備考** |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | 1 | アップロードIDがUUID型でない | エラー | アップロードIDを正しく入力してください | Upload_id is invalid format | |
@@ -722,7 +729,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
  ◆出力イメージ
 
->#No. Start Date End Date Item Id Action WorkFlow Status
+>#No. Start Date End Date Item ID Status Import Result
 
 
 #### 4.4. 「インポート」（Import）タブで一括登録のアイテムを確認・登録する
@@ -1319,14 +1326,15 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         英語：「ERROR:The specified provinding user policy does not exist in the system」  
         日本語：「エラー：指定する利用規約はシステムに存在しません。」
 
-  - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueに設定されている場合
-    - accessRigthsの修正条件にインポートするメタデータ情報が該当する場合、修正後のAccess Rightsの値でアイテムが登録される
-      - Access Rights:embargoed accessの場合
-        1. コンテンツファイルのアクセスにopen_restrictredが存在する場合、restricted accessに修正される
-        2. 1を満たさずコンテンツファイルのアクセスがopen_date、日付が未来である場合embargoed accessに修正される
-        3. 1,2を満たさずコンテンツファイルのアクセスがopen_loginが存在する場合、restricted accessに修正される
-        4. すべてのコンテンツファイルが「open_access」または「アクセスがopen_date,日付が処理日以前」である場合open accessに修正される
-        5. 1~4を満たさない場合、embargoed accessのままとなる
+  - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTS（既定 False）を True に設定している場合
+    - インポート処理自体は Access Rights の値を書き換えない。登録されたアイテムは、レコード取得時（`invenio_records.api.Record.get_record`）および検索インデックス作成時（`weko_records.utils.json_loader`）に `weko_records.utils.update_embargo_rights` によって、修正後の Access Rights（jpcoar_mapping の `accessRights.@value` にマッピングされた項目と対応する URI）に読み替えられる
+      - 判定は `check_embargo_rights` による。Access Rights が embargoed access の場合のみ対象で、コンテンツファイルのアクセス（accessrole）と公開日で判定する
+        1. open_restricted のファイルが1つでもある場合、restricted access に修正される
+        2. 1を満たさず、公開日が未来の open_date のファイルがある場合、修正しない（embargoed access のまま）
+        3. 1,2を満たさず、open_login のファイルがある場合、restricted access に修正される
+        4. すべてのファイルが open_access、または公開日が処理日以前の open_date である場合、open access に修正される
+        5. 1~4を満たさない場合（ファイルが無い場合を含む）、embargoed access のままとなる
+
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`weko_search_ui.admin.ItemImportView`（endpoint `items/import`、テンプレート `weko_search_ui/admin/import.html`。3画面は単一SPA）。
@@ -1389,3 +1397,5 @@ TSV/CSV/ZIP インポートは「チェック（check）」と「登録（import
 | 2025/01/23 |-                                       |サブリポジトリ対応 |
 | 2025/06/05 |218410fd51f7dce1ca7df00cdbe851033e936f2d|メタデータ補完機能 |
 | 2026/07/17 |                                        |v2.1.0差分反映：テンプレート列 `.bulk_doi`/`.BULK_DOI`（DOI補完用）を追記 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：結果画面の列（ステータス／インポート結果、#61684）と表示値・終了日UTC、結果ファイル見出し、`.researchmap_linkage` の挙動、WEKO_SEARCH_FIX_ACCESSRIGHTS の適用箇所（取得時・索引時の読み替え）を実装準拠に修正 |
+| 2026/10/05 | 508030789 | `.upload_id`（ファイルアップロードID）を未リリース機能として注記 |

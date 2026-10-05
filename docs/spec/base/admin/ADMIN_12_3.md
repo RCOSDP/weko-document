@@ -150,6 +150,10 @@
      「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する
     - 「secret_key」：S3互換オブジェクトストレージのシークレットキー  
       「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する
+    - 「readonly_access_key」：S3互換オブジェクトストレージの読み取り用アクセスキー（#61752）  
+      「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する。入力欄はパスワード形式
+    - 「readonly_secret_key」：S3互換オブジェクトストレージの読み取り用シークレットキー（#61752）  
+      「Type」に「S3 Path」、「S3 Virtual Host」を選択する時表示する。入力欄はパスワード形式
     - 「endpoint_url」：S3互換オブジェクトストレージのエンドポイントURL  
       「Type」に「S3 Path」を選択する時表示する  
        保存時、入力内容の末尾に'/'が無い場合、補完する
@@ -190,6 +194,8 @@
         ・「type」  
         ・「access_key」  
         ・「secret_key」  
+        ・「readonly_access_key」（`postgresql/ddl/61660.sql` で追加。VARCHAR(128)）  
+        ・「readonly_secret_key」（同上）  
         ・「size」  
         ・「quota_size」  
         ・「max_file_size」
@@ -366,6 +372,9 @@ jctest/jctest/b6/a5/1012-dea5-4ca0-82e1-ee6c9fed8908/data
 
 - 画面/ハンドラ：`invenio_files_rest.admin.LocationModelView`（テーブル `files_location`、endpoint `location`）。`can_create`/`can_edit`/`can_delete` は System Administrator（環境変数 `INVENIO_ROLE_SYSTEM`）のみに許可。`get_query` は System / Repository 管理者以外を `default=False` に限定するため、リポジトリ管理者は既定ロケーション（`default=True`）を閲覧できる（操作は不可）。
 - 実装補足：「URI は https:// で始まること」の検証は **S3 Virtual Host 型のときのみ**適用される。`s3_signature_version` は作成時に None にされる（フォーム選択値は破棄）。Type の選択肢は config `FILES_REST_LOCATION_TYPE_LIST`（`s3` / `s3_vh`）。`slug` は `^[a-z][a-z0-9-]+$`。
+- 実装補足（v2.1.0、#61752 S3 読み取り専用アクセスキー）：
+  - 編集画面（`templates/admin/location_edit.html` の `checkLocationType()`）では、Type が「S3 Path」「S3 Virtual Host」のとき access_key / secret_key / readonly_access_key / readonly_secret_key の4項目を表示し、いずれも必須（ラベルに赤字「*」、HTML の required 属性）とする。それ以外の Type では非表示にして値をクリアする。必須はクライアント側の制御であり、サーバー側（`LocationModelView`）での必須チェックはない。
+  - ストレージ接続時の鍵の使い分け（`invenio_s3.ext.InvenioS3.init_s3fs_info(location, mode)`）：書き込み系（`mode='wb'`。ファイル初期化・保存・削除・コピー、インポート時の不要ファイル削除）はロケーションの access_key / secret_key（未設定時は config `S3_ACCESS_KEY_ID` / `S3_SECRET_ACCESS_KEY`）、それ以外（読み取り。`S3FSFileStorage.send_file` の署名付き URL 生成を含む）はロケーションの readonly_access_key / readonly_secret_key（未設定時は config `S3_READONLY_ACCESS_KEY_ID` / `S3_READONLY_SECRET_ACCESS_KEY`、既定 None）を使用する。`_get_fs` の既定 mode は `'rb'` のため、mode を指定しない呼び出しは読み取り用の鍵となる。
 
 ## 更新履歴
 
@@ -373,3 +382,4 @@ jctest/jctest/b6/a5/1012-dea5-4ca0-82e1-ee6c9fed8908/data
 |:---:|:---:|:---:|
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2026/07/17 | | v2.1.0差分反映：作成/編集/削除はシステム管理者のみ・リポジトリ管理者は閲覧のみ（デフォルトロケーションも表示可）に訂正 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：S3 読み取り専用アクセスキー（readonly_access_key / readonly_secret_key、#61752）の入力項目・DB列・鍵の使い分けを追記 |

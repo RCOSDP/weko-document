@@ -24,7 +24,7 @@
     - Spec：スペックの情報を入れる。ユニークとする。入力必須項目。
     - Name：セットの命名を入れる
     - Description：セットの説明を入れる
-    - Search Pattern：検索パターン
+    - Search Pattern：検索パターン。セットに含めるレコードを選択するための検索パターン（`OAISet.search_pattern`、モデル上のラベル「Search pattern」・説明「Search pattern to select records」）。任意項目
   - 「保存（Save）」ボタンを押すと、設定されたセット内容をセット一覧に追加させ、メッセージをセット一覧に表示させる  
     メッセージ：「レコードが正常に作成されました。（Record was successfully saved）」
   - [保存してもう一つ追加（Save Add Another）]ボタンを押すと、設定されたセット内容をセット一覧に追加させ、他のセットを追加設定可能とする。
@@ -76,3 +76,4 @@
 |:---:|:---:|:---:|
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2025/01/23 | - | サブリポジトリ対応 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：Search Pattern 項目の説明を実装（OAISet.search_pattern）に合わせて補足 |

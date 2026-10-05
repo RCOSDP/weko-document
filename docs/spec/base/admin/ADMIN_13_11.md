@@ -183,7 +183,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 画面/ハンドラ：`invenio_accounts.admin.UserView`（model `User`、テーブル `accounts_user` / `accounts_user_role`）。パスワードは `pwd.genword(12)` を既定とし `on_model_change` でハッシュ化（二重ハッシュ回避）。作成時に通知チェックでパスワードリセット案内を送信。
-- 権限：編集・削除・有効化／無効化は `_admin_roles=[System Administrator]` により **System Administrator 専用**（`can_edit`/`can_delete`/`can_activate`/`can_inactivate`）。一覧の絞り込みは `get_query`/`get_count_query` で、`WEKO_PERMISSION_SUPER_ROLE_USER`（System＋Repository）は全件、Community/サブリポジトリ管理者は `Community.get_repositories_by_user` の範囲に限定。フォームには Roles とは別に **Groups**（`_groups_` ロール）欄があり、Roles ドロップダウンは `_groups_` ロールを除外する。
+- 権限：編集・削除・有効化／無効化は `_admin_roles=[System Administrator]` により **System Administrator 専用**（`can_edit`/`can_delete`/`can_activate`/`can_inactivate`）。一覧の絞り込みは `get_query`/`get_count_query` で、`WEKO_PERMISSION_SUPER_ROLE_USER`（System＋Repository）は全件、Community/サブリポジトリ管理者は `Community.get_repositories_by_user` の範囲に限定。フォームには Roles とは別に **Groups** 欄がある。v2.1.0（#1891）以降、Groups の選択肢は学認mAPグループ（`weko_accounts.api.map_group_condition`：`<prefix>_<FQDN>_<group_keyword>_` で始まる名前、既定値では `jc_<FQDN>_gr_`）、Roles の選択肢は学認mAPロール（`map_role_condition`：`sysadm_group` と一致、または `<prefix>_<FQDN>_<role_keyword>_` で始まる名前）と学認mAPグループの両方を除外したロールである。編集時の既存値の振り分けも `is_map_group` による（従来の名前に `_groups_` を含むかでの判定は廃止）。FQDN は `WEKO_ACCOUNTS_IDP_ENTITY_ID` から生成され、同 config または `WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` が未設定の場合、Groups の選択肢は空になり、すべてのロールが Roles に表示される。
 
 ## 更新履歴
 
@@ -191,3 +191,4 @@
 |:---:|:---:|:---:|
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2025/01/23 | - | サブリポジトリ対応 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：Roles/Groups 欄の選択肢の振り分けを map conditions（#1891）準拠に修正 |

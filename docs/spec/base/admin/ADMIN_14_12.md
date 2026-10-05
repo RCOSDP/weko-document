@@ -401,6 +401,9 @@
 
   - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueの場合
     - 作成・編集を実行時に、修正表示されるAccess Rightsに合わせた集計クエリに切り替わる
+      - 保存（`/api/admin/facet-search/save`・`remove`）時に `weko_admin.utils.store_facet_search_query_in_redis` が集計クエリを再生成して Redis（`facet_search_query_has_permission` / `facet_search_query_no_permission`）に保存する。有効なファセットのうちマッピングが `accessRights` のものがあると、`create_facet_search_query` は `WEKO_ACCESS_RIGHTS_CHOICES` の各値について、修正後の Access Rights に該当するレコードを数える filters 集計 `new_accessRights` を aggs と post_filters に追加する
+      - 検索時は `weko_search_ui.utils.fix_aggregations_accessrights` が `new_accessRights` の件数（0件は除外）で accessRights ファセットのバケットを置き換え、絞り込み時は `invenio_records_rest.facets._create_filter_dsl` が `new_accessRights` のフィルタ条件を使用する
+      - 集計クエリ内の日付条件（公開日到来の判定に使う当日日付）は Redis 保存時点の日付で固定される。ファセットの保存や Redis キーの削除で再生成されるまで更新されない
     - access Rightsの修正表示については[メタデータ表示](../user/USER_3_1.md#メタデータ表示)の「Access Rightsの表示について」参照
 
 エラーメッセージ
@@ -516,3 +519,4 @@
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：WEKO_SEARCH_FIX_ACCESSRIGHTS 有効時の集計クエリ（new_accessRights）の生成・使用箇所と日付固定の注意を具体化 |

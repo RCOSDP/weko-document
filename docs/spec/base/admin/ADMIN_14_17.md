@@ -75,6 +75,7 @@
 
 - 画面/ハンドラ：`weko_admin.admin.WebApiAccount`（endpoint `webapiaccount`）＋ API `weko_admin.views.get_curr_api_cert`（`/get_curr_api_cert/<api_code>`）/ `save_api_cert_data`（POST）/ `get_api_cert_type`。model `ApiCertificate`（テーブル `api_certificate`、PK `api_code`）。
 - 接続確認関数は `weko_admin.utils.validate_certification` で、確認を行うのは `api_code=='crf'`（CrossRef）のみ。OA Assist（`oaa`）は接続確認なしで保存。保存は `utils.save_api_certification`（`update_api_cert`/`insert_new_api_cert`）。
+- 実装補足（v2.1.0）：`get_api_cert_type` と `get_curr_api_cert` にも login_required ＋ System Administrator のロール制限が付き（issue62569。`save_api_cert_data` は従来どおり System Administrator のみ）、本画面の API はすべて System Administrator 専用となった（未ログインは 401、他ロールは 403）。
 
 ## 更新履歴
 
@@ -82,3 +83,4 @@
 | --- | --- | --- |
 | 2026/03/18 | 37ff130e96e87f9d012917cd160e7fbc08d0c19a | v2.0.0 |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：API認証情報の取得 API（get_api_cert_type / get_curr_api_cert）のシステム管理者限定を追記 |

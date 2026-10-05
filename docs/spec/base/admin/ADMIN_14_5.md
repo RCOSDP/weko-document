@@ -66,9 +66,11 @@
 
 - 画面/ハンドラ：`weko_admin.admin.RankingSettingsView.index`（POST、`submit=='save_ranking_settings'`）→ `RankingSettings.update`（テーブル `ranking_settings`、`rankings` は JSON）。範囲チェック（表示件数1-30 / 集計期間1-3650 / 新着1-100）。
 - 実装補足：[Delete] ボタンは `RankingSettings.delete` を呼ばず、入力値をクライアント側で破棄して保存済み設定を再表示するのみ（DB からの削除は発生しない）。
+- 実装補足（v2.1.0、502 対策のキャッシュ）：トップ画面のランキング結果（`weko_items_ui.utils.get_ranking`）は invenio-cache（Redis）に `WEKO_ITEMS_UI_RANKING_CACHE_TTL`（既定 300 秒）の間キャッシュされる。キャッシュキーにはホスト名・言語・当日日付・ユーザー（ゲストは共通、ログインユーザーは個別）・ランキング設定（集計期間・表示件数・新着期間・表示ランキング種別）の署名を含むため、本画面での設定変更は即時に反映されるが、集計結果（閲覧数・新着アイテム等）の変化は最大で TTL の間反映されない。
 
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 |:---:|:---:|:---:|
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：ランキング結果のキャッシュ（WEKO_ITEMS_UI_RANKING_CACHE_TTL）と設定反映タイミングを追記 |
