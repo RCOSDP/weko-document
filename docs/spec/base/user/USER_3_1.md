@@ -117,12 +117,12 @@
       - 【Administration > アイテムタイプ管理(ItemTypes) > メタデータ (Metadata) 画面】の言語のサブプロパティの"Show List"のチェックを非活性とする。
 
   - Access Rightsの表示について
-    - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueに設定されている場合、Access Rightsは以下の条件で表示される
-      - Access Rights:embargoed accessの場合
-        1. ファイルのアクセスにopen_restrictredが存在する場合、restricted accessで表示される
-        2. 1を満たさずファイルのアクセスがopen_date、日付が未来である場合embargoed accessで表示される
-        3. 1,2を満たさずファイルのアクセスがopen_loginが存在する場合、restricted accessで表示される
-        4. すべてのファイルが「open_access」または「アクセスがopen_date,日付が処理日以前」である場合open accessで表示される
+    - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTS（既定 False）をTrueに設定している場合、Access Rights（jpcoar_mapping の accessRights.@value にマッピングされた項目）は以下の条件で表示される（レコード取得時に `weko_records.utils.update_embargo_rights` / `check_embargo_rights` で値を読み替える）
+      - Access Rights:embargoed accessの場合（ファイルの accessrole と公開日（date[0].dateValue）で判定する）
+        1. ファイルのアクセスにopen_restrictedが1つでも存在する場合、restricted accessで表示される
+        2. 1を満たさず、アクセスがopen_dateで日付が未来のファイルが存在する場合、embargoed accessのまま表示される
+        3. 1,2を満たさず、ファイルのアクセスにopen_loginが存在する場合、restricted accessで表示される
+        4. ファイルが1件以上あり、すべてのファイルが「open_access」または「アクセスがopen_dateで日付が処理日以前」である場合、open accessで表示される（あわせて accessRights の URI も `ACCESS_RIGHT_TYPE_URI` の値に置き換える）
         5. 1~4を満たさない場合、embargoed accessのままとなる
 
 2. Permalink欄の表示について
@@ -151,47 +151,47 @@
 
       - 最新バージョンの[Delete this version]ボタンが押下された場合は、最新バージョンを論理削除し、ひとつ前のバージョンを最新バージョンに変更する。その後、バージョン更新を行うと、論理削除された次バージョンとして作成する（論理削除されたバージョンは欠番となる）。
 
-    - 以下はバージョン削除の流れ：
+    - 以下はバージョン削除（`weko_records_ui.utils.delete_version`）の流れ：
 
-    1. 該当のバージョン削除を削除する
+    1. 該当のバージョンを論理削除する
 
-       1. records_metadata にある資料の publish_status が -1（削除）に設定する
+       1. records_metadata にある当該バージョンの publish_status を -1（削除）に設定する
 
-       2. ESにある資料の publish_status 情報を更新する
+       2. ES にある当該バージョンの publish_status 情報を更新する
 
-       3. 関するフィードバックメール情報を削除する
+       3. 当該バージョンのフィードバックメール情報を削除する
 
-       4. 該当のPIDの状態は DELETED に変更する
+       4. 当該バージョンの object_uuid に紐づく PID の状態を DELETED に変更する
 
-       5. 関するバケットを削除する
+       5. 当該バージョンのファイルのうち他のバージョンから参照されていないファイル実体を削除し、当該バージョンのバケットを削除済み（deleted）にする
 
-    2. （i）でバージョンを論理削除した後、現時点最新のバージョンを取得する
+    2. （1）でバージョンを論理削除した後、現時点の最新バージョンを取得する
 
-    3. 削除されたバージョンは最新のバージョンでしたら、（ii）で取得したバージョンの資料はベースとして、
+    3. 削除されたバージョンが最新バージョンであった場合、（2）で取得したバージョンのデータをもとに、
 
-       1. 親PIDのmetadata情報を更新する（インデックス情報を更新しない）
+       1. 親PIDのmetadata情報を更新する（インデックス情報は更新しない）
 
        2. 親PIDのフィードバックメール情報を更新する
 
-       3. 親PIDの状態は公開に変更する（DBとES）
+       3. 親PIDの公開状態を（2）で取得したバージョンの公開状態（publish_status）に揃える（DBとES）
 
-       4. 親PIDのアイテムリンクを更新する
+       4. 親PIDのアイテムリンクを更新し、外部システム連携（`call_external_system`）を呼び出す
 
-       5. （ii）で取得したバージョンのインデックス情報を更新する（親PIDがペースとして）
+       5. （2）で取得したバージョンのインデックス情報を、親PIDのインデックス情報で更新する
 
-    4. 編集用のPIDが使っていない場合、（ii）で取得したバージョンの資料はベースとして、
+    4. 編集用PIDが存在し、ワークフローのアクティビティで編集中でない場合（`is_workflow_activity_work` が偽）、（2）で取得したバージョンのデータをもとに、
 
-       1. 編集用PIDのmetadata情報を更新する（インデックス情報を更新しない）
+       1. 編集用PIDのmetadata情報を更新する（インデックス情報は更新しない）
 
        2. 編集用PIDのフィードバックメール情報を更新する
 
-       3. 編集用PIDの状態は公開に変更する（DBとES）
+       3. 編集用PIDの公開状態を（2）で取得したバージョンの公開状態に揃える（DBとES）
 
        4. 編集用PIDのアイテムリンクを更新する
 
-    5. 削除されたバージョンのアイテムリンクを削除する
+    5. 削除されたバージョンを参照元とするアイテムリンク（item_reference）を削除する
 
-      - 親PID：バージョンが付いていないPID、編集用PID：「.0」ついているPID
+       - 親PID：バージョンが付いていないPID、編集用PID：「.0」が付いているPID
 
   - アイテムにDOIが付与されている場合、アイテムの削除を認めない。  
     　日本語：アイテムにDOIが付与されているため、アイテムを削除することはできません。  
@@ -385,9 +385,15 @@
 - 画面/ハンドラ：`weko_records_ui.views.default_view_method`。config `WEKO_DEPOSIT_SYS_CREATOR_KEY`（v2.0.2 で `creator_type`/`creator_name_type` 追加）、`WEKO_RECORDS_UI_DEFAULT_MAX_WIDTH_THUMBNAIL`（100）。編集ロックは Redis `pid_{}_will_be_edit`（`weko_items_ui.utils.lock_item_will_be_edit`）。
 - 詳細表示は weko-records-ui（＋ weko-deposit、ルーティングは invenio-records-ui）が担う。
 
+> 実装補足（v2.1.0）：
+> - アイテム詳細画面からの削除・バージョン削除（`/records/soft_delete/<recid>`、バージョン削除は recid に `del_ver_` 接頭辞）、復元（`/records/restore/<recid>`）、`/get_uri`、`/records/copy_bucket`・`/records/get_file_place`・`/records/replace_file` は `login_required` に加えて `weko_records_ui.permissions.record_edit_permission_required` で認可する。判定は `check_created_id`（作成者・所有者・共有者（代理投稿 `WEKO_ITEMS_UI_PROXY_POSTING` 有効時は共有者全員、無効時は最後の共有者）・当該レコードのインデックスを管轄するコミュニティのコミュニティ管理者（`has_comadmin_permission`）・`WEKO_PERMISSION_SUPER_ROLE_USER` のロール）で、権限が無い場合は 403、recid が特定できない場合は 400、未ログインは 401 を返す（issue62569）。
+> - 画面の［削除］ボタンは `POST /items/prepare_delete_item`（`weko_items_ui.views.prepare_delete_item`）から `soft_delete(del_value)` を位置引数で直接呼ぶため、デコレータは位置引数からも recid を解決する（issue62807。修正前は一律 400 となり削除できなかった）。
+> - 性能対策：`default_view_method` で Google Scholar / Google Dataset メタタグ生成用に組み立てる JPCOAR の OAI-PMH XML を、キャッシュ（キー `record_jpcoar_xml_<OAI ID>_<revision_id>`、有効期限 config `WEKO_RECORDS_UI_GOOGLE_XML_CACHE_TTL`（既定 300 秒））に保持する。アイテム編集で revision が変わると別キーになるため即時に反映される。また、パンくず（インデックスパス名）と所属コミュニティの算出で `Indexes.get_index` の結果をリクエスト内で再利用する。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2024/07/1 | 7733de131da9ad59ab591b2df1c70ddefcfcad98 | v1.0.7対応 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：Access Rights 読み替え条件の訂正、バージョン削除の流れを `delete_version` 準拠に訂正、削除・復元等の認可（`record_edit_permission_required`、issue62569/62807）と詳細画面の性能キャッシュを実装補足に追記 |

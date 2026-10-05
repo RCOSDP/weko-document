@@ -111,7 +111,7 @@ record_viewedに閲覧回数を送り出し、ESに回数を登録する。
 
   - weko-admin.models.AdminSettings.getから【Administration > stas (統計情報)】で設定した統計情報の表示を読み取り、display_statsがtrueの場合に統計情報を表示する。
 
-ファイル詳細画面を開く際に、weko_records_ui.view.get_uriを呼び出してfile_downloadedにファイルダウンロード回数を送り出し、ESに回数を登録する。  
+URL 型のコンテンツファイルのリンクを押下した際に、weko_records_ui.views.get_uriを呼び出してfile_downloadedにファイルダウンロード回数を送り出し、ESに回数を登録する（v2.1.0 以降、get_uri は当該アイテムの編集権限を持つログインユーザーのみ受け付ける。実装補足参照）。ファイル本体のダウンロード時は invenio_files_rest.views.ObjectResource.send_object が file_downloaded を送り出す。  
 ファイルのプレビューが行われる際に、invenio_file_rest.views.ObjectResource.send_objectを呼び出して、file_previewedに再生回数を送り出し、ESに回数を登録する。
 
   - invenio_stats.views.QueryFileStatsCountにおいてダウンロード回数と再生回数を取得する。weko-admin.models.AdminSettings.getから【Administration > stas (統計情報)】で設定した統計情報の表示を読み取り、display_statsがtrueの場合に統計情報を表示する。
@@ -119,9 +119,12 @@ record_viewedに閲覧回数を送り出し、ESに回数を登録する。
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 表示回数は `default_view_method` が `record_viewed` を送出、`invenio_stats.views.QueryRecordViewCount` / `QueryFileStatsCount` で取得。`file_downloaded` は `weko_records_ui.views.get_uri` と `invenio_files_rest.views.ObjectResource.send_object` の2箇所で送出。
+- 実装補足（v2.1.0、取得 API の権限）：アイテム詳細画面から呼ばれる取得 API（`/api/stats/<record_id>` の `QueryRecordViewCount`、`/api/stats/<bucket_id>/<file_key>` の `QueryFileStatsCount`。GET は通算、POST は本文 `{"date": "total" | "YYYY-MM"}` で月指定）は、詳細画面と同じ閲覧権限 `page_permission_factory` で判定する（`invenio_stats.permissions.record_view_permission_required`／`bucket_view_permission_required`）。ID の形式不正は 400、該当レコード（ファイル統計は当該バケットを持つレコード）が無ければ 404、閲覧不可なら 403。POST の本文が不正（`date` 欠落・形式不正）な場合も 400 を返す（`get_query_date`）。
+- 実装補足（v2.1.0、URL 型ファイルの回数送出）：`/get_uri`（`weko_records_ui.views.get_uri`。URL 型コンテンツのリンク押下時に `app.js` の `OnLinkClick` から呼ばれ `file_downloaded` を送出）に `@login_required` と `record_edit_permission_required(param='pid_value')` が付いた。このため回数が送出されるのは当該アイテムの編集権限を持つログインユーザーがリンクを押した場合に限られ、ゲストや編集権限のない利用者の押下では 401／403 となり回数に計上されない（リンク先自体は `window.open` で開く）。
 
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：閲覧数・ファイル統計取得 API の閲覧権限判定と、`/get_uri` の認可追加による URL 型ファイルの回数計上範囲を追記 |

@@ -130,9 +130,13 @@
 
 - 実装補足：ログイン画面・文言は **Flask-Security**（`flask_security.views.login`、route `/login/`）由来。セッション記録は `invenio_accounts.sessions`（`login_listener`→`add_session`、table `accounts_user_session_activity`）。所属機関名は invenio-accounts 側の列 `orgniazation_name`（綴りママ。ローカル認証時は Null）。Shibboleth 関連の実ビューは weko-accounts（`shib_login` / `shib_sp_login` 等）。config `WEKO_ACCOUNTS_SHIB_LOGIN_ENABLED`（既定 False）/ `_SHIB_IDP_LOGIN_ENABLED` / `_SHIB_INST_LOGIN_DIRECTLY_ENABLED` / `_SHIB_DP_LOGIN_DIRECTLY_ENABLED`。
 
+- 実装補足（v2.1.0、未ログイン時の応答）：`login_required` で未ログインと判定された場合の応答は `weko_accounts.unauthorized`（`WekoAccounts.init_unauthorized_handler` が login_manager の unauthorized handler として登録。`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`、既定 True）が決める。UI アプリでは、画面遷移（`Sec-Fetch-Dest` が `document`／`iframe`／`frame`／`embed`／`object`、または判定材料が無い通常のリクエスト・HTML フォーム POST）は従来どおりログイン画面へリダイレクトし、プログラムからの呼び出し（パスが `/api/` で始まる、`X-Requested-With: XMLHttpRequest`、JSON 本文、`Sec-Fetch-Dest` がナビゲーション以外（`empty` 等）、Accept で JSON を HTML より優先）には 401 と JSON `{"status": 401, "message": "Authentication required."}` を返す。iframe 等の埋め込み（制限付きファイルのプレビュー等）もログイン画面へ戻すため、枠内に JSON が表示されることはない。API アプリ（`/api`）はログイン画面を持たないため常に 401 JSON を返す。
+- 実装補足（v2.1.0、ログイン API）：REST のログイン API `POST /api/<version>/login`（`weko_accounts.rest.WekoLogin`、`v1` のみ）は、本文が JSON オブジェクトでない・`email`／`password` が文字列でないか空の場合は 400「Invalid request.」、ログイン済みは 400「User allready logged in.」、ユーザー不存在・パスワード不一致はいずれも 403「Invalid email or password.」（存在しない場合もハッシュ計算を行い応答時間を揃える）、無効化ユーザーは 403「Account is disabled.」、成功時は 200 で `{"id", "email"}` を返す。レート制限は既定制限を持たないログイン専用の `weko_accounts.utils.login_limiter` を API アプリにのみ初期化し、本 API にだけ `WEKO_API_LIMIT_RATE_DEFAULT`（既定 `['100 per minute']`）を適用する（キーはエンドポイント名＋接続元アドレス）。他の `/api` 配下の経路にはこの制限はかからない。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2024/03/14 | xxxxx | W-OA-14_WEKO3サブリポジトリ管理・表示機能の開発対応 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：未ログイン時の応答（画面遷移はログイン画面、AJAX・API は 401 JSON、iframe 内もログイン画面へ）とログイン API の応答・レート制限を追記 |

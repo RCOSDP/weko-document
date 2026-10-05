@@ -754,6 +754,7 @@
 
   - ファイルプレビューのビューアは、ファイルのアクセス権限と同様。  
     ファイルのアクセス権限がないユーザーは、ファイルプレビュー及びファイルの情報を見ることはできない
+  - プレビュー表示（`RECORDS_UI_ENDPOINTS` の `recid_preview`、`/record/<pid_value>/preview/<path:filename>`）のビュー `weko_records_ui.preview.preview` にはデコレータ `weko_records_ui.permissions.file_permission_required` が付く。プレビューアと同じ方法（`current_previewer.record_file_factory`）で対象ファイルを解決し、ダウンロードと同じ `file_permission_factory`（`check_file_download_permission`）で判定する。権限がない場合、未ログインならログイン画面へ誘導し（`weko_accounts.views._redirect_method`）、ログイン済みなら 403 を返す。ファイルが存在しない場合はビュー側で 404 とする。プレビューは iframe 内に表示されるが、未ログイン時はその iframe 内でもログイン画面へ遷移する（[ログイン](./USER_8_2.md) の実装補足を参照）。
 
 #### (4)マルチパートダウンロード処理について
   
@@ -794,6 +795,7 @@
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 権限判定：`weko_records_ui.permissions.check_file_download_permission`（内部ヘルパー `__check_user_permission`）/ `check_open_restricted_permission` / `check_user_group_permission`。ダウンロード処理は `weko_records_ui.fd`（`file_download_ui` / `file_preview_ui` / `_download_file`）。ワンタイム／シークレットURLモデルは `file_onetime_download` / `file_secret_download` / `file_url_download_log`。`WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG` は weko-admin、プレビューサイズ上限 `WEKO_ITEMS_UI_FILE_SISE_PREVIEW_LIMIT` は weko-items-ui（形式別 dict）。
+- 実装補足（v2.1.0、IIIF の権限判定）：IIIF 画像 API（`/api/iiif/v2/<bucket_id>:<version_id>:<key>/...` の画像・info.json。invenio-iiif の `handlers.protect_api`）は、対象ファイルが属するレコードについて `page_permission_factory`（詳細画面と同じ閲覧権限）と `check_file_download_permission`（ファイルのダウンロード権限）の両方を満たす場合のみ応答し、満たさない・オブジェクトが無い場合は 404 とする（`invenio_iiif.permissions.iiif_object_permission_factory`。レコードのファイルでないオブジェクトは Invenio-Files-REST の `object-read` 権限で判定）。IIIF マニフェスト（`IIIF_MANIFEST_ENDPOINTS` の `recid`、`IIIF_API_PREFIX` 配下の `records/<pid_value>/manifest.json`）は `permission_factory_imp='weko_records_ui.permissions:page_permission_factory'` によりレコードの閲覧権限を確認し（未ログインは 401、ログイン済みで権限なしは 403）、マニフェストに含める画像もファイル権限を満たすものに限る。サムネイル作成の Celery タスク `invenio_iiif.tasks.create_thumbnail` は利用者のリクエスト外の内部処理のため、利用者の権限を確かめずに対象オブジェクトを解決する（`g.obj` に設定して `image_opener` に使わせる）。
 - 大容量（マルチパート）ダウンロードの閾値・パートサイズは S3 サーバ側転送用の `WEKO_RECORDS_UI_S3_TRANSFER_MULTIPART_THRESHOLD` / `_CHUNKSIZE` で設定する。
 
 ## 詳細リファレンス（v2.0.2 実装：エラー処理・分岐・データモデル）
@@ -805,7 +807,7 @@
 `check_file_download_permission(record, fjson, is_display_file_info, item_type)` は `fjson['accessrole']` で分岐する。分岐前に以下の「無条件許可」が先に評価される。
 
 - 登録者系：`current_user.id` が `user_id_list`（`record._deposit.created_by` / `record.owner` / `record.weko_shared_ids`。`WEKO_ITEMS_UI_PROXY_POSTING` が True なら全共有者、False なら最後の1件）に含まれれば許可。
-- スーパーユーザー系：`current_user` のロール名が `WEKO_PERMISSION_SUPER_ROLE_USER` + `WEKO_PERMISSION_ROLE_COMMUNITY` に含まれれば許可。
+- スーパーユーザー系：`is_superuser_or_record_comadmin(record)` が真なら許可。`current_user` のロール名が `WEKO_PERMISSION_SUPER_ROLE_USER`（システム管理者・リポジトリ管理者）に含まれれば無条件で許可し、`WEKO_PERMISSION_ROLE_COMMUNITY`（コミュニティ管理者）の場合は `has_comadmin_permission(record)` により自コミュニティ配下のインデックスに属するアイテムに限って許可する（`check_created_id` と同じ管轄判定。v2.1.0 で変更。以前はコミュニティ管理者ロールを持てば全アイテムで許可していた）。所有者・管理者判定 `is_owners_or_superusers` も同じ判定を使う。
 - 上記に該当しない場合のみ accessrole 別判定へ進む。処理中の例外は `abort(500)`。
 
 | accessrole | ダウンロード可否の条件 |
@@ -861,3 +863,4 @@
 |2025/09/15|c387c0a978c9eb318044b3d17d72838872012370|Import to GakuNin RDM機能を追加|
 |2025/10/31|160a811eed2c61492558905db34fa0619da6b18f|設定値による機能制御を記載|
 |2026/07/17||v2.1.0差分反映：サイトライセンス利用者は open_login/open_restricted で実DL可（`check_file_download_permission` のフォールバック）、および open_restricted のワンタイムDL強制フローをスキップ（`fd.py file_ui`）する点を追記|
+|2026/10/05|508030789|release_v2.1.0突合：プレビューでのファイル権限確認（`file_permission_required`）、ファイル権限判定のコミュニティ管理者を自コミュニティ配下のアイテムに限定（`is_superuser_or_record_comadmin`）、IIIF 画像配信・マニフェストの権限判定を反映|

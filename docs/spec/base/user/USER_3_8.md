@@ -78,8 +78,11 @@ resリストをgoogle_scholar_metaで受け取り、templating.render_template�
 
 - `weko_records_ui.utils.get_google_scholar_meta`（`default_view_method` から `record_tree` 付きで呼ぶ）。config `WEKO_RECORDS_UI_GOOGLE_SCHOLAR_OUTPUT_RESOURCE_TYPE`。`target_map` のほか citation_doi / citation_issn / citation_pdf_url / citation_dissertation_institution（`InstitutionName`）等も出力する。
 
+- 実装補足（v2.1.0、XML のキャッシュ）：アイテム詳細画面でメタタグ生成のために組み立てる JPCOAR 形式の OAI-PMH XML（`getrecord(metadataPrefix='jpcoar')`）は invenio-cache に `record_jpcoar_xml_<OAI ID>_<レコードの revision_id>` をキーとしてキャッシュされる（v2.0.3／v2.0.4 の 502 エラー対策。`weko_records_ui.views.default_view_method`）。アイテム編集で revision が上がると別キーになり即時反映される。有効期間 `WEKO_RECORDS_UI_GOOGLE_XML_CACHE_TTL`（既定 300 秒）は、revision に表れない変更（アイテムタイプのマッピング変更等）の反映遅延の上限となる。
+
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：メタタグ生成用 JPCOAR XML のキャッシュ（`WEKO_RECORDS_UI_GOOGLE_XML_CACHE_TTL`）を追記 |

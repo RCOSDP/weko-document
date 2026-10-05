@@ -81,8 +81,9 @@
               
             updatedの日付のマッピングは、Getrecord、ListRecord、ListIdentifierのheaderにおいて、「datestamp=record.updated,」が使用されており、invenio_records.api.get_recordからDBのupdatedを取得している。  
             
-            設定値WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueの場合、エンバーゴを考慮したupdatedが出力される。
-            AccessRightsがembargoed accessからopen accessに修正される場合、ファイルの公開日とDBのupdatedを比較して、新しい日付がupdatedとして出力される。
+            設定値WEKO_SEARCH_FIX_ACCESSRIGHTS（weko_search_ui/config.py、既定 False）をTrueにしている場合、エンバーゴを考慮したupdatedが出力される（`invenio_records.api.Record.updated`）。
+            AccessRightsがembargoed accessからopen accessに読み替えられる場合（読み替え条件は[メタデータ表示](./USER_3_1.md)のAccess Rightsの表示を参照）、ファイルの公開日のうち最も新しい日付とDBのupdatedを比較して、新しい方がupdatedとして出力される。
+            あわせて、ListRecords/ListIdentifiersの from/until による絞り込みも、ESの _updated だけでなくエンバーゴ期間が明けたファイルの公開日を考慮した条件（`invenio_oaiserver.query.range_query`）で行う。
               
             jpcoarスキーマガイドラインに記載されている以下の項目は不要となる
             
@@ -309,7 +310,7 @@
     
       - Description: 概要
     
-      - Search Pattern: 検索パターン  
+      - Search Pattern: 検索パターン ※当該インデックスのIDを `path:"<インデックスID>"` の形式で設定する（`weko_index_tree.tasks`）  
         例 path:"1628576975817"
 
 6. Other Formats
@@ -510,3 +511,4 @@ Elasticsearch の利用
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：WEKO_SEARCH_FIX_ACCESSRIGHTS 有効時の updated 出力と from/until 絞り込みの記述を実装準拠に補足、Sets の Search Pattern の形式を明記 |

@@ -116,8 +116,12 @@
 
 - 制限公開ファイルのメール入力→ダウンロードは `weko_records_ui.fd.file_download_onetime` → `_download_file`。権限は `permissions.check_file_download_permission` → `check_open_restricted_permission`。文言「Could not download file.」「Please input email address.」。関連モジュール：weko-records-ui（＋ guest activity は weko-workflow）。
 
+- 実装補足（v2.1.0、ゲスト用アクティビティ作成）：メール入力モーダルの送信先 `POST /workflow/activity/init-guest`（`weko_workflow.views.init_activity_guest`。`detail.js`／`file_action.js` から呼ばれる）には接続元アドレス単位で「5 per minute」のレート制限（`weko_workflow.utils.limiter`。`WekoWorkflow.init_limiter` で実アプリに初期化）がかかり、`guest_mail` がメールアドレスとして不正な場合は 400（`{"msg": "Invalid guest_mail"}`）を返す。
+- 実装補足（v2.1.0、ゲストトークンでのファイル操作）：ゲストトークン（セッションの `guest_token`）を持つ未ログインセッションに許可する Invenio-Files-REST のファイル操作（`files-rest-object-read`／`files-rest-bucket-update`／`files-rest-object-delete`／`files-rest-object-delete-version`）は、トークンに対応するゲストアクティビティのアイテム（およびそのルートバージョン）に紐づくバケットに限られる（`invenio_files_rest.views.is_guest_login_can_access_file` → `permissions.get_guest_activity_bucket_ids`）。他のバケットへの操作は許可されない。
+
 ## 更新履歴
 
 | 日付    | 更新内容 |
 | ------- | -------- |
 | 2023/09 | 初版作成 |
+| 2026/10/05 | release_v2.1.0突合（508030789）：`init-guest` のレート制限・メール形式検証、ゲストトークンでのファイル操作を当該アクティビティのバケットに限定する点を追記 |

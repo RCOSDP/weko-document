@@ -224,33 +224,33 @@
 
   - WEB API リクエスト  
     ※ API仕様： https://info.arxiv.org/help/api/user-manual.html
-    - リクエストURL  https://export.arxiv.org/api/query?search_query=doi:{doi}
+    - リクエストURL  
+      https://export.arxiv.org/api/query?search_query=doi:{doi}
     - method  
       GET
     - パラメータ  
       | パラメーター名 | 説明 | 値 |
       | ----- | ----- | ----- |
-      | doi | 検索するDOI | {doi}: 入力されたDOI
+      | search_query | 検索するDOI | `doi:{doi}` の形式（{doi}: 入力されたDOIの末尾2セグメント（`prefix/suffix`）） |
 
+    - リクエストURLは config `WEKO_WORKSPACE_ARXIV_API_URL`（既定 `https://export.arxiv.org/api/query?search_query=doi:`）に DOI を連結して生成する。レスポンスは XML 形式（Atom）で返却され、`xmltodict` で辞書に変換して解析する（`feed.entry` 配下を参照）。
+    - 抽出対象のデータ（下表の「取得キー」）は config `WEKO_WORKSPACE_ARXIV_REQUIRED_ITEM`（title / identifier / date / description / creator / relation / subject）で制御される。
     - 取得したデータは、アイテムの対応項目および対応するJPCOARマッピング(jpcoar_v2_mapping)が設定されたメタデータ項目に自動入力される
 
       取得データの入力先メタデータ項目
-      | **データ** | **パス** | **対応するJPCOARマッピング** |
+      | **データ** | **取得キー（arXiv応答のパス）** | **対応するJPCOARマッピング** |
       | --------- | -------- | --------------------------- |
-      | タイトル      | title                                        | dc:title                              |
-      | arXivの論文ページへのURL       |    identifier                                        | jpcoar:identifier(identifierType=URI)                  |
-      | 論文の提出日     | date                                    | datacite:date(dateType=Submitted)                |
-      | 論文の最終更新日      | date                                        | datacite:date(dateType=Updated)               |
-      | 論文の要約    | description                                |datacite:description(descriptionType=Abstract)                |
-      | 著者の名前     | creator                               　　　　　　　　　| jpcoar:creator→jpcoar:createrName                　　|
-      | 著者の所属機関       | creator                                                                   |jpcoar:creator→jpcoar:affiliation→jpcoar:affiliationName
-      | HTML表示用のURL      | relation                                  | jpcoar:relation(relationType=isFormatOf)→jpcoar:relatedIdentifier(identifierType=URI)             |
-      | pdf表示用のURL   | relation                              | jpcoar:relation(relationType=isFormatOf)→jpcoar:relatedIdentifier(identifierType=URI)    |
-      | 解決済みDOI(doi.org)のURL　      | relation                                              | jpcoar:relation(relationType=isFormatOf)→jpcoar:relatedIdentifier(identifierType=URI)                      |
-      | 論文のカテゴリ   | subject                                            | jpcoar:subject(subjectScheme=Other)                   |
-      | 論文の主要カテゴリ   | subject                                          | jpcoar:subject(subjectScheme=Other)の先頭                   |
-      | 著者によるコメント   | description                                          | datacite:description(descriptionType=Other)                  |
-      | DOI   | relation | jpcoar:relation(relationType=isVersionOf)→jpcoar:relatedIdentifier(identifierType=DOI)                   |
+      | タイトル | title（entry.title） | dc:title |
+      | arXivの論文ページへのURL | identifier（entry.id） | jpcoar:identifier(identifierType=URI) |
+      | 論文の提出日 | date（entry.published の日付部分） | datacite:date(dateType=Submitted) |
+      | 論文の最終更新日 | date（entry.updated の日付部分） | datacite:date(dateType=Updated) |
+      | 論文の要約 | description（entry.summary） | datacite:description(descriptionType=Abstract) |
+      | 著者によるコメント | description（entry.arxiv:comment） | datacite:description(descriptionType=Other) |
+      | 著者の名前 | creator（entry.author.name） | jpcoar:creator→jpcoar:creatorName |
+      | 著者の所属機関 | creator（entry.author.arxiv:affiliation） | jpcoar:creator→jpcoar:affiliation→jpcoar:affiliationName |
+      | 論文関連リンク（HTML表示用URL・PDF表示用URL・解決済みDOI(doi.org)のURL など entry.link の全件） | relation（entry.link.@href） | jpcoar:relation(relationType=isFormatOf)→jpcoar:relatedIdentifier(identifierType=URI) |
+      | DOI | relation（entry.arxiv:doi） | jpcoar:relation(relationType=isVersionOf)→jpcoar:relatedIdentifier(identifierType=DOI) |
+      | 論文のカテゴリ | subject（entry.category.@term） | jpcoar:subject(subjectScheme=Other)。主要カテゴリ（entry.arxiv:primary_category.@term）と一致するものを先頭に置く |
 
 ## 関連モジュール
 
@@ -327,21 +327,10 @@
 - arXiv 取得は weko-workspace で完結する。エンドポイントは `weko_workspace.views.get_auto_fill_record_data_arXivapi`（route `/get_auto_fill_record_data_arXivapi`）、取得ロジックは `weko_workspace.api.arXivURL` と `weko_workspace.utils.get_arXiv_record_data`（`get_arXiv_title_data` / `get_arXiv_identifier_data` / `get_arXiv_date_data` / `get_arXiv_description_data` / `get_arXiv_creator_data` / `get_arXiv_relation_data` / `get_arXiv_subject_data` ほか）。config は `WEKO_WORKSPACE_ARXIV_API_URL`（既定 `https://export.arxiv.org/api/query?search_query=doi:`）と `WEKO_WORKSPACE_ARXIV_REQUIRED_ITEM`（title/identifier/date/description/creator/relation/subject）。
 - 各外部ソース（CiNii/JaLC/DataCite/arXiv）が生成する DOI 識別子には `relationType='isVersionOf'` が付与される（JaLC は併せて `type='DOI'` を付与）。
 
----
-
-### arXiv APIからのメタデータ取得
-
-  * arXiv API からDOIに紐づくメタデータを取得する
-    * `weko_workspace.api.arXivURL.get_data()` を呼び出し、arXiv API からデータを取得する
-      * arXiv API からはXML形式でレスポンスが返却される
-    * 取得したAPIレスポンスを解析し、辞書型に整形する
-    * アイテムタイプのJPCOARマッピングに応じた項目にメタデータを設定する
-
-
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|
 |---|---|---|
 |2025/03/27|057e4d8985a4b5526c0db7f07f717a4bb45bc984|初版作成|
 |2026/07/17||v2.1.0差分反映：arXiv メタデータ自動補完ソースを追加（`arXivURL`／`get_arXiv_*`／endpoint `get_auto_fill_record_data_arXivapi`／config `WEKO_WORKSPACE_ARXIV_API_URL`・`_REQUIRED_ITEM`）、DOI識別子への `relationType='isVersionOf'` 付与を追記|
-
+| 2026/10/05 | 508030789 | release_v2.1.0突合：arXiv のリクエストパラメータを `search_query=doi:{doi}` に訂正、取得データ表を `get_arXiv_*` の実装（応答パス・マッピング先）に合わせて整理、処理概要の重複節を削除 |

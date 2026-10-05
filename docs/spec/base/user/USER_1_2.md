@@ -172,11 +172,11 @@
 | 3 | 件名 (Subject) | Keyword | subject.subjectScheme | |
 | 4 | 地域 (Region) | Keyword | geoLocation.geoLocationPlace | |
 | 5 | 内容記述 (Description) | FullText | search_des, search_des.ja | |
-| 6 | 出版者 (Publisher) | FullText | search_publisher. search_publisher.ja | |
+| 6 | 出版者 (Publisher) | FullText | search_publisher, search_publisher.ja | |
 | 7 | 寄与者 (Contributor) | FullText | search_contributor, search_contributor.ja | |
 | 8 | コンテンツ作成日 (Contents Created Date) | Keyword | date.dateType, file.date.dateType | date.dateTypeが'file.date.dateType'キーで検索される |
 | 9 | フォーマット (Format) | Keyword | file.mimeType | |
-| 10 | ID | FullText | | ※表 1-2‑3参照 追加検索用のキーはKeyword方式 |
+| 10 | ID | FullText | | ※表 1-2‑3参照。追加検索用のキーはKeyword方式 |
 | 11 | 雑誌名 (Journal Title) | FullText | sourceTitle, sourceTitle.ja | |
 | 12 | 資源タイプ (ResourceType) | | type.raw | |
 | 13 | アイテムタイプ (ItemType) | FullText | itemtype | |
@@ -186,13 +186,14 @@
 | 17 | 著者版フラグ (Author Version Flag) | FullText | versionType | |
 | 18 | 学位番号 (Academic Degree Number) | FullText | dissertationNumber | |
 | 19 | 学位名 (Degree Name) | FullText | degreeName, degreeName.ja | |
-| 20 | 学位授与機関 (Institution For Academic Degree) | FullText | degreeGrantor. degreeGrantorName, dgName, dgName.ja | degreeGrantorNameが' dgName, dgName.ja 'キーで検索される degreeGrantorNameはキーワード方式 |
+| 20 | 学位授与機関 (Institution For Academic Degree) | FullText | degreeGrantor.degreeGrantorName, dgName, dgName.ja | degreeGrantorNameが'dgName, dgName.ja'キーで検索される。degreeGrantorNameはキーワード方式 |
 | 21 | 著者ID (Author ID) | Keyword | creator.nameIdentifier | |
-| 22 | Index | FullText | path.tree | 入力したIndex IDに所属するアイテムを検索 ※入力したIndex ID下にある子インデックスに所属するアイテムの検索まではしない |
-| 23 | License | | content.licensetype.raw | ファイル情報プロパティのライセンス情報を検索 ※権利情報プロパティ(dc:rights)の検索は実施しない |
+| 22 | Index | FullText | path.tree | 入力したIndex IDに所属するアイテムを検索。※入力したIndex ID下にある子インデックスに所属するアイテムの検索まではしない |
+| 23 | License | | content.licensetype.raw | ファイル情報プロパティのライセンス情報を検索。※権利情報プロパティ(dc:rights)の検索は実施しない |
 | 24 | テキスト1 (text1) | Keyword | Text1 | |
-| 24 | float_JA_1 | float_range | float_range1 | |
-| 25 | geopoint_JA_1 | geo_point | geo_point1 | |
+| 25 | float_JA_1 | float_range | float_range1 | |
+| 26 | geopoint_JA_1 | geo_point | geo_point1 | |
+| 27 | アクセス権 (Access Rights) | Keyword | accessRights | 検索パラメータ `accessrights`（選択肢 embargoed access / metadata only access / open access / restricted access、複数選択時は OR）。WEKO_SEARCH_FIX_ACCESSRIGHTS が True の場合はファイルのアクセス（accessrole）と公開日も考慮して検索する（下記実装補足参照） |
 
 表 1-2‑3　 IDの選択肢と対応するキー
 
@@ -228,39 +229,14 @@
 
 アイテムの表示順、表示数のプルダウンを選択すると、検索結果エリアでのアイテムの表示を選択した表示順、表示数に変更する処理を行う。
 
-| **No.** | **検索項目** | **検索方式** | **検索用のキー** | **備考** |
-| --- | --- | --- | --- | --- |
-| 1 | タイトル (Title) | FullText | search_title, search_title.ja | |
-| 2 | 著者名 (Author Name) | FullText | search_creator, search_creator.ja | |
-| 3 | 件名 (Subject) | Keyword | subject.subjectScheme | |
-| 4 | 地域 (Region) | Keyword | geoLocation.geoLocationPlace | |
-| 5 | 内容記述 (Description) | FullText | search_des, search_des.ja | |
-| 6 | 出版者 (Publisher) | FullText | search_publisher, search_publisher.ja | |
-| 7 | 寄与者 (Contributor) | FullText | search_contributor, search_contributor.ja | |
-| 8 | コンテンツ作成日 (Contents Created Date) | Keyword | date.dateType, file.date.dateType | date.dateTypeが'file.date.dateType'キーで検索される |
-| 9 | フォーマット (Format) | Keyword | file.mimeType | |
-| 10 | ID | FullText | | ※表 1-2‑3参照。追加検索用のキーはKeyword方式 |
-| 11 | 雑誌名 (Journal Title) | FullText | sourceTitle, sourceTitle.ja | |
-| 12 | 資源タイプ (ResourceType) | | type.raw | |
-| 13 | アイテムタイプ (ItemType) | FullText | itemtype | |
-| 14 | 言語 (Language) | Keyword | language | |
-| 15 | 期間 (Period) | Keyword | temporal | |
-| 16 | 学位取得日 (Academic Degree Date) | | dateGranted | |
-| 17 | 著者版フラグ (Author Version Flag) | FullText | versionType | |
-| 18 | 学位番号 (Academic Degree Number) | FullText | dissertationNumber | |
-| 19 | 学位名 (Degree Name) | FullText | degreeName, degreeName.ja | |
-| 20 | 学位授与機関 (Institution For Academic Degree) | FullText | degreeGrantor.degreeGrantorName, dgName, dgName.ja | degreeGrantorNameが'dgName, dgName.ja'キーで検索される。degreeGrantorNameはキーワード方式 |
-| 21 | 著者ID (Author ID) | Keyword | creator.nameIdentifier | |
-| 22 | Index | FullText | path.tree | 入力したIndex IDに所属するアイテムを検索。※入力したIndex ID下にある子インデックスに所属するアイテムの検索まではしない |
-| 23 | License | | content.licensetype.raw | ファイル情報プロパティのライセンス情報を検索。※権利情報プロパティ(dc:rights)の検索は実施しない |
-| 24 | テキスト1 (text1) | Keyword | Text1 | |
-| 25 | float_JA_1 | float_range | float_range1 | |
-| 26 | geopoint_JA_1 | geo_point | geo_point1 | |
-| 27 | アクセス権 (Access Right) | Keyword | Access Right | |
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 詳細検索は `weko_search_ui.query.default_search_factory._get_detail_keywords_query`。検索キーと内部フィールドの対応は config `WEKO_SEARCH_KEYWORDS_DICT`。`exact_title_match`（タイトル完全一致）の分岐あり。
+
+> 実装補足（v2.1.0）：
+> - アクセス権（Access Rights）の詳細検索条件は `weko_admin.config` の詳細検索条件（id `accessrights`、`inputType: checkbox_list`、`default_display: True`）として定義され、`weko_search_ui.query.default_search_factory` 内の `__get_accessrights_query` で ES の `accessRights` を検索する。選択値は config `WEKO_ACCESS_RIGHTS_CHOICES` に含まれるもののみ有効。
+> - config `WEKO_SEARCH_FIX_ACCESSRIGHTS`（既定 False）を True にしている場合は、アイテム詳細画面の Access Rights の読み替え（[メタデータ表示](./USER_3_1.md) 参照）と整合するよう、`embargoed access` のアイテムをファイルの accessrole（open_access / open_date / open_login / open_restricted / open_no）と公開日（`content.date.dateValue`）で open access / restricted access / embargoed access に振り分けて検索する。
 
 ## 更新履歴
 
@@ -268,3 +244,4 @@
 | --- | --- | --- |
 | 2022/04/28 | 57247ecce9b5e0879a2538687e446e0ea310129c | 初版作成 |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | v0.9.22対応 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：重複していた検索項目とキーの表を表 1-2‑2 に統合（No. 振り直し、アクセス権の検索キー `accessRights`）、アクセス権検索と WEKO_SEARCH_FIX_ACCESSRIGHTS を実装補足に追記 |

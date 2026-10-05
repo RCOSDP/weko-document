@@ -40,8 +40,11 @@
 
 - 本ページは Item Registration の概要。関連モジュール：weko-workflow（アクティビティ）/ weko-items-ui（登録画面）/ weko-deposit（永続化）。詳細は子ページ（USER_4_5〜4_9, 4_16, 4_17）参照。
 
+- 実装補足（v2.1.0、編集・更新系の権限）：アイテム編集画面（`DEPOSIT_RECORDS_UI_ENDPOINTS` の `depid` `/item/edit/<pid_value>`・`iframe_depid` `/item/iframe/edit/<pid_value>`）の `weko_items_ui.permissions.edit_permission_factory` は、閲覧用の `page_permission_factory` への委譲をやめて `check_created_id`（作成者・所有者・共有ユーザー・システム／リポジトリ管理者・該当コミュニティのコミュニティ管理者）で判定する（以前は公開アイテムなら匿名でも通っていた）。デポジット REST（`/api/deposits/items/<pid_value>`、`weko_deposit.rest.ItemResource`）の POST／PUT はデコレータ `require_item_edit_permission` で未ログイン 401、アイテム不存在 404、編集権限なし 403 とし（バージョン付き pid は親 recid で判定）、`DEPOSIT_REST_ENDPOINTS['depid']` の `update_permission_factory_imp` にも `edit_permission_factory` を設定した。個別の更新権限を持たないエンドポイントは `RECORDS_REST_DEFAULT_UPDATE_PERMISSION_FACTORY = deny_all` で拒否される。公開 `/api/deposits/publish/<pid_value>`（`weko_deposit.rest.publish`）も `@login_required` と `edit_permission_factory` で判定する（不存在 404、権限なし 403、公開処理失敗 400）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                         | 更新内容 |
 | ---------- | ---------------------------------------- | -------- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：編集画面・デポジット REST・公開 API の編集権限判定を追記 |

@@ -204,8 +204,11 @@ docker-compose exec -u root web celery -A invenio_app.celery call weko_indextree
 - 表示は `weko_search_ui.views.search` が `weko_search_ui.utils.get_journal_info`（`is_output` が False なら None を返し非表示）を呼ぶ。KBART出力は Celery `weko_indextree_journal.tasks.export_journal_task`（出力先 `weko/kbart`、beat は instance.cfg）。table `journal`（`Journal`）。
 - KBARTファイル名のプレフィックスは `OAISERVER_REPOSITORY_NAME` 由来。`is_output` は KBART 出力をフィルタせず画面表示のみに作用する（出力は全 Journal）。
 
+- 実装補足（v2.1.0、雑誌情報取得 API の権限）：雑誌情報の JSON 取得 `GET /journal_info/<index_id>`（`weko_search_ui.views.journal_detail`）にデコレータ `weko_search_ui.utils.check_index_permission` が付いた。インデックスが存在しない場合は 404、`weko_index_tree.utils.filter_index_list_by_role` で閲覧可能と判定されない場合は 403 を返し、閲覧可能なインデックスの雑誌情報のみ返す。
+
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|
 |:---:|:---:|:---:|
 |2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+| 2026/10/05 | 508030789 | release_v2.1.0突合：雑誌情報取得 API（`journal_info`）のインデックス閲覧権限判定を追記 |

@@ -131,7 +131,7 @@
 
 「メインコンテンツ」ウィジェットの［トップ（Top）］タブ内に表示される、［インデックスツリー］エリア内のインデックスのリンクを押下する、または、[インデックスリンク]エリアのプルダウンからインデックスを選択する。この操作によって以下の処理をする。
 
-- weko_search_ui.static.js.weko_search_ui.app getPathNameメソッドを呼び出す。そして、get_path_name_dictメソッドによってindexテーブルより選択したインデックスのパンくずリストを取得する。なお、権限がないインデックスはfilter_index_list_by_roleメソッドで非表示になる。`filter_index_list_by_role` / `reduce_index_by_role` はいずれも `check_index_permission_by_role_and_group`（ロール ANY 一致 AND グループ ANY 一致。認証ユーザー `-98`／ゲスト `-99`／No Group `-89`）で閲覧可否を判定する。
+- weko_search_ui.static.js.weko_search_ui.app getPathNameメソッドを呼び出す。そして、get_path_name_dictメソッド（`GET /get_path_name_dict/<path_str>`、`path_str` はインデックスIDを `_` で連結したもの）によってindexテーブルより選択したインデックスのパンくずリスト用の名称を取得する。v2.1.0 以降、get_path_name_dict は各IDについて `weko_index_tree.utils.check_index_permissions` で閲覧可否を確認し、閲覧できないインデックスおよび存在しないインデックスは結果に含めない。IDに数字以外（1〜18桁の数字以外）を含む指定は 400 を返す。なお、権限がないインデックスはfilter_index_list_by_roleメソッドで非表示になる。`filter_index_list_by_role` / `reduce_index_by_role` はいずれも `check_index_permission_by_role_and_group`（ロール ANY 一致 AND グループ ANY 一致。認証ユーザー `-98`／ゲスト `-99`／No Group `-89`）で閲覧可否を判定する。
 - 選択したインデックスに登録されている公開設定の雑誌情報をweko_search_ui.views.searchメソッドにてget_journal_infoを使って取得し、表示する。処理の詳細についてはUSER-2-3雑誌情報を参照すること
 - weko_search_ui.static.js.weko_search_ui.app.getChildListメソッドを呼び出す。そして、get_child_listメソッドによってindexテーブルより選択したインデックスに所属する子インデックスのデータを取得し、表示する。
 - weko_search_ui.static.js.weko_search_ui.app.dispaly_comment_journalメソッドにて、format_commentを呼び出し、コメントを整形し表示する。
@@ -155,3 +155,4 @@
 |2022/05/10|57247ecce9b5e0879a2538687e446e0ea310129c|初版作成|
 |2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|v0.9.22対応|
 |2026/07/17||v2.1.0差分反映：インデックス閲覧判定を `check_index_permission_by_role_and_group`（ロール ANY 一致 AND グループ ANY 一致、認証 -98／ゲスト -99／No Group -89、mAP ロール除外）で補足|
+| 2026/10/05 | 508030789 | release_v2.1.0突合：インデックス名取得（`get_path_name_dict`）を閲覧可能なインデックスに限定する点を反映 |

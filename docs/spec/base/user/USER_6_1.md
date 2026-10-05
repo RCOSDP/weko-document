@@ -257,9 +257,12 @@
 - 画面/ハンドラ：`weko_items_ui.views.ranking`（route `/items/ranking`）。設定は `weko_admin.models.RankingSettings`（table `ranking_settings`）、取得 `weko_items_ui.utils.get_ranking` / `get_permission_record`。
 - ランキング集計モジュールは `invenio_stats.utils` の `QueryRankingHelper` / `WekoQueryRankingHelper`。ランキングはリクエスト毎に Elasticsearch からライブ算出される（ES の統計インデックスは `invenio_stats` の process/aggregate タスクが populate）。範囲 1-30/1-3650/1-100 はUIのみ。config `WEKO_ITEMS_UI_RANKING_*`。
 
+- 実装補足（v2.1.0、ランキング結果のキャッシュ）：`weko_items_ui.utils.get_ranking` の結果は invenio-cache（Redis）に短時間キャッシュされる（v2.0.3／v2.0.4 の 502 エラー対策）。キーは `get_ranking_<INVENIO_WEB_HOST_NAME>_<言語>_<当日日付>_<ユーザー（ログインユーザーは u<id>、未ログインは guest）>_<ランキング設定（statistical_period／display_rank／new_item_period／rankings）のハッシュ>` で、利用者ごとの権限フィルタ結果が他の利用者に見えないようにしている。有効期間は `WEKO_ITEMS_UI_RANKING_CACHE_TTL`（既定 300 秒）。このため、新規アイテムや閲覧数の変化はキャッシュ期間内は反映されない（ランキング設定の変更はキーが変わるため即時反映）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID | 更新内容                 |
 | ---------- | ---------------- | ------------------------ |
 |            |                  | 初版作成                 |
 | 2023/11/11 | v0.9.27          | 閲覧回数の計算手法を明記 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：ランキング結果の短時間キャッシュ（`WEKO_ITEMS_UI_RANKING_CACHE_TTL`）を追記 |

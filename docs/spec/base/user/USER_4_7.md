@@ -86,6 +86,7 @@ Item Registrationの一部として、画面上の設定エリアで代理投稿
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 代理投稿は config `WEKO_ITEMS_UI_PROXY_POSTING`（既定 False）。サーバ側 `weko_items_ui.views.get_search_data` / `validate_user_info`、権限判定 `weko_workflow.views.check_authority_action`。`autocomplete` / `get_autofill_data` はブラウザ側JS（`app.js`）。
+- 実装補足（v2.1.0）：ユーザー情報の検証・取得 API（`validate_user_info`・`validate_users_info`・`validate_email_and_index`・`get_userinfo_by_emails`。いずれも weko-items-ui の `blueprint_api`）には `@login_required` と `weko_items_ui.permissions.item_permission.require(http_exception=403)`（アクション `item-access`：リポジトリ管理者・コミュニティ管理者・Contributor、システム管理者は superuser）が付き、未ログインは 401、それ以外のロールのみのユーザーは 403 となる。
 
 ## 更新履歴
 
@@ -93,3 +94,4 @@ Item Registrationの一部として、画面上の設定エリアで代理投稿
 | ---------- | ---------------------------------------- | ------------------------------------ |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成                             |
 | 2025/10/31 | 160a811eed2c61492558905db34fa0619da6b18f | 設定値による代理投稿者の制御を記載   |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：ユーザー情報検証・取得 API の認可（`login_required`＋`item_permission`）を追記 |

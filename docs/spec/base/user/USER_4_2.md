@@ -162,6 +162,8 @@ def get_new_activity_id(self, for_delete=False):
 
 - アクティビティID採番は `weko_workflow.api.WorkActivity.get_new_activity_id`（`A-{}-{}` / 削除は `D-{}-{}`）。ロックは `views.lock_activity` / `unlock_activity`（Redis `workflow_userlock_activity_<user_id>` / `workflow_locked_activity_<activity_id>`）。一覧は `new_activity` → `WorkFlow.get_workflow_list` → `get_workflows_by_roles`。
 
+- 実装補足（v2.1.0）：ワークフロー一覧 `GET /workflow/activity/new`（`weko_workflow.views.new_activity`）は `@login_required` に加え `weko_items_ui.permissions.item_permission.require(http_exception=403)`（アクション `item-access`：リポジトリ管理者・コミュニティ管理者・Contributor、システム管理者は superuser）が付き、一般ユーザー等それ以外のロールのみのユーザーは 403 となる（表の「一般ユーザー ×」が実装で担保された）。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                            |
@@ -169,3 +171,4 @@ def get_new_activity_id(self, for_delete=False):
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562   | 初版作成                                            |
 | 2024/07/01 | 7733de131da9ad59ab591b2df1c70ddefcfcad98   | v1.0.7対応                                          |
 | 2025/07/17 |                                            | 削除用ワークフローのactivity_idの採番ロジックを記載 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：`new_activity` の `item_permission` による利用ロール制限を追記 |

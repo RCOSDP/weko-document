@@ -129,9 +129,11 @@ Cite asの情報での表示言語の優先度は以下の通りです。画面�
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 引用情報は `invenio_records_rest.serializers.citeproc.CiteprocSerializer`＋`weko_records.serializers.schemas.csl.RecordSchemaCSLJSON`。既定スタイル `aapg-bulletin`。レンダリングは Jinja フィルタ `weko_records_ui.views.citation`。
+- 実装補足（v2.1.0、引用情報 API の権限）：REST の引用情報取得 `GET /api/record/cites/<pid_value>`（`weko_records_ui.rest.WekoRecordsCitesResource.get`、クエリ `style`／`locale`）は `require_api_auth(allow_anonymous=True)`・`require_oauth_scopes(item_read_scope)` が付き、対象レコードについて詳細画面と同じ閲覧権限 `page_permission_factory` を確認する。閲覧できないレコードは存在しない場合と同じく 404（本文 `"Not found"`）を返す。
 
 ## 更新履歴
 
 | 日付 | GitHubコミットID | 更新内容 |
 | --- | --- | --- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：引用情報 REST API の閲覧権限判定を追記 |

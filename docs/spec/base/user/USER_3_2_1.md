@@ -93,9 +93,11 @@ weko/modules/weko-records-ui/weko_records_ui/api.py
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 実装：`weko_records_ui.api.get_file_place_info` / `replace_file_bucket` / `copy_bucket_to_s3`。HTTPルート（`weko_records_ui.views`）：`/get_file_place`（`get_file_place`）/ `/replace_file`（`replace_file`）/ `/get_bucket_list`（`get_bucket_list`）/ `/copy_bucket`（`copy_bucket`）。クライアントJS `bucket.js`。
+- 実装補足（v2.1.0、認可）：`/records/copy_bucket`・`/records/get_file_place`・`/records/replace_file` はいずれも `@login_required` に加えて `weko_records_ui.permissions.record_edit_permission_required(param='pid')` が付き、リクエスト（view 引数・フォーム・JSON 本文・クエリ）の `pid` で指すアイテムの編集権限（`check_created_id_by_recid`：作成者・共有ユーザー・当該コミュニティのコミュニティ管理者・システム／リポジトリ管理者）を確認する。未ログインはログイン処理（API/AJAX には 401）、`pid` 欠落は 400、権限なしは 403。`/records/get_bucket_list` は `@login_required` のみ。
 
 ## 更新履歴
 
 |日付|GitHubコミットID|更新内容|
 |:---:|:---:|:---:|
 |2025/05/30|**********|初版作成|
+|2026/10/05|508030789|release_v2.1.0突合：ファイルのコピー・置き換え系ルートの認可（`record_edit_permission_required`）を追記|

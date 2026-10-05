@@ -33,9 +33,9 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
         - フィードバックメール送信先（Feedback Mail Destination）
 
 - researchmap連携フラグ
-  - アイテム登録を行う際に、「researchmapデータ連携フラグ」の設定エリアを表示する。
-  - researchmapデータ連携フラグの登録データを、temp_metadataに登録して管理する。
-  - チェックボックスによりフラグを表示する。
+  - アイテム登録を行う際に、「CRIS機関へ自動連携」（Auto Linkage to CRIS Institution）欄に「researchmap」チェックボックスと「前回連携結果：」（Latest Linkage Result：）を表示する（利用申請等の open_restricted のワークフローでは表示しない）。
+  - チェック状態は保存時に `cris_linkage: {"researchmap": true/false}` としてアクティビティの一時メタデータ（workflow_activity.temp_data）に登録して管理する。
+  - フラグが有効なアクティビティが登録完了した時点で、researchmap 連携シグナル（`cris_researchmap_linkage_request`）を送信し、researchmap への連携処理を行う（詳細は [researchmap連携機能](./USER_11_1.md) 参照）。
 
 - 日付のフォーマットで定義されるプロパティまたは属性に対して、3つのフォーマット（YYYY-MM-DD、YYYY-MM、YYYY）が入力できる
     - 入力方法はカレンダー入力、または手入力である
@@ -52,7 +52,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     - 「検索」ボタンを押すと、【Administration > 著者DB管理（Author Management） > 編集（Edit）】で登録された著者DB一覧を表示する
     - ［入力（import）］ ボタンを押すと、選択した著者情報をメタデータの各エリアに入力する
     - 「Add Author」ボタンを押すと、著者登録画面が表示され著者情報を登録することができる（登録すると著者DB管理画面にも反映される）
-      - 作成者識別子の選択肢にresearchmapを追加し、会員と１対１のID(parmalink)のデータを管理する。
+      - 作成者識別子の選択肢に researchmap がある（config `WEKO_AUTHORS_LIST_SCHEME`）。researchmap 会員と1対1に対応する ID（パーマリンク（permalink））を管理する。
     - コミュニティ管理者、登録ユーザーの場合は著者登録画面のコミュニティ選択欄の選択肢にアクティビティを作成したコミュニティを加える。
     - アイテム作成時、作成者識別子は編集不可となる。
     - アイテム編集時、作成者識別子"WEKO"のデータ部分はユーザーでの編集は不可とする（作成者識別子Scheme, 作成者識別子URI, 作成者識別子はグレーアウトする）。それ以外の識別子は変更可能となる。
@@ -61,13 +61,13 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
     - アイテムで個別に編集した作成者の項目は、Adminの著者DBには反映されない。  
     なお、アイテムで個別に編集した後に著者DBから著者を取り込むと、個別編集した項目は上書きされる
   
-- weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTSがTrueに設定されている場合
-  - 入力したメタデータが以下のaccessRigthsの修正条件に該当する場合、修正後のAccess Rightsの値でアイテムが登録される
-    - Access Rights:embargoed accessの場合
-      1. ファイルのアクセスにopen_restrictredが存在する場合、restricted accessに修正される
-      2. 1を満たさずファイルのアクセスがopen_date、日付が未来である場合embargoed accessに修正される
-      3. 1,2を満たさずファイルのアクセスがopen_loginが存在する場合、restricted accessに修正される
-      4. すべてのファイルが「open_access」または「アクセスがopen_date,日付が処理日以前」である場合open accessに修正される
+- weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTS（既定 False）をTrueに設定している場合
+  - 入力したメタデータが以下のAccess Rightsの修正条件に該当する場合、修正後のAccess Rightsの値（あわせて URI も `ACCESS_RIGHT_TYPE_URI` の値）でアイテムが登録される（`weko_records.utils.json_loader` から `update_embargo_rights` / `check_embargo_rights` を呼び出す）
+    - Access Rights:embargoed accessの場合（ファイルのアクセス（accessrole）と公開日で判定する）
+      1. ファイルのアクセスにopen_restrictedが1つでも存在する場合、restricted accessに修正される
+      2. 1を満たさず、アクセスがopen_dateで日付が未来のファイルが存在する場合、embargoed accessのままとなる
+      3. 1,2を満たさず、ファイルのアクセスにopen_loginが存在する場合、restricted accessに修正される
+      4. ファイルが1件以上あり、すべてのファイルが「open_access」または「アクセスがopen_dateで日付が処理日以前」である場合、open accessに修正される
       5. 1~4を満たさない場合、embargoed accessのままとなる
 
 ### 2. アイテムのメタデータを自動入力できる
@@ -296,3 +296,4 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 |2025/01/01|09c6391d2ed1bae053fee9f8dfc98e95e1e1b87f|v1.0.7a2|
 |2024/04/14|cd0183f59a16928be2511e33e4495a3376f143c9|v1.0.6  |
 |2023/08/31|353ba1deb094af5056a58bb40f07596b8e95a562|初版作成|
+| 2026/10/05 | 508030789 | release_v2.1.0突合：researchmap連携フラグの画面ラベル・保存先・連携タイミングを実装準拠に修正、WEKO_SEARCH_FIX_ACCESSRIGHTS の修正条件を訂正 |
