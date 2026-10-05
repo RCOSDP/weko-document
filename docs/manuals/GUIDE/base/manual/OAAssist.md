@@ -20,7 +20,7 @@ OA Assistを利用することで、以下の作業を一連の流れとして�
 
 出版社ポリシーや論文の版の考え方、即時オープンアクセス（以下、即時OA）への対応方針など、登録にあたっての前提知識については、以下の資料をご参照ください。
 
-- [JAIRO Cloud（WEKO3）登録ガイド 学術雑誌論文編| 即時OAの対象となる学術雑誌論文と機関リポジトリ担当者の対応](journalPaperdeposit.md#即時oaの対象となる学術雑誌論文と機関リポジトリ担当者の対応)
+- [JAIRO Cloud（WEKO3）登録ガイド 学術雑誌論文編| 即時OAの対象となる学術雑誌論文と機関リポジトリ担当者の対応](journalPaperdeposit.md#1-即時oaの対象となる学術雑誌論文とリポジトリ担当者の対応)
 
 本手順は、即時OAの対象論文に限らず、機関リポジトリへの登録可否を検討する学術雑誌論文全般において利用することができます。
 
@@ -70,12 +70,12 @@ flowchart TD
    1. JAIRO Cloudに管理者ユーザーでログインします。
    2. 右上のプルダウンメニューから「アプリケーション」を選択します。  
         ![WEKOのトップ画面の画像　※アプリケーションを強調](images/oa-assist/app_setting_1.png)
-   3. 「Developer Applications」の「New Application」を選択します。  
+   3. 「Developer Applications」の「New application」を選択します。  
         ![アプリケーション一覧画面の画像　※＋New Applicationを強調](images/oa-assist/app_setting_2.png)
    4. 以下の情報を入力します：
       - **名前**: 任意のアプリケーション名を入力します。(例： OA Assist_journal)
-      - **ウェブサイトURL**: OA AssistのURLを入力します。(例：)
-      - **Redirect URIs**: OA AssistのコールバックURLを入力します。
+      - **ウェブサイト URL**: OA AssistのURLを入力します。
+      - **Redirect URIs (one per line)**: OA AssistのコールバックURLを入力します。
       - **Client type**: 「Confidential」を選択します。
         ![アプリケーション設定画面の画像　※名前、ウェブサイトURL、Redirect URIs、Client typeを強調](images/oa-assist/app_setting_3.png)
    5. 「登録」を押下します。
@@ -94,7 +94,7 @@ flowchart TD
         ![機関設定画面の画像　※上記の項目を強調](images/oa-assist/organization_setting_1.png)
     3. ［認証］ボタンをクリックして、JAIRO Cloudとの連携を確認します。  
         JAIRO Cloudのログイン画面が表示されます。  
-        ログインし［Authorize application］をクリックします。  
+        ログインし［Authorize application］（日本語表示の場合は［アプリの使用を承諾する］）をクリックします。  
         ![Authorize applicationの画像　※Authorize applicationボタンを強調](images/oa-assist/authorize_1.png)
     4. 認証成功画面が表示されます。  
         ![認証成功画面の画像](images/oa-assist/authorize_2.png)
@@ -114,14 +114,14 @@ flowchart TD
 3. 作成タブを選択します。  
     ![JSON-LDの一覧画面　※作成タブを強調](images/oa-assist/sword_setting_3.png)
 
-4. [アプリケーション設定](#アプリケーション設定)で登録したOA Assistのアプリケーションを選択します。  
+4. [アプリケーション設定](#アプリケーション設定oa-assist-jairo-cloud)で登録したOA Assistのアプリケーションを選択します。  
     ![JSON-LD設定の作成画面](images/oa-assist/sword_setting_4.png)
 
 5. 登録方式はいずれかを選択します。  
    - 直接登録: アイテムを直接登録します。
    - ワークフロー登録: 指定したワークフローを経由して登録します。  
 
-   ※ワークフロー登録を選択した場合、設定されたワークフローに承認待ちのアクティビティが残っている間は設定の変更ができなくなります。
+   ※ワークフロー登録を選択した場合、設定されたワークフローに承認待ちのアクティビティが残っている間は設定の変更・削除ができなくなります。
 
 6. マッピングは「デフォルトマッピング（フル）」を選択します。  
    登録するアイテムタイプに対応するマッピングを選択して下さい。  
@@ -412,7 +412,9 @@ OA Assistでは、出版社ポリシーや査読情報など登録可否の判�
     ![alt text](images/oa-assist/item_1.png)
 
 4. ［送信］ボタンをクリックします。  
-   ※JAIRO Cloudの連携方式が直接登録の場合、アイテムは非公開状態で登録されます。
+   ※JAIRO Cloudの連携方式が直接登録の場合、アイテムは非公開状態で登録されます。  
+   ※JAIRO Cloudの連携方式がワークフロー登録の場合、アクティビティが作成されて自動的に進められ、ワークフローに承認アクションがある場合は承認待ちで停止します（アイテムは非公開）。JAIRO Cloudのワークフロー画面から当該アクティビティを開き、承認してください。  
+   ※送信に用いるJAIRO Cloudのアカウント（[アプリケーション設定](#アプリケーション設定oa-assist-jairo-cloud)で認証したアカウント）には、System Administrator、Repository Administrator、Community Administrator、Contributorのいずれかのロールが必要です（既定の設定の場合）。
 
 #### 送信後の注意事項（relationTypeの補完について）(OA Assist)
 
@@ -450,7 +452,7 @@ JAIRO Cloud上でアイテムとして登録・公開するまでの作業手順
 2. ［Click to select］ボタンをクリックして本文ファイルを登録します。  
     ![alt text](images/oa-assist/metadata_edit_2.png)
    ［Start upload］ボタンをクリックすると選択したファイルがアップロードされます。  
-    ※本文ファイルの登録方法は、[JAIRO Cloudで登録する場合の操作 |ファイルのアップロード](journalPaperdeposit.md#ファイルのアップロード)もご確認ください。
+    ※本文ファイルの登録方法は、[JAIRO Cloudで登録する場合の操作 |ファイルのアップロード](journalPaperdeposit.md#44-ファイルのアップロード)もご確認ください。
 
 3. メタデータの確認と補完を行います。OA Assistから連携されたメタデータを確認し、必要に応じて修正・補完を行います。  
     特に、OA Assistでは自動入力されない、または不十分な場合がある以下の項目について確認して下さい。
@@ -462,7 +464,7 @@ JAIRO Cloud上でアイテムとして登録・公開するまでの作業手順
     - **助成情報**: 取得元データに十分な情報がない場合があります。
     - **権利情報**: 取得元データに十分な情報がない場合があります。
 
-    ※入力するメタデータの詳細や登録時の操作については[JAIRO Cloudから登録する場合の操作](journalPaperdeposit.md#メタデータ入力画面での入力・選択)を参照してください。
+    ※入力するメタデータの詳細や登録時の操作については[JAIRO Cloudから登録する場合の操作](journalPaperdeposit.md#45-メタデータ入力画面での入力選択)を参照してください。
 
 4. ワークフローを完了まで進めます。  
     ※アイテムを登録するインデックスを変更する場合は、OA Assistで送信先インデックスを変更することも可能ですが、
