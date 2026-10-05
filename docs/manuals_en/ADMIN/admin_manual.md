@@ -10296,11 +10296,11 @@ The information you enter is added to the index.
 
 This section explains how to output registered journal information in the KBART format.
 
-  - > The file is output to "your institution's repository URL" + "/weko/kbart/filelist.txt", using the filename in the KBART2 extended format with the last update date.
+  - > The file is output to "your institution's repository URL" + "/static/weko/kbart/filelist.txt", using the filename in the KBART2 extended format with the last update date.
 
 > ![](media/media/image105.png)
 
-  - > The journal information is output to "your institution's repository URL" + "/weko/kbart/\[repository name\]\_Global\_AllTitles\_\[last modified date\].txt", as a tsv file in KBART2 extended format.
+  - > The journal information is output to "your institution's repository URL" + "/static/weko/kbart/\[repository name\]\_AllTitles\_\[last modified date\].txt", as a tsv file in KBART2 extended format.
 
 > ![](media/media/image106.png)
 
