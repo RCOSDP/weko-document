@@ -51,15 +51,23 @@ Chapter 7: Export items
 
 This chapter describes step-by-step instructions on exporting items.
 
-Chapter 8: Explore communities
+Chapter 8: Upload large files
+
+This chapter notes that the large file upload feature has not been released.
+
+Chapter 9: Explore communities
 
 This chapter describes step-by-step instructions on exploring communities.
 
-Chapter 9: Operating tips
+Chapter 10: Operating tips
 
 This chapter provides tips for working with the System.
 
-Chapter 10: Workspace
+Chapter 11: RSS
+
+This chapter describes how to get new arrivals by RSS feed.
+
+Chapter 12: Workspace
 
 This chapter describes how to view and register your own items in the workspace.
 
@@ -157,6 +165,8 @@ The format conventions used in this document are as follows:
 
 [4.1.8 The Information screen 58](#the-information-screen)
 
+[4.1.9 The file details screen](#the-file-details-screen)
+
 [5. Register items 61](#register-itemsindexword)
 
 [5.1 Register items 62](#linkidaddactivities参照先indexword-pronounceあいてむをとうろくする-indexitemアイテムを登録するregister-itemsindexword)
@@ -175,7 +185,13 @@ The format conventions used in this document are as follows:
 
 [5.2.1 Display the activities list 97](#display-the-activities-list)
 
-[5.2.2 View the activity details 101](#linkidviewactivitydetails参照先view-the-activity-details)
+[5.2.2 Export activities to a TSV file](#export-activities-to-a-tsv-file)
+
+[5.2.3 Delete activities](#delete-activities)
+
+[5.2.4 View the activity details 101](#linkidviewactivitydetails参照先view-the-activity-details)
+
+[5.3 Activity lock (v1.0.7)](#activity-lock-v107)
 
 [6. Edit and delete items 102](#edit-and-delete-itemsindexword)
 
@@ -187,41 +203,57 @@ The format conventions used in this document are as follows:
 
 [7.1 Export items 112](#linkidcommunitykakunin参照先indexword-pronounceこみゆにていをかくにんする-indexitemコミュニティを確認するexport-itemsindexword)
 
-[8. Explore communities 114](#explore-communitiesindexword)
+[8. Upload large files](#upload-large-files)
 
-[8.1 Explore communities 115](#linkidcommunitykakunin参照先indexword-pronounceこみゆにていをかくにんする-indexitemコミュニティを確認するexplore-communitiesindexword)
+[9. Explore communities 114](#explore-communitiesindexword)
 
-[9. Operating tips 116](#operating-tipsindexword)
+[9.1 Explore communities 115](#linkidcommunitykakunin参照先indexword-pronounceこみゆにていをかくにんする-indexitemコミュニティを確認するexplore-communitiesindexword)
 
-[9.1 Modify your profile 117](#linkidviewprofile参照先modify-your-profile)
+[9.2 View the content policy](#view-the-content-policy)
 
-[9.2 Determine which device is used to log in to an account 120](#linkidchecklogindevice参照先determine-which-device-is-used-to-log-in-to-an-account)
+[10. Operating tips 116](#operating-tipsindexword)
 
-[9.3 Manage applications 121](#linkidmanageapplication参照先manage-applications)
+[10.1 Modify your profile 117](#linkidviewprofile参照先modify-your-profile)
 
-[9.3.1 View the authorized applications 121](#linkidviewapplications参照先view-the-authorized-applications)
+[10.2 Determine which device is used to log in to an account 120](#linkidchecklogindevice参照先determine-which-device-is-used-to-log-in-to-an-account)
 
-[9.3.2 Add an application 121](#linkidaddapplication参照先add-an-application)
+[10.3 Manage applications 121](#linkidmanageapplication参照先manage-applications)
 
-[9.3.3 Add an access token 123](#linkidaddaccesstoken参照先add-an-access-token)
+[10.3.1 View the authorized applications 121](#linkidviewapplications参照先view-the-authorized-applications)
 
-[9.4 Join and view a group 124](#linkidmanagegroup参照先join-and-view-a-group)
+[10.3.2 Add an application 121](#linkidaddapplication参照先add-an-application)
 
-[9.4.1 Join a group 124](#join-a-group)
+[10.3.3 Add an access token 123](#linkidaddaccesstoken参照先add-an-access-token)
 
-[9.4.2 View groups 125](#view-groups)
+[10.4 Join and view a group 124](#linkidmanagegroup参照先join-and-view-a-group)
 
-[9.5 Modify the session validity time 127](#linkidchangetimeout参照先modify-the-session-validity-time)
+[10.4.1 Join a group 124](#join-a-group)
 
-[9.6 Display the Administration screen. 128](#linkidopenadminmenu参照先display-the-administration-screen.)
+[10.4.2 View groups 125](#view-groups)
 
-[10. Workspace](#workspace)
+[10.5 Modify the session validity time 127](#linkidchangetimeout参照先modify-the-session-validity-time)
 
-[10.1 View the item list](#view-the-item-list)
+[10.6 Display the Administration screen. 128](#linkidopenadminmenu参照先display-the-administration-screen.)
 
-[10.1.1 Export the item list](#export-the-item-list)
+[10.7 Display the cookie consent screen](#display-the-cookie-consent-screen)
 
-[10.2 Register an item quickly](#register-an-item-quickly)
+[10.8 Share non-public content using a one-time address](#share-non-public-content-using-a-one-time-address)
+
+[10.8.1 Secret URL feature](#secret-url-feature)
+
+[11. RSS](#rss)
+
+[11.1 Get new arrivals by RSS feed for each index](#get-new-arrivals-by-rss-feed-for-each-index)
+
+[11.2 Get new arrivals by RSS feed for all indexes](#get-new-arrivals-by-rss-feed-for-all-indexes)
+
+[12. Workspace](#workspace)
+
+[12.1 View the item list](#view-the-item-list)
+
+[12.1.1 Export the item list](#export-the-item-list)
+
+[12.2 Register an item quickly](#register-an-item-quickly)
 
 #   
 System overview\</INDEXWORD\>
@@ -439,7 +471,7 @@ Table 1‑3. The elements in the Home screen
 <tr class="even">
 <td>2</td>
 <td>The "Communities" tab</td>
-<td>Explore communities. See "ANCHORID=community【参照元】8Chapter 8: Explore communities【E】" for more information.</td>
+<td>Explore communities. See "ANCHORID=community【参照元】Chapter 9: Explore communities【E】" for more information.</td>
 </tr>
 <tr class="odd">
 <td>3</td>
@@ -1620,6 +1652,74 @@ Table 4‑8. The "Version" and "Stats" tabs on the Information screen
 | 11  |       | The "See details" pull-down | Displays the download count and the preview count of the content file for each country.                                                                          |
 
 [v2.1.0] Note: The "Stats" tab is available only to users who can view the item details screen of the item.
+
+
+Note: When the Secret URL feature is enabled on the Administration screen, a "Secret URL" button is also displayed in the file area. See "Share non-public content using a one-time address" for more information on this feature.
+
+For a billing file, the price of the content file for each role is displayed in the file information area.
+
+### The file details screen
+
+The Information screen described in "The Information screen" is also called the file details screen. It consists of the file name information area (the link to the filename and the checksum), the metadata display area (the metadata of the file), and the Version and Stats information area (the version information and status information such as the view count, switched by the tabs at the top).
+
+From the file details screen, users who have permission to edit the item can replace the file and copy the file to an open bucket as described below.
+
+Note: The "Replace the file content" and "Copy file to open bucket" buttons are displayed only when user storage modification is enabled in the System settings (disabled by default). Contact the system administrator for more information.
+
+#### Replace a file
+
+You can replace a file without going through the workflow screen.
+
+1.  Open the file details screen with an account that has permission to edit the item.
+
+    The "Replace the file content" button is displayed in the file name information area.
+
+2.  Click the "Replace the file content" button.
+
+    The file selection window of your computer opens.
+
+3.  Select the replacement file and click "Open".
+
+    Note: You can only select a file with the same name as the original file. If you select a file with a different name, the message "Please select the same named file as the original file." appears.
+
+4.  When the replacement is complete, the message "File replacement successful." appears and the item details screen is displayed.
+
+    The file is replaced with the selected file, and the version of the item is updated. To restore the state before the replacement, delete the corresponding version of the item. See "Version" for information on item versions.
+
+#### Copy a file to an open bucket
+
+You can copy the file to an open bucket on Amazon S3 or other storage.
+
+1.  To retrieve or create the destination bucket, set up your S3 account information in your profile.
+
+    Click the icon next to the account name in the upper right corner of the screen and select "Profile". In the "Profile" screen, enter the following items based on the S3 account to use, and save the profile.
+
+| No. | Element                          | Description                                                                                                  |
+| --- | -------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 1   | The "access key" text box        | Enter the access key of the S3 account used for copying files to an open bucket from the file details screen. |
+| 2   | The "secret key" text box        | Enter the secret key of the S3 account used for copying files to an open bucket from the file details screen. |
+| 3   | The "endpoint url" text box      | Enter the endpoint URL of the S3 account. Example: "https://s3.*region-name*.amazonaws.com/"                  |
+| 4   | The "region name" text box       | Enter the region name when you specify the region of the S3 bucket to use.                                   |
+
+2.  Open the file details screen with an account that has permission to edit the item.
+
+    The "Copy file to open bucket" button is displayed in the file name information area.
+
+3.  Click the "Copy file to open bucket" button.
+
+    A dialog box for selecting the destination bucket appears.
+
+4.  Select the destination bucket.
+
+    - To use an existing bucket, select the "Bucket" radio button and select a bucket from the list of existing buckets retrieved with the account information you set up in Step 1. The bucket must be an open bucket (a bucket that anyone can write to), because the copy is written to the destination bucket from the S3 account where the original file is stored (for example, when the original file is stored on S3). Configure the bucket as public in advance.
+
+    - To create a new bucket with the account information you set up in Step 1, select the "New Creating Bucket Name" radio button and enter the name of the bucket to create.
+
+5.  Click the "Execution" button.
+
+    The file is copied. When the copy is completed successfully, the URL of the copied file is displayed at the bottom of the dialog box.
+
+    Note: Take note of the URL. The copied file is not managed by the System, and you cannot check the URL again after closing the dialog box. If you have created a new bucket, check that the bucket is set to public.
 
 #   
 Register items\</INDEXWORD\>
@@ -3274,6 +3374,54 @@ Table 5‑25. The elements for paging
 > 
 > ![](media/media/image217.png)
 
+
+### Export activities to a TSV file
+
+This section explains how to export activities to a TSV file.
+
+1.  Display the activities list screen with a system administrator or repository administrator account, and click the "All" tab.
+
+2.  Search for the activities to export by using the "Add Filter" button.
+
+    See "Filter the activities list" for details of the procedure.
+
+3.  Click the "Download" button.
+
+    A TSV file is exported.
+
+Table 5-27. The "Download" button
+
+| No. | Element               | Description                                                                                                                                                                                  |
+| --- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | The "Download" button | Displayed only to system administrators and repository administrators. Click to download the activities that match the same search conditions as the activities displayed on the screen as a TSV file. |
+
+### Delete activities
+
+This section explains how to delete activities.
+
+When activities are deleted, a TSV file of the activities is downloaded.
+
+1.  Display the activities list screen with a system administrator or repository administrator account, and click the "All" tab.
+
+2.  Search for the activities to delete by using the "Add Filter" button.
+
+    See "Filter the activities list" for details of the procedure.
+
+3.  To delete all the activities that match the search conditions, click the "Clear" button next to the "Download" button. To delete only one activity, click the "Clear" button in the row of that activity.
+
+    The "Clear Confirm" dialog box appears.
+
+4.  Click "OK" in the confirmation dialog box.
+
+    Note: Deleted activities cannot be restored.
+
+Table 5-28. The "Clear" buttons
+
+| No. | Element                                          | Description                                                                                                                                                                                                              |
+| --- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | The "Clear" button (next to the "Download" button) | Displayed only to system administrators and repository administrators. Click to download the activities that match the same search conditions as the activities displayed on the screen as a TSV file, and delete those activities. |
+| 2   | The "Clear" button (in each row)                 | Displayed only to system administrators and repository administrators. Click to download the selected activity as a TSV file, and delete that activity.                                                                  |
+
 ### LINKID=viewactivitydetails【参照先】View the activity details
 
 This section explains how to view the activity details.
@@ -3299,6 +3447,17 @@ Table 5-26. The elements in the activity details screen
 | 5   | Creator  | Displays the creator of the activity.                                                            |
 | 6   | Updated  | Displays the date the activity was last updated. You must use the display format "*yyyy-mm-dd*". |
 | 7   | Updater  | Displays the user who last updated the activity.                                                 |
+
+
+## Activity lock (v1.0.7)
+
+You cannot run multiple activities at the same time.
+
+If you try to run an activity while another activity is already running, a screen with the message "One user cannot open multiple activities simultaneously." appears. Complete or cancel the running activity.
+
+If you try to open the same activity in multiple tabs, a screen with the message "This activity is being locked" appears. Check whether the activity is open in another tab, close that tab, and then resume the activity.
+
+Note: Depending on the state of the web browser, the System may fail to determine whether an activity is running. In that case, click the "Force Unlock" button and start the activity.
 
 #   
 Edit and delete items\</INDEXWORD\>
@@ -3553,6 +3712,13 @@ LINKID=exportitemstable【参照先】Table 7-1. The elements in the "Items to E
 > 
 > ![](media/media/image236.png)
 
+
+# Upload large files
+
+**This feature has not been released.**
+
+The release of the large file upload feature (a feature for uploading large files from a dedicated screen and, if an upload fails, resuming it from where it stopped by specifying the upload ID) has been postponed. It is not available in the current version.
+
 # Explore communities\</INDEXWORD\>
 
 This chapter provides information on exploring communities.
@@ -3570,6 +3736,17 @@ zu070010.tif![](media/media/image237.png)
 2.  Click on the community name link from the list in the "Communities" screen.
 
 ![](media/media/image238.png)
+
+
+## View the content policy
+
+This section explains how to view the content policy of a community.
+
+1.  Click the "コンテンツポリシー" (Content Policy) tab on the top page of the community.
+
+    Note: The label of this tab is displayed in Japanese regardless of the display language.
+
+2.  The content policy set for the community is displayed.
 
 #   
 Operating tips\</INDEXWORD\>
@@ -3596,23 +3773,23 @@ The "Profile" screen appears.
 
 \<TBLATT POSITION=”1” SCALE=”151”\>
 
-Table 9‑1. The elements in the "Profile" screen
+Table 10‑1. The elements in the "Profile" screen
 
 | No. | Element                                                          | Description                                                                                                                                                            |
 | --- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | The "Username" text box                                          | Enter a username. You can use alphanumeric characters, hyphens (-), and underscores (\_). The minimum length is 3 characters, and the maximum length is 16 characters. |
-| 2   | The "Timezone" pull-down list                                    | Select a time zone from the "Timezone" pull-down list. See "ANCHORID=timezone【参照元】Figure 8-1. The "Timezone" pull-down list【E】".                                       |
-| 3   | The "Language" pull-down list                                    | Select a language from the "Language" pull-down list. See "ANCHORID=gengopulldownlist【参照元】Figure 8-2. The "Language" pull-down list【E】".                               |
+| 2   | The "Timezone" pull-down list                                    | Select a time zone from the "Timezone" pull-down list. See "ANCHORID=timezone【参照元】Figure 10-1. The "Timezone" pull-down list【E】".                                       |
+| 3   | The "Language" pull-down list                                    | Select a language from the "Language" pull-down list. See "ANCHORID=gengopulldownlist【参照元】Figure 10-2. The "Language" pull-down list【E】".                               |
 | 4   | The "Email Address" text box                                     | The input format should be "*XXXXX*＠*XXX.XXX*". You can use alphanumeric characters, hyphens (-), and underscores (\_). The maximum length is 254 characters.          |
 | 5   | The "Re-enter email address" text box                            | Enter the new email address again to confirm that the value you specified in "Email Address" is correct.                                                               |
 | 6   | The icon080020.tif![](media/media/image242.png) button           | Click to close the "Profile" screen without saving the changes you have made.                                                                                          |
 | 7   | The icon080030.tif![icon080030](media/media/image243.png) button | Click to update the profile with the changes and close the "Profile" screen.                                                                                           |
 
-LINKID=timezone【参照先】Figure 9-1. The "Timezone" pull-down list
+LINKID=timezone【参照先】Figure 10-1. The "Timezone" pull-down list
 
 zu080030.tif![](media/media/image244.png)
 
-LINKID=gengopulldownlist【参照先】Figure 9-2. The "Language" pull-down list
+LINKID=gengopulldownlist【参照先】Figure 10-2. The "Language" pull-down list
 
 zu080040.tif![](media/media/image245.png)
 
@@ -3666,7 +3843,7 @@ A screen appears where you can create an action.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 9‑2. The elements in the "New OAuth Application" screen
+Table 10‑2. The elements in the "New OAuth Application" screen
 
 <table>
 <thead>
@@ -3726,7 +3903,7 @@ zu080130.tif![](media/media/image254.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 9‑3. The elements in the "New personal access token" screen
+Table 10‑3. The elements in the "New personal access token" screen
 
 | No. | Element | Description     |
 | --- | ------- | --------------- |
@@ -3811,6 +3988,101 @@ The Administration screen will be displayed. See the System Administration Manua
 
 zu080060.tif![](media/media/image263.png)
 
+
+## Display the cookie consent screen
+
+This section explains how to display the cookie consent screen.
+
+1.  Scroll down the Home screen and click "Change consent settings" at the bottom of the screen.
+
+    The cookie consent screen ("Services we would like to use") appears.
+
+The following table shows the items displayed in the cookie consent screen.
+
+Table 10‑4. The items displayed in the cookie consent screen
+
+| No. | Type        | Purpose                                                                                   | Application                     |
+| --- | ----------- | ----------------------------------------------------------------------------------------- | ------------------------------- |
+| 1   | JAIRO Cloud | Used to improve the quality of the JAIRO Cloud service. This item is required and cannot be disabled. | Google Analytics                |
+| 2   | Analytics   | Analytics                                                                                 | Google Analytics, Facebook, X   |
+
+After completing the settings according to your purpose, click the "Save" button to save the settings.
+
+Note: The "Change consent settings" link is displayed only when the cookie consent feature is enabled in the System.
+
+## Share non-public content using a one-time address
+
+### Secret URL feature
+
+When the Secret URL feature is enabled on the Administration screen, you can issue secret URLs.
+
+A secret URL is a one-time address that can be issued by the contributor (including proxy contributors) of the item, system administrators, and repository administrators. Anyone who knows the URL can download the target content file.
+
+**This feature does not grant new access permissions to, or restrict access via secret URLs to, public content or content that is accessible to site license users through the site license feature.**
+
+The "Secret URL" button is added to the file area of the Information screen when the following conditions are met:
+
+1.  The display of secret URLs is enabled in the "Restricted Access" screen of the Administration screen.
+
+2.  The contributor of the item, a proxy contributor of the item, a repository administrator, or a system administrator is logged in.
+
+3.  The file is set to "Do not Publish", or the file is set to "Input Open Access Date" and the specified date is in the future.
+
+Note: A file can be downloaded through a secret URL only when the index where the item is registered is public and the Publish Status of the item is "Public".
+
+When the Secret URL feature is enabled, the following items are added.
+
+Table 10‑5. The items displayed when the Secret URL feature is enabled
+
+| No. | Element                 | Description                                                                                                                                                                                                                      |
+| --- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | The "Secret URL" button | Click to display the area for creating a secret URL.                                                                                                                                                                             |
+| 2   | Label Name              | Displayed when a secret URL has been created. Displays the link name given when the secret URL was created, or the identifier of the URL if no link name was given.                                                              |
+| 3   | Create Date             | Displayed when a secret URL has been created. Displays the date and time when the secret URL was created.                                                                                                                         |
+| 4   | Expiration Date         | Displayed when a secret URL has been created. Displays the expiration date of the secret URL.                                                                                                                                     |
+| 5   | Download Count          | Displayed when a secret URL has been created. Displays the download count and the download limit of the secret URL.                                                                                                              |
+| 6   | The "Delete" button     | Displayed when a secret URL has been created. Click to display a confirmation dialog box. Clicking the delete button in the dialog box deletes the secret URL. To cancel the deletion, click the close button to close the dialog box. |
+| 7   | The "Copy" button       | Displayed when a secret URL has been created. Click to display a dialog box, and you can copy the issued secret URL to the clipboard. Click the close button in the dialog box to close it.                                      |
+
+Click the "Secret URL" button to display the area for creating a secret URL.
+
+The following table explains the items in the area for creating a secret URL.
+
+Table 10‑6. The items in the area for creating a secret URL
+
+| No. | Element                        | Description                                                                                                                      |
+| --- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | The "Create Secret URL" button | Click to create a secret URL.                                                                                                    |
+| 2   | The "Send Email" check box     | If you select this check box and click the "Create Secret URL" button, a notification email is sent to the account that clicked the "Secret URL" button. |
+| 3   | Link Name                      | Enter the link name of the secret URL to create.                                                                                 |
+| 4   | URL Expiry Date                | Select the expiration date of the secret URL to create from the calendar. The maximum expiration date is displayed below the field.   |
+| 5   | Download Limit                 | Specify the download limit of the secret URL to create. The maximum download count is displayed below the field.                 |
+
+
+# RSS
+
+This chapter explains how to get the new arrivals from the WEKO RSS feed and subscribe to them for each index.
+
+## Get new arrivals by RSS feed for each index
+
+You can get the new arrivals by RSS feed for each index when the RSS icon display setting of the target index is set to "Display". See "Manage the index tree" in the System Administration Manual for more information.
+
+1.  Display "Index List" so that the index for which you want to get the new arrivals is displayed. The RSS icon is displayed for the indexes for which the new arrivals by RSS feed are available.
+
+2.  Click the RSS icon.
+
+    The new arrivals are retrieved from the WEKO RSS feed, and the RSS of the corresponding item list is output.
+
+## Get new arrivals by RSS feed for all indexes
+
+You can get the new arrivals by RSS feed for all indexes when the New arrivals widget is displayed and the RSS feed setting of the widget is enabled. See "Managing widgets" in the System Administration Manual for more information.
+
+1.  Display a screen that has the New arrivals widget. The RSS icon is displayed when the new arrivals by RSS feed are available.
+
+2.  Click the RSS icon.
+
+    The new arrivals are retrieved from the WEKO RSS feed, and the RSS of the corresponding item list is output.
+
 # Workspace
 
 This chapter provides information on the workspace, where you can view and register your own items.
@@ -3833,7 +4105,7 @@ The workspace item list screen appears.
 
 The following table explains the main elements of the workspace item list screen.
 
-Table 10-1. The elements in the workspace item list screen
+Table 12-1. The elements in the workspace item list screen
 
 | No. | Element | Description |
 | --- | ------- | ----------- |
@@ -3853,7 +4125,7 @@ Table 10-1. The elements in the workspace item list screen
 | [v2.1.0] 14  | DOI | Displayed when a related identifier with the identifier type "DOI" and the relation type "isVersionOf" is registered in the related information of the item. Click to go to the DOI link (doi.org). |
 | 15  | Edit | Displays the item edit screen. |
 
-Table 10-2. The elements in the filter condition panel
+Table 12-2. The elements in the filter condition panel
 
 | No. | Element | Description |
 | --- | ------- | ----------- |
@@ -3869,7 +4141,7 @@ Table 10-2. The elements in the filter condition panel
 
 A dialog for selecting the export method appears ("Please select the following option:").
 
-Table 10-3. The elements in the export dialog
+Table 12-3. The elements in the export dialog
 
 | No. | Element | Description |
 | --- | ------- | ----------- |
@@ -3919,7 +4191,7 @@ The retrieved metadata is entered automatically.
 
 5.  Select the index in which to register the item, and click the "Regist" button.
 
-Table 10-4. The elements in the item registration screen of the workspace
+Table 12-4. The elements in the item registration screen of the workspace
 
 | No. | Element | Description |
 | --- | ------- | ----------- |
