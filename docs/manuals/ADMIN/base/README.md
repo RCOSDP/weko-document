@@ -5339,7 +5339,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 <tr class="even">
 <td>Type<sup>※</sup></td>
 <td><p>ウィジェット種別を設定します。</p>
-<p>詳細は、「(1) Typeの設定内容」を参照してください。</p>
+<p>詳細は、「Typeの設定内容」を参照してください。</p>
 <ul>
 <li><p>Free description</p></li>
 <li><p>Access counter</p></li>
@@ -5362,7 +5362,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 </tr>
 <tr class="odd">
 <td>Theme</td>
-<td><p>以下からウィジェットのテーマを設定します。詳細は、「(2) Themeの設定内容」を参照してください。</p>
+<td><p>以下からウィジェットのテーマを設定します。詳細は、「Themeの設定内容」を参照してください。</p>
 <ul>
 <li><p>Default</p></li>
 <li><p>Simple</p></li>
@@ -5384,7 +5384,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 </tr>
 <tr class="odd">
 <td>Border Style</td>
-<td><p>以下からウィジェットの枠線のスタイルを設定します。詳細は、「(3) Border Styleの設定内容」を参照してください。</p>
+<td><p>以下からウィジェットの枠線のスタイルを設定します。詳細は、「Border Styleの設定内容」を参照してください。</p>
 <ul>
 <li><p>None</p></li>
 <li><p>Solid</p></li>
@@ -6360,7 +6360,7 @@ Author IDを編集する方法を説明します。
 
 2. 各項目を入力します。
      
-     入力項目については、「（3）Author IDを追加する」を参照してください。
+     入力項目については、「Author IDを追加する」を参照してください。
 
 3. ［保存］をクリックします。  
      
@@ -6574,7 +6574,7 @@ URLについて
 
 ![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image202.png)
 
-入力項目については、「（2）外部著者ID Prefixを追加する」を参照してください。
+入力項目については、「外部著者ID Prefixを追加する」を参照してください。
 
 3. ［Save］をクリックします。
      
