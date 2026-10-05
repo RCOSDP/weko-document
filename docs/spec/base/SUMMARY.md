@@ -5,6 +5,7 @@
     * [モジュール索引（逆引きリファレンス）](./MODULE_INDEX.md)
     * [開発者ガイド（道しるべ）](./DEV_GUIDE.md)
     * [横断索引](./CROSS_REFERENCE.md)
+    * [用語集](./GLOSSARY.md)
 * [ユーザ機能](./user/README.md)
     * アイテム検索
         * [USER-1-1: 簡易検索（全文検索・キーワード検索）](./user/USER_1_1.md)
@@ -55,8 +56,8 @@
         * [USER-5-2: コンテンツポリシー](./user/USER_5_2.md)
     * ランキング
         * [USER-6-1: ランキング](./user/USER_6_1.md)
-    * 大容量ファイルアップロード
-        * [USER-7-1: ファイルアップロード](./user/USER_7_1.md)
+    * 大容量ファイルアップロード（未リリース）
+        * [USER-7-1: ファイルアップロード（未リリース）](./user/USER_7_1.md)
     * 言語切替
         * [USER-7-2: 言語切替](./user/USER_7_2.md)
     * ユーザーアカウント
@@ -194,6 +195,7 @@
     * [API-17: 承認API](./api/API_17_approval_activity.md)
     * [API-18: CAPTCHA](./api/API_18_CAPTCHA.md)
     * [API-19: リクエストメール送信API](./api/API_19_reqest_mail.md)
+    * [API-20: 一括インポートAPI](./api/API_20_bulk_import.md)
 * [データ構造](./other/README.md)
     * [SCHEMA-1-1: Render](./other/SCHEMA_1_1.md)
     * [SCHEMA-1-2: Schema](./other/SCHEMA_1_2.md)
@@ -216,6 +218,8 @@
     * [プッシュ通知機能](./other/INBOX_01.md)
     * [OAアシスト機能ステータス連携](./other/OA-ASSIST_STATUS_LINKING.md)
     * [Signposting（FAIR Signposting）](./other/SIGNPOSTING_01.md)
+    * [JSONLDインポート文字列置換](./other/JSONLD_IMPORT_REPLACE.md)
+    * [API連携によるレコード追加機能（researchmap）](./other/RESEARCHMAP_LINKAGE.md)
 * [制限公開機能](./restricted_access/README.md)
     * [RESTRICTED_ACCESS-13-1: アイテムタイプ管理（制限公開）](./restricted_access/RESTRICTED_ACCESS_01.md)
     * [RESTRICTED_ACCESS-13-2: アイテム詳細(制限公開)](./restricted_access/RESTRICTED_ACCESS_02.md)
@@ -271,3 +275,4 @@
     * [未病データベースとWEKOの構成](./ams/AMS_ARCHITECTURE_01.md)
     * [未病データベース GakuNin RDMボタン表示](./ams/AMS_GRDM_BUTTON_01.md)
     * [未病データベース Shibboleth対応](./ams/AMS_SHIBBOLETH_01.md)
+    * [未病データベース 拡張メタデータ対応](./ams/AMS_EXTENDED_METADATA.md)

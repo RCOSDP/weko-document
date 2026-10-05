@@ -49,6 +49,12 @@
 
 - セッション: [その他 › セッション管理](other/SESSION_01.md)（`invenio-accounts` ベース。一括登録は `WEKO_ADMIN_IMPORT_PAGE_LIFETIME`）
 - 学認（Shibboleth）: [その他 › Shibboleth対応](other/SHIBBOLETH_01.md)、[ADMIN-14-19](admin/ADMIN_14_19.md)、`weko-accounts`
+- 未認証応答（v2.1.0）: API アプリは 401 JSON、UI アプリは API/AJAX 呼び出しのみ 401 JSON（`weko_accounts.unauthorized`、`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`）。概要は [アーキテクチャ › 認証・権限](ARCHITECTURE.md)
+
+## キャッシュ
+
+- Redis（invenio-cache、`CACHE_TYPE` / `CACHE_REDIS_URL`）。セッションは別 DB（`ACCOUNTS_SESSION_REDIS_URL`）
+- v2.1.0 の短 TTL キャッシュ（検索設定・`AdminSettings`・ランキング・詳細検索条件・Google 用 XML）: [アーキテクチャ › キャッシュ](ARCHITECTURE.md)
 
 ## ログ
 
@@ -71,15 +77,17 @@
 - OAI-PMH: [ADMIN-9-*](admin/ADMIN_9_1.md), [API-2](api/API_02_OAIPMH.md) / `invenio-oaiserver`, `invenio-oaiharvester`
 - ResourceSync: [ADMIN-10-*](admin/ADMIN_10_1.md) / `invenio-resourcesyncserver`, `invenio-resourcesyncclient`
 - SWORD: [ADMIN-16-*](admin/ADMIN_16_1.md), [API-6](api/API_06_sword_api.md) / `weko-swordserver`
-- Signposting: `weko-signposting`
+- Signposting: [その他 › Signposting](other/SIGNPOSTING_01.md) / `weko-signposting`
 - COAR Notify（プッシュ通知）: [プッシュ通知機能](other/INBOX_01.md) / `weko-notifications`
 - GakuNinRDM 連携: [その他 › GakuNinRDM連携](other/WORKFLOW_01.md)
 - 解析基盤連携: [その他 › 解析基盤連携](other/KAISEKI_01.md)
 - OA アシスト連携: [OAアシスト機能ステータス連携](other/OA-ASSIST_STATUS_LINKING.md)
-- researchmap 連携: [researchmap連携機能](user/USER_11_1.md)
+- researchmap 連携: [researchmap連携機能](user/USER_11_1.md)、[API連携によるレコード追加機能](other/RESEARCHMAP_LINKAGE.md)
+- JSON-LD インポート時の文字列置換: [JSONLDインポート文字列置換](other/JSONLD_IMPORT_REPLACE.md)
 
 ## 更新履歴
 
 | 日付 | 更新内容 |
 | --- | --- |
 | 2026/07/15 | 新規作成。config／DB／API エンドポイント／Celery／権限／ログ／ID 等の横断索引ハブとして整備 |
+| 2026/10/05 | release_v2.1.0突合（508030789）：未認証応答（401）とキャッシュの項を追加、Signposting / API連携によるレコード追加 / JSONLDインポート文字列置換へのリンクを追加 |

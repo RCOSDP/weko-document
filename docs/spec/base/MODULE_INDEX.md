@@ -5,7 +5,7 @@ WEKO3 を構成する各モジュールが「何をするか」と、「その�
 
 - **順引き（機能 → モジュール）** は各機能仕様の「関連モジュール」節を参照。
 - **逆引き（モジュール → 機能）** が本ページ。各機能仕様の「関連モジュール」節を機械集計して生成している。
-- モジュール実装は `/home/mhaya/weko/modules/<モジュール名>/` にある。突き合わせ基準は tag `v2.0.2`。
+- モジュール実装は `/home/mhaya/weko/modules/<モジュール名>/` にある。突き合わせ基準は tag `v2.0.2`（release_v2.1.0（508030789）でモジュール構成・主なファイル・逆引きを再確認）。
 - 利用ライブラリ・パッケージの一覧は [その他 › モジュール、ライブラリ](other/MODULE_01.md) を参照。
 - 全体像・レイヤ構造は [アーキテクチャ全体像](ARCHITECTURE.md)、変更作業の入口は [開発者ガイド](DEV_GUIDE.md) を参照。
 
@@ -27,15 +27,15 @@ WEKO3 が Invenio3 上に独自実装した機能群。開発の主対象はほ�
 
 ### `weko-accounts`
 
-WEKO 独自の認証連携（Shibboleth／セキュリティ設定）を invenio-accounts に付加。
+WEKO 独自の認証連携（Shibboleth／セキュリティ設定）を invenio-accounts に付加。v2.1.0 では未認証応答の制御（`unauthorized.py`：API アプリは常に 401 JSON、UI アプリは API/AJAX とみなすリクエストのみ 401 JSON・画面遷移はログイン画面へ。`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`）、ログイン API のレート制限、Shibboleth SP 属性の受け付け元制限（`WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`）も担う。
 
 - 主なファイル: `views.py`, `rest.py`, `api.py`, `models.py`, `config.py`, `admin.py`, `utils.py`
 - 実装: `modules/weko-accounts/`
-- このモジュールを「関連モジュール」に挙げる機能仕様（3件）:
+- このモジュールを「関連モジュール」に挙げる機能仕様（4件）:
     - 管理機能: [Shibboleth](admin/ADMIN_14_19.md)
-    - WebAPI: [Index操作API](api/API_05_index_op.md)
+    - WebAPI: [一括インポートAPI](api/API_20_bulk_import.md) / [Index操作API](api/API_05_index_op.md)
     - ユーザ機能: [ログイン](user/USER_8_2.md)
-- 本文中で言及する機能仕様: 9件
+- 本文中で言及する機能仕様: 10件
 
 ### `weko-admin`
 
@@ -74,12 +74,12 @@ WEKO 独自の認証連携（Shibboleth／セキュリティ設定）を invenio
 
 - 主なファイル: `views.py`, `rest.py`, `api.py`, `tasks.py`, `config.py`, `utils.py`
 - 実装: `modules/weko-deposit/`
-- このモジュールを「関連モジュール」に挙げる機能仕様（12件）:
+- このモジュールを「関連モジュール」に挙げる機能仕様（11件）:
     - 管理機能: [編集](admin/ADMIN_5_1.md) / [RO-Crate インポート](admin/ADMIN_2_5.md) / [一括更新](admin/ADMIN_2_1.md)
     - WebAPI: [OAI-PMH 2.0](api/API_02_OAIPMH.md)
     - その他/データ構造: [Form](other/SCHEMA_1_3.md)
     - 制限公開: [アイテム詳細(制限公開)](restricted_access/RESTRICTED_ACCESS_02.md) / [アイテムタイプ管理（制限公開）](restricted_access/RESTRICTED_ACCESS_01.md)
-    - ユーザ機能: [Item Registration](user/USER_4_4.md) / [Item Registration：ファイルアップロード](user/USER_4_5.md) / [Item Registration：インデックス指定](user/USER_4_9.md) / [メタデータ表示](user/USER_3_1.md) / [ワークスペース：簡易アイテム登録機能](user/USER_10_2.md)
+    - ユーザ機能: [Item Registration](user/USER_4_4.md) / [Item Registration：ファイルアップロード](user/USER_4_5.md) / [Item Registration：インデックス指定](user/USER_4_9.md) / [メタデータ表示](user/USER_3_1.md)
 - 本文中で言及する機能仕様: 9件
 
 ### `weko-gridlayout`
@@ -153,9 +153,10 @@ CNRI Handle による永続識別子の発行。
 - 実装: `modules/weko-items-ui/`
 - このモジュールを「関連モジュール」に挙げる機能仕様（21件）:
     - 管理機能: [ランキング表示](admin/ADMIN_14_5.md) / [CRIS連携](admin/ADMIN_14_23.md)
+    - WebAPI: [一括インポートAPI](api/API_20_bulk_import.md)
     - その他/データ構造: [Schema](other/SCHEMA_1_2.md) / [Form](other/SCHEMA_1_3.md)
     - 制限公開: [アイテムタイプ管理（制限公開）](restricted_access/RESTRICTED_ACCESS_01.md)
-    - ユーザ機能: [Item Registration](user/USER_4_4.md) / [目次形式表示](user/USER_2_2.md) / [ランキング](user/USER_6_1.md) / [Item Registration：コンテンツ未登録時の制限公開機能](user/USER_4_16.md) / [アイテム一括出力](user/USER_2_4.md) / [一覧形式表示](user/USER_2_1.md) / [Item Registration：インデックス指定](user/USER_4_9.md) / [Item Registration：リクエストメール機能](user/USER_4_17.md) / [ワークスペース：メタデータ自動補完機能](user/USER_10_3.md) / [RSS](user/USER_1_5.md) / [USER-1-1: 簡易検索（全文検索・キーワード検索）](user/USER_1_1.md) / [詳細検索](user/USER_1_2.md) / [ワークスペース：簡易アイテム登録機能](user/USER_10_2.md) / [Item Registration：代理投稿](user/USER_4_7.md) / [ファセット検索](user/USER_1_4.md) / [Item Registration：メタデータ入力](user/USER_4_6.md)
+    - ユーザ機能: [Item Registration](user/USER_4_4.md) / [目次形式表示](user/USER_2_2.md) / [ランキング](user/USER_6_1.md) / [Item Registration：コンテンツ未登録時の制限公開機能](user/USER_4_16.md) / [アイテム一括出力](user/USER_2_4.md) / [一覧形式表示](user/USER_2_1.md) / [Item Registration：インデックス指定](user/USER_4_9.md) / [Item Registration：リクエストメール機能](user/USER_4_17.md) / [ワークスペース：メタデータ自動補完機能](user/USER_10_3.md) / [RSS](user/USER_1_5.md) / [USER-1-1: 簡易検索（全文検索・キーワード検索）](user/USER_1_1.md) / [詳細検索](user/USER_1_2.md) / [Item Registration：代理投稿](user/USER_4_7.md) / [ファセット検索](user/USER_1_4.md) / [Item Registration：メタデータ入力](user/USER_4_6.md)
 - 本文中で言及する機能仕様: 19件
 
 ### `weko-itemtypes-ui`
@@ -215,7 +216,7 @@ COAR Notify 準拠のプッシュ通知（inbox）機能。
     - 制限公開: [アイテム詳細(制限公開)](restricted_access/RESTRICTED_ACCESS_02.md) / [アイテムタイプ管理（制限公開）](restricted_access/RESTRICTED_ACCESS_01.md)
     - ツール: [Render](tools/TOOL_01.md)
     - ユーザ機能: [ワークスペース：アイテム一覧情報取得](user/USER_10_1.md) / [目次形式表示](user/USER_2_2.md) / [Google Scholar メタデータ出力](user/USER_3_8.md) / [共有](user/USER_3_6.md) / [一覧形式表示](user/USER_2_1.md) / [Item Registration：ファイルアップロード](user/USER_4_5.md) / [Item Registration：フィードバックメール機能](user/USER_4_8.md) / [Item Link](user/USER_4_11.md) / [統計情報表示](user/USER_3_5.md) / [メタデータ表示](user/USER_3_1.md) / [RSS](user/USER_1_5.md) / [アイテムバージョン管理](user/USER_3_3.md) / [Google Dataset メタデータ出力](user/USER_3_9.md) / [USER-1-1: 簡易検索（全文検索・キーワード検索）](user/USER_1_1.md) / [引用情報表示](user/USER_3_4.md) / [所属コミュニティ情報表示](user/USER_3_10.md) / [コンテンツファイル管理](user/USER_3_2.md) / [アイテム利用申請機能](user/USER_3_13.md) / [リクエスト機能](user/USER_3_11.md)
-- 本文中で言及する機能仕様: 39件
+- 本文中で言及する機能仕様: 42件
 
 ### `weko-records-ui`
 
@@ -258,12 +259,12 @@ Redis 接続ヘルパ。
 
 - 主なファイル: `views.py`, `rest.py`, `api.py`, `tasks.py`, `config.py`, `permissions.py`, `admin.py`, `utils.py`
 - 実装: `modules/weko-search-ui/`
-- このモジュールを「関連モジュール」に挙げる機能仕様（22件）:
+- このモジュールを「関連モジュール」に挙げる機能仕様（24件）:
     - 管理機能: [一括エクスポート](admin/ADMIN_2_3.md) / [一括削除](admin/ADMIN_2_2.md) / [カスタムソート](admin/ADMIN_3_3.md) / [エクスポート (基本監査ログ)](admin/ADMIN_17_1.md) / [RO-Crate インポート](admin/ADMIN_2_5.md) / [フィードバックメール](admin/ADMIN_6_2.md) / [インポート](admin/ADMIN_2_4.md) / [一括更新](admin/ADMIN_2_1.md) / [JSON-LD マッピング](admin/ADMIN_1_5.md)
-    - WebAPI: [SWORD API](api/API_06_sword_api.md) / [アイテム検索用API](api/API_12_item_search_RO-Crate.md)
+    - WebAPI: [一括インポートAPI](api/API_20_bulk_import.md) / [SWORD API](api/API_06_sword_api.md) / [アイテム検索用API](api/API_12_item_search_RO-Crate.md) / [OAI-PMH 2.0](api/API_02_OAIPMH.md)
     - その他/データ構造: [利用統計ログ](other/USAGE_LOG.md)
     - ユーザ機能: [ワークスペース：アイテム一覧情報取得](user/USER_10_1.md) / [目次形式表示](user/USER_2_2.md) / [一覧形式表示](user/USER_2_1.md) / [インデックス検索](user/USER_1_3.md) / [Item Link](user/USER_4_11.md) / [RSS](user/USER_1_5.md) / [USER-1-1: 簡易検索（全文検索・キーワード検索）](user/USER_1_1.md) / [詳細検索](user/USER_1_2.md) / [雑誌情報](user/USER_2_3.md) / [ファセット検索](user/USER_1_4.md)
-- 本文中で言及する機能仕様: 32件
+- 本文中で言及する機能仕様: 37件
 
 ### `weko-signposting`
 
@@ -326,13 +327,13 @@ SWORD（v3）によるアイテム受入 API。
 
 - 主なファイル: `views.py`, `rest.py`, `api.py`, `models.py`, `tasks.py`, `config.py`, `admin.py`, `utils.py`
 - 実装: `modules/weko-workflow/`
-- このモジュールを「関連モジュール」に挙げる機能仕様（27件）:
+- このモジュールを「関連モジュール」に挙げる機能仕様（26件）:
     - 管理機能: [ワークフロー](admin/ADMIN_7_2.md) / [ワークスペース設定](admin/ADMIN_7_3.md) / [SWORD API JSON-LD](admin/ADMIN_16_2.md) / [フロー](admin/ADMIN_7_1.md)
     - WebAPI: [SWORD API](api/API_06_sword_api.md)
     - その他/データ構造: [利用統計ログ](other/USAGE_LOG.md) / [登録完了・承認通知機能](other/INBOX_01.md)
     - 制限公開: [ワークフロー管理（制限公開）](restricted_access/RESTRICTED_ACCESS_03.md) / [プロフィール表示設定](restricted_access/RESTRICTED_ACCESS_05.md) / [メールテンプレート](restricted_access/RESTRICTED_ACCESS_04.md) / [アイテム詳細(制限公開)](restricted_access/RESTRICTED_ACCESS_02.md) / [アイテムタイプ管理（制限公開）](restricted_access/RESTRICTED_ACCESS_01.md)
-    - ユーザ機能: [Item Registration](user/USER_4_4.md) / [ワークフロー](user/USER_4_3.md) / [OA Policy Confirmation（現在非対応）](user/USER_4_12.md) / [Item Registration：ファイルアップロード](user/USER_4_5.md) / [Item Registration：フィードバックメール機能](user/USER_4_8.md) / [Item Registration：インデックス指定](user/USER_4_9.md) / [Item Link](user/USER_4_11.md) / [ワークフロー一覧表示](user/USER_4_2.md) / [Identifier Grant](user/USER_4_10.md) / [Approval](user/USER_4_13.md) / [所属コミュニティ情報表示](user/USER_3_10.md) / [ワークスペース：簡易アイテム登録機能](user/USER_10_2.md) / [Item Registration：代理投稿](user/USER_4_7.md) / [アイテム利用申請機能](user/USER_3_13.md) / [Item Registration：メタデータ入力](user/USER_4_6.md)
-- 本文中で言及する機能仕様: 16件
+    - ユーザ機能: [Item Registration](user/USER_4_4.md) / [ワークフロー](user/USER_4_3.md) / [OA Policy Confirmation（現在非対応）](user/USER_4_12.md) / [Item Registration：ファイルアップロード](user/USER_4_5.md) / [Item Registration：フィードバックメール機能](user/USER_4_8.md) / [Item Registration：インデックス指定](user/USER_4_9.md) / [Item Link](user/USER_4_11.md) / [ワークフロー一覧表示](user/USER_4_2.md) / [Identifier Grant](user/USER_4_10.md) / [Approval](user/USER_4_13.md) / [所属コミュニティ情報表示](user/USER_3_10.md) / [Item Registration：代理投稿](user/USER_4_7.md) / [アイテム利用申請機能](user/USER_3_13.md) / [Item Registration：メタデータ入力](user/USER_4_6.md)
+- 本文中で言及する機能仕様: 17件
 
 ### `weko-workspace`
 
@@ -343,7 +344,7 @@ SWORD（v3）によるアイテム受入 API。
 - このモジュールを「関連モジュール」に挙げる機能仕様（3件）:
     - 制限公開: [プロフィール表示設定](restricted_access/RESTRICTED_ACCESS_05.md)
     - ユーザ機能: [ワークスペース：アイテム一覧情報取得](user/USER_10_1.md) / [ワークスペース：メタデータ自動補完機能](user/USER_10_3.md)
-- 本文中で言及する機能仕様: 4件
+- 本文中で言及する機能仕様: 3件
 
 ---
 
@@ -406,9 +407,9 @@ SQLAlchemy によるDB接続・マイグレーション管理の基盤。
 
 ### `invenio-iiif`
 
-IIIF 画像 API（画像プレビュー／変換）。
+IIIF 画像 API（画像プレビュー／変換）とマニフェスト。v2.1.0 から `permissions.py`（`iiif_object_permission_factory`）で画像配信時にファイルの閲覧権限を、マニフェストでは `weko_records_ui.permissions:page_permission_factory` でレコードの閲覧権限を判定する（サムネイル作成タスクは権限判定なし）。
 
-- 主なファイル: `views.py`, `tasks.py`, `config.py`, `utils.py`
+- 主なファイル: `views.py`, `tasks.py`, `config.py`, `permissions.py`, `utils.py`
 - 実装: `modules/invenio-iiif/`
 - 本文中で言及する機能仕様: 2件
 
@@ -452,7 +453,7 @@ OAI-PMH サーバ（メタデータの外部提供）。
     - WebAPI: [OAI-PMH 2.0](api/API_02_OAIPMH.md)
     - その他/データ構造: [Signposting（FAIR Signposting）](other/SIGNPOSTING_01.md)
     - ユーザ機能: [エクスポート](user/USER_3_7.md)
-- 本文中で言及する機能仕様: 6件
+- 本文中で言及する機能仕様: 8件
 
 ### `invenio-oauth2server`
 
@@ -460,9 +461,9 @@ OAuth2 サーバ（WebAPI のトークン／スコープ管理）。
 
 - 主なファイル: `models.py`, `config.py`, `admin.py`, `utils.py`
 - 実装: `modules/invenio-oauth2server/`
-- このモジュールを「関連モジュール」に挙げる機能仕様（3件）:
+- このモジュールを「関連モジュール」に挙げる機能仕様（4件）:
     - 管理機能: [OAuthアプリケーション](admin/ADMIN_13_8.md) / [OAuthアプリケーショントークン](admin/ADMIN_13_7.md)
-    - WebAPI: [SWORD API](api/API_06_sword_api.md)
+    - WebAPI: [一括インポートAPI](api/API_20_bulk_import.md) / [SWORD API](api/API_06_sword_api.md)
 - 本文中で言及する機能仕様: 7件
 
 ### `invenio-previewer`
@@ -487,10 +488,11 @@ OAuth2 サーバ（WebAPI のトークン／スコープ管理）。
 
 - 主なファイル: `views.py`, `api.py`, `models.py`, `config.py`, `admin.py`
 - 実装: `modules/invenio-records/`
-- このモジュールを「関連モジュール」に挙げる機能仕様（6件）:
+- このモジュールを「関連モジュール」に挙げる機能仕様（7件）:
     - 管理機能: [レコードメタデータ](admin/ADMIN_11_2.md)
+    - WebAPI: [OAI-PMH 2.0](api/API_02_OAIPMH.md)
     - ユーザ機能: [一覧形式表示](user/USER_2_1.md) / [メタデータ表示](user/USER_3_1.md) / [エクスポート](user/USER_3_7.md) / [引用情報表示](user/USER_3_4.md) / [ファセット検索](user/USER_1_4.md)
-- 本文中で言及する機能仕様: 9件
+- 本文中で言及する機能仕様: 13件
 
 ### `invenio-records-rest`
 
@@ -500,7 +502,7 @@ OAuth2 サーバ（WebAPI のトークン／スコープ管理）。
 - 実装: `modules/invenio-records-rest/`
 - このモジュールを「関連モジュール」に挙げる機能仕様（3件）:
     - ユーザ機能: [一覧形式表示](user/USER_2_1.md) / [引用情報表示](user/USER_3_4.md) / [ファセット検索](user/USER_1_4.md)
-- 本文中で言及する機能仕様: 7件
+- 本文中で言及する機能仕様: 8件
 
 ### `invenio-resourcesyncclient`
 
@@ -514,9 +516,9 @@ ResourceSync クライアント（Resync による外部リソース取り込み
 
 ### `invenio-resourcesyncserver`
 
-ResourceSync サーバ（Resource List／Change List の公開）。
+ResourceSync サーバ（Resource List／Change List の公開）。v2.1.0 から `permissions.py`（`is_public_record` / `can_download_file` / `public_record_required`）で配信対象を公開アイテム・ダウンロード可能なファイルに限る。
 
-- 主なファイル: `views.py`, `api.py`, `models.py`, `config.py`, `admin.py`, `utils.py`
+- 主なファイル: `views.py`, `api.py`, `models.py`, `config.py`, `permissions.py`, `admin.py`, `utils.py`
 - 実装: `modules/invenio-resourcesyncserver/`
 - このモジュールを「関連モジュール」に挙げる機能仕様（2件）:
     - 管理機能: [Resource List](admin/ADMIN_10_1.md) / [Change List](admin/ADMIN_10_2.md)
@@ -524,7 +526,7 @@ ResourceSync サーバ（Resource List／Change List の公開）。
 
 ### `invenio-s3`
 
-S3 互換オブジェクトストレージ対応。
+S3 互換オブジェクトストレージ対応。v2.1.0 でクライアントへのダウンロード用の読み取り専用アクセスキー（`S3_READONLY_ACCESS_KEY_ID` / `S3_READONLY_SECRET_ACCESS_KEY`、既定 `None`）を追加。
 
 - 主なファイル: `config.py`
 - 実装: `modules/invenio-s3/`
@@ -558,3 +560,4 @@ S3 互換オブジェクトストレージ対応。
 | 日付 | 更新内容 |
 | --- | --- |
 | 2026/07/15 | 新規作成。49 ディレクトリ（実モジュール47＋非モジュール2）について、説明と機能仕様の逆引きを整備（tag v2.0.2 で突き合わせ） |
+| 2026/10/05 | release_v2.1.0突合（508030789）：49 ディレクトリ構成に変化なしを確認。`spec/tools/generate_module_index.py` で逆引き・主なファイルを再生成（invenio-iiif / invenio-resourcesyncserver に `permissions.py` 追加、API_20 等の新規参照反映）。weko-accounts / invenio-iiif / invenio-resourcesyncserver / invenio-s3 の説明に v2.1.0 の変更を追記 |
