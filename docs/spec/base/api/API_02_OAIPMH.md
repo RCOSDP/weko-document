@@ -65,7 +65,7 @@ https://[host]/oai?verb=GetRecord&metadataPrefix=jpcoar_2.0&identifier=https://d
 </GetRecord>
 </OAI-PMH>
 ```
-- `WEKO_SEARCH_FIX_ACCESSRIGHTS`（weko-search-ui、既定 `False`）を `True` にしている場合、エンバーゴ解除（open access 化）と判定されたアイテムは、エンバーゴ期間が終了した日付（公開日）とレコードの更新日を比較して新しい日付が datestamp に出力される（`invenio_records.api.Record.updated`）。
+- 【v2.1.0】`WEKO_SEARCH_FIX_ACCESSRIGHTS`（weko-search-ui、既定 `False`）を `True` にしている場合、エンバーゴ解除（open access 化）と判定されたアイテムは、エンバーゴ期間が終了した日付（公開日）とレコードの更新日を比較して新しい日付が datestamp に出力される（`invenio_records.api.Record.updated`）。
 - 上記以外は `records_metadata` テーブルの `updated` が出力される。
 
 idDoesNotExist　の例。
@@ -279,7 +279,7 @@ identifier：アイテムに利用可能なメタデータフォーマットが�
 </ListRecords>
 </OAI-PMH>
 ```
-- `WEKO_SEARCH_FIX_ACCESSRIGHTS`（weko-search-ui、既定 `False`）を `True` にしている場合、エンバーゴ解除（open access 化）と判定されたアイテムは、エンバーゴ期間が終了した日付（公開日）とレコードの更新日を比較して新しい日付が datestamp に出力される（`invenio_records.api.Record.updated`）。
+- 【v2.1.0】`WEKO_SEARCH_FIX_ACCESSRIGHTS`（weko-search-ui、既定 `False`）を `True` にしている場合、エンバーゴ解除（open access 化）と判定されたアイテムは、エンバーゴ期間が終了した日付（公開日）とレコードの更新日を比較して新しい日付が datestamp に出力される（`invenio_records.api.Record.updated`）。
 - 上記以外は `records_metadata` テーブルの `updated` が出力される。
 
 #### 処理概要
@@ -377,7 +377,7 @@ resumptionToken：リポジトリが応答する際に不完全リストとセ�
 > - エラーは marshmallow の `ValidationError` 等を HTTP 422 でXML返却する。`noSetHierarchy` はインデックスを常にsetとして扱うため実装上発行されない。
 > - 主なconfig：`OAISERVER_PAGE_SIZE` / `OAISERVER_GRANULARITY` / `OAISERVER_PROTOCOL_VERSION` / `OAISERVER_RESUMPTION_TOKEN_EXPIRE_TIME` / `OAISERVER_METADATA_FORMATS` / `OAISERVER_CODE_NO_RECORDS_MATCH` / `OAISERVER_MESSAGE_NO_RECORDS_MATCH`、`INDEXER_DEFAULT_INDEX`。
 
-> 実装補足（v2.1.0：エンバーゴ考慮）：
+> 【v2.1.0】実装補足（v2.1.0：エンバーゴ考慮）：
 > - `weko_search_ui/config.py` の `WEKO_SEARCH_FIX_ACCESSRIGHTS`（既定 `False`）が `True` の環境では、ListRecords/ListIdentifiers の from/until 絞り込みが `invenio_oaiserver/query.py` の `range_query`（`get_records` から呼び出し）に切り替わり、エンバーゴ解除（公開日到来）アイテムを収集対象に含める。`range_query` はエンバーゴアイテム（accessRights=embargoed access）について `content.accessrole.raw`=open_date とその公開日（`content.date.dateValue.raw`）および `_updated` の双方で期間内外を判定する。
 > - 併せて `invenio_records/api.py` の `Record.updated` プロパティが、エンバーゴ解除（open access 化）と判定されたアイテムの更新日時（datestamp）を `max(元のupdated, 最新の公開日)` に繰り上げる。
 > - `WEKO_SEARCH_FIX_ACCESSRIGHTS`=False（既定）の場合は素の `_updated` レンジ・素の更新日時による従来動作。

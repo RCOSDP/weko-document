@@ -199,7 +199,7 @@ curl -X PUT https://192.168.56.101/sword/deposit/1   -F "file=@import.zip;type=a
 
   - recid
       - アイテムIDを指定する
-      - 更新ファイル内のアイテムIDは recid と一致している必要がある（一致しない場合は 400 `BadRequest`：`Item id does not match. ...`）。ファイルにアイテムIDが無い場合は、`weko_search_ui.utils.handle_check_exist_record` がリクエストURLの recid（`request.view_args`）で補完し、URIが無い場合は `<host>/records/<アイテムID>` で補完する。補完後のIDが既存アイテムとして存在しない（status=new）場合は 400
+      - 【v2.1.0】更新ファイル内のアイテムIDは recid と一致している必要がある（一致しない場合は 400 `BadRequest`：`Item id does not match. ...`）。ファイルにアイテムIDが無い場合は、`weko_search_ui.utils.handle_check_exist_record` がリクエストURLの recid（`request.view_args`）で補完し、URIが無い場合は `<host>/records/<アイテムID>` で補完する。補完後のIDが既存アイテムとして存在しない（status=new）場合は 400
 
   - -F オプション
       - POSTするファイルを指定する。自動的にContent-Typeは"multipart/form-data"となる
@@ -232,7 +232,7 @@ curl -X DELETE https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer D
 ※ 〇：利用可能、△：一部機能のみ利用可能、×：利用不可
 
 - アイテムを操作可能なAPIは、システム管理者、リポジトリ管理者、コミュニティ管理者、および Contributor ロールを持つ登録ユーザーが利用可能（[設定値:22](#conf22) `WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE`）。
-- v2.1.0 では、登録可能ロールの設定はリクエストごとに `current_app.config` から参照される（`decorators.check_deposit_role`）。このため instance.cfg 等で `WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE` を上書きした場合、その値が POST/PUT/DELETE のロール判定に反映される（v2.0.x まではモジュール読み込み時の既定値で固定されており、上書きが効かなかった）。ロールを持たない場合は 403（`Forbidden` の[エラードキュメント](#エラードキュメント)）となる。
+- 【v2.1.0】v2.1.0 では、登録可能ロールの設定はリクエストごとに `current_app.config` から参照される（`decorators.check_deposit_role`）。このため instance.cfg 等で `WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE` を上書きした場合、その値が POST/PUT/DELETE のロール判定に反映される（v2.0.x まではモジュール読み込み時の既定値で固定されており、上書きが効かなかった）。ロールを持たない場合は 403（`Forbidden` の[エラードキュメント](#エラードキュメント)）となる。
 
 ## 機能内容
 
@@ -467,7 +467,7 @@ DELETE /sword/deposit/\<recid\>
 
 | 観点                 | 直接登録（Direct）                                                                     | ワークフロー登録（Workflow）                                                                                                                                       |
 | -------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ドキュメント生成処理 | `_get_status_document`<br/>（複数アイテム時 `_get_status_multi_document(register_type="Direct")`） | `_get_status_workflow_document`<br/>（複数アイテム時 `_get_status_multi_document(register_type="Workflow")`）                                                       |
+| 【v2.1.0】ドキュメント生成処理 | `_get_status_document`<br/>（複数アイテム時 `_get_status_multi_document(register_type="Direct")`） | `_get_status_workflow_document`<br/>（複数アイテム時 `_get_status_multi_document(register_type="Workflow")`）                                                       |
 | 必要スコープ         | `deposit:write`、`deposit:actions`、`item:create`／`item:update`／`item:delete`        | 上記に加えて `user:activity` が必須。付与されていない場合は 403（`Forbidden`）を返す。                                                                             |
 | POST のレスポンスコード | 201                                                                                   | 承認アクションで停止した場合：**202**<br/>承認不要のワークフローで最後（`end_action`）まで完了した場合：**201**                                                    |
 | PUT のレスポンスコード  | 200                                                                                   | 承認アクションで停止した場合：**202**<br/>承認不要のワークフローで完了した場合：**200**                                                                            |
@@ -475,18 +475,18 @@ DELETE /sword/deposit/\<recid\>
 | `@type`              | `Status`                                                                                | 単一アイテム時は **`ServiceDocument`**（実装上そのように出力される）<br/>複数アイテム時は `Status`                                                                  |
 | `state[].@id`        | `http://purl.org/net/sword/3.0/state/ingested`                                          | `http://purl.org/net/sword/3.0/state/inWorkflow`                                                                                                                       |
 | `eTag`               | 出力する（レコードのリビジョン番号）                                                    | **出力しない**（単一・複数いずれの場合も）                                                                                                                          |
-| `links`              | レコード詳細画面URL → 各ファイル → DOI/CNRIハンドル（permalink）                       | **先頭にアクティビティ詳細画面URL** → レコード詳細画面URL → 各ファイル<br/>DOI/CNRIハンドルのリンクは出力しない（単一アイテム時）                                   |
-| ファイルのリンク元   | レコードのメタデータ（`_get_file_info`）                                                | アクティビティの一時データ（`workflow_activity.temp_data`）。URLは `https://[INVENIO_WEB_HOST_NAME]/record/[recid]/files/[ファイル名]` 形式となる。一時データが無い場合はレコードのメタデータを参照する。 |
+| 【v2.1.0】`links`              | レコード詳細画面URL → 各ファイル → DOI/CNRIハンドル（permalink）                       | **先頭にアクティビティ詳細画面URL** → レコード詳細画面URL → 各ファイル<br/>DOI/CNRIハンドルのリンクは出力しない（単一アイテム時）                                   |
+| 【v2.1.0】ファイルのリンク元   | レコードのメタデータ（`_get_file_info`）                                                | アクティビティの一時データ（`workflow_activity.temp_data`）。URLは `https://[INVENIO_WEB_HOST_NAME]/record/[recid]/files/[ファイル名]` 形式となる。一時データが無い場合はレコードのメタデータを参照する。 |
 | アクティビティID     | －                                                                                      | 登録・更新のアクティビティは `A-YYYYMMDD-NNNNN`、削除のアクティビティは `D-YYYYMMDD-NNNNN` 形式となる。                                                             |
 
-`links` に出力されるURLは項目ごとに生成元が異なる（実装上、下記の3系統が混在する）。
+【v2.1.0】`links` に出力されるURLは項目ごとに生成元が異なる（実装上、下記の3系統が混在する）。
 リバースプロキシ配下などで各設定値が一致していない場合、1つのレスポンス内でホスト名が揃わないことがある。
 
 - アクティビティ詳細画面URL・ステータスドキュメントの `@id`：`url_for(..., _external=True)`（`SERVER_NAME`）
 - レコード詳細画面URL（`links[].@id`、`derivedFrom`）：`request.url_root`（リクエストのホスト）
 - ファイルURL：ワークフロー経由時は環境変数 `INVENIO_WEB_HOST_NAME`、直接登録時（およびレコード参照時）はレコードのメタデータに保存されたURL
 
-また、階層を持つファイル（例 `data/sample.rst`）はインポート時にファイル名がURLエンコードされて
+【v2.1.0】また、階層を持つファイル（例 `data/sample.rst`）はインポート時にファイル名がURLエンコードされて
 フラット化されるため、ファイルURLは `.../files/data%2Fsample.rst` のような形になる。
 
 #### レスポンス例：POST /sword/service-document（直接登録・201）
@@ -565,13 +565,13 @@ Content-Type: application/json
 
 - 先頭の `links` がアクティビティ詳細画面のURLであり、クライアントはこのURLから承認状況を確認する。
 - `eTag` は出力されない。また `@type` は `Status` ではなく `ServiceDocument` となる。
-- ファイルのリンクはアクティビティの一時データ（`workflow_activity.temp_data`）から生成されるため、
+- 【v2.1.0】ファイルのリンクはアクティビティの一時データ（`workflow_activity.temp_data`）から生成されるため、
   この時点ではファイルURLのホストが環境変数 `INVENIO_WEB_HOST_NAME` に基づく。
 - 承認不要のワークフローで最後まで実行された場合も、レスポンスコードが 201 になるだけでボディの `state` は `inWorkflow` のままとなる（次の例を参照）。
 
 #### レスポンス例：POST /sword/service-document（ワークフロー登録・アイテム分割）
 
-[アイテム分割機能](#アイテム分割機能)により複数アイテムが登録された場合は `_get_status_multi_document` が使用され、
+【v2.1.0】[アイテム分割機能](#アイテム分割機能)により複数アイテムが登録された場合は `_get_status_multi_document` が使用され、
 アクティビティ詳細画面URL、レコード詳細画面URL、ファイルの順に整列した `links` を返す。
 アイテムリンクが設定されている場合、リンク先アイテムの情報を `log` に出力する。
 
@@ -649,7 +649,7 @@ Content-Type: application/json
 
 #### レスポンス例：POST /sword/service-document（直接登録・アイテム分割・201）
 
-同じリクエストを直接登録の設定で実行した場合の実測値。
+【v2.1.0】同じリクエストを直接登録の設定で実行した場合の実測値。
 アクティビティのリンクが出力されず、`state` は `ingested`、`eTag`（最後に登録したアイテムのリビジョン番号）が出力される。
 
 ```http
@@ -731,7 +731,7 @@ Content-Type: text/html; charset=utf-8
     - `eTag`：アイテムのリビジョン番号。ワークフローの進行によりレコードが更新されると値が増加する（実測では承認前 `3` → 承認後 `7`）。
     - `links`：DOI・CNRIハンドルが付与された後は permalink のリンクが追加される。
       また、レコードにファイル情報が反映されるとファイルのリンク（`rel:["http://purl.org/net/sword/3.0/terms/fileSetFile"]`）が増減する。
-- ファイルのリンクは承認前から出力される。アイテム登録アクションの時点でメタデータとファイル情報が
+- 【v2.1.0】ファイルのリンクは承認前から出力される。アイテム登録アクションの時点でメタデータとファイル情報が
   レコード（デポジット）に保存されるため、承認待ちの状態でもレコードのメタデータからファイルのリンクが生成される。
 - アクティビティ詳細画面のURLは POST / PUT のレスポンスにのみ含まれ、`GET /sword/deposit/<recid>` のレスポンスには含まれない。
 - ただし、**削除をワークフロー経由で行った場合のみ**、承認によってアイテムが削除されるため、
@@ -931,7 +931,7 @@ Content-Type: application/json
 | fileSet                      | object  | ファイルセットを示すオブジェクト。  現時点では空オブジェクトを返す。                                                                   |
 | fileSet.@id                  | string  | ファイルセットのURL。                                                                                                                  |
 | fileSet.eTag                 | string  | ファイルセットのeTag。                                                                                                                 |
-| links                        | array   | アイテムのリンクを示すオブジェクト。  アイテム詳細ページのURL（`rel:["alternate"]`）を出力する。DOIやCNRIハンドル（permalink/DOI）を持つ場合も同様に出力する。加えて、アイテムの各ファイルへのリンク（`rel:["http://purl.org/net/sword/3.0/terms/fileSetFile"]`、`derivedFrom` にレコードURL。生成は `_get_file_info`）を出力する。ワークフロー経由の複数アイテム登録時は、アクティビティ詳細画面URL（`rel:["alternate"]`）とレコード間参照の `log` も出力する。並び順は `_sort_links_for_status`（activity→record→file→other）で整列する。 |
+| 【v2.1.0】links                        | array   | アイテムのリンクを示すオブジェクト。  アイテム詳細ページのURL（`rel:["alternate"]`）を出力する。DOIやCNRIハンドル（permalink/DOI）を持つ場合も同様に出力する。加えて、アイテムの各ファイルへのリンク（`rel:["http://purl.org/net/sword/3.0/terms/fileSetFile"]`、`derivedFrom` にレコードURL。生成は `_get_file_info`）を出力する。ワークフロー経由の複数アイテム登録時は、アクティビティ詳細画面URL（`rel:["alternate"]`）とレコード間参照の `log` も出力する。並び順は `_sort_links_for_status`（activity→record→file→other）で整列する。 |
 | links[].@id                  | string  | リソースのURL。                                                                                                                        |
 | links[].byReference          | string  | byReference deposit の際の参照元URL。                                                                                                  |
 | links[].contentType          | string  | リソースのコンテンツタイプ。                                                                                                           |
@@ -945,7 +945,7 @@ Content-Type: application/json
 | links[].eTag                 | string  | リソースのeTag。                                                                                                                       |
 | links[].log                  | string  | クライアントが知っておくべきデポジットに関連する情報。                                                                                 |
 | links[].packaging            | string  | リソースがパッケージである場合、パッケージ形式の識別子を示す。                                                                         |
-| links[].rel                  | string  | リソースとオブジェクトの関係。  以下の何れかの文字列を持つ。<ul><li>alternate</li><li>packaging</li><li>depositedOn</li><li>depositedOnBehalfOf</li><li>status</li><li>log</li><li>dcterms:relation</li><li>dcterms:replaces</li><li>dcterms:isReplacedBy</li><li>versionReplaced</li><li>eTag</li><li>byReference</li><li>derivedFrom</li><li>metadataFormat</li><li>http://purl.org/net/sword/3.0/terms/fileSetFile</li></ul>（`fileSetFile` は `WEKO_SWORDSERVER_SWORD_VERSION` と `WEKO_SWORDSERVER_FILE_SET_FILE` の連結で生成する） |
+| 【v2.1.0】links[].rel                  | string  | リソースとオブジェクトの関係。  以下の何れかの文字列を持つ。<ul><li>alternate</li><li>packaging</li><li>depositedOn</li><li>depositedOnBehalfOf</li><li>status</li><li>log</li><li>dcterms:relation</li><li>dcterms:replaces</li><li>dcterms:isReplacedBy</li><li>versionReplaced</li><li>eTag</li><li>byReference</li><li>derivedFrom</li><li>metadataFormat</li><li>http://purl.org/net/sword/3.0/terms/fileSetFile</li></ul>（`fileSetFile` は `WEKO_SWORDSERVER_SWORD_VERSION` と `WEKO_SWORDSERVER_FILE_SET_FILE` の連結で生成する） |
 | links[].status               | string  | 取り込みに関するリソースのステータス。                                                                                                 |
 | links[].versionReplacedOn    | string  | 現在のリソースが新しいリソースに置き換えられた日付。                                                                                   |
 | metadata                     | object  | メタデータを示すオブジェクト。  現時点では空オブジェクトを返す。                                                                       |
@@ -953,7 +953,7 @@ Content-Type: application/json
 | metadata.eTag                | string  | メタデータのeTag。                                                                                                                     |
 | service                      | string  | サービスドキュメントのURL。                                                                                                            |
 | state                        | array   | アイテムがサーバー上にある状態のリスト。                                                                                               |
-| state[].@id                  | string  | 状態の識別子。直接登録の場合は"http://purl.org/net/sword/3.0/state/ingested"（`_get_status_document`、eTag=リビジョン番号）、ワークフロー経由登録の場合は"http://purl.org/net/sword/3.0/state/inWorkflow"（`_get_status_workflow_document`）を出力する。複数アイテム登録時は `_get_status_multi_document` が登録方式に応じて状態を決定する。従来は ingested 固定であった。 |
+| state[].@id                  | string  | 状態の識別子。直接登録の場合は"http://purl.org/net/sword/3.0/state/ingested"（`_get_status_document`、eTag=リビジョン番号）、ワークフロー経由登録の場合は"http://purl.org/net/sword/3.0/state/inWorkflow"（`_get_status_workflow_document`）を出力する。複数アイテム登録時は、v2.1.0 で追加された `_get_status_multi_document` が登録方式に応じて状態を決定する。 |
 | state[].description          | string  | 状態の説明                                                                                                                             |
 
 ### エラードキュメント
@@ -1135,7 +1135,7 @@ Content-Type: application/json
       登録するようにメタデータを作成する。
     - マッピング先が無いメタデータはテキストエリアに保存する。
     - メタデータ自動補完フラグ（[wk:metadataAutoFill](../admin/ADMIN_2_5.md#wkmetadataautofillメタデータ自動補完フラグ)）が有効で、補完にもちいるDOIが指定されていれば、メタデータ補完APIを呼び出し、メタデータを補完する。
-    - researchmap連携フラグ（`wk:researchmapLinkage`）が有効な場合、ワークフロー経由での登録時にresearchmap業績連携（`cris_linkage.researchmap`）を有効化する。フラグは `JsonLdMapper` が `system_info["researchmap_linkage"]`（既定 `False`）として取得し、`weko_swordserver/views.py`（`post_service_document` / `put_object`）が `item["metadata"]["researchmap"]` に設定、`weko_workflow/headless/activity.py`（`HeadlessActivity`）がアクティビティ登録データの `cris_linkage.researchmap` へ引き渡す。
+    - 【v2.1.0】researchmap連携フラグ（`wk:researchmapLinkage`）が有効な場合、ワークフロー経由での登録時にresearchmap業績連携（`cris_linkage.researchmap`）を有効化する。フラグは `JsonLdMapper` が `system_info["researchmap_linkage"]`（既定 `False`）として取得し、`weko_swordserver/views.py`（`post_service_document` / `put_object`）が `item["metadata"]["researchmap"]` に設定、`weko_workflow/headless/activity.py`（`HeadlessActivity`）がアクティビティ登録データの `cris_linkage.researchmap` へ引き渡す。
     - ファイルが階層化されている場合、weko3のストレージでは階層を維持できないため、あらかじめ相対パスをURLエンコードしてファイル名を改め、`/data/`フォルダ直下に配置する。  
       例：`/data/20230101/sample.pdf` → `/data/20230101%2Fsample.pdf`
 
@@ -1159,7 +1159,7 @@ Content-Type: application/json
     - 承認不要のワークフローの場合はワークフローを最後まで実行し登録を完了させる。
     - 承認が必要なワークフローの場合はアクティビティを承認アクションまで進める。
     - アクティビティの進行に必要なのメタデータが存在しない場合はアクティビティを停止し、どのメタデータが必須かエラーメッセージをJSON-LD形式で返却する。
-    - アイテムのPIDと、レコードのURL、アクティビティ詳細画面のURL、ファイル情報がある場合ファイルリンクを返却する。
+    - 【v2.1.0】アイテムのPIDと、レコードのURL、アクティビティ詳細画面のURL、ファイル情報がある場合ファイルリンクを返却する。
 
     ※ メタデータ形式がXML形式の場合、現時点ではインデックスを指定することができないため、直接登録は行えない。  
       また、ワークフロー経由で登録する場合、ワークフローに登録先インデックスが指定されていなければ、アクティビティにメタデータとファイルを登録して停止する。
@@ -1167,7 +1167,7 @@ Content-Type: application/json
     アイテムの登録処理に失敗した場合は、エラー（[メッセージ:14](#err14)）とする。
 
 5. レスポンスを返却する
-   - 登録されたアイテムのURL、ファイル情報がある場合はそのファイルのURLをステータスドキュメントに含めて返却する。ワークフロー経由の場合は、承認待ちで停止したか最後まで完了したかに関わらず、アクティビティ詳細画面のURLも含める（直接登録の場合は含まない）。
+   - 【v2.1.0】登録されたアイテムのURL、ファイル情報がある場合はそのファイルのURLをステータスドキュメントに含めて返却する。ワークフロー経由の場合は、承認待ちで停止したか最後まで完了したかに関わらず、アクティビティ詳細画面のURLも含める（直接登録の場合は含まない）。
    - レスポンスコードは、直接登録は 201、ワークフロー経由は最後のアクションが `end_action` まで進んだ場合 201、それ以外（承認待ち等）は 202 とする（[ワークフロー有無によるレスポンスの違い](#ワークフロー有無によるレスポンスの違い)）。
    - 一連の登録処理に問題がありエラーが発生した場合は、エラードキュメントを返却する。
 
@@ -1188,7 +1188,7 @@ Content-Type: application/json
 
 - アイテムの分割は許可されない
 - 更新ファイルから読み取ったアイテムID（`item["id"]`）が、リクエストURLのパスパラメータで指定されたアイテムID（recid）と一致しない場合は 400（`BadRequest`、`Item id does not match. item: ..., request: ...`）とする。また、アイテムが未登録（`status` が `new`）と判定された場合も 400（`This item is not registered yet: ...`）とする。
-  - 更新ファイルに アイテムID（`identifier`）が無い場合は、`check_import_items` → 各形式の `check_*_import_items` → `weko_search_ui.utils.handle_check_exist_record` で、リクエストURLの recid（`request.view_args`）によりアイテムIDが補完される。URI（`uri`）が無い場合は `<host>/records/<アイテムID>` で補完される。ファイルに記載したアイテムIDが recid と異なる場合は 400（`Item id does not match. ...`）。
+  - 【v2.1.0】更新ファイルに アイテムID（`identifier`）が無い場合は、`check_import_items` → 各形式の `check_*_import_items` → `weko_search_ui.utils.handle_check_exist_record` で、リクエストURLの recid（`request.view_args`）によりアイテムIDが補完される。URI（`uri`）が無い場合は `<host>/records/<アイテムID>` で補完される。ファイルに記載したアイテムIDが recid と異なる場合は 400（`Item id does not match. ...`）。
 - SWORD v3プロトコルでは、PUTメソッドはアイテムのメタデータとファイルすべての置き換えを意味するが、
   例外として[メタデータのみ置換フラグ](../admin/ADMIN_2_5.md#wkmetadatareplaceメタデータのみ置換フラグ)が有効な場合は、
   メタデータのみを置き換え、ファイルを維持する。  
@@ -1220,8 +1220,8 @@ Content-Type: application/json
 - 分割されるアイテムは、論文アイテムと論拠データアイテムの2種に分類され、相互にアイテムリンクされる。
 - 論文アイテムから論拠データアイテムへのアイテムリンクのリレーションタイプは`isSupplementedBy`、論拠データアイテムから論文アイテムへのアイテムリンクのリレーションタイプは`isSupplementTo`である。
 - アイテムリンクにはアイテムIDが必要なため、先に論拠データを登録しそのアイテムIDを取得し、論文アイテムを登録する際に相互にアイテムリンクを設定する。 
-- 生成されるアイテムURLおよびワークフローがある場合はそれらのURLをレスポンスで返す。
-- 分割アイテム間で設定したリンク情報は、ステータスドキュメントの"log"フィールドに含めて返却される。
+- 【v2.1.0】生成されるアイテムURLおよびワークフローがある場合はそれらのURLをレスポンスで返す。
+- 【v2.1.0】分割アイテム間で設定したリンク情報は、ステータスドキュメントの"log"フィールドに含めて返却される。
 - このとき、`isSupplementTo`のアイテムリンク先をもつ論拠データアイテムを先に登録するように、アイテムの登録順を制御する。
 
 ### 処理に関するエトセトラ
@@ -1289,7 +1289,7 @@ Content-Type: application/json
   ```python
   "Item check error: [エラーメッセージ]"
   ```
-  当該アイテムに警告（warnings）が存在する場合は、エラーメッセージに `, 'warnings': [...]` を連結して併記する（`weko_swordserver/views.py` の `post_service_document` / `put_object`）。
+  【v2.1.0】当該アイテムに警告（warnings）が存在する場合は、エラーメッセージに `, 'warnings': [...]` を連結して併記する（`weko_swordserver/views.py` の `post_service_document` / `put_object`）。
 
 12. アイテムが既に登録されている場合<span id="err12">
   ```python
@@ -1534,7 +1534,7 @@ Content-Type: application/json
     WEKO_SWORDSERVER_BAGIT_VERIFICATION = True
     ```
 
-24. ファイルリンク（fileSetFile）の rel を生成するためのパス<span id="conf24">
+24. 【v2.1.0】ファイルリンク（fileSetFile）の rel を生成するためのパス<span id="conf24">
 
     `WEKO_SWORDSERVER_SWORD_VERSION`（[設定値:1](#conf01)）と連結して、ステータスドキュメントの各ファイルリンク（`links[].rel`）を生成する。
     release_v2.1.0 では `scripts/instance.cfg` での設定が削除され（#63281）、`weko_swordserver/config.py` の既定値が使われる。
@@ -1545,7 +1545,7 @@ Content-Type: application/json
 ## 実装補足（v2.0.2）
 
 - 中核実装モジュールは **weko-swordserver**（`invenio-sword` は同梱されず、SWORD処理は自作の weko-swordserver に集約）。エンドポイント（`views.py`、Blueprint `url_prefix="/sword"`）：`get_service_document` / `post_service_document`（GET/POST `/sword/service-document`）、`get_status_document` / `put_object` / `delete_object`（GET/PUT/DELETE `/sword/deposit/<recid>`）。
-- 認証は Bearer/OAuth2（`before_request` の `verify_oauth_token_and_set_current_user` ＋ `@oauth2.require_oauth()`）。スコープ：`deposit:write` / `deposit:actions`（invenio-deposit）、`item:create` / `item:update` / `item:delete`（weko-items-ui）、Workflow登録時は `user:activity`（weko-workflow）。POST/PUT/DELETE は `decorators.check_deposit_role()`（v2.1.0 で `@roles_required(WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE)` から置き換え。リクエスト時に `current_app.config["WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE"]` を読み、`weko_accounts.utils.roles_required` で判定）。
+- 【v2.1.0】認証は Bearer/OAuth2（`before_request` の `verify_oauth_token_and_set_current_user` ＋ `@oauth2.require_oauth()`）。スコープ：`deposit:write` / `deposit:actions`（invenio-deposit）、`item:create` / `item:update` / `item:delete`（weko-items-ui）、Workflow登録時は `user:activity`（weko-workflow）。POST/PUT/DELETE は `decorators.check_deposit_role()`（v2.1.0 で `@roles_required(WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE)` から置き換え。リクエスト時に `current_app.config["WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE"]` を読み、`weko_accounts.utils.roles_required` で判定）。
 - 関連モジュール：weko-swordserver（本体）、weko-search-ui（`import_items_to_system` / `import_items_to_activity` / `delete_items_with_activity`、BagIt `bagit>=1.7.0`）、weko-records（`ItemTypeJsonldMapping` ＝ `jsonld_mappings`）、weko-items-ui、weko-admin（一時ディレクトリ `TempDirInfo`）、weko-accounts（`roles_required` / `limiter`）、weko-logging、weko-notifications、invenio-files-rest、invenio-oaiserver（`OaiIdentify`）。
 - DELETE 成功時、アクティビティ使用時のURLは **Location** ヘッダーに含まれる。
 - レート制限（`@limiter.limit`）により超過時は 429（`TooManyRequests`）。
@@ -1564,3 +1564,4 @@ Content-Type: application/json
 | 2026/07/17 |                                            | v2.1.0差分反映：`wk:researchmapLinkage`連携（`cris_linkage.researchmap`）・checkエラー時warnings併記、ステータスドキュメントの`links`（fileSetFile/derivedFrom・複数登録時Activityリンク/log）・`state`のinWorkflow・設定値conf24（`WEKO_SWORDSERVER_FILE_SET_FILE`）を追記 |
 | 2026/07/28 |                                            | 「ワークフロー有無によるレスポンスの違い」を追加（直接登録／ワークフロー登録の差分一覧、POST・DELETEのレスポンス例、ワークフロー承認後のレスポンスの挙動とGETの承認前後比較）。レスポンス例はv2.1.0実装に対する実測値を採録                                                     |
 | 2026/10/05 | 508030789 | release_v2.1.0突合：登録可能ロール設定の実行時参照（`check_deposit_role`）を追記、PUT時の recid によるID/URI補完（`handle_check_exist_record` が `request.view_args` の recid を使用）とID不一致時400を実装準拠で明記、直接登録時の`links`順序（レコード→ファイル→permalink）を修正、重複していた設定値（conf2）を削除、conf24 は config.py 既定値を使用する旨（instance.cfg から削除、#63281）を追記 |
+| 2026/10/05 | 508030789 | v2.1.0タグ付けに伴う記述訂正：state[].@id の「従来は ingested 固定」を訂正（v2.0.4 でもワークフロー経由は inWorkflow） |

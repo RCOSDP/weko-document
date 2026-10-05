@@ -27,7 +27,7 @@
 | wid |  | Int | 作成者（著者）識別子（`creator.nameIdentifier`）を指定して検索。※「アイテムIDを指定」ではない点に注意 |
 | iid |  | Int | インデックスID（`path.tree`）を指定して検索 |
 | date_range1_from<br>date_range1_to |  | yyymmdd | dte_range1 に対して期間の範囲を指定して検索 |
-| accessrights |  | string（カンマ区切り） | アクセス権（`open access` / `embargoed access` / `restricted access` / `metadata only access`＝`WEKO_ACCESS_RIGHTS_CHOICES`）で絞り込む。`WEKO_SEARCH_FIX_ACCESSRIGHTS`=True の環境ではエンバーゴ状態（ファイルの `accessrole`・公開日・現在日）を考慮して出し分ける。既定（`WEKO_SEARCH_FIX_ACCESSRIGHTS`=False）は素の term/terms 一致による従来動作。 |
+| 【v2.1.0】accessrights |  | string（カンマ区切り） | アクセス権（`open access` / `embargoed access` / `restricted access` / `metadata only access`＝`WEKO_ACCESS_RIGHTS_CHOICES`）で絞り込む。`WEKO_SEARCH_FIX_ACCESSRIGHTS`=True の環境ではエンバーゴ状態（ファイルの `accessrole`・公開日・現在日）を考慮して出し分ける。既定（`WEKO_SEARCH_FIX_ACCESSRIGHTS`=False）は素の term/terms 一致による従来動作。 |
 
 レスポンス例：
 
@@ -1236,7 +1236,7 @@
 1. エンドポイント `GET /api/records/`（`RECORDS_REST_ENDPOINTS["recid"]` の `list_route`）。ハンドラは `invenio_records_rest.views.RecordsListResource.get`。
 2. 検索ファクトリ（`es_search_factory`）が `search_type`（`WEKO_SEARCH_TYPE_DICT`＝FULL_TEXT:0 / KEYWORD:1 / INDEX:2）・`q`・`size`・`page`・`sort` 等からESクエリを構築する。
 3. `get_permission_filter` により公開範囲を絞り込む。
-4. `accessrights` パラメータ指定時は `weko_search_ui/query.py` の `default_search_factory.__get_accessrights_query`（カンマ区切り、`WEKO_ACCESS_RIGHTS_CHOICES` で妥当性検査）がアクセス権フィルタを付加する。`WEKO_SEARCH_FIX_ACCESSRIGHTS`（`weko_search_ui/config.py`、既定 `False`）が `True` の場合、`embargoed access` のアイテムをファイルの `content.accessrole.raw` と公開日（`content.date.dateValue.raw`）・現在日で open/restricted/embargoed に振り分けて絞り込む。ES索引側の accessRights 実効値は `weko_records/utils.py` `json_loader` が索引フィールド `accessRights` として付与する。`False`（既定）では素の term/terms 一致による従来動作。
+4. 【v2.1.0】`accessrights` パラメータ指定時は `weko_search_ui/query.py` の `default_search_factory.__get_accessrights_query`（カンマ区切り、`WEKO_ACCESS_RIGHTS_CHOICES` で妥当性検査）がアクセス権フィルタを付加する。`WEKO_SEARCH_FIX_ACCESSRIGHTS`（`weko_search_ui/config.py`、既定 `False`）が `True` の場合、`embargoed access` のアイテムをファイルの `content.accessrole.raw` と公開日（`content.date.dateValue.raw`）・現在日で open/restricted/embargoed に振り分けて絞り込む。ES索引側の accessRights 実効値は `weko_records/utils.py` `json_loader` が索引フィールド `accessRights` として付与する。`False`（既定）では素の term/terms 一致による従来動作。
 5. レスポンスは JSON（`hits` / `aggregations` / `links`）。`search_index="{prefix}-weko"`、`max_result_window = WEKO_SEARCH_MAX_RESULT`（10000）。
 
   - 主要設定値

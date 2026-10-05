@@ -242,7 +242,7 @@ url, headers, body = oauth.prepare_token_request('https://dev.ir.rcos.nii.ac.jp/
 > - エラー時挙動：クライアントID不在は 404、未ログイン時は `@login_required` により 302 リダイレクト、`client_credentials` を非機密クライアントで用いると `InvalidClientError`。
 > - `weko-accounts` にはOAuth関連の実装は無い（認証基盤としての間接関与のみ）。
 
-> 実装補足（v2.1.0）：
+> 【v2.1.0】実装補足（v2.1.0）：
 > - 要求スコープが空／解決不能（`invenio_oauth2server/views/server.py` の `authorize` で `scopes_list` が空）の場合、認可フォームを描画せず `/oauth/errors?error=invalid_scope` へリダイレクトする。
 > - `/oauth/errors`（`GET`、`views/server.py` の `errors`）は、`AccessDeniedError` 以外の `OAuth2Error` では 400、`access_denied` では 200 を返す（`errors.html` を多言語表示）。
 > - weko-items-ui に新スコープ `item:bulkprocess`（`weko_items_ui/scopes.py` の `item_bulk_process_scope`、group `item`）を追加。一括インポートAPI（[API-20](./API_20_bulk_import.md)）で使用する。

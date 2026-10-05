@@ -50,7 +50,7 @@ APIを実行する。
 
         -   ファイルのアクセス権限を確認する(check_file_download_permission)。
 
-            > 実装補足（v2.1.0）：`check_file_download_permission` における管理者の無条件許可は、システム管理者・リポジトリ管理者と、**当該アイテムが所属するコミュニティを担当する**コミュニティ管理者に限られる（`permissions.is_superuser_or_record_comadmin` → `has_comadmin_permission`）。担当外アイテムのコミュニティ管理者は一般の登録ユーザーと同じ判定となる。
+            > 【v2.1.0】実装補足（v2.1.0）：`check_file_download_permission` における管理者の無条件許可は、システム管理者・リポジトリ管理者と、**当該アイテムが所属するコミュニティを担当する**コミュニティ管理者に限られる（`permissions.is_superuser_or_record_comadmin` → `has_comadmin_permission`）。担当外アイテムのコミュニティ管理者は一般の登録ユーザーと同じ判定となる。
 
         -   利用申請が必要なファイルか確認する(check_content_clickable)。
 
