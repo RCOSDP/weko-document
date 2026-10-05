@@ -6,7 +6,7 @@
 
     - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/nginx/login.py>（`/secure/login.py`。nginx の `location ~ /secure/` から fcgiwrap で実行される CGI。v2.0.0 以降の標準。旧 `nginx/login.php` による運用は終了）
 
-    - nginx の `shib_fastcgi_params` で環境変数として渡された属性のうち、`/etc/nginx/shib_fastcgi_params` に `fastcgi_param` として列挙された名前のものと `HTTP_WEKOID`・`HTTP_WEKOSOCIETYAFFILIATION` をフォームデータにして、`/weko/shib/login?next=...` へ POST する（送信先はループバックアドレス `127.0.0.1`、Host ヘッダに公開ホスト名）。`HTTP_WEKOSOCIETYAFFILIATION` が無い場合は、`NO_CHECK_WEKOSOCIETYAFFILIATION=TRUE` でない限り「Permission is invalid」を表示してトップへ戻す
+    - 【v2.1.0】nginx の `shib_fastcgi_params` で環境変数として渡された属性のうち、`/etc/nginx/shib_fastcgi_params` に `fastcgi_param` として列挙された名前のものと `HTTP_WEKOID`・`HTTP_WEKOSOCIETYAFFILIATION` をフォームデータにして、`/weko/shib/login?next=...` へ POST する（送信先はループバックアドレス `127.0.0.1`、Host ヘッダに公開ホスト名）。`HTTP_WEKOSOCIETYAFFILIATION` が無い場合は、`NO_CHECK_WEKOSOCIETYAFFILIATION=TRUE` でない限り「Permission is invalid」を表示してトップへ戻す
 
   - 認証時にIdPより取得した属性情報に基づきログインユーザに対してロール割り当てを行う
 
@@ -106,7 +106,7 @@
 
     - 設定キー：WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT
 
-    - 現在の設定値：
+    - 【v2.1.0】現在の設定値：
 
 >      WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT = {
 >          "prefix": "jc",                             # Prefix
@@ -158,7 +158,7 @@
 
   - weko_accounts.views.shib_sp_login関数によって、IdPからのリクエストを処理する
 
-    - 本関数（`POST /weko/shib/login`）は、Web サーバ上の SP ログインスクリプト（`nginx/login.py`）からの送信だけを受け付ける（デコレータ `weko_accounts.utils.shib_sp_source_required`）。送信元アドレス（`request.remote_addr`）が `WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`（既定 `['127.0.0.1', '::1']`）に含まれない場合は警告ログを出して 403 を返す。ログインスクリプトはループバックアドレス宛てに POST し、Host ヘッダに公開ホスト名を入れる
+    - 【v2.1.0】本関数（`POST /weko/shib/login`）は、Web サーバ上の SP ログインスクリプト（`nginx/login.py`）からの送信だけを受け付ける（デコレータ `weko_accounts.utils.shib_sp_source_required`）。送信元アドレス（`request.remote_addr`）が `WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`（既定 `['127.0.0.1', '::1']`）に含まれない場合は警告ログを出して 403 を返す。ログインスクリプトはループバックアドレス宛てに POST し、Host ヘッダに公開ホスト名を入れる
 
     - WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPSがTrueのとき、学認mAPグループをWEKO3にロールとして作成する
 
@@ -343,11 +343,11 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足（v2.1.0、SP 属性の受け付け元限定）：IdP の属性はリクエストそのものから取り出すため、`shib_sp_login` は SP ログインスクリプトからの POST に限って受け付ける（`shib_sp_source_required`、許可アドレスは `WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`、それ以外は 403）。nginx（`weko.conf`／`weko-ams.conf`／`weko-ams-restricted.conf`）でも `location = /weko/shib/login` を設け、`map "$request_method:$realip_remote_addr" $weko_shib_sp_denied` により GET/HEAD 以外はループバック（`127.0.0.1`／`::1`）からの POST のみ通し、それ以外は 403 とする。判定には real_ip モジュールが X-Forwarded-For で書き換える前の接続元 `$realip_remote_addr` を用い、WEKO へ渡す `REMOTE_ADDR` も同じ値にする（信頼プロキシから X-Forwarded-For にループバックを入れてなりすます経路を塞ぐ）。既存環境では `login.py`／`login.php` と nginx 設定を同時に更新する必要がある（片方だけでは Shibboleth ログインが通らない）。
-- 実装補足（v2.1.0、mAP ロール／グループの判定条件）：学認 mAP 由来のロール／グループの判定は `weko_accounts.api` の `map_role_condition`／`map_group_condition`（SQL 条件）および `is_map_role`／`is_map_group`／`is_map_sysadm_role`／`is_map_managed_name` に集約された。ロールは `sysadm_group`（`jc_roles_sysadm`）または `<prefix>_<fqdn>_<role_keyword>_` 前方一致、グループは `<prefix>_<fqdn>_<group_keyword>_`（既定 `jc_<fqdn>_gr_`）前方一致で、`<fqdn>` は `WEKO_ACCOUNTS_IDP_ENTITY_ID` から作る自機関の値（`create_fqdn_from_entity_id`）。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` と `WEKO_ACCOUNTS_IDP_ENTITY_ID` のいずれかが未設定なら、どのロールも mAP 由来とみなさない（`_is_gakunin_map_configured`）。ログイン時のロール更新 `update_roles` で外すロールも、従来の「`jc_` で始まる」から `is_map_managed_name`（`jc_roles_sysadm` または `<prefix>_<fqdn>_` 前方一致）に限定された。ユーザー管理・コミュニティ管理画面のロール／グループ選択肢も同じ条件で振り分ける。
+- 【v2.1.0】実装補足（v2.1.0、SP 属性の受け付け元限定）：IdP の属性はリクエストそのものから取り出すため、`shib_sp_login` は SP ログインスクリプトからの POST に限って受け付ける（`shib_sp_source_required`、許可アドレスは `WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`、それ以外は 403）。nginx（`weko.conf`／`weko-ams.conf`／`weko-ams-restricted.conf`）でも `location = /weko/shib/login` を設け、`map "$request_method:$realip_remote_addr" $weko_shib_sp_denied` により GET/HEAD 以外はループバック（`127.0.0.1`／`::1`）からの POST のみ通し、それ以外は 403 とする。判定には real_ip モジュールが X-Forwarded-For で書き換える前の接続元 `$realip_remote_addr` を用い、WEKO へ渡す `REMOTE_ADDR` も同じ値にする（信頼プロキシから X-Forwarded-For にループバックを入れてなりすます経路を塞ぐ）。既存環境では `login.py`／`login.php` と nginx 設定を同時に更新する必要がある（片方だけでは Shibboleth ログインが通らない）。
+- 【v2.1.0】実装補足（v2.1.0、mAP ロール／グループの判定条件）：学認 mAP 由来のロール／グループの判定は `weko_accounts.api` の `map_role_condition`／`map_group_condition`（SQL 条件）および `is_map_role`／`is_map_group`／`is_map_sysadm_role`／`is_map_managed_name` に集約された。ロールは `sysadm_group`（`jc_roles_sysadm`）または `<prefix>_<fqdn>_<role_keyword>_` 前方一致、グループは `<prefix>_<fqdn>_<group_keyword>_`（既定 `jc_<fqdn>_gr_`）前方一致で、`<fqdn>` は `WEKO_ACCOUNTS_IDP_ENTITY_ID` から作る自機関の値（`create_fqdn_from_entity_id`）。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` と `WEKO_ACCOUNTS_IDP_ENTITY_ID` のいずれかが未設定なら、どのロールも mAP 由来とみなさない（`_is_gakunin_map_configured`）。ログイン時のロール更新 `update_roles` で外すロールも、従来の「`jc_` で始まる」から `is_map_managed_name`（`jc_roles_sysadm` または `<prefix>_<fqdn>_` 前方一致）に限定された。ユーザー管理・コミュニティ管理画面のロール／グループ選択肢も同じ条件で振り分ける。
 
 - 実装補足（訂正、v2.0.2）：Shibboleth ログインの実エンドポイントは `POST /weko/shib/login`（`weko_accounts.views.shib_sp_login`）。ロール付与は `ShibUser.check_in`（`gakunin_check_in` というメソッドは存在せず、mAPグループ処理は check_in 内にインライン）→ `_find_organization_name`（organizationName判定。真なら mAPグループ判定 `_assign_roles_to_user` をスキップ）。
 - config 実値：`WEKO_ACCOUNTS_SHIB_ROLE_RELATION = {'管理者':'System Administrator','図書館員':'Repository Administrator','教員':'Contributor','教官':'Contributor'}`。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` は `role_keyword='ro'`、`role_mapping={'radm':'Repository Administrator','cadm':'Community Administrator','cont':'Contributor'}`（グループ名例は `jc_<fqdn>_ro_radm` 等）。`WEKO_ACCOUNTS_IDP_ENTITY_ID` の既定は空文字。
 - table `shibboleth_user`（`ShibbolethUser`）＋中間表 `shibboleth_userrole`。紐づけキーは `shib_eppn`。ブロックユーザーは AdminSettings `blocked_user_settings.blocked_ePPNs` で拒否。関連：[AMS Shibboleth対応](../ams/AMS_SHIBBOLETH_01.md)。
 
-- 実装補足（v2.1.0、AMS経路）：`shib_sp_login`／`shib_auto_login`／`confirm_user`／`confirm_user_without_page`／`shib_login` の各ビューは、`next` クエリの値が `ams`（`ams_login`）の場合に AMS ログイン経路へ分岐する。この場合、失敗時は WEKO のログイン画面へ flash せず外部 AMS ログイン画面（`WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`）へエラー付きでリダイレクトし、成功時は `/?next=ams` へ遷移する。詳細は [AMS Shibboleth対応](../ams/AMS_SHIBBOLETH_01.md) を参照。
+- 【v2.1.0】実装補足（v2.1.0、AMS経路）：`shib_sp_login`／`shib_auto_login`／`confirm_user`／`confirm_user_without_page`／`shib_login` の各ビューは、`next` クエリの値が `ams`（`ams_login`）の場合に AMS ログイン経路へ分岐する。この場合、失敗時は WEKO のログイン画面へ flash せず外部 AMS ログイン画面（`WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`）へエラー付きでリダイレクトし、成功時は `/?next=ams` へ遷移する。詳細は [AMS Shibboleth対応](../ams/AMS_SHIBBOLETH_01.md) を参照。

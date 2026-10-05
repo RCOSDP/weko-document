@@ -145,6 +145,7 @@ WEKO_RECORDS_UI_OA_GET_OA_POLICIES_URL
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2026/07/14 |  | 本文を実装準拠に修正 |
 | 2026/10/05 | 508030789 | release_v2.1.0突合：v2.1.0 で追加・変更された主な config（S3 読み取り専用キー、未認証応答、キャッシュ TTL、Shibboleth SP 受け付け元、ログイン API のレート制限、#63281 の instance.cfg 整理）を追記 |
+| 2026/10/05 | 508030789 | v2.1.0タグ付けに伴う記述訂正：502 エラー対策のキャッシュは v2.1.0 で導入と訂正 |
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
@@ -154,8 +155,8 @@ WEKO_RECORDS_UI_OA_GET_OA_POLICIES_URL
 - 実装補足（v2.1.0、追加・変更された主な config）：
   - `S3_READONLY_ACCESS_KEY_ID` / `S3_READONLY_SECRET_ACCESS_KEY`（invenio-s3、既定 None。`scripts/instance.cfg` にも None で定義）：S3 から読み出す（書き込みモード `wb` 以外で開く）際に使う読み取り専用のアクセスキー。ロケーションに読み取り専用キー（`readonly_access_key` / `readonly_secret_key`）が設定されていればそちらを優先する（`invenio_s3.ext.InvenioS3.init_s3fs_info`。#61752）。書き込みは従来どおり `S3_ACCESS_KEY_ID` / `S3_SECRET_ACCESS_KEY`。
   - `WEKO_ACCOUNTS_UNAUTHORIZED_JSON`（weko-accounts、既定 True）：未ログイン時、API アプリは常に、UI アプリは API/AJAX 呼び出しと判定したリクエストに 401 JSON を返す（[ログイン](../user/USER_8_2.md) 参照）。
-  - `WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`（weko-accounts、既定 `['127.0.0.1', '::1']`）：Shibboleth SP の属性（`POST /weko/shib/login`）を受け付ける送信元アドレス（[Shibboleth対応](./SHIBBOLETH_01.md) 参照）。
-  - `WEKO_API_LIMIT_RATE_DEFAULT`（weko-accounts、既定 `['100 per minute']`）：REST アプリではログイン API（`POST /api/<version>/login`）のみに適用されるレート制限値。
-  - 短時間キャッシュの有効期間（いずれも秒、既定 300、0 で期限なし。v2.0.3／v2.0.4 の 502 エラー対策）：`WEKO_ADMIN_SETTINGS_CACHE_TTL`（weko-admin。`get_search_setting()` と `AdminSettings.get()`。更新時に無効化され、TTL は他プロセスからの変更の反映遅延の上限）、`WEKO_SEARCH_DETAIL_KEYWORD_CACHE_TTL`（weko-search-ui。詳細検索条件 `get_search_detail_keyword()`。言語・利用者のインデックス可視範囲・検索条件設定をキーに含む）、`WEKO_ITEMS_UI_RANKING_CACHE_TTL`（weko-items-ui。ランキング `get_ranking()`）、`WEKO_RECORDS_UI_GOOGLE_XML_CACHE_TTL`（weko-records-ui。詳細画面のメタタグ生成用 JPCOAR XML）。キャッシュ先は invenio-cache（Redis）。
-  - #63281（cf13495c3）：`scripts/instance.cfg` から `WEKO_SEARCH_UI_IMPORT_REPLACE_RULES` / `WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP` / `WEKO_SWORDSERVER_FILE_SET_FILE` の定義を削除した。インポート置換ルール 2 件は weko-search-ui の `config.py` の既定値（`pipe_full_width`：`|`→`｜`、`jsonld_mappings` の id `32001` に適用）へ移した。
+  - 【v2.1.0】`WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`（weko-accounts、既定 `['127.0.0.1', '::1']`）：Shibboleth SP の属性（`POST /weko/shib/login`）を受け付ける送信元アドレス（[Shibboleth対応](./SHIBBOLETH_01.md) 参照）。
+  - 【v2.1.0】`WEKO_API_LIMIT_RATE_DEFAULT`（weko-accounts、既定 `['100 per minute']`）：REST アプリではログイン API（`POST /api/<version>/login`）のみに適用されるレート制限値。
+  - 【v2.1.0】短時間キャッシュの有効期間（いずれも秒、既定 300、0 で期限なし。v2.1.0 の 502 エラー対策。v2.0.3／v2.0.4 のリリースには含まれない）：`WEKO_ADMIN_SETTINGS_CACHE_TTL`（weko-admin。`get_search_setting()` と `AdminSettings.get()`。更新時に無効化され、TTL は他プロセスからの変更の反映遅延の上限）、`WEKO_SEARCH_DETAIL_KEYWORD_CACHE_TTL`（weko-search-ui。詳細検索条件 `get_search_detail_keyword()`。言語・利用者のインデックス可視範囲・検索条件設定をキーに含む）、`WEKO_ITEMS_UI_RANKING_CACHE_TTL`（weko-items-ui。ランキング `get_ranking()`）、`WEKO_RECORDS_UI_GOOGLE_XML_CACHE_TTL`（weko-records-ui。詳細画面のメタタグ生成用 JPCOAR XML）。キャッシュ先は invenio-cache（Redis）。
+  - 【v2.1.0】#63281（cf13495c3）：`scripts/instance.cfg` から `WEKO_SEARCH_UI_IMPORT_REPLACE_RULES` / `WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP` / `WEKO_SWORDSERVER_FILE_SET_FILE` の定義を削除した。インポート置換ルール 2 件は weko-search-ui の `config.py` の既定値（`pipe_full_width`：`|`→`｜`、`jsonld_mappings` の id `32001` に適用）へ移した。
 

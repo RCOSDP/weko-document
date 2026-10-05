@@ -25,7 +25,7 @@ OAI-PMH の XML）へプログラムから到達できるようにすること�
 
 ## 利用可能なロール
 
-- アイテム詳細画面と同じ閲覧権限を持つ利用者（v2.1.0 以降）。`recid_signposting` に詳細表示 `recid` と同じ `permission_factory_imp='weko_records_ui.permissions:page_permission_factory'` が設定されており、閲覧できないアイテム（非公開・公開日前・閲覧不可インデックスのみに所属 等）への HEAD リクエストには `Link` ヘッダを返さない。未ログインの場合はログイン画面（`RECORDS_UI_LOGIN_ENDPOINT`）へのリダイレクト、ログイン済みで権限がない場合は 403 となる（invenio-records-ui の `record_view` の挙動）。公開アイテムおよび管理者は従来どおり応答を得られる。
+- 【v2.1.0】アイテム詳細画面と同じ閲覧権限を持つ利用者（v2.1.0 以降）。`recid_signposting` に詳細表示 `recid` と同じ `permission_factory_imp='weko_records_ui.permissions:page_permission_factory'` が設定されており、閲覧できないアイテム（非公開・公開日前・閲覧不可インデックスのみに所属 等）への HEAD リクエストには `Link` ヘッダを返さない。未ログインの場合はログイン画面（`RECORDS_UI_LOGIN_ENDPOINT`）へのリダイレクト、ログイン済みで権限がない場合は 403 となる（invenio-records-ui の `record_view` の挙動）。公開アイテムおよび管理者は従来どおり応答を得られる。
 
 ## 関連モジュール
 
@@ -36,7 +36,7 @@ OAI-PMH の XML）へプログラムから到達できるようにすること�
 
 ## 処理概要
 
-1. `weko-records-ui` の `RECORDS_UI_ENDPOINTS` に `recid_signposting`（`route='/records/<pid_value>'`,
+1. 【v2.1.0】`weko-records-ui` の `RECORDS_UI_ENDPOINTS` に `recid_signposting`（`route='/records/<pid_value>'`,
    `methods=['HEAD']`, `view_imp='weko_signposting.api.requested_signposting'`,
    `permission_factory_imp='weko_records_ui.permissions:page_permission_factory'`）が定義される。
    PID 解決後、view 呼び出し前に `page_permission_factory(record).can()` で閲覧権限を確認する（v2.1.0 で追加）。

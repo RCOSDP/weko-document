@@ -16,7 +16,7 @@
 | [OAアシスト ステータス連携](./OA-ASSIST_STATUS_LINKING.md) | 外部システムへの公開ステータス連携 |
 | [Signposting](./SIGNPOSTING_01.md) | FAIR Signposting（アイテム詳細の `Link` ヘッダによる関連リソース提示） |
 | [researchmap連携（レコード追加）](./RESEARCHMAP_LINKAGE.md) | researchmap API への業績情報の一括登録（Celery バッチ） |
-| [JSONLDインポート文字列置換](./JSONLD_IMPORT_REPLACE.md) | JSON-LD インポート時の文字列置換ルール（`WEKO_SEARCH_UI_IMPORT_REPLACE_RULES`） |
+| 【v2.1.0】[JSONLDインポート文字列置換](./JSONLD_IMPORT_REPLACE.md) | JSON-LD インポート時の文字列置換ルール（`WEKO_SEARCH_UI_IMPORT_REPLACE_RULES`） |
 | [解析基盤連携](./KAISEKI_01.md) | オンライン分析（Binder 誘導） |
 | [Shibboleth対応](./SHIBBOLETH_01.md) | 学認／Shibboleth ログイン・ロール付与 |
 | [elasticsearch](./OTHER_elasticsearch.md) | 検索基盤（ES 6.8）・インデックス |
