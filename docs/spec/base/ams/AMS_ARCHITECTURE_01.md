@@ -2,7 +2,7 @@
 
 未病データベースとWEKOの構成を記述する。
 
-> 注：本書で「フロント」と呼ぶ Nuxt アプリケーション（`weko-frontend` / `nginx/ams/weko-frontend/`）は WEKO バックエンドとは**別リポジトリ**で管理されており、本仕様書リポジトリおよび WEKO バックエンドリポジトリ（`/home/mhaya/weko`）には含まれない。以下のフロントのパス・ページ・サーバーサイドAPIの定義はそのフロントリポジトリ側にある。
+> 注：本書で「フロント」と呼ぶ Nuxt アプリケーション（`weko-frontend` / `nginx/ams/weko-frontend/`）は WEKO 本体リポジトリ（RCOSDP/weko）の `nginx/ams/weko-frontend/` に含まれる（release_v2.1.0 でも同ディレクトリに存在。本仕様書リポジトリには含まれない）。以下のフロントのパス・ページ・サーバーサイドAPIの定義は同ディレクトリにある。
 
 ## 用語説明
 
@@ -88,3 +88,4 @@ nginxコンテナの`/etc/nginx/conf.d/weko.conf`に`weko/nginx/weko-ams-restric
 |--------------|------------------|------------|
 | 2025/08/29   |   6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3  | 初版作成   |
 | 2026/07/14   |  | 実装(v2.0.2)と突き合わせ。フロントが呼ぶWEKOバックエンド実API・nginx振り分けの実装方式・CAPTCHA/リクエストメールのIP制限・`weko-ams-restricted.conf`未収録・フロントが別リポジトリである旨を追記 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：フロント（weko-frontend）が WEKO 本体リポジトリの nginx/ams/weko-frontend/ に含まれる旨に注記を修正 |

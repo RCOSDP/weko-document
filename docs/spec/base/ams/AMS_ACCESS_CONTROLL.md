@@ -2,7 +2,7 @@
 
 未病データベースにおけるアクセスコントロールについて記載します。
 
-> 前提・実装補足（v2.0.2）：本書の各画面・操作は Nuxt フロント（`weko-frontend`、別リポジトリ）の画面遷移であり、実際のアクセス制御（オープンアクセス／特定グループ所属ユーザのみ閲覧可）は、フロントが呼び出す WEKO バックエンドAPIの権限判定によって担保される。「特定グループ（WEKO内部ではロール）」への所属判定・ロール付与は Shibboleth ログイン時に weko-accounts が行う（[AMS Shibboleth対応](./AMS_SHIBBOLETH_01.md) 参照）。バックエンドの主なAPI系統：検索・アイテム取得（`/api/v1/records/...`、weko-records-ui `WekoRecordsResource`）、ファイルダウンロード（`~ /record/<id>/files/...`、weko-records-ui）、リクエストメール（`/api/v1/records/<id>/request-mail`）、OAI-PMH（`/oai`、invenio-oaiserver）。ファイルの実体がWEKO3外部にある場合のダウンロード可否は各ファイルの格納場所判定に依存する（本書内の各「※」注記を参照）。
+> 前提・実装補足（v2.0.2）：本書の各画面・操作は Nuxt フロント（`weko-frontend`、WEKO 本体リポジトリの `nginx/ams/weko-frontend/`）の画面遷移であり、実際のアクセス制御（オープンアクセス／特定グループ所属ユーザのみ閲覧可）は、フロントが呼び出す WEKO バックエンドAPIの権限判定によって担保される。「特定グループ（WEKO内部ではロール）」への所属判定・ロール付与は Shibboleth ログイン時に weko-accounts が行う（[AMS Shibboleth対応](./AMS_SHIBBOLETH_01.md) 参照）。バックエンドの主なAPI系統：検索・アイテム取得（`/api/v1/records/...`、weko-records-ui `WekoRecordsResource`）、ファイルダウンロード（`~ /record/<id>/files/...`、weko-records-ui）、リクエストメール（`/api/v1/records/<id>/request-mail`）、OAI-PMH（`/oai`、invenio-oaiserver）。ファイルの実体がWEKO3外部にある場合のダウンロード可否は各ファイルの格納場所判定に依存する（本書内の各「※」注記を参照）。
 
 ## 用語説明
 
@@ -469,3 +469,4 @@
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3      | 初版作成                                                 |
 | 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。アクセス制御を担保するWEKOバックエンドAPI系統とロール付与（weko-accounts）の前提を追記 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：フロント（weko-frontend）が WEKO 本体リポジトリの nginx/ams/weko-frontend/ に含まれる旨に注記を修正 |

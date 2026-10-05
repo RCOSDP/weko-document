@@ -2,7 +2,7 @@
 
 未病データベース（AMS）は、未病データベース専用の WEKO3 リポジトリ（バックエンド）と、その上で動作する Nuxt 製フロントエンド（`weko-frontend`）から構成されるシステムである。
 
-> 注：フロントエンド（`weko-frontend` / `nginx/ams/weko-frontend/`）は WEKO バックエンド（`/home/mhaya/weko`）とは**別リポジトリ**で管理される。本カテゴリの各仕様書のうち、フロントのページ（`*.vue`）・設定（`app.config.ts`）・サーバーサイドAPI（`weko-frontend/server`）はそのフロントリポジトリ側の定義であり、本書ではフロントが利用する WEKO バックエンド側の接点を中心に実装（v2.0.2）と突き合わせている。
+> 注：フロントエンド（`weko-frontend`）は WEKO 本体リポジトリ（RCOSDP/weko）内の `nginx/ams/weko-frontend/` に含まれる（release_v2.1.0 でも同ディレクトリに存在する）。本カテゴリの各仕様書のうち、フロントのページ（`pages/**/*.vue`）・設定（`app.config.ts`）・サーバーサイドAPI（`server/`）は同ディレクトリの定義である。各仕様書はフロントが利用する WEKO バックエンド側の接点を中心に実装（v2.0.2、以後 release_v2.1.0）と突き合わせている。なお b19e39d8a..release_v2.1.0 の間に `nginx/ams/` 配下の変更はない。
 
 ## 本カテゴリの構成
 
@@ -12,6 +12,7 @@
 | [未病フロント アクセスコントロール](./AMS_ACCESS_CONTROLL.md) | 画面・操作ごとのロール別アクセス可否 |
 | [GakuNin RDMボタン表示](./AMS_GRDM_BUTTON_01.md) | RO-Crate ↔ WEKOアイテム変換、JSON-LDマッピング、GRDMボタン表示条件 |
 | [Shibboleth対応](./AMS_SHIBBOLETH_01.md) | Shibbolethログイン・ロール付与・OAuth認証・エラー |
+| [拡張メタデータ対応](./AMS_EXTENDED_METADATA.md) | JSON-LD（RO-Crate/SWORD）登録時の拡張メタデータファイル（`wk:extendedMetadata`）の取り込み |
 
 ## 関連モジュール（WEKOバックエンド）
 
