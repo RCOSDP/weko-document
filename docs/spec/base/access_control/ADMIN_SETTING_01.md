@@ -262,8 +262,19 @@
 
 （2026/07/14 実装 v2.0.2 と突き合わせ）本画面のロール別アクセス可否は、`weko_admin/ext.py` の `WekoAdmin.role_has_access`（`@app.before_request` の `is_accessible_to_role` が全 Flask-Admin ビューの `is_accessible`/`is_visible` を上書き）で判定される。判定は `weko_admin/config.py` の `WEKO_ADMIN_ACCESS_TABLE`（System Administrator は全許可、Repository Administrator は `WEKO_ADMIN_REPOSITORY_ACCESS_LIST`、Community Administrator は `WEKO_ADMIN_COMMUNITY_ACCESS_LIST`）に、当該ビューの endpoint 名が含まれるかで行う。ロールを持たないユーザー（登録／一般）およびゲストは全画面 ×。画面内の作成・編集・削除（CRUD）や一覧の絞り込みは各 ModelView の `can_create`/`can_edit`/`can_delete`/`get_query` による別レイヤで、コミュニティ範囲の絞り込みは `Community.get_repositories_by_user`／`WEKO_PERMISSION_SUPER_ROLE_USER`（System＋Repository）で行われる。
 
+### 実装上の変更（v2.1.0：画面から呼ばれる API の認可強化）
+
+release_v2.1.0 では、各設定画面が内部で呼び出す API（`/api/admin/...`）に、画面自体の可否と揃えた認可が追加された（issue62569, PR #1901 / #1927）。未ログイン時は 401、ロール不一致時は 403 となる（`weko_accounts.utils.roles_required`）。
+
+| 画面 | API | 追加された認可 |
+| --- | --- | --- |
+| 検索設定 | `GET /api/admin/search/init_display_index/<selected_index>`（初期表示インデックスのツリー取得） | `login_required` ＋ `roles_required`（System / Repository Administrator のみ） |
+| WebAPIアカウント | `GET /api/admin/get_api_cert_type`、`GET /api/admin/get_curr_api_cert/<api_code>` | `login_required` ＋ `roles_required`（System Administrator のみ） |
+| サイトマップ | （生成内容）`weko_sitemap/ext.py` の `WekoSitemap._generate_all_item_urls` | サイトマップに載せるアイテムを、ゲストが詳細画面を閲覧できるアイテム（`check_publish_status`：公開かつ公開日到来、かつ `weko_index_tree.utils.check_index_permissions`：ゲストが閲覧可能なインデックスに所属）に限定（PR #1926） |
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3      | 初版作成                                                 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：検索設定・WebAPIアカウントの内部API認可、サイトマップの公開アイテム限定を追記 |

@@ -137,7 +137,16 @@
 | ------------------------ | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | アイテム作成者：<br>自分 | ○                  | ○                    | ○                      | ○            | ×            | ×                        |
 | 代理投稿者：<br>自分     | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
+| 管轄コミュニティの<br>インデックス配下のアイテム | ○                  | ○                    | ○                      | ×            | ×            | ×                        |
 | 上記以外                 | ○                  | ○                    | ×                      | ×            | ×            | ×                        |
+
+※ 「管轄コミュニティのインデックス配下のアイテム」は、アイテムの所属インデックス（`path`）のいずれかが、ログインユーザーが所属するコミュニティのルートインデックス配下（子孫を含む）にあることを指します（`weko_records_ui.permissions.has_comadmin_permission`）。
+
+> 実装補足（v2.1.0）：
+> - `weko_items_ui.permissions.edit_permission_factory` は v2.1.0 で `check_created_id`（作成者・所有者・共有者・`WEKO_PERMISSION_SUPER_ROLE_USER`・管轄コミュニティの Community Administrator）のみで判定するよう修正された。v2.0.x までは閲覧用の `page_permission_factory` に委譲していたため、公開済みかつ閲覧可能インデックス配下のアイテムであれば未ログインでも編集系の判定が通っていた（`/item/edit`、`/item/iframe/edit`、`/deposits/publish/<pid_value>` などが影響を受けていた）。
+> - `PUT` / `POST /deposits/redirect/<pid_value>`（`ItemResource.put` / `post`）にはデコレータ `weko_deposit.rest.require_item_edit_permission` が付き、未ログインは 401、対象アイテムが存在しない場合は 404（"Item not found"）、編集権限が無い場合は 403 を返す。バージョン付き PID（例 `1.1`）は親の recid で判定する。
+> - `PUT /deposits/publish/<pid_value>`（`weko_deposit.rest.publish`）は v2.0.x まで認可が付いていなかったが、`login_required` と `edit_permission_factory` による判定（存在しない場合 404、権限なし 403）が追加された。
+> - depid エンドポイント（`DEPOSIT_REST_ENDPOINTS['depid']`）の `update_permission_factory_imp` に `weko_items_ui.permissions:edit_permission_factory` を設定し、既定の更新権限ファクトリ `RECORDS_REST_DEFAULT_UPDATE_PERMISSION_FACTORY` は `deny_all` に変更された（削除は従来どおり `deny_all`）。
 
 ## アイテムAPIのアイテム閲覧権限
 
@@ -183,6 +192,11 @@
 
 - **`GET /api/records/`（バージョン無し）** は invenio-records-rest の recid エンドポイント（`list_route='/records/'`）であり、`item:read` スコープは強制されない（権限ファクトリ＋ES権限フィルタのみ）。
 - **`PUT /api/records/`** に対応する実ハンドラは存在しない（invenio recid の PUT は `deny_all`）。アイテム編集の実経路は `PUT /deposits/redirect/<pid_value>`（`weko_deposit.rest.ItemResource.put`、`weko_items_ui.permissions.edit_permission_factory`）。
+
+### 実装補足（v2.1.0）
+
+- 本APIを提供する API アプリでは、未認証で `login_required` 等に該当した場合、ログイン画面へのリダイレクトではなく 401（JSON `{"status": 401, "message": "Authentication required."}`）を返す（`weko_accounts.unauthorized`、`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`（既定 True））。
+- 引用文献API `GET /api/record/cites/<pid_value>`（`weko_records_ui.rest.WekoRecordsCitesResource`）は `require_api_auth(allow_anonymous=True)`＋`item:read` スコープと、`page_permission_factory`（詳細画面と同じ閲覧権限）による判定が追加された。閲覧権限が無い場合は不存在と同じ 404（"Not found"）を返す。
 - バージョン付きの `GET /api/<version>/records`・`/records/<pid_value>`・`/records/<pid_value>/stats`・`POST /records/list` は `require_api_auth(allow_anonymous=True)`＋`item:read` で整合。`GET /api/index/` はデコレータ無し（権限フィルタのみ）。
 
 ## 更新履歴
@@ -191,3 +205,4 @@
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3      | 初版作成                                                 |
 | 2026/07/14 |                                            | 本文を実装準拠に修正                                     |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：アイテム編集権限（edit_permission_factory→check_created_id）、depid ルート／publish の認可・応答、管轄コミュニティ管理者の行、API アプリの 401 応答、cites API の閲覧権限を追記 |

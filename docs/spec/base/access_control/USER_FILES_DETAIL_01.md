@@ -20,6 +20,8 @@
 
 表内のいずれかの条件の○に合致すればダウンロードが可能です。
 
+※ コミュニティ管理者の「上記以外」の○は、アイテムが自身の所属するコミュニティのインデックス配下に登録されている場合に限ります（それ以外のアイテムでは登録ユーザーと同じ扱い）。
+
 #### ファイル公開設定：オープンアクセス
 
 | 条件/ロール      | システム<br>管理者 | リポジトリ<br>管理者 |   コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>(未ログイン) |
@@ -61,6 +63,8 @@
 
 表内のいずれかの条件の○に合致すれば情報閲覧が可能です。
 
+※ コミュニティ管理者の「上記以外」の○は、アイテムが自身の所属するコミュニティのインデックス配下に登録されている場合に限ります（それ以外のアイテムでは登録ユーザーと同じ扱い）。
+
 #### ファイル公開設定：公開しない「以外」
 
 | 条件/ロール      | システム<br>管理者 | リポジトリ<br>管理者 |   コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>(未ログイン) |
@@ -82,6 +86,8 @@
 「ファイル情報 > 表示形式」が「プレビュー」の場合、ファイルプレビューを行うことが出来ます。
 
 表内のいずれかの条件の○に合致すればプレビュー閲覧が可能です。
+
+※ コミュニティ管理者の「上記以外」の○は、アイテムが自身の所属するコミュニティのインデックス配下に登録されている場合に限ります（それ以外のアイテムでは登録ユーザーと同じ扱い）。
 
 #### ファイル公開設定：オープンアクセス
 
@@ -130,7 +136,11 @@
 | ---------------- | ------------------ | -------------------- | ------------------------- | ------------ | ------------ | ---------------------- |
 | 作成者：自分     | ○                  | ○                    | ○                        | ○            | ×            | ×                      |
 | 代理投稿者：自分 | ○                  | ○                    | ○                        | ○            | ○            | ×                      |
-| 上記以外         | ○                  | ○                    | ×                        | ×            | ×            | ×                      |
+| 上記以外         | ○                  | ○                    | ○ ※                      | ×            | ×            | ×                      |
+
+※ 自身が所属するコミュニティのインデックス配下に登録されたアイテムに限ります。
+
+本機能は `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED`（既定 `False`）を有効にしている場合のみ、最新バージョンのアイテムで表示されます。
 
 ## 公開バケットへのコピー
 
@@ -142,7 +152,11 @@
 | ---------------- | ------------------ | -------------------- | ------------------------- | ------------ | ------------ | ---------------------- |
 | 作成者：自分     | ○                  | ○                    | ○                        | ○            | ×            | ×                      |
 | 代理投稿者：自分 | ○                  | ○                    | ○                        | ○            | ○            | ×                      |
-| 上記以外         | ○                  | ○                    | ×                        | ×            | ×            | ×                      |
+| 上記以外         | ○                  | ○                    | ○ ※                      | ×            | ×            | ×                      |
+
+※ 自身が所属するコミュニティのインデックス配下に登録されたアイテムに限ります。
+
+本機能は `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED`（既定 `False`）を有効にしている場合のみ、最新バージョンのアイテムで表示されます。
 
 ## シークレットURL
 
@@ -216,10 +230,19 @@
 
 - ファイルダウンロード／プレビュー／ファイル情報は `check_file_download_permission`（accessrole 別分岐。所有者＋`WEKO_PERMISSION_SUPER_ROLE_USER`＋Community Administrator をバイパス）で担保され、仕様と整合。
 - シークレットURLの設定編集・作成済み編集は `has_permission_to_manage_secret_url`（所有者・`weko_shared_ids`・System＋Repository のみ。Community Administrator は所有者でない限り不可）で担保され、仕様と整合。
-- **ファイル置き換え**（`weko_records_ui.views.replace_file`）・**公開バケットへのコピー**（`copy_bucket`）は、対応するエンドポイントに `@login_required` も権限ファクトリも所有者チェックも無い（ゲストを含め誰でも POST 可能）。仕様（所有者／代理投稿者／管理者のみ）は**バックエンドでは強制されておらず UI 表示に依存**する。
+- **ファイル置き換え**（`weko_records_ui.views.replace_file`）・**公開バケットへのコピー**（`copy_bucket`）は、対応するエンドポイントに `@login_required` も権限ファクトリも所有者チェックも無い（ゲストを含め誰でも POST 可能）。仕様（所有者／代理投稿者／管理者のみ）は**バックエンドでは強制されておらず UI 表示に依存**する。→ release_v2.1.0 で解消（下記）。
+
+### 実装上の変更（release_v2.1.0：認可の強化）
+
+- **管理者バイパスの範囲**：`check_file_download_permission`（ダウンロード／ファイル情報／プレビュー）と `is_owners_or_superusers` の管理者バイパスが `is_superuser_or_record_comadmin` に統一された。System/Repository Administrator は全アイテム、Community Administrator は自身が所属するコミュニティのインデックス配下のアイテム（`has_comadmin_permission`）に限ってバイパスされる。以前は Community Administrator が全アイテムのファイルをバイパスしていた。
+- **ファイルプレビュー**（`/record/<pid_value>/preview/<filename>` の `weko_records_ui.preview.preview`）：`file_permission_required` デコレータで `file_permission_factory` を確認し、権限が無い場合は未ログインならログイン画面へ遷移、ログイン済みなら 403。プレビューを表示する iframe 内で未認証になった場合も JSON ではなくログイン画面を返す（`weko_accounts.unauthorized`：`Sec-Fetch-Dest` が iframe 等の場合）。
+- **ファイル置き換え／公開バケットへのコピー／ファイル配置取得**（`/records/replace_file`・`/records/copy_bucket`・`/records/get_file_place`）：`@login_required` と `record_edit_permission_required(param='pid')`（`check_created_id`：作成者・所有者・共有者・System/Repository Administrator・当該アイテムのコミュニティの Community Administrator）を要求。未ログインは 401／ログイン画面、権限なしは 403、`pid` 欠落は 400。S3 バケット一覧（`/records/get_bucket_list`）は `@login_required`。画面上のボタン表示も同じ `check_created_id`（テンプレートフィルタ `check_permission`）と `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED`・最新バージョン（`can_edit`）で制御される。
+- **IIIF 画像配信**（`invenio_iiif.handlers.protect_api`）：レコードのファイルであれば詳細画面の閲覧権限（`page_permission_factory`）かつ `check_file_download_permission` を満たす場合のみ配信し、満たさない場合・オブジェクトが無い場合は 404（`invenio_iiif.permissions.iiif_object_permission_factory`）。レコードに属さないオブジェクトは Invenio-Files-REST の `object-read` 権限で判定。サムネイル作成タスクは利用者権限を確認せずに対象を解決する。
+- **ファイル統計**（`QueryFileStatsCount`）：バケットを持つレコードの閲覧権限が必要（不可は 403）。
 
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3      | 初版作成                                                 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：コミュニティ管理者のバイパスを所属コミュニティのアイテムに限定、ファイル置き換え/公開バケットコピーの可否表を実装準拠に修正（バックエンド強制・設定条件）、プレビュー・IIIF・ファイル統計の権限判定を追記 |

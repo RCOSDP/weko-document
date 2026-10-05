@@ -54,8 +54,14 @@
 - アイテムエクスポート画面（`weko_items_ui.views.export`、`/items/export`）は `@login_required` を持たずゲストも到達し得るが、管理設定 `export_settings.allow_item_exporting` が無効の場合は全ロール共通で `abort(403)` となる（仕様未記載）。
 - アイテム一覧の絞り込みは検索と同一の `get_permission_filter`。ファイルコンテンツ出力は `check_file_download_permission` かつ `accessrole != 'open_restricted'` のファイルのみ（`open_restricted` はダウンロード権限があってもコンテンツを除外）。
 
+### 実装上の変更（release_v2.1.0）
+
+- エクスポート処理（`weko_items_ui.utils._export_item`）で、指定されたレコードごとに出力可否を再判定するようになった。System/Repository Administrator（`get_user_roles()` の第1要素）、編集権限を持つユーザー（`check_created_id`）、または公開済みかつ公開日到来のレコード（`check_publish_status`）以外はスキップされ、出力結果に含まれない（画面の一覧を経由せずレコード ID を直接指定した場合も非公開の他者レコードは出力されない）。
+- BibTeX 形式の事前検証（`validate_bibtex`）では、存在しないレコードと詳細画面の閲覧権限が無いレコードを出力不可として扱う。
+
 ## 更新履歴
 
 | 日付       | GitHubコミットID                           | 更新内容                                                 |
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3      | 初版作成                                                 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：エクスポート時のレコード単位の出力可否判定、BibTeX検証の閲覧権限を追記 |

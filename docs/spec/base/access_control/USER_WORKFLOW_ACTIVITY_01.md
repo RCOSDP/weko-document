@@ -190,9 +190,9 @@
 
 | ロール           | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
 | ---------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
-| ページの閲覧可否 | ○                  | ○                    | ○                      | ○            | ○※1          | ×                        |
+| ページの閲覧可否 | ○                  | ○                    | ○                      | ○            | ×※1          | ×                        |
 
-※1 URL入力で直接アクセスすることで閲覧可能
+※1 `item-access` アクションを持たないため、URL を直接入力しても 403 となります（v2.1.0 で `/workflow/activity/new`・`/workflow/activity/list` に `item_permission.require(http_exception=403)` を追加）。
 
 **管理画面 ワークフロー管理 ＞ ワークフローの表示/非表示欄でユーザーの持つロールが「表示」に登録されている**
 
@@ -354,9 +354,22 @@
 
 ※1 「権限あり」とは、管理画面のインデックスツリー管理 ＞ ツリー編集 でインデックスごとに設定出来る「投稿権限」の値です。
 
+> 実装補足（v2.1.0）：条件2は閲覧権限と同じ `weko_index_tree.utils.check_index_permission_by_role_and_group` を投稿ロール／投稿グループに対して適用する（`reduce_index_by_role(..., browsing_role=False)`）。ロール条件かつグループ条件の両方が必要で、GakuNin mAP のロールは判定から除外、mAP グループはロールグループとしてグループ条件側で扱われる（`get_user_roles_and_groups`、#1891）。ログインユーザーには「Authenticated User」(-98)、グループもロールグループも持たないユーザーには「グループなし」(-89) が自動付与される。詳細は [インデックス閲覧権限](USER_ITEM_SEARCH_01.md#インデックス閲覧権限) の実装補足を参照。
+
 ## 実装（アクセス制御の担保）
 
 （2026/07/14 実装 v2.0.2 と突き合わせ）本画面／操作のアクセス可否は、対応するビューの権限ファクトリ・`@login_required`・所有者/ロール判定で担保される。閲覧系は `weko_records_ui.permissions.page_permission_factory` / `check_file_download_permission`、検索系は `weko_search_ui.query.get_permission_filter`、所有者判定は `check_created_id`（`created_by`/`owner`/`weko_shared_ids` のいずれか一致。ロール非依存のため「作成者:自分＝一般ユーザー×」はコード強制でなく実務上の前提）を用いる。
+
+### 実装上の変更（release_v2.1.0：認可の強化）
+
+- **ワークフロータブ**（`weko_theme/macros/tabs_selector.html`）：表示条件が「ロールを1つ以上持つログインユーザー」から「System Administrator / Repository Administrator / Community Administrator / Contributor のいずれかを持つログインユーザー」に変更。`/workflow/` 自体は従来どおり `@login_required` かつロールを1つも持たない場合 403（`index`）。
+- **新規アクティビティ／アクティビティ一覧**（`/workflow/activity/new`・`/workflow/activity/list`）：`@login_required` に加え `weko_items_ui.permissions.item_permission`（`item-access` アクション。既定では Repository Administrator・Community Administrator・Contributor に付与、System Administrator は superuser-access で通過）を要求し、不足時は 403。
+- **アクティビティの削除確認**（`/workflow/verify_deletion/<activity_id>`）：ゲストは `session["guest_token"]` から復元した activity_id とパスの activity_id が一致する場合のみ、ログインユーザーは申請者本人、System/Repository Administrator、担当コミュニティの Community Administrator（`check_authority_by_admin`）のみ許可。それ以外は 403（`Authorization required`）。
+- **フィードバックメール／リクエストメール送信先の取得**（`/workflow/get_feedback_maillist/<activity_id>`・`/workflow/get_request_maillist/<activity_id>`）：`@check_authority` を追加。管理者（`check_authority_by_admin`）、申請者本人、またはアイテム（未作成時は一時データ）の共有者（`shared_user_ids`／`weko_shared_ids`）以外は `{"code": 403, "msg": "Authorization required"}` を返す（issue62796）。
+- **ゲストアクティビティの作成**（`POST /workflow/activity/init-guest`）：接続元 IP ごとに 1 分あたり 5 回のレート制限（`weko_workflow.utils.limiter`）と、`guest_mail` のメールアドレス形式検証（不正時 400 `Invalid guest_mail`）を追加。
+- **ゲストトークンでのファイル操作**：ゲスト（`session["guest_token"]`）による `files-rest-object-read` / `files-rest-bucket-update` / `files-rest-object-delete` / `files-rest-object-delete-version` は、そのトークンのアクティビティに登録されたアイテム（およびその元バージョン）のバケットに対してのみ許可される（`invenio_files_rest.views.is_guest_login_can_access_file`・`invenio_files_rest.permissions.get_guest_activity_bucket_ids`）。以前は任意のバケットに対して許可されていた。
+- **アイテム登録の保存**（`PUT`/`POST /deposits/redirect/<pid_value>`、`weko_deposit.rest.ItemResource`。`PUT /deposits/publish/<pid_value>`（`publish`）も `@login_required`＋同じ編集権限判定）：`require_item_edit_permission` により未認証は 401、`weko_items_ui.permissions.edit_permission_factory`（＝`check_created_id`：作成者・所有者・共有者・System/Repository Administrator・当該アイテムのコミュニティの Community Administrator）を満たさない場合 403。バージョン付き pid は親 recid で判定する。`DEPOSIT_REST_ENDPOINTS` の `update_permission_factory_imp` も `edit_permission_factory`、既定の `RECORDS_REST_DEFAULT_UPDATE_PERMISSION_FACTORY` は `deny_all`。
+- **ユーザー情報の検証 API**（`/items/validate_email_and_index`・`validate_user_info`・`validate_users_info`・`get_userinfo_by_emails`。代理投稿者・リクエストメール送信先などの入力検証に使用）：`@login_required` と `item_permission`（`item-access`）を要求。
 
 ## 更新履歴
 
@@ -364,3 +377,4 @@
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3      | 初版作成                                                 |
 | 2025/11/14|213e1edb08782bee732b86d55c34240bc9758867|インデックス権限判定の修正|
+| 2026/10/05 | 508030789 | release_v2.1.0突合：新規アクティビティの一般ユーザー可否を×に修正、ワークフロータブ表示条件・activity/new/list の item-access 要求・削除確認/メール送信先取得の当事者検証・ゲスト作成のレート制限・ゲストトークンのバケット限定・depid 更新の編集権限・インデックス投稿権限の判定補足を追記 |
