@@ -264,7 +264,7 @@ DOIや各種外部サービスIDを用いて、Web APIからメタデータを�
 
 | 項番 | 項目 | 入力・選択内容 |
 | --- | --- | --- |
-| 1 | [**【アクセス権】**](https://schema.irdb.nii.ac.jp/ja/schema/2.0/5) | エンバーゴなし： 「open access」を選択。<br>エンバーゴあり： 「embargoed access」を選択。<br>※「embargoed access」を選択した場合、エンバーゴ期間経過後「open access」に変更する。<br>※システム管理者が設定ファイルで `WEKO_SEARCH_FIX_ACCESSRIGHTS` を有効にしている場合、「embargoed access」のアイテムは、ファイル情報の【アクセス】の設定と現在日に応じて自動的に読み替えられます。すべてのファイルが「オープンアクセス」または解禁日を過ぎた「オープンアクセス日を指定する」になった時点で「open access」として扱われ、「制限公開」のファイルがある場合、または解禁日前のファイルがなく「ログインユーザのみ」のファイルがある場合は「restricted access」として扱われます。この読み替えはアイテム詳細画面、検索（アクセス権のファセット・絞り込み）、OAI-PMHによるハーベスト等に反映されます。 |
+| 【v2.1.0】1 | [**【アクセス権】**](https://schema.irdb.nii.ac.jp/ja/schema/2.0/5) | エンバーゴなし： 「open access」を選択。<br>エンバーゴあり： 「embargoed access」を選択。<br>※「embargoed access」を選択した場合、エンバーゴ期間経過後「open access」に変更する。<br>※システム管理者が設定ファイルで `WEKO_SEARCH_FIX_ACCESSRIGHTS` を有効にしている場合、「embargoed access」のアイテムは、ファイル情報の【アクセス】の設定と現在日に応じて自動的に読み替えられます。すべてのファイルが「オープンアクセス」または解禁日を過ぎた「オープンアクセス日を指定する」になった時点で「open access」として扱われ、「制限公開」のファイルがある場合、または解禁日前のファイルがなく「ログインユーザのみ」のファイルがある場合は「restricted access」として扱われます。この読み替えはアイテム詳細画面、検索（アクセス権のファセット・絞り込み）、OAI-PMHによるハーベスト等に反映されます。 |
 | 2 | [**【権利情報】**](https://schema.irdb.nii.ac.jp/ja/schema/2.0/6) | 権利情報を入力する。<br>（例：©（出版社・学会名）./ This is an Open access Article under CreativeCommons Licence.）<br>※CCライセンスの時は補足[「CCライセンスの付与について」](#61-ccライセンスの付与について)を参照<br><span style="color:green">根拠データについて、「データの利活用・提供方針」があればこちらに入力する。著者から事前に聞いておくとスムーズ。（例：無償。ただしクレジット表記を条件とする。）  <br>※研究者には[「研究データの公開・利用条件指定ガイドライン」](https://japanlinkcenter.org/rduf/doc/rduf_license_guideline.pdf)等を参考に「データの利活用・提供方針」を定めるよう周知する。</span> |
 
 入力例：
