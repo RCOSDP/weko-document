@@ -125,7 +125,9 @@ The format conventions used in this document are as follows:
 
 [3.1.2 Search in "Index Tree" 25](#linkidsearchwithindextree参照先search-in-index-tree)
 
-[3.1.3 View the Item Lists 28](#linkidviewitemlist参照先view-the-item-lists)
+[3.1.3 Display journal information](#display-journal-information)
+
+[3.1.4 View the Item Lists 28](#linkidviewitemlist参照先view-the-item-lists)
 
 [3.2 Search using the ranking 31](#linkidsearchwithitemranking参照先indexword-pronounceらんきんくてけんさくする-indexitemランキングで検索するsearch-using-the-rankingindexword)
 
@@ -163,9 +165,19 @@ The format conventions used in this document are as follows:
 
 [4.1.7 Export 57](#export)
 
-[4.1.8 The Information screen 58](#the-information-screen)
+[4.1.8 Communities](#communities)
 
-[4.1.9 The file details screen](#the-file-details-screen)
+[4.1.9 The Information screen 58](#the-information-screen)
+
+[4.1.10 The file details screen](#the-file-details-screen)
+
+[4.1.11 The request mail form](#the-request-mail-form)
+
+[4.1.12 Apply to use external data](#apply-to-use-external-data)
+
+[4.1.13 Google Scholar metadata output](#google-scholar-metadata-output)
+
+[4.1.14 Google Dataset metadata output](#google-dataset-metadata-output)
 
 [5. Register items 61](#register-itemsindexword)
 
@@ -510,11 +522,16 @@ Table 1‑3. The elements in the Home screen
 </tr>
 <tr class="even">
 <td>10</td>
-<td>The "Index Link" screen</td>
-<td>This screen shows index links.</td>
+<td>The "Minimize menu" button</td>
+<td>Shows or hides the menus such as the index links and the index tree.</td>
 </tr>
 <tr class="odd">
 <td>11</td>
+<td>The "Index Link" screen</td>
+<td>This screen shows index links.</td>
+</tr>
+<tr class="even">
+<td>12</td>
 <td>The "Index Tree" screen</td>
 <td>This screen shows indexes organized under the index tree.</td>
 </tr>
@@ -532,7 +549,7 @@ This section explains how to display the Home screen.
 
 1.  Specify the URL of the System in your browser.
 
-The Home screen of the System The search results appear s. See "ANCHORID=login【参照元】Section 2.2. Log in to the System【E】" for information on logging in to the System.
+When you access the System successfully, the Home screen appears. See "ANCHORID=login【参照元】Section 2.2. Log in to the System【E】" for information on logging in to the System.
 
 zu020010.tif![](media/media/image8.png)
 
@@ -683,6 +700,12 @@ According to the user information used in the Shibboleth login, the System creat
 
   - A faculty member will be assigned a general user role.
 
+Note: When a user logs in through GakuNin Embedded DS, roles and groups are assigned to the user according to the information from the GakuNin mAP feature.
+
+  - The role names and group names are defined according to the configuration file. The defined group names are included in the specified attribute.
+
+  - Access control for users who log in through GakuNin is performed based on the groups defined by the GakuNin mAP feature.
+
 ## LINKID=logout【参照先】\<INDEXWORD PRONOUNCE="ろくあうとする" INDEXITEM="ログアウトする"\>Log out of the System\</INDEXWORD\>
 
 This section explains how to log out of the System.
@@ -750,8 +773,8 @@ Table 2‑5. The elements in the "Sign up" screen
 
 | No. | Element                                               | Description                                                                                                                                                                          |
 | --- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | The "Email Address" text box                          | Enter an email address. The input format should be "*XXXXX*＠*XXX.XXX*". You can use alphanumeric characters, hyphens (-), and underscores (\_). The maximum length is 16 characters. |
-| 2   | The "Password" text box                               | Enter a new password. You can enter 6 to 16 characters (alphanumeric characters only).                                                                                               |
+| 1   | The "Email Address" text box                          | Enter an email address. The input format should be "*XXXXX*＠*XXX.XXX*". You can use alphanumeric characters, hyphens (-), and underscores (\_). The maximum length is 255 characters. |
+| 2   | The "Password" text box                               | Enter a new password. You can enter 6 to 255 characters (alphanumeric characters only).                                                                                              |
 | 3   | The icon020070.tif![](media/media/image26.png) button | Click to sign-up for the service.                                                                                                                                                    |
 | 4   | The icon020080.tif![](media/media/image27.png) link   | Click to navigate to the login screen. Log in and continue working.                                                                                                                  |
 
@@ -860,6 +883,20 @@ zu030070.tif![](media/media/image35.png)
 
 A search for items is performed. The search results appear in the "Item Lists" screen. See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E】" for more information.
 
+
+### Display journal information
+
+When journal information is configured for an index and set to be output, the journal information appears above "Item Lists" when you search with that index. See "Manage journal information" in the System Administration Manual for details on configuring journal information.
+
+Each piece of journal information is displayed in the format "*item name*: *value*", and only the items that have a value are displayed.
+
+| No. | Element | Description |
+| --- | ------- | ----------- |
+| 1   | Thumbnail | The thumbnail image of the index appears if one is set. |
+| 2   | "Title" area | Displays the "Title", "Publisher name", "Language" and "Online-format identifier" of the journal information, and the comment of the index. |
+| 3   | URL | Displays the URL of the index. |
+| 4   | "Details" link | Click to expand the other journal information, such as "Print-format identifier", "NCID", "Publication type", "Coverage depth" and the volumes and issues available online. |
+
 ### LINKID=viewitemlist【参照先】View the Item Lists
 
 This section explains how to view the information in "Item Lists" in two ways: a list and a table of contents.
@@ -872,15 +909,24 @@ The display language is chosen according to the following priority order: the la
 
 > zu030080.tif![](media/media/image30.png)
 
-When a content file is registered, and the file information is configured to be displayed in "Item Lists", the link of the content file extension appears (If there is no content file and only a URL is registered, the link will appear as a URL. If there is no file extension, the link will appear "unknown". You can download the content file by clicking on the link (If there is no content file and only a URL is registered, you will be redirected to that URL).
+| No. | Element     | Description |
+| --- | ----------- | ----------- |
+| 1   | Thumbnail   | When "Show List" is set to "ON" in the thumbnail property options for the item type, the thumbnail files uploaded for "Item Lists" will be displayed. If multiple thumbnail files have been uploaded, the first thumbnail file on the item details screen will appear. |
+| 2   | Author ID   | When "Show List" is set to "ON" in the creator property options for the item type, author IDs are displayed as icons. |
+| 3   | Description | Displayed when "Show List" is set to "ON" in the Description property options for the item type. Click to display the Description information below the element. |
+| 4   | Files       | Displayed when "Show List" is set to "ON" in the Files property options for the item type. Click to display the file information below the element as links with the file extensions (if there is no content file and only a URL is registered, the link will appear as "URL"; if there is no file extension, the link will appear as "unknown"). You can download the content file by clicking on the link (if there is no content file and only a URL is registered, you will be redirected to that URL). If many content files are registered, "..." appears in "Item Lists". Clicking "..." will display the item details screen. |
 
-"..." in "Item Lists" indicates that there are more registered content files in addition to what is being displayed. Clicking "..." will display the item details screen.
+  - Display Description
 
-![](media/media/image36.png)
+    The Description information of the item is displayed.
 
-When "Show List" is set to "ON" in the thumbnail property options for the item type, the thumbnail files uploaded for "Item Lists" will be displayed.
+  - Display Files
 
-If multiple thumbnail files have been uploaded, the first thumbnail file on the item details screen will appear.
+    The content files and text URL information of the item are displayed.
+
+  - Display Reference
+
+    The related identifier information of the item is displayed.
 
 See "Section 3.3.1. Simple search" for information on the display order and the number of items displayed.
 
@@ -901,6 +947,8 @@ Display search results in a list of headings. See the System Administration Manu
 The item details screen appears. See "ANCHORID=displayitem【参照元】Chapter 4: View item details【E】" for more information.
 
 ## LINKID=searchwithitemranking【参照先】\<INDEXWORD PRONOUNCE="らんきんくてけんさくする" INDEXITEM="ランキングで検索する"\>Search using the ranking\</INDEXWORD\>
+
+The ranking search is available when the ranking display is set to "On". See "Configure the ranking display" in the System Administration Manual for more information.
 
 This section explains how to search for items using the ranking display.
 
@@ -951,7 +999,7 @@ The item details screen for the item appears.
 
 17. Download the file as needed.
     
-    1.  #### User Who Created The Most Items
+#### User Who Created The Most Items
 
 It ranks the users based on the number of items they created.
 
@@ -997,7 +1045,7 @@ The item details screen for the item appears.
     
     ・Searches without keywords (i.e. listing all data) or searches using only blank spaces are not included in the keyword ranking. The "Most Searched Keywords" ranking shows the searched text as it is specified. For example, if you specify "adults and children", this phrase will be counted as one keyword. (It is handled as a different keyword than "adults" or "children.")
     
-    1.  ## LINKID=searchwithkeywords【参照先】\<INDEXWORD PRONOUNCE="きいわあとてけんさくする" INDEXITEM="キーワードで検索する"\>Search by keywords\</INDEXWORD\>
+## LINKID=searchwithkeywords【参照先】\<INDEXWORD PRONOUNCE="きいわあとてけんさくする" INDEXITEM="キーワードで検索する"\>Search by keywords\</INDEXWORD\>
 
 There are two types of keyword searches: simple search and advanced search. This section explains how to search for items by specifying keywords.
 
@@ -1073,9 +1121,12 @@ Table 3‑3. The elements in the "Search Results" screen
 | 1   | "Search Results"                                      | The search results appear.                                                                                                                                                                                       |
 | 2   | The icon030080.tif![](media/media/image47.png) button | Click to open the "Items to Export" screen. You can export information contained in the items. See "Chapter 7: Export items" for more information.                                                               |
 | 3   | An item name                                          | Clicking on a name takes you to the item details screen. See "ANCHORID=displayitem【参照元】Chapter 4: View item details【E】" for more information. See "ANCHORID=preview【参照元】Figure 3-2. The item details screen【E】". |
-| 4   | The "Display Order" pull-down list                    | Select the order in which the search results are displayed from the "Display Order" pull-down list. See "ANCHORID=displaypulldownlist【参照元】Figure 3-3. The "Display Order" pull-down list【E】".                    |
+| 4   | The "Display Order" pull-down list                    | Select the order in which the search results are displayed from the "Display Order" pull-down list. See "ANCHORID=displaypulldownlist【参照元】Figure 3-3. The "Display Order" pull-down list【E】". Only the display orders that are set to be shown in the list in the search result display settings are displayed. See "Configure the search results settings" in the System Administration Manual for more information. |
 | 5   | The "asc/desc" pull-down list                         | Select "asc" (ascending) or "desc" (descending) for a sort order. See "ANCHORID=ascpulldownlist【参照元】Figure 3-4. The "asc/desc" pull-down list【E】" for more information.                                          |
 | 6   | The "Display Number" pull-down list                   | Select the number of items to display from the "Display Number" pull-down list. See "ANCHORID=displaycountpulldownlist【参照元】Figure 3-5. The "Display Number" pull-down list【E】" for more information.             |
+| 7   | The author ID icon                                    | If an identifier is set for an author, the first letter of the identifier name is displayed as an icon. For ORCID, the ORCID icon is displayed.                                                                   |
+| 8   | The file links                                        | If files are attached to the item, links to the files are displayed.                                                                                                                                             |
+| 9   | The "..." link                                        | Displayed when many files are attached to the item. Click to expand the file links.                                                                                                                              |
 
 LINKID=preview【参照先】Figure 3-2. The item details screen
 
@@ -1114,6 +1165,8 @@ You can perform an OR search by separating text with " OR " or " | " (both requi
 You can perform an AND search using a combination of the simple search text field and any element of the advanced search.
 
 Click Enter to search for items matching the search criteria. The search results appear in the "Search Results" area on the "Top" tab.
+
+Note: To use the search criteria you have set, use the search button in the advanced search area.
 
 zu030310.tif![](media/media/image53.png)\<TBLATT POSITION=”1” SCALE=”151”\>
 
@@ -1179,6 +1232,8 @@ Table 3‑5. The elements in the "Search Results" screen
 | 4   | The "Display Order" pull-down list                    | Select the order in which the search results are displayed from the "Display Order" pull-down list. See "ANCHORID=displaypulldownlist【参照元】Figure 3-3. The "Display Order" pull-down list【E】".        |
 | 5   | The "asc/desc" pull-down list                         | Select "asc" (ascending) or "desc" (descending) for a sort order. See "ANCHORID=ascpulldownlist【参照元】Figure 3-4. The "asc/desc" pull-down list【E】" for more information.                              |
 | 6   | The "Display Number" pull-down list                   | Select the number of items to display from the "Display Number" pull-down list. See "ANCHORID=displaycountpulldownlist【参照元】Figure 3-5. The "Display Number" pull-down list【E】" for more information. |
+
+Note: Currently, searching with "published" specified for "Author Version Flag" does not work.
 
 ## LINKID=variantcharasearch【参照先】\<INDEXWORD PRONOUNCE="いたいしけんさくについて" INDEXITEM="異体字検索について"\>About variant character search\</INDEXWORD\>
 
@@ -1372,7 +1427,7 @@ Table 4‑2. The elements in the "Confirm" screen
 
 > Notes:
 
-You cannot delete an item when it has a DOI granted. If you click the "Delete" button in this case, the message "This item cannot be deleted because a DOI is granted" will appear.
+You cannot delete an item when it has a DOI granted. You also cannot delete an item that has a DOI granted when any of the indexes to which the item directly belongs or their parent indexes is set to be hidden. If you click the "Delete" button in these cases, the message "This item cannot be deleted because a DOI is granted" will appear.
 
 > ![](media/media/image74.png)
 > 
@@ -1463,6 +1518,12 @@ You can view content files registered with an item in a list of file information
 > 
 > 　The item details screen appears, with a specific message at the top. For support when the following screen appears, contact your administrator.![](media/media/image85.png)
 > 
+> ・The following feature is provided to the institutions participating in the early use of the usage application feature. Institutions that have not applied for the early use of this feature cannot use it. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
+> 
+> ・Access control is set for content whose content file access is set to "Restricted Access". You can download the content after completing procedures such as agreeing to the terms and conditions.
+> 
+> Clicking the "Apply" button starts the application procedure. Depending on the content, you may not be able to apply unless you sign up for an account and log in. Ask the repository staff about the conditions for applying.
+> 
 > ・When the access to the content file is configured as "Restricted Access", and "Providing Method: Role" is set to "Non-Logged In User":
 > 
 > You can perform the operations shown below. See "Section 5.1.1. Register items" for details on setting up restricted access.
@@ -1471,11 +1532,21 @@ You can view content files registered with an item in a list of file information
 
 1.  When you click the "Apply" button on the item details screen, the terms and conditions appear on the modal screen (if any).
 
+> You can click the "Print Terms and Conditions" button to open a print preview for printing the displayed terms and conditions.
+> 
 > The "Next" button becomes active when you select the check box below the terms and conditions. Press the button, and a modal screen appears where you can enter the email address.![](media/media/image87.png)
 
 2.  A modal screen appears where you can enter your email address.![](media/media/image88.png)
 
 > An email message with a link to the edit screen of a specific workflow is sent to the email address specified in the modal screen. Clicking on the link will take you to an action screen defined in the workflow (e.g., the item registration screen), and you can carry on with the operation to complete the workflow.
+> 
+> At this time, you may also be asked to enter a password. In this case, enter a password that complies with the password policy. See the System Administration Manual for how to configure whether a password is required.
+> 
+> However, if there is an incomplete workflow, the link in the email message is the link to that workflow. Cancel or complete the incomplete workflow.
+> 
+> The link in the received email message cannot be reused after the workflow is canceled or completed.
+> 
+> If you have canceled the workflow by mistake by clicking the button for discarding the input and terminating the activity, click the "Apply" button on the details screen of the item to apply for, and receive an email message again.
 > 
 > When the workflow is "Done", the user who started the workflow will receive an email with a link to download the file.
 > 
@@ -1491,9 +1562,42 @@ You can view content files registered with an item in a list of file information
 > 
 > 　→ The user receives an email with a link to a usage report workflow available indefinitely.
 
+・When the content file is a billing file:
+
+The price of the content file is displayed for each configured role. You can also perform the following operations. See "Section 5.1.1. Register items" for information on setting up a billing file.
+
+If the file has not been purchased and you have a role that can purchase it, the "charge" button is displayed. Click the "charge" button to purchase the content file.
+
+・When the content file is large:
+
+1.  When you try to download a large content file, a warning message appears.
+
+2.  Check the warning and click "OK". A file picker for saving the file appears. Enter the name of the file to save, and click "Save".
+
+3.  You cannot operate the screen during the download. Leave it as it is until the download completes. (You can operate other screens.)
+
+
+#### The "Import to GakuNin RDM" button
+
+This feature imports a GakuNin RDM project archive published in WEKO3 into GakuNin RDM as a new project. A GakuNin RDM project archive is created by exporting a project in GakuNin RDM.
+
+The procedure is as follows.
+
+1.  Export the project in GakuNin RDM.
+
+2.  Upload the exported file (the GakuNin RDM project archive) in the item registration screen of WEKO3.
+
+3.  The MIME type of the file is set to "application/zip". Change it to "application/rdm-project".
+
+4.  Set the access of the file to either "Open Access" or "Input Open Access Date".
+
+5.  The GakuNin RDM project archive is now ready to be published.
+
+6.  The "Import to GakuNin RDM" button appears for the file in the item details screen. When the item is published and the file is publicly accessible (for "Input Open Access Date", after the open access date has passed), clicking the button takes you to GakuNin RDM to import the archive. Otherwise, the button is disabled, and hovering over it shows the reason ("Item is not published", "File is not publicly accessible", or "Item is not published and file is not publicly accessible").
+
 ### Share items
 
-You can share items using various social media or print them.
+You can share items using various social media or print them. (This feature is not available because the services used have been discontinued. A successor feature is under development.)
 
 Figure 4-6. The "Share" screen
 
@@ -1572,11 +1676,25 @@ Table 4‑6. The elements in the "Export" screen
 
 | No. | Element                 | Description                                                                 |
 | --- | ----------------------- | --------------------------------------------------------------------------- |
-| 1   | The "JPCOAR" button     | Click to generate OAI-PMH output in the JPCOAR format.                      |
-| 2   | The "DublinCore" button | Click to generate OAI-PMH output in the DublinCore format.                  |
-| 3   | The "DDI" button        | Click to generate OAI-PMH output in the DDI format.                         |
-| 4   | The "JSON" link         | Click to generate output in the JSON format as an "Other Formats" option.   |
+| 1   | The "JPCOAR 2.0" button | Click to generate OAI-PMH output in the JPCOAR 2.0 format.                  |
+| 2   | The "JPCOAR 1.0" button | Click to generate OAI-PMH output in the JPCOAR 1.0.2 format.                |
+| 3   | The "DublinCore" button | Click to generate OAI-PMH output in the DublinCore format.                  |
+| 4   | The "DDI" button        | Click to generate OAI-PMH output in the DDI format.                         |
+| 5   | The "JSON" link         | Click to generate output in the JSON format as an "Other Formats" option.   |
 |     | The "BIBTEX" link       | Click to generate output in the BIBTEX format as an "Other Formats" option. |
+|     | The "ZIP" link          | Click to download the item metadata as an "Other Formats" option.           |
+
+
+### Communities
+
+The "Communities" area displays the communities to which the item belongs.
+
+Table 4‑7. The elements in the "Communities" area
+
+| No. | Element         | Description                                                    |
+| --- | --------------- | -------------------------------------------------------------- |
+| 1   | Community logo  | The logo image of the community appears if one is set. Click it to display the top page of the community. |
+| 2   | Community title | Click to display the top page of the community.                |
 
 ### The Information screen
 
@@ -1592,7 +1710,7 @@ Figure 4-12. The "Stats" tab
 
 The following table explains each element in the Information screen.
 
-Table 4‑7. The elements in the Information screen
+Table 4‑8. The elements in the Information screen
 
 <table>
 <thead>
@@ -1635,7 +1753,7 @@ Table 4‑7. The elements in the Information screen
 
 The following table explains the elements displayed in the "Version" and "Stats" tabs.
 
-Table 4‑8. The "Version" and "Stats" tabs on the Information screen
+Table 4‑9. The "Version" and "Stats" tabs on the Information screen
 
 | No. | Tab   | Element                     | Description                                                                                                                                                      |
 | --- | ----- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1657,6 +1775,195 @@ Table 4‑8. The "Version" and "Stats" tabs on the Information screen
 Note: When the Secret URL feature is enabled on the Administration screen, a "Secret URL" button is also displayed in the file area. See "Share non-public content using a one-time address" for more information on this feature.
 
 For a billing file, the price of the content file for each role is displayed in the file information area.
+
+
+### The request mail form
+
+This is an experimental feature. It is not provided in the JAIRO Cloud environment.
+
+Clicking the "Request Mail" button on the item details screen displays the "Request Mail Form".
+
+The request mail is sent to the email addresses set as the request mail destinations when the item was created or edited.
+
+You can enter the following items in the form.
+
+  - From  
+    Enter the sender's email address. If the email address is not in a valid format, an error message appears when you click the "Send" button. This item is required.
+
+  - Subject  
+    Enter the subject of the email. This item is required.
+
+  - Body  
+    Enter the body of the email. This item is required.
+
+After entering the above items, enter the result of the calculation shown in the CAPTCHA image in the input field at the bottom right of the form. You can then send the email.
+
+The CAPTCHA image has an expiration time. If it has expired, the email cannot be sent and the image is refreshed. The default expiration time is 600 seconds.
+
+### Apply to use external data
+
+This is an experimental feature. It is not provided in the JAIRO Cloud environment.
+
+You can apply to use data located outside WEKO by clicking the "Apply" button on the right side of the item details screen.
+
+This feature is available only when all of the following conditions are met:
+
+  - No content file is registered with the item.
+
+  - The usage application method is configured for the item.
+
+1.  Click the "Apply" button. If terms and conditions are configured, they appear on a modal screen.
+    
+    The "Next" button becomes active when you select the "I have read and agreed to the Terms and Conditions" check box below the terms and conditions. Click the button, and a modal screen appears where you can enter your email address.
+    
+    You can also click the "Print Terms and Conditions" button to open a print preview of the displayed terms and conditions.
+
+2.  An email message with a link to the edit screen of a specific workflow is sent to the email address specified in the modal screen. Clicking on the link in the email takes you to an action screen defined in the workflow (e.g., the item registration screen), and you can carry on with the operation to complete the workflow.
+
+When the workflow is "Done", the user who started the workflow receives an email with a link to download the file.
+
+A modal warning message configured by the administrator is displayed if a user who clicks "Apply" does not match the providing method setting.
+
+When the user downloads a content file using the link sent by email, an email message with a usage report workflow link is sent according to the user's account.
+
+  - For a guest user: The user receives an email with a link to a usage report workflow available for a limited period.
+
+  - For a registered user: The user receives an email with a link to a usage report workflow available indefinitely.
+
+### Google Scholar metadata output
+
+Google Scholar metadata is output in the header of the Web page based on the metadata of the item.
+
+The metadata is registered with Google Scholar based on the output metadata.
+
+The JPCOAR mapping (jpcoar_v2_mapping) corresponds to the Google Scholar metadata as follows.
+
+Table 4‑10. Google Scholar metadata
+
+| No. | JPCOAR mapping     | Google Scholar metadata |
+| --- | ------------------ | ----------------------- |
+| 1   | dc:title           | citation_title          |
+| 2   | jpcoar:creatorName | citation_author         |
+| 3   | dc:publisher       | citation_publisher      |
+| 4   | jpcoar:subject     | citation_keywords       |
+| 5   | jpcoar:sourceTitle | citation_journal_title  |
+| 6   | jpcoar:volume      | citation_volume         |
+| 7   | jpcoar:issue       | citation_issue          |
+| 8   | jpcoar:pageStart   | citation_firstpage      |
+| 9   | jpcoar:pageEnd     | citation_lastpage       |
+
+### Google Dataset metadata output
+
+Google Dataset metadata is output when the following conditions are met:
+
+  - The "Resource Type" in the item metadata is "dataset".
+
+  - The "Description" in the item metadata is 50 characters or more.
+
+Google Dataset metadata is output as follows.
+
+Table 4‑11. Google Dataset metadata
+
+<table>
+<thead>
+<tr class="header">
+<th>schema.org</th>
+<th></th>
+<th>Source JPCOAR schema element</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>description</td>
+<td>Required</td>
+<td>datacite:description</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>name</td>
+<td>Required</td>
+<td>dc:title</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>creator</td>
+<td></td>
+<td>jpcoar:creator</td>
+<td>"creator": [<br />
+    {<br />
+        "@type": "Person",<br />
+        "sameAs": "http://orcid.org/0000-0000-0000-0000",<br />
+        "givenName": "Jane",<br />
+        "familyName": "Foo",<br />
+        "name": "Jane Foo"<br />
+    },</td>
+</tr>
+<tr class="even">
+<td>citation</td>
+<td></td>
+<td>jpcoar:identifier</td>
+<td>"citation": "https://doi.org/10.1111/111"</td>
+</tr>
+<tr class="odd">
+<td>keywords</td>
+<td></td>
+<td>jpcoar:subject</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>license</td>
+<td></td>
+<td>dc:rights (assumed)</td>
+<td>"license" : {<br />
+  "@type": "CreativeWork",<br />
+  "name": "Custom license",<br />
+  "url": "https://example.com/custom_license"<br />
+  }</td>
+</tr>
+<tr class="odd">
+<td>spatialCoverage</td>
+<td></td>
+<td>datacite:geoLocation</td>
+<td>"spatialCoverage:" {<br />
+"@type": "Place",<br />
+"geo": {<br />
+"@type": "GeoCoordinates",<br />
+"latitude": 39.3280,<br />
+"longitude": 120.1633<br />
+}<br />
+}</td>
+</tr>
+<tr class="even">
+<td>temporalCoverage</td>
+<td></td>
+<td>dcterms:temporal</td>
+<td>"temporalCoverage" : "2008"</td>
+</tr>
+<tr class="odd">
+<td>includedInDataCatalog</td>
+<td></td>
+<td></td>
+<td>includedInDataCatalog":{<br />
+"@type":"DataCatalog",<br />
+"name":&lt;URL of the repository&gt;<br />
+}</td>
+</tr>
+<tr class="even">
+<td>distribution</td>
+<td></td>
+<td>jpcoar:file</td>
+<td>"distribution":[<br />
+{<br />
+"@type":"DataDownload",<br />
+"encodingFormat":&lt;format of the file content&gt;,<br />
+"contentUrl":&lt;URL of the file&gt;<br />
+},<br />
+…<br />
+]</td>
+</tr>
+</tbody>
+</table>
 
 ### The file details screen
 
@@ -1805,7 +2112,7 @@ zu050120.tif![](media/media/image111.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-5. The elements in the thumbnail registration screen
+Table 5-3. The elements in the thumbnail registration screen
 
 | No. | Element                                              | Description                                                                                          |
 | --- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
@@ -1830,7 +2137,7 @@ This section explains how to automatically populate metadata from an external da
     
     ![](media/media/image117.png)
 
-Table 5‑6. The elements in the "Automatic metadata input" screen
+Table 5‑4. The elements in the "Automatic metadata input" screen
 
 <table>
 <thead>
@@ -1895,9 +2202,94 @@ Table 5‑6. The elements in the "Automatic metadata input" screen
 </tbody>
 </table>
 
+| **Data**                      | **Path**                                        | **Corresponding JPCOAR mapping**    |
+| ----------------------------- | ----------------------------------------------- | ----------------------------------- |
+| Title                         | dc:title                                        | dc:title                            |
+| Alternative title             | dcterms:alternative                             | dc:title                            |
+| Product identifier            | productIdentifier.identifier(type=xx)           | jpcoar:relation                     |
+| Creator name                  | creator.foaf:name                               | jpcoar:creatorName                  |
+| Creator identifier            | creator.personIdentifier                        |                                     |
+| Creator affiliation name      | creator.jpcoar:affiliationName                  |                                     |
+| Contributor name              | contributor.foaf:name                           | jpcoar:contributorName              |
+| Contributor affiliation name  | contributor.jpcoar:affiliationName              |                                     |
+| Contributor identifier        | contributor.personIdentifier                    |                                     |
+| Publication identifier        | publication.publicationidentifier               |                                     |
+| Publication name              | publication.prism:publicationName               | jpcoar:sourceTitle                  |
+| Publication date              | publication.prism:publicationDate               |                                     |
+| Volume                        | publication.prism:volume                        | jpcoar:volume                       |
+| Issue                         | publication.prism:number                        | jpcoar:issue                        |
+| Starting page                 | publication.prism:startingPage                  | jpcoar:pageStart                    |
+| Ending page                   | publication.prism:endingPage                    | jpcoar:pageEnd                      |
+| Number of pages               | publication.jpcoar:numPages                     | jpcoar:numPages                     |
+| Publisher                     | publication.dc:publisher                        | dc:publisher                        |
+| Date                          | publication.prism:publicationDate               | datacite:date                       |
+| NCID of the journal           | publication.publicationIdentifier(@type=NCID)   | jpcoar:sourceIdentifier             |
+| ISSN of the journal           | publication.publicationIdentifier(@type=ISSN)   | jpcoar:sourceIdentifier             |
+| Dissertation number           | ndl:dissertationNumber                          |                                     |
+| Degree name                   | ndl:degreeName                                  |                                     |
+| Date granted                  | ndl:dateGranted                                 |                                     |
+| Degree grantor identifier     | degreeAwardInstitution.institutionIdentifier    |                                     |
+| Degree grantor name           | degreeAwardInstitution.jpcoar:degreeGrantorName |                                     |
+| Conference name               | jpcoar:conferenceName                           |                                     |
+| Conference place              | jpcoar:conferencePlace                          |                                     |
+| Conference date (start day)   | jpcoar:conferenceDate.jpcoar:startDay           |                                     |
+| Conference date (start month) | jpcoar:conferenceDate.jpcoar:startMonth         |                                     |
+| Conference date (start year)  | jpcoar:conferenceDate.jpcoar:startYear          |                                     |
+| Conference date (end day)     | jpcoar:conferenceDate.jpcoar:endDay             |                                     |
+| Conference date (end month)   | jpcoar:conferenceDate.jpcoar:endDay             |                                     |
+| Conference date (end year)    | jpcoar:conferenceDate.jpcoar:endDay             |                                     |
+| Funder name                   | fundingProgram.notation                         |                                     |
+| Related product relation type | relatedProduct.relationType                     |                                     |
+| Related product identifier    | relatedProduct.productIdentifier                |                                     |
+| Related product title         | relatedProduct.jpcoar:relatedTitle              |                                     |
+| Abstract type                 | description.type                                | The type is fixed to "Abstraction". |
+| Abstract text                 | description.notation                            | dc:description                      |
+| Subject URL                   | foaf:topic.@id                                  | jpcoar:subject                      |
+| Subject title                 | foaf:topic.dc:title                             | jpcoar:subject                      |
+| Version                       | datacite:version                                |                                     |
+| Language                      | dc:language                                     |                                     |
+
 Additional Information:
 
 ・When multiple properties share the same mapping information, only the first property (the top one) will be used. For example, if an item type contains properties "ISBN" and "ISSN" in this order, and both are mapped to "jpcoar:sourceIdentifier", data imported via the "Automatic metadata input" screen will be mapped to "ISBN".
+
+
+#### Automatically populate metadata from researchmap
+
+This section explains how to automatically populate metadata from researchmap.
+
+1.  In the "Automatic metadata input" screen, select "researchmap" in "Select the ID".
+
+    The "parmalink", "achievement type" and "achievement id" entry fields appear.
+
+2.  Enter "parmalink", "achievement type" and "achievement id".
+
+    - "parmalink": The link identifier that the researcher entered when registering with researchmap. It is the string at the end of the URL of the researcher's details page used to access "My Portal" (the researcher's public web page on researchmap). It consists of 3 to 20 alphanumeric characters and symbols. An error occurs if it contains any of the following characters:
+
+      % # < > + ¥ " ' & ? = ~ : ; , @ $ ^ | ] [ ! ( ) * /
+
+    - "achievement type": The following six types are supported: "published papers", "MISC", "book etc", "presentations", "Works" and "others". The default is "published papers".
+
+    - "achievement id": The ID that identifies the achievement registered in researchmap. An error occurs if it contains characters other than numerals.
+
+    These three values correspond to the URL of the achievement on researchmap as follows:
+
+    https://researchmap.jp/{parmalink}/{achievement type}/{achievement id}
+
+3.  Click the "Get" button.
+
+    If the information you entered is correct, the metadata is populated automatically. The metadata populated for each achievement type is shown in the table below.
+
+Table 5-5. Metadata populated from researchmap
+
+| Achievement type | Metadata |
+| --- | --- |
+| published papers | Title, Creator, Description, Publisher, Date, Source Title, Volume Number, Issue Number, Page Start, Page End, Language, Related Identifier, Resource Type |
+| MISC | Title, Creator, Description, Publisher, Date, Source Title, Volume Number, Issue Number, Page Start, Page End, Language, Related Identifier, Resource Type |
+| book etc | Title, Creator, Description, Publisher, Date, Number of Pages, Language, Related Identifier, Resource Type |
+| presentations | Title, Creator, Description, Date, Conference, Resource Type |
+| Works | Title, Creator, Description, Related Identifier, Resource Type |
+| others | Title, Description, Resource Type |
 
 #### Set up a proxy contributor
 
@@ -1915,9 +2307,23 @@ zu050545.tif![zu050545](media/media/image121.png)
 
 As you enter text in the "Username" or "Email", the matching users registered in the repository are filtered and displayed in the list of candidates. When you select a user from the list of users, the username and email address of the selected user will be populated.
 
+The user specified as the proxy contributor is granted permission to edit the item, in the same way as the user who registered the item. You can specify only one user as the proxy contributor.
+
 If the user you specify does not exist in the repository, the error message "Shared user information is not valid/Please check it again\!" will appear.
 
 If you specify the user who registered the item, the error message "You cannot specify yourself in 'Other users' setting" will appear.
+
+
+#### Register multiple proxy contributors
+
+Note: This is an experimental feature. It is not provided in the JAIRO Cloud environment.
+
+The users specified as proxy contributors are granted the permission to register (edit) the item, in the same way as the user who registered the item.
+
+When the extended proxy posting feature is enabled (`WEKO_ITEMS_UI_PROXY_POSTING = True` in the configuration file (instance.cfg)), you can specify multiple proxy contributors.
+
+- Click the "New" button to add a new row of the user information entry fields.
+- Click the trash icon in a row to delete the row.
 
 #### Register a file
 
@@ -1945,6 +2351,8 @@ zu050100.tif![](media/media/image125.png)
 
 If the file exceeds the maximum size allowed for the repository, the error message "Error:Location has no quota" will be displayed and the file cannot be registered.
 
+The maximum size of a file that can be uploaded is 20 GB. Files larger than this cannot be uploaded.
+
 When the upload completes successfully, the filename, text URL, format, and size information will be automatically populated.
 
 Additional Information:
@@ -1953,7 +2361,7 @@ Additional Information:
 > 
 > You can also change the file display order in the item details screen by dragging and dropping the files to rearrange them in the input area.
 
-Table 5‑7. The elements in the Item Registration screen
+Table 5‑6. The elements in the Item Registration screen
 
 | No. | Element                                                          | Description                                                                                                                                                                                                                    |
 | --- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -1967,13 +2375,15 @@ Table 5‑7. The elements in the Item Registration screen
 
 ![](media/media/image126.png)
 
+The following feature is provided to the institutions participating in the early use of the usage application feature. Institutions that have not applied for the early use of this feature cannot use it. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
+
 The information in the file for restricted access is as follows
 
 The entry elements are the same as the file information up to the license field.
 
 > ![](media/media/image127.png)
 
-Table 5-8. The elements in the file information screen
+Table 5-7. The elements in the file information screen
 
 <table>
 <thead>
@@ -2106,7 +2516,7 @@ zu050200.tif![](media/media/image131.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-9. The elements in the "Preview" pull-down list
+Table 5-8. The elements in the "Preview" pull-down list
 
 | No. | Preview | Description                                                                                |
 | --- | ------- | ------------------------------------------------------------------------------------------ |
@@ -2130,7 +2540,7 @@ LINKID=displaylicense【参照先】Figure 5-5. The "License" pull-down listzu05
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-10. The elements in the "License" screen
+Table 5-9. The elements in the "License" screen
 
 <table>
 <thead>
@@ -2288,7 +2698,7 @@ The access information for restricted access appears as follows
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-11 The "Access" radio buttons with publishing options
+Table 5-10 The "Access" radio buttons with publishing options
 
 <table>
 <thead>
@@ -2329,7 +2739,7 @@ Table 5-11 The "Access" radio buttons with publishing options
 <tr class="odd">
 <td>5</td>
 <td>Restricted Access</td>
-<td><p>When you click this option, the elements No. 13 through No. 15 described in "Table 5-8. The elements in the file information screen" will be displayed. See the table for more information.</p>
+<td><p>When you click this option, the elements No. 13 through No. 15 described in "Table 5-7. The elements in the file information screen" will be displayed. See the table for more information.</p>
 <p>Selecting "Restricted Access" does not automatically set up "Access Rights". See Section (14) for "Access Rights".</p></td>
 </tr>
 </tbody>
@@ -2367,7 +2777,7 @@ This section explains how to specify information on a billing file.
     
     ![](media/media/image140.png)
     
-    Table 5-12. The elements in the "Billing File Information" screen
+    Table 5-11. The elements in the "Billing File Information" screen
 
 <table>
 <thead>
@@ -2423,7 +2833,7 @@ This section explains how to specify information on a billing file.
 
 3)  \<TBLATT POSITION="1" SCALE="151"\>
     
-    1.  #### Specify how the billing file is published
+#### Specify how the billing file is published
 
 This section explains how to set up how the billing file is published.
 
@@ -2433,7 +2843,7 @@ zu050220.tif![](media/media/image134.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-13 The "Access" radio buttons with publishing options
+Table 5-12 The "Access" radio buttons with publishing options
 
 <table>
 <thead>
@@ -2488,7 +2898,7 @@ In the Item Registration screen, enter the required elements for the item.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-14. The elements in the Item Registration screen
+Table 5-13. The elements in the Item Registration screen
 
 <table>
 <thead>
@@ -2637,7 +3047,7 @@ zu050130.tif![](media/media/image156.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-15. The elements in the creator search screen
+Table 5-14. The elements in the creator search screen
 
 <table>
 <thead>
@@ -2692,7 +3102,7 @@ LINKID=writeradd【参照先】Figure 5-14. The "Add Author" screen
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-16. The elements in the "Add Author" screen
+Table 5-15. The elements in the "Add Author" screen
 
 | No. | Element                                                | Description                                                                                                               |
 | --- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
@@ -2700,14 +3110,26 @@ Table 5-16. The elements in the "Add Author" screen
 | 2   | The "Name" pull-down lists                             | Select an option from the pull-down list. See "ANCHORID=name【参照元】Figure 5-16. The "Name" pull-down lists【E】".             |
 | 3   | The "Author ID" pull-down list                         | Select the Author ID from the pull-down list. See "ANCHORID=authorid【参照元】Figure 5-17. The "Author ID" pull-down list【E】". |
 | 4   | The "Author ID" text box                               | Enter the author ID.                                                                                                      |
-| 5   | The "E-mail" text box                                  | Enter an email address.                                                                                                   |
-| 6   | The "+ Add author item" link                           | Click to add a field for entering another name.                                                                           |
-| 7   | The "+ Add a new ID" link                              | Click to add a field for entering another author ID.                                                                      |
-| 8   | The "+ Add E-mail" link                                | Click to add an email field.                                                                                              |
-| 9   | The icon050170.tif![](media/media/image162.png) button | Click to navigate to the creator search screen without adding an author.                                                  |
-| 10  | The icon050180.tif![](media/media/image163.png) button | Click to navigate to the creator search screen.                                                                           |
-| 11  | The icon050190.tif![](media/media/image164.png) button | Click to add the author and navigate to the creator search screen.                                                        |
-| 12  | The icon050140.tif![](media/media/image160.png) button | Click to close the "Add Author" screen and navigate to the creator search screen.                                         |
+| 5   | The "E-Mail" text box                                  | Enter an email address.                                                                                                   |
+| 6   | The "Community" text box                               | Select the community that manages the author.                                                                             |
+| 7   | The "+ Add author item" link                           | Click to add a field for entering another name.                                                                           |
+| 8   | The "+ Add a new ID" link                              | Click to add a field for entering another author ID.                                                                      |
+| 9   | The "+ Add E-mail" link                                | Click to add an email field.                                                                                              |
+| 10  | The "+ Add Community" link                             | Click to add a field for entering another community.                                                                      |
+| 11  | The icon050170.tif![](media/media/image162.png) button | Click to navigate to the creator search screen without adding an author.                                                  |
+| 12  | The "Identifier" pull-down list                        | Select the scheme name of the affiliation identifier from the pull-down list.                                             |
+| 13  | The "Identifier" text box                              | Enter the identifier of the institution the author is affiliated with.                                                    |
+| 14  | The "Affiliation Name" text box                        | Enter the name of the affiliated institution.                                                                             |
+| 15  | The "Affiliation Name" pull-down list                  | Select the language of the affiliation name from the pull-down list.                                                      |
+| 16  | The "Start Date" date picker of "Affiliation Period"   | Select the start date of the affiliation from the calendar.                                                               |
+| 17  | The "End Date" date picker of "Affiliation Period"     | Select the end date of the affiliation from the calendar.                                                                 |
+| 18  | The "+ Add Identifier" link                            | Click to add a field for entering another affiliation identifier.                                                         |
+| 19  | The "+ Add Affiliation Name" link                      | Click to add a field for entering another affiliation name.                                                               |
+| 20  | The "+ Add Affiliation Period" link                    | Click to add a field for entering another affiliation period.                                                             |
+| 21  | The "+ Add Affiliation" link                           | Click to add a field for entering another set of affiliation information.                                                 |
+| 22  | The icon050180.tif![](media/media/image163.png) button | Click to navigate to the creator search screen.                                                                           |
+| 23  | The icon050190.tif![](media/media/image164.png) button | Click to add the author and navigate to the creator search screen.                                                        |
+| 24  | The icon050140.tif![](media/media/image160.png) button | Click to close the "Add Author" screen and navigate to the creator search screen.                                         |
 
 LINKID=displaynumber【参照先】Figure 5-15. The "Display Number" pull-down list
 
@@ -2751,7 +3173,7 @@ zu050570.tif![](media/media/image170.png)
 
 20. Enter the issued date in the "Date" text box.
     
-    1.  #### Set up the version type
+#### Set up the version type
 
 This section explains how to set up the version type.
 
@@ -2762,6 +3184,23 @@ zu050580.tif![](media/media/image171.png)
 Figure 5‑18. The "Version Type" pull-down list
 
 zu050590.tif![](media/media/image172.png)
+
+
+#### Retrieve policy information
+
+This section explains how to retrieve the OA policy information of the journal.
+
+1.  In the Item Registration screen, select "ISSN" or "eISSN" as the source identifier, or enter the journal title.
+
+2.  Click the "OA Policy" button in "OA policy Information:".
+
+    A link to the policy information appears.
+
+    If none of ISSN, eISSN and the journal title is entered, the message "Please enter ISSN, eISSN, or journal title" appears. If no policy information is found, the message "No Policy Information found" appears.
+
+3.  Click the link to view the policy information in a new tab.
+
+Note: To retrieve policy information, the system administrator must configure the OA Assist Web API in advance.
 
 #### Configure the Feedback Mail Destination setting
 
@@ -2777,11 +3216,11 @@ This section explains how to configure the Feedback Mail Destination setting.
     
     ![](media/media/image175.png)
 
-See "Table 5-15. The elements in the creator search screen" for information on the elements in the creator search screen. When you click the "Import" button, the email address will be populated in the "Feedback Mail Destination" list as shown below.
+See "Table 5-14. The elements in the creator search screen" for information on the elements in the creator search screen. When you click the "Import" button, the email address will be populated in the "Feedback Mail Destination" list as shown below.
 
 ![](media/media/image176.png)
 
-> Table 5‑17. The elements in the "Feedback Mail Destination" screen
+> Table 5‑16. The elements in the "Feedback Mail Destination" screen
 
 <table>
 <thead>
@@ -2825,7 +3264,7 @@ zu050180.tif![](media/media/image179.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-18. The options in the "Access Rights" pull-down list
+Table 5-17. The options in the "Access Rights" pull-down list
 
 <table>
 <thead>
@@ -2874,6 +3313,9 @@ Table 5-18. The options in the "Access Rights" pull-down list
 
 > ![](media/media/image181.png)
 
+  - > If you enter an identifier, title, resource type, and creator that match an item already registered, the warning message "The same item may have been registered." appears.
+    > Links to the details pages of the registered items that seem to be the same are displayed. Click a link to display the item details screen in a new tab.
+
   - > If the value you enter does not exist in the defined choices, the error message "{} is not one of {}" will appear.
 
 > ![](media/media/image182.png)
@@ -2881,6 +3323,119 @@ Table 5-18. The options in the "Access Rights" pull-down list
   - > If a JavaScript error occurs, the error message "An error occurred while processing the input data\!{}" will appear.
 
 > ![](media/media/image183.png)
+
+
+#### Set up how users apply to use the item
+
+Note: This is an experimental feature. It is not provided in the JAIRO Cloud environment.
+
+This section explains how to set up how users apply to use the item.
+
+Note: This feature is available only when no content file is registered in the item.
+
+1.  In the Item Registration screen, select the "Set usage application workflow for item" check box.
+
+    The "WorkFlow" and "Terms and Conditions" pull-down lists appear.
+
+2.  Select the usage application workflow and the terms and conditions from the "WorkFlow" and "Terms and Conditions" pull-down lists.
+
+    See "Table 5-18. The elements for setting up how users apply to use the item" for the workflows and terms and conditions that can be set.
+
+Table 5-18. The elements for setting up how users apply to use the item
+
+| No. | Element | Description |
+| --- | --- | --- |
+| 1 | "WorkFlow" | Lists the workflows with "Restricted Access Flag" enabled among those managed in "Admin" > "WorkFlow" > "WorkFlow List". |
+| 2 | "Terms and Conditions" | Displays a list of terms and conditions configured in the Administration screen. A "Free Input" option is provided, and a text area will be displayed when it is selected. |
+
+#### Set up the request mail destination
+
+Note: This is an experimental feature. It is not provided in the JAIRO Cloud environment.
+
+This section explains how to set up the request mail destination.
+
+1.  In the Item Registration screen, select the "Display Request Mail Button" check box.
+
+2.  Click the "Input from author DB" button for "Request Mail Destination".
+
+    The creator search screen appears.
+
+3.  In the creator search screen, enter a keyword in the "Search" text box and click the "Search" button.
+
+    Creators who satisfy the search criteria appear.
+
+See "Table 5-14. The elements in the creator search screen" for information on the elements in the creator search screen. When you click the "Import" button, the email address will be populated in the "Request Mail Destination" list.
+
+Table 5-19. The elements in the "Request Mail Destination" screen
+
+| No. | Element | Description |
+| --- | --- | --- |
+| 1 | The list of request mail destinations | Displays a list of email addresses configured. |
+| 2 | The text box showing "Input text" | You can enter an email address here manually. Press the Enter key to register the mail address entered. |
+| 3 | The "Delete" button | Click to remove the selected email address from the request mail destinations. |
+
+#### CRIS linkage (researchmap linkage)
+
+This section explains how to link the item with researchmap.
+
+1.  In the Item Registration screen, select the "researchmap" check box in "Auto Linkage to CRIS Institution".
+
+    The result of the latest linkage is displayed in "Latest Linkage Result：". The result is one of the following four:
+
+    - "Nothing": No linkage has been performed yet.
+    - "Running": The operations in WEKO have been completed, and the linkage with the CRIS institution is waiting or in progress.
+    - "Successful": The linkage with the CRIS institution has succeeded. The date of completion is also displayed.
+    - "Failed": The linkage with the CRIS institution has failed. The date of failure is also displayed.
+
+2.  After selecting the check box, complete the workflow.
+
+    Automatic linkage is scheduled when the workflow is completed.
+
+The creators entered in the item (Creator and Contributor) are the targets of the linkage. For the linkage, the parmalink of researchmap must be registered for the author in the author DB in advance.
+
+By default, automatic linkage is performed every day at 0:00.
+
+Additional Information: The following metadata is required for linkage with researchmap.
+
+Table 5-20. Metadata required for linkage with researchmap
+
+| jpcoar_mapping | Metadata name |
+| --- | --- |
+| dc:title | Title |
+| jpcoar:creator | Creator \*1 |
+| datacite:date | Date \*2 |
+| jpcoar:resource\_type | Resource Type \*3 |
+
+\*1: You must specify a creator who is registered in the author DB and for whom the parmalink of researchmap is set.
+
+\*2: This element is different from the publication date of the item and must be set separately.
+
+\*3: Only some resource types can be specified. The resource types that can be specified are listed in the table below.
+
+Table 5-21. Resource types that can be specified for linkage with researchmap
+
+| Resource type | Achievement type in researchmap |
+| --- | --- |
+| article | publish\_papers |
+| journal article | publish\_papers |
+| conference paper | publish\_papers |
+| departmental bulletin paper | publish\_papers |
+| master thesis | publish\_papers |
+| doctoral thesis | publish\_papers |
+| learning object | misc |
+| technical report | misc |
+| book | books\_etc |
+| report | books\_etc |
+| musical notation | books\_etc |
+| video | books\_etc |
+| image | books\_etc |
+| sound | books\_etc |
+| map | books\_etc |
+| conference presentation | presentations |
+| conference poster | presentations |
+| interactive resource | works |
+| software | works |
+| other | other |
 
 ### Set up an index
 
@@ -2896,7 +3451,7 @@ zu050280.tif![](media/media/image184.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5‑19. The elements in the "Specific index" screen
+Table 5‑22. The elements in the "Specific index" screen
 
 | No. | Element                                                | Description                                                               |
 | --- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
@@ -2919,14 +3474,15 @@ The comment input screen appears.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5‑20. The elements in the comment input screen
+Table 5‑23. The elements in the comment input screen
 
 | No. | Element                                                                             | Description                                                                  |
 | --- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | 1   | Comment                                                                             | Enter comments.                                                              |
-| 2   | The icon050080.tif![](media/media/image146.png) button                              | Click to save the specified information temporarily.                         |
-| 3   | The icon050230.tif![](media/media/image147.png) button                              | Click to complete the registration of the item's metadata and content files. |
-| 4   | The ![](media/media/image148.png)icon050240.tif![](media/media/image149.png) button | Click to discard the input and terminate the activity you are working on.    |
+| 2   | The "Back" button                                                                   | Click to return to the Item Registration screen.                             |
+| 3   | The icon050080.tif![](media/media/image146.png) button                              | Click to save the specified information temporarily.                         |
+| 4   | The icon050230.tif![](media/media/image147.png) button                              | Click to complete the registration of the item's metadata and content files. |
+| 5   | The ![](media/media/image148.png)icon050240.tif![](media/media/image149.png) button | Click to discard the input and terminate the activity you are working on.    |
 
 22. Click the icon050230.tif![](media/media/image147.png) button.
 
@@ -2984,7 +3540,7 @@ zu050330.tif![](media/media/image195.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-21. The elements in the "Identifier Grant" screen
+Table 5-24. The elements in the "Identifier Grant" screen
 
 <table>
 <thead>
@@ -3001,7 +3557,7 @@ Table 5-21. The elements in the "Identifier Grant" screen
 <td><p>Select a DOI-issuing organization from the "Identifier Grant" radio buttons.</p>
 <ul>
 <li><blockquote>
-<p>The following "Identifier Grant" options are supported:</p>
+<p>The following "Identifier Grant" options are supported (currently, NDL JaLC DOI cannot be granted (fixed in v1.0.7)).</p>
 </blockquote></li>
 </ul>
 <ul>
@@ -3021,11 +3577,16 @@ Table 5-21. The elements in the "Identifier Grant" screen
 </tr>
 <tr class="even">
 <td>2</td>
-<td>The icon050080.tif<img src="media/media/image146.png" style="width:0.59055in;height:0.19685in" /> button</td>
-<td>Click to save the specified information temporarily.</td>
+<td>The "Back" button</td>
+<td>Returns to the previous action (added in v1.0.7).</td>
 </tr>
 <tr class="odd">
 <td>3</td>
+<td>The icon050080.tif<img src="media/media/image146.png" style="width:0.59055in;height:0.19685in" /> button</td>
+<td>Click to save the specified information temporarily.</td>
+</tr>
+<tr class="even">
+<td>4</td>
 <td>The icon050250.tif<img src="media/media/image147.png" style="width:0.59055in;height:0.19685in" /> button</td>
 <td><p>Proceed to verify whether the conditions for granting a DOI is met.</p>
 <ul>
@@ -3037,8 +3598,8 @@ Table 5-21. The elements in the "Identifier Grant" screen
 </blockquote></li>
 </ul></td>
 </tr>
-<tr class="even">
-<td>4</td>
+<tr class="odd">
+<td>5</td>
 <td>The icon050240.tif<img src="media/media/image149.png" style="width:0.3937in;height:0.19685in" /> button</td>
 <td>Click to discard the input and terminate the activity you are working on.</td>
 </tr>
@@ -3111,9 +3672,32 @@ Table 5-21. The elements in the "Identifier Grant" screen
 
 ### Approve items
 
-Items must be approved by a user with the role to administer a repository.
+Items must basically be approved by a user with the role to administer a repository.
+
+Users other than repository administrators can approve items in the following cases.
+
+- When a specific role is set as the approver: users with the selected role can approve items.
+
+- When a specific user is set as the approver: the selected user can approve items.
+
+・The following cases are available only to the institutions participating in the early use of the usage application feature. Institutions that have not applied for the early use of this feature cannot use them.
+
+> - When a property is set as the approver: the user set in the selected property can approve items.
+
+> - When "Item registrant" is set as the approver: the user who registered the item can approve the item.
+
+・The following cases are experimental features. They are not provided in the JAIRO Cloud environment.
+
+> - When "Request mail" is set as the approver: the user registered with the email address of the request mail destination set when registering the item can approve items.
+> - When "Request mail" is set as the approver in the "Usage Application" or "Two-Step Usage Application" workflow for a restricted access item: the user with the email address of the request destination of the restricted access item for which the usage application was made can approve items.
+
+See "Set up flows" in the System Administration Manual for information on how to set up approvers.
 
 The approver can "Reject", "Save", or "Approve" items that are pending approval.
+
+When approving in the "Usage Application" or "Two-Step Usage Application" workflow for a restricted access item, the preview is displayed regardless of the display format of the item registered at the time of the application.
+
+This feature can be turned on and off on the Administration screen.
 
 You can approve items from the "Workflow" screen.
 
@@ -3141,7 +3725,7 @@ zu050370.tif![](media/media/image204.png)
 
 \<TBLATT POSITION=”1” SCALE=”151”\>
 
-Table 5-22. The elements in the item approval screen
+Table 5-25. The elements in the item approval screen
 
 | No. | Element                                                | Description                                                               |
 | --- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
@@ -3149,6 +3733,8 @@ Table 5-22. The elements in the item approval screen
 | 2   | The icon050080.tif![](media/media/image146.png) button | Click to save the specified information temporarily.                      |
 | 3   | The icon050220.tif![](media/media/image206.png) button | Click to approve the item.                                                |
 | 4   | The icon050240.tif![](media/media/image149.png) button | Click to discard the input and terminate the activity you are working on. |
+
+If the registered item was registered from OA Assist, its status is linked to OA Assist.
 
 ## LINKID=viewactivities【参照先】\<INDEXWORD PRONOUNCE="あくていひていをさんしようする" INDEXITEM="アクティビティを参照する"\>View activities\</INDEXWORD\>
 
@@ -3188,7 +3774,7 @@ zu050420.tif![](media/media/image209.png)
 
 > \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-23. The elements in the activities list screen
+Table 5-26. The elements in the activities list screen
 
 <table>
 <thead>
@@ -3272,7 +3858,7 @@ Table 5-23. The elements in the activities list screen
 
 > ![](media/media/image211.png)
 
-Table 5‑24. The elements in the filter screen
+Table 5‑27. The elements in the filter screen
 
 <table>
 <thead>
@@ -3328,13 +3914,13 @@ Table 5‑24. The elements in the filter screen
 </tbody>
 </table>
 
-1.  #### Page through the activities list
-    
-    This section explains how to page through the activities list.
-    
-    ![](media/media/image214.png)
+#### Page through the activities list
 
-Table 5‑25. The elements for paging
+This section explains how to page through the activities list.
+
+![](media/media/image214.png)
+
+Table 5‑28. The elements for paging
 
 <table>
 <thead>
@@ -3379,6 +3965,8 @@ Table 5‑25. The elements for paging
 
 This section explains how to export activities to a TSV file.
 
+Note: The "Download" and "Clear" buttons are displayed only when the "All" tab is displayed. They are not displayed unless `DELETE_ACTIVITY_LOG_ENABLE = True` is set in the configuration file (instance.cfg).
+
 1.  Display the activities list screen with a system administrator or repository administrator account, and click the "All" tab.
 
 2.  Search for the activities to export by using the "Add Filter" button.
@@ -3389,7 +3977,7 @@ This section explains how to export activities to a TSV file.
 
     A TSV file is exported.
 
-Table 5-27. The "Download" button
+Table 5-29. The "Download" button
 
 | No. | Element               | Description                                                                                                                                                                                  |
 | --- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3398,6 +3986,8 @@ Table 5-27. The "Download" button
 ### Delete activities
 
 This section explains how to delete activities.
+
+Note: The "Download" and "Clear" buttons are displayed only when the "All" tab is displayed. They are not displayed unless `DELETE_ACTIVITY_LOG_ENABLE = True` is set in the configuration file (instance.cfg).
 
 When activities are deleted, a TSV file of the activities is downloaded.
 
@@ -3415,7 +4005,7 @@ When activities are deleted, a TSV file of the activities is downloaded.
 
     Note: Deleted activities cannot be restored.
 
-Table 5-28. The "Clear" buttons
+Table 5-30. The "Clear" buttons
 
 | No. | Element                                          | Description                                                                                                                                                                                                              |
 | --- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -3436,7 +4026,7 @@ zu050430.tif![](media/media/image218.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 5-26. The elements in the activity details screen
+Table 5-31. The elements in the activity details screen
 
 | No. | Element  | Description                                                                                      |
 | --- | -------- | ------------------------------------------------------------------------------------------------ |
@@ -3545,7 +4135,7 @@ Notes:
 
 > Click the icon050250.tif![](media/media/image147.png) button in the Item Registration screen to check the specified metadata. If there is an error, you will see a message. For the details of the error, see "Section 5.1.1. Register items," under "Additional Information: Verification on the metadata you have entered".
 
-See "Table 5-14. The elements in the Item Registration screen" for information on how the icon060030.tif![](media/media/image146.png), ![](media/media/image67.png), and icon050240.tif![](media/media/image149.png) buttons work on the Item Registration screen.
+See "Table 5-13. The elements in the Item Registration screen" for information on how the icon060030.tif![](media/media/image146.png), ![](media/media/image67.png), and icon050240.tif![](media/media/image149.png) buttons work on the Item Registration screen.
 
 36. Click the icon060070.tif![](media/media/image229.png) button.
 
@@ -3727,13 +4317,26 @@ This chapter provides information on exploring communities.
 
 This section explains how to explore communities.
 
+Communities can be explored when the System is configured to display communities. See "Configure the index tree/facet display" in the System Administration Manual for more information.
+
 1.  Click on the "Communities" tab in the Home screen.
 
 The "Communities" screen appears.
 
 zu070010.tif![](media/media/image237.png)
 
+Table 9‑1. The elements in the "Communities" screen
+
+| No. | Element                     | Description                                                                                                                                                                  |
+| --- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Community logo              | Displays the logo image of the community, if a logo is set for the community.                                                                                               |
+| 2   | Community name              | Click to display the top page of the community.                                                                                                                              |
+| 3   | Tag information             | Displays the following subject information set for the community, separated by commas.<ul><li>Subject</li><li>Subject URI</li><li>Subject Scheme</li><li>Language</li></ul> |
+| 4   | Hosting institution information | Displays the following hosting institution information set for the community, separated by commas.<ul><li>Hosting Institution Type</li><li>Hosting Institution Name</li><li>Language</li></ul> |
+
 2.  Click on the community name link from the list in the "Communities" screen.
+
+3.  The top page of the selected community appears.
 
 ![](media/media/image238.png)
 
@@ -3777,13 +4380,19 @@ Table 10‑1. The elements in the "Profile" screen
 
 | No. | Element                                                          | Description                                                                                                                                                            |
 | --- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | The "Username" text box                                          | Enter a username. You can use alphanumeric characters, hyphens (-), and underscores (\_). The minimum length is 3 characters, and the maximum length is 16 characters. |
+| 1   | The "Username" text box                                          | Enter a username. You can use alphanumeric characters, hyphens (-), and underscores (\_). The minimum length is 3 characters, and the maximum length is 255 characters. |
 | 2   | The "Timezone" pull-down list                                    | Select a time zone from the "Timezone" pull-down list. See "ANCHORID=timezone【参照元】Figure 10-1. The "Timezone" pull-down list【E】".                                       |
 | 3   | The "Language" pull-down list                                    | Select a language from the "Language" pull-down list. See "ANCHORID=gengopulldownlist【参照元】Figure 10-2. The "Language" pull-down list【E】".                               |
 | 4   | The "Email Address" text box                                     | The input format should be "*XXXXX*＠*XXX.XXX*". You can use alphanumeric characters, hyphens (-), and underscores (\_). The maximum length is 254 characters.          |
 | 5   | The "Re-enter email address" text box                            | Enter the new email address again to confirm that the value you specified in "Email Address" is correct.                                                               |
-| 6   | The icon080020.tif![](media/media/image242.png) button           | Click to close the "Profile" screen without saving the changes you have made.                                                                                          |
-| 7   | The icon080030.tif![icon080030](media/media/image243.png) button | Click to update the profile with the changes and close the "Profile" screen.                                                                                           |
+| 6   | The "access key" text box                                        | If you want to use "Copy a file to an open bucket" from the file details screen, enter the access key of the S3 account to use.                                        |
+| 7   | The "secret key" text box                                        | If you want to use "Copy a file to an open bucket" from the file details screen, enter the secret key of the S3 account to use.                                        |
+| 8   | The "endpoint url" text box                                      | If you want to use "Copy a file to an open bucket" from the file details screen, enter the endpoint URL of the S3 account to use.                                      |
+| 9   | The "region name" text box                                       | If you want to use "Copy a file to an open bucket" from the file details screen and need to specify the region of the S3 account to use, enter the region name.         |
+| 10  | The icon080020.tif![](media/media/image242.png) button           | Click to close the "Profile" screen without saving the changes you have made.                                                                                          |
+| 11  | The icon080030.tif![icon080030](media/media/image243.png) button | Click to update the profile with the changes and close the "Profile" screen.                                                                                           |
+
+Note: Items 6 to 9 (the S3 account information) are displayed only when `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED = True` is set in the configuration file (instance.cfg). This setting is disabled (False) by default.
 
 LINKID=timezone【参照先】Figure 10-1. The "Timezone" pull-down list
 
@@ -3914,6 +4523,8 @@ Table 10‑3. The elements in the "New personal access token" screen
 
 The access token is added.
 
+Note: A personal access token has no expiration date. Handle it with sufficient care, and be sure to delete it before your account is suspended.
+
 ## LINKID=managegroup【参照先】Join and view a group
 
 This section explains how to join a group and view a group to which you belong.
@@ -4008,7 +4619,7 @@ Table 10‑4. The items displayed in the cookie consent screen
 
 After completing the settings according to your purpose, click the "Save" button to save the settings.
 
-Note: The "Change consent settings" link is displayed only when the cookie consent feature is enabled in the System.
+Note: The "Change consent settings" link is displayed only when `ENABLE_COOKIE_CONSENT = True` is set in the configuration file (instance.cfg). This setting is disabled (False) by default.
 
 ## Share non-public content using a one-time address
 
@@ -4028,7 +4639,7 @@ The "Secret URL" button is added to the file area of the Information screen when
 
 3.  The file is set to "Do not Publish", or the file is set to "Input Open Access Date" and the specified date is in the future.
 
-Note: A file can be downloaded through a secret URL only when the index where the item is registered is public and the Publish Status of the item is "Public".
+Note: That the index where the item is registered is public and that the Publish Status of the item is "Public" are not conditions for displaying the button. These conditions are checked when a file is downloaded through a secret URL, and if they are not met, the file cannot be downloaded through the secret URL.
 
 When the Secret URL feature is enabled, the following items are added.
 
@@ -4117,23 +4728,27 @@ Table 12-1. The elements in the workspace item list screen
 | 6   | The "Filter Display" button | Displays the filter condition panel. |
 | 7   | Sort conditions | Sorts the items by "Publication Date", "Title", "Number of accesses" or "Number of downloads", in ascending or descending order. |
 | 8   | Paging | Changes the number of items displayed per page to 20, 50 or 100. |
-| [v2.1.0] 9   | Check boxes | Select items to be exported. The check box in the header selects all items. |
-| 10  | Favorite and read/unread buttons | Switch the favorite status and the read/unread status of the item. |
-| 11  | Item information | Displays the title (click to display the item details screen), journal title or conference name, volume (issue), whether document files exist, authors, publication date, related links and funding references. |
-| 12  | Number of accesses and downloads | Displays the access count and download count of the item. |
-| 13  | Resource type and status | Displays the resource type and the status linked with OA Assist, and whether feedback mail is set. |
-| [v2.1.0] 14  | DOI | Displayed when a related identifier with the identifier type "DOI" and the relation type "isVersionOf" is registered in the related information of the item. Click to go to the DOI link (doi.org). |
-| 15  | Edit | Displays the item edit screen. |
+| 9   | Year labels | When the items are grouped by year, they are displayed under the label of each year. |
+| [v2.1.0] 10  | Check boxes | Select items to be exported. The check box in the header selects all items. |
+| 11  | Favorite and read/unread buttons | Switch the favorite status and the read/unread status of the item. |
+| 12  | Item information | Displays the title (click to display the item details screen), journal title or conference name, volume (issue), whether document files exist, authors, publication date, related links and funding references. |
+| 13  | Number of accesses and downloads | Displays the access count and download count of the item. |
+| 14  | Resource type and status | Displays the resource type and the status linked with OA Assist, and whether feedback mail is set. |
+| [v2.1.0] 15  | DOI | Displayed when a related identifier with the identifier type "DOI" and the relation type "isVersionOf" is registered in the related information of the item. Click to go to the DOI link (doi.org). |
+| 16  | Edit | Displays the item edit screen. |
+| 17  | Related information | When the item has related information, click the related link to display the relation type, the relation title and the relation URL. |
+| 18  | Page navigation | Displays the previous page, the page numbers and the next page of the item list. |
 
 Table 12-2. The elements in the filter condition panel
 
 | No. | Element | Description |
 | --- | ------- | ----------- |
 | 1   | Filter conditions | Filter by "Resource Type", "Peer Review", "Related To Paper", "Related To Data", "Funding Reference - Funder Name", "Funding Reference - Award Title", "File" and "Favorite". |
-| 2   | The "Filter" button | Filters the item list by the selected conditions. |
-| 3   | The "Clear" button | Clears the filter conditions. |
-| 4   | The "Save" button | Saves the selected filter conditions. |
-| 5   | The "Reset" button | Resets the filter conditions. |
+| [v2.1.0] 2   | Tooltips | Truncated text of the options is displayed in a tooltip. |
+| 3   | The "Filter" button | Filters the item list by the selected conditions. |
+| 4   | The "Clear" button | Clears the filter conditions. |
+| 5   | The "Save" button | Saves the selected filter conditions. |
+| 6   | The "Reset" button | Resets the filter conditions. |
 
 ### Export the item list
 
