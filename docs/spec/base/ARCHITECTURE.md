@@ -40,11 +40,11 @@ S3 互換ストレージ利用時、v2.1.0 からクライアントへのダウ�
 - **postgresql / pgpool**: メタデータ・各種状態の永続化。
 - **elasticsearch**: 検索・ファセット・統計イベントの格納。
 - **redis**: セッション・キャッシュ・一部の一時状態。
-  v2.1.0（v2.0.3/v2.0.4 の 502 エラー対策取り込み）では、高頻度に呼ばれる設定・集計の取得結果を invenio-cache（`CACHE_TYPE = 'redis'`）に短 TTL でキャッシュする（後述「キャッシュ」）。
+  【v2.1.0】v2.1.0 では（502 エラー対策。v2.0.3／v2.0.4 のリリースには含まれない）、高頻度に呼ばれる設定・集計の取得結果を invenio-cache（`CACHE_TYPE = 'redis'`）に短 TTL でキャッシュする（後述「キャッシュ」）。
 - **rabbitmq**: Celery のメッセージブローカ。
 - **nginx**: リバースプロキシ（`https://127.0.0.1/`）。設定は `nginx/weko.conf`（AMS 用は `weko-ams.conf` / `weko-ams-restricted.conf`）。
-  v2.1.0 では `listen 443 ssl;`（非推奨の `ssl on` を廃止）、gzip は `gzip_http_version 1.0`（前段プロキシの HTTP/1.0 転送にも効かせる）とし、`gzip_types` から `application/octet-stream`（バイナリのダウンロード）と `text/html`（既定で圧縮対象）を外した。
-  また `location = /weko/shib/login` を設け、POST は real_ip で書き換える前の接続元（`$realip_remote_addr`）がループバック（`127.0.0.1` / `::1`）の場合のみ許可し（それ以外は 403）、その接続元を `REMOTE_ADDR` として WEKO に渡す（Shibboleth SP 属性の受け付け元限定。詳細は [Shibboleth対応](other/SHIBBOLETH_01.md)）。
+  【v2.1.0】v2.1.0 では `listen 443 ssl;`（非推奨の `ssl on` を廃止）、gzip は `gzip_http_version 1.0`（前段プロキシの HTTP/1.0 転送にも効かせる）とし、`gzip_types` から `application/octet-stream`（バイナリのダウンロード）と `text/html`（既定で圧縮対象）を外した。
+  【v2.1.0】また `location = /weko/shib/login` を設け、POST は real_ip で書き換える前の接続元（`$realip_remote_addr`）がループバック（`127.0.0.1` / `::1`）の場合のみ許可し（それ以外は 403）、その接続元を `REMOTE_ADDR` として WEKO に渡す（Shibboleth SP 属性の受け付け元限定。詳細は [Shibboleth対応](other/SHIBBOLETH_01.md)）。
 - **handle**（任意）: CNRI Handle サーバ連携時。
 
 > UI アプリと API アプリが分かれている点は重要。ある機能が「画面から動くのか API から動くのか」で、
@@ -115,13 +115,13 @@ WEKO3 の機能は `modules/` 配下の Python パッケージ（Invenio 拡張�
 
 > 実装補足（v2.1.0）：
 > - 未認証時の応答は `weko_accounts.unauthorized` が制御する（`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`、既定 `True`）。API アプリ（`/api`）は常に 401 JSON を返し（従来は `security.login` を解決できず 500）、UI アプリは API/AJAX 呼び出しとみなすリクエストにのみ 401 JSON を返す。通常の画面遷移と iframe 等の埋め込み内の遷移（`Sec-Fetch-Dest` が document / iframe / frame / embed / object）はログイン画面へ遷移する。
-> - 認可が未設定だった API への `login_required`／権限チェックの追加（issue62569 ほか）、IIIF・signposting・統計・プレビュー・サイトマップ・ResourceSync 等の閲覧権限判定の統一が行われた。個別の可否は各機能仕様・[アクセスコントロール](access_control/README.md) を参照。
-> - ログイン API（`/api/<version>/login`）は失敗応答を1種類に揃え、ログイン API にだけレート制限（`WEKO_API_LIMIT_RATE_DEFAULT`）をかける（/api 配下の他経路には制限をかけない）。
-> - Shibboleth SP の属性は SP のログインスクリプト（`nginx/login.py`）がループバック宛てに POST したものだけを受け付ける（`WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`、既定 `['127.0.0.1', '::1']`。nginx 側の制限と二重）。
+> - 【v2.1.0】認可が未設定だった API への `login_required`／権限チェックの追加（issue62569 ほか）、IIIF・signposting・統計・プレビュー・サイトマップ・ResourceSync 等の閲覧権限判定の統一が行われた。個別の可否は各機能仕様・[アクセスコントロール](access_control/README.md) を参照。
+> - 【v2.1.0】ログイン API（`/api/<version>/login`）は失敗応答を1種類に揃え、ログイン API にだけレート制限（`WEKO_API_LIMIT_RATE_DEFAULT`）をかける（/api 配下の他経路には制限をかけない）。
+> - 【v2.1.0】Shibboleth SP の属性は SP のログインスクリプト（`nginx/login.py`）がループバック宛てに POST したものだけを受け付ける（`WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`、既定 `['127.0.0.1', '::1']`。nginx 側の制限と二重）。
 
 ### キャッシュ（v2.1.0）
 
-v2.0.3/v2.0.4 の 502 エラー対策として、ページ描画ごとに繰り返されていた DB／ES 参照を invenio-cache（Redis）で短 TTL キャッシュする。cache 拡張が未設定の環境ではキャッシュせず従来どおり都度取得する。
+【v2.1.0】502 エラー対策（v2.1.0 で導入。v2.0.3／v2.0.4 のリリースには含まれない）として、ページ描画ごとに繰り返されていた DB／ES 参照を invenio-cache（Redis）で短 TTL キャッシュする。cache 拡張が未設定の環境ではキャッシュせず従来どおり都度取得する。
 
 | 対象 | キャッシュ単位・無効化 | TTL 設定（既定） |
 | --- | --- | --- |
@@ -144,3 +144,4 @@ v2.0.3/v2.0.4 の 502 エラー対策として、ページ描画ごとに繰り�
 | --- | --- |
 | 2026/07/15 | 新規作成。技術スタック・プロセス構成・Invenio entry_points 機構・データフローを実装（tag v2.0.2）と `AGENTS.md`／`docker-compose` を基に整理 |
 | 2026/10/05 | release_v2.1.0突合（508030789）：nginx 設定（listen ssl、gzip、/weko/shib/login の接続元制限）、未認証応答 401 統一・ログイン API レート制限・SP 属性受け付け元限定、502 対策キャッシュ（Redis 短 TTL）、S3 読み取り専用アクセスキーを追記。モジュール構成（49 ディレクトリ）に変化なしを確認 |
+| 2026/10/05 | v2.1.0タグ付けに伴う記述訂正：502 エラー対策のキャッシュは v2.1.0 で導入（v2.0.3／v2.0.4 には含まれない）と訂正 |

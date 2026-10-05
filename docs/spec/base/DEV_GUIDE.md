@@ -103,7 +103,7 @@ Invenio 拡張は entry_points 経由でアプリに組み込まれる（詳細�
 - **config キーの綴り・実在に注意**。過去に `S3_SECRECT_ACCESS_KEY`（誤）→ `S3_SECRET_ACCESS_KEY`（正）等の混入があった。
   存在しないキーもある。config は [横断索引](CROSS_REFERENCE.md) 経由で `other/CONFIG_01.md` と実 `config.py` の両方で確認する。
 - **未認証時の応答はアプリ・リクエスト種別で異なる**（v2.1.0）。API アプリは 401 JSON、UI アプリは API/AJAX 呼び出しのみ 401 JSON で、画面遷移はログイン画面へリダイレクトする（`weko_accounts.unauthorized`）。新しい API を足す際は `login_required` だけでなく権限チェック（`permissions.py` の factory 等）も付ける。
-- **設定値の一部は Redis に短 TTL でキャッシュされる**（v2.1.0）。`get_search_setting()` / `AdminSettings.get()` 等を DB 直接更新で変えた場合、反映は最大 TTL（既定 300 秒）遅れる（[アーキテクチャ › キャッシュ](ARCHITECTURE.md)）。
+- 【v2.1.0】**設定値の一部は Redis に短 TTL でキャッシュされる**（v2.1.0）。`get_search_setting()` / `AdminSettings.get()` 等を DB 直接更新で変えた場合、反映は最大 TTL（既定 300 秒）遅れる（[アーキテクチャ › キャッシュ](ARCHITECTURE.md)）。
 - **アクセスコントロール表の一部はコード裏付けが弱い**。管理画面のロール可否表には Flask-Admin の factory 依存で
   コード上の明示的な `can_*` が無いものがあり、仕様書内で要検証と注記されている箇所がある。
 

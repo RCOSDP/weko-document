@@ -54,7 +54,7 @@
 ## キャッシュ
 
 - Redis（invenio-cache、`CACHE_TYPE` / `CACHE_REDIS_URL`）。セッションは別 DB（`ACCOUNTS_SESSION_REDIS_URL`）
-- v2.1.0 の短 TTL キャッシュ（検索設定・`AdminSettings`・ランキング・詳細検索条件・Google 用 XML）: [アーキテクチャ › キャッシュ](ARCHITECTURE.md)
+- 【v2.1.0】v2.1.0 の短 TTL キャッシュ（検索設定・`AdminSettings`・ランキング・詳細検索条件・Google 用 XML）: [アーキテクチャ › キャッシュ](ARCHITECTURE.md)
 
 ## ログ
 
@@ -83,7 +83,7 @@
 - 解析基盤連携: [その他 › 解析基盤連携](other/KAISEKI_01.md)
 - OA アシスト連携: [OAアシスト機能ステータス連携](other/OA-ASSIST_STATUS_LINKING.md)
 - researchmap 連携: [researchmap連携機能](user/USER_11_1.md)、[API連携によるレコード追加機能](other/RESEARCHMAP_LINKAGE.md)
-- JSON-LD インポート時の文字列置換: [JSONLDインポート文字列置換](other/JSONLD_IMPORT_REPLACE.md)
+- 【v2.1.0】JSON-LD インポート時の文字列置換: [JSONLDインポート文字列置換](other/JSONLD_IMPORT_REPLACE.md)
 
 ## 更新履歴
 

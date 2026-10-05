@@ -27,7 +27,7 @@ WEKO3 が Invenio3 上に独自実装した機能群。開発の主対象はほ�
 
 ### `weko-accounts`
 
-WEKO 独自の認証連携（Shibboleth／セキュリティ設定）を invenio-accounts に付加。v2.1.0 では未認証応答の制御（`unauthorized.py`：API アプリは常に 401 JSON、UI アプリは API/AJAX とみなすリクエストのみ 401 JSON・画面遷移はログイン画面へ。`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`）、ログイン API のレート制限、Shibboleth SP 属性の受け付け元制限（`WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`）も担う。
+WEKO 独自の認証連携（Shibboleth／セキュリティ設定）を invenio-accounts に付加。【v2.1.0】v2.1.0 では未認証応答の制御（`unauthorized.py`：API アプリは常に 401 JSON、UI アプリは API/AJAX とみなすリクエストのみ 401 JSON・画面遷移はログイン画面へ。`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`）、ログイン API のレート制限、Shibboleth SP 属性の受け付け元制限（`WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`）も担う。
 
 - 主なファイル: `views.py`, `rest.py`, `api.py`, `models.py`, `config.py`, `admin.py`, `utils.py`
 - 実装: `modules/weko-accounts/`
@@ -407,7 +407,7 @@ SQLAlchemy によるDB接続・マイグレーション管理の基盤。
 
 ### `invenio-iiif`
 
-IIIF 画像 API（画像プレビュー／変換）とマニフェスト。v2.1.0 から `permissions.py`（`iiif_object_permission_factory`）で画像配信時にファイルの閲覧権限を、マニフェストでは `weko_records_ui.permissions:page_permission_factory` でレコードの閲覧権限を判定する（サムネイル作成タスクは権限判定なし）。
+IIIF 画像 API（画像プレビュー／変換）とマニフェスト。【v2.1.0】v2.1.0 から `permissions.py`（`iiif_object_permission_factory`）で画像配信時にファイルの閲覧権限を、マニフェストでは `weko_records_ui.permissions:page_permission_factory` でレコードの閲覧権限を判定する（サムネイル作成タスクは権限判定なし）。
 
 - 主なファイル: `views.py`, `tasks.py`, `config.py`, `permissions.py`, `utils.py`
 - 実装: `modules/invenio-iiif/`
@@ -516,7 +516,7 @@ ResourceSync クライアント（Resync による外部リソース取り込み
 
 ### `invenio-resourcesyncserver`
 
-ResourceSync サーバ（Resource List／Change List の公開）。v2.1.0 から `permissions.py`（`is_public_record` / `can_download_file` / `public_record_required`）で配信対象を公開アイテム・ダウンロード可能なファイルに限る。
+ResourceSync サーバ（Resource List／Change List の公開）。【v2.1.0】v2.1.0 から `permissions.py`（`is_public_record` / `can_download_file` / `public_record_required`）で配信対象を公開アイテム・ダウンロード可能なファイルに限る。
 
 - 主なファイル: `views.py`, `api.py`, `models.py`, `config.py`, `permissions.py`, `admin.py`, `utils.py`
 - 実装: `modules/invenio-resourcesyncserver/`
