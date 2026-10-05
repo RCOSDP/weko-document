@@ -115,3 +115,5 @@ node_modules/
 
 # Temporary outputs of the documentation/implementation audit (kept locally, not tracked)
 /findings*.md
+/task_plan.md
+/progress.md
