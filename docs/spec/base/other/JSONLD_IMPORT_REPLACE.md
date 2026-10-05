@@ -7,6 +7,24 @@ JSONLDファイルのインポート時に、JSON内の指定されたパスに�
 ## 利用方法
 
 設定値で置換ルール定義(`WEKO_SEARCH_UI_IMPORT_REPLACE_RULES`)、適用ルールマップ(`WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP`)の2つを設定する。  
+いずれも weko-search-ui の config（`weko_search_ui/config.py`）に既定値が定義されており、変更する場合は `instance.cfg` 等で上書きする。release_v2.1.0 の既定値は以下のとおり（#63281 で `scripts/instance.cfg` に置いていた同内容の設定を削除し、モジュールの既定値に移した）。既定ルール `pipe_full_width` は `target_path` が空のため、既定のままでは置換は行われない。
+
+```Python
+WEKO_SEARCH_UI_IMPORT_REPLACE_RULES = {
+    "pipe_full_width": {
+        "from": "|",
+        "to": "｜",
+        "is_regex": False,
+        "target_path": []
+    }
+}
+WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP = {
+    "32001": [
+        "pipe_full_width"
+    ]
+}
+```
+
 JSONLD形式のメタデータを取り込む際、自動で以下の文字列置換処理が適用される。
 
 - 取り込みに使用中のJSONLDマッピングのidをキーとして、適用ルールマップから適用するルール名のリストを取得する。
@@ -182,15 +200,24 @@ WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP = {
 
     | 内容                                                                 | 英語メッセージ                                                                                  | 日本語メッセージ                                                                     | 備考                    |
     | :------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- | :---------------------- |
-    | 置換ルール定義、置換ルールマッピング、<br>ルールキーリストの型が不正 | Replacement failed.:The type of the jsonld mapping replacement rule is invalid.                 | 置換処理に失敗しました。:jsonldマッピングの置換ルールの型が不正です。                |                         |
-    | 置換ルールIDが取得できない                                           | Replacement failed.:Required replacement rule: '{rule_id}' is missing.                          | 置換処理に失敗しました。:必要な置換ルール：'{rule_id}'が見つかりません。             | {rule id}: 置換ルールID |
-    | `from`、`to`、`target_path`の設定が不正                              | Replacement failed.:Replacement rule: '{rule_id}' is invalid.                                   | 置換処理に失敗しました。:置換ルール： '{rule_id}'の設定が不正です。                  | {rule id}: 置換ルールID |
+    | 置換ルール定義、置換ルールマッピング、<br>ルールキーリストの型が不正 | Replacement failed.: The type of the jsonld mapping replacement rule is invalid.                 | 置換処理に失敗しました。: jsonldマッピングの置換ルールの型が不正です。                |                         |
+    | 置換ルールIDが取得できない                                           | Replacement failed.: Required replacement rule: '{rule_id}' is missing.                          | 置換処理に失敗しました。: 必要な置換ルール：'{rule_id}'が見つかりません。             | {rule id}: 置換ルールID |
+    | `from`、`to`、`target_path`の設定が不正                              | Replacement failed.: Replacement rule: '{rule_id}' is invalid.                                   | 置換処理に失敗しました。: 置換ルール： '{rule_id}'の設定が不正です。                  | {rule id}: 置換ルールID |
     | `is_regex`の設定が不正                                               | Replacement rule: '{rule_id}' - 'is_regex' is not boolean. Treated as False.                    | 置換ルール: '{rule_id}' - 'is_regex' が真偽値ではありません。Falseとして処理します。 | {rule id}: 置換ルールID |
-    | re.error発生時                                                       | Replacement failed.:Replacement rule: Replacement rule: '{rule_id}' - regex error: {エラー原因} | 置換処理に失敗しました。:置換ルール: '{rule_id}' - 正規表現エラー: {エラー原因}      | {rule id}: 置換ルールID |
-    | それ以外のエラー発生時                                               | Replacement failed.:{起きたエラーのメッセージ}                                                  | 置換処理に失敗しました。:{起きたエラーのメッセージ}                                  |                         |
+    | re.error発生時                                                       | Replacement failed.: Replacement rule: '{rule_id}' - regex error: {エラー原因} | 置換処理に失敗しました。: 置換ルール: '{rule_id}' - 正規表現エラー: {エラー原因}      | {rule id}: 置換ルールID |
+    | それ以外のエラー発生時                                               | Replacement failed.: {起きたエラーのメッセージ}                                                  | 置換処理に失敗しました。: {起きたエラーのメッセージ}                                  |                         |
+
+## 実装補足（v2.1.0）
+
+- 処理本体は `weko_search_ui.mapper.JsonLdMapper.apply_import_replace_rules`。`to_item_metadata` の中で、JSON-LD をフラット化したメタデータ（キーは `creator[0].name[0].value` のように配列添字付き）に対して、マッピング処理の前に呼び出される。
+- 各ルールの `target_path` と、メタデータのキーから `[n]` を除いたパスが一致する値を置換する。`is_regex` が True の場合は `re.sub`、False の場合は `str.replace`（部分一致の全置換）で置換する。
+- 警告は `system_info["warnings"]` に追加され、ログにも WARNING で出力される。`is_regex` が真偽値でない旨の警告のみ「Replacement failed.: 」を付けずに出力する。
+- 型不正（ルール定義・ルールマップ・ルールキーリスト）や置換中の想定外の例外が発生した場合は、その時点で残りのルールの適用を打ち切る。
+- 置換結果は `[n]` を除いたパス（`target_path` と同名のキー）に書き戻されるため、配列添字を含むキーの値（例 `creator[0].name[0].value`）については元のキーの値が置換されない実装になっている（要確認）。
 
 ## 変更履歴
 
 | 日付       | GitHubコミットID | 更新内容 |
 | ---------- | ---------------- | -------- |
 | 2026/02/13 |                  | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：設定の既定値（#63281 で instance.cfg からモジュール config へ移動）を追記、警告メッセージの書式を実装（`Replacement failed.: `）に合わせて訂正、実装補足を追記 |

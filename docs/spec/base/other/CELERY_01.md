@@ -93,8 +93,12 @@ docker-compose -f docker-compose2.yml exec --user root web celery -A invenio_app
 | 日付 | GitHubコミットID | 更新内容 |
 | ---- | ---- | ---- |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：`update_sitemap` の掲載対象を公開アイテムに限定、IIIF サムネイル作成タスクの対象解決を追記 |
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - `CELERY_BEAT_SCHEDULE` の定義は `scripts/instance.cfg`（jinja テンプレート、`environ()` で invenio.cfg を生成）にあり、各タスクは対応モジュールの `tasks.py` に実在する（`invenio_stats.tasks.process_events`/`aggregate_events`、`weko_indextree_journal.tasks.export_journal_task`、`weko_admin.tasks.*`、`invenio_oaiharvester.tasks.check_schedules_and_run`、`invenio_files_rest.tasks.check_send_alert_mail`/`check_file_storage_time`、`weko_authors.tasks.check_tmp_file_time_for_author`、`weko_sitemap.tasks.update_sitemap`、`invenio_resourcesyncclient.tasks.run_sync_auto`、`weko_workflow.tasks.cancel_expired_usage_report_activities`、`weko_items_ui.tasks.bulk_post_item_to_researchmap`）。
 - 補足：`weko_logging.tasks.delete_log`（ログ削除）は実装済みだが beat スケジュールではコメントアウトされ**無効**（定期実行されない）。
+- 実装補足（v2.1.0、`update_sitemap`）：サイトマップに列挙するアイテムは公開アイテムに限られる（`weko_sitemap.ext.WekoSitemap._is_public_item`）。アイテム詳細画面のゲスト向け判定と同じく、`weko_records_ui.permissions.check_publish_status`（公開状態かつ公開日到来）と `weko_index_tree.utils.check_index_permissions`（閲覧可能なインデックス配下）の両方を満たすアイテムのみを載せ、判定はバージョン番号を除いた親レコード（最新状態）で行う。判定中の例外は非掲載扱い。
+- 実装補足（v2.1.0、`invenio_iiif.tasks.create_thumbnail`）：IIIF 画像を開く処理に利用者の権限判定が入ったため、リクエスト外で動く本タスクは利用者の権限を確かめずに対象オブジェクト（`ObjectVersion`）を直接解決して `g.obj` に設定し、画像を開く処理にそれを使わせる。
+

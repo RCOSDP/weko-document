@@ -6,7 +6,8 @@
 
 ## 利用方法  
 celeryのタスクとして、researchmapへの業績情報の登録処理が実行される。  
-定期的に（例：一日一回）、バッチ処理により実行される。
+定期的に（例：一日一回）、バッチ処理により実行される（`scripts/instance.cfg` の `CELERY_BEAT_SCHEDULE` に `bulk_post_item_to_researchmap`（`weko_items_ui.tasks.bulk_post_item_to_researchmap`）が毎日 0:00 で登録されている）。  
+画面からの連携指定は [Item Registration：メタデータ入力](../user/USER_4_6.md) の researchmap連携フラグ、連携結果の表示等は [researchmap連携機能](../user/USER_11_1.md) を参照。
 
 ## 利用可能なロール
 
@@ -52,13 +53,24 @@ celeryのタスクとして、researchmapへの業績情報の登録処理が実
 
 ## 機能内容
 
+> 実装補足（v2.1.0）：本書は要件定義を基にした記述を含む。release_v2.1.0 の実装（weko-items-ui の `tasks.py` / `linkage.py` / `signals.py` / `models.py`）の挙動は以下のとおりで、本文と異なる箇所は実装が正となる。
+> - 連携予約：Item Registration で researchmap にチェックして登録完了したとき（`weko_workflow.views.next_action`）、インポート（`weko_search_ui.utils.import_items_to_system` で `researchmap_linkage` が真の場合。RO-Crate/JSON-LD インポート・SWORD API を含む）で登録完了したときに、シグナル `cris_researchmap_linkage_request` を送信する。受信側（`weko_items_ui.signals.receiver`）は `cris_linkage_result` を実行中（`succeed = NULL`）にし、RabbitMQ のキュー `cris_researchmap_linkage`（config `LINKAGE_MQ_EXCHANGE` / `LINKAGE_MQ_QUEUE`）に `{"item_uuid": ...}` を投入する。
+> - バッチ：`bulk_post_item_to_researchmap` がキューを読み切るまで1件ずつ処理する（`process_researchmap_queue`）。処理後はメッセージを ack して削除する（失敗時も再投入しない）。
+> - 対象判定：アイテムが非公開（`check_publish_status`）または非公開インデックスに属する場合は「非公開」、連携対象著者がいない場合は「連携対象者無し」、資源タイプが config `WEKO_ITEMS_UI_CRIS_LINKAGE_RESEARCHMAP_TYPE_MAPPINGS` に無い場合は「連携形式対象外」として失敗を記録し送信しない。
+> - 連携対象著者：レコードの `author_link`（著者DBの著者ID）から著者DBを引き、著者識別子のスキーム `researchmap`（`AuthorsPrefixSettings`）に登録された ID（パーマリンク）を `user_id` として使う（`weko_authors.models.Authors.get_authorIdInfo`）。レコードのメタデータ中の nameIdentifier を直接は参照しない。
+> - 業績データ：`WEKO_ITEMS_UI_CRIS_LINKAGE_RESEARCHMAP_MAPPINGS`（researchmap 項目と JPCOAR マッピングの対応）で作成し、連携対象著者ごとに1行の JSON を作って改行（CRLF）で連結し、1アイテム分を1回の `POST <WEKO_ITEMS_UI_CRIS_LINKAGE_RESEARCHMAP_BASE_URL>/_bulk` で送信する。整合性チェック（`check` パラメータ）は使用しない。
+> - マージモード：AdminSettings（config `WEKO_ADMIN_SETTINGS_RESEARCHMAP_LINKAGE_SETTINGS`）の `merge_mode`、未設定時は config `WEKO_ITEMS_UI_CRIS_LINKAGE_RESEARCHMAP_MERGE_MODE_DEFAULT`（既定 `similar_merge_similar_data`）。
+> - 認証：AdminSettings `researchmap_linkage_settings` のクライアントID（`researchmap_cidkey_contents`）と秘密鍵（`researchmap_pkey_contents`）で RS256 の JWT（有効期限10分）を作り、`/oauth2/token` からアクセストークンを取得する（scope は送信時 `write achievements`）。
+> - リトライ：HTTP ステータスが 200/404 以外の場合に config `WEKO_ITEMS_UI_CRIS_LINKAGE_RESEARCHMAP_RETRY_MAX`（既定 5）回まで再送する。401 かつ `invalid_token` の場合はアクセストークンを取り直す。結果確認（`_bulk_results` の URL）は処理中（code 102）の間 10 秒ごとに再取得する。
+> - 結果の記録：`cris_linkage_result` テーブル（主キー recid + cris_institution（`researchmap`）、`succeed`（真偽値。NULL は実行中）、`last_linked_date`、`last_linked_item`、`failed_log`）。結果1行目の code が 200/201/204/304 のとき成功（`succeed = true`、連携日時・アイテムUUIDを更新）、それ以外や例外時は失敗（`succeed = false`、`failed_log` に応答や例外内容）とする。本文中の連携フラグ「0（未連携）」「-2（連携エラー）」の値は実装には存在しない。
+
 - タスクをscripts/instance.cfgのCELERY_BEAT_SCHEDULEに記載し、参照する。
 
 - 処理キューにレコードIDが入っているアイテムに対して、連携を行う。処理キューに処理を予約するには、「ItemRegistrationにてCRIS連携の機関チェックボックスをONにして登録し、アイテム登録が完了したとき」「連携フラグをTRUEにしてインポートし、登録完了したとき」（[インポート](../admin/ADMIN_2_4.md)を参照）（「JSON-LD形式で連携フラグをTRUEにしてインポート（RO-Crateインポート、SWORD API）し、登録完了したとき」[RO-Crateインポート](../admin/ADMIN_2_5.md)を参照）のいずれかのタイミングで行える。
 
 - Celeryによりバッチ処理として、連携機能がONの場合、WEKOに登録されているアイテムのデータをresearchmapへ業績情報として追加する。
 
-  - 機能のON/OFFは設定ファイルに定義する。
+  - 機能のON/OFFは設定ファイルに定義する。（実装上は専用の ON/OFF 設定値はなく、`CELERY_BEAT_SCHEDULE` へのタスク登録の有無と、アイテムごとの連携フラグで制御される）
 
   - ResearchmapがCRIS連携に指定されているアイテムがキューに入っている場合、そのアイテムをresearchmapへの業績情報登録を行う。ただし、そのアイテムが公開状態であること、「著者」「コントリビュータ」欄（attribute_nameがcreator, contributor）に著者が登録されており、その著者の著者DBにresearchmapへのparmalinkが登録されている必要がある。また、researchmap側の設定としても、対象機関の下にある著者であり、公開状態にあることなど、連携を許可される設定下にある必要がある。（researchmap側の設定については、researchmapの連携API仕様書「3.10 研究者情報、代理人情報における取得・更新範囲」を参照のこと）
 
@@ -68,7 +80,7 @@ celeryのタスクとして、researchmapへの業績情報の登録処理が実
 
       - 対象レコードが登録されているインデックスの公開状態を既存のメソッドを用いて確認する。（返り値True: public, False: private）
 
-      - ファイルが添付されている場合は、ファイル情報の公開状態を既存のメソッドを用いて確認する。（返り値True: ダウンロード可能, False: ダウンロード不可）
+      - ファイルが添付されている場合は、ファイル情報の公開状態を既存のメソッドを用いて確認する。（返り値True: ダウンロード可能, False: ダウンロード不可）（※release_v2.1.0 の実装ではファイルの公開状態による判定は行っていない。アイテムの公開状態（`check_publish_status`）と非公開インデックス判定（`invenio_oaiserver.response.is_private_index`）のみで判定する）
 
       - 確認結果が公開状態であれば、著者情報を確認する。  
         アイテムのrecord_metadataを確認し、researchmapへ業績情報として登録できる入力データを作成する。
@@ -166,7 +178,7 @@ celeryのタスクとして、researchmapへの業績情報の登録処理が実
 
     - 既存のJWT作成ライブラリを利用する。(jpadilla/pyjwt)
 
-    - 有効期限は2分とする。（推奨値）設定ファイルで値を管理する。
+    - 有効期限は2分とする。（推奨値）設定ファイルで値を管理する。（※release_v2.1.0 の実装では有効期限は10分固定（`Researchmap.create_jwt`）で、設定値はない）
 
     - 利用機関で機関毎に事前に取得しているAPIキーのクライアントIDを保持する。
 
@@ -433,3 +445,9 @@ celeryのタスクとして、researchmapへの業績情報の登録処理が実
     - statusが completion「完了」の場合、該当行のアイテムのresearchmap連携フラグを「成功」にする。
 
     - statusが error「エラー」の場合、response項目のerrorを参照し、発生したエラーが再実行で解消しない類のエラーである場合、該当行のアイテムのresearchmap連携フラグを「失敗」とする。
+
+## 更新履歴
+
+| 日付 | GitHubコミットID | 更新内容 |
+| --- | --- | --- |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：実行タイミング・連携予約・対象判定・著者特定・認証・リトライ・結果記録を実装補足に追記し、ファイル公開判定・JWT 有効期限・ON/OFF 設定の記述に実装との差異を注記 |
