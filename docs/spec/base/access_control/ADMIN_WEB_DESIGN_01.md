@@ -55,9 +55,9 @@
 
 ### 実装上の変更（v2.1.0：ウィジェット関連 API の認可強化）
 
-release_v2.1.0 では、ウィジェット・ページレイアウト画面が内部で呼び出す API（`weko_gridlayout/views.py`）に認可が追加され、上記サブ表の「自身の管理するコミュニティ」の条件が API 側でも担保されるようになった（issue62569 PR #1901、ウィジェット権限 No.290/303/304 PR #1930、issue62783 PR #1923）。
+【v2.1.0】release_v2.1.0 では、ウィジェット・ページレイアウト画面が内部で呼び出す API（`weko_gridlayout/views.py`）に認可が追加され、上記サブ表の「自身の管理するコミュニティ」の条件が API 側でも担保されるようになった（issue62569 PR #1901、ウィジェット権限 No.290/303/304 PR #1930、issue62783 PR #1923）。
 
-リポジトリスコープ検証は `weko_admin.permissions.repository_scope_required` で行う。
+【v2.1.0】リポジトリスコープ検証は `weko_admin.permissions.repository_scope_required` で行う。
 
 - 未ログインは 401。System / Repository Administrator（`WEKO_PERMISSION_SUPER_ROLE_USER`）は無条件で許可。
 - Community Administrator は、検証対象のリポジトリ ID がすべて `Community.get_repositories_by_user` の返すコミュニティに含まれる場合のみ許可。それ以外は 403。
@@ -65,18 +65,18 @@ release_v2.1.0 では、ウィジェット・ページレイアウト画面が�
 
 | API | 追加された認可 |
 | --- | --- |
-| `POST /api/admin/load_widget_list_design_setting` | `repository_scope_required(repository_id_param='repository_id')` |
-| `POST /api/admin/save_widget_layout_setting` | `repository_scope_required(repository_id_param='repository_id', id_param='page_id', id_model=WidgetDesignPage)` |
-| `POST /api/admin/save_widget_design_page` | 同上 |
-| `POST /api/admin/delete_widget_design_page` | `repository_scope_required(id_param='page_id', id_model=WidgetDesignPage)` |
-| `POST /api/admin/save_widget_item` | `repository_scope_required(repository_id_param='data.repository', id_param='data_id', id_model=WidgetItem, pk_attr='widget_id')` |
-| `POST /api/admin/delete_widget_item` | `repository_scope_required(id_param='data_id', id_model=WidgetItem, pk_attr='widget_id')` |
-| `GET /api/admin/load_widget_type` | `login_required` ＋ `roles_required`（System / Repository / Community Administrator） |
+| 【v2.1.0】`POST /api/admin/load_widget_list_design_setting` | `repository_scope_required(repository_id_param='repository_id')` |
+| 【v2.1.0】`POST /api/admin/save_widget_layout_setting` | `repository_scope_required(repository_id_param='repository_id', id_param='page_id', id_model=WidgetDesignPage)` |
+| 【v2.1.0】`POST /api/admin/save_widget_design_page` | 同上 |
+| 【v2.1.0】`POST /api/admin/delete_widget_design_page` | `repository_scope_required(id_param='page_id', id_model=WidgetDesignPage)` |
+| 【v2.1.0】`POST /api/admin/save_widget_item` | `repository_scope_required(repository_id_param='data.repository', id_param='data_id', id_model=WidgetItem, pk_attr='widget_id')` |
+| 【v2.1.0】`POST /api/admin/delete_widget_item` | `repository_scope_required(id_param='data_id', id_model=WidgetItem, pk_attr='widget_id')` |
+| 【v2.1.0】`GET /api/admin/load_widget_type` | `login_required` ＋ `roles_required`（System / Repository / Community Administrator） |
 | `POST /widget/uploads/<community_id>`、`POST /widget/uploads/`（ウィジェット用ファイルのアップロード） | `login_required` |
-| `GET /widget/uploaded/<filename>`、`GET /widget/uploaded/<filename>/<community_id>`（アップロード済みファイルの取得） | `roles_required`（System / Repository / Community Administrator。未ログインは 401、その他ロールは 403） |
+| `GET /widget/uploaded/<filename>`、`GET /widget/uploaded/<filename>/<community_id>`（アップロード済みファイルの取得） | なし（公開ページのウィジェットから読み込まれるため、未ログインでも取得できる） |
 | `POST /api/admin/widget/unlock` | `login_required` |
 
-> 実装補足（v2.1.0）：`/widget/uploaded/...` は管理者ロールのみ取得可能となったため、フリー記述ウィジェット等に埋め込んだアップロード画像は、ゲスト・一般ユーザーの閲覧時に表示されない（401/403）可能性がある。
+> 実装補足（v2.1.0）：release_v2.1.0 時点のコード（facd5abf7）では `/widget/uploaded/...` に管理者ロール必須が付き、フリー記述ウィジェット等に埋め込んだアップロード画像がゲスト・一般ユーザーに表示されない（401/403）不具合があった。PR #1937 で認証なしの取得に戻している（v2.0.4 と同じ挙動）。
 
 ## 更新履歴
 
@@ -84,3 +84,4 @@ release_v2.1.0 では、ウィジェット・ページレイアウト画面が�
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |    6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3      | 初版作成                                                 |
 | 2026/10/05 | 508030789 | release_v2.1.0突合：ウィジェット・ページレイアウト関連APIの認可（リポジトリスコープ検証・ロール制限）を追記 |
+| 2026/10/05 | 508030789 | v2.1.0タグ付けに伴う記述訂正：`/widget/uploaded` の認可を PR #1937（認証なしの取得に戻す）に合わせて訂正 |

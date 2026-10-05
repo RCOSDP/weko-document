@@ -268,9 +268,9 @@ release_v2.1.0 では、各設定画面が内部で呼び出す API（`/api/admi
 
 | 画面 | API | 追加された認可 |
 | --- | --- | --- |
-| 検索設定 | `GET /api/admin/search/init_display_index/<selected_index>`（初期表示インデックスのツリー取得） | `login_required` ＋ `roles_required`（System / Repository Administrator のみ） |
+| 【v2.1.0】検索設定 | `GET /api/admin/search/init_display_index/<selected_index>`（初期表示インデックスのツリー取得） | `login_required` ＋ `roles_required`（System / Repository Administrator のみ） |
 | WebAPIアカウント | `GET /api/admin/get_api_cert_type`、`GET /api/admin/get_curr_api_cert/<api_code>` | `login_required` ＋ `roles_required`（System Administrator のみ） |
-| サイトマップ | （生成内容）`weko_sitemap/ext.py` の `WekoSitemap._generate_all_item_urls` | サイトマップに載せるアイテムを、ゲストが詳細画面を閲覧できるアイテム（`check_publish_status`：公開かつ公開日到来、かつ `weko_index_tree.utils.check_index_permissions`：ゲストが閲覧可能なインデックスに所属）に限定（PR #1926） |
+| 【v2.1.0】サイトマップ | （生成内容）`weko_sitemap/ext.py` の `WekoSitemap._generate_all_item_urls` | サイトマップに載せるアイテムを、ゲストが詳細画面を閲覧できるアイテム（`check_publish_status`：公開かつ公開日到来、かつ `weko_index_tree.utils.check_index_permissions`：ゲストが閲覧可能なインデックスに所属）に限定（PR #1926） |
 
 ## 更新履歴
 

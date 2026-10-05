@@ -234,11 +234,11 @@
 
 ### 実装上の変更（release_v2.1.0：認可の強化）
 
-- **管理者バイパスの範囲**：`check_file_download_permission`（ダウンロード／ファイル情報／プレビュー）と `is_owners_or_superusers` の管理者バイパスが `is_superuser_or_record_comadmin` に統一された。System/Repository Administrator は全アイテム、Community Administrator は自身が所属するコミュニティのインデックス配下のアイテム（`has_comadmin_permission`）に限ってバイパスされる。以前は Community Administrator が全アイテムのファイルをバイパスしていた。
-- **ファイルプレビュー**（`/record/<pid_value>/preview/<filename>` の `weko_records_ui.preview.preview`）：`file_permission_required` デコレータで `file_permission_factory` を確認し、権限が無い場合は未ログインならログイン画面へ遷移、ログイン済みなら 403。プレビューを表示する iframe 内で未認証になった場合も JSON ではなくログイン画面を返す（`weko_accounts.unauthorized`：`Sec-Fetch-Dest` が iframe 等の場合）。
+- 【v2.1.0】**管理者バイパスの範囲**：`check_file_download_permission`（ダウンロード／ファイル情報／プレビュー）と `is_owners_or_superusers` の管理者バイパスが `is_superuser_or_record_comadmin` に統一された。System/Repository Administrator は全アイテム、Community Administrator は自身が所属するコミュニティのインデックス配下のアイテム（`has_comadmin_permission`）に限ってバイパスされる。以前は Community Administrator が全アイテムのファイルをバイパスしていた。
+- 【v2.1.0】**ファイルプレビュー**（`/record/<pid_value>/preview/<filename>` の `weko_records_ui.preview.preview`）：`file_permission_required` デコレータで `file_permission_factory` を確認し、権限が無い場合は未ログインならログイン画面へ遷移、ログイン済みなら 403。プレビューを表示する iframe 内で未認証になった場合も JSON ではなくログイン画面を返す（`weko_accounts.unauthorized`：`Sec-Fetch-Dest` が iframe 等の場合）。
 - **ファイル置き換え／公開バケットへのコピー／ファイル配置取得**（`/records/replace_file`・`/records/copy_bucket`・`/records/get_file_place`）：`@login_required` と `record_edit_permission_required(param='pid')`（`check_created_id`：作成者・所有者・共有者・System/Repository Administrator・当該アイテムのコミュニティの Community Administrator）を要求。未ログインは 401／ログイン画面、権限なしは 403、`pid` 欠落は 400。S3 バケット一覧（`/records/get_bucket_list`）は `@login_required`。画面上のボタン表示も同じ `check_created_id`（テンプレートフィルタ `check_permission`）と `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED`・最新バージョン（`can_edit`）で制御される。
-- **IIIF 画像配信**（`invenio_iiif.handlers.protect_api`）：レコードのファイルであれば詳細画面の閲覧権限（`page_permission_factory`）かつ `check_file_download_permission` を満たす場合のみ配信し、満たさない場合・オブジェクトが無い場合は 404（`invenio_iiif.permissions.iiif_object_permission_factory`）。レコードに属さないオブジェクトは Invenio-Files-REST の `object-read` 権限で判定。サムネイル作成タスクは利用者権限を確認せずに対象を解決する。
-- **ファイル統計**（`QueryFileStatsCount`）：バケットを持つレコードの閲覧権限が必要（不可は 403）。
+- 【v2.1.0】**IIIF 画像配信**（`invenio_iiif.handlers.protect_api`）：レコードのファイルであれば詳細画面の閲覧権限（`page_permission_factory`）かつ `check_file_download_permission` を満たす場合のみ配信し、満たさない場合・オブジェクトが無い場合は 404（`invenio_iiif.permissions.iiif_object_permission_factory`）。レコードに属さないオブジェクトは Invenio-Files-REST の `object-read` 権限で判定。サムネイル作成タスクは利用者権限を確認せずに対象を解決する。
+- 【v2.1.0】**ファイル統計**（`QueryFileStatsCount`）：バケットを持つレコードの閲覧権限が必要（不可は 403）。
 
 ## 更新履歴
 

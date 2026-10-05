@@ -74,12 +74,12 @@
 
 ### 実装上の変更（v2.1.0：画面から呼ばれる API のリポジトリスコープ検証）
 
-release_v2.1.0 では、フィードバックメール・サイトライセンス画面が内部で呼び出す API に、選択したリポジトリ（コミュニティ）が操作者の管轄内かの検証が追加された（PR #1901 / #1923 / #1927）。管轄の判定は System / Repository Administrator（`WEKO_PERMISSION_SUPER_ROLE_USER`）は無条件、それ以外は `Community.get_repositories_by_user` が返すコミュニティに限る（上記サブ表 ※1 と同じ）。
+【v2.1.0】release_v2.1.0 では、フィードバックメール・サイトライセンス画面が内部で呼び出す API に、選択したリポジトリ（コミュニティ）が操作者の管轄内かの検証が追加された（PR #1901 / #1923 / #1927）。管轄の判定は System / Repository Administrator（`WEKO_PERMISSION_SUPER_ROLE_USER`）は無条件、それ以外は `Community.get_repositories_by_user` が返すコミュニティに限る（上記サブ表 ※1 と同じ）。
 
 | 画面 | API | 追加された認可 | 不許可時 |
 | --- | --- | --- | --- |
-| フィードバックメール | `GET /api/admin/get_send_mail_history` | `weko_admin.permissions.repository_scope_required(repository_id_param='repo_id')`：未ログインは 401。Community Administrator は `repo_id` が担当コミュニティの場合のみ許可 | 403 |
-| サイトライセンス | `POST /api/admin/sitelicensesendmail/send/<start_month>/<end_month>`（手動送信） | 既存の `login_required` ＋ `roles_required`（System / Repository / Community Administrator）に加え、`_form_repository_scope_required`：フォームの `repo_id` が管轄内（`_is_repository_in_user_scope`）であること。`repo_id` 未指定は System / Repository Administrator 以外は不許可 | 403 |
+| 【v2.1.0】フィードバックメール | `GET /api/admin/get_send_mail_history` | `weko_admin.permissions.repository_scope_required(repository_id_param='repo_id')`：未ログインは 401。Community Administrator は `repo_id` が担当コミュニティの場合のみ許可 | 403 |
+| 【v2.1.0】サイトライセンス | `POST /api/admin/sitelicensesendmail/send/<start_month>/<end_month>`（手動送信） | 既存の `login_required` ＋ `roles_required`（System / Repository / Community Administrator）に加え、`_form_repository_scope_required`：フォームの `repo_id` が管轄内（`_is_repository_in_user_scope`）であること。`repo_id` 未指定は System / Repository Administrator 以外は不許可 | 403 |
 | サイトライセンス | `GET /api/admin/get_site_license_send_mail_settings`（「コミュニティ」選択時の機関一覧・自動送信設定取得） | `login_required` ＋ `roles_required`（System / Repository Administrator のみ） | 403 |
 
 > 実装補足（v2.1.0）：`get_site_license_send_mail_settings` は Community Administrator を許可していないため、Community Administrator がサイトライセンス画面で「コミュニティ」を切り替えると一覧取得が 403 となり（画面には「Failed to fetch data」が表示される）、上記サブ表 ※1 の機能を利用できない。画面の可否（Community ○）と API の可否が一致していない。

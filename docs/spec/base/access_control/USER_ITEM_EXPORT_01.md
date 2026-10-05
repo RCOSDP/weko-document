@@ -56,8 +56,8 @@
 
 ### 実装上の変更（release_v2.1.0）
 
-- エクスポート処理（`weko_items_ui.utils._export_item`）で、指定されたレコードごとに出力可否を再判定するようになった。System/Repository Administrator（`get_user_roles()` の第1要素）、編集権限を持つユーザー（`check_created_id`）、または公開済みかつ公開日到来のレコード（`check_publish_status`）以外はスキップされ、出力結果に含まれない（画面の一覧を経由せずレコード ID を直接指定した場合も非公開の他者レコードは出力されない）。
-- BibTeX 形式の事前検証（`validate_bibtex`）では、存在しないレコードと詳細画面の閲覧権限が無いレコードを出力不可として扱う。
+- 【v2.1.0】エクスポート処理（`weko_items_ui.utils._export_item`）で、指定されたレコードごとに出力可否を再判定するようになった。System/Repository Administrator（`get_user_roles()` の第1要素）、編集権限を持つユーザー（`check_created_id`）、または公開済みかつ公開日到来のレコード（`check_publish_status`）以外はスキップされ、出力結果に含まれない（画面の一覧を経由せずレコード ID を直接指定した場合も非公開の他者レコードは出力されない）。
+- 【v2.1.0】BibTeX 形式の事前検証（`validate_bibtex`）では、存在しないレコードと詳細画面の閲覧権限が無いレコードを出力不可として扱う。
 
 ## 更新履歴
 

@@ -76,7 +76,7 @@ Resource Syncのアクセスコントロールについて記述します。
 
 ### 実装上の変更（v2.1.0：ChangeListのエンバーゴ考慮）
 
-`WEKO_SEARCH_FIX_ACCESSRIGHTS`（`weko_search_ui/config.py`、既定 `False`）がTrueの環境では、ResourceSync の変更差分（ChangeList）生成がエンバーゴ状態を考慮する。
+【v2.1.0】`WEKO_SEARCH_FIX_ACCESSRIGHTS`（`weko_search_ui/config.py`、既定 `False`）がTrueの環境では、ResourceSync の変更差分（ChangeList）生成がエンバーゴ状態を考慮する。
 
 - `invenio_resourcesyncserver/query.py` の `item_changes_search_factory` は、更新日ウィンドウ（from/until）による `_updated` レンジ絞り込みを、`invenio_oaiserver.query.range_query`（OAI-PMHと共通のエンバーゴ考慮クエリ）へ切り替える。エンバーゴ解除（公開日到来）アイテムを差分に反映するため、公開日と `_updated` の双方でウィンドウ内外を判定する。
 - レコードの更新日時（datestamp）自体の繰り上げは `invenio_records/api.py` の `Record.updated` プロパティが担う（OAI-PMHと共通）。
@@ -84,7 +84,7 @@ Resource Syncのアクセスコントロールについて記述します。
 
 ### 実装上の変更（v2.1.0：公開エンドポイントの配信対象を公開アイテム・ダウンロード可能ファイルに限定）
 
-管理画面で作成した Resource List / Change List は、未ログインでもアクセスできる公開エンドポイント（`/resync/<index_id>/...`、`invenio_resourcesyncserver/views.py`）から配信される。release_v2.1.0 では配信対象が次のとおり絞り込まれた（PR #1926）。
+【v2.1.0】管理画面で作成した Resource List / Change List は、未ログインでもアクセスできる公開エンドポイント（`/resync/<index_id>/...`、`invenio_resourcesyncserver/views.py`）から配信される。release_v2.1.0 では配信対象が次のとおり絞り込まれた（PR #1926）。
 
 | 対象 | 判定 | 判定不可時の応答 |
 | --- | --- | --- |

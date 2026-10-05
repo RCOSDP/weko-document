@@ -10,7 +10,7 @@ SWORD API のアクセスコントロールについて記述します。
 - [PUT /sword/deposit/\<recid\>](#put-sworddepositrecid) ※
 - [DELETE /sword/deposit/\<recid\>](#delete-sworddepositrecid) ※
 
-※ `weko_swordserver/config.py` の `WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE` の値によって使用可能なロールを指定することが出来ます（既定は System Administrator・Repository Administrator・Community Administrator・Contributor。下表は既定値での可否）。v2.1.0 以降、この値はリクエストごとに `current_app.config` から読み込まれる（デコレータ `weko_swordserver.decorators.check_deposit_role`）ため、instance.cfg 等のアプリケーション設定で上書きした値が反映されます（v2.0.x まではモジュール定数を import していたため、アプリケーション設定での上書きが効きませんでした）。ロールの判定自体は `weko_accounts.utils.roles_required` が行います。  
+【v2.1.0】※ `weko_swordserver/config.py` の `WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE` の値によって使用可能なロールを指定することが出来ます（既定は System Administrator・Repository Administrator・Community Administrator・Contributor。下表は既定値での可否）。v2.1.0 以降、この値はリクエストごとに `current_app.config` から読み込まれる（デコレータ `weko_swordserver.decorators.check_deposit_role`）ため、instance.cfg 等のアプリケーション設定で上書きした値が反映されます（v2.0.x まではモジュール定数を import していたため、アプリケーション設定での上書きが効きませんでした）。ロールの判定自体は `weko_accounts.utils.roles_required` が行います。  
 ただし、インデックスの公開状態や投稿権限を無視して投稿可能となります。
 
 ## GET /sword/service-document

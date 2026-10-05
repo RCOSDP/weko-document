@@ -702,12 +702,12 @@
 
 - **公開ステータス変更**：`weko_items_ui.permissions.edit_permission_factory` が `page_permission_factory` への委譲をやめ `check_created_id`（作成者・所有者・共有者・System/Repository Administrator・当該アイテムのコミュニティの Community Administrator）で判定するよう修正され、上記 v2.0.2 注記の「閲覧権限と同一」は解消した。`/record/<pid>/publish`・`/item/edit`・`/item/iframe/edit` と、`weko_deposit.rest.publish`（`PUT /deposits/publish/<pid_value>`、`@login_required`＋同判定。不可は 403、該当なしは 404）が対象。
 - **アイテム削除／バージョン削除／復元**（`/records/soft_delete/<recid>`・`/records/restore/<recid>`）：所有者判定がデコレータ `weko_records_ui.permissions.record_edit_permission_required` に移り、`check_created_id` 不成立は 403（ビュー内の例外処理で 500 に化けない）。バージョン削除の `del_ver_` 接頭辞は除去して判定し、Python から位置引数で呼ばれる経路（`prepare_delete_item` 等）でも recid を取得する（issue62807）。`weko_shared_ids` を持たない旧形式レコードは `weko_shared_id`（-1 は共有なし）で判定する。
-- **Other Formats（BibTeX）**：BibTeX 出力前の検証（`/items/validate_bibtex_export` → `weko_items_ui.utils.validate_bibtex`）で、存在しないレコードと詳細画面の閲覧権限（`page_permission_factory`）が無いレコードは必須項目欠落と同様に出力不可（`invalid_record_ids`）として扱う。リクエストボディが不正な場合は 400。
-- **引用（Cite as）API**（`WekoRecordsCitesResource.get`）：`require_api_auth(allow_anonymous=True)`・`item_read_scope` を付与し、詳細画面の閲覧権限が無いレコードは 404（"Not found"）。
-- **閲覧数・ファイル統計**（`invenio_stats.views.QueryRecordViewCount`・`QueryFileStatsCount`）：詳細画面と同じ閲覧権限（`page_permission_factory`）を要求し、不正な ID は 400、該当なしは 404、閲覧不可は 403（`record_view_permission_required`／`bucket_view_permission_required`）。
-- **signposting**（`HEAD /records/<pid_value>`）：`page_permission_factory` を権限ファクトリとして設定し、詳細画面を閲覧できないレコードには応答しない。
-- **IIIF マニフェスト**：`IIIF_MANIFEST_ENDPOINTS` に `page_permission_factory` を設定し、閲覧不可は未ログイン 401／ログイン済み 403。マニフェストに列挙する画像はファイルのダウンロード権限があるものに限る。
-- **シークレットURL設定の取得**（`/get-secret-settings`）・**URI 取得**（`/get_uri`、編集権限 `record_edit_permission_required(param='pid_value')`）に `@login_required` を追加。PDF カバーページ設定（`/admin/pdfcoverpage`）は System/Repository Administrator に限定。
+- 【v2.1.0】**Other Formats（BibTeX）**：BibTeX 出力前の検証（`/items/validate_bibtex_export` → `weko_items_ui.utils.validate_bibtex`）で、存在しないレコードと詳細画面の閲覧権限（`page_permission_factory`）が無いレコードは必須項目欠落と同様に出力不可（`invalid_record_ids`）として扱う。リクエストボディが不正な場合は 400。
+- 【v2.1.0】**引用（Cite as）API**（`WekoRecordsCitesResource.get`）：`require_api_auth(allow_anonymous=True)`・`item_read_scope` を付与し、詳細画面の閲覧権限が無いレコードは 404（"Not found"）。
+- 【v2.1.0】**閲覧数・ファイル統計**（`invenio_stats.views.QueryRecordViewCount`・`QueryFileStatsCount`）：詳細画面と同じ閲覧権限（`page_permission_factory`）を要求し、不正な ID は 400、該当なしは 404、閲覧不可は 403（`record_view_permission_required`／`bucket_view_permission_required`）。
+- 【v2.1.0】**signposting**（`HEAD /records/<pid_value>`）：`page_permission_factory` を権限ファクトリとして設定し、詳細画面を閲覧できないレコードには応答しない。
+- 【v2.1.0】**IIIF マニフェスト**：`IIIF_MANIFEST_ENDPOINTS` に `page_permission_factory` を設定し、閲覧不可は未ログイン 401／ログイン済み 403。マニフェストに列挙する画像はファイルのダウンロード権限があるものに限る。
+- 【v2.1.0】**シークレットURL設定の取得**（`/get-secret-settings`）・**URI 取得**（`/get_uri`、編集権限 `record_edit_permission_required(param='pid_value')`）に `@login_required` を追加。PDF カバーページ設定（`/admin/pdfcoverpage`）は System/Repository Administrator に限定。
 - 未ログインでの AJAX/fetch 呼び出しが `@login_required` に当たった場合は 401 JSON を返し、通常の画面遷移・iframe 内の遷移はログイン画面へ遷移する（`weko_accounts.unauthorized.wants_json`、`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`）。
 - 上記 v2.0.2 注記のうち、リクエストメール POST（`RequestMail.post_v1`）に認可が無い点、`prepare_edit_item` が `get_user_roles(is_super_role=True)` により任意の Community Administrator に編集を許す点は release_v2.1.0 でも変わらない。
 

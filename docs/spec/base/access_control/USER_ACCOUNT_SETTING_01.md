@@ -78,16 +78,16 @@
 
 #### グループの作成、編集、削除、メンバー管理
 
-グループの作成・編集・削除・メンバー管理（メンバー一覧、追加招待、承認、除外）は、システム管理者・リポジトリ管理者・コミュニティ管理者のみ行えます。それ以外のロールでアクセスした場合は 403 となります。
+【v2.1.0】グループの作成・編集・削除・メンバー管理（メンバー一覧、追加招待、承認、除外）は、システム管理者・リポジトリ管理者・コミュニティ管理者のみ行えます。それ以外のロールでアクセスした場合は 403 となります。
 
-さらに、既存グループの編集・削除・メンバーの承認／除外は、そのグループの管理者（`GroupAdmin`：グループ単位の管理者）である場合に限られます。メンバーの追加招待は、グループの管理者であるか、グループの参加ポリシーが「Open」の場合に可能です。
+【v2.1.0】さらに、既存グループの編集・削除・メンバーの承認／除外は、そのグループの管理者（`GroupAdmin`：グループ単位の管理者）である場合に限られます。メンバーの追加招待は、グループの管理者であるか、グループの参加ポリシーが「Open」の場合に可能です。
 
 | 条件/ロール | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
 | -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
-| グループ作成 | ○ | ○ | ○ | × | × | × |
-| 編集・削除・メンバー承認／除外：<br>グループの管理者 | ○ | ○ | ○ | × | × | × |
+| 【v2.1.0】グループ作成 | ○ | ○ | ○ | × | × | × |
+| 【v2.1.0】編集・削除・メンバー承認／除外：<br>グループの管理者 | ○ | ○ | ○ | × | × | × |
 | 編集・削除・メンバー承認／除外：<br>上記以外 | × | × | × | × | × | × |
-| メンバー追加招待：<br>グループの管理者、または参加ポリシーが Open | ○ | ○ | ○ | × | × | × |
+| 【v2.1.0】メンバー追加招待：<br>グループの管理者、または参加ポリシーが Open | ○ | ○ | ○ | × | × | × |
 | メンバー追加招待：<br>上記以外 | × | × | × | × | × | × |
 
 ※ グループからの退会、招待の承諾／拒否はログインしていればロールに関係なく行えます。
@@ -124,7 +124,7 @@
 
 ### 実装補足（v2.0.2）
 
-- **Groups（作成・編集・削除・メンバー管理）**：release_v2.1.0（#1931、グループ権限 No.306/307/312〜326）で `weko_groups.views` の `new`・`manage`・`delete`・`members`・`new_member`・`approve`・`remove` に `roles_required([System Administrator, Repository Administrator, Community Administrator])` が追加され（不足時 403。未ログインは先行する `@login_required` によりログイン画面へ遷移、AJAX は 401 JSON）、その上で既存グループの編集・削除・承認・除外は `Group.can_edit`→`is_admin`（`GroupAdmin` テーブル）、メンバー一覧は `can_see_members`、招待は `can_invite_others` で判定する。`can_invite_others` は参加ポリシーが CLOSED 以外（Approval 含む）なら許可していたものを、OPEN の場合のみ許可するよう修正。ログイン中ユーザーのグループ一覧取得（`/grouplist`）に `@login_required` を追加。グループ画面の閲覧（`index`）・退会（`leave`）・招待の承諾／拒否（`accept`／`reject`）は `@login_required` のみ。
+- 【v2.1.0】**Groups（作成・編集・削除・メンバー管理）**：release_v2.1.0（#1931、グループ権限 No.306/307/312〜326）で `weko_groups.views` の `new`・`manage`・`delete`・`members`・`new_member`・`approve`・`remove` に `roles_required([System Administrator, Repository Administrator, Community Administrator])` が追加され（不足時 403。未ログインは先行する `@login_required` によりログイン画面へ遷移、AJAX は 401 JSON）、その上で既存グループの編集・削除・承認・除外は `Group.can_edit`→`is_admin`（`GroupAdmin` テーブル）、メンバー一覧は `can_see_members`、招待は `can_invite_others` で判定する。`can_invite_others` は参加ポリシーが CLOSED 以外（Approval 含む）なら許可していたものを、OPEN の場合のみ許可するよう修正。ログイン中ユーザーのグループ一覧取得（`/grouplist`）に `@login_required` を追加。グループ画面の閲覧（`index`）・退会（`leave`）・招待の承諾／拒否（`accept`／`reject`）は `@login_required` のみ。
 - Profile／Security／通知／アプリケーション／Administration／Sessions は仕様と整合（Sessions は `weko_admin.views.lifetime` 冒頭の `_has_admin_access()` により管理3ロール限定）。メール通知の有効化は `current_user.confirmed_at` が必要。
 
 ## 更新履歴

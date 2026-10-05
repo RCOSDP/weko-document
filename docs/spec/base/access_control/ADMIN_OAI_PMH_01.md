@@ -67,7 +67,7 @@ OAI-PMHのアクセスコントロールについて記述します。
 
 ### 実装上の変更（v2.1.0：ハーベスト応答のエンバーゴ考慮）
 
-`WEKO_SEARCH_FIX_ACCESSRIGHTS`（`weko_search_ui/config.py`、既定 `False`）がTrueの環境では、OAI-PMH のハーベスト応答がエンバーゴ状態を考慮する。
+【v2.1.0】`WEKO_SEARCH_FIX_ACCESSRIGHTS`（`weko_search_ui/config.py`、既定 `False`）がTrueの環境では、OAI-PMH のハーベスト応答がエンバーゴ状態を考慮する。
 
 - `invenio_oaiserver/query.py` の `get_records` は、from/until による期間絞り込みを新設関数 `range_query`（同ファイル）に委譲する。`range_query` はエンバーゴアイテム（accessRights=embargoed access）について、ファイルの `content.accessrole.raw`=open_date とその公開日（`content.date.dateValue.raw`）および `_updated` の双方で期間内外を判定するため、公開日がウィンドウ内に入ったエンバーゴ解除アイテムを収集対象に含める。
 - `invenio_records/api.py` の `Record.updated` プロパティは、エンバーゴ解除（open access 化）と判定されたアイテムについて `max(元のupdated, 最新のopen_date)` を返し、レコードの更新日時（datestamp）を公開日基準へ繰り上げる。

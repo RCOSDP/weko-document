@@ -175,7 +175,7 @@
 
 ### 実装上の変更（v2.1.0：GakuNin mAP ロール／グループの判定条件）
 
-フロー・ワークフロー設定画面のロール選択肢に関わる GakuNin mAP のロール／グループ判定が、release_v2.1.0 で変更された（PR #1891）。`weko_workflow/admin.py` の `FlowSettingView`・`WorkFlowSettingView`、および `weko_workflow/api.py` の `WorkFlow.get_workflows_by_roles` は、ロール一覧から mAP ロール（`map_role_condition`）を除外する。
+【v2.1.0】フロー・ワークフロー設定画面のロール選択肢に関わる GakuNin mAP のロール／グループ判定が、release_v2.1.0 で変更された（PR #1891）。`weko_workflow/admin.py` の `FlowSettingView`・`WorkFlowSettingView`、および `weko_workflow/api.py` の `WorkFlow.get_workflows_by_roles` は、ロール一覧から mAP ロール（`map_role_condition`）を除外する。
 
 判定は `weko_accounts/api.py` の関数に集約された（`map_role_condition` / `map_group_condition` / `is_map_role` / `is_map_group` / `is_map_managed_name` / `is_map_sysadm_role`）。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT`（`prefix`、`role_keyword`、`group_keyword`（v2.1.0 で追加、既定 `gr`）、`sysadm_group`、`role_mapping`）と `WEKO_ACCOUNTS_IDP_ENTITY_ID` の両方が設定されている場合のみ有効で、`<fqdn>` は `WEKO_ACCOUNTS_IDP_ENTITY_ID` のホスト名の `.`・`-` を `_` に置換した値（`create_fqdn_from_entity_id`）。
 

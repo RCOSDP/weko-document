@@ -156,7 +156,7 @@
 | 可          | ○                  | ○                    | ○                      | ○            | ○            | ○                        |
 | 不可        | ○                  | ○                    | ×                      | ×            | ×            | ×                        |
 
-条件4 ユーザーの持つロールの1個以上が「権限あり」に設定されている、かつユーザーの持つグループの1個以上が「権限あり」に設定されている ※1
+【v2.1.0】条件4 ユーザーの持つロールの1個以上が「権限あり」に設定されている、かつユーザーの持つグループの1個以上が「権限あり」に設定されている ※1
 
 | 条件/ロール          | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
 | -------------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
@@ -167,7 +167,7 @@
 
 ※2 自身が管理するインデックスに限ります。
 
-> 実装補足（v2.1.0）：条件4は `weko_index_tree.utils.check_index_permission_by_role_and_group` で判定され、「ロール条件」かつ「グループ条件」の両方を満たす必要がある（`check_roles(...) and check_groups(...)`）。管理者ロール（`get_user_roles` の第1要素。呼び出し元により System/Repository Administrator、`is_super_role=True` の場合は Community Administrator も含む）は判定前にバイパスされ、インデックスツリーの絞り込み（`reduce_index_by_role`）では Community Administrator は自身が管理するインデックス（`check_comadmin`）のみバイパスされる。
+> 【v2.1.0】実装補足（v2.1.0）：条件4は `weko_index_tree.utils.check_index_permission_by_role_and_group` で判定され、「ロール条件」かつ「グループ条件」の両方を満たす必要がある（`check_roles(...) and check_groups(...)`）。管理者ロール（`get_user_roles` の第1要素。呼び出し元により System/Repository Administrator、`is_super_role=True` の場合は Community Administrator も含む）は判定前にバイパスされ、インデックスツリーの絞り込み（`reduce_index_by_role`）では Community Administrator は自身が管理するインデックス（`check_comadmin`）のみバイパスされる。
 > - ロール／グループの分類は `get_user_roles_and_groups` が行い、GakuNin mAP のロール（`weko_accounts.api.map_role_condition`：`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` の `sysadm_group` 名、または `<prefix>_<リポジトリFQDN>_<role_keyword>_` で始まるロール名）は判定対象から除外し、mAP グループ（`map_group_condition`：`<prefix>_<リポジトリFQDN>_<group_keyword>_` で始まるロール名）は「ロールグループ」としてグループ条件側で扱う。GakuNin mAP 連携の設定が無い場合はどのロールも mAP ロール／グループとみなされない（#1891 で、従来の「名前が prefix で始まり role_keyword を含む」判定から置き換え）。
 > - ロール条件：ユーザーの通常ロール（ログイン中は「Authenticated User」(-98)、未ログインは「Guest」(-99) を自動付与）のいずれかがインデックスの閲覧ロールに含まれること。
 > - グループ条件：ユーザーの所属グループ、またはロールグループのいずれかがインデックスの閲覧グループに含まれること。未ログイン、またはグループもロールグループも持たないログインユーザーは「グループなし」(-89) として扱われる。
@@ -178,7 +178,7 @@
 
 ### 実装上の変更（v2.1.0：エンバーゴ考慮のaccessRights）
 
-新設configマスタースイッチ `weko_search_ui/config.py` の `WEKO_SEARCH_FIX_ACCESSRIGHTS`（既定 `False`）がTrueの環境では、アクセス権（accessRights）ファセット・アクセス権指定検索がエンバーゴ状態を考慮する。
+【v2.1.0】新設configマスタースイッチ `weko_search_ui/config.py` の `WEKO_SEARCH_FIX_ACCESSRIGHTS`（既定 `False`）がTrueの環境では、アクセス権（accessRights）ファセット・アクセス権指定検索がエンバーゴ状態を考慮する。
 
 - アクセス権の実効値は、`weko_records/utils.py` の `check_embargo_rights` / `update_embargo_rights` が、アイテム各ファイルの `accessrole`（open_access / open_date / open_login / open_restricted）と公開日（open_date）を現在日と比較して判定する（embargoed access のうち、公開日到来かつ全ファイルが公開相当なら open access、open_login/open_restricted を含むなら restricted access 等）。判定に用いる区分は `WEKO_ACCESS_RIGHTS_CHOICES`、書き換え時のURIは `ACCESS_RIGHT_TYPE_URI` を参照する。
 - 検索時の絞り込みは `weko_search_ui/query.py` の `default_search_factory.__get_accessrights_query`（リクエストパラメータ `accessrights`）、ファセット集計は `weko_admin/utils.py` の `create_facet_search_query`（`new_accessRights` 集計と `ACCESS_RIGHTS_QUERY_TEMPLATE`）・`invenio_records_rest/facets.py` の `_create_filter_dsl`・`weko_search_ui/utils.py` の `fix_aggregations_accessrights` が担う。ES索引側の accessRights 実効値は `weko_records/utils.py` `json_loader` が索引フィールド `accessRights` として付与する。
@@ -186,8 +186,8 @@
 
 ### 実装上の変更（release_v2.1.0：認可の強化）
 
-- **インデックス名取得**（`weko_search_ui.views.get_path_name_dict`、`/get_path_name_dict/<path_str>`）：`path_str` の各要素が数字（1〜18桁）でなければ 400。閲覧できないインデックス（`weko_index_tree.utils.check_index_permissions` が偽）と存在しないインデックスは応答から除外される（以前は権限に関係なく名称を返していた）。
-- **雑誌情報**（`weko_search_ui.views.journal_detail`、`/journal_info/<index_id>`）：`weko_search_ui.utils.check_index_permission` デコレータにより、存在しないインデックスは 404、上記条件1〜4（`filter_index_list_by_role`）で閲覧できないインデックスは 403（issue62782/62796）。
+- 【v2.1.0】**インデックス名取得**（`weko_search_ui.views.get_path_name_dict`、`/get_path_name_dict/<path_str>`）：`path_str` の各要素が数字（1〜18桁）でなければ 400。閲覧できないインデックス（`weko_index_tree.utils.check_index_permissions` が偽）と存在しないインデックスは応答から除外される（以前は権限に関係なく名称を返していた）。
+- 【v2.1.0】**雑誌情報**（`weko_search_ui.views.journal_detail`、`/journal_info/<index_id>`）：`weko_search_ui.utils.check_index_permission` デコレータにより、存在しないインデックスは 404、上記条件1〜4（`filter_index_list_by_role`）で閲覧できないインデックスは 403（issue62782/62796）。
 - **検索画面のフィードバックメール一覧**（`/search/feedback_mail_list`）：`@login_required` に加えシステム管理者・リポジトリ管理者・コミュニティ管理者に限定（`roles_required`。それ以外は 403）。
 - 未ログインでの AJAX 呼び出しが `@login_required` に当たった場合、ログイン画面への 302 ではなく 401 JSON（`{"status": 401, "message": "Authentication required."}`）を返す（`weko_accounts.unauthorized`、`WEKO_ACCOUNTS_UNAUTHORIZED_JSON` 既定 True）。通常の画面遷移・iframe 内の遷移は従来どおりログイン画面へ遷移する。
 

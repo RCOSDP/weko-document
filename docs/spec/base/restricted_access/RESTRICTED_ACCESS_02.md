@@ -1,9 +1,9 @@
 # アイテム詳細(制限公開)
 
 - コンテンツのアクセスを「制限公開」とした場合のアイテム詳細画面、ファイル詳細画面の処理
-  - アクセスしているユーザーが管理者権限があるかどうかは、「__check_user_permission」のメソッド（`weko-records-ui/weko_records_ui/permissions.py` の `check_file_download_permission` 内）でチェックする。管理者権限ありとして扱われるのは、`WEKO_PERMISSION_SUPER_ROLE_USER`（`['System Administrator', 'Repository Administrator']`）のロールを持つユーザー（全アイテム）と、`WEKO_PERMISSION_ROLE_COMMUNITY`（`['Community Administrator']`）のロールを持ち、かつ当該アイテムが自身の管理するコミュニティ配下のインデックスに所属するユーザーである（`is_superuser_or_record_comadmin` → `has_comadmin_permission`。v2.1.0 で変更。v2.0.x まではコミュニティ管理者は所属コミュニティに関わらず全アイテムで管理者扱いだった）。加えてアイテム登録者本人（`created_by` / `owner` / `weko_shared_ids`）も権限ありとして扱われる。
+  - 【v2.1.0】アクセスしているユーザーが管理者権限があるかどうかは、「__check_user_permission」のメソッド（`weko-records-ui/weko_records_ui/permissions.py` の `check_file_download_permission` 内）でチェックする。管理者権限ありとして扱われるのは、`WEKO_PERMISSION_SUPER_ROLE_USER`（`['System Administrator', 'Repository Administrator']`）のロールを持つユーザー（全アイテム）と、`WEKO_PERMISSION_ROLE_COMMUNITY`（`['Community Administrator']`）のロールを持ち、かつ当該アイテムが自身の管理するコミュニティ配下のインデックスに所属するユーザーである（`is_superuser_or_record_comadmin` → `has_comadmin_permission`。v2.1.0 で変更。v2.0.x まではコミュニティ管理者は所属コミュニティに関わらず全アイテムで管理者扱いだった）。加えてアイテム登録者本人（`created_by` / `owner` / `weko_shared_ids`）も権限ありとして扱われる。
 - 管理者権限をもつユーザに対して、アイテム詳細画面、ファイル詳細画面に、ファイルの情報を取得し、ダウンロードできる
-- 管理者権限・登録者権限が無く、ワンタイムURL発行済みの利用申請（`check_open_restricted_permission`）でも許可されない場合でも、当該アイテムのアイテムタイプでサイトライセンスが有効（`ItemTypeName.has_site_license`）で、アクセス元 IP アドレスがサイトライセンス機関の IP 範囲に含まれる（`weko_records_ui.ipaddr.check_site_license_permission`）か、ファイルに設定されたグループ（`groups`）のメンバーである（`check_user_group_permission`）場合はダウンロードを許可する（`check_file_download_permission` 内の `site_license_check`）
+- 【v2.1.0】管理者権限・登録者権限が無く、ワンタイムURL発行済みの利用申請（`check_open_restricted_permission`）でも許可されない場合でも、当該アイテムのアイテムタイプでサイトライセンスが有効（`ItemTypeName.has_site_license`）で、アクセス元 IP アドレスがサイトライセンス機関の IP 範囲に含まれる（`weko_records_ui.ipaddr.check_site_license_permission`）か、ファイルに設定されたグループ（`groups`）のメンバーである（`check_user_group_permission`）場合はダウンロードを許可する（`check_file_download_permission` 内の `site_license_check`）
 - 権限がないユーザに対して、アイテム詳細画面に「アクセス制限」（英「Restricted Access」）と表示する。ファイル情報のリンクは不活性とし、ファイル詳細画面の「Action」にダウンロードボタンのかわりに「申請」ボタンを表示し、コンテンツ登録時に設定した「提供方法：ロール」のロールに一致するユーザーは「申請」ボタンをクリックことで以下の利用申請を実施することができる
   - 「提供方法：ロール」を「非ログインユーザ」とした場合、ログインしていないユーザは「申請」ボタンをクリックことで以下の利用申請を実施することができる
 - 制限公開用のコンテンツファイルでの提供方法に一致しないユーザが「申請」ボタンを押下した場合はモーダルで警告メッセージを表示する
@@ -87,11 +87,11 @@
 - ワンタイムURLによるダウンロード（GET：検証）
   - route `recid_guest_onetime_validation` → `fd` のトークン検証 → `validate_onetime_token`（`DISPLAY_FLAG` チェック → `validate_url_download` → ゲストなら `validate_onetime_guest`）→ `process_onetime_file_download` → `check_and_send_usage_report` / ダウンロードログ保存 / `DownloadMixin.increment_download_count`
 - ゲスト（非ログインユーザ）の利用申請開始（`POST /workflow/activity/init-guest`、`weko_workflow.views.init_activity_guest`）
-  - v2.1.0 でアクセス元 IP アドレス単位のレート制限（1分あたり5回、`weko_workflow.utils.limiter`。`WekoWorkflow.init_limiter` で UI アプリに初期化）を追加。超過時は 429
-  - v2.1.0 で `guest_mail` の形式検証（`email_validator.validate_email`、到達性検査なし）を追加。不正な場合は 400（`{"msg": "Invalid guest_mail"}`）
+  - 【v2.1.0】v2.1.0 でアクセス元 IP アドレス単位のレート制限（1分あたり5回、`weko_workflow.utils.limiter`。`WekoWorkflow.init_limiter` で UI アプリに初期化）を追加。超過時は 429
+  - 【v2.1.0】v2.1.0 で `guest_mail` の形式検証（`email_validator.validate_email`、到達性検査なし）を追加。不正な場合は 400（`{"msg": "Invalid guest_mail"}`）
 - ゲストアクティビティでのファイル操作（v2.1.0）
-  - メールのリンクから利用申請ワークフローに入ったゲストは、セッションの `guest_token` によりファイル操作（`files-rest-object-read` / `files-rest-bucket-update` / `files-rest-object-delete` / `files-rest-object-delete-version`）が許可されるが、v2.1.0 から対象は当該ゲストアクティビティのバケットに限定された（`invenio_files_rest.views.is_guest_login_can_access_file` → `invenio_files_rest.permissions.get_guest_activity_bucket_ids`：`GuestActivity.token` からアクティビティを引き、その `item_id` のレコードと、そのアイテムの親（バージョン無し recid）レコードに紐づくバケットのみ）。他のバケットへの操作は権限エラーとなる
-  - アクティビティ削除確認（`GET /workflow/verify_deletion/<activity_id>`）は、ゲストの場合 `guest_token` をデコードして得たアクティビティ ID とパスの `activity_id` が一致する場合のみ、ログインユーザーの場合は申請者本人または管理者（`check_authority_by_admin`：System/Repository Administrator、または担当コミュニティの Community Administrator）のみ許可し、それ以外は 403（`{"code": 403, "msg": "Authorization required"}`）を返す（v2.1.0 で追加）
+  - 【v2.1.0】メールのリンクから利用申請ワークフローに入ったゲストは、セッションの `guest_token` によりファイル操作（`files-rest-object-read` / `files-rest-bucket-update` / `files-rest-object-delete` / `files-rest-object-delete-version`）が許可されるが、v2.1.0 から対象は当該ゲストアクティビティのバケットに限定された（`invenio_files_rest.views.is_guest_login_can_access_file` → `invenio_files_rest.permissions.get_guest_activity_bucket_ids`：`GuestActivity.token` からアクティビティを引き、その `item_id` のレコードと、そのアイテムの親（バージョン無し recid）レコードに紐づくバケットのみ）。他のバケットへの操作は権限エラーとなる
+  - 【v2.1.0】アクティビティ削除確認（`GET /workflow/verify_deletion/<activity_id>`）は、ゲストの場合 `guest_token` をデコードして得たアクティビティ ID とパスの `activity_id` が一致する場合のみ、ログインユーザーの場合は申請者本人または管理者（`check_authority_by_admin`：System/Repository Administrator、または担当コミュニティの Community Administrator）のみ許可し、それ以外は 403（`{"code": 403, "msg": "Authorization required"}`）を返す（v2.1.0 で追加）
 - ゲストの確定ダウンロード（POST）
   - route `recid_guest_file_download` → メール／パスワード照合 → `process_onetime_file_download`
 - ダウンロード可否の検証（`validate_url_download`、`weko-records-ui/weko_records_ui/utils.py`）

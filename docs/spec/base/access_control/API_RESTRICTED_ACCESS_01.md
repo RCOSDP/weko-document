@@ -90,7 +90,7 @@
 
 - 本カテゴリのエンドポイント自体のデコレータ（`require_api_auth` / `require_oauth_scopes`）は b19e39d8a 以降変更されていない。
 - API アプリでは `login_required` 等による未認証応答が、ログイン画面へのリダイレクト（API アプリには `security` blueprint が無いため 500 になっていた）から、401 の JSON（`{"status": 401, "message": "Authentication required."}`）に統一された（`weko_accounts/unauthorized.py` の `install(app, api_only=True)`、`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`（既定 True）。issue62569）。
-- `GET /api/<version>/records/<pid>/need-restricted-access` が内部で用いる `weko_records_ui.permissions.check_file_download_permission` では、コミュニティ管理者を管理者扱いする範囲が、当該アイテムが自身の管理するコミュニティ配下のインデックスに所属する場合に限定された（`is_superuser_or_record_comadmin`）。上表のコミュニティ管理者の判定結果は、担当外コミュニティのアイテムでは一般の登録ユーザーと同じになる。
+- 【v2.1.0】`GET /api/<version>/records/<pid>/need-restricted-access` が内部で用いる `weko_records_ui.permissions.check_file_download_permission` では、コミュニティ管理者を管理者扱いする範囲が、当該アイテムが自身の管理するコミュニティ配下のインデックスに所属する場合に限定された（`is_superuser_or_record_comadmin`）。上表のコミュニティ管理者の判定結果は、担当外コミュニティのアイテムでは一般の登録ユーザーと同じになる。
 
 ## 更新履歴
 
