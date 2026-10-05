@@ -175,7 +175,7 @@ if (!/\/[a-z0-9?&/=]*/.test(this.state.url)) {
 - 画面/ハンドラ：`weko_gridlayout.admin.WidgetDesign.index`（endpoint `widgetdesign`）。ページ保存は `views.save_widget_design_page` → `WidgetDesignPageServices.add_or_update_page` → `WidgetDesignPage.create_or_update`。
 - レイアウト保存：`views.save_widget_layout_setting` → **`WidgetDesignServices.update_widget_design_setting`**。モデル：`WidgetDesignSetting` / `WidgetDesignPage` / `WidgetDesignPageMultiLangData`（後者は物理削除 `delete_by_page_id`）。
 
-> 実装補足（v2.1.0）：ページレイアウト関連 API は `weko_admin.permissions.repository_scope_required` によりリポジトリスコープを検証する（System/Repository Administrator は無条件、Community Administrator は担当コミュニティのみ、その他は 403、未ログインは 401）。対象は `load_widget_list_design_setting`（`repository_id`）、`save_widget_layout_setting`・`save_widget_design_page`（`page_id` で特定した既存ページの `repository_id` とリクエストの `repository_id` の両方）、`delete_widget_design_page`（`page_id` のページの `repository_id`）。`page_id` が存在しないページを指す場合は 404。詳細は [管理画面（Webデザイン）のアクセス制御](../access_control/ADMIN_WEB_DESIGN_01.md) を参照。
+> 【v2.1.0】実装補足（v2.1.0）：ページレイアウト関連 API は `weko_admin.permissions.repository_scope_required` によりリポジトリスコープを検証する（System/Repository Administrator は無条件、Community Administrator は担当コミュニティのみ、その他は 403、未ログインは 401）。対象は `load_widget_list_design_setting`（`repository_id`）、`save_widget_layout_setting`・`save_widget_design_page`（`page_id` で特定した既存ページの `repository_id` とリクエストの `repository_id` の両方）、`delete_widget_design_page`（`page_id` のページの `repository_id`）。`page_id` が存在しないページを指す場合は 404。詳細は [管理画面（Webデザイン）のアクセス制御](../access_control/ADMIN_WEB_DESIGN_01.md) を参照。
 
 ## 更新履歴
 

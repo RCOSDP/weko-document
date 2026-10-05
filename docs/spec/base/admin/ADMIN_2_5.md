@@ -200,7 +200,7 @@ RO-Crateには、アイテムのメタデータを記述するための語彙が
 カスタム語彙はプレフィックスとして、`wk:`が付与されている。  
 新規登録としてインポートする際に必須である項目は、インデックスIDと公開ステータスである。  
 更新登録としてインポートする際に追加で必要になる項目は、アイテムIDとURIである。
-アイテムIDとURIがファイル内で指定されていない場合は、リクエストURLのパスパラメータで指定されたアイテムID（recid）を用いて、アイテムIDとURIの値を自動的に補完する（`weko_search_ui.utils.handle_check_exist_record` が `request.view_args["recid"]` を参照するため、パスに recid を含む SWORD API の `PUT /sword/deposit/<recid>` 経由のみ）。  
+【v2.1.0】アイテムIDとURIがファイル内で指定されていない場合は、リクエストURLのパスパラメータで指定されたアイテムID（recid）を用いて、アイテムIDとURIの値を自動的に補完する（`weko_search_ui.utils.handle_check_exist_record` が `request.view_args["recid"]` を参照するため、パスに recid を含む SWORD API の `PUT /sword/deposit/<recid>` 経由のみ）。  
 なお、アイテムIDが指定されURIが省略された場合は、経路によらず `<ホストURL>records/<アイテムID>` がURIとして補完される。
 一部の語彙は、RO-Crateインポート機能では使用できず、SWORD APIを利用してアイテムを登録・更新する際に使用される。
 
@@ -216,7 +216,7 @@ RO-Crateには、アイテムのメタデータを記述するための語彙が
 | wk:grant.@id                               | .DOI                 | URL              | -            |       |       | DOI                                       |
 | wk:grant<br>.jpcoar:identifierRegistration | .DOI_RA              | URL              | -            |       |       | DOI_RA                                    |
 | wk:editMode                                | Keep/Upgrade Version | 文字列           | -            |       |  〇   | Keep/Upgrade Version                      |
-| wk:researchmapLinkage                      | .RESEAECHMAP_LINKAGE | 真偽値           | false        |       |       | researchmap連携フラグ                     |
+| 【v2.1.0】wk:researchmapLinkage                      | .RESEAECHMAP_LINKAGE | 真偽値           | false        |       |       | researchmap連携フラグ                     |
 | wk:itemLinks.identifier                    | -                    | 整数値 or 文字列 | -            |       |       | アイテムリンク先識別子                    |
 | wk:itemLinks.value                         | -                    | 文字列           | -            |       |       | アイテムリンクタイプ                      |
 | wk:textExtraction                          | -                    | 真偽値           | true         |       |       | 全文検索用本文抽出フラグ                  |
@@ -224,7 +224,7 @@ RO-Crateには、アイテムのメタデータを記述するための語彙が
 | wk:isSplited                               | -                    | 真偽値           | false        |       |       | アイテム分割フラグ （SWORD経由のみ）      |
 | wk:metadataAutoFill                        | -                    | 真偽値           | false        |       |       | メタデータ自動補完フラグ                  |
 | wk:metadataReplace                         | -                    | 真偽値           | false        |       |       | メタデータのみ置換フラグ（SWORD経由のみ） |
-| wk:extendedMetadata                        | -                    | 真偽値           | -            |       |       | 拡張メタデータファイルフラグ（`hasPart` のファイルエンティティに記述）。[拡張メタデータ対応](../ams/AMS_EXTENDED_METADATA.md)参照 |
+| 【v2.1.0】wk:extendedMetadata                        | -                    | 真偽値           | -            |       |       | 拡張メタデータファイルフラグ（`hasPart` のファイルエンティティに記述）。[拡張メタデータ対応](../ams/AMS_EXTENDED_METADATA.md)参照 |
 
 ※ 登録用ファイル保存フラグとアイテム分割フラグが両方`true`の場合、アイテム分割フラグが優先され、ファイルは展開されて保存される。
 
@@ -475,7 +475,7 @@ SWORD APIを利用してアイテムを更新する際に、メタデータの�
 
 ### wk:researchmapLinkage：researchmap連携フラグ
 
-researchmapへの業績連携を行うかどうかを指定する。ルートデータセット直下に記述する。デフォルト値は`false`である。  
+【v2.1.0】researchmapへの業績連携を行うかどうかを指定する。ルートデータセット直下に記述する。デフォルト値は`false`である。  
 `JsonLdMapper`が`wk:researchmapLinkage`を解析して`system_info["researchmap_linkage"]`に格納し、登録経路に応じて以下のとおり連携される。
 
 - ワークフロー経由（SWORD API の登録種別 Workflow）：SWORD側（`weko_swordserver`）で`metadata["researchmap"]`に反映し、`weko_workflow` の `HeadlessActivity` が `cris_linkage.researchmap` としてアクティビティ登録データに設定する。
@@ -531,7 +531,7 @@ WEKO3では、アイテムの全文検索に使用するのために本文ファ
 
 ## 文字列置換機能
 
-文字列置換機能を使用することができる。文字列置換機能については[JSONLDインポート文字列置換](../other/JSONLD_IMPORT_REPLACE.md) を参照。  
+【v2.1.0】文字列置換機能を使用することができる。文字列置換機能については[JSONLDインポート文字列置換](../other/JSONLD_IMPORT_REPLACE.md) を参照。  
 release_v2.1.0 の `weko_search_ui/config.py` の既定値では、置換ルール `WEKO_SEARCH_UI_IMPORT_REPLACE_RULES` に `pipe_full_width`（半角「|」→全角「｜」）が定義され、`WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP` で JSON-LD マッピング ID `32001` に割り当てられている（#63281 で `scripts/instance.cfg` から config.py の既定値へ移動）。ただし既定の `target_path` は空リストであり、`JsonLdMapper.apply_import_replace_rules` は `target_path` に列挙した項目のみを置換するため、既定のままでは置換は行われない。
 
 ## 関連モジュール

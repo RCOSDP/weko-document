@@ -22,7 +22,7 @@
 
   - 機能の有効無効はこの画面上で行うか、admin_settings テーブルの name が restricted_access であるレコードの settings 内の item_application.item_application_enable で設定可能
 
-    > 実装補足（v2.1.0）：`AdminSettings.get()` の結果は invenio-cache（Redis）に `WEKO_ADMIN_SETTINGS_CACHE_TTL`（既定 300 秒）の間キャッシュされる。本画面からの保存（`AdminSettings.update`）ではキャッシュが即時に破棄されるが、admin_settings テーブルを直接更新した場合は最大で TTL の間、旧設定が使われる（本書の他の箇所の admin_settings 直接設定も同様）。
+    > 【v2.1.0】実装補足（v2.1.0）：`AdminSettings.get()` の結果は invenio-cache（Redis）に `WEKO_ADMIN_SETTINGS_CACHE_TTL`（既定 300 秒）の間キャッシュされる。本画面からの保存（`AdminSettings.update`）ではキャッシュが即時に破棄されるが、admin_settings テーブルを直接更新した場合は最大で TTL の間、旧設定が使われる（本書の他の箇所の admin_settings 直接設定も同様）。
 
   - 「コンテンツ未登録アイテムの利用申請」(Application for use of items without content)エリアで機能有効化および、コンテンツ未登録状態で利用申請可能なアイテムタイプを設定する
 

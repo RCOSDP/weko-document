@@ -183,7 +183,7 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ：`invenio_files_rest.admin.FileInstanceModelView`（テーブル `files_files`、endpoint `fileinstance`）。`can_create=False`・`can_edit=False`・`can_delete=True`・`can_view_details=True`。削除時は `delete_model()` が実体ファイル（`model.uri`）を存在すれば `os.remove` した上で `files_files` レコードを削除し、`invenio_files_rest.utils.update_location_size` でロケーションサイズを再計算する（実体が無くてもレコードが在れば削除して再計算。uri/id 欠落は `AttributeError`/`ValueError`、レコードも実体も無い場合は `FileNotFoundError`）。`@action('verify_checksum')` → `verify_checksum.delay(file_id)`（「Fixity check(s) sent to queue.」）。チェック不一致時は `last_check=False`（Fixity フラグ）を設定。
+- 【v2.1.0】画面/ハンドラ：`invenio_files_rest.admin.FileInstanceModelView`（テーブル `files_files`、endpoint `fileinstance`）。`can_create=False`・`can_edit=False`・`can_delete=True`・`can_view_details=True`。削除時は `delete_model()` が実体ファイル（`model.uri`）を存在すれば `os.remove` した上で `files_files` レコードを削除し、`invenio_files_rest.utils.update_location_size` でロケーションサイズを再計算する（実体が無くてもレコードが在れば削除して再計算。uri/id 欠落は `AttributeError`/`ValueError`、レコードも実体も無い場合は `FileNotFoundError`）。`@action('verify_checksum')` → `verify_checksum.delay(file_id)`（「Fixity check(s) sent to queue.」）。チェック不一致時は `last_check=False`（Fixity フラグ）を設定。
 - 実装補足：詳細に表示される多数の「Files Object / …」フィルタは `column_filters` に `objects`（リレーション）を含めたことによる展開。
 
 ## 更新履歴

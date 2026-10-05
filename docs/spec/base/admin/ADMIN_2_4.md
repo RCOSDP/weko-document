@@ -228,7 +228,7 @@
 
 ⑥表/ステータス（Status）
 
-  - Celeryタスクの結果（task_result）に応じて以下を表示する。
+  - 【v2.1.0】Celeryタスクの結果（task_result）に応じて以下を表示する。
       - タスク結果が未取得→「Start」
       - 登録成功（task_result.success が真）→「成功」（Success）
       - 実行中（task_status が STARTED）→「Started」
@@ -236,14 +236,14 @@
 
 ⑦表/インポート結果（Import Result）
 
-  - Celeryタスクの状態（task_status）に応じて以下を表示する。
+  - 【v2.1.0】Celeryタスクの状態（task_status）に応じて以下を表示する。
       - PENDING→「To Do」（日本語訳なし）
       - STARTED→「Doing」（日本語訳なし）
       - SUCCESS かつ登録成功→「完了」（Done）
       - SUCCESS かつ登録失敗→エラーメッセージ。error_id が is_duplicated_doi / is_withdraw_doi / item_is_deleted / item_is_being_edit / failed_to_update_elasticsearch の場合は「Error msg : <翻訳済みメッセージ>」、それ以外は error_id をそのまま表示する
       - FAILURE→「FAILURE」
 
-> 実装補足（v2.1.0）：#61684 で列見出しが「Status」「Import Result」に戻された（一時的に存在した「Action」「Work Flow Status」「Processing」「Waiting」のラベルは削除）。終了日（④）は `/check_status`（`ItemImportView.get_status`）でタスクの完了（成功／失敗）を検知した時点の **UTC** 日時（`datetime.utcnow()`）であり、開始日（③）は Celery ワーカーの `datetime.now()`（サーバーのローカル時刻）である。
+> 【v2.1.0】実装補足（v2.1.0）：#61684 で列見出しが「Status」「Import Result」に戻された（一時的に存在した「Action」「Work Flow Status」「Processing」「Waiting」のラベルは削除）。終了日（④）は `/check_status`（`ItemImportView.get_status`）でタスクの完了（成功／失敗）を検知した時点の **UTC** 日時（`datetime.utcnow()`）であり、開始日（③）は Celery ワーカーの `datetime.now()`（サーバーのローカル時刻）である。
 
 ## インポートファイル／TSVファイルについて
 
@@ -334,7 +334,7 @@
 | .doi_ra           | .DOI_RA              | DOIの種類を指定する。JaLC/Crossref/DataCite(※4)/NDL JaLC (※5)のいずれかを設定する。                                                     |
 | .doi              | .DOI                 | DOIを「prefix/suffix」の形式で設定する。通常モードの時は自動採番(※3)される。識別子変更モードの時は手入力で変更可能。                     |
 | .edit_mode        | Keep/Upgrade Version | 対象のアイテムのバージョン更新可否を指定する。新規登録の場合は空、更新の場合は必須でKeep/Upgradeのいずれかを指定する。<br>※インポートファイル（zip）に既存アイテムの元ファイルが同名、ファイルパスも同一で含まれていた場合（元ファイルを変更しない） <br>・Keep: 重複登録されない <br>・Upgrade: 重複登録する。ファイル名だけでは、同名同ファイルなのか同名異ファイルなのかが判断できない |
-| .bulk_doi         | .BULK_DOI            | メタデータ補完に用いるDOIを「prefix/suffix」の形式で指定する。インポート（Import）画面のDOI入力欄（内部キー `bulk_doi`）に保持され、`handle_metadata_by_doi` による補完対象DOIとして使用される。設定キー `WEKO_EXPORT_TEMPLATE_BASIC_ID`（`.bulk_doi`）/ `WEKO_EXPORT_TEMPLATE_BASIC_NAME`（`.BULK_DOI`）。 |
+| 【v2.1.0】.bulk_doi         | .BULK_DOI            | メタデータ補完に用いるDOIを「prefix/suffix」の形式で指定する。インポート（Import）画面のDOI入力欄（内部キー `bulk_doi`）に保持され、`handle_metadata_by_doi` による補完対象DOIとして使用される。設定キー `WEKO_EXPORT_TEMPLATE_BASIC_ID`（`.bulk_doi`）/ `WEKO_EXPORT_TEMPLATE_BASIC_NAME`（`.BULK_DOI`）。 |
 
 #### ※2) CNRIハンドルサーバの使用について  
 CNRIハンドルの使用状態は「WEKO_HANDLE_ALLOW_REGISTER_CRNI」(modules/weko-handle/weko_handle/config.py)の設定値で判断している
@@ -1326,7 +1326,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         英語：「ERROR:The specified provinding user policy does not exist in the system」  
         日本語：「エラー：指定する利用規約はシステムに存在しません。」
 
-  - weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTS（既定 False）を True に設定している場合
+  - 【v2.1.0】weko_search_ui/config.py: WEKO_SEARCH_FIX_ACCESSRIGHTS（既定 False）を True に設定している場合
     - インポート処理自体は Access Rights の値を書き換えない。登録されたアイテムは、レコード取得時（`invenio_records.api.Record.get_record`）および検索インデックス作成時（`weko_records.utils.json_loader`）に `weko_records.utils.update_embargo_rights` によって、修正後の Access Rights（jpcoar_mapping の `accessRights.@value` にマッピングされた項目と対応する URI）に読み替えられる
       - 判定は `check_embargo_rights` による。Access Rights が embargoed access の場合のみ対象で、コンテンツファイルのアクセス（accessrole）と公開日で判定する
         1. open_restricted のファイルが1つでもある場合、restricted access に修正される

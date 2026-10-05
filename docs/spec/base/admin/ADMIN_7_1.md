@@ -52,7 +52,7 @@
         アクションの順序を設定するボタン
   - 「Action Role」カラムに、アクションを実行するロールを限定できる。
     - 「Action Role」プルダウンから選択する。「Action Role」プルダウンの選択肢は以下である。
-      - システム管理者、リポジトリ管理者は、システムに設定されたすべてのロールが表示される。ただし学認mAPロール（`weko_accounts.api.map_role_condition`：`sysadm_group` と一致、または `<prefix>_<FQDN>_<role_keyword>_` で始まる名前）は除外される（`FlowSettingView`。v2.1.0 #1891 で判定を map conditions に統一）。
+      - 【v2.1.0】システム管理者、リポジトリ管理者は、システムに設定されたすべてのロールが表示される。ただし学認mAPロール（`weko_accounts.api.map_role_condition`：`sysadm_group` と一致、または `<prefix>_<FQDN>_<role_keyword>_` で始まる名前）は除外される（`FlowSettingView`。v2.1.0 #1891 で判定を map conditions に統一）。
       - サブリポジトリ管理者は、自身が管理するサブリポジトリに関連するロールのみが表示される。
     - 「表示しない（Deny）」チェックボックスにチェックを入れる場合、選択されているロールが実施不可とする。
   - 「Action User」カラムに、アクションを実行するユーザーを限定できる。

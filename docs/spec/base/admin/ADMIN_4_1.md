@@ -472,12 +472,12 @@ session[lock_key] = locked_value
 - 画面/ハンドラ：`weko_gridlayout.admin.WidgetSettingView`（endpoint `widgetitem`）。一覧/詳細/編集/作成（`index_view`/`details_view`/`edit_view`/`create_view`）。編集保存の DB 書込は `WidgetItemServices.update_by_id`。削除は論理削除（`is_deleted`）で `is_used_in_widget_design` をチェック。編集ロックは `WidgetItemServices.get_locked_widget_info`（セッションキー `locked_widget_key_{}`、`WEKO_ADMIN_DEFAULT_LIFETIME` 分で失効）。一覧はリポジトリ権限でスコープ（`get_query`、super-role のみ全件）。
 - 実装補足：ウィジェット種別は DB 駆動（テーブル `widget_type`、`WidgetType.get_all_widget_types`、CLI `insert_widget_type_to_db`）でコード定数ではない。関連モジュール（追記）：invenio-communities / weko-admin / weko-index-tree / weko-items-ui / weko-theme。config：`WEKO_GRIDLAYOUT_WIDGET_DEFAULT_COLOR`（`#4169E1`）ほか。
 
-> 実装補足（v2.1.0）：ウィジェット関連 API の権限確認（issue62783：リポジトリスコープ検証、issue62770：No.290/303/304 のロール制限）
+> 【v2.1.0】実装補足（v2.1.0）：ウィジェット関連 API の権限確認（issue62783：リポジトリスコープ検証、issue62770：No.290/303/304 のロール制限）
 >
 > - リポジトリスコープ検証：`POST /api/admin/save_widget_item` と `POST /api/admin/delete_widget_item` は `weko_admin.permissions.repository_scope_required` で保護される。System/Repository Administrator は無条件に許可、Community Administrator は `Community.get_repositories_by_user` で得た担当コミュニティに対してのみ許可し、それ以外（ロールなし等）は 403、未ログインは 401。
 >   - 保存：既存ウィジェット（リクエストの `data_id`＝`widget_items.widget_id` から取得した現在の `repository_id`＝移動元）とリクエストの `data.repository`（移動先）の両方が担当範囲内であることを要求する。これにより担当外コミュニティでの作成・担当外ウィジェットの上書き・担当外への移動が拒否される。`data_id` が存在しないウィジェットを指す場合は 404。リポジトリを特定できない要求はコミュニティ管理者には許可されない（「Root Index」はコミュニティではないため、コミュニティ管理者は Root Index のウィジェットを作成・更新できない）。
 >   - 削除：`data_id` で特定したウィジェットの `repository_id` が担当範囲内であることを要求する（一覧タブのごみ箱アイコンからの削除は flask-admin の `WidgetSettingView` 経由で、本デコレータの対象外）。
-> - ロール制限：`GET /api/admin/load_widget_type`（ウィジェット種別一覧）は login_required ＋ System/Repository/Community Administrator のみ。エディタでアップロードしたファイルの取得 `GET /widget/uploaded/<filename>[/<community_id>]` も System/Repository/Community Administrator のみ（未ログインは 401、その他ロールは 403）、アップロード `POST /widget/uploads/<community_id>` は login_required。
+> - ロール制限：`GET /api/admin/load_widget_type`（ウィジェット種別一覧）は login_required ＋ System/Repository/Community Administrator のみ。エディタでアップロードしたファイルの取得 `GET /widget/uploaded/<filename>[/<community_id>]` は公開ページから読み込まれるため認証なしで取得できる（release_v2.1.0 時点のコードでは管理者ロール必須になっていたが、PR #1937 で認証なしに戻す）、アップロード `POST /widget/uploads/<community_id>` は login_required。
 > - 詳細は [管理画面（Webデザイン）のアクセス制御](../access_control/ADMIN_WEB_DESIGN_01.md) を参照。
 
 ## 更新履歴
@@ -488,3 +488,4 @@ session[lock_key] = locked_value
 |2023/11/11|V0.9.27| |
 |2025/01/23|-|サブリポジトリ対応|
 | 2026/10/05 | 508030789 | release_v2.1.0突合：ウィジェット保存/削除 API のリポジトリスコープ検証、load_widget_type・アップロードファイル取得のロール制限（issue62783・62770）を追記 |
+| 2026/10/05 | 508030789 | v2.1.0タグ付けに伴う記述訂正：`/widget/uploaded` の認可を PR #1937 に合わせて訂正 |

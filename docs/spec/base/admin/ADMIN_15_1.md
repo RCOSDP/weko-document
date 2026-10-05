@@ -23,7 +23,7 @@ Elasticsearchのマッピング変更や検索設定の変更を反映するた�
 - 実行制御の解除
   - エラーが発生した際に、画面からの処理実行ができないように制御がされているので、これを下記の方法で解除します。
     - データベースのadmin_settingsテーブルのelastic_reindex_settingsという名のレコードのsettingsが{"has_errored": true}となっているため、これを{"has_errored": false}に変更します。
-    - v2.1.0 以降、`AdminSettings.get()` の結果は invenio-cache（Redis）にキー `admin_settings_<name>` で `WEKO_ADMIN_SETTINGS_CACHE_TTL`（既定 300 秒）の間キャッシュされる。DB を直接更新した場合、キャッシュ（`admin_settings_elastic_reindex_settings`）を削除しない限り、最大で TTL の間は実行制御が解除されない。
+    - 【v2.1.0】v2.1.0 以降、`AdminSettings.get()` の結果は invenio-cache（Redis）にキー `admin_settings_<name>` で `WEKO_ADMIN_SETTINGS_CACHE_TTL`（既定 300 秒）の間キャッシュされる。DB を直接更新した場合、キャッシュ（`admin_settings_elastic_reindex_settings`）を削除しない限り、最大で TTL の間は実行制御が解除されない。
 
 ## 利用可能なロール
 

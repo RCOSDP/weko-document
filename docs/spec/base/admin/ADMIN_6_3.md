@@ -98,7 +98,7 @@
   - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/views.py>
   - manual_send_site_license_mailメソッド
     - 画面で選択中のリポジトリIDがフォームの `repo_id` として送信される。
-    - 権限確認：login_required ＋ System/Repository/Community Administrator のロール確認に加え、`_form_repository_scope_required` により、フォームの `repo_id` が操作者の担当範囲であることを確認する（System/Repository Administrator は全リポジトリ、それ以外は `Community.get_repositories_by_user` で得た担当コミュニティのみ。`repo_id` が空、または担当外の場合は 403）。内部呼び出しで引数 `repo_id` を渡した場合はこの確認は行わない。
+    - 【v2.1.0】権限確認：login_required ＋ System/Repository/Community Administrator のロール確認に加え、`_form_repository_scope_required` により、フォームの `repo_id` が操作者の担当範囲であることを確認する（System/Repository Administrator は全リポジトリ、それ以外は `Community.get_repositories_by_user` で得た担当コミュニティのみ。`repo_id` が空、または担当外の場合は 403）。内部呼び出しで引数 `repo_id` を渡した場合はこの確認は行わない。
     - sitelicense_infoテーブルから、receive_mail_flagの値が「T」かつ repository_id が `repo_id` であるレコード全件を取得する。
     - レコードが取得できたら、以下の処理を行う。
       - 集計月の入力値より、fromの月の1日を「start_date」、toの月の最終日を「end_date」とする。

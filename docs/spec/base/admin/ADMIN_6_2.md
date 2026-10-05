@@ -201,7 +201,7 @@
 
 - 画面/ハンドラ：`weko_admin.admin.FeedbackMailView`（endpoint `feedbackmail`、画面描画）＋ API（`weko_admin.views`：`update_feedback_mail` / `get_feedback_mail` / `get_send_mail_history` / `get_failed_mail` / `resend_failed_mail`）。送信は Celery `weko_admin.tasks.send_feedback_mail`（crontab：毎月1日 0:00、スケジュールキー `send-feedback-mail-schedules`）。
 
-> 実装補足（v2.1.0）：送信履歴取得 `GET /api/admin/get_send_mail_history` は `weko_admin.permissions.repository_scope_required(repository_id_param='repo_id')` で保護される。未ログインは 401、System/Repository Administrator は無条件に許可、Community Administrator はクエリの `repo_id` が担当コミュニティの場合のみ許可、それ以外は 403。なお画面（`feedback_mail.js`）の一部の取得処理は `repo_id` を付けずに `?page=1` で呼び出すため、Community Administrator の場合はその呼び出しが 403 となる。`get_failed_mail` / `resend_failed_mail` は System/Repository Administrator のみ。
+> 【v2.1.0】実装補足（v2.1.0）：送信履歴取得 `GET /api/admin/get_send_mail_history` は `weko_admin.permissions.repository_scope_required(repository_id_param='repo_id')` で保護される。未ログインは 401、System/Repository Administrator は無条件に許可、Community Administrator はクエリの `repo_id` が担当コミュニティの場合のみ許可、それ以外は 403。なお画面（`feedback_mail.js`）の一部の取得処理は `repo_id` を付けずに `?page=1` で呼び出すため、Community Administrator の場合はその呼び出しが 403 となる。`get_failed_mail` / `resend_failed_mail` は System/Repository Administrator のみ。
 - config：最大送信件数 `WEKO_SEARCH_MAX_FEEDBACK_MAIL` は 10000。テーブル `feedback_email_setting`（`account_author`（NOT NULL）・`root_url` 列を含む）/ `feedback_mail_history` / `feedback_mail_failed` / `feedback_mail_list`（weko-records）。
 
 ## 更新履歴
