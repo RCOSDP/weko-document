@@ -58,25 +58,41 @@ Chapter 11: Resource Sync
 
 Describes step-by-step instructions on managing resource sync.
 
-Chapter 12: Records
+Chapter 12: SWORD API
+
+Describes step-by-step instructions on setting up registration through the SWORD API.
+
+Chapter 13: Records
 
 Describes step-by-step instructions on managing records.
 
-Chapter 13: Files
+Chapter 14: Files
 
 Describes step-by-step instructions on how to manage files.
 
-Chapter 14: User Management
+Chapter 15: User Management
 
 Describes step-by-step instructions on managing users.
 
-Chapter 15: Setting
+Chapter 16: Setting
 
 Describes step-by-step instructions on how to manage the system settings.
 
-Chapter 16: User Account
+Chapter 17: Log Management
+
+Describes step-by-step instructions on exporting logs.
+
+Chapter 18: Maintenance
+
+Describes step-by-step instructions on maintaining the search index.
+
+Chapter 19: User Account
 
 Describes step-by-step instructions on how to manage a user account.
+
+Chapter 20: Advanced Menu
+
+Describes step-by-step instructions on editing the user profile settings.
 
   - Conventions
 
@@ -152,11 +168,21 @@ The format conventions used in this document are as follows:
 
 [2.4.2 Map an item type added by the System 53](#map-an-item-type-added-by-the-system)
 
-[2.5 Set up the RO-Crate mapping](#set-up-the-ro-crate-mapping)
+[2.5 Set up the JSON-LD mapping](#set-up-the-json-ld-mapping)
 
-[2.5.1 Elements in the RO-Crate Mapping screen](#elements-in-the-ro-crate-mapping-screen)
+[2.5.1 Create a JSON-LD mapping](#create-a-json-ld-mapping)
 
-[2.5.2 Create or edit an RO-Crate mapping](#create-or-edit-an-ro-crate-mapping)
+[2.5.2 Edit or delete a JSON-LD mapping](#edit-or-delete-a-json-ld-mapping)
+
+[2.5.3 About WEKO-specific properties (wk:)](#about-weko-specific-properties-wk)
+
+[2.5.4 Troubleshooting the JSON-LD mapping](#troubleshooting-the-json-ld-mapping)
+
+[2.6 Set up the RO-Crate mapping](#set-up-the-ro-crate-mapping)
+
+[2.6.1 Elements in the RO-Crate Mapping screen](#elements-in-the-ro-crate-mapping-screen)
+
+[2.6.2 Create or edit an RO-Crate mapping](#create-or-edit-an-ro-crate-mapping)
 
 [3. Items 57](#items)
 
@@ -274,6 +300,12 @@ The format conventions used in this document are as follows:
 
 [8.2.3 Delete a workflow 199](#linkiddeleteworkflow参照先delete-a-workflow)
 
+[8.3 Set up the workspace](#set-up-the-workspace)
+
+[8.3.1 Set the registration method to Direct Registration](#set-the-registration-method-to-direct-registration)
+
+[8.3.2 Set the registration method to WorkFlow Registration](#set-the-registration-method-to-workflow-registration)
+
 [9. Communities 202](#communities)
 
 [9.1 Manage communities 203](#linkidmanagecommunity参照先manage-communities)
@@ -360,249 +392,293 @@ The format conventions used in this document are as follows:
 
 [11.3.4 Delete a Resync 244](#delete-a-resync)
 
-[12. Records 246](#records)
+[12. SWORD API](#sword-api)
 
-[12.1 View Persistent Identifiers 247](#linkidviewpersistentidentifier参照先view-persistent-identifiers)
+[12.1 Set up TSV/CSV](#set-up-tsvcsv)
 
-[12.2 Manage Record Metadata 248](#linkidmanagerecordmetadata参照先manage-record-metadata)
+[12.2 Set up XML](#set-up-xml)
 
-[12.2.1 View Record Metadata 248](#linkidviewrecordmetadata参照先view-record-metadata)
+[12.3 Create a JSON-LD setting](#create-a-json-ld-setting)
 
-[12.2.2 Delete Record Metadata 248](#linkiddeleterecordmetadata参照先delete-record-metadata)
+[12.4 Edit a JSON-LD setting](#edit-a-json-ld-setting)
 
-[13. Files 250](#files)
+[12.5 Delete a JSON-LD setting](#delete-a-json-ld-setting)
 
-[13.1 Manage Buckets 251](#linkidlocationmanagement参照先-manage-buckets)
+[13. Records 246](#records)
 
-[13.1.1 View Buckets 251](#linkidviewbucket参照先view-buckets)
+[13.1 View Persistent Identifiers 247](#linkidviewpersistentidentifier参照先view-persistent-identifiers)
 
-[13.1.2 Create a Bucket 251](#linkidcreatebucket参照先create-a-bucket)
+[13.2 Manage Record Metadata 248](#linkidmanagerecordmetadata参照先manage-record-metadata)
 
-[13.1.3 Edit a Bucket 252](#linkideditbucket参照先edit-a-bucket)
+[13.2.1 View Record Metadata 248](#linkidviewrecordmetadata参照先view-record-metadata)
 
-[13.2 Manage File Instances 254](#manage-file-instances)
+[13.2.2 Delete Record Metadata 248](#linkiddeleterecordmetadata参照先delete-record-metadata)
 
-[13.2.1 View File Instances 254](#linkidviewfileinstance参照先view-file-instances)
+[14. Files 250](#files)
 
-[13.2.2 Run a fixity check 254](#linkidcheckfixity参照先run-a-fixity-check)
+[14.1 Manage Buckets 251](#linkidlocationmanagement参照先-manage-buckets)
 
-[13.2.3 Delete File Instances](#delete-file-instances)
+[14.1.1 View Buckets 251](#linkidviewbucket参照先view-buckets)
 
-[13.3 Manage Locations 256](#manage-locations)
+[14.1.2 Create a Bucket 251](#linkidcreatebucket参照先create-a-bucket)
 
-[13.3.1 View Locations 256](#linkidviewlocation参照先view-locations)
+[14.1.3 Edit a Bucket 252](#linkideditbucket参照先edit-a-bucket)
 
-[13.3.2 Create a Location 256](#linkidcreatelocation参照先create-a-location)
+[14.2 Manage File Instances 254](#manage-file-instances)
 
-[13.3.3 Edit a Location 257](#linkideditlocation参照先edit-a-location)
+[14.2.1 View File Instances 254](#linkidviewfileinstance参照先view-file-instances)
 
-[13.3.4 Delete Locations 258](#linkiddeletelocation参照先delete-locations)
+[14.2.2 Run a fixity check 254](#linkidcheckfixity参照先run-a-fixity-check)
 
-[13.4 Manage Multipart Objects 260](#linkidmanagebucket参照先linkidmanageobjectversion参照先manage-multipart-objects)
+[14.2.3 Delete File Instances](#delete-file-instances)
 
-[13.4.1 View Multipart Objects 260](#linkidviewmultipartobject参照先view-multipart-objects)
+[14.3 Manage Locations 256](#manage-locations)
 
-[13.5 Manage Object Versions 261](#manage-object-versions)
+[14.3.1 View Locations 256](#linkidviewlocation参照先view-locations)
 
-[13.5.1 View Object Versions 261](#linkidviewobjectversion参照先view-object-versions)
+[14.3.2 Create a Location 256](#linkidcreatelocation参照先create-a-location)
 
-[14. User Management 262](#linkidmanagemultipartobject参照先linkidmanagefileinstance参照先user-management)
+[14.3.3 Edit a Location 257](#linkideditlocation参照先edit-a-location)
 
-[14.1 Access: Roles 263](#linkidaccessrolesetting参照先access-roles)
+[14.3.4 Delete Locations 258](#linkiddeletelocation参照先delete-locations)
 
-[14.1.1 View role-based actions 263](#linkidviewaccessrole参照先view-role-based-actions)
+[14.4 Manage Multipart Objects 260](#linkidmanagebucket参照先linkidmanageobjectversion参照先manage-multipart-objects)
 
-[14.1.2 Add an action to a role 263](#linkidaddaccessrole参照先add-an-action-to-a-role)
+[14.4.1 View Multipart Objects 260](#linkidviewmultipartobject参照先view-multipart-objects)
 
-[14.1.3 Modify a role-based action 264](#linkidchangeaccessrole参照先modify-a-role-based-action)
+[14.5 Manage Object Versions 261](#manage-object-versions)
 
-[14.1.4 Delete actions from a role 265](#linkiddeleteaccessrole参照先delete-actions-from-a-role)
+[14.5.1 View Object Versions 261](#linkidviewobjectversion参照先view-object-versions)
 
-[14.2 Access: System Roles 267](#linkidaccesssystemrolesetting参照先access-system-roles)
+[14.6 Use the institutional storage feature](#use-the-institutional-storage-feature)
 
-[14.2.1 View system role-based actions 267](#linkidviewsystemrole参照先view-system-role-based-actions)
+[14.6.1 Add an institutional storage](#add-an-institutional-storage)
 
-[14.2.2 Add an action to a system role 267](#linkidaddsystemrole参照先add-an-action-to-a-system-role)
+[14.6.2 Change the storage location of a workflow](#change-the-storage-location-of-a-workflow)
 
-[14.2.3 Modify a system role-based action 268](#linkidchangesystemrole参照先modify-a-system-role-based-action)
+[15. User Management 262](#linkidmanagemultipartobject参照先linkidmanagefileinstance参照先user-management)
 
-[14.2.4 Delete actions from a system role 269](#linkiddeletesystemrole参照先delete-actions-from-a-system-role)
+[15.1 Access: Roles 263](#linkidaccessrolesetting参照先access-roles)
 
-[14.3 Access: Users 271](#linkidaccessusers参照先access-users)
+[15.1.1 View role-based actions 263](#linkidviewaccessrole参照先view-role-based-actions)
 
-[14.3.1 View user actions 271](#linkidviewusers参照先view-user-actions)
+[15.1.2 Add an action to a role 263](#linkidaddaccessrole参照先add-an-action-to-a-role)
 
-[14.3.2 Add an action to a user 271](#linkidaddusers参照先add-an-action-to-a-user)
+[15.1.3 Modify a role-based action 264](#linkidchangeaccessrole参照先modify-a-role-based-action)
 
-[14.3.3 Modify a user action 272](#linkidchangeusers参照先modify-a-user-action)
+[15.1.4 Delete actions from a role 265](#linkiddeleteaccessrole参照先delete-actions-from-a-role)
 
-[14.3.4 Delete user actions 273](#linkiddeleteusers参照先delete-user-actions)
+[15.2 Access: System Roles 267](#linkidaccesssystemrolesetting参照先access-system-roles)
 
-[14.4 Manage Linked account identities 275](#linkidmanagelinkedaccountidentities参照先manage-linked-account-identities)
+[15.2.1 View system role-based actions 267](#linkidviewsystemrole参照先view-system-role-based-actions)
 
-[14.4.1 View Linked account identities 275](#linkidviewlinkedaccountidentities参照先view-linked-account-identities)
+[15.2.2 Add an action to a system role 267](#linkidaddsystemrole参照先add-an-action-to-a-system-role)
 
-[14.4.2 Delete Linked account identities 275](#linkiddeletelinkedaccountidentities参照先delete-linked-account-identities)
+[15.2.3 Modify a system role-based action 268](#linkidchangesystemrole参照先modify-a-system-role-based-action)
 
-[14.5 Manage Linked account tokens 277](#linkidmanagelinkedaccounttokens参照先manage-linked-account-tokens)
+[15.2.4 Delete actions from a system role 269](#linkiddeletesystemrole参照先delete-actions-from-a-system-role)
 
-[14.5.1 View Linked account tokens 277](#linkidviewlinkedaccounttokens参照先view-linked-account-tokens)
+[15.3 Access: Users 271](#linkidaccessusers参照先access-users)
 
-[14.5.2 Create a Linked account token 277](#linkidcreatelinkedaccounttokens参照先create-a-linked-account-token)
+[15.3.1 View user actions 271](#linkidviewusers参照先view-user-actions)
 
-[14.5.3 Edit a Linked account token 278](#linkideditlinkedaccounttokens参照先edit-a-linked-account-token)
+[15.3.2 Add an action to a user 271](#linkidaddusers参照先add-an-action-to-a-user)
 
-[14.5.4 Delete Linked account tokens 279](#linkiddeletelinkedaccounttokens参照先delete-linked-account-tokens)
+[15.3.3 Modify a user action 272](#linkidchangeusers参照先modify-a-user-action)
 
-[14.6 Manage Linked accounts 280](#linkidmanagelinkedaccounts参照先manage-linked-accounts)
+[15.3.4 Delete user actions 273](#linkiddeleteusers参照先delete-user-actions)
 
-[14.6.1 View Linked accounts 280](#linkidviewlinkedaccounts参照先view-linked-accounts)
+[15.4 Manage Linked account identities 275](#linkidmanagelinkedaccountidentities参照先manage-linked-account-identities)
 
-[14.6.2 Create a Linked account 280](#linkidcreatelinkedaccounts参照先create-a-linked-account)
+[15.4.1 View Linked account identities 275](#linkidviewlinkedaccountidentities参照先view-linked-account-identities)
 
-[14.6.3 Edit a Linked account 281](#linkideditlinkedaccounts参照先edit-a-linked-account)
+[15.4.2 Delete Linked account identities 275](#linkiddeletelinkedaccountidentities参照先delete-linked-account-identities)
 
-[14.6.4 Delete Linked accounts 282](#linkiddeletelinkedaccounts参照先delete-linked-accounts)
+[15.5 Manage Linked account tokens 277](#linkidmanagelinkedaccounttokens参照先manage-linked-account-tokens)
 
-[14.7 Manage OAuth Application Tokens 284](#linkidmanageoauthapplitokens参照先manage-oauth-application-tokens)
+[15.5.1 View Linked account tokens 277](#linkidviewlinkedaccounttokens参照先view-linked-account-tokens)
 
-[14.7.1 View OAuth Application Tokens 284](#linkidviewoauthapplitokens参照先view-oauth-application-tokens)
+[15.5.2 Create a Linked account token 277](#linkidcreatelinkedaccounttokens参照先create-a-linked-account-token)
 
-[14.7.2 Delete OAuth Application Tokens 285](#linkiddeleteoauthapplitokens参照先delete-oauth-application-tokens)
+[15.5.3 Edit a Linked account token 278](#linkideditlinkedaccounttokens参照先edit-a-linked-account-token)
 
-[14.8 Manage OAuth Applications 286](#linkidmanageoauthappli参照先manage-oauth-applications)
+[15.5.4 Delete Linked account tokens 279](#linkiddeletelinkedaccounttokens参照先delete-linked-account-tokens)
 
-[14.8.1 View OAuth Applications 286](#linkidviewoauthappli参照先view-oauth-applications)
+[15.6 Manage Linked accounts 280](#linkidmanagelinkedaccounts参照先manage-linked-accounts)
 
-[14.8.2 Delete OAuth Applications 286](#linkiddeleteoauthappli参照先delete-oauth-applications)
+[15.6.1 View Linked accounts 280](#linkidviewlinkedaccounts参照先view-linked-accounts)
 
-[14.9 Manage roles 288](#linkidmanageroles参照先manage-roles)
+[15.6.2 Create a Linked account 280](#linkidcreatelinkedaccounts参照先create-a-linked-account)
 
-[14.9.1 View roles 288](#linkidviewroles参照先view-roles)
+[15.6.3 Edit a Linked account 281](#linkideditlinkedaccounts参照先edit-a-linked-account)
 
-[14.9.2 Create a role 289](#linkidcreateroles参照先create-a-role)
+[15.6.4 Delete Linked accounts 282](#linkiddeletelinkedaccounts参照先delete-linked-accounts)
 
-[14.9.3 Edit a role 289](#linkideditroles参照先edit-a-role)
+[15.7 Manage OAuth Application Tokens 284](#linkidmanageoauthapplitokens参照先manage-oauth-application-tokens)
 
-[14.9.4 Delete roles 290](#linkiddeleteroles参照先delete-roles)
+[15.7.1 View OAuth Application Tokens 284](#linkidviewoauthapplitokens参照先view-oauth-application-tokens)
 
-[14.10 Manage Session Activities 292](#linkidmanagesessionact参照先manage-session-activities)
+[15.7.2 Delete OAuth Application Tokens 285](#linkiddeleteoauthapplitokens参照先delete-oauth-application-tokens)
 
-[14.10.1 View Session Activities 292](#linkidviewsessionact参照先view-session-activities)
+[15.8 Manage OAuth Applications 286](#linkidmanageoauthappli参照先manage-oauth-applications)
 
-[14.10.2 Delete Session Activities 292](#linkiddeletesessionact参照先delete-session-activities)
+[15.8.1 View OAuth Applications 286](#linkidviewoauthappli参照先view-oauth-applications)
 
-[14.11 Manage users 293](#linkidmanageuser参照先manage-users)
+[15.8.2 Delete OAuth Applications 286](#linkiddeleteoauthappli参照先delete-oauth-applications)
 
-[14.11.1 View users 293](#linkidviewuser参照先view-users)
+[15.9 Manage roles 288](#linkidmanageroles参照先manage-roles)
 
-[14.11.2 Add a user 293](#linkidcreateuser参照先add-a-user)
+[15.9.1 View roles 288](#linkidviewroles参照先view-roles)
 
-[14.11.3 Edit a user 294](#linkidedituser参照先edit-a-user)
+[15.9.2 Create a role 289](#linkidcreateroles参照先create-a-role)
 
-[14.11.4 Disable or enable users 295](#linkidinacivateuser参照先disable-or-enable-users)
+[15.9.3 Edit a role 289](#linkideditroles参照先edit-a-role)
 
-[14.12 Manage User Profiles 297](#linkidmanageuserprofile参照先manage-user-profiles)
+[15.9.4 Delete roles 290](#linkiddeleteroles参照先delete-roles)
 
-[14.12.1 View User Profiles 297](#linkidviewuserprofile参照先view-user-profiles)
+[15.10 Manage Session Activities 292](#linkidmanagesessionact参照先manage-session-activities)
 
-[14.12.2 Delete User Profiles 297](#linkiddeleteuserprofile参照先delete-user-profiles)
+[15.10.1 View Session Activities 292](#linkidviewsessionact参照先view-session-activities)
 
-[15. Setting 298](#setting)
+[15.10.2 Delete Session Activities 292](#linkiddeletesessionact参照先delete-session-activities)
 
-[15.1 Configure the author display setting 299](#linkidauthormanagement参照先configure-the-author-display-setting)
+[15.11 Manage users 293](#linkidmanageuser参照先manage-users)
 
-[15.2 Display the Index Link 300](#display-the-index-link)
+[15.11.1 View users 293](#linkidviewuser参照先view-users)
 
-[15.3 Configure the activity list display](#configure-the-activity-list-display)
+[15.11.2 Add a user 293](#linkidcreateuser参照先add-a-user)
 
-[15.4 Set up languages 301](#set-up-languages)
+[15.11.3 Edit a user 294](#linkidedituser参照先edit-a-user)
 
-[15.5 Display the PDF cover page 302](#display-the-pdf-cover-page)
+[15.11.4 Disable or enable users 295](#linkidinacivateuser参照先disable-or-enable-users)
 
-[15.6 Configure the ranking display 305](#configure-the-ranking-display)
+[15.12 Manage User Profiles 297](#linkidmanageuserprofile参照先manage-user-profiles)
 
-[15.7 Modify the statistics setting 307](#modify-the-statistics-setting)
+[15.12.1 View User Profiles 297](#linkidviewuserprofile参照先view-user-profiles)
 
-[15.8 Configure the Web page style 308](#configure-the-web-page-style)
+[15.12.2 Delete User Profiles 297](#linkiddeleteuserprofile参照先delete-user-profiles)
 
-[15.9 Set up Identifiers 312](#set-up-identifiers)
+[16. Setting 298](#setting)
 
-[15.9.1 View Identifiers 312](#linkidviewidentifier参照先view-identifiers)
+[16.1 Configure the author display setting 299](#linkidauthormanagement参照先configure-the-author-display-setting)
 
-[15.9.2 Create an Identifier 312](#linkidcreateidentifier参照先create-an-identifier)
+[16.2 Display the Index Link 300](#display-the-index-link)
 
-[15.9.3 Edit an Identifier 315](#linkideditidentifier参照先edit-an-identifier)
+[16.3 Configure the activity list display](#configure-the-activity-list-display)
 
-[15.10 Modify the export settings 316](#modify-the-export-settings)
+[16.4 Set up languages 301](#set-up-languages)
 
-[15.11 Configure the log analysis settings 317](#configure-the-log-analysis-settings)
+[16.5 Display the PDF cover page 302](#display-the-pdf-cover-page)
 
-[15.12 Configure the search conditions, the number of results displayed, and the initial display 318](#configure-the-search-conditions-the-number-of-results-displayed-and-the-initial-display)
+[16.6 Configure the ranking display 305](#configure-the-ranking-display)
 
-[15.12.1 Configure the author search setting 318](#configure-the-author-search-setting)
+[16.7 Modify the statistics setting 307](#modify-the-statistics-setting)
 
-[15.12.2 Configure the search results settings 318](#configure-the-search-results-settings)
+[16.8 Configure the Web page style 308](#configure-the-web-page-style)
 
-[15.12.3 Configure detail search results settings 319](#configure-detail-search-results-settings)
+[16.9 Set up Identifiers 312](#set-up-identifiers)
 
-[15.12.4 Configure the index tree/facet display 321](#configure-the-index-treefacet-display)
+[16.9.1 View Identifiers 312](#linkidviewidentifier参照先view-identifiers)
 
-[15.12.5 Configure the initial display 323](#configure-the-initial-display)
+[16.9.2 Create an Identifier 312](#linkidcreateidentifier参照先create-an-identifier)
 
-[15.13 Manage faceted searches 325](#manage-faceted-searches)
+[16.9.3 Edit an Identifier 315](#linkideditidentifier参照先edit-an-identifier)
 
-[15.13.1 Configure faceted searches 325](#_Toc99036165)
+[16.10 Modify the export settings 316](#modify-the-export-settings)
 
-[15.14 Configure the site information 329](#configure-the-site-information)
+[16.11 Configure the log analysis settings 317](#configure-the-log-analysis-settings)
 
-[15.15 Configure IP addresses permitted by the site license 331](#configure-ip-addresses-permitted-by-the-site-license)
+[16.12 Configure the search conditions, the number of results displayed, and the initial display 318](#configure-the-search-conditions-the-number-of-results-displayed-and-the-initial-display)
 
-[15.16 Create a sitemap 334](#linkidsitemapcreating参照先create-a-sitemap)
+[16.12.1 Configure the author search setting 318](#configure-the-author-search-setting)
 
-[15.17 Set up emails 335](#set-up-emails)
+[16.12.2 Configure the search results settings 318](#configure-the-search-results-settings)
 
-[15.18 Set up a WebAPI Account 337](#set-up-a-webapi-account)
+[16.12.3 Configure detail search results settings 319](#configure-detail-search-results-settings)
 
-[15.19 Configure the file preview settings 339](#configure-the-file-preview-settings)
+[16.12.4 Configure the index tree/facet display 321](#configure-the-index-treefacet-display)
 
-[15.20 Allow Shibboleth users 340](#allow-shibboleth-users)
+[16.12.5 Configure the initial display 323](#configure-the-initial-display)
 
-[15.21 Manage restricted access 341](#linkideditindextree参照先linkidfilepreviewsetting参照先linkididentifiersetting参照先linkidsiteinfosetting参照先linkidwidgetsetting参照先manage-restricted-access)
+[16.13 Manage faceted searches 325](#manage-faceted-searches)
 
-[15.21.1 Configure restricted access 341](#configure-restricted-access)
+[16.13.1 Configure faceted searches 325](#_Toc99036165)
 
-[15.21.2 Email notifications on the result of the application for the restricted access 345](#email-notifications-on-the-result-of-the-application-for-the-restricted-access)
+[16.14 Configure the site information 329](#configure-the-site-information)
 
-[15.21.3 Other email notifications for the restricted access 352](#other-email-notifications-for-the-restricted-access)
+[16.15 Configure IP addresses permitted by the site license 331](#configure-ip-addresses-permitted-by-the-site-license)
 
-[15.22 Set up an institution name 367](#set-up-an-institution-name)
+[16.16 Create a sitemap 334](#linkidsitemapcreating参照先create-a-sitemap)
 
-[16. User Account 368](#user-account)
+[16.17 Set up emails 335](#set-up-emails)
 
-[16.1 Update a profile 369](#linkidupdateprofile参照先update-a-profile)
+[16.18 Edit mail templates](#edit-mail-templates)
 
-[16.2 Change a password 370](#linkidchangepassword参照先change-a-password)
+[16.18.1 Extended mail template features](#extended-mail-template-features)
 
-[16.3 Determine which device is used to log in to an account 371](#linkidchecklogindevice参照先determine-which-device-is-used-to-log-in-to-an-account)
+[16.18.2 Default mail templates](#default-mail-templates)
 
-[16.4 Manage applications 372](#linkidmanageapplication参照先manage-applications)
+[16.19 Set up a WebAPI Account 337](#set-up-a-webapi-account)
 
-[16.5 Manage groups 373](#linkidmanagegroup参照先manage-groups)
+[16.20 Configure the file preview settings 339](#configure-the-file-preview-settings)
 
-[16.5.1 Accept a request or invitation to join a group 373](#linkidinclusiverequest参照先accept-a-request-or-invitation-to-join-a-group)
+[16.21 Allow Shibboleth users 340](#allow-shibboleth-users)
 
-[16.5.2 Create a group 374](#linkidcreategroup参照先create-a-group)
+[16.22 Manage restricted access 341](#linkideditindextree参照先linkidfilepreviewsetting参照先linkididentifiersetting参照先linkidsiteinfosetting参照先linkidwidgetsetting参照先manage-restricted-access)
 
-[16.5.3 Invite members to a group 375](#linkidaddusertogroup参照先invite-members-to-a-group)
+[16.22.1 Configure restricted access 341](#configure-restricted-access)
 
-[16.5.4 Edit a group 377](#linkideditgroup参照先edit-a-group)
+[16.22.2 Email notifications on the result of the application for the restricted access 345](#email-notifications-on-the-result-of-the-application-for-the-restricted-access)
 
-[16.5.5 Delete a group 378](#linkiddeletegroup参照先delete-a-group)
+[16.22.3 Other email notifications for the restricted access 352](#other-email-notifications-for-the-restricted-access)
 
-[16.6 Modify the session validity time 380](#linkidchangetimeout参照先modify-the-session-validity-time)
+[16.23 Set up an institution name 367](#set-up-an-institution-name)
 
-[16.7 Access the Administration screen 381](#linkidopenadmin参照先access-the-administration-screen)
+[16.24 Manage the CRIS linkage](#manage-the-cris-linkage)
+
+[16.24.1 Set up API keys](#set-up-api-keys)
+
+[16.24.2 Set up the merge mode](#set-up-the-merge-mode)
+
+[17. Log Management](#log-management)
+
+[17.1 Export the basic audit logs](#export-the-basic-audit-logs)
+
+[18. Maintenance](#maintenance)
+
+[18.1 Set up the ElasticSearch index](#set-up-the-elasticsearch-index)
+
+[19. User Account 368](#user-account)
+
+[19.1 Update a profile 369](#linkidupdateprofile参照先update-a-profile)
+
+[19.2 Change a password 370](#linkidchangepassword参照先change-a-password)
+
+[19.3 Determine which device is used to log in to an account 371](#linkidchecklogindevice参照先determine-which-device-is-used-to-log-in-to-an-account)
+
+[19.4 Manage applications 372](#linkidmanageapplication参照先manage-applications)
+
+[19.5 Manage groups 373](#linkidmanagegroup参照先manage-groups)
+
+[19.5.1 Accept a request or invitation to join a group 373](#linkidinclusiverequest参照先accept-a-request-or-invitation-to-join-a-group)
+
+[19.5.2 Create a group 374](#linkidcreategroup参照先create-a-group)
+
+[19.5.3 Invite members to a group 375](#linkidaddusertogroup参照先invite-members-to-a-group)
+
+[19.5.4 Edit a group 377](#linkideditgroup参照先edit-a-group)
+
+[19.5.5 Delete a group 378](#linkiddeletegroup参照先delete-a-group)
+
+[19.6 Modify the session validity time 380](#linkidchangetimeout参照先modify-the-session-validity-time)
+
+[19.7 Access the Administration screen 381](#linkidopenadmin参照先access-the-administration-screen)
+
+[20. Advanced Menu](#advanced-menu)
+
+[20.1 The "Profile Settings" screen](#the-profile-settings-screen)
+
+[20.2 Edit the user profile settings](#edit-the-user-profile-settings)
 
 #   
 Chapter 1: System Overview
@@ -7348,6 +7424,15 @@ You can map multiple child properties to a single child element by inserting a c
 
 > ![](media/media/image59.png)
 
+
+7.  > To output a fixed value to a child element, click "+Add static value".
+
+An input field ("Input static value") is added. The value you enter is output to the child element.
+
+Notes:
+
+If an error occurs because of the mapping, restore the original mapping settings. If the problem is not solved, contact your system administrator.
+
 ### Map an item type added by the System
 
 1.  > Select an item type for "Item Type (Source)" and a schema for "Schema (Target)".
@@ -7381,6 +7466,772 @@ The values appear in "Element (Parent)" and "Schema (Parent)".
 Notes:
 
 If you want to map the same schema to different properties, you need to set up the same mappings for all those properties, including the Schema (child). If the same mappings are not used, the message "Duplicate mapping as below" will be displayed, and you cannot save the mapping information.
+
+
+\* Mapping an item type added by the System can be performed only by system administrators.
+
+
+## Set up the JSON-LD mapping
+
+This section explains how to map metadata provided from external systems (in the JSON-LD format) to the schema of an item type. The item type to be mapped needs to be defined beforehand.
+
+To access the mapping screen, click "Item Types" and then click "JSON-LD Mapping".
+
+The mappings set up in this screen are used in the "JSON-LD" settings registered with the SWORD API function, and as the mappings selected on the "Items" \> "RO-Crate Import" screen (see "[Import items in the RO-Crate format](#import-items-in-the-ro-crate-format)").
+
+### Create a JSON-LD mapping
+
+1.  Click the "Create" tab.
+
+2.  Enter any name in "Name", and select the target item type in "Item Type".
+
+    Then enter the mapping text in "Mapping". Since no editor is currently provided for the mapping, paste a mapping definition text that you have prepared yourself directly into the text area.
+
+3.  Click "Save".
+
+    The information you specified is saved.
+
+    "Name", "Item Type", and "Mapping" are all required. If any of them is not entered, "The following items is required. Please recheck and input." appears, followed by the name of the missing item (Name, Item Type, or Mapping). If the mapping is not valid JSON, "Invalid JSON" appears.
+
+    When you save, the content of the mapping is checked. If there is a problem, the error messages appear in a dialog box, "Failed to validate mapping" appears, and the mapping is not saved. For the error messages, see "[Troubleshooting the JSON-LD mapping](#troubleshooting-the-json-ld-mapping)".
+
+#### Mapping example
+
+The following is an example for the default item type (full). The keys on the left side are the property names of the item type and are used as they are defined in the item type (this is why some of them are in Japanese).
+
+```
+{
+    "APC": "rioxxterms:apc",
+    "APC.APC": "rioxxterms:apc.value",
+    "ID登録": "jpcoar:identifierRegistration",
+    "ID登録.ID登録": "jpcoar:identifierRegistration.value",
+    "ID登録.ID登録タイプ": "jpcoar:identifierRegistration.identifierType",
+    "公開日": "datePublished",
+    "その他のタイトル": "dcterms:alternative",
+    "その他のタイトル.その他のタイトル": "dcterms:alternative.value",
+    "その他のタイトル.言語": "dcterms:alternative.language",
+    "アクセス権": "dcterms:accessRights",
+    "アクセス権.アクセス権": "dcterms:accessRights.value",
+    "アクセス権.アクセス権URI": "dcterms:accessRights.rdf:resource",
+    "カタログ": "jpcoar:catalog",
+    "カタログ.Access Rights": "jpcoar:catalog.dcterms:accessRights",
+    "カタログ.Access Rights.アクセス権": "jpcoar:catalog.dcterms:accessRights.value",
+    "カタログ.Access Rights.アクセス権URI": "jpcoar:catalog.dcterms:accessRights.rdf:resource",
+    "カタログ.Descriptions": "jpcoar:catalog.datacite:description",
+    "カタログ.Descriptions.Description Type": "jpcoar:catalog.datacite:description.descriptionType",
+    "カタログ.Descriptions.Description": "jpcoar:catalog.datacite:description.value",
+    "カタログ.Descriptions.Language": "jpcoar:catalog.datacite:description.language",
+    "カタログ.Hosting Institution": "jpcoar:catalog.jpcoar:contributor",
+    "カタログ.Hosting Institution.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName",
+    "カタログ.Hosting Institution.Hosting Institution Name.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.value",
+    "カタログ.Hosting Institution.Hosting Institution Name.Language": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.language",
+    "カタログ.Hosting Institution.Hosting Institution Type": "jpcoar:catalog.jpcoar:contributor.contributorType",
+    "カタログ.Identifier": "jpcoar:catalog.jpcoar:identifier",
+    "カタログ.Identifier.Identifier Type": "jpcoar:catalog.jpcoar:identifier.identifierType",
+    "カタログ.Identifier.Identifier": "jpcoar:catalog.jpcoar:identifier.value",
+    "カタログ.License": "jpcoar:catalog.jpcoar:license",
+    "カタログ.License.Language": "jpcoar:catalog.jpcoar:license.language",
+    "カタログ.License.License Type": "jpcoar:catalog.jpcoar:license.licenseType",
+    "カタログ.License.License": "jpcoar:catalog.jpcoar:license.value",
+    "カタログ.License.RDF Resource": "jpcoar:catalog.jpcoar:license.rdf:resource",
+    "カタログ.Rights": "jpcoar:catalog.dc:rights",
+    "カタログ.Rights.Language": "jpcoar:catalog.dc:rights.language",
+    "カタログ.Rights.RDF Resource": "jpcoar:catalog.dc:rights.rdf:resource",
+    "カタログ.Rights.Rights": "jpcoar:catalog.dc:rights.value",
+    "カタログ.Subject": "jpcoar:catalog.jpcoar:subject",
+    "カタログ.Subject.Language": "jpcoar:catalog.jpcoar:subject.language",
+    "カタログ.Subject.Subject Scheme": "jpcoar:catalog.jpcoar:subject.subjectScheme",
+    "カタログ.Subject.Subject URI": "jpcoar:catalog.jpcoar:subject.subjectURI",
+    "カタログ.Subject.Subject": "jpcoar:catalog.jpcoar:subject.value",
+    "カタログ.Thumbnail": "jpcoar:catalog.jpcoar:file",
+    "カタログ.Thumbnail.Thumbnail URI": "jpcoar:catalog.jpcoar:file.jpcoar:URI",
+    "カタログ.Thumbnail.Thumbnail URI.Object Type": "jpcoar:catalog.jpcoar:file.jpcoar:URI.objectType",
+    "カタログ.Thumbnail.Thumbnail URI.Thumbnail URI": "jpcoar:catalog.jpcoar:file.jpcoar:URI.value",
+    "カタログ.Title": "jpcoar:catalog.dc:title",
+    "カタログ.Title.Language": "jpcoar:catalog.dc:title.language",
+    "カタログ.Title.Title": "jpcoar:catalog.dc:title.value",
+    "タイトル": "dc:title",
+    "タイトル.タイトル": "dc:title.value",
+    "タイトル.言語": "dc:title.language",
+    "データセットシリーズ": "jpcoar:datasetSeries",
+    "データセットシリーズ.Dataset Series": "jpcoar:datasetSeries.value",
+    "バージョン情報": "datacite:version",
+    "バージョン情報.バージョン情報": "datacite:version.value",
+    "ファイル情報": "hasPart",
+    "ファイル情報.アクセス": "hasPart.dcterms:accessRights",
+    "ファイル情報.グループ": "hasPart.department",
+    "ファイル情報.サイズ": "hasPart.jpcoar:extent",
+    "ファイル情報.サイズ.サイズ": "hasPart.jpcoar:extent.value",
+    "ファイル情報.バージョン情報": "hasPart.datacite:version",
+    "ファイル情報.ファイル名": "hasPart.name",
+    "ファイル情報.フォーマット": "hasPart.jpcoar:mimeType",
+    "ファイル情報.ライセンス": "hasPart.license",
+    "ファイル情報.公開日.タイプ": "$Available",
+    "ファイル情報.公開日.公開日": "hasPart.datePublished",
+    "ファイル情報.日付": "hasPart.datacite:date",
+    "ファイル情報.日付.日付": "hasPart.datacite:date.value",
+    "ファイル情報.日付.日付タイプ": "hasPart.datacite:date.dateType",
+    "ファイル情報.本文URL": "hasPart.jpcoar:URI",
+    "ファイル情報.本文URL.オブジェクトタイプ": "hasPart.jpcoar:URI.objectType",
+    "ファイル情報.本文URL.ラベル": "hasPart.@id",
+    "ファイル情報.本文URL.本文URL": "hasPart.jpcoar:URI.value",
+    "ファイル情報.表示形式": "hasPart.jpcoar:format",
+    "ページ数": "jpcoar:numPages",
+    "ページ数.ページ数": "jpcoar:numPages.value",
+    "主題": "jpcoar:subject",
+    "主題.主題": "jpcoar:subject.value",
+    "主題.主題Scheme": "jpcoar:subject.subjectScheme",
+    "主題.主題URI": "jpcoar:subject.subjectURI",
+    "主題.言語": "jpcoar:subject.language",
+    "会議記述": "jpcoar:conference",
+    "会議記述.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor",
+    "会議記述.主催機関.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor.value",
+    "会議記述.主催機関.言語": "jpcoar:conference.jpcoar:conferenceSponsor.language",
+    "会議記述.会議名": "jpcoar:conference.jpcoar:conferenceName",
+    "会議記述.会議名.会議名": "jpcoar:conference.jpcoar:conferenceName.value",
+    "会議記述.会議名.言語": "jpcoar:conference.jpcoar:conferenceName.language",
+    "会議記述.回次": "jpcoar:conference.jpcoar:conferenceSequence",
+    "会議記述.開催会場": "jpcoar:conference.jpcoar:conferenceVenue",
+    "会議記述.開催会場.言語": "jpcoar:conference.jpcoar:conferenceVenue.language",
+    "会議記述.開催会場.開催会場": "jpcoar:conference.jpcoar:conferenceVenue.value",
+    "会議記述.開催国": "jpcoar:conference.jpcoar:conferenceCountry",
+    "会議記述.開催地": "jpcoar:conference.jpcoar:conferencePlace",
+    "会議記述.開催地.言語": "jpcoar:conference.jpcoar:conferencePlace.language",
+    "会議記述.開催地.開催地": "jpcoar:conference.jpcoar:conferencePlace.value",
+    "会議記述.開催期間": "jpcoar:conference.jpcoar:conferenceDate.language",
+    "会議記述.開催期間.終了年": "jpcoar:conference.jpcoar:conferenceDate.endYear",
+    "会議記述.開催期間.終了日": "jpcoar:conference.jpcoar:conferenceDate.endDay",
+    "会議記述.開催期間.終了月": "jpcoar:conference.jpcoar:conferenceDate.endMonth",
+    "会議記述.開催期間.言語": "jpcoar:conference.jpcoar:conferenceDate",
+    "会議記述.開催期間.開催期間": "jpcoar:conference.jpcoar:conferenceDate.value",
+    "会議記述.開催期間.開始年": "jpcoar:conference.jpcoar:conferenceDate.startYear",
+    "会議記述.開催期間.開始日": "jpcoar:conference.jpcoar:conferenceDate.startDay",
+    "会議記述.開催期間.開始月": "jpcoar:conference.jpcoar:conferenceDate.startMonth",
+    "位置情報": "datacite:geoLocation",
+    "位置情報.位置情報（点）": "datacite:geoLocation.datacite:geoLocationPoint",
+    "位置情報.位置情報（点）.経度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLongitude",
+    "位置情報.位置情報（点）.緯度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLatitude",
+    "位置情報.位置情報（空間）": "datacite:geoLocation.datacite:geoLocationBox",
+    "位置情報.位置情報（空間）.北部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:northBoundLatitude",
+    "位置情報.位置情報（空間）.南部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:southBoundLatitude",
+    "位置情報.位置情報（空間）.東部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:eastBoundLongitude",
+    "位置情報.位置情報（空間）.西部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:westBoundLongitude",
+    "位置情報.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace",
+    "位置情報.位置情報（自由記述）.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace.value",
+    "作成者": "jpcoar:creator",
+    "作成者.作成者タイプ": "jpcoar:creator.creatorType",
+    "作成者.作成者メールアドレス": "jpcoar:creator.email",
+    "作成者.作成者メールアドレス.メールアドレス": "jpcoar:creator.email.value",
+    "作成者.作成者別名": "jpcoar:creator.jpcoar:creatorAlternative",
+    "作成者.作成者別名.別名": "jpcoar:creator.jpcoar:creatorAlternative.value",
+    "作成者.作成者別名.言語": "jpcoar:creator.jpcoar:creatorAlternative.language",
+    "作成者.作成者名": "jpcoar:creator.jpcoar:givenName",
+    "作成者.作成者名.名": "jpcoar:creator.jpcoar:givenName.value",
+    "作成者.作成者名.言語": "jpcoar:creator.jpcoar:givenName.language",
+    "作成者.作成者姓": "jpcoar:creator.jpcoar:familyName",
+    "作成者.作成者姓.姓": "jpcoar:creator.jpcoar:familyName.value",
+    "作成者.作成者姓.言語": "jpcoar:creator.jpcoar:familyName.language",
+    "作成者.作成者姓名": "jpcoar:creator.jpcoar:creatorName",
+    "作成者.作成者姓名.名前タイプ": "jpcoar:creator.jpcoar:creatorName.nameType",
+    "作成者.作成者姓名.姓名": "jpcoar:creator.jpcoar:creatorName.value",
+    "作成者.作成者姓名.言語": "jpcoar:creator.jpcoar:creatorName.language",
+    "作成者.作成者所属": "jpcoar:creator.jpcoar:affiliation",
+    "作成者.作成者所属.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName",
+    "作成者.作成者所属.所属機関名.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.value",
+    "作成者.作成者所属.所属機関名.言語": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.language",
+    "作成者.作成者所属.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "作成者.作成者所属.所属機関識別子.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "作成者.作成者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "作成者.作成者所属.所属機関識別子.所属機関識別子URI": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "作成者.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier",
+    "作成者.作成者識別子.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier.value",
+    "作成者.作成者識別子.作成者識別子Scheme": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "作成者.作成者識別子.作成者識別子URI": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierURI",
+    "内容記述": "datacite:description",
+    "内容記述.内容記述": "datacite:description.value",
+    "内容記述.内容記述タイプ": "datacite:description.descriptionType",
+    "内容記述.言語": "datacite:description.language",
+    "出版タイプ": "oaire:version",
+    "出版タイプ.出版タイプ": "oaire:version.value",
+    "出版タイプ.出版タイプResource": "oaire:version.rdf:resource",
+    "出版タイプ.査読の有無": "oaire:version.itemReviewed",
+    "出版者": "jpcoar:publisher",
+    "出版者.出版者": "dc:publisher.value",
+    "出版者.言語": "dc:publisher.language",
+    "出版者情報.出版地": "jpcoar:publisher.dcndl:location",
+    "出版者情報.出版地.出版地": "jpcoar:publisher.dcndl:location.value",
+    "出版者情報.出版地.言語": "jpcoar:publisher.dcndl:location.language",
+    "出版者情報.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace",
+    "出版者情報.出版地（国名コード）.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace.value",
+    "出版者情報.出版地（国名コード）.言語": "jpcoar:publisher.dcndl:publicationPlace.language",
+    "出版者情報.出版者名": "jpcoar:publisher.jpcoar:publisherName",
+    "出版者情報.出版者名.出版者名": "jpcoar:publisher.jpcoar:publisherName.value",
+    "出版者情報.出版者名.言語": "jpcoar:publisher.jpcoar:publisherName.language",
+    "出版者情報.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription",
+    "出版者情報.出版者注記.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription.value",
+    "出版者情報.出版者注記.言語": "jpcoar:publisher.jpcoar:publisherDescription.language",
+    "助成情報": "jpcoar:fundingReference",
+    "助成情報.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream",
+    "助成情報.プログラム情報.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream.value",
+    "助成情報.プログラム情報.言語": "jpcoar:fundingReference.jpcoar:fundingStream.language",
+    "助成情報.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier",
+    "助成情報.プログラム情報識別子.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.value",
+    "助成情報.プログラム情報識別子.プログラム情報識別子タイプ": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierType",
+    "助成情報.プログラム情報識別子.プログラム情報識別子タイプURI": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierTypeURI",
+    "助成情報.助成機関名": "jpcoar:fundingReference.jpcoar:funderName",
+    "助成情報.助成機関名.助成機関名": "jpcoar:fundingReference.jpcoar:funderName.value",
+    "助成情報.助成機関名.言語": "jpcoar:fundingReference.jpcoar:funderName.language",
+    "助成情報.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier",
+    "助成情報.助成機関識別子.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier.value",
+    "助成情報.助成機関識別子.助成機関識別子URI": "jpcoar:fundingReference.jpcoar:funderIdentifier.funderIdentifierTypeURI",
+    "助成情報.助成機関識別子.助成機関識別子タイプ": "jpcoar:fundingReference.jpcoar:funderIdentifier.funderIdentifierType",
+    "助成情報.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle",
+    "助成情報.研究課題名.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle.value",
+    "助成情報.研究課題名.言語": "jpcoar:fundingReference.jpcoar:awardTitle.language",
+    "助成情報.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber",
+    "助成情報.研究課題番号.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber.value",
+    "助成情報.研究課題番号.研究課題番号URI": "jpcoar:fundingReference.jpcoar:awardNumber.awardURI",
+    "助成情報.研究課題番号.研究課題番号タイプ": "jpcoar:fundingReference.jpcoar:awardNumber.awardNumberType",
+    "原文の言語": "dcndl:originalLanguage",
+    "原文の言語.Original Language": "dcndl:originalLanguage.value",
+    "収録物名": "jpcoar:sourceTitle",
+    "収録物名.収録物名": "jpcoar:sourceTitle.value",
+    "収録物名.言語": "jpcoar:sourceTitle.language",
+    "収録物識別子": "jpcoar:sourceIdentifier",
+    "収録物識別子.収録物識別子": "jpcoar:sourceIdentifier.value",
+    "収録物識別子.収録物識別子タイプ": "jpcoar:sourceIdentifier.identifierType",
+    "号": "jpcoar:issue",
+    "号.号": "jpcoar:issue.value",
+    "大きさ": "dcterms:extent",
+    "大きさ.Extent": "dcterms:extent.value",
+    "大きさ.Language": "dcterms:extent.language",
+    "学位名": "dcndl:degreeName",
+    "学位名.学位名": "dcndl:degreeName.value",
+    "学位名.言語": "dcndl:degreeName.language",
+    "学位授与年月日": "dcndl:dateGranted",
+    "学位授与年月日.学位授与年月日": "dcndl:dateGranted.value",
+    "学位授与機関": "jpcoar:degreeGrantor",
+    "学位授与機関.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName",
+    "学位授与機関.学位授与機関名.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.value",
+    "学位授与機関.学位授与機関名.言語": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.language",
+    "学位授与機関.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier",
+    "学位授与機関.学位授与機関識別子.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.value",
+    "学位授与機関.学位授与機関識別子.学位授与機関識別子Scheme": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "学位授与番号": "dcndl:dissertationNumber",
+    "学位授与番号.学位授与番号": "dcndl:dissertationNumber.value",
+    "寄与者": "jpcoar:contributor",
+    "寄与者.寄与者タイプ": "jpcoar:contributor.contributorType",
+    "寄与者.寄与者メールアドレス": "jpcoar:contributor.email",
+    "寄与者.寄与者メールアドレス.メールアドレス": "jpcoar:contributor.email.value",
+    "寄与者.寄与者別名": "jpcoar:contributor.jpcoar:contributorAlternative",
+    "寄与者.寄与者別名.別名": "jpcoar:contributor.jpcoar:contributorAlternative.value",
+    "寄与者.寄与者別名.言語": "jpcoar:contributor.jpcoar:contributorAlternative.language",
+    "寄与者.寄与者名": "jpcoar:contributor.jpcoar:givenName",
+    "寄与者.寄与者名.名": "jpcoar:contributor.jpcoar:givenName.value",
+    "寄与者.寄与者名.言語": "jpcoar:contributor.jpcoar:givenName.language",
+    "寄与者.寄与者姓": "jpcoar:contributor.jpcoar:familyName",
+    "寄与者.寄与者姓.姓": "jpcoar:contributor.jpcoar:familyName.value",
+    "寄与者.寄与者姓.言語": "jpcoar:contributor.jpcoar:familyName.language",
+    "寄与者.寄与者姓名": "jpcoar:contributor.jpcoar:contributorName",
+    "寄与者.寄与者姓名.名前タイプ": "jpcoar:contributor.jpcoar:contributorName.nameType",
+    "寄与者.寄与者姓名.姓名": "jpcoar:contributor.jpcoar:contributorName.value",
+    "寄与者.寄与者姓名.言語": "jpcoar:contributor.jpcoar:contributorName.language",
+    "寄与者.寄与者所属": "jpcoar:contributor.jpcoar:affiliation",
+    "寄与者.寄与者所属.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName",
+    "寄与者.寄与者所属.所属機関名.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.value",
+    "寄与者.寄与者所属.所属機関名.言語": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.language",
+    "寄与者.寄与者所属.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "寄与者.寄与者所属.所属機関識別子.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "寄与者.寄与者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "寄与者.寄与者所属.所属機関識別子.所属機関識別子URI": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "寄与者.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier",
+    "寄与者.寄与者識別子.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier.value",
+    "寄与者.寄与者識別子.寄与者識別子Scheme": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "寄与者.寄与者識別子.寄与者識別子URI": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierURI",
+    "巻": "jpcoar:volume",
+    "巻.巻": "jpcoar:volume.value",
+    "所蔵機関": "jpcoar:holdingAgent",
+    "所蔵機関.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName",
+    "所蔵機関.所蔵機関名.Language": "jpcoar:holdingAgent.jpcoar:holdingAgentName.language",
+    "所蔵機関.所蔵機関名.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName.value",
+    "所蔵機関.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子URI": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierURI",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子スキーマ": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierScheme",
+    "日付": "datacite:date",
+    "日付.日付": "datacite:date.value",
+    "日付.日付タイプ": "datacite:date.dateType",
+    "日付（リテラル）": "dcterms:date",
+    "日付（リテラル）.日付（リテラル）": "dcterms:date.value",
+    "日付（リテラル）.言語": "dcterms:date.language",
+    "時間的範囲": "dcterms:temporal",
+    "時間的範囲.時間的範囲": "dcterms:temporal.value",
+    "時間的範囲.言語": "dcterms:temporal.language",
+    "書誌情報": "dcterms:medium",
+    "書誌情報.ページ数": "dcterms:medium.numberOfPages",
+    "書誌情報.号": "dcterms:medium.issueNumber",
+    "書誌情報.巻": "dcterms:medium.volumeNumber",
+    "書誌情報.発行日": "dcterms:medium.datePublished",
+    "書誌情報.発行日.日付": "dcterms:medium.datePublished.value",
+    "書誌情報.発行日.日付タイプ": "dcterms:medium.datePublished.dateType",
+    "書誌情報.終了ページ": "dcterms:medium.pageEnd",
+    "書誌情報.開始ページ": "dcterms:medium.pageStart",
+    "書誌情報.雑誌名": "dcterms:medium.name",
+    "書誌情報.雑誌名.タイトル": "dcterms:medium.name.value",
+    "書誌情報.雑誌名.言語": "dcterms:medium.name.language",
+    "権利情報": "dc:rights",
+    "権利情報.権利情報": "dc:rights.value",
+    "権利情報.権利情報Resource": "dc:rights.rdf:resource",
+    "権利情報.言語": "dc:rights.language",
+    "権利者情報": "jpcoar:rightsHolder",
+    "権利者情報.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName",
+    "権利者情報.権利者名.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName.language",
+    "権利者情報.権利者名.言語": "jpcoar:rightsHolder.jpcoar:rightsHolderName.value",
+    "権利者情報.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier",
+    "権利者情報.権利者識別子.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier.value",
+    "権利者情報.権利者識別子.権利者識別子Scheme": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "権利者情報.権利者識別子.権利者識別子URI": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierURI",
+    "版": "dcndl:edition",
+    "版.版": "dcndl:edition.value",
+    "版.言語": "dcndl:edition.language",
+    "物理的形態": "jpcoar:format",
+    "物理的形態.Language": "jpcoar:format.language",
+    "物理的形態.物理的形態": "jpcoar:format.value",
+    "終了ページ": "jpcoar:pageEnd",
+    "終了ページ.終了ページ": "jpcoar:pageEnd.value",
+    "見出し": "headline",
+    "見出し.大見出し": "headline.value",
+    "見出し.小見出し": "headline.alternativeHeadline",
+    "見出し.言語": "headline.language",
+    "言語": "dc:language",
+    "言語.言語": "dc:language.value",
+    "識別子": "jpcoar:identifier",
+    "識別子.識別子": "jpcoar:identifier.value",
+    "識別子.識別子タイプ": "jpcoar:identifier.identifierType",
+    "資源タイプ": "dc:type",
+    "資源タイプ.資源タイプ": "dc:type.value",
+    "資源タイプ.資源タイプ識別子": "dc:type.rdf:resource",
+    "部編名": "dcndl:volumeTitle",
+    "部編名.Language": "dcndl:volumeTitle.language",
+    "部編名.部編名": "dcndl:volumeTitle.value",
+    "開始ページ": "jpcoar:pageStart",
+    "開始ページ.開始ページ": "jpcoar:pageStart.value",
+    "関連情報": "jpcoar:relation",
+    "関連情報.関連タイプ": "jpcoar:relation.relationType",
+    "関連情報.関連名称": "jpcoar:relation.jpcoar:relatedTitle",
+    "関連情報.関連名称.言語": "jpcoar:relation.jpcoar:relatedTitle.language",
+    "関連情報.関連名称.関連名称": "jpcoar:relation.jpcoar:relatedTitle.value",
+    "関連情報.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier",
+    "関連情報.関連識別子.識別子タイプ": "jpcoar:relation.jpcoar:relatedIdentifier.identifierType",
+    "関連情報.関連識別子.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier.value"
+}
+```
+
+### Edit or delete a JSON-LD mapping
+
+1.  In the "List" tab, click the edit button of the mapping definition that you want to edit or delete.
+
+2.  The registered content appears. Edit the content as necessary.
+
+    To save the edited content, click "Save". To delete the mapping, click "Delete". When you click "Delete", the confirmation dialog box "Are you sure you want to delete it?" appears. Click "Delete" to delete the mapping.
+
+Notes:
+
+  - If there are activities awaiting approval in the workflow of a SWORD API "JSON-LD" setting that uses this mapping, you cannot edit or delete the mapping. When you open the edit screen, the message "There are unapproved items in the workflow using this application. Until all are approved, no changes can be made to the configuration." appears, and "Save" and "Delete" are disabled. Process (approve or reject) all the activities awaiting approval before you perform the operation.
+
+  - If this mapping is used in a SWORD API "JSON-LD" setting, you cannot change "Item Type". When you open the edit screen, the message "This mapping is currently used by the SWORD API, so you cannot change the item type selection." appears, and you cannot select "Item Type" (you can still edit the name and the mapping).
+
+### About WEKO-specific properties (wk:)
+
+In metadata in the JSON-LD format (JSON-LD registration through the SWORD API, and ro-crate-metadata.json imported with RO-Crate import), you can describe WEKO-specific properties (prefix "wk:") that specify how to register items, in addition to the metadata of the item type. These properties do not need to be defined in the JSON-LD mapping. For the list of the properties, see "[WEKO-specific properties (wk:)](#weko-specific-properties-wk)".
+
+[v2.1.0] When metadata in the JSON-LD format is taken in, you can replace specified strings in the metadata before registration for each JSON-LD mapping used. For details, see "[Replace metadata strings on import](#replace-metadata-strings-on-import)".
+
+### Troubleshooting the JSON-LD mapping
+
+#### "公開日" is required. / "PubDate" is not in itemtype.
+
+In some environments, when you try to save the JSON-LD mapping of the default item type (full), an error dialog box containing the messages '"公開日" is required.' and '"PubDate" is not in itemtype.' appears.
+
+In that case, the JSON-LD mapping contains the following line.
+
+```
+"PubDate": "datePublished",
+```
+
+Rewrite it as follows, and save the change.
+
+```
+"公開日": "datePublished",
+```
+
+The error no longer appears.
+
+#### A large number of error messages such as '"Title" is required.' appear
+
+When you try to save the JSON-LD mapping of the default item type (full), a large number of error messages such as '"Title" is required.' may appear.
+
+In that case, copying and saving the following JSON-LD mapping may reduce the error messages.
+
+```
+{
+    "APC": "rioxxterms:apc",
+    "版": "dcndl:edition",
+    "Date": "datacite:date",
+    "File": "hasPart",
+    "Title": "dc:title",
+    "Rights": "dc:rights",
+    "APC.APC": "rioxxterms:apc.value",
+    "Creator": "jpcoar:creator",
+    "Heading": "headline",
+    "PubDate": "datePublished",
+    "Subject": "jpcoar:subject",
+    "Version": "datacite:version",
+    "版.版": "dcndl:edition.value",
+    "Language": "dc:language",
+    "Page End": "jpcoar:pageEnd",
+    "Relation": "jpcoar:relation",
+    "Temporal": "dcterms:temporal",
+    "Publisher": "dc:publisher",
+    "大きさ": "dcterms:extent",
+    "部編名": "dcndl:volumeTitle",
+    "Conference": "jpcoar:conference",
+    "Identifier": "jpcoar:identifier",
+    "Page Start": "jpcoar:pageStart",
+    "版.言語": "dcndl:edition.language",
+    "Contributor": "jpcoar:contributor",
+    "Date.日付": "datacite:date.value",
+    "Degree Name": "dcndl:degreeName",
+    "Description": "datacite:description",
+    "File.日付": "hasPart.datacite:date",
+    "Date Granted": "dcndl:dateGranted",
+    "Geo Location": "datacite:geoLocation",
+    "Issue Number": "jpcoar:issue",
+    "Source Title": "jpcoar:sourceTitle",
+    "Title.言語": "dc:title.language",
+    "Version Type": "oaire:version",
+    "カタログ": "jpcoar:catalog",
+    "所蔵機関": "jpcoar:holdingAgent",
+    "Access Rights": "dcterms:accessRights",
+    "Resource Type": "dc:type",
+    "Rights Holder": "jpcoar:rightsHolder",
+    "Rights.言語": "dc:rights.language",
+    "Volume Number": "jpcoar:volume",
+    "Degree Grantor": "jpcoar:degreeGrantor",
+    "File.サイズ": "hasPart.jpcoar:extent",
+    "File.本文URL": "hasPart.jpcoar:URI",
+    "Heading.言語": "headline.language",
+    "Subject.主題": "jpcoar:subject.value",
+    "Subject.言語": "jpcoar:subject.language",
+    "Language.言語": "dc:language.value",
+    "Number of Pages": "jpcoar:numPages",
+    "Temporal.言語": "dcterms:temporal.language",
+    "出版者情報": "jpcoar:publisher",
+    "原文の言語": "dcndl:originalLanguage",
+    "物理的形態": "jpcoar:format",
+    "Issue Number.号": "jpcoar:issue.value",
+    "Publisher.言語": "dc:publisher.language",
+    "大きさ.Extent": "dcterms:extent.value",
+    "Alternative Title": "dcterms:alternative",
+    "Conference.回次": "jpcoar:conference.jpcoar:conferenceSequence",
+    "File.アクセス": "hasPart.dcterms:accessRights",
+    "File.グループ": "hasPart.department",
+    "File.表示形式": "hasPart.jpcoar:format",
+    "Funding Reference": "jpcoar:fundingReference",
+    "Source Identifier": "jpcoar:sourceIdentifier",
+    "Subject.主題URI": "jpcoar:subject.subjectURI",
+    "Volume Number.巻": "jpcoar:volume.value",
+    "カタログ.Thumbnail": "jpcoar:catalog.jpcoar:file",
+    "Degree Name.言語": "dcndl:degreeName.language",
+    "Description.言語": "datacite:description.language",
+    "File.日付.日付": "hasPart.datacite:date.value",
+    "Title.タイトル": "dc:title.value",
+    "カタログ.Title": "jpcoar:catalog.dc:title",
+    "大きさ.Language": "dcterms:extent.language",
+    "部編名.Language": "dcndl:volumeTitle.language",
+    "Dissertation Number": "dcndl:dissertationNumber",
+    "Publisher.出版者": "dc:publisher.value",
+    "Rights.権利情報": "dc:rights.value",
+    "Source Title.言語": "jpcoar:sourceTitle.language",
+    "カタログ.Rights": "jpcoar:catalog.dc:rights",
+    "部編名.部編名": "dcndl:volumeTitle.value",
+    "Conference.会議名": "jpcoar:conference.jpcoar:conferenceName",
+    "Conference.開催国": "jpcoar:conference.jpcoar:conferenceCountry",
+    "Conference.開催地": "jpcoar:conference.jpcoar:conferencePlace",
+    "Creator.作成者名": "jpcoar:creator.jpcoar:givenName",
+    "Creator.作成者姓": "jpcoar:creator.jpcoar:familyName",
+    "Date.日付タイプ": "datacite:date.dateType",
+    "File.ファイル名": "hasPart.name",
+    "File.ライセンス": "hasPart.license",
+    "Heading.大見出し": "headline.value",
+    "Heading.小見出し": "headline.alternativeHeadline",
+    "Identifier.識別子": "jpcoar:identifier.value",
+    "Subject.主題Scheme": "jpcoar:subject.subjectScheme",
+    "カタログ.License": "jpcoar:catalog.jpcoar:license",
+    "カタログ.Subject": "jpcoar:catalog.jpcoar:subject",
+    "Degree Name.学位名": "dcndl:degreeName.value",
+    "Relation.関連名称": "jpcoar:relation.jpcoar:relatedTitle",
+    "Conference.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor",
+    "Conference.開催会場": "jpcoar:conference.jpcoar:conferenceVenue",
+    "Conference.開催期間": "jpcoar:conference.jpcoar:conferenceDate.language",
+    "Creator.作成者別名": "jpcoar:creator.jpcoar:creatorAlternative",
+    "Creator.作成者姓名": "jpcoar:creator.jpcoar:creatorName",
+    "Creator.作成者所属": "jpcoar:creator.jpcoar:affiliation",
+    "File.フォーマット": "hasPart.jpcoar:mimeType",
+    "Identifier Registration": "jpcoar:identifierRegistration",
+    "カタログ.Identifier": "jpcoar:catalog.jpcoar:identifier",
+    "Alternative Title.言語": "dcterms:alternative.language",
+    "Contributor.寄与者名": "jpcoar:contributor.jpcoar:givenName",
+    "Contributor.寄与者姓": "jpcoar:contributor.jpcoar:familyName",
+    "Creator.作成者名.名": "jpcoar:creator.jpcoar:givenName.value",
+    "Creator.作成者姓.姓": "jpcoar:creator.jpcoar:familyName.value",
+    "Description.内容記述": "datacite:description.value",
+    "File.サイズ.サイズ": "hasPart.jpcoar:extent.value",
+    "File.公開日.タイプ": "$Available",
+    "File.公開日.公開日": "hasPart.datePublished",
+    "File.本文URL.ラベル": "hasPart.@id",
+    "File.本文URL.本文URL": "hasPart.jpcoar:URI.value",
+    "Page End.終了ページ": "jpcoar:pageEnd.value",
+    "Relation.関連タイプ": "jpcoar:relation.relationType",
+    "Relation.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier",
+    "Temporal.時間的範囲": "dcterms:temporal.value",
+    "カタログ.Hosting Institution": "jpcoar:catalog.jpcoar:contributor",
+    "カタログ.Descriptions": "jpcoar:catalog.datacite:description",
+    "カタログ.Title.Title": "jpcoar:catalog.dc:title.value",
+    "原文の言語.Original Language": "dcndl:originalLanguage.language",
+    "日付（リテラル）": "dcterms:date",
+    "物理的形態.Language": "jpcoar:format.language",
+    "Bibliographic Information": "dcterms:medium",
+    "Source Title.収録物名": "jpcoar:sourceTitle.value",
+    "出版者情報.出版地": "jpcoar:publisher.dcndl:location",
+    "Creator.作成者タイプ": "jpcoar:creator.creatorType",
+    "Creator.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier",
+    "File.バージョン情報": "hasPart.datacite:version",
+    "Page Start.開始ページ": "jpcoar:pageStart.value",
+    "Rights Holder.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName",
+    "カタログ.Access Rights": "jpcoar:catalog.dcterms:accessRights",
+    "カタログ.Thumbnail.Thumbnail URI.Thumbnail URI": "jpcoar:catalog.jpcoar:file.jpcoar:URI",
+    "カタログ.Rights.Rights": "jpcoar:catalog.dc:rights.value",
+    "Conference.会議名.言語": "jpcoar:conference.jpcoar:conferenceName.language",
+    "Conference.開催地.言語": "jpcoar:conference.jpcoar:conferencePlace.language",
+    "Contributor.寄与者別名": "jpcoar:contributor.jpcoar:contributorAlternative",
+    "Contributor.寄与者姓名": "jpcoar:contributor.jpcoar:contributorName",
+    "Contributor.寄与者所属": "jpcoar:contributor.jpcoar:affiliation",
+    "Creator.作成者名.言語": "jpcoar:creator.jpcoar:givenName.language",
+    "Creator.作成者姓.言語": "jpcoar:creator.jpcoar:familyName.language",
+    "File.日付.日付タイプ": "hasPart.datacite:date.dateType",
+    "Rights.権利情報Resource": "dc:rights.rdf:resource",
+    "カタログ.Title.Language": "jpcoar:catalog.dc:title.language",
+    "Contributor.寄与者名.名": "jpcoar:contributor.jpcoar:givenName.value",
+    "Contributor.寄与者姓.姓": "jpcoar:contributor.jpcoar:familyName.value",
+    "Number of Pages.ページ数": "jpcoar:numPages.value",
+    "Relation.関連名称.言語": "jpcoar:relation.jpcoar:relatedTitle.language",
+    "Version Type.出版タイプ": "oaire:version.value",
+    "Version Type.査読の有無": "oaire:version.itemReviewed",
+    "カタログ.License.License": "jpcoar:catalog.jpcoar:license.value",
+    "カタログ.Rights.Language": "jpcoar:catalog.dc:rights.language",
+    "カタログ.Subject.Subject": "jpcoar:catalog.jpcoar:subject.value",
+    "出版者情報.出版者名": "jpcoar:publisher.jpcoar:publisherName",
+    "所蔵機関.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName",
+    "Access Rights.アクセス権": "dcterms:accessRights.value",
+    "Bibliographic Information.号": "dcterms:medium.issueNumber",
+    "Bibliographic Information.巻": "dcterms:medium.volumeNumber",
+    "Identifier.識別子タイプ": "jpcoar:identifier.identifierType",
+    "Resource Type.資源タイプ": "dc:type.value",
+    "Version.バージョン情報": "datacite:version.value",
+    "カタログ.Thumbnail.Thumbnail URI.Object Type": "jpcoar:catalog.jpcoar:file.objectType",
+    "カタログ.License.Language": "jpcoar:catalog.jpcoar:license.language",
+    "カタログ.Subject.Language": "jpcoar:catalog.jpcoar:subject.language",
+    "Conference.主催機関.言語": "jpcoar:conference.jpcoar:conferenceSponsor.language",
+    "Conference.会議名.会議名": "jpcoar:conference.jpcoar:conferenceName.value",
+    "Conference.開催会場.言語": "jpcoar:conference.jpcoar:conferenceVenue.language",
+    "Conference.開催地.開催地": "jpcoar:conference.jpcoar:conferencePlace.value",
+    "Conference.開催期間.言語": "jpcoar:conference.jpcoar:conferenceDate",
+    "Contributor.寄与者タイプ": "jpcoar:contributor.contributorType",
+    "Contributor.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier",
+    "Creator.作成者別名.別名": "jpcoar:creator.jpcoar:creatorAlternative.value",
+    "Creator.作成者別名.言語": "jpcoar:creator.jpcoar:creatorAlternative.language",
+    "Creator.作成者姓名.姓名": "jpcoar:creator.jpcoar:creatorName.value",
+    "Creator.作成者姓名.言語": "jpcoar:creator.jpcoar:creatorName.language",
+    "データセットシリーズ": "jpcoar:datasetSeries",
+    "Contributor.寄与者名.言語": "jpcoar:contributor.jpcoar:givenName.language",
+    "Contributor.寄与者姓.言語": "jpcoar:contributor.jpcoar:familyName.language",
+    "出版者情報.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription",
+    "日付（リテラル）.言語": "dcterms:date.language",
+    "物理的形態.物理的形態": "jpcoar:format.value",
+    "Access Rights.アクセス権URI": "dcterms:accessRights.rdf:resource",
+    "Identifier Registration.ID登録": "jpcoar:identifierRegistration.value",
+    "Rights Holder.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier",
+    "カタログ.Rights.RDF Resource": "jpcoar:catalog.dc:rights.rdf:resource",
+    "カタログ.Subject.Subject URI": "jpcoar:catalog.jpcoar:subject.subjectURI",
+    "Conference.開催期間.終了年": "jpcoar:conference.jpcoar:conferenceDate.endYear",
+    "Conference.開催期間.終了日": "jpcoar:conference.jpcoar:conferenceDate.endDay",
+    "Conference.開催期間.終了月": "jpcoar:conference.jpcoar:conferenceDate.endMonth",
+    "Conference.開催期間.開始年": "jpcoar:conference.jpcoar:conferenceDate.startYear",
+    "Conference.開催期間.開始日": "jpcoar:conference.jpcoar:conferenceDate.startDay",
+    "Conference.開催期間.開始月": "jpcoar:conference.jpcoar:conferenceDate.startMonth",
+    "Description.内容記述タイプ": "datacite:description.descriptionType",
+    "Funding Reference.助成機関名": "jpcoar:fundingReference.jpcoar:funderName",
+    "Funding Reference.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle",
+    "Rights Holder.権利者名.言語": "jpcoar:rightsHolder.jpcoar:rightsHolderName.value",
+    "カタログ.Descriptions.Language": "jpcoar:catalog.datacite:description.language",
+    "カタログ.License.License Type": "jpcoar:catalog.jpcoar:license.licenseType",
+    "カタログ.License.RDF Resource": "jpcoar:catalog.jpcoar:license.rdf:resource",
+    "原文の言語.Original Language": "dcndl:originalLanguage.value",
+    "Contributor.寄与者別名.別名": "jpcoar:contributor.jpcoar:contributorAlternative.value",
+    "Contributor.寄与者別名.言語": "jpcoar:contributor.jpcoar:contributorAlternative.language",
+    "Contributor.寄与者姓名.姓名": "jpcoar:contributor.jpcoar:contributorName.value",
+    "Contributor.寄与者姓名.言語": "jpcoar:contributor.jpcoar:contributorName.language",
+    "Date Granted.学位授与年月日": "dcndl:dateGranted.value",
+    "Geo Location.位置情報（点）": "datacite:geoLocation.datacite:geoLocationPoint",
+    "Relation.関連名称.関連名称": "jpcoar:relation.jpcoar:relatedTitle.value",
+    "カタログ.Identifier.Identifier": "jpcoar:catalog.jpcoar:identifier.value",
+    "所蔵機関.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier",
+    "Bibliographic Information.発行日": "dcterms:medium.datePublished",
+    "Bibliographic Information.雑誌名": "dcterms:medium.name",
+    "カタログ.Subject.Subject Scheme": "jpcoar:catalog.jpcoar:subject.subjectScheme",
+    "出版者情報.出版地.出版地": "jpcoar:publisher.dcndl:location.value",
+    "出版者情報.出版者名.言語": "jpcoar:publisher.jpcoar:publisherName.language",
+    "Conference.主催機関.主催機関": "jpcoar:conference.jpcoar:conferenceSponsor.value",
+    "Conference.開催会場.開催会場": "jpcoar:conference.jpcoar:conferenceVenue.value",
+    "Conference.開催期間.開催期間": "jpcoar:conference.jpcoar:conferenceDate.value",
+    "Degree Grantor.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName",
+    "Funding Reference.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber",
+    "Source Identifier.収録物識別子": "jpcoar:sourceIdentifier.value",
+    "Version Type.出版タイプResource": "oaire:version.rdf:resource",
+    "カタログ.Descriptions.Description": "jpcoar:catalog.datacite:description.value",
+    "Geo Location.位置情報（空間）": "datacite:geoLocation.datacite:geoLocationBox",
+    "所蔵機関.所蔵機関名.Language": "jpcoar:holdingAgent.jpcoar:holdingAgentName.language",
+    "Bibliographic Information.ページ数": "dcterms:medium.numberOfPages",
+    "Creator.作成者メールアドレス": "jpcoar:creator.email",
+    "Dissertation Number.学位授与番号": "dcndl:dissertationNumber.value",
+    "Resource Type.資源タイプ識別子": "dc:type.rdf:resource",
+    "出版者情報.出版者注記.言語": "jpcoar:publisher.jpcoar:publisherDescription.language",
+    "Creator.作成者姓名.名前タイプ": "jpcoar:creator.jpcoar:creatorName.nameType",
+    "Creator.作成者所属.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName",
+    "Funding Reference.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream",
+    "Funding Reference.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier",
+    "Rights Holder.権利者名.権利者名": "jpcoar:rightsHolder.jpcoar:rightsHolderName.language",
+    "カタログ.Access Rights.アクセス権URI": "jpcoar:catalog.dcterms:accessRights.rdf:resource",
+    "カタログ.Identifier.Identifier Type": "jpcoar:catalog.jpcoar:identifier.identifierType",
+    "Funding Reference.助成機関名.言語": "jpcoar:fundingReference.jpcoar:funderName.language",
+    "Funding Reference.研究課題名.言語": "jpcoar:fundingReference.jpcoar:awardTitle.language",
+    "Relation.関連識別子.関連識別子": "jpcoar:relation.jpcoar:relatedIdentifier.value",
+    "カタログ.Access Rights.アクセス権": "jpcoar:catalog.dcterms:accessRights.value",
+    "Bibliographic Information.終了ページ": "dcterms:medium.pageEnd",
+    "Bibliographic Information.開始ページ": "dcterms:medium.pageStart",
+    "Geo Location.位置情報（点）.経度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLongitude",
+    "Geo Location.位置情報（点）.緯度": "datacite:geoLocation.datacite:geoLocationPoint.datacite:pointLatitude",
+    "Identifier Registration.ID登録タイプ": "jpcoar:identifierRegistration.identifierType",
+    "カタログ.Hosting Institution.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName",
+    "カタログ.Hosting Institution.Hosting Institution Type": "jpcoar:catalog.jpcoar:contributor.contributorType",
+    "カタログ.Descriptions.Description Type": "jpcoar:catalog.datacite:description.descriptionType",
+    "出版者情報.出版者名.出版者名": "jpcoar:publisher.jpcoar:publisherName.value",
+    "Alternative Title.その他のタイトル": "dcterms:alternative.value",
+    "Bibliographic Information.発行日.日付": "dcterms:medium.datePublished.value",
+    "Bibliographic Information.雑誌名.言語": "dcterms:medium.name.language",
+    "Contributor.寄与者メールアドレス": "jpcoar:contributor.email",
+    "Degree Grantor.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier",
+    "File.本文URL.オブジェクトタイプ": "hasPart.jpcoar:URI.objectType",
+    "Contributor.寄与者姓名.名前タイプ": "jpcoar:contributor.jpcoar:contributorName.nameType",
+    "Contributor.寄与者所属.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName",
+    "Degree Grantor.学位授与機関名.言語": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.language",
+    "Geo Location.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace",
+    "Relation.関連識別子.識別子タイプ": "jpcoar:relation.jpcoar:relatedIdentifier.identifierType",
+    "所蔵機関.所蔵機関名.所蔵機関名": "jpcoar:holdingAgent.jpcoar:holdingAgentName.value",
+    "Creator.作成者所属.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "Creator.作成者識別子.作成者識別子": "jpcoar:creator.jpcoar:nameIdentifier.value",
+    "Source Identifier.収録物識別子タイプ": "jpcoar:sourceIdentifier.identifierType",
+    "データセットシリーズ.Dataset Series": "jpcoar:datasetSeries.value",
+    "Creator.作成者所属.所属機関名.言語": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.language",
+    "Funding Reference.プログラム情報.言語": "jpcoar:fundingReference.jpcoar:fundingStream.language",
+    "出版者情報.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace",
+    "出版者情報.出版者注記.出版者注記": "jpcoar:publisher.jpcoar:publisherDescription.value",
+    "Bibliographic Information.雑誌名.タイトル": "dcterms:medium.name.value",
+    "Creator.作成者識別子.作成者識別子URI": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Funding Reference.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier",
+    "Contributor.寄与者所属.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier",
+    "Contributor.寄与者識別子.寄与者識別子": "jpcoar:contributor.jpcoar:nameIdentifier.value",
+    "Funding Reference.助成機関名.助成機関名": "jpcoar:fundingReference.jpcoar:funderName.value",
+    "Funding Reference.研究課題名.研究課題名": "jpcoar:fundingReference.jpcoar:awardTitle.value",
+    "日付（リテラル）.日付（リテラル）": "dcterms:date.value",
+    "Contributor.寄与者所属.所属機関名.言語": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.language",
+    "Geo Location.位置情報（空間）.北部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:northBoundLatitude",
+    "Geo Location.位置情報（空間）.南部緯度": "datacite:geoLocation.datacite:geoLocationBox.datacite:southBoundLatitude",
+    "Geo Location.位置情報（空間）.東部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:eastBoundLongitude",
+    "Geo Location.位置情報（空間）.西部経度": "datacite:geoLocation.datacite:geoLocationBox.datacite:westBoundLongitude",
+    "カタログ.Hosting Institution.Hosting Institution Name.Language": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.language",
+    "Bibliographic Information.発行日.日付タイプ": "dcterms:medium.datePublished.dateType",
+    "Creator.作成者識別子.作成者識別子Scheme": "jpcoar:creator.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Rights Holder.権利者識別子.権利者識別子": "jpcoar:rightsHolder.jpcoar:nameIdentifier.value",
+    "Contributor.寄与者識別子.寄与者識別子URI": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Rights Holder.権利者識別子.権利者識別子URI": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Contributor.寄与者識別子.寄与者識別子Scheme": "jpcoar:contributor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Creator.作成者所属.所属機関名.所属機関名": "jpcoar:creator.jpcoar:affiliation.jpcoar:affiliationName.value",
+    "Funding Reference.研究課題番号.研究課題番号": "jpcoar:fundingReference.jpcoar:awardNumber.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.value",
+    "Rights Holder.権利者識別子.権利者識別子Scheme": "jpcoar:rightsHolder.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Degree Grantor.学位授与機関名.学位授与機関名": "jpcoar:degreeGrantor.jpcoar:degreeGrantorName.value",
+    "Funding Reference.助成機関識別子.助成機関識別子タイプ": "jpcoar:fundingReference.jpcoar:funderIdentifier.funderIdentifierType",
+    "Funding Reference.研究課題番号.研究課題番号URI": "jpcoar:fundingReference.jpcoar:awardNumber.awardURI",
+    "カタログ.Hosting Institution.Hosting Institution Name.Hosting Institution Name": "jpcoar:catalog.jpcoar:contributor.jpcoar:contributorName.value",
+    "Contributor.寄与者所属.所属機関名.所属機関名": "jpcoar:contributor.jpcoar:affiliationjpcoar:affiliationName.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子URI": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierURI",
+    "Creator.作成者メールアドレス.メールアドレス": "jpcoar:creator.email.value",
+    "Funding Reference.プログラム情報.プログラム情報": "jpcoar:fundingReference.jpcoar:fundingStream.value",
+    "Funding Reference.助成機関識別子.助成機関識別子": "jpcoar:fundingReference.jpcoar:funderIdentifier.value",
+    "Contributor.寄与者メールアドレス.メールアドレス": "jpcoar:contributor.email.value",
+    "Funding Reference.研究課題番号.研究課題番号タイプ": "jpcoar:fundingReference.jpcoar:awardNumber.awardNumberType",
+    "Creator.作成者所属.所属機関識別子.所属機関識別子": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "所蔵機関.所蔵機関識別子.所蔵機関識別子スキーマ": "jpcoar:holdingAgent.jpcoar:holdingAgentNameIdentifier.nameIdentifierScheme",
+    "Creator.作成者所属.所属機関識別子.所属機関識別子URI": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Degree Grantor.学位授与機関識別子.学位授与機関識別子": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.value",
+    "Contributor.寄与者所属.所属機関識別子.所属機関識別子": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.value",
+    "Creator.作成者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:creator.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Contributor.寄与者所属.所属機関識別子.所属機関識別子URI": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierURI",
+    "Geo Location.位置情報（自由記述）.位置情報（自由記述）": "datacite:geoLocation.datacite:geoLocationPlace.value",
+    "Degree Grantor.学位授与機関識別子.学位授与機関識別子Scheme": "jpcoar:degreeGrantor.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "Contributor.寄与者所属.所属機関識別子.所属機関識別子Scheme": "jpcoar:contributor.jpcoar:affiliation.jpcoar:nameIdentifier.nameIdentifierScheme",
+    "出版者情報.出版地（国名コード）.出版地（国名コード）": "jpcoar:publisher.dcndl:publicationPlace.value",
+    "Funding Reference.プログラム情報識別子.プログラム情報識別子": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.value",
+    "Funding Reference.プログラム情報識別子.プログラム情報識別子タイプ": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierType",
+    "Funding Reference.プログラム情報識別子.プログラム情報識別子タイプURI": "jpcoar:fundingReference.jpcoar:fundingStreamIdentifier.fundingStreamIdentifierTypeURI"
+}
+```
+
+#### "xxxx" is required.
+
+This error message appears when the mapping for an element that is required in the item type is missing or incorrect. The required elements differ depending on the settings of the item type. Examples are as follows.
+
+  - PubDate
+
+  - 資源タイプ (Resource Type)
+
+  - 資源タイプ.資源タイプ識別子 (Resource Type.Resource Type Identifier)
+
+  - 資源タイプ.資源タイプ (Resource Type.Resource Type)
+
+Add the mapping for "xxxx" according to the error message.
+
+#### "xxxx" is not in itemtype.
+
+This error message appears when an item type element specified in the mapping does not exist in the item type. If a similar item type element exists, a hint appears, as in '"xxxx" is not in itemtype, did you mean "yyyy"?'.
+
+For example, if the label of the title property is set to "タイトルa", the following mapping causes an error.
+
+```
+"タイトル": "dc:title",
+"タイトル.言語": "dc:title.language",
+"タイトル.タイトル": "dc:title.value",   
+```
+
+In this case, you can resolve the error by correcting the mapping as follows.
+
+```
+"タイトルa": "dc:title",
+"タイトルa.言語": "dc:title.language",
+"タイトルa.タイトル": "dc:title.value",   
+```
 
 ## Set up the RO-Crate mapping
 
@@ -11953,6 +12804,25 @@ You cannot delete a workflow if there are running activities (activities other t
 
 ![](media/media/image259.png)
 
+
+## Set up the workspace
+
+This section explains how to set the registration method used when items are registered from the workspace.
+
+To access the screen where you can configure this setting, click "WorkFlow" and then click "WorkSpaceWorkFlow Setting". Select "Direct Registration" or "WorkFlow Registration", and then click "Save". The message "WorkSpace WorkFlow Setting was updated." appears.
+
+### Set the registration method to Direct Registration
+
+When items are registered from the workspace, they are registered directly without using a workflow.
+
+The item type selected in "Item Type Select" is used for item registration.
+
+Items registered with Direct Registration are published immediately after registration. If you want to control publication, use WorkFlow Registration.
+
+### Set the registration method to WorkFlow Registration
+
+When items are registered from the workspace, they are registered using the workflow selected in "WorkFlow Select".
+
 # Communities
 
 This chapter provides information on how to manage communities.
@@ -12949,6 +13819,130 @@ The following temporary file is created when executing ResourceSyncServer with t
 
 /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko\_resync\_xxxxxxxx
 
+
+# SWORD API
+
+This chapter provides information on how to configure the settings for linking items through the SWORD API. The setting method differs depending on the format of the metadata.
+
+Notes:
+
+  - [v2.1.0] Only users who have a role specified in WEKO\_SWORDSERVER\_DEPOSIT\_ROLE\_ENABLE in instance.cfg can register, update, and delete items through the SWORD API. The default roles are System Administrator, Repository Administrator, Community Administrator, and Contributor. Because this setting is read for each API request, changes made in instance.cfg are applied as they are.
+
+  - To use the API, you must register an OAuth2 application and issue an access token in advance. For details of the API specification, see "SWORD API" in the functional specifications.
+
+## Set up TSV/CSV
+
+This section explains how to configure the settings for linking items with metadata in the TSV/CSV format.
+
+1.  Click "SWORD API", and then click "TSV/XML".
+
+> The setting screen appears. If the screen for a different metadata format appears, click the "TSV/CSV" tab.
+
+2.  Set the required elements.
+
+> The following table lists the elements you can set.
+
+Table 12‑1. The elements on the TSV/CSV tab
+
+| Element | Description |
+|---|---|
+| Active | If you select this check box, linking with metadata in the TSV/CSV format is enabled. If you clear the check box, linking with metadata in the TSV/CSV format results in an error. |
+| Registration Type | Select "Direct" or "WorkFlow". "WorkFlow" cannot be specified because the workflow that corresponds to the item type described in the metadata is selected automatically at the time of linking. |
+| Duplicate Check | Checks whether the metadata such as the title duplicates that of an item that is already registered at the time of linking. If you select this check box and an item that may be a duplicate is already registered as a result of the duplicate check, the linking is canceled. \* This element appears only when the item duplicate check feature is enabled (WEKO\_ITEMS\_UI\_ENABLE\_DUPLICATE\_CHECK = True in instance.cfg). |
+
+3.  Click "Save".
+
+## Set up XML
+
+This section explains how to configure the settings for linking items with metadata in the XML format.
+
+1.  Click "SWORD API", and then click "TSV/XML".
+
+2.  Click the "XML" tab.
+
+> The setting screen appears.
+
+3.  Set the required elements.
+
+> The following table lists the elements you can set.
+
+Table 12‑2. The elements on the XML tab
+
+| Element | Description |
+|---|---|
+| Active | If you select this check box, linking with metadata in the XML format is enabled. By default, the check box is cleared (disabled). |
+| Registration Type | For the XML format, the destination index cannot be specified at present, so only "WorkFlow" can be selected ("Direct" cannot be selected). |
+| WorkFlow | Select the workflow to use. This element is required. Only the item types that are linked to the selected workflow can be registered. If the selected workflow has been deleted, an error message appears. Select a workflow again. |
+| Duplicate Check | Checks whether the metadata such as the title duplicates that of an item that is already registered at the time of linking. If you select this check box and an item that may be a duplicate is already registered as a result of the duplicate check, the linking is canceled. \* This element appears only when the item duplicate check feature is enabled (WEKO\_ITEMS\_UI\_ENABLE\_DUPLICATE\_CHECK = True in instance.cfg). |
+
+4.  Click "Save".
+
+## Create a JSON-LD setting
+
+This section explains how to create a setting for linking items with metadata in the JSON-LD format. Using an OAuth2 application and a mapping definition created in advance, you specify the registration type (direct registration or registration through a workflow). You also specify the priority of the APIs used when metadata is complemented by using a DOI at the time of linking.
+
+1.  Click "SWORD API", and then click "JSON-LD".
+
+2.  Click the "Create" tab.
+
+3.  Set each element.
+
+> The following table lists the elements you can set.
+
+Table 12‑3. The elements on the JSON-LD create tab
+
+| Element | Description |
+|---|---|
+| Application<sup>\*</sup> | Select an OAuth2 application registered in advance. This element is required. The options are the applications other than personal access tokens for which a SWORD API setting has not yet been created. |
+| Active | If you select this check box, linking by this application is enabled. If you clear the check box, linking from this application results in an error. |
+| Registration Type<sup>\*</sup> | Select "Direct" or "WorkFlow". This element is required. |
+| WorkFlow | If you select "WorkFlow" for "Registration Type", select the workflow to use. Only the item types that are linked to the selected workflow can be registered. |
+| Mapping<sup>\*</sup> | Select a mapping definition (created in "Item Types" \> "JSON-LD Mapping"). This element is required. For registration through a workflow, only the mapping definitions for the same item type as that of the selected workflow appear as options. When you select a mapping definition, the result of checking the consistency between the item type name and the mapping definition appears below the "Mapping" field. If there is no problem, "✓" appears. If there is a problem, a red "✘" appears and you cannot click "Save". |
+| Duplicate Check | Checks whether the metadata such as the title duplicates that of an item that is already registered at the time of linking. If you select this check box and an item that may be a duplicate is already registered as a result of the duplicate check, the linking is canceled. \* This element appears only when the item duplicate check feature is enabled (WEKO\_ITEMS\_UI\_ENABLE\_DUPLICATE\_CHECK = True in instance.cfg). |
+| Metadata Retrieve API | Used to complement the metadata by using external APIs at the time of linking. Move the APIs to use from "Disable" to "Enable" and arrange them in order of priority. The available APIs are "JaLC API", "医中誌 Web API", "CrossRef", "DataCite", "CiNii Research", and "Original" (the original metadata received via the SWORD API). "Original" cannot be disabled. |
+
+4.  When the settings are complete, click "Save".
+
+Additional Information:
+
+  - Metadata is complemented when the metadata auto-fill flag (wk:metadataAutoFill) is enabled in the JSON-LD metadata and the DOI to be used for the complement is specified.
+
+  - [v2.1.0] If the researchmap linkage flag (wk:researchmapLinkage) is enabled in the JSON-LD metadata, the item is linked to researchmap as an achievement when the item is registered through a workflow (the linkage with researchmap must be configured). For details of each flag, see "[WEKO-specific properties (wk:)](#weko-specific-properties-wk)" and the custom vocabulary in "RO-Crate Import" in the functional specifications.
+
+## Edit a JSON-LD setting
+
+This section explains how to edit a setting for linking items with metadata in the JSON-LD format.
+
+1.  Click the "List" tab.
+
+2.  Click on the pencil icon displayed at the beginning of the line for the setting you want to edit.
+
+> The edit screen appears. "Application" cannot be changed.
+
+3.  Edit the required elements, and then click "Save".
+
+Notes:
+
+If there is an activity awaiting approval in the workflow specified in the setting, you cannot edit the setting. When you open the edit screen, the message "There are unapproved items in the workflow using this application. Until all are approved, no changes can be made to the configuration." appears, and you cannot operate the elements or "Save".
+
+## Delete a JSON-LD setting
+
+This section explains how to delete a setting for linking items with metadata in the JSON-LD format.
+
+1.  Click the "List" tab.
+
+2.  Click on the trash can icon displayed at the beginning of the line for the setting you want to delete.
+
+> You are prompted to confirm the deletion.
+
+3.  Click "OK" on the confirmation dialog that appears.
+
+> The setting is deleted.
+
+Notes:
+
+If there is an activity awaiting approval in the workflow specified in the setting, you cannot delete the setting. The message "There are unapproved items in the workflow using this application. Until all are approved, no changes can be made to the configuration." appears.
+
 #   
 Records
 
@@ -13050,7 +14044,7 @@ zu0301020.tif![](media/media/image317.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 13‑1. The elements in the "Create" tab
+Table 14‑1. The elements in the "Create" tab
 
 | Element               | Description                                                                                      |
 | --------------------- | ------------------------------------------------------------------------------------------------ |
@@ -13182,19 +14176,19 @@ zu0303020.tif![](media/media/image323.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 13‑2. The elements in the "Create" tab
+Table 14‑2. The elements in the "Create" tab
 
 | Element    | Description                                        |
 | ---------- | -------------------------------------------------- |
 | Name       | Specify a Location name. This element is required. |
 | URI        | Specify the URI for the Location. For an S3-compatible storage, specify "S3://*bucket name*". If Type is S3 Virtual Host, specify a URL starting with "https://". |
-| Type       | Select a type. The types are blank, "S3 Path", and "S3 Virtual Host" (shown as "S3 Virtural Host" on the screen). If you select S3 Path or S3 Virtual Host, the elements for S3-compatible object storage appear (see "Table 13‑3"). |
+| Type       | Select a type. The types are blank, "S3 Path", and "S3 Virtual Host" (shown as "S3 Virtural Host" on the screen). If you select S3 Path or S3 Virtual Host, the elements for S3-compatible object storage appear (see "Table 14‑3"). |
 | Quota Size | Specify an upper limit for the capacity.           |
 | Default    | Check if you want to use it as the default.<br>\* If another Location is already set as the default, this element is grayed out (inactive) and cannot be selected. You can set a new Location as the default after clearing the existing default Location. |
 
 If you select "S3 Path" or "S3 Virtual Host" for Type, the following elements appear.
 
-Table 13‑3. The elements for S3-compatible object storage
+Table 14‑3. The elements for S3-compatible object storage
 
 | Element    | Description |
 | ---------- | ----------- |
@@ -13294,6 +14288,89 @@ zu0305010.tif![](media/media/image328.png)
 
 The details appear.
 
+
+## Use the institutional storage feature
+
+The institutional storage feature allows you to add a storage (Location) as a destination for storing repository data. It is provided as an option for cases where the storage provided by JAIRO Cloud is not sufficient.
+
+[v2.1.0] Only system administrators can create, edit, and delete Locations. Repository administrators cannot add or change Locations; they can only view the list and details. Repository administrators can select the storage destination for each workflow. For example, you can store data registered through the research data registration workflow in the institutional storage, and data registered through other workflows in the JAIRO Cloud storage.
+
+Note that the storage destination cannot be changed after an item is registered. To change the storage destination, you need to upload the files again.
+
+A storage that can be used as an institutional storage for JAIRO Cloud must meet the following conditions.
+
+  - "Path Style" or "Virtual Hosted Style" can be used for object URLs.
+
+  - Presigned URLs can be used. They are used to let users download files directly from the institutional storage.
+
+However, since there is no clear definition of S3-compatible storage, a storage may not be usable even if it meets the above conditions.
+
+To use an institutional storage, contact the JAIRO Cloud help desk with the following information: the product name of the institutional storage, the endpoint URL, the object URL style ("Path Style" or "Virtual Hosted Style"), the signature version ("S3" or "S3v4"), and the name and email address of the contact person.
+
+### Add an institutional storage
+
+1.  [v2.1.0] Add an institutional storage on the Administration screen. Log in as a system administrator and access the Administration screen. Repository administrators cannot add institutional storages (Locations); a system administrator adds one after the help desk above has been contacted.
+
+2.  Click "Files", and then click "Location".
+
+[v2.1.0] The list of Locations appears.
+
+3.  Click on the "Create" tab.
+
+A screen appears where you can create a Location.
+
+4.  Specify "Name", "URI", and "Type". If you select "S3 Path" or "S3 Virtual Host" for "Type", make sure to also enter access\_key, secret\_key, readonly\_access\_key, readonly\_secret\_key, and region\_name, which appear when the type is selected. For "S3 Path", also enter the value of the institutional storage for endpoint\_url.
+
+For example, if you use "jctest" as the bucket name and the S3 Path style for the object URLs of the institutional storage, specify the settings as follows.
+
+Table 14‑4. Example settings for an institutional storage
+
+| Element | Value        |
+| ------- | ------------ |
+| Name    | s3storage    |
+| URI     | s3://jctest/ |
+| Type    | S3 Path      |
+
+5.  Click "Save".
+
+6.  In the list screen, click on the pencil icon displayed at the beginning of the line of the created Location to open the edit screen. When a Location is created, send\_file\_directly is saved as checked and signature\_version is not saved, so configure the following settings on the edit screen.
+
+7.  Make sure that access\_key, secret\_key, readonly\_access\_key, readonly\_secret\_key, endpoint\_url, and region\_name of the institutional storage are set correctly. For readonly\_access\_key and readonly\_secret\_key, set the read-only keys used for read operations such as downloading.
+
+8.  Uncheck send\_file\_directly. This allows files to be downloaded directly from the institutional storage.
+
+9.  For signature\_version, select the signature version supported by the institutional storage.
+
+10. Set "Quota Size" if you want to limit the usage of the institutional storage. Specify the value in bytes.
+
+11. Click "Save".
+
+### Change the storage location of a workflow
+
+1.  Change the storage location of a workflow on the Administration screen. Log in as a repository administrator or a system administrator and access the Administration screen.
+
+2.  Click "WorkFlow", and then click "WorkFlow List".
+
+3.  Create a new workflow, or click the name of an existing workflow.
+
+4.  Select the institutional storage for "Storage Location" (shown as "Strage Location" on the screen).
+
+5.  Click "Save".
+
+This completes the setup of the institutional storage. Files registered through the workflow will be stored in the institutional storage from the next registration.
+
+Notes:
+
+  - A Location in which files have ever been stored cannot be deleted.
+
+  - The location of files stored in a Location cannot be changed after registration.
+
+  - If you change the storage location of a workflow, the new storage location is used for registrations made after the change. The storage location of items that are already registered is not changed.
+
+  - You can change the storage location of a workflow while an activity using the workflow is running. However, if files have already been uploaded in the activity, the previous storage location is used.
+
+  - Files stored in an institutional storage cannot be managed on the JAIRO Cloud side. Since JAIRO Cloud cannot handle troubles such as accidentally deleted files, establish a backup system on the institution side.
+
 # LINKID=managemultipartobject【参照先】LINKID=managefileinstance【参照先】User Management
 
 This chapter provides information on how to manage users.
@@ -13332,7 +14409,7 @@ zu1001020.tif![](media/media/image330.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 14‑1. The elements in the "Create" tab
+Table 15‑1. The elements in the "Create" tab
 
 | Element  | Description                              |
 | -------- | ---------------------------------------- |
@@ -13417,7 +14494,7 @@ zu1002020.tif![](media/media/image335.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 14‑2. The elements in the "Create" tab
+Table 15‑2. The elements in the "Create" tab
 
 | Element     | Description                                     |
 | ----------- | ----------------------------------------------- |
@@ -13502,7 +14579,7 @@ zu1003020.tif![](media/media/image340.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 14‑3. The elements in the "Create" tab
+Table 15‑3. The elements in the "Create" tab
 
 | Element  | Description                              |
 | -------- | ---------------------------------------- |
@@ -13623,7 +14700,7 @@ zu1005020.tif![](media/media/image346.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 14‑4. The elements in the "Create" tab
+Table 15‑4. The elements in the "Create" tab
 
 | Element        | Description                                        |
 | -------------- | -------------------------------------------------- |
@@ -13700,7 +14777,7 @@ zu1006020.tif![](media/media/image348.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 14‑5. The elements in the "Create" tab
+Table 15‑5. The elements in the "Create" tab
 
 | Element       | Description                               |
 | ------------- | ----------------------------------------- |
@@ -13864,7 +14941,7 @@ zu1009020.tif![](media/media/image355.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 14‑6. The elements in the "Create" tab
+Table 15‑6. The elements in the "Create" tab
 
 | Element     | Description          |
 | ----------- | -------------------- |
@@ -13986,7 +15063,7 @@ zu1011020.tif![](media/media/image361.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 14‑7. The elements in the "Create" tab
+Table 15‑7. The elements in the "Create" tab
 
 | Element                | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ |
@@ -14095,7 +15172,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑1. The elements in "Items".
+Table 16‑1. The elements in "Items".
 
 <table>
 <thead>
@@ -14221,7 +15298,7 @@ zu0814020.tif![](media/media/image370.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑2. The elements in "Header Settings"
+Table 16‑2. The elements in "Header Settings"
 
 <table>
 <thead>
@@ -14271,7 +15348,7 @@ zu0815010.tif![](media/media/image371.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑3. The elements in "Ranking"
+Table 16‑3. The elements in "Ranking"
 
 <table>
 <thead>
@@ -14419,7 +15496,7 @@ zu0804020.tif![](media/media/image380.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑4. The elements in "Prefix"
+Table 16‑4. The elements in "Prefix"
 
 | Element           | Description                                                           |
 | ----------------- | --------------------------------------------------------------------- |
@@ -14490,7 +15567,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑5. The elements in "Item Export"
+Table 16‑5. The elements in "Item Export"
 
 | Element                       | Description                                       |
 | ----------------------------- | ------------------------------------------------- |
@@ -14517,7 +15594,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑6. The elements in "Items".
+Table 16‑6. The elements in "Items".
 
 | Element                          | Description                                                    |
 | -------------------------------- | -------------------------------------------------------------- |
@@ -14542,7 +15619,7 @@ This section explains how to configure the author search.
 > 
 > The following table lists the elements displayed.
 
-Table 15‑7. The elements in the "Search Author Setting" area
+Table 16‑7. The elements in the "Search Author Setting" area
 
 <table>
 <thead>
@@ -14576,7 +15653,7 @@ zu0816010.tif![](media/media/image388.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑8. The elements in "Search Results Setting"
+Table 16‑8. The elements in "Search Results Setting"
 
 <table>
 <thead>
@@ -14750,7 +15827,7 @@ This section explains how to configure the index tree/facet display.
 > 
 > ![](media/media/image390.png)
 
-Table 15‑9. The elements in "Index Tree/Facet Display Setting"
+Table 16‑9. The elements in "Index Tree/Facet Display Setting"
 
 <table>
 <thead>
@@ -14803,7 +15880,7 @@ You can configure the elements in the main content when the top page screen is i
 > 
 > ![](media/media/image391.png)
 
-Table 15‑10. The elements in "Main Screen Initial Display Setting"
+Table 16‑10. The elements in "Main Screen Initial Display Setting"
 
 <table>
 <thead>
@@ -15011,7 +16088,7 @@ zu0818010.tif![](media/media/image397.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑11. The elements in "Site Info"
+Table 16‑11. The elements in "Site Info"
 
 <table>
 <thead>
@@ -15208,7 +16285,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑13. The elements in "Send Test Mail"
+Table 16‑13. The elements in "Send Test Mail"
 
 | Element   | Description                        |
 | --------- | ---------------------------------- |
@@ -15219,6 +16296,508 @@ Table 15‑13. The elements in "Send Test Mail"
 5.  Click "Send".
 
 A test email message is sent out. Verify that the recipient has received the test email message.
+
+
+## Edit mail templates
+
+This section explains how to edit the templates of emails sent from the System.
+
+The mail template feature is provided to the institutions participating in the early use of the application-for-use feature. Institutions that have not applied for the early use of this feature cannot use it. If you are interested in using this feature, contact wekosoftware@nii.ac.jp.
+
+1.  Click "Setting", and then click "Mail Templates".
+
+A screen appears where you can edit mail templates. The list of mail templates appears on the left side of the screen.
+
+2.  Select the mail template you want to edit.
+
+If you want to create a new mail template, click "Add".
+
+The text boxes on the right side of the screen become editable.
+
+3.  Edit the mail template in the text boxes on the right side of the screen.
+
+Enter the subject in "Subject" and the body in the text box below it. "Subject" and the body are required.
+
+A string enclosed in square brackets ([ ]) is used as a variable. The following table lists the variables you can use and their contents.
+
+\<TBLATT POSITION="1" SCALE="151"\>
+
+Table 16‑15. The variables available in mail templates
+
+| Variable                                | Content                                                         |
+| --------------------------------------- | --------------------------------------------------------------- |
+| url\_guest\_user                        | URL of the guide to registering an application for use (for guest users) |
+| register\_date                          | Registration date or report date                                |
+| restricted\_fullname                    | Name of the registrant                                          |
+| restricted\_university\_institution     | Affiliation of the registrant                                   |
+| restricted\_activity\_id                | Application number of the application for use                  |
+| restricted\_research\_title             | Research title of the registrant                                |
+| restricted\_data\_name                  | Data requested in the application for use                       |
+| restricted\_application\_date           | Date of the application for use                                 |
+| restricted\_mail\_address               | Email address of the registrant                                 |
+| advisor\_fullname                       | Full name of the advisor                                        |
+| advisor\_university\_institution        | Affiliation of the advisor                                      |
+| guarantor\_fullname                     | Full name of the guarantor                                      |
+| guarantor\_university\_institution      | Affiliation of the guarantor                                    |
+| restricted\_download\_link              | Download link of the file                                       |
+| restricted\_expiration\_date            | Expiration of the download URL                                  |
+| restricted\_expiration\_date\_ja/en     | Description of the download expiration (Japanese/English)       |
+| restricted\_site\_name\_ja/en           | Site name (Japanese/English)                                    |
+| restricted\_institution\_name\_ja/en    | Institution name of the site (Japanese/English)                 |
+| restricted\_site\_mail                  | Contact email address of the site                               |
+| restricted\_site\_url                   | URL of the site                                                 |
+| data\_download\_date                    | Date the data was downloaded                                    |
+| usage\_report\_url                      | URL of the guide to registering a data usage report             |
+| restricted\_usage\_activity\_id         | Application number of the data usage report                     |
+| output\_report\_activity\_id            | Application number of the output registration                   |
+| output\_report\_title                   | Title of the output registration                                |
+| terms\_of\_use\_jp/en                   | Terms of use of the requested data (Japanese/English)           |
+| secret\_url                             | Secret URL for private or embargoed data                        |
+| landing\_url                            | URL of the landing page of the requested data                   |
+| 1                                       | Affiliation of the applicant                                    |
+| 2                                       | Full name of the applicant                                      |
+| 3                                       | Activity ID of the application workflow                         |
+| 4                                       | Email address of the applicant                                  |
+| 6                                       | Name of the requested item                                      |
+| 10                                      | URL                                                             |
+| 13                                      | Approval date                                                   |
+| 14                                      | Date 7 days after the approval date                             |
+| 15                                      | Last day of the fiscal year                                     |
+| 16                                      | Activity ID                                                     |
+| restricted\_approver\_name              | \*                                                              |
+| restricted\_approver\_affiliation       | \*                                                              |
+| restricted\_supervisor                  | \*                                                              |
+| restricted\_reference                   | \*                                                              |
+| file\_name                              | File name                                                       |
+| restricted\_download\_count             | Number of downloads                                             |
+| restricted\_download\_count\_ja/en      | Description of the number of downloads (Japanese/English)       |
+| restricted\_research\_plan              | Research plan                                                   |
+
+\*: These strings have no specific meaning as variables, but they become blank if enclosed in square brackets ([ ]).
+
+4.  Click "Save".
+
+The edited content is saved. If "Subject" or the body is blank, the content is not saved and the message "Please input the Mail Subject and Mail Body." appears.
+
+### Extended mail template features
+
+> This feature is not provided in the JAIROCloud environment.
+
+By default, the mail template edit screen displays only two required items: "Subject" and the body.
+
+If the system administrator enables "INVENIO\_MAIL\_ADDITIONAL\_RECIPIENTS\_ENABLED" (sets it to True) in the WEKO3 configuration file (it is disabled by default), the following three items are additionally displayed on the screen.
+
+  - Recipients
+
+  - CC
+
+  - BCC
+
+With this feature, when a mail template is used, the email is also sent automatically to the email addresses set in these items.
+
+These items are optional. When you enter them, the following restrictions apply.
+
+  - The email addresses must be registered in the WEKO system.
+
+  - The users associated with the email addresses must not be deactivated.
+
+  - To register multiple email addresses, separate them with commas (,).
+
+If you disable this feature after setting email addresses in a template, emails are not sent to those email addresses.
+
+If a user whose email address is set in a template is deleted or deactivated after the template is registered, the email address is automatically removed from the template.
+
+### Default mail templates
+
+The following mail templates are registered in the initial state. The subject and body of each template are written in both Japanese and English. The body consists of the Japanese text, a separator line, and the English text; only the English text is shown below.
+
+1.  Guidance for registering an application for use
+
+<!-- end list -->
+
+  - Recipient: The applicant for use (guest user)
+
+  - Overview: An email that guides a guest user who wants to apply for the use of a restricted access item to the application for use.
+
+  - Subject: 利用申請登録のご案内／Register Application for Use
+
+  - Body (English text):
+
+<!-- end list -->
+
+    This is a message from [restricted_site_name_en].
+    Please access the link below and register your Application.
+
+    [url_guest_user]
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_site_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+2.  Notification of receipt of an application for data use
+
+<!-- end list -->
+
+  - Recipient: The applicant for use
+
+  - Overview: An email that notifies the applicant that the application for use has been received.
+
+  - Subject: データ利用申請の受付のお知らせ／Your Application was Received
+
+  - Body (English text):
+
+<!-- end list -->
+
+    Dear [restricted_fullname],
+
+    This is a message from [restricted_institution_name_en].
+    Thank you for using [restricted_site_name_en].
+
+    We received the below application:
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    You will be notified once the application is approved.
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_institution_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+3.  Request for approval (application from a logged-in user)
+
+<!-- end list -->
+
+  - Recipient: The approver (the user specified as the Action User)
+
+  - Overview: An email that asks the user specified as the approver to perform the approval.
+
+  - Subject: データ利用申請の承認のお願い（ログインユーザー向け）／Request for Approval of Application for Use （for logged in users）
+
+  - Body (English text):
+
+<!-- end list -->
+
+    Dear [advisor_fullname],
+
+    This is a message from [restricted_site_name_en].
+    We received the below application from [restricted_university_institution] [restricted_fullname]
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    Please log in your account and From [Workflow], confirm the above application by clicking on “approve” or “reject”.
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+4.  Request for approval (application from a guest user)
+
+<!-- end list -->
+
+  - Recipient: The approver (the user specified as the Action User)
+
+  - Overview: An email that asks the user specified as the approver to perform the approval.
+
+  - Subject: データ利用申請の承認のお願い（ゲストユーザー向け）／Request for Approval of Application for Use （for guest user）
+
+  - Body (English text): The same as "Request for approval (application from a logged-in user)".
+
+5.  Notification of rejection (to a logged-in user)
+
+<!-- end list -->
+
+  - Recipient: The applicant for use
+
+  - Overview: An email that notifies the applicant that the approval flow has been rejected.
+
+  - Subject: 利用申請の審査結果について（ログインユーザー向け）／The results of the review of your application （for logged in users）
+
+  - Body (English text):
+
+<!-- end list -->
+
+    Dear [restricted_fullname],
+
+    Thank you for using [restricted_site_name_en].
+    Based on the content of your application, after careful consideration within our office,
+    we have decided not to provide the content at this time.
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    We are very sorry for this reply despite your application.
+    Thank you for your continued support of [restricted_site_name_en].
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+6.  Notification of rejection (to a guest user)
+
+<!-- end list -->
+
+  - Recipient: The applicant for use
+
+  - Overview: An email that notifies the applicant that the approval flow has been rejected.
+
+  - Subject: 利用申請の審査結果について（ゲストユーザー向け）／The results of the review of your application （for guest user）
+
+  - Body (English text): The same as "Notification of rejection (to a logged-in user)".
+
+7.  Notification of approval (to a logged-in user)
+
+<!-- end list -->
+
+  - Recipient: The applicant for use
+
+  - Overview: An email that notifies the registrant that the workflow has been approved.
+
+  - Subject: 利用申請の承認のお知らせ（ログインユーザー向け）／Your application was approved （for logged in users）
+
+  - Body (English text):
+
+<!-- end list -->
+
+    Dear [restricted_fullname],
+
+    Thank you for using [restricted_site_name_en].
+    Your application below has been approved.
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    The data can be downloaded from the address below.
+
+    [landing_url]
+
+    Please access [restricted_site_name_en] from the above address and login with your registered account.
+    If you logged in, you will be able to download the submitted data from the download button.
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+8.  Notification of approval (to a guest user)
+
+<!-- end list -->
+
+  - Recipient: The applicant for use
+
+  - Overview: An email that notifies the registrant that the workflow has been approved.
+
+  - Subject: 利用申請の承認のお知らせ（ゲストユーザー向け）／Guest's application was approved （for guest user）
+
+  - Body (English text):
+
+<!-- end list -->
+
+    Dear [restricted_fullname]
+
+    Thank you for using [restricted_site_name_en].
+    Your application below has been approved.
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    The data can be downloaded from the address below.
+
+    [restricted_download_link]
+
+    If you click the address, you will be required to enter your email address.
+    You can download the content you have applied for by entering the email address you registered when applying for use.
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en]
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+9.  Notification of the data usage report workflow
+
+<!-- end list -->
+
+  - Recipient: The user who downloaded a content file of an item that requires an application for use
+
+  - Overview: An email that provides the applicant with the link to the data usage report workflow when the applicant downloads the data.
+
+  - Subject: 利用報告の登録のお願い／Request for register Data Usage Report
+
+  - Body (English text):
+
+<!-- end list -->
+
+    This is a message from [restricted_site_name_en].
+    We have confirmed that the dataset which you registered at below has been downloaded.
+
+    Application No.：[restricted_usage_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    For the downloaded data, please register the Data Usage Report by the link below.
+
+    [usage_report_url]
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_site_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+10. Reminder of the data usage report
+
+<!-- end list -->
+
+  - Recipient: Users who have not submitted a data usage report
+
+  - Overview: A reminder email to users who have not submitted a data usage report.
+
+  - Subject: 利用報告の登録のお願い／Request for register Data Usage Report
+
+  - Body (English text):
+
+<!-- end list -->
+
+    This is a message from [restricted_site_name_en].
+    At this time, the Data Usage Report below has not been registered.
+
+    Usage Report No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Usage Dataset：[restricted_data_name]
+    Download date：[data_download_date]
+
+    Please register the Data Usage Report from the link below.
+
+    [usage_report_url]
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_site_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+11. Notification of a secret URL
+
+<!-- end list -->
+
+  - Recipient: The registrant
+
+  - Overview: An email for issuing and sending a secret URL.
+
+  - This email template is not displayed unless the secret URL download feature is turned on in the settings. For how to turn it on or off, see "Manage restricted access".
+
+  - Subject: シークレットURL提供のお知らせ／Notice of providing secret URL
+
+  - Body (English text):
+
+<!-- end list -->
+
+    [restricted_university_institution]
+    [restricted_fullname]
+
+    This is a message from [restricted_site_name_en].
+    Secret URL for [file_name] registered in [restricted_data_name] is created.
+
+    The data can be downloaded from the address below.
+
+
+    [secret_url]
+
+    This URL is valid until [restricted_expiration_date][restricted_expiration_date_en]. You can download it up to [restricted_download_count][restricted_download_count_en] times.
+
+    Please do not reply to this email as it has been sent automatically.
+    If you received this message in error, please notify the [restricted_site_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+12. Notification of an application for use
+
+<!-- end list -->
+
+  - Recipient: The registrant of the item (the registrant of the item for which the application for use is made)
+
+  - Overview: An email sent to the registrant of the item for which an application for use is made.
+
+  - Subject: 利用申請のお知らせ / Notice of application for use
+
+  - Body (English text):
+
+<!-- end list -->
+
+    Dear Data Provider,
+
+    This is a message from [restricted_institution_name_en].
+    We received the below application from [restricted_fullname].
+
+    Application No.：[restricted_activity_id]
+    Name：[restricted_fullname]
+    E-mail：[restricted_mail_address]
+    Affiliation：[restricted_university_institution]
+    Title of research：[restricted_research_title]
+    Dataset requested ：[restricted_data_name]
+    Application date：[restricted_application_date]
+
+    Please do not reply to this email as it has been sent automatically.
+    Please direct all inquiries to the following address.
+    Also, if you received this message in error, please notify [restricted_institution_name_en].
+
+    [restricted_site_name_en]：[restricted_site_url]
+    E-mail：[restricted_site_mail]
+
+In addition to the above, the following three mail templates for data usage reports are registered in the initial state. Their bodies follow the same format as the corresponding templates for applications for use.
+
+  - 利用報告の受付のお知らせ／Your Application was Received
+
+  - 利用報告の承認のお知らせ／Guest's application was approved （for guest user）
+
+  - 利用報告の審査結果について／The results of the review of your application （for guest user）
 
 ## Set up a WebAPI Account
 
@@ -15256,7 +16835,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15‑14. The elements in "File Preview"
+Table 16‑14. The elements in "File Preview"
 
 | Element       | Description                                                    |
 | ------------- | -------------------------------------------------------------- |
@@ -16164,6 +17743,120 @@ zu0813010.tif![](media/media/image413.png)
 
 The setting is saved.
 
+
+## Manage the CRIS linkage
+
+This section explains how to manage the linkage with CRIS (researchmap).
+
+To display the CRIS linkage screen, click "Setting", and then click "CRIS Linkage".
+
+### Set up API keys
+
+This section explains how to set up the API keys.
+
+You can set up the following two keys in "API Key" on this screen. To set up a key, click "Select file", select the key file, and then click "Save". "Registered" is displayed for a key that has already been registered.
+
+1.  client id key
+
+The client ID that each institution can obtain.
+
+If the content of the file is too large (more than 100 characters), the error messages "Failurely Changed Settings." and "client id key size too large." appear.
+
+2.  private key
+
+The private key used to sign the JWT.
+
+If the content of the file is too large (more than 5,000 characters), the error messages "Failurely Changed Settings." and "private key size too large." appear.
+
+If you click "Save" while neither key is selected, the error messages "Failurely Changed Settings." and "Please input at least one of client id key or private key" appear.
+
+Notes:
+
+・The URL of the researchmap API to be linked is specified with "WEKO\_ITEMS\_UI\_CRIS\_LINKAGE\_RESEARCHMAP\_BASE\_URL" and "WEKO\_ITEMS\_UI\_CRIS\_LINKAGE\_RESEARCHMAP\_HOST" in the configuration file. The default is the researchmap trial environment (api-trial.researchmap.jp). To link with the production environment, change the configuration file.
+
+### Set up the merge mode
+
+This section explains how to set up the merge mode.
+
+On this screen, you can select the merge mode used for data linkage with researchmap in "Merge Mode", and then click "Save". You can select one of the following four merge modes.
+
+1.  similar merge(similar data priority)
+
+If a similar document exists in the achievement list of the member whose achievements are to be added or updated, the similar document takes priority, and the input data (or the input data merged with the specified document) is merged into it.
+
+2.  similar merge(input data priority)
+
+If a similar document exists in the achievement list of the member whose achievements are to be added or updated, the input data (or the input data merged with the specified document) takes priority, and the similar document is merged into it.
+
+3.  merge
+
+If no specified document exists, a new achievement is registered. If a similar document exists in the achievement list of the member whose achievements are to be added or updated, an error occurs.
+
+4.  force
+
+Even if a similar document exists, the input data is treated as a separate achievement and forcibly registered as new. However, if the similar document has been registered or updated by someone other than the institution (such as the member themselves), the input data cannot be added.
+
+By default, "similar merge(similar data priority)" is selected.
+
+
+# Log Management
+
+This chapter provides information on how to manage logs.
+
+## Export the basic audit logs
+
+This section explains how to export all of the basic audit logs.
+
+1.  Select "Logs" and then "Export" from the menu.
+
+The screen for exporting files appears.
+
+2.  To start the export, click "Export".
+
+A dialog appears asking whether you are sure you want to export all logs ("Are you sure you want to export all logs?").
+
+3.  Click "Execute".
+
+The export of all logs starts.
+
+When the export is completed successfully, a download URL appears on the screen.
+
+Click the URL to download a zip file (export\_log.zip).
+
+The basic audit logs are stored in the export file in TSV format.
+
+**The TSV file is named "user\_activity\_logs\_yyMMddhhmmss.tsv".**
+
+4.  To stop the export, click "Cancel".
+
+The "Cancel" button is disabled by default. It is enabled only while an export is in progress.
+
+**When you click "Cancel", a dialog appears asking whether you are sure you want to cancel the export ("Are you sure you want to cancel process of exporting all logs?"). Click "Execute" to cancel the export, or "Cancel" to continue it.**
+
+# Maintenance
+
+This chapter provides information on maintenance.
+
+## Set up the ElasticSearch index
+
+This section explains how to rebuild the ElasticSearch index.
+
+1.  Select "Maintenance" and then "ElasticSearch Index" from the menu.
+
+The "ElasticSearch Index" screen appears.
+
+2.  Select either the "reindex Item Index" or the "Reindex Item" radio button.
+
+3.  Click "Execute".
+
+A confirmation dialog appears.
+
+4.  Click "Execute" in the dialog.
+
+The selected reindexing method is executed.
+
+While it is running, the "Execute" button is disabled and the status next to the button changes to "executing...".
+
 # User Account
 
 This chapter provides information on how to manage user accounts.
@@ -16230,7 +17923,7 @@ zu1205040.tif![](media/media/image417.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 16‑1. The elements in "New group"
+Table 19‑1. The elements in "New group"
 
 | Element     | Description                       |
 | ----------- | --------------------------------- |
@@ -16283,7 +17976,7 @@ zu1205090.tif![](media/media/image422.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 16‑2. The input elements
+Table 19‑2. The input elements
 
 | Element     | Description                       |
 | ----------- | --------------------------------- |
@@ -16337,3 +18030,93 @@ The validity time is updated.
 ## LINKID=openadmin【参照先】Access the Administration screen
 
 See "ANCHORID=adminwindow【参照元】Section 1.4 Access the Administration screen【E】" for instruction.
+
+
+# Advanced Menu
+
+Notes:
+
+This feature is experimental. It is not provided in the JAIRO Cloud environment.
+
+This chapter provides information on the Advanced menu.
+
+## The "Profile Settings" screen
+
+1.  Select "Profile Settings" from the "Advanced" pull-down menu on the left side of the screen.
+
+The "Profile Settings" screen appears.
+
+## Edit the user profile settings
+
+1.  Edit the label name.
+
+You can edit the label of each item in the text box.
+
+2.  Edit the input format.
+
+You can select the input format from the pull-down menu.
+
+The following five input formats are available.
+
+Table 20‑1. The input formats
+
+| Input format    | Description                                                              |
+| --------------- | ------------------------------------------------------------------------ |
+| text            | Text input                                                               |
+| select          | Pull-down menu                                                           |
+| identifier      | Half-width digits only                                                   |
+| phonenumber     | Half-width digits with hyphens (-), or half-width digits only            |
+| position(other) | Can be entered only when the value of the "position" item is "Others (Input Detail)" |
+
+3.  Edit the options.
+
+You can edit the options, which appear only when the input format is "select". Separate the options with the "|" character.
+
+4.  Edit the display setting.
+
+You can specify whether each item is displayed on the profile screen. Select the "Display" check box to display the item on the screen.
+
+The displayed items are automatically entered in the applicant property items of the usage application flow and the usage report flow. (Items that are not displayed are excluded from the automatically entered items.)
+
+5.  Save the settings.
+
+Click "SAVE" at the bottom of the screen to save your changes.
+
+The message "Settings updated successfully" appears.
+
+If a label name or the options are left blank, the settings cannot be saved and the message "Failed to update settings." appears. Enter the blank items and click "SAVE" again.
+
+6.  Initial settings
+
+There are 20 items in total. Their initial settings are as follows.
+
+Table 20‑2. The initial settings of the items
+
+| Item       | Label name                                          | Input format    | Display |
+| ---------- | --------------------------------------------------- | --------------- | ------- |
+| fullname   | 氏名 (Full name)                                     | text            | true    |
+| university | 大学・機関名 (University/Institution)                 | text            | true    |
+| department | 所属部局・部署 (Department/Division)                  | text            | true    |
+| position   | 役職 (Position)                                      | select          | true    |
+| item1      | 役職（その他） (Position (Other))                      | position(other) | true    |
+| item2      | 電話番号 (Phone number)                               | phonenumber     | true    |
+| item3      | 所属学会名 (Academic society)                          | text            | true    |
+| item4      | 所属学会役職 (Position in the academic society)         | select          | true    |
+| item5      | 所属学会名 (Academic society)                          | text            | true    |
+| item6      | 所属学会役職 (Position in the academic society)         | select          | true    |
+| item7      | 所属学会名 (Academic society)                          | text            | true    |
+| item8      | 所属学会役職 (Position in the academic society)         | select          | true    |
+| item9      | 所属学会名 (Academic society)                          | text            | true    |
+| item10     | 所属学会役職 (Position in the academic society)         | select          | true    |
+| item11     | 所属学会名 (Academic society)                          | text            | true    |
+| item12     | 所属学会役職 (Position in the academic society)         | select          | true    |
+| item13     | item13                                              | text            | false   |
+| item14     | item14                                              | text            | false   |
+| item15     | item15                                              | text            | false   |
+| item16     | item16                                              | text            | false   |
+
+Notes:
+
+The initial label names are set in Japanese in the configuration (WEKO\_USERPROFILES\_DEFAULT\_FIELDS\_SETTINGS). The English text in parentheses is a translation for reference.
+
+You can turn the Profile Settings feature on and off with "WEKO\_USERPROFILES\_CUSTOMIZE\_ENABLED" in the configuration file. It is disabled (False) by default; "Profile Settings" appears in the "Advanced" menu only when it is enabled.
