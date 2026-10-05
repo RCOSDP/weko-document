@@ -12,7 +12,7 @@
 | [未病フロント アクセスコントロール](./AMS_ACCESS_CONTROLL.md) | 画面・操作ごとのロール別アクセス可否 |
 | [GakuNin RDMボタン表示](./AMS_GRDM_BUTTON_01.md) | RO-Crate ↔ WEKOアイテム変換、JSON-LDマッピング、GRDMボタン表示条件 |
 | [Shibboleth対応](./AMS_SHIBBOLETH_01.md) | Shibbolethログイン・ロール付与・OAuth認証・エラー |
-| [拡張メタデータ対応](./AMS_EXTENDED_METADATA.md) | JSON-LD（RO-Crate/SWORD）登録時の拡張メタデータファイル（`wk:extendedMetadata`）の取り込み |
+| 【v2.1.0】[拡張メタデータ対応](./AMS_EXTENDED_METADATA.md) | JSON-LD（RO-Crate/SWORD）登録時の拡張メタデータファイル（`wk:extendedMetadata`）の取り込み |
 
 ## 関連モジュール（WEKOバックエンド）
 

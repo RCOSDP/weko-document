@@ -21,7 +21,7 @@
   - 所属グループが「目標2Grp」である場合、対応するロールを付与することにより、目標2ユーザとしてアクセス権限を付与する
 
     - 属性情報（`isMemberOf`）からmAPグループIDに所属しているか判定する。判定パターンは WEKO 実装上 config 駆動で `<prefix>_<fqdn>_<role_keyword>_<suffix>` 形式（`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT`、既定 `prefix=jc` / `role_keyword=ro`）。AMS では `role_keyword` に `groups` を設定するため `jc_<fqdn>_groups_<groupname>` となる（`<groupname>` に目標2Grpの値が入る）。マッチしたグループ名に対応する WEKO ロールを付与する。
-      - 実装補足（v2.1.0）：`ShibUser._assign_roles_to_user` は、`<prefix>_<fqdn>_<role_keyword>_<suffix>` に一致するグループには `role_mapping` の WEKO ロールを、`sysadm_group` には System Administrator を付与し、さらにグループ名と同名のロールが存在すればそのロールも付与する。一方、インデックスの閲覧・投稿権限判定や管理画面の選択肢では、#1891（map conditions）以降、`<prefix>_<fqdn>_<role_keyword>_` で始まるロールは「学認mAPロール」として非表示・判定対象外となり、グループとして扱われるのは `<prefix>_<fqdn>_<group_keyword>_`（`group_keyword` 既定 `gr`）で始まるロールである。このため、上記のように `role_keyword` を `groups` に変更する運用では目標2Grp のロールがインデックス権限判定から除外される点に注意が必要である（AMS 環境で `WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` を変更している設定ファイルは release_v2.1.0 のソースツリー内には見当たらず、実環境の設定値は未確認）。
+      - 【v2.1.0】実装補足（v2.1.0）：`ShibUser._assign_roles_to_user` は、`<prefix>_<fqdn>_<role_keyword>_<suffix>` に一致するグループには `role_mapping` の WEKO ロールを、`sysadm_group` には System Administrator を付与し、さらにグループ名と同名のロールが存在すればそのロールも付与する。一方、インデックスの閲覧・投稿権限判定や管理画面の選択肢では、#1891（map conditions）以降、`<prefix>_<fqdn>_<role_keyword>_` で始まるロールは「学認mAPロール」として非表示・判定対象外となり、グループとして扱われるのは `<prefix>_<fqdn>_<group_keyword>_`（`group_keyword` 既定 `gr`）で始まるロールである。このため、上記のように `role_keyword` を `groups` に変更する運用では目標2Grp のロールがインデックス権限判定から除外される点に注意が必要である（AMS 環境で `WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` を変更している設定ファイルは release_v2.1.0 のソースツリー内には見当たらず、実環境の設定値は未確認）。
 
   - 所属グループが「目標2Grp」ではない場合、通常通りログインする
 
@@ -57,7 +57,7 @@
 
   - ログイン処理後のリダイレクト先はフロントのTOPページを指定する
 
-  - WEKO実装（AMSログイン経路）：フロント login.vue は returnURL に `?next=ams` を付与する。`shib_sp_login`（`POST /weko/shib/login`）は `next=ams`（`ams_login`）を判定して後続処理（`shib_auto_login` / `confirm_user_without_page` / `confirm_user` / `shib_login`）へ `next=ams` を伝播する。AMS経路では失敗時に WEKO ログイン画面へ flash せず、`generate_ams_login_url` ／ `_redirect_method(..., ams_error=...)` により外部 AMS ログイン画面（config `WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`、既定 `'{}ams/login'`）へ `?error=<訳文をquote_plus>` 付きでリダイレクトする。成功時は `/?next=ams` へ遷移し、index.vue から OAuth2 API を実行する。
+  - 【v2.1.0】WEKO実装（AMSログイン経路）：フロント login.vue は returnURL に `?next=ams` を付与する。`shib_sp_login`（`POST /weko/shib/login`）は `next=ams`（`ams_login`）を判定して後続処理（`shib_auto_login` / `confirm_user_without_page` / `confirm_user` / `shib_login`）へ `next=ams` を伝播する。AMS経路では失敗時に WEKO ログイン画面へ flash せず、`generate_ams_login_url` ／ `_redirect_method(..., ams_error=...)` により外部 AMS ログイン画面（config `WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`、既定 `'{}ams/login'`）へ `?error=<訳文をquote_plus>` 付きでリダイレクトする。成功時は `/?next=ams` へ遷移し、index.vue から OAuth2 API を実行する。
 
 - ログイン処理後、nginx/ams/weko-frontend/pages/index.vueからOAuth2 APIを実行する
 
@@ -74,12 +74,12 @@
 
     「レスポンス（バックエンド実挙動）」列は WEKO バックエンド（`weko_accounts.views`）の実際の応答、「エラーメッセージ（日/英）」列はフロントのログイン画面での表示文言である。
 
-    AMSログイン経路（`next=ams`）では、下表の各エラーで WEKO ログイン画面へ flash せず、外部 AMS ログイン画面 `{url_root}ams/login?error=<訳文>`（config `WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`、既定 `'{}ams/login'`）へエラー文言付きでリダイレクトする（`generate_ams_login_url` ／ `_redirect_method(..., ams_error=...)`）。AMS経路のエラー文言は、ログインブロック時は "Login is blocked."、登録ユーザー情報がない場合は "There is no user information."（いずれも `_()` で翻訳可能）。
+    【v2.1.0】AMSログイン経路（`next=ams`）では、下表の各エラーで WEKO ログイン画面へ flash せず、外部 AMS ログイン画面 `{url_root}ams/login?error=<訳文>`（config `WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`、既定 `'{}ams/login'`）へエラー文言付きでリダイレクトする（`generate_ams_login_url` ／ `_redirect_method(..., ams_error=...)`）。AMS経路のエラー文言は、ログインブロック時は "Login is blocked."、登録ユーザー情報がない場合は "There is no user information."（いずれも `_()` で翻訳可能）。
 
     | エラー原因 | ステータスコード | レスポンス（バックエンド実挙動） | エラーメッセージ（日/英） |
     | --------- | --------------- | --------- | ----------------------- |
     | WEKOでログインブロックされている | リダイレクト | `flash("Failed to login.")`＋ログイン画面へリダイレクト（ブロック判定は AdminSettings `blocked_user_settings.blocked_ePPNs`、ワイルドカード対応） | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator. |
-    | 登録ユーザー情報がない | リダイレクト | AMS経路では `ShibUser.check_weko_user` が偽の場合に `{url_root}ams/login?error=There is no user information.` へリダイレクト（`_()` で翻訳される）し、フロント（`pages/ams/login.vue`）が `error` クエリの英語文字列と照合して訳文を表示する。通常経路は `flash('check_weko_user')`＋ログイン画面へリダイレクト | ユーザー情報がありません。<br>/There is no user information. |
+    | 【v2.1.0】登録ユーザー情報がない | リダイレクト | AMS経路では `ShibUser.check_weko_user` が偽の場合に `{url_root}ams/login?error=There is no user information.` へリダイレクト（`_()` で翻訳される）し、フロント（`pages/ams/login.vue`）が `error` クエリの英語文字列と照合して訳文を表示する。通常経路は `flash('check_weko_user')`＋ログイン画面へリダイレクト | ユーザー情報がありません。<br>/There is no user information. |
     | Redisにcache_keyがない | 400（`abort(400)` 時。通常は `flash()`＋リダイレクト） | Missing SHIB_CACHE_PREFIX! | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
     | Shibboleth-Session-IDが取得出来ない | 400（`abort(400)` 時。通常は `flash()`＋リダイレクト） | Missing Shib-Session-ID! | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
     | shib_eppnが取得出来ない | 400（`abort(400)` 時。通常は `flash()`＋リダイレクト） | Missing SHIB_ATTRs!（`shib_login` 側は単数形 Missing SHIB_ATTR!） | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
