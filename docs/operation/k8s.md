@@ -6665,7 +6665,7 @@ data:
   INVENIO_WEB_PROTOCOL: https
   INVENIO_WORKER_HOST: 127.0.0.1
   SHIB_IDP_LOGIN_ENABLED: "True"
-  SHIB_IDP_LOGIN_URL: https://research.ren.africa/secure/login.php
+  SHIB_IDP_LOGIN_URL: https://research.ren.africa/secure/login.py
   PATH: /home/invenio/.virtualenvs/invenio/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
   SEARCH_INDEX_PREFIX: research_ren_africa
   VIRTUALENVWRAPPER_PYTHON: /home/invenio/.virtualenvs/invenio/bin/python
