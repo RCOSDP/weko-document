@@ -65,8 +65,8 @@ https://[host]/oai?verb=GetRecord&metadataPrefix=jpcoar_2.0&identifier=https://d
 </GetRecord>
 </OAI-PMH>
 ```
-- WEKO_SEARCH_ACCESSRIGHTがTrueの場合、エンバーゴ期間が終了した日付とレコードの更新日を比較して新しい日付がdatestampに出力される。
-- 上記以外はrecords_metadataテーブルのupdatedが出力される。
+- `WEKO_SEARCH_FIX_ACCESSRIGHTS`（weko-search-ui、既定 `False`）を `True` にしている場合、エンバーゴ解除（open access 化）と判定されたアイテムは、エンバーゴ期間が終了した日付（公開日）とレコードの更新日を比較して新しい日付が datestamp に出力される（`invenio_records.api.Record.updated`）。
+- 上記以外は `records_metadata` テーブルの `updated` が出力される。
 
 idDoesNotExist　の例。
 
@@ -279,8 +279,8 @@ identifier：アイテムに利用可能なメタデータフォーマットが�
 </ListRecords>
 </OAI-PMH>
 ```
-- WEKO_SEARCH_ACCESSRIGHTがTrueの場合、エンバーゴ期間が終了した日付とレコードの更新日を比較して新しい日付がdatestampに出力される。
-- 上記以外はrecords_metadataテーブルのupdatedが出力される。
+- `WEKO_SEARCH_FIX_ACCESSRIGHTS`（weko-search-ui、既定 `False`）を `True` にしている場合、エンバーゴ解除（open access 化）と判定されたアイテムは、エンバーゴ期間が終了した日付（公開日）とレコードの更新日を比較して新しい日付が datestamp に出力される（`invenio_records.api.Record.updated`）。
+- 上記以外は `records_metadata` テーブルの `updated` が出力される。
 
 #### 処理概要
 
@@ -389,3 +389,4 @@ resumptionToken：リポジトリが応答する際に不完全リストとセ�
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | 初版作成 |
 | 2026/07/14 |  | 実装(v2.0.2)と突き合わせ。関連モジュール・エンドポイント・metadataFormatの動的生成・ESインデックス・resumptionToken・configキー・noSetHierarchy未発行を追記 |
 | 2026/07/17 |  | v2.1.0差分反映：from/until のエンバーゴ考慮（`range_query`）・datestamp繰り上げ（`Record.updated`）を追記（`WEKO_SEARCH_FIX_ACCESSRIGHTS`、既定False） |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：GetRecord/ListRecords の datestamp 記述の config 名を実装準拠（`WEKO_SEARCH_ACCESSRIGHT` → `WEKO_SEARCH_FIX_ACCESSRIGHTS`、既定False）に修正 |

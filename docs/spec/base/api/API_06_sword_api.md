@@ -199,7 +199,7 @@ curl -X PUT https://192.168.56.101/sword/deposit/1   -F "file=@import.zip;type=a
 
   - recid
       - アイテムIDを指定する
-      - ファイルにアイテムidとuriの値が指定されていない場合、recidの値でアイテムidとuriの情報が補完される
+      - 更新ファイル内のアイテムIDは recid と一致している必要がある（一致しない場合は 400 `BadRequest`：`Item id does not match. ...`）。ファイルにアイテムIDが無い場合は、`weko_search_ui.utils.handle_check_exist_record` がリクエストURLの recid（`request.view_args`）で補完し、URIが無い場合は `<host>/records/<アイテムID>` で補完する。補完後のIDが既存アイテムとして存在しない（status=new）場合は 400
 
   - -F オプション
       - POSTするファイルを指定する。自動的にContent-Typeは"multipart/form-data"となる
@@ -232,6 +232,7 @@ curl -X DELETE https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer D
 ※ 〇：利用可能、△：一部機能のみ利用可能、×：利用不可
 
 - アイテムを操作可能なAPIは、システム管理者、リポジトリ管理者、コミュニティ管理者、および Contributor ロールを持つ登録ユーザーが利用可能（[設定値:22](#conf22) `WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE`）。
+- v2.1.0 では、登録可能ロールの設定はリクエストごとに `current_app.config` から参照される（`decorators.check_deposit_role`）。このため instance.cfg 等で `WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE` を上書きした場合、その値が POST/PUT/DELETE のロール判定に反映される（v2.0.x まではモジュール読み込み時の既定値で固定されており、上書きが効かなかった）。ロールを持たない場合は 403（`Forbidden` の[エラードキュメント](#エラードキュメント)）となる。
 
 ## 機能内容
 
@@ -474,7 +475,7 @@ DELETE /sword/deposit/\<recid\>
 | `@type`              | `Status`                                                                                | 単一アイテム時は **`ServiceDocument`**（実装上そのように出力される）<br/>複数アイテム時は `Status`                                                                  |
 | `state[].@id`        | `http://purl.org/net/sword/3.0/state/ingested`                                          | `http://purl.org/net/sword/3.0/state/inWorkflow`                                                                                                                       |
 | `eTag`               | 出力する（レコードのリビジョン番号）                                                    | **出力しない**（単一・複数いずれの場合も）                                                                                                                          |
-| `links`              | レコード詳細画面URL → DOI/CNRIハンドル（permalink） → 各ファイル                       | **先頭にアクティビティ詳細画面URL** → レコード詳細画面URL → 各ファイル<br/>DOI/CNRIハンドルのリンクは出力しない（単一アイテム時）                                   |
+| `links`              | レコード詳細画面URL → 各ファイル → DOI/CNRIハンドル（permalink）                       | **先頭にアクティビティ詳細画面URL** → レコード詳細画面URL → 各ファイル<br/>DOI/CNRIハンドルのリンクは出力しない（単一アイテム時）                                   |
 | ファイルのリンク元   | レコードのメタデータ（`_get_file_info`）                                                | アクティビティの一時データ（`workflow_activity.temp_data`）。URLは `https://[INVENIO_WEB_HOST_NAME]/record/[recid]/files/[ファイル名]` 形式となる。一時データが無い場合はレコードのメタデータを参照する。 |
 | アクティビティID     | －                                                                                      | 登録・更新のアクティビティは `A-YYYYMMDD-NNNNN`、削除のアクティビティは `D-YYYYMMDD-NNNNN` 形式となる。                                                             |
 
@@ -1166,7 +1167,8 @@ Content-Type: application/json
     アイテムの登録処理に失敗した場合は、エラー（[メッセージ:14](#err14)）とする。
 
 5. レスポンスを返却する
-   - アイテムの登録完了の有無に関わらず、登録されたアイテムのURL、アクティビティ詳細画面のURLおよび、ファイル情報がある場合はそのファイルのURLをステータスドキュメントに含めて返却する。
+   - 登録されたアイテムのURL、ファイル情報がある場合はそのファイルのURLをステータスドキュメントに含めて返却する。ワークフロー経由の場合は、承認待ちで停止したか最後まで完了したかに関わらず、アクティビティ詳細画面のURLも含める（直接登録の場合は含まない）。
+   - レスポンスコードは、直接登録は 201、ワークフロー経由は最後のアクションが `end_action` まで進んだ場合 201、それ以外（承認待ち等）は 202 とする（[ワークフロー有無によるレスポンスの違い](#ワークフロー有無によるレスポンスの違い)）。
    - 一連の登録処理に問題がありエラーが発生した場合は、エラードキュメントを返却する。
 
 ### アイテム状態取得機能：GET /sword/deposit/&lt;recid&gt;
@@ -1185,7 +1187,8 @@ Content-Type: application/json
 ほとんどの処理はアイテム状態取得機能と同様であるが、以下の点が異なる。
 
 - アイテムの分割は許可されない
-- 更新ファイルで`identifier`および`uri`の値が指定されていない場合、リクエストURLのパスパラメータで指定されたアイテムID（recid）を用いて、`identifier`および`uri`の値を自動的に補完する。
+- 更新ファイルから読み取ったアイテムID（`item["id"]`）が、リクエストURLのパスパラメータで指定されたアイテムID（recid）と一致しない場合は 400（`BadRequest`、`Item id does not match. item: ..., request: ...`）とする。また、アイテムが未登録（`status` が `new`）と判定された場合も 400（`This item is not registered yet: ...`）とする。
+  - 更新ファイルに アイテムID（`identifier`）が無い場合は、`check_import_items` → 各形式の `check_*_import_items` → `weko_search_ui.utils.handle_check_exist_record` で、リクエストURLの recid（`request.view_args`）によりアイテムIDが補完される。URI（`uri`）が無い場合は `<host>/records/<アイテムID>` で補完される。ファイルに記載したアイテムIDが recid と異なる場合は 400（`Item id does not match. ...`）。
 - SWORD v3プロトコルでは、PUTメソッドはアイテムのメタデータとファイルすべての置き換えを意味するが、
   例外として[メタデータのみ置換フラグ](../admin/ADMIN_2_5.md#wkmetadatareplaceメタデータのみ置換フラグ)が有効な場合は、
   メタデータのみを置き換え、ファイルを維持する。  
@@ -1525,12 +1528,6 @@ Content-Type: application/json
         "Contributor"
     ]
     ```
-23. ファイルセットファイルのファイルパス<span id="conf2">
-
-    ```python
-    WEKO_SWORDSERVER_FILE_SET_FILE = "/terms/fileSetFile"
-    ```
-
 23. BagIt整合性検証の有効化<span id="conf23">
 
     ```python
@@ -1540,6 +1537,7 @@ Content-Type: application/json
 24. ファイルリンク（fileSetFile）の rel を生成するためのパス<span id="conf24">
 
     `WEKO_SWORDSERVER_SWORD_VERSION`（[設定値:1](#conf01)）と連結して、ステータスドキュメントの各ファイルリンク（`links[].rel`）を生成する。
+    release_v2.1.0 では `scripts/instance.cfg` での設定が削除され（#63281）、`weko_swordserver/config.py` の既定値が使われる。
     ```python
     WEKO_SWORDSERVER_FILE_SET_FILE = "/terms/fileSetFile"
     ```
@@ -1547,7 +1545,7 @@ Content-Type: application/json
 ## 実装補足（v2.0.2）
 
 - 中核実装モジュールは **weko-swordserver**（`invenio-sword` は同梱されず、SWORD処理は自作の weko-swordserver に集約）。エンドポイント（`views.py`、Blueprint `url_prefix="/sword"`）：`get_service_document` / `post_service_document`（GET/POST `/sword/service-document`）、`get_status_document` / `put_object` / `delete_object`（GET/PUT/DELETE `/sword/deposit/<recid>`）。
-- 認証は Bearer/OAuth2（`before_request` の `verify_oauth_token_and_set_current_user` ＋ `@oauth2.require_oauth()`）。スコープ：`deposit:write` / `deposit:actions`（invenio-deposit）、`item:create` / `item:update` / `item:delete`（weko-items-ui）、Workflow登録時は `user:activity`（weko-workflow）。POST/PUT/DELETE は `@roles_required(WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE)`。
+- 認証は Bearer/OAuth2（`before_request` の `verify_oauth_token_and_set_current_user` ＋ `@oauth2.require_oauth()`）。スコープ：`deposit:write` / `deposit:actions`（invenio-deposit）、`item:create` / `item:update` / `item:delete`（weko-items-ui）、Workflow登録時は `user:activity`（weko-workflow）。POST/PUT/DELETE は `decorators.check_deposit_role()`（v2.1.0 で `@roles_required(WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE)` から置き換え。リクエスト時に `current_app.config["WEKO_SWORDSERVER_DEPOSIT_ROLE_ENABLE"]` を読み、`weko_accounts.utils.roles_required` で判定）。
 - 関連モジュール：weko-swordserver（本体）、weko-search-ui（`import_items_to_system` / `import_items_to_activity` / `delete_items_with_activity`、BagIt `bagit>=1.7.0`）、weko-records（`ItemTypeJsonldMapping` ＝ `jsonld_mappings`）、weko-items-ui、weko-admin（一時ディレクトリ `TempDirInfo`）、weko-accounts（`roles_required` / `limiter`）、weko-logging、weko-notifications、invenio-files-rest、invenio-oaiserver（`OaiIdentify`）。
 - DELETE 成功時、アクティビティ使用時のURLは **Location** ヘッダーに含まれる。
 - レート制限（`@limiter.limit`）により超過時は 429（`TooManyRequests`）。
@@ -1565,3 +1563,4 @@ Content-Type: application/json
 | 2026/07/14 |                                            | 本文を実装準拠に修正（サービスドキュメントのacceptPackaging/acceptArchiveFormat、利用可能ロール）           |
 | 2026/07/17 |                                            | v2.1.0差分反映：`wk:researchmapLinkage`連携（`cris_linkage.researchmap`）・checkエラー時warnings併記、ステータスドキュメントの`links`（fileSetFile/derivedFrom・複数登録時Activityリンク/log）・`state`のinWorkflow・設定値conf24（`WEKO_SWORDSERVER_FILE_SET_FILE`）を追記 |
 | 2026/07/28 |                                            | 「ワークフロー有無によるレスポンスの違い」を追加（直接登録／ワークフロー登録の差分一覧、POST・DELETEのレスポンス例、ワークフロー承認後のレスポンスの挙動とGETの承認前後比較）。レスポンス例はv2.1.0実装に対する実測値を採録                                                     |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：登録可能ロール設定の実行時参照（`check_deposit_role`）を追記、PUT時の recid によるID/URI補完（`handle_check_exist_record` が `request.view_args` の recid を使用）とID不一致時400を実装準拠で明記、直接登録時の`links`順序（レコード→ファイル→permalink）を修正、重複していた設定値（conf2）を削除、conf24 は config.py 既定値を使用する旨（instance.cfg から削除、#63281）を追記 |
