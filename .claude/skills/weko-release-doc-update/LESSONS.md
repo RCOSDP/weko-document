@@ -30,3 +30,11 @@
 - 本文の節番号参照が目次と一致、表・図番号が章内で連番
 - CRLF のファイル（GUIDE の一部）の改行を保つ
 - push 前に `git fetch` してリモートの変更をマージ
+- honkit でビルドし、分岐点からの新しいリンク切れが無いこと（`scripts/build_docs.sh --compare <DOC_BASE>`）
+
+## ビルド（honkit）
+- **arm64 では `npm install` が puppeteer の Chromium ダウンロードで失敗する。** `PUPPETEER_SKIP_DOWNLOAD=true PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true` を付ける。`npm install` は `package-lock.json` を書き換えるので `npm ci` を使う（`build_docs.sh` が実施）。
+- **ログのノイズは失敗ではない。** shelljs の circular dependency 警告、`prismjs/components/prism-Python.js` の MODULE_NOT_FOUND（コードブロックの言語名 `Python` が大文字）、deprecated 警告、spec の「search index is too big」が出ても、最後に「generation finished with success」があれば成功。
+- **honkit と GitHub はアンカーの作り方が違う。** honkit は全角の括弧・中黒を残し、`_` を消し、同名見出しに `-1` を付けない。GitHub 式のアンカー（`#認証認可の共通事項release_v210`、`#アイテムを一括出力する-1`）は GitHub では効くが honkit のサイトでは切れる（check_build.py の SLUG）。どちらでも効くリンクにするには見出しを句読点の無い文言にするしかないので、既存分は報告に留める。
+- **見出しに `\<version>` を書くと honkit では HTML タグとして扱われ**、見出しが「GET /api/\」と崩れてアンカーからも消える（v2.1.0 の spec/access_control・api で 53 見出し・83 リンク）。見出しのパス引数はバッククォートで囲む（`` GET `/api/<version>/authors` `` は honkit も GitHub と同じ `get-apiversionauthors` になる）。ただし `<pid_value>` のように `_` を含むと honkit は `_` を消すので、honkit では切れたまま（SLUG）。
+- 分岐点時点で既に切れているリンク（ADMIN の `_Toc…`、spec の `(\\l)`、`media/media/imageN.png` の欠落、GUIDE の sword_setting_5/6.png）は「existing」として出る。今回の作業範囲外なら報告だけにする。
