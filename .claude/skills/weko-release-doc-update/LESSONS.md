@@ -37,4 +37,8 @@
 - **ログのノイズは失敗ではない。** shelljs の circular dependency 警告、`prismjs/components/prism-Python.js` の MODULE_NOT_FOUND（コードブロックの言語名 `Python` が大文字）、deprecated 警告、spec の「search index is too big」が出ても、最後に「generation finished with success」があれば成功。
 - **honkit と GitHub はアンカーの作り方が違う。** honkit は全角の括弧・中黒を残し、`_` を消し、同名見出しに `-1` を付けない。GitHub 式のアンカー（`#認証認可の共通事項release_v210`、`#アイテムを一括出力する-1`）は GitHub では効くが honkit のサイトでは切れる（check_build.py の SLUG）。どちらでも効くリンクにするには見出しを句読点の無い文言にするしかないので、既存分は報告に留める。
 - **見出しに `\<version>` を書くと honkit では HTML タグとして扱われ**、見出しが「GET /api/\」と崩れてアンカーからも消える（v2.1.0 の spec/access_control・api で 53 見出し・83 リンク）。見出しのパス引数はバッククォートで囲む（`` GET `/api/<version>/authors` `` は honkit も GitHub と同じ `get-apiversionauthors` になる）。ただし `<pid_value>` のように `_` を含むと honkit は `_` を消すので、honkit では切れたまま（SLUG）。
-- 分岐点時点で既に切れているリンク（ADMIN の `_Toc…`、spec の `(\\l)`、`media/media/imageN.png` の欠落、GUIDE の sword_setting_5/6.png）は「existing」として出る。今回の作業範囲外なら報告だけにする。
+- v2.1.0 では分岐点時点で既に切れていたリンクも直した。多くは Word 変換の名残で、
+  - 別の仕様書への参照が同じページ内のアンカー（`[USER-2-4: アイテム一括出力](#アイテム一括出力)`）や `(\\l)` になっている → ラベルの仕様書 ID を SUMMARY.md で引いてファイルへのリンクにする。
+  - 画像が `media/media/imageN.png`（仕様書のサブフォルダからの相対）になっている → 実体は `spec/base/media/media/`。番号が他の文書と重なることがあるので、中身を見て文脈と合うことを確かめてから `../` を足す。
+  - GUIDE の `sword_setting_5/6.png` はどのブランチにも無かった → ローカル環境で撮り直した（マッピング選択だけで ✓／✘ が出るので環境の変更は不要）。
+- **段落の途中の `<!-- -->` は honkit では隠れず、そのまま文字として表示される**（ADMIN の目次に `<!--` と古い `_Toc…` リンクが出ていた）。不要な行はコメントにせず削除する。

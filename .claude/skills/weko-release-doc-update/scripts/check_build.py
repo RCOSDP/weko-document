@@ -42,7 +42,8 @@ def collect(root):
         for f in fs:
             if f.endswith('.html'):
                 p = os.path.normpath(os.path.join(d, f))
-                pages[p] = open(p, encoding='utf-8', errors='replace').read()
+                # links inside HTML comments are not shown, so they are not checked
+                pages[p] = re.sub(r'<!--.*?-->', '', open(p, encoding='utf-8', errors='replace').read(), flags=re.S)
     ids = {p: set(re.findall(r'\sid="([^"]+)"', s)) for p, s in pages.items()}
     slugs = {p: gh_slugs(html.unescape(re.sub(r'<[^>]+>', '', t)).strip()
                          for t in re.findall(r'<h([1-6])[^>]*>(.*?)</h\1>', s, re.S) for t in [t[1]])
