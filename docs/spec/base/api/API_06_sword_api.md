@@ -177,7 +177,7 @@ $ curl -X POST -s -k https://192.168.56.101/sword/service-document -F "file=@imp
       - 必須の Content-Length および Content-Type については前述の通り、-Fオプションにて自動付加されるため-Hオプションでの指定は不要
 
 
-#### GET /sword/deposit/\<recid\>
+#### GET `/sword/deposit/<recid>`
 
 ```shell
 curl -X GET https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer Dp85qdLJefoKZ9AuUeIVCqL0Zj9lHxulU1ZSqWGZKI0xJUfxA4wKFnWgztEo"
@@ -189,7 +189,7 @@ curl -X GET https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer Dp85
   - -H オプション
       - Authorization は "Bearer" + " (半角スペース)" + "アクセストークン"の形式で指定する
 
-#### PUT /sword/deposit/\<recid\>
+#### PUT `/sword/deposit/<recid>`
 
 ```shell
 curl -X PUT https://192.168.56.101/sword/deposit/1   -F "file=@import.zip;type=application/zip" \
@@ -210,7 +210,7 @@ curl -X PUT https://192.168.56.101/sword/deposit/1   -F "file=@import.zip;type=a
   - -H オプション
       - Authorization は "Bearer" + " (半角スペース)" + "アクセストークン"の形式で指定する
 
-#### DELETE /sword/deposit/\<recid\>
+#### DELETE `/sword/deposit/<recid>`
 
 ```shell
 curl -X DELETE https://192.168.56.101/sword/deposit/1 -H "Authorization:Bearer Dp85qdLJefoKZ9AuUeIVCqL0Zj9lHxulU1ZSqWGZKI0xJUfxA4wKFnWgztEo"
@@ -331,7 +331,7 @@ POST /sword/service-document
 失敗時 : [エラードキュメント](#エラードキュメント)を返す。
 
 
-### アイテム状態取得機能：GET /sword/deposit/\<recid\>
+### アイテム状態取得機能：GET `/sword/deposit/<recid>`
 
 #### エンドポイント
 GET /sword/deposit/\<recid\>
@@ -369,7 +369,7 @@ GET /sword/deposit/\<recid\>
 失敗時 : [エラードキュメント](#エラードキュメント)を返す。
 
 
-### アイテム更新機能：PUT /sword/deposit/\<recid\>
+### アイテム更新機能：PUT `/sword/deposit/<recid>`
 
 #### エンドポイント
 PUT /sword/deposit/\<recid\>
@@ -414,7 +414,7 @@ PUT /sword/deposit/\<recid\>
 | 500    | エラードキュメント     | サーバー内部エラーが発生した場合。                                                                                                |
 
 
-### アイテム削除機能：DELETE /sword/deposit/\<recid\>
+### アイテム削除機能：DELETE `/sword/deposit/<recid>`
 
 #### エンドポイント
 DELETE /sword/deposit/\<recid\>
@@ -704,7 +704,7 @@ Content-Type: application/json
 }
 ```
 
-#### レスポンス例：DELETE /sword/deposit/\<recid\>（ワークフロー削除・202）
+#### レスポンス例：DELETE `/sword/deposit/<recid>`（ワークフロー削除・202）
 
 削除の場合はボディを返さず、**Location** ヘッダーにアクティビティ詳細画面のURLを含める。
 削除アクティビティのIDは `D-` で始まる。実測値は以下のとおり。
@@ -740,7 +740,7 @@ Content-Type: text/html; charset=utf-8
 - 以上より、承認状況の確認にはレスポンスの `links` に含まれるアクティビティ詳細画面のURL、あるいは
   [API_16：アクティビティ一覧](./API_16_activity_list.md)、[API_17：承認](./API_17_approval_activity.md) を使用する必要がある。
 
-##### 承認前後の GET /sword/deposit/\<recid\> の比較
+##### 承認前後の GET `/sword/deposit/<recid>` の比較
 
 承認待ちの状態（アイテム登録用アクティビティが承認アクションで停止中）でも、
 recid は登録時点で採番・登録済み（PIDのステータスは `REGISTERED`）であるため、ステータスドキュメントを取得できる。
@@ -1197,7 +1197,7 @@ Content-Type: application/json
   一括インポート機能によって更新中である場合、すでにアイテムに対するアクティビティが存在する場合も同様にエラー（[ーメッセージ:26](#err26)、[メッセージ:27](#err27)）とする。
 
 
-### アイテム削除機能：DELETE /sword/deposit/\<recid\>
+### アイテム削除機能：DELETE `/sword/deposit/<recid>`
 
 - リクエストをチェックする
     - Authorizationヘッダーに記載されたOAuth認証情報を使用しWEKOにログインする

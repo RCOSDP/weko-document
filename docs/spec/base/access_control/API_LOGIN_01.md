@@ -7,7 +7,7 @@
 - [POST /api/\<version>/login](#post-apiversionlogin)
 - [POST /api/\<version>/logout](#post-apiversionlogout)
 
-## POST /api/\<version>/login
+## POST `/api/<version>/login`
 
 表内のいずれかの○に合致すれば、ログインAPIへのアクセスおよびログインが出来ます。
 
@@ -28,7 +28,7 @@
 >
 > レート制限：ログインAPIのみ、API アプリ専用の `weko_accounts.utils.login_limiter`（Flask-Limiter、既定の制限なし）で回数制限をかける。上限値は `WEKO_API_LIMIT_RATE_DEFAULT`（既定 `['100 per minute']`）で、キーは「エンドポイント名＋接続元 IP アドレス（`get_remote_addr`）」。上限超過時は Flask-Limiter により 429 が返る。API アプリの他のエンドポイントには共有の `limiter` の既定制限は適用されない。
 
-## POST /api/\<version>/logout
+## POST `/api/<version>/logout`
 
 表内のいずれかの○に合致すれば、ログアウトAPIへアクセスすることが出来ます。
 

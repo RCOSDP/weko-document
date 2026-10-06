@@ -42,7 +42,7 @@ curl -X POST "https://{hostname}/api/items/import-task?mode=<mode>&is_change_ide
 - ZIPファイルは [ADMIN_2_4：インポート](../admin/ADMIN_2_4.md) で使用するファイルと同様のもの（TSV/CSV形式のメタデータを含むZIP）を使用する。
 - TSVファイルの「.bulk_doi」に指定したDOI値で、[DOIを使用したメタデータ補完機能](../user/USER_4_6.md#3-web-apiによるdoiを使用したメタデータ補完機能)を行うことができる。
 
-#### GET /api/items/import-task/get_bulk_import_task_status/\<task_id>
+#### GET `/api/items/import-task/get_bulk_import_task_status/<task_id>`
 
 ```shell
 curl -X GET "https://{hostname}/api/items/import-task/get_bulk_import_task_status/<task_id>" \
@@ -187,7 +187,7 @@ POST /api/items/import-task
 
   チェックタスクの失敗・タイムアウト時は `summary` が空、`task_id` が空文字で、`expire` を含まない。
 
-### 一括インポート進捗取得機能：GET /api/items/import-task/get_bulk_import_task_status/\<task_id>
+### 一括インポート進捗取得機能：GET `/api/items/import-task/get_bulk_import_task_status/<task_id>`
 
 #### エンドポイント
 GET /api/items/import-task/get_bulk_import_task_status/\<task_id>
@@ -294,7 +294,7 @@ GET /api/items/import-task/get_bulk_import_task_status/\<task_id>
 5. checkモードでは `task_id` を返し、`can_import` により 200／400 を返す。
 6. importモードでは、`can_import`（エラーのあるアイテムが無い）のとき、各レコードに対し `create_flow_define`→`handle_workflow` を行い、DOI（`bulk_doi`）があれば `handle_metadata_by_doi` で補完したうえで `weko_search_ui.tasks.import_item` を `apply_async` する。`tasks[]`（item_task_id / task_status / task_result）をRedisへ更新する（TTL は維持）。`request_info` の action は `IMPORT`（`UserActivityLogger` の要約情報を付加）。
 
-### GET /api/items/import-task/get_bulk_import_task_status/\<task_id>（get_bulk_import_task_status）
+### GET `/api/items/import-task/get_bulk_import_task_status/<task_id>`（get_bulk_import_task_status）
 
 1. Redisから `task_id` を取得する（無ければ404、デコード失敗は400）。
 2. `task_data.user_id` と現在ユーザーが不一致なら403とする。

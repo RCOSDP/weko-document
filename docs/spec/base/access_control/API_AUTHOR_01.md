@@ -10,7 +10,7 @@
 - [DELETE /api/\<version>/authors/\<identifier>](#delete-apiversionauthorsidentifier)
 - [GET /api/\<version>/authors/count](#get-apiversionauthorscount)
 
-## GET /api/\<version>/authors
+## GET `/api/<version>/authors`
 
 表内のいずれかの○に合致すれば、著者DBの著者を検索することが出来ます。
 
@@ -19,7 +19,7 @@
 | トークンのスコープに<br>author:search<br>がある | ○                  | ○                    | ×                      | ×            | ×            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-## POST /api/\<version>/authors
+## POST `/api/<version>/authors`
 
 表内のいずれかの○に合致すれば、著者DBに著者を追加することが出来ます。
 
@@ -28,7 +28,7 @@
 | トークンのスコープに<br>author:create<br>がある | ○                  | ○                    | ×                      | ×            | ×            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-## PUT /api/\<version>/authors/\<identifier>
+## PUT `/api/<version>/authors/<identifier>`
 
 表内のいずれかの○に合致すれば、著者DBの著者を編集することが出来ます。
 
@@ -37,7 +37,7 @@
 | トークンのスコープに<br>author:update<br>がある | ○                  | ○                    | ×                      | ×            | ×            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-## DELETE /api/\<version>/authors/\<identifier>
+## DELETE `/api/<version>/authors/<identifier>`
 
 表内のいずれかの○に合致すれば、著者DBの著者を削除することが出来ます。
 
@@ -46,7 +46,7 @@
 | トークンのスコープに<br>author:delete<br>がある | ○                  | ○                    | ×                      | ×            | ×            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/authors/count
+## GET `/api/<version>/authors/count`
 
 表内のいずれかの○に合致すれば、著者DBの著者数を取得することが出来ます。
 

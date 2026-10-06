@@ -21,7 +21,7 @@ SWORD API のアクセスコントロールについて記述します。
 | -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 利用可否 | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 
-## GET /sword/deposit/\<recid>
+## GET `/sword/deposit/<recid>`
 
 ○ に合致すれば、レコードIDを指定してアイテムのステータスドキュメントを取得することが出来ます。
 
@@ -45,7 +45,7 @@ SWORD API のアクセスコントロールについて記述します。
   | トークンのスコープに<br>deposit:write<br>deposit:actions<br>item:create<br>**user:activity** が全て存在 | ○ | ○ | ○ | ○ | × | × |
   | 上記以外 | × | × | × | × | × | × |
 
-## PUT /sword/deposit/\<recid>
+## PUT `/sword/deposit/<recid>`
 
 ○ に合致すれば、レコードIDを指定してメタデータやファイルを置換することが出来ます。
 
@@ -61,7 +61,7 @@ SWORD API のアクセスコントロールについて記述します。
   | トークンのスコープに<br>deposit:write<br>deposit:actions<br>item:update<br>**user:activity** が全て存在 | ○ | ○ | ○ | ○ | × | × |
   | 上記以外 | × | × | × | × | × | × |
 
-## DELETE /sword/deposit/\<recid>
+## DELETE `/sword/deposit/<recid>`
 
 ○ に合致すれば、レコードIDを指定してアイテムを削除することが出来ます。
 

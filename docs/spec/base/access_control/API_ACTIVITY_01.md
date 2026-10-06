@@ -17,7 +17,7 @@
 | トークンのスコープに<br>user:activity<br>がある | ○                  | ○                    | ○                      | ○            | ○            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/depositactivity/\<activity_id>
+## GET `/api/depositactivity/<activity_id>`
 
 表内のいずれかの○に合致すれば、指定したアクティビティIDのアクティビティの状態を取得することが出来ます。
 
@@ -26,7 +26,7 @@
 | トークンのスコープに<br>user:activity<br>がある | ○                  | ○                    | ○                      | ○            | ○            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-## DELETE /api/depositactivity/\<activity_id>
+## DELETE `/api/depositactivity/<activity_id>`
 
 表内のいずれかの○に合致すれば、指定したアクティビティIDのアクティビティを中断することが出来ます。
 

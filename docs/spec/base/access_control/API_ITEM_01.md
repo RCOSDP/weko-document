@@ -12,7 +12,7 @@
 - [GET /api/index/](#get-apiindex)
 - [PUT /api/records/](#put-apirecords)
 
-## GET /api/\<version>/records
+## GET `/api/<version>/records`
 
 #### APIの使用
 
@@ -53,7 +53,7 @@
 | 条件と合致  | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 合致しない  | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/records/\<pid_value>
+## GET `/api/<version>/records/<pid_value>`
 
 #### APIの使用
 
@@ -73,7 +73,7 @@
 | 閲覧権限：あり | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 閲覧権限：なし | ×                  | ×                    | ×                      | ×            | ×            | ○                        |
 
-## GET /api/\<version>/records/\<pid_value>/stats
+## GET `/api/<version>/records/<pid_value>/stats`
 
 #### APIの使用
 
@@ -93,7 +93,7 @@
 | 閲覧権限：あり | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 閲覧権限：なし | ×                  | ×                    | ×                      | ×            | ×            | ○                        |
 
-## POST /api/\<version>/records/list
+## POST `/api/<version>/records/list`
 
 #### APIの使用
 

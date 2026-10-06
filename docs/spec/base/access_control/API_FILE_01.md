@@ -11,7 +11,7 @@
 - [POST /api/\<version>/records/\<pid_value>/files/selected](#post-apiversionrecordspid_valuefilesselected)
 - [GET /api/\<version>/ranking/\<ranking_type>](#get-apiversionrankingranking_type)
 
-## GET /api/\<version>/ranking/\<pid_value>/files
+## GET `/api/<version>/ranking/<pid_value>/files`
 
 #### APIの使用
 
@@ -31,7 +31,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ○                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/records/\<pid_value>/files/\<filename>
+## GET `/api/<version>/records/<pid_value>/files/<filename>`
 
 #### APIの使用
 
@@ -51,7 +51,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ○                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/records/\<pid_value>/files/\<filename>/stats
+## GET `/api/<version>/records/<pid_value>/files/<filename>/stats`
 
 #### APIの使用
 
@@ -71,7 +71,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ○                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/records/\<pid_value>/files/all
+## GET `/api/<version>/records/<pid_value>/files/all`
 
 #### APIの使用
 
@@ -91,7 +91,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ○                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## POST /api/\<version>/records/\<pid_value>/files/selected
+## POST `/api/<version>/records/<pid_value>/files/selected`
 
 #### APIの使用
 
@@ -111,7 +111,7 @@
 | ファイル閲覧権限：<br>あり | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | ファイル閲覧権限：<br>なし | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/ranking/\<ranking_type>
+## GET `/api/<version>/ranking/<ranking_type>`
 
 #### APIの使用
 

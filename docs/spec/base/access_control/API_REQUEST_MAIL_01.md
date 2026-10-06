@@ -8,7 +8,7 @@
 - [POST /api/\<version>/captcha/validate](#post-apiversioncaptchavalidate)
 - [POST /api/\<version>/records/\<pid_value>/request-mail](#post-apiversionrecordspid_valuerequest-mail)
 
-## GET /api/\<version>/captcha/image
+## GET `/api/<version>/captcha/image`
 
 表内のいずれかの○に合致すれば、CAPTCHA画像を取得することが出来ます。
 
@@ -16,7 +16,7 @@
 | -------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 利用可否 | ○                 | ○                   | ○                      | ○            | ○            | ○                        |
 
-## POST /api/\<version>/captcha/validate
+## POST `/api/<version>/captcha/validate`
 
 表内のいずれかの○に合致すれば、CAPTCHA結果検証APIへアクセスすることが出来ます。
 
@@ -31,7 +31,7 @@
 | calculation_result<br>が正しい | ○                  | ○                    | ○                      | ○            | ○            | ○                       |
 | calculation_result<br>が誤り                                 | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-## POST /api/\<version>/records/\<pid_value>/request-mail
+## POST `/api/<version>/records/<pid_value>/request-mail`
 
 表内のいずれかの○に合致すれば、リクエストメール送信APIへアクセスすることが出来ます。
 

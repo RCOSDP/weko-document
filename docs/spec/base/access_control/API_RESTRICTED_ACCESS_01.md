@@ -12,7 +12,7 @@
 - [POST /api/\<version>/workflow/activities/\<activity_id>/application](#post-apiversionworkflowactivitiesactivity_idapplication)
 - [GET /api/\<version>/records/\<pid>/need-restricted-access](#get-apiversionrecordspidneed-restricted-access)
 
-## GET /api/\<version>/workflow/activities
+## GET `/api/<version>/workflow/activities`
 
 表内のいずれかの○に合致すれば、アクティビティの一覧を取得することが出来ます。
 
@@ -23,7 +23,7 @@
 
 ※1 自身が担当するアクティビティのみ取得することが出来ます。
 
-## POST /api/\<version>/workflow/activities/\<activity_id>/approve
+## POST `/api/<version>/workflow/activities/<activity_id>/approve`
 
 表内の○に合致すれば、承認待ちのアクティビティを承認することが出来ます。
 
@@ -32,7 +32,7 @@
 | トークンのスコープに<br>user:activity<br>がある    | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 上記以外                                           | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-## POST /api/\<version>/workflow/activities/\<activity_id>/throw-out
+## POST `/api/<version>/workflow/activities/<activity_id>/throw-out`
 
 表内の○に合致すれば、操作中のアクティビティの操作を却下することが出来ます。
 
@@ -41,7 +41,7 @@
 | トークンのスコープに<br>user:activity<br>がある    | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 上記以外                                           | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
-## GET /api/\<version>/records/\<pid>/files/\<filename>/terms
+## GET `/api/<version>/records/<pid>/files/<filename>/terms`
 
 表内の○に合致すれば、指定した制限公開ファイルの利用申請を行う際の利用規約を取得することが出来ます。
 
@@ -50,7 +50,7 @@
 | トークンのスコープに<br>user:activityがある | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 上記以外                                    | ×                  | ×                    | ×                      | ×            | ×            | ○                        |
 
-## POST /api/\<version>/records/\<pid>/files/\<filename>/application
+## POST `/api/<version>/records/<pid>/files/<filename>/application`
 
 表内の○に合致すれば、指定した制限公開ファイルの利用申請を開始し、アクティビティの作成を行うことが出来ます。
 
@@ -62,7 +62,7 @@
 ※1 ゲストアクティビティが作成されます。<br>
 　　既に同ファイル、同一メールアドレスに紐づくゲストアクティビティが存在する場合は既存アクティビティを使用します。
 
-## POST /api/\<version>/workflow/activities/\<activity_id>/application
+## POST `/api/<version>/workflow/activities/<activity_id>/application`
 
 表内の○に合致すれば、制限公開ファイルの利用申請ワークフローにおける申請内容の登録を行うことが出来ます。
 
@@ -73,7 +73,7 @@
 
 ※ 利用申請ワークフローのみで利用可能で、通常のワークフローアクティビティでは利用出来ません。
 
-## GET /api/\<version>/records/\<pid>/need-restricted-access
+## GET `/api/<version>/records/<pid>/need-restricted-access`
 
 表内の○に合致すれば、当該ファイルのコンテンツダウンロードに利用申請が必要かどうか判断することが出来ます。
 
