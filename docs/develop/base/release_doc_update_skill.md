@@ -119,10 +119,16 @@ python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/man
 |---|---|---|
 | PAGE | リンク先のページが無い | 新しいものは直す |
 | ANCHOR | リンク先の見出しが無い（GitHub でも切れる） | 新しいものは直す |
-| SLUG | GitHub では効くが honkit のサイトでは切れるアンカー（honkit は全角括弧・中黒を残し、`_` を消し、同名見出しに `-1` を付けない） | 報告のみ（`--strict` で失敗扱い） |
+| SLUG | GitHub では効くが honkit のサイトでは切れるアンカー（honkit は全角括弧・中黒を残し、`_` を消し、同名見出しに `-1` を付けない） | `add_anchors.py` で見出しの直前に `<a id="…"></a>` を足して直す（見出しは変えない）。`--strict` で失敗扱いにできる |
 | IMAGE | 画像ファイルが無い | 新しいものは直す |
 
   `new` が今回増えた問題、`existing` は分岐点に既にあった問題です。新しい PAGE／ANCHOR／IMAGE があるか、ビルドが終わらなければ終了コード 1 になります。
+- GitHub でのみ有効なアンカー（SLUG）は次で直します（先にビルドしておく）。
+
+  ```
+  python3 .claude/skills/weko-release-doc-update/scripts/add_anchors.py docs/spec/base docs/build/spec/html --apply
+  ```
+
 - ログに出る shelljs の警告、`prism-Python.js` が見つからないエラー、deprecated 警告は、最後に「generation finished with success」があれば問題ありません。
 - 英語版マニュアル・開発者向け文書・運用文書は book.json が無いため対象外です。
 
