@@ -9,6 +9,7 @@ WEKO3 の新しいリリースに合わせて weko-document を更新するた�
 - 新しいバージョンのアップデート手順書を作る
 - 今回のバージョンで変わった箇所に【vX.Y.Z】タグを付ける
 - 手順番号・節番号の参照・表／図番号の崩れを直す
+- 機能仕様書・マニュアル・登録ガイドを honkit でビルドし、リンク切れ・画像の欠落を確認する
 - スクリーンショットを撮り直し、古い画像と同じ赤枠・矢印・番号を描いて差し替える
 - カテゴリ単位でコミットし、push する（push は指示したときだけ）
 
@@ -52,7 +53,8 @@ v2.2.0 向けにドキュメントを更新して。実装は RCOSDP/weko の re
 5. **タグ付け**：「v2.2.0 で変わった箇所に【v2.2.0】タグを付けて」（見出しには付けません）
 6. **番号と参照**：「手順番号の崩れと節番号の参照を直して」
 7. **スクリーンショット**：「撮影用の管理者アカウントを作って、差し替えが必要な画像を撮って注記を付けて」→ 比較ページを確認 →「差し替えて」
-8. **コミット**：「カテゴリ単位でコミットして push して」
+8. **ビルド確認**：「ビルドしてリンク切れを確認して」
+9. **コミット**：「カテゴリ単位でコミットして push して」
 
 各段階の終わりに、Claude は「直した齟齬」「追記した内容」「実装側の不具合と思われる点」「確認が必要な点」を報告します。
 
@@ -97,7 +99,34 @@ python3 .claude/skills/weko-release-doc-update/scripts/verify_manual.py --tag '�
 python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/manuals_en/USER/user_manual.md
 ```
 
-## 8. スキルの中身
+## 8. ビルドしてリンク切れを確認する
+
+機能仕様書・管理者マニュアル・ユーザーマニュアル・登録ガイドを honkit でビルドし、HTML のリンク切れを確認します。Claude に「ビルドして確認して」と依頼するか、weko-document のルートで次を実行します。
+
+```
+# 分岐点（例 main）もビルドし、そこから増えた問題だけを数える
+.claude/skills/weko-release-doc-update/scripts/build_docs.sh --compare main --work ~/weko-docbuild
+
+# 一部の本だけ／PDF も作る（PDF は calibre の ebook-convert が必要）
+.claude/skills/weko-release-doc-update/scripts/build_docs.sh admin user --pdf
+```
+
+- 出力は `docs/build/<本>/html`（`.gitignore` 済み）、ログは `--work` のフォルダです。
+- 初回は `npm ci` で honkit を入れます。arm64 では puppeteer の Chromium が無いので、そのダウンロードを省いて入れます。`package-lock.json` は変わりません。
+- 結果の見方：
+
+| 種類 | 意味 | 扱い |
+|---|---|---|
+| PAGE | リンク先のページが無い | 新しいものは直す |
+| ANCHOR | リンク先の見出しが無い（GitHub でも切れる） | 新しいものは直す |
+| SLUG | GitHub では効くが honkit のサイトでは切れるアンカー（honkit は全角括弧・中黒を残し、`_` を消し、同名見出しに `-1` を付けない） | 報告のみ（`--strict` で失敗扱い） |
+| IMAGE | 画像ファイルが無い | 新しいものは直す |
+
+  `new` が今回増えた問題、`existing` は分岐点に既にあった問題です。新しい PAGE／ANCHOR／IMAGE があるか、ビルドが終わらなければ終了コード 1 になります。
+- ログに出る shelljs の警告、`prism-Python.js` が見つからないエラー、deprecated 警告は、最後に「generation finished with success」があれば問題ありません。
+- 英語版マニュアル・開発者向け文書・運用文書は book.json が無いため対象外です。
+
+## 9. スキルの中身
 
 | 場所 | 内容 |
 |---|---|
@@ -105,10 +134,10 @@ python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/man
 | `LESSONS.md` | これまでの作業で得た注意点 |
 | `rules/` | 作業ルール（共通、タグ付け、英語版生成、撮影）。`{{...}}` を今回の値に置き換えて使う |
 | `prompts/` | 作業の種類ごとの依頼文の雛形 |
-| `scripts/` | 差し込み、番号の振り直し、検証、撮影、注記、比較ページ、差し替え、撮影用サンプルデータの登録 |
+| `scripts/` | 差し込み、番号の振り直し、検証、ビルドとリンク切れ確認、撮影、注記、比較ページ、差し替え、撮影用サンプルデータの登録 |
 | `examples/` | v2.1.0 での撮影・注記の指定、日本語版と英語版の画像の対応表 |
 
-## 9. 注意
+## 10. 注意
 
 - 作業記録（突合のメモ、計画、進捗）は作業フォルダに出力し、リポジトリには入れません（`.gitignore` 済み）。
 - 撮影用アカウントのパスワードはリポジトリの外に置きます。
