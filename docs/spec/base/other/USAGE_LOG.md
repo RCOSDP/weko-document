@@ -33,7 +33,7 @@ CELERY_BEAT_SCHEDULE = {
 
 - 各種ログはelasticsearchに格納されており、インデックスを指定して取得することができる
 
-  - インデックスについては[その他-4: elasticsearch](#elasticsearch)を参照
+  - インデックスについては[その他-4: elasticsearch](OTHER_elasticsearch.md)を参照
 
   - 生データである「events-stats-{ログの種類}」から、統計情報「stats-{ログの種類}」を作成している
 

@@ -171,9 +171,9 @@
 
 | **テーマ** | **イメージ** | **メモ** |
 | ---- | ---- | ---- |
-| Default | ![](media/media/image3.png) | 現在のデフォルト(メインのデザイン)<br>角丸。枠線あり。影あり。 |
-| Side Line | ![](media/media/image3.png) | 四角。左枠線のみ。影なし。 |
-| Simple | ![](media/media/image3.png) | 四角。枠線なし。影なし。 |
+| Default | ![](../media/media/image3.png) | 現在のデフォルト(メインのデザイン)<br>角丸。枠線あり。影あり。 |
+| Side Line | ![](../media/media/image3.png) | 四角。左枠線のみ。影なし。 |
+| Simple | ![](../media/media/image3.png) | 四角。枠線なし。影なし。 |
 
 - 各種ウィジェットでの入力項目
   - **Free description**
@@ -207,7 +207,7 @@
 
 | **設定** | **表示** |
 | --------------------------- | --------------------------- |
-| ![](media/media/image4.png) | ![](media/media/image5.png) |
+| ![](../media/media/image4.png) | ![](../media/media/image5.png) |
 
   - **Notice**
     - 概要  

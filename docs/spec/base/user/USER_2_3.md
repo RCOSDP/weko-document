@@ -72,7 +72,7 @@
       - 「Do not output」を選択する場合、すでに登録済みの情報があればデータはそのまま保持して画面表示のみ非表示とする。
       - 必須項目を入力後、最下部の「保存」ボタンを押下することで雑誌情報の初期登録は完了となる。
       - 必須項目は「タイトル(Title)」、「最古オンライン巻号の出版年月日(Date of first issue available online)」、「カバー範囲(Coverage depth)」、「資料種別(Publication type)」、「アクセスモデル(Access type)」、「言語(langueage)」である。
-      - 項目の詳細については[ADMIN-3-2 雑誌情報](#雑誌情報-1)を参照すること。
+      - 項目の詳細については[ADMIN-3-2 雑誌情報](../admin/ADMIN_3_2.md)を参照すること。
 
 2 インデックスの雑誌情報をKBART形式で出力できる
 
@@ -153,7 +153,7 @@
   - 雑誌情報の設定が「出力する」になっていて、かつ、雑誌情報が設定されている状態でインデックスツリー検索、またはインデックスリンク検索を行う。その時、weko_search_ui.views.searchメソッドにてget_journal_infoを使ってそのインデックスに所属する雑誌情報を取得し、表示する。  
     なお、「出力する」の設定はjournalテーブルの列「is_output」を参照する。
   - 初期表示は雑誌情報をキー名"publication_title"、"publisher_name"、"language”、"online_identifier"、"openSearchUrl"の順に値を表示していく。詳細表示のキー名についてはweko_search_ui.indexlist.htmlを参照すること
-- 雑誌情報設定画面の処理については[ADMIN-3-2 雑誌情報](#雑誌情報-1)を参照すること。
+- 雑誌情報設定画面の処理については[ADMIN-3-2 雑誌情報](../admin/ADMIN_3_2.md)を参照すること。
 - 雑誌情報出力処理について。
   - 雑誌情報出力処理はweko_indextree_journal.tasks.export_journal_taskメソッドで行われ、kbart2拡張形式のtxtファイルで出力される。同ディレクトリにfilelist.txtとして出力されたファイル名を記載したtxtファイルも出力する。
   - デフォルトの実行スケジュールは以下のセロリタスクで設定される。  

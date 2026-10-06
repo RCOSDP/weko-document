@@ -69,7 +69,7 @@
       - JP： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/templates/weko_admin/email_templates/statistic_mail_template_ja.tpl>
 - メールの件名には、【Administration > 設定（setting） > サイト情報（site info）画面】 の「サイト名」を使用する  
   　日本語メールには日本語サイト名を、英語メールには英語サイト名をセットする
-- アイテム登録時（[USER-4-8: Item Registration：フィードバックメール機能](#_Item_Registration：フィードバックメール機能)を参照）にフィードバックメールを受信する設定にしている方を対象とする
+- アイテム登録時（[USER-4-8: Item Registration：フィードバックメール機能](../user/USER_4_8.md)を参照）にフィードバックメールを受信する設定にしている方を対象とする
 - ユーザ情報にメールアドレスが登録されていない場合は対象者にならず、メールは送信されない
 - 対象者が複数のアイテムで受信する設定となっている場合、メールは1通のみ(まとめて)送信されるようにする
 - 閲覧回数、ファイル再生回数、ファイルダウンロード回数等がすべてゼロであるアイテムでもメールに記載する

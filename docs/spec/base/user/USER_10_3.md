@@ -8,7 +8,7 @@
 
 * ワークスペース（WorkSpace）の簡易登録画面にてDOIを入力し「取得」ボタンを押下する。
 * [SWORD API JSON-LD](../admin/ADMIN_16_2.md)
-* [RO-Crate インポート](../admin/ADMIN_2_5.md#メタデータ補完機能)
+* [RO-Crate インポート](../admin/ADMIN_2_5.md#wkmetadataautofillメタデータ自動補完フラグ)
 
 ## 利用可能なロール
 

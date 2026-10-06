@@ -28,7 +28,7 @@ curl https://ホスト/api/depositactivity/アクティビティID -H "Authoriza
 
 - 機能内容
 
-- 使用方法については、[その他-10: GakuNinRDM連携](#gakuninrdm連携)を参照
+- 使用方法については、[その他-10: GakuNinRDM連携](../other/WORKFLOW_01.md)を参照
 
 - 関連モジュール
 

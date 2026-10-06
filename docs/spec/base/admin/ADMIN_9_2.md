@@ -34,7 +34,7 @@
 
 - OAI-PMHのIdentify情報を返戻可能
 
-  【Admin > OAI-PMH > Identify画面】上の設定値に基づき、OAI-PMHのIdentifyリクエスト(verb=Identify)に対してレスポンス可能とする。詳細は[Web-API API-2:OAI-PMH](#_OAI-PMH)を参照。
+  【Admin > OAI-PMH > Identify画面】上の設定値に基づき、OAI-PMHのIdentifyリクエスト(verb=Identify)に対してレスポンス可能とする。詳細は[Web-API API-2:OAI-PMH](../api/API_02_OAIPMH.md)を参照。
 
 ## 関連モジュール
 

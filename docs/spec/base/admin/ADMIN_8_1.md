@@ -167,7 +167,7 @@
 - コミュニティ作成時のページ追加
   - コミュニティを新規作成した際に、ページレイアウト機能から作成できるコミュニティ配下のページが  
     自動で作成される。  
-    ページレイアウト（Page Layout）画面】の詳細は[ADMIN-4-2: ページレイアウト](\\l)を参照  
+    ページレイアウト（Page Layout）画面】の詳細は[ADMIN-4-2: ページレイアウト](ADMIN_4_2.md)を参照  
     作成されるページは以下の通り。  
       - Title：About、 URL：/c/{community_id}/page/about  
       - Title：Editorial board、 URL：/c/{community_id}/page/eb  
