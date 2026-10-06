@@ -353,6 +353,8 @@ DOI発行機関を指定する場合は、`jpcoar:identifierRegistration`で指�
 },
 ```
 
+<a id="wktextextraction全文検索用本文抽出フラグ"></a>
+
 ### wk:textExtraction：全文検索用本文抽出フラグ
 
 WEKO3では、アイテム登録時に本文ファイルのテキストを抽出し、アイテムの全文検索に利用している。  
@@ -373,6 +375,8 @@ WEKO3では、アイテム登録時に本文ファイルのテキストを抽出
 }
 ```
 
+<a id="wksaveasis登録用ファイル保存フラグ"></a>
+
 ### wk:saveAsIs：登録用ファイル保存フラグ<span id="saveAsIs">
 
 RO-Crate+BagItファイルをインポート時するとき、デフォルトではZIPファイルを展開し、dataディレクトリ内のファイルを登録する。  
@@ -385,6 +389,8 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
   "wk:saveAsIs": true
 }
 ```
+
+<a id="wkissplitedアイテム分割フラグ"></a>
 
 ### wk:isSplited：アイテム分割フラグ<span id="isSplited">
 
@@ -433,6 +439,8 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
 }
 ```
 
+<a id="wkmetadataautofillメタデータ自動補完フラグ"></a>
+
 ### wk:metadataAutoFill：メタデータ自動補完フラグ
 
 アイテムのメタデータを自動補完するかどうかを指定する。ルートデータセット直下に記述する。  
@@ -460,6 +468,8 @@ RO-Crate+BagItファイルをインポート時するとき、デフォルトで
   "identifierType": "DOI"
 }
 ```
+
+<a id="wkmetadatareplaceメタデータのみ置換フラグ"></a>
 
 ### wk:metadataReplace：メタデータのみ置換フラグ
 

@@ -28,12 +28,16 @@ WEKO3 が提供する各種 WEB API の仕様をまとめる。REST API はAPI�
 | 【v2.1.0】[API-20: 一括インポートAPI](./API_20_bulk_import.md) | `/api/items/import-task`, `/api/items/import-task/get_bulk_import_task_status/<task_id>`（weko-items-ui） |
 | [API Endpoint](./API_ENDPOINT_01.md) | エンドポイント一覧の入口 |
 
+<a id="認証認可の共通事項release_v210"></a>
+
 ## 認証・認可の共通事項（release_v2.1.0）
 
 - **未認証時の応答**：APIアプリ（`/api/` 配下）では、`login_required` 等で未認証と判定された場合、401 と JSON `{"status": 401, "message": "Authentication required."}` を返す（`weko_accounts.unauthorized.install(app, api_only=True)`）。v2.0.x では API アプリにログイン画面が無いため 500 になっていた。UI アプリでも AJAX/fetch 等の機械的な呼び出しには同じ 401 JSON を返し、通常の画面遷移はログイン画面へリダイレクトする。`WEKO_ACCOUNTS_UNAUTHORIZED_JSON`（既定 True）で制御する。詳細は [アクセスコントロール：ログイン](../access_control/API_LOGIN_01.md) を参照。
   - OAuth2 のトークンが無い・無効な場合（`@oauth2.require_oauth()`）は従来どおり 401、スコープ不足（`@require_oauth_scopes`）は 403。SWORD API（`/sword/...`）・一括インポートAPIなど、Blueprint 単位のエラーハンドラを持つ API は各仕様書記載の本文形式で返す。
 - 【v2.1.0】**ログインAPI**（`POST /api/<version>/login`）：失敗応答は存否を区別しない 403 `InvalidCredentialsError`／400 `InvalidLoginRequestError` に統一され、ログインAPIのみ `WEKO_API_LIMIT_RATE_DEFAULT`（既定 `['100 per minute']`）でレート制限（超過時 429）される。詳細は [アクセスコントロール：ログイン](../access_control/API_LOGIN_01.md)。
 - 【v2.1.0】**ファイル権限の管理者判定**：`check_file_download_permission` 等で無条件に許可される管理者は、システム管理者・リポジトリ管理者と、当該アイテムが所属するコミュニティを担当するコミュニティ管理者に限られる（`weko_records_ui.permissions.is_superuser_or_record_comadmin`）。
+
+<a id="個別のapi仕様書が無いapiの一覧release_v210"></a>
 
 ## 個別のAPI仕様書が無いAPIの一覧（release_v2.1.0）
 

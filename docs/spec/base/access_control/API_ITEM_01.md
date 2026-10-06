@@ -53,6 +53,8 @@
 | 条件と合致  | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 合致しない  | -                  | -                    | ×                      | ×            | ×            | ×                        |
 
+<a id="get-apiversionrecordspid_value"></a>
+
 ## GET `/api/<version>/records/<pid_value>`
 
 #### APIの使用
@@ -72,6 +74,8 @@
 | -------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | 閲覧権限：あり | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 閲覧権限：なし | ×                  | ×                    | ×                      | ×            | ×            | ○                        |
+
+<a id="get-apiversionrecordspid_valuestats"></a>
 
 ## GET `/api/<version>/records/<pid_value>/stats`
 

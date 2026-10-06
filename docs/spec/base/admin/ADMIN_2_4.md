@@ -245,6 +245,8 @@
 
 > 【v2.1.0】実装補足（v2.1.0）：#61684 で列見出しが「Status」「Import Result」に戻された（一時的に存在した「Action」「Work Flow Status」「Processing」「Waiting」のラベルは削除）。終了日（④）は `/check_status`（`ItemImportView.get_status`）でタスクの完了（成功／失敗）を検知した時点の **UTC** 日時（`datetime.utcnow()`）であり、開始日（③）は Celery ワーカーの `datetime.now()`（サーバーのローカル時刻）である。
 
+<a id="インポートファイルtsvファイルについて"></a>
+
 ## インポートファイル／TSVファイルについて
 
 #### 3.1 インポートファイル

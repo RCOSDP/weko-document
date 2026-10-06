@@ -17,6 +17,8 @@
 | トークンのスコープに<br>user:activity<br>がある | ○                  | ○                    | ○                      | ○            | ○            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
+<a id="get-apidepositactivityactivity_id"></a>
+
 ## GET `/api/depositactivity/<activity_id>`
 
 表内のいずれかの○に合致すれば、指定したアクティビティIDのアクティビティの状態を取得することが出来ます。
@@ -25,6 +27,8 @@
 | -------------------------------------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | トークンのスコープに<br>user:activity<br>がある | ○                  | ○                    | ○                      | ○            | ○            | ×                       |
 | 上記以外                                     | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
+
+<a id="delete-apidepositactivityactivity_id"></a>
 
 ## DELETE `/api/depositactivity/<activity_id>`
 

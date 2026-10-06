@@ -31,6 +31,8 @@
 | calculation_result<br>が正しい | ○                  | ○                    | ○                      | ○            | ○            | ○                       |
 | calculation_result<br>が誤り                                 | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
 
+<a id="post-apiversionrecordspid_valuerequest-mail"></a>
+
 ## POST `/api/<version>/records/<pid_value>/request-mail`
 
 表内のいずれかの○に合致すれば、リクエストメール送信APIへアクセスすることが出来ます。

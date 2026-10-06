@@ -23,6 +23,8 @@
 
 ※1 自身が担当するアクティビティのみ取得することが出来ます。
 
+<a id="post-apiversionworkflowactivitiesactivity_idapprove"></a>
+
 ## POST `/api/<version>/workflow/activities/<activity_id>/approve`
 
 表内の○に合致すれば、承認待ちのアクティビティを承認することが出来ます。
@@ -31,6 +33,8 @@
 | -------------------------------------------------- | ------------------ | -------------------- | ---------------------- | ------------ | ------------ | ------------------------ |
 | トークンのスコープに<br>user:activity<br>がある    | ○                  | ○                    | ○                      | ○            | ○            | ×                        |
 | 上記以外                                           | ×                  | ×                    | ×                      | ×            | ×            | ×                        |
+
+<a id="post-apiversionworkflowactivitiesactivity_idthrow-out"></a>
 
 ## POST `/api/<version>/workflow/activities/<activity_id>/throw-out`
 
@@ -61,6 +65,8 @@
 
 ※1 ゲストアクティビティが作成されます。<br>
 　　既に同ファイル、同一メールアドレスに紐づくゲストアクティビティが存在する場合は既存アクティビティを使用します。
+
+<a id="post-apiversionworkflowactivitiesactivity_idapplication"></a>
 
 ## POST `/api/<version>/workflow/activities/<activity_id>/application`
 

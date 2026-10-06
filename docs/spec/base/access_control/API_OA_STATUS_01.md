@@ -6,6 +6,8 @@ OAステータスに関するAPIのアクセスコントロールについて記
 
 - [POST /api/\<version>/oa_status/callback](#post-apiversionoa_statuscallback)
 
+<a id="post-apiversionoa_statuscallback"></a>
+
 ## POST `/api/<version>/oa_status/callback`
 
 表内のいずれかの○に合致すれば、OAステータスの更新が出来ます。
