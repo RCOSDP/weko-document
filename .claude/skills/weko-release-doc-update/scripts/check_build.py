@@ -46,7 +46,7 @@ def collect(root):
                 pages[p] = re.sub(r'<!--.*?-->', '', open(p, encoding='utf-8', errors='replace').read(), flags=re.S)
     ids = {p: set(re.findall(r'\sid="([^"]+)"', s)) for p, s in pages.items()}
     slugs = {p: gh_slugs(html.unescape(re.sub(r'<[^>]+>', '', t)).strip()
-                         for t in re.findall(r'<h([1-6])[^>]*>(.*?)</h\1>', s, re.S) for t in [t[1]])
+                         for t in re.findall(r'<h([1-6])\s[^>]*id="[^"]*"[^>]*>(.*?)</h\1>', s, re.S) for t in [t[1]])
              for p, s in pages.items()}
     issues = set()
     for p, s in pages.items():  # whole page, including the sidebar summary links
