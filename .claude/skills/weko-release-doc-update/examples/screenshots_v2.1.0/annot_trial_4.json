@@ -1,0 +1,46 @@
+[
+ {
+  "image": "image4",
+  "url": "/admin/inclusionrequest/",
+  "annotate": [
+   {
+    "id": "menu",
+    "box": [
+     "text=\"コミュニティ管理\" >> visible=true"
+    ]
+   },
+   {
+    "id": "sub",
+    "box": [
+     "text=\"参加リクエスト\" >> visible=true"
+    ]
+   },
+   {
+    "id": "tbl",
+    "box": [
+     "table >> visible=true"
+    ],
+    "pad": 6
+   },
+   {
+    "arrow": {
+     "from": "menu",
+     "to": "sub",
+     "fromSide": "bottom",
+     "toSide": "top",
+     "at": 0.18,
+     "straight": "v"
+    }
+   },
+   {
+    "arrow": {
+     "from": "sub",
+     "to": "tbl",
+     "fromSide": "right",
+     "toSide": "bottom",
+     "elbow": "h"
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,23 @@
+const { start } = require('./lib');
+(async () => {
+  const { browser, page, go } = await start();
+  await go('/admin/swordapi/jsonld/add/?url=%2Fadmin%2Fswordapi%2Fjsonld%2F');
+  await page.waitForTimeout(1500);
+  const opts = async (s) => page.$$eval(s + ' option', os => os.map(o => o.value + ':' + o.textContent.trim()));
+  console.log(await opts('#application'));
+  await page.selectOption('#application', { label: 'screenshot-sample アプリケーション' });
+  await page.check('input[name="registration_type"][value="Workflow"]');
+  await page.waitForTimeout(1000);
+  console.log(await opts('#workflow'));
+  await page.selectOption('#workflow', { label: 'screenshot-sample ワークフロー' });
+  await page.waitForTimeout(1000);
+  console.log(await opts('#mapping'));
+  await page.selectOption('#mapping', { label: 'screenshot-sample マッピング' });
+  await page.waitForTimeout(800);
+  await page.screenshot({ path: 'probe/sw_before.png', fullPage: true });
+  await page.click('#save_button');
+  await page.waitForTimeout(4000);
+  console.log(page.url());
+  await page.screenshot({ path: 'probe/sw_after.png', fullPage: true });
+  await browser.close();
+})();

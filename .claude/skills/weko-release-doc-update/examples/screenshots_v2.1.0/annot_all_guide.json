@@ -1,0 +1,12 @@
+[
+ {"image":"app_setting_1","url":"/account/settings/applications/clients/new/","steps":[
+   {"fill":"#name","value":"GRDM_JAIROCloud_XXUniversity"},
+   {"fill":"#description","value":"GakuNin RDMのJAIRO Cloud連携用（XX大学リポジトリ）"},
+   {"fill":"#website","value":"https://rdm.nii.ac.jp"},
+   {"fill":"#redirect_uris","value":"https://rdm.nii.ac.jp/oauth/callback/weko/xx.repo.nii.ac.jp/"},
+   {"eval":"(()=>{const s=document.getElementById('is_confidential'); s.selectedIndex=0; s.dispatchEvent(new Event('change')); document.activeElement.blur();})()"}
+  ],
+  "note":"form is filled but not submitted (same as mk_app.js)",
+  "annotate":[{"box":["button[type=submit].btn-primary >> visible=true"],"pad":5}],
+  "crop":{"around":[".breadcrumb >> visible=true",".panel:has-text(\"New OAuth Application\") >> visible=true",".panel:has-text(\"プロフィール\") >> visible=true"],"pad":10}}
+]

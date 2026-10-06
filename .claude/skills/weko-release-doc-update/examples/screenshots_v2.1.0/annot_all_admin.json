@@ -1,0 +1,193 @@
+[
+ {
+  "image": "image189",
+  "url": "/admin/authors/",
+  "wait": 1500,
+  "steps": [
+   {
+    "click": "text=著者追加",
+    "wait": 2000
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     ".panel-body > .row:has(input[placeholder=\"セイ\"]) >> visible=true"
+    ],
+    "pad": 6
+   }
+  ]
+ },
+ {
+  "image": "image199",
+  "url": "/admin/authors/",
+  "wait": 1500,
+  "steps": [
+   {
+    "click": "text=著者識別子",
+    "wait": 2000
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     "li:has(> a:has-text(\"著者識別子\")) >> visible=true"
+    ],
+    "pad": 3
+   }
+  ]
+ },
+ {
+  "image": "image200",
+  "url": "/admin/authors/",
+  "wait": 1500,
+  "steps": [
+   {
+    "click": "text=著者識別子",
+    "wait": 2000
+   },
+   {
+    "eval": "(()=>{const s=[...document.querySelectorAll('select')].filter(e=>e.offsetParent)[0]; s.size=s.options.length; s.style.height='auto'; s.style.overflow='hidden';})()",
+    "wait": 500
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     "tr:has(button:has-text(\"追加\")) >> visible=true"
+    ],
+    "pad": 6
+   }
+  ]
+ },
+ {
+  "image": "image326",
+  "url": "/admin/location/new/",
+  "annotate": [
+   {
+    "box": [
+     "#name",
+     "#quota_size"
+    ],
+    "pad": 6
+   }
+  ]
+ },
+ {
+  "image": "image327",
+  "url": "/admin/location/edit/?id=1",
+  "annotate": [
+   {
+    "box": [
+     "#name",
+     "#quota_size",
+     "#default"
+    ],
+    "pad": 8
+   }
+  ]
+ },
+ {
+  "image": "image330",
+  "url": "/admin/multipartobject/",
+  "annotate": [
+   {
+    "box": [
+     "li.active:has(a:has-text(\"一覧\")) >> visible=true"
+    ],
+    "pad": 3
+   }
+  ]
+ },
+ {
+  "image": "image365",
+  "url": "/admin/user/new/",
+  "steps": [
+   {
+    "clear": "#password"
+   },
+   {
+    "eval": "document.activeElement.blur()"
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     "label[for=email]",
+     "#email",
+     "label[for=notification]",
+     "text=Send the new user an email >> visible=true"
+    ],
+    "pad": 10,
+    "minX": 236
+   }
+  ]
+ },
+ {
+  "image": "image366",
+  "url": "/admin/user/edit/?id=7",
+  "steps": [
+   {
+    "clear": "#password"
+   },
+   {
+    "eval": "document.activeElement.blur()"
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     "label[for=email]",
+     "#email",
+     "label[for=notification]",
+     "text=Send the new user an email >> visible=true"
+    ],
+    "pad": 10,
+    "minX": 236
+   }
+  ]
+ },
+ {
+  "image": "image370",
+  "url": "/admin/itemsetting/",
+  "wait": 1000,
+  "annotate": [
+   {
+    "box": [
+     "text=Display Email >> visible=true",
+     "button:has-text(\"保存\") >> visible=true",
+     "text=Hide Email >> visible=true"
+    ],
+    "pad": 14
+   }
+  ]
+ },
+ {
+  "image": "image460",
+  "url": "/admin/swordapi/jsonld/add/?url=%2Fadmin%2Fswordapi%2Fjsonld%2F",
+  "wait": 1500,
+  "annotate": [
+   {
+    "box": [
+     "button:has-text(\"保存\") >> visible=true"
+    ],
+    "pad": 6
+   }
+  ]
+ },
+ {
+  "image": "image480",
+  "url": "/admin/cris_linkage/",
+  "wait": 1500,
+  "annotate": [
+   {
+    "box": [
+     "label[for=merge_mode]",
+     "#merge_mode",
+     "form[action$=\"save_merge_mode\"] button[type=submit]"
+    ],
+    "pad": 12
+   }
+  ]
+ }
+]

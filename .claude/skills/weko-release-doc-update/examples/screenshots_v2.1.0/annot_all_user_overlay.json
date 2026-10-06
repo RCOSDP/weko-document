@@ -1,0 +1,34 @@
+[
+ {"image":"image134","src":"out/ja_user/image134.png",
+  "note":"activity registration screen cannot be reopened without changing the activity; annotations drawn on the earlier capture",
+  "rects":{"sel":[164,122,111,30],"id":[283,122,207,34],"get":[510,122,54,34],"close":[934,289,90,33],"dlg":[141,31,898,307]},
+  "annotate":[
+   {"callout":{"target":"#sel","label":"1","side":"left","dist":34}},
+   {"callout":{"target":"#id","label":"2","side":"below","dist":34}},
+   {"callout":{"target":"#get","label":"3","side":"below","dist":34}},
+   {"callout":{"target":"#close","label":"4","side":"below","dist":24}}
+  ],
+  "crop":{"around":["#dlg"],"pad":12}},
+ {"image":"image312","src":"out/ja_user/image312.png",
+  "note":"workspace item registration needs the workspace setting; annotations drawn on the earlier capture",
+  "rects":{"doi":[48,148,64,22],"get":[1028,186,54,34],"src":[125,236,930,64],"fileh":[48,340,64,22],"file":[33,331,1114,250],"metah":[48,610,82,22],"meta":[33,601,1114,252],"area":[0,0,1180,862]},
+  "annotate":[
+   {"box":["#file"],"pad":3,"color":"blue","width":2.5},
+   {"box":["#meta"],"pad":3,"color":"blue","width":2.5},
+   {"callout":{"target":"#doi","label":"1","side":"right","dist":34}},
+   {"callout":{"target":"#get","label":"2","side":"right","dist":30}},
+   {"callout":{"target":"#src","label":"3","side":"right","dist":30}},
+   {"callout":{"target":"#fileh","label":"4","side":"right","dist":34}},
+   {"callout":{"target":"#metah","label":"5","side":"right","dist":34}}
+  ],
+  "crop":{"around":["#area"],"pad":0}},
+ {"image":"image313","src":"out/ja_user/image313.png",
+  "note":"same full-page capture as image312; lower part",
+  "rects":{"oa":[65,2743,133,34],"tree":[96,2948,145,22],"reg":[528,3160,120,40],"area":[0,2664,1180,545]},
+  "annotate":[
+   {"callout":{"target":"#oa","label":"6","side":"right","dist":70}},
+   {"callout":{"target":"#tree","label":"7","side":"right","dist":14}},
+   {"callout":{"target":"#reg","label":"8","side":"right","dist":70}}
+  ],
+  "crop":{"around":["#area"],"pad":0}}
+]

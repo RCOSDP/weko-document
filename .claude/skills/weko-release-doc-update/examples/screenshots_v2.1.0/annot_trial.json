@@ -1,0 +1,19 @@
+[
+ {"image":"image4","url":"/admin/inclusionrequest/","annotate":[
+   {"id":"menu","box":["text=\"コミュニティ管理\" >> visible=true"]},
+   {"id":"sub","box":["text=\"参加リクエスト\" >> visible=true"]},
+   {"id":"tbl","box":["table >> visible=true"],"pad":6},
+   {"arrow":{"from":"menu","to":"sub","fromSide":"bottom","toSide":"top"}},
+   {"arrow":{"from":"sub","to":"tbl","fromSide":"right","toSide":"bottom","elbow":"h"}}
+ ]},
+ {"image":"image418","url":"/admin/shibboleth/","annotate":[
+   {"box":["text=Shibbolethを有効にする >> visible=true","text=Shibbolethを無効にする >> visible=true"],"pad":8}
+ ]},
+ {"image":"image307","url":"/workspace/","wait":4000,"steps":[{"click":"text=アイテムを出力 >> visible=true","wait":1500}],
+  "annotate":[
+   {"callout":{"target":"button:has-text(\"選択アイテム出力\") >> visible=true","label":"59"}},
+   {"callout":{"target":"button:has-text(\"全て出力\") >> visible=true","label":"60"}},
+   {"callout":{"target":".modal.in button:has-text(\"キャンセル\"), .modal.show button:has-text(\"キャンセル\") >> visible=true","label":"61"}}
+  ],
+  "crop":{"around":[".modal.in .modal-content, .modal.show .modal-content >> visible=true"],"pad":12}}
+]

@@ -1,0 +1,41 @@
+[
+ {
+  "image": "image307",
+  "url": "/workspace/",
+  "wait": 4000,
+  "steps": [
+   {
+    "click": "text=アイテムを出力 >> visible=true",
+    "wait": 1500
+   }
+  ],
+  "annotate": [
+   {
+    "callout": {
+     "target": "button:has-text(\"選択アイテム出力\") >> visible=true",
+     "label": "59"
+    }
+   },
+   {
+    "callout": {
+     "target": "button:has-text(\"全て出力\") >> visible=true",
+     "label": "60"
+    }
+   },
+   {
+    "callout": {
+     "target": "button:has-text(\"キャンセル\") >> visible=true",
+     "label": "61"
+    }
+   }
+  ],
+  "crop": {
+   "around": [
+    "text=以下のオプションを選択してください >> visible=true",
+    "button:has-text(\"選択アイテム出力\") >> visible=true",
+    "button:has-text(\"キャンセル\") >> visible=true"
+   ],
+   "pad": 28
+  }
+ }
+]
