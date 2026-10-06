@@ -1,0 +1,235 @@
+[
+ {
+  "image": "image4",
+  "ja": "image4",
+  "url": "/admin/inclusionrequest/",
+  "annotate": [
+   {
+    "id": "menu",
+    "box": [
+     "span:text-is(\"Communities\") >> visible=true"
+    ]
+   },
+   {
+    "id": "sub",
+    "box": [
+     "a[href=\"/admin/inclusionrequest/\"] >> visible=true"
+    ]
+   },
+   {
+    "id": "tbl",
+    "box": [
+     "table >> visible=true"
+    ],
+    "pad": 6
+   },
+   {
+    "arrow": {
+     "from": "menu",
+     "to": "sub",
+     "fromSide": "bottom",
+     "toSide": "top",
+     "at": 0.18,
+     "straight": "v"
+    }
+   },
+   {
+    "arrow": {
+     "from": "sub",
+     "to": "tbl",
+     "fromSide": "right",
+     "toSide": "bottom",
+     "elbow": "h"
+    }
+   }
+  ]
+ },
+ {
+  "image": "image188",
+  "ja": "image189",
+  "url": "/admin/authors/",
+  "wait": 1500,
+  "steps": [
+   {
+    "click": "text=Add Author",
+    "wait": 2000
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     ".panel-body > .row:has(input[placeholder=\"セイ\"]) >> visible=true"
+    ],
+    "pad": 6
+   }
+  ]
+ },
+ {
+  "image": "image197",
+  "ja": "image199",
+  "url": "/admin/authors/",
+  "wait": 1500,
+  "steps": [
+   {
+    "click": "a:has-text(\"ID Prefix\")",
+    "wait": 2000
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     "li:has(> a:has-text(\"ID Prefix\")) >> visible=true"
+    ],
+    "pad": 3
+   }
+  ]
+ },
+ {
+  "image": "image198",
+  "ja": "image200",
+  "url": "/admin/authors/",
+  "wait": 1500,
+  "steps": [
+   {
+    "click": "a:has-text(\"ID Prefix\")",
+    "wait": 2000
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     "tr:has(button:has-text(\"Add\")) >> visible=true"
+    ],
+    "pad": 6
+   }
+  ]
+ },
+ {
+  "image": "image256",
+  "ja": "image259",
+  "url": "/admin/workflowsetting/bbbb1d7f-2e3a-4bb2-945c-d71b221cb068",
+  "wait": 1500
+ },
+ {
+  "image": "image323",
+  "ja": "image326",
+  "url": "/admin/location/new/",
+  "annotate": [
+   {
+    "box": [
+     "#name",
+     "#quota_size"
+    ],
+    "pad": 6
+   }
+  ]
+ },
+ {
+  "image": "image324",
+  "ja": "image327",
+  "url": "/admin/location/edit/?id=1",
+  "annotate": [
+   {
+    "box": [
+     "#name",
+     "#quota_size",
+     "#default"
+    ],
+    "pad": 8
+   }
+  ]
+ },
+ {
+  "image": "image327",
+  "ja": "image330",
+  "url": "/admin/multipartobject/",
+  "annotate": [
+   {
+    "box": [
+     "li.active:has(a:has-text(\"List\")) >> visible=true"
+    ],
+    "pad": 3
+   }
+  ]
+ },
+ {
+  "image": "image361",
+  "ja": "image365",
+  "url": "/admin/user/new/",
+  "steps": [
+   {
+    "clear": "#password"
+   },
+   {
+    "eval": "document.activeElement.blur()"
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     "#email",
+     "text=Send the new user an email >> visible=true"
+    ],
+    "pad": 10
+   }
+  ]
+ },
+ {
+  "image": "image362",
+  "ja": "image366",
+  "url": "/admin/user/edit/?id=7",
+  "steps": [
+   {
+    "clear": "#password"
+   },
+   {
+    "eval": "document.activeElement.blur()"
+   }
+  ],
+  "annotate": [
+   {
+    "box": [
+     "#email",
+     "text=Send the new user an email >> visible=true"
+    ],
+    "pad": 10
+   }
+  ]
+ },
+ {
+  "image": "image366",
+  "ja": "image370",
+  "url": "/admin/itemsetting/",
+  "wait": 1000,
+  "annotate": [
+   {
+    "box": [
+     "text=Display Email >> nth=1",
+     "text=Hide Email >> visible=true",
+     "text=Hide Open Date >> visible=true"
+    ],
+    "pad": 8
+   }
+  ]
+ },
+ {
+  "image": "image397",
+  "ja": "image406",
+  "url": "/admin/site_info/",
+  "wait": 1500
+ },
+ {
+  "image": "image409",
+  "ja": "image418",
+  "url": "/admin/shibboleth/",
+  "annotate": [
+   {
+    "box": [
+     "text=Enable Shibboleth Authentication >> visible=true",
+     "text=Disable Shibboleth Authentication >> visible=true"
+    ],
+    "pad": 8
+   }
+  ]
+ }
+]

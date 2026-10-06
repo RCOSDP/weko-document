@@ -34,7 +34,7 @@ v2.1.0（2026-10）で実施した作業を手順化したもの。人が読む�
    - 章番号がずれたら `scripts/caption_renum.py`／`scripts/table_renum.py` で表・図番号を振り直し、`scripts/caption_check.py` で確認。
 7. **【NEW_VER】タグ付け**：`DOC_BASE` 以降の差分のうち、**`PREV_TAG..RELEASE_REF` の実装差分で挙動が変わったもの**だけに付ける。見出しには付けない（`rules/TAG_RULES.md`、`prompts/tagging.md`）。
 8. **整合チェック**：`scripts/verify_manual.py`（見出し文言・タグ数・目次の連番とリンク先）。手順番号の通し番号崩れ・節番号参照の不一致は `prompts/fix_numbering.md`。
-9. **スクリーンショット**：`rules/SCREENSHOT_RULES.md`。撮影用管理者アカウント作成 → `scripts/capture.js` で全画面撮影 → サンプルデータは記録して登録 → 古い画像の注記を `scripts/annotate.js` で再現 → `scripts/stage2.py` で比較ページ → レビュー後に `scripts/apply_screenshots.py` で差し替え。
+9. **スクリーンショット**：`rules/SCREENSHOT_RULES.md`。撮影用管理者アカウント作成 → `scripts/capture.js` で全画面撮影 → サンプルデータは記録して登録 → 古い画像の注記を `scripts/annotate.js` で再現 → `scripts/stage2.py` で比較ページ → レビュー後に `scripts/apply_screenshots.py` で差し替え。 英語版は画像番号が違うので、節単位で日本語版との対応表を作ってから英語画面で撮る。
 10. **コミット**：カテゴリ単位（`spec(api): ...`、`manual(ADMIN): ...`、`manual_en(USER): ...`、`operation: ...`）。push 前に `git fetch` してリモートの変更をマージ。push はユーザーの指示があってから。
 
 ## 2. 作業の原則（`LESSONS.md` に詳細）

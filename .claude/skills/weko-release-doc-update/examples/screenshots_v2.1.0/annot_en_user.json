@@ -1,0 +1,102 @@
+[
+ {
+  "image": "image235",
+  "ja": "image266",
+  "note": "Captured 2026-10-06 after the English index-tree cache was regenerated. Callout numbers follow Table 7-1 of the English user manual (1 = index name / panel heading).",
+  "url": "/search?page=1&size=20&sort=custom_sort&search_type=2&q=1791272758678",
+  "wait": 4000,
+  "steps": [
+   {
+    "click": "text=Export >> visible=true",
+    "wait": 4000
+   },
+   {
+    "eval": "(()=>{const r=[...document.querySelectorAll('tr')].find(t=>t.textContent.includes('アイテム（3）'));r.querySelector('input[type=checkbox]').click();})()",
+    "wait": 800
+   }
+  ],
+  "annotate": [
+   {
+    "callout": {
+     "target": "text=Items to Export >> visible=true",
+     "label": "1",
+     "side": "right",
+     "dist": 30
+    }
+   },
+   {
+    "callout": {
+     "target": "#item_export_check_all",
+     "label": "2",
+     "side": "above",
+     "dist": 44,
+     "dx": 230
+    }
+   },
+   {
+    "callout": {
+     "target": "th:text-is(\"Item\")",
+     "label": "3",
+     "side": "above",
+     "dist": 34
+    }
+   },
+   {
+    "callout": {
+     "target": "th:text-is(\"Message\")",
+     "label": "4",
+     "side": "above",
+     "dist": 34
+    }
+   },
+   {
+    "callout": {
+     "target": "th:text-is(\"No. of Files\")",
+     "label": "5",
+     "side": "above",
+     "dist": 34,
+     "dx": -80
+    }
+   },
+   {
+    "callout": {
+     "target": "p:text-is(\"File Contents\") >> visible=true",
+     "label": "6",
+     "side": "left",
+     "dist": 40
+    }
+   },
+   {
+    "callout": {
+     "target": "p:text-is(\"Export Format\") >> visible=true",
+     "label": "7",
+     "side": "left",
+     "dist": 40
+    }
+   },
+   {
+    "callout": {
+     "target": "#item_export_button",
+     "label": "8",
+     "side": "below",
+     "dist": 34
+    }
+   },
+   {
+    "callout": {
+     "target": "a.back-button >> visible=true",
+     "label": "9",
+     "side": "right",
+     "dist": 34
+    }
+   }
+  ],
+  "crop": {
+   "around": [
+    ".panel:has(#item_export_button) >> visible=true",
+    "a.back-button >> visible=true"
+   ],
+   "pad": 12
+  }
+ }
+]

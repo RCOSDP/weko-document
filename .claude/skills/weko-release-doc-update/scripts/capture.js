@@ -49,7 +49,7 @@ function readCred() {
 
   // dismiss the cookie-consent banner on the user-facing pages (browser cookie only)
   await page.goto(`${BASE}/`, { waitUntil: 'networkidle' }).catch(() => {});
-  const ok = page.locator('button:visible, a:visible', { hasText: /^\s*同意\s*$/ });
+  const ok = page.locator('button:visible, a:visible', { hasText: /^\s*(同意|That's ok)\s*$/ });
   if (await ok.count()) { await ok.first().click().catch(() => {}); await page.waitForTimeout(800); }
   const results = [];
   for (const t of targets) {
