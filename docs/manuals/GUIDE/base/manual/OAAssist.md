@@ -78,7 +78,7 @@ flowchart TD
       - **Redirect URIs (one per line)**: OA AssistのコールバックURLを入力します。
       - **Client type**: 「Confidential」を選択します。
         ![アプリケーション設定画面の画像　※名前、ウェブサイトURL、Redirect URIs、Client typeを強調](images/oa-assist/app_setting_3.png)
-   5. 「登録」を押下します。
+   5. 「Register」を押下します。
    6. クライアントIDとクライアントシークレットが生成されます。
         ![クライアントIDとクライアントシークレットが表示される画面](images/oa-assist/app_setting_4.png)
 
