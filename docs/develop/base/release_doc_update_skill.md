@@ -9,7 +9,7 @@ WEKO3 の新しいリリースに合わせて weko-document を更新するた�
 - 新しいバージョンのアップデート手順書を作る
 - 今回のバージョンで変わった箇所に【vX.Y.Z】タグを付ける
 - 手順番号・節番号の参照・表／図番号の崩れを直す
-- 機能仕様書・マニュアル・登録ガイドを honkit でビルドし、リンク切れ・画像の欠落を確認する
+- 機能仕様書・マニュアル（日本語／英語）・登録ガイドを honkit でビルドし、リンク切れ・画像の欠落を確認する
 - スクリーンショットを撮り直し、古い画像と同じ赤枠・矢印・番号を描いて差し替える
 - カテゴリ単位でコミットし、push する（push は指示したときだけ）
 
@@ -101,7 +101,7 @@ python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/man
 
 ## 8. ビルドしてリンク切れを確認する
 
-機能仕様書・管理者マニュアル・ユーザーマニュアル・登録ガイドを honkit でビルドし、HTML のリンク切れを確認します。Claude に「ビルドして確認して」と依頼するか、weko-document のルートで次を実行します。
+機能仕様書・管理者マニュアル・ユーザーマニュアル・登録ガイド・英語版マニュアル（管理者・ユーザー）を honkit でビルドし、HTML のリンク切れを確認します。Claude に「ビルドして確認して」と依頼するか、weko-document のルートで次を実行します。
 
 ```
 # 分岐点（例 main）もビルドし、そこから増えた問題だけを数える
@@ -130,7 +130,8 @@ python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/man
   ```
 
 - ログに出る shelljs の警告、`prism-Python.js` が見つからないエラー、deprecated 警告は、最後に「generation finished with success」があれば問題ありません。
-- 英語版マニュアル・開発者向け文書・運用文書は book.json が無いため対象外です。
+- 本の名前は `spec`、`admin`、`user`、`GUIDE`、`admin_en`、`user_en` です。開発者向け文書・運用文書は book.json が無いため対象外です。
+- ビルド結果は別リポジトリに登録して github.io で公開しているので、公開サイトで切れるリンクを残さないよう、SLUG も直します。
 
 ## 9. スキルの中身
 
