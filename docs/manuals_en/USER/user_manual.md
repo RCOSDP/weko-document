@@ -3936,7 +3936,7 @@ Table 5‑28. The elements for paging
 <tr class="odd">
 <td>1</td>
 <td>The "Display Number" pull-down</td>
-<td><p>Specify the number of activities to display. The default is set to "20". See "Figure 5-23. The "Display Number" pull-down".</p>
+<td><p>Specify the number of activities to display. The default is set to "20". See "Figure 5-24. The "Display Number" pull-down".</p>
 <p>Clicking an option will refresh the display, applying the number of activities selected.</p></td>
 </tr>
 <tr class="even">
@@ -3958,7 +3958,7 @@ Table 5‑28. The elements for paging
 </tbody>
 </table>
 
-> Figure 5-23. The "Display Number" pull-down
+> Figure 5-24. The "Display Number" pull-down
 > 
 > ![](media/media/image217.png)
 
@@ -4022,7 +4022,7 @@ This section explains how to view the activity details.
 
 The activity details screen appears.
 
-Figure 5‑24. The activity details screen
+Figure 5‑25. The activity details screen
 
 zu050430.tif![](media/media/image218.png)
 
