@@ -2,6 +2,12 @@ System Administration Manual
 
 (For Community Administrator, Repository Administrator, and System Administrator)
 
+v2.1.0
+
+| Version | Changes |
+| ------- | ------- |
+| v2.1.0  | Reviewed against the release_v2.1.0 implementation and reflected the corrections made to the Japanese version (roles and functions, index view/deposit permissions, GakuNin mAP roles and groups, permissions for locations, file instances and user management, Shibboleth and SWORD API settings, targets of ResourceSync, OAI-PMH and the sitemap, mail templates, Elasticsearch indexes, institutional storage, KBART output). Added the sections that were only in the Japanese version: JSON-LD mapping, SWORD API, Workspace settings, institutional storage, mail templates, CRIS linkage, log management, maintenance, advanced menu, item type mapping (fixed values), item type export/import, ID Prefix of organizations, advanced search customization, and secret URLs. Marked the changes in v2.1.0 with [v2.1.0]. Replaced screenshots with the release_v2.1.0 English screens. Removed the Word field codes left in the text and fixed broken links and table/figure numbers |
+
 Introduction
 
 This manual provides information on operating the WEKO3 system (referred to as the "System" in this document). The information in this manual will help users at academic institutions or public agencies carry out data registration, data referencing and other administrative tasks.
