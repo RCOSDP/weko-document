@@ -58,6 +58,15 @@ bash build_spec.sh
 bash build_guide.sh
 ```
 
+### 英語版マニュアルのビルド
+
+```
+bash build_user_manual_en.sh
+bash build_admin_manual_en.sh
+```
+
+出力先はそれぞれ `build/user_en`、`build/admin_en` です。
+
 
 
 

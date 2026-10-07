@@ -1,0 +1,22 @@
+{
+    "title":"User Operation Manual",
+    "description":"For General User, Registered User, and Community/Repository/System Administrator",
+    "author":"Research Center for Open Science and Data Platform, National Institute of Informatics",
+    "language":"en",
+    "structure": {
+        "readme": "user_manual.md"
+    },
+    "plugins":[
+        "intopic-toc",
+        "back-to-top-button",
+        "anchors",
+        "collapsible-chapters",
+        "hide-published-with",
+        "plantuml-cloud"
+    ],
+    "pluginsConfig": {
+        "search": {
+            "maxIndexSize": 1000000000
+        }
+    }
+}
