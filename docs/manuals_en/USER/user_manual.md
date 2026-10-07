@@ -273,13 +273,13 @@ This chapter provides a high-level overview of the System.
 
 ## About the System
 
-The System allows you to store and publish academic research results. The System's \<INDEXWORD PRONOUNCE="りほしとり" INDEXITEM="リポジトリ"\>repository\</INDEXWORD\> can store \<INDEXWORD PRONOUNCE="こんてんつ" INDEXITEM="コンテンツ"\>content\</INDEXWORD\> in various formats, including PDF files, videos, and images. You can efficiently manage research results by categorizing and arranging them in a tree structure. You can also reference research results by keyword search or full-text search. The data in the repository can also be synchronized with other repositories. For information on the terminology used in this document, such as "item" or "index", see "ANCHORID=terminology【参照元】Section 1.2. "Glossary"【E】.
+The System allows you to store and publish academic research results. The System's repository can store content in various formats, including PDF files, videos, and images. You can efficiently manage research results by categorizing and arranging them in a tree structure. You can also reference research results by keyword search or full-text search. The data in the repository can also be synchronized with other repositories. For information on the terminology used in this document, such as "item" or "index", see "Section 1.2. "Glossary".
 
 Figure 1-1. Data management in the System
 
 zu010010.tif![](media/media/image1.png)
 
-To register an \<INDEXWORD PRONOUNCE="あいてむ" INDEXITEM="アイテム"\>item\</INDEXWORD\>, you must first create a \<INDEXWORD PRONOUNCE="わあくふろお" INDEXITEM="ワークフロー"\>workflow\</INDEXWORD\> and register the item. You then need to get approval from reviewers/approvers before publishing the item.
+To register an item, you must first create a workflow and register the item. You then need to get approval from reviewers/approvers before publishing the item.
 
 Figure 1-2. Data registration
 
@@ -291,7 +291,7 @@ This section explains the terminology used in the System.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
+Table 1‑1. Terms used in the System
 
 <table>
 <thead>
@@ -307,7 +307,7 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 <p>In the WEKO3 module, you can use DDI as a metadata schema for OAI-PMH.</p></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="dublincore" INDEXITEM="DublinCore"&gt;DublinCore&lt;/INDEXWORD&gt;</td>
+<td>DublinCore</td>
 <td>A metadata schema standardized by the International Organization for Standardization (ISO 15836) (http://dublincore.org/). In the WEKO3 module, you can use DublinCore as a metadata schema for OAI-PMH.</td>
 </tr>
 <tr class="odd">
@@ -316,118 +316,118 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 <p>In the WEKO3 module, you can use JPCOAR as a metadata schema for OAI-PMH.</p></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="junii2" INDEXITEM="junii2"&gt;junii2&lt;/INDEXWORD&gt;</td>
+<td>junii2</td>
 <td><p>A metadata schema published by the National Institute of Informatics (NII) (https://www.nii.ac.jp/irp/archive/system/junii2.html).</p>
 <p>In the WEKO3 module, you cannot use junii2 as a metadata schema for OAI-PMH.</p></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="oai－pmh" INDEXITEM="OAI-PMH"&gt;OAI-PMH&lt;/INDEXWORD&gt;</td>
+<td>OAI-PMH</td>
 <td>OAI-PMH (The Open Archives Initiative Protocol for Metadata Harvesting) is a protocol developed by the Open Archives Initiative to exchange metadata between repositories (http://www.openarchives.org/OAI/openarchivesprotocol.html). External systems, including repositories, can use OAI-PMH to collect metadata of the items registered in the WEKO3 module.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ui" INDEXITEM="UI"&gt;UI&lt;/INDEXWORD&gt;</td>
+<td>UI</td>
 <td>Stands for "User Interface". It is an interface for exchanging information between the System and the user.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="weko3りほしとり" INDEXITEM="WEKO3リポジトリ"&gt;WEKO3 repository&lt;/INDEXWORD&gt;</td>
+<td>WEKO3 repository</td>
 <td>A repository created with the WEKO3 module and related software.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="あいてむ" INDEXITEM="アイテム"&gt;Item&lt;/INDEXWORD&gt;</td>
+<td>Item</td>
 <td><p>A unit of information stored in a repository. An item is made up of content files and metadata. Metadata contains information that conforms to the description elements and description formats specified in a metadata schema.</p>
 <p>Each item is assigned an item ID that is unique within a WEKO3 repository. An item is tied to a single item type and cannot be linked to multiple item types.</p>
 <p>You can associate different metadata with a single item by creating additional item types.</p></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="あいてむたいふ" INDEXITEM="アイテムタイプ"&gt;Item type&lt;/INDEXWORD&gt;</td>
+<td>Item type</td>
 <td><p>Defines the data type of metadata registered for an item. An item type consists of elements specified in a metadata schema such as JPCOAR.</p>
 <p>The repository administrator needs to consider the metadata required for a particular item and create an item type to suit the needs.</p>
 <p>Example:</p>
 <p>When storing journal papers and research data in the repository, the metadata elements for journal papers are differentiated from those for research data. In such a case, you can create an item type for journal papers and an item type for research data, respectively.</p></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="いんてつくす" INDEXITEM="インデックス"&gt;Index&lt;/INDEXWORD&gt;</td>
+<td>Index</td>
 <td>A unit (category) used to group items registered in the WEKO3 repository. Items registered in the WEKO3 repository will always have one or more indexes. An index can have multiple child indexes and items.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="いんてつくすつりい" INDEXITEM="インデックスツリー"&gt;Index tree&lt;/INDEXWORD&gt;</td>
+<td>Index tree</td>
 <td>A tree structure of nested indexes. A WEKO3 repository has a single repository tree.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="こみゆにてい" INDEXITEM="コミュニティ"&gt;Community&lt;/INDEXWORD&gt;</td>
+<td>Community</td>
 <td>A group of users who can access a particular repository. You can make items available only to the users of the community.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="こみゆにていかんりしや" INDEXITEM="コミュニティ管理者"&gt;Community administrator&lt;/INDEXWORD&gt;</td>
+<td>Community administrator</td>
 <td>A user with the role to manage the community.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="こんてんつ" INDEXITEM="コンテンツ"&gt;Content&lt;/INDEXWORD&gt;</td>
+<td>Content</td>
 <td>Research data registered in a repository, such as research papers and materials. The word "content" is used interchangeably with "item" in this manual.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="こんてんつふあいる" INDEXITEM="コンテンツファイル"&gt;Content file&lt;/INDEXWORD&gt;</td>
+<td>Content file</td>
 <td>Refers to the papers and other files that make up an item.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="しすてむ" INDEXITEM="システム"&gt;System&lt;/INDEXWORD&gt;</td>
+<td>System</td>
 <td>Refers to the WEKO3 System.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="しすてむかんりしや" INDEXITEM="システム管理者"&gt;System administrator&lt;/INDEXWORD&gt;</td>
+<td>System administrator</td>
 <td>A user with the role to administer the System.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="すきいま" INDEXITEM="スキーマ"&gt;Schema&lt;/INDEXWORD&gt;</td>
+<td>Schema</td>
 <td>A definition of a repository database structure. It defines the relationship between objects that make up a database, such as tables and lists.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="たいあろく" INDEXITEM="ダイアログ"&gt;Dialog&lt;/INDEXWORD&gt;</td>
+<td>Dialog</td>
 <td>A UI mainly used to display messages and alerts. The user can still interact with UIs on the screen while a dialog is displayed.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="とうろくゆうさあ" INDEXITEM="登録ユーザー"&gt;Registered user&lt;/INDEXWORD&gt;</td>
+<td>Registered user</td>
 <td>User who can access stored academic research results and register data from academic research results in the repository.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="はあへすていんく" INDEXITEM="ハーベスティング"&gt;Harvesting&lt;/INDEXWORD&gt;</td>
+<td>Harvesting</td>
 <td>Scheduled activity for collecting repository data by external systems. It uses a dedicated protocol. Metadata needs to be mapped to the protocol.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ふろお" INDEXITEM="フロー"&gt;Flow&lt;/INDEXWORD&gt;</td>
+<td>Flow</td>
 <td>A series of actions used to save items to the System. It defines a sequence of actions such as adding data to a repository, entering metadata, and peer review/approval.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="めたてえた" INDEXITEM="メタデータ"&gt;Metadata&lt;/INDEXWORD&gt;</td>
+<td>Metadata</td>
 <td>Information related to an item. Examples include information for a title, author, and file size. Metadata consists of content metadata and administrative metadata. Content metadata is a summary of the item. Administrative metadata is information such as the creator of the content metadata or access count for the item.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="りほしとり" INDEXITEM="リポジトリ"&gt;Repository&lt;/INDEXWORD&gt;</td>
+<td>Repository</td>
 <td><p>A set of services a university provides to its community members to manage and distribute digital materials created by the university and its members. In principle, a university or academic organization (i.e., a single institution) can operate one repository.</p>
 <p>The term refers to, in this manual, a space where research data (i.e., items) and their metadata are stored.</p></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="りほしとりかんりしや" INDEXITEM="リポジトリ管理者"&gt;Repository administrator&lt;/INDEXWORD&gt;</td>
+<td>Repository administrator</td>
 <td>A user with the role to administer a repository. The repository administrator can configure the WEKO3 module, the index tree, and item types.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ろくいん" INDEXITEM="ログイン"&gt;Log in&lt;/INDEXWORD&gt;</td>
+<td>Log in</td>
 <td>The action to authenticate with a computer or various services on the Internet using pre-registered account information to access data.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="ろくあうと" INDEXITEM="ログアウト"&gt;Log out&lt;/INDEXWORD&gt;</td>
+<td>Log out</td>
 <td>The action to close one's access to data granted through authentication upon logging in.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ろおる" INDEXITEM="ロール"&gt;Role&lt;/INDEXWORD&gt;</td>
+<td>Role</td>
 <td>Defines the permissions granted to a user when operating the System, repository, and other elements. Permissions include adding, changing, and deleting data.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="わあくふろお" INDEXITEM="ワークフロー"&gt;Workflow&lt;/INDEXWORD&gt;</td>
+<td>Workflow</td>
 <td>Defines a series of processes for business operations. It also refers to the sequence of those operations. A workflow for the WEKO3 repository defines a sequence of actions starting with registering items through publishing, including adding data to the repository, entering metadata, or peer review/approval.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="いたいし" INDEXITEM="異体字"&gt;Variant character&lt;/INDEXWORD&gt;</td>
+<td>Variant character</td>
 <td><p>The traditional alternative of kanji or a different form of character with the same pronunciation and meaning but written differently.</p>
 <p>Example:</p>
 <p>"會" instead of "会", or "壱" instead of "一".</p></td>
@@ -445,14 +445,14 @@ Table 1‑2. The features related to registering and viewing data in the System
 
 | Features                                                                                              | Description                                                                                                                                                                                                      |
 | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \<INDEXWORD PRONOUNCE="あいてむいちらんひようし" INDEXITEM="アイテム一覧表示"\>View a list of items\</INDEXWORD\>         | View a list of items registered in the System. You can drill down the information by selecting an item from the list.                                                                                            |
-| \<INDEXWORD PRONOUNCE="あいてむしようさいひようし" INDEXITEM="アイテム詳細表示"\>View item details\</INDEXWORD\>           | View the metadata of an item. You can also download research papers and other files that make up an item.                                                                                                        |
-| \<INDEXWORD PRONOUNCE="らんきんくひようし" INDEXITEM="ランキング表示"\>View ranking\</INDEXWORD\>                     | Aggregate statistics such as the view count of an item and show the ranking.                                                                                                                                     |
-| \<INDEXWORD PRONOUNCE="いんてつくすつりいけんさく" INDEXITEM="インデックスツリー検索"\>Search the index tree\</INDEXWORD\>    | List items belonging to an index by selecting the index from the index tree.                                                                                                                                     |
-| \<INDEXWORD PRONOUNCE="きいわあとけんさく" INDEXITEM="キーワード検索"\>Search by keywords\</INDEXWORD\>               | Search for items via keyword searches. The search results will show the items containing specified keywords. You can search for metadata and content files.                                                      |
-| \<INDEXWORD PRONOUNCE="あいてむとうろく・こうかい" INDEXITEM="アイテム登録・公開"\>Register and publish items\</INDEXWORD\> | Register and publish your research data and other related materials and papers. Content files and their metadata are organized into an "item" and stored in the repository. You can also register only metadata. |
-| \<INDEXWORD PRONOUNCE="わあくふろお" INDEXITEM="ワークフロー"\>Workflow\</INDEXWORD\>                             | Set up a workflow when you register an item so that it will go through the stages of peer review/approval before publication. You can also view a list of items pending approval.                                |
-| \<INDEXWORD PRONOUNCE="あいてむへんしゆう・さくしよ" INDEXITEM="アイテム編集・削除"\>Edit and delete items\</INDEXWORD\>     | Edit or delete a registered item.                                                                                                                                                                                |
+| View a list of items         | View a list of items registered in the System. You can drill down the information by selecting an item from the list.                                                                                            |
+| View item details           | View the metadata of an item. You can also download research papers and other files that make up an item.                                                                                                        |
+| View ranking                     | Aggregate statistics such as the view count of an item and show the ranking.                                                                                                                                     |
+| Search the index tree    | List items belonging to an index by selecting the index from the index tree.                                                                                                                                     |
+| Search by keywords               | Search for items via keyword searches. The search results will show the items containing specified keywords. You can search for metadata and content files.                                                      |
+| Register and publish items | Register and publish your research data and other related materials and papers. Content files and their metadata are organized into an "item" and stored in the repository. You can also register only metadata. |
+| Workflow                             | Set up a workflow when you register an item so that it will go through the stages of peer review/approval before publication. You can also view a list of items pending approval.                                |
+| Edit and delete items     | Edit or delete a registered item.                                                                                                                                                                                |
 
 ## The elements of the Home screen.
 
@@ -476,13 +476,13 @@ Table 1‑3. The elements in the Home screen
 <tr class="odd">
 <td>1</td>
 <td>The "Top" tab</td>
-<td><p>Search for items here. See "ANCHORID=searchitems【参照元】Chapter 3: Search for items【E】" for more information.</p>
+<td><p>Search for items here. See "Chapter 3: Search for items" for more information.</p>
 <p>Click to navigate to the Home screen.</p></td>
 </tr>
 <tr class="even">
 <td>2</td>
 <td>The "Communities" tab</td>
-<td>Explore communities. See "ANCHORID=community【参照元】Chapter 9: Explore communities【E】" for more information.</td>
+<td>Explore communities. See "Chapter 9: Explore communities" for more information.</td>
 </tr>
 <tr class="odd">
 <td>3</td>
@@ -492,32 +492,32 @@ Table 1‑3. The elements in the Home screen
 <tr class="even">
 <td>4</td>
 <td>The "Search" text box</td>
-<td>Specify the conditions for keyword searches here. See "ANCHORID=searchwithkeywords【参照元】Section 3.3. Search by keywords【E】" for more information.</td>
+<td>Specify the conditions for keyword searches here. See "Section 3.3. Search by keywords" for more information.</td>
 </tr>
 <tr class="odd">
 <td>5</td>
 <td>The icon010010.tif<img src="media/media/image4.png" style="width:0.42197in;height:0.12925in" /> button</td>
-<td>Use this button for a simple search. See "ANCHORID=kanikensaku【参照元】Section 3.3.1. Simple search【E】" for more information.</td>
+<td>Use this button for a simple search. See "Section 3.3.1. Simple search" for more information.</td>
 </tr>
 <tr class="even">
 <td>6</td>
 <td>The "Language" pull-down list</td>
-<td>Specify the display language here. See "ANCHORID=displayhome【参照元】Section 2.1. Access the Home screen【E】" for more information.</td>
+<td>Specify the display language here. See "Section 2.1. Access the Home screen" for more information.</td>
 </tr>
 <tr class="odd">
 <td>7</td>
 <td>The "icon010020.tif<img src="media/media/image5.png" style="width:0.45566in;height:0.18611in" />" button</td>
-<td>Use this button to log in to an account. See "ANCHORID=login【参照元】Section 2.2. Log in to the System【E】" for more information.</td>
+<td>Use this button to log in to an account. See "Section 2.2. Log in to the System" for more information.</td>
 </tr>
 <tr class="even">
 <td>8</td>
 <td>The "icon010030.tif<img src="media/media/image6.png" style="width:0.46927in;height:0.17064in" />" button</td>
-<td>Use this button to sign-up for an account. See "ANCHORID=setacount【参照元】Section 2.5. Sign-up for a new account【E】" for more information.</td>
+<td>Use this button to sign-up for an account. See "Section 2.5. Sign-up for a new account" for more information.</td>
 </tr>
 <tr class="odd">
 <td>9</td>
 <td>The icon010040.tif<img src="media/media/image7.png" style="width:0.50971in;height:0.15755in" /> button</td>
-<td>Use this button for advanced searches. See "ANCHORID=syousaikensaku【参照元】Section 3.3.2. Advanced search【E】" for more information.</td>
+<td>Use this button for advanced searches. See "Section 3.3.2. Advanced search" for more information.</td>
 </tr>
 <tr class="even">
 <td>10</td>
@@ -547,7 +547,7 @@ This section explains how to display the Home screen.
 
 1.  Specify the URL of the System in your browser.
 
-When you access the System successfully, the Home screen appears. See "ANCHORID=login【参照元】Section 2.2. Log in to the System【E】" for information on logging in to the System.
+When you access the System successfully, the Home screen appears. See "Section 2.2. Log in to the System" for information on logging in to the System.
 
 zu020010.tif![](media/media/image8.png)
 
@@ -586,7 +586,7 @@ Table 2‑1. The elements in the "Log in" screen
 | 3   | The icon020010.tif![](media/media/image5.png) button            | Click to log in with the account (email address) and password you entered. The Home screen of the System appears.                                                                                                            |
 | 4   | The icon020020.tif![icon020020](media/media/image12.png) button | Single sign-on to open sources.                                                                                                                                                                                              |
 | 5   | The "Sign Up" link                                              | Click to display the sign-up screen.                                                                                                                                                                                         |
-| 6   | The "Forgot Password" link                                      | Click to reset your password. See "ANCHORID=changepassword【参照元】Section 2.4. Change a password【E】" for more information.                                                                                                      |
+| 6   | The "Forgot Password" link                                      | Click to reset your password. See "Section 2.4. Change a password" for more information.                                                                                                      |
 
 2)  > Click the icon020010.tif![](media/media/image5.png) button.
     
@@ -810,7 +810,7 @@ zu030020.tif![](media/media/image29.png)
 
 zu030030.tif![](media/media/image30.png)
 
-See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E】" for more information.
+See "Section 3.1.3. View the Item Lists" for more information.
 
 ### Search in "Index Tree"
 
@@ -828,7 +828,7 @@ You can use the index tree to search for items in the following ways.
 
 1.  Click on an index name under "Index Tree".
 
-A search for items is performed. The search results appear in the "Item Lists" screen. See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E】" for more information.
+A search for items is performed. The search results appear in the "Item Lists" screen. See "Section 3.1.3. View the Item Lists" for more information.
 
 zu030050.tif![](media/media/image32.png)
 
@@ -866,7 +866,7 @@ Each index shows the number of items it contains. Public and private items are c
 
 14. Click on an index name in "Index List".
 
-A search for items is performed. The search results appear in the "Item Lists" screen. See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E】" for more information.
+A search for items is performed. The search results appear in the "Item Lists" screen. See "Section 3.1.3. View the Item Lists" for more information.
 
 #### To search from "Index Tree":
 
@@ -878,7 +878,7 @@ zu030070.tif![](media/media/image35.png)
 
 15. Click on an index name.
 
-A search for items is performed. The search results appear in the "Item Lists" screen. See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E】" for more information.
+A search for items is performed. The search results appear in the "Item Lists" screen. See "Section 3.1.3. View the Item Lists" for more information.
 
 
 ### Display journal information
@@ -931,7 +931,7 @@ See "Section 3.3.1. Simple search" for information on the display order and the 
 
 The item details screen appears.
 
-See "ANCHORID=displayitem【参照元】Chapter 4: View item details【E】" for more information on the screen elements.
+See "Chapter 4: View item details" for more information on the screen elements.
 
 #### To view "Item Lists" as a table of contents:
 
@@ -941,7 +941,7 @@ Display search results in a list of headings. See the System Administration Manu
 
 1.  Click the title of an item.
 
-The item details screen appears. See "ANCHORID=displayitem【参照元】Chapter 4: View item details【E】" for more information.
+The item details screen appears. See "Chapter 4: View item details" for more information.
 
 ## Search using the ranking
 
@@ -1098,14 +1098,14 @@ Table 3‑2. The elements in the simple search screen
 <tr class="even">
 <td>4</td>
 <td>The <img src="media/media/image7.png" style="width:0.61805in;height:0.19103in" />icon030020.tif button</td>
-<td>Click to display the advanced search screen to specify more details. See "ANCHORID=syousaikensaku【参照元】Section 3.3.2. Advanced search【E】" for more information.</td>
+<td>Click to display the advanced search screen to specify more details. See "Section 3.3.2. Advanced search" for more information.</td>
 </tr>
 </tbody>
 </table>
 
 2.  Click the icon030010.tif![](media/media/image4.png) button.
 
-The search results appear. See "ANCHORID=displayitem【参照元】Chapter 4: View item details【E】" for more information on search results.
+The search results appear. See "Chapter 4: View item details" for more information on search results.
 
 zu030120.tif![](media/media/image46.png)
 
@@ -1117,27 +1117,27 @@ Table 3‑3. The elements in the "Search Results" screen
 | --- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | "Search Results"                                      | The search results appear.                                                                                                                                                                                       |
 | 2   | The icon030080.tif![](media/media/image47.png) button | Click to open the "Items to Export" screen. You can export information contained in the items. See "Chapter 7: Export items" for more information.                                                               |
-| 3   | An item name                                          | Clicking on a name takes you to the item details screen. See "ANCHORID=displayitem【参照元】Chapter 4: View item details【E】" for more information. See "ANCHORID=preview【参照元】Figure 3-2. The item details screen【E】". |
-| 4   | The "Display Order" pull-down list                    | Select the order in which the search results are displayed from the "Display Order" pull-down list. See "ANCHORID=displaypulldownlist【参照元】Figure 3-3. The "Display Order" pull-down list【E】". Only the display orders that are set to be shown in the list in the search result display settings are displayed. See "Configure the search results settings" in the System Administration Manual for more information. |
-| 5   | The "asc/desc" pull-down list                         | Select "asc" (ascending) or "desc" (descending) for a sort order. See "ANCHORID=ascpulldownlist【参照元】Figure 3-4. The "asc/desc" pull-down list【E】" for more information.                                          |
-| 6   | The "Display Number" pull-down list                   | Select the number of items to display from the "Display Number" pull-down list. See "ANCHORID=displaycountpulldownlist【参照元】Figure 3-5. The "Display Number" pull-down list【E】" for more information.             |
+| 3   | An item name                                          | Clicking on a name takes you to the item details screen. See "Chapter 4: View item details" for more information. See "Figure 3-2. The item details screen". |
+| 4   | The "Display Order" pull-down list                    | Select the order in which the search results are displayed from the "Display Order" pull-down list. See "Figure 3-3. The "Display Order" pull-down list". Only the display orders that are set to be shown in the list in the search result display settings are displayed. See "Configure the search results settings" in the System Administration Manual for more information. |
+| 5   | The "asc/desc" pull-down list                         | Select "asc" (ascending) or "desc" (descending) for a sort order. See "Figure 3-4. The "asc/desc" pull-down list" for more information.                                          |
+| 6   | The "Display Number" pull-down list                   | Select the number of items to display from the "Display Number" pull-down list. See "Figure 3-5. The "Display Number" pull-down list" for more information.             |
 | 7   | The author ID icon                                    | If an identifier is set for an author, the first letter of the identifier name is displayed as an icon. For ORCID, the ORCID icon is displayed.                                                                   |
 | 8   | The file links                                        | If files are attached to the item, links to the files are displayed.                                                                                                                                             |
 | 9   | The "..." link                                        | Displayed when many files are attached to the item. Click to expand the file links.                                                                                                                              |
 
-LINKID=preview【参照先】Figure 3-2. The item details screen
+Figure 3-2. The item details screen
 
 zu030130.tif![](media/media/image48.png)
 
-LINKID=displaypulldownlist【参照先】Figure 3-3. The "Display Order" pull-down list
+Figure 3-3. The "Display Order" pull-down list
 
 zu030140.tif![](media/media/image49.png)
 
-LINKID=ascpulldownlist【参照先】Figure 3-4. The "asc/desc" pull-down list
+Figure 3-4. The "asc/desc" pull-down list
 
 zu030150.tif![](media/media/image50.png)
 
-LINKID=displaycountpulldownlist【参照先】Figure 3-5. The "Display Number" pull-down list
+Figure 3-5. The "Display Number" pull-down list
 
 zu030160.tif![](media/media/image51.png)
 
@@ -1196,7 +1196,7 @@ Table 3‑4. The elements in the advanced search screen
 <tr class="even">
 <td>4</td>
 <td>The icon030060.tif<img src="media/media/image4.png" style="width:0.51181in;height:0.15677in" /> button</td>
-<td>Click to run a search. The "Search Results" screen will then appear. See "ANCHORID=kensakukekka【参照元】Figure 3-6. The "Search Results" screen【E】" for more information.</td>
+<td>Click to run a search. The "Search Results" screen will then appear. See "Figure 3-6. The "Search Results" screen" for more information.</td>
 </tr>
 <tr class="odd">
 <td>5</td>
@@ -1213,7 +1213,7 @@ Table 3‑4. The elements in the advanced search screen
 </tbody>
 </table>
 
-LINKID=kensakukekka【参照先】Figure 3-6. The "Search Results" screen
+Figure 3-6. The "Search Results" screen
 
 zu030320.tif![](media/media/image60.png)
 
@@ -1225,10 +1225,10 @@ Table 3‑5. The elements in the "Search Results" screen
 | --- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | "Search Results"                                      | The search results appear.                                                                                                                                                                           |
 | 2   | The icon030080.tif![](media/media/image47.png) button | Click to open the "Items to Export" screen. You can export information contained in the items. See "Chapter 7: Export items" for more information.                                                   |
-| 3   | An item name                                          | Clicking on a name takes you to the item details screen. See "ANCHORID=preview【参照元】Figure 3-2. The item details screen【E】".                                                                          |
-| 4   | The "Display Order" pull-down list                    | Select the order in which the search results are displayed from the "Display Order" pull-down list. See "ANCHORID=displaypulldownlist【参照元】Figure 3-3. The "Display Order" pull-down list【E】".        |
-| 5   | The "asc/desc" pull-down list                         | Select "asc" (ascending) or "desc" (descending) for a sort order. See "ANCHORID=ascpulldownlist【参照元】Figure 3-4. The "asc/desc" pull-down list【E】" for more information.                              |
-| 6   | The "Display Number" pull-down list                   | Select the number of items to display from the "Display Number" pull-down list. See "ANCHORID=displaycountpulldownlist【参照元】Figure 3-5. The "Display Number" pull-down list【E】" for more information. |
+| 3   | An item name                                          | Clicking on a name takes you to the item details screen. See "Figure 3-2. The item details screen".                                                                          |
+| 4   | The "Display Order" pull-down list                    | Select the order in which the search results are displayed from the "Display Order" pull-down list. See "Figure 3-3. The "Display Order" pull-down list".        |
+| 5   | The "asc/desc" pull-down list                         | Select "asc" (ascending) or "desc" (descending) for a sort order. See "Figure 3-4. The "asc/desc" pull-down list" for more information.                              |
+| 6   | The "Display Number" pull-down list                   | Select the number of items to display from the "Display Number" pull-down list. See "Figure 3-5. The "Display Number" pull-down list" for more information. |
 
 Note: Currently, searching with "published" specified for "Author Version Flag" does not work.
 
@@ -1293,7 +1293,7 @@ This section explains how to filter items using faceted searches.
 
 zu030030.tif![](media/media/image65.png)
 
-See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E】" for more information.
+See "Section 3.1.3. View the Item Lists" for more information.
 
 [v2.1.0] Note: If `WEKO_SEARCH_FIX_ACCESSRIGHTS = True` is set in the configuration file (instance.cfg), the facet for access rights (accessRights) counts and filters items registered with the access right "embargoed access" according to the current date and the access settings of their content files, as follows (with the default setting, items are counted according to the registered access right value).
 
@@ -1612,13 +1612,13 @@ Table 4‑4. The elements in the "Share" screen
 | 2   | The icon040080.tif![icon040080](media/media/image91.png) button         | Click to share the item using "Twitter".                                                                                                       |
 | 3   | The icon040090.tif![icon040090](media/media/image92.png) button         | Click to share the item using "Facebook".                                                                                                      |
 | 4   | The icon040100.tif![icon040100](media/media/image93.png) button         | Click to open the "Print" screen.                                                                                                              |
-| 5   | The icon040110.tif![icon040110](media/media/image94.png) pull-down list | Select the media from the pull-down list to add to social sharing. See "ANCHORID=pulldpwnlist【参照元】Figure 4-8. The "AddThis" pull-down list【E】. |
+| 5   | The icon040110.tif![icon040110](media/media/image94.png) pull-down list | Select the media from the pull-down list to add to social sharing. See "Figure 4-8. The "AddThis" pull-down list. |
 
 Figure 4-7. The "Print" screen
 
 zu040060.tif![](media/media/image95.png)
 
-LINKID=pulldpwnlist【参照先】Figure 4-8. The "AddThis" pull-down list
+Figure 4-8. The "AddThis" pull-down list
 
 zu040070.tif![](media/media/image96.png)
 
@@ -2065,7 +2065,7 @@ Table 5‑1. The elements in the workflow selection screen
 | --- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | Workflow                                               | A series of data registration processes that combine an item type and flows. It is created by the administrator.                                                                          |
 | 2   | Item Type                                              | The data type to be registered.                                                                                                                                                           |
-| 3   | Flow                                                   | A combination of processes (actions) to be performed when registering data. For information on each action, see "ANCHORID=stepaction【参照元】Table 5-2. The actions in the "Step" screen【E】". |
+| 3   | Flow                                                   | A combination of processes (actions) to be performed when registering data. For information on each action, see "Table 5-2. The actions in the "Step" screen". |
 | 4   | The icon050020.tif![](media/media/image106.png) button | Click to access to the "Action" screen.                                                                                                                                                   |
 | 5   | The icon050270.tif![](media/media/image67.png) button  | Click to access to the activities list screen.                                                                                                                                            |
 
@@ -2075,7 +2075,7 @@ The "Step" screen for the flow set at the start of the selected workflow appears
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-LINKID=stepaction【参照先】Table 5‑2. The actions in the "Step" screen
+Table 5‑2. The actions in the "Step" screen
 
 | No. | Action Name       | Description                                                   |
 | --- | ----------------- | ------------------------------------------------------------- |
@@ -2088,7 +2088,7 @@ LINKID=stepaction【参照先】Table 5‑2. The actions in the "Step" screen
 
 4.  Perform the actions corresponding to the "Step" screen for the flow displayed.
 
-See "ANCHORID=additem【参照元】Section 5.1.1. Register items【E】" through "ANCHORID=adddoi【参照元】Section 5.1.4. Gant DOIs【E】" for more information.
+See "Section 5.1.1. Register items" through "Section 5.1.4. Gant DOIs" for more information.
 
 <a id="register-items-2"></a>
 
@@ -2417,7 +2417,7 @@ Table 5-7. The elements in the file information screen
 <tr class="even">
 <td>4</td>
 <td>Object Type</td>
-<td>Specify the object type of the file. See "ANCHORID=language【参照元】Figure 5-1. The "Object Type" pull-down list【E】" for options.</td>
+<td>Specify the object type of the file. See "Figure 5-1. The "Object Type" pull-down list" for options.</td>
 </tr>
 <tr class="odd">
 <td>5</td>
@@ -2506,13 +2506,13 @@ This section explains how to set up the file preview format, the link name to th
 
 1.  In the Item Registration screen, select the file you want to set as the display name of the contents file.
 
-LINKID=displayname【参照先】Figure 5-3. The "Display Name" pull-down list
+Figure 5-3. The "Display Name" pull-down list
 
 zu050190.tif![](media/media/image130.png)
 
 11. Select the preview format from the pull-down list.
 
-LINKID=displaycase【参照先】Figure 5-4. The "Preview" pull-down list
+Figure 5-4. The "Preview" pull-down list
 
 zu050200.tif![](media/media/image131.png)
 
@@ -2536,7 +2536,7 @@ The Preview display must be configured in the WEKO Administration.
 
 12. Select a license from the pull-down list.
 
-LINKID=displaylicense【参照先】Figure 5-5. The "License" pull-down listzu050210.tif
+Figure 5-5. The "License" pull-down listzu050210.tif
 
 ![](media/media/image132.png)
 
@@ -2556,7 +2556,7 @@ Table 5-9. The elements in the "License" screen
 <tr class="odd">
 <td>1</td>
 <td>Free Input</td>
-<td>A text area will appear when this option is selected. You can enter the license information manually. See "Figure 5-6. The "Free Input" text boxLINKID=displaycase【参照先】.</td>
+<td>A text area will appear when this option is selected. You can enter the license information manually. See "Figure 5-6. The "Free Input" text box.</td>
 </tr>
 <tr class="even">
 <td>2</td>
@@ -2805,7 +2805,7 @@ This section explains how to specify information on a billing file.
 <td>3</td>
 <td>Object Type</td>
 <td><p>Select the object type of the file.</p>
-<p>See "ANCHORID=language【参照元】Figure 5-1. The "Object Type" pull-down list【E】" for options.</p></td>
+<p>See "Figure 5-1. The "Object Type" pull-down list" for options.</p></td>
 </tr>
 <tr class="even">
 <td>4</td>
@@ -2914,7 +2914,7 @@ Table 5-13. The elements in the Item Registration screen
 <tr class="odd">
 <td>1</td>
 <td>"PubDate" pull-down list<sup>*</sup></td>
-<td>Select the publish date from the pull-down list or enter it manually. Enter a date in the <em>yyyy-mm-dd</em> format. To select from the pull-down list, see "ANCHORID=pubdate【参照元】Figure 5‑10. "PubDate" pull-down list【E】".</td>
+<td>Select the publish date from the pull-down list or enter it manually. Enter a date in the <em>yyyy-mm-dd</em> format. To select from the pull-down list, see "Figure 5‑10. "PubDate" pull-down list".</td>
 </tr>
 <tr class="even">
 <td>2</td>
@@ -2924,17 +2924,17 @@ Table 5-13. The elements in the Item Registration screen
 <tr class="odd">
 <td>3</td>
 <td>The "Language" pull-down list under "Title"<sup>*</sup></td>
-<td>Select an option from the pull-down list. See "ANCHORID=language【参照元】Figure 5-11. The "Language" pull-down list【E】".</td>
+<td>Select an option from the pull-down list. See "Figure 5-11. The "Language" pull-down list".</td>
 </tr>
 <tr class="even">
 <td>4</td>
 <td>The "Language" pull-down list under "Language"*<sup>*</sup></td>
-<td>Select an option from the pull-down list. See "ANCHORID=country【参照元】Figure 5-12. The "Language" pull-down list【E】".</td>
+<td>Select an option from the pull-down list. See "Figure 5-12. The "Language" pull-down list".</td>
 </tr>
 <tr class="odd">
 <td>5</td>
 <td>The "Resource Type" pull-down list under "Resource Type"<sup>*</sup></td>
-<td>Select an option from the pull-down list. See "Figure 5-13. The "Resource Type" pull-down list【E】".</td>
+<td>Select an option from the pull-down list. See "Figure 5-13. The "Resource Type" pull-down list".</td>
 </tr>
 <tr class="even">
 <td>6</td>
@@ -2982,7 +2982,7 @@ Table 5-13. The elements in the Item Registration screen
 <tr class="even">
 <td>14</td>
 <td>The icon050250.tif<img src="media/media/image147.png" style="width:0.5625in;height:0.1875in" /> button</td>
-<td>Click to navigate to the "Specific index" screen. See "ANCHORID=createindex【参照元】Section 5.1.2. Set up an index【E】".</td>
+<td>Click to navigate to the "Specific index" screen. See "Section 5.1.2. Set up an index".</td>
 </tr>
 <tr class="odd">
 <td>15</td>
@@ -3011,19 +3011,19 @@ The required elements, however, vary depending on the item type.
 > 
 > The suffix is a unique value returned by the LHS (Local Handle Server).
 
-LINKID=pubdate【参照先】Figure 5-10. The "PubDate" pull-down list
+Figure 5-10. The "PubDate" pull-down list
 
 zu050050.tif![](media/media/image150.png)
 
-LINKID=language【参照先】Figure 5-11. The "Language" pull-down list
+Figure 5-11. The "Language" pull-down list
 
 zu050060.tif![](media/media/image151.png)
 
-LINKID=country【参照先】Figure 5-12. The "Language" pull-down list
+Figure 5-12. The "Language" pull-down list
 
 zu050070.tif![](media/media/image152.png)
 
-LINKID=type【参照先】Figure 5-13. The "Resource Type" pull-down list
+Figure 5-13. The "Resource Type" pull-down list
 
 ![](media/media/image153.png)
 
@@ -3078,12 +3078,12 @@ Table 5-14. The elements in the creator search screen
 <tr class="even">
 <td>4</td>
 <td>The icon050150.tif<img src="media/media/image157.png" style="width:0.57292in;height:0.20504in" /> button</td>
-<td>Click to display the "Add Author" screen. Enter the creator information. See "ANCHORID=writeradd【参照元】Figure 5-14. The "Add Author" screen【E】".</td>
+<td>Click to display the "Add Author" screen. Enter the creator information. See "Figure 5-14. The "Add Author" screen".</td>
 </tr>
 <tr class="odd">
 <td>5</td>
 <td>The icon050160.tif<img src="media/media/image158.png" style="width:1.09375in;height:0.25in" alt="icon050160" /> pull-down list</td>
-<td>Select the number of rows displayed in the list of creators from the pull-down list. See "ANCHORID=displaynumber【参照元】Figure 5-15. The "Display Number" pull-down list【E】".</td>
+<td>Select the number of rows displayed in the list of creators from the pull-down list. See "Figure 5-15. The "Display Number" pull-down list".</td>
 </tr>
 <tr class="even">
 <td>6</td>
@@ -3098,7 +3098,7 @@ Table 5-14. The elements in the creator search screen
 </tbody>
 </table>
 
-LINKID=writeradd【参照先】Figure 5-14. The "Add Author" screen
+Figure 5-14. The "Add Author" screen
 
 ![](media/media/image161.png)zu050150.tif
 
@@ -3109,8 +3109,8 @@ Table 5-15. The elements in the "Add Author" screen
 | No. | Element                                                | Description                                                                                                               |
 | --- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
 | 1   | The "Name" text box                                    | Enter a name.                                                                                                             |
-| 2   | The "Name" pull-down lists                             | Select an option from the pull-down list. See "ANCHORID=name【参照元】Figure 5-16. The "Name" pull-down lists【E】".             |
-| 3   | The "Author ID" pull-down list                         | Select the Author ID from the pull-down list. See "ANCHORID=authorid【参照元】Figure 5-17. The "Author ID" pull-down list【E】". |
+| 2   | The "Name" pull-down lists                             | Select an option from the pull-down list. See "Figure 5-16. The "Name" pull-down lists".             |
+| 3   | The "Author ID" pull-down list                         | Select the Author ID from the pull-down list. See "Figure 5-17. The "Author ID" pull-down list". |
 | 4   | The "Author ID" text box                               | Enter the author ID.                                                                                                      |
 | 5   | The "E-Mail" text box                                  | Enter an email address.                                                                                                   |
 | 6   | The "Community" text box                               | Select the community that manages the author.                                                                             |
@@ -3133,15 +3133,15 @@ Table 5-15. The elements in the "Add Author" screen
 | 23  | The icon050190.tif![](media/media/image164.png) button | Click to add the author and navigate to the creator search screen.                                                        |
 | 24  | The icon050140.tif![](media/media/image160.png) button | Click to close the "Add Author" screen and navigate to the creator search screen.                                         |
 
-LINKID=displaynumber【参照先】Figure 5-15. The "Display Number" pull-down list
+Figure 5-15. The "Display Number" pull-down list
 
 zu050140.tif![](media/media/image165.png)
 
-LINKID=name【参照先】Figure 5-16. The "Name" pull-down lists
+Figure 5-16. The "Name" pull-down lists
 
 zu050153.tif![](media/media/image166.png) ![](media/media/image167.png)
 
-LINKID=authorid【参照先】Figure 5-17. The "Author ID" pull-down list
+Figure 5-17. The "Author ID" pull-down list
 
 zu050156.tif![](media/media/image168.png)
 
@@ -3256,11 +3256,11 @@ See "Table 5-14. The elements in the creator search screen" for information on t
 
 1.  This section explains how to set up the availability of the content. You can select and fill in the information using the controlled vocabulary. In the Item Registration screen, select the access rights from the zu050160.tif"Access Rights" pull-down list. "Access Rights URI" is automatically populated with the relevant access rights URI.
 
-See "Figure 5-19. The "Access Rights" pull-down listANCHORID=access【参照元】【E】".
+See "Figure 5-19. The "Access Rights" pull-down list".
 
 ![](media/media/image177.png)![背景パターン 自動的に生成された説明](media/media/image178.png)![背景パターン 自動的に生成された説明](media/media/image178.png)zu050170.tif
 
-LINKID=access【参照先】Figure 5-19. The "Access Rights" pull-down list
+Figure 5-19. The "Access Rights" pull-down list
 
 zu050180.tif![](media/media/image179.png)
 
@@ -3936,7 +3936,7 @@ Table 5‑28. The elements for paging
 <tr class="odd">
 <td>1</td>
 <td>The "Display Number" pull-down</td>
-<td><p>Specify the number of activities to display. The default is set to "20". See "Figure 5-23. The "Display Number" pull-down【E】".</p>
+<td><p>Specify the number of activities to display. The default is set to "20". See "Figure 5-23. The "Display Number" pull-down".</p>
 <p>Clicking an option will refresh the display, applying the number of activities selected.</p></td>
 </tr>
 <tr class="even">
@@ -4130,7 +4130,7 @@ If the item is being edited, you will see the message "The item is being edited"
 
 35. Click the icon060040.tif![](media/media/image147.png) button.
 
-The "Specific index" screen appears. See "ANCHORID=createindex【参照元】Section 5.1.2. Set up an index【E】" for more information.
+The "Specific index" screen appears. See "Section 5.1.2. Set up an index" for more information.
 
 Notes:
 
@@ -4231,7 +4231,7 @@ zu070010.tifFigure 7-1. The "Items to Export" screenzu030180.tif
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-LINKID=exportitemstable【参照先】Table 7-1. The elements in the "Items to Export" screen
+Table 7-1. The elements in the "Items to Export" screen
 
 <table>
 <thead>
@@ -4384,8 +4384,8 @@ Table 10‑1. The elements in the "Profile" screen
 | No. | Element                                                          | Description                                                                                                                                                            |
 | --- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | The "Username" text box                                          | Enter a username. You can use alphanumeric characters, hyphens (-), and underscores (\_). The minimum length is 3 characters, and the maximum length is 255 characters. |
-| 2   | The "Timezone" pull-down list                                    | Select a time zone from the "Timezone" pull-down list. See "ANCHORID=timezone【参照元】Figure 10-1. The "Timezone" pull-down list【E】".                                       |
-| 3   | The "Language" pull-down list                                    | Select a language from the "Language" pull-down list. See "ANCHORID=gengopulldownlist【参照元】Figure 10-2. The "Language" pull-down list【E】".                               |
+| 2   | The "Timezone" pull-down list                                    | Select a time zone from the "Timezone" pull-down list. See "Figure 10-1. The "Timezone" pull-down list".                                       |
+| 3   | The "Language" pull-down list                                    | Select a language from the "Language" pull-down list. See "Figure 10-2. The "Language" pull-down list".                               |
 | 4   | The "Email Address" text box                                     | The input format should be "*XXXXX*＠*XXX.XXX*". You can use alphanumeric characters, hyphens (-), and underscores (\_). The maximum length is 254 characters.          |
 | 5   | The "Re-enter email address" text box                            | Enter the new email address again to confirm that the value you specified in "Email Address" is correct.                                                               |
 | 6   | The "access key" text box                                        | If you want to use "Copy a file to an open bucket" from the file details screen, enter the access key of the S3 account to use.                                        |
@@ -4397,11 +4397,11 @@ Table 10‑1. The elements in the "Profile" screen
 
 Note: Items 6 to 9 (the S3 account information) are displayed only when `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED = True` is set in the configuration file (instance.cfg). This setting is disabled (False) by default.
 
-LINKID=timezone【参照先】Figure 10-1. The "Timezone" pull-down list
+Figure 10-1. The "Timezone" pull-down list
 
 zu080030.tif![](media/media/image244.png)
 
-LINKID=gengopulldownlist【参照先】Figure 10-2. The "Language" pull-down list
+Figure 10-2. The "Language" pull-down list
 
 zu080040.tif![](media/media/image245.png)
 
@@ -4588,7 +4588,7 @@ This section explains how to display the Administration screen.
 
 1.  Log in with an administrator account.
 
-See "ANCHORID=login【参照元】Section 2.2. Log in to the System【E】" for information on how to log in.
+See "Section 2.2. Log in to the System" for information on how to log in.
 
 2.  Click icon020040.tif![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
 
