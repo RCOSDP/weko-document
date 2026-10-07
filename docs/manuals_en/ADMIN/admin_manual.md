@@ -7430,15 +7430,21 @@ Set the following schema associations and languages for each metadata attribute 
 
   - JPCOAR
 
+  - JPCOAR v1
+
+  - JPCOAR v2
+
   - Dublin Core
 
   - DDI
+
+  - lom
     
     The metadata serving capabilities generate metadata output based on the mapping information for the item type. For detailed terminology, refer to the respective official Websites of these schemas.
     
     1.  ### Add schemas
 
-The WEKO3 system supports adding and configuring JPCOAR, Dublin Core, and DDI schemas.
+The WEKO3 system supports adding and configuring JPCOAR, JPCOAR v1, JPCOAR v2, Dublin Core, DDI, and lom schemas.
 
 1.  Click "+Add Schema".
 
@@ -10643,7 +10649,7 @@ Table 5‑3. Elements and descriptions for the access counter setting
 </tbody>
 </table>
 
-Figure 5.‑10. Sample Access counter display
+Figure 5‑10. Sample Access counter display
 
 zu0824060.tif![](media/media/image143.png)
 
@@ -10692,7 +10698,7 @@ Table 5‑4. Elements and descriptions for the Notice setting
 </tbody>
 </table>
 
-zu0824070.tifFigure 5‑12. . Sample Notice display
+zu0824070.tifFigure 5‑12. Sample Notice display
 
 zu0824080.tif![](media/media/image145.png)
 
@@ -16873,7 +16879,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 15.‑12. The elements in "Mail Setting"
+Table 16‑12. The elements in "Mail Setting"
 
 | Element        | Description                              |
 | -------------- | ---------------------------------------- |
@@ -16898,7 +16904,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 16‑12. The elements in "Send Test Mail"
+Table 16‑13. The elements in "Send Test Mail"
 
 | Element   | Description                        |
 | --------- | ---------------------------------- |
@@ -16935,7 +16941,7 @@ A string enclosed in square brackets ([ ]) is used as a variable. The following 
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 16‑13. The variables available in mail templates
+Table 16‑14. The variables available in mail templates
 
 | Variable                                | Content                                                         |
 | --------------------------------------- | --------------------------------------------------------------- |
@@ -17476,7 +17482,7 @@ The following table lists the information you can enter.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-Table 16‑14. The elements in "File Preview"
+Table 16‑15. The elements in "File Preview"
 
 | Element       | Description                                                    |
 | ------------- | -------------------------------------------------------------- |
