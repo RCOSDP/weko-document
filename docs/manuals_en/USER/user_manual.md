@@ -95,61 +95,61 @@ The format conventions used in this document are as follows:
 
 # Table of Contents
 
-[1. System overview 6](#system-overviewindexword)
+[1. System overview 6](#system-overview)
 
-[1.1 About the System 7](#linkidwhatis参照先indexword-pronounceしすてむとは-indexitemシステムとはabout-the-systemindexword)
+[1.1 About the System 7](#about-the-system)
 
-[1.2 Glossary 9](#linkidterminology参照先indexword-pronounceようこかいせつ-indexitem用語解説glossaryindexword)
+[1.2 Glossary 9](#glossary)
 
-[1.3 System features 12](#linkidfeaturesandusers参照先indexword-pronounceしすてむのきのう-indexitemシステムの機能system-featuresindexword)
+[1.3 System features 12](#system-features)
 
-[1.4 The elements of the Home screen. 13](#indexword-pronounceほおむかめんのかくふめいしよう-indexitemホーム画面の各部名称the-elements-of-the-home-screenindexword)
+[1.4 The elements of the Home screen. 13](#the-elements-of-the-home-screen)
 
-[2. Log in and log out 14](#log-in-and-log-outindexword)
+[2. Log in and log out 14](#log-in-and-log-out)
 
-[2.1 Access the Home screen 15](#linkiddisplayhome参照先indexword-pronounceほおむかめんをひようしする-indexitemホーム画面を表示するaccess-the-home-screenindexword)
+[2.1 Access the Home screen 15](#access-the-home-screen)
 
-[2.2 Log in to the System 16](#linkidlogin参照先indexword-pronounceろくいんする-indexitemログインするlog-in-to-the-systemindexword)
+[2.2 Log in to the System 16](#log-in-to-the-system)
 
-[2.3 Log out of the System 21](#linkidlogout参照先indexword-pronounceろくあうとする-indexitemログアウトするlog-out-of-the-systemindexword)
+[2.3 Log out of the System 21](#log-out-of-the-system)
 
-[2.4 Change a password 22](#linkidchangepassword参照先indexword-pronounceはすわあとをへんこうする-indexitemパスワードを変更するchange-a-passwordindexword)
+[2.4 Change a password 22](#change-a-password)
 
-[2.5 Sign-up for a new account 23](#linkidsetacount参照先sign-up-for-a-new-account)
+[2.5 Sign-up for a new account 23](#sign-up-for-a-new-account)
 
-[3. Search for items 24](#search-for-itemsindexword)
+[3. Search for items 24](#search-for-items)
 
-[3.1 Search for items using indexes 25](#linkidsearchwithindex参照先indexword-pronounceいんてつくすてけんさくする-indexitemインデックスで検索するsearch-for-items-using-indexesindexword)
+[3.1 Search for items using indexes 25](#search-for-items-using-indexes)
 
-[3.1.1 Search in "Index Link" 25](#linkidsearchwithindexlink参照先search-in-index-link)
+[3.1.1 Search in "Index Link" 25](#search-in-index-link)
 
-[3.1.2 Search in "Index Tree" 25](#linkidsearchwithindextree参照先search-in-index-tree)
+[3.1.2 Search in "Index Tree" 25](#search-in-index-tree)
 
 [3.1.3 Display journal information](#display-journal-information)
 
-[3.1.4 View the Item Lists 28](#linkidviewitemlist参照先view-the-item-lists)
+[3.1.4 View the Item Lists 28](#view-the-item-lists)
 
-[3.2 Search using the ranking 31](#linkidsearchwithitemranking参照先indexword-pronounceらんきんくてけんさくする-indexitemランキングで検索するsearch-using-the-rankingindexword)
+[3.2 Search using the ranking 31](#search-using-the-ranking)
 
-[3.3 Search by keywords 34](#linkidsearchwithkeywords参照先indexword-pronounceきいわあとてけんさくする-indexitemキーワードで検索するsearch-by-keywordsindexword)
+[3.3 Search by keywords 34](#search-by-keywords)
 
-[3.3.1 Simple search 34](#linkidkanikensaku参照先simple-search)
+[3.3.1 Simple search 34](#simple-search)
 
-[3.3.2 Advanced search 37](#linkidsyousaikensaku参照先advanced-search)
+[3.3.2 Advanced search 37](#advanced-search)
 
-[3.4 About variant character search 41](#linkidvariantcharasearch参照先indexword-pronounceいたいしけんさくについて-indexitem異体字検索についてabout-variant-character-searchindexword)
+[3.4 About variant character search 41](#about-variant-character-search)
 
-[3.5 Search by author name 42](#linkidsearchwithauthorname参照先indexword-pronounceちよしやめいてけんさくする-indexitem著者名で検索するsearch-by-author-nameindexword)
+[3.5 Search by author name 42](#search-by-author-name)
 
-[3.5.1 Search by author name 42](#search-by-author-name)
+[3.5.1 Search by author name 42](#search-by-author-name-1)
 
 [3.5.2 Search by WEKO author ID 43](#search-by-weko-author-id)
 
 [3.6 Faceted search 44](#faceted-search)
 
-[4. View item details 46](#view-item-detailsindexword)
+[4. View item details 46](#view-item-details)
 
-[4.1 The item details screen 47](#linkiditemdetailswindow参照先indexword-pronounceあいてむしようさいかめん-indexitemアイテム詳細画面the-item-details-screenindexword)
+[4.1 The item details screen 47](#the-item-details-screen)
 
 [4.1.1 Metadata 47](#metadata)
 
@@ -179,21 +179,21 @@ The format conventions used in this document are as follows:
 
 [4.1.14 Google Dataset metadata output](#google-dataset-metadata-output)
 
-[5. Register items 61](#register-itemsindexword)
+[5. Register items 61](#register-items)
 
-[5.1 Register items 62](#linkidaddactivities参照先indexword-pronounceあいてむをとうろくする-indexitemアイテムを登録するregister-itemsindexword)
+[5.1 Register items 62](#register-items-1)
 
-[5.1.1 Register items 64](#linkidadditem参照先register-items)
+[5.1.1 Register items 64](#register-items-2)
 
 [5.1.2 Set up an index 88](#set-up-an-index)
 
-[5.1.3 Set up an item link 90](#linkidcreatelink参照先set-up-an-item-link)
+[5.1.3 Set up an item link 90](#set-up-an-item-link)
 
-[5.1.4 Gant DOIs 91](#linkidadddoi参照先gant-dois)
+[5.1.4 Gant DOIs 91](#gant-dois)
 
 [5.1.5 Approve items 94](#approve-items)
 
-[5.2 View activities 97](#linkidviewactivities参照先indexword-pronounceあくていひていをさんしようする-indexitemアクティビティを参照するview-activitiesindexword)
+[5.2 View activities 97](#view-activities)
 
 [5.2.1 Display the activities list 97](#display-the-activities-list)
 
@@ -201,51 +201,51 @@ The format conventions used in this document are as follows:
 
 [5.2.3 Delete activities](#delete-activities)
 
-[5.2.4 View the activity details 101](#linkidviewactivitydetails参照先view-the-activity-details)
+[5.2.4 View the activity details 101](#view-the-activity-details)
 
 [5.3 Activity lock (v1.0.7)](#activity-lock-v107)
 
-[6. Edit and delete items 102](#edit-and-delete-itemsindexword)
+[6. Edit and delete items 102](#edit-and-delete-items)
 
-[6.1 Edit items 103](#linkidedititemsprocedure参照先indexword-pronounceあいてむをへんしゆうする-indexitemアイテムを編集するedit-itemsindexword)
+[6.1 Edit items 103](#edit-items)
 
 [6.2 Delete items 108](#delete-items)
 
-[7. Export items 111](#export-itemsindexword)
+[7. Export items 111](#export-items)
 
-[7.1 Export items 112](#linkidcommunitykakunin参照先indexword-pronounceこみゆにていをかくにんする-indexitemコミュニティを確認するexport-itemsindexword)
+[7.1 Export items 112](#export-items-1)
 
 [8. Upload large files](#upload-large-files)
 
-[9. Explore communities 114](#explore-communitiesindexword)
+[9. Explore communities 114](#explore-communities)
 
-[9.1 Explore communities 115](#linkidcommunitykakunin参照先indexword-pronounceこみゆにていをかくにんする-indexitemコミュニティを確認するexplore-communitiesindexword)
+[9.1 Explore communities 115](#explore-communities-1)
 
 [9.2 View the content policy](#view-the-content-policy)
 
-[10. Operating tips 116](#operating-tipsindexword)
+[10. Operating tips 116](#operating-tips)
 
-[10.1 Modify your profile 117](#linkidviewprofile参照先modify-your-profile)
+[10.1 Modify your profile 117](#modify-your-profile)
 
-[10.2 Determine which device is used to log in to an account 120](#linkidchecklogindevice参照先determine-which-device-is-used-to-log-in-to-an-account)
+[10.2 Determine which device is used to log in to an account 120](#determine-which-device-is-used-to-log-in-to-an-account)
 
-[10.3 Manage applications 121](#linkidmanageapplication参照先manage-applications)
+[10.3 Manage applications 121](#manage-applications)
 
-[10.3.1 View the authorized applications 121](#linkidviewapplications参照先view-the-authorized-applications)
+[10.3.1 View the authorized applications 121](#view-the-authorized-applications)
 
-[10.3.2 Add an application 121](#linkidaddapplication参照先add-an-application)
+[10.3.2 Add an application 121](#add-an-application)
 
-[10.3.3 Add an access token 123](#linkidaddaccesstoken参照先add-an-access-token)
+[10.3.3 Add an access token 123](#add-an-access-token)
 
-[10.4 Join and view a group 124](#linkidmanagegroup参照先join-and-view-a-group)
+[10.4 Join and view a group 124](#join-and-view-a-group)
 
 [10.4.1 Join a group 124](#join-a-group)
 
 [10.4.2 View groups 125](#view-groups)
 
-[10.5 Modify the session validity time 127](#linkidchangetimeout参照先modify-the-session-validity-time)
+[10.5 Modify the session validity time 127](#modify-the-session-validity-time)
 
-[10.6 Display the Administration screen. 128](#linkidopenadminmenu参照先display-the-administration-screen)
+[10.6 Display the Administration screen. 128](#display-the-administration-screen)
 
 [10.7 Display the cookie consent screen](#display-the-cookie-consent-screen)
 
@@ -267,16 +267,11 @@ The format conventions used in this document are as follows:
 
 [12.2 Register an item quickly](#register-an-item-quickly)
 
-<a id="system-overviewindexword"></a>
-
-#   
-System overview\</INDEXWORD\>
+# System overview
 
 This chapter provides a high-level overview of the System.
 
-<a id="linkidwhatis参照先indexword-pronounceしすてむとは-indexitemシステムとはabout-the-systemindexword"></a>
-
-## LINKID=whatis【参照先】\<INDEXWORD PRONOUNCE="しすてむとは" INDEXITEM="システムとは"\>About the System\</INDEXWORD\>
+## About the System
 
 The System allows you to store and publish academic research results. The System's \<INDEXWORD PRONOUNCE="りほしとり" INDEXITEM="リポジトリ"\>repository\</INDEXWORD\> can store \<INDEXWORD PRONOUNCE="こんてんつ" INDEXITEM="コンテンツ"\>content\</INDEXWORD\> in various formats, including PDF files, videos, and images. You can efficiently manage research results by categorizing and arranging them in a tree structure. You can also reference research results by keyword search or full-text search. The data in the repository can also be synchronized with other repositories. For information on the terminology used in this document, such as "item" or "index", see "ANCHORID=terminology【参照元】Section 1.2. "Glossary"【E】.
 
@@ -290,9 +285,7 @@ Figure 1-2. Data registration
 
 zu010020.tif![](media/media/image2.png)
 
-<a id="linkidterminology参照先indexword-pronounceようこかいせつ-indexitem用語解説glossaryindexword"></a>
-
-## LINKID=terminology【参照先】\<INDEXWORD PRONOUNCE="ようこかいせつ" INDEXITEM="用語解説"\>Glossary\</INDEXWORD\>
+## Glossary
 
 This section explains the terminology used in the System.
 
@@ -442,9 +435,7 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 </tbody>
 </table>
 
-<a id="linkidfeaturesandusers参照先indexword-pronounceしすてむのきのう-indexitemシステムの機能system-featuresindexword"></a>
-
-## LINKID=featuresandusers【参照先】\<INDEXWORD PRONOUNCE="しすてむのきのう" INDEXITEM="システムの機能"\>System features\</INDEXWORD\>
+## System features
 
 The following table shows the System features.
 
@@ -463,9 +454,7 @@ Table 1‑2. The features related to registering and viewing data in the System
 | \<INDEXWORD PRONOUNCE="わあくふろお" INDEXITEM="ワークフロー"\>Workflow\</INDEXWORD\>                             | Set up a workflow when you register an item so that it will go through the stages of peer review/approval before publication. You can also view a list of items pending approval.                                |
 | \<INDEXWORD PRONOUNCE="あいてむへんしゆう・さくしよ" INDEXITEM="アイテム編集・削除"\>Edit and delete items\</INDEXWORD\>     | Edit or delete a registered item.                                                                                                                                                                                |
 
-<a id="indexword-pronounceほおむかめんのかくふめいしよう-indexitemホーム画面の各部名称the-elements-of-the-home-screenindexword"></a>
-
-## \<INDEXWORD PRONOUNCE="［ほおむ］かめんのかくふめいしよう" INDEXITEM="［ホーム］画面の各部名称"\>The elements of the Home screen.\</INDEXWORD\>
+## The elements of the Home screen.
 
 You will find the following elements in the Home screen.
 
@@ -548,16 +537,11 @@ Table 1‑3. The elements in the Home screen
 </tbody>
 </table>
 
-<a id="log-in-and-log-outindexword"></a>
-
-#   
-Log in and log out\</INDEXWORD\>
+# Log in and log out
 
 This chapter provides information on logging in to and out of the System and changing passwords.
 
-<a id="linkiddisplayhome参照先indexword-pronounceほおむかめんをひようしする-indexitemホーム画面を表示するaccess-the-home-screenindexword"></a>
-
-## LINKID=displayhome【参照先】\<INDEXWORD PRONOUNCE="［ほおむ］かめんをひようしする" INDEXITEM="［ホーム］画面を表示する"\>Access the Home screen\</INDEXWORD\>
+## Access the Home screen
 
 This section explains how to display the Home screen.
 
@@ -573,9 +557,7 @@ zu020020.tif![](media/media/image9.png)
 
 The screen refreshes to display in the language selected.
 
-<a id="linkidlogin参照先indexword-pronounceろくいんする-indexitemログインするlog-in-to-the-systemindexword"></a>
-
-## LINKID=login【参照先】\<INDEXWORD PRONOUNCE="ろくいんする" INDEXITEM="ログインする"\>Log in to the System\</INDEXWORD\>
+## Log in to the System
 
 This section explains how to log in to the System.
 
@@ -722,9 +704,7 @@ Note: When a user logs in through GakuNin Embedded DS, roles and groups are assi
 
   - Access control for users who log in through GakuNin is performed based on the groups defined by the GakuNin mAP feature.
 
-<a id="linkidlogout参照先indexword-pronounceろくあうとする-indexitemログアウトするlog-out-of-the-systemindexword"></a>
-
-## LINKID=logout【参照先】\<INDEXWORD PRONOUNCE="ろくあうとする" INDEXITEM="ログアウトする"\>Log out of the System\</INDEXWORD\>
+## Log out of the System
 
 This section explains how to log out of the System.
 
@@ -738,9 +718,7 @@ zu020050.tif![](media/media/image21.png)
 
 You will log out of the System.
 
-<a id="linkidchangepassword参照先indexword-pronounceはすわあとをへんこうする-indexitemパスワードを変更するchange-a-passwordindexword"></a>
-
-## LINKID=changepassword【参照先】\<INDEXWORD PRONOUNCE="はすわあとをへんこうする" INDEXITEM="パスワードを変更する"\>Change a password\</INDEXWORD\>
+## Change a password
 
 This section explains how to change the password configured for an account.
 
@@ -775,9 +753,7 @@ Table 2‑4. The elements in the "Change password" screen
 
 The password is updated.
 
-<a id="linkidsetacount参照先sign-up-for-a-new-account"></a>
-
-## LINKID=setacount【参照先】Sign-up for a new account
+## Sign-up for a new account
 
 This section explains how to create a new account.
 
@@ -804,22 +780,15 @@ Table 2‑5. The elements in the "Sign up" screen
 
 Log in with the account you created.
 
-<a id="search-for-itemsindexword"></a>
-
-#   
-Search for items\</INDEXWORD\>
+# Search for items
 
 This chapter provides information on searching for items.
 
-<a id="linkidsearchwithindex参照先indexword-pronounceいんてつくすてけんさくする-indexitemインデックスで検索するsearch-for-items-using-indexesindexword"></a>
-
-## LINKID=searchwithindex【参照先】\<INDEXWORD PRONOUNCE="いんてつくすてけんさくする" INDEXITEM="インデックスで検索する"\>Search for items using indexes\</INDEXWORD\>
+## Search for items using indexes
 
 This section explains how to search for items on the Home screen using index links or the index tree.
 
-<a id="linkidsearchwithindexlink参照先search-in-index-link"></a>
-
-### LINKID=searchwithindexlink【参照先】Search in "Index Link"
+### Search in "Index Link"
 
 The index link search is available when index links are configured "Enable". See the System Administration Manual in "Section 15.2. Display the Index Link" for more information.
 
@@ -843,9 +812,7 @@ zu030030.tif![](media/media/image30.png)
 
 See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E】" for more information.
 
-<a id="linkidsearchwithindextree参照先search-in-index-tree"></a>
-
-### LINKID=searchwithindextree【参照先】Search in "Index Tree"
+### Search in "Index Tree"
 
 This section explains how to search for items using the index tree.
 
@@ -927,9 +894,7 @@ Each piece of journal information is displayed in the format "*item name*: *valu
 | 3   | URL | Displays the URL of the index. |
 | 4   | "Details" link | Click to expand the other journal information, such as "Print-format identifier", "NCID", "Publication type", "Coverage depth" and the volumes and issues available online. |
 
-<a id="linkidviewitemlist参照先view-the-item-lists"></a>
-
-### LINKID=viewitemlist【参照先】View the Item Lists
+### View the Item Lists
 
 This section explains how to view the information in "Item Lists" in two ways: a list and a table of contents.
 
@@ -978,9 +943,7 @@ Display search results in a list of headings. See the System Administration Manu
 
 The item details screen appears. See "ANCHORID=displayitem【参照元】Chapter 4: View item details【E】" for more information.
 
-<a id="linkidsearchwithitemranking参照先indexword-pronounceらんきんくてけんさくする-indexitemランキングで検索するsearch-using-the-rankingindexword"></a>
-
-## LINKID=searchwithitemranking【参照先】\<INDEXWORD PRONOUNCE="らんきんくてけんさくする" INDEXITEM="ランキングで検索する"\>Search using the ranking\</INDEXWORD\>
+## Search using the ranking
 
 The ranking search is available when the ranking display is set to "On". See "Configure the ranking display" in the System Administration Manual for more information.
 
@@ -1079,15 +1042,11 @@ The item details screen for the item appears.
     
     ・Searches without keywords (i.e. listing all data) or searches using only blank spaces are not included in the keyword ranking. The "Most Searched Keywords" ranking shows the searched text as it is specified. For example, if you specify "adults and children", this phrase will be counted as one keyword. (It is handled as a different keyword than "adults" or "children.")
     
-<a id="linkidsearchwithkeywords参照先indexword-pronounceきいわあとてけんさくする-indexitemキーワードで検索するsearch-by-keywordsindexword"></a>
-
-## LINKID=searchwithkeywords【参照先】\<INDEXWORD PRONOUNCE="きいわあとてけんさくする" INDEXITEM="キーワードで検索する"\>Search by keywords\</INDEXWORD\>
+## Search by keywords
 
 There are two types of keyword searches: simple search and advanced search. This section explains how to search for items by specifying keywords.
 
-<a id="linkidkanikensaku参照先simple-search"></a>
-
-### LINKID=kanikensaku【参照先】Simple search
+### Simple search
 
 1.  Click on the "Top" tab.
 
@@ -1182,9 +1141,7 @@ LINKID=displaycountpulldownlist【参照先】Figure 3-5. The "Display Number" p
 
 zu030160.tif![](media/media/image51.png)
 
-<a id="linkidsyousaikensaku参照先advanced-search"></a>
-
-### LINKID=syousaikensaku【参照先】Advanced search
+### Advanced search
 
 1.  Click on the "Top" tab.
 
@@ -1275,9 +1232,7 @@ Table 3‑5. The elements in the "Search Results" screen
 
 Note: Currently, searching with "published" specified for "Author Version Flag" does not work.
 
-<a id="linkidvariantcharasearch参照先indexword-pronounceいたいしけんさくについて-indexitem異体字検索についてabout-variant-character-searchindexword"></a>
-
-## LINKID=variantcharasearch【参照先】\<INDEXWORD PRONOUNCE="いたいしけんさくについて" INDEXITEM="異体字検索について"\>About variant character search\</INDEXWORD\>
+## About variant character search
 
 The System supports the "variant character search" feature. Variant characters are the traditional alternative of kanji or a different form of character with the same pronunciation and meaning but written differently.
 
@@ -1292,13 +1247,13 @@ The index definition of variant characters is based on the integrated index of k
 "Guidelines for providing the integrated index of kanji" (Japanese)  
 https://www.nii.ac.jp/CAT-ILL/about/system/kui.html
 
-<a id="linkidsearchwithauthorname参照先indexword-pronounceちよしやめいてけんさくする-indexitem著者名で検索するsearch-by-author-nameindexword"></a>
-
-## LINKID=searchwithauthorname【参照先】\<INDEXWORD PRONOUNCE="ちよしやめいてけんさくする" INDEXITEM="著者名で検索する"\>Search by author name\</INDEXWORD\>
+## Search by author name
 
 This section explains how to search for items by specifying registered author names.
 
 You can search authors using the following methods.
+
+<a id="search-by-author-name-1"></a>
 
 ### Search by author name
 
@@ -1348,13 +1303,11 @@ See "ANCHORID=viewitemlist【参照元】Section 3.1.3. View the Item Lists【E�
 
   - Otherwise, if there is a content file set to "Input Open Access Date" with a future publish date or set to "Do not Publish", or if there is no content file: "embargoed access"
 
-# View item details\</INDEXWORD\>
+# View item details
 
 This chapter describes elements that are included in items.
 
-<a id="linkiditemdetailswindow参照先indexword-pronounceあいてむしようさいかめん-indexitemアイテム詳細画面the-item-details-screenindexword"></a>
-
-## LINKID=itemdetailswindow【参照先】\<INDEXWORD PRONOUNCE="あいてむしようさいかめん" INDEXITEM="アイテム詳細画面"\>The item details screen\</INDEXWORD\>
+## The item details screen
 
 This chapter describes elements that are included in the item details screen.
 
@@ -2074,16 +2027,13 @@ You can copy the file to an open bucket on Amazon S3 or other storage.
 
     Note: Take note of the URL. The copied file is not managed by the System, and you cannot check the URL again after closing the dialog box. If you have created a new bucket, check that the bucket is set to public.
 
-<a id="register-itemsindexword"></a>
-
-#   
-Register items\</INDEXWORD\>
+# Register items
 
 This chapter provides information on registering items.
 
-<a id="linkidaddactivities参照先indexword-pronounceあいてむをとうろくする-indexitemアイテムを登録するregister-itemsindexword"></a>
+<a id="register-items-1"></a>
 
-## LINKID=addactivities【参照先】\<INDEXWORD PRONOUNCE="あいてむをとうろくする" INDEXITEM="アイテムを登録する"\>Register items\</INDEXWORD\>
+## Register items
 
 When you register items in the System, you need to register workflow activities. This section explains how to register activities in the System.
 
@@ -2140,9 +2090,9 @@ LINKID=stepaction【参照先】Table 5‑2. The actions in the "Step" screen
 
 See "ANCHORID=additem【参照元】Section 5.1.1. Register items【E】" through "ANCHORID=adddoi【参照元】Section 5.1.4. Gant DOIs【E】" for more information.
 
-<a id="linkidadditem参照先register-items"></a>
+<a id="register-items-2"></a>
 
-### LINKID=additem【参照先】Register items
+### Register items
 
 This section explains how to specify files and metadata for an activity.
 
@@ -3548,9 +3498,7 @@ Encountering this message when your login session has not expired suggests that 
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, チャットまたはテキスト メッセージ 自動的に生成された説明](media/media/image190.png)
 
-<a id="linkidcreatelink参照先set-up-an-item-link"></a>
-
-### LINKID=createlink【参照先】Set up an item link
+### Set up an item link
 
 You can link up registered items with each other.
 
@@ -3574,9 +3522,7 @@ zu050680.tif![](media/media/image193.png)
 
 The link will be registered.
 
-<a id="linkidadddoi参照先gant-dois"></a>
-
-### LINKID=adddoi【参照先】Gant DOIs
+### Gant DOIs
 
 You can grant a DOI to an item if it has not already been granted one. You must take cautions when working with DOIs. The following cautions apply when granting DOIs to items.
 
@@ -3792,9 +3738,7 @@ Table 5-25. The elements in the item approval screen
 
 If the registered item was registered from OA Assist, its status is linked to OA Assist.
 
-<a id="linkidviewactivities参照先indexword-pronounceあくていひていをさんしようする-indexitemアクティビティを参照するview-activitiesindexword"></a>
-
-## LINKID=viewactivities【参照先】\<INDEXWORD PRONOUNCE="あくていひていをさんしようする" INDEXITEM="アクティビティを参照する"\>View activities\</INDEXWORD\>
+## View activities
 
 This section explains how to view activities registered in the System.
 
@@ -4070,9 +4014,7 @@ Table 5-30. The "Clear" buttons
 | 1   | The "Clear" button (next to the "Download" button) | Displayed only to system administrators and repository administrators. Click to download the activities that match the same search conditions as the activities displayed on the screen as a TSV file, and delete those activities. |
 | 2   | The "Clear" button (in each row)                 | Displayed only to system administrators and repository administrators. Click to download the selected activity as a TSV file, and delete that activity.                                                                  |
 
-<a id="linkidviewactivitydetails参照先view-the-activity-details"></a>
-
-### LINKID=viewactivitydetails【参照先】View the activity details
+### View the activity details
 
 This section explains how to view the activity details.
 
@@ -4109,16 +4051,11 @@ If you try to open the same activity in multiple tabs, a screen with the message
 
 Note: Depending on the state of the web browser, the System may fail to determine whether an activity is running. In that case, click the "Force Unlock" button and start the activity.
 
-<a id="edit-and-delete-itemsindexword"></a>
-
-#   
-Edit and delete items\</INDEXWORD\>
+# Edit and delete items
 
 This chapter provides information on editing and deleting registered items.
 
-<a id="linkidedititemsprocedure参照先indexword-pronounceあいてむをへんしゆうする-indexitemアイテムを編集するedit-itemsindexword"></a>
-
-## LINKID=edititemsprocedure【参照先】\<INDEXWORD PRONOUNCE="あいてむをへんしゆうする" INDEXITEM="アイテムを編集する"\>Edit items\</INDEXWORD\>
+## Edit items
 
 This section explains how to edit items registered in the Systems.
 
@@ -4268,16 +4205,13 @@ After deleting an item, if you try to display it in the item details screen by d
 
 ![](media/media/image234.png)
 
-<a id="export-itemsindexword"></a>
-
-#   
-Export items\</INDEXWORD\>
+# Export items
 
 This chapter provides information on exporting items.
 
-<a id="linkidcommunitykakunin参照先indexword-pronounceこみゆにていをかくにんする-indexitemコミュニティを確認するexport-itemsindexword"></a>
+<a id="export-items-1"></a>
 
-## LINKID=communitykakunin【参照先】\<INDEXWORD PRONOUNCE="こみゆにていをかくにんする" INDEXITEM="コミュニティを確認する"\>Export items\</INDEXWORD\>
+## Export items
 
 This section explains how to export items.
 
@@ -4377,13 +4311,13 @@ LINKID=exportitemstable【参照先】Table 7-1. The elements in the "Items to E
 
 The release of the large file upload feature (a feature for uploading large files from a dedicated screen and, if an upload fails, resuming it from where it stopped by specifying the upload ID) has been postponed. It is not available in the current version.
 
-# Explore communities\</INDEXWORD\>
+# Explore communities
 
 This chapter provides information on exploring communities.
 
-<a id="linkidcommunitykakunin参照先indexword-pronounceこみゆにていをかくにんする-indexitemコミュニティを確認するexplore-communitiesindexword"></a>
+<a id="explore-communities-1"></a>
 
-## LINKID=communitykakunin【参照先】\<INDEXWORD PRONOUNCE="こみゆにていをかくにんする" INDEXITEM="コミュニティを確認する"\>Explore communities\</INDEXWORD\>
+## Explore communities
 
 This section explains how to explore communities.
 
@@ -4421,16 +4355,11 @@ This section explains how to view the content policy of a community.
 
 2.  The content policy set for the community is displayed.
 
-<a id="operating-tipsindexword"></a>
-
-#   
-Operating tips\</INDEXWORD\>
+# Operating tips
 
 This chapter provides tips for working with the System.
 
-<a id="linkidviewprofile参照先modify-your-profile"></a>
-
-## LINKID=viewprofile【参照先】Modify your profile
+## Modify your profile
 
 This section explains how to modify your account profile.
 
@@ -4480,9 +4409,7 @@ zu080040.tif![](media/media/image245.png)
 
 The profile is updated.
 
-<a id="linkidchecklogindevice参照先determine-which-device-is-used-to-log-in-to-an-account"></a>
-
-## LINKID=checklogindevice【参照先】Determine which device is used to log in to an account
+## Determine which device is used to log in to an account
 
 This section explains how to determine which device is used to log in to an account
 
@@ -4498,15 +4425,11 @@ The sessions are deleted.
 
 zu080080.tif![](media/media/image247.png)
 
-<a id="linkidmanageapplication参照先manage-applications"></a>
-
-## LINKID=manageapplication【参照先】Manage applications
+## Manage applications
 
 This section explains how to manage applications. To access the screen where you can manage groups, select "Applications" from the user account pull-down menu in the upper right corner of the screen.
 
-<a id="linkidviewapplications参照先view-the-authorized-applications"></a>
-
-### LINKID=viewapplications【参照先】View the authorized applications
+### View the authorized applications
 
 This section explains how to view the authorized applications.
 
@@ -4516,9 +4439,7 @@ A list of the authorized applications appears in "Authorized applications".
 
 zu080090.tif![](media/media/image248.png)
 
-<a id="linkidaddapplication参照先add-an-application"></a>
-
-### LINKID=addapplication【参照先】Add an application
+### Add an application
 
 This section explains how to add an application.
 
@@ -4578,9 +4499,7 @@ Table 10‑2. The elements in the "New OAuth Application" screen
 
 The application is added.
 
-<a id="linkidaddaccesstoken参照先add-an-access-token"></a>
-
-### LINKID=addaccesstoken【参照先】Add an access token
+### Add an access token
 
 This section explains how to add an access token.
 
@@ -4609,9 +4528,7 @@ The access token is added.
 
 Note: A personal access token has no expiration date. Handle it with sufficient care, and be sure to delete it before your account is suspended.
 
-<a id="linkidmanagegroup参照先join-and-view-a-group"></a>
-
-## LINKID=managegroup【参照先】Join and view a group
+## Join and view a group
 
 This section explains how to join a group and view a group to which you belong.
 
@@ -4661,15 +4578,11 @@ Click on the "Members" button to display details on the group.
 
 ![](media/media/image261.png)
 
-<a id="linkidchangetimeout参照先modify-the-session-validity-time"></a>
-
-## LINKID=changetimeout【参照先】Modify the session validity time
+## Modify the session validity time
 
 See the System Administration Manual for instruction.
 
-<a id="linkidopenadminmenu参照先display-the-administration-screen"></a>
-
-## LINKID=openadminmenu【参照先】Display the Administration screen.
+## Display the Administration screen.
 
 This section explains how to display the Administration screen.
 
