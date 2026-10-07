@@ -35,8 +35,9 @@
 ## ビルド（honkit）
 - **公開されるのは HTML 版。** ビルド結果は別リポジトリに登録して github.io（https://rcosdp.github.io/weko/user/ など）で公開している。GitHub 上の markdown で効くリンクでも、HTML 版で切れれば公開サイトで切れる。
 - 英語版（`manuals_en`）は 1 ファイルの本なので、`book.json` の `structure.readme` でそのファイルを README 扱いにし、空の `SUMMARY.md` を置いてビルドする（v2.1.0 で追加）。
-- **英語版の見出しには Word のフィールドコード（`LINKID=…【参照先】`、`\<INDEXWORD PRONOUNCE=… \>`）が文字として残っている。** 目次のリンクはそれを含む GitHub 式アンカーで書かれており、honkit は `\<INDEXWORD…\>` をタグとして扱うので HTML 版では切れる。`add_anchors.py` は `\<` `\>` を文字として扱うので、そのまま直せる（v2.1.0 で 191 か所）。見出しのフィールドコード自体の除去は、全リンクの書き換えが要るので未着手。
-- 英語版の章見出しは空の `#` の次の行に章名がある（`#   ` / `Author Management`）。章へのリンクは空見出しの直前に `<a id>` を置いて受ける。番号付きリストの中に入った見出し（`1.  ## …`）はどちらの環境でも見出しにならないので、リスト記号を外す。
+- **英語版の見出しには Word のフィールドコード（`LINKID=…【参照先】`、`\<INDEXWORD PRONOUNCE=… \>`）が文字として残っていた。** honkit は `\<INDEXWORD…\>` をタグとして扱うので、フィールドコード入りの GitHub 式アンカーは HTML 版で切れ、見出しにもフィールドコードが表示される。v2.1.0 では `scripts/strip_heading_fieldcodes.py` で見出しから除去し（ADMIN 166・USER 47 見出し）、旧アンカーへのリンク（約 200）を新しいアンカーに書き換えた。その後ビルドして、同名見出し（`#register-items-1` など）だけ `add_anchors.py` で `<a id>` を補った。本文中のフィールドコード（`ANCHORID=…【参照元】…【E】`、本文の INDEXWORD、表のキャプションの LINKID）は残っている。
+- 英語版の章見出しは空の `#` の次の行に章名があった（`#   ` / `Author Management`）。v2.1.0 で `# Author Management` の 1 行にまとめた。番号付きリストの中に入った見出しは、`1.  ### …` のように同じ行にあれば両方で見出しになるが、ずれて見出しにならないものはリスト記号を外す。
+- **見出しの先頭に見えない文字（U+200F など）が入っていることがある。** GitHub はアンカーから除くが honkit は残すので切れる（ADMIN の「Index Tree」など 3 見出し）。見出しから削除する。
 - **arm64 では `npm install` が puppeteer の Chromium ダウンロードで失敗する。** `PUPPETEER_SKIP_DOWNLOAD=true PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true` を付ける。`npm install` は `package-lock.json` を書き換えるので `npm ci` を使う（`build_docs.sh` が実施）。
 - **ログのノイズは失敗ではない。** shelljs の circular dependency 警告、`prismjs/components/prism-Python.js` の MODULE_NOT_FOUND（コードブロックの言語名 `Python` が大文字）、deprecated 警告、spec の「search index is too big」が出ても、最後に「generation finished with success」があれば成功。
 - **honkit と GitHub はアンカーの作り方が違う。** honkit は全角の括弧・コロン・中黒を残し、`_` を消し、同名見出しに `-1` を付けない。GitHub 式のアンカー（`#認証認可の共通事項release_v210`、`#アイテムを一括出力する-1`）は GitHub では効くが honkit のサイトでは切れる（check_build.py の SLUG）。見出しは変えずに、`scripts/add_anchors.py` で見出しの直前に `<a id="GitHub式アンカー"></a>` を入れれば両方で効く（v2.1.0 で 54 か所）。リンクは GitHub 式で書く。

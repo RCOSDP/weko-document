@@ -54,6 +54,6 @@ v2.1.0（2026-10）で実施した作業を手順化したもの。人が読む�
 - `rules/EN_FRAG_RULES.md` — 英語版の断片生成
 - `rules/SCREENSHOT_RULES.md` — 撮影・サンプルデータ・注記
 - `prompts/*.md` — エージェントへの依頼文の雛形（`{{...}}` を置き換えて使う）
-- `scripts/` — `insert_frags.py`（英語版断片の差し込み）、`caption_check.py`／`caption_renum.py`／`table_renum.py`（表・図番号）、`verify_manual.py`（コミット前検証）、`build_docs.sh`／`check_build.py`／`add_anchors.py`（honkit ビルド、リンク切れ確認、honkit 用アンカーの補完）、`capture.js`／`annotate.js`／`overlay.js`（撮影・注記）、`stage2.py`（比較ページ）、`apply_screenshots.py`（レビュー後の差し替え）、`sample_data/`（撮影用サンプルデータの登録）
+- `scripts/` — `insert_frags.py`（英語版断片の差し込み）、`caption_check.py`／`caption_renum.py`／`table_renum.py`（表・図番号）、`verify_manual.py`（コミット前検証）、`build_docs.sh`／`check_build.py`／`add_anchors.py`／`strip_heading_fieldcodes.py`（honkit ビルド、リンク切れ確認、honkit 用アンカーの補完、見出しの Word フィールドコード除去）、`capture.js`／`annotate.js`／`overlay.js`（撮影・注記）、`stage2.py`（比較ページ）、`apply_screenshots.py`（レビュー後の差し替え）、`sample_data/`（撮影用サンプルデータの登録）
 - `examples/screenshots_v2.1.0/` — v2.1.0 の撮影・注記指定（英語版や次のバージョンで流用）
 - `LESSONS.md` — v2.1.0 で得た注意点
