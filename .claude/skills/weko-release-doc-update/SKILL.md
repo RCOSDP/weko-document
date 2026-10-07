@@ -34,7 +34,7 @@ v2.1.0（2026-10）で実施した作業を手順化したもの。人が読む�
    - 章番号がずれたら `scripts/caption_renum.py`／`scripts/table_renum.py` で表・図番号を振り直し、`scripts/caption_check.py` で確認。
 7. **【NEW_VER】タグ付け**：`DOC_BASE` 以降の差分のうち、**`PREV_TAG..RELEASE_REF` の実装差分で挙動が変わったもの**だけに付ける。見出しには付けない（`rules/TAG_RULES.md`、`prompts/tagging.md`）。
 8. **整合チェック**：`scripts/verify_manual.py`（見出し文言・タグ数・目次の連番とリンク先）。手順番号の通し番号崩れ・節番号参照の不一致は `prompts/fix_numbering.md`。
-   **ビルド確認**：`scripts/build_docs.sh --compare <DOC_BASE> --work <作業フォルダ>/docbuild` で spec・admin・user・GUIDE を honkit でビルドし、`scripts/check_build.py` で分岐点からの**新しい**リンク切れ（PAGE／ANCHOR／IMAGE）を確認する。分岐点に既にあったものは「existing」として数だけ出る。SLUG（GitHub では効くが honkit では切れるアンカー）は `scripts/add_anchors.py` で見出しの前に id を足して直し、`check_build.py --strict` で 0 件を確認する。英語版（`manuals_en`）・develop・operation はビルド対象外（book.json が無い）。
+   **ビルド確認**：`scripts/build_docs.sh --compare <DOC_BASE> --work <作業フォルダ>/docbuild` で spec・admin・user・GUIDE・admin_en・user_en を honkit でビルドし、`scripts/check_build.py` で分岐点からの**新しい**リンク切れ（PAGE／ANCHOR／IMAGE）を確認する。分岐点に既にあったものは「existing」として数だけ出る。SLUG（GitHub では効くが honkit では切れるアンカー）は `scripts/add_anchors.py` で見出しの前に id を足して直し、`check_build.py --strict` で 0 件を確認する。develop・operation はビルド対象外（book.json が無い）。ビルド結果は別リポジトリに登録して github.io（https://rcosdp.github.io/weko/）で公開しているので、HTML 版で切れるリンク（SLUG を含む）は公開サイトで切れる。
 9. **スクリーンショット**：`rules/SCREENSHOT_RULES.md`。撮影用管理者アカウント作成 → `scripts/capture.js` で全画面撮影 → サンプルデータは記録して登録 → 古い画像の注記を `scripts/annotate.js` で再現 → `scripts/stage2.py` で比較ページ → レビュー後に `scripts/apply_screenshots.py` で差し替え。 英語版は画像番号が違うので、節単位で日本語版との対応表を作ってから英語画面で撮る。
 10. **コミット**：カテゴリ単位（`spec(api): ...`、`manual(ADMIN): ...`、`manual_en(USER): ...`、`operation: ...`）。push 前に `git fetch` してリモートの変更をマージ。push はユーザーの指示があってから。
 

@@ -2,7 +2,7 @@
 # Build the weko-document books with honkit and check the HTML for broken links/anchors/images.
 #
 # usage: build_docs.sh [--compare <git ref>] [--work <dir>] [--pdf] [book ...]
-#   book:       spec admin user GUIDE (default: all four)
+#   book:       spec admin user GUIDE admin_en user_en (default: all)
 #   --compare:  also build the books of <git ref> (e.g. main, or the previous release commit)
 #               and report only the issues that are new in the working tree (check_build.py --baseline)
 #   --work:     where logs and the <git ref> build go (default: $TMPDIR or /tmp, weko-doc-build)
@@ -21,8 +21,9 @@ while [ $# -gt 0 ]; do
     *) BOOKS+=("$1"); shift ;;
   esac
 done
-[ ${#BOOKS[@]} -eq 0 ] && BOOKS=(spec admin user GUIDE)
-declare -A SRC=([spec]=spec/base [admin]=manuals/ADMIN/base [user]=manuals/USER/base [GUIDE]=manuals/GUIDE/base)
+[ ${#BOOKS[@]} -eq 0 ] && BOOKS=(spec admin user GUIDE admin_en user_en)
+declare -A SRC=([spec]=spec/base [admin]=manuals/ADMIN/base [user]=manuals/USER/base [GUIDE]=manuals/GUIDE/base
+  [admin_en]=manuals_en/ADMIN [user_en]=manuals_en/USER)
 mkdir -p "$WORK/logs"
 
 # honkit and its plugins. --ignore-scripts would skip plugin setup, so skip only the puppeteer
@@ -35,6 +36,10 @@ fi
 build() {  # build <docs dir> <book> <out dir> <log>
   local docs=$1 b=$2 out=$3 log=$4 s=$SECONDS
   rm -rf "$out"; mkdir -p "$out"
+  # an older ref may lack the honkit config (manuals_en got book.json/SUMMARY.md in v2.1.0): borrow it
+  for f in book.json SUMMARY.md; do
+    [ -e "$docs/${SRC[$b]}/$f" ] || cp "$PWD/${SRC[$b]}/$f" "$docs/${SRC[$b]}/$f" 2>/dev/null
+  done
   (cd "$docs" && npx honkit build "$PWD/${SRC[$b]}" "$out/html") > "$log" 2>&1
   local rc=$?
   echo "  $b: exit=$rc $((SECONDS - s))s -> $out/html"
