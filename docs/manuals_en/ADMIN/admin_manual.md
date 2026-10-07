@@ -120,23 +120,23 @@ The format conventions used in this document are as follows:
 
 [1. Chapter 1: System Overview 11](#chapter-1-system-overview)
 
-[1.1 About the System 12](#linkidwhatis参照先about-the-system)
+[1.1 About the System 12](#about-the-system)
 
-[1.2 Glossary 14](#linkidterminology参照先glossary)
+[1.2 Glossary 14](#glossary)
 
-[1.3 System features 17](#linkidfeaturesandusers参照先system-features)
+[1.3 System features 17](#system-features)
 
-[1.4 Access the Administration screen 20](#linkidadminwindow参照先indexword-pronounceかんりかめん-indexitem管理画面access-the-administration-screenindexword)
+[1.4 Access the Administration screen 20](#access-the-administration-screen)
 
 [2. Item Types 22](#item-types)
 
-[2.1 Set up properties 23](#linkidsetpropertyitemtype参照先set-up-properties)
+[2.1 Set up properties 23](#set-up-properties)
 
-[2.1.1 Add properties 23](#linkidaddpropertyitemtype参照先add-properties)
+[2.1.1 Add properties 23](#add-properties)
 
-[2.1.2 Edit properties 28](#linkidmetadataattritemtype参照先edit-properties)
+[2.1.2 Edit properties 28](#edit-properties)
 
-[2.2 Manage item types 32](#linkidaddordeleteitemtype参照先manage-item-types)
+[2.2 Manage item types 32](#manage-item-types)
 
 [2.2.1 Operations enabled for each item type 32](#operations-enabled-for-each-item-type)
 
@@ -160,7 +160,7 @@ The format conventions used in this document are as follows:
 
 [2.2.11 Troubleshooting item types](#troubleshooting-item-types)
 
-[2.3 Set up OAI schemas 48](#linkidsetoaischema参照先set-up-oai-schemas)
+[2.3 Set up OAI schemas 48](#set-up-oai-schemas)
 
 [2.3.1 About schemas that support mapping 48](#about-schemas-that-support-mapping)
 
@@ -168,9 +168,9 @@ The format conventions used in this document are as follows:
 
 [2.3.3 Delete schemas 50](#delete-schemas)
 
-[2.4 Map item types to schemas 51](#linkidmapitemtypetoschema参照先map-item-types-to-schemas)
+[2.4 Map item types to schemas 51](#map-item-types-to-schemas)
 
-[2.4.1 Map item types 51](#indexword-pronounceあいてむたいふをまつひんく-indexitemアイテムタイプをマッピングindexwordmap-item-types)
+[2.4.1 Map item types 51](#map-item-types)
 
 [2.4.2 Map an item type added by the System 53](#map-an-item-type-added-by-the-system)
 
@@ -194,7 +194,7 @@ The format conventions used in this document are as follows:
 
 [3.1 Bulk update with a license or an embargo 58](#bulk-update-with-a-license-or-an-embargo)
 
-[3.2 Bulk delete items 62](#linkidcustomsorting参照先linkidimportitems参照先bulk-delete-items)
+[3.2 Bulk delete items 62](#bulk-delete-items)
 
 [3.3 Export items 64](#export-items)
 
@@ -216,9 +216,9 @@ The format conventions used in this document are as follows:
 
 [4.1.2 Add an index 89](#add-an-index)
 
-[4.1.3 Modify an index 93](#linkidchangeindexitem参照先modify-an-index)
+[4.1.3 Modify an index 93](#modify-an-index)
 
-[4.1.4 Delete an index 94](#linkiddeleteindexitem参照先delete-an-index)
+[4.1.4 Delete an index 94](#delete-an-index)
 
 [4.2 Manage journal information 97](#manage-journal-information)
 
@@ -230,17 +230,17 @@ The format conventions used in this document are as follows:
 
 [5. Web Design 105](#web-design)
 
-[5.1 Managing widgets 106](#linkidmanagecommunity参照先managing-widgets)
+[5.1 Managing widgets 106](#managing-widgets)
 
-[5.1.1 Display a list of widgets 106](#linkiddetailwidgets参照先display-a-list-of-widgets)
+[5.1.1 Display a list of widgets 106](#display-a-list-of-widgets)
 
-[5.1.2 Create a widget 107](#linkidcreatewidgets参照先create-a-widget)
+[5.1.2 Create a widget 107](#create-a-widget)
 
-[5.1.3 Edit a widget 126](#linkideditwidgets参照先edit-a-widget)
+[5.1.3 Edit a widget 126](#edit-a-widget)
 
-[5.1.4 Delete a widget 127](#linkiddeletewidgets参照先delete-a-widget)
+[5.1.4 Delete a widget 127](#delete-a-widget)
 
-[5.2 Manage the page layout 131](#linkidwidgetdesignsetting参照先manage-the-page-layout)
+[5.2 Manage the page layout 131](#manage-the-page-layout)
 
 [5.2.1 Add or remove widgets from a page 131](#add-or-remove-widgets-from-a-page)
 
@@ -254,7 +254,7 @@ The format conventions used in this document are as follows:
 
 [6. Author Management 141](#author-management)
 
-[6.1 Manage author information 142](#linkidmanagecommunity参照先manage-author-information)
+[6.1 Manage author information 142](#manage-author-information)
 
 [6.1.1 Manage author name sources 142](#manage-author-name-sources)
 
@@ -268,45 +268,45 @@ The format conventions used in this document are as follows:
 
 [7. Statistics 167](#statistics)
 
-[7.1 Set up reports 168](#linkidfeedbackmailsetting参照先linkidreportsetting参照先set-up-reports)
+[7.1 Set up reports 168](#set-up-reports)
 
-[7.1.1 Check the number of registered items 168](#linkidnumofitems参照先check-the-number-of-registered-items)
+[7.1.1 Check the number of registered items 168](#check-the-number-of-registered-items)
 
-[7.1.2 Download fixed form reports 169](#linkidgetreports参照先download-fixed-form-reports)
+[7.1.2 Download fixed form reports 169](#download-fixed-form-reports)
 
-[7.1.3 Types of fixed form reports 170](#linkidreportstype参照先types-of-fixed-form-reports)
+[7.1.3 Types of fixed form reports 170](#types-of-fixed-form-reports)
 
-[7.1.4 Send a fixed form report by email 176](#linkidmailreports参照先send-a-fixed-form-report-by-email)
+[7.1.4 Send a fixed form report by email 176](#send-a-fixed-form-report-by-email)
 
-[7.1.5 Sett up a custom report 181](#linkidcustomreports参照先sett-up-a-custom-report)
+[7.1.5 Sett up a custom report 181](#sett-up-a-custom-report)
 
-[7.2 Set up feedback mails 183](#linkidsitelicensestatisticssetting参照先-set-up-feedback-mails)
+[7.2 Set up feedback mails 183](#set-up-feedback-mails)
 
 [7.3 Set up the site license 185](#set-up-the-site-license)
 
-[7.3.1 Send site license statistics automatically 185](#linkidsitelicensestatisticsinfosetting参照先send-site-license-statistics-automatically)
+[7.3.1 Send site license statistics automatically 185](#send-site-license-statistics-automatically)
 
-[7.3.2 Send site license statistics manually 185](#linkidmanuallysendsitelicense参照先send-site-license-statistics-manually)
+[7.3.2 Send site license statistics manually 185](#send-site-license-statistics-manually)
 
-[7.3.3 Site license statistics 186](#linkidsitelicenseusage参照先site-license-statistics)
+[7.3.3 Site license statistics 186](#site-license-statistics)
 
 [8. WorkFlow 188](#workflow)
 
-[8.1 Set up flows 189](#linkidsetflow参照先set-up-flows)
+[8.1 Set up flows 189](#set-up-flows)
 
-[8.1.1 Add a flow 189](#linkidaddflow参照先add-a-flow)
+[8.1.1 Add a flow 189](#add-a-flow)
 
-[8.1.2 Edit flow actions 191](#linkideditflow参照先edit-flow-actions)
+[8.1.2 Edit flow actions 191](#edit-flow-actions)
 
-[8.1.3 Delete a flow 195](#linkiddelflow参照先delete-a-flow)
+[8.1.3 Delete a flow 195](#delete-a-flow)
 
-[8.2 Set up workflows 197](#linkidsetworkflow参照先set-up-workflows)
+[8.2 Set up workflows 197](#set-up-workflows)
 
-[8.2.1 Add a workflow 197](#linkidaddworkflow参照先add-a-workflow)
+[8.2.1 Add a workflow 197](#add-a-workflow)
 
-[8.2.2 Edit a workflow 198](#linkideditworkflow参照先edit-a-workflow)
+[8.2.2 Edit a workflow 198](#edit-a-workflow)
 
-[8.2.3 Delete a workflow 199](#linkiddeleteworkflow参照先delete-a-workflow)
+[8.2.3 Delete a workflow 199](#delete-a-workflow)
 
 [8.3 Set up the workspace](#set-up-the-workspace)
 
@@ -316,57 +316,57 @@ The format conventions used in this document are as follows:
 
 [9. Communities 202](#communities)
 
-[9.1 Manage communities 203](#linkidmanagecommunity参照先manage-communities)
+[9.1 Manage communities 203](#manage-communities)
 
-[9.1.1 View communities 203](#linkidviewcommunity参照先view-communities)
+[9.1.1 View communities 203](#view-communities)
 
-[9.1.2 Create a community 203](#linkidcreatecommunity参照先create-a-community)
+[9.1.2 Create a community 203](#create-a-community)
 
-[9.1.3 Edit a community 204](#linkideditcommunity参照先edit-a-community)
+[9.1.3 Edit a community 204](#edit-a-community)
 
-[9.2 Manage favorite communities 206](#linkidfeaturedcommunity参照先manage-favorite-communities)
+[9.2 Manage favorite communities 206](#manage-favorite-communities)
 
-[9.2.1 View favorite communities 206](#linkidviewfeaturedcommunity参照先view-favorite-communities)
+[9.2.1 View favorite communities 206](#view-favorite-communities)
 
-[9.2.2 Create a favorite community 206](#linkidcreatefeaturedcommunity参照先create-a-favorite-community)
+[9.2.2 Create a favorite community 206](#create-a-favorite-community)
 
-[9.2.3 Edit a favorite community 207](#linkideditfeaturedcommunity参照先edit-a-favorite-community)
+[9.2.3 Edit a favorite community 207](#edit-a-favorite-community)
 
-[9.2.4 Delete favorite communities 208](#linkiddeletefeaturedcommunity参照先delete-favorite-communities)
+[9.2.4 Delete favorite communities 208](#delete-favorite-communities)
 
-[9.3 Manage inclusion requests 210](#linkidinclusionrequest参照先indexword-pronounceこみゆにていさんかようきゆう-indexitemコミュニティ参加要求manage-inclusion-requestsindexword)
+[9.3 Manage inclusion requests 210](#manage-inclusion-requests)
 
-[9.3.1 View inclusion requests 210](#linkidviewinclusionrequest参照先view-inclusion-requests)
+[9.3.1 View inclusion requests 210](#view-inclusion-requests)
 
-[9.3.2 Delete inclusion requests 210](#linkiddeleteinclusionrequest参照先delete-inclusion-requests)
+[9.3.2 Delete inclusion requests 210](#delete-inclusion-requests)
 
 [10. OAI-PMH 212](#oai-pmh)
 
-[10.1 Set up harvesting 213](#linkidsetharvesting参照先set-up-harvesting)
+[10.1 Set up harvesting 213](#set-up-harvesting)
 
-[10.1.1 Run a harvesting plan 213](#linkidviewplanforharvesting参照先run-a-harvesting-plan)
+[10.1.1 Run a harvesting plan 213](#run-a-harvesting-plan)
 
-[10.1.2 Create a harvesting plan 217](#linkidcreateplanforharvesting参照先create-a-harvesting-plan)
+[10.1.2 Create a harvesting plan 217](#create-a-harvesting-plan)
 
-[10.1.3 Edit a harvesting plan 218](#linkideditplanforharvesting参照先edit-a-harvesting-plan)
+[10.1.3 Edit a harvesting plan 218](#edit-a-harvesting-plan)
 
-[10.1.4 Delete harvesting plans 220](#linkiddeleteplanforharvesting参照先delete-harvesting-plans)
+[10.1.4 Delete harvesting plans 220](#delete-harvesting-plans)
 
-[10.2 Identify 222](#linkididentify参照先identify)
+[10.2 Identify 222](#identify)
 
-[10.2.1 View output sets 222](#linkidviewoutputset参照先view-output-sets)
+[10.2.1 View output sets 222](#view-output-sets)
 
-[10.2.2 Create an output set 222](#linkidcreateoutputset参照先create-an-output-set)
+[10.2.2 Create an output set 222](#create-an-output-set)
 
-[10.2.3 Edit an output set 223](#linkideditoutputset参照先edit-an-output-set)
+[10.2.3 Edit an output set 223](#edit-an-output-set)
 
-[10.3 Sets 224](#linkidset参照先sets)
+[10.3 Sets 224](#sets)
 
-[10.3.1 View Sets 224](#linkidviewset参照先view-sets)
+[10.3.1 View Sets 224](#view-sets)
 
-[10.3.2 Create a Set 224](#linkidcreateset参照先create-a-set)
+[10.3.2 Create a Set 224](#create-a-set)
 
-[10.3.3 Edit a Set 225](#linkideditset参照先edit-a-set)
+[10.3.3 Edit a Set 225](#edit-a-set)
 
 [11. Resource Sync 228](#resource-sync)
 
@@ -414,49 +414,49 @@ The format conventions used in this document are as follows:
 
 [13. Records 246](#records)
 
-[13.1 View Persistent Identifiers 247](#linkidviewpersistentidentifier参照先view-persistent-identifiers)
+[13.1 View Persistent Identifiers 247](#view-persistent-identifiers)
 
-[13.2 Manage Record Metadata 248](#linkidmanagerecordmetadata参照先manage-record-metadata)
+[13.2 Manage Record Metadata 248](#manage-record-metadata)
 
-[13.2.1 View Record Metadata 248](#linkidviewrecordmetadata参照先view-record-metadata)
+[13.2.1 View Record Metadata 248](#view-record-metadata)
 
-[13.2.2 Delete Record Metadata 248](#linkiddeleterecordmetadata参照先delete-record-metadata)
+[13.2.2 Delete Record Metadata 248](#delete-record-metadata)
 
 [14. Files 250](#files)
 
-[14.1 Manage Buckets 251](#linkidlocationmanagement参照先-manage-buckets)
+[14.1 Manage Buckets 251](#manage-buckets)
 
-[14.1.1 View Buckets 251](#linkidviewbucket参照先view-buckets)
+[14.1.1 View Buckets 251](#view-buckets)
 
-[14.1.2 Create a Bucket 251](#linkidcreatebucket参照先create-a-bucket)
+[14.1.2 Create a Bucket 251](#create-a-bucket)
 
-[14.1.3 Edit a Bucket 252](#linkideditbucket参照先edit-a-bucket)
+[14.1.3 Edit a Bucket 252](#edit-a-bucket)
 
 [14.2 Manage File Instances 254](#manage-file-instances)
 
-[14.2.1 View File Instances 254](#linkidviewfileinstance参照先view-file-instances)
+[14.2.1 View File Instances 254](#view-file-instances)
 
-[14.2.2 Run a fixity check 254](#linkidcheckfixity参照先run-a-fixity-check)
+[14.2.2 Run a fixity check 254](#run-a-fixity-check)
 
 [14.2.3 Delete File Instances](#delete-file-instances)
 
 [14.3 Manage Locations 256](#manage-locations)
 
-[14.3.1 View Locations 256](#linkidviewlocation参照先view-locations)
+[14.3.1 View Locations 256](#view-locations)
 
-[14.3.2 Create a Location 256](#linkidcreatelocation参照先create-a-location)
+[14.3.2 Create a Location 256](#create-a-location)
 
-[14.3.3 Edit a Location 257](#linkideditlocation参照先edit-a-location)
+[14.3.3 Edit a Location 257](#edit-a-location)
 
-[14.3.4 Delete Locations 258](#linkiddeletelocation参照先delete-locations)
+[14.3.4 Delete Locations 258](#delete-locations)
 
-[14.4 Manage Multipart Objects 260](#linkidmanagebucket参照先linkidmanageobjectversion参照先manage-multipart-objects)
+[14.4 Manage Multipart Objects 260](#manage-multipart-objects)
 
-[14.4.1 View Multipart Objects 260](#linkidviewmultipartobject参照先view-multipart-objects)
+[14.4.1 View Multipart Objects 260](#view-multipart-objects)
 
 [14.5 Manage Object Versions 261](#manage-object-versions)
 
-[14.5.1 View Object Versions 261](#linkidviewobjectversion参照先view-object-versions)
+[14.5.1 View Object Versions 261](#view-object-versions)
 
 [14.6 Use the institutional storage feature](#use-the-institutional-storage-feature)
 
@@ -466,111 +466,111 @@ The format conventions used in this document are as follows:
 
 [14.6.3 Notes on the institutional storage feature](#notes-on-the-institutional-storage-feature)
 
-[15. User Management 262](#linkidmanagemultipartobject参照先linkidmanagefileinstance参照先user-management)
+[15. User Management 262](#user-management)
 
-[15.1 Access: Roles 263](#linkidaccessrolesetting参照先access-roles)
+[15.1 Access: Roles 263](#access-roles)
 
-[15.1.1 View role-based actions 263](#linkidviewaccessrole参照先view-role-based-actions)
+[15.1.1 View role-based actions 263](#view-role-based-actions)
 
-[15.1.2 Add an action to a role 263](#linkidaddaccessrole参照先add-an-action-to-a-role)
+[15.1.2 Add an action to a role 263](#add-an-action-to-a-role)
 
-[15.1.3 Modify a role-based action 264](#linkidchangeaccessrole参照先modify-a-role-based-action)
+[15.1.3 Modify a role-based action 264](#modify-a-role-based-action)
 
-[15.1.4 Delete actions from a role 265](#linkiddeleteaccessrole参照先delete-actions-from-a-role)
+[15.1.4 Delete actions from a role 265](#delete-actions-from-a-role)
 
-[15.2 Access: System Roles 267](#linkidaccesssystemrolesetting参照先access-system-roles)
+[15.2 Access: System Roles 267](#access-system-roles)
 
-[15.2.1 View system role-based actions 267](#linkidviewsystemrole参照先view-system-role-based-actions)
+[15.2.1 View system role-based actions 267](#view-system-role-based-actions)
 
-[15.2.2 Add an action to a system role 267](#linkidaddsystemrole参照先add-an-action-to-a-system-role)
+[15.2.2 Add an action to a system role 267](#add-an-action-to-a-system-role)
 
-[15.2.3 Modify a system role-based action 268](#linkidchangesystemrole参照先modify-a-system-role-based-action)
+[15.2.3 Modify a system role-based action 268](#modify-a-system-role-based-action)
 
-[15.2.4 Delete actions from a system role 269](#linkiddeletesystemrole参照先delete-actions-from-a-system-role)
+[15.2.4 Delete actions from a system role 269](#delete-actions-from-a-system-role)
 
-[15.3 Access: Users 271](#linkidaccessusers参照先access-users)
+[15.3 Access: Users 271](#access-users)
 
-[15.3.1 View user actions 271](#linkidviewusers参照先view-user-actions)
+[15.3.1 View user actions 271](#view-user-actions)
 
-[15.3.2 Add an action to a user 271](#linkidaddusers参照先add-an-action-to-a-user)
+[15.3.2 Add an action to a user 271](#add-an-action-to-a-user)
 
-[15.3.3 Modify a user action 272](#linkidchangeusers参照先modify-a-user-action)
+[15.3.3 Modify a user action 272](#modify-a-user-action)
 
-[15.3.4 Delete user actions 273](#linkiddeleteusers参照先delete-user-actions)
+[15.3.4 Delete user actions 273](#delete-user-actions)
 
-[15.4 Manage Linked account identities 275](#linkidmanagelinkedaccountidentities参照先manage-linked-account-identities)
+[15.4 Manage Linked account identities 275](#manage-linked-account-identities)
 
-[15.4.1 View Linked account identities 275](#linkidviewlinkedaccountidentities参照先view-linked-account-identities)
+[15.4.1 View Linked account identities 275](#view-linked-account-identities)
 
-[15.4.2 Delete Linked account identities 275](#linkiddeletelinkedaccountidentities参照先delete-linked-account-identities)
+[15.4.2 Delete Linked account identities 275](#delete-linked-account-identities)
 
-[15.5 Manage Linked account tokens 277](#linkidmanagelinkedaccounttokens参照先manage-linked-account-tokens)
+[15.5 Manage Linked account tokens 277](#manage-linked-account-tokens)
 
-[15.5.1 View Linked account tokens 277](#linkidviewlinkedaccounttokens参照先view-linked-account-tokens)
+[15.5.1 View Linked account tokens 277](#view-linked-account-tokens)
 
-[15.5.2 Create a Linked account token 277](#linkidcreatelinkedaccounttokens参照先create-a-linked-account-token)
+[15.5.2 Create a Linked account token 277](#create-a-linked-account-token)
 
-[15.5.3 Edit a Linked account token 278](#linkideditlinkedaccounttokens参照先edit-a-linked-account-token)
+[15.5.3 Edit a Linked account token 278](#edit-a-linked-account-token)
 
-[15.5.4 Delete Linked account tokens 279](#linkiddeletelinkedaccounttokens参照先delete-linked-account-tokens)
+[15.5.4 Delete Linked account tokens 279](#delete-linked-account-tokens)
 
-[15.6 Manage Linked accounts 280](#linkidmanagelinkedaccounts参照先manage-linked-accounts)
+[15.6 Manage Linked accounts 280](#manage-linked-accounts)
 
-[15.6.1 View Linked accounts 280](#linkidviewlinkedaccounts参照先view-linked-accounts)
+[15.6.1 View Linked accounts 280](#view-linked-accounts)
 
-[15.6.2 Create a Linked account 280](#linkidcreatelinkedaccounts参照先create-a-linked-account)
+[15.6.2 Create a Linked account 280](#create-a-linked-account)
 
-[15.6.3 Edit a Linked account 281](#linkideditlinkedaccounts参照先edit-a-linked-account)
+[15.6.3 Edit a Linked account 281](#edit-a-linked-account)
 
-[15.6.4 Delete Linked accounts 282](#linkiddeletelinkedaccounts参照先delete-linked-accounts)
+[15.6.4 Delete Linked accounts 282](#delete-linked-accounts)
 
-[15.7 Manage OAuth Application Tokens 284](#linkidmanageoauthapplitokens参照先manage-oauth-application-tokens)
+[15.7 Manage OAuth Application Tokens 284](#manage-oauth-application-tokens)
 
-[15.7.1 View OAuth Application Tokens 284](#linkidviewoauthapplitokens参照先view-oauth-application-tokens)
+[15.7.1 View OAuth Application Tokens 284](#view-oauth-application-tokens)
 
-[15.7.2 Delete OAuth Application Tokens 285](#linkiddeleteoauthapplitokens参照先delete-oauth-application-tokens)
+[15.7.2 Delete OAuth Application Tokens 285](#delete-oauth-application-tokens)
 
-[15.8 Manage OAuth Applications 286](#linkidmanageoauthappli参照先manage-oauth-applications)
+[15.8 Manage OAuth Applications 286](#manage-oauth-applications)
 
-[15.8.1 View OAuth Applications 286](#linkidviewoauthappli参照先view-oauth-applications)
+[15.8.1 View OAuth Applications 286](#view-oauth-applications)
 
-[15.8.2 Delete OAuth Applications 286](#linkiddeleteoauthappli参照先delete-oauth-applications)
+[15.8.2 Delete OAuth Applications 286](#delete-oauth-applications)
 
-[15.9 Manage roles 288](#linkidmanageroles参照先manage-roles)
+[15.9 Manage roles 288](#manage-roles)
 
-[15.9.1 View roles 288](#linkidviewroles参照先view-roles)
+[15.9.1 View roles 288](#view-roles)
 
-[15.9.2 Create a role 289](#linkidcreateroles参照先create-a-role)
+[15.9.2 Create a role 289](#create-a-role)
 
-[15.9.3 Edit a role 289](#linkideditroles参照先edit-a-role)
+[15.9.3 Edit a role 289](#edit-a-role)
 
-[15.9.4 Delete roles 290](#linkiddeleteroles参照先delete-roles)
+[15.9.4 Delete roles 290](#delete-roles)
 
-[15.10 Manage Session Activities 292](#linkidmanagesessionact参照先manage-session-activities)
+[15.10 Manage Session Activities 292](#manage-session-activities)
 
-[15.10.1 View Session Activities 292](#linkidviewsessionact参照先view-session-activities)
+[15.10.1 View Session Activities 292](#view-session-activities)
 
-[15.10.2 Delete Session Activities 292](#linkiddeletesessionact参照先delete-session-activities)
+[15.10.2 Delete Session Activities 292](#delete-session-activities)
 
-[15.11 Manage users 293](#linkidmanageuser参照先manage-users)
+[15.11 Manage users 293](#manage-users)
 
-[15.11.1 View users 293](#linkidviewuser参照先view-users)
+[15.11.1 View users 293](#view-users)
 
-[15.11.2 Add a user 293](#linkidcreateuser参照先add-a-user)
+[15.11.2 Add a user 293](#add-a-user)
 
-[15.11.3 Edit a user 294](#linkidedituser参照先edit-a-user)
+[15.11.3 Edit a user 294](#edit-a-user)
 
-[15.11.4 Disable or enable users 295](#linkidinacivateuser参照先disable-or-enable-users)
+[15.11.4 Disable or enable users 295](#disable-or-enable-users)
 
-[15.12 Manage User Profiles 297](#linkidmanageuserprofile参照先manage-user-profiles)
+[15.12 Manage User Profiles 297](#manage-user-profiles)
 
-[15.12.1 View User Profiles 297](#linkidviewuserprofile参照先view-user-profiles)
+[15.12.1 View User Profiles 297](#view-user-profiles)
 
-[15.12.2 Delete User Profiles 297](#linkiddeleteuserprofile参照先delete-user-profiles)
+[15.12.2 Delete User Profiles 297](#delete-user-profiles)
 
 [16. Setting 298](#setting)
 
-[16.1 Configure the author display setting 299](#linkidauthormanagement参照先configure-the-author-display-setting)
+[16.1 Configure the author display setting 299](#configure-the-author-display-setting)
 
 [16.2 Display the Index Link 300](#display-the-index-link)
 
@@ -588,11 +588,11 @@ The format conventions used in this document are as follows:
 
 [16.9 Set up Identifiers 312](#set-up-identifiers)
 
-[16.9.1 View Identifiers 312](#linkidviewidentifier参照先view-identifiers)
+[16.9.1 View Identifiers 312](#view-identifiers)
 
-[16.9.2 Create an Identifier 312](#linkidcreateidentifier参照先create-an-identifier)
+[16.9.2 Create an Identifier 312](#create-an-identifier)
 
-[16.9.3 Edit an Identifier 315](#linkideditidentifier参照先edit-an-identifier)
+[16.9.3 Edit an Identifier 315](#edit-an-identifier)
 
 [16.10 Modify the export settings 316](#modify-the-export-settings)
 
@@ -624,7 +624,7 @@ The format conventions used in this document are as follows:
 
 [16.15 Configure IP addresses permitted by the site license 331](#configure-ip-addresses-permitted-by-the-site-license)
 
-[16.16 Create a sitemap 334](#linkidsitemapcreating参照先create-a-sitemap)
+[16.16 Create a sitemap 334](#create-a-sitemap)
 
 [16.17 Set up emails 335](#set-up-emails)
 
@@ -640,7 +640,7 @@ The format conventions used in this document are as follows:
 
 [16.21 Allow Shibboleth users 340](#allow-shibboleth-users)
 
-[16.22 Manage restricted access 341](#linkideditindextree参照先linkidfilepreviewsetting参照先linkididentifiersetting参照先linkidsiteinfosetting参照先linkidwidgetsetting参照先manage-restricted-access)
+[16.22 Manage restricted access 341](#manage-restricted-access)
 
 [16.22.1 Configure restricted access 341](#configure-restricted-access)
 
@@ -668,29 +668,29 @@ The format conventions used in this document are as follows:
 
 [19. User Account 368](#user-account)
 
-[19.1 Update a profile 369](#linkidupdateprofile参照先update-a-profile)
+[19.1 Update a profile 369](#update-a-profile)
 
-[19.2 Change a password 370](#linkidchangepassword参照先change-a-password)
+[19.2 Change a password 370](#change-a-password)
 
-[19.3 Determine which device is used to log in to an account 371](#linkidchecklogindevice参照先determine-which-device-is-used-to-log-in-to-an-account)
+[19.3 Determine which device is used to log in to an account 371](#determine-which-device-is-used-to-log-in-to-an-account)
 
-[19.4 Manage applications 372](#linkidmanageapplication参照先manage-applications)
+[19.4 Manage applications 372](#manage-applications)
 
-[19.5 Manage groups 373](#linkidmanagegroup参照先manage-groups)
+[19.5 Manage groups 373](#manage-groups)
 
-[19.5.1 Accept a request or invitation to join a group 373](#linkidinclusiverequest参照先accept-a-request-or-invitation-to-join-a-group)
+[19.5.1 Accept a request or invitation to join a group 373](#accept-a-request-or-invitation-to-join-a-group)
 
-[19.5.2 Create a group 374](#linkidcreategroup参照先create-a-group)
+[19.5.2 Create a group 374](#create-a-group)
 
-[19.5.3 Invite members to a group 375](#linkidaddusertogroup参照先invite-members-to-a-group)
+[19.5.3 Invite members to a group 375](#invite-members-to-a-group)
 
-[19.5.4 Edit a group 377](#linkideditgroup参照先edit-a-group)
+[19.5.4 Edit a group 377](#edit-a-group)
 
-[19.5.5 Delete a group 378](#linkiddeletegroup参照先delete-a-group)
+[19.5.5 Delete a group 378](#delete-a-group)
 
-[19.6 Modify the session validity time 380](#linkidchangetimeout参照先modify-the-session-validity-time)
+[19.6 Modify the session validity time 380](#modify-the-session-validity-time)
 
-[19.7 Access the Administration screen 381](#linkidopenadmin参照先access-the-administration-screen)
+[19.7 Access the Administration screen 381](#access-the-administration-screen-1)
 
 [20. Advanced Menu](#advanced-menu)
 
@@ -698,16 +698,11 @@ The format conventions used in this document are as follows:
 
 [20.2 Edit the user profile settings](#edit-the-user-profile-settings)
 
-<a id="chapter-1-system-overview"></a>
-
-#   
-Chapter 1: System Overview
+# Chapter 1: System Overview
 
 This chapter provides a high-level overview of the System.
 
-<a id="linkidwhatis参照先about-the-system"></a>
-
-## LINKID=whatis【参照先】About the System
+## About the System
 
 \<INDEXWORD PRONOUNCE="しすてむ" INDEXITEM="システム"\>The System\</INDEXWORD\> allows you to store and publish academic research results. The System's repository can store \<INDEXWORD PRONOUNCE="こんてんつ" INDEXITEM="コンテンツ"\>content\</INDEXWORD\> in a variety of formats, including PDF files, videos, and images. You can efficiently manage research results by categorizing and arranging them in a tree structure. You can also reference data by keyword search or full-text search. The data in the \<INDEXWORD PRONOUNCE="りほしとり" INDEXITEM="リポジトリ"\>repository\</INDEXWORD\> can also be synchronized with other repositories. For information on the terminology used in this document, such as "item" or "index", see Secton ANCHORID=terminology【参照元】1.2. "Glossary"【E】.
 
@@ -721,9 +716,7 @@ Figure 1‑2. Registering data
 
 zu0101020.tif![](media/media/image2.png)
 
-<a id="linkidterminology参照先glossary"></a>
-
-## LINKID=terminology【参照先】Glossary
+## Glossary
 
 This section explains the terminology used in the System.
 
@@ -878,9 +871,7 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 </tbody>
 </table>
 
-<a id="linkidfeaturesandusers参照先system-features"></a>
-
-## LINKID=featuresandusers【参照先】System features
+## System features
 
 The following table shows the administrator roles for the System.
 
@@ -1671,9 +1662,7 @@ Legend: 〇: Feature available, ×: Feature not available
 
   - [v2.1.0] If integration with GakuNin mAP groups at academic federation (Shibboleth) login is enabled (WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPS in the configuration file; default: False), users who belong to a GakuNin mAP role group are given the corresponding WEKO role (System Administrator, Repository Administrator, Community Administrator, or Contributor) when they log in. The menus available on the Administration screen follow the given role. The GakuNin mAP role groups (roles whose names are jc\_roles\_sysadm or start with jc\_*FQDN*\_ro\_) are not shown in the role choices of User Management, WorkFlow, and Communities. GakuNin mAP groups (names starting with jc\_*FQDN*\_gr\_) are treated as groups, not as roles. *FQDN* is the host name of the entity ID set in WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID, with "." and "-" replaced by "\_".
 
-<a id="linkidadminwindow参照先indexword-pronounceかんりかめん-indexitem管理画面access-the-administration-screenindexword"></a>
-
-## LINKID=adminwindow【参照先】\<INDEXWORD PRONOUNCE="かんりかめん" INDEXITEM="管理画面"\>Access the Administration screen\</INDEXWORD\>
+## Access the Administration screen
 
 This section explains how to access the "Administration" screen. The system management operations described in this manual are performed in the "Administration" screen. To display the setting screen for each menu, follow the steps below.
 
@@ -1703,15 +1692,11 @@ This chapter provides information on how to manage item types.
 
 You can create item types by combining properties. An item type created is used as a format (i.e. a template) for registering items.
 
-<a id="linkidsetpropertyitemtype参照先set-up-properties"></a>
-
-## LINKID=setpropertyitemtype【参照先】Set up properties
+## Set up properties
 
 To access the \<INDEXWORD PRONOUNCE="properties" INDEXITEM="Properties"\>Properties\</INDEXWORD\> screen, click "Item Types" and then click "Properties". This screen allows you to register new properties and update saved properties.
 
-<a id="linkidaddpropertyitemtype参照先add-properties"></a>
-
-### LINKID=addpropertyitemtype【**参照先**】Add properties
+### Add properties
 
 This section explains how to add a new property.
 
@@ -1844,9 +1829,7 @@ The property information will not reflect the "enum" setting you have added.
 
 The property is added.
 
-<a id="linkidmetadataattritemtype参照先edit-properties"></a>
-
-### LINKID=metadataattritemtype【参照先】Edit properties
+### Edit properties
 
 This section explains how to edit existing properties.
 
@@ -1902,9 +1885,7 @@ zu0404150.tif![](media/media/image22.png)
 
 The property is added.
 
-<a id="linkidaddordeleteitemtype参照先manage-item-types"></a>
-
-## LINKID=addordeleteitemtype【参照先】Manage item types
+## Manage item types
 
 You can \<INDEXWORD PRONOUNCE="あいてむたいふをさくせい" INDEXITEM="アイテムタイプを作成"\>create item types\</INDEXWORD\> used for item registration. You can also edit them.
 
@@ -7435,9 +7416,7 @@ After an update, a green message area may appear at the top of the item type edi
 
 This message appears when there is a data inconsistency that does not affect the operation. Saving the item type resolves the data inconsistency, and the message no longer appears.
 
-<a id="linkidsetoaischema参照先set-up-oai-schemas"></a>
-
-## LINKID=setoaischema【参照先】Set up OAI schemas
+## Set up OAI schemas
 
 To access the \<INDEXWORD PRONOUNCE="oaischema" INDEXITEM="OAI Schema"\>OAI Schema\</INDEXWORD\> screen, click "Item Types" and then click "OAI Schema". This screen lists the schemas used for mapping, and you can add or remove any of the schemas.
 
@@ -7505,13 +7484,9 @@ The schema is deleted.
 
 zu0403030.tif![](media/media/image54.png)
 
-<a id="linkidmapitemtypetoschema参照先map-item-types-to-schemas"></a>
-
-## LINKID=mapitemtypetoschema【参照先】Map item types to schemas
+## Map item types to schemas
     
-<a id="indexword-pronounceあいてむたいふをまつひんく-indexitemアイテムタイプをマッピングindexwordmap-item-types"></a>
-
-### \<INDEXWORD PRONOUNCE="あいてむたいふをまつひんく" INDEXITEM="アイテムタイプをマッピング"\>\</INDEXWORD\>Map item types
+### Map item types
 
 This section explains how to map an item type to a schema. You first need to add the schema before starting this operation. For information on adding schemas, see "ANCHORID=setoaischema【参照元】Section 2.3. Set up OAI schemas【E】".
 
@@ -8483,9 +8458,7 @@ The information of the items displayed in the confirmation dialog is updated. Th
 
 > ![](media/media/image69.png)
 
-<a id="linkidcustomsorting参照先linkidimportitems参照先bulk-delete-items"></a>
-
-## LINKID=customsorting【参照先】LINKID=Importitems【参照先】Bulk delete items
+## Bulk delete items
 
 This section explains how to \<INDEXWORD PRONOUNCE="あいてむをいつかつさくしよ" INDEXITEM="アイテムを一括削除"\>bulk delete items\</INDEXWORD\>.
 
@@ -9836,21 +9809,15 @@ curl -X GET "https://{host name}/api/items/import-task/get_bulk_import_task_stat
 
 If you are not authenticated (for example, the access token is invalid), 401 is returned. If the role or scope is insufficient, 403 is returned.
 
-<a id="index-tree"></a>
-
-# ‏Index Tree
+# Index Tree
 
 This chapter provides information on how to manage the index tree.
 
-<a id="manage-the-index-tree"></a>
-
-## ‏Manage the index tree
+## Manage the index tree
 
 To access the screen where you can \<INDEXWORD PRONOUNCE="いんてつくすつりいのへんしゆう" INDEXITEM="インデックスツリーの編集"\>edit the index tree\</INDEXWORD\>, click "Index Tree" and then click "Edit Tree".
 
-<a id="set-up-the-index-display"></a>
-
-### ‏Set up the index display
+### Set up the index display
 
 You can set the display size of the index tree shown in such places as the home screen.
 
@@ -10018,9 +9985,7 @@ If there are no errors, the popup message "Index is updated successfully" appear
 
 ![](media/media/image91.png)
 
-<a id="linkidchangeindexitem参照先modify-an-index"></a>
-
-### LINKID=changeindexitem【参照先】Modify an index
+### Modify an index
 
 This section explains how to modify the information in the index.
 
@@ -10044,9 +10009,7 @@ You cannot set the index to private if any of its subordinate items has a DOI gr
 
 ![](media/media/image94.png)
 
-<a id="linkiddeleteindexitem参照先delete-an-index"></a>
-
-### LINKID=deleteindexitem【参照先】Delete an index
+### Delete an index
 
 This section explains how to delete an index. When you delete an index, its child indexes and items are also deleted.
 
@@ -10378,17 +10341,13 @@ zu0503030.tif![](media/media/image109.png)
 
 This chapter provides information on how to manage Web design.
 
-<a id="linkidmanagecommunity参照先managing-widgets"></a>
-
-## LINKID=managecommunity【参照先】Managing widgets
+## Managing widgets
 
 Using widgets, you can specify different content for each language. The content of the widget displayed on the screen will change according to the display language setting of WEKO3. The English setting will apply if no widget corresponds to the display language setting.
 
 To access the screen where you can \<INDEXWORD PRONOUNCE="ういしえつとのかんり" INDEXITEM="ウィジェットの管理"\>manage widgets\</INDEXWORD\>, click "Web Design" and then click "Widget".
 
-<a id="linkiddetailwidgets参照先display-a-list-of-widgets"></a>
-
-### LINKID=detailwidgets【参照先】Display a list of widgets
+### Display a list of widgets
 
 This section explains how to display a list of widgets.
 
@@ -10404,9 +10363,7 @@ The detailed information on the widget appears.
 
 > ![](media/media/image112.png)
 
-<a id="linkidcreatewidgets参照先create-a-widget"></a>
-
-### LINKID=createwidgets【参照先】Create a widget
+### Create a widget
 
 This section explains how to create a widget.
 
@@ -10524,7 +10481,7 @@ An error message appears if the label name of the widget you specified exists in
 
 > ![](media/media/image116.png)
 
-#### LINKID=typesetting【参照先】Settings for the Type element
+#### Settings for the Type element
 
 Specify the widget type. The following are examples of input and display for each type.
 
@@ -10892,7 +10849,7 @@ See "Figure 5-20. Color specification" for specifying a color. The default is se
 
 For the detailed settings for the Free description option, see "Table 5-2. Elements and descriptions for the free description setting".
 
-#### LINKID=themesetting【参照先】Settings for the Theme element
+#### Settings for the Theme element
 
 Specify the theme of the widget.
 
@@ -10906,7 +10863,7 @@ Table 5‑7. Sample display for each theme
 | Simple    | zu0824210.tif![](media/media/image160.png) | This is a rectangular-shaped area with a hidden border. Shading is not applied.                            |
 | Side Line | zu0824200.tif![](media/media/image161.png) | This is a rectangular-shaped area with a vertical line on the left border. Shading is not applied.         |
 
-#### LINKID=borderstyle【参照先】Settings for the Border Style element
+#### Settings for the Border Style element
 
 Specify the border style of the widget.
 
@@ -10921,9 +10878,7 @@ Table 5‑8. Sample display for each border style
 | Dotted | zu0824240.tif![](media/media/image162.png) | A dotted line is displayed. |
 | Double | zu0824250.tif![](media/media/image163.png) | A double line is displayed. |
 
-<a id="linkideditwidgets参照先edit-a-widget"></a>
-
-### LINKID=editwidgets【参照先】Edit a widget
+### Edit a widget
 
 This section explains how to edit a widget.
 
@@ -10943,9 +10898,7 @@ Notes:
 
 [v2.1.0] For community administrators, when the widget is saved, it is checked that both the repository to which the widget currently belongs and the repository specified in "Repository" are communities managed by the administrator. You cannot modify a widget that belongs to a repository not managed by the administrator (including Root Index), or move a widget to such a repository. Likewise, you can delete only widgets that belong to the communities you manage.
 
-<a id="linkiddeletewidgets参照先delete-a-widget"></a>
-
-### LINKID=deletewidgets【参照先】Delete a widget
+### Delete a widget
 
 This section explains how to delete a widget.
 
@@ -10980,9 +10933,7 @@ This section explains how to delete a widget.
 > 
 > ![](media/media/image169.png)
 
-<a id="linkidwidgetdesignsetting参照先manage-the-page-layout"></a>
-
-## LINKID=widgetdesignsetting【参照先】Manage the page layout
+## Manage the page layout
 
 You can \<INDEXWORD PRONOUNCE="へえしついか" INDEXITEM="ページ追加"\>add\</INDEXWORD\>, modify or remove pages from the repository. You can also \<INDEXWORD PRONOUNCE="ういしえつとをはいち" INDEXITEM="ウィジェットを配置"\>place widgets\</INDEXWORD\> into the pages.
 
@@ -11130,16 +11081,11 @@ You can choose to upload files (including images) to widgets if they have a WYSI
 
 Image uploads will be converted to a file upload format through the BASE64 encoding.
 
-<a id="author-management"></a>
-
-#   
-Author Management
+# Author Management
 
 This chapter provides information on how to manage the Author DB.
 
-<a id="linkidmanagecommunity参照先manage-author-information"></a>
-
-## LINKID=managecommunity【参照先】Manage author information
+## Manage author information
 
 You can set up \<INDEXWORD PRONOUNCE="ちよしやめいてんきよ" INDEXITEM="著者名典拠"\>author name sources\</INDEXWORD\> and external author ID Prefixes.
 
@@ -11149,7 +11095,7 @@ You can create associations between the author information under your administra
 
 1.  ### Manage author name sources
     
-    1.  #### LINKID=viewauthorid【参照先】View author IDs
+    1.  #### View author IDs
 
 This section explains how to Authoview author IDs.
 
@@ -11223,7 +11169,7 @@ If there are no results, the message "Sorry, No results" appears.
 
 > ![](media/media/image186.png)
 
-#### LINKID=addauthor【参照先】Add an author ID
+#### Add an author ID
 
 This section explains how to add an author ID.
 
@@ -11447,7 +11393,7 @@ Table 6‑5. The elements in the "Community" area
 
 The author ID is added.
 
-#### LINKID=editauthor【参照先】Edit an author ID
+#### Edit an author ID
 
 This section explains how to edit an author ID.
 
@@ -11471,7 +11417,7 @@ The change you made is saved.
 
   - If the "Force Change Flag" is on: the name, the author ID, the email address, and the affiliation identifier
 
-#### LINKID=deleteauthor【参照先】Delete an author ID
+#### Delete an author ID
 
 This section explains how to delete an author ID.
 
@@ -11487,7 +11433,7 @@ The Author ID is deleted.
 
 zu0801050.tif![](media/media/image193.png)
 
-#### LINKID=mergeauthorid【参照先】Merge author IDs
+#### Merge author IDs
 
 This section explains how to merge author information.
 
@@ -11511,7 +11457,7 @@ zu0801080.tif![](media/media/image196.png)
 
 1.  ### Manage external author ID Prefixes
     
-    1.  #### LINKID=addidprefix【参照先】View external author ID Prefixes
+    1.  #### View external author ID Prefixes
 
 This section explains how to Authoview ID Prefixes.
 
@@ -11661,7 +11607,7 @@ You cannot set up the same scheme multiple times in "Scheme". If you select a sc
 
 "Community" is required for community administrators. If you do not select a managed community, clicking "+Add" will display the error message "You must include at least one managed community.".
 
-#### LINKID=editidprefix【参照先】Edit an external author ID Prefix
+#### Edit an external author ID Prefix
 
 This section explains how to edit an external author ID Prefix.
 
@@ -11679,7 +11625,7 @@ See the section "ANCHORID=addidprefix【参照元】(2) Add an external author I
 
 The change you made is saved. The message "Update completed" appears.
 
-#### LINKID=deleteidprefix【参照先】Delete an external author ID Prefix
+#### Delete an external author ID Prefix
 
 This section explains how to delete an external author ID prefix.
 
@@ -12654,15 +12600,11 @@ Table 6‑17 Validation checks for identifiers
 
 This chapter provides information on how to set up statistics.
 
-<a id="linkidfeedbackmailsetting参照先linkidreportsetting参照先set-up-reports"></a>
-
-## LINKID=feedbackmailsetting【参照先】LINKID=reportsetting【参照先】Set up reports
+## Set up reports
 
 To access the screen where you can manage reports, click "Statistics" and then click "Reports".
 
-<a id="linkidnumofitems参照先check-the-number-of-registered-items"></a>
-
-### LINKID=numofitems【参照先】Check the number of registered items
+### Check the number of registered items
 
 In the "Number of items registered" section of the report management screen, you can see "Total number of items registered", "Number of public items registered" and "Number of private items registered".
 
@@ -12684,9 +12626,7 @@ Number of private items registered:
 
 zu0902010.tif![](media/media/image209.png)
 
-<a id="linkidgetreports参照先download-fixed-form-reports"></a>
-
-### LINKID=getreports【参照先】Download fixed form reports
+### Download fixed form reports
 
 There are eleven different tsv (tab-separated values) formats available for downloading as the fixed form reports. This section explains how to download fixed form reports.
 
@@ -12704,9 +12644,7 @@ When an error occurs, the error message "Unexpected error occurred" will appear.
 
 > ![](media/media/image211.png)
 
-<a id="linkidreportstype参照先types-of-fixed-form-reports"></a>
-
-### LINKID=reportstype【参照先】Types of fixed form reports
+### Types of fixed form reports
 
 The following is a list of fixed form reports that can be downloaded in the tsv format.
 
@@ -12931,9 +12869,7 @@ Figure 7‑11. Site Access
 
 ![](media/media/image222.png)\<TBLATT POSITION="1" SCALE="151"\>
 
-<a id="linkidmailreports参照先send-a-fixed-form-report-by-email"></a>
-
-### LINKID=mailreports【参照先】Send a fixed form report by email
+### Send a fixed form report by email
 
 This section explains how to send a fixed form report with a specified period to a registered email address.
 
@@ -12989,9 +12925,7 @@ The email schedule is set. Fixed form reports email will be sent based on the sp
 
 zu0902060.tif![](media/media/image230.png)
 
-<a id="linkidcustomreports参照先sett-up-a-custom-report"></a>
-
-### LINKID=customreports【参照先】Sett up a custom report
+### Sett up a custom report
 
 1.  Enter the elements in "Custom Report".
 
@@ -13052,9 +12986,7 @@ The results appear in "Result".
 
 zu0902080.tif![](media/media/image232.png)
 
-<a id="linkidsitelicensestatisticssetting参照先-set-up-feedback-mails"></a>
-
-## LINKID=sitelicensestatisticssetting【参照先】 Set up feedback mails
+## Set up feedback mails
 
 This section explains how to configure the \<INDEXWORD PRONOUNCE="ふいいとはつくめえる" INDEXITEM="フィードバックメール"\>Feedback Mail\</INDEXWORD\> settings.
 
@@ -13098,9 +13030,7 @@ When you select a repository from the pull-down at the top of the screen, the se
 
 You can specify certain item types to be excluded in the aggregation in the management screen.
 
-<a id="linkidsitelicensestatisticsinfosetting参照先send-site-license-statistics-automatically"></a>
-
-### LINKID=sitelicensestatisticsinfosetting【参照先】Send site license statistics automatically
+### Send site license statistics automatically
 
 1.  From the pull-down at the top of the screen, select the repository whose settings you want to change.
 
@@ -13112,9 +13042,7 @@ zu0903010.tif![](media/media/image236.png)
 
 See "ANCHORID=sitelicenseusage【参照元】Section 7.3.3 Site license statistics【E】" for information on the files attached to feedback mails for site license statistics.
 
-<a id="linkidmanuallysendsitelicense参照先send-site-license-statistics-manually"></a>
-
-### LINKID=manuallysendsitelicense【参照先】Send site license statistics manually
+### Send site license statistics manually
 
 1.  From the pull-down at the top of the screen, select the repository for which you want to obtain statistics.
 
@@ -13126,9 +13054,7 @@ zu0903020.tif![](media/media/image237.png)
 
 See "ANCHORID=sitelicenseusage【参照元】Section 7.3.3 Site license statistics【E】" for information on the files attached to feedback mails for site license statistics.
 
-<a id="linkidsitelicenseusage参照先site-license-statistics"></a>
-
-### LINKID=sitelicenseusage【参照先】Site license statistics
+### Site license statistics
 
 You obtain four types of tsv (tab-separated values) format files by unzipping the archive attached to a site license statistics feedback mail.
 
@@ -13179,15 +13105,11 @@ Table 7‑3. Site license statistics
 
 This chapter provides information on how to manage workflows.
 
-<a id="linkidsetflow参照先set-up-flows"></a>
-
-## LINKID=setflow【参照先】Set up flows
+## Set up flows
 
 A \<INDEXWORD PRONOUNCE="ふろお" INDEXITEM="フロー"\>flow\</INDEXWORD\> refers to a sequence of processes (actions) involved in item registration. To access the "Flow List" screen, click "WorkFlow" and then clicking "Flow List". You can view a list of flows and add or delete specified flows in this screen.
 
-<a id="linkidaddflow参照先add-a-flow"></a>
-
-### LINKID=addflow【参照先】Add a flow
+### Add a flow
 
 This section explains how to add a new flow. A flow created in this step does not have actions registered. See "ANCHORID=editflow【参照元】Section 8.1.2 Edit flow actions【E】" for information on how to add actions to a flow.
 
@@ -13237,9 +13159,7 @@ To create a deletion flow, do the following:
 
 8.  Finally, click "Save".
 
-<a id="linkideditflow参照先edit-flow-actions"></a>
-
-### LINKID=editflow【参照先】Edit flow actions
+### Edit flow actions
 
 This section explains how to add actions to the flow and change the order of actions.
 
@@ -13291,9 +13211,7 @@ The flow is saved. The message "Updated flow action successfully" appears.
 
 > zu1101090.tif![](media/media/image249.png)
 
-<a id="linkiddelflow参照先delete-a-flow"></a>
-
-### LINKID=delflow【参照先】Delete a flow
+### Delete a flow
 
 1.  Click the flow name you want to edit.
 
@@ -13313,15 +13231,11 @@ You cannot delete a flow if it is used in a workflow. In this case, clicking "De
 
 > ![](media/media/image252.png)
 
-<a id="linkidsetworkflow参照先set-up-workflows"></a>
-
-## LINKID=setworkflow【参照先】Set up workflows
+## Set up workflows
 
 A \<INDEXWORD PRONOUNCE="わあくふろお" INDEXITEM="ワークフロー"\>workflow\</INDEXWORD\> is a combination of flows and items. To access the "Flow List" screen, click "WorkFlow" and then clicking "WorkFlow List". You can view a list of workflows and add or delete specified workflows in this screen.
 
-<a id="linkidaddworkflow参照先add-a-workflow"></a>
-
-### LINKID=addworkflow【参照先】Add a workflow
+### Add a workflow
 
 1.  > Click "+Create WorkFlow".
 
@@ -13356,9 +13270,7 @@ zu1101300.tif
 
 The workflow is saved. The message "Workflow created successfully" appears.
 
-<a id="linkideditworkflow参照先edit-a-workflow"></a>
-
-### LINKID=editworkflow【参照先】Edit a workflow
+### Edit a workflow
 
 1.  Click on the Workflow name.
 
@@ -13382,9 +13294,7 @@ The flow and the item type can be changed regardless of whether the workflow is 
 
 The workflow is saved. If it is saved successfully, the message "Workflow created successfully" appears.
 
-<a id="linkiddeleteworkflow参照先delete-a-workflow"></a>
-
-### LINKID=deleteworkflow【参照先】Delete a workflow
+### Delete a workflow
 
 1.  Click on the Workflow name.
 
@@ -13427,9 +13337,7 @@ When items are registered from the workspace, they are registered using the work
 
 This chapter provides information on how to manage communities.
 
-<a id="linkidmanagecommunity参照先manage-communities"></a>
-
-## LINKID=managecommunity【参照先】Manage communities
+## Manage communities
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="こみゆにてい" INDEXITEM="コミュニティ"\>communities\</INDEXWORD\>.
 
@@ -13437,9 +13345,7 @@ This section explains how to manage \<INDEXWORD PRONOUNCE="こみゆにてい" I
 
 By creating a community, you can make items available only to the users of the community.
 
-<a id="linkidviewcommunity参照先view-communities"></a>
-
-### LINKID=viewcommunity【参照先】View communities
+### View communities
 
 This section explains how to \<INDEXWORD PRONOUNCE="こみゆにていをさんしよう" INDEXITEM="コミュニティを参照"\>view communities\</INDEXWORD\>.
 
@@ -13464,9 +13370,7 @@ The details appear.
 
 \* \<FQDN\> is the host name of the IdP entity ID with "." and "-" replaced by "\_".
 
-<a id="linkidcreatecommunity参照先create-a-community"></a>
-
-### LINKID=createcommunity【参照先】Create a community
+### Create a community
 
 This section explains how to \<INDEXWORD PRONOUNCE="こみゆにていをさくせい" INDEXITEM="コミュニティを作成"\>create a community\</INDEXWORD\>.
 
@@ -13512,9 +13416,7 @@ A community is created.
 | Editorial board  | /c/{community\_id}/page/eb              |
 | OA Policy        | /c/{community\_id}/page/oapolicy        |
 
-<a id="linkideditcommunity参照先edit-a-community"></a>
-
-### LINKID=editcommunity【参照先】Edit a community
+### Edit a community
 
 This section explains how to \<INDEXWORD PRONOUNCE="こみゆにていをへんしゆう" INDEXITEM="コミュニティを編集"\>edit a community\</INDEXWORD\>.
 
@@ -13532,15 +13434,11 @@ zu0201030.tif![](media/media/image262.png)
 
 The setting is saved.
 
-<a id="linkidfeaturedcommunity参照先manage-favorite-communities"></a>
-
-## LINKID=featuredcommunity【参照先】Manage favorite communities
+## Manage favorite communities
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="おきにいりのこみゆにてい" INDEXITEM="お気に入りのコミュニティ"\>favorite communities\</INDEXWORD\>. To access the screen where you can manage your favorite communities, click "Communities" and then click "Community".
 
-<a id="linkidviewfeaturedcommunity参照先view-favorite-communities"></a>
-
-### LINKID=viewfeaturedcommunity【参照先】View favorite communities
+### View favorite communities
 
 This section explains how to view your favorite communities.
 
@@ -13554,9 +13452,7 @@ zu0202010.tif![](media/media/image263.png)
 
 The details appear.
 
-<a id="linkidcreatefeaturedcommunity参照先create-a-favorite-community"></a>
-
-### LINKID=createfeaturedcommunity【参照先】Create a favorite community
+### Create a favorite community
 
 This section explains how to create a favorite community.
 
@@ -13583,9 +13479,7 @@ Table 9‑2. The elements in the "Create" tab
 
 A featured community is created.
 
-<a id="linkideditfeaturedcommunity参照先edit-a-favorite-community"></a>
-
-### LINKID=editfeaturedcommunity【参照先】Edit a favorite community
+### Edit a favorite community
 
 This section explains how to edit a favorite community.
 
@@ -13603,9 +13497,7 @@ zu0202030.tif![](media/media/image265.png)
 
 The setting is saved.
 
-<a id="linkiddeletefeaturedcommunity参照先delete-favorite-communities"></a>
-
-### LINKID=deletefeaturedcommunity【参照先】Delete favorite communities
+### Delete favorite communities
 
 To delete communities individually, do the following:
 
@@ -13627,15 +13519,11 @@ zu0202050.tif![](media/media/image267.png)
 
 The selected communities are deleted.
 
-<a id="linkidinclusionrequest参照先indexword-pronounceこみゆにていさんかようきゆう-indexitemコミュニティ参加要求manage-inclusion-requestsindexword"></a>
-
-## LINKID=inclusionrequest【参照先】\<INDEXWORD PRONOUNCE="こみゆにていさんかようきゆう" INDEXITEM="コミュニティ参加要求"\>Manage inclusion requests\</INDEXWORD\>
+## Manage inclusion requests
 
 This section explains how to manage inclusion requests for joining communities. To access the screen where you can manage inclusion requests, click "Communities" and then click "Inclusion Request".
 
-<a id="linkidviewinclusionrequest参照先view-inclusion-requests"></a>
-
-### LINKID=viewinclusionrequest【参照先】View inclusion requests
+### View inclusion requests
 
 This section explains how to view inclusion requests.
 
@@ -13645,9 +13533,7 @@ The "List" tab shows a list of communities.
 
 zu0203010.tif![](media/media/image268.png)
 
-<a id="linkiddeleteinclusionrequest参照先delete-inclusion-requests"></a>
-
-### LINKID=deleteinclusionrequest【参照先】Delete inclusion requests
+### Delete inclusion requests
 
 To delete inclusion requests individually, do the following:
 
@@ -13669,24 +13555,17 @@ zu0203030.tif![](media/media/image270.png)
 
 The selected inclusion requests are deleted.
 
-<a id="oai-pmh"></a>
-
-#   
-OAI-PMH
+# OAI-PMH
 
 This chapter provides information on how to set up harvesting using the OAI-PMH.
 
-<a id="linkidsetharvesting参照先set-up-harvesting"></a>
-
-## LINKID=setharvesting【参照先】Set up harvesting
+## Set up harvesting
 
 You can perform harvesting from other institutions using \<INDEXWORD PRONOUNCE="oai－pmh" INDEXITEM="OAI-PMH"\>OAI-PMH\</INDEXWORD\>.
 
 The schemas that support harvesting are "JPCOAR" and "DDI". For information on other schemas, contact wekosoftware@nii.ac.jp.\<INDEXWORD PRONOUNCE="はあへすていんく" INDEXITEM="ハーベスティング"\> To access the screen where you can set up \</INDEXWORD\>harvesting, click "OAI-PMH" and then click "Harvesting".
 
-<a id="linkidviewplanforharvesting参照先run-a-harvesting-plan"></a>
-
-### LINKID=viewplanforharvesting【参照先】Run a harvesting plan
+### Run a harvesting plan
 
 You can run harvesting plans automatically or choose to run them manually.
 
@@ -13742,9 +13621,7 @@ The details appear.
 > 
 > ![](media/media/image277.png)
 
-<a id="linkidcreateplanforharvesting参照先create-a-harvesting-plan"></a>
-
-### LINKID=createplanforharvesting【参照先】Create a harvesting plan
+### Create a harvesting plan
 
 1.  > Click on the "Create" tab.
     
@@ -13774,9 +13651,7 @@ Table 10‑1. The elements in the "Create" tab
     
     An output set is created.
 
-<a id="linkideditplanforharvesting参照先edit-a-harvesting-plan"></a>
-
-### LINKID=editplanforharvesting【参照先】Edit a harvesting plan
+### Edit a harvesting plan
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
@@ -13804,9 +13679,7 @@ The setting is saved.
 
 zu0601060.tif![](media/media/image282.png)
 
-<a id="linkiddeleteplanforharvesting参照先delete-harvesting-plans"></a>
-
-### LINKID=deleteplanforharvesting【参照先】Delete harvesting plans
+### Delete harvesting plans
 
 To delete records individually, do the following:
 
@@ -13828,25 +13701,19 @@ zu0601080.tif![](media/media/image284.png)
 
 The records are deleted.
 
-<a id="linkididentify参照先identify"></a>
-
-## LINKID=identify【参照先】Identify
+## Identify
 
 You can take the information used to output repository information from OAI-PMH and the base URL of OAI-PMH and map them to the standard format. To access the screen where you can configure the Identify setting, click "OAI-PMH" and then click "Identify"
 
 You use this setting to access the OAI-PMH provider feature.
 
-<a id="linkidviewoutputset参照先view-output-sets"></a>
-
-### LINKID=viewoutputset【参照先】View output sets
+### View output sets
 
 1.  Click on the "List" tab to display a list of registered prefix IDs.
 
 zu0602010.tif![](media/media/image285.png)
 
-<a id="linkidcreateoutputset参照先create-an-output-set"></a>
-
-### LINKID=createoutputset【参照先】Create an output set
+### Create an output set
 
 1.  > Click on the "Create" tab.
 
@@ -13864,9 +13731,7 @@ zu0602020.tif![](media/media/image286.png)
 
 An output set is created.
 
-<a id="linkideditoutputset参照先edit-an-output-set"></a>
-
-### LINKID=editoutputset【参照先】Edit an output set
+### Edit an output set
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
 
@@ -13880,15 +13745,11 @@ zu0602030.tif![](media/media/image287.png)
 
 The setting is saved.
 
-<a id="linkidset参照先sets"></a>
-
-## LINKID=set【参照先】Sets
+## Sets
 
 To access the screen where you can configure the Sets setting, click "OAI-PMH" and then click "Sets"
 
-<a id="linkidviewset参照先view-sets"></a>
-
-### LINKID=viewset【参照先】View Sets
+### View Sets
 
 1.  Click on the "List" tab to display a list of registered IDs.
 
@@ -13898,9 +13759,7 @@ zu0603010.tif![](media/media/image288.png)
 
 The details of the ID appear.
 
-<a id="linkidcreateset参照先create-a-set"></a>
-
-### LINKID=createset【参照先】Create a Set
+### Create a Set
 
 1.  Click on the "Create" tab.
 
@@ -13914,9 +13773,7 @@ zu0603020.tif![](media/media/image289.png)
 
 The Set is created.
 
-<a id="linkideditset参照先edit-a-set"></a>
-
-### LINKID=editset【参照先】Edit a Set
+### Edit a Set
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
 
@@ -14004,10 +13861,7 @@ If WEKO\_SEARCH\_FIX\_ACCESSRIGHTS is enabled (True) in instance.cfg, the output
 
   - The \<datestamp\> of an item whose embargo period has ended is the later of the update date and time and the publication date of the item.
 
-<a id="resource-sync"></a>
-
-#   
-Resource Sync
+# Resource Sync
 
 This chapter provides information on how to manage Resource Sync.
 
@@ -14467,7 +14321,7 @@ The Resync edit screen appears.
 
 > See "ANCHORID=createcommunity【参照元】Section 11.3.2 Create a Resync【E】" for information on the elements.
 
-### Delete a Resync 
+### Delete a Resync
 
 This section explains how to delete a Resync.
 
@@ -14609,16 +14463,11 @@ Notes:
 
 If there is an activity awaiting approval in the workflow specified in the setting, you cannot delete the setting. The message "There are unapproved items in the workflow using this application. Until all are approved, no changes can be made to the configuration." appears.
 
-<a id="records"></a>
-
-#   
-Records
+# Records
 
 This chapter provides information on how to manage records.
 
-<a id="linkidviewpersistentidentifier参照先view-persistent-identifiers"></a>
-
-## LINKID=viewpersistentidentifier【参照先】View Persistent Identifiers
+## View Persistent Identifiers
 
 This section explains how to view \<INDEXWORD PRONOUNCE="persistentidentifier" INDEXITEM="Persistent Identifier"\>Persistent Identifiers\</INDEXWORD\>.
 
@@ -14634,15 +14483,11 @@ zu0701010.tif![](media/media/image312.png)
     
     In the "Object" column, click "View" to see the details of the Record Metadata.
 
-<a id="linkidmanagerecordmetadata参照先manage-record-metadata"></a>
-
-## LINKID=managerecordmetadata【参照先】Manage Record Metadata
+## Manage Record Metadata
 
 The "List" tab appears when you click "Records" and then click "\<INDEXWORD PRONOUNCE="recordmetadata" INDEXITEM="Record Metadata"\>Record Metadata\</INDEXWORD\>".
 
-<a id="linkidviewrecordmetadata参照先view-record-metadata"></a>
-
-### LINKID=viewrecordmetadata【参照先】View Record Metadata
+### View Record Metadata
 
 This section explains how to view Record Metadata.
 
@@ -14656,9 +14501,7 @@ zu0702010.tif![](media/media/image313.png)
     
     The details of the Record Metadata appear.
 
-<a id="linkiddeleterecordmetadata参照先delete-record-metadata"></a>
-
-### LINKID=deleterecordmetadata【参照先】Delete Record Metadata
+### Delete Record Metadata
 
 This section explains how to delete Record Metadata.
 
@@ -14688,15 +14531,11 @@ This chapter provides information on how to manage files.
 
 [v2.1.0] \* Among the Files menus, repository administrators can use only "Location" (read access only). The other menus can be used only by system administrators.
 
-<a id="linkidlocationmanagement参照先-manage-buckets"></a>
-
-## LINKID=locationmanagement【参照先】 Manage Buckets
+## Manage Buckets
 
 The "List" tab appears when you click "Files" and then click "\<INDEXWORD PRONOUNCE="bucket" INDEXITEM="Bucket"\>Bucket\</INDEXWORD\>".
 
-<a id="linkidviewbucket参照先view-buckets"></a>
-
-### LINKID=viewbucket【参照先】View Buckets
+### View Buckets
 
 This section explains how to view Buckets.
 
@@ -14710,9 +14549,7 @@ zu0301010.tif![](media/media/image316.png)
 
 The details appear.
 
-<a id="linkidcreatebucket参照先create-a-bucket"></a>
-
-### LINKID=createbucket【参照先】Create a Bucket
+### Create a Bucket
 
 This section explains how to create a Bucket.
 
@@ -14742,9 +14579,7 @@ Table 14‑1. The elements in the "Create" tab
 
 The Bucket is created.
 
-<a id="linkideditbucket参照先edit-a-bucket"></a>
-
-### LINKID=editbucket【参照先】Edit a Bucket
+### Edit a Bucket
 
 This section explains how to edit a Bucket.
 
@@ -14766,9 +14601,7 @@ The setting is saved.
 
 The "List" tab appears when you click "Files" and then click "\<INDEXWORD PRONOUNCE="fileinstance" INDEXITEM="File Instance"\>File Instance\</INDEXWORD\>".
 
-<a id="linkidviewfileinstance参照先view-file-instances"></a>
-
-### LINKID=viewfileinstance【参照先】View File Instances
+### View File Instances
 
 This section explains how to view File Instances.
 
@@ -14782,9 +14615,7 @@ zu0302010.tif![](media/media/image319.png)
 
 The details appear.
 
-<a id="linkidcheckfixity参照先run-a-fixity-check"></a>
-
-### LINKID=checkfixity【参照先】Run a fixity check
+### Run a fixity check
 
 This section explains how to run a fixity check to see if any file has been modified.
 
@@ -14832,9 +14663,7 @@ To delete multiple File Instances at once, do the following:
 
 This section explains how to manage Locations.\<INDEXWORD PRONOUNCE="location" INDEXITEM="Location"\> To access the screen where you can manage \</INDEXWORD\>Locations, click "Files" and then click "Location".
 
-<a id="linkidviewlocation参照先view-locations"></a>
-
-### LINKID=viewlocation【参照先】View Locations
+### View Locations
 
 This section explains how to view Locations.
 
@@ -14856,9 +14685,7 @@ The details appear.
 
   - If two or more Locations are set as the default: "Multiple locations are set as default. Only one default location can be configured. Please correct the settings."
 
-<a id="linkidcreatelocation参照先create-a-location"></a>
-
-### LINKID=createlocation【参照先】Create a Location
+### Create a Location
 
 [v2.1.0] This section explains how to create a Location. Only system administrators can create Locations.
 
@@ -14904,9 +14731,7 @@ Table 14‑3. The elements for S3-compatible object storage
 
 The location is created.
 
-<a id="linkideditlocation参照先edit-a-location"></a>
-
-### LINKID=editlocation【参照先】Edit a Location
+### Edit a Location
 
 [v2.1.0] This section explains how to edit a Location. Only system administrators can edit Locations.
 
@@ -14924,9 +14749,7 @@ zu0303030.tif![](media/media/image324.png)
 
 The setting is saved.
 
-<a id="linkiddeletelocation参照先delete-locations"></a>
-
-### LINKID=deletelocation【参照先】Delete Locations
+### Delete Locations
 
 [v2.1.0] This section explains how to delete Locations. Only system administrators can delete Locations.
 
@@ -14950,15 +14773,11 @@ zu0303060.tif![](media/media/image326.png)
 
 The records are deleted.
 
-<a id="linkidmanagebucket参照先linkidmanageobjectversion参照先manage-multipart-objects"></a>
-
-## LINKID=managebucket【参照先】LINKID=manageobjectversion【参照先】Manage Multipart Objects
+## Manage Multipart Objects
 
 This section explains how to manage Multipart Objects. (This feature is currently unavailable.)
 
-<a id="linkidviewmultipartobject参照先view-multipart-objects"></a>
-
-### LINKID=viewmultipartobject【参照先】View Multipart Objects
+### View Multipart Objects
 
 This section explains how to view \<INDEXWORD PRONOUNCE="multipartobject" INDEXITEM="Multipart Object"\>Multipart Objects\</INDEXWORD\>.
 
@@ -14978,9 +14797,7 @@ The details appear.
 
 This section explains how to manage Object Versions.
 
-<a id="linkidviewobjectversion参照先view-object-versions"></a>
-
-### LINKID=viewobjectversion【参照先】View Object Versions
+### View Object Versions
 
 This section explains how to view \<INDEXWORD PRONOUNCE="objectversion" INDEXITEM="Object Version"\>Object Versions\</INDEXWORD\>.
 
@@ -15077,23 +14894,17 @@ This completes the setup of the institutional storage. Files registered through 
 
   - Files stored in an institutional storage cannot be managed on the JAIRO Cloud side. Since JAIRO Cloud cannot handle troubles such as accidentally deleted files, establish a backup system on the institution side.
 
-<a id="linkidmanagemultipartobject参照先linkidmanagefileinstance参照先user-management"></a>
-
-# LINKID=managemultipartobject【参照先】LINKID=managefileinstance【参照先】User Management
+# User Management
 
 This chapter provides information on how to manage users.
 
 \* Among the User Management menus, repository administrators can use "User", "User Profile", and "Session Activity", and community administrators can use "User". The other menus can be used only by system administrators.
 
-<a id="linkidaccessrolesetting参照先access-roles"></a>
-
-## LINKID=accessrolesetting【参照先】Access: Roles
+## Access: Roles
 
 This section explains how to add an action to a \<INDEXWORD PRONOUNCE="ろおる" INDEXITEM="ロール"\>role\</INDEXWORD\>. To access the screen where you can manage roles, click "User Management" and then click "Access: Roles".
 
-<a id="linkidviewaccessrole参照先view-role-based-actions"></a>
-
-### LINKID=viewaccessrole【参照先】View role-based actions
+### View role-based actions
 
 This section explains how to view role-based actions.
 
@@ -15107,9 +14918,7 @@ zu1001010.tif![](media/media/image329.png)
 
 The details appear.
 
-<a id="linkidaddaccessrole参照先add-an-action-to-a-role"></a>
-
-### LINKID=addaccessrole【参照先】Add an action to a role
+### Add an action to a role
 
 This section explains how to add an action to a role.
 
@@ -15136,9 +14945,7 @@ Table 15‑1. The elements in the "Create" tab
 
 The action is added to the role.
 
-<a id="linkidchangeaccessrole参照先modify-a-role-based-action"></a>
-
-### LINKID=changeaccessrole【参照先】Modify a role-based action
+### Modify a role-based action
 
 This section explains how to edit a role-based action.
 
@@ -15156,9 +14963,7 @@ zu1001030.tif![](media/media/image331.png)
 
 The setting is saved.
 
-<a id="linkiddeleteaccessrole参照先delete-actions-from-a-role"></a>
-
-### LINKID=deleteaccessrole【参照先】Delete actions from a role
+### Delete actions from a role
 
 To delete actions individually, do the following:
 
@@ -15180,15 +14985,11 @@ zu1001050.tif![](media/media/image333.png)
 
 > The actions are deleted.
 
-<a id="linkidaccesssystemrolesetting参照先access-system-roles"></a>
-
-## LINKID=accesssystemrolesetting【参照先】Access: System Roles
+## Access: System Roles
 
 This section explains how to add an action to a \<INDEXWORD PRONOUNCE="しすてむろおる" INDEXITEM="システムロール"\>system role\</INDEXWORD\>. To access the screen where you can manage system roles, click "User Management" and then click "Access: System Roles".
 
-<a id="linkidviewsystemrole参照先view-system-role-based-actions"></a>
-
-### LINKID=viewsystemrole【参照先】View system role-based actions
+### View system role-based actions
 
 1.  This section explains how to view system role-based actions
 
@@ -15202,9 +15003,7 @@ zu1002010.tif![](media/media/image334.png)
 
 The details appear.
 
-<a id="linkidaddsystemrole参照先add-an-action-to-a-system-role"></a>
-
-### LINKID=addsystemrole【参照先】Add an action to a system role
+### Add an action to a system role
 
 This section explains how to add an action to a system role.
 
@@ -15231,9 +15030,7 @@ Table 15‑2. The elements in the "Create" tab
 
 The action is added to the system role.
 
-<a id="linkidchangesystemrole参照先modify-a-system-role-based-action"></a>
-
-### LINKID=changesystemrole【参照先】Modify a system role-based action
+### Modify a system role-based action
 
 This section explains how to edit a system role-based action.
 
@@ -15251,9 +15048,7 @@ zu1002030.tif![](media/media/image336.png)
 
 The setting is saved.
 
-<a id="linkiddeletesystemrole参照先delete-actions-from-a-system-role"></a>
-
-### LINKID=deletesystemrole【参照先】Delete actions from a system role
+### Delete actions from a system role
 
 To delete actions individually, do the following:
 
@@ -15275,15 +15070,11 @@ zu1002050.tif![](media/media/image338.png)
 
 The actions are deleted.
 
-<a id="linkidaccessusers参照先access-users"></a>
-
-## LINKID=accessusers【参照先】Access: Users
+## Access: Users
 
 This section explains how to add an action to a \<INDEXWORD PRONOUNCE="ゆうさあ" INDEXITEM="ユーザー"\>user\</INDEXWORD\>. To access the screen where you can manage users, click "User Management" and then click "Access: Users".
 
-<a id="linkidviewusers参照先view-user-actions"></a>
-
-### LINKID=viewusers【参照先】View user actions
+### View user actions
 
 1.  This section explains how to view user actions.
 
@@ -15297,9 +15088,7 @@ zu1003010.tif![](media/media/image339.png)
 
 The details appear.
 
-<a id="linkidaddusers参照先add-an-action-to-a-user"></a>
-
-### LINKID=addusers【参照先】Add an action to a user
+### Add an action to a user
 
 This section explains how to add an action to a user.
 
@@ -15326,9 +15115,7 @@ Table 15‑3. The elements in the "Create" tab
 
 The action is added to the user.
 
-<a id="linkidchangeusers参照先modify-a-user-action"></a>
-
-### LINKID=changeusers【参照先】Modify a user action
+### Modify a user action
 
 This section explains how to edit a user action.
 
@@ -15346,9 +15133,7 @@ zu1003030.tif![](media/media/image341.png)
 
 The setting is saved.
 
-<a id="linkiddeleteusers参照先delete-user-actions"></a>
-
-### LINKID=deleteusers【参照先】Delete user actions
+### Delete user actions
 
 To delete actions individually, do the following:
 
@@ -15370,15 +15155,11 @@ zu1003050.tif![](media/media/image343.png)
 
 The actions are deleted.
 
-<a id="linkidmanagelinkedaccountidentities参照先manage-linked-account-identities"></a>
-
-## LINKID=managelinkedaccountidentities【参照先】Manage Linked account identities
+## Manage Linked account identities
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="linkedaccount" INDEXITEM="Linked account"\>Linked account\</INDEXWORD\> identities. To access the screen where you can manage Linked account identities, click "User Management" and then click "Linked account identities".
 
-<a id="linkidviewlinkedaccountidentities参照先view-linked-account-identities"></a>
-
-### LINKID=viewlinkedaccountidentities【参照先】View Linked account identities
+### View Linked account identities
 
 This section explains how to view Linked account identities.
 
@@ -15392,9 +15173,7 @@ zu1004010.tif![](media/media/image344.png)
     
     The details appear.
     
-<a id="linkiddeletelinkedaccountidentities参照先delete-linked-account-identities"></a>
-
-### LINKID=deletelinkedaccountidentities【参照先】Delete Linked account identities
+### Delete Linked account identities
 
 To delete identities individually, do the following:
 
@@ -15412,15 +15191,11 @@ You are prompted to confirm the deletion.
 
 The identities are deleted.
 
-<a id="linkidmanagelinkedaccounttokens参照先manage-linked-account-tokens"></a>
-
-## LINKID=managelinkedaccounttokens【参照先】Manage Linked account tokens
+## Manage Linked account tokens
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="linkedaccountのとおくん" INDEXITEM="Linked accountのトークン"\>Linked account\</INDEXWORD\> tokens. To access the screen where you can manage Linked account tokens, click "User Management" and then click "Linked account tokens".
 
-<a id="linkidviewlinkedaccounttokens参照先view-linked-account-tokens"></a>
-
-### LINKID=viewlinkedaccounttokens【参照先】View Linked account tokens
+### View Linked account tokens
 
 This section explains how to view Linked account tokens.
 
@@ -15434,9 +15209,7 @@ zu1005010.tif![](media/media/image345.png)
 
 The details appear.
 
-<a id="linkidcreatelinkedaccounttokens参照先create-a-linked-account-token"></a>
-
-### LINKID=createlinkedaccounttokens【参照先】Create a Linked account token
+### Create a Linked account token
 
 This section explains how to create a Linked account token.
 
@@ -15461,9 +15234,7 @@ Table 15‑4. The elements in the "Create" tab
 
 The token is created.
 
-<a id="linkideditlinkedaccounttokens参照先edit-a-linked-account-token"></a>
-
-### LINKID=editlinkedaccounttokens【参照先】Edit a Linked account token
+### Edit a Linked account token
 
 This section explains how to edit a Linked account token.
 
@@ -15479,9 +15250,7 @@ See "ANCHORID=createlinkedaccounttokens【参照元】Section 14.5.2 Create a Li
 
 The setting is saved.
 
-<a id="linkiddeletelinkedaccounttokens参照先delete-linked-account-tokens"></a>
-
-### LINKID=deletelinkedaccounttokens【参照先】Delete Linked account tokens
+### Delete Linked account tokens
 
 To delete tokens individually, do the following:
 
@@ -15499,15 +15268,11 @@ You are prompted to confirm the deletion.
 
 The tokens are deleted.
 
-<a id="linkidmanagelinkedaccounts参照先manage-linked-accounts"></a>
-
-## LINKID=managelinkedaccounts【参照先】Manage Linked accounts
+## Manage Linked accounts
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="linkedaccount" INDEXITEM="Linked account"\>Linked accounts\</INDEXWORD\>. To access the screen where you can manage Linked accounts, click "User Management" and then click "Linked accounts".
 
-<a id="linkidviewlinkedaccounts参照先view-linked-accounts"></a>
-
-### LINKID=viewlinkedaccounts【参照先】View Linked accounts
+### View Linked accounts
 
 This section explains how to view Linked accounts.
 
@@ -15521,9 +15286,7 @@ zu1006010.tif![](media/media/image347.png)
 
 The details appear.
 
-<a id="linkidcreatelinkedaccounts参照先create-a-linked-account"></a>
-
-### LINKID=createlinkedaccounts【参照先】Create a Linked account
+### Create a Linked account
 
 This section explains how to create a Linked account.
 
@@ -15551,9 +15314,7 @@ Table 15‑5. The elements in the "Create" tab
 
 The account is created.
 
-<a id="linkideditlinkedaccounts参照先edit-a-linked-account"></a>
-
-### LINKID=editlinkedaccounts【参照先】Edit a Linked account
+### Edit a Linked account
 
 This section explains how to edit a Linked account.
 
@@ -15571,9 +15332,7 @@ zu1006030.tif![](media/media/image349.png)
 
 The setting is saved.
 
-<a id="linkiddeletelinkedaccounts参照先delete-linked-accounts"></a>
-
-### LINKID=deletelinkedaccounts【参照先】Delete Linked accounts
+### Delete Linked accounts
 
 To delete accounts individually, do the following:
 
@@ -15595,15 +15354,11 @@ zu1006050.tif![](media/media/image351.png)
 
 The accounts are deleted.
 
-<a id="linkidmanageoauthapplitokens参照先manage-oauth-application-tokens"></a>
-
-## LINKID=manageoauthapplitokens【参照先】Manage OAuth Application Tokens
+## Manage OAuth Application Tokens
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="oauthapplicationのとおくん" INDEXITEM="OAuth Applicationのトークン"\>OAuth Application tokens\</INDEXWORD\>. To access the screen where you can manage OAuth Application Tokens, click "User Management", and then click "OAuth Application Tokens".
 
-<a id="linkidviewoauthapplitokens参照先view-oauth-application-tokens"></a>
-
-### LINKID=viewoauthapplitokens【参照先】View OAuth Application Tokens
+### View OAuth Application Tokens
 
 This section explains how to view OAuth Application tokens.
 
@@ -15617,9 +15372,7 @@ zu1007010.tif![](media/media/image352.png)
 
 The details appear.
 
-<a id="linkiddeleteoauthapplitokens参照先delete-oauth-application-tokens"></a>
-
-### LINKID=deleteoauthapplitokens【参照先】Delete OAuth Application Tokens
+### Delete OAuth Application Tokens
 
 To delete tokens individually, do the following:
 
@@ -15637,9 +15390,7 @@ You are prompted to confirm the deletion.
 
 The tokens are deleted.
 
-<a id="linkidmanageoauthappli参照先manage-oauth-applications"></a>
-
-## LINKID=manageoauthappli【参照先】Manage OAuth Applications
+## Manage OAuth Applications
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="oauthapplication" INDEXITEM="OAuth Application"\>OAuth Applications\</INDEXWORD\>. To access the screen where you can manage OAuth Applications, click "User Management", and then click "OAuth Applications".
 
@@ -15649,9 +15400,7 @@ In the management screen, you can only view and delete registered OAuth Applicat
 
 [v2.1.0] \* If the scope specified in an authorization request of an OAuth Application is invalid (it contains no valid scope), the authorization screen is not displayed, and the error screen shows "error: The scope is incorrect."
 
-<a id="linkidviewoauthappli参照先view-oauth-applications"></a>
-
-### LINKID=viewoauthappli【参照先】View OAuth Applications
+### View OAuth Applications
 
 This section explains how to view OAuth Applications.
 
@@ -15665,9 +15414,7 @@ zu1008010.tif![](media/media/image353.png)
 
 The details appear.
 
-<a id="linkiddeleteoauthappli参照先delete-oauth-applications"></a>
-
-### LINKID=deleteoauthappli【参照先】Delete OAuth Applications
+### Delete OAuth Applications
 
 To delete applications individually, do the following:
 
@@ -15685,17 +15432,13 @@ You are prompted to confirm the deletion.
 
 The applications are deleted.
 
-<a id="linkidmanageroles参照先manage-roles"></a>
-
-## LINKID=manageroles【参照先】Manage roles
+## Manage roles
 
 This section explains how to \<INDEXWORD PRONOUNCE="ろおるかんり" INDEXITEM="ロール管理"\>manage roles\</INDEXWORD\>. To access the screen where you can manage roles, click "User Management" and then click "Role".
 
 Depending on the role, the menus and actions that appear will differ (e.g., workflow approval permissions). For information on the features available for each role, see "Table 1-2. Administrator roles for the System" and "Table 1-3. System features and administrator roles".
 
-<a id="linkidviewroles参照先view-roles"></a>
-
-### LINKID=viewroles【参照先】View roles
+### View roles
 
 This section explains how to view roles.
 
@@ -15709,9 +15452,7 @@ zu1009010.tif![](media/media/image354.png)
 
 The details appear.
 
-<a id="linkidcreateroles参照先create-a-role"></a>
-
-### LINKID=createroles【参照先】Create a role
+### Create a role
 
 This section explains how to create a role.
 
@@ -15737,9 +15478,7 @@ Table 15‑6. The elements in the "Create" tab
 
 The account is created.
 
-<a id="linkideditroles参照先edit-a-role"></a>
-
-### LINKID=editroles【参照先】Edit a role
+### Edit a role
 
 This section explains how to create a role.
 
@@ -15757,9 +15496,7 @@ zu1009030.tif![](media/media/image356.png)
 
 The setting is saved.
 
-<a id="linkiddeleteroles参照先delete-roles"></a>
-
-### LINKID=deleteroles【参照先】Delete roles
+### Delete roles
 
 To delete roles individually, do the following:
 
@@ -15781,15 +15518,11 @@ zu1009050.tif![](media/media/image358.png)
 
 The roles are deleted.
 
-<a id="linkidmanagesessionact参照先manage-session-activities"></a>
-
-## LINKID=managesessionact【参照先】Manage Session Activities
+## Manage Session Activities
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="sessionactivity" INDEXITEM="Session Activity"\>Session Activity\</INDEXWORD\>. To access the screen where you can manage Session Activity, click "User Management", and then click "Session Activity".
 
-<a id="linkidviewsessionact参照先view-session-activities"></a>
-
-### LINKID=viewsessionact【参照先】View Session Activities
+### View Session Activities
 
 This section explains how to view Session Activities.
 
@@ -15799,9 +15532,7 @@ The "List" tab shows a list of identities. You can filter the list by selecting 
 
 zu1010010.tif![](media/media/image359.png)
 
-<a id="linkiddeletesessionact参照先delete-session-activities"></a>
-
-### LINKID=deletesessionact【参照先】Delete Session Activities
+### Delete Session Activities
 
 This section explains how to delete sessions.
 
@@ -15821,15 +15552,11 @@ You are prompted to confirm the deletion.
 
 The sessions are deleted.
 
-<a id="linkidmanageuser参照先manage-users"></a>
-
-## LINKID=manageuser【参照先】Manage users
+## Manage users
 
 This section explains how to \<INDEXWORD PRONOUNCE="ゆうさあをかんり" INDEXITEM="ユーザー管理"\>manage users\</INDEXWORD\>. To access the screen where you can manage users, click "User Management" and then click "User".
 
-<a id="linkidviewuser参照先view-users"></a>
-
-### LINKID=viewuser【参照先】View users
+### View users
 
 This section explains how to view users.
 
@@ -15847,9 +15574,7 @@ zu1011010.tif![](media/media/image360.png)
 
 The details appear.
 
-<a id="linkidcreateuser参照先add-a-user"></a>
-
-### LINKID=createuser【参照先】Add a user
+### Add a user
 
 This section explains how to add a user. Only system administrators can add users.
 
@@ -15878,9 +15603,7 @@ Table 15‑7. The elements in the "Create" tab
 
 The user is created.
 
-<a id="linkidedituser参照先edit-a-user"></a>
-
-### LINKID=edituser【参照先】Edit a user
+### Edit a user
 
 This section explains how to edit a user. Only system administrators can edit users.
 
@@ -15898,9 +15621,7 @@ zu1011030.tif![](media/media/image362.png)
 
 The setting is saved.
 
-<a id="linkidinacivateuser参照先disable-or-enable-users"></a>
-
-### LINKID=inacivateuser【参照先】Disable or enable users
+### Disable or enable users
 
 This section explains how to disable or enable users. Only system administrators can disable or enable users.
 
@@ -15918,15 +15639,11 @@ zu1011050.tif![](media/media/image364.png)
 
 The users are disabled or enabled according to the configuration.
 
-<a id="linkidmanageuserprofile参照先manage-user-profiles"></a>
-
-## LINKID=manageuserprofile【参照先】Manage User Profiles
+## Manage User Profiles
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="userprofile" INDEXITEM="User Profile"\>User Profiles\</INDEXWORD\>. To access the screen where you can manage User Profiles, click "User Management" and then click "User Profile".
 
-<a id="linkidviewuserprofile参照先view-user-profiles"></a>
-
-### LINKID=viewuserprofile【参照先】View User Profiles
+### View User Profiles
 
 This section explains how to view User Profiles.
 
@@ -15940,9 +15657,7 @@ zu1012010.tif![グラフィカル ユーザー インターフェイス, テキ�
 
 The details appear.
 
-<a id="linkiddeleteuserprofile参照先delete-user-profiles"></a>
-
-### LINKID=deleteuserprofile【参照先】Delete User Profiles
+### Delete User Profiles
 
 This section explains how to delete User Profiles. Only system administrators can delete User Profiles.
 
@@ -15966,9 +15681,7 @@ The User Profiles are deleted.
 
 This chapter provides information on how to manage the system settings.
 
-<a id="linkidauthormanagement参照先configure-the-author-display-setting"></a>
-
-## LINKID=authormanagement【参照先】Configure the author display setting
+## Configure the author display setting
 
 This section explains how to \<INDEXWORD PRONOUNCE="ちよしやしようほうをひようし" INDEXITEM="著者情報を表示"\>display author information\</INDEXWORD\> with items.
 
@@ -16286,9 +15999,7 @@ The background color you specified is saved. The message "Successfully update co
 
 This section explains how to set up the Prefix IDs for the \<INDEXWORD PRONOUNCE="jalcdoi" INDEXITEM="JaLC DOI"\>JaLC DOI\</INDEXWORD\> handle server, the \<INDEXWORD PRONOUNCE="jalccrossrefdoi" INDEXITEM="JaLC CrossRef DOI"\>JaLC CrossRef DOI\</INDEXWORD\> handle server, and the \<INDEXWORD PRONOUNCE="jalcdatacitedoi" INDEXITEM="JaLC DataCite DOI"\>JaLC DataCite DOI\</INDEXWORD\> handle server. To access the screen where you can configure these settings, click "Setting" and then click "Identifier".
 
-<a id="linkidviewidentifier参照先view-identifiers"></a>
-
-### LINKID=viewidentifier【参照先】View Identifiers
+### View Identifiers
 
 1.  > Click on the "List" tab to display a list of registered prefix IDs.
 
@@ -16298,9 +16009,7 @@ zu0804010.tif![](media/media/image379.png)
 
 The details of the ID appear.
 
-<a id="linkidcreateidentifier参照先create-an-identifier"></a>
-
-### LINKID=createidentifier【参照先】Create an Identifier
+### Create an Identifier
 
 1.  Click on the "Create" tab.
 
@@ -16340,9 +16049,7 @@ zu0804050.tif![](media/media/image383.png)
 
 The Prefix ID is created. The "List" tab will display the Prefix ID.
 
-<a id="linkideditidentifier参照先edit-an-identifier"></a>
-
-### LINKID=editidentifier【参照先】Edit an Identifier
+### Edit an Identifier
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
 
@@ -17126,9 +16833,7 @@ zu0819040.tif![](media/media/image402.png)
 
 The setting is saved.
 
-<a id="linkidsitemapcreating参照先create-a-sitemap"></a>
-
-## LINKID=sitemapcreating【参照先】Create a sitemap
+## Create a sitemap
 
 You can create and update a \<INDEXWORD PRONOUNCE="さいとまつふ" INDEXITEM="サイトマップ"\>sitemap\</INDEXWORD\>. You must have administrative privileges to create and update a sitemap.
 
@@ -17839,9 +17544,7 @@ Notes:
 
 ・Logins to the WEKO API (/api/<version>/login) are rate-limited per source IP address. The limit is specified with "WEKO_API_LIMIT_RATE_DEFAULT" in the configuration file (default: 100 per minute).
 
-<a id="linkideditindextree参照先linkidfilepreviewsetting参照先linkididentifiersetting参照先linkidsiteinfosetting参照先linkidwidgetsetting参照先manage-restricted-access"></a>
-
-## LINKID=editindextree【参照先】LINKID=filepreviewsetting【参照先】LINKID=identifiersetting【参照先】LINKID=siteinfosetting【参照先】LINKID=widgetsetting【参照先】Manage restricted access
+## Manage restricted access
 
 ### Configure restricted access
 
@@ -18923,33 +18626,23 @@ While it is running, the "Execute" button is disabled and the status next to the
 
 This chapter provides information on how to manage user accounts.
 
-<a id="linkidupdateprofile参照先update-a-profile"></a>
-
-## LINKID=updateprofile【参照先】Update a profile
+## Update a profile
 
 See the Data Registration Guide for information on updating a \<INDEXWORD PRONOUNCE="ゆうさあふろふいいる" INDEXITEM="ユーザープロフィール"\>user profile\</INDEXWORD\>.
 
-<a id="linkidchangepassword参照先change-a-password"></a>
-
-## LINKID=changepassword【参照先】Change a password
+## Change a password
 
 See the Data Registration Guide for information on how to \<INDEXWORD PRONOUNCE="はすわあとをへんこう" INDEXITEM="パスワードを変更"\>change a password\</INDEXWORD\>.
 
-<a id="linkidchecklogindevice参照先determine-which-device-is-used-to-log-in-to-an-account"></a>
-
-## LINKID=checklogindevice【参照先】Determine which device is used to log in to an account
+## Determine which device is used to log in to an account
 
 See the Data Registration Guide for information on how to determine which device is used to log in to an account.
 
-<a id="linkidmanageapplication参照先manage-applications"></a>
-
-## LINKID=manageapplication【参照先】Manage applications
+## Manage applications
 
 See the Data Registration Guide for information on how to manage applications.
 
-<a id="linkidmanagegroup参照先manage-groups"></a>
-
-## LINKID=managegroup【参照先】Manage groups
+## Manage groups
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="くるうふ" INDEXITEM="グループ"\>groups\</INDEXWORD\>. To access the screen where you can manage groups, select "Groups" from the user account pull-down menu in the upper right corner of the screen.
 
@@ -18961,9 +18654,7 @@ Notes:
 
 ・Any logged-in user can accept or reject invitations and join requests, and leave a group.
 
-<a id="linkidinclusiverequest参照先accept-a-request-or-invitation-to-join-a-group"></a>
-
-### LINKID=inclusiverequest【参照先】Accept a request or invitation to join a group
+### Accept a request or invitation to join a group
 
 1.  Select "Groups" from the user account pull-down menu in the upper right corner of the screen.
 
@@ -18981,9 +18672,7 @@ zu1205020.tif![](media/media/image415.png)
 
 Group membership is granted.
 
-<a id="linkidcreategroup参照先create-a-group"></a>
-
-### LINKID=creategroup【参照先】Create a group
+### Create a group
 
 This section explains how to create a group.
 
@@ -19010,9 +18699,7 @@ Table 19‑1. The elements in "New group"
 
 The group is created.
 
-<a id="linkidaddusertogroup参照先invite-members-to-a-group"></a>
-
-### LINKID=addusertogroup【参照先】Invite members to a group
+### Invite members to a group
 
 This section explains how to invite members to a group.
 
@@ -19038,9 +18725,7 @@ zu1205070.tif![](media/media/image420.png)
 
 An email is sent out.
 
-<a id="linkideditgroup参照先edit-a-group"></a>
-
-### LINKID=editgroup【参照先】Edit a group
+### Edit a group
 
 This section explains how to modify the information of a group.
 
@@ -19067,9 +18752,7 @@ Table 19‑2. The input elements
 
 The group information is updated.
 
-<a id="linkiddeletegroup参照先delete-a-group"></a>
-
-### LINKID=deletegroup【参照先】Delete a group
+### Delete a group
 
 This section explains how to delete a group.
 
@@ -19091,9 +18774,7 @@ The group is deleted.
 
 zu1205120.tif![](media/media/image425.png)
 
-<a id="linkidchangetimeout参照先modify-the-session-validity-time"></a>
-
-## LINKID=changetimeout【参照先】Modify the session validity time
+## Modify the session validity time
 
 This section explains how to modify the session validity time.
 
@@ -19111,9 +18792,9 @@ zu1206020.tif![](media/media/image427.png)
 
 The validity time is updated.
 
-<a id="linkidopenadmin参照先access-the-administration-screen"></a>
+<a id="access-the-administration-screen-1"></a>
 
-## LINKID=openadmin【参照先】Access the Administration screen
+## Access the Administration screen
 
 See "ANCHORID=adminwindow【参照元】Section 1.4 Access the Administration screen【E】" for instruction.
 
