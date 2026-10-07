@@ -3,6 +3,12 @@ User Operation Manual
 For General User, Registered User,  
 and Community/Repository/System Administrator
 
+v2.1.0
+
+| Version | Changes |
+| ------- | ------- |
+| v2.1.0  | Reviewed against the release_v2.1.0 implementation and reflected the corrections made to the Japanese version (permissions to download, preview and view statistics of files including site license users, index viewing conditions, item edit and delete permissions, bulk export formats). Added the Workspace chapter and the sections that were only in the Japanese version: file details screen (replace and copy), activity TSV export, deletion and lock, large file upload (not released), content policy, cookie consent screen, secret URLs, RSS, journal information, communities, request mail form, Google Scholar/Dataset output, Import to GakuNin RDM, and autofill from researchmap. Marked the changes in v2.1.0 with [v2.1.0]. Replaced screenshots with the release_v2.1.0 English screens. Removed the Word field codes left in the text and fixed broken links and table/figure numbers |
+
 Introduction
 
 This manual provides information on operating the WEKO3 System (referred to as the "System" in this document). The information in this manual will help users carry out data registration, data referencing, and other tasks.
