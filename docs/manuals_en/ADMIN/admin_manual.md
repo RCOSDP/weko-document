@@ -704,13 +704,13 @@ This chapter provides a high-level overview of the System.
 
 ## About the System
 
-\<INDEXWORD PRONOUNCE="しすてむ" INDEXITEM="システム"\>The System\</INDEXWORD\> allows you to store and publish academic research results. The System's repository can store \<INDEXWORD PRONOUNCE="こんてんつ" INDEXITEM="コンテンツ"\>content\</INDEXWORD\> in a variety of formats, including PDF files, videos, and images. You can efficiently manage research results by categorizing and arranging them in a tree structure. You can also reference data by keyword search or full-text search. The data in the \<INDEXWORD PRONOUNCE="りほしとり" INDEXITEM="リポジトリ"\>repository\</INDEXWORD\> can also be synchronized with other repositories. For information on the terminology used in this document, such as "item" or "index", see Secton ANCHORID=terminology【参照元】1.2. "Glossary"【E】.
+The System allows you to store and publish academic research results. The System's repository can store content in a variety of formats, including PDF files, videos, and images. You can efficiently manage research results by categorizing and arranging them in a tree structure. You can also reference data by keyword search or full-text search. The data in the repository can also be synchronized with other repositories. For information on the terminology used in this document, such as "item" or "index", see Secton 1.2. "Glossary".
 
 Figure 1‑1. Data management in the System
 
 zu0101010.tif![](media/media/image1.png)
 
-To register an \<INDEXWORD PRONOUNCE="あいてむ" INDEXITEM="アイテム"\>item\</INDEXWORD\>, you must first create a \<INDEXWORD PRONOUNCE="わあくふろお" INDEXITEM="ワークフロー"\>workflow\</INDEXWORD\> and register the item. You then need to get approval from reviewers/approvers before publishing the item.
+To register an item, you must first create a workflow and register the item. You then need to get approval from reviewers/approvers before publishing the item.
 
 Figure 1‑2. Registering data
 
@@ -722,7 +722,7 @@ This section explains the terminology used in the System.
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
-LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
+Table 1‑1. Terms used in the System
 
 <table>
 <thead>
@@ -738,7 +738,7 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 <p>In the WEKO3 module, you can use DDI as a metadata schema for OAI-PMH.</p></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="dublincore" INDEXITEM="DublinCore"&gt;DublinCore&lt;/INDEXWORD&gt;</td>
+<td>DublinCore</td>
 <td>A metadata schema standardized by the International Organization for Standardization (ISO 15836) (http://dublincore.org/). In the WEKO3 module, you can use DublinCore as a metadata schema for OAI-PMH.</td>
 </tr>
 <tr class="odd">
@@ -747,57 +747,57 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 <p>In the WEKO3 module, you can use JPCOAR as a metadata schema for OAI-PMH.</p></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="junii2" INDEXITEM="junii2"&gt;junii2&lt;/INDEXWORD&gt;</td>
+<td>junii2</td>
 <td><p>A metadata schema published by the National Institute of Informatics (NII) (http://www.nii.ac.jp/irp/archive/system/junii2.html).</p>
 <p>In the WEKO3 module, you cannot use junii2 as a metadata schema for OAI-PMH.</p></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="oai－pmh" INDEXITEM="OAI-PMH"&gt;OAI-PMH&lt;/INDEXWORD&gt;</td>
+<td>OAI-PMH</td>
 <td>OAI-PMH (The Open Archives Initiative Protocol for Metadata Harvesting) is a protocol developed by the Open Archives Initiative to exchange metadata between repositories (http://www.openarchives.org/OAI/openarchivesprotocol.html). External systems, including repositories, can use OAI-PMH to collect metadata of the items registered in the WEKO3 module.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ui" INDEXITEM="UI"&gt;UI&lt;/INDEXWORD&gt;</td>
+<td>UI</td>
 <td>Stands for "User Interface". It is an interface for exchanging information between the System and the user.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="weko3りほしとり" INDEXITEM="WEKO3リポジトリ"&gt;WEKO3 repository&lt;/INDEXWORD&gt;</td>
+<td>WEKO3 repository</td>
 <td>A repository created with the WEKO3 module and related software.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="あいてむ" INDEXITEM="アイテム"&gt;Item&lt;/INDEXWORD&gt;</td>
+<td>Item</td>
 <td><p>A unit of information stored in the repository. An item is made up of content files and metadata. Metadata contains information that conforms to the description elements and description formats specified in a metadata schema.</p>
 <p>Each item is assigned an item ID that is unique within the WEKO3 repository. An item is tied to a single item type and cannot be linked to multiple item types.</p>
 <p>You can associate different metadata with a single item by creating additional item types.</p></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="あいてむたいふ" INDEXITEM="アイテムタイプ"&gt;Item type&lt;/INDEXWORD&gt;</td>
+<td>Item type</td>
 <td><p>Defines the data type of metadata registered for an item. An item type consists of elements specified in a metadata schema such as JPCOAR.</p>
 <p>The repository administrator needs to consider the metadata required for a particular item and create an item type to suit the needs.</p>
 <p>Example:</p>
 <p>When storing journal papers and research data in the repository, the metadata elements for journal papers are differentiated from those for research data. In such a case, you can create an item type for journal papers and an item type for research data, respectively.</p></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="いんてつくす" INDEXITEM="インデックス"&gt;Index&lt;/INDEXWORD&gt;</td>
+<td>Index</td>
 <td>A unit (category) used to group items registered in the WEKO3 repository. Items registered in the WEKO3 repository will always have one or more indexes. An index can have multiple child indexes and items.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="いんてつくすつりい" INDEXITEM="インデックスツリー"&gt;Index tree&lt;/INDEXWORD&gt;</td>
+<td>Index tree</td>
 <td>A tree structure of nested indexes. A WEKO3 repository has a single repository tree.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="こみゆにてい" INDEXITEM="コミュニティ"&gt;Community&lt;/INDEXWORD&gt;</td>
+<td>Community</td>
 <td>A group of users who can access the repository. You can make items available only to the users of the community.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="こみゆにていかんりしや" INDEXITEM="コミュニティ管理者"&gt;Community administrator&lt;/INDEXWORD&gt;</td>
+<td>Community administrator</td>
 <td>A user with the role to manage the community.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="こんてんつ" INDEXITEM="コンテンツ"&gt;Content&lt;/INDEXWORD&gt;</td>
+<td>Content</td>
 <td>Research data registered in the repository, such as research papers and materials. The word "content" is used interchangeably with "item" in this manual.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="こんてんつふあいる" INDEXITEM="コンテンツファイル"&gt;Content file&lt;/INDEXWORD&gt;</td>
+<td>Content file</td>
 <td>Refers to the papers and other files that make up an item.</td>
 </tr>
 <tr class="odd">
@@ -806,64 +806,64 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 <p>Logged-in users who do not belong to any group, and users who are not logged in (guests), are treated as members of the group "No Group".</p></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="しすてむ" INDEXITEM="システム"&gt;System&lt;/INDEXWORD&gt;</td>
+<td>System</td>
 <td>Refers to the WEKO3 system.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="しすてむかんりしや" INDEXITEM="システム管理者"&gt;System administrator&lt;/INDEXWORD&gt;</td>
+<td>System administrator</td>
 <td>A user with the role to administer the System.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="すきいま" INDEXITEM="スキーマ"&gt;Schema&lt;/INDEXWORD&gt;</td>
+<td>Schema</td>
 <td>A definition of the database structure for a repository. It defines the relationship between objects that make up a database, such as tables and lists.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="たいあろく" INDEXITEM="ダイアログ"&gt;Dialog&lt;/INDEXWORD&gt;</td>
+<td>Dialog</td>
 <td>A UI mainly used to display messages and alerts. The user can still interact with UI's on the screen while a dialog is displayed.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="とうろくゆうさあ" INDEXITEM="登録ユーザー"&gt;Registered user&lt;/INDEXWORD&gt;</td>
+<td>Registered user</td>
 <td>User who can access stored academic research results and register data from academic research results in the repository.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="はあへすていんく" INDEXITEM="ハーベスティング"&gt;Harvesting&lt;/INDEXWORD&gt;</td>
+<td>Harvesting</td>
 <td>Scheduled activity for collecting repository data by external systems. It uses a dedicated protocol. Metadata needs to be mapped to the protocol.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ふろお" INDEXITEM="フロー"&gt;Flow&lt;/INDEXWORD&gt;</td>
+<td>Flow</td>
 <td>A series of actions used to save items to the System. It defines a sequence of actions such as adding data to the repository, entering metadata, and peer review/approval.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="めたてえた" INDEXITEM="メタデータ"&gt;Metadata&lt;/INDEXWORD&gt;</td>
+<td>Metadata</td>
 <td>Information related to an item. Examples include information for a title, author, and file size. Metadata consists of content metadata and administrative metadata. Content metadata is a summary of the item. Administrative metadata is information such as the creator of the content metadata or access count for the item.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="りほしとり" INDEXITEM="リポジトリ"&gt;Repository&lt;/INDEXWORD&gt;</td>
+<td>Repository</td>
 <td><p>A set of services a university provides to its community members to manage and distribute digital materials created by the university and its members. In principle, a single entity (e.g. a university or academic institution) can operate one repository.</p>
 <p>The term refers to, in this manual, a space where research data (i.e. items) and their metadata are stored.</p></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="りほしとりかんりしや" INDEXITEM="リポジトリ管理者"&gt;Repository administrator&lt;/INDEXWORD&gt;</td>
+<td>Repository administrator</td>
 <td>A user with the role to administer a repository. The repository administrator can configure the WEKO3 module, the index tree, and item types.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ろくいん" INDEXITEM="ログイン"&gt;Log in&lt;/INDEXWORD&gt;</td>
+<td>Log in</td>
 <td>The action to authenticate with a computer or various services on the Internet using pre-registered account information to access data.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="ろくあうと" INDEXITEM="ログアウト"&gt;Log out&lt;/INDEXWORD&gt;</td>
+<td>Log out</td>
 <td>The action to close one's access to data granted through authentication upon logging in.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ろおる" INDEXITEM="ロール"&gt;Role&lt;/INDEXWORD&gt;</td>
+<td>Role</td>
 <td>Defines the permissions granted to a user when operating the System, repository, and other elements. Permissions include adding, changing, and deleting data.</td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="わあくふろお" INDEXITEM="ワークフロー"&gt;Workflow&lt;/INDEXWORD&gt;</td>
+<td>Workflow</td>
 <td>Defines a series of tasks for business operations. It also refers to the sequence of those operations. A workflow for the WEKO3 repository defines a sequence of actions starting with registering items through publishing, including adding data to the repository, entering metadata, or peer review/approval.</td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="いたいし" INDEXITEM="異体字"&gt;Variant character&lt;/INDEXWORD&gt;</td>
+<td>Variant character</td>
 <td><p>The traditional alternative of kanji or a different form of character with the same pronunciation and meaning but written differently.</p>
 <p>Example:</p>
 <p>"會" instead of "会", or "壱" instead of "一".</p></td>
@@ -881,9 +881,9 @@ Table 1‑2. Administrator roles for the System
 
 | Administrator role                                                                               | Description                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \<INDEXWORD PRONOUNCE="しすてむかんりしや" INDEXITEM="システム管理者"\>System administrator\</INDEXWORD\>        | Responsible for such tasks as managing user accounts, managing workflows and integrating OAI-PMH. Some operations, including editing users and roles, configuring properties and OAI schemas, managing records, managing files, and maintenance, can only be performed by system administrators.                                  |
-| \<INDEXWORD PRONOUNCE="りほしとりかんりしや" INDEXITEM="リポジトリ管理者"\>Repository administrator\</INDEXWORD\>  | Responsible for such tasks as registering schemas in the repository, creating item types and mapping metadata.                                                                                                                                                 |
-| \<INDEXWORD PRONOUNCE="こみゆにていかんりしや" INDEXITEM="コミュニティ管理者"\>Community administrator\</INDEXWORD\> | Each research category, such as a faculty or department, represents a single index within the index tree. This administrative role is responsible for a particular index and performs harvesting, editing the index tree, registering widgets and other tasks. |
+| System administrator        | Responsible for such tasks as managing user accounts, managing workflows and integrating OAI-PMH. Some operations, including editing users and roles, configuring properties and OAI schemas, managing records, managing files, and maintenance, can only be performed by system administrators.                                  |
+| Repository administrator  | Responsible for such tasks as registering schemas in the repository, creating item types and mapping metadata.                                                                                                                                                 |
+| Community administrator | Each research category, such as a faculty or department, represents a single index within the index tree. This administrative role is responsible for a particular index and performs harvesting, editing the index tree, registering widgets and other tasks. |
 
 The following table shows the administrative features of the System and the administrator roles that can perform each operation.
 
@@ -970,11 +970,11 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="あいてむそうさ" INDEXITEM="アイテム操作"&gt;Items&lt;/INDEXWORD&gt;</td>
+<td>Items</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ANCHORID=itemmanagement【参照元】3. Items【E】</td>
+<td>3. Items</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1106,11 +1106,11 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="りようとうけい" INDEXITEM="利用統計"&gt;Statistics&lt;/INDEXWORD&gt;</td>
+<td>Statistics</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>7. Statistics【E】ANCHORID=statisticsmanagement【参照元】</td>
+<td>7. Statistics</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1138,11 +1138,11 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="even">
-<td>WorkFlowワーク風呂＾管理&lt;/INDEXWORD&gt;</td>
+<td>WorkFlowワーク風呂＾管理</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ANCHORID=workflowmanagement【参照元】8. WorkFlow【E】</td>
+<td>8. WorkFlow</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1166,7 +1166,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ANCHORID=communitymanagement【参照元】9. Communities【E】</td>
+<td>9. Communities</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1194,11 +1194,11 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="oai－pmh" INDEXITEM="OAI-PMH"&gt;OAI-PMH&lt;/INDEXWORD&gt;</td>
+<td>OAI-PMH</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ANCHORID=oaipmhsetting【参照元】10. OAI-PMH【E】</td>
+<td>10. OAI-PMH</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1230,7 +1230,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>11. Resource Sync【E】</td>
+<td>11. Resource Sync</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1258,11 +1258,11 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="れこおとかんり" INDEXITEM="レコード管理"&gt;Records&lt;/INDEXWORD&gt;</td>
+<td>Records</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ANCHORID=recordmanagement【参照元】12. Records</td>
+<td>12. Records</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1282,11 +1282,11 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ふあいるかんり" INDEXITEM="ファイル管理"&gt;Files&lt;/INDEXWORD&gt;</td>
+<td>Files</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ANCHORID=filemanagement【参照元】13. Files【E】</td>
+<td>13. Files</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1330,11 +1330,11 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="even">
-<td>&lt;INDEXWORD PRONOUNCE="ゆうさあかんり" INDEXITEM="ユーザー管理"&gt;User Management&lt;/INDEXWORD&gt;</td>
+<td>User Management</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ANCHORID=usermanagement【参照元】14. User Management【E】</td>
+<td>14. User Management</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -1434,11 +1434,11 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="odd">
-<td>&lt;INDEXWORD PRONOUNCE="しすてむせつてい" INDEXITEM="システム設定"&gt;Setting&lt;/INDEXWORD&gt;</td>
+<td>Setting</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>ANCHORID=systemsetting【参照元】15. Setting【E】</td>
+<td>15. Setting</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -1642,11 +1642,11 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="odd">
-<td>Managing &lt;INDEXWORD PRONOUNCE="ゆうさああかうんと" INDEXITEM="ユーザーアカウント"&gt;User Accounts&lt;/INDEXWORD&gt;</td>
+<td>Managing User Accounts</td>
 <td>〇</td>
 <td>〇</td>
 <td>〇</td>
-<td>ANCHORID=useraccount【参照元】16. Managing User Accounts【E】</td>
+<td>16. Managing User Accounts</td>
 <td></td>
 </tr>
 </tbody>
@@ -1694,7 +1694,7 @@ You can create item types by combining properties. An item type created is used 
 
 ## Set up properties
 
-To access the \<INDEXWORD PRONOUNCE="properties" INDEXITEM="Properties"\>Properties\</INDEXWORD\> screen, click "Item Types" and then click "Properties". This screen allows you to register new properties and update saved properties.
+To access the Properties screen, click "Item Types" and then click "Properties". This screen allows you to register new properties and update saved properties.
 
 ### Add properties
 
@@ -1716,7 +1716,7 @@ An attribute is added.
 
 Check "Required" if you want to make the attribute required. To delete the entry, click "X".
 
-For information on the input formats, see "ANCHORID=metadataattritemtype【参照元】Table 2-1. Input formats for metadata attributes【E】".
+For information on the input formats, see "Table 2-1. Input formats for metadata attributes".
 
 zu0404030.tif![](media/media/image7.png)\<TBLATT POSITION=”1” SCALE=”151”\>
 
@@ -1867,7 +1867,7 @@ The following is a list of system properties.
 
 2.  Edit metadata elements.
     
-    Enter an element name in the text area and select an input format from the drop-down list. For information on the input formats, see "ANCHORID=metadataattritemtype【参照元】Table 2-1. Input formats for metadata attributes【E】".
+    Enter an element name in the text area and select an input format from the drop-down list. For information on the input formats, see "Table 2-1. Input formats for metadata attributes".
     
     Check "Required" if you want to make the attribute required. To delete the entry, click "X".
     
@@ -1887,7 +1887,7 @@ The property is added.
 
 ## Manage item types
 
-You can \<INDEXWORD PRONOUNCE="あいてむたいふをさくせい" INDEXITEM="アイテムタイプを作成"\>create item types\</INDEXWORD\> used for item registration. You can also edit them.
+You can create item types used for item registration. You can also edit them.
 
 To access the screen where you can manage item types, click "Item Types" and then click "Metadata".
 
@@ -1897,11 +1897,11 @@ In the screen for editing metadata, you can switch between item types.
 
 zu0402010.tif![](media/media/image23.png)
 
-Select "\<INDEXWORD PRONOUNCE="ひようしゆんあいてむたいふ" INDEXITEM="標準アイテムタイプ"\>Standard Item Type\</INDEXWORD\>" to display the item types available for item registration.
+Select "Standard Item Type" to display the item types available for item registration.
 
-Select "\<INDEXWORD PRONOUNCE="はあへすとようあいてむたいふ" INDEXITEM="ハーベスト用アイテムタイプ"\>Item Type for Harvesting\</INDEXWORD\>" to display the item types available for harvesting only. This item type is not available for item registration and can only be used for harvesting.
+Select "Item Type for Harvesting" to display the item types available for harvesting only. This item type is not available for item registration and can only be used for harvesting.
 
-Select "\<INDEXWORD PRONOUNCE="さくしよすみあいてむたいふ" INDEXITEM="削除済みアイテムタイプ"\>Deleted Item Type\</INDEXWORD\>" to display the deleted item types. "Deleted Item Type" appears only when you are logged in as a system administrator.
+Select "Deleted Item Type" to display the deleted item types. "Deleted Item Type" appears only when you are logged in as a system administrator.
 
 The following table shows the operations that are enabled for each item type.
 
@@ -7418,7 +7418,7 @@ This message appears when there is a data inconsistency that does not affect the
 
 ## Set up OAI schemas
 
-To access the \<INDEXWORD PRONOUNCE="oaischema" INDEXITEM="OAI Schema"\>OAI Schema\</INDEXWORD\> screen, click "Item Types" and then click "OAI Schema". This screen lists the schemas used for mapping, and you can add or remove any of the schemas.
+To access the OAI Schema screen, click "Item Types" and then click "OAI Schema". This screen lists the schemas used for mapping, and you can add or remove any of the schemas.
 
 ### About schemas that support mapping
 
@@ -7433,8 +7433,6 @@ Set the following schema associations and languages for each metadata attribute 
   - Dublin Core
 
   - DDI
-    
-    \<INDEXWORD PRONOUNCE="jpcoar" INDEXITEM="JPCOAR"\>
     
     The metadata serving capabilities generate metadata output based on the mapping information for the item type. For detailed terminology, refer to the respective official Websites of these schemas.
     
@@ -7488,7 +7486,7 @@ zu0403030.tif![](media/media/image54.png)
     
 ### Map item types
 
-This section explains how to map an item type to a schema. You first need to add the schema before starting this operation. For information on adding schemas, see "ANCHORID=setoaischema【参照元】Section 2.3. Set up OAI schemas【E】".
+This section explains how to map an item type to a schema. You first need to add the schema before starting this operation. For information on adding schemas, see "Section 2.3. Set up OAI schemas".
 
 To access the screen where you can edit mapping, click "Item Types" and then click "Mapping".
 
@@ -8420,7 +8418,7 @@ This chapter provides information on how to manage items.
 
 ## Bulk update with a license or an embargo
 
-This section explains how to bulk update the file attributes of items belonging to the index with a license or an embargo.\<INDEXWORD PRONOUNCE="らいせんす" INDEXITEM="ライセンス"\>\</INDEXWORD\>\<INDEXWORD PRONOUNCE="えんはあこ" INDEXITEM="エンバーゴ"\>\</INDEXWORD\>
+This section explains how to bulk update the file attributes of items belonging to the index with a license or an embargo.
 
 1.  Click "Items", and then click "Bulk Update".
 
@@ -8460,7 +8458,7 @@ The information of the items displayed in the confirmation dialog is updated. Th
 
 ## Bulk delete items
 
-This section explains how to \<INDEXWORD PRONOUNCE="あいてむをいつかつさくしよ" INDEXITEM="アイテムを一括削除"\>bulk delete items\</INDEXWORD\>.
+This section explains how to bulk delete items.
 
 1.  Click "Items", and then click "Bulk Delete".
     
@@ -9815,7 +9813,7 @@ This chapter provides information on how to manage the index tree.
 
 ## Manage the index tree
 
-To access the screen where you can \<INDEXWORD PRONOUNCE="いんてつくすつりいのへんしゆう" INDEXITEM="インデックスツリーの編集"\>edit the index tree\</INDEXWORD\>, click "Index Tree" and then click "Edit Tree".
+To access the screen where you can edit the index tree, click "Index Tree" and then click "Edit Tree".
 
 ### Set up the index display
 
@@ -9891,7 +9889,7 @@ Table 4‑1. The elements in "Index Edit"
 <td>Index Link</td>
 <td><p>Specify whether to show the index in the index link on the top page.</p>
 <p>You can also specify the display names shown in the index link. A name in English is required. If you leave it blank, the index name will be shown.</p>
-<p>See "Section ANCHORID=indexlinksetting【参照元】15.2. Display the Index Link"【E】 for more information.</p></td>
+<p>See "Section 15.2. Display the Index Link" for more information.</p></td>
 </tr>
 <tr class="odd">
 <td>More Function</td>
@@ -9993,7 +9991,7 @@ This section explains how to modify the information in the index.
 
 zu0802030.tif![](media/media/image92.png)
 
-See "ANCHORID=addindexitem【参照元】Section 4.1.2. Add an index【E】" for information on the elements.
+See "Section 4.1.2. Add an index" for information on the elements.
 
 2.  Click "Send".
 
@@ -10055,7 +10053,7 @@ Notes:
 
 ## Manage journal information
 
-You can specify \<INDEXWORD PRONOUNCE="さつししようほう" INDEXITEM="雑誌情報"\>journal information to the index in the tree. The journal information you specify can be generated in the KBART format.
+You can specify journal information to the index in the tree. The journal information you specify can be generated in the KBART format.
 
 ### Edit journal information
 
@@ -10345,7 +10343,7 @@ This chapter provides information on how to manage Web design.
 
 Using widgets, you can specify different content for each language. The content of the widget displayed on the screen will change according to the display language setting of WEKO3. The English setting will apply if no widget corresponds to the display language setting.
 
-To access the screen where you can \<INDEXWORD PRONOUNCE="ういしえつとのかんり" INDEXITEM="ウィジェットの管理"\>manage widgets\</INDEXWORD\>, click "Web Design" and then click "Widget".
+To access the screen where you can manage widgets, click "Web Design" and then click "Widget".
 
 ### Display a list of widgets
 
@@ -10399,7 +10397,7 @@ Table 5‑1. Elements and descriptions for creating a widget
 <tr class="even">
 <td>Type<sup>*</sup></td>
 <td><p>Specify the widget type.</p>
-<p>See "ANCHORID=typesetting【参照元】(1) Settings for the Type element【E】" for more information.</p>
+<p>See "(1) Settings for the Type element" for more information.</p>
 <ul>
 <li><p>Free description</p></li>
 <li><p>Access counter</p></li>
@@ -10422,7 +10420,7 @@ Table 5‑1. Elements and descriptions for creating a widget
 </tr>
 <tr class="odd">
 <td>Theme</td>
-<td><p>Specify the theme for the widget from the options below. See "ANCHORID=themesetting【参照元】(2) Settings for the Theme element【E】" for more information.</p>
+<td><p>Specify the theme for the widget from the options below. See "(2) Settings for the Theme element" for more information.</p>
 <ul>
 <li><p>Default</p></li>
 <li><p>Simple</p></li>
@@ -10444,7 +10442,7 @@ Table 5‑1. Elements and descriptions for creating a widget
 </tr>
 <tr class="odd">
 <td>Border Style</td>
-<td><p>Specify the border style of the widget from the options below. See "ANCHORID=borderstyle【参照元】(3) Settings for the Border Style element【E】" for more information.</p>
+<td><p>Specify the border style of the widget from the options below. See "(3) Settings for the Border Style element" for more information.</p>
 <ul>
 <li><p>None</p></li>
 <li><p>Solid</p></li>
@@ -10888,7 +10886,7 @@ The "Edit" tab appears.
 
 2.  Modify the setting of the widget.
 
-See "ANCHORID=createwidgets【参照元】Section 5.1.2. Create a widget【E】" for more information on the elements.
+See "Section 5.1.2. Create a widget" for more information on the elements.
 
 3.  Click "Save".
 
@@ -10935,7 +10933,7 @@ This section explains how to delete a widget.
 
 ## Manage the page layout
 
-You can \<INDEXWORD PRONOUNCE="へえしついか" INDEXITEM="ページ追加"\>add\</INDEXWORD\>, modify or remove pages from the repository. You can also \<INDEXWORD PRONOUNCE="ういしえつとをはいち" INDEXITEM="ウィジェットを配置"\>place widgets\</INDEXWORD\> into the pages.
+You can add, modify or remove pages from the repository. You can also place widgets into the pages.
 
 To access the screen where you can manage the page layout, click "Web Design" and then click "Page Layout".
 
@@ -10955,7 +10953,7 @@ zu0825010.tif![](media/media/image170.png)
 
 zu0825020.tif![](media/media/image171.png)
 
-You can add a new page. See "Section ANCHORID=addpageonrepository【参照元】5.2.2. Add a page"【E】 for information on adding a page.
+You can add a new page. See "Section 5.2.2. Add a page" for information on adding a page.
 
 3.  To add a widget, click the "Add Widget" for the widget you want to add in "Widget List".
 
@@ -11049,7 +11047,7 @@ The trash can icon (![icontrashbox](media/media/image165.png)) does not appear f
 
 The page is deleted. The message "Successfully deleted page" appears.
 
-zu0825080.tif![](media/media/image182.png)LINKID=deletepageonrepository【参照先】
+zu0825080.tif![](media/media/image182.png)
 
 ### Edit a widget on the page
 
@@ -11087,7 +11085,7 @@ This chapter provides information on how to manage the Author DB.
 
 ## Manage author information
 
-You can set up \<INDEXWORD PRONOUNCE="ちよしやめいてんきよ" INDEXITEM="著者名典拠"\>author name sources\</INDEXWORD\> and external author ID Prefixes.
+You can set up author name sources and external author ID Prefixes.
 
 To access the screen where you can manage author information, click "Author Management" and then click "Edit".
 
@@ -11405,7 +11403,7 @@ zu0801040.tif![](media/media/image191.png)
 
 2.  Specify settings for each element.
 
-See the section "ANCHORID=addauthor【参照元】 (3) Add an author ID【E】" for information on the elements.
+See the section " (3) Add an author ID" for information on the elements.
 
 3.  Click "Save".
 
@@ -11619,7 +11617,7 @@ zu0801100.tif![](media/media/image199.png)
 
 zu0801110.tif![](media/media/image200.png)
 
-See the section "ANCHORID=addidprefix【参照元】(2) Add an external author ID Prefix【E】" for information on the elements.
+See the section "(2) Add an external author ID Prefix" for information on the elements.
 
 3.  Click "Save".
 
@@ -11708,7 +11706,7 @@ To delete an affiliation ID Prefix, click "Edit", and then click "Delete".
 
 ## Export author information
 
-\<INDEXWORD PRONOUNCE="ちよしやめいてんきよ" INDEXITEM="著者名典拠"\>You can export author name source information as a batch file.\</INDEXWORD\>一括出力
+You can export author name source information as a batch file.一括出力
 
 This section explains how to bulk export author information.
 
@@ -12632,13 +12630,13 @@ There are eleven different tsv (tab-separated values) formats available for down
 
 1.  In the report management screen, under "Fixed Form Reports", select "Type", "Year", and "Month" for "Aggregation month".
 
-See "ANCHORID=reportstype【参照元】Section 7.1.3 Types of fixed form reports【E】" for information on the elements that can be selected for "Type".
+See "Section 7.1.3 Types of fixed form reports" for information on the elements that can be selected for "Type".
 
 zu0902020.tif![](media/media/image210.png)
 
 2.  Click "Download".
 
-The specified fixed form reports are downloaded. See "ANCHORID=reportstype【参照元】Section 7.1.3 Types of fixed form reports【E】" for information on the downloaded files.
+The specified fixed form reports are downloaded. See "Section 7.1.3 Types of fixed form reports" for information on the downloaded files.
 
 When an error occurs, the error message "Unexpected error occurred" will appear.
 
@@ -12877,7 +12875,7 @@ The files sent as the fixed form reports are in eleven different tsv (tab-separa
 
 1.  In the report management screen, under "Fixed Form Reports", select "Type", "Year", and "Month" for "Aggregation month".
 
-See "ANCHORID=reportstype【参照元】Section 7.1.3 Types of fixed form reports【E】" for information on the elements that can be selected for "Type".
+See "Section 7.1.3 Types of fixed form reports" for information on the elements that can be selected for "Type".
 
 zu0902020.tif![](media/media/image223.png)
 
@@ -12988,7 +12986,7 @@ zu0902080.tif![](media/media/image232.png)
 
 ## Set up feedback mails
 
-This section explains how to configure the \<INDEXWORD PRONOUNCE="ふいいとはつくめえる" INDEXITEM="フィードバックメール"\>Feedback Mail\</INDEXWORD\> settings.
+This section explains how to configure the Feedback Mail settings.
 
 1.  > Click "Statistics", and then click "Feedback Mail".
 
@@ -13020,7 +13018,7 @@ The historical feedback mails sent are also displayed in the "Send logs" table.
 
 ## Set up the site license
 
-To access the screen where you can aggregate usage logs for the \<INDEXWORD PRONOUNCE="さいとらいせんす" INDEXITEM="サイトライセンス"\>site license\</INDEXWORD\>, click "Statistics" and then click "Site License".
+To access the screen where you can aggregate usage logs for the site license, click "Statistics" and then click "Site License".
 
 [v2.1.0] For community administrators, only the repositories they manage are available. You cannot manually send statistics by email for a repository that you do not manage.
 
@@ -13040,7 +13038,7 @@ zu0903010.tif![](media/media/image236.png)
 
 3.  Click "Save".
 
-See "ANCHORID=sitelicenseusage【参照元】Section 7.3.3 Site license statistics【E】" for information on the files attached to feedback mails for site license statistics.
+See "Section 7.3.3 Site license statistics" for information on the files attached to feedback mails for site license statistics.
 
 ### Send site license statistics manually
 
@@ -13052,7 +13050,7 @@ zu0903020.tif![](media/media/image237.png)
 
 3.  Click "Manual Send".
 
-See "ANCHORID=sitelicenseusage【参照元】Section 7.3.3 Site license statistics【E】" for information on the files attached to feedback mails for site license statistics.
+See "Section 7.3.3 Site license statistics" for information on the files attached to feedback mails for site license statistics.
 
 ### Site license statistics
 
@@ -13107,11 +13105,11 @@ This chapter provides information on how to manage workflows.
 
 ## Set up flows
 
-A \<INDEXWORD PRONOUNCE="ふろお" INDEXITEM="フロー"\>flow\</INDEXWORD\> refers to a sequence of processes (actions) involved in item registration. To access the "Flow List" screen, click "WorkFlow" and then clicking "Flow List". You can view a list of flows and add or delete specified flows in this screen.
+A flow refers to a sequence of processes (actions) involved in item registration. To access the "Flow List" screen, click "WorkFlow" and then clicking "Flow List". You can view a list of flows and add or delete specified flows in this screen.
 
 ### Add a flow
 
-This section explains how to add a new flow. A flow created in this step does not have actions registered. See "ANCHORID=editflow【参照元】Section 8.1.2 Edit flow actions【E】" for information on how to add actions to a flow.
+This section explains how to add a new flow. A flow created in this step does not have actions registered. See "Section 8.1.2 Edit flow actions" for information on how to add actions to a flow.
 
 1.  > Click "+Create Flow".
 
@@ -13133,7 +13131,7 @@ The "Start" and "End" actions are automatically added to the flow, and the flow 
 
 zu1101030.tif![](media/media/image240.png)
 
-You can then add actions to the flow. See "ANCHORID=editflow【参照元】Section 8.1.2 Edit flow actions【E】" for information on how to add actions to a flow.
+You can then add actions to the flow. See "Section 8.1.2 Edit flow actions" for information on how to add actions to a flow.
 
 > An error message appears when the flow name you specified already exists in the System.
 
@@ -13233,7 +13231,7 @@ You cannot delete a flow if it is used in a workflow. In this case, clicking "De
 
 ## Set up workflows
 
-A \<INDEXWORD PRONOUNCE="わあくふろお" INDEXITEM="ワークフロー"\>workflow\</INDEXWORD\> is a combination of flows and items. To access the "Flow List" screen, click "WorkFlow" and then clicking "WorkFlow List". You can view a list of workflows and add or delete specified workflows in this screen.
+A workflow is a combination of flows and items. To access the "Flow List" screen, click "WorkFlow" and then clicking "WorkFlow List". You can view a list of workflows and add or delete specified workflows in this screen.
 
 ### Add a workflow
 
@@ -13339,7 +13337,7 @@ This chapter provides information on how to manage communities.
 
 ## Manage communities
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="こみゆにてい" INDEXITEM="コミュニティ"\>communities\</INDEXWORD\>.
+This section explains how to manage communities.
 
 ★ To access the screen where you can manage communities, click "Communities" and then click "Community".
 
@@ -13347,7 +13345,7 @@ By creating a community, you can make items available only to the users of the c
 
 ### View communities
 
-This section explains how to \<INDEXWORD PRONOUNCE="こみゆにていをさんしよう" INDEXITEM="コミュニティを参照"\>view communities\</INDEXWORD\>.
+This section explains how to view communities.
 
 1.  Click "Communities", and then click "Community".
 
@@ -13372,7 +13370,7 @@ The details appear.
 
 ### Create a community
 
-This section explains how to \<INDEXWORD PRONOUNCE="こみゆにていをさくせい" INDEXITEM="コミュニティを作成"\>create a community\</INDEXWORD\>.
+This section explains how to create a community.
 
 1.  > Click on the "Create" tab.
 
@@ -13418,7 +13416,7 @@ A community is created.
 
 ### Edit a community
 
-This section explains how to \<INDEXWORD PRONOUNCE="こみゆにていをへんしゆう" INDEXITEM="コミュニティを編集"\>edit a community\</INDEXWORD\>.
+This section explains how to edit a community.
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
@@ -13426,7 +13424,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=createcommunity【参照元】Section 9.1.2 Create a community【E】" for information on the elements.
+See "Section 9.1.2 Create a community" for information on the elements.
 
 zu0201030.tif![](media/media/image262.png)
 
@@ -13436,7 +13434,7 @@ The setting is saved.
 
 ## Manage favorite communities
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="おきにいりのこみゆにてい" INDEXITEM="お気に入りのコミュニティ"\>favorite communities\</INDEXWORD\>. To access the screen where you can manage your favorite communities, click "Communities" and then click "Community".
+This section explains how to manage favorite communities. To access the screen where you can manage your favorite communities, click "Communities" and then click "Community".
 
 ### View favorite communities
 
@@ -13489,7 +13487,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=createfeaturedcommunity【参照元】Section 9.2.2 Create a favorite community【E】" for information on the elements.
+See "Section 9.2.2 Create a favorite community" for information on the elements.
 
 zu0202030.tif![](media/media/image265.png)
 
@@ -13561,9 +13559,9 @@ This chapter provides information on how to set up harvesting using the OAI-PMH.
 
 ## Set up harvesting
 
-You can perform harvesting from other institutions using \<INDEXWORD PRONOUNCE="oai－pmh" INDEXITEM="OAI-PMH"\>OAI-PMH\</INDEXWORD\>.
+You can perform harvesting from other institutions using OAI-PMH.
 
-The schemas that support harvesting are "JPCOAR" and "DDI". For information on other schemas, contact wekosoftware@nii.ac.jp.\<INDEXWORD PRONOUNCE="はあへすていんく" INDEXITEM="ハーベスティング"\> To access the screen where you can set up \</INDEXWORD\>harvesting, click "OAI-PMH" and then click "Harvesting".
+The schemas that support harvesting are "JPCOAR" and "DDI". For information on other schemas, contact wekosoftware@nii.ac.jp. To access the screen where you can set up harvesting, click "OAI-PMH" and then click "Harvesting".
 
 ### Run a harvesting plan
 
@@ -13659,7 +13657,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=createplanforharvesting【参照元】Section 10.1.2 Create a harvesting plan【E】" for information on the elements.
+See "Section 10.1.2 Create a harvesting plan" for information on the elements.
 
 zu0601030.tif![](media/media/image279.png)
 
@@ -13873,7 +13871,7 @@ The Resource List setting screen is displayed by clicking "Resource Sync" and "R
 
 ### Output Resource Lists
 
-This section explains how to \</INDEXWORD\>output Resource Lists and Resource Dumps.
+This section explains how to output Resource Lists and Resource Dumps.
 
 1.  Click on the "List" tab to display the registered Resource Lists.
 
@@ -13909,7 +13907,7 @@ Figure 11‑2. Sample output Resource Dumps
 
 ### Create a Resource List
 
-This section explains how to \</INDEXWORD\>create a Resource List.
+This section explains how to create a Resource List.
 
 1.  > Click on the "Create" tab.
 
@@ -13969,7 +13967,7 @@ Table 11‑1. The elements on the Resource List create tab
 
 ### Edit a Resource List
 
-This section explains how to \</INDEXWORD\>edit a Resource List.
+This section explains how to edit a Resource List.
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
@@ -13977,11 +13975,11 @@ The Resource List edit screen appears.
 
 2.  Modify the setting.
 
-> See "ANCHORID=createcommunity【参照元】Section 11.1.2 Create a Resource List【E】" for information on the elements.
+> See "Section 11.1.2 Create a Resource List" for information on the elements.
 
 ### Delete a Resource List
 
-This section explains how to \</INDEXWORD\>delete a Resource List.
+This section explains how to delete a Resource List.
 
 1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
 
@@ -13999,7 +13997,7 @@ The Change List setting screen is displayed by clicking "Resource Sync" and "Cha
 
 ### View Change Lists
 
-This section explains how to \</INDEXWORD\>output Change Lists and Change Dumps.
+This section explains how to output Change Lists and Change Dumps.
 
 1.  > Click on the "List" tab to display the registered Change Lists.
 
@@ -14049,7 +14047,7 @@ Figure 11‑6. Sample output Change Dumps
 
 ### Create a Change List
 
-This section explains how to \</INDEXWORD\>create a Change List.
+This section explains how to create a Change List.
 
 1.  > Click on the "Create" tab.
 
@@ -14129,7 +14127,7 @@ Table 11‑2. The elements on the Change List create tab
 
 ### Edit a Change List
 
-This section explains how to \</INDEXWORD\>edit a Change List.
+This section explains how to edit a Change List.
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
@@ -14137,7 +14135,7 @@ The Change List edit screen appears.
 
 2.  Modify the setting.
 
-> See "ANCHORID=createcommunity【参照元】Section 11.2.2 Create a Change List【E】" for information on the elements.
+> See "Section 11.2.2 Create a Change List" for information on the elements.
 > 
 > ![](media/media/image306.png)
 
@@ -14147,7 +14145,7 @@ The Change List edit screen appears.
 
 ### Delete a Change List
 
-This section explains how to \</INDEXWORD\>delete a Change List.
+This section explains how to delete a Change List.
 
 1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
 
@@ -14319,7 +14317,7 @@ The Resync edit screen appears.
 
 2.  Modify the setting.
 
-> See "ANCHORID=createcommunity【参照元】Section 11.3.2 Create a Resync【E】" for information on the elements.
+> See "Section 11.3.2 Create a Resync" for information on the elements.
 
 ### Delete a Resync
 
@@ -14469,7 +14467,7 @@ This chapter provides information on how to manage records.
 
 ## View Persistent Identifiers
 
-This section explains how to view \<INDEXWORD PRONOUNCE="persistentidentifier" INDEXITEM="Persistent Identifier"\>Persistent Identifiers\</INDEXWORD\>.
+This section explains how to view Persistent Identifiers.
 
 1.  Click "Records", and then click "Persistent Identifier".
 
@@ -14485,7 +14483,7 @@ zu0701010.tif![](media/media/image312.png)
 
 ## Manage Record Metadata
 
-The "List" tab appears when you click "Records" and then click "\<INDEXWORD PRONOUNCE="recordmetadata" INDEXITEM="Record Metadata"\>Record Metadata\</INDEXWORD\>".
+The "List" tab appears when you click "Records" and then click "Record Metadata".
 
 ### View Record Metadata
 
@@ -14533,7 +14531,7 @@ This chapter provides information on how to manage files.
 
 ## Manage Buckets
 
-The "List" tab appears when you click "Files" and then click "\<INDEXWORD PRONOUNCE="bucket" INDEXITEM="Bucket"\>Bucket\</INDEXWORD\>".
+The "List" tab appears when you click "Files" and then click "Bucket".
 
 ### View Buckets
 
@@ -14591,7 +14589,7 @@ zu0301030.tif![](media/media/image318.png)
 
 2.  > Modify the setting.
 
-See "ANCHORID=createbucket【参照元】Section 13.1.2 Create a Bucket【E】" for information on the elements.
+See "Section 13.1.2 Create a Bucket" for information on the elements.
 
 3.  > Click "Save".
 
@@ -14599,7 +14597,7 @@ The setting is saved.
 
 ## Manage File Instances
 
-The "List" tab appears when you click "Files" and then click "\<INDEXWORD PRONOUNCE="fileinstance" INDEXITEM="File Instance"\>File Instance\</INDEXWORD\>".
+The "List" tab appears when you click "Files" and then click "File Instance".
 
 ### View File Instances
 
@@ -14661,7 +14659,7 @@ To delete multiple File Instances at once, do the following:
 
 ## Manage Locations
 
-This section explains how to manage Locations.\<INDEXWORD PRONOUNCE="location" INDEXITEM="Location"\> To access the screen where you can manage \</INDEXWORD\>Locations, click "Files" and then click "Location".
+This section explains how to manage Locations. To access the screen where you can manage Locations, click "Files" and then click "Location".
 
 ### View Locations
 
@@ -14741,7 +14739,7 @@ A screen appears where you can edit the setting.
 
 2.  > Modify the setting.
 
-See "ANCHORID=createlocation【参照元】Section 14.3.2 Create a Location【E】" for information on the elements.
+See "Section 14.3.2 Create a Location" for information on the elements.
 
 zu0303030.tif![](media/media/image324.png)
 
@@ -14779,7 +14777,7 @@ This section explains how to manage Multipart Objects. (This feature is currentl
 
 ### View Multipart Objects
 
-This section explains how to view \<INDEXWORD PRONOUNCE="multipartobject" INDEXITEM="Multipart Object"\>Multipart Objects\</INDEXWORD\>.
+This section explains how to view Multipart Objects.
 
 1.  Click "Files", and then click "Multipart Object".
 
@@ -14799,7 +14797,7 @@ This section explains how to manage Object Versions.
 
 ### View Object Versions
 
-This section explains how to view \<INDEXWORD PRONOUNCE="objectversion" INDEXITEM="Object Version"\>Object Versions\</INDEXWORD\>.
+This section explains how to view Object Versions.
 
 1.  Click "Files", and then click "Object Version".
 
@@ -14902,7 +14900,7 @@ This chapter provides information on how to manage users.
 
 ## Access: Roles
 
-This section explains how to add an action to a \<INDEXWORD PRONOUNCE="ろおる" INDEXITEM="ロール"\>role\</INDEXWORD\>. To access the screen where you can manage roles, click "User Management" and then click "Access: Roles".
+This section explains how to add an action to a role. To access the screen where you can manage roles, click "User Management" and then click "Access: Roles".
 
 ### View role-based actions
 
@@ -14955,7 +14953,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=addaccessrole【参照元】Section 14.1.2 Add an action to a role【E】" for information on the elements.
+See "Section 14.1.2 Add an action to a role" for information on the elements.
 
 zu1001030.tif![](media/media/image331.png)
 
@@ -14987,7 +14985,7 @@ zu1001050.tif![](media/media/image333.png)
 
 ## Access: System Roles
 
-This section explains how to add an action to a \<INDEXWORD PRONOUNCE="しすてむろおる" INDEXITEM="システムロール"\>system role\</INDEXWORD\>. To access the screen where you can manage system roles, click "User Management" and then click "Access: System Roles".
+This section explains how to add an action to a system role. To access the screen where you can manage system roles, click "User Management" and then click "Access: System Roles".
 
 ### View system role-based actions
 
@@ -15040,7 +15038,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=addsystemrole【参照元】Section 14.2.2 Add an action to a system role【E】" for information on the elements.
+See "Section 14.2.2 Add an action to a system role" for information on the elements.
 
 zu1002030.tif![](media/media/image336.png)
 
@@ -15072,7 +15070,7 @@ The actions are deleted.
 
 ## Access: Users
 
-This section explains how to add an action to a \<INDEXWORD PRONOUNCE="ゆうさあ" INDEXITEM="ユーザー"\>user\</INDEXWORD\>. To access the screen where you can manage users, click "User Management" and then click "Access: Users".
+This section explains how to add an action to a user. To access the screen where you can manage users, click "User Management" and then click "Access: Users".
 
 ### View user actions
 
@@ -15125,7 +15123,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=addusers【参照元】Section 14.3.2 Add an action to a user【E】" for information on the elements.
+See "Section 14.3.2 Add an action to a user" for information on the elements.
 
 zu1003030.tif![](media/media/image341.png)
 
@@ -15157,7 +15155,7 @@ The actions are deleted.
 
 ## Manage Linked account identities
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="linkedaccount" INDEXITEM="Linked account"\>Linked account\</INDEXWORD\> identities. To access the screen where you can manage Linked account identities, click "User Management" and then click "Linked account identities".
+This section explains how to manage Linked account identities. To access the screen where you can manage Linked account identities, click "User Management" and then click "Linked account identities".
 
 ### View Linked account identities
 
@@ -15193,7 +15191,7 @@ The identities are deleted.
 
 ## Manage Linked account tokens
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="linkedaccountのとおくん" INDEXITEM="Linked accountのトークン"\>Linked account\</INDEXWORD\> tokens. To access the screen where you can manage Linked account tokens, click "User Management" and then click "Linked account tokens".
+This section explains how to manage Linked account tokens. To access the screen where you can manage Linked account tokens, click "User Management" and then click "Linked account tokens".
 
 ### View Linked account tokens
 
@@ -15244,7 +15242,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=createlinkedaccounttokens【参照元】Section 14.5.2 Create a Linked account token【E】" for information on the elements.
+See "Section 14.5.2 Create a Linked account token" for information on the elements.
 
 3.  Click "Save".
 
@@ -15270,7 +15268,7 @@ The tokens are deleted.
 
 ## Manage Linked accounts
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="linkedaccount" INDEXITEM="Linked account"\>Linked accounts\</INDEXWORD\>. To access the screen where you can manage Linked accounts, click "User Management" and then click "Linked accounts".
+This section explains how to manage Linked accounts. To access the screen where you can manage Linked accounts, click "User Management" and then click "Linked accounts".
 
 ### View Linked accounts
 
@@ -15324,7 +15322,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=createlinkedaccounts【参照元】Section 14.6.2 Create a Linked account【E】" for information on the elements.
+See "Section 14.6.2 Create a Linked account" for information on the elements.
 
 zu1006030.tif![](media/media/image349.png)
 
@@ -15356,7 +15354,7 @@ The accounts are deleted.
 
 ## Manage OAuth Application Tokens
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="oauthapplicationのとおくん" INDEXITEM="OAuth Applicationのトークン"\>OAuth Application tokens\</INDEXWORD\>. To access the screen where you can manage OAuth Application Tokens, click "User Management", and then click "OAuth Application Tokens".
+This section explains how to manage OAuth Application tokens. To access the screen where you can manage OAuth Application Tokens, click "User Management", and then click "OAuth Application Tokens".
 
 ### View OAuth Application Tokens
 
@@ -15392,7 +15390,7 @@ The tokens are deleted.
 
 ## Manage OAuth Applications
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="oauthapplication" INDEXITEM="OAuth Application"\>OAuth Applications\</INDEXWORD\>. To access the screen where you can manage OAuth Applications, click "User Management", and then click "OAuth Applications".
+This section explains how to manage OAuth Applications. To access the screen where you can manage OAuth Applications, click "User Management", and then click "OAuth Applications".
 
 In the management screen, you can only view and delete registered OAuth Applications. Each user registers OAuth Applications and issues tokens from the "Applications" screen of the account settings.
 
@@ -15434,7 +15432,7 @@ The applications are deleted.
 
 ## Manage roles
 
-This section explains how to \<INDEXWORD PRONOUNCE="ろおるかんり" INDEXITEM="ロール管理"\>manage roles\</INDEXWORD\>. To access the screen where you can manage roles, click "User Management" and then click "Role".
+This section explains how to manage roles. To access the screen where you can manage roles, click "User Management" and then click "Role".
 
 Depending on the role, the menus and actions that appear will differ (e.g., workflow approval permissions). For information on the features available for each role, see "Table 1-2. Administrator roles for the System" and "Table 1-3. System features and administrator roles".
 
@@ -15488,7 +15486,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=createroles【参照元】Section 14.9.2 Create a role【E】" for information on the elements.
+See "Section 14.9.2 Create a role" for information on the elements.
 
 zu1009030.tif![](media/media/image356.png)
 
@@ -15520,7 +15518,7 @@ The roles are deleted.
 
 ## Manage Session Activities
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="sessionactivity" INDEXITEM="Session Activity"\>Session Activity\</INDEXWORD\>. To access the screen where you can manage Session Activity, click "User Management", and then click "Session Activity".
+This section explains how to manage Session Activity. To access the screen where you can manage Session Activity, click "User Management", and then click "Session Activity".
 
 ### View Session Activities
 
@@ -15554,7 +15552,7 @@ The sessions are deleted.
 
 ## Manage users
 
-This section explains how to \<INDEXWORD PRONOUNCE="ゆうさあをかんり" INDEXITEM="ユーザー管理"\>manage users\</INDEXWORD\>. To access the screen where you can manage users, click "User Management" and then click "User".
+This section explains how to manage users. To access the screen where you can manage users, click "User Management" and then click "User".
 
 ### View users
 
@@ -15613,7 +15611,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-See "ANCHORID=createuser【参照元】Section 14.11.2 Add a user【E】" for information on the elements.
+See "Section 14.11.2 Add a user" for information on the elements.
 
 zu1011030.tif![](media/media/image362.png)
 
@@ -15641,7 +15639,7 @@ The users are disabled or enabled according to the configuration.
 
 ## Manage User Profiles
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="userprofile" INDEXITEM="User Profile"\>User Profiles\</INDEXWORD\>. To access the screen where you can manage User Profiles, click "User Management" and then click "User Profile".
+This section explains how to manage User Profiles. To access the screen where you can manage User Profiles, click "User Management" and then click "User Profile".
 
 ### View User Profiles
 
@@ -15683,7 +15681,7 @@ This chapter provides information on how to manage the system settings.
 
 ## Configure the author display setting
 
-This section explains how to \<INDEXWORD PRONOUNCE="ちよしやしようほうをひようし" INDEXITEM="著者情報を表示"\>display author information\</INDEXWORD\> with items.
+This section explains how to display author information with items.
 
 1.  Click "Setting", and then click "Items".
 
@@ -15730,7 +15728,7 @@ The setting is saved.
 
 ## Display the Index Link
 
-This section explains how to display the \<INDEXWORD PRONOUNCE="いんてつくすりんく" INDEXITEM="インデックスリンク"\>Index Link\</INDEXWORD\>. For information on setting up the indexes in the index links, see "Section ANCHORID=addindexitem【参照元】4.1.2 "Add an index"【E】.
+This section explains how to display the Index Link. For information on setting up the indexes in the index links, see "Section 4.1.2 "Add an index".
 
 1.  Click "Setting", and then click "Index Link".
 
@@ -15742,7 +15740,7 @@ zu0806010.tif![](media/media/image367.png)
 
 3.  Click "Update".
 
-The setting is saved. "Index Link" is set to display on the Home screen.LINKID=indextreesetting【参照先】
+The setting is saved. "Index Link" is set to display on the Home screen.
 
 ## Configure the activity list display
 
@@ -15762,7 +15760,7 @@ This section explains how to configure whether to show the column of approver em
 
 ## Set up languages
 
-This section explains how to set up \<INDEXWORD PRONOUNCE="けんこをせつてい" INDEXITEM="言語を設定"\>display languages\</INDEXWORD\>. The languages you configure here will be displayed in the "Language" drop-down menu on the Home screen.
+This section explains how to set up display languages. The languages you configure here will be displayed in the "Language" drop-down menu on the Home screen.
 
 1.  Click "Setting", and then click "Language".
 
@@ -15780,7 +15778,7 @@ The setting is saved.
 
 ## Display the PDF cover page
 
-You can set up the \<INDEXWORD PRONOUNCE="pdfのひようしかそう" INDEXITEM="PDFの表紙画像"\>PDF cover page\</INDEXWORD\> when displaying items. You can also choose to display text or an image in the header.
+You can set up the PDF cover page when displaying items. You can also choose to display text or an image in the header.
 
 The following elements can be displayed on the PDF cover page.
 
@@ -15859,7 +15857,7 @@ The setting is saved.
 
 ## Configure the ranking display
 
-This section explains how to configure the display, an aggregation method, and an aggregation period for \<INDEXWORD PRONOUNCE="らんきんく" INDEXITEM="ランキング"\>ranking\</INDEXWORD\>.
+This section explains how to configure the display, an aggregation method, and an aggregation period for ranking.
 
 1.  Click "Setting", and then click "Ranking".
 
@@ -15997,7 +15995,7 @@ The background color you specified is saved. The message "Successfully update co
 
 ## Set up Identifiers
 
-This section explains how to set up the Prefix IDs for the \<INDEXWORD PRONOUNCE="jalcdoi" INDEXITEM="JaLC DOI"\>JaLC DOI\</INDEXWORD\> handle server, the \<INDEXWORD PRONOUNCE="jalccrossrefdoi" INDEXITEM="JaLC CrossRef DOI"\>JaLC CrossRef DOI\</INDEXWORD\> handle server, and the \<INDEXWORD PRONOUNCE="jalcdatacitedoi" INDEXITEM="JaLC DataCite DOI"\>JaLC DataCite DOI\</INDEXWORD\> handle server. To access the screen where you can configure these settings, click "Setting" and then click "Identifier".
+This section explains how to set up the Prefix IDs for the JaLC DOI handle server, the JaLC CrossRef DOI handle server, and the JaLC DataCite DOI handle server. To access the screen where you can configure these settings, click "Setting" and then click "Identifier".
 
 ### View Identifiers
 
@@ -16057,7 +16055,7 @@ A screen appears where you can edit the setting.
 
 2.  Modify the setting.
     
-    See "ANCHORID=createidentifier【参照元】Section 15.9.2 Create an Identifier【E】" for information on the elements.
+    See "Section 15.9.2 Create an Identifier" for information on the elements.
 
 ![](media/media/image384.png)zu0804060.tif
 
@@ -16077,7 +16075,7 @@ The registered Identifier setting will be reflected in the "Identifier Grant" sc
 
 ## Modify the export settings
 
-When you \<INDEXWORD PRONOUNCE="えくすほおと" INDEXITEM="エクスポート"\>export\</INDEXWORD\> item data in the item detail screen or the item export screen, content files will be compressed into a single zip file (export file) and downloaded.
+When you export item data in the item detail screen or the item export screen, content files will be compressed into a single zip file (export file) and downloaded.
 
 This section explains how to allow item export and allow content files to be exported.
 
@@ -16106,7 +16104,7 @@ The setting is saved.
 
 ## Configure the log analysis settings
 
-You can specify IP addresses to be excluded from \<INDEXWORD PRONOUNCE="ろくかいせき" INDEXITEM="ログ解析"\>log analysis\</INDEXWORD\>. You can also configure the shared crawler list provided by the NII.
+You can specify IP addresses to be excluded from log analysis. You can also configure the shared crawler list provided by the NII.
 
 1.  Click "Setting", and then click "Log Analysis".
 
@@ -16133,7 +16131,7 @@ The setting is saved.
 
 ## Configure the search conditions, the number of results displayed, and the initial display
 
-To access the screen where you can \<INDEXWORD PRONOUNCE="けんさくのせつてい" INDEXITEM="検索の設定"\>configure the search settings\</INDEXWORD\>, click "Setting" and then click "Search".
+To access the screen where you can configure the search settings, click "Setting" and then click "Search".
 
 ### Configure the author search setting
 
@@ -16803,7 +16801,7 @@ If you specify multiple site names for a single language, you will get the error
 
 ## Configure IP addresses permitted by the site license
 
-This section explains how to configure IP addresses permitted by a \<INDEXWORD PRONOUNCE="さいとらいせんす" INDEXITEM="サイトライセンス"\>site license\</INDEXWORD\>. Users can download paid files free of charge when they access from IP addresses permitted by the site license. You can also exclude certain item types from free downloads even when they access from permitted IP addresses. You can give feedback on usage by site license users on the report screen.
+This section explains how to configure IP addresses permitted by a site license. Users can download paid files free of charge when they access from IP addresses permitted by the site license. You can also exclude certain item types from free downloads even when they access from permitted IP addresses. You can give feedback on usage by site license users on the report screen.
 
 1.  Click "Setting", and then click "Site License".
 
@@ -16835,7 +16833,7 @@ The setting is saved.
 
 ## Create a sitemap
 
-You can create and update a \<INDEXWORD PRONOUNCE="さいとまつふ" INDEXITEM="サイトマップ"\>sitemap\</INDEXWORD\>. You must have administrative privileges to create and update a sitemap.
+You can create and update a sitemap. You must have administrative privileges to create and update a sitemap.
 
 1.  Click "Setting", and then click "Sitemap".
 
@@ -16861,7 +16859,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
 ## Set up emails
 
-This section explains how to \</INDEXWORD\>set up emails\<INDEXWORD PRONOUNCE="めえるをせつてい" INDEXITEM="メールを設定"\> sent from the System.
+This section explains how to set up emails sent from the System.
 
 1.  Click "Setting", and then click "Mail".
 
@@ -17464,7 +17462,7 @@ The setting is saved.
 
 ## Configure the file preview settings
 
-This section explains how to configure the \<INDEXWORD PRONOUNCE="ふれひゆう" INDEXITEM="プレビュー"\>preview\</INDEXWORD\> settings for PDF files.
+This section explains how to configure the preview settings for PDF files.
 
 1.  Click "Setting", and then click "File Preview".
 
@@ -17491,7 +17489,7 @@ The "File Preview" settings are saved.
 
 ## Allow Shibboleth users
 
-This section explains how to allow \<INDEXWORD PRONOUNCE="しほれすゆうさあ" INDEXITEM="シボレスユーザー"\>Shibboleth users\</INDEXWORD\> to log in.
+This section explains how to allow Shibboleth users to log in.
 
 1.  Click "Setting", and then click "Shibboleth".
 
@@ -18494,7 +18492,7 @@ The following describes the text embedded in the messages.
 
 ## Set up an institution name
 
-\<INDEXWORD PRONOUNCE="きかんめいをせつてい" INDEXITEM="機関名を設定"\>This section explains how to set up an institution name\</INDEXWORD\>.
+This section explains how to set up an institution name.
 
 1.  Click "Setting", and then click "Others".
 
@@ -18628,11 +18626,11 @@ This chapter provides information on how to manage user accounts.
 
 ## Update a profile
 
-See the Data Registration Guide for information on updating a \<INDEXWORD PRONOUNCE="ゆうさあふろふいいる" INDEXITEM="ユーザープロフィール"\>user profile\</INDEXWORD\>.
+See the Data Registration Guide for information on updating a user profile.
 
 ## Change a password
 
-See the Data Registration Guide for information on how to \<INDEXWORD PRONOUNCE="はすわあとをへんこう" INDEXITEM="パスワードを変更"\>change a password\</INDEXWORD\>.
+See the Data Registration Guide for information on how to change a password.
 
 ## Determine which device is used to log in to an account
 
@@ -18644,7 +18642,7 @@ See the Data Registration Guide for information on how to manage applications.
 
 ## Manage groups
 
-This section explains how to manage \<INDEXWORD PRONOUNCE="くるうふ" INDEXITEM="グループ"\>groups\</INDEXWORD\>. To access the screen where you can manage groups, select "Groups" from the user account pull-down menu in the upper right corner of the screen.
+This section explains how to manage groups. To access the screen where you can manage groups, select "Groups" from the user account pull-down menu in the upper right corner of the screen.
 
 Notes:
 
@@ -18796,7 +18794,7 @@ The validity time is updated.
 
 ## Access the Administration screen
 
-See "ANCHORID=adminwindow【参照元】Section 1.4 Access the Administration screen【E】" for instruction.
+See "Section 1.4 Access the Administration screen" for instruction.
 
 
 # Advanced Menu
