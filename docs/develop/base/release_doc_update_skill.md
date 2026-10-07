@@ -129,6 +129,12 @@ python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/man
   python3 .claude/skills/weko-release-doc-update/scripts/add_anchors.py docs/spec/base docs/build/spec/html --apply
   ```
 
+- Word から変換した見出しに残るフィールドコード（`LINKID=…【参照先】`、`\<INDEXWORD …\>`）は、次で除去し、ファイル内のリンクを新しいアンカーに書き換えます（`--apply` を付けないと件数の表示だけ）。そのあとビルドし直して `add_anchors.py` を実行します。
+
+  ```
+  python3 .claude/skills/weko-release-doc-update/scripts/strip_heading_fieldcodes.py docs/manuals_en/ADMIN/admin_manual.md --apply
+  ```
+
 - ログに出る shelljs の警告、`prism-Python.js` が見つからないエラー、deprecated 警告は、最後に「generation finished with success」があれば問題ありません。
 - 本の名前は `spec`、`admin`、`user`、`GUIDE`、`admin_en`、`user_en` です。開発者向け文書・運用文書は book.json が無いため対象外です。
 - ビルド結果は別リポジトリに登録して github.io で公開しているので、公開サイトで切れるリンクを残さないよう、SLUG も直します。
