@@ -618,7 +618,7 @@ The format conventions used in this document are as follows:
 
 [16.13 Manage faceted searches 325](#manage-faceted-searches)
 
-[16.13.1 Configure faceted searches 325](#_Toc99036165)
+[16.13.1 Configure faceted searches 325](#configure-faceted-searches)
 
 [16.14 Configure the site information 329](#configure-the-site-information)
 
@@ -698,10 +698,14 @@ The format conventions used in this document are as follows:
 
 [20.2 Edit the user profile settings](#edit-the-user-profile-settings)
 
+<a id="chapter-1-system-overview"></a>
+
 #   
 Chapter 1: System Overview
 
 This chapter provides a high-level overview of the System.
+
+<a id="linkidwhatis参照先about-the-system"></a>
 
 ## LINKID=whatis【参照先】About the System
 
@@ -716,6 +720,8 @@ To register an \<INDEXWORD PRONOUNCE="あいてむ" INDEXITEM="アイテム"\>it
 Figure 1‑2. Registering data
 
 zu0101020.tif![](media/media/image2.png)
+
+<a id="linkidterminology参照先glossary"></a>
 
 ## LINKID=terminology【参照先】Glossary
 
@@ -871,6 +877,8 @@ LINKID=terminologylist【参照先】Table 1‑1. Terms used in the System
 </tr>
 </tbody>
 </table>
+
+<a id="linkidfeaturesandusers参照先system-features"></a>
 
 ## LINKID=featuresandusers【参照先】System features
 
@@ -1663,6 +1671,8 @@ Legend: 〇: Feature available, ×: Feature not available
 
   - [v2.1.0] If integration with GakuNin mAP groups at academic federation (Shibboleth) login is enabled (WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPS in the configuration file; default: False), users who belong to a GakuNin mAP role group are given the corresponding WEKO role (System Administrator, Repository Administrator, Community Administrator, or Contributor) when they log in. The menus available on the Administration screen follow the given role. The GakuNin mAP role groups (roles whose names are jc\_roles\_sysadm or start with jc\_*FQDN*\_ro\_) are not shown in the role choices of User Management, WorkFlow, and Communities. GakuNin mAP groups (names starting with jc\_*FQDN*\_gr\_) are treated as groups, not as roles. *FQDN* is the host name of the entity ID set in WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID, with "." and "-" replaced by "\_".
 
+<a id="linkidadminwindow参照先indexword-pronounceかんりかめん-indexitem管理画面access-the-administration-screenindexword"></a>
+
 ## LINKID=adminwindow【参照先】\<INDEXWORD PRONOUNCE="かんりかめん" INDEXITEM="管理画面"\>Access the Administration screen\</INDEXWORD\>
 
 This section explains how to access the "Administration" screen. The system management operations described in this manual are performed in the "Administration" screen. To display the setting screen for each menu, follow the steps below.
@@ -1693,9 +1703,13 @@ This chapter provides information on how to manage item types.
 
 You can create item types by combining properties. An item type created is used as a format (i.e. a template) for registering items.
 
+<a id="linkidsetpropertyitemtype参照先set-up-properties"></a>
+
 ## LINKID=setpropertyitemtype【参照先】Set up properties
 
 To access the \<INDEXWORD PRONOUNCE="properties" INDEXITEM="Properties"\>Properties\</INDEXWORD\> screen, click "Item Types" and then click "Properties". This screen allows you to register new properties and update saved properties.
+
+<a id="linkidaddpropertyitemtype参照先add-properties"></a>
 
 ### LINKID=addpropertyitemtype【**参照先**】Add properties
 
@@ -1830,6 +1844,8 @@ The property information will not reflect the "enum" setting you have added.
 
 The property is added.
 
+<a id="linkidmetadataattritemtype参照先edit-properties"></a>
+
 ### LINKID=metadataattritemtype【参照先】Edit properties
 
 This section explains how to edit existing properties.
@@ -1885,6 +1901,8 @@ zu0404150.tif![](media/media/image22.png)
 4.  Click "Save".
 
 The property is added.
+
+<a id="linkidaddordeleteitemtype参照先manage-item-types"></a>
 
 ## LINKID=addordeleteitemtype【参照先】Manage item types
 
@@ -7417,6 +7435,8 @@ After an update, a green message area may appear at the top of the item type edi
 
 This message appears when there is a data inconsistency that does not affect the operation. Saving the item type resolves the data inconsistency, and the message no longer appears.
 
+<a id="linkidsetoaischema参照先set-up-oai-schemas"></a>
+
 ## LINKID=setoaischema【参照先】Set up OAI schemas
 
 To access the \<INDEXWORD PRONOUNCE="oaischema" INDEXITEM="OAI Schema"\>OAI Schema\</INDEXWORD\> screen, click "Item Types" and then click "OAI Schema". This screen lists the schemas used for mapping, and you can add or remove any of the schemas.
@@ -7485,9 +7505,13 @@ The schema is deleted.
 
 zu0403030.tif![](media/media/image54.png)
 
-1.  ## LINKID=mapitemtypetoschema【参照先】Map item types to schemas
+<a id="linkidmapitemtypetoschema参照先map-item-types-to-schemas"></a>
+
+## LINKID=mapitemtypetoschema【参照先】Map item types to schemas
     
-    1.  ### \<INDEXWORD PRONOUNCE="あいてむたいふをまつひんく" INDEXITEM="アイテムタイプをマッピング"\>\</INDEXWORD\>Map item types
+<a id="indexword-pronounceあいてむたいふをまつひんく-indexitemアイテムタイプをマッピングindexwordmap-item-types"></a>
+
+### \<INDEXWORD PRONOUNCE="あいてむたいふをまつひんく" INDEXITEM="アイテムタイプをマッピング"\>\</INDEXWORD\>Map item types
 
 This section explains how to map an item type to a schema. You first need to add the schema before starting this operation. For information on adding schemas, see "ANCHORID=setoaischema【参照元】Section 2.3. Set up OAI schemas【E】".
 
@@ -8458,6 +8482,8 @@ zu0502050.tif![](media/media/image68.png)
 The information of the items displayed in the confirmation dialog is updated. The versions of these items are also updated.
 
 > ![](media/media/image69.png)
+
+<a id="linkidcustomsorting参照先linkidimportitems参照先bulk-delete-items"></a>
 
 ## LINKID=customsorting【参照先】LINKID=Importitems【参照先】Bulk delete items
 
@@ -9810,13 +9836,19 @@ curl -X GET "https://{host name}/api/items/import-task/get_bulk_import_task_stat
 
 If you are not authenticated (for example, the access token is invalid), 401 is returned. If the role or scope is insufficient, 403 is returned.
 
+<a id="index-tree"></a>
+
 # ‏Index Tree
 
 This chapter provides information on how to manage the index tree.
 
+<a id="manage-the-index-tree"></a>
+
 ## ‏Manage the index tree
 
 To access the screen where you can \<INDEXWORD PRONOUNCE="いんてつくすつりいのへんしゆう" INDEXITEM="インデックスツリーの編集"\>edit the index tree\</INDEXWORD\>, click "Index Tree" and then click "Edit Tree".
+
+<a id="set-up-the-index-display"></a>
 
 ### ‏Set up the index display
 
@@ -9986,6 +10018,8 @@ If there are no errors, the popup message "Index is updated successfully" appear
 
 ![](media/media/image91.png)
 
+<a id="linkidchangeindexitem参照先modify-an-index"></a>
+
 ### LINKID=changeindexitem【参照先】Modify an index
 
 This section explains how to modify the information in the index.
@@ -10009,6 +10043,8 @@ You cannot set the index to private if any of its subordinate items has a DOI gr
 ![](media/media/image93.png)
 
 ![](media/media/image94.png)
+
+<a id="linkiddeleteindexitem参照先delete-an-index"></a>
 
 ### LINKID=deleteindexitem【参照先】Delete an index
 
@@ -10342,11 +10378,15 @@ zu0503030.tif![](media/media/image109.png)
 
 This chapter provides information on how to manage Web design.
 
+<a id="linkidmanagecommunity参照先managing-widgets"></a>
+
 ## LINKID=managecommunity【参照先】Managing widgets
 
 Using widgets, you can specify different content for each language. The content of the widget displayed on the screen will change according to the display language setting of WEKO3. The English setting will apply if no widget corresponds to the display language setting.
 
 To access the screen where you can \<INDEXWORD PRONOUNCE="ういしえつとのかんり" INDEXITEM="ウィジェットの管理"\>manage widgets\</INDEXWORD\>, click "Web Design" and then click "Widget".
+
+<a id="linkiddetailwidgets参照先display-a-list-of-widgets"></a>
 
 ### LINKID=detailwidgets【参照先】Display a list of widgets
 
@@ -10363,6 +10403,8 @@ zu0824009.tif![](media/media/image110.png)
 The detailed information on the widget appears.
 
 > ![](media/media/image112.png)
+
+<a id="linkidcreatewidgets参照先create-a-widget"></a>
 
 ### LINKID=createwidgets【参照先】Create a widget
 
@@ -10879,6 +10921,8 @@ Table 5‑8. Sample display for each border style
 | Dotted | zu0824240.tif![](media/media/image162.png) | A dotted line is displayed. |
 | Double | zu0824250.tif![](media/media/image163.png) | A double line is displayed. |
 
+<a id="linkideditwidgets参照先edit-a-widget"></a>
+
 ### LINKID=editwidgets【参照先】Edit a widget
 
 This section explains how to edit a widget.
@@ -10898,6 +10942,8 @@ The widget is updated. The message "Widget item updated successfully." appears a
 Notes:
 
 [v2.1.0] For community administrators, when the widget is saved, it is checked that both the repository to which the widget currently belongs and the repository specified in "Repository" are communities managed by the administrator. You cannot modify a widget that belongs to a repository not managed by the administrator (including Root Index), or move a widget to such a repository. Likewise, you can delete only widgets that belong to the communities you manage.
+
+<a id="linkiddeletewidgets参照先delete-a-widget"></a>
 
 ### LINKID=deletewidgets【参照先】Delete a widget
 
@@ -10933,6 +10979,8 @@ This section explains how to delete a widget.
 > If the widget you want to delete is used in "Page Layout", the message "Cannot delete widget (ID: \<widget\_ID\>, because it's setting in Widget Design)" will appear.
 > 
 > ![](media/media/image169.png)
+
+<a id="linkidwidgetdesignsetting参照先manage-the-page-layout"></a>
 
 ## LINKID=widgetdesignsetting【参照先】Manage the page layout
 
@@ -11082,10 +11130,14 @@ You can choose to upload files (including images) to widgets if they have a WYSI
 
 Image uploads will be converted to a file upload format through the BASE64 encoding.
 
+<a id="author-management"></a>
+
 #   
 Author Management
 
 This chapter provides information on how to manage the Author DB.
+
+<a id="linkidmanagecommunity参照先manage-author-information"></a>
 
 ## LINKID=managecommunity【参照先】Manage author information
 
@@ -12602,9 +12654,13 @@ Table 6‑17 Validation checks for identifiers
 
 This chapter provides information on how to set up statistics.
 
+<a id="linkidfeedbackmailsetting参照先linkidreportsetting参照先set-up-reports"></a>
+
 ## LINKID=feedbackmailsetting【参照先】LINKID=reportsetting【参照先】Set up reports
 
 To access the screen where you can manage reports, click "Statistics" and then click "Reports".
+
+<a id="linkidnumofitems参照先check-the-number-of-registered-items"></a>
 
 ### LINKID=numofitems【参照先】Check the number of registered items
 
@@ -12628,6 +12684,8 @@ Number of private items registered:
 
 zu0902010.tif![](media/media/image209.png)
 
+<a id="linkidgetreports参照先download-fixed-form-reports"></a>
+
 ### LINKID=getreports【参照先】Download fixed form reports
 
 There are eleven different tsv (tab-separated values) formats available for downloading as the fixed form reports. This section explains how to download fixed form reports.
@@ -12645,6 +12703,8 @@ The specified fixed form reports are downloaded. See "ANCHORID=reportstype【参
 When an error occurs, the error message "Unexpected error occurred" will appear.
 
 > ![](media/media/image211.png)
+
+<a id="linkidreportstype参照先types-of-fixed-form-reports"></a>
 
 ### LINKID=reportstype【参照先】Types of fixed form reports
 
@@ -12871,6 +12931,8 @@ Figure 7‑11. Site Access
 
 ![](media/media/image222.png)\<TBLATT POSITION="1" SCALE="151"\>
 
+<a id="linkidmailreports参照先send-a-fixed-form-report-by-email"></a>
+
 ### LINKID=mailreports【参照先】Send a fixed form report by email
 
 This section explains how to send a fixed form report with a specified period to a registered email address.
@@ -12926,6 +12988,8 @@ zu0902050.tif![](media/media/image229.png)
 The email schedule is set. Fixed form reports email will be sent based on the specified transmission interval.
 
 zu0902060.tif![](media/media/image230.png)
+
+<a id="linkidcustomreports参照先sett-up-a-custom-report"></a>
 
 ### LINKID=customreports【参照先】Sett up a custom report
 
@@ -12988,6 +13052,8 @@ The results appear in "Result".
 
 zu0902080.tif![](media/media/image232.png)
 
+<a id="linkidsitelicensestatisticssetting参照先-set-up-feedback-mails"></a>
+
 ## LINKID=sitelicensestatisticssetting【参照先】 Set up feedback mails
 
 This section explains how to configure the \<INDEXWORD PRONOUNCE="ふいいとはつくめえる" INDEXITEM="フィードバックメール"\>Feedback Mail\</INDEXWORD\> settings.
@@ -13032,6 +13098,8 @@ When you select a repository from the pull-down at the top of the screen, the se
 
 You can specify certain item types to be excluded in the aggregation in the management screen.
 
+<a id="linkidsitelicensestatisticsinfosetting参照先send-site-license-statistics-automatically"></a>
+
 ### LINKID=sitelicensestatisticsinfosetting【参照先】Send site license statistics automatically
 
 1.  From the pull-down at the top of the screen, select the repository whose settings you want to change.
@@ -13044,6 +13112,8 @@ zu0903010.tif![](media/media/image236.png)
 
 See "ANCHORID=sitelicenseusage【参照元】Section 7.3.3 Site license statistics【E】" for information on the files attached to feedback mails for site license statistics.
 
+<a id="linkidmanuallysendsitelicense参照先send-site-license-statistics-manually"></a>
+
 ### LINKID=manuallysendsitelicense【参照先】Send site license statistics manually
 
 1.  From the pull-down at the top of the screen, select the repository for which you want to obtain statistics.
@@ -13055,6 +13125,8 @@ zu0903020.tif![](media/media/image237.png)
 3.  Click "Manual Send".
 
 See "ANCHORID=sitelicenseusage【参照元】Section 7.3.3 Site license statistics【E】" for information on the files attached to feedback mails for site license statistics.
+
+<a id="linkidsitelicenseusage参照先site-license-statistics"></a>
 
 ### LINKID=sitelicenseusage【参照先】Site license statistics
 
@@ -13107,9 +13179,13 @@ Table 7‑3. Site license statistics
 
 This chapter provides information on how to manage workflows.
 
+<a id="linkidsetflow参照先set-up-flows"></a>
+
 ## LINKID=setflow【参照先】Set up flows
 
 A \<INDEXWORD PRONOUNCE="ふろお" INDEXITEM="フロー"\>flow\</INDEXWORD\> refers to a sequence of processes (actions) involved in item registration. To access the "Flow List" screen, click "WorkFlow" and then clicking "Flow List". You can view a list of flows and add or delete specified flows in this screen.
+
+<a id="linkidaddflow参照先add-a-flow"></a>
 
 ### LINKID=addflow【参照先】Add a flow
 
@@ -13160,6 +13236,8 @@ To create a deletion flow, do the following:
 7.  Add the "Approval" action, and move it between "Start" and "End".
 
 8.  Finally, click "Save".
+
+<a id="linkideditflow参照先edit-flow-actions"></a>
 
 ### LINKID=editflow【参照先】Edit flow actions
 
@@ -13213,6 +13291,8 @@ The flow is saved. The message "Updated flow action successfully" appears.
 
 > zu1101090.tif![](media/media/image249.png)
 
+<a id="linkiddelflow参照先delete-a-flow"></a>
+
 ### LINKID=delflow【参照先】Delete a flow
 
 1.  Click the flow name you want to edit.
@@ -13233,9 +13313,13 @@ You cannot delete a flow if it is used in a workflow. In this case, clicking "De
 
 > ![](media/media/image252.png)
 
+<a id="linkidsetworkflow参照先set-up-workflows"></a>
+
 ## LINKID=setworkflow【参照先】Set up workflows
 
 A \<INDEXWORD PRONOUNCE="わあくふろお" INDEXITEM="ワークフロー"\>workflow\</INDEXWORD\> is a combination of flows and items. To access the "Flow List" screen, click "WorkFlow" and then clicking "WorkFlow List". You can view a list of workflows and add or delete specified workflows in this screen.
+
+<a id="linkidaddworkflow参照先add-a-workflow"></a>
 
 ### LINKID=addworkflow【参照先】Add a workflow
 
@@ -13272,6 +13356,8 @@ zu1101300.tif
 
 The workflow is saved. The message "Workflow created successfully" appears.
 
+<a id="linkideditworkflow参照先edit-a-workflow"></a>
+
 ### LINKID=editworkflow【参照先】Edit a workflow
 
 1.  Click on the Workflow name.
@@ -13295,6 +13381,8 @@ The flow and the item type can be changed regardless of whether the workflow is 
 3.  Click "Save".
 
 The workflow is saved. If it is saved successfully, the message "Workflow created successfully" appears.
+
+<a id="linkiddeleteworkflow参照先delete-a-workflow"></a>
 
 ### LINKID=deleteworkflow【参照先】Delete a workflow
 
@@ -13339,6 +13427,8 @@ When items are registered from the workspace, they are registered using the work
 
 This chapter provides information on how to manage communities.
 
+<a id="linkidmanagecommunity参照先manage-communities"></a>
+
 ## LINKID=managecommunity【参照先】Manage communities
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="こみゆにてい" INDEXITEM="コミュニティ"\>communities\</INDEXWORD\>.
@@ -13346,6 +13436,8 @@ This section explains how to manage \<INDEXWORD PRONOUNCE="こみゆにてい" I
 ★ To access the screen where you can manage communities, click "Communities" and then click "Community".
 
 By creating a community, you can make items available only to the users of the community.
+
+<a id="linkidviewcommunity参照先view-communities"></a>
 
 ### LINKID=viewcommunity【参照先】View communities
 
@@ -13371,6 +13463,8 @@ The details appear.
 | Repository-specific role (jc\_\<FQDN\>\_ro\_cont) | Contributor |
 
 \* \<FQDN\> is the host name of the IdP entity ID with "." and "-" replaced by "\_".
+
+<a id="linkidcreatecommunity参照先create-a-community"></a>
 
 ### LINKID=createcommunity【参照先】Create a community
 
@@ -13418,6 +13512,8 @@ A community is created.
 | Editorial board  | /c/{community\_id}/page/eb              |
 | OA Policy        | /c/{community\_id}/page/oapolicy        |
 
+<a id="linkideditcommunity参照先edit-a-community"></a>
+
 ### LINKID=editcommunity【参照先】Edit a community
 
 This section explains how to \<INDEXWORD PRONOUNCE="こみゆにていをへんしゆう" INDEXITEM="コミュニティを編集"\>edit a community\</INDEXWORD\>.
@@ -13436,9 +13532,13 @@ zu0201030.tif![](media/media/image262.png)
 
 The setting is saved.
 
+<a id="linkidfeaturedcommunity参照先manage-favorite-communities"></a>
+
 ## LINKID=featuredcommunity【参照先】Manage favorite communities
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="おきにいりのこみゆにてい" INDEXITEM="お気に入りのコミュニティ"\>favorite communities\</INDEXWORD\>. To access the screen where you can manage your favorite communities, click "Communities" and then click "Community".
+
+<a id="linkidviewfeaturedcommunity参照先view-favorite-communities"></a>
 
 ### LINKID=viewfeaturedcommunity【参照先】View favorite communities
 
@@ -13453,6 +13553,8 @@ zu0202010.tif![](media/media/image263.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidcreatefeaturedcommunity参照先create-a-favorite-community"></a>
 
 ### LINKID=createfeaturedcommunity【参照先】Create a favorite community
 
@@ -13481,6 +13583,8 @@ Table 9‑2. The elements in the "Create" tab
 
 A featured community is created.
 
+<a id="linkideditfeaturedcommunity参照先edit-a-favorite-community"></a>
+
 ### LINKID=editfeaturedcommunity【参照先】Edit a favorite community
 
 This section explains how to edit a favorite community.
@@ -13498,6 +13602,8 @@ zu0202030.tif![](media/media/image265.png)
 3.  Click "Save".
 
 The setting is saved.
+
+<a id="linkiddeletefeaturedcommunity参照先delete-favorite-communities"></a>
 
 ### LINKID=deletefeaturedcommunity【参照先】Delete favorite communities
 
@@ -13521,9 +13627,13 @@ zu0202050.tif![](media/media/image267.png)
 
 The selected communities are deleted.
 
+<a id="linkidinclusionrequest参照先indexword-pronounceこみゆにていさんかようきゆう-indexitemコミュニティ参加要求manage-inclusion-requestsindexword"></a>
+
 ## LINKID=inclusionrequest【参照先】\<INDEXWORD PRONOUNCE="こみゆにていさんかようきゆう" INDEXITEM="コミュニティ参加要求"\>Manage inclusion requests\</INDEXWORD\>
 
 This section explains how to manage inclusion requests for joining communities. To access the screen where you can manage inclusion requests, click "Communities" and then click "Inclusion Request".
+
+<a id="linkidviewinclusionrequest参照先view-inclusion-requests"></a>
 
 ### LINKID=viewinclusionrequest【参照先】View inclusion requests
 
@@ -13534,6 +13644,8 @@ This section explains how to view inclusion requests.
 The "List" tab shows a list of communities.
 
 zu0203010.tif![](media/media/image268.png)
+
+<a id="linkiddeleteinclusionrequest参照先delete-inclusion-requests"></a>
 
 ### LINKID=deleteinclusionrequest【参照先】Delete inclusion requests
 
@@ -13557,16 +13669,22 @@ zu0203030.tif![](media/media/image270.png)
 
 The selected inclusion requests are deleted.
 
+<a id="oai-pmh"></a>
+
 #   
 OAI-PMH
 
 This chapter provides information on how to set up harvesting using the OAI-PMH.
+
+<a id="linkidsetharvesting参照先set-up-harvesting"></a>
 
 ## LINKID=setharvesting【参照先】Set up harvesting
 
 You can perform harvesting from other institutions using \<INDEXWORD PRONOUNCE="oai－pmh" INDEXITEM="OAI-PMH"\>OAI-PMH\</INDEXWORD\>.
 
 The schemas that support harvesting are "JPCOAR" and "DDI". For information on other schemas, contact wekosoftware@nii.ac.jp.\<INDEXWORD PRONOUNCE="はあへすていんく" INDEXITEM="ハーベスティング"\> To access the screen where you can set up \</INDEXWORD\>harvesting, click "OAI-PMH" and then click "Harvesting".
+
+<a id="linkidviewplanforharvesting参照先run-a-harvesting-plan"></a>
 
 ### LINKID=viewplanforharvesting【参照先】Run a harvesting plan
 
@@ -13624,6 +13742,8 @@ The details appear.
 > 
 > ![](media/media/image277.png)
 
+<a id="linkidcreateplanforharvesting参照先create-a-harvesting-plan"></a>
+
 ### LINKID=createplanforharvesting【参照先】Create a harvesting plan
 
 1.  > Click on the "Create" tab.
@@ -13654,6 +13774,8 @@ Table 10‑1. The elements in the "Create" tab
     
     An output set is created.
 
+<a id="linkideditplanforharvesting参照先edit-a-harvesting-plan"></a>
+
 ### LINKID=editplanforharvesting【参照先】Edit a harvesting plan
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
@@ -13682,6 +13804,8 @@ The setting is saved.
 
 zu0601060.tif![](media/media/image282.png)
 
+<a id="linkiddeleteplanforharvesting参照先delete-harvesting-plans"></a>
+
 ### LINKID=deleteplanforharvesting【参照先】Delete harvesting plans
 
 To delete records individually, do the following:
@@ -13704,17 +13828,23 @@ zu0601080.tif![](media/media/image284.png)
 
 The records are deleted.
 
+<a id="linkididentify参照先identify"></a>
+
 ## LINKID=identify【参照先】Identify
 
 You can take the information used to output repository information from OAI-PMH and the base URL of OAI-PMH and map them to the standard format. To access the screen where you can configure the Identify setting, click "OAI-PMH" and then click "Identify"
 
 You use this setting to access the OAI-PMH provider feature.
 
+<a id="linkidviewoutputset参照先view-output-sets"></a>
+
 ### LINKID=viewoutputset【参照先】View output sets
 
 1.  Click on the "List" tab to display a list of registered prefix IDs.
 
 zu0602010.tif![](media/media/image285.png)
+
+<a id="linkidcreateoutputset参照先create-an-output-set"></a>
 
 ### LINKID=createoutputset【参照先】Create an output set
 
@@ -13734,6 +13864,8 @@ zu0602020.tif![](media/media/image286.png)
 
 An output set is created.
 
+<a id="linkideditoutputset参照先edit-an-output-set"></a>
+
 ### LINKID=editoutputset【参照先】Edit an output set
 
 1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
@@ -13748,9 +13880,13 @@ zu0602030.tif![](media/media/image287.png)
 
 The setting is saved.
 
+<a id="linkidset参照先sets"></a>
+
 ## LINKID=set【参照先】Sets
 
 To access the screen where you can configure the Sets setting, click "OAI-PMH" and then click "Sets"
+
+<a id="linkidviewset参照先view-sets"></a>
 
 ### LINKID=viewset【参照先】View Sets
 
@@ -13761,6 +13897,8 @@ zu0603010.tif![](media/media/image288.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
 
 The details of the ID appear.
+
+<a id="linkidcreateset参照先create-a-set"></a>
 
 ### LINKID=createset【参照先】Create a Set
 
@@ -13775,6 +13913,8 @@ zu0603020.tif![](media/media/image289.png)
 3.  Click "Save".
 
 The Set is created.
+
+<a id="linkideditset参照先edit-a-set"></a>
 
 ### LINKID=editset【参照先】Edit a Set
 
@@ -13863,6 +14003,8 @@ If WEKO\_SEARCH\_FIX\_ACCESSRIGHTS is enabled (True) in instance.cfg, the output
   - In period specification with from/until for ListRecords and ListIdentifiers, an item whose embargo period has ended is also output if its publication date is within the specified period, in addition to its update date and time.
 
   - The \<datestamp\> of an item whose embargo period has ended is the later of the update date and time and the publication date of the item.
+
+<a id="resource-sync"></a>
 
 #   
 Resource Sync
@@ -14467,10 +14609,14 @@ Notes:
 
 If there is an activity awaiting approval in the workflow specified in the setting, you cannot delete the setting. The message "There are unapproved items in the workflow using this application. Until all are approved, no changes can be made to the configuration." appears.
 
+<a id="records"></a>
+
 #   
 Records
 
 This chapter provides information on how to manage records.
+
+<a id="linkidviewpersistentidentifier参照先view-persistent-identifiers"></a>
 
 ## LINKID=viewpersistentidentifier【参照先】View Persistent Identifiers
 
@@ -14488,9 +14634,13 @@ zu0701010.tif![](media/media/image312.png)
     
     In the "Object" column, click "View" to see the details of the Record Metadata.
 
+<a id="linkidmanagerecordmetadata参照先manage-record-metadata"></a>
+
 ## LINKID=managerecordmetadata【参照先】Manage Record Metadata
 
 The "List" tab appears when you click "Records" and then click "\<INDEXWORD PRONOUNCE="recordmetadata" INDEXITEM="Record Metadata"\>Record Metadata\</INDEXWORD\>".
+
+<a id="linkidviewrecordmetadata参照先view-record-metadata"></a>
 
 ### LINKID=viewrecordmetadata【参照先】View Record Metadata
 
@@ -14505,6 +14655,8 @@ zu0702010.tif![](media/media/image313.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
     
     The details of the Record Metadata appear.
+
+<a id="linkiddeleterecordmetadata参照先delete-record-metadata"></a>
 
 ### LINKID=deleterecordmetadata【参照先】Delete Record Metadata
 
@@ -14536,9 +14688,13 @@ This chapter provides information on how to manage files.
 
 [v2.1.0] \* Among the Files menus, repository administrators can use only "Location" (read access only). The other menus can be used only by system administrators.
 
+<a id="linkidlocationmanagement参照先-manage-buckets"></a>
+
 ## LINKID=locationmanagement【参照先】 Manage Buckets
 
 The "List" tab appears when you click "Files" and then click "\<INDEXWORD PRONOUNCE="bucket" INDEXITEM="Bucket"\>Bucket\</INDEXWORD\>".
+
+<a id="linkidviewbucket参照先view-buckets"></a>
 
 ### LINKID=viewbucket【参照先】View Buckets
 
@@ -14553,6 +14709,8 @@ zu0301010.tif![](media/media/image316.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidcreatebucket参照先create-a-bucket"></a>
 
 ### LINKID=createbucket【参照先】Create a Bucket
 
@@ -14584,6 +14742,8 @@ Table 14‑1. The elements in the "Create" tab
 
 The Bucket is created.
 
+<a id="linkideditbucket参照先edit-a-bucket"></a>
+
 ### LINKID=editbucket【参照先】Edit a Bucket
 
 This section explains how to edit a Bucket.
@@ -14606,6 +14766,8 @@ The setting is saved.
 
 The "List" tab appears when you click "Files" and then click "\<INDEXWORD PRONOUNCE="fileinstance" INDEXITEM="File Instance"\>File Instance\</INDEXWORD\>".
 
+<a id="linkidviewfileinstance参照先view-file-instances"></a>
+
 ### LINKID=viewfileinstance【参照先】View File Instances
 
 This section explains how to view File Instances.
@@ -14619,6 +14781,8 @@ zu0302010.tif![](media/media/image319.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidcheckfixity参照先run-a-fixity-check"></a>
 
 ### LINKID=checkfixity【参照先】Run a fixity check
 
@@ -14668,6 +14832,8 @@ To delete multiple File Instances at once, do the following:
 
 This section explains how to manage Locations.\<INDEXWORD PRONOUNCE="location" INDEXITEM="Location"\> To access the screen where you can manage \</INDEXWORD\>Locations, click "Files" and then click "Location".
 
+<a id="linkidviewlocation参照先view-locations"></a>
+
 ### LINKID=viewlocation【参照先】View Locations
 
 This section explains how to view Locations.
@@ -14689,6 +14855,8 @@ The details appear.
   - If no Location is set as the default: "No default location is set. Please configure one location as default."
 
   - If two or more Locations are set as the default: "Multiple locations are set as default. Only one default location can be configured. Please correct the settings."
+
+<a id="linkidcreatelocation参照先create-a-location"></a>
 
 ### LINKID=createlocation【参照先】Create a Location
 
@@ -14736,6 +14904,8 @@ Table 14‑3. The elements for S3-compatible object storage
 
 The location is created.
 
+<a id="linkideditlocation参照先edit-a-location"></a>
+
 ### LINKID=editlocation【参照先】Edit a Location
 
 [v2.1.0] This section explains how to edit a Location. Only system administrators can edit Locations.
@@ -14753,6 +14923,8 @@ zu0303030.tif![](media/media/image324.png)
 3.  > Click "Save".
 
 The setting is saved.
+
+<a id="linkiddeletelocation参照先delete-locations"></a>
 
 ### LINKID=deletelocation【参照先】Delete Locations
 
@@ -14778,9 +14950,13 @@ zu0303060.tif![](media/media/image326.png)
 
 The records are deleted.
 
+<a id="linkidmanagebucket参照先linkidmanageobjectversion参照先manage-multipart-objects"></a>
+
 ## LINKID=managebucket【参照先】LINKID=manageobjectversion【参照先】Manage Multipart Objects
 
 This section explains how to manage Multipart Objects. (This feature is currently unavailable.)
+
+<a id="linkidviewmultipartobject参照先view-multipart-objects"></a>
 
 ### LINKID=viewmultipartobject【参照先】View Multipart Objects
 
@@ -14801,6 +14977,8 @@ The details appear.
 ## Manage Object Versions
 
 This section explains how to manage Object Versions.
+
+<a id="linkidviewobjectversion参照先view-object-versions"></a>
 
 ### LINKID=viewobjectversion【参照先】View Object Versions
 
@@ -14899,15 +15077,21 @@ This completes the setup of the institutional storage. Files registered through 
 
   - Files stored in an institutional storage cannot be managed on the JAIRO Cloud side. Since JAIRO Cloud cannot handle troubles such as accidentally deleted files, establish a backup system on the institution side.
 
+<a id="linkidmanagemultipartobject参照先linkidmanagefileinstance参照先user-management"></a>
+
 # LINKID=managemultipartobject【参照先】LINKID=managefileinstance【参照先】User Management
 
 This chapter provides information on how to manage users.
 
 \* Among the User Management menus, repository administrators can use "User", "User Profile", and "Session Activity", and community administrators can use "User". The other menus can be used only by system administrators.
 
+<a id="linkidaccessrolesetting参照先access-roles"></a>
+
 ## LINKID=accessrolesetting【参照先】Access: Roles
 
 This section explains how to add an action to a \<INDEXWORD PRONOUNCE="ろおる" INDEXITEM="ロール"\>role\</INDEXWORD\>. To access the screen where you can manage roles, click "User Management" and then click "Access: Roles".
+
+<a id="linkidviewaccessrole参照先view-role-based-actions"></a>
 
 ### LINKID=viewaccessrole【参照先】View role-based actions
 
@@ -14922,6 +15106,8 @@ zu1001010.tif![](media/media/image329.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidaddaccessrole参照先add-an-action-to-a-role"></a>
 
 ### LINKID=addaccessrole【参照先】Add an action to a role
 
@@ -14950,6 +15136,8 @@ Table 15‑1. The elements in the "Create" tab
 
 The action is added to the role.
 
+<a id="linkidchangeaccessrole参照先modify-a-role-based-action"></a>
+
 ### LINKID=changeaccessrole【参照先】Modify a role-based action
 
 This section explains how to edit a role-based action.
@@ -14967,6 +15155,8 @@ zu1001030.tif![](media/media/image331.png)
 3.  Click "Save".
 
 The setting is saved.
+
+<a id="linkiddeleteaccessrole参照先delete-actions-from-a-role"></a>
 
 ### LINKID=deleteaccessrole【参照先】Delete actions from a role
 
@@ -14990,9 +15180,13 @@ zu1001050.tif![](media/media/image333.png)
 
 > The actions are deleted.
 
+<a id="linkidaccesssystemrolesetting参照先access-system-roles"></a>
+
 ## LINKID=accesssystemrolesetting【参照先】Access: System Roles
 
 This section explains how to add an action to a \<INDEXWORD PRONOUNCE="しすてむろおる" INDEXITEM="システムロール"\>system role\</INDEXWORD\>. To access the screen where you can manage system roles, click "User Management" and then click "Access: System Roles".
+
+<a id="linkidviewsystemrole参照先view-system-role-based-actions"></a>
 
 ### LINKID=viewsystemrole【参照先】View system role-based actions
 
@@ -15007,6 +15201,8 @@ zu1002010.tif![](media/media/image334.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidaddsystemrole参照先add-an-action-to-a-system-role"></a>
 
 ### LINKID=addsystemrole【参照先】Add an action to a system role
 
@@ -15035,6 +15231,8 @@ Table 15‑2. The elements in the "Create" tab
 
 The action is added to the system role.
 
+<a id="linkidchangesystemrole参照先modify-a-system-role-based-action"></a>
+
 ### LINKID=changesystemrole【参照先】Modify a system role-based action
 
 This section explains how to edit a system role-based action.
@@ -15052,6 +15250,8 @@ zu1002030.tif![](media/media/image336.png)
 3.  Click "Save".
 
 The setting is saved.
+
+<a id="linkiddeletesystemrole参照先delete-actions-from-a-system-role"></a>
 
 ### LINKID=deletesystemrole【参照先】Delete actions from a system role
 
@@ -15075,9 +15275,13 @@ zu1002050.tif![](media/media/image338.png)
 
 The actions are deleted.
 
+<a id="linkidaccessusers参照先access-users"></a>
+
 ## LINKID=accessusers【参照先】Access: Users
 
 This section explains how to add an action to a \<INDEXWORD PRONOUNCE="ゆうさあ" INDEXITEM="ユーザー"\>user\</INDEXWORD\>. To access the screen where you can manage users, click "User Management" and then click "Access: Users".
+
+<a id="linkidviewusers参照先view-user-actions"></a>
 
 ### LINKID=viewusers【参照先】View user actions
 
@@ -15092,6 +15296,8 @@ zu1003010.tif![](media/media/image339.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidaddusers参照先add-an-action-to-a-user"></a>
 
 ### LINKID=addusers【参照先】Add an action to a user
 
@@ -15120,6 +15326,8 @@ Table 15‑3. The elements in the "Create" tab
 
 The action is added to the user.
 
+<a id="linkidchangeusers参照先modify-a-user-action"></a>
+
 ### LINKID=changeusers【参照先】Modify a user action
 
 This section explains how to edit a user action.
@@ -15137,6 +15345,8 @@ zu1003030.tif![](media/media/image341.png)
 3.  Click "Save".
 
 The setting is saved.
+
+<a id="linkiddeleteusers参照先delete-user-actions"></a>
 
 ### LINKID=deleteusers【参照先】Delete user actions
 
@@ -15160,9 +15370,13 @@ zu1003050.tif![](media/media/image343.png)
 
 The actions are deleted.
 
+<a id="linkidmanagelinkedaccountidentities参照先manage-linked-account-identities"></a>
+
 ## LINKID=managelinkedaccountidentities【参照先】Manage Linked account identities
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="linkedaccount" INDEXITEM="Linked account"\>Linked account\</INDEXWORD\> identities. To access the screen where you can manage Linked account identities, click "User Management" and then click "Linked account identities".
+
+<a id="linkidviewlinkedaccountidentities参照先view-linked-account-identities"></a>
 
 ### LINKID=viewlinkedaccountidentities【参照先】View Linked account identities
 
@@ -15178,7 +15392,9 @@ zu1004010.tif![](media/media/image344.png)
     
     The details appear.
     
-    1.  ### LINKID=deletelinkedaccountidentities【参照先】Delete Linked account identities
+<a id="linkiddeletelinkedaccountidentities参照先delete-linked-account-identities"></a>
+
+### LINKID=deletelinkedaccountidentities【参照先】Delete Linked account identities
 
 To delete identities individually, do the following:
 
@@ -15196,9 +15412,13 @@ You are prompted to confirm the deletion.
 
 The identities are deleted.
 
+<a id="linkidmanagelinkedaccounttokens参照先manage-linked-account-tokens"></a>
+
 ## LINKID=managelinkedaccounttokens【参照先】Manage Linked account tokens
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="linkedaccountのとおくん" INDEXITEM="Linked accountのトークン"\>Linked account\</INDEXWORD\> tokens. To access the screen where you can manage Linked account tokens, click "User Management" and then click "Linked account tokens".
+
+<a id="linkidviewlinkedaccounttokens参照先view-linked-account-tokens"></a>
 
 ### LINKID=viewlinkedaccounttokens【参照先】View Linked account tokens
 
@@ -15213,6 +15433,8 @@ zu1005010.tif![](media/media/image345.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidcreatelinkedaccounttokens参照先create-a-linked-account-token"></a>
 
 ### LINKID=createlinkedaccounttokens【参照先】Create a Linked account token
 
@@ -15239,6 +15461,8 @@ Table 15‑4. The elements in the "Create" tab
 
 The token is created.
 
+<a id="linkideditlinkedaccounttokens参照先edit-a-linked-account-token"></a>
+
 ### LINKID=editlinkedaccounttokens【参照先】Edit a Linked account token
 
 This section explains how to edit a Linked account token.
@@ -15254,6 +15478,8 @@ See "ANCHORID=createlinkedaccounttokens【参照元】Section 14.5.2 Create a Li
 3.  Click "Save".
 
 The setting is saved.
+
+<a id="linkiddeletelinkedaccounttokens参照先delete-linked-account-tokens"></a>
 
 ### LINKID=deletelinkedaccounttokens【参照先】Delete Linked account tokens
 
@@ -15273,9 +15499,13 @@ You are prompted to confirm the deletion.
 
 The tokens are deleted.
 
+<a id="linkidmanagelinkedaccounts参照先manage-linked-accounts"></a>
+
 ## LINKID=managelinkedaccounts【参照先】Manage Linked accounts
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="linkedaccount" INDEXITEM="Linked account"\>Linked accounts\</INDEXWORD\>. To access the screen where you can manage Linked accounts, click "User Management" and then click "Linked accounts".
+
+<a id="linkidviewlinkedaccounts参照先view-linked-accounts"></a>
 
 ### LINKID=viewlinkedaccounts【参照先】View Linked accounts
 
@@ -15290,6 +15520,8 @@ zu1006010.tif![](media/media/image347.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidcreatelinkedaccounts参照先create-a-linked-account"></a>
 
 ### LINKID=createlinkedaccounts【参照先】Create a Linked account
 
@@ -15319,6 +15551,8 @@ Table 15‑5. The elements in the "Create" tab
 
 The account is created.
 
+<a id="linkideditlinkedaccounts参照先edit-a-linked-account"></a>
+
 ### LINKID=editlinkedaccounts【参照先】Edit a Linked account
 
 This section explains how to edit a Linked account.
@@ -15336,6 +15570,8 @@ zu1006030.tif![](media/media/image349.png)
 3.  Click "Save".
 
 The setting is saved.
+
+<a id="linkiddeletelinkedaccounts参照先delete-linked-accounts"></a>
 
 ### LINKID=deletelinkedaccounts【参照先】Delete Linked accounts
 
@@ -15359,9 +15595,13 @@ zu1006050.tif![](media/media/image351.png)
 
 The accounts are deleted.
 
+<a id="linkidmanageoauthapplitokens参照先manage-oauth-application-tokens"></a>
+
 ## LINKID=manageoauthapplitokens【参照先】Manage OAuth Application Tokens
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="oauthapplicationのとおくん" INDEXITEM="OAuth Applicationのトークン"\>OAuth Application tokens\</INDEXWORD\>. To access the screen where you can manage OAuth Application Tokens, click "User Management", and then click "OAuth Application Tokens".
+
+<a id="linkidviewoauthapplitokens参照先view-oauth-application-tokens"></a>
 
 ### LINKID=viewoauthapplitokens【参照先】View OAuth Application Tokens
 
@@ -15376,6 +15616,8 @@ zu1007010.tif![](media/media/image352.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkiddeleteoauthapplitokens参照先delete-oauth-application-tokens"></a>
 
 ### LINKID=deleteoauthapplitokens【参照先】Delete OAuth Application Tokens
 
@@ -15395,6 +15637,8 @@ You are prompted to confirm the deletion.
 
 The tokens are deleted.
 
+<a id="linkidmanageoauthappli参照先manage-oauth-applications"></a>
+
 ## LINKID=manageoauthappli【参照先】Manage OAuth Applications
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="oauthapplication" INDEXITEM="OAuth Application"\>OAuth Applications\</INDEXWORD\>. To access the screen where you can manage OAuth Applications, click "User Management", and then click "OAuth Applications".
@@ -15404,6 +15648,8 @@ In the management screen, you can only view and delete registered OAuth Applicat
 [v2.1.0] \* The scopes that can be given to a token include the scopes for Web APIs such as items, indexes, and authors, as well as the scope "item:bulkprocess" for the bulk import API. The bulk import API can be used by users with the system administrator or repository administrator role.
 
 [v2.1.0] \* If the scope specified in an authorization request of an OAuth Application is invalid (it contains no valid scope), the authorization screen is not displayed, and the error screen shows "error: The scope is incorrect."
+
+<a id="linkidviewoauthappli参照先view-oauth-applications"></a>
 
 ### LINKID=viewoauthappli【参照先】View OAuth Applications
 
@@ -15418,6 +15664,8 @@ zu1008010.tif![](media/media/image353.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkiddeleteoauthappli参照先delete-oauth-applications"></a>
 
 ### LINKID=deleteoauthappli【参照先】Delete OAuth Applications
 
@@ -15437,11 +15685,15 @@ You are prompted to confirm the deletion.
 
 The applications are deleted.
 
+<a id="linkidmanageroles参照先manage-roles"></a>
+
 ## LINKID=manageroles【参照先】Manage roles
 
 This section explains how to \<INDEXWORD PRONOUNCE="ろおるかんり" INDEXITEM="ロール管理"\>manage roles\</INDEXWORD\>. To access the screen where you can manage roles, click "User Management" and then click "Role".
 
 Depending on the role, the menus and actions that appear will differ (e.g., workflow approval permissions). For information on the features available for each role, see "Table 1-2. Administrator roles for the System" and "Table 1-3. System features and administrator roles".
+
+<a id="linkidviewroles参照先view-roles"></a>
 
 ### LINKID=viewroles【参照先】View roles
 
@@ -15456,6 +15708,8 @@ zu1009010.tif![](media/media/image354.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidcreateroles参照先create-a-role"></a>
 
 ### LINKID=createroles【参照先】Create a role
 
@@ -15483,6 +15737,8 @@ Table 15‑6. The elements in the "Create" tab
 
 The account is created.
 
+<a id="linkideditroles参照先edit-a-role"></a>
+
 ### LINKID=editroles【参照先】Edit a role
 
 This section explains how to create a role.
@@ -15500,6 +15756,8 @@ zu1009030.tif![](media/media/image356.png)
 3.  Click "Save".
 
 The setting is saved.
+
+<a id="linkiddeleteroles参照先delete-roles"></a>
 
 ### LINKID=deleteroles【参照先】Delete roles
 
@@ -15523,9 +15781,13 @@ zu1009050.tif![](media/media/image358.png)
 
 The roles are deleted.
 
+<a id="linkidmanagesessionact参照先manage-session-activities"></a>
+
 ## LINKID=managesessionact【参照先】Manage Session Activities
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="sessionactivity" INDEXITEM="Session Activity"\>Session Activity\</INDEXWORD\>. To access the screen where you can manage Session Activity, click "User Management", and then click "Session Activity".
+
+<a id="linkidviewsessionact参照先view-session-activities"></a>
 
 ### LINKID=viewsessionact【参照先】View Session Activities
 
@@ -15536,6 +15798,8 @@ This section explains how to view Session Activities.
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
 zu1010010.tif![](media/media/image359.png)
+
+<a id="linkiddeletesessionact参照先delete-session-activities"></a>
 
 ### LINKID=deletesessionact【参照先】Delete Session Activities
 
@@ -15557,9 +15821,13 @@ You are prompted to confirm the deletion.
 
 The sessions are deleted.
 
+<a id="linkidmanageuser参照先manage-users"></a>
+
 ## LINKID=manageuser【参照先】Manage users
 
 This section explains how to \<INDEXWORD PRONOUNCE="ゆうさあをかんり" INDEXITEM="ユーザー管理"\>manage users\</INDEXWORD\>. To access the screen where you can manage users, click "User Management" and then click "User".
+
+<a id="linkidviewuser参照先view-users"></a>
 
 ### LINKID=viewuser【参照先】View users
 
@@ -15578,6 +15846,8 @@ zu1011010.tif![](media/media/image360.png)
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkidcreateuser参照先add-a-user"></a>
 
 ### LINKID=createuser【参照先】Add a user
 
@@ -15608,6 +15878,8 @@ Table 15‑7. The elements in the "Create" tab
 
 The user is created.
 
+<a id="linkidedituser参照先edit-a-user"></a>
+
 ### LINKID=edituser【参照先】Edit a user
 
 This section explains how to edit a user. Only system administrators can edit users.
@@ -15625,6 +15897,8 @@ zu1011030.tif![](media/media/image362.png)
 3.  Click "Save".
 
 The setting is saved.
+
+<a id="linkidinacivateuser参照先disable-or-enable-users"></a>
 
 ### LINKID=inacivateuser【参照先】Disable or enable users
 
@@ -15644,9 +15918,13 @@ zu1011050.tif![](media/media/image364.png)
 
 The users are disabled or enabled according to the configuration.
 
+<a id="linkidmanageuserprofile参照先manage-user-profiles"></a>
+
 ## LINKID=manageuserprofile【参照先】Manage User Profiles
 
 This section explains how to manage \<INDEXWORD PRONOUNCE="userprofile" INDEXITEM="User Profile"\>User Profiles\</INDEXWORD\>. To access the screen where you can manage User Profiles, click "User Management" and then click "User Profile".
+
+<a id="linkidviewuserprofile参照先view-user-profiles"></a>
 
 ### LINKID=viewuserprofile【参照先】View User Profiles
 
@@ -15661,6 +15939,8 @@ zu1012010.tif![グラフィカル ユーザー インターフェイス, テキ�
 2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
+
+<a id="linkiddeleteuserprofile参照先delete-user-profiles"></a>
 
 ### LINKID=deleteuserprofile【参照先】Delete User Profiles
 
@@ -15685,6 +15965,8 @@ The User Profiles are deleted.
 # Setting
 
 This chapter provides information on how to manage the system settings.
+
+<a id="linkidauthormanagement参照先configure-the-author-display-setting"></a>
 
 ## LINKID=authormanagement【参照先】Configure the author display setting
 
@@ -16004,6 +16286,8 @@ The background color you specified is saved. The message "Successfully update co
 
 This section explains how to set up the Prefix IDs for the \<INDEXWORD PRONOUNCE="jalcdoi" INDEXITEM="JaLC DOI"\>JaLC DOI\</INDEXWORD\> handle server, the \<INDEXWORD PRONOUNCE="jalccrossrefdoi" INDEXITEM="JaLC CrossRef DOI"\>JaLC CrossRef DOI\</INDEXWORD\> handle server, and the \<INDEXWORD PRONOUNCE="jalcdatacitedoi" INDEXITEM="JaLC DataCite DOI"\>JaLC DataCite DOI\</INDEXWORD\> handle server. To access the screen where you can configure these settings, click "Setting" and then click "Identifier".
 
+<a id="linkidviewidentifier参照先view-identifiers"></a>
+
 ### LINKID=viewidentifier【参照先】View Identifiers
 
 1.  > Click on the "List" tab to display a list of registered prefix IDs.
@@ -16013,6 +16297,8 @@ zu0804010.tif![](media/media/image379.png)
 2.  > Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
 
 The details of the ID appear.
+
+<a id="linkidcreateidentifier参照先create-an-identifier"></a>
 
 ### LINKID=createidentifier【参照先】Create an Identifier
 
@@ -16053,6 +16339,8 @@ zu0804050.tif![](media/media/image383.png)
 5.  Click "Save".
 
 The Prefix ID is created. The "List" tab will display the Prefix ID.
+
+<a id="linkideditidentifier参照先edit-an-identifier"></a>
 
 ### LINKID=editidentifier【参照先】Edit an Identifier
 
@@ -16838,6 +17126,8 @@ zu0819040.tif![](media/media/image402.png)
 
 The setting is saved.
 
+<a id="linkidsitemapcreating参照先create-a-sitemap"></a>
+
 ## LINKID=sitemapcreating【参照先】Create a sitemap
 
 You can create and update a \<INDEXWORD PRONOUNCE="さいとまつふ" INDEXITEM="サイトマップ"\>sitemap\</INDEXWORD\>. You must have administrative privileges to create and update a sitemap.
@@ -17548,6 +17838,8 @@ Notes:
 ・[v2.1.0] User attributes sent from the Shibboleth SP are accepted only when sent from the SP login script (login.py) on the Web server. The accepted source addresses are specified with "WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS" in the configuration file (default: "127.0.0.1" and "::1"). Transmissions from other addresses are rejected. When you update an existing environment, update the login script (login.py) and the nginx settings at the same time. If you update only one of them, Shibboleth login will fail.
 
 ・Logins to the WEKO API (/api/<version>/login) are rate-limited per source IP address. The limit is specified with "WEKO_API_LIMIT_RATE_DEFAULT" in the configuration file (default: 100 per minute).
+
+<a id="linkideditindextree参照先linkidfilepreviewsetting参照先linkididentifiersetting参照先linkidsiteinfosetting参照先linkidwidgetsetting参照先manage-restricted-access"></a>
 
 ## LINKID=editindextree【参照先】LINKID=filepreviewsetting【参照先】LINKID=identifiersetting【参照先】LINKID=siteinfosetting【参照先】LINKID=widgetsetting【参照先】Manage restricted access
 
@@ -18631,21 +18923,31 @@ While it is running, the "Execute" button is disabled and the status next to the
 
 This chapter provides information on how to manage user accounts.
 
+<a id="linkidupdateprofile参照先update-a-profile"></a>
+
 ## LINKID=updateprofile【参照先】Update a profile
 
 See the Data Registration Guide for information on updating a \<INDEXWORD PRONOUNCE="ゆうさあふろふいいる" INDEXITEM="ユーザープロフィール"\>user profile\</INDEXWORD\>.
+
+<a id="linkidchangepassword参照先change-a-password"></a>
 
 ## LINKID=changepassword【参照先】Change a password
 
 See the Data Registration Guide for information on how to \<INDEXWORD PRONOUNCE="はすわあとをへんこう" INDEXITEM="パスワードを変更"\>change a password\</INDEXWORD\>.
 
+<a id="linkidchecklogindevice参照先determine-which-device-is-used-to-log-in-to-an-account"></a>
+
 ## LINKID=checklogindevice【参照先】Determine which device is used to log in to an account
 
 See the Data Registration Guide for information on how to determine which device is used to log in to an account.
 
+<a id="linkidmanageapplication参照先manage-applications"></a>
+
 ## LINKID=manageapplication【参照先】Manage applications
 
 See the Data Registration Guide for information on how to manage applications.
+
+<a id="linkidmanagegroup参照先manage-groups"></a>
 
 ## LINKID=managegroup【参照先】Manage groups
 
@@ -18658,6 +18960,8 @@ Notes:
 ・[v2.1.0] In addition to the roles above, editing and deleting a group, approving join requests, and removing members can be performed only by the administrator of the group (the creator of the group). Members can be invited by the administrator of the group, and also by members of the group if its join policy is "Open". Groups created on the screen have the join policy "Open with approval" (approval required), so only the administrator of the group can invite members.
 
 ・Any logged-in user can accept or reject invitations and join requests, and leave a group.
+
+<a id="linkidinclusiverequest参照先accept-a-request-or-invitation-to-join-a-group"></a>
 
 ### LINKID=inclusiverequest【参照先】Accept a request or invitation to join a group
 
@@ -18676,6 +18980,8 @@ zu1205020.tif![](media/media/image415.png)
 3.  Click "Accept" to join the group.
 
 Group membership is granted.
+
+<a id="linkidcreategroup参照先create-a-group"></a>
 
 ### LINKID=creategroup【参照先】Create a group
 
@@ -18704,6 +19010,8 @@ Table 19‑1. The elements in "New group"
 
 The group is created.
 
+<a id="linkidaddusertogroup参照先invite-members-to-a-group"></a>
+
 ### LINKID=addusertogroup【参照先】Invite members to a group
 
 This section explains how to invite members to a group.
@@ -18729,6 +19037,8 @@ zu1205070.tif![](media/media/image420.png)
 4.  Click "Invite".
 
 An email is sent out.
+
+<a id="linkideditgroup参照先edit-a-group"></a>
 
 ### LINKID=editgroup【参照先】Edit a group
 
@@ -18757,6 +19067,8 @@ Table 19‑2. The input elements
 
 The group information is updated.
 
+<a id="linkiddeletegroup参照先delete-a-group"></a>
+
 ### LINKID=deletegroup【参照先】Delete a group
 
 This section explains how to delete a group.
@@ -18779,6 +19091,8 @@ The group is deleted.
 
 zu1205120.tif![](media/media/image425.png)
 
+<a id="linkidchangetimeout参照先modify-the-session-validity-time"></a>
+
 ## LINKID=changetimeout【参照先】Modify the session validity time
 
 This section explains how to modify the session validity time.
@@ -18796,6 +19110,8 @@ zu1206020.tif![](media/media/image427.png)
 3.  Click "Update".
 
 The validity time is updated.
+
+<a id="linkidopenadmin参照先access-the-administration-screen"></a>
 
 ## LINKID=openadmin【参照先】Access the Administration screen
 
