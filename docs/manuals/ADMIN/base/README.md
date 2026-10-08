@@ -1794,32 +1794,32 @@ SWORD APIの管理に関する操作手順を説明しています。
 <tbody>
 <tr class="odd">
 <td>テキスト</td>
-<td><img src="media/media/image8.png" style="width:1.6875in;height:0.43056in" alt="zu0404050" /></td>
+<td><img src="media/media/image8.png" style="width:1.6875in;height:0.43056in" alt="" /></td>
 <td>1行のテキストで値を入力します。</td>
 </tr>
 <tr class="even">
 <td>テキストエリア</td>
-<td><img src="media/media/image9.png" style="width:2.04167in;height:0.45833in" alt="zu0404060" /></td>
+<td><img src="media/media/image9.png" style="width:2.04167in;height:0.45833in" alt="" /></td>
 <td>複数行のテキストで値を入力します。</td>
 </tr>
 <tr class="odd">
 <td>チェックボックス<sup>※</sup></td>
-<td><img src="media/media/image10.png" style="width:0.66667in;height:0.96875in" alt="zu0404070" /></td>
+<td><img src="media/media/image10.png" style="width:0.66667in;height:0.96875in" alt="" /></td>
 <td>複数選択のチェックボックスで値を入力します。</td>
 </tr>
 <tr class="even">
 <td>選択式(ラジオ)<sup>※</sup></td>
-<td><img src="media/media/image11.png" style="width:1.16667in;height:0.61111in" alt="zu0404080" /></td>
+<td><img src="media/media/image11.png" style="width:1.16667in;height:0.61111in" alt="" /></td>
 <td>単一選択のラジオボタンで値を入力します。</td>
 </tr>
 <tr class="odd">
 <td>選択式(プルダウン)<sup>※</sup></td>
-<td><img src="media/media/image12.png" style="width:1.64583in;height:0.45139in" alt="zu0404090" /></td>
+<td><img src="media/media/image12.png" style="width:1.64583in;height:0.45139in" alt="" /></td>
 <td>単一選択のプルダウンメニューで値を入力します。</td>
 </tr>
 <tr class="even">
 <td>日付</td>
-<td><img src="media/media/image13.png" style="width:1.66667in;height:1.35417in" alt="zu0404100" /></td>
+<td><img src="media/media/image13.png" style="width:1.66667in;height:1.35417in" alt="" /></td>
 <td><p>次のどちらかの形式で値を入力します。</p>
 <ul>
 <li><p><em>yyyy-mm-dd、yyyy-mm、yyyy</em>形式で入力</p></li>
@@ -3377,7 +3377,7 @@ WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP = {
 
 #### 「xxxx」に対応するマッピングが必要です
 
-![image483](media/media/image483.png)
+![](media/media/image483.png)
 
 アイテムタイプで必須となっている項目へのマッピング設定がないまたは誤っている場合に表示されるエラーメッセージです。必須の項目はアイテムタイプの設定によって異なります。例えば以下のような項目です。
 
@@ -3390,14 +3390,14 @@ WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP = {
 
 #### 「xxxx」はアイテムタイプに存在しません
 
-![image484](media/media/image484.png)
+![](media/media/image484.png)
 
 マッピング設定にあるアイテムタイプ項目が存在しない場合に表示されるエラーメッセージです。
 類似するアイテムタイプ項目が存在する場合は、ヒントが表示されます。
 
 例えば、タイトルプロパティのラベルを「タイトルa」としている場合、
 
-![image485](media/media/image485.png)
+![](media/media/image485.png)
 
 下記マッピング設定はエラーとなります。
 
@@ -5339,7 +5339,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 
 ![](media/media/image110.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
     
     ウィジェットの詳細情報が表示されます。
 
@@ -5621,7 +5621,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 </tbody>
 </table>
 
-![zu0824060](media/media/image142.png)
+![](media/media/image142.png)
 
 図 5‑10Access counter表示例
 
@@ -5670,7 +5670,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 </tbody>
 </table>
 
-![zu0824080](media/media/image144.png)
+![](media/media/image144.png)
 
 図 5‑12Notice表示例
 
@@ -5717,7 +5717,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 
 図 5‑15［Display Results］プルダウン
 
-![zu0824100](media/media/image148.png)
+![](media/media/image148.png)
 
 図 5‑16New arrivals表示例
 
@@ -5729,7 +5729,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 
 Main contentsの設定は、「表 5-1ウィジェットの作成画面の項目と説明」で説明した項目のみです。
 
-![zu0824120](media/media/image150.png)
+![](media/media/image150.png)
 
 図 5‑18Main contents表示例
 
@@ -5789,7 +5789,7 @@ Main contentsの設定は、「表 5-1ウィジェットの作成画面の項目
 
 図 5‑20色指定
 
-![zu0824140](media/media/image153.png)
+![](media/media/image153.png)
 
 図 5‑21Menu表示例
 
@@ -5833,9 +5833,9 @@ Main contentsの設定は、「表 5-1ウィジェットの作成画面の項目
 
 | テーマ       | 表示例                                    | 説明                                       |
 | --------- | -------------------------------------- | ---------------------------------------- |
-| Default   | ![zu0824190](media/media/image158.png) | デフォルト設定です。角が丸まった四角形で、枠線が表示されます。影が表示されます。 |
-| Simple    | ![zu0824210](media/media/image159.png) | 枠線が非表示の四角形です。影は表示されません。                  |
-| Side Line | ![zu0824200](media/media/image160.png) | 左枠線だけが表示される四角形です。影は表示されません。              |
+| Default   | ![](media/media/image158.png) | デフォルト設定です。角が丸まった四角形で、枠線が表示されます。影が表示されます。 |
+| Simple    | ![](media/media/image159.png) | 枠線が非表示の四角形です。影は表示されません。                  |
+| Side Line | ![](media/media/image160.png) | 左枠線だけが表示される四角形です。影は表示されません。              |
 
 ##### Border Styleの設定内容
 
@@ -5845,16 +5845,16 @@ Main contentsの設定は、「表 5-1ウィジェットの作成画面の項目
 
 | テーマ    | 表示例                                    | 説明          |
 | ------ | -------------------------------------- | ----------- |
-| None   | ![zu0824220](media/media/image161.png) | 線は表示されません。  |
-| Solid  | ![zu0824230](media/media/image162.png) | 実線が表示されます。  |
-| Dotted | ![zu0824240](media/media/image163.png) | 点線が表示されます。  |
-| Double | ![zu0824250](media/media/image164.png) | 二重線が表示されます。 |
+| None   | ![](media/media/image161.png) | 線は表示されません。  |
+| Solid  | ![](media/media/image162.png) | 実線が表示されます。  |
+| Dotted | ![](media/media/image163.png) | 点線が表示されます。  |
+| Double | ![](media/media/image164.png) | 二重線が表示されます。 |
 
 #### ウィジェットを編集する
 
 ウィジェットを編集する方法を説明します。
 
-1.  ［一覧］タブで、ウィジェットの行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、ウィジェットの行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     ［編集］タブが表示されます。
 
@@ -5880,7 +5880,7 @@ Main contentsの設定は、「表 5-1ウィジェットの作成画面の項目
 
 <!-- end list -->
 
-1.  > ［一覧］タブでウィジェットの行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックします。
+1.  > ［一覧］タブでウィジェットの行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックします。
     
     ウィジェットが削除されます。メッセージ「1 レコードが正常に削除されました。」が表示されます。
     
@@ -6005,7 +6005,7 @@ Main contentsの設定は、「表 5-1ウィジェットの作成画面の項目
 
 ページのタイトルまたはURLを変更する方法を説明します。
 
-1.  Pagesのプルダウンリストの右に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  Pagesのプルダウンリストの右に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     Pageダイアログが表示されます。
 
@@ -6021,13 +6021,13 @@ Main contentsの設定は、「表 5-1ウィジェットの作成画面の項目
 
 リポジトリからページを削除する方法を説明します。
 
-1.  Pagesのプルダウンリストの右に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックします。
+1.  Pagesのプルダウンリストの右に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックします。
     
     削除確認用のダイアログが表示されます。
 
 ![](media/media/image182.png)
 
-Main Layoutのページに限り、削除不可のため、ゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）が表示されません（WEKO2からの移行機関は、Main Layoutではなくトップページが削除不可になります）。
+Main Layoutのページに限り、削除不可のため、ゴミ箱のアイコン（![](media/media/image166.png)）が表示されません（WEKO2からの移行機関は、Main Layoutではなくトップページが削除不可になります）。
 
 2. ［Submit］をクリックします。
     
@@ -9053,7 +9053,7 @@ Repositoryは「Root Index」を選択します。
 
 ![](media/media/image263.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
 
@@ -9135,7 +9135,7 @@ Repositoryは「Root Index」を選択します。
 
 コミュニティを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -9165,7 +9165,7 @@ Repositoryは「Root Index」を選択します。
 
 ![](media/media/image266.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
 
@@ -9198,7 +9198,7 @@ Repositoryは「Root Index」を選択します。
 
 お気に入りのコミュニティを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -9218,7 +9218,7 @@ Repositoryは「Root Index」を選択します。
 
 コミュニティを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとコミュニティが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとコミュニティが削除されます。
 
 複数のコミュニティをまとめて削除する場合
 
@@ -9254,7 +9254,7 @@ Repositoryは「Root Index」を選択します。
 
 コミュニティ参加要求を１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとコミュニティ参加要求が削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとコミュニティ参加要求が削除されます。
 
 複数のコミュニティ参加要求をまとめて削除する場合
 
@@ -9300,7 +9300,7 @@ OAI-PMHを利用し、他の機関からハーベストを行うことができ�
 
 ![](media/media/image274.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
 
@@ -9378,7 +9378,7 @@ OAI-PMHを利用し、他の機関からハーベストを行うことができ�
 
 #### ハーベスティングのプランを編集する
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -9410,7 +9410,7 @@ OAI-PMHを利用し、他の機関からハーベストを行うことができ�
 
 レコードを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとレコードが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとレコードが削除されます。
 
 複数のレコードをまとめて削除する場合
 
@@ -9462,7 +9462,7 @@ OAI-PMHからリポジトリの情報を出力する際に使用する情報と�
 
 #### 出力セットを編集する
 
-1.  ［一覧］タブで、IDの行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、IDの行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -9486,7 +9486,7 @@ Setsを設定する画面は、［OAI-PMH］をクリックして［Sets］を�
 
 ![](media/media/image291.png)
 
-2. IDの行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. IDの行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      IDの詳細が表示されます。
 
@@ -9508,7 +9508,7 @@ Setsを設定する画面は、［OAI-PMH］をクリックして［Sets］を�
 
 #### Setを編集する
 
-1.  ［一覧］タブで、IDの行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、IDの行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -9705,7 +9705,7 @@ Resource Listの入力項目を次に示します。
 
 Resource Listを編集する方法を説明します。
 
-1.  ［List］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［List］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     Resource Listの編集画面が表示されます。
 
@@ -9719,7 +9719,7 @@ Resource Listを編集する方法を説明します。
 
 Resource Listを削除する方法を説明します。
 
-1.  ［List］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックします。
+1.  ［List］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックします。
     
     削除確認用のダイアログが表示されます。
 
@@ -9874,7 +9874,7 @@ Change Listの入力項目を次に示します。
 
 Change Listを編集する方法を説明します。
 
-1.  ［List］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［List］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     Change Listの編集画面が表示されます。
 
@@ -9894,7 +9894,7 @@ Change Listを編集する方法を説明します。
 
 Change Listを削除する方法を説明します。
 
-1.  ［List］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックします。
+1.  ［List］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックします。
     
     削除確認用のダイアログが表示されます。
 
@@ -9918,7 +9918,7 @@ Resyncの設定画面は［Resource Sync］をクリックして、［Resync］�
 
 <!-- end list -->
 
-1.  > ［List］タブで、［Status］が［Automatic］の行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+1.  > ［List］タブで、［Status］が［Automatic］の行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
 
 > Resyncの詳細画面が表示されます。
 
@@ -9940,7 +9940,7 @@ Resyncの設定画面は［Resource Sync］をクリックして、［Resync］�
 
 <!-- end list -->
 
-1.  > ［List］タブで、［Status］が［Manual］の行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+1.  > ［List］タブで、［Status］が［Manual］の行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
 
 > Resyncの詳細画面が表示されます。
 
@@ -10053,7 +10053,7 @@ Resyncの入力項目を次に示します。
 
 Resyncを編集する方法を説明します。
 
-1.  ［List］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［List］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     Resyncの編集画面が表示されます。
 
@@ -10067,7 +10067,7 @@ Resyncを編集する方法を説明します。
 
 Resyncを削除する方法を説明します。
 
-1.  ［List］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックします。
+1.  ［List］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックします。
     
     削除確認用のダイアログが表示されます。
 
@@ -10180,7 +10180,7 @@ SWORD APIを利用してアイテムを連携するための設定を行いま�
 ### JSON-LD用の設定を編集する
 1. ［一覧］タブを選択します。
 
-2. 編集したい設定の行頭にある鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+2. 編集したい設定の行頭にある鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
 
 3. 編集画面が表示されます。アプリケーションは変更できません。
 
@@ -10194,7 +10194,7 @@ SWORD APIを利用してアイテムを連携するための設定を行いま�
 
 1. ［一覧］タブを選択します。
 
-2. 削除したい設定の行頭にあるゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックします。
+2. 削除したい設定の行頭にあるゴミ箱のアイコン（![](media/media/image166.png)）をクリックします。
 
 3. 削除されます。
 
@@ -10216,7 +10216,7 @@ Persistent Identifierを参照する方法を説明します。
 
 ![](media/media/image315.png)
 
-2. IDの行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. IDの行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      IDの詳細が表示されます。
      
@@ -10236,7 +10236,7 @@ Record Metadataを参照する方法を説明します。
 
 ![](media/media/image316.png)
 
-2. IDの行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. IDの行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      Record Metadataの詳細が表示されます。
 
@@ -10246,7 +10246,7 @@ Record Metadataを削除する方法を説明します。
 
 レコードを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとレコードが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとレコードが削除されます。
 
 複数のレコードをまとめて削除する場合
 
@@ -10284,7 +10284,7 @@ Bucketを参照する方法を説明します。
 
 ![](media/media/image319.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10322,7 +10322,7 @@ Bucketを作成する方法を説明します。
 
 Bucketを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -10350,7 +10350,7 @@ File Instanceを参照する方法を説明します。
 
 ![](media/media/image322.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
 
@@ -10376,7 +10376,7 @@ File Instanceを削除すると、File Instanceのレコードが削除され、
 
 File Instanceを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックします。
     
     削除確認用のダイアログが表示されます。
 
@@ -10412,7 +10412,7 @@ Locationを参照する方法を説明します。
 
 ![](media/media/image325.png)
 
-3. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+3. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
 4. 詳細が表示されます。
 
@@ -10486,7 +10486,7 @@ Locationを参照する方法を説明します。
 
 【v2.1.0】Locationを編集する方法を説明します。Locationを編集できるのはシステム管理者のみです。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -10508,7 +10508,7 @@ Locationを参照する方法を説明します。
 
 Locationを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとLocationが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとLocationが削除されます。
 
 複数のLocationをまとめて削除する場合
 
@@ -10542,7 +10542,7 @@ Multipart Objectを参照する方法を説明します。
 
 ![](media/media/image330.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
 
@@ -10562,7 +10562,7 @@ Object Versionを参照する方法を説明します。
 
 ![](media/media/image332.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
 
@@ -10675,7 +10675,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ![](media/media/image333.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10710,7 +10710,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ロールのアクションを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -10730,7 +10730,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 アクションを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアクションが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとアクションが削除されます。
 
 複数のアクションをまとめて削除する場合
 
@@ -10762,7 +10762,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ![](media/media/image338.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10795,7 +10795,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 システムロールのアクションを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -10815,7 +10815,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 アクションを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアクションが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとアクションが削除されます。
 
 複数のアクションをまとめて削除する場合
 
@@ -10847,7 +10847,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ![](media/media/image343.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10881,7 +10881,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ユーザのアクションを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -10901,7 +10901,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 アクションを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアクションが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとアクションが削除されます。
 
 複数のアクションをまとめて削除する場合
 
@@ -10933,7 +10933,7 @@ Linked accountのidentityを参照する方法を説明します。
 
 ![](media/media/image348.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10941,7 +10941,7 @@ Linked accountのidentityを参照する方法を説明します。
 
 identityを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとidentityが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとidentityが削除されます。
 
 複数のidentityをまとめて削除する場合
 
@@ -10971,7 +10971,7 @@ Linked accountのトークンを参照する方法を説明します。
 
 ![](media/media/image349.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11002,7 +11002,7 @@ Linked accountのトークンを作成する方法を説明します。
 
 Linked accountのトークンを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -11020,7 +11020,7 @@ Linked accountのトークンを編集する方法を説明します。
 
 トークンを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとidentityが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとidentityが削除されます。
 
 複数のトークンをまとめて削除する場合
 
@@ -11050,7 +11050,7 @@ Linked accountを参照する方法を説明します。
 
 ![](media/media/image351.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11084,7 +11084,7 @@ Linked accountを作成する方法を説明します。
 
 Linked accountを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -11104,7 +11104,7 @@ Linked accountを編集する方法を説明します。
 
 アカウントを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアカウントが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとアカウントが削除されます。
 
 複数のアカウントをまとめて削除する場合
 
@@ -11136,7 +11136,7 @@ OAuth Applicationのトークンを参照する方法を説明します。
 
 ![](media/media/image356.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11144,7 +11144,7 @@ OAuth Applicationのトークンを参照する方法を説明します。
 
 トークンを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとトークンが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとトークンが削除されます。
 
 複数のトークンをまとめて削除する場合
 
@@ -11180,7 +11180,7 @@ OAuth Applicationを参照する方法を説明します。
 
 ![](media/media/image357.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
 
@@ -11188,7 +11188,7 @@ OAuth Applicationを参照する方法を説明します。
 
 アプリケーションを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアプリケーションが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとアプリケーションが削除されます。
 
 複数のアプリケーションをまとめて削除する場合
 
@@ -11220,7 +11220,7 @@ OAuth Applicationを参照する方法を説明します。
 
 ![](media/media/image358.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11252,7 +11252,7 @@ OAuth Applicationを参照する方法を説明します。
 
 ロールを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -11272,7 +11272,7 @@ OAuth Applicationを参照する方法を説明します。
 
 ロールを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとロールが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとロールが削除されます。
 
 複数のロールをまとめて削除する場合
 
@@ -11310,7 +11310,7 @@ Session activityを参照する方法を説明します。
 
 ※現在ログインしているご自身のセッションは削除できません。選択したセッションに自身のセッションが含まれる場合は、「You could not remove your current session」と表示され、削除されません。
 
-セッションを１件ずつ削除する場合は、［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックします。
+セッションを１件ずつ削除する場合は、［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックします。
 
 複数のセッションをまとめて削除する場合
 
@@ -11344,7 +11344,7 @@ Session activityを参照する方法を説明します。
 
 ![](media/media/image364.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11379,7 +11379,7 @@ Session activityを参照する方法を説明します。
 
 ユーザを編集する方法を説明します。ユーザを編集できるのはシステム管理者のみです。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -11427,7 +11427,7 @@ User Profileを参照する方法を説明します。
 
 ![](media/media/image369.png)
 
-2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11437,7 +11437,7 @@ User Profileを削除する方法を説明します。User Profileを削除で�
 
 User Profileを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとUser Profileが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックするとUser Profileが削除されます。
 
 複数のUser Profileをまとめて削除する場合
 
@@ -11785,7 +11785,7 @@ JaLC DOIハンドルサーバ、JaLC CrossRef DOIハンドルサーバ、およ�
 
 ![](media/media/image383.png)
 
-2. IDの行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
+2. IDの行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックします。
      
      IDの詳細が表示されます。
      
@@ -11817,7 +11817,7 @@ JaLC DOIハンドルサーバ、JaLC CrossRef DOIハンドルサーバ、およ�
      
      複数のWEKOを所有する機関において、DOIの値が重複することを防ぐため、Prefix IDにSuffixを付加できます。
 
-![zu0804030](media/media/image385.png)
+![](media/media/image385.png)
 
 DOIが付与されたアイテムをすでに登録している場合、設定を変更することはできません。
 
@@ -11835,7 +11835,7 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 
 <!-- end list -->
 
-1.  ［一覧］タブで、IDの行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、IDの行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -12369,13 +12369,13 @@ $.item_30002_title0.attribute_value_mlt[*].subitem_title
 
 ![](media/media/image401.png)
 
-行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックすると、
+行頭に表示されている目のアイコン（![](media/media/image111.png)）をクリックすると、
 
 詳細画面が表示されます。
 
 ![](media/media/image402.png)
 
-行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックすると、
+行頭に表示されている鉛筆のアイコン（![](media/media/image165.png)）をクリックすると、
 
 編集画面が表示されます。
 
@@ -12454,7 +12454,7 @@ UIが「RangeSlider」の場合は「AND」のみ選択できます。</td>
 
 ![](media/media/image404.png)
 
-［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックすると、削除画面が表示されます。\[Delete\] ボタンをクリックすると、削除して良いかのポップアップが表示されます。\[OK\] ボタンをクリックすると、ファセット項目が削除されます。
+［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![](media/media/image166.png)）をクリックすると、削除画面が表示されます。\[Delete\] ボタンをクリックすると、削除して良いかのポップアップが表示されます。\[OK\] ボタンをクリックすると、ファセット項目が削除されます。
 
 ![](media/media/image405.png)
 
@@ -14275,7 +14275,7 @@ APIキーの設定について説明します。
      
      グループが削除されます。
 
-![zu1205120](media/media/image437.png)
+![](media/media/image437.png)
 
 ### セッションの有効時間を変更する
 
@@ -14366,7 +14366,7 @@ APIキーの設定について説明します。
 
 5. 状態の保存
 
-画面下部にあるSAVEボタン（![iconsave](media/media/image466.png)）を押下することで、編集内容を保存できます。
+画面下部にあるSAVEボタン（![](media/media/image466.png)）を押下することで、編集内容を保存できます。
 
 図 12-7 保存成功画面
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image467.png)
