@@ -52,7 +52,7 @@
 - 日付範囲入力（範囲入力＋カレンダー入力）
 - geo_distance
 
-表 1-2‑1　初期登録を行った環境で詳細検索エリアに初期表示される項目
+表 1-2-1　初期登録を行った環境で詳細検索エリアに初期表示される項目
 
 | **No.** | **検索項目** | **入力エリア** |
 | --- | --- | --- |
@@ -159,11 +159,11 @@
 
 - ［検索］ボタンを押下せず、テキストボックス内にカーソルキーがある状態でエンターキーを押下することでも検索処理を実行する。
 - 検索項目の選択肢は、weko_search_ui.config.py WEKO_SEARCH_KEYWORDS_DICTで設定している。
-- 検索項目と対応するキーを表 1-2‑2に示す。
+- 検索項目と対応するキーを表 1-2-2に示す。
   - weko_schema_ui.mappings.v6.weko.item-v1.0.0.jsonにてElasticsearchでの文字解析方法を設定している。
   - FullText: 全文検索
 
-表 1-2‑2　検索項目と対応するキー
+表 1-2-2　検索項目と対応するキー
 
 | **No.** | **検索項目** | **検索方式** | **検索用のキー** | **備考** |
 | --- | --- | --- | --- | --- |
@@ -176,7 +176,7 @@
 | 7 | 寄与者 (Contributor) | FullText | search_contributor, search_contributor.ja | |
 | 8 | コンテンツ作成日 (Contents Created Date) | Keyword | date.dateType, file.date.dateType | date.dateTypeが'file.date.dateType'キーで検索される |
 | 9 | フォーマット (Format) | Keyword | file.mimeType | |
-| 10 | ID | FullText | | ※表 1-2‑3参照。追加検索用のキーはKeyword方式 |
+| 10 | ID | FullText | | ※表 1-2-3参照。追加検索用のキーはKeyword方式 |
 | 11 | 雑誌名 (Journal Title) | FullText | sourceTitle, sourceTitle.ja | |
 | 12 | 資源タイプ (ResourceType) | | type.raw | |
 | 13 | アイテムタイプ (ItemType) | FullText | itemtype | |
@@ -195,7 +195,7 @@
 | 26 | geopoint_JA_1 | geo_point | geo_point1 | |
 | 【v2.1.0】27 | アクセス権 (Access Rights) | Keyword | accessRights | 検索パラメータ `accessrights`（選択肢 embargoed access / metadata only access / open access / restricted access、複数選択時は OR）。WEKO_SEARCH_FIX_ACCESSRIGHTS が True の場合はファイルのアクセス（accessrole）と公開日も考慮して検索する（下記実装補足参照） |
 
-表 1-2‑3　 IDの選択肢と対応するキー
+表 1-2-3　 IDの選択肢と対応するキー
 
 | **No.** | **選択肢** | **検索用のキー** | **追加検索用のキー** |
 | --- | --- | --- | --- |
@@ -244,4 +244,4 @@
 | --- | --- | --- |
 | 2022/04/28 | 57247ecce9b5e0879a2538687e446e0ea310129c | 初版作成 |
 | 2023/08/31 | 353ba1deb094af5056a58bb40f07596b8e95a562 | v0.9.22対応 |
-| 2026/10/05 | 508030789 | release_v2.1.0突合：重複していた検索項目とキーの表を表 1-2‑2 に統合（No. 振り直し、アクセス権の検索キー `accessRights`）、アクセス権検索と WEKO_SEARCH_FIX_ACCESSRIGHTS を実装補足に追記 |
+| 2026/10/05 | 508030789 | release_v2.1.0突合：重複していた検索項目とキーの表を表 1-2-2 に統合（No. 振り直し、アクセス権の検索キー `accessRights`）、アクセス権検索と WEKO_SEARCH_FIX_ACCESSRIGHTS を実装補足に追記 |

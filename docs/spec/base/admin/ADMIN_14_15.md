@@ -82,7 +82,7 @@
 
   - データベースから取得するアイテムの上限レコード数を設定する
     
-      - パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py#L16 
+      - パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py#L16
     
     
       - 設定キー：WEKO_SITEMAP_TOTAL_MAX_URL_COUNT  
@@ -92,7 +92,7 @@
 
   - キャッシュのタイムアウト時間を設定する
     
-      - パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py#L24 
+      - パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py#L24
     
       - 設定キー：WEKO_SITEMAP_CACHE_TIMEOUT  
         現在の設定値:
@@ -110,7 +110,7 @@
 
 > 「sitemapindex」URLのエンドポイントを設定する
 
-  - パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py#L32 
+  - パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py#L32
 
   - 設定キー：SITEMAP_ENDPOINT_URL  
     現在の設定値:
@@ -119,7 +119,7 @@
 > 
 > 各ページURLのエンドポイントを設定する
 
-  - パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py#L34 
+  - パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py#L34
 
   - 設定キー：SITEMAP_ENDPOINT_PAGE_URL  
     現在の設定値:

@@ -243,20 +243,20 @@ WEKO_LOGGING_OPERATION_MASTER = {
 サンプル
 ```json
 {
-    "id": 5,
-    "log_level": "ERROR",
-    "date":"2025/02/21 7:38:19.201",
-    "user_id": 1,
-    "eppn": null,
-    "ip_address":"192.168.56.1",
-    "client_id":"Z6DWfNWrrGwEYvh5Dcf81SSkrH6BiqIja17Cu2Hs",
-    "community_id": "ccp",
-    "source": "/sword/service-document",
-    "log_group_id": 2,
-    "operation_type_id": 10,
-    "operation_id": 2,
-    "target":"item",
-    "target_key":"2000001"
+    "id": 5,
+    "log_level": "ERROR",
+    "date":"2025/02/21 7:38:19.201",
+    "user_id": 1,
+    "eppn": null,
+    "ip_address":"192.168.56.1",
+    "client_id":"Z6DWfNWrrGwEYvh5Dcf81SSkrH6BiqIja17Cu2Hs",
+    "community_id": "ccp",
+    "source": "/sword/service-document",
+    "log_group_id": 2,
+    "operation_type_id": 10,
+    "operation_id": 2,
+    "target":"item",
+    "target_key":"2000001"
 }
 ```
 

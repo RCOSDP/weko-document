@@ -113,7 +113,7 @@
 >          "sysadm_group": "jc_roles_sysadm",          # システム管理者のグループ名
 >          "role_keyword": "ro",                    # ロールグループを表すキーワード
 >          "role_mapping": {
->              "radm": "Repository Administrator",  # リポジトリ管理者グループ
+>              "radm": "Repository Administrator", # リポジトリ管理者グループ
 >              "cadm": "Community Administrator",    # コミュニティ管理者グループ
 >              "cont": "Contributor"            # コントリビュータグループ
 >          },

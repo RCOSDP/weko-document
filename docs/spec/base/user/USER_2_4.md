@@ -126,7 +126,7 @@
 
 - エクスポート（TSV出力）時のテキスト処理は以下の通り
 
-    - 改行コード（\\n）→<br/> に変換する（`escape_newline`）（ [~~\#23229\#note-6~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229#note-6) ）
+    - 改行コード（\\n）→<br/> に変換する（`escape_newline`）（[~~\#23229\#note-6~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229#note-6)）
 
 
 ## 関連モジュール
@@ -148,7 +148,7 @@
 
 ### コンテンツファイルを含める場合はBagit形式でアイテムを一括出力する
 
-- 仕様書： 別紙「WEKO3_BagIt.pptx」を参照すること。
+- 仕様書： 別紙「WEKO3_BagIt.pptx」を参照すること。
 - weko_items_ui.utils.export_itemsメソッドにてbagit.make_bagを実行することでbagitファイルを生成する。
 - コンテンツファイルを含める場合、エクスポート時には登録ファイルが1つのzipファイルに圧縮されてダウンロードされる
 - zipファイルは階層構成（Bagit形式）で出力できる

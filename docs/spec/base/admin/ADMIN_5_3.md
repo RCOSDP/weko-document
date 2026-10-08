@@ -563,7 +563,7 @@
                       - ダウンロードする際には分割したファイルを合体させ、ファイル名としては**import_author_check_result_{yyyymmddhhmm}.tsv**とする。
                           インポートチェック結果のtsvで保存する情報としては以下
                           - No.
-                          - WEKOID	
+                          - WEKOID
                           - full_name
                           - Mail Address
                           - チェック結果

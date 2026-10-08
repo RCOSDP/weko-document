@@ -437,7 +437,7 @@ CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の�
 
 ### 3.3 自動設定の項目
 
-  - **出版タイプ** （JPCOARスキーマ「出版タイプ」：<https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/16> の統制語彙に基づく）  
+  - **出版タイプ** （JPCOARスキーマ「出版タイプ」：<https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/16> の統制語彙に基づく）  
     プロパティID：  
     項目：
 
@@ -446,7 +446,7 @@ CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の�
 | .metadata.item_1531978917933.subitem_1522305645492 | 出版タイプ.出版タイプ         | versiontype               |                  |        |
 | .metadata.item_1531978917933.subitem_1600292170262 | 出版タイプ.出版タイプResource | versiontype.@rdf:resource | 〇                |        |
 
-  - **アクセス権** （JPCOARスキーマ「アクセス権」：<https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/5> の統制語彙に基づく）  
+  - **アクセス権** （JPCOARスキーマ「アクセス権」：<https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/5> の統制語彙に基づく）  
     プロパティID：  
     項目：
 
@@ -455,7 +455,7 @@ CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の�
 | .metadata.item_1531978848664.subitem_1522299639480 | Access Right.アクセス権    | accessRights               |                  |        |
 | .metadata.item_1531978848664.subitem_1600958577026 | Access Right.アクセス権URI | accessRights.@rdf:resource | 〇                |        |
 
-  - **資源タイプ** （JPCOARスキーマ「資源タイプ」：https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/14 の統制語彙に基づく）  
+  - **資源タイプ** （JPCOARスキーマ「資源タイプ」：https://schema.irdb.nii.ac.jp/ja/schema/1.0.2/14 の統制語彙に基づく）  
     プロパティID：  
     項目：
 
