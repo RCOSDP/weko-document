@@ -36,60 +36,264 @@
     - method  
       GET
     - パラメータ  
-      | パラメーター名 | 説明 | 値 |
-      | ----- | ----- | ----- |
-      | doi | 検索するDOI | {doi}: 入力されたDOI
-      | format | レスポンス形式 | 「json」固定とする
+
+      <table>
+      <thead>
+      <tr>
+      <th>パラメーター名</th>
+      <th>説明</th>
+      <th>値</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>doi</td>
+      <td>検索するDOI</td>
+      <td>{doi}: 入力されたDOI</td>
+      </tr>
+      <tr>
+      <td>format</td>
+      <td>レスポンス形式</td>
+      <td>「json」固定とする</td>
+      </tr>
+      </tbody>
+      </table>
 
     - 取得したデータは、アイテムの対応項目および対応するJPCOARマッピング(jpcoar_v2_mapping)が設定されたメタデータ項目に自動入力される  
     
       取得データの入力先メタデータ項目
-      | **データ** | **パス** | **対応するJPCOARマッピング** |
-      | --------- | -------- | --------------------------- |
-      | タイトル      | dc:title                                        | dc:title                              |
-      | 別タイトル     | dcterms:alternative                             | dc:title                              |
-      | 成果物識別子    | productIdentifier.identifier(type=xx)           | jpcoar:relation                       |
-      | 著者名       | creator.foaf:name                               | jpcoar:creatorName                            |
-      | 著者識別子     | creator.personIdentifier                        |                                       |
-      | 著者所属名     | creator.jpcoar:affiliationName                  |                                       |
-      | 寄与者名      | contributor.foaf:name                           | jpcoar:contributorName |
-      | 寄与者所属名    | contributor.jpcoar:affiliationName              |                                       |
-      | 寄与者識別子    | contributor.personIdentifier                    |                                       |
-      | 収録物識別子    | publication.publicationidentifier               |                                       |
-      | 収録物名      | publication.prism:publicationName               | jpcoar:sourceTitle                 |
-      | 収録物発行日    | publication.prism:publicationDate               |                                       |
-      | 巻         | publication.prism:volume                        | jpcoar:volume                          |
-      | 号         | publication.prism:number                        | jpcoar:issue                          |
-      | 開始ページ     | publication.prism:startingPage                  | jpcoar:pageStart                    |
-      | 終了ページ     | publication.prism:endingPage                    | jpcoar:pageEnd                      |
-      | 総ページ数     | publication.jpcoar:numPages                     | jpcoar:numPages                       |
-      | 発行者       | publication.dc:publisher                        | dc:publisher                          |
-      | 日付        | publication.prism:publicationDate               | datacite:date               |
-      | 収録誌のNCID  | publication.publicationIdentifier(@type=NCID)   |jpcoar:sourceIdentifier                            |
-      | 収録誌のISSN  | publication.publicationIdentifier(@type=ISSN)   | jpcoar:sourceIdentifier                            |
-      | 学位授与番号    | ndl:dissertationNumber                          |                                       |
-      | 学位名       | ndl:degreeName                                  |                                       |
-      | 学位授与年月日   | ndl:dateGranted                                 |                                       |
-      | 学位授与機関識別子 | degreeAwardInstitution.institutionIdentifier    |                                       |
-      | 学位授与機関名   | degreeAwardInstitution.jpcoar:degreeGrantorName |                                       |
-      | 学会、会議名    | jpcoar:conferenceName                           |                                       |
-      | 開催地       | jpcoar:conferencePlace                          |                                       |
-      | 開催期間(開始日) | jpcoar:conferenceDate.jpcoar:startDay           |                                       |
-      | 開催期間(開始月) | jpcoar:conferenceDate.jpcoar:startMonth         |                                       |
-      | 開催期間(開始年) | jpcoar:conferenceDate.jpcoar:startYear          |                                       |
-      | 開催期間(終了日) | jpcoar:conferenceDate.jpcoar:endDay             |                                       |
-      | 開催期間(終了月) | jpcoar:conferenceDate.jpcoar:endDay             |                                       |
-      | 開催期間(終了年) | jpcoar:conferenceDate.jpcoar:endDay             |                                       |
-      | 助成機関名     | fundingProgram.notation                         |                                       |
-      | 関連物関連タイプ  | relatedProduct.relationType                     |                                       |
-      | 関連物識別子    | relatedProduct.productIdentifier                |                                       |
-      | 関連物タイトル   | relatedProduct.jpcoar:relatedTitle              |                                       |
-      | 抄録タイプ     | description.type                                | typeはAbstraction固定                    |
-      | 抄録本文      | description.notation                            | dc:description                        |
-      | 主題URL     | foaf:topic.@id                                  | jpcoar:subject                        |
-      | 主題タイトル    | foaf:topic.dc:title                             | jpcoar:subject                        |
-      | バージョン     | datacite:version                                |                                       |
-      | 言語        | dc:language                                     |                                       |
+
+      <table>
+      <thead>
+      <tr>
+      <th><strong>データ</strong></th>
+      <th><strong>パス</strong></th>
+      <th><strong>対応するJPCOARマッピング</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>タイトル</td>
+      <td>dc:title</td>
+      <td>dc:title</td>
+      </tr>
+      <tr>
+      <td>別タイトル</td>
+      <td>dcterms:alternative</td>
+      <td>dc:title</td>
+      </tr>
+      <tr>
+      <td>成果物識別子</td>
+      <td>productIdentifier.identifier(type=xx)</td>
+      <td>jpcoar:relation</td>
+      </tr>
+      <tr>
+      <td>著者名</td>
+      <td>creator.foaf:name</td>
+      <td>jpcoar:creatorName</td>
+      </tr>
+      <tr>
+      <td>著者識別子</td>
+      <td>creator.personIdentifier</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>著者所属名</td>
+      <td>creator.jpcoar:affiliationName</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>寄与者名</td>
+      <td>contributor.foaf:name</td>
+      <td>jpcoar:contributorName</td>
+      </tr>
+      <tr>
+      <td>寄与者所属名</td>
+      <td>contributor.jpcoar:affiliationName</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>寄与者識別子</td>
+      <td>contributor.personIdentifier</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>収録物識別子</td>
+      <td>publication.publicationidentifier</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>収録物名</td>
+      <td>publication.prism:publicationName</td>
+      <td>jpcoar:sourceTitle</td>
+      </tr>
+      <tr>
+      <td>収録物発行日</td>
+      <td>publication.prism:publicationDate</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>巻</td>
+      <td>publication.prism:volume</td>
+      <td>jpcoar:volume</td>
+      </tr>
+      <tr>
+      <td>号</td>
+      <td>publication.prism:number</td>
+      <td>jpcoar:issue</td>
+      </tr>
+      <tr>
+      <td>開始ページ</td>
+      <td>publication.prism:startingPage</td>
+      <td>jpcoar:pageStart</td>
+      </tr>
+      <tr>
+      <td>終了ページ</td>
+      <td>publication.prism:endingPage</td>
+      <td>jpcoar:pageEnd</td>
+      </tr>
+      <tr>
+      <td>総ページ数</td>
+      <td>publication.jpcoar:numPages</td>
+      <td>jpcoar:numPages</td>
+      </tr>
+      <tr>
+      <td>発行者</td>
+      <td>publication.dc:publisher</td>
+      <td>dc:publisher</td>
+      </tr>
+      <tr>
+      <td>日付</td>
+      <td>publication.prism:publicationDate</td>
+      <td>datacite:date</td>
+      </tr>
+      <tr>
+      <td>収録誌のNCID</td>
+      <td>publication.publicationIdentifier(@type=NCID)</td>
+      <td>jpcoar:sourceIdentifier</td>
+      </tr>
+      <tr>
+      <td>収録誌のISSN</td>
+      <td>publication.publicationIdentifier(@type=ISSN)</td>
+      <td>jpcoar:sourceIdentifier</td>
+      </tr>
+      <tr>
+      <td>学位授与番号</td>
+      <td>ndl:dissertationNumber</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>学位名</td>
+      <td>ndl:degreeName</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>学位授与年月日</td>
+      <td>ndl:dateGranted</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>学位授与機関識別子</td>
+      <td>degreeAwardInstitution.institutionIdentifier</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>学位授与機関名</td>
+      <td>degreeAwardInstitution.jpcoar:degreeGrantorName</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>学会、会議名</td>
+      <td>jpcoar:conferenceName</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>開催地</td>
+      <td>jpcoar:conferencePlace</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>開催期間(開始日)</td>
+      <td>jpcoar:conferenceDate.jpcoar:startDay</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>開催期間(開始月)</td>
+      <td>jpcoar:conferenceDate.jpcoar:startMonth</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>開催期間(開始年)</td>
+      <td>jpcoar:conferenceDate.jpcoar:startYear</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>開催期間(終了日)</td>
+      <td>jpcoar:conferenceDate.jpcoar:endDay</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>開催期間(終了月)</td>
+      <td>jpcoar:conferenceDate.jpcoar:endDay</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>開催期間(終了年)</td>
+      <td>jpcoar:conferenceDate.jpcoar:endDay</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>助成機関名</td>
+      <td>fundingProgram.notation</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>関連物関連タイプ</td>
+      <td>relatedProduct.relationType</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>関連物識別子</td>
+      <td>relatedProduct.productIdentifier</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>関連物タイトル</td>
+      <td>relatedProduct.jpcoar:relatedTitle</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>抄録タイプ</td>
+      <td>description.type</td>
+      <td>typeはAbstraction固定</td>
+      </tr>
+      <tr>
+      <td>抄録本文</td>
+      <td>description.notation</td>
+      <td>dc:description</td>
+      </tr>
+      <tr>
+      <td>主題URL</td>
+      <td>foaf:topic.@id</td>
+      <td>jpcoar:subject</td>
+      </tr>
+      <tr>
+      <td>主題タイトル</td>
+      <td>foaf:topic.dc:title</td>
+      <td>jpcoar:subject</td>
+      </tr>
+      <tr>
+      <td>バージョン</td>
+      <td>datacite:version</td>
+      <td></td>
+      </tr>
+      <tr>
+      <td>言語</td>
+      <td>dc:language</td>
+      <td></td>
+      </tr>
+      </tbody>
+      </table>
 
 ---
 
@@ -102,28 +306,104 @@
     - method  
       GET
     - パラメータ  
-      | パラメーター名 | 説明 | 値 |
-      | ----- | ----- | ----- |
-      | doi | 検索するDOI | {doi}: 入力されたDOIをURLエンコードした文字列
+
+      <table>
+      <thead>
+      <tr>
+      <th>パラメーター名</th>
+      <th>説明</th>
+      <th>値</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>doi</td>
+      <td>検索するDOI</td>
+      <td>{doi}: 入力されたDOIをURLエンコードした文字列</td>
+      </tr>
+      </tbody>
+      </table>
 
     - 取得したデータは、アイテムの対応項目および対応するJPCOARマッピング(jpcoar_v2_mapping)が設定されたメタデータ項目に自動入力される
 
       取得データの入力先メタデータ項目
-      | **データ** | **パス** | **対応するJPCOARマッピング** |
-      | --------- | -------- | --------------------------- |
-      | タイトル      | title                                        | dc:title                              |
-      | 著者名       | creator                                           | jpcoar:creatorName                    |
-      | 著者所属名     | affiliation                                     | jpcoar:affiliationName                |
-      | 寄与者名      | creator                                          | jpcoar:contributorName                |
-      | 寄与者所属名    | affiliationName                                |jpcoar:affiliationName                 |
-      | 収録物名      | journal_title_name                               | jpcoar:sourceTitle                 |
-      | 収録物発行日    | date                                           | date(dateType="Issued")             |
-      | 巻         | volume                                             | jpcoar:volume                          |
-      | 号         | issue                                              | jpcoar:issue                          |
-      | 開始ページ     | first_page                                      | jpcoar:pageStart                    |
-      | 終了ページ     | last_page                                       | jpcoar:pageEnd                      |
-      | 日付        | date                                               | datacite:date                      |
-      | 収録誌のISSN  | journal_id_type                                  | jpcoar:sourceIdentifier             |
+
+      <table>
+      <thead>
+      <tr>
+      <th><strong>データ</strong></th>
+      <th><strong>パス</strong></th>
+      <th><strong>対応するJPCOARマッピング</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>タイトル</td>
+      <td>title</td>
+      <td>dc:title</td>
+      </tr>
+      <tr>
+      <td>著者名</td>
+      <td>creator</td>
+      <td>jpcoar:creatorName</td>
+      </tr>
+      <tr>
+      <td>著者所属名</td>
+      <td>affiliation</td>
+      <td>jpcoar:affiliationName</td>
+      </tr>
+      <tr>
+      <td>寄与者名</td>
+      <td>creator</td>
+      <td>jpcoar:contributorName</td>
+      </tr>
+      <tr>
+      <td>寄与者所属名</td>
+      <td>affiliationName</td>
+      <td>jpcoar:affiliationName</td>
+      </tr>
+      <tr>
+      <td>収録物名</td>
+      <td>journal_title_name</td>
+      <td>jpcoar:sourceTitle</td>
+      </tr>
+      <tr>
+      <td>収録物発行日</td>
+      <td>date</td>
+      <td>date(dateType="Issued")</td>
+      </tr>
+      <tr>
+      <td>巻</td>
+      <td>volume</td>
+      <td>jpcoar:volume</td>
+      </tr>
+      <tr>
+      <td>号</td>
+      <td>issue</td>
+      <td>jpcoar:issue</td>
+      </tr>
+      <tr>
+      <td>開始ページ</td>
+      <td>first_page</td>
+      <td>jpcoar:pageStart</td>
+      </tr>
+      <tr>
+      <td>終了ページ</td>
+      <td>last_page</td>
+      <td>jpcoar:pageEnd</td>
+      </tr>
+      <tr>
+      <td>日付</td>
+      <td>date</td>
+      <td>datacite:date</td>
+      </tr>
+      <tr>
+      <td>収録誌のISSN</td>
+      <td>journal_id_type</td>
+      <td>jpcoar:sourceIdentifier</td>
+      </tr>
+      </tbody>
+      </table>
 
 ---
 
@@ -136,26 +416,94 @@
     - method  
       GET
     - パラメータ  
-      | パラメーター名 | 説明 | 値 |
-      | ----- | ----- | ----- |
-      | doi | 検索するDOI | {doi}: 入力されたDOI
+
+      <table>
+      <thead>
+      <tr>
+      <th>パラメーター名</th>
+      <th>説明</th>
+      <th>値</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>doi</td>
+      <td>検索するDOI</td>
+      <td>{doi}: 入力されたDOI</td>
+      </tr>
+      </tbody>
+      </table>
 
     - 取得したデータは、アイテムの対応項目および対応するJPCOARマッピング(jpcoar_v2_mapping)が設定されたメタデータ項目に自動入力される
 
       取得データの入力先メタデータ項目
-      | **データ** | **パス** | **対応するJPCOARマッピング** |
-      | --------- | -------- | --------------------------- |
-      | タイトル      | title                                        | dc:title                              |
-      | 著者名       | creator                                           | jpcoar:creatorName                    |
-      | 著者所属名     | affiliation                                     | jpcoar:affiliationName                |
-      | 寄与者名      | creator                                          | jpcoar:contributorName                |
-      | 寄与者所属名    | affiliationName                                |jpcoar:affiliationName                 |
-      | 識別子      | doi                               　　　　　　　　　| jpcoar:identifier                 　　|
-      | 日付        | date                                               | datacite:date                      |
-      | 会議名      | fundingReferences                                  | jpcoar:fundingReference             |
-      | 関連識別子   | relationships_type                              | jpcoar:relatedIdentifier(identifierType="DOI")    |
-      | 権利　      | rights                                              | jpcoar:rights                      |
-      | バージョン   | version                                             | jpcoar:edition                    |
+
+      <table>
+      <thead>
+      <tr>
+      <th><strong>データ</strong></th>
+      <th><strong>パス</strong></th>
+      <th><strong>対応するJPCOARマッピング</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>タイトル</td>
+      <td>title</td>
+      <td>dc:title</td>
+      </tr>
+      <tr>
+      <td>著者名</td>
+      <td>creator</td>
+      <td>jpcoar:creatorName</td>
+      </tr>
+      <tr>
+      <td>著者所属名</td>
+      <td>affiliation</td>
+      <td>jpcoar:affiliationName</td>
+      </tr>
+      <tr>
+      <td>寄与者名</td>
+      <td>creator</td>
+      <td>jpcoar:contributorName</td>
+      </tr>
+      <tr>
+      <td>寄与者所属名</td>
+      <td>affiliationName</td>
+      <td>jpcoar:affiliationName</td>
+      </tr>
+      <tr>
+      <td>識別子</td>
+      <td>doi</td>
+      <td>jpcoar:identifier</td>
+      </tr>
+      <tr>
+      <td>日付</td>
+      <td>date</td>
+      <td>datacite:date</td>
+      </tr>
+      <tr>
+      <td>会議名</td>
+      <td>fundingReferences</td>
+      <td>jpcoar:fundingReference</td>
+      </tr>
+      <tr>
+      <td>関連識別子</td>
+      <td>relationships_type</td>
+      <td>jpcoar:relatedIdentifier(identifierType="DOI")</td>
+      </tr>
+      <tr>
+      <td>権利</td>
+      <td>rights</td>
+      <td>jpcoar:rights</td>
+      </tr>
+      <tr>
+      <td>バージョン</td>
+      <td>version</td>
+      <td>jpcoar:edition</td>
+      </tr>
+      </tbody>
+      </table>
 
 ### 医中誌Web APIからのメタデータ取得
 
@@ -182,14 +530,48 @@
       - method  
         GET
       - パラメータ  
-        | パラメーター名 | 説明 | 値 |
-        | ----- | ----- | ----- |
-        | operation | 操作種別 | SRUの場合は「searchRetrieve」固定
-        | version | バージョン | 「1.2」固定とする
-        | startRecord | 開始位置 | 「1」固定とする
-        | recordPacking | レスポンス形式 | 「xml」固定とする
-        | recordSchema | 取得データスキーマ | 「pam」固定とする
-        | query | 検索式 | {query}: 「prism.doi={doi}」をURLエンコードした文字列<br>  * {doi}: 入力されたDOI
+
+        <table>
+        <thead>
+        <tr>
+        <th>パラメーター名</th>
+        <th>説明</th>
+        <th>値</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>operation</td>
+        <td>操作種別</td>
+        <td>SRUの場合は「searchRetrieve」固定</td>
+        </tr>
+        <tr>
+        <td>version</td>
+        <td>バージョン</td>
+        <td>「1.2」固定とする</td>
+        </tr>
+        <tr>
+        <td>startRecord</td>
+        <td>開始位置</td>
+        <td>「1」固定とする</td>
+        </tr>
+        <tr>
+        <td>recordPacking</td>
+        <td>レスポンス形式</td>
+        <td>「xml」固定とする</td>
+        </tr>
+        <tr>
+        <td>recordSchema</td>
+        <td>取得データスキーマ</td>
+        <td>「pam」固定とする</td>
+        </tr>
+        <tr>
+        <td>query</td>
+        <td>検索式</td>
+        <td>{query}: 「prism.doi={doi}」をURLエンコードした文字列<br>  * {doi}: 入力されたDOI</td>
+        </tr>
+        </tbody>
+        </table>
     
     - ログアウト  
       ※ログイン時に取得した cookie をhttp ヘッダにセットしてリクエストする。
@@ -203,20 +585,78 @@
     - 取得したデータは、アイテムの対応項目および対応するJPCOARマッピング(jpcoar_v2_mapping)が設定されたメタデータ項目に自動入力される
 
       取得データの入力先メタデータ項目
-      | **データ** | **パス** | **対応するJPCOARマッピング** |
-      | --------- | -------- | --------------------------- |
-      | タイトル      | dc:title                                     | jpcoar:titleName                             |
-      | 著者名       | dc:creator                                        | jpcoar:creatorName　　　                   |
-      | 寄与者名      | dc:creator                                           | jpcoar:contributorName                |
-      | 収録物名      | prism:publicationName                               | jpcoar:sourceTitle                 |
-      | 収録物発行日    | prism:publicationDate                              | date(dateType="Issued")             |
-      | 巻         | prism:volume                                             | jpcoar:volume                          |
-      | 号         | prism:number                                            | jpcoar:issue                          |
-      | 開始ページ     | prism:startingPage                                      | jpcoar:pageStart                    |
-      | 総ページ数     | prism:pageRange                                     | jpcoar:numPages                       |
-      | 日付        | prism:publicationDatee                                 | datacite:date                      |
-      | 収録誌のISSN  | prism:issn                                          | jpcoar:sourceIdentifier             |
-      | 関連識別子  | prism:doi                                             | jpcoar:relatedIdentifier(identifierType="DOI")             |
+
+      <table>
+      <thead>
+      <tr>
+      <th><strong>データ</strong></th>
+      <th><strong>パス</strong></th>
+      <th><strong>対応するJPCOARマッピング</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>タイトル</td>
+      <td>dc:title</td>
+      <td>jpcoar:titleName</td>
+      </tr>
+      <tr>
+      <td>著者名</td>
+      <td>dc:creator</td>
+      <td>jpcoar:creatorName</td>
+      </tr>
+      <tr>
+      <td>寄与者名</td>
+      <td>dc:creator</td>
+      <td>jpcoar:contributorName</td>
+      </tr>
+      <tr>
+      <td>収録物名</td>
+      <td>prism:publicationName</td>
+      <td>jpcoar:sourceTitle</td>
+      </tr>
+      <tr>
+      <td>収録物発行日</td>
+      <td>prism:publicationDate</td>
+      <td>date(dateType="Issued")</td>
+      </tr>
+      <tr>
+      <td>巻</td>
+      <td>prism:volume</td>
+      <td>jpcoar:volume</td>
+      </tr>
+      <tr>
+      <td>号</td>
+      <td>prism:number</td>
+      <td>jpcoar:issue</td>
+      </tr>
+      <tr>
+      <td>開始ページ</td>
+      <td>prism:startingPage</td>
+      <td>jpcoar:pageStart</td>
+      </tr>
+      <tr>
+      <td>総ページ数</td>
+      <td>prism:pageRange</td>
+      <td>jpcoar:numPages</td>
+      </tr>
+      <tr>
+      <td>日付</td>
+      <td>prism:publicationDatee</td>
+      <td>datacite:date</td>
+      </tr>
+      <tr>
+      <td>収録誌のISSN</td>
+      <td>prism:issn</td>
+      <td>jpcoar:sourceIdentifier</td>
+      </tr>
+      <tr>
+      <td>関連識別子</td>
+      <td>prism:doi</td>
+      <td>jpcoar:relatedIdentifier(identifierType="DOI")</td>
+      </tr>
+      </tbody>
+      </table>
 
 ---
 
@@ -229,28 +669,96 @@
     - method  
       GET
     - パラメータ  
-      | パラメーター名 | 説明 | 値 |
-      | ----- | ----- | ----- |
-      | search_query | 検索するDOI | `doi:{doi}` の形式（{doi}: 入力されたDOIの末尾2セグメント（`prefix/suffix`）） |
+
+      <table>
+      <thead>
+      <tr>
+      <th>パラメーター名</th>
+      <th>説明</th>
+      <th>値</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>search_query</td>
+      <td>検索するDOI</td>
+      <td><code>doi:{doi}</code> の形式（{doi}: 入力されたDOIの末尾2セグメント（<code>prefix/suffix</code>））</td>
+      </tr>
+      </tbody>
+      </table>
 
     - リクエストURLは config `WEKO_WORKSPACE_ARXIV_API_URL`（既定 `https://export.arxiv.org/api/query?search_query=doi:`）に DOI を連結して生成する。レスポンスは XML 形式（Atom）で返却され、`xmltodict` で辞書に変換して解析する（`feed.entry` 配下を参照）。
     - 抽出対象のデータ（下表の「取得キー」）は config `WEKO_WORKSPACE_ARXIV_REQUIRED_ITEM`（title / identifier / date / description / creator / relation / subject）で制御される。
     - 取得したデータは、アイテムの対応項目および対応するJPCOARマッピング(jpcoar_v2_mapping)が設定されたメタデータ項目に自動入力される
 
       取得データの入力先メタデータ項目
-      | **データ** | **取得キー（arXiv応答のパス）** | **対応するJPCOARマッピング** |
-      | --------- | -------- | --------------------------- |
-      | タイトル | title（entry.title） | dc:title |
-      | arXivの論文ページへのURL | identifier（entry.id） | jpcoar:identifier(identifierType=URI) |
-      | 論文の提出日 | date（entry.published の日付部分） | datacite:date(dateType=Submitted) |
-      | 論文の最終更新日 | date（entry.updated の日付部分） | datacite:date(dateType=Updated) |
-      | 論文の要約 | description（entry.summary） | datacite:description(descriptionType=Abstract) |
-      | 著者によるコメント | description（entry.arxiv:comment） | datacite:description(descriptionType=Other) |
-      | 著者の名前 | creator（entry.author.name） | jpcoar:creator→jpcoar:creatorName |
-      | 著者の所属機関 | creator（entry.author.arxiv:affiliation） | jpcoar:creator→jpcoar:affiliation→jpcoar:affiliationName |
-      | 論文関連リンク（HTML表示用URL・PDF表示用URL・解決済みDOI(doi.org)のURL など entry.link の全件） | relation（entry.link.@href） | jpcoar:relation(relationType=isFormatOf)→jpcoar:relatedIdentifier(identifierType=URI) |
-      | DOI | relation（entry.arxiv:doi） | jpcoar:relation(relationType=isVersionOf)→jpcoar:relatedIdentifier(identifierType=DOI) |
-      | 論文のカテゴリ | subject（entry.category.@term） | jpcoar:subject(subjectScheme=Other)。主要カテゴリ（entry.arxiv:primary_category.@term）と一致するものを先頭に置く |
+
+      <table>
+      <thead>
+      <tr>
+      <th><strong>データ</strong></th>
+      <th><strong>取得キー（arXiv応答のパス）</strong></th>
+      <th><strong>対応するJPCOARマッピング</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>タイトル</td>
+      <td>title（entry.title）</td>
+      <td>dc:title</td>
+      </tr>
+      <tr>
+      <td>arXivの論文ページへのURL</td>
+      <td>identifier（entry.id）</td>
+      <td>jpcoar:identifier(identifierType=URI)</td>
+      </tr>
+      <tr>
+      <td>論文の提出日</td>
+      <td>date（entry.published の日付部分）</td>
+      <td>datacite:date(dateType=Submitted)</td>
+      </tr>
+      <tr>
+      <td>論文の最終更新日</td>
+      <td>date（entry.updated の日付部分）</td>
+      <td>datacite:date(dateType=Updated)</td>
+      </tr>
+      <tr>
+      <td>論文の要約</td>
+      <td>description（entry.summary）</td>
+      <td>datacite:description(descriptionType=Abstract)</td>
+      </tr>
+      <tr>
+      <td>著者によるコメント</td>
+      <td>description（entry.arxiv:comment）</td>
+      <td>datacite:description(descriptionType=Other)</td>
+      </tr>
+      <tr>
+      <td>著者の名前</td>
+      <td>creator（entry.author.name）</td>
+      <td>jpcoar:creator→jpcoar:creatorName</td>
+      </tr>
+      <tr>
+      <td>著者の所属機関</td>
+      <td>creator（entry.author.arxiv:affiliation）</td>
+      <td>jpcoar:creator→jpcoar:affiliation→jpcoar:affiliationName</td>
+      </tr>
+      <tr>
+      <td>論文関連リンク（HTML表示用URL・PDF表示用URL・解決済みDOI(doi.org)のURL など entry.link の全件）</td>
+      <td>relation（entry.link.@href）</td>
+      <td>jpcoar:relation(relationType=isFormatOf)→jpcoar:relatedIdentifier(identifierType=URI)</td>
+      </tr>
+      <tr>
+      <td>DOI</td>
+      <td>relation（entry.arxiv:doi）</td>
+      <td>jpcoar:relation(relationType=isVersionOf)→jpcoar:relatedIdentifier(identifierType=DOI)</td>
+      </tr>
+      <tr>
+      <td>論文のカテゴリ</td>
+      <td>subject（entry.category.@term）</td>
+      <td>jpcoar:subject(subjectScheme=Other)。主要カテゴリ（entry.arxiv:primary_category.@term）と一致するものを先頭に置く</td>
+      </tr>
+      </tbody>
+      </table>
 
 ## 関連モジュール
 

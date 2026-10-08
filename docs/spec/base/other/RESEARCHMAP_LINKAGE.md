@@ -151,12 +151,32 @@ celeryのタスクとして、researchmapへの業績情報の登録処理が実
 
               - ※ 以下の文字をデータ中に含める場合は、「\」でエスケープする。「"」であれば「\\"」と記載する。
 
-                | エスケープ表記 | 説明                                  |
-                | -------------- | ------------------------------------- |
-                | \\"             | ダブルクォーテーション                |
-                | \\\\           | バックスラッシュ                      |
-                | \n             | 改行                                  |
-                | \uXXXX         | 4 桁の16 進数で表記されたUnicode 文字 |
+                <table>
+                <thead>
+                <tr>
+                <th>エスケープ表記</th>
+                <th>説明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>\"</td>
+                <td>ダブルクォーテーション</td>
+                </tr>
+                <tr>
+                <td>\\</td>
+                <td>バックスラッシュ</td>
+                </tr>
+                <tr>
+                <td>\n</td>
+                <td>改行</td>
+                </tr>
+                <tr>
+                <td>\uXXXX</td>
+                <td>4 桁の16 進数で表記されたUnicode 文字</td>
+                </tr>
+                </tbody>
+                </table>
 
         - researchmapへの成果物登録の際の業績種別とJPCOARスキーマの資源タイプの対応表は、設定ファイルで変更可能とする。
 
@@ -256,7 +276,7 @@ celeryのタスクとして、researchmapへの業績情報の登録処理が実
   - アクセストークンを利用して、WEKOの登録アイテムに関するメタデータをresearchmapの業績情報に登録するリクエストAPIを呼び出す。
 
     - リクエスト  
-      POST or PUT https://api.researchmap.jp/\_bulk
+      POST or PUT https://api.researchmap.jp/_bulk
 
     - パラメータ （POST BODY（JSON））例  
       ```json
@@ -270,12 +290,32 @@ celeryのタスクとして、researchmapへの業績情報の登録処理が実
 
       - ※ 以下の文字をデータ中に含める場合は、「\」でエスケープする。「"」であれば「\\"」と記載する。
 
-          | エスケープ表記 | 説明                                  |
-          | -------------- | ------------------------------------- |
-          | \\"             | ダブルクォーテーション                |
-          | \\\\           | バックスラッシュ                      |
-          | \n             | 改行                                  |
-          | \uXXXX         | 4 桁の16 進数で表記されたUnicode 文字 |
+          <table>
+          <thead>
+          <tr>
+          <th>エスケープ表記</th>
+          <th>説明</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td>\"</td>
+          <td>ダブルクォーテーション</td>
+          </tr>
+          <tr>
+          <td>\\</td>
+          <td>バックスラッシュ</td>
+          </tr>
+          <tr>
+          <td>\n</td>
+          <td>改行</td>
+          </tr>
+          <tr>
+          <td>\uXXXX</td>
+          <td>4 桁の16 進数で表記されたUnicode 文字</td>
+          </tr>
+          </tbody>
+          </table>
 
     - 情報が更新可能な範囲は、API キーに紐づいた機関に所属する一般会員。（researchmapのAPI設計書記載の仕様）
 
@@ -387,7 +427,7 @@ celeryのタスクとして、researchmapへの業績情報の登録処理が実
   - 業績情報の一括更新結果の確認を行う。
 
     - リクエスト  
-        GET https://api.researchmap.jp/\_bulk_results
+        GET https://api.researchmap.jp/_bulk_results
 
     - パラメーター（GET）
 

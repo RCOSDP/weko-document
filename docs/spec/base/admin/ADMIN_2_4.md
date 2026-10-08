@@ -1278,13 +1278,36 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 - 「リクエスト送信先」の情報を保存するため、request_mail_listテーブルを追加する。  
   カラムは以下の表のものとする。
 
-  | カラム名  | 説明                                                                  |
-  | --------- | --------------------------------------------------------------------- |
-  | created   | 作られた日時秒                                                        |
-  | updated   | 更新された日時秒                                                      |
-  | id        | 一意なID。主キー                                                      |
-  | item_id   | アイテムのID。Item_metadataテーブルのidカラムの外部キー。uuidとする。 |
-  | mail_list | emailとauthor_idを対応させた辞書をリスト型でもつ。                    |
+  <table>
+  <thead>
+  <tr>
+  <th>カラム名</th>
+  <th>説明</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>created</td>
+  <td>作られた日時秒</td>
+  </tr>
+  <tr>
+  <td>updated</td>
+  <td>更新された日時秒</td>
+  </tr>
+  <tr>
+  <td>id</td>
+  <td>一意なID。主キー</td>
+  </tr>
+  <tr>
+  <td>item_id</td>
+  <td>アイテムのID。Item_metadataテーブルのidカラムの外部キー。uuidとする。</td>
+  </tr>
+  <tr>
+  <td>mail_list</td>
+  <td>emailとauthor_idを対応させた辞書をリスト型でもつ。</td>
+  </tr>
+  </tbody>
+  </table>
 
   - 「リクエスト送信先」の情報がインポートされたとき、その情報をrequest_mail_listテーブルに追加、編集、削除をする。
 
@@ -1297,11 +1320,28 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
   - 「利用申請」の情報がインポートされたとき、その情報をapplication_itemテーブルに追加、編集、削除をする。なお、tsvファイルのapplication_item.*の情報は以下の表のように対応させ、json形式でitem_applicationカラムに保存するものとする。
 
-    | キー               | 値                                  |
-    | ------------------ | ----------------------------------- |
-    | “workflow”         | .item_application.workflow_id       |
-    | “terms”            | .item_application.terms             |
-    | “termsDescription” | .item_application.terms_description |
+    <table>
+    <thead>
+    <tr>
+    <th>キー</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>“workflow”</td>
+    <td>.item_application.workflow_id</td>
+    </tr>
+    <tr>
+    <td>“terms”</td>
+    <td>.item_application.terms</td>
+    </tr>
+    <tr>
+    <td>“termsDescription”</td>
+    <td>.item_application.terms_description</td>
+    </tr>
+    </tbody>
+    </table>
 
   - インポート画面にてダウンロードされるテンプレートtsvファイルに    ".item_application.workflow",".item_application.terms",".item_application.terms_description"の３つの列を追加する。
 

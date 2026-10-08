@@ -78,13 +78,42 @@
 
   - 画面に読み込んだインポート用ファイルの「サマリー(Summary)」を以下のように表示する
 
-    | # | 項目名            | 概要                      |
-    | -- | -------------- | ----------------------- |
-    | 1  | 総計(Total)      | 読み込んだファイルの著者の数          |
-    | 2  | New Creator    | 読み込んだファイルの内、新規登録となる著者の数 |
-    | 3  | Update Creator | 読み込んだファイルの内、更新の著者の数     |
-    | 4  | Delete Creator | 読み込んだファイルの内、削除となる著者の数   |
-    | 5  | Result Error   | 内容のチェックでエラーとなった著者の数     |
+    <table>
+    <thead>
+    <tr>
+    <th>#</th>
+    <th>項目名</th>
+    <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>1</td>
+    <td>総計(Total)</td>
+    <td>読み込んだファイルの著者の数</td>
+    </tr>
+    <tr>
+    <td>2</td>
+    <td>New Creator</td>
+    <td>読み込んだファイルの内、新規登録となる著者の数</td>
+    </tr>
+    <tr>
+    <td>3</td>
+    <td>Update Creator</td>
+    <td>読み込んだファイルの内、更新の著者の数</td>
+    </tr>
+    <tr>
+    <td>4</td>
+    <td>Delete Creator</td>
+    <td>読み込んだファイルの内、削除となる著者の数</td>
+    </tr>
+    <tr>
+    <td>5</td>
+    <td>Result Error</td>
+    <td>内容のチェックでエラーとなった著者の数</td>
+    </tr>
+    </tbody>
+    </table>
 
   - 画面に表示される著者DBの詳細情報は以下の通り
 
@@ -324,11 +353,28 @@
   - **インポート対象の判定**
       - TSV ファイルの **1行目** に記載された情報をもとに、インポート対象を判定する。
 
-          | **1行目の内容** | **インポート対象** |
-          |----------------------|----------------------|
-          | 記載なし | 著者 (`authors` テーブル) |
-          | `authors_prefix_settings` | 著者識別子 (`authors_prefix_settings` テーブル) |
-          | `authors_affiliation_settings` | 機関識別子 (`authors_affiliation_settings` テーブル) |
+          <table>
+          <thead>
+          <tr>
+          <th><strong>1行目の内容</strong></th>
+          <th><strong>インポート対象</strong></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td>記載なし</td>
+          <td>著者 (<code>authors</code> テーブル)</td>
+          </tr>
+          <tr>
+          <td><code>authors_prefix_settings</code></td>
+          <td>著者識別子 (<code>authors_prefix_settings</code> テーブル)</td>
+          </tr>
+          <tr>
+          <td><code>authors_affiliation_settings</code></td>
+          <td>機関識別子 (<code>authors_affiliation_settings</code> テーブル)</td>
+          </tr>
+          </tbody>
+          </table>
 
       - フロントエンドで **「次へ」ボタン** を押せるのは、TSV の形式が Export target の値と一致した場合のみ。
 
@@ -350,15 +396,44 @@
       各 TSV ファイルの **各行のデータチェック** を行う。  
       以下では識別子の場合のチェック項目のみとする。
 
-      | **チェック項目** | **エラー条件** |
-      |----------------|----------------|
-      | **TSV フォーマット** | 列の数が不足または過剰 |
-      | **name 列** | 空欄の場合 |
-      | **scheme 列** | 空欄の場合 |
-      | **scheme の重複** | 同一ファイル内に重複がある場合 |
-      | **URL の形式** | `http://` または `https://` で始まっていない場合 |
-      | **削除対象の識別子** | DB内に対象が存在しない場合 |
-      | **コミュニティID列** | DB内に対象が存在しない、またはコミュニティ管理者の管理対象外のコミュニティの場合|
+      <table>
+      <thead>
+      <tr>
+      <th><strong>チェック項目</strong></th>
+      <th><strong>エラー条件</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><strong>TSV フォーマット</strong></td>
+      <td>列の数が不足または過剰</td>
+      </tr>
+      <tr>
+      <td><strong>name 列</strong></td>
+      <td>空欄の場合</td>
+      </tr>
+      <tr>
+      <td><strong>scheme 列</strong></td>
+      <td>空欄の場合</td>
+      </tr>
+      <tr>
+      <td><strong>scheme の重複</strong></td>
+      <td>同一ファイル内に重複がある場合</td>
+      </tr>
+      <tr>
+      <td><strong>URL の形式</strong></td>
+      <td><code>http://</code> または <code>https://</code> で始まっていない場合</td>
+      </tr>
+      <tr>
+      <td><strong>削除対象の識別子</strong></td>
+      <td>DB内に対象が存在しない場合</td>
+      </tr>
+      <tr>
+      <td><strong>コミュニティID列</strong></td>
+      <td>DB内に対象が存在しない、またはコミュニティ管理者の管理対象外のコミュニティの場合</td>
+      </tr>
+      </tbody>
+      </table>
 
       - schemeの値が対象となるDBに既存で存在する場合、更新とする。
       - schemeの値が対象となるDBに存在しない場合、新規登録となる。
@@ -369,11 +444,28 @@
       2. **「インポート」ボタン** を押すと、非同期タスク (`Celery`) が開始する。
       3. `import_type` に応じて、適切なインポートメソッドを呼び出す。
 
-          | **import_type の値** | **実行する処理** |
-          |----------------|----------------|
-          | `author_db` | 著者DB用のインポート (`authors` テーブル) |
-          | `id_prefix` | 著者識別子用のインポート (`authors_prefix_settings` テーブル) |
-          | `affiliation_id` | 機関識別子用のインポート (`authors_affiliation_settings` テーブル) |
+          <table>
+          <thead>
+          <tr>
+          <th><strong>import_type の値</strong></th>
+          <th><strong>実行する処理</strong></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><code>author_db</code></td>
+          <td>著者DB用のインポート (<code>authors</code> テーブル)</td>
+          </tr>
+          <tr>
+          <td><code>id_prefix</code></td>
+          <td>著者識別子用のインポート (<code>authors_prefix_settings</code> テーブル)</td>
+          </tr>
+          <tr>
+          <td><code>affiliation_id</code></td>
+          <td>機関識別子用のインポート (<code>authors_affiliation_settings</code> テーブル)</td>
+          </tr>
+          </tbody>
+          </table>
 
   - **インポートステータスの管理**
       - 各インポートタスクの ID を Redis (`WEKO_AUTHORS_IMPORT_CACHE_KEY`) に保存。
@@ -382,13 +474,36 @@
 
   - **エラーハンドリング**
 
-      | **エラー発生箇所** | **対応** |
-      |----------------|----------------|
-      | **TSV のフォーマット不一致** | エラーメッセージを表示し、次のステップへ進めない |
-      | **Celery ワーカーが停止** | エラーメッセージを表示し、インポートを禁止 |
-      | **Redis キーが既に存在** | 前回の処理が完了していないため、インポートを禁止 |
-      | **DB エラー (SQLAlchemyError)** | リトライ（最大 `5回`）、失敗した場合はスキップ |
-      | **Redis エラー (RedisError)** | リトライ（最大 `5回`）、失敗した場合はエラーを表示 |
+      <table>
+      <thead>
+      <tr>
+      <th><strong>エラー発生箇所</strong></th>
+      <th><strong>対応</strong></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><strong>TSV のフォーマット不一致</strong></td>
+      <td>エラーメッセージを表示し、次のステップへ進めない</td>
+      </tr>
+      <tr>
+      <td><strong>Celery ワーカーが停止</strong></td>
+      <td>エラーメッセージを表示し、インポートを禁止</td>
+      </tr>
+      <tr>
+      <td><strong>Redis キーが既に存在</strong></td>
+      <td>前回の処理が完了していないため、インポートを禁止</td>
+      </tr>
+      <tr>
+      <td><strong>DB エラー (SQLAlchemyError)</strong></td>
+      <td>リトライ（最大 <code>5回</code>）、失敗した場合はスキップ</td>
+      </tr>
+      <tr>
+      <td><strong>Redis エラー (RedisError)</strong></td>
+      <td>リトライ（最大 <code>5回</code>）、失敗した場合はエラーを表示</td>
+      </tr>
+      </tbody>
+      </table>
 
   - **著者DBのインポートについて**
       - 著者DBのインポートについては著者の量によっては処理が重くなるためバッチ処理を行う。
@@ -464,11 +579,28 @@
 
               - **ファイル削除のタイミング**
 
-                  | ファイル | 削除条件 |
-                  |-----------------|------------------------------------------------|
-                  | `import_author_{yyyymmddhhmm}.tsv` | インポートチェック完了時 / 保存期間24 時間経過時|
-                  | `import_author_check_result_{yyyymmddhhmm}.tsv` | 別インポートチェック時 / 保存期間24 時間経過時 |
-                  | `import_author_result_{yyyymmddhhmm}.tsv` | 別インポート開始時 / インポート完了後 24 時間経過時（Celery タスクで削除） |
+                  <table>
+                  <thead>
+                  <tr>
+                  <th>ファイル</th>
+                  <th>削除条件</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  <td><code>import_author_{yyyymmddhhmm}.tsv</code></td>
+                  <td>インポートチェック完了時 / 保存期間24 時間経過時</td>
+                  </tr>
+                  <tr>
+                  <td><code>import_author_check_result_{yyyymmddhhmm}.tsv</code></td>
+                  <td>別インポートチェック時 / 保存期間24 時間経過時</td>
+                  </tr>
+                  <tr>
+                  <td><code>import_author_result_{yyyymmddhhmm}.tsv</code></td>
+                  <td>別インポート開始時 / インポート完了後 24 時間経過時（Celery タスクで削除）</td>
+                  </tr>
+                  </tbody>
+                  </table>
 
               - 保存期間は （デフォルト: 24時間）で管理
               - 削除処理は Celery タスクが定期的に実行

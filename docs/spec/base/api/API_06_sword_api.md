@@ -906,7 +906,7 @@ Content-Type: application/json
 | treatment                    | object  | デポジット時に期待される処理のURLと説明を示すオブジェクト。[設定値:9](#conf09)                                                                            |
 | treatment.@id                | string  | 処理のURL。                                                                                                                                                |
 | treatment.description        | string  | 処理の説明。                                                                                                                                               |
-| version                      | string  | サポートしているSWORDバージョン。"http://purl.org/net/sword/3.0"を出力。[設定値:1](#conf01)                                                                |
+| version                      | string  | サポートしているSWORDバージョン。`"http://purl.org/net/sword/3.0"`を出力。[設定値:1](#conf01)                                                                |
 
 
 ### ステータスドキュメント

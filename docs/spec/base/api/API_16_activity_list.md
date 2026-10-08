@@ -52,19 +52,47 @@
 
 -   URLはapi/:version/workflow/activities
 
-  | パラメータ | 値           |
-  |------------|--------------|
-  | :version   | APIのバージョン |
+  <table>
+  <thead>
+  <tr>
+  <th>パラメータ</th>
+  <th>値</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>:version</td>
+  <td>APIのバージョン</td>
+  </tr>
+  </tbody>
+  </table>
 
 -   リクエスト
 
     -   ヘッダ
 
-  | キー名            | 値                                                    |
-  |-------------------|-------------------------------------------------------|
-  | Accept-Language   | 表示する言語の指定                                    |
-  | Authorization     | Bearer アクセストークン                               |
-  | If-None-Match     | 初回リクエスト時のレスポンスヘッダーに設定されているETagの値 |
+  <table>
+  <thead>
+  <tr>
+  <th>キー名</th>
+  <th>値</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>Accept-Language</td>
+  <td>表示する言語の指定</td>
+  </tr>
+  <tr>
+  <td>Authorization</td>
+  <td>Bearer アクセストークン</td>
+  </tr>
+  <tr>
+  <td>If-None-Match</td>
+  <td>初回リクエスト時のレスポンスヘッダーに設定されているETagの値</td>
+  </tr>
+  </tbody>
+  </table>
 
 -   ボディ
 
@@ -91,9 +119,20 @@
 
     -   ヘッダ
 
-  | キー名 | 値             |
-  |--------|----------------|
-  | ETag   | コンテンツのハッシュ値 |
+  <table>
+  <thead>
+  <tr>
+  <th>キー名</th>
+  <th>値</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>ETag</td>
+  <td>コンテンツのハッシュ値</td>
+  </tr>
+  </tbody>
+  </table>
 
 -   ボディ
 

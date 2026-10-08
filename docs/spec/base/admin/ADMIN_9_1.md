@@ -160,14 +160,40 @@ OAI-PMHハーベスト実行履歴の表示件数を設定
     - 存在しない場合、新規登録をする
       - Metadata Prefix の設定によって、アイテムタイプを決まる （v2.0.0）
 
-        | Metadata Prefix の値 | 使用しているハーベスト用アイテムタイプ |
-        |:--|:--|
-        | oai_dc | Multiple |
-        | jpcoar | Multiple |
-        | jpcoar_1.0 | Multiple |
-        | jpcoar_2.0 | Multiple |
-        | oai_ddi25 | Harvesting DDI |
-        | ddi | Harvesting DDI |
+        <table>
+        <thead>
+        <tr>
+        <th>Metadata Prefix の値</th>
+        <th>使用しているハーベスト用アイテムタイプ</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>oai_dc</td>
+        <td>Multiple</td>
+        </tr>
+        <tr>
+        <td>jpcoar</td>
+        <td>Multiple</td>
+        </tr>
+        <tr>
+        <td>jpcoar_1.0</td>
+        <td>Multiple</td>
+        </tr>
+        <tr>
+        <td>jpcoar_2.0</td>
+        <td>Multiple</td>
+        </tr>
+        <tr>
+        <td>oai_ddi25</td>
+        <td>Harvesting DDI</td>
+        </tr>
+        <tr>
+        <td>ddi</td>
+        <td>Harvesting DDI</td>
+        </tr>
+        </tbody>
+        </table>
 
 - 新規アイテムの「pid_id」、「pid_value」の値を設定する。
   - 「pid_id」= hvstid

@@ -90,41 +90,116 @@ GET /api/{version}/authors
 
 - パスパラメータ
 
-    | 項目 | 説明 |
-    | --- | --- |
-    | version | APIのバージョン |
+    <table>
+    <thead>
+    <tr>
+    <th>項目</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>version</td>
+    <td>APIのバージョン</td>
+    </tr>
+    </tbody>
+    </table>
 
 - クエリパラメータ
 
     - idtypeは文字列で指定させる（例：weko、orcid）
 
-    | 項目 | 説明 |
-    | --- | --- |
-    |fullname|著者姓名|
-    |firstname|著者名|
-    |familyname|著者姓|
-    |idtype|著者識別子種別。選択肢は画面と同様|
-    |authorid|idtypeに対応した著者識別子|
-    |communityid|著者を管理するコミュニティのID|
+    <table>
+    <thead>
+    <tr>
+    <th>項目</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>fullname</td>
+    <td>著者姓名</td>
+    </tr>
+    <tr>
+    <td>firstname</td>
+    <td>著者名</td>
+    </tr>
+    <tr>
+    <td>familyname</td>
+    <td>著者姓</td>
+    </tr>
+    <tr>
+    <td>idtype</td>
+    <td>著者識別子種別。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>authorid</td>
+    <td>idtypeに対応した著者識別子</td>
+    </tr>
+    <tr>
+    <td>communityid</td>
+    <td>著者を管理するコミュニティのID</td>
+    </tr>
+    </tbody>
+    </table>
 
 - ヘッダーパラメータ
 
-    | 項目 | 値 | 必須 | 説明 |
-    | --- | --- | --- | --- |
-    | Authorization | Bearer <access_token> | - |操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目</th>
+    <th>値</th>
+    <th>必須</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Authorization</td>
+    <td>Bearer <access_token></td>
+    <td>-</td>
+    <td>操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。</td>
+    </tr>
+    </tbody>
+    </table>
 
 
 #### レスポンス<!-- omit in toc -->
 
 - レスポンスコード
 
-    | コード | 説明 |
-    | --- | --- |
-    | 200 | 正常終了 |
-    | 400 | リクエストに不備がある |
-    | 401 | OAuth2認証失敗 |
-    | 403 | 該当ユーザに必要なロールが付与されていない|
-    | 500 | 内部のエラー |
+    <table>
+    <thead>
+    <tr>
+    <th>コード</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>200</td>
+    <td>正常終了</td>
+    </tr>
+    <tr>
+    <td>400</td>
+    <td>リクエストに不備がある</td>
+    </tr>
+    <tr>
+    <td>401</td>
+    <td>OAuth2認証失敗</td>
+    </tr>
+    <tr>
+    <td>403</td>
+    <td>該当ユーザに必要なロールが付与されていない</td>
+    </tr>
+    <tr>
+    <td>500</td>
+    <td>内部のエラー</td>
+    </tr>
+    </tbody>
+    </table>
 
 - レスポンスボディ
 
@@ -187,66 +262,214 @@ GET /api/{version}/authors
 
     **データ構造**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |authors|object|変更情報を格納する。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>authors</td>
+    <td>object</td>
+    <td>変更情報を格納する。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **emailInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |email|string|著者のメールアドレス|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>email</td>
+    <td>string</td>
+    <td>著者のメールアドレス</td>
+    </tr>
+    </tbody>
+    </table>
 
     **authorIdInfo**
 
     - idtypeは文字列に変換して返す（例：weko、orcid）
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |idType|string|著者識別子種別。選択肢は画面と同様|
-    |authorId|string|著者識別子|
-    |authorIdShowFlg|boolean|［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>idType</td>
+    <td>string</td>
+    <td>著者識別子種別。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>authorId</td>
+    <td>string</td>
+    <td>著者識別子</td>
+    </tr>
+    <tr>
+    <td>authorIdShowFlg</td>
+    <td>boolean</td>
+    <td>［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **authorNameInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |language|string|著者姓名の記述言語。選択肢は画面と同様|
-    |firstname|string|著者名|
-    |familyName|string|著者姓|
-    |nameFormat|string|著者名と著者姓の組み合わせ方|
-    |nameShowFlg|boolean|［著者DBから入力］機能で、氏名が自動入力されるかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>language</td>
+    <td>string</td>
+    <td>著者姓名の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>firstname</td>
+    <td>string</td>
+    <td>著者名</td>
+    </tr>
+    <tr>
+    <td>familyName</td>
+    <td>string</td>
+    <td>著者姓</td>
+    </tr>
+    <tr>
+    <td>nameFormat</td>
+    <td>string</td>
+    <td>著者名と著者姓の組み合わせ方</td>
+    </tr>
+    <tr>
+    <td>nameShowFlg</td>
+    <td>boolean</td>
+    <td>［著者DBから入力］機能で、氏名が自動入力されるかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **identifierInfo**
 
     - affiliationIdTypeは文字列に変換して返す（例：ISNI、ROR）
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |affiliationIdType|string|所属機関識別子種別。選択肢は画面と同様|
-    |affiliationId|string|所属機関識別子|
-    |identifierShowFlg|boolean||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationIdType</td>
+    <td>string</td>
+    <td>所属機関識別子種別。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>affiliationId</td>
+    <td>string</td>
+    <td>所属機関識別子</td>
+    </tr>
+    <tr>
+    <td>identifierShowFlg</td>
+    <td>boolean</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     **affiliationNameInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |affiliationName|string|所属機関名|
-    |affiliationNameLang|string|所属機関の記述言語。選択肢は画面と同様|
-    |affiliationNameShowFlg|boolean||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationName</td>
+    <td>string</td>
+    <td>所属機関名</td>
+    </tr>
+    <tr>
+    <td>affiliationNameLang</td>
+    <td>string</td>
+    <td>所属機関の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>affiliationNameShowFlg</td>
+    <td>boolean</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     **affiliationPeriodInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |periodStart|string|所属開始日。入力形式はyyyy-MM-dd。|
-    |periodEnd|string|所属終了日。入力形式はyyyy-MM-dd。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>periodStart</td>
+    <td>string</td>
+    <td>所属開始日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    <tr>
+    <td>periodEnd</td>
+    <td>string</td>
+    <td>所属終了日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **communityIds**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |communityIds[n]|string|著者を管理するコミュニティのID|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>communityIds[n]</td>
+    <td>string</td>
+    <td>著者を管理するコミュニティのID</td>
+    </tr>
+    </tbody>
+    </table>
 
 
 ### 5.3. 処理概要
@@ -304,15 +527,41 @@ POST /api/{version}/authors
 
 - パスパラメータ
 
-    | 項目 | 説明 |
-    | --- | --- |
-    | version | APIのバージョン |
+    <table>
+    <thead>
+    <tr>
+    <th>項目</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>version</td>
+    <td>APIのバージョン</td>
+    </tr>
+    </tbody>
+    </table>
 
 - ヘッダーパラメータ
 
-    | 項目 | 値 | 必須 | 説明 |
-    | --- | --- | --- | --- |
-    | Authorization | Bearer <access_token> | - |操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目</th>
+    <th>値</th>
+    <th>必須</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Authorization</td>
+    <td>Bearer <access_token></td>
+    <td>-</td>
+    <td>操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。</td>
+    </tr>
+    </tbody>
+    </table>
 
 - リクエストボディ
 
@@ -373,71 +622,273 @@ POST /api/{version}/authors
 
     **データ構造**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |author|object|〇|-|変更情報を格納する。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>author</td>
+    <td>object</td>
+    <td>〇</td>
+    <td>-</td>
+    <td>変更情報を格納する。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **emailInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |email|string|✕|-|著者のメールアドレス|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>email</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>-</td>
+    <td>著者のメールアドレス</td>
+    </tr>
+    </tbody>
+    </table>
 
     **authorIdInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |idType|string|△※|-|著者識別子種別。選択肢は画面と同様（例：weko、orcid）|
-    |authorId|string|△※|-|著者識別子|
-    |authorIdShowFlg|boolean|✕|true|［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>idType</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>著者識別子種別。選択肢は画面と同様（例：weko、orcid）</td>
+    </tr>
+    <tr>
+    <td>authorId</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>著者識別子</td>
+    </tr>
+    <tr>
+    <td>authorIdShowFlg</td>
+    <td>boolean</td>
+    <td>✕</td>
+    <td>true</td>
+    <td>［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ idTypeとauthorIdの片方のみが送られた場合はエラーにする
 
     **authorNameInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |language|string|✕※|-|著者姓名の記述言語。選択肢は画面と同様|
-    |firstname|string|✕|-|著者名|
-    |familyName|string|✕|-|著者姓|
-    |nameFormat|string|✕|"familyNmAndNm"※|著者名と著者姓の組み合わせ方|
-    |nameShowFlg|boolean|✕|true|［著者DBから入力］機能で、氏名が自動入力されるかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>language</td>
+    <td>string</td>
+    <td>✕※</td>
+    <td>-</td>
+    <td>著者姓名の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>firstname</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>-</td>
+    <td>著者名</td>
+    </tr>
+    <tr>
+    <td>familyName</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>-</td>
+    <td>著者姓</td>
+    </tr>
+    <tr>
+    <td>nameFormat</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>"familyNmAndNm"※</td>
+    <td>著者名と著者姓の組み合わせ方</td>
+    </tr>
+    <tr>
+    <td>nameShowFlg</td>
+    <td>boolean</td>
+    <td>✕</td>
+    <td>true</td>
+    <td>［著者DBから入力］機能で、氏名が自動入力されるかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ firstnameまたはfamilyNameが指定されたときはlanguageは必須とする
     ※ language、firstname、familyNameが送られてきた場合でnameFormatが指定されていない場合のみデフォルト値を適用する
 
     **identifierInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |affiliationIdType|string|△※|-|所属機関識別子種別。選択肢は画面と同様（例：ISNI、ROR）|
-    |affiliationId|string|△※|-|所属機関識別子|
-    |identifierShowFlg|boolean|✕|true||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationIdType</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>所属機関識別子種別。選択肢は画面と同様（例：ISNI、ROR）</td>
+    </tr>
+    <tr>
+    <td>affiliationId</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>所属機関識別子</td>
+    </tr>
+    <tr>
+    <td>identifierShowFlg</td>
+    <td>boolean</td>
+    <td>✕</td>
+    <td>true</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ affiliationIdTypeとaffiliationIdの片方のみが送られた場合はエラーにする
 
     **affiliationNameInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |affiliationName|string|△※|-|所属機関名|
-    |affiliationNameLang|string|△※|-|所属機関の記述言語。選択肢は画面と同様|
-    |affiliationNameShowFlg|boolean|✕|true||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationName</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>所属機関名</td>
+    </tr>
+    <tr>
+    <td>affiliationNameLang</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>所属機関の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>affiliationNameShowFlg</td>
+    <td>boolean</td>
+    <td>✕</td>
+    <td>true</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ affiliationNameとaffiliationNameLangの片方のみが送られた場合はエラーにする
 
     **affiliationPeriodInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |periodStart|string|✕|-|所属開始日。入力形式はyyyy-MM-dd。|
-    |periodEnd|string|✕|-|所属終了日。入力形式はyyyy-MM-dd。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>periodStart</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>-</td>
+    <td>所属開始日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    <tr>
+    <td>periodEnd</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>-</td>
+    <td>所属終了日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **communityIds**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |communityIds[n]|string|△※|-|著者を管理するコミュニティのID|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>communityIds[n]</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>著者を管理するコミュニティのID</td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ コミュニティ管理者の場合は管理対象のコミュニティが指定されていない場合はエラーにする
 
@@ -445,13 +896,36 @@ POST /api/{version}/authors
 
 - レスポンスコード
 
-    | コード | 説明 |
-    | --- | --- |
-    | 200 | 正常終了 |
-    | 400 | リクエストに不備がある |
-    | 401 | OAuth2認証失敗 |
-    | 403 | 該当ユーザに必要なロールが付与されていない|
-    | 500 | 内部のエラー |
+    <table>
+    <thead>
+    <tr>
+    <th>コード</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>200</td>
+    <td>正常終了</td>
+    </tr>
+    <tr>
+    <td>400</td>
+    <td>リクエストに不備がある</td>
+    </tr>
+    <tr>
+    <td>401</td>
+    <td>OAuth2認証失敗</td>
+    </tr>
+    <tr>
+    <td>403</td>
+    <td>該当ユーザに必要なロールが付与されていない</td>
+    </tr>
+    <tr>
+    <td>500</td>
+    <td>内部のエラー</td>
+    </tr>
+    </tbody>
+    </table>
 
 - レスポンスボディ
 
@@ -513,66 +987,214 @@ POST /api/{version}/authors
 
     **データ構造**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |authors|object|変更情報を格納する。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>authors</td>
+    <td>object</td>
+    <td>変更情報を格納する。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **emailInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |email|string|著者のメールアドレス|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>email</td>
+    <td>string</td>
+    <td>著者のメールアドレス</td>
+    </tr>
+    </tbody>
+    </table>
 
     **authorIdInfo**
 
     - idtypeは文字列に変換して返す（例：weko、orcid）
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |idType|string|著者識別子種別。選択肢は画面と同様|
-    |authorId|string|著者識別子|
-    |authorIdShowFlg|boolean|［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>idType</td>
+    <td>string</td>
+    <td>著者識別子種別。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>authorId</td>
+    <td>string</td>
+    <td>著者識別子</td>
+    </tr>
+    <tr>
+    <td>authorIdShowFlg</td>
+    <td>boolean</td>
+    <td>［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **authorNameInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |language|string|著者姓名の記述言語。選択肢は画面と同様|
-    |firstName|string|著者名|
-    |familyName|string|著者姓|
-    |nameFormat|string|著者名と著者姓の組み合わせ方|
-    |nameShowFlg|boolean|［著者DBから入力］機能で、氏名が自動入力されるかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>language</td>
+    <td>string</td>
+    <td>著者姓名の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>firstName</td>
+    <td>string</td>
+    <td>著者名</td>
+    </tr>
+    <tr>
+    <td>familyName</td>
+    <td>string</td>
+    <td>著者姓</td>
+    </tr>
+    <tr>
+    <td>nameFormat</td>
+    <td>string</td>
+    <td>著者名と著者姓の組み合わせ方</td>
+    </tr>
+    <tr>
+    <td>nameShowFlg</td>
+    <td>boolean</td>
+    <td>［著者DBから入力］機能で、氏名が自動入力されるかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **identifierInfo**
 
     - affiliationIdTypeは文字列に変換して返す（例：ISNI、ROR）
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |affiliationIdType|string|所属機関識別子種別。選択肢は画面と同様|
-    |affiliationId|string|所属機関識別子|
-    |identifierShowFlg|boolean||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationIdType</td>
+    <td>string</td>
+    <td>所属機関識別子種別。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>affiliationId</td>
+    <td>string</td>
+    <td>所属機関識別子</td>
+    </tr>
+    <tr>
+    <td>identifierShowFlg</td>
+    <td>boolean</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     **affiliationNameInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |affiliationName|string|所属機関名|
-    |affiliationNameLang|string|所属機関の記述言語。選択肢は画面と同様|
-    |affiliationNameShowFlg|boolean||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationName</td>
+    <td>string</td>
+    <td>所属機関名</td>
+    </tr>
+    <tr>
+    <td>affiliationNameLang</td>
+    <td>string</td>
+    <td>所属機関の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>affiliationNameShowFlg</td>
+    <td>boolean</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     **affiliationPeriodInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |periodStart|string|所属開始日。入力形式はyyyy-MM-dd。|
-    |periodEnd|string|所属終了日。入力形式はyyyy-MM-dd。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>periodStart</td>
+    <td>string</td>
+    <td>所属開始日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    <tr>
+    <td>periodEnd</td>
+    <td>string</td>
+    <td>所属終了日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **communityIds**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |communityIds[n]|string|著者を管理するコミュニティのID|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>communityIds[n]</td>
+    <td>string</td>
+    <td>著者を管理するコミュニティのID</td>
+    </tr>
+    </tbody>
+    </table>
 
 ### 6.3. 処理概要
 
@@ -647,16 +1269,45 @@ PUT /api/{version}/authors/{identifier}
 
 - パスパラメータ
 
-    | 項目 | 説明 |
-    | --- | --- |
-    | version | APIのバージョン |
-    | identifier | 更新対象の著者を一意に識別する値。<br>authorsテーブルのIDまたはElasticSearchのUUID のいずれかを指定する。 |
+    <table>
+    <thead>
+    <tr>
+    <th>項目</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>version</td>
+    <td>APIのバージョン</td>
+    </tr>
+    <tr>
+    <td>identifier</td>
+    <td>更新対象の著者を一意に識別する値。<br>authorsテーブルのIDまたはElasticSearchのUUID のいずれかを指定する。</td>
+    </tr>
+    </tbody>
+    </table>
 
 - ヘッダーパラメータ
 
-    | 項目 | 値 | 必須 | 説明 |
-    | --- | --- | --- | --- |
-    | Authorization | Bearer <access_token> | 〇 |操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目</th>
+    <th>値</th>
+    <th>必須</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Authorization</td>
+    <td>Bearer <access_token></td>
+    <td>〇</td>
+    <td>操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。</td>
+    </tr>
+    </tbody>
+    </table>
 
 - リクエストボディ
 
@@ -723,72 +1374,277 @@ PUT /api/{version}/authors/{identifier}
 
     **データ構造**
 
-    |項目名|型|必須|説明|
-    | --- | --- | --- | --- |
-    |force_change|boolean|✕|著者名の変更をアイテムに反映するかどうか|
-    |author|object|〇|変更情報を格納する。<br>空の辞書はエラーとする。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>force_change</td>
+    <td>boolean</td>
+    <td>✕</td>
+    <td>著者名の変更をアイテムに反映するかどうか</td>
+    </tr>
+    <tr>
+    <td>author</td>
+    <td>object</td>
+    <td>〇</td>
+    <td>変更情報を格納する。<br>空の辞書はエラーとする。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **emailInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |email|string|✕|-|著者のメールアドレス|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>email</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>-</td>
+    <td>著者のメールアドレス</td>
+    </tr>
+    </tbody>
+    </table>
 
     **authorIdInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |idType|string|〇※|-|著者識別子種別。選択肢は画面と同様（例：weko、orcid）|
-    |authorId|string|〇※|-|著者識別子|
-    |authorIdShowFlg|boolean|✕|true|［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>idType</td>
+    <td>string</td>
+    <td>〇※</td>
+    <td>-</td>
+    <td>著者識別子種別。選択肢は画面と同様（例：weko、orcid）</td>
+    </tr>
+    <tr>
+    <td>authorId</td>
+    <td>string</td>
+    <td>〇※</td>
+    <td>-</td>
+    <td>著者識別子</td>
+    </tr>
+    <tr>
+    <td>authorIdShowFlg</td>
+    <td>boolean</td>
+    <td>✕</td>
+    <td>true</td>
+    <td>［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ idTypeとauthorIdの片方のみが送られた場合はエラーにする
 
     **authorNameInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |language|string|△※|-|著者姓名の記述言語。選択肢は画面と同様|
-    |firstName|string|△※|-|著者名|
-    |familyName|string|△※|-|著者姓|
-    |nameFormat|string|✕|"familyNmAndNm"※|著者名と著者姓の組み合わせ方|
-    |nameShowFlg|boolean|✕|true|［著者DBから入力］機能で、氏名が自動入力されるかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>language</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>著者姓名の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>firstName</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>著者名</td>
+    </tr>
+    <tr>
+    <td>familyName</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>著者姓</td>
+    </tr>
+    <tr>
+    <td>nameFormat</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>"familyNmAndNm"※</td>
+    <td>著者名と著者姓の組み合わせ方</td>
+    </tr>
+    <tr>
+    <td>nameShowFlg</td>
+    <td>boolean</td>
+    <td>✕</td>
+    <td>true</td>
+    <td>［著者DBから入力］機能で、氏名が自動入力されるかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ firstNameまたはfamilyNameが指定されたときはlanguageは必須とする
     ※ language、firstname、familyNameが送られてきた場合でnameFormatが指定されていない場合のみデフォルト値を適用する
 
     **identifierInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |affiliationIdType|string|△※|-|所属機関識別子種別。選択肢は画面と同様（例：ISNI、ROR）|
-    |affiliationId|string|△※|-|所属機関識別子|
-    |identifierShowFlg|boolean|✕|true||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationIdType</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>所属機関識別子種別。選択肢は画面と同様（例：ISNI、ROR）</td>
+    </tr>
+    <tr>
+    <td>affiliationId</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>所属機関識別子</td>
+    </tr>
+    <tr>
+    <td>identifierShowFlg</td>
+    <td>boolean</td>
+    <td>✕</td>
+    <td>true</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ affiliationIdTypeとaffiliationIdの片方のみが送られた場合はエラーにする
 
     **affiliationNameInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |affiliationName|string|△※|-|所属機関名|
-    |affiliationNameLang|string|△※|-|所属機関の記述言語。選択肢は画面と同様|
-    |affiliationNameShowFlg|boolean|✕|true||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationName</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>所属機関名</td>
+    </tr>
+    <tr>
+    <td>affiliationNameLang</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>所属機関の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>affiliationNameShowFlg</td>
+    <td>boolean</td>
+    <td>✕</td>
+    <td>true</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ affiliationNameとaffiliationNameLangの片方のみが送られた場合はエラーにする
 
     **affiliationPeriodInfo**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |periodStart|string|✕|-|所属開始日。入力形式はyyyy-MM-dd。|
-    |periodEnd|string|✕|-|所属終了日。入力形式はyyyy-MM-dd。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>periodStart</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>-</td>
+    <td>所属開始日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    <tr>
+    <td>periodEnd</td>
+    <td>string</td>
+    <td>✕</td>
+    <td>-</td>
+    <td>所属終了日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **communityIds**
 
-    |項目名|型|必須|デフォルト値|説明|
-    | --- | --- | --- | --- | --- |
-    |communityIds[n]|string|△※|-|著者を管理するコミュニティのID|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>必須</th>
+    <th>デフォルト値</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>communityIds[n]</td>
+    <td>string</td>
+    <td>△※</td>
+    <td>-</td>
+    <td>著者を管理するコミュニティのID</td>
+    </tr>
+    </tbody>
+    </table>
 
     ※ コミュニティ管理者の場合は管理対象のコミュニティが指定されていない場合エラーにする。
 
@@ -796,14 +1652,40 @@ PUT /api/{version}/authors/{identifier}
 
 - レスポンスコード
 
-    | コード | 説明 |
-    | --- | --- |
-    | 200 | 正常終了 |
-    | 400 | リクエストに不備がある |
-    | 401 | OAuth2認証失敗 |
-    | 403 | 該当ユーザに必要なロールが付与されていない |
-    | 404 | 指定された著者が存在しない |
-    | 500 | 内部のエラー |
+    <table>
+    <thead>
+    <tr>
+    <th>コード</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>200</td>
+    <td>正常終了</td>
+    </tr>
+    <tr>
+    <td>400</td>
+    <td>リクエストに不備がある</td>
+    </tr>
+    <tr>
+    <td>401</td>
+    <td>OAuth2認証失敗</td>
+    </tr>
+    <tr>
+    <td>403</td>
+    <td>該当ユーザに必要なロールが付与されていない</td>
+    </tr>
+    <tr>
+    <td>404</td>
+    <td>指定された著者が存在しない</td>
+    </tr>
+    <tr>
+    <td>500</td>
+    <td>内部のエラー</td>
+    </tr>
+    </tbody>
+    </table>
 
 
 - レスポンスボディ
@@ -866,66 +1748,214 @@ PUT /api/{version}/authors/{identifier}
 
     **データ構造**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |authors|object|変更情報を格納する。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>authors</td>
+    <td>object</td>
+    <td>変更情報を格納する。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **emailInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |email|string|著者のメールアドレス|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>email</td>
+    <td>string</td>
+    <td>著者のメールアドレス</td>
+    </tr>
+    </tbody>
+    </table>
 
     **authorIdInfo**
 
     - idtypeは文字列に変換して返す（例：weko、orcid）
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |idType|string|著者識別子種別。選択肢は画面と同様|
-    |authorId|string|著者識別子|
-    |authorIdShowFlg|boolean|［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>idType</td>
+    <td>string</td>
+    <td>著者識別子種別。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>authorId</td>
+    <td>string</td>
+    <td>著者識別子</td>
+    </tr>
+    <tr>
+    <td>authorIdShowFlg</td>
+    <td>boolean</td>
+    <td>［著者DBから入力］機能で、外部著者IDを自動入力するかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **authorNameInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |language|string|著者姓名の記述言語。選択肢は画面と同様|
-    |firstName|string|著者名|
-    |familyName|string|著者姓|
-    |nameFormat|string|著者名と著者姓の組み合わせ方|
-    |nameShowFlg|boolean|［著者DBから入力］機能で、氏名が自動入力されるかどうか。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>language</td>
+    <td>string</td>
+    <td>著者姓名の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>firstName</td>
+    <td>string</td>
+    <td>著者名</td>
+    </tr>
+    <tr>
+    <td>familyName</td>
+    <td>string</td>
+    <td>著者姓</td>
+    </tr>
+    <tr>
+    <td>nameFormat</td>
+    <td>string</td>
+    <td>著者名と著者姓の組み合わせ方</td>
+    </tr>
+    <tr>
+    <td>nameShowFlg</td>
+    <td>boolean</td>
+    <td>［著者DBから入力］機能で、氏名が自動入力されるかどうか。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **identifierInfo**
 
     - affiliationIdTypeは文字列に変換して返す（例：ISNI、ROR）
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |affiliationIdType|string|所属機関識別子種別。選択肢は画面と同様|
-    |affiliationId|string|所属機関識別子|
-    |identifierShowFlg|boolean||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationIdType</td>
+    <td>string</td>
+    <td>所属機関識別子種別。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>affiliationId</td>
+    <td>string</td>
+    <td>所属機関識別子</td>
+    </tr>
+    <tr>
+    <td>identifierShowFlg</td>
+    <td>boolean</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     **affiliationNameInfo**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |affiliationName|string|所属機関名|
-    |affiliationNameLang|string|所属機関の記述言語。選択肢は画面と同様|
-    |affiliationNameShowFlg|boolean||
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>affiliationName</td>
+    <td>string</td>
+    <td>所属機関名</td>
+    </tr>
+    <tr>
+    <td>affiliationNameLang</td>
+    <td>string</td>
+    <td>所属機関の記述言語。選択肢は画面と同様</td>
+    </tr>
+    <tr>
+    <td>affiliationNameShowFlg</td>
+    <td>boolean</td>
+    <td></td>
+    </tr>
+    </tbody>
+    </table>
 
     **"affiliationPeriodInfo"**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |periodStart|string|所属開始日。入力形式はyyyy-MM-dd。|
-    |periodEnd|string|所属終了日。入力形式はyyyy-MM-dd。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>periodStart</td>
+    <td>string</td>
+    <td>所属開始日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    <tr>
+    <td>periodEnd</td>
+    <td>string</td>
+    <td>所属終了日。入力形式はyyyy-MM-dd。</td>
+    </tr>
+    </tbody>
+    </table>
 
     **communityIds**
 
-    |項目名|型|説明|
-    | --- | --- | --- |
-    |communityIds[n]|string|著者を管理するコミュニティのID|
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>communityIds[n]</td>
+    <td>string</td>
+    <td>著者を管理するコミュニティのID</td>
+    </tr>
+    </tbody>
+    </table>
 
 
 ### 7.3. 処理概要
@@ -1011,30 +2041,85 @@ DELETE /api/{version}/authors/{identifier}
 
 - パスパラメータ
 
-    | 項目 | 説明 |
-    | --- | --- |
-    | version | APIのバージョン |
-    | identifier | 削除対象の著者を一意に識別する値。<br>authorsテーブルのIDまたはElasticSearchのUUID のいずれかを指定する。 |
+    <table>
+    <thead>
+    <tr>
+    <th>項目</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>version</td>
+    <td>APIのバージョン</td>
+    </tr>
+    <tr>
+    <td>identifier</td>
+    <td>削除対象の著者を一意に識別する値。<br>authorsテーブルのIDまたはElasticSearchのUUID のいずれかを指定する。</td>
+    </tr>
+    </tbody>
+    </table>
 
 - ヘッダーパラメータ
 
-    | 項目 | 値 | 必須 | 説明 |
-    | --- | --- | --- | --- |
-    | Authorization | Bearer <access_token> | 〇 |操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。|
+    <table>
+    <thead>
+    <tr>
+    <th>項目</th>
+    <th>値</th>
+    <th>必須</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Authorization</td>
+    <td>Bearer <access_token></td>
+    <td>〇</td>
+    <td>操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。</td>
+    </tr>
+    </tbody>
+    </table>
 
 
 #### レスポンス<!-- omit in toc -->
 
 - レスポンスコード
 
-    | コード | 説明 |
-    | --- | --- |
-    | 200 | 正常終了 |
-    | 400 | リクエストに不備がある |
-    | 401 | OAuth2認証失敗 |
-    | 403 | 該当ユーザに必要なロールが付与されていない |
-    | 404 | 指定された著者が存在しない |
-    | 500 | 内部のエラー |
+    <table>
+    <thead>
+    <tr>
+    <th>コード</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>200</td>
+    <td>正常終了</td>
+    </tr>
+    <tr>
+    <td>400</td>
+    <td>リクエストに不備がある</td>
+    </tr>
+    <tr>
+    <td>401</td>
+    <td>OAuth2認証失敗</td>
+    </tr>
+    <tr>
+    <td>403</td>
+    <td>該当ユーザに必要なロールが付与されていない</td>
+    </tr>
+    <tr>
+    <td>404</td>
+    <td>指定された著者が存在しない</td>
+    </tr>
+    <tr>
+    <td>500</td>
+    <td>内部のエラー</td>
+    </tr>
+    </tbody>
+    </table>
 
 
 ### 8.3. 処理概要

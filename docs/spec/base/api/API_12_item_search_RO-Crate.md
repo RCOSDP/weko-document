@@ -83,75 +83,305 @@
 - URL  
   api/:version/records
 
-  | パラメータ | 値             |
-  |------------|----------------|
-  | version    | バージョン情報 |
+  <table>
+  <thead>
+  <tr>
+  <th>パラメータ</th>
+  <th>値</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>version</td>
+  <td>バージョン情報</td>
+  </tr>
+  </tbody>
+  </table>
 
 - リクエスト  
   - ヘッダ
-    | キー名 | 値 |
-    |----|----|
-    | Accept-Language | 言語設定<br>デフォルトはen |
-    | Authorization | 認可情報 |
+
+    <table>
+    <thead>
+    <tr>
+    <th>キー名</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Accept-Language</td>
+    <td>言語設定<br>デフォルトはen</td>
+    </tr>
+    <tr>
+    <td>Authorization</td>
+    <td>認可情報</td>
+    </tr>
+    </tbody>
+    </table>
 
   - クエリ
-    | パラメータ | 型 | 説明 |
-    |----|----|----|
-    | q | string | 検索するキーワード |
-    | search_type | int | 検索形式 (0: 全文検索、1: キーワード検索) |
-    | pretty | bool | レスポンスの整形の有無 (デフォルト: false) |
-    | page | int | 取得するページ番号 |
-    | cursor | int | ページネーションのカーソル |
-    | size | int | 取得する検索結果の最大数 |
-    | sort | string | ソートキー |
-    | 以下、メタデータ項目 |  |  |
-    | title | string | タイトル |
-    | exact_title_match | bool | タイトル完全一致検索を指定する (デフォルト: false) |
-    | creator | string | 著者名 |
-    | subject | string | 件名 |
-    | sbjscheme | int (候補から選択) | 件名種別 |
-    | spatial | string | 地域 |
-    | des | string | 内容記述 |
-    | publisher | string | 出版者 |
-    | cname | string | 寄与者 |
-    | fd_attr | string (候補から選択) | 日付種別 |
-    | filedate_from | date (YYYYMMDD形式) | 日付下限を指定 |
-    | filedate_to | date (YYYYMMDD形式) | 日付上限を指定 |
-    | mimetype | string | フォーマット |
-    | id | string | 識別子 |
-    | id_attr | string (候補から選択) | 識別子種別 |
-    | srctitle | string | 雑誌名 |
-    | type | int (候補から選択) | 資源タイプ |
-    | lang | string (候補から選択) | 言語 |
-    | temporal | string | 期間 |
-    | dategranted_from | date (YYYYMMDD形式) | 学位取得日下限を指定 |
-    | dategranted_to | date (YYYYMMDD形式) | 学位取得日上限を指定 |
-    | version | string (候補から選択) | 著者版フラグ |
-    | dissno | string | 学位番号 |
-    | degreename | string | 学位名 |
-    | dgname | string | 学位授与機関 |
-    | wid | int | 作成者識別子 |
-    | iid | int | インデックスID |
-    | license | string (候補から選択) | ライセンス |
-    | textX<br>(Xは1~10の整数) | string | 詳細検索条件設定でtextXに割り当てた項目の値 |
-    | integer_rangeX_from<br>(Xは1~5の整数) | int | 詳細検索条件設定でinteger_rangeXに割り当てた項目の値の下限 |
-    | integer_rangeX_to<br>(Xは1~5の整数) | int | 詳細検索条件設定でinteger_rangeXに割り当てた項目の値の上限 |
-    | float_rangeX_from<br>(Xは1~5の整数) | float | 詳細検索条件設定でfloat_rangeXに割り当てた項目の値の下限 |
-    | float_rangeX_to<br>(Xは1~5の整数) | float | 詳細検索条件設定でfloat_rangeXに割り当てた項目の値の上限 |
-    | date_rangeX_from<br>(Xは1~5の整数) | date | 詳細検索条件設定でdate_rangeXに割り当てた項目の値の下限 (YYYYMMDD形式) |
-    | date_rangeX_to<br>(Xは1=5の整数) | date | 詳細検索条件設定でdate_rangeXに割り当てた項目の値の上限 (YYYYMMDD形式) |
-    | ファセット検索項目 |  | ファセット検索の設定でActiveとした項目 |
+
+    <table>
+    <thead>
+    <tr>
+    <th>パラメータ</th>
+    <th>型</th>
+    <th>説明</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>q</td>
+    <td>string</td>
+    <td>検索するキーワード</td>
+    </tr>
+    <tr>
+    <td>search_type</td>
+    <td>int</td>
+    <td>検索形式 (0: 全文検索、1: キーワード検索)</td>
+    </tr>
+    <tr>
+    <td>pretty</td>
+    <td>bool</td>
+    <td>レスポンスの整形の有無 (デフォルト: false)</td>
+    </tr>
+    <tr>
+    <td>page</td>
+    <td>int</td>
+    <td>取得するページ番号</td>
+    </tr>
+    <tr>
+    <td>cursor</td>
+    <td>int</td>
+    <td>ページネーションのカーソル</td>
+    </tr>
+    <tr>
+    <td>size</td>
+    <td>int</td>
+    <td>取得する検索結果の最大数</td>
+    </tr>
+    <tr>
+    <td>sort</td>
+    <td>string</td>
+    <td>ソートキー</td>
+    </tr>
+    <tr>
+    <td>以下、メタデータ項目</td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>title</td>
+    <td>string</td>
+    <td>タイトル</td>
+    </tr>
+    <tr>
+    <td>exact_title_match</td>
+    <td>bool</td>
+    <td>タイトル完全一致検索を指定する (デフォルト: false)</td>
+    </tr>
+    <tr>
+    <td>creator</td>
+    <td>string</td>
+    <td>著者名</td>
+    </tr>
+    <tr>
+    <td>subject</td>
+    <td>string</td>
+    <td>件名</td>
+    </tr>
+    <tr>
+    <td>sbjscheme</td>
+    <td>int (候補から選択)</td>
+    <td>件名種別</td>
+    </tr>
+    <tr>
+    <td>spatial</td>
+    <td>string</td>
+    <td>地域</td>
+    </tr>
+    <tr>
+    <td>des</td>
+    <td>string</td>
+    <td>内容記述</td>
+    </tr>
+    <tr>
+    <td>publisher</td>
+    <td>string</td>
+    <td>出版者</td>
+    </tr>
+    <tr>
+    <td>cname</td>
+    <td>string</td>
+    <td>寄与者</td>
+    </tr>
+    <tr>
+    <td>fd_attr</td>
+    <td>string (候補から選択)</td>
+    <td>日付種別</td>
+    </tr>
+    <tr>
+    <td>filedate_from</td>
+    <td>date (YYYYMMDD形式)</td>
+    <td>日付下限を指定</td>
+    </tr>
+    <tr>
+    <td>filedate_to</td>
+    <td>date (YYYYMMDD形式)</td>
+    <td>日付上限を指定</td>
+    </tr>
+    <tr>
+    <td>mimetype</td>
+    <td>string</td>
+    <td>フォーマット</td>
+    </tr>
+    <tr>
+    <td>id</td>
+    <td>string</td>
+    <td>識別子</td>
+    </tr>
+    <tr>
+    <td>id_attr</td>
+    <td>string (候補から選択)</td>
+    <td>識別子種別</td>
+    </tr>
+    <tr>
+    <td>srctitle</td>
+    <td>string</td>
+    <td>雑誌名</td>
+    </tr>
+    <tr>
+    <td>type</td>
+    <td>int (候補から選択)</td>
+    <td>資源タイプ</td>
+    </tr>
+    <tr>
+    <td>lang</td>
+    <td>string (候補から選択)</td>
+    <td>言語</td>
+    </tr>
+    <tr>
+    <td>temporal</td>
+    <td>string</td>
+    <td>期間</td>
+    </tr>
+    <tr>
+    <td>dategranted_from</td>
+    <td>date (YYYYMMDD形式)</td>
+    <td>学位取得日下限を指定</td>
+    </tr>
+    <tr>
+    <td>dategranted_to</td>
+    <td>date (YYYYMMDD形式)</td>
+    <td>学位取得日上限を指定</td>
+    </tr>
+    <tr>
+    <td>version</td>
+    <td>string (候補から選択)</td>
+    <td>著者版フラグ</td>
+    </tr>
+    <tr>
+    <td>dissno</td>
+    <td>string</td>
+    <td>学位番号</td>
+    </tr>
+    <tr>
+    <td>degreename</td>
+    <td>string</td>
+    <td>学位名</td>
+    </tr>
+    <tr>
+    <td>dgname</td>
+    <td>string</td>
+    <td>学位授与機関</td>
+    </tr>
+    <tr>
+    <td>wid</td>
+    <td>int</td>
+    <td>作成者識別子</td>
+    </tr>
+    <tr>
+    <td>iid</td>
+    <td>int</td>
+    <td>インデックスID</td>
+    </tr>
+    <tr>
+    <td>license</td>
+    <td>string (候補から選択)</td>
+    <td>ライセンス</td>
+    </tr>
+    <tr>
+    <td>textX<br>(Xは1~10の整数)</td>
+    <td>string</td>
+    <td>詳細検索条件設定でtextXに割り当てた項目の値</td>
+    </tr>
+    <tr>
+    <td>integer_rangeX_from<br>(Xは1~5の整数)</td>
+    <td>int</td>
+    <td>詳細検索条件設定でinteger_rangeXに割り当てた項目の値の下限</td>
+    </tr>
+    <tr>
+    <td>integer_rangeX_to<br>(Xは1~5の整数)</td>
+    <td>int</td>
+    <td>詳細検索条件設定でinteger_rangeXに割り当てた項目の値の上限</td>
+    </tr>
+    <tr>
+    <td>float_rangeX_from<br>(Xは1~5の整数)</td>
+    <td>float</td>
+    <td>詳細検索条件設定でfloat_rangeXに割り当てた項目の値の下限</td>
+    </tr>
+    <tr>
+    <td>float_rangeX_to<br>(Xは1~5の整数)</td>
+    <td>float</td>
+    <td>詳細検索条件設定でfloat_rangeXに割り当てた項目の値の上限</td>
+    </tr>
+    <tr>
+    <td>date_rangeX_from<br>(Xは1~5の整数)</td>
+    <td>date</td>
+    <td>詳細検索条件設定でdate_rangeXに割り当てた項目の値の下限 (YYYYMMDD形式)</td>
+    </tr>
+    <tr>
+    <td>date_rangeX_to<br>(Xは1=5の整数)</td>
+    <td>date</td>
+    <td>詳細検索条件設定でdate_rangeXに割り当てた項目の値の上限 (YYYYMMDD形式)</td>
+    </tr>
+    <tr>
+    <td>ファセット検索項目</td>
+    <td></td>
+    <td>ファセット検索の設定でActiveとした項目</td>
+    </tr>
+    </tbody>
+    </table>
 
   - リクエスト例  
     `curl <WEKO3のURL>/api/v1/records?title=jumps`
 
 - レスポンス
   - ヘッダ
-    | キー名        | 値       |
-    |---------------|----------|
-    | Cache-Control | no-store |
-    | Pragma        | no-cache |
-    | Expires       | 0        |
+
+    <table>
+    <thead>
+    <tr>
+    <th>キー名</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Cache-Control</td>
+    <td>no-store</td>
+    </tr>
+    <tr>
+    <td>Pragma</td>
+    <td>no-cache</td>
+    </tr>
+    <tr>
+    <td>Expires</td>
+    <td>0</td>
+    </tr>
+    </tbody>
+    </table>
 
   - ボディ  
     Elasticsearchから得られた検索結果のメタデータをRO-Crate形式に変換して返す。
@@ -233,12 +463,42 @@
   ◯: マッチする、 ✕: マッチしない  
   ただし、括弧による優先度の操作は現在未実装
 
-  |検索文字列\検索対象の文字列      |quick brown|brown quick|quick|
-  |---------------------------------|-----------|-----------|-----|
-  | quick OR brown                  |◯          |◯          |◯    |
-  | quick brown                     |◯          |◯          |✕    |
-  | quick brown OR fox jumps        |◯          |◯          |✕    |
-  | quick (brown OR fox) jumps      |✕          |✕          |✕    |
+  <table>
+  <thead>
+  <tr>
+  <th>検索文字列\検索対象の文字列</th>
+  <th>quick brown</th>
+  <th>brown quick</th>
+  <th>quick</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>quick OR brown</td>
+  <td>◯</td>
+  <td>◯</td>
+  <td>◯</td>
+  </tr>
+  <tr>
+  <td>quick brown</td>
+  <td>◯</td>
+  <td>◯</td>
+  <td>✕</td>
+  </tr>
+  <tr>
+  <td>quick brown OR fox jumps</td>
+  <td>◯</td>
+  <td>◯</td>
+  <td>✕</td>
+  </tr>
+  <tr>
+  <td>quick (brown OR fox) jumps</td>
+  <td>✕</td>
+  <td>✕</td>
+  <td>✕</td>
+  </tr>
+  </tbody>
+  </table>
 
 ## 更新履歴
 
@@ -284,34 +544,97 @@ APIを実行する。
   GET
   - URL  
     /api/:version/records/:record_id
-    | パラメータ | 値                         |
-    |------------|----------------------------|
-    | version    | バージョン情報             |
-    | record_id  | アイテムを一意に識別するID |
+
+    <table>
+    <thead>
+    <tr>
+    <th>パラメータ</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>version</td>
+    <td>バージョン情報</td>
+    </tr>
+    <tr>
+    <td>record_id</td>
+    <td>アイテムを一意に識別するID</td>
+    </tr>
+    </tbody>
+    </table>
 
 - リクエスト
   - ヘッダ
-    | キー名 | 値 |
-    |----|----|
-    | Accept-Language | 言語設定<br>デフォルトはen |
-    | If-None-Match | 1回目のレスポンスヘッダーETagに設定された値 |
-    | If-Modified-Since | 1回目のレスポンスヘッダーLast-Modifiedに設定された値 |
-    | Authorization | 認可情報 |
+
+    <table>
+    <thead>
+    <tr>
+    <th>キー名</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Accept-Language</td>
+    <td>言語設定<br>デフォルトはen</td>
+    </tr>
+    <tr>
+    <td>If-None-Match</td>
+    <td>1回目のレスポンスヘッダーETagに設定された値</td>
+    </tr>
+    <tr>
+    <td>If-Modified-Since</td>
+    <td>1回目のレスポンスヘッダーLast-Modifiedに設定された値</td>
+    </tr>
+    <tr>
+    <td>Authorization</td>
+    <td>認可情報</td>
+    </tr>
+    </tbody>
+    </table>
 
   - クエリ
-    | パラメータ | 値                     |
-    |------------|------------------------|
-    | pretty     | レスポンスの整形フラグ |
+
+    <table>
+    <thead>
+    <tr>
+    <th>パラメータ</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>pretty</td>
+    <td>レスポンスの整形フラグ</td>
+    </tr>
+    </tbody>
+    </table>
 
   - リクエスト例  
   `curl <WEKO3のURL>/api/v1/records/15`
 
 - レスポンス
   - ヘッダ
-    | キー名        | 値                         |
-    |---------------|----------------------------|
-    | Etag          | アイテム情報のバージョンID |
-    | Last-Modified | アイテム情報の更新日時     |
+
+    <table>
+    <thead>
+    <tr>
+    <th>キー名</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Etag</td>
+    <td>アイテム情報のバージョンID</td>
+    </tr>
+    <tr>
+    <td>Last-Modified</td>
+    <td>アイテム情報の更新日時</td>
+    </tr>
+    </tbody>
+    </table>
 
   - ボディ  
   メタデータをRO-Crate形式に変換して返す。
@@ -428,28 +751,77 @@ APIを実行する。
   POST
 
 - URL  
-/api/:version/records/list  
+  /api/:version/records/list  
 
-  | パラメータ | 値             |
-  |------------|----------------|
-  | version    | バージョン情報 |
+  <table>
+  <thead>
+  <tr>
+  <th>パラメータ</th>
+  <th>値</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>version</td>
+  <td>バージョン情報</td>
+  </tr>
+  </tbody>
+  </table>
 
 - リクエスト
   - ヘッダ
-    | キー名 | 値 |
-    |----|----|
-    | Accept-Language | 言語設定<br>デフォルトはen |
-    | If-None-Match | 1回目のレスポンスヘッダーETagに設定された値 |
-    | If-Modified-Since | 1回目のレスポンスヘッダーLast-Modifiedに設定された値 |
-    | Authorization | 認可情報 |
+
+    <table>
+    <thead>
+    <tr>
+    <th>キー名</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Accept-Language</td>
+    <td>言語設定<br>デフォルトはen</td>
+    </tr>
+    <tr>
+    <td>If-None-Match</td>
+    <td>1回目のレスポンスヘッダーETagに設定された値</td>
+    </tr>
+    <tr>
+    <td>If-Modified-Since</td>
+    <td>1回目のレスポンスヘッダーLast-Modifiedに設定された値</td>
+    </tr>
+    <tr>
+    <td>Authorization</td>
+    <td>認可情報</td>
+    </tr>
+    </tbody>
+    </table>
 
   - クエリ
 
-    | パラメータ | 値 |
-    |----|----|
-    | q | 検索するキーワード |
-    | search_type | 検索する形式 |
-    | sort | ソートキー |
+    <table>
+    <thead>
+    <tr>
+    <th>パラメータ</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>q</td>
+    <td>検索するキーワード</td>
+    </tr>
+    <tr>
+    <td>search_type</td>
+    <td>検索する形式</td>
+    </tr>
+    <tr>
+    <td>sort</td>
+    <td>ソートキー</td>
+    </tr>
+    </tbody>
+    </table>
 
     上記に加え、メタデータ項目のパラメータはアイテム検索用APIと同一のものを使用可能とする。
 
@@ -488,10 +860,26 @@ APIを実行する。
 
 - レスポンス
   - ヘッダ
-    | キー名        | 値                         |
-    |---------------|----------------------------|
-    | Etag          | アイテム情報のバージョンID |
-    | Last-Modified | アイテム情報の更新日時     |
+
+    <table>
+    <thead>
+    <tr>
+    <th>キー名</th>
+    <th>値</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Etag</td>
+    <td>アイテム情報のバージョンID</td>
+    </tr>
+    <tr>
+    <td>Last-Modified</td>
+    <td>アイテム情報の更新日時</td>
+    </tr>
+    </tbody>
+    </table>
+
   - ボディ  
   TSVファイルデータ (検索結果をリクエストボディで指定した形式に変換したもの)
 

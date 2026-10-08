@@ -55,28 +55,117 @@
 
     ※以下、管理者画面のプロフィール設定編集画面の操作により表示される項目
 
-    | 項目名 | 初期ラベル名 | 初期表示設定 |
-    | -------------- | ------------------- | ------------ |
-    | fullname       | 氏名                | True         |
-    | university     | 大学・機関         | True         |
-    | department     | 所属部局・部署      | True         |
-    | position       | 役職                | True         |
-    | item1          | 役職（その他）      | True         |
-    | item2          | 電話番号            | True         |
-    | item3          | 所属学会名          | True         |
-    | item4          | 所属学会役職        | True         |
-    | item5          | 所属学会名          | True         |
-    | item6          | 所属学会役職        | True         |
-    | item7          | 所属学会名          | True         |
-    | item8          | 所属学会役職        | True         |
-    | item9          | 所属学会名          | True         |
-    | item10         | 所属学会役職        | True         |
-    | item11         | 所属学会名          | True         |
-    | item12         | 所属学会役職        | True         |
-    | item13         | item13              | False        |
-    | item14         | item14              | False        |
-    | item15         | item15              | False        |
-    | item16         | item16              | False        |
+    <table>
+    <thead>
+    <tr>
+    <th>項目名</th>
+    <th>初期ラベル名</th>
+    <th>初期表示設定</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>fullname</td>
+    <td>氏名</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>university</td>
+    <td>大学・機関</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>department</td>
+    <td>所属部局・部署</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>position</td>
+    <td>役職</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item1</td>
+    <td>役職（その他）</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item2</td>
+    <td>電話番号</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item3</td>
+    <td>所属学会名</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item4</td>
+    <td>所属学会役職</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item5</td>
+    <td>所属学会名</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item6</td>
+    <td>所属学会役職</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item7</td>
+    <td>所属学会名</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item8</td>
+    <td>所属学会役職</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item9</td>
+    <td>所属学会名</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item10</td>
+    <td>所属学会役職</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item11</td>
+    <td>所属学会名</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item12</td>
+    <td>所属学会役職</td>
+    <td>True</td>
+    </tr>
+    <tr>
+    <td>item13</td>
+    <td>item13</td>
+    <td>False</td>
+    </tr>
+    <tr>
+    <td>item14</td>
+    <td>item14</td>
+    <td>False</td>
+    </tr>
+    <tr>
+    <td>item15</td>
+    <td>item15</td>
+    <td>False</td>
+    </tr>
+    <tr>
+    <td>item16</td>
+    <td>item16</td>
+    <td>False</td>
+    </tr>
+    </tbody>
+    </table>
 
   - ［Update Profile］ボタンを押すと、設定内容をチェックし、エラーがない場合、設定内容を保存する
 

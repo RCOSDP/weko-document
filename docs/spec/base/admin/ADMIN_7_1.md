@@ -105,12 +105,42 @@
         - 「Approval」アクションに対して、複数定義された場合、「無効」（Unusable）ボタンを押すと、アクション一覧に並ぶ「Approval」のうち枝番が一番大きいものから行われる
       - 各アクションの説明については、以下の通りである
 
-        | # | アクション名 | 説明 | 制限事項 |
-        |:---:|:---:|:---:|:---:|
-        | 1 | Item Registration | アイテムのメタデータとコンテンツを登録するアクションである | |
-        | 2 | Item Link | アイテムにリンク設定するアクションである | |
-        | 3 | Identifier Grant | アイテムにDOIを付与するアクションである | Approvalの前で実行すること |
-        | 4 | Approval | アイテムの査読／承認するアクションである | |
+        <table>
+        <thead>
+        <tr>
+        <th>#</th>
+        <th>アクション名</th>
+        <th>説明</th>
+        <th>制限事項</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>1</td>
+        <td>Item Registration</td>
+        <td>アイテムのメタデータとコンテンツを登録するアクションである</td>
+        <td></td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>Item Link</td>
+        <td>アイテムにリンク設定するアクションである</td>
+        <td></td>
+        </tr>
+        <tr>
+        <td>3</td>
+        <td>Identifier Grant</td>
+        <td>アイテムにDOIを付与するアクションである</td>
+        <td>Approvalの前で実行すること</td>
+        </tr>
+        <tr>
+        <td>4</td>
+        <td>Approval</td>
+        <td>アイテムの査読／承認するアクションである</td>
+        <td></td>
+        </tr>
+        </tbody>
+        </table>
 
 - フロー名のリンクを押すと、フローの編集画面に移動する
   - フローの編集画面で、フローの情報を編集できる

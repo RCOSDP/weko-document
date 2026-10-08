@@ -4,11 +4,28 @@
 
 - 本書では以下の用語で統一する
 
-  | 用語 | 説明 |
-  | ---- | ---- |
-  | フロント | 未病データベースのフロントエンド |
-  | WEKO | 未病データベース用のWEKO3リポジトリ（バックエンド） |
-  | Shibbolethログイン | 学認IdPやOrthrosアカウントによるログイン |
+  <table>
+  <thead>
+  <tr>
+  <th>用語</th>
+  <th>説明</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>フロント</td>
+  <td>未病データベースのフロントエンド</td>
+  </tr>
+  <tr>
+  <td>WEKO</td>
+  <td>未病データベース用のWEKO3リポジトリ（バックエンド）</td>
+  </tr>
+  <tr>
+  <td>Shibbolethログイン</td>
+  <td>学認IdPやOrthrosアカウントによるログイン</td>
+  </tr>
+  </tbody>
+  </table>
 
 ## 1. Shibbolethログイン時のロール付与
 
@@ -76,24 +93,89 @@
 
     【v2.1.0】AMSログイン経路（`next=ams`）では、下表の各エラーで WEKO ログイン画面へ flash せず、外部 AMS ログイン画面 `{url_root}ams/login?error=<訳文>`（config `WEKO_ACCOUNTS_SHIB_AMS_LOGIN_URL`、既定 `'{}ams/login'`）へエラー文言付きでリダイレクトする（`generate_ams_login_url` ／ `_redirect_method(..., ams_error=...)`）。AMS経路のエラー文言は、ログインブロック時は "Login is blocked."、登録ユーザー情報がない場合は "There is no user information."（いずれも `_()` で翻訳可能）。
 
-    | エラー原因 | ステータスコード | レスポンス（バックエンド実挙動） | エラーメッセージ（日/英） |
-    | --------- | --------------- | --------- | ----------------------- |
-    | WEKOでログインブロックされている | リダイレクト | `flash("Failed to login.")`＋ログイン画面へリダイレクト（ブロック判定は AdminSettings `blocked_user_settings.blocked_ePPNs`、ワイルドカード対応） | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator. |
-    | 【v2.1.0】登録ユーザー情報がない | リダイレクト | AMS経路では `ShibUser.check_weko_user` が偽の場合に `{url_root}ams/login?error=There is no user information.` へリダイレクト（`_()` で翻訳される）し、フロント（`pages/ams/login.vue`）が `error` クエリの英語文字列と照合して訳文を表示する。通常経路は `flash('check_weko_user')`＋ログイン画面へリダイレクト | ユーザー情報がありません。<br>/There is no user information. |
-    | Redisにcache_keyがない | 400（`abort(400)` 時。通常は `flash()`＋リダイレクト） | Missing SHIB_CACHE_PREFIX! | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
-    | Shibboleth-Session-IDが取得出来ない | 400（`abort(400)` 時。通常は `flash()`＋リダイレクト） | Missing Shib-Session-ID! | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
-    | shib_eppnが取得出来ない | 400（`abort(400)` 時。通常は `flash()`＋リダイレクト） | Missing SHIB_ATTRs!（`shib_login` 側は単数形 Missing SHIB_ATTR!） | ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.  |
+    <table>
+    <thead>
+    <tr>
+    <th>エラー原因</th>
+    <th>ステータスコード</th>
+    <th>レスポンス（バックエンド実挙動）</th>
+    <th>エラーメッセージ（日/英）</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>WEKOでログインブロックされている</td>
+    <td>リダイレクト</td>
+    <td><code>flash("Failed to login.")</code>＋ログイン画面へリダイレクト（ブロック判定は AdminSettings <code>blocked_user_settings.blocked_ePPNs</code>、ワイルドカード対応）</td>
+    <td>ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.</td>
+    </tr>
+    <tr>
+    <td>【v2.1.0】登録ユーザー情報がない</td>
+    <td>リダイレクト</td>
+    <td>AMS経路では <code>ShibUser.check_weko_user</code> が偽の場合に <code>{url_root}ams/login?error=There is no user information.</code> へリダイレクト（<code>_()</code> で翻訳される）し、フロント（<code>pages/ams/login.vue</code>）が <code>error</code> クエリの英語文字列と照合して訳文を表示する。通常経路は <code>flash('check_weko_user')</code>＋ログイン画面へリダイレクト</td>
+    <td>ユーザー情報がありません。<br>/There is no user information.</td>
+    </tr>
+    <tr>
+    <td>Redisにcache_keyがない</td>
+    <td>400（<code>abort(400)</code> 時。通常は <code>flash()</code>＋リダイレクト）</td>
+    <td>Missing SHIB_CACHE_PREFIX!</td>
+    <td>ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.</td>
+    </tr>
+    <tr>
+    <td>Shibboleth-Session-IDが取得出来ない</td>
+    <td>400（<code>abort(400)</code> 時。通常は <code>flash()</code>＋リダイレクト）</td>
+    <td>Missing Shib-Session-ID!</td>
+    <td>ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.</td>
+    </tr>
+    <tr>
+    <td>shib_eppnが取得出来ない</td>
+    <td>400（<code>abort(400)</code> 時。通常は <code>flash()</code>＋リダイレクト）</td>
+    <td>Missing SHIB_ATTRs!（<code>shib_login</code> 側は単数形 Missing SHIB_ATTR!）</td>
+    <td>ログインに失敗しました。管理者に連絡してください。<br>/Failed to Login. Please contact server administrator.</td>
+    </tr>
+    </tbody>
+    </table>
 
   - OAuth認証画面
 
     OAuth認証はバックエンドでは invenio-oauth2server（`invenio_oauth2server.views.server.authorize` ＋ oauthlib）が処理し、「レスポンス（バックエンド実挙動）」列は oauthlib 標準のエラーコードである。「エラーメッセージ（日/英）」列はフロント（`weko-frontend`）側でエラーコードから生成・表示する文言である。
 
-    | エラー原因 | ステータスコード | レスポンス（バックエンド実挙動） | エラーメッセージ（日/英） |
-    | --------- | --------------- | --------- | ----------------------- |
-    | レスポンスタイプ誤り | 400 | `unsupported_response_type` | このレスポンスタイプはサポートされていません。<br>/This response type is not supported. |
-    | クライアントID誤り | 400（クライアントID不在時は 404） | `invalid_client` | クライアントIDに誤りがあります。<br>/The client ID is incorrect. |
-    | スコープ誤り | 400 | `invalid_scope` | スコープに誤りがあります。<br>/The scope is incorrect. |
-    | ユーザーが【Reject】を選択 | 200 | `access_denied` | アクセスが拒否されました。<br>/Access has been denied. |
+    <table>
+    <thead>
+    <tr>
+    <th>エラー原因</th>
+    <th>ステータスコード</th>
+    <th>レスポンス（バックエンド実挙動）</th>
+    <th>エラーメッセージ（日/英）</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>レスポンスタイプ誤り</td>
+    <td>400</td>
+    <td><code>unsupported_response_type</code></td>
+    <td>このレスポンスタイプはサポートされていません。<br>/This response type is not supported.</td>
+    </tr>
+    <tr>
+    <td>クライアントID誤り</td>
+    <td>400（クライアントID不在時は 404）</td>
+    <td><code>invalid_client</code></td>
+    <td>クライアントIDに誤りがあります。<br>/The client ID is incorrect.</td>
+    </tr>
+    <tr>
+    <td>スコープ誤り</td>
+    <td>400</td>
+    <td><code>invalid_scope</code></td>
+    <td>スコープに誤りがあります。<br>/The scope is incorrect.</td>
+    </tr>
+    <tr>
+    <td>ユーザーが【Reject】を選択</td>
+    <td>200</td>
+    <td><code>access_denied</code></td>
+    <td>アクセスが拒否されました。<br>/Access has been denied.</td>
+    </tr>
+    </tbody>
+    </table>
 
 ## 4. 目標2ユーザ以外が閲覧権限が必要なアイテム詳細画面にアクセスした場合
 
