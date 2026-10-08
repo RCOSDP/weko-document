@@ -714,13 +714,13 @@ The System allows you to store and publish academic research results. The System
 
 Figure 1‑1. Data management in the System
 
-zu0101010.tif![](media/media/image1.png)
+![](media/media/image1.png)
 
 To register an item, you must first create a workflow and register the item. You then need to get approval from reviewers/approvers before publishing the item.
 
 Figure 1‑2. Registering data
 
-zu0101020.tif![](media/media/image2.png)
+![](media/media/image2.png)
 
 ## Glossary
 
@@ -1680,15 +1680,13 @@ For information on logging in, refer to the Data Registration Guide.
     
     ![](media/media/image3.png)
 
-zu0104010.tifThe "Administration" screen appears.
+The "Administration" screen appears.
 
 3.  Click to expand a menu on the left side of the screen and select an element.
 
 The setting screen appears.
 
 ![](media/media/image4.png)
-
-zu0104020.tif
 
 See Table 1-3 for a list of the menus on the Administration screen and the roles that can operate each menu.
 
@@ -1710,8 +1708,6 @@ This section explains how to add a new property.
     
     ![](media/media/image5.png)
 
-zu0404010.tif
-
 2.  Click "+Add".
 
 An attribute is added.
@@ -1724,7 +1720,7 @@ Check "Required" if you want to make the attribute required. To delete the entry
 
 For information on the input formats, see "Table 2-1. Input formats for metadata attributes".
 
-zu0404030.tif![](media/media/image7.png)\<TBLATT POSITION=”1” SCALE=”151”\>
+![](media/media/image7.png)\<TBLATT POSITION=”1” SCALE=”151”\>
 
 Table 2‑1. Input formats for metadata attributes
 
@@ -1739,32 +1735,32 @@ Table 2‑1. Input formats for metadata attributes
 <tbody>
 <tr class="odd">
 <td>Text</td>
-<td>zu0404050.tif<img src="media/media/image8.png" style="width:1.6875in;height:0.43056in" alt="zu0404050" /></td>
+<td><img src="media/media/image8.png" style="width:1.6875in;height:0.43056in" alt="zu0404050" /></td>
 <td>Accepts a single line of text as input.</td>
 </tr>
 <tr class="even">
 <td>Text Area</td>
-<td>zu0404060.tif<img src="media/media/image9.png" style="width:2.04167in;height:0.45833in" alt="zu0404060" /></td>
+<td><img src="media/media/image9.png" style="width:2.04167in;height:0.45833in" alt="zu0404060" /></td>
 <td>Accepts multiple lines of text as input.</td>
 </tr>
 <tr class="odd">
 <td>Check Box<sup>*</sup></td>
-<td>zu0404070.tif<img src="media/media/image10.png" style="width:0.66667in;height:0.96875in" alt="zu0404070" /></td>
+<td><img src="media/media/image10.png" style="width:0.66667in;height:0.96875in" alt="zu0404070" /></td>
 <td>Accepts the values of one or more selected check boxes as input.</td>
 </tr>
 <tr class="even">
 <td>Selective (radio)<sup>*</sup></td>
-<td>zu0404080.tif<img src="media/media/image11.png" style="width:1.16667in;height:0.61111in" alt="zu0404080" /></td>
+<td><img src="media/media/image11.png" style="width:1.16667in;height:0.61111in" alt="zu0404080" /></td>
 <td>Accepts the value of a selected radio button as input.</td>
 </tr>
 <tr class="odd">
 <td>Selective (pull-down)<sup>*</sup></td>
-<td>zu0404090.tif<img src="media/media/image12.png" style="width:1.64583in;height:0.45139in" alt="zu0404090" /></td>
+<td><img src="media/media/image12.png" style="width:1.64583in;height:0.45139in" alt="zu0404090" /></td>
 <td>Accepts the value of a selected pull-down menu as input.</td>
 </tr>
 <tr class="even">
 <td>Date</td>
-<td>zu0404100.tif<img src="media/media/image13.png" style="width:1.66667in;height:1.35417in" alt="zu0404100" /></td>
+<td><img src="media/media/image13.png" style="width:1.66667in;height:1.35417in" alt="zu0404100" /></td>
 <td><p>Accepts a value specified in either of the following ways as input.</p>
 <ul>
 <li><p>Enter a date with the <em>yyyy-mm-dd, yyyy-mm, or yyyy</em> format.</p></li>
@@ -1773,12 +1769,12 @@ Table 2‑1. Input formats for metadata attributes
 </tr>
 <tr class="odd">
 <td>Object</td>
-<td>zu0404110.tif<img src="media/media/image14.png" style="width:2.20118in;height:1.7378in" /></td>
+<td><img src="media/media/image14.png" style="width:2.20118in;height:1.7378in" /></td>
 <td>Accepts multiple elements as input. These elements are grouped as a set. Examples include the Creator Affiliation for the Creator properties.</td>
 </tr>
 <tr class="even">
 <td>List</td>
-<td>zu0404120.tif<img src="media/media/image15.png" style="width:1.59375in;height:1.01454in" /></td>
+<td><img src="media/media/image15.png" style="width:1.59375in;height:1.01454in" /></td>
 <td>Accepts repetitive entries of the same element as input. These elements are grouped as a set. Examples include the Rights Holder Identifier for the Rights Holder Information properties.</td>
 </tr>
 </tbody>
@@ -1799,7 +1795,7 @@ Table 2‑1. Input formats for metadata attributes
 
 The property information you specified appears in the JSON format underneath, in the text area, as well as in the "Form(Singular)" and "Form(Multiple)" areas.
 
-zu0404040.tif![](media/media/image16.png)
+![](media/media/image16.png)
 
 Notes:
 
@@ -1841,7 +1837,7 @@ This section explains how to edit existing properties.
 
 1.  Select "Properties".
 
-zu0404130.tif![](media/media/image20.png)
+![](media/media/image20.png)
 
 Notes:
 
@@ -1879,13 +1875,13 @@ The following is a list of system properties.
     
     To add an attribute, click "+Add".
 
-zu0404140.tif![](media/media/image21.png)
+![](media/media/image21.png)
 
 3.  Click "JSON Schema".
 
 The property information you specified appears in the JSON format underneath, in the text area, as well as in the "Form(Singular)" and "Form(Multiple)" areas.
 
-zu0404150.tif![](media/media/image22.png)
+![](media/media/image22.png)
 
 4.  Click "Save".
 
@@ -1901,7 +1897,7 @@ To access the screen where you can manage item types, click "Item Types" and the
 
 In the screen for editing metadata, you can switch between item types.
 
-zu0402010.tif![](media/media/image23.png)
+![](media/media/image23.png)
 
 Select "Standard Item Type" to display the item types available for item registration.
 
@@ -7051,21 +7047,21 @@ This section explains how to add an item type.
 
 1.  Check the "Standard Item Type" or "Item Type for Harvesting" radio button.
 
-zu0402020.tif![](media/media/image24.png)
+![](media/media/image24.png)
 
 2.  Check the "New Registration" radio button.
 
-zu0402030.tif![](media/media/image25.png)
+![](media/media/image25.png)
 
 3.  Enter an item type name in the area next to "Item Type".
 
-zu0402040.tif![](media/media/image26.png)
+![](media/media/image26.png)
 
 4.  To add a metadata attribute, click "Add Metadata".
 
 An empty metadata attribute is added.
 
-zu0402050.tif![](media/media/image27.png)
+![](media/media/image27.png)
 
 5.  Click "Save".
 
@@ -7113,7 +7109,7 @@ The metadata elements of the item type appear.
 
 \* You cannot modify the properties set for the item types (i.e. they appear inactive).
 
-zu0402060.tif![](media/media/image32.png)
+![](media/media/image32.png)
 
 2.  In the "Element Name" column for this metadata element, click "Localization Settings".
     
@@ -7157,13 +7153,13 @@ This section explains how to add an attribute and rearrange the display order of
 
 The metadata elements of the item type appear.
 
-zu0402060.tif![](media/media/image37.png)
+![](media/media/image37.png)
 
 2.  > Below the metadata elements at the bottom of the screen, click "+Add Metadata".
 
 An element is added.
 
-zu0402070.tif![](media/media/image38.png)
+![](media/media/image38.png)
 
 3.  > Click "X".
     
@@ -7277,11 +7273,11 @@ This section explains how to rename an item type.
 
 The name appears in the area next to "Item Type". Make sure that "Version Upgrade" is checked.
 
-zu0402060.tif![](media/media/image45.png)
+![](media/media/image45.png)
 
 2.  Rename the item type name.
 
-zu0402090.tif![](media/media/image46.png)
+![](media/media/image46.png)
 
 3.  Click "Save".
 
@@ -7299,7 +7295,7 @@ You cannot create a new item using a deleted item type.
 
 The name appears in the area next to "Item Type".
 
-zu0402060.tif![](media/media/image47.png)
+![](media/media/image47.png)
 
 2.  Click "Delete".
     
@@ -7352,13 +7348,13 @@ This section explains how to restore a deleted item type. This operation can be 
 
 1.  Select "Deleted Item Type".
 
-zu0402130.tif![](media/media/image50.png)
+![](media/media/image50.png)
 
 2.  Select an item type.
 
 The metadata elements of the item type appear. Note that the elements and buttons appear inactive.
 
-zu0402140.tif![](media/media/image51.png)
+![](media/media/image51.png)
 
 3.  Click "Restore".
 
@@ -7456,11 +7452,11 @@ The WEKO3 system supports adding and configuring JPCOAR, JPCOAR v1, JPCOAR v2, D
 
 The setting screen appears.
 
-zu0403010.tif![](media/media/image52.png)
+![](media/media/image52.png)
 
 2.  Add a schema mapping file and specify information in the required fields.
 
-zu0403020.tif![](media/media/image53.png)
+![](media/media/image53.png)
 
 Notes:
 
@@ -7492,7 +7488,7 @@ The schemas are added.
 
 The schema is deleted.
 
-zu0403030.tif![](media/media/image54.png)
+![](media/media/image54.png)
 
 ## Map item types to schemas
     
@@ -7508,23 +7504,23 @@ The mapping information set in this screen is referenced when generating OAI-PMH
 
 The values appear in "Element (Parent)" and "Schema (Parent)".
 
-zu0401010.tif![](media/media/image55.png)
+![](media/media/image55.png)
 
 2.  > Select an attribute for "Schema (Parent)" from the pull-down list to be mapped to "Element (Parent)", or check the radio button on the left in "Schema (Parent)".
 
 > The child attributes appear.
 
-zu0401020.tif![](media/media/image56.png)
+![](media/media/image56.png)
 
 3.  > Select an attribute for "Schema (Child)" from the pull-down list.
 
-zu0401030.tif![](media/media/image57.png)
+![](media/media/image57.png)
 
 4.  > To add an attribute, click "+Add".
 
 An element is added.
 
-zu0401040.tif![](media/media/image58.png)
+![](media/media/image58.png)
 
 5.  > Click "Save".
 
@@ -7551,7 +7547,7 @@ If an error occurs because of the mapping, restore the original mapping settings
 
 The values appear in "Element (Parent)" and "Schema (Parent)".
 
-> zu0401010.tif![](media/media/image60.png)
+> ![](media/media/image60.png)
 
 2.  > Click "Element defined by System (Parent)".
     
@@ -8438,29 +8434,29 @@ A screen appears where you can bulk update items.
 
 2.  In the "Index Tree", select the index you want to bulk update the items.
 
-zu0502010.tif![](media/media/image64.png)
+![](media/media/image64.png)
 
 3.  Under "Fields for Update", select "Access Type" or "Licence".
 
 An input field appears.
 
-zu0502020.tif![](media/media/image65.png)
+![](media/media/image65.png)
 
 4.  Specify a value.
 
-zu0502030.tif![](media/media/image66.png)
+![](media/media/image66.png)
 
 5.  In the "Item list", select the item you want to update.
 
 If you want to select all items, click "Select All". To select individual items, select the corresponding check boxes.
 
-zu0502040.tif![](media/media/image67.png)
+![](media/media/image67.png)
 
 6.  Click "Update".
 
 The confirmation dialog appears, showing how the selected items will be updated.
 
-zu0502050.tif![](media/media/image68.png)
+![](media/media/image68.png)
 
 7.  Click "Continue".
 
@@ -8489,8 +8485,6 @@ This section explains how to bulk delete items.
     When the items are deleted, all the previous versions will also be logically deleted.
     
     ![](media/media/image71.png)
-
-zu0501020.tif
 
 ## Export items
 
@@ -8567,7 +8561,7 @@ This section explains how to import items by specifying a file. You import files
 
 The "Select" tab is where you can start importing items.
 
-> ![](media/media/image76.png)zu0504010.tif
+> ![](media/media/image76.png)
 > 
 > If the "Administration" \> "Items" \> "Import" screen opens on another device while you are trying to import, the message "Import is in progress on another device" will appear on that device.
 > 
@@ -8661,7 +8655,7 @@ For elements other than the metadata files defined for item types, see the "Supp
   - The directory structure that does not include a bagit.txt file  
     ![テキスト 自動的に生成された説明](media/media/image80.png)
 
-> You can include multiple tsv files for different item types in a single import operation.zu0504020.tif
+> You can include multiple tsv files for different item types in a single import operation.
 > 
 > You can also place csv files (extension .csv) instead of tsv files directly under the data folder.
 
@@ -8701,7 +8695,7 @@ Items with "Error" results cannot be imported. Check the file and start again fr
 
 > ![](media/media/image84.png)
 
-zu0504030.tif\<TBLATT POSITION="1" SCALE="151"\>
+\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 3‑3. The elements on the "Import" tab
 
@@ -9223,7 +9217,7 @@ Table 3‑7. Error messages of the import results
     
     ![](media/media/image86.png)
 
-zu0504040.tif\<TBLATT POSITION="1" SCALE="151"\>
+\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 3‑8. The elements in the "Result" tab
 
@@ -9841,15 +9835,15 @@ This section explains how to add an index. Select an index from the tree and add
 
 An index ("New Index") is added to the bottom line of that index. No selection is necessary to add an index directly under the root index.
 
-zu0802010.tif![](media/media/image88.png)
+![](media/media/image88.png)
 
 2.  Drag and drop the newly added index to the desired position.
 
-zu0802020.tif![](media/media/image89.png)
+![](media/media/image89.png)
 
 3.  Select the index you added and enter information in "Index Edit".
     
-    ![](media/media/image90.png)zu0802030.tifThe following table lists the information you can enter for the index.
+    ![](media/media/image90.png)The following table lists the information you can enter for the index.
 
 \<TBLATT POSITION=”1” SCALE=”151”\>
 
@@ -10001,7 +9995,7 @@ This section explains how to modify the information in the index.
 
 1.  Select an index and enter information in "Index Edit".
 
-zu0802030.tif![](media/media/image92.png)
+![](media/media/image92.png)
 
 See "Section 4.1.2. Add an index" for information on the elements.
 
@@ -10027,7 +10021,7 @@ This section explains how to delete an index. When you delete an index, its chil
 
 A popup window appears for your to operate.
 
-zu0802040.tif![](media/media/image95.png)
+![](media/media/image95.png)
 
 2.  Select a relevant button on the popup to proceed.
     
@@ -10039,7 +10033,7 @@ zu0802040.tif![](media/media/image95.png)
 
 > All the child indexes and items will be deleted.
 > 
-> ![](media/media/image97.png)zu0802050.tif
+> ![](media/media/image97.png)
 
 2)  > If you click "Move Items To Parent Index":
 
@@ -10079,13 +10073,13 @@ The "Journal Information" screen appears.
 
 If you select the root index or do not select any index, you cannot set journal information.
 
-zu0805010.tif![](media/media/image100.png)
+![](media/media/image100.png)
 
 3.  To export journal information, select "Output" displayed under "Journal" (the default selection is "Do Not Output").
 
 The setting elements for the journal information appear.
 
-zu0805020.tif![](media/media/image101.png)
+![](media/media/image101.png)
 
 4.  Enter journal information.
     
@@ -10335,17 +10329,17 @@ A screen appears where you can bulk update the order in the listed items.
 
 The list of items placed directly under the selected index appears.
 
-zu0503010.tif![](media/media/image107.png)
+![](media/media/image107.png)
 
 3.  Click "Edit".
 
-zu0503020.tif![](media/media/image108.png)
+![](media/media/image108.png)
 
 4.  Assign a number to each item's "Display Priority" and click "Save".
 
 The order of the items is changed.
 
-zu0503030.tif![](media/media/image109.png)
+![](media/media/image109.png)
 
 # Web Design
 
@@ -10365,9 +10359,9 @@ This section explains how to display a list of widgets.
 
 A list of created widgets appears.
 
-zu0824009.tif![](media/media/image110.png)
+![](media/media/image110.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The detailed information on the widget appears.
 
@@ -10381,11 +10375,11 @@ This section explains how to create a widget.
 
 A screen appears where you can create a widget.
 
-zu0824010.tif![](media/media/image113.png)
+![](media/media/image113.png)
 
 2.  Enter information for each element.
 
-zu0824020.tif![](media/media/image114.png)
+![](media/media/image114.png)
 
 The following table lists the information you can enter.
 
@@ -10501,7 +10495,7 @@ Figure 5‑1. Elements for the Free description setting
 
 ![](media/media/image117.png)
 
-zu0824030.tifTable 5‑2. Elements and descriptions for the free description setting
+Table 5‑2. Elements and descriptions for the free description setting
 
 <table>
 <thead>
@@ -10617,13 +10611,13 @@ Figure 5‑7. The Insert Link popup
 
 Figure 5‑8. Sample Free description display
 
-zu0824040.tif![](media/media/image141.png)
+![](media/media/image141.png)
 
 ##### Access counter
 
 Figure 5‑9. Elements for the Access counter setting
 
-zu0824050.tif![](media/media/image142.png)
+![](media/media/image142.png)
 
 Table 5‑3. Elements and descriptions for the access counter setting
 
@@ -10657,7 +10651,7 @@ Table 5‑3. Elements and descriptions for the access counter setting
 
 Figure 5‑10. Sample Access counter display
 
-zu0824060.tif![](media/media/image143.png)
+![](media/media/image143.png)
 
 ##### Notice
 
@@ -10704,9 +10698,9 @@ Table 5‑4. Elements and descriptions for the Notice setting
 </tbody>
 </table>
 
-zu0824070.tifFigure 5‑12. Sample Notice display
+Figure 5‑12. Sample Notice display
 
-zu0824080.tif![](media/media/image145.png)
+![](media/media/image145.png)
 
 ##### New arrivals
 
@@ -10714,7 +10708,7 @@ Figure 5‑13. Elements for the New arrivals setting
 
 ![](media/media/image146.png)
 
-zu0824090.tifTable 5‑5. Elements and descriptions for New arrivals
+Table 5‑5. Elements and descriptions for New arrivals
 
 <table>
 <thead>
@@ -10753,25 +10747,25 @@ Figure 5‑15. The "Display Results" pull-down
 
 Figure 5‑16. Sample New arrivals display
 
-zu0824100.tif![](media/media/image149.png)
+![](media/media/image149.png)
 
 ##### Main contents
 
 Figure 5‑17. Elements for the Main contents setting
 
-zu0824110.tif![](media/media/image150.png)
+![](media/media/image150.png)
 
 The elements for "Main contents" are only those described in "Table 5-1. Elements and descriptions for creating a widget".
 
 Figure 5‑18. Sample Main contents display
 
-zu0824120.tif![](media/media/image151.png)
+![](media/media/image151.png)
 
 ##### Menu
 
 Figure 5‑19. Elements for the Menu setting
 
-zu0824130.tif![](media/media/image152.png)
+![](media/media/image152.png)
 
 Table 5‑6. Elements and descriptions for Menu
 
@@ -10825,7 +10819,7 @@ Figure 5‑20. Color specification
 
 Figure 5‑21. Sample Menu display
 
-zu0824140.tif![](media/media/image154.png)
+![](media/media/image154.png)
 
 ##### Header
 
@@ -10841,17 +10835,17 @@ For the detailed settings for the Free description option, see "Table 5-2. Eleme
 
 Figure 5‑23. Sample Header display
 
-zu0824160.tif![](media/media/image156.png)
+![](media/media/image156.png)
 
 ##### Footer
 
 Figure 5‑24. Elements for the Footer setting
 
-zu0824170.tif![](media/media/image157.png)
+![](media/media/image157.png)
 
 Figure 5‑25. Sample Footer display
 
-zu0824180.tif![](media/media/image158.png)
+![](media/media/image158.png)
 
 You can specify the background color and free description for the footer.
 
@@ -10869,9 +10863,9 @@ Table 5‑7. Sample display for each theme
 
 | Theme     | Sample display                             | Description                                                                                                |
 | --------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| Default   | zu0824190.tif![](media/media/image159.png) | This is the default setting. A rectangular-shaped area is shown with a rounded border. Shading is applied. |
-| Simple    | zu0824210.tif![](media/media/image160.png) | This is a rectangular-shaped area with a hidden border. Shading is not applied.                            |
-| Side Line | zu0824200.tif![](media/media/image161.png) | This is a rectangular-shaped area with a vertical line on the left border. Shading is not applied.         |
+| Default   | ![](media/media/image159.png) | This is the default setting. A rectangular-shaped area is shown with a rounded border. Shading is applied. |
+| Simple    | ![](media/media/image160.png) | This is a rectangular-shaped area with a hidden border. Shading is not applied.                            |
+| Side Line | ![](media/media/image161.png) | This is a rectangular-shaped area with a vertical line on the left border. Shading is not applied.         |
 
 #### Settings for the Border Style element
 
@@ -10883,16 +10877,16 @@ Table 5‑8. Sample display for each border style
 
 | Theme  | Sample display                             | Description                 |
 | ------ | ------------------------------------------ | --------------------------- |
-| None   | zu0824220.tif![](media/media/image160.png) | No line is displayed.       |
-| Solid  | zu0824230.tif![](media/media/image159.png) | A solid line is displayed.  |
-| Dotted | zu0824240.tif![](media/media/image162.png) | A dotted line is displayed. |
-| Double | zu0824250.tif![](media/media/image163.png) | A double line is displayed. |
+| None   | ![](media/media/image160.png) | No line is displayed.       |
+| Solid  | ![](media/media/image159.png) | A solid line is displayed.  |
+| Dotted | ![](media/media/image162.png) | A dotted line is displayed. |
+| Double | ![](media/media/image163.png) | A double line is displayed. |
 
 ### Edit a widget
 
 This section explains how to edit a widget.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line for a widget.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line for a widget.
 
 The "Edit" tab appears.
 
@@ -10916,7 +10910,7 @@ This section explains how to delete a widget.
 
 <!-- end list -->
 
-1)  > In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line for a widget.
+1)  > In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line for a widget.
 
 > The widget is deleted. The message "Record was successfully deleted" appears.
 > 
@@ -10959,11 +10953,11 @@ The "Main Layout" page of the selected repository appears. "Widget List" also di
 
 The widgets that are enabled in the "Widget" screen (i.e. "Enable" is checked) appear in "Widget List".
 
-zu0825010.tif![](media/media/image170.png)
+![](media/media/image170.png)
 
 2.  From the "Pages" pull-down list, select the page you want to specify the widget design.
 
-zu0825020.tif![](media/media/image171.png)
+![](media/media/image171.png)
 
 You can add a new page. See "Section 5.2.2. Add a page" for information on adding a page.
 
@@ -10975,7 +10969,7 @@ You need to adjust the position and the width of each widget.
 
 (The height will be automatically adjusted as you modify the widgets.)
 
-zu0825030.tif![](media/media/image172.png)
+![](media/media/image172.png)
 
 Notes:
 
@@ -10987,7 +10981,7 @@ Notes:
 
 The widget is removed from the "Preview" panel.
 
-zu0825040.tif![](media/media/image174.png)
+![](media/media/image174.png)
 
 5.  Click "Save".
     
@@ -11009,13 +11003,13 @@ This section explains how to add a page to the repository.
 
 The "Page" dialog box appears.
 
-zu0825050.tif![](media/media/image176.png)
+![](media/media/image176.png)
 
 2.  Specify the URL and the title for each language, and click "Save".
 
 The page is added. In the "Pages" pull-down list, the title of the page you added appears.
 
-zu0825060.tif![](media/media/image177.png)
+![](media/media/image177.png)
 
 > "URL" is a required element.
 > 
@@ -11031,27 +11025,27 @@ By placing the "Menu" widget, you can display a link to each page you add. The l
 
 This section explains how to change the title or URL of a page.
 
-1.  Click the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) that appears to the right of the "Pages" pull-down list.
+1.  Click the pencil icon (![iconpen](media/media/image164.png)) that appears to the right of the "Pages" pull-down list.
 
 The "Page" dialog box appears.
 
-zu0825070.tif![](media/media/image179.png)
+![](media/media/image179.png)
 
 2.  Modify the information on the page and click "Save".
 
 The change you made is saved. The message "Successfully saved page" appears.
 
-![](media/media/image180.png)zu0825060.tif
+![](media/media/image180.png)
 
 ### Delete a page
 
 This section explains how to delete a page from the repository.
 
-1.  Click the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) that appears to the right of the "Pages" pull-down list.
+1.  Click the trash can icon (![icontrashbox](media/media/image165.png)) that appears to the right of the "Pages" pull-down list.
 
 You are prompted to confirm the deletion.
 
-zu0825070.tif![](media/media/image181.png)
+![](media/media/image181.png)
 
 The trash can icon (![icontrashbox](media/media/image165.png)) does not appear for the "Main Layout" page because it is not a deletable page.
 
@@ -11059,7 +11053,7 @@ The trash can icon (![icontrashbox](media/media/image165.png)) does not appear f
 
 The page is deleted. The message "Successfully deleted page" appears.
 
-zu0825080.tif![](media/media/image182.png)
+![](media/media/image182.png)
 
 ### Edit a widget on the page
 
@@ -11159,7 +11153,7 @@ This section explains how to search author IDs.
 
 1.  You can search Author IDs using the search box in the "Author ID" tab.
 
-zu0801010.tif![](media/media/image185.png)
+![](media/media/image185.png)
 
 You can perform AND searches using the following elements.
 
@@ -11187,11 +11181,11 @@ This section explains how to add an author ID.
 
 The screen appears where you can add an author.
 
-zu0801020.tif![](media/media/image187.png)
+![](media/media/image187.png)
 
 2.  Enter the name.
 
-zu0801030.tif![](media/media/image188.png)
+![](media/media/image188.png)
 
 The following table lists the information you can enter.
 
@@ -11411,7 +11405,7 @@ This section explains how to edit an author ID.
 
 The screen appears in which you can add an author.
 
-zu0801040.tif![](media/media/image191.png)
+![](media/media/image191.png)
 
 2.  Specify settings for each element.
 
@@ -11435,13 +11429,13 @@ This section explains how to delete an author ID.
 
 The screen appears in which you can add an author.
 
-zu0801040.tif![](media/media/image192.png)
+![](media/media/image192.png)
 
 2.  Click "Delete".
 
 The Author ID is deleted.
 
-zu0801050.tif![](media/media/image193.png)
+![](media/media/image193.png)
 
 #### Merge author IDs
 
@@ -11451,19 +11445,19 @@ This section explains how to merge author information.
 
 You can check more than one "Origin" check box. You have only one selection allowed for "Target".
 
-zu0801060.tif![](media/media/image194.png)
+![](media/media/image194.png)
 
 2.  Click "Merge".
 
 A window appears showing the selected authors for "Origin" and "Target".
 
-zu0801070.tif![](media/media/image195.png)
+![](media/media/image195.png)
 
 3.  Click "Execute".
 
 The authors' information will be merged into the author specified in "Target".
 
-zu0801080.tif![](media/media/image196.png)
+![](media/media/image196.png)
 
 1.  ### Manage external author ID Prefixes
     
@@ -11517,7 +11511,7 @@ This section explains how to add an external author ID Prefix.
 
 1.  In the "ID Prefix" tab, enter the information for the external author.
     
-    ![](media/media/image198.png)zu0801090.tif
+    ![](media/media/image198.png)
 
 The following table lists the information you can enter.
 
@@ -11623,11 +11617,11 @@ This section explains how to edit an external author ID Prefix.
 
 1.  Click "Edit" in the "ID Prefix" tab.
 
-zu0801100.tif![](media/media/image199.png)
+![](media/media/image199.png)
 
 2.  Specify settings for each element.
 
-zu0801110.tif![](media/media/image200.png)
+![](media/media/image200.png)
 
 See the section "(2) Add an external author ID Prefix" for information on the elements.
 
@@ -11641,13 +11635,13 @@ This section explains how to delete an external author ID prefix.
 
 1.  Click "Edit" in the "ID Prefix" tab.
 
-zu0801100.tif![](media/media/image201.png)
+![](media/media/image201.png)
 
 2.  Click "Delete".
 
 The external author ID Prefix is deleted. The message "Successfully deleted" appears.
 
-zu0801120.tif![](media/media/image202.png)
+![](media/media/image202.png)
 
 Notes:
 
@@ -12634,7 +12628,7 @@ Number of private items registered:
 
 ・The publish date of the item is in the future, even if the publish status of the index is "public".
 
-zu0902010.tif![](media/media/image209.png)
+![](media/media/image209.png)
 
 ### Download fixed form reports
 
@@ -12644,7 +12638,7 @@ There are eleven different tsv (tab-separated values) formats available for down
 
 See "Section 7.1.3 Types of fixed form reports" for information on the elements that can be selected for "Type".
 
-zu0902020.tif![](media/media/image210.png)
+![](media/media/image210.png)
 
 2.  Click "Download".
 
@@ -12889,11 +12883,11 @@ The files sent as the fixed form reports are in eleven different tsv (tab-separa
 
 See "Section 7.1.3 Types of fixed form reports" for information on the elements that can be selected for "Type".
 
-zu0902020.tif![](media/media/image223.png)
+![](media/media/image223.png)
 
 2.  Enter an email address in "Receive Mail".
 
-zu0902030.tif![](media/media/image224.png)
+![](media/media/image224.png)
 
 3.  To add an email address, click "+Email Address".
     
@@ -12913,7 +12907,7 @@ zu0902030.tif![](media/media/image224.png)
 
 You are prompted to confirm the operation to send the email.
 
-zu0902040.tif![](media/media/image226.png)
+![](media/media/image226.png)
 
 7.  Click "Confirm" on the confirmation dialog that appears.
 
@@ -12927,19 +12921,19 @@ When an error occurs while sending the email, the error message "Unexpected erro
 
 8.  If you want to send emails regularly, specify "Frequency" for "Transmission Interval" under "Report Email Schedule" and select the "On" radio button.
 
-zu0902050.tif![](media/media/image229.png)
+![](media/media/image229.png)
 
 9.  Click "Save".
 
 The email schedule is set. Fixed form reports email will be sent based on the specified transmission interval.
 
-zu0902060.tif![](media/media/image230.png)
+![](media/media/image230.png)
 
 ### Sett up a custom report
 
 1.  Enter the elements in "Custom Report".
 
-zu0902070.tif![](media/media/image231.png)
+![](media/media/image231.png)
 
 The following table lists the information you can enter.
 
@@ -12994,7 +12988,7 @@ Table 7‑2. The elements for "Custom Report"
 
 The results appear in "Result".
 
-zu0902080.tif![](media/media/image232.png)
+![](media/media/image232.png)
 
 ## Set up feedback mails
 
@@ -13010,7 +13004,7 @@ The values configured for the selected repository appear in the elements on the 
 
 3.  > For "Feedback email feature", select "Enable" or "Disable".
 
-zu0901010.tif![](media/media/image233.png)
+![](media/media/image233.png)
 
 4.  > Specify "Exclusion from sending".
 
@@ -13018,7 +13012,7 @@ You can specify "Exclusion from sending" by using the "Input from author DB" scr
 
 > See the User Operation Manual in "Section 5.1.2 Register Items", which provides the section"(13) Configure the Feedback Mail Destination setting", for information on how to configure the setting.
 
-zu0901020.tif![](media/media/image234.png)
+![](media/media/image234.png)
 
 5.  > Click "Save".
 
@@ -13046,7 +13040,7 @@ You can specify certain item types to be excluded in the aggregation in the mana
 
 2.  For "Automatic Send", click the "Enable" radio button.
 
-zu0903010.tif![](media/media/image236.png)
+![](media/media/image236.png)
 
 3.  Click "Save".
 
@@ -13058,7 +13052,7 @@ See "Section 7.3.3 Site license statistics" for information on the files attache
 
 2.  In "Manual Send", specify the period for which you want to aggregate logs.
 
-zu0903020.tif![](media/media/image237.png)
+![](media/media/image237.png)
 
 3.  Click "Manual Send".
 
@@ -13127,11 +13121,11 @@ This section explains how to add a new flow. A flow created in this step does no
 
 A screen appears where you can create a flow.
 
-zu1101010.tif![](media/media/image238.png)
+![](media/media/image238.png)
 
 2.  > Enter a flow name.
 
-zu1101020.tif![](media/media/image239.png)
+![](media/media/image239.png)
 
 3.  > Select the repository in which to register the flow in "Repository".
 
@@ -13141,7 +13135,7 @@ The flow is added.
 
 The "Start" and "End" actions are automatically added to the flow, and the flow status becomes "Creating".
 
-zu1101030.tif![](media/media/image240.png)
+![](media/media/image240.png)
 
 You can then add actions to the flow. See "Section 8.1.2 Edit flow actions" for information on how to add actions to a flow.
 
@@ -13181,13 +13175,11 @@ Adding or removing actions to the flow, changing the order of actions, etc., wil
 
 A screen appears where you can edit the flow.
 
-> zu1101040.tif![](media/media/image242.png)
+> ![](media/media/image242.png)
 
 2.  You can limit the roles or users who can perform the action by selecting them in the drop-down list.
 
     [v2.1.0] If GakuNin mAP integration is configured, the roles given by GakuNin mAP (the system administrator group and the repository-specific roles) are not shown in the role choices.
-
-> zu1101050.tif
 
 ![](media/media/image243.png)For "Action User", you can configure which email to send in which approval flow using this screen.
 
@@ -13197,7 +13189,7 @@ If you select the "Specify Property" option for "Action User", a modal screen wi
 
 "Action List" appears.
 
-> zu1101060.tif![](media/media/image246.png)
+> ![](media/media/image246.png)
 
 4.  Click "Apply" to add an action. Click "Unusable" to delete an action.
 
@@ -13209,17 +13201,17 @@ For "Approval", you can add multiple "Approval" actions to the action list by cl
 
 You can also delete "Approval" actions from the action list by clicking the "Unusable" button. Clicking the button multiple times also deletes multiple actions. The "Approval" action with the largest branch number in the action list will be deleted first.
 
-> zu1101070.tif![](media/media/image247.png)
+> ![](media/media/image247.png)
 
 5.  To change the order of actions, use "Change Order" to move them up or down.
 
-> zu1101080.tif![](media/media/image248.png)
+> ![](media/media/image248.png)
 
 6.  Click "Save" at the bottom of the screen.
 
 The flow is saved. The message "Updated flow action successfully" appears.
 
-> zu1101090.tif![](media/media/image249.png)
+> ![](media/media/image249.png)
 
 ### Delete a flow
 
@@ -13227,13 +13219,13 @@ The flow is saved. The message "Updated flow action successfully" appears.
 
 A screen appears where you can edit the setting.
 
-> zu1101040.tif![](media/media/image250.png)
+> ![](media/media/image250.png)
 
 2.  Click "Delete".
 
 The flow is deleted.
 
-> zu1101100.tif![](media/media/image251.png)
+> ![](media/media/image251.png)
 
 Notes:
 
@@ -13250,8 +13242,6 @@ A workflow is a combination of flows and items. To access the "Flow List" screen
 1.  > Click "+Create WorkFlow".
 
 A screen appears where you can create a new workflow.
-
-zu1101200.tif
 
 ![](media/media/image253.png)
 
@@ -13272,8 +13262,6 @@ Table 8‑1. The elements for adding a workflow
 | Storage Location (shown as "Strage Location" on the screen) | Select the storage in which items are stored from the pull-down. If "Undesignated" is selected, the default Location is used. |
 | [v2.1.0] Display/Hide | You can specify whether the workflow is shown or hidden for each role.<br>If GakuNin mAP integration is configured, the roles given by GakuNin mAP are not shown. |
 
-zu1101300.tif
-
 ![](media/media/image254.png)
 
 3.  > Click "Save".
@@ -13286,9 +13274,9 @@ The workflow is saved. The message "Workflow created successfully" appears.
 
 A screen appears where you can edit the workflow.
 
-zu1101400.tif![](media/media/image255.png)
+![](media/media/image255.png)
 
-2.  Specify a name for the workflow you want to edit, select a flow, and select an item type.zu1101500.tif
+2.  Specify a name for the workflow you want to edit, select a flow, and select an item type.
 
 ![](media/media/image256.png)
 
@@ -13310,13 +13298,13 @@ The workflow is saved. If it is saved successfully, the message "Workflow create
 
 A screen appears where you can edit the workflow.
 
-zu1101400.tif![](media/media/image257.png)
+![](media/media/image257.png)
 
 2.  Click "Delete".
 
 The workflow is deleted.
 
-zu1101600.tif![](media/media/image258.png)
+![](media/media/image258.png)
 
 Notes:
 
@@ -13363,9 +13351,9 @@ This section explains how to view communities.
 
 The "List" tab shows a list of communities. ★\<You can filter the list by selecting criteria and specifying values in "Add Filter".\>★
 
-zu0201010.tif![](media/media/image260.png)
+![](media/media/image260.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -13390,7 +13378,7 @@ A screen appears where you can create a community.
 
 2.  > Enter information for each element.
 
-zu0201020.tif![](media/media/image261.png)
+![](media/media/image261.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -13430,7 +13418,7 @@ A community is created.
 
 This section explains how to edit a community.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -13438,7 +13426,7 @@ A screen appears where you can edit the setting.
 
 See "Section 9.1.2 Create a community" for information on the elements.
 
-zu0201030.tif![](media/media/image262.png)
+![](media/media/image262.png)
 
 3.  Click "Save".
 
@@ -13456,9 +13444,9 @@ This section explains how to view your favorite communities.
 
 The "List" tab shows a list of communities.
 
-zu0202010.tif![](media/media/image263.png)
+![](media/media/image263.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -13472,7 +13460,7 @@ A screen appears where you can specify your favorite community.
 
 Enter information for each element.
 
-zu0202020.tif![](media/media/image264.png)
+![](media/media/image264.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -13493,7 +13481,7 @@ A featured community is created.
 
 This section explains how to edit a favorite community.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -13501,7 +13489,7 @@ A screen appears where you can edit the setting.
 
 See "Section 9.2.2 Create a favorite community" for information on the elements.
 
-zu0202030.tif![](media/media/image265.png)
+![](media/media/image265.png)
 
 3.  Click "Save".
 
@@ -13511,19 +13499,19 @@ The setting is saved.
 
 To delete communities individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected communities will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected communities will be deleted.
 
 To delete multiple communities at once, do the following:
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu0202040.tif![](media/media/image266.png)
+![](media/media/image266.png)
 
 2.  Click on the "With selected" tab, and select "Delete".
 
 You are prompted to confirm the deletion.
 
-zu0202050.tif![](media/media/image267.png)
+![](media/media/image267.png)
 
 3.  Click "OK".
 
@@ -13541,25 +13529,25 @@ This section explains how to view inclusion requests.
 
 The "List" tab shows a list of communities.
 
-zu0203010.tif![](media/media/image268.png)
+![](media/media/image268.png)
 
 ### Delete inclusion requests
 
 To delete inclusion requests individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected inclusion requests will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected inclusion requests will be deleted.
 
 To delete multiple inclusion requests at once, do the following:
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu0203020.tif![](media/media/image269.png)
+![](media/media/image269.png)
 
 2.  Click on the "With selected" tab, and select "Delete".
 
 You are prompted to confirm the deletion.
 
-zu0203030.tif![](media/media/image270.png)
+![](media/media/image270.png)
 
 3.  Click "OK".
 
@@ -13585,9 +13573,9 @@ If you want to select manual execution, do the following steps:
 
 1.  Click on the "List" tab to see a list of registered plans.
 
-zu0601010.tif![](media/media/image271.png)
+![](media/media/image271.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -13639,7 +13627,7 @@ The details appear.
 
 2.  > Enter information for each element.
 
-zu0601020.tif![](media/media/image278.png)
+![](media/media/image278.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -13663,7 +13651,7 @@ Table 10‑1. The elements in the "Create" tab
 
 ### Edit a harvesting plan
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -13671,41 +13659,41 @@ A screen appears where you can edit the setting.
 
 See "Section 10.1.2 Create a harvesting plan" for information on the elements.
 
-zu0601030.tif![](media/media/image279.png)
+![](media/media/image279.png)
 
 3.  Click "Save".
 
 The setting is saved.
 
-zu0601040.tif![](media/media/image280.png)
+![](media/media/image280.png)
 
 4.  In "Schedule", specify the interval at which harvesting is performed.
 
-zu0601050.tif![](media/media/image281.png)
+![](media/media/image281.png)
 
 5.  Click "Save".
 
 The setting is saved.
 
-zu0601060.tif![](media/media/image282.png)
+![](media/media/image282.png)
 
 ### Delete harvesting plans
 
 To delete records individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected records will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected records will be deleted.
 
 To delete multiple records at once, do the following:
 
 2.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu0601070.tif![](media/media/image283.png)
+![](media/media/image283.png)
 
 3.  > Click on the "With selected" tab, and select "Delete".
 
 You are prompted to confirm the deletion.
 
-zu0601080.tif![](media/media/image284.png)
+![](media/media/image284.png)
 
 4.  > Click "OK".
 
@@ -13721,7 +13709,7 @@ You use this setting to access the OAI-PMH provider feature.
 
 1.  Click on the "List" tab to display a list of registered prefix IDs.
 
-zu0602010.tif![](media/media/image285.png)
+![](media/media/image285.png)
 
 ### Create an output set
 
@@ -13735,7 +13723,7 @@ zu0602010.tif![](media/media/image285.png)
 
 The repository information is available from "http://\[site\_URL\]/?action=repository\_oaipmh\&verb=Identify".
 
-zu0602020.tif![](media/media/image286.png)
+![](media/media/image286.png)
 
 3.  > Click "Save".
 
@@ -13743,13 +13731,13 @@ An output set is created.
 
 ### Edit an output set
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
 
 A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-zu0602030.tif![](media/media/image287.png)
+![](media/media/image287.png)
 
 3.  Click "Save".
 
@@ -13763,9 +13751,9 @@ To access the screen where you can configure the Sets setting, click "OAI-PMH" a
 
 1.  Click on the "List" tab to display a list of registered IDs.
 
-zu0603010.tif![](media/media/image288.png)
+![](media/media/image288.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
 
 The details of the ID appear.
 
@@ -13777,7 +13765,7 @@ A screen appears where you can create a Set.
 
 2.  Enter information for each element.
 
-zu0603020.tif![](media/media/image289.png)
+![](media/media/image289.png)
 
 3.  Click "Save".
 
@@ -13785,13 +13773,13 @@ The Set is created.
 
 ### Edit a Set
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
 
 A screen appears where you can edit the setting.
 
 2.  Modify the setting.
 
-zu0603030.tif![](media/media/image290.png)
+![](media/media/image290.png)
 
 3.  Click "Save".
 
@@ -13981,7 +13969,7 @@ Table 11‑1. The elements on the Resource List create tab
 
 This section explains how to edit a Resource List.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 The Resource List edit screen appears.
 
@@ -13993,7 +13981,7 @@ The Resource List edit screen appears.
 
 This section explains how to delete a Resource List.
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
 
 > You are prompted to confirm the deletion.
 
@@ -14141,7 +14129,7 @@ Table 11‑2. The elements on the Change List create tab
 
 This section explains how to edit a Change List.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 The Change List edit screen appears.
 
@@ -14159,7 +14147,7 @@ The Change List edit screen appears.
 
 This section explains how to delete a Change List.
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
 
 > You are prompted to confirm the deletion.
 
@@ -14181,7 +14169,7 @@ This section explains how to collect data.
 
 <!-- end list -->
 
-1)  In the "List" tab, click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Automatic".
+1)  In the "List" tab, click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Automatic".
 
 > The Resync details screen appears.
 
@@ -14203,7 +14191,7 @@ This section explains how to collect data.
 
 <!-- end list -->
 
-1)  In the "List" tab, click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Manual".
+1)  In the "List" tab, click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Manual".
 
 > The Resync details screen appears.
 
@@ -14323,7 +14311,7 @@ Table 11‑3. The elements on the Resync create tab
 
 This section explains how to edit a Resync.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 The Resync edit screen appears.
 
@@ -14335,7 +14323,7 @@ The Resync edit screen appears.
 
 This section explains how to delete a Resync.
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
 
 > You are prompted to confirm the deletion.
 
@@ -14485,9 +14473,9 @@ This section explains how to view Persistent Identifiers.
 
 The "List" tab displays a list of Persistent Identifiers. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu0701010.tif![](media/media/image312.png)
+![](media/media/image312.png)
 
-2.  > Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
+2.  > Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
     
     The details of the ID appear.
     
@@ -14505,9 +14493,9 @@ This section explains how to view Record Metadata.
 
 The "List" tab displays a list of Record Metadata. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu0702010.tif![](media/media/image313.png)
+![](media/media/image313.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
     
     The details of the Record Metadata appear.
 
@@ -14517,19 +14505,19 @@ This section explains how to delete Record Metadata.
 
 To delete records individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected records will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected records will be deleted.
 
 To delete multiple records at once, do the following:
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu0702020.tif![](media/media/image314.png)
+![](media/media/image314.png)
 
 2.  > Click on the "With selected" tab, and select "Delete".
 
 You are prompted to confirm the deletion.
 
-zu0702030.tif![](media/media/image315.png)
+![](media/media/image315.png)
 
 3.  > Click "OK".
 
@@ -14553,9 +14541,9 @@ This section explains how to view Buckets.
 
 The "List" tab displays a list of Buckets. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu0301010.tif![](media/media/image316.png)
+![](media/media/image316.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14569,7 +14557,7 @@ A screen appears where you can create a Bucket.
 
 2.  Enter information for each element.
 
-zu0301020.tif![](media/media/image317.png)
+![](media/media/image317.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -14593,11 +14581,11 @@ The Bucket is created.
 
 This section explains how to edit a Bucket.
 
-1.  > In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  > In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
-zu0301030.tif![](media/media/image318.png)
+![](media/media/image318.png)
 
 2.  > Modify the setting.
 
@@ -14619,9 +14607,9 @@ This section explains how to view File Instances.
 
 The "List" tab displays a list of File Instances. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu0302010.tif![](media/media/image319.png)
+![](media/media/image319.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14631,13 +14619,13 @@ This section explains how to run a fixity check to see if any file has been modi
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu0302020.tif![](media/media/image320.png)
+![](media/media/image320.png)
 
 2.  Click on the "With selected" tab, and select "Run fixity check".
 
 A dialog appears. A fixity check on the files is performed.
 
-zu0302030.tif![](media/media/image321.png)
+![](media/media/image321.png)
 
 ### Delete File Instances
 
@@ -14647,7 +14635,7 @@ When you delete a File Instance, the File Instance record is deleted, and the us
 
 To delete File Instances individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
     
     You are prompted to confirm the deletion.
 
@@ -14681,9 +14669,9 @@ This section explains how to view Locations.
 
 The "List" tab shows a list of Locations. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu0303010.tif![](media/media/image322.png)
+![](media/media/image322.png)
 
-2.  > Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  > Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14705,7 +14693,7 @@ A screen appears where you can create a Location.
 
 Enter information for each element.
 
-zu0303020.tif![](media/media/image323.png)
+![](media/media/image323.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -14745,7 +14733,7 @@ The location is created.
 
 [v2.1.0] This section explains how to edit a Location. Only system administrators can edit Locations.
 
-1.  > In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  > In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -14753,7 +14741,7 @@ A screen appears where you can edit the setting.
 
 See "Section 14.3.2 Create a Location" for information on the elements.
 
-zu0303030.tif![](media/media/image324.png)
+![](media/media/image324.png)
 
 3.  > Click "Save".
 
@@ -14765,19 +14753,19 @@ The setting is saved.
 
 To delete Locations individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected locations will then be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected locations will then be deleted.
 
 To delete multiple Locations at once, do the following:
 
 1.  > In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu0303050.tif![](media/media/image325.png)
+![](media/media/image325.png)
 
 2.  > Click on the "With selected" tab, and select "Delete".
 
 You are prompted to confirm the deletion.
 
-zu0303060.tif![](media/media/image326.png)
+![](media/media/image326.png)
 
 3.  > Click "OK".
 
@@ -14795,9 +14783,9 @@ This section explains how to view Multipart Objects.
 
 The "List" tab displays a list of Multipart Objects. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu0304010.tif![](media/media/image327.png)
+![](media/media/image327.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14815,9 +14803,9 @@ This section explains how to view Object Versions.
 
 The "List" tab displays a list of Object Versions. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu0305010.tif![](media/media/image328.png)
+![](media/media/image328.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14922,9 +14910,9 @@ This section explains how to view role-based actions.
 
 The "List" tab shows a list of actions added to the role.
 
-zu1001010.tif![](media/media/image329.png)
+![](media/media/image329.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14938,7 +14926,7 @@ A screen appears where you can create an action.
 
 2.  Enter information for each element.
 
-zu1001020.tif![](media/media/image330.png)
+![](media/media/image330.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -14959,7 +14947,7 @@ The action is added to the role.
 
 This section explains how to edit a role-based action.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -14967,7 +14955,7 @@ A screen appears where you can edit the setting.
 
 See "Section 14.1.2 Add an action to a role" for information on the elements.
 
-zu1001030.tif![](media/media/image331.png)
+![](media/media/image331.png)
 
 3.  Click "Save".
 
@@ -14977,19 +14965,19 @@ The setting is saved.
 
 To delete actions individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
 
 To delete multiple actions at once, do the following:
 
 1)  > In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu1001040.tif![](media/media/image332.png)
+![](media/media/image332.png)
 
 2)  > Click on the "With selected" tab, and select "Delete".
 
 > You are prompted to confirm the deletion.
 
-zu1001050.tif![](media/media/image333.png)
+![](media/media/image333.png)
 
 3)  > Click "OK".
 
@@ -15007,9 +14995,9 @@ Click "User Management" and then click "Access: System Roles".
 
 The "List" tab shows a list of actions added to the role.
 
-zu1002010.tif![](media/media/image334.png)
+![](media/media/image334.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15023,7 +15011,7 @@ A screen appears where you can create an action.
 
 Enter information for each element.
 
-zu1002020.tif![](media/media/image335.png)
+![](media/media/image335.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15044,7 +15032,7 @@ The action is added to the system role.
 
 This section explains how to edit a system role-based action.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15052,7 +15040,7 @@ A screen appears where you can edit the setting.
 
 See "Section 14.2.2 Add an action to a system role" for information on the elements.
 
-zu1002030.tif![](media/media/image336.png)
+![](media/media/image336.png)
 
 3.  Click "Save".
 
@@ -15062,19 +15050,19 @@ The setting is saved.
 
 To delete actions individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
 
 To delete multiple actions at once, do the following:
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu1002040.tif![](media/media/image337.png)
+![](media/media/image337.png)
 
 2.  Click on the "With selected" tab, and select "Delete".
 
 You are prompted to confirm the deletion.
 
-zu1002050.tif![](media/media/image338.png)
+![](media/media/image338.png)
 
 3.  Click "OK".
 
@@ -15092,9 +15080,9 @@ Click "User Management" and then click "Access: Users".
 
 The "List" tab shows a list of actions added to the role.
 
-zu1003010.tif![](media/media/image339.png)
+![](media/media/image339.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15108,7 +15096,7 @@ A screen appears where you can create an action.
 
 Enter information for each element.
 
-zu1003020.tif![](media/media/image340.png)
+![](media/media/image340.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15129,7 +15117,7 @@ The action is added to the user.
 
 This section explains how to edit a user action.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15137,7 +15125,7 @@ A screen appears where you can edit the setting.
 
 See "Section 14.3.2 Add an action to a user" for information on the elements.
 
-zu1003030.tif![](media/media/image341.png)
+![](media/media/image341.png)
 
 3.  Click "Save".
 
@@ -15147,19 +15135,19 @@ The setting is saved.
 
 To delete actions individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
 
 To delete multiple actions at once, do the following:
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu1003040.tif![](media/media/image342.png)
+![](media/media/image342.png)
 
 2.  Click on the "With selected" tab, and select "Delete".
 
 You are prompted to confirm the deletion.
 
-zu1003050.tif![](media/media/image343.png)
+![](media/media/image343.png)
 
 3.  Click "OK".
 
@@ -15177,9 +15165,9 @@ This section explains how to view Linked account identities.
     
     The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu1004010.tif![](media/media/image344.png)
+![](media/media/image344.png)
 
-2.  > Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  > Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
     
     The details appear.
     
@@ -15187,7 +15175,7 @@ zu1004010.tif![](media/media/image344.png)
 
 To delete identities individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected identities will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected identities will be deleted.
 
 To delete multiple identities at once, do the following:
 
@@ -15213,9 +15201,9 @@ This section explains how to view Linked account tokens.
 
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu1005010.tif![](media/media/image345.png)
+![](media/media/image345.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15229,7 +15217,7 @@ A screen appears where you can create a token.
 
 Enter information for each element.
 
-zu1005020.tif![](media/media/image346.png)
+![](media/media/image346.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15248,7 +15236,7 @@ The token is created.
 
 This section explains how to edit a Linked account token.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15264,7 +15252,7 @@ The setting is saved.
 
 To delete tokens individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected identities will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected identities will be deleted.
 
 To delete multiple tokens at once, do the following:
 
@@ -15290,9 +15278,9 @@ This section explains how to view Linked accounts.
 
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu1006010.tif![](media/media/image347.png)
+![](media/media/image347.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15306,7 +15294,7 @@ A screen appears where you can create an account.
 
 Enter information for each element.
 
-zu1006020.tif![](media/media/image348.png)
+![](media/media/image348.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15328,7 +15316,7 @@ The account is created.
 
 This section explains how to edit a Linked account.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15336,7 +15324,7 @@ A screen appears where you can edit the setting.
 
 See "Section 14.6.2 Create a Linked account" for information on the elements.
 
-zu1006030.tif![](media/media/image349.png)
+![](media/media/image349.png)
 
 3.  Click "Save".
 
@@ -15346,19 +15334,19 @@ The setting is saved.
 
 To delete accounts individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected accounts will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected accounts will be deleted.
 
 To delete multiple accounts at once, do the following:
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu1006040.tif![](media/media/image350.png)
+![](media/media/image350.png)
 
 2.  Click on the "With selected" tab, and select "Delete".
 
 You are prompted to confirm the deletion.
 
-zu1006050.tif![](media/media/image351.png)
+![](media/media/image351.png)
 
 3.  Click "OK".
 
@@ -15376,9 +15364,9 @@ This section explains how to view OAuth Application tokens.
 
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu1007010.tif![](media/media/image352.png)
+![](media/media/image352.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15386,7 +15374,7 @@ The details appear.
 
 To delete tokens individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected tokens will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected tokens will be deleted.
 
 To delete multiple tokens at once, do the following:
 
@@ -15418,9 +15406,9 @@ This section explains how to view OAuth Applications.
 
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu1008010.tif![](media/media/image353.png)
+![](media/media/image353.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15428,7 +15416,7 @@ The details appear.
 
 To delete applications individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected applications will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected applications will be deleted.
 
 To delete multiple applications at once, do the following:
 
@@ -15456,9 +15444,9 @@ This section explains how to view roles.
 
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu1009010.tif![](media/media/image354.png)
+![](media/media/image354.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15472,7 +15460,7 @@ A screen appears where you can create a role.
 
 Enter information for each element.
 
-zu1009020.tif![](media/media/image355.png)
+![](media/media/image355.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15492,7 +15480,7 @@ The account is created.
 
 This section explains how to create a role.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15500,7 +15488,7 @@ A screen appears where you can edit the setting.
 
 See "Section 14.9.2 Create a role" for information on the elements.
 
-zu1009030.tif![](media/media/image356.png)
+![](media/media/image356.png)
 
 3.  Click "Save".
 
@@ -15510,19 +15498,19 @@ The setting is saved.
 
 To delete roles individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected roles will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected roles will be deleted.
 
 To delete multiple roles at once, do the following:
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu1009040.tif![](media/media/image357.png)
+![](media/media/image357.png)
 
 2.  Click on the "With selected" tab, and select "Delete".
 
 You are prompted to confirm the deletion.
 
-zu1009050.tif![](media/media/image358.png)
+![](media/media/image358.png)
 
 3.  Click "OK".
 
@@ -15540,7 +15528,7 @@ This section explains how to view Session Activities.
 
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu1010010.tif![](media/media/image359.png)
+![](media/media/image359.png)
 
 ### Delete Session Activities
 
@@ -15548,7 +15536,7 @@ This section explains how to delete sessions.
 
 \* You cannot delete your own current session. If the selected sessions include your own session, "You could not remove your current session" appears, and the session is not deleted.
 
-To delete a session individually, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line in the "List" tab.
+To delete a session individually, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line in the "List" tab.
 
 To delete multiple sessions at once, do the following:
 
@@ -15578,9 +15566,9 @@ For community administrators, only the users who belong to the communities they 
 
 \* Only system administrators can add, edit, disable, and enable users. Repository administrators and community administrators can only view the list and details of users.
 
-zu1011010.tif![](media/media/image360.png)
+![](media/media/image360.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15594,7 +15582,7 @@ The screen appears where you can add a user.
 
 Enter information for each element.
 
-zu1011020.tif![](media/media/image361.png)
+![](media/media/image361.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15617,7 +15605,7 @@ The user is created.
 
 This section explains how to edit a user. Only system administrators can edit users.
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15625,7 +15613,7 @@ A screen appears where you can edit the setting.
 
 See "Section 14.11.2 Add a user" for information on the elements.
 
-zu1011030.tif![](media/media/image362.png)
+![](media/media/image362.png)
 
 3.  Click "Save".
 
@@ -15637,13 +15625,13 @@ This section explains how to disable or enable users. Only system administrators
 
 1.  In the "List" tab, check the check boxes at the beginning of the lines.
 
-zu1011040.tif![](media/media/image363.png)
+![](media/media/image363.png)
 
 2.  Click on the "With selected" tab, and select "Inactivate" or "Activate".
 
 You are prompted to confirm the operation.
 
-zu1011050.tif![](media/media/image364.png)
+![](media/media/image364.png)
 
 3.  Click "OK".
 
@@ -15661,9 +15649,9 @@ This section explains how to view User Profiles.
 
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-zu1012010.tif![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image365.png)
+![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image365.png)
 
-2.  Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15673,7 +15661,7 @@ This section explains how to delete User Profiles. Only system administrators ca
 
 To delete User Profiles individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected user profiles will be deleted.
+1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected user profiles will be deleted.
 
 To delete multiple User Profiles at once, do the following:
 
@@ -15701,7 +15689,7 @@ A screen appears where you can configure the setting.
 
 2.  Specify settings for each element.
 
-zu0809010.tif![](media/media/image366.png)
+![](media/media/image366.png)
 
 The following table lists the information you can enter.
 
@@ -15748,7 +15736,7 @@ A screen appears where you can configure the display of the Index Link.
 
 2.  Click "Enable" to display the Index Link. Click "Disable" to hide it.
 
-zu0806010.tif![](media/media/image367.png)
+![](media/media/image367.png)
 
 3.  Click "Update".
 
@@ -15782,7 +15770,7 @@ A screen appears where you can configure languages.
 
 According to your action, the language is added to or removed from "Registered language".
 
-zu0810010.tif![](media/media/image368.png)
+![](media/media/image368.png)
 
 3.  Click "Save".
 
@@ -15823,13 +15811,13 @@ A screen appears where you can configure the PDF cover page.
 
 This setting will display the PDF cover page.
 
-zu0814010.tif![](media/media/image369.png)
+![](media/media/image369.png)
 
 3.  Specify the elements in "Header Settings".
 
 The following table lists the information displayed.
 
-zu0814020.tif![](media/media/image370.png)
+![](media/media/image370.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15879,7 +15867,7 @@ A screen appears where you can configure the ranking display.
 
 The following table lists the elements displayed.
 
-zu0815010.tif![](media/media/image371.png)
+![](media/media/image371.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -15939,7 +15927,7 @@ A screen appears where you can configure the statistics setting.
 
 2.  Select "On" for "Show/Hide Record Stats".
 
-zu0821010.tif![](media/media/image372.png)
+![](media/media/image372.png)
 
 3.  Click "Save".
 
@@ -15957,7 +15945,7 @@ A screen appears where you can configure the color. The default is set to white.
     
     The color palette appears.
 
-zu0822010.tif![](media/media/image373.png)
+![](media/media/image373.png)
 
 3.  Pick a background color from the color palette.
     
@@ -16013,9 +16001,9 @@ This section explains how to set up the Prefix IDs for the JaLC DOI handle serve
 
 1.  > Click on the "List" tab to display a list of registered prefix IDs.
 
-zu0804010.tif![](media/media/image379.png)
+![](media/media/image379.png)
 
-2.  > Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
+2.  > Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
 
 The details of the ID appear.
 
@@ -16027,7 +16015,7 @@ A screen appears where you can create a Prefix ID.
 
 2.  Specify the values for "Prefix".
 
-zu0804020.tif![](media/media/image380.png)
+![](media/media/image380.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -16045,15 +16033,15 @@ Table 16‑4. The elements in "Prefix"
 
 When a single institution operates multiple WEKO Systems, you can avoid conflicting DOI values by adding a suffix to a Prefix ID.
 
-zu0804030.tif![zu0804030](media/media/image381.png)
+![zu0804030](media/media/image381.png)
 
 You cannot modify the setting if you have already registered an item with a DOI.
 
-zu0804040.tif![](media/media/image382.png)
+![](media/media/image382.png)
 
 4.  For "Enable/Disable", specify servers for which you want to enable Prefix ID by moving them to "Enable".
 
-zu0804050.tif![](media/media/image383.png)
+![](media/media/image383.png)
 
 5.  Click "Save".
 
@@ -16061,7 +16049,7 @@ The Prefix ID is created. The "List" tab will display the Prefix ID.
 
 ### Edit an Identifier
 
-1.  In the "List" tab, click on the pencil icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
+1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
 
 A screen appears where you can edit the setting.
 
@@ -16069,7 +16057,7 @@ A screen appears where you can edit the setting.
     
     See "Section 15.9.2 Create an Identifier" for information on the elements.
 
-![](media/media/image384.png)zu0804060.tif
+![](media/media/image384.png)
 
 3.  Click "Save".
 
@@ -16097,7 +16085,7 @@ A screen appears where you can configure item export.
 
 2.  Specify settings for each element.
 
-zu0808010.tif![](media/media/image385.png)
+![](media/media/image385.png)
 
 The following table lists the information you can enter.
 
@@ -16124,7 +16112,7 @@ A screen appears where you can configure the log analysis settings.
 
 2.  Specify settings for each element.
 
-zu0811010.tif![](media/media/image386.png)
+![](media/media/image386.png)
 
 The following table lists the information you can enter.
 
@@ -16185,7 +16173,7 @@ This section explains how to configure the search results settings.
 
 The following table lists the elements displayed.
 
-zu0816010.tif![](media/media/image388.png)
+![](media/media/image388.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -16232,7 +16220,7 @@ This section explains how to configure the detail search results settings.
 
 You can specify items you want to use for detail searches by checking the corresponding boxes under "Useable Item". The items with the "Initial Condition" turned on will be displayed as default in the detail search screen.
 
-zu0816020.tif![](media/media/image389.png)
+![](media/media/image389.png)
 
 2.  Click "Save".
 
@@ -16614,11 +16602,11 @@ The "List" tab shows a list of the registered facet elements.
 
 ![](media/media/image392.png)
 
-Click on the eye icon (iconeye.tif![iconeye](media/media/image111.png)) displayed at the beginning of the line. The "Details" screen appears.
+Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line. The "Details" screen appears.
 
 ![](media/media/image393.png)
 
-Click on the eye icon (iconpen.tif![iconpen](media/media/image164.png)) displayed at the beginning of the line. The "Edit" screen appears.
+Click on the eye icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line. The "Edit" screen appears.
 
 ![](media/media/image394.png)
 
@@ -16692,7 +16680,7 @@ If "WEKO\_SEARCH\_FIX\_ACCESSRIGHTS" is enabled (True) in the configuration file
 
 ![](media/media/image395.png)
 
-In the "List" tab, click on the trash can icon (icontrashbox.tif![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The relevant "Delete" screen appears. When you click the "Delete" button, a popup window will appear asking you to confirm the action. Click the \[OK\] button to delete the facet element.
+In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The relevant "Delete" screen appears. When you click the "Delete" button, a popup window will appear asking you to confirm the action. Click the \[OK\] button to delete the facet element.
 
 ![](media/media/image396.png)
 
@@ -16708,7 +16696,7 @@ A screen appears where you can configure the site information
 
 The following table lists the elements displayed.
 
-zu0818010.tif![](media/media/image397.png)
+![](media/media/image397.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -16823,21 +16811,21 @@ A screen appears where you can configure permissions for the site license.
 
 A screen appears where you can enter information for the site license.
 
-zu0819010.tif![](media/media/image399.png)
+![](media/media/image399.png)
 
 3.  Specify the elements for the site license.
 
-zu0819020.tif![](media/media/image400.png)
+![](media/media/image400.png)
 
 4.  To add a site license, click "+More Input Row".
 
 To change the display order of site licenses, use the arrow buttons displayed on the right.
 
-zu0819030.tif![](media/media/image401.png)
+![](media/media/image401.png)
 
 5.  Specify the permitted item types in the "Allow" list and the excluded item types in the "Deny" list.
 
-zu0819040.tif![](media/media/image402.png)
+![](media/media/image402.png)
 
 6.  Click "Save".
 
@@ -16855,7 +16843,7 @@ A screen appears where you can create a sitemap.
 
 When the sitemap has been created, "SUCCESS" appears in the "Status" column.
 
-zu0820010.tif![](media/media/image403.png)
+![](media/media/image403.png)
 
 Additional Information:
 
@@ -16879,7 +16867,7 @@ A screen appears where you can configure the email setting.
 
 2.  Enter the elements in "Mail Setting".
 
-zu0812010.tif![](media/media/image404.png)
+![](media/media/image404.png)
 
 The following table lists the information you can enter.
 
@@ -16904,7 +16892,7 @@ The setting is saved. If Server, Port, or Default sender is blank, the setting i
 
 4.  Enter the elements in "Send Test Mail".
 
-zu0812020.tif![](media/media/image405.png)
+![](media/media/image405.png)
 
 The following table lists the information you can enter.
 
@@ -17462,11 +17450,11 @@ A screen appears where you can configure the setting.
 
 2.  Select an option from "Input Type".
 
-zu0823010.tif![](media/media/image406.png)
+![](media/media/image406.png)
 
 3.  Enter information for the field that appears when you select the option.
 
-zu0823020.tif![](media/media/image407.png)
+![](media/media/image407.png)
 
 4.  Click "Save".
 
@@ -17482,7 +17470,7 @@ The "File Preview" screen appears.
 
 2.  Specify settings for each element.
 
-zu0803010.tif![](media/media/image408.png)
+![](media/media/image408.png)
 
 The following table lists the information you can enter.
 
@@ -17509,7 +17497,7 @@ A screen appears where you can configure the setting for Shibboleth users.
 
 2.  Click either the "Allow shibboleth user" or "Deny shibboleth user" radio button.
 
-zu0817010.tif![](media/media/image409.png)
+![](media/media/image409.png)
 
 3.  If necessary, configure "Default Role", "Attribute Mapping", and "Block User".
 
@@ -18512,7 +18500,7 @@ A screen appears where you can set up an institution name.
 
 2.  Specify a name in "Institution Name".
 
-zu0813010.tif![](media/media/image413.png)
+![](media/media/image413.png)
 
 3.  Click "Save".
 
@@ -18670,13 +18658,13 @@ Notes:
 
 The "My Groups" screen appears.
 
-zu1205010.tif![](media/media/image414.png)
+![](media/media/image414.png)
 
 2.  Click "Requests" or "Invitations".
 
 The "Pending requests" or "Pending invitations" screen appears.
 
-zu1205020.tif![](media/media/image415.png)
+![](media/media/image415.png)
 
 3.  Click "Accept" to join the group.
 
@@ -18690,11 +18678,11 @@ This section explains how to create a group.
 
 A screen appears where you can create a group.
 
-zu1205030.tif![](media/media/image416.png)
+![](media/media/image416.png)
 
 2.  Enter information for each element.
 
-zu1205040.tif![](media/media/image417.png)
+![](media/media/image417.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -18717,19 +18705,19 @@ This section explains how to invite members to a group.
 
 A list of members appears.
 
-zu1205050.tif![](media/media/image418.png)
+![](media/media/image418.png)
 
 2.  Click "+Invite".
 
 A screen appears where you can enter information.
 
-zu1205060.tif![](media/media/image419.png)
+![](media/media/image419.png)
 
 3.  Enter an email address.
 
 Enter one email address per line to send the invitation to multiple addresses.
 
-zu1205070.tif![](media/media/image420.png)
+![](media/media/image420.png)
 
 4.  Click "Invite".
 
@@ -18743,11 +18731,11 @@ This section explains how to modify the information of a group.
 
 A screen appears where you can edit the setting.
 
-zu1205080.tif![](media/media/image421.png)
+![](media/media/image421.png)
 
 2.  Enter information for each element.
 
-zu1205090.tif![](media/media/image422.png)
+![](media/media/image422.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -18770,19 +18758,19 @@ This section explains how to delete a group.
 
 A screen appears where you can edit the setting.
 
-zu1205100.tif![](media/media/image423.png)
+![](media/media/image423.png)
 
 2.  Click "Delete".
 
 You are prompted to confirm the deletion.
 
-zu1205110.tif![](media/media/image424.png)
+![](media/media/image424.png)
 
 3.  Click "Delete".
 
 The group is deleted.
 
-zu1205120.tif![](media/media/image425.png)
+![](media/media/image425.png)
 
 ## Modify the session validity time
 
@@ -18792,11 +18780,11 @@ This section explains how to modify the session validity time.
 
 The "Life Time" screen appears.
 
-zu1206010.tif![](media/media/image426.png)
+![](media/media/image426.png)
 
 2.  Select the session validity time.
 
-zu1206020.tif![](media/media/image427.png)
+![](media/media/image427.png)
 
 3.  Click "Update".
 
