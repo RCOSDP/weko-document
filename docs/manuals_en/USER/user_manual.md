@@ -101,79 +101,79 @@ The format conventions used in this document are as follows:
 
 # Table of Contents
 
-[1. System overview 6](#system-overview)
+[1. System overview](#system-overview)
 
-[1.1 About the System 7](#about-the-system)
+[1.1 About the System](#about-the-system)
 
-[1.2 Glossary 9](#glossary)
+[1.2 Glossary](#glossary)
 
-[1.3 System features 12](#system-features)
+[1.3 System features](#system-features)
 
-[1.4 The elements of the Home screen. 13](#the-elements-of-the-home-screen)
+[1.4 The elements of the Home screen.](#the-elements-of-the-home-screen)
 
-[2. Log in and log out 14](#log-in-and-log-out)
+[2. Log in and log out](#log-in-and-log-out)
 
-[2.1 Access the Home screen 15](#access-the-home-screen)
+[2.1 Access the Home screen](#access-the-home-screen)
 
-[2.2 Log in to the System 16](#log-in-to-the-system)
+[2.2 Log in to the System](#log-in-to-the-system)
 
-[2.3 Log out of the System 21](#log-out-of-the-system)
+[2.3 Log out of the System](#log-out-of-the-system)
 
-[2.4 Change a password 22](#change-a-password)
+[2.4 Change a password](#change-a-password)
 
-[2.5 Sign-up for a new account 23](#sign-up-for-a-new-account)
+[2.5 Sign-up for a new account](#sign-up-for-a-new-account)
 
-[3. Search for items 24](#search-for-items)
+[3. Search for items](#search-for-items)
 
-[3.1 Search for items using indexes 25](#search-for-items-using-indexes)
+[3.1 Search for items using indexes](#search-for-items-using-indexes)
 
-[3.1.1 Search in "Index Link" 25](#search-in-index-link)
+[3.1.1 Search in "Index Link"](#search-in-index-link)
 
-[3.1.2 Search in "Index Tree" 25](#search-in-index-tree)
+[3.1.2 Search in "Index Tree"](#search-in-index-tree)
 
 [3.1.3 Display journal information](#display-journal-information)
 
-[3.1.4 View the Item Lists 28](#view-the-item-lists)
+[3.1.4 View the Item Lists](#view-the-item-lists)
 
-[3.2 Search using the ranking 31](#search-using-the-ranking)
+[3.2 Search using the ranking](#search-using-the-ranking)
 
-[3.3 Search by keywords 34](#search-by-keywords)
+[3.3 Search by keywords](#search-by-keywords)
 
-[3.3.1 Simple search 34](#simple-search)
+[3.3.1 Simple search](#simple-search)
 
-[3.3.2 Advanced search 37](#advanced-search)
+[3.3.2 Advanced search](#advanced-search)
 
-[3.4 About variant character search 41](#about-variant-character-search)
+[3.4 About variant character search](#about-variant-character-search)
 
-[3.5 Search by author name 42](#search-by-author-name)
+[3.5 Search by author name](#search-by-author-name)
 
-[3.5.1 Search by author name 42](#search-by-author-name-1)
+[3.5.1 Search by author name](#search-by-author-name-1)
 
-[3.5.2 Search by WEKO author ID 43](#search-by-weko-author-id)
+[3.5.2 Search by WEKO author ID](#search-by-weko-author-id)
 
-[3.6 Faceted search 44](#faceted-search)
+[3.6 Faceted search](#faceted-search)
 
-[4. View item details 46](#view-item-details)
+[4. View item details](#view-item-details)
 
-[4.1 The item details screen 47](#the-item-details-screen)
+[4.1 The item details screen](#the-item-details-screen)
 
-[4.1.1 Metadata 47](#metadata)
+[4.1.1 Metadata](#metadata)
 
-[4.1.2 Statistics 49](#statistics)
+[4.1.2 Statistics](#statistics)
 
-[4.1.3 Version 50](#version)
+[4.1.3 Version](#version)
 
-[4.1.4 Content files 51](#content-files)
+[4.1.4 Content files](#content-files)
 
-[4.1.5 Share items 55](#share-items)
+[4.1.5 Share items](#share-items)
 
-[4.1.6 Bibliographic Citation 56](#bibliographic-citation)
+[4.1.6 Bibliographic Citation](#bibliographic-citation)
 
-[4.1.7 Export 57](#export)
+[4.1.7 Export](#export)
 
 [4.1.8 Communities](#communities)
 
-[4.1.9 The Information screen 58](#the-information-screen)
+[4.1.9 The Information screen](#the-information-screen)
 
 [4.1.10 The file details screen](#the-file-details-screen)
 
@@ -185,73 +185,73 @@ The format conventions used in this document are as follows:
 
 [4.1.14 Google Dataset metadata output](#google-dataset-metadata-output)
 
-[5. Register items 61](#register-items)
+[5. Register items](#register-items)
 
-[5.1 Register items 62](#register-items-1)
+[5.1 Register items](#register-items-1)
 
-[5.1.1 Register items 64](#register-items-2)
+[5.1.1 Register items](#register-items-2)
 
-[5.1.2 Set up an index 88](#set-up-an-index)
+[5.1.2 Set up an index](#set-up-an-index)
 
-[5.1.3 Set up an item link 90](#set-up-an-item-link)
+[5.1.3 Set up an item link](#set-up-an-item-link)
 
-[5.1.4 Gant DOIs 91](#gant-dois)
+[5.1.4 Gant DOIs](#gant-dois)
 
-[5.1.5 Approve items 94](#approve-items)
+[5.1.5 Approve items](#approve-items)
 
-[5.2 View activities 97](#view-activities)
+[5.2 View activities](#view-activities)
 
-[5.2.1 Display the activities list 97](#display-the-activities-list)
+[5.2.1 Display the activities list](#display-the-activities-list)
 
 [5.2.2 Export activities to a TSV file](#export-activities-to-a-tsv-file)
 
 [5.2.3 Delete activities](#delete-activities)
 
-[5.2.4 View the activity details 101](#view-the-activity-details)
+[5.2.4 View the activity details](#view-the-activity-details)
 
 [5.3 Activity lock (v1.0.7)](#activity-lock-v107)
 
-[6. Edit and delete items 102](#edit-and-delete-items)
+[6. Edit and delete items](#edit-and-delete-items)
 
-[6.1 Edit items 103](#edit-items)
+[6.1 Edit items](#edit-items)
 
-[6.2 Delete items 108](#delete-items)
+[6.2 Delete items](#delete-items)
 
-[7. Export items 111](#export-items)
+[7. Export items](#export-items)
 
-[7.1 Export items 112](#export-items-1)
+[7.1 Export items](#export-items-1)
 
 [8. Upload large files](#upload-large-files)
 
-[9. Explore communities 114](#explore-communities)
+[9. Explore communities](#explore-communities)
 
-[9.1 Explore communities 115](#explore-communities-1)
+[9.1 Explore communities](#explore-communities-1)
 
 [9.2 View the content policy](#view-the-content-policy)
 
-[10. Operating tips 116](#operating-tips)
+[10. Operating tips](#operating-tips)
 
-[10.1 Modify your profile 117](#modify-your-profile)
+[10.1 Modify your profile](#modify-your-profile)
 
-[10.2 Determine which device is used to log in to an account 120](#determine-which-device-is-used-to-log-in-to-an-account)
+[10.2 Determine which device is used to log in to an account](#determine-which-device-is-used-to-log-in-to-an-account)
 
-[10.3 Manage applications 121](#manage-applications)
+[10.3 Manage applications](#manage-applications)
 
-[10.3.1 View the authorized applications 121](#view-the-authorized-applications)
+[10.3.1 View the authorized applications](#view-the-authorized-applications)
 
-[10.3.2 Add an application 121](#add-an-application)
+[10.3.2 Add an application](#add-an-application)
 
-[10.3.3 Add an access token 123](#add-an-access-token)
+[10.3.3 Add an access token](#add-an-access-token)
 
-[10.4 Join and view a group 124](#join-and-view-a-group)
+[10.4 Join and view a group](#join-and-view-a-group)
 
-[10.4.1 Join a group 124](#join-a-group)
+[10.4.1 Join a group](#join-a-group)
 
-[10.4.2 View groups 125](#view-groups)
+[10.4.2 View groups](#view-groups)
 
-[10.5 Modify the session validity time 127](#modify-the-session-validity-time)
+[10.5 Modify the session validity time](#modify-the-session-validity-time)
 
-[10.6 Display the Administration screen. 128](#display-the-administration-screen)
+[10.6 Display the Administration screen.](#display-the-administration-screen)
 
 [10.7 Display the cookie consent screen](#display-the-cookie-consent-screen)
 
@@ -571,7 +571,7 @@ The login screen appears.
 
 <!-- end list -->
 
-1)  > Enter the account information in the WEKO3 login screen and click the "Log In" button to log in.
+1.  > Enter the account information in the WEKO3 login screen and click the "Log In" button to log in.
 
 ![](media/media/image11.png)
 
@@ -586,7 +586,7 @@ Table 2‑1. The elements in the "Log in" screen
 | 5   | The "Sign Up" link                                              | Click to display the sign-up screen.                                                                                                                                                                                         |
 | 6   | The "Forgot Password" link                                      | Click to reset your password. See "Section 2.4. Change a password" for more information.                                                                                                      |
 
-2)  > Click the ![](media/media/image5.png) button.
+2.  > Click the ![](media/media/image5.png) button.
     
     The Home screen of the System appears.
 
@@ -598,13 +598,13 @@ Table 2‑1. The elements in the "Log in" screen
 
 <!-- end list -->
 
-1)  > Enter the account information in the JAIRO Cloud login screen to log in to the System.
+1.  > Enter the account information in the JAIRO Cloud login screen to log in to the System.
 
 > Figure 2-1. The JAIRO Cloud login screen
 
 ![](media/media/image13.png)
 
-2)  > Log in to the System from the GakuNin Embedded DS login screen (pattern 1).
+2.  > Log in to the System from the GakuNin Embedded DS login screen (pattern 1).
     
     ![](media/media/image14.png)
 
@@ -627,7 +627,7 @@ Enter the account information in the login screen for the selected institution t
 
 The WEKO3 home screen appears.
 
-3)  > Log in to the System from the GakuNin Embedded DS login screen (pattern 2).
+3.  > Log in to the System from the GakuNin Embedded DS login screen (pattern 2).
 
 ![](media/media/image19.png)
 
@@ -1002,7 +1002,7 @@ It ranks the keywords based on the number of times they were used for searches.
 
 You can view keywords and the number of times searched.
 
-![テーブル が含まれている画像 自動的に生成された説明](media/media/image42.png)![テーブル が含まれている画像 自動的に生成された説明](media/media/image42.png)![](media/media/image43.png)
+![](media/media/image42.png)![](media/media/image42.png)![](media/media/image43.png)
 
 1.  Click on a keyword.
 
@@ -1465,21 +1465,21 @@ Table 4‑3. The elements in the "Versions" screen
 
 You can view content files registered with an item in a list of file information according to the preview selected at item registration.
 
-1)  > The "Preview" option: Simple
+1.  > The "Preview" option: Simple
 
 > ![](media/media/image80.png)
 
-2)  > The "Preview" option: Detail
+2.  > The "Preview" option: Detail
 
 > ![](media/media/image81.png)
 
-3)  > The "Preview" option: Preview
+3.  > The "Preview" option: Preview
 
 > ![](media/media/image82.png)
 > 
 > ・If you do not have access rights to the content file, the preview will appear as follows.
 > 
-> ![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image83.png)
+> ![](media/media/image83.png)
 > 
 > The preview is not displayed, and the file information area shows that you do not have access to the file.
 > 
@@ -1491,7 +1491,7 @@ You can view content files registered with an item in a list of file information
 > 
 > ・If the content file's publish date is in the future, the preview will appear as follows.
 > 
-> ![グラフィカル ユーザー インターフェイス 自動的に生成された説明](media/media/image84.png)
+> ![](media/media/image84.png)
 > 
 > The preview is not displayed, and the file information area shows when the file becomes downloadable.
 > 
@@ -1647,7 +1647,7 @@ Note that only the latest version of the metadata will be output.
 
 Figure 4-10. The "Export" screen
 
-![グラフィカル ユーザー インターフェイス 低い精度で自動的に生成された説明](media/media/image99.png)![](media/media/image100.png)
+![](media/media/image99.png)![](media/media/image100.png)
 
 Table 4‑6. The elements in the "Export" screen
 
@@ -2799,7 +2799,7 @@ This section explains how to specify information on a billing file.
 </tbody>
 </table>
 
-3)  
+3.  
     
 #### Specify how the billing file is published
 
@@ -3214,7 +3214,7 @@ See "Table 5-14. The elements in the creator search screen" for information on t
 
 See "Figure 5-19. The "Access Rights" pull-down list".
 
-![](media/media/image177.png)![背景パターン 自動的に生成された説明](media/media/image178.png)![背景パターン 自動的に生成された説明](media/media/image178.png)
+![](media/media/image177.png)![](media/media/image178.png)![](media/media/image178.png)
 
 Figure 5-19. The "Access Rights" pull-down list
 
@@ -3257,7 +3257,7 @@ Table 5-17. The options in the "Access Rights" pull-down list
 
 > \* See the JPCOAR schema guidelines for detailed information on the vocabulary relating to access rights.
 > 
-> https://schema.irdb.nii.ac.jp/ja/access\_rights\_vocabulary
+> https://schema.irdb.nii.ac.jp/ja/access_rights_vocabulary
 > 
 > **Additional Information: Verification on the metadata you have entered**
 
@@ -3424,7 +3424,7 @@ If you click the ![](media/media/image146.png) or ![](media/media/image147.png) 
 
 The comment input screen appears.
 
-![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image186.png)![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image186.png)![](media/media/image187.png)
+![](media/media/image186.png)![](media/media/image186.png)![](media/media/image187.png)
 
 Table 5‑23. The elements in the comment input screen
 
@@ -3440,13 +3440,13 @@ Table 5‑23. The elements in the comment input screen
 
 The "Step" screen appears, and "Item Registration" shows "Done" in the flow.
 
-![グラフ が含まれている画像 自動的に生成された説明](media/media/image188.png)![](media/media/image189.png)
+![](media/media/image188.png)![](media/media/image189.png)
 
 When you proceed to the next action, you may receive the error message "Please make sure the item type mapping is correct". This message will be displayed if the login session has expired, in which case you need to log in again.
 
 Encountering this message when your login session has not expired suggests that there is a problem with the back-end processing. Contact your system administrator in such a case.
 
-![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, チャットまたはテキスト メッセージ 自動的に生成された説明](media/media/image190.png)
+![](media/media/image190.png)
 
 ### Set up an item link
 
