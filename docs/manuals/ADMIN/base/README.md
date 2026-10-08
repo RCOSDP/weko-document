@@ -8797,7 +8797,7 @@ Repositoryは「Root Index」を選択します。
      
      フローが保存されます。メッセージ「Updated flow action successfully.」が表示されます。
 
-zu1101090.tif![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image252.png)
+![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image252.png)
 
 【利用申請機能 先行利用機関向け 注意事項】
 
@@ -8909,7 +8909,7 @@ zu1101090.tif![コンピューターのスクリーンショット 自動的に�
 </tbody>
 </table>
 
-![](media/media/image257.png)zu1101300.tif
+![](media/media/image257.png)
 
 3.   ［保存］をクリックします。
      
@@ -10479,8 +10479,6 @@ Multipart Objectを参照する方法を説明します。
     
     ［一覧］タブにMultipart Objectのリストが表示されます。［フィルターを追加］で項目を選択して値を適用すると、フィルタリングできます。
 
-zu0304010.tif
-
 ![](media/media/image330.png)
 
 2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
@@ -10503,7 +10501,7 @@ Object Versionを参照する方法を説明します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション, メール 自動的に生成された説明](media/media/image332.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
 
@@ -10616,7 +10614,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ![グラフィカル ユーザー インターフェイス, テーブル 中程度の精度で自動的に生成された説明](media/media/image333.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10651,7 +10649,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ロールのアクションを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（iconpen.tif![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -10671,7 +10669,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 アクションを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとアクションが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアクションが削除されます。
 
 複数のアクションをまとめて削除する場合
 
@@ -10703,7 +10701,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image338.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10736,7 +10734,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 システムロールのアクションを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（iconpen.tif![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -10756,7 +10754,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 アクションを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとアクションが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアクションが削除されます。
 
 複数のアクションをまとめて削除する場合
 
@@ -10788,7 +10786,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image343.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10822,7 +10820,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ユーザのアクションを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（iconpen.tif![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -10842,7 +10840,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 アクションを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとアクションが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアクションが削除されます。
 
 複数のアクションをまとめて削除する場合
 
@@ -10874,7 +10872,7 @@ Linked accountのidentityを参照する方法を説明します。
 
 ![コンピューターのスクリーンショット 自動的に生成された説明](media/media/image348.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10882,7 +10880,7 @@ Linked accountのidentityを参照する方法を説明します。
 
 identityを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとidentityが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとidentityが削除されます。
 
 複数のidentityをまとめて削除する場合
 
@@ -10912,7 +10910,7 @@ Linked accountのトークンを参照する方法を説明します。
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image349.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -10943,7 +10941,7 @@ Linked accountのトークンを作成する方法を説明します。
 
 Linked accountのトークンを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（iconpen.tif![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -10961,7 +10959,7 @@ Linked accountのトークンを編集する方法を説明します。
 
 トークンを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとidentityが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとidentityが削除されます。
 
 複数のトークンをまとめて削除する場合
 
@@ -10991,7 +10989,7 @@ Linked accountを参照する方法を説明します。
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image351.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11025,7 +11023,7 @@ Linked accountを作成する方法を説明します。
 
 Linked accountを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（iconpen.tif![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -11045,7 +11043,7 @@ Linked accountを編集する方法を説明します。
 
 アカウントを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとアカウントが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアカウントが削除されます。
 
 複数のアカウントをまとめて削除する場合
 
@@ -11077,7 +11075,7 @@ OAuth Applicationのトークンを参照する方法を説明します。
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image356.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11085,7 +11083,7 @@ OAuth Applicationのトークンを参照する方法を説明します。
 
 トークンを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとトークンが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとトークンが削除されます。
 
 複数のトークンをまとめて削除する場合
 
@@ -11121,7 +11119,7 @@ OAuth Applicationを参照する方法を説明します。
 
 ![モニター画面に映るウェブサイトのスクリーンショット 中程度の精度で自動的に生成された説明](media/media/image357.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
 
@@ -11129,7 +11127,7 @@ OAuth Applicationを参照する方法を説明します。
 
 アプリケーションを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとアプリケーションが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとアプリケーションが削除されます。
 
 複数のアプリケーションをまとめて削除する場合
 
@@ -11161,7 +11159,7 @@ OAuth Applicationを参照する方法を説明します。
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image358.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11193,7 +11191,7 @@ OAuth Applicationを参照する方法を説明します。
 
 ロールを編集する方法を説明します。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（iconpen.tif![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -11213,7 +11211,7 @@ OAuth Applicationを参照する方法を説明します。
 
 ロールを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとロールが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとロールが削除されます。
 
 複数のロールをまとめて削除する場合
 
@@ -11285,7 +11283,7 @@ Session activityを参照する方法を説明します。
 
 ![グラフィカル ユーザー インターフェイス, アプリケーション, メール 自動的に生成された説明](media/media/image364.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11320,7 +11318,7 @@ Session activityを参照する方法を説明します。
 
 ユーザを編集する方法を説明します。ユーザを編集できるのはシステム管理者のみです。
 
-1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（iconpen.tif![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -11368,7 +11366,7 @@ User Profileを参照する方法を説明します。
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image369.png)
 
-2. 行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. 行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      詳細が表示されます。
      
@@ -11378,7 +11376,7 @@ User Profileを削除する方法を説明します。User Profileを削除で�
 
 User Profileを１件ずつ削除する場合
 
-1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（icontrashbox.tif![icontrashbox](media/media/image166.png)）をクリックするとUser Profileが削除されます。
+1.  ［一覧］タブで、行頭に表示されているゴミ箱のアイコン（![icontrashbox](media/media/image166.png)）をクリックするとUser Profileが削除されます。
 
 複数のUser Profileをまとめて削除する場合
 
@@ -11726,7 +11724,7 @@ JaLC DOIハンドルサーバ、JaLC CrossRef DOIハンドルサーバ、およ�
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション 自動的に生成された説明](media/media/image383.png)
 
-2. IDの行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックします。
+2. IDの行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックします。
      
      IDの詳細が表示されます。
      
@@ -11776,7 +11774,7 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 
 <!-- end list -->
 
-1.  ［一覧］タブで、IDの行頭に表示されている鉛筆のアイコン（iconpen.tif![iconpen](media/media/image165.png)）をクリックします。
+1.  ［一覧］タブで、IDの行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックします。
     
     編集画面が表示されます。
 
@@ -12310,13 +12308,13 @@ $.item_30002_title0.attribute_value_mlt[*].subitem_title
 
 ![](media/media/image401.png)
 
-行頭に表示されている目のアイコン（iconeye.tif![iconeye](media/media/image111.png)）をクリックすると、
+行頭に表示されている目のアイコン（![iconeye](media/media/image111.png)）をクリックすると、
 
 詳細画面が表示されます。
 
 ![](media/media/image402.png)
 
-行頭に表示されている鉛筆のアイコン（iconpen.tif![iconpen](media/media/image165.png)）をクリックすると、
+行頭に表示されている鉛筆のアイコン（![iconpen](media/media/image165.png)）をクリックすると、
 
 編集画面が表示されます。
 
