@@ -95,8 +95,11 @@ python3 .claude/skills/weko-release-doc-update/scripts/apply_screenshots.py revi
 # 見出しが変わっていないか、タグ数、目次の連番とリンク先を確認
 python3 .claude/skills/weko-release-doc-update/scripts/verify_manual.py --tag '【v2.1.0】' docs/manuals/ADMIN/base/README.md
 
-# 英語版の表・図番号が章ごとに連番か確認
+# 表・図番号が章ごとに連番か確認（英語版・日本語版）
 python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/manuals_en/USER/user_manual.md
+
+# 日本語版の表・図番号を章ごとに振り直し、本文の参照も書き換える（--apply を付けないと変更点の表示だけ）
+python3 .claude/skills/weko-release-doc-update/scripts/renumber_captions_ja.py docs/manuals/USER/base/README.md --apply
 ```
 
 ## 8. ビルドしてリンク切れを確認する
