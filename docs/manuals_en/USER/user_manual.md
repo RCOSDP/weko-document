@@ -582,7 +582,7 @@ Table 2‑1. The elements in the "Log in" screen
 | 1   | The account text box                                            | Enter the account information (email address) of a general user. The input format should be "*XXXX@XXX*.*XXX*". You can use alphanumeric characters, hyphens (-), and underscores (\_). The maximum length is 16 characters. |
 | 2   | The password text box                                           | Enter the password for the account (email address) you entered. You can enter 6 to 16 characters (alphanumeric characters only).                                                                                             |
 | 3   | The ![](media/media/image5.png) button            | Click to log in with the account (email address) and password you entered. The Home screen of the System appears.                                                                                                            |
-| 4   | The ![icon020020](media/media/image12.png) button | Single sign-on to open sources.                                                                                                                                                                                              |
+| 4   | The ![](media/media/image12.png) button | Single sign-on to open sources.                                                                                                                                                                                              |
 | 5   | The "Sign Up" link                                              | Click to display the sign-up screen.                                                                                                                                                                                         |
 | 6   | The "Forgot Password" link                                      | Click to reset your password. See "Section 2.4. Change a password" for more information.                                                                                                      |
 
@@ -706,7 +706,7 @@ Note: When a user logs in through GakuNin Embedded DS, roles and groups are assi
 
 This section explains how to log out of the System.
 
-1.  Click ![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
+1.  Click ![](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
 
 A pull-down menu appears.
 
@@ -720,7 +720,7 @@ You will log out of the System.
 
 This section explains how to change the password configured for an account.
 
-1.  Click ![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
+1.  Click ![](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
 
 A pull-down menu appears.
 
@@ -792,7 +792,7 @@ This section explains how to search for items using index links.
 
 This screen shows "Index link".
 
-![zu030010](media/media/image28.png)
+![](media/media/image28.png)
 
 12. Select an index name from the "Index Link" pull-down list.
 
@@ -864,7 +864,7 @@ A search for items is performed. The search results appear in the "Item Lists" s
 
 #### To search from "Index Tree":
 
-1.  Click ![icon030030](media/media/image34.png) next to an index in "Index Tree".
+1.  Click ![](media/media/image34.png) next to an index in "Index Tree".
 
 Child indexes belonging to the index appear.
 
@@ -1175,12 +1175,12 @@ Table 3‑4. The elements in the advanced search screen
 </tr>
 <tr class="even">
 <td>2</td>
-<td>The <img src="media/media/image54.png" style="width:0.20833in;height:0.20833in" alt="icon030040" /> button</td>
+<td>The <img src="media/media/image54.png" style="width:0.20833in;height:0.20833in" alt="" /> button</td>
 <td>Click to delete the criteria.</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>The <img src="media/media/image55.png" style="width:0.92708in;height:0.20833in" alt="icon030050" /> button</td>
+<td>The <img src="media/media/image55.png" style="width:0.92708in;height:0.20833in" alt="" /> button</td>
 <td>Click to add criteria.</td>
 </tr>
 <tr class="even">
@@ -1190,7 +1190,7 @@ Table 3‑4. The elements in the advanced search screen
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>The <img src="media/media/image56.png" style="width:0.42708in;height:0.20833in" alt="icon030070" /> button</td>
+<td>The <img src="media/media/image56.png" style="width:0.42708in;height:0.20833in" alt="" /> button</td>
 <td>Click to clear the criteria.</td>
 </tr>
 <tr class="even">
@@ -1405,7 +1405,7 @@ Table 4‑2. The elements in the "Confirm" screen
 
 | No. | Element                                                         | Description                                                          |
 | --- | --------------------------------------------------------------- | -------------------------------------------------------------------- |
-| 1   | The ![icon040040](media/media/image72.png) button | Click to delete the item.                                            |
+| 1   | The ![](media/media/image72.png) button | Click to delete the item.                                            |
 | 2   | The ![](media/media/image73.png) button           | Click to cancel the delete operation and close the "Confirm" screen. |
 
 > Notes:
@@ -1588,11 +1588,11 @@ Table 4‑4. The elements in the "Share" screen
 
 | No. | Element                                                                 | Description                                                                                                                                    |
 | --- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | The ![icon040060](media/media/image90.png) button         | Click to share the item using "Mendeley".                                                                                                      |
-| 2   | The ![icon040080](media/media/image91.png) button         | Click to share the item using "Twitter".                                                                                                       |
-| 3   | The ![icon040090](media/media/image92.png) button         | Click to share the item using "Facebook".                                                                                                      |
-| 4   | The ![icon040100](media/media/image93.png) button         | Click to open the "Print" screen.                                                                                                              |
-| 5   | The ![icon040110](media/media/image94.png) pull-down list | Select the media from the pull-down list to add to social sharing. See "Figure 4-8. The "AddThis" pull-down list. |
+| 1   | The ![](media/media/image90.png) button         | Click to share the item using "Mendeley".                                                                                                      |
+| 2   | The ![](media/media/image91.png) button         | Click to share the item using "Twitter".                                                                                                       |
+| 3   | The ![](media/media/image92.png) button         | Click to share the item using "Facebook".                                                                                                      |
+| 4   | The ![](media/media/image93.png) button         | Click to open the "Print" screen.                                                                                                              |
+| 5   | The ![](media/media/image94.png) pull-down list | Select the media from the pull-down list to add to social sharing. See "Figure 4-8. The "AddThis" pull-down list. |
 
 Figure 4-7. The "Print" screen
 
@@ -2092,7 +2092,7 @@ Table 5-3. The elements in the thumbnail registration screen
 | --- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | 1   | Filename                                             | Displays the name of the file to be registered.                                                      |
 | 2   | Size                                                 | Displays the size of the file to be registered.                                                      |
-| 3   | Progress                                             | Displays ![icon050060](media/media/image112.png) when the file registration completes. |
+| 3   | Progress                                             | Displays ![](media/media/image112.png) when the file registration completes. |
 | 4   | Action (![](media/media/image113.png)) | Click to delete the registered file.                                                                 |
 
 #### Automatically populate metadata
@@ -2271,13 +2271,13 @@ This section explains how to set up a proxy contributor.
 
 1.  In the Item Registration screen, select the "Other user" radio button to specify a proxy contributor.
 
-![zu050540](media/media/image120.png)
+![](media/media/image120.png)
 
 The entry fields for the user information appear.
 
 7.  Enter the username and email address in the user information entry fields.
 
-![zu050545](media/media/image121.png)
+![](media/media/image121.png)
 
 As you enter text in the "Username" or "Email", the matching users registered in the repository are filtered and displayed in the list of candidates. When you select a user from the list of users, the username and email address of the selected user will be populated.
 
@@ -2317,7 +2317,7 @@ If another file with the same name is already being used, the error message "The
 
 > ![](media/media/image123.png)
 
-9.  Click on the ![icon050050](media/media/image124.png) button in the displayed file information.
+9.  Click on the ![](media/media/image124.png) button in the displayed file information.
 
 ![](media/media/image125.png)
 
@@ -2341,9 +2341,9 @@ Table 5‑6. The elements in the Item Registration screen
 | --- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1   | "Filename"                                                       | Displays the name of the file to be registered.                                                                                                                                                                                |
 | 2   | "Size"                                                           | Displays the size of the file to be registered.                                                                                                                                                                                |
-| 3   | "Progress"                                                       | When you click the ![icon050050](media/media/image124.png) button, the upload starts, and its progress appears in "%". Displays ![icon050060](media/media/image112.png) when the upload completes. |
+| 3   | "Progress"                                                       | When you click the ![](media/media/image124.png) button, the upload starts, and its progress appears in "%". Displays ![](media/media/image112.png) when the upload completes. |
 | 4   | The ![](media/media/image113.png) button           | Click to delete the registered file.                                                                                                                                                                                           |
-| 5   | The ![icon050050](media/media/image124.png) button | Click to start uploading the file.                                                                                                                                                                                             |
+| 5   | The ![](media/media/image124.png) button | Click to start uploading the file.                                                                                                                                                                                             |
 
 10. Enter the file information.
 
@@ -3040,7 +3040,7 @@ Table 5-14. The elements in the creator search screen
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>The <img src="media/media/image158.png" style="width:1.09375in;height:0.25in" alt="icon050160" /> pull-down list</td>
+<td>The <img src="media/media/image158.png" style="width:1.09375in;height:0.25in" alt="" /> pull-down list</td>
 <td>Select the number of rows displayed in the list of creators from the pull-down list. See "Figure 5-15. The "Display Number" pull-down list".</td>
 </tr>
 <tr class="even">
@@ -4126,7 +4126,7 @@ Table 6‑1. The elements in the "Confirm" screen
 
 | No. | Element                                                         | Description                                                            |
 | --- | --------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| 1   | The ![icon060050](media/media/image72.png) button | Click to delete the item. You are returned to the "Item Lists" screen. |
+| 1   | The ![](media/media/image72.png) button | Click to delete the item. You are returned to the "Item Lists" screen. |
 | 2   | The ![](media/media/image73.png) button           | Click to cancel the delete operation and close the "Confirm" screen.   |
 
 Notes:
@@ -4135,7 +4135,7 @@ The ![](media/media/image69.png) button does not appear in the item details scre
 
 Older versions of the item do not display the ![](media/media/image69.png) button. When the latest version is deleted, all the previous versions will also be logically deleted.
 
-39. Click the ![icon060050](media/media/image72.png) button.
+39. Click the ![](media/media/image72.png) button.
 
 The item will be deleted.
 
@@ -4299,7 +4299,7 @@ This chapter provides tips for working with the System.
 
 This section explains how to modify your account profile.
 
-1.  Click ![icon080010](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
+1.  Click ![](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
 
 A pull-down menu appears.
 
@@ -4327,7 +4327,7 @@ Table 10‑1. The elements in the "Profile" screen
 | 8   | The "endpoint url" text box                                      | If you want to use "Copy a file to an open bucket" from the file details screen, enter the endpoint URL of the S3 account to use.                                      |
 | 9   | The "region name" text box                                       | If you want to use "Copy a file to an open bucket" from the file details screen and need to specify the region of the S3 account to use, enter the region name.         |
 | 10  | The ![](media/media/image242.png) button           | Click to close the "Profile" screen without saving the changes you have made.                                                                                          |
-| 11  | The ![icon080030](media/media/image243.png) button | Click to update the profile with the changes and close the "Profile" screen.                                                                                           |
+| 11  | The ![](media/media/image243.png) button | Click to update the profile with the changes and close the "Profile" screen.                                                                                           |
 
 Note: Items 6 to 9 (the S3 account information) are displayed only when `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED = True` is set in the configuration file (instance.cfg). This setting is disabled (False) by default.
 
@@ -4339,7 +4339,7 @@ Figure 10-2. The "Language" pull-down list
 
 ![](media/media/image245.png)
 
-42. Click the ![icon080030](media/media/image243.png) button.
+42. Click the ![](media/media/image243.png) button.
 
 The profile is updated.
 
@@ -4520,7 +4520,7 @@ This section explains how to display the Administration screen.
 
 See "Section 2.2. Log in to the System" for information on how to log in.
 
-2.  Click ![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
+2.  Click ![](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
 
 A pull-down menu appears.
 
