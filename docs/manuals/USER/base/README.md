@@ -431,7 +431,7 @@ v2.1.0
 </tr>
 <tr class="even">
 <td>7</td>
-<td>［<img src="media/media/image5.png" style="width:0.51181in;height:0.18611in" alt="icon010020" />］</td>
+<td>［<img src="media/media/image5.png" style="width:0.51181in;height:0.18611in" alt="" />］</td>
 <td>ログインを実施します。詳細については、「2.2 ログインする」を参照してください。</td>
 </tr>
 <tr class="odd">
@@ -477,7 +477,7 @@ v2.1.0
 | 5  | ［リセット］リンク                                                      | クリックすると、［所属機関］テキストボックスに入力した内容が削除されます。                             |
 | 6  | ［アカウント］テキストボックス                             | ログインしたい一般閲覧者のアカウントを入力します。入力フォーマットは「*XXXXX*＠*XXX*.*XXX*」の形式で指定します。半角英数字、ハイフン（-）、アンダーバー（\_）を使用できます。16文字まで入力できます。 |
 | 7  | ［パスワード］テキストボックス                             | 入力したメールアドレスのパスワードを入力します。6～16文字（半角英数字だけ）で入力してください。                                                              |
-| 8  | ［![icon020010](media/media/image10.png)］ボタン | クリックすると、入力したメールアドレスとパスワードでログインします。システムの［ホーム］画面が表示されます。                                                         |
+| 8  | ［![](media/media/image10.png)］ボタン | クリックすると、入力したメールアドレスとパスワードでログインします。システムの［ホーム］画面が表示されます。                                                         |
 | 9  | ［パスワードをお忘れの方はこちら］リンク                        | クリックすると、パスワードの再設定ができます。詳細については、「2.4 パスワードを変更する」を参照してください。                                                      |
 
 #### 学認Embedded DSのログイン画面 パターン1
@@ -575,13 +575,13 @@ v2.1.0
 
 3.  画面右上の［言語］プルダウンリストから言語を選択します。表示言語が選択した言語に切り替わります。
 
-![zu020020](media/media/image9.png)
+![](media/media/image9.png)
 
 ### ログインする
 
 ここでは、システムにログインする手順を説明します。
 
-1.  ［ホーム］画面右上の［![icon020010](media/media/image10.png)］ボタンをクリックします。
+1.  ［ホーム］画面右上の［![](media/media/image10.png)］ボタンをクリックします。
 
 ![](media/media/image11.png)
 
@@ -593,7 +593,7 @@ v2.1.0
 
 1.  WEKO3の[［ログイン］画面](#ログイン画面)でアカウント情報を入力してログインします。
 
-2.  ［![icon020010](media/media/image10.png)］ボタンをクリックします。
+2.  ［![](media/media/image10.png)］ボタンをクリックします。
 
 3.  ログインに成功すると、 [ホーム画面](#ホーム画面) が表示されます。
 
@@ -651,7 +651,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 ここでは、システムからログアウトする手順を説明します。
 
-1.  ［ホーム］画面右上のアカウント名右の［![icon020040](media/media/image24.png)］をクリックすると、プルダウンメニューが表示されます。
+1.  ［ホーム］画面右上のアカウント名右の［![](media/media/image24.png)］をクリックすると、プルダウンメニューが表示されます。
 
 ![](media/media/image25.png)
 
@@ -661,7 +661,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 ここでは、アカウントに設定されているパスワードを変更する手順を説明します。
 
-1.  ［ホーム］画面右上のアカウント名右の［![icon020040](media/media/image24.png)］をクリックすると、プルダウンメニューが表示されます。
+1.  ［ホーム］画面右上のアカウント名右の［![](media/media/image24.png)］をクリックすると、プルダウンメニューが表示されます。
 
 ![](media/media/image26.png)
 
@@ -669,7 +669,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 3.  表示された［パスワード変更］画面に変更後パスワードを入力します。
 
-![zu020070](media/media/image27.png)
+![](media/media/image27.png)
 
 図 2-3［パスワード変更］画面
 
@@ -680,9 +680,9 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 | 1  | ［現在のパスワード］テキストボックス                          | 現在設定されているパスワードを入力します。                         |
 | 2  | ［新規パスワード］テキストボックス                           | 新しいパスワードを入力します。6～16文字（半角英数字だけ）で入力してください。      |
 | 3  | ［新規パスワード確認］テキストボックス                         | ［新規パスワード］で設定した値が正しいか確認するため、再度、新しいパスワードを入力します。 |
-| 4  | ［![icon020050](media/media/image28.png)］ボタン | クリックすると入力された情報を反映し、パスワードを変更します。               |
+| 4  | ［![](media/media/image28.png)］ボタン | クリックすると入力された情報を反映し、パスワードを変更します。               |
 
-4.  ［![icon020050](media/media/image28.png)］ボタンをクリックします。パスワードが変更されます。
+4.  ［![](media/media/image28.png)］ボタンをクリックします。パスワードが変更されます。
 
 ### アカウントを登録する
 
@@ -694,7 +694,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 2.  表示された［アカウント登録］画面にアカウント名およびパスワードを入力します。
 
-![zu020080](media/media/image30.png)
+![](media/media/image30.png)
 
 表 2‑5［アカウント登録］画面の項目と説明
 
@@ -702,10 +702,10 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 | -- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | 1  | ［メールアドレス］テキストボックス                                       | メールアドレスを入力します。入力フォーマットは「*XXXXX*＠*XXX.XXX*」の形式で指定します。半角英数字、ハイフン（-）、アンダーバー（\_）を使用できます。255文字まで入力できます。 |
 | 2  | ［パスワード］テキストボックス                                         | 新しいパスワードを入力します。6～255文字（半角英数字だけ）で入力してください。                                                          |
-| 3  | ［![icon020070](media/media/image31.png)］ボタン             | クリックすると、アカウントが登録されます。                                                                              |
-| 4  | アカウントをお持ちの方？［![icon020080](media/media/image32.png)］リンク | クリックすると、［ログイン］画面が表示されます。ログインして、作業を継続します。                                                           |
+| 3  | ［![](media/media/image31.png)］ボタン             | クリックすると、アカウントが登録されます。                                                                              |
+| 4  | アカウントをお持ちの方？［![](media/media/image32.png)］リンク | クリックすると、［ログイン］画面が表示されます。ログインして、作業を継続します。                                                           |
 
-3.  ［![icon020070](media/media/image31.png)］ボタンをクリックすると、登録したアカウントでシステムにログインします。
+3.  ［![](media/media/image31.png)］ボタンをクリックすると、登録したアカウントでシステムにログインします。
 
 ## アイテムを検索する
 
@@ -723,11 +723,11 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 1.  ［ホーム］画面の［TOP］タブをクリックすると、インデックスリンクが表示されます。
 
-![zu030010](media/media/image33.png)
+![](media/media/image33.png)
 
 2.  ［インデックスリンク］のプルダウンリストで、インデックス名を選択します。
 
-![zu030020](media/media/image34.png)
+![](media/media/image34.png)
 
 3.  検索結果が［アイテムリスト］画面に表示されます。
 
@@ -743,7 +743,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 2.  インデックスツリーが表示されます。
 
-![zu030040](media/media/image36.png)
+![](media/media/image36.png)
 
 インデックスツリーでの検索方法は次のいずれかの手順で検索できます。
 
@@ -805,11 +805,11 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 <!-- end list -->
 
-1.  ［インデックスツリー］の［![icon030030](media/media/image39.png)］をクリックします。
+1.  ［インデックスツリー］の［![](media/media/image39.png)］をクリックします。
     
     ［インデックスツリーのインデックスリスト］画面が表示されます。
 
-![zu030070](media/media/image40.png)
+![](media/media/image40.png)
 
 2.  ［インデックスリスト］でインデックス名をクリックします。
     
@@ -918,7 +918,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
     
     ［ランキング］画面が表示されます。
 
-![zu030200](media/media/image44.png)
+![](media/media/image44.png)
 
 アイテムの閲覧回数やファイルのダウンロード回数、検索キーワードなどのランキングを閲覧できます。
 
@@ -934,7 +934,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 2.  必要に応じて、ファイルをダウンロードします。
 
-![zu030210](media/media/image45.png)
+![](media/media/image45.png)
 
 図 3-1［最も閲覧されたアイテム］画面
 
@@ -987,7 +987,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 アイテムタイトルおよび公開日時が表示されます。
 
-![zu030250](media/media/image49.png)
+![](media/media/image49.png)
 
 1.  アイテムタイトルのリンクを選択します。
     
@@ -1092,7 +1092,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 </tr>
 <tr class="even">
 <td>2</td>
-<td>［<img src="media/media/image55.png" style="width:0.6875in;height:0.20833in" alt="icon030080" />］ボタン</td>
+<td>［<img src="media/media/image55.png" style="width:0.6875in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると、［一括出力］画面に遷移します。アイテムの情報をエクスポートします。詳細については、「7. アイテムを一括出力する」を参照してください。</td>
 </tr>
 <tr class="odd">
@@ -1145,11 +1145,11 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 
 図 3-3表示順プルダウンリスト
 
-![zu030150](media/media/image58.png)
+![](media/media/image58.png)
 
 図 3-4 ascプルダウンリスト
 
-![zu030160](media/media/image59.png)
+![](media/media/image59.png)
 
 図 3-5表示数プルダウンリスト
 
@@ -1201,22 +1201,22 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 </tr>
 <tr class="even">
 <td>2</td>
-<td>［<img src="media/media/image63.png" style="width:0.20833in;height:0.20833in" alt="icon030040" />］ボタン</td>
+<td>［<img src="media/media/image63.png" style="width:0.20833in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると、検索条件から削除されます。</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>［<img src="media/media/image64.png" style="width:0.92708in;height:0.20833in" alt="icon030050" />］ボタン</td>
+<td>［<img src="media/media/image64.png" style="width:0.92708in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると、検索条件を追加できます。</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>［<img src="media/media/image65.png" style="width:0.39583in;height:0.20833in" alt="icon030060" />］ボタン</td>
+<td>［<img src="media/media/image65.png" style="width:0.39583in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると、検索が開始され［検索結果］画面が表示されます。「図3-6 ［検索結果］画面を参照してください。</td>
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>［<img src="media/media/image66.png" style="width:0.42708in;height:0.20833in" alt="icon030070" />］ボタン</td>
+<td>［<img src="media/media/image66.png" style="width:0.42708in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると、初期検索条件に戻ります。</td>
 </tr>
 <tr class="even">
@@ -1239,7 +1239,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 | 項番 | 項目                                          | 説明                                                                          |
 | -- | ------------------------------------------- | --------------------------------------------------------------------------- |
 | 1  | 検索結果                                        | 検索結果一覧が表示されます。                                                              |
-| 2  | ［![icon030080](media/media/image55.png)］ボタン | クリックすると、［一括出力］画面に遷移します。アイテムの情報をエクスポートします。詳細については、「7. アイテムを一括出力する」を参照してください。 |
+| 2  | ［![](media/media/image55.png)］ボタン | クリックすると、［一括出力］画面に遷移します。アイテムの情報をエクスポートします。詳細については、「7. アイテムを一括出力する」を参照してください。 |
 | 3  | アイテム名                                       | クリックすると、アイテム詳細画面に遷移します。「図3-2 アイテムの詳細画面」を参照してください。                           |
 | 4  | ［表示順］プルダウンリスト                               | 検索結果の表示順を［表示順］プルダウンリストから選択します。「図3-3 表示順プルダウンリストを参照してください。                   |
 | 5  | ［asc］プルダウンリスト                               | 昇順、降順を［asc］プルダウンリストから選択します。「図3-4 ascプルダウンリストを参照してください。                      |
@@ -1397,17 +1397,17 @@ https://www.nii.ac.jp/CAT-ILL/about/system/kui.html
 </tr>
 <tr class="odd">
 <td>11</td>
-<td>［<img src="media/media/image78.png" style="width:0.54167in;height:0.20833in" alt="icon040010" />］ボタン</td>
+<td>［<img src="media/media/image78.png" style="width:0.54167in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると、アイテム詳細画面を閉じて前画面に遷移します。</td>
 </tr>
 <tr class="even">
 <td>12</td>
-<td>［<img src="media/media/image79.png" style="width:0.52083in;height:0.20833in" alt="icon040020" />］ボタン</td>
+<td>［<img src="media/media/image79.png" style="width:0.52083in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると、編集します。</td>
 </tr>
 <tr class="odd">
 <td>13</td>
-<td>［<img src="media/media/image80.png" style="width:0.54167in;height:0.20833in" alt="icon040030" />］ボタン</td>
+<td>［<img src="media/media/image80.png" style="width:0.54167in;height:0.20833in" alt="" />］ボタン</td>
 <td><p>クリックすると、削除します。</p>
 <p>［削除確認］画面が表示されます。</p></td>
 </tr>
@@ -1426,7 +1426,7 @@ DOI付与されているアイテムに対して、アイテムのステータ�
 
 図 4-2エラーメッセージ「このアイテムはDOIが付与されているため非公開にできません。」
 
-![msg040010](media/media/image82.png)
+![](media/media/image82.png)
 
 図 4‑3［削除確認］画面
 
@@ -1434,8 +1434,8 @@ DOI付与されているアイテムに対して、アイテムのステータ�
 
 | 項番 | 項目                                          | 説明                               |
 | -- | ------------------------------------------- | -------------------------------- |
-| 1  | ［![icon040040](media/media/image83.png)］ボタン | クリックすると、アイテムが削除されます。             |
-| 2  | ［![icon040050](media/media/image84.png)］ボタン | クリックすると、アイテムは削除されず［削除確認］画面が閉じます。 |
+| 1  | ［![](media/media/image83.png)］ボタン | クリックすると、アイテムが削除されます。             |
+| 2  | ［![](media/media/image84.png)］ボタン | クリックすると、アイテムは削除されず［削除確認］画面が閉じます。 |
 
 注
 
@@ -1479,7 +1479,7 @@ DOI付与されているアイテムに対して、アイテムを削除でき�
     
     アクセス元の国別のアイテム閲覧数が表示されます。
 
-![zu040030](media/media/image89.png)
+![](media/media/image89.png)
 
 図 4-8［期間］プルダウンリスト
 
@@ -1487,7 +1487,7 @@ DOI付与されているアイテムに対して、アイテムを削除でき�
 
 ［バージョン］画面でアイテムのバージョンが確認できます。
 
-![zu040040](media/media/image90.png)
+![](media/media/image90.png)
 
 図 4-9［バージョン］画面
 
@@ -1650,11 +1650,11 @@ DOI付与されているアイテムに対して、アイテムを削除でき�
 
 | 項番 | 項目                                                | 説明                                                       |
 | -- | ------------------------------------------------- | -------------------------------------------------------- |
-| 1  | ［![icon040090](media/media/image105.png)］ボタン      | クリックすると、「Facebook」が起動します。                                |
-| 2  | ［![icon040080](media/media/image104.png)］ボタン      | クリックすると、「Twitter」が起動します。                                 |
-| 3  | ［![icon040100](media/media/image106.png)］ボタン      | クリックすると、印刷が行なえます。                                        |
+| 1  | ［![](media/media/image105.png)］ボタン      | クリックすると、「Facebook」が起動します。                                |
+| 2  | ［![](media/media/image104.png)］ボタン      | クリックすると、「Twitter」が起動します。                                 |
+| 3  | ［![](media/media/image106.png)］ボタン      | クリックすると、印刷が行なえます。                                        |
 
-![zu040060](media/media/image108.png)
+![](media/media/image108.png)
 
 > 図 4-22［Print］画面
 
@@ -2309,7 +2309,7 @@ Information画面の各項目の内容は以下の通りです。
 
 図 5‑1［ホーム］画面
 
-2.  表示された［アクティビティ一覧］画面の［![icon050010](media/media/image117.png)］ボタンをクリックします。
+2.  表示された［アクティビティ一覧］画面の［![](media/media/image117.png)］ボタンをクリックします。
     
     ［ワークフロー選択］画面が表示されます。
 
@@ -2319,9 +2319,9 @@ Information画面の各項目の内容は以下の通りです。
 
 > 本画面の詳細については、本マニュアルの「5.2 アクティビティを参照する」を参照してください。
 
-3.  表示された［ワークフロー選択］画面の登録するアイテムに対応するワークフローの［![icon050020](media/media/image119.png)］ボタンをクリックします。
+3.  表示された［ワークフロー選択］画面の登録するアイテムに対応するワークフローの［![](media/media/image119.png)］ボタンをクリックします。
 
-![zu050030](media/media/image120.png)
+![](media/media/image120.png)
 
 図 5‑3［ワークフロー選択］画面
 
@@ -2332,8 +2332,8 @@ Information画面の各項目の内容は以下の通りです。
 | 1  | ワークフロー                                       | アイテムタイプとフローを組み合わせたデータ登録の一連の処理です。管理者が作成します。                                    |
 | 2  | アイテムタイプ                                      | 登録するデータのタイプです。                                                                |
 | 3  | フロー                                          | データを登録する際に実行する処理（アクション）の組み合わせです。アクションについては、「表 5-2［ステップ］画面のアクション名と説明を参照してください。 |
-| 4  | ［![icon050020](media/media/image119.png)］ボタン | クリックすると、［アクション］画面に遷移します。                                                      |
-| 5  | ［![icon050270](media/media/image121.png)］ボタン | クリックすると、［アクティビティ一覧］画面に遷移します。                                                  |
+| 4  | ［![](media/media/image119.png)］ボタン | クリックすると、［アクション］画面に遷移します。                                                      |
+| 5  | ［![](media/media/image121.png)］ボタン | クリックすると、［アクティビティ一覧］画面に遷移します。                                                  |
 
 > 選択したワークフローの先頭に登録されているフローの［ステップ］画面が表示されます。
 
@@ -2364,9 +2364,9 @@ Information画面の各項目の内容は以下の通りです。
 
 アイテムのサムネイルを登録する手順について説明します。
 
-1.  表示されたItem Registration画面で、［Drop files or folders here］に登録するファイルをドラッグ＆ドロップするか、［![icon050070](media/media/image123.png)］ボタンをクリックします。
+1.  表示されたItem Registration画面で、［Drop files or folders here］に登録するファイルをドラッグ＆ドロップするか、［![](media/media/image123.png)］ボタンをクリックします。
 
-![zu050110](media/media/image124.png)
+![](media/media/image124.png)
 
 > 図 5‑5 Item Registration画面
 > 
@@ -2386,7 +2386,7 @@ Information画面の各項目の内容は以下の通りです。
 | -- | ------------------------------------ | -------------------------------------------------------------- |
 | 1  | ファイル名                                | 登録するファイル名が表示されます。                                              |
 | 2  | 容量                                   | 登録するファイルのサイズが表示されます。                                           |
-| 3  | 進捗                                   | ファイルの登録が完了すると［![icon050060](media/media/image129.png)］が表示されます。 |
+| 3  | 進捗                                   | ファイルの登録が完了すると［![](media/media/image129.png)］が表示されます。 |
 | 4  | アクション［![](media/media/image130.png)］ | クリックすると、登録したファイルが削除されます。                                       |
 
 ##### メタデータを自動的に入力する
@@ -2578,7 +2578,7 @@ parmalinkとは、researchmapでの新規登録の際にご入力いただくリ
 
 1.  表示されたItem Registration画面で、投稿者の「This user」が選択されているところから「Other user」をラジオボタンから選択します。
 
-![zu050540](media/media/image140.png)
+![](media/media/image140.png)
 
 図 5‑9 投稿者の設定画面
 
@@ -2586,7 +2586,7 @@ parmalinkとは、researchmapでの新規登録の際にご入力いただくリ
 
 2.  表示されたユーザ情報入力項目にユーザ名とメールアドレスを入力します。
 
-![zu050545](media/media/image141.png)
+![](media/media/image141.png)
 
 > 図 5‑10\[ユーザ情報入力項目\]画面
 
@@ -2619,9 +2619,9 @@ parmalinkとは、researchmapでの新規登録の際にご入力いただくリ
 
 コンテンツファイルを登録する手順について説明します。
 
-1.  表示されたItem Registration画面で、［Drop files or folders here］に登録するファイルをドラッグ＆ドロップするか、または［![icon050030](media/media/image142.png)］ボタンをクリックします。
+1.  表示されたItem Registration画面で、［Drop files or folders here］に登録するファイルをドラッグ＆ドロップするか、または［![](media/media/image142.png)］ボタンをクリックします。
 
-![zu050090](media/media/image143.png)
+![](media/media/image143.png)
 
 > 図 5‑11\[Item Registration\]画面
 > 
@@ -2637,7 +2637,7 @@ parmalinkとは、researchmapでの新規登録の際にご入力いただくリ
 
 > 図 5‑12エラーメッセージ「同一のファイル名は登録できません。」
 
-3.  表示されたファイル情報の［![icon050050](media/media/image145.png)］ボタンをクリックします。
+3.  表示されたファイル情報の［![](media/media/image145.png)］ボタンをクリックします。
 
 ![](media/media/image146.png)
 
@@ -2683,7 +2683,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 <tr class="odd">
 <td>3</td>
 <td>［Progress］</td>
-<td><p>［<img src="media/media/image145.png" style="width:0.53125in;height:0.22917in" alt="icon050050" />］ボタンをクリック後アップロード進捗状況が「％」で表示されます。アップロードが完了すると［<img src="media/media/image129.png" style="width:0.21875in;height:0.21875in" alt="icon050060" />］が表示されます。</p>
+<td><p>［<img src="media/media/image145.png" style="width:0.53125in;height:0.22917in" alt="" />］ボタンをクリック後アップロード進捗状況が「％」で表示されます。アップロードが完了すると［<img src="media/media/image129.png" style="width:0.21875in;height:0.21875in" alt="" />］が表示されます。</p>
 <p>[Error]とともに[Resume]ボタンが表示される場合は、そのファイルのアップロードが中断したところから再度アップロードができます。</p></td>
 </tr>
 <tr class="even">
@@ -2693,7 +2693,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>［<img src="media/media/image145.png" style="width:0.53125in;height:0.22917in" alt="icon050050" />］ボタン</td>
+<td>［<img src="media/media/image145.png" style="width:0.53125in;height:0.22917in" alt="" />］ボタン</td>
 <td>クリックすると、アップロードが開始されます。</td>
 </tr>
 </tbody>
@@ -2853,13 +2853,13 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 
 1.  表示されたItem Registration画面で、コンテンツファイルの表示名に設定するファイルを選択します。
 
-![zu050190](media/media/image151.png)
+![](media/media/image151.png)
 
 > 図 5‑18［表示名］プルダウンリスト
 
 2.  表示形式をプルダウンリストから選択します。
 
-![zu050200](media/media/image152.png)
+![](media/media/image152.png)
 
 図 5‑19［表示形式］プルダウンリスト
 
@@ -3327,15 +3327,15 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 </tr>
 <tr class="odd">
 <td>13</td>
-<td>［<img src="media/media/image170.png" style="width:0.44792in;height:0.20833in" alt="icon050085" />］ボタン</td>
+<td>［<img src="media/media/image170.png" style="width:0.44792in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると、入力した内容が一時保存されます。</td>
 </tr>
 </tbody>
 </table>
 
-| 14 | ［![icon050250](media/media/image171.png)］ボタン | クリックすると、［インデックス指定］画面に遷移します。「5.1 アイテムを登録する」の「インデックスを設定する」を参照してください。 |
+| 14 | ［![](media/media/image171.png)］ボタン | クリックすると、［インデックス指定］画面に遷移します。「5.1 アイテムを登録する」の「インデックスを設定する」を参照してください。 |
 | -- | -------------------------------------------- | ----------------------------------------------------------------------- |
-| 15 | ［![icon050260](media/media/image121.png)］ボタン | クリックすると、入力した内容は保存されず［ワークフロー選択］画面に遷移します。                                 |
+| 15 | ［![](media/media/image121.png)］ボタン | クリックすると、入力した内容は保存されず［ワークフロー選択］画面に遷移します。                                 |
 | 16 | ［![](media/media/image172.png)］ボタン           | クリックすると、入力した内容を破棄し、作業中のアクティビティを中止します。                                   |
 
 > 注※
@@ -3356,15 +3356,15 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 > 「強制終了」ボタンにより、アクティビティを中止した場合、戻るボタンを利用してアクティビティを再開できません。
 > 改めてアイテムの登録をしてください。
 
-![zu050050](media/media/image173.png)
+![](media/media/image173.png)
 
 図 5‑32［公開日］プルダウンリスト
 
-![zu050060](media/media/image174.png)
+![](media/media/image174.png)
 
 図 5‑33［Language］プルダウンリスト
 
-![zu050080](media/media/image175.png)
+![](media/media/image175.png)
 
 図 5‑34［Type］プルダウンリスト
 
@@ -3378,13 +3378,13 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 
 作成者検索画面から選択する手順を説明します。
 
-1.  表示されたItem Registration画面で、作成者の画面右下の［![icon050110](media/media/image176.png)］ボタンをクリックします。
+1.  表示されたItem Registration画面で、作成者の画面右下の［![](media/media/image176.png)］ボタンをクリックします。
     
     作成者検索画面が表示されます。
 
 <!-- end list -->
 
-2.  表示された作成者検索画面の［検索］テキストボックスに条件を入力後、［![icon050120](media/media/image177.png)］ボタンをクリックします。
+2.  表示された作成者検索画面の［検索］テキストボックスに条件を入力後、［![](media/media/image177.png)］ボタンをクリックします。
 
 ![](media/media/image178.png)
 
@@ -3408,7 +3408,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 </tr>
 <tr class="even">
 <td>2</td>
-<td><p>［<img src="media/media/image177.png" style="width:0.5in;height:0.25in" alt="icon050120" />］ボタン</p></td>
+<td><p>［<img src="media/media/image177.png" style="width:0.5in;height:0.25in" alt="" />］ボタン</p></td>
 <td>クリックすると指定した検索条件に従って検索が実行されます。検索結果は一覧に表示されます。</td>
 </tr>
 <tr class="odd">
@@ -3423,12 +3423,12 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>［<img src="media/media/image180.png" style="width:1.09375in;height:0.25in" alt="icon050160" />］プルダウンリスト</td>
+<td>［<img src="media/media/image180.png" style="width:1.09375in;height:0.25in" alt="" />］プルダウンリスト</td>
 <td>作成者の一覧に表示する行数をプルダウンリストから選択します。「図 5-37［Display Number］プルダウンリストを参照してください。</td>
 </tr>
 <tr class="even">
 <td>6</td>
-<td>［<img src="media/media/image181.png" style="width:0.35417in;height:0.25in" alt="icon050130" />］ボタン</td>
+<td>［<img src="media/media/image181.png" style="width:0.35417in;height:0.25in" alt="" />］ボタン</td>
 <td>クリックすると、作成者検索画面が閉じItem Registration画面の作成者入力項目に作成者情報が反映されます。</td>
 </tr>
 <tr class="odd">
@@ -3508,7 +3508,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 </tr>
 <tr class="odd">
 <td>11</td>
-<td>［<img src="media/media/image184.png" style="width:0.35417in;height:0.25in" alt="icon050170" />］ボタン</td>
+<td>［<img src="media/media/image184.png" style="width:0.35417in;height:0.25in" alt="" />］ボタン</td>
 <td>クリックすると、著者が追加されず［作成者検索］画面に遷移します。</td>
 </tr>
 <tr class="even">
@@ -3563,12 +3563,12 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 </tr>
 <tr class="even">
 <td>22</td>
-<td>［<img src="media/media/image185.png" style="width:0.38542in;height:0.25in" alt="icon050180" />］ボタン</td>
+<td>［<img src="media/media/image185.png" style="width:0.38542in;height:0.25in" alt="" />］ボタン</td>
 <td>クリックすると、［作成者検索］画面に遷移します。</td>
 </tr>
 <tr class="odd">
 <td>23</td>
-<td>［<img src="media/media/image186.png" style="width:0.38542in;height:0.25in" alt="icon050190" />］ボタン</td>
+<td>［<img src="media/media/image186.png" style="width:0.38542in;height:0.25in" alt="" />］ボタン</td>
 <td>クリックすると、著者が追加され［作成者検索］画面に遷移します。</td>
 </tr>
 <tr class="even">
@@ -3579,7 +3579,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 </tbody>
 </table>
 
-![zu050140](media/media/image187.png)
+![](media/media/image187.png)
 
 図 5‑37［Display Number］プルダウンリスト
 
@@ -3611,7 +3611,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 
 1.  表示されたItem Registration画面で、書誌情報の［雑誌名］テキストボックスに雑誌名を入力する
 
-![zu050570](media/media/image192.png)
+![](media/media/image192.png)
 
 > 図 5‑42［雑誌名］テキストボックス
 
@@ -3661,7 +3661,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 
 フィードバックメール送信先を設定する手順について説明します。
 
-1.  表示されたItem Registration画面で、フィードバックメール送信先の［![icon050110](media/media/image176.png)］ボタンをクリックします。  
+1.  表示されたItem Registration画面で、フィードバックメール送信先の［![](media/media/image176.png)］ボタンをクリックします。  
     作成者検索画面が表示されます。
 
 ![](media/media/image195.png)
@@ -3769,7 +3769,7 @@ Registration\]画面で表示されるファイル情報の入力エリア順と
 > 
 > **【入力したメタデータのチェック】**
 
-  - > 必須項目を入力せずに［![icon050250](media/media/image171.png)］ボタンをクリックした場合、エラーメッセージ「以下の項目が入力必須となります。ご確認の上、再度入力してください。」が表示されます。
+  - > 必須項目を入力せずに［![](media/media/image171.png)］ボタンをクリックした場合、エラーメッセージ「以下の項目が入力必須となります。ご確認の上、再度入力してください。」が表示されます。
 
 ![](media/media/image202.png)
 
@@ -3946,13 +3946,13 @@ researchmap連携を行う手順について説明します。
 | 項番 | 項目                                           | 説明                                    |
 | -- | -------------------------------------------- | ------------------------------------- |
 | 1  | インデックス名                                      | ［インデックスツリー］でチェックしたインデックス名が表示されます。     |
-| 2  | ［![icon050080](media/media/image207.png)］ボタン | クリックすると、入力した内容が一時保存されます。              |
+| 2  | ［![](media/media/image207.png)］ボタン | クリックすると、入力した内容が一時保存されます。              |
 | 3  | ［![](media/media/image208.png)］ボタン           | クリックすると、次の操作に進みます。                    |
-| 4  | ［![icon050100](media/media/image209.png)］ボタン | クリックすると、入力した内容を破棄し、作業中のアクティビティを中止します。 |
+| 4  | ［![](media/media/image209.png)］ボタン | クリックすると、入力した内容を破棄し、作業中のアクティビティを中止します。 |
 
 注
 
-インデックスを選択しない場合、［![icon050080](media/media/image207.png)］ボタンまたは［![](media/media/image208.png)］ボタンをクリックすると、［At least one index should be selected.］というエラーメッセージが表示されます。
+インデックスを選択しない場合、［![](media/media/image207.png)］ボタンまたは［![](media/media/image208.png)］ボタンをクリックすると、［At least one index should be selected.］というエラーメッセージが表示されます。
 
 ![](media/media/image210.png)
 
@@ -3972,7 +3972,7 @@ researchmap連携を行う手順について説明します。
 | -- | -------------------------------------------- | --------------------------------------------- |
 | 1  | コメント                                         | コメントを入力します。                                   |
 | 2  | ![](media/media/image212.png)                | アイテムレジストレーション画面に戻ります。                         |
-| 3  | ［![icon050080](media/media/image207.png)］ボタン | クリックすると、入力した内容が一時保存されます。                      |
+| 3  | ［![](media/media/image207.png)］ボタン | クリックすると、入力した内容が一時保存されます。                      |
 | 4  | ［![](media/media/image208.png)］ボタン           | クリックすると、アイテムのメタデータとコンテンツファイルを登録するアクションが完了します。 |
 | 5  | ［![](media/media/image172.png)］ボタン           | クリックすると、入力した内容を破棄し、作業中のアクティビティを中止します。         |
 
@@ -4000,7 +4000,7 @@ researchmap連携を行う手順について説明します。
 
 そのインデックスに所属する［アイテムリンク］画面が表示されます。
 
-![zu050660](media/media/image215.png)
+![](media/media/image215.png)
 
 図 5‑59［アイテムリンク］画面
 
@@ -4008,7 +4008,7 @@ researchmap連携を行う手順について説明します。
 
 2.  表示された［アイテムリンク］画面からリンクしたいアイテムの「+」ボタンを選択します。
 
-![zu050670](media/media/image216.png)
+![](media/media/image216.png)
 
 > 図 5‑60［アイテムリンク］画面(「+」ボタンを選択後)
 
@@ -4082,12 +4082,12 @@ researchmap連携を行う手順について説明します。
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>［<img src="media/media/image207.png" style="width:0.61458in;height:0.20833in" alt="icon050080" />］ボタン</td>
+<td>［<img src="media/media/image207.png" style="width:0.61458in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると、入力した内容が一時保存されます。</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>［<img src="media/media/image171.png" style="width:0.5625in;height:0.25in" alt="icon050250" />］ボタン</td>
+<td>［<img src="media/media/image171.png" style="width:0.5625in;height:0.25in" alt="" />］ボタン</td>
 <td><p>DOI付与条件のチェックを行います。</p>
 <ul>
 <li><blockquote>
@@ -4209,7 +4209,7 @@ researchmap連携を行う手順について説明します。
 
 ［アクティビティ一覧］画面が表示されます。アクションが「Approval」のアイテムが承認待ちのアイテムです。
 
-![zu050340](media/media/image229.png)
+![](media/media/image229.png)
 
 図 5‑68［アクティビティ一覧］画面
 
@@ -4217,7 +4217,7 @@ researchmap連携を行う手順について説明します。
 
 査読／承認の権限がない場合は、次の画面が表示されます。
 
-![zu050350](media/media/image230.png)
+![](media/media/image230.png)
 
 > 図 5‑69閲覧権限不足画面
 
@@ -4225,7 +4225,7 @@ researchmap連携を行う手順について説明します。
     
     ［アイテム承認］画面が表示されます。
 
-![zu050360](media/media/image231.png)
+![](media/media/image231.png)
 
 > 図 5‑70［アクティビティ一覧］画面
 
@@ -4240,7 +4240,7 @@ researchmap連携を行う手順について説明します。
 | 項番 | 項目                                           | 説明                                    |
 | -- | -------------------------------------------- | ------------------------------------- |
 | 1  | ［![](media/media/image233.png)］ボタン           | クリックすると、ワークフローの一つ前のアクションに戻ります。        |
-| 2  | ［![icon050080](media/media/image207.png)］ボタン | クリックすると、入力した内容が一時保存されます。              |
+| 2  | ［![](media/media/image207.png)］ボタン | クリックすると、入力した内容が一時保存されます。              |
 | 3  | ［![](media/media/image234.png)］ボタン           | クリックすると、アイテムが「承認」されます。                |
 | 4  | ［![](media/media/image172.png)］ボタン           | クリックすると、入力した内容を破棄し、作業中のアクティビティを中止します。 |
 
@@ -4547,7 +4547,7 @@ researchmap連携を行う手順について説明します。
     
     ［アクティビティの詳細］画面が表示されます。
 
-![zu050430](media/media/image246.png)
+![](media/media/image246.png)
 
 > 図 5‑82［アクティビティの詳細］画面
 
@@ -4584,13 +4584,13 @@ researchmap連携を行う手順について説明します。
 複数のアクティビティを同時実行することはできません。
 既に実行済みのアクティビティがある状態でアクティビティを実行しようとすると以下画面が表示されます。
 
-![image302](media/media/image302.png)
+![](media/media/image302.png)
 
 実行中のアクティビティを完了させるか、中止してください。
 
 また、同一アクティビティを複数タブで開こうとすると、下記画面が表示されます。
 
-![image301](media/media/image301.png)
+![](media/media/image301.png)
 
 他に実行しているタブがないかを確認し、実行中のタブを終了してからアクティビティ再開してください。
 
@@ -4615,7 +4615,7 @@ researchmap連携を行う手順について説明します。
 
 インデックスの配下のアイテムを編集できます。編集するアイテムをインデックスツリーで探します。
 
-![zu060010](media/media/image248.png)
+![](media/media/image248.png)
 
 > 図 6‑1［インデックスツリー］画面
 
@@ -4623,7 +4623,7 @@ researchmap連携を行う手順について説明します。
     
     ［アイテムリスト］画面が表示されます。
 
-![zu060020](media/media/image249.png)
+![](media/media/image249.png)
 
 > 図 6‑2［アイテムリスト］画面
 
@@ -4635,7 +4635,7 @@ researchmap連携を行う手順について説明します。
 
 図 6‑3アイテム詳細画面
 
-3.  表示されたアイテム詳細画面の［![icon060020](media/media/image251.png)］ボタンをクリックします。
+3.  表示されたアイテム詳細画面の［![](media/media/image251.png)］ボタンをクリックします。
     
     Item Registration画面が表示されます。
     
@@ -4664,7 +4664,7 @@ researchmap連携を行う手順について説明します。
 
 > ［アクティビティ一覧］画面が表示されます。
 
-![zu060050](media/media/image258.png)
+![](media/media/image258.png)
 
 > 図 6‑7［アクティビティ一覧］画面
 
@@ -4692,17 +4692,17 @@ researchmap連携を行う手順について説明します。
 
 ［バージョン管理］は入力必須項目です。
 
-7.  ［![icon060040](media/media/image260.png)］ボタンをクリックします。
+7.  ［![](media/media/image260.png)］ボタンをクリックします。
     
     ［インデックス指定］画面が表示されます。詳細については、「5.1 アイテムを登録する」の「インデックスを設定する」を参照してください。
     
     注
     
-    Item Registration画面の［![icon050250](media/media/image171.png)］ボタンをクリックすると、入力したメタデータのチェックを行います。エラーがある場合、エラーメッセージが表示されます。エラーの内容は「5.1 アイテムを登録する」章の【入力したメタデータのチェック】の説明を参照してください。
+    Item Registration画面の［![](media/media/image171.png)］ボタンをクリックすると、入力したメタデータのチェックを行います。エラーがある場合、エラーメッセージが表示されます。エラーの内容は「5.1 アイテムを登録する」章の【入力したメタデータのチェック】の説明を参照してください。
     
-    Item Registration画面の［![icon060030](media/media/image261.png)］ボタン、［![icon050260](media/media/image121.png)］ボタン、［![](media/media/image172.png)］ボタンをクリックする時の挙動は「表 5-14Item Registration画面の項目と説明」を参照してください。
+    Item Registration画面の［![](media/media/image261.png)］ボタン、［![](media/media/image121.png)］ボタン、［![](media/media/image172.png)］ボタンをクリックする時の挙動は「表 5-14Item Registration画面の項目と説明」を参照してください。
 
-8.  ［![icon060070](media/media/image262.png)］ボタンをクリックします。
+8.  ［![](media/media/image262.png)］ボタンをクリックします。
     
     定義されているフローによって次のアクションに進みます。
     
@@ -4722,7 +4722,7 @@ researchmap連携を行う手順について説明します。
 
 インデックスの配下のアイテムを削除できます。削除するアイテムをインデックスツリーで探します。
 
-![zu060010](media/media/image248.png)
+![](media/media/image248.png)
 
 > 図 6‑10［インデックスツリー］画面
 
@@ -4730,7 +4730,7 @@ researchmap連携を行う手順について説明します。
     
     ［アイテムリスト］画面が表示されます。
 
-![zu060020](media/media/image249.png)
+![](media/media/image249.png)
 
 > 図 6‑11［アイテムリスト］画面
 
@@ -4748,7 +4748,7 @@ researchmap連携を行う手順について説明します。
     
     一括登録を実行中に他端末および実行端末でアイテムの［削除］ボタンを押下した場合、アイテムの削除はできません。
 
-![msg060010](media/media/image82.png)
+![](media/media/image82.png)
 
 図 6‑13［削除確認］画面
 
@@ -4756,8 +4756,8 @@ researchmap連携を行う手順について説明します。
 
 | 項番 | 項目                                           | 説明                                    |
 | -- | -------------------------------------------- | ------------------------------------- |
-| 1  | ［![icon060050](media/media/image83.png)］ボタン  | クリックすると、アイテムが削除されます。［アイテムリスト］画面に戻ります。 |
-| 2  | ［![icon060060](media/media/image264.png)］ボタン | クリックすると、アイテムは削除されず［削除確認］画面が閉じます。      |
+| 1  | ［![](media/media/image83.png)］ボタン  | クリックすると、アイテムが削除されます。［アイテムリスト］画面に戻ります。 |
+| 2  | ［![](media/media/image264.png)］ボタン | クリックすると、アイテムは削除されず［削除確認］画面が閉じます。      |
 
 注
 
@@ -4765,7 +4765,7 @@ researchmap連携を行う手順について説明します。
 
 アイテムの旧バージョンには、［![](media/media/image263.png)］ボタンが表示されません。また、最新バージョンが削除された時は該当アイテムの旧バージョンもすべて論理削除されます。
 
-4.  ［![icon060050](media/media/image83.png)］ボタンをクリックします。
+4.  ［![](media/media/image83.png)］ボタンをクリックします。
     
     アイテムが削除されます。
     
@@ -4793,9 +4793,9 @@ researchmap連携を行う手順について説明します。
 
 2.  検索結果が［アイテムリスト］画面に表示されます。
     
-    ［![icon030080](media/media/image55.png)］ボタンをクリックして［一括出力］画面を表示します。
+    ［![](media/media/image55.png)］ボタンをクリックして［一括出力］画面を表示します。
     
-    ［![icon030080](media/media/image55.png)］ボタンは、管理画面のアイテム一括出力設定でアイテムの出力が許可されている場合に表示されます。
+    ［![](media/media/image55.png)］ボタンは、管理画面のアイテム一括出力設定でアイテムの出力が許可されている場合に表示されます。
 
 ![](media/media/image266.png)
 
@@ -4857,14 +4857,14 @@ researchmap連携を行う手順について説明します。
 </tr>
 <tr class="even">
 <td>8</td>
-<td>［<img src="media/media/image55.png" style="width:0.6875in;height:0.20833in" alt="icon030080" />］ボタン</td>
+<td>［<img src="media/media/image55.png" style="width:0.6875in;height:0.20833in" alt="" />］ボタン</td>
 <td><p>Item一覧で選択したアイテムを出力します。</p>
 <p>出力するアイテムを選択しない場合、ボタンが非活動になります。</p>
 <p>一度に出力できるアイテムの最大件数がボタンの左に表示されます。選択したアイテム数が最大件数を超えた場合、メッセージ「Exceeded number of selectable items.」が表示され、ボタンが非活動になります。</p></td>
 </tr>
 <tr class="odd">
 <td>9</td>
-<td>［<img src="media/media/image267.png" style="width:0.53125in;height:0.20833in" alt="icon030090" />］ボタン</td>
+<td>［<img src="media/media/image267.png" style="width:0.53125in;height:0.20833in" alt="" />］ボタン</td>
 <td>クリックすると［簡易検索］画面に戻ります。</td>
 </tr>
 </tbody>
@@ -4939,7 +4939,7 @@ researchmap連携を行う手順について説明します。
 
 ここでは、アカウントのプロフィールを変更する方法を説明します。
 
-1.  画面右上のアカウント名右の［![icon080010](media/media/image24.png)］をクリックします。
+1.  画面右上のアカウント名右の［![](media/media/image24.png)］をクリックします。
     
     ユーザカウントのプルダウンメニューが表示されます。
 
@@ -4968,20 +4968,20 @@ researchmap連携を行う手順について説明します。
 | 7  | ［secret key］テキストボックス                        | ファイル詳細画面から「公開バケットへのコピー」を行いたい場合、使用するS3アカウントの［secret key］を入力します。                                      |
 | 8  | ［endpoint url］テキストボックス                        | ファイル詳細画面から「公開バケットへのコピー」を行いたい場合、使用するS3アカウントの［endpoint url］を入力します。                                      |
 | 9  | ［region name］テキストボックス                        | ファイル詳細画面から「公開バケットへのコピー」を行いたい場合で、使用するS3アカウントの［region name］を指定する場合は入力します。                                      |
-| 10  | ［![icon080020](media/media/image274.png)］ボタン | クリックすると、変更内容を保存せず、［プロフィール］画面を再表示します。                                                 |
-| 11  | ［![icon080030](media/media/image275.png)］ボタン | クリックすると、プロフィールが変更され［プロフィール］画面を再表示します。                                                |
+| 10  | ［![](media/media/image274.png)］ボタン | クリックすると、変更内容を保存せず、［プロフィール］画面を再表示します。                                                 |
+| 11  | ［![](media/media/image275.png)］ボタン | クリックすると、プロフィールが変更され［プロフィール］画面を再表示します。                                                |
 
 注：項番6～9（S3アカウント情報の項目）は、設定ファイル（instance.cfg）で `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED = True` が設定されている場合にだけ表示されます（既定の設定は無効（False）です）。
 
-![zu080030](media/media/image276.png)
+![](media/media/image276.png)
 
 > 図 9‑3［タイムゾーン］プルダウンリスト
 
-![zu080040](media/media/image277.png)
+![](media/media/image277.png)
 
 図 9‑4［言語］プルダウンリスト
 
-4.  ［![icon080030](media/media/image275.png)］ボタンをクリックします。プロファイルが変更されます。
+4.  ［![](media/media/image275.png)］ボタンをクリックします。プロファイルが変更されます。
     
 ### アカウントにログインしたデバイスを確認したい
 
@@ -5184,7 +5184,7 @@ researchmap連携を行う手順について説明します。
 
 <!-- end list -->
 
-2.  ［ホーム］画面右上のアカウント名右の［![icon020040](media/media/image24.png)］をクリックします。
+2.  ［ホーム］画面右上のアカウント名右の［![](media/media/image24.png)］をクリックします。
 
 プルダウンメニューが表示されます。
 
@@ -5438,7 +5438,7 @@ Cookieの使用確認画面を表示する方法を説明します。
 
 ここでは、WEKOからワークスペースのアイテム一覧画面を表示する手順を説明します。
 
-1.  ログインしている場合、[ホーム]画面右上のアカウント名右の[![icon020040](media/media/image24.png)]をクリックすると、プルダウンが表示されます。ワークスペースはログインユーザーであれば利用できます。
+1.  ログインしている場合、[ホーム]画面右上のアカウント名右の[![](media/media/image24.png)]をクリックすると、プルダウンが表示されます。ワークスペースはログインユーザーであれば利用できます。
 
 表11-1 ワークスペース
 ![](media/media/image316.png)
