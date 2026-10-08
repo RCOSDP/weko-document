@@ -7,7 +7,7 @@ Checks, against HEAD:
   - count of the tag string (if --tag) and that no heading carries it
   - with --tag-only: the file equals HEAD once the tag strings are removed
   - for manuals with a TOC (## 目次 / # Table of Contents): TOC numbers are consecutive and
-    every TOC link points to an existing heading slug (honkit-like slug)
+    every TOC link points to a heading (honkit-like or GitHub slug) or an <a id> placed in the file
 """
 import re, subprocess, sys
 
@@ -15,6 +15,14 @@ def slug(t):
     t = t.strip().lower()
     t = re.sub(r'[^\w\- 　-鿿＀-￯]', '', t)
     return t.replace(' ', '-')
+
+def gh_slugs(heads):
+    out, seen = set(), {}
+    for h in heads:
+        b = re.sub(r'[^\w\- ]', '', re.sub(r'`', '', h).lower()).replace(' ', '-')
+        n = seen.get(b, 0); seen[b] = n + 1
+        out.add(b if n == 0 else f'{b}-{n}')
+    return out
 
 HEAD_RE = re.compile(r'^\s*(?:\d+\.\s+)?(#{1,6}) (.*)')
 TOC_RE = re.compile(r'^\[(\d+(?:\.\d+)*)\.? (.*?)( \d+)?\]\((#[^)]*)\)$')
@@ -48,11 +56,11 @@ def main(argv):
             same = stripped == old
             msg.append(f'only-tags-changed={same}')
             ok &= same
-        L = new.split('\n')
+        L = new.replace('\r', '').split('\n')
         toc = [m.groups() for l in L for m in [TOC_RE.match(l)] if m]
         if toc:
-            slugs = {slug(h) for h in hn}
-            bad_link = [t[0] for t in toc if t[3][1:] not in slugs and t[2] is None]  # new (page-less) entries must resolve
+            slugs = {slug(h) for h in hn} | gh_slugs(hn) | set(re.findall(r'<a id="([^"]+)"', new))
+            bad_link = [t[0] for t in toc if t[3][1:] not in slugs]
             prev, breaks = None, []
             for t in toc:
                 cur = tuple(int(x) for x in t[0].split('.'))
