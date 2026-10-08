@@ -135,6 +135,13 @@ python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/man
   python3 .claude/skills/weko-release-doc-update/scripts/strip_heading_fieldcodes.py docs/manuals_en/ADMIN/admin_manual.md --apply
   ```
 
+- GitHub では正しく見えても、honkit が Markdown として解釈せずに文字のまま表示している箇所（リスト内のパイプ表、`1)` 形式のリスト、段落に続けた `<!--`、コードブロックになった段落など）は、次で見つけます。リスト内の表は `fix_tables.py` で HTML の表に変換できます（`--apply` を付けないと件数の表示だけ）。
+
+  ```
+  python3 .claude/skills/weko-release-doc-update/scripts/scan_rendered.py docs/build/admin/html
+  python3 .claude/skills/weko-release-doc-update/scripts/fix_tables.py docs/spec/base/api/API_13_author.md --apply
+  ```
+
 - ログに出る shelljs の警告、`prism-Python.js` が見つからないエラー、deprecated 警告は、最後に「generation finished with success」があれば問題ありません。
 - 本の名前は `spec`、`admin`、`user`、`GUIDE`、`admin_en`、`user_en` です。開発者向け文書・運用文書は book.json が無いため対象外です。
 - ビルド結果は別リポジトリに登録して github.io で公開しているので、公開サイトで切れるリンクを残さないよう、SLUG も直します。
