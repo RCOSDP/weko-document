@@ -295,8 +295,6 @@ Figure 1-2. Data registration
 
 This section explains the terminology used in the System.
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 1‑1. Terms used in the System
 
 <table>
@@ -445,8 +443,6 @@ Table 1‑1. Terms used in the System
 
 The following table shows the System features.
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 1‑2. The features related to registering and viewing data in the System
 
 | Features                                                                                              | Description                                                                                                                                                                                                      |
@@ -465,8 +461,6 @@ Table 1‑2. The features related to registering and viewing data in the System
 You will find the following elements in the Home screen.
 
 > ![](media/media/image3.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 1‑3. The elements in the Home screen
 
@@ -580,8 +574,6 @@ The login screen appears.
 1)  > Enter the account information in the WEKO3 login screen and click the "Log In" button to log in.
 
 ![](media/media/image11.png)
-
-\<TBLATT POSITION=”1” SCALE=”151”\>
 
 Table 2‑1. The elements in the "Log in" screen
 
@@ -744,8 +736,6 @@ Figure 2-3. The "Change password" screen
 
 ![](media/media/image23.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 2‑4. The elements in the "Change password" screen
 
 | No. | Element                                               | Description                                                                                        |
@@ -770,8 +760,6 @@ The "Sign up" screen appears.
 10. Enter an account name and password in the "Sign up" screen that appears.
 
 ![](media/media/image25.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 2‑5. The elements in the "Sign up" screen
 
@@ -979,8 +967,6 @@ Figure 3-1. The "Most Viewed Items" screen
 
 ![](media/media/image39.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 3‑1. The elements in the "Most Viewed Items" screen
 
 | No. | Element            | Description                                                                                              |
@@ -1062,7 +1048,7 @@ Enter a keyword in the keyword search text box and check the "Full text" or "Key
 
 ![](media/media/image45.png)
 
-19. \<TBLATT POSITION="1" SCALE="151"\>
+19. 
 
 Table 3‑2. The elements in the simple search screen
 
@@ -1114,8 +1100,6 @@ Table 3‑2. The elements in the simple search screen
 The search results appear. See "Chapter 4: View item details" for more information on search results.
 
 ![](media/media/image46.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 3‑3. The elements in the "Search Results" screen
 
@@ -1171,7 +1155,7 @@ Click Enter to search for items matching the search criteria. The search results
 
 Note: To use the search criteria you have set, use the search button in the advanced search area.
 
-![](media/media/image53.png)\<TBLATT POSITION=”1” SCALE=”151”\>
+![](media/media/image53.png)
 
 Table 3‑4. The elements in the advanced search screen
 
@@ -1222,8 +1206,6 @@ Table 3‑4. The elements in the advanced search screen
 Figure 3-6. The "Search Results" screen
 
 ![](media/media/image60.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 3‑5. The elements in the "Search Results" screen
 
@@ -1325,8 +1307,6 @@ Figure 4-1. The item details screen
 
 ![](media/media/image66.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 4‑1. The elements in the item details screen
 
 <table>
@@ -1421,8 +1401,6 @@ Figure 4-2. The "Confirm" screen
 
 ![](media/media/image71.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 4‑2. The elements in the "Confirm" screen
 
 | No. | Element                                                         | Description                                                          |
@@ -1475,8 +1453,6 @@ You can check the version of the item in the "Versions" screen.
 Figure 4-5. The "Versions" screen
 
 ![](media/media/image79.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 4‑3. The elements in the "Versions" screen
 
@@ -1608,8 +1584,6 @@ Figure 4-6. The "Share" screen
 
 ![](media/media/image89.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 4‑4. The elements in the "Share" screen
 
 | No. | Element                                                                 | Description                                                                                                                                    |
@@ -1674,8 +1648,6 @@ Note that only the latest version of the metadata will be output.
 Figure 4-10. The "Export" screen
 
 ![グラフィカル ユーザー インターフェイス 低い精度で自動的に生成された説明](media/media/image99.png)![](media/media/image100.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 4‑6. The elements in the "Export" screen
 
@@ -2063,8 +2035,6 @@ See "Section 5.2. View activities" for more information on this screen.
 
 ![](media/media/image107.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 5‑1. The elements in the workflow selection screen
 
 | No. | Element                                                | Description                                                                                                                                                                               |
@@ -2078,8 +2048,6 @@ Table 5‑1. The elements in the workflow selection screen
 The "Step" screen for the flow set at the start of the selected workflow appears.
 
 ![](media/media/image108.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5‑2. The actions in the "Step" screen
 
@@ -2117,8 +2085,6 @@ The file selection dialog appears.
 The file information appears.
 
 ![](media/media/image111.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5-3. The elements in the thumbnail registration screen
 
@@ -2355,7 +2321,7 @@ If another file with the same name is already being used, the error message "The
 
 ![](media/media/image125.png)
 
-\<TBLATT POSITION=”1” SCALE=”151”\>　　The file is uploaded.
+　　The file is uploaded.
 
 If the file exceeds the maximum size allowed for the repository, the error message "Error:Location has no quota" will be displayed and the file cannot be registered.
 
@@ -2522,8 +2488,6 @@ Figure 5-4. The "Preview" pull-down list
 
 ![](media/media/image131.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 5-8. The elements in the "Preview" pull-down list
 
 | No. | Preview | Description                                                                                |
@@ -2545,8 +2509,6 @@ The Preview display must be configured in the WEKO Administration.
 Figure 5-5. The "License" pull-down list
 
 ![](media/media/image132.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5-9. The elements in the "License" screen
 
@@ -2704,8 +2666,6 @@ The access information for restricted access appears as follows
 
 ![](media/media/image135.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 5-10 The "Access" radio buttons with publishing options
 
 <table>
@@ -2839,7 +2799,7 @@ This section explains how to specify information on a billing file.
 </tbody>
 </table>
 
-3)  \<TBLATT POSITION="1" SCALE="151"\>
+3)  
     
 #### Specify how the billing file is published
 
@@ -2848,8 +2808,6 @@ This section explains how to set up how the billing file is published.
 1.  Specify the publishing method by selecting an "Access" radio button.
 
 ![](media/media/image134.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5-12 The "Access" radio buttons with publishing options
 
@@ -2903,8 +2861,6 @@ This section explains the elements used for specifying metadata.
 In the Item Registration screen, enter the required elements for the item.
 
 ![](media/media/image142.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5-13. The elements in the Item Registration screen
 
@@ -3051,8 +3007,6 @@ The creator search screen appears.
 
 ![](media/media/image156.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 5-14. The elements in the creator search screen
 
 <table>
@@ -3105,8 +3059,6 @@ Table 5-14. The elements in the creator search screen
 Figure 5-14. The "Add Author" screen
 
 ![](media/media/image161.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5-15. The elements in the "Add Author" screen
 
@@ -3267,8 +3219,6 @@ See "Figure 5-19. The "Access Rights" pull-down list".
 Figure 5-19. The "Access Rights" pull-down list
 
 ![](media/media/image179.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5-17. The options in the "Access Rights" pull-down list
 
@@ -3455,8 +3405,6 @@ Displays the name of the index checked in the Index Tree.
 
 ![](media/media/image184.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 5‑22. The elements in the "Specific index" screen
 
 | No. | Element                                                | Description                                                               |
@@ -3477,8 +3425,6 @@ If you click the ![](media/media/image146.png) or ![](media/media/image147.png) 
 The comment input screen appears.
 
 ![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image186.png)![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image186.png)![](media/media/image187.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5‑23. The elements in the comment input screen
 
@@ -3538,13 +3484,9 @@ This section explains how to grant a DOI to an item in the Identifier Grant acti
 
 ![](media/media/image194.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Figure 5‑20. The "Identifier Grant" screen
 
 ![](media/media/image195.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5-24. The elements in the "Identifier Grant" screen
 
@@ -3729,8 +3671,6 @@ The item approval screen appears.
 
 ![](media/media/image204.png)
 
-\<TBLATT POSITION=”1” SCALE=”151”\>
-
 Table 5-25. The elements in the item approval screen
 
 | No. | Element                                                | Description                                                               |
@@ -3777,8 +3717,6 @@ Click to view the activities that are pending approval.
 Click to view the activities that are being registered or edited, those that have been cancelled, those that are pending approval, and those that are complete.
 
 ![](media/media/image209.png)
-
-> \<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5-26. The elements in the activities list screen
 
@@ -4030,8 +3968,6 @@ Figure 5‑25. The activity details screen
 
 ![](media/media/image218.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 5-31. The elements in the activity details screen
 
 | No. | Element  | Description                                                                                      |
@@ -4186,8 +4122,6 @@ If the "Delete" button of an item is pressed on another device or on the same de
 
 ![](media/media/image233.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 6‑1. The elements in the "Confirm" screen
 
 | No. | Element                                                         | Description                                                            |
@@ -4232,8 +4166,6 @@ Run a search by entering keywords in the keyword search text box or run an index
 Figure 7-1. The "Items to Export" screen
 
 ![](media/media/image235.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 7-1. The elements in the "Items to Export" screen
 
@@ -4381,8 +4313,6 @@ The "Profile" screen appears.
 
 ![](media/media/image240.png)![](media/media/image240.png)![](media/media/image241.png)
 
-\<TBLATT POSITION=”1” SCALE=”151”\>
-
 Table 10‑1. The elements in the "Profile" screen
 
 | No. | Element                                                          | Description                                                                                                                                                            |
@@ -4457,8 +4387,6 @@ A screen appears where you can create an action.
 
 ![](media/media/image250.png)![](media/media/image252.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 10‑2. The elements in the "New OAuth Application" screen
 
 <table>
@@ -4516,8 +4444,6 @@ A screen appears where you can create an action.
 2.  Enter information for each element.
 
 ![](media/media/image254.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 10‑3. The elements in the "New personal access token" screen
 
