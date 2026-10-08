@@ -124,41 +124,41 @@ The format conventions used in this document are as follows:
 
 # Table of Contents
 
-[1. Chapter 1: System Overview 11](#chapter-1-system-overview)
+[1. Chapter 1: System Overview](#chapter-1-system-overview)
 
-[1.1 About the System 12](#about-the-system)
+[1.1 About the System](#about-the-system)
 
-[1.2 Glossary 14](#glossary)
+[1.2 Glossary](#glossary)
 
-[1.3 System features 17](#system-features)
+[1.3 System features](#system-features)
 
-[1.4 Access the Administration screen 20](#access-the-administration-screen)
+[1.4 Access the Administration screen](#access-the-administration-screen)
 
-[2. Item Types 22](#item-types)
+[2. Item Types](#item-types)
 
-[2.1 Set up properties 23](#set-up-properties)
+[2.1 Set up properties](#set-up-properties)
 
-[2.1.1 Add properties 23](#add-properties)
+[2.1.1 Add properties](#add-properties)
 
-[2.1.2 Edit properties 28](#edit-properties)
+[2.1.2 Edit properties](#edit-properties)
 
-[2.2 Manage item types 32](#manage-item-types)
+[2.2 Manage item types](#manage-item-types)
 
-[2.2.1 Operations enabled for each item type 32](#operations-enabled-for-each-item-type)
+[2.2.1 Operations enabled for each item type](#operations-enabled-for-each-item-type)
 
-[2.2.2 Default item types 33](#default-item-types)
+[2.2.2 Default item types](#default-item-types)
 
-[2.2.3 Add item types 30](#add-item-types)
+[2.2.3 Add item types](#add-item-types)
 
-[2.2.4 Copy item types 32](#copy-item-types)
+[2.2.4 Copy item types](#copy-item-types)
 
-[2.2.5 Edit item types 34](#edit-item-types)
+[2.2.5 Edit item types](#edit-item-types)
 
-[2.2.6 Rename item types 43](#rename-item-types)
+[2.2.6 Rename item types](#rename-item-types)
 
-[2.2.7 Delete item types 44](#delete-item-types)
+[2.2.7 Delete item types](#delete-item-types)
 
-[2.2.8 Restore item types 46](#restore-item-types)
+[2.2.8 Restore item types](#restore-item-types)
 
 [2.2.9 Export item types](#export-item-types)
 
@@ -166,19 +166,19 @@ The format conventions used in this document are as follows:
 
 [2.2.11 Troubleshooting item types](#troubleshooting-item-types)
 
-[2.3 Set up OAI schemas 48](#set-up-oai-schemas)
+[2.3 Set up OAI schemas](#set-up-oai-schemas)
 
-[2.3.1 About schemas that support mapping 48](#about-schemas-that-support-mapping)
+[2.3.1 About schemas that support mapping](#about-schemas-that-support-mapping)
 
-[2.3.2 Add schemas 48](#add-schemas)
+[2.3.2 Add schemas](#add-schemas)
 
-[2.3.3 Delete schemas 50](#delete-schemas)
+[2.3.3 Delete schemas](#delete-schemas)
 
-[2.4 Map item types to schemas 51](#map-item-types-to-schemas)
+[2.4 Map item types to schemas](#map-item-types-to-schemas)
 
-[2.4.1 Map item types 51](#map-item-types)
+[2.4.1 Map item types](#map-item-types)
 
-[2.4.2 Map an item type added by the System 53](#map-an-item-type-added-by-the-system)
+[2.4.2 Map an item type added by the System](#map-an-item-type-added-by-the-system)
 
 [2.5 Set up the JSON-LD mapping](#set-up-the-json-ld-mapping)
 
@@ -196,15 +196,15 @@ The format conventions used in this document are as follows:
 
 [2.6.2 Create or edit an RO-Crate mapping](#create-or-edit-an-ro-crate-mapping)
 
-[3. Items 57](#items)
+[3. Items](#items)
 
-[3.1 Bulk update with a license or an embargo 58](#bulk-update-with-a-license-or-an-embargo)
+[3.1 Bulk update with a license or an embargo](#bulk-update-with-a-license-or-an-embargo)
 
-[3.2 Bulk delete items 62](#bulk-delete-items)
+[3.2 Bulk delete items](#bulk-delete-items)
 
-[3.3 Export items 64](#export-items)
+[3.3 Export items](#export-items)
 
-[3.4 Import items 67](#import-items)
+[3.4 Import items](#import-items)
 
 [3.5 Import items in the RO-Crate format](#import-items-in-the-ro-crate-format)
 
@@ -214,105 +214,105 @@ The format conventions used in this document are as follows:
 
 [3.6 Use the bulk import API](#use-the-bulk-import-api)
 
-[4. ‏Index Tree 88](#index-tree)
+[4. Index Tree](#index-tree)
 
-[4.1 ‏Manage the index tree 89](#manage-the-index-tree)
+[4.1 Manage the index tree](#manage-the-index-tree)
 
-[4.1.1 ‏Set up the index display 89](#set-up-the-index-display)
+[4.1.1 Set up the index display](#set-up-the-index-display)
 
-[4.1.2 Add an index 89](#add-an-index)
+[4.1.2 Add an index](#add-an-index)
 
-[4.1.3 Modify an index 93](#modify-an-index)
+[4.1.3 Modify an index](#modify-an-index)
 
-[4.1.4 Delete an index 94](#delete-an-index)
+[4.1.4 Delete an index](#delete-an-index)
 
-[4.2 Manage journal information 97](#manage-journal-information)
+[4.2 Manage journal information](#manage-journal-information)
 
-[4.2.1 Edit journal information 97](#edit-journal-information)
+[4.2.1 Edit journal information](#edit-journal-information)
 
-[4.2.2 Output journal information in the KBART format 101](#output-journal-information-in-the-kbart-format)
+[4.2.2 Output journal information in the KBART format](#output-journal-information-in-the-kbart-format)
 
-[4.3 Change a sort order 103](#change-a-sort-order)
+[4.3 Change a sort order](#change-a-sort-order)
 
-[5. Web Design 105](#web-design)
+[5. Web Design](#web-design)
 
-[5.1 Managing widgets 106](#managing-widgets)
+[5.1 Managing widgets](#managing-widgets)
 
-[5.1.1 Display a list of widgets 106](#display-a-list-of-widgets)
+[5.1.1 Display a list of widgets](#display-a-list-of-widgets)
 
-[5.1.2 Create a widget 107](#create-a-widget)
+[5.1.2 Create a widget](#create-a-widget)
 
-[5.1.3 Edit a widget 126](#edit-a-widget)
+[5.1.3 Edit a widget](#edit-a-widget)
 
-[5.1.4 Delete a widget 127](#delete-a-widget)
+[5.1.4 Delete a widget](#delete-a-widget)
 
-[5.2 Manage the page layout 131](#manage-the-page-layout)
+[5.2 Manage the page layout](#manage-the-page-layout)
 
-[5.2.1 Add or remove widgets from a page 131](#add-or-remove-widgets-from-a-page)
+[5.2.1 Add or remove widgets from a page](#add-or-remove-widgets-from-a-page)
 
-[5.2.2 Add a page 135](#add-a-page)
+[5.2.2 Add a page](#add-a-page)
 
-[5.2.3 Modify a page 137](#modify-a-page)
+[5.2.3 Modify a page](#modify-a-page)
 
-[5.2.4 Delete a page 138](#delete-a-page)
+[5.2.4 Delete a page](#delete-a-page)
 
-[5.2.5 Edit a widget on the page 140](#edit-a-widget-on-the-page)
+[5.2.5 Edit a widget on the page](#edit-a-widget-on-the-page)
 
-[6. Author Management 141](#author-management)
+[6. Author Management](#author-management)
 
-[6.1 Manage author information 142](#manage-author-information)
+[6.1 Manage author information](#manage-author-information)
 
-[6.1.1 Manage author name sources 142](#manage-author-name-sources)
+[6.1.1 Manage author name sources](#manage-author-name-sources)
 
-[6.1.2 Manage external author ID Prefixes 151](#manage-external-author-id-prefixes)
+[6.1.2 Manage external author ID Prefixes](#manage-external-author-id-prefixes)
 
 [6.1.3 Manage affiliation ID Prefixes](#manage-affiliation-id-prefixes)
 
-[6.2 Export author information 156](#export-author-information)
+[6.2 Export author information](#export-author-information)
 
-[6.3 Import author information 159](#import-author-information)
+[6.3 Import author information](#import-author-information)
 
-[7. Statistics 167](#statistics)
+[7. Statistics](#statistics)
 
-[7.1 Set up reports 168](#set-up-reports)
+[7.1 Set up reports](#set-up-reports)
 
-[7.1.1 Check the number of registered items 168](#check-the-number-of-registered-items)
+[7.1.1 Check the number of registered items](#check-the-number-of-registered-items)
 
-[7.1.2 Download fixed form reports 169](#download-fixed-form-reports)
+[7.1.2 Download fixed form reports](#download-fixed-form-reports)
 
-[7.1.3 Types of fixed form reports 170](#types-of-fixed-form-reports)
+[7.1.3 Types of fixed form reports](#types-of-fixed-form-reports)
 
-[7.1.4 Send a fixed form report by email 176](#send-a-fixed-form-report-by-email)
+[7.1.4 Send a fixed form report by email](#send-a-fixed-form-report-by-email)
 
-[7.1.5 Sett up a custom report 181](#sett-up-a-custom-report)
+[7.1.5 Sett up a custom report](#sett-up-a-custom-report)
 
-[7.2 Set up feedback mails 183](#set-up-feedback-mails)
+[7.2 Set up feedback mails](#set-up-feedback-mails)
 
-[7.3 Set up the site license 185](#set-up-the-site-license)
+[7.3 Set up the site license](#set-up-the-site-license)
 
-[7.3.1 Send site license statistics automatically 185](#send-site-license-statistics-automatically)
+[7.3.1 Send site license statistics automatically](#send-site-license-statistics-automatically)
 
-[7.3.2 Send site license statistics manually 185](#send-site-license-statistics-manually)
+[7.3.2 Send site license statistics manually](#send-site-license-statistics-manually)
 
-[7.3.3 Site license statistics 186](#site-license-statistics)
+[7.3.3 Site license statistics](#site-license-statistics)
 
-[8. WorkFlow 188](#workflow)
+[8. WorkFlow](#workflow)
 
-[8.1 Set up flows 189](#set-up-flows)
+[8.1 Set up flows](#set-up-flows)
 
-[8.1.1 Add a flow 189](#add-a-flow)
+[8.1.1 Add a flow](#add-a-flow)
 
-[8.1.2 Edit flow actions 191](#edit-flow-actions)
+[8.1.2 Edit flow actions](#edit-flow-actions)
 
-[8.1.3 Delete a flow 195](#delete-a-flow)
+[8.1.3 Delete a flow](#delete-a-flow)
 
-[8.2 Set up workflows 197](#set-up-workflows)
+[8.2 Set up workflows](#set-up-workflows)
 
-[8.2.1 Add a workflow 197](#add-a-workflow)
+[8.2.1 Add a workflow](#add-a-workflow)
 
-[8.2.2 Edit a workflow 198](#edit-a-workflow)
+[8.2.2 Edit a workflow](#edit-a-workflow)
 
-[8.2.3 Delete a workflow 199](#delete-a-workflow)
+[8.2.3 Delete a workflow](#delete-a-workflow)
 
 [8.3 Set up the workspace](#set-up-the-workspace)
 
@@ -320,91 +320,91 @@ The format conventions used in this document are as follows:
 
 [8.3.2 Set the registration method to WorkFlow Registration](#set-the-registration-method-to-workflow-registration)
 
-[9. Communities 202](#communities)
+[9. Communities](#communities)
 
-[9.1 Manage communities 203](#manage-communities)
+[9.1 Manage communities](#manage-communities)
 
-[9.1.1 View communities 203](#view-communities)
+[9.1.1 View communities](#view-communities)
 
-[9.1.2 Create a community 203](#create-a-community)
+[9.1.2 Create a community](#create-a-community)
 
-[9.1.3 Edit a community 204](#edit-a-community)
+[9.1.3 Edit a community](#edit-a-community)
 
-[9.2 Manage favorite communities 206](#manage-favorite-communities)
+[9.2 Manage favorite communities](#manage-favorite-communities)
 
-[9.2.1 View favorite communities 206](#view-favorite-communities)
+[9.2.1 View favorite communities](#view-favorite-communities)
 
-[9.2.2 Create a favorite community 206](#create-a-favorite-community)
+[9.2.2 Create a favorite community](#create-a-favorite-community)
 
-[9.2.3 Edit a favorite community 207](#edit-a-favorite-community)
+[9.2.3 Edit a favorite community](#edit-a-favorite-community)
 
-[9.2.4 Delete favorite communities 208](#delete-favorite-communities)
+[9.2.4 Delete favorite communities](#delete-favorite-communities)
 
-[9.3 Manage inclusion requests 210](#manage-inclusion-requests)
+[9.3 Manage inclusion requests](#manage-inclusion-requests)
 
-[9.3.1 View inclusion requests 210](#view-inclusion-requests)
+[9.3.1 View inclusion requests](#view-inclusion-requests)
 
-[9.3.2 Delete inclusion requests 210](#delete-inclusion-requests)
+[9.3.2 Delete inclusion requests](#delete-inclusion-requests)
 
-[10. OAI-PMH 212](#oai-pmh)
+[10. OAI-PMH](#oai-pmh)
 
-[10.1 Set up harvesting 213](#set-up-harvesting)
+[10.1 Set up harvesting](#set-up-harvesting)
 
-[10.1.1 Run a harvesting plan 213](#run-a-harvesting-plan)
+[10.1.1 Run a harvesting plan](#run-a-harvesting-plan)
 
-[10.1.2 Create a harvesting plan 217](#create-a-harvesting-plan)
+[10.1.2 Create a harvesting plan](#create-a-harvesting-plan)
 
-[10.1.3 Edit a harvesting plan 218](#edit-a-harvesting-plan)
+[10.1.3 Edit a harvesting plan](#edit-a-harvesting-plan)
 
-[10.1.4 Delete harvesting plans 220](#delete-harvesting-plans)
+[10.1.4 Delete harvesting plans](#delete-harvesting-plans)
 
-[10.2 Identify 222](#identify)
+[10.2 Identify](#identify)
 
-[10.2.1 View output sets 222](#view-output-sets)
+[10.2.1 View output sets](#view-output-sets)
 
-[10.2.2 Create an output set 222](#create-an-output-set)
+[10.2.2 Create an output set](#create-an-output-set)
 
-[10.2.3 Edit an output set 223](#edit-an-output-set)
+[10.2.3 Edit an output set](#edit-an-output-set)
 
-[10.3 Sets 224](#sets)
+[10.3 Sets](#sets)
 
-[10.3.1 View Sets 224](#view-sets)
+[10.3.1 View Sets](#view-sets)
 
-[10.3.2 Create a Set 224](#create-a-set)
+[10.3.2 Create a Set](#create-a-set)
 
-[10.3.3 Edit a Set 225](#edit-a-set)
+[10.3.3 Edit a Set](#edit-a-set)
 
-[11. Resource Sync 228](#resource-sync)
+[11. Resource Sync](#resource-sync)
 
-[11.1 Manage Resource Lists 229](#manage-resource-lists)
+[11.1 Manage Resource Lists](#manage-resource-lists)
 
-[11.1.1 Output Resource Lists 229](#output-resource-lists)
+[11.1.1 Output Resource Lists](#output-resource-lists)
 
-[11.1.2 Create a Resource List 231](#create-a-resource-list)
+[11.1.2 Create a Resource List](#create-a-resource-list)
 
-[11.1.3 Edit a Resource List 232](#edit-a-resource-list)
+[11.1.3 Edit a Resource List](#edit-a-resource-list)
 
-[11.1.4 Delete a Resource List 232](#delete-a-resource-list)
+[11.1.4 Delete a Resource List](#delete-a-resource-list)
 
-[11.2 Manage Change Lists 234](#manage-change-lists)
+[11.2 Manage Change Lists](#manage-change-lists)
 
-[11.2.1 View Change Lists 234](#view-change-lists)
+[11.2.1 View Change Lists](#view-change-lists)
 
-[11.2.2 Create a Change List 236](#create-a-change-list)
+[11.2.2 Create a Change List](#create-a-change-list)
 
-[11.2.3 Edit a Change List 238](#edit-a-change-list)
+[11.2.3 Edit a Change List](#edit-a-change-list)
 
-[11.2.4 Delete a Change List 239](#delete-a-change-list)
+[11.2.4 Delete a Change List](#delete-a-change-list)
 
-[11.3 Manage Resyncs 240](#manage-resyncs)
+[11.3 Manage Resyncs](#manage-resyncs)
 
-[11.3.1 Collect data 240](#collect-data)
+[11.3.1 Collect data](#collect-data)
 
-[11.3.2 Create a Resync 242](#create-a-resync)
+[11.3.2 Create a Resync](#create-a-resync)
 
-[11.3.3 Edit a Resync 244](#edit-a-resync)
+[11.3.3 Edit a Resync](#edit-a-resync)
 
-[11.3.4 Delete a Resync 244](#delete-a-resync)
+[11.3.4 Delete a Resync](#delete-a-resync)
 
 [12. SWORD API](#sword-api)
 
@@ -418,51 +418,51 @@ The format conventions used in this document are as follows:
 
 [12.5 Delete a JSON-LD setting](#delete-a-json-ld-setting)
 
-[13. Records 246](#records)
+[13. Records](#records)
 
-[13.1 View Persistent Identifiers 247](#view-persistent-identifiers)
+[13.1 View Persistent Identifiers](#view-persistent-identifiers)
 
-[13.2 Manage Record Metadata 248](#manage-record-metadata)
+[13.2 Manage Record Metadata](#manage-record-metadata)
 
-[13.2.1 View Record Metadata 248](#view-record-metadata)
+[13.2.1 View Record Metadata](#view-record-metadata)
 
-[13.2.2 Delete Record Metadata 248](#delete-record-metadata)
+[13.2.2 Delete Record Metadata](#delete-record-metadata)
 
-[14. Files 250](#files)
+[14. Files](#files)
 
-[14.1 Manage Buckets 251](#manage-buckets)
+[14.1 Manage Buckets](#manage-buckets)
 
-[14.1.1 View Buckets 251](#view-buckets)
+[14.1.1 View Buckets](#view-buckets)
 
-[14.1.2 Create a Bucket 251](#create-a-bucket)
+[14.1.2 Create a Bucket](#create-a-bucket)
 
-[14.1.3 Edit a Bucket 252](#edit-a-bucket)
+[14.1.3 Edit a Bucket](#edit-a-bucket)
 
-[14.2 Manage File Instances 254](#manage-file-instances)
+[14.2 Manage File Instances](#manage-file-instances)
 
-[14.2.1 View File Instances 254](#view-file-instances)
+[14.2.1 View File Instances](#view-file-instances)
 
-[14.2.2 Run a fixity check 254](#run-a-fixity-check)
+[14.2.2 Run a fixity check](#run-a-fixity-check)
 
 [14.2.3 Delete File Instances](#delete-file-instances)
 
-[14.3 Manage Locations 256](#manage-locations)
+[14.3 Manage Locations](#manage-locations)
 
-[14.3.1 View Locations 256](#view-locations)
+[14.3.1 View Locations](#view-locations)
 
-[14.3.2 Create a Location 256](#create-a-location)
+[14.3.2 Create a Location](#create-a-location)
 
-[14.3.3 Edit a Location 257](#edit-a-location)
+[14.3.3 Edit a Location](#edit-a-location)
 
-[14.3.4 Delete Locations 258](#delete-locations)
+[14.3.4 Delete Locations](#delete-locations)
 
-[14.4 Manage Multipart Objects 260](#manage-multipart-objects)
+[14.4 Manage Multipart Objects](#manage-multipart-objects)
 
-[14.4.1 View Multipart Objects 260](#view-multipart-objects)
+[14.4.1 View Multipart Objects](#view-multipart-objects)
 
-[14.5 Manage Object Versions 261](#manage-object-versions)
+[14.5 Manage Object Versions](#manage-object-versions)
 
-[14.5.1 View Object Versions 261](#view-object-versions)
+[14.5.1 View Object Versions](#view-object-versions)
 
 [14.6 Use the institutional storage feature](#use-the-institutional-storage-feature)
 
@@ -472,167 +472,167 @@ The format conventions used in this document are as follows:
 
 [14.6.3 Notes on the institutional storage feature](#notes-on-the-institutional-storage-feature)
 
-[15. User Management 262](#user-management)
+[15. User Management](#user-management)
 
-[15.1 Access: Roles 263](#access-roles)
+[15.1 Access: Roles](#access-roles)
 
-[15.1.1 View role-based actions 263](#view-role-based-actions)
+[15.1.1 View role-based actions](#view-role-based-actions)
 
-[15.1.2 Add an action to a role 263](#add-an-action-to-a-role)
+[15.1.2 Add an action to a role](#add-an-action-to-a-role)
 
-[15.1.3 Modify a role-based action 264](#modify-a-role-based-action)
+[15.1.3 Modify a role-based action](#modify-a-role-based-action)
 
-[15.1.4 Delete actions from a role 265](#delete-actions-from-a-role)
+[15.1.4 Delete actions from a role](#delete-actions-from-a-role)
 
-[15.2 Access: System Roles 267](#access-system-roles)
+[15.2 Access: System Roles](#access-system-roles)
 
-[15.2.1 View system role-based actions 267](#view-system-role-based-actions)
+[15.2.1 View system role-based actions](#view-system-role-based-actions)
 
-[15.2.2 Add an action to a system role 267](#add-an-action-to-a-system-role)
+[15.2.2 Add an action to a system role](#add-an-action-to-a-system-role)
 
-[15.2.3 Modify a system role-based action 268](#modify-a-system-role-based-action)
+[15.2.3 Modify a system role-based action](#modify-a-system-role-based-action)
 
-[15.2.4 Delete actions from a system role 269](#delete-actions-from-a-system-role)
+[15.2.4 Delete actions from a system role](#delete-actions-from-a-system-role)
 
-[15.3 Access: Users 271](#access-users)
+[15.3 Access: Users](#access-users)
 
-[15.3.1 View user actions 271](#view-user-actions)
+[15.3.1 View user actions](#view-user-actions)
 
-[15.3.2 Add an action to a user 271](#add-an-action-to-a-user)
+[15.3.2 Add an action to a user](#add-an-action-to-a-user)
 
-[15.3.3 Modify a user action 272](#modify-a-user-action)
+[15.3.3 Modify a user action](#modify-a-user-action)
 
-[15.3.4 Delete user actions 273](#delete-user-actions)
+[15.3.4 Delete user actions](#delete-user-actions)
 
-[15.4 Manage Linked account identities 275](#manage-linked-account-identities)
+[15.4 Manage Linked account identities](#manage-linked-account-identities)
 
-[15.4.1 View Linked account identities 275](#view-linked-account-identities)
+[15.4.1 View Linked account identities](#view-linked-account-identities)
 
-[15.4.2 Delete Linked account identities 275](#delete-linked-account-identities)
+[15.4.2 Delete Linked account identities](#delete-linked-account-identities)
 
-[15.5 Manage Linked account tokens 277](#manage-linked-account-tokens)
+[15.5 Manage Linked account tokens](#manage-linked-account-tokens)
 
-[15.5.1 View Linked account tokens 277](#view-linked-account-tokens)
+[15.5.1 View Linked account tokens](#view-linked-account-tokens)
 
-[15.5.2 Create a Linked account token 277](#create-a-linked-account-token)
+[15.5.2 Create a Linked account token](#create-a-linked-account-token)
 
-[15.5.3 Edit a Linked account token 278](#edit-a-linked-account-token)
+[15.5.3 Edit a Linked account token](#edit-a-linked-account-token)
 
-[15.5.4 Delete Linked account tokens 279](#delete-linked-account-tokens)
+[15.5.4 Delete Linked account tokens](#delete-linked-account-tokens)
 
-[15.6 Manage Linked accounts 280](#manage-linked-accounts)
+[15.6 Manage Linked accounts](#manage-linked-accounts)
 
-[15.6.1 View Linked accounts 280](#view-linked-accounts)
+[15.6.1 View Linked accounts](#view-linked-accounts)
 
-[15.6.2 Create a Linked account 280](#create-a-linked-account)
+[15.6.2 Create a Linked account](#create-a-linked-account)
 
-[15.6.3 Edit a Linked account 281](#edit-a-linked-account)
+[15.6.3 Edit a Linked account](#edit-a-linked-account)
 
-[15.6.4 Delete Linked accounts 282](#delete-linked-accounts)
+[15.6.4 Delete Linked accounts](#delete-linked-accounts)
 
-[15.7 Manage OAuth Application Tokens 284](#manage-oauth-application-tokens)
+[15.7 Manage OAuth Application Tokens](#manage-oauth-application-tokens)
 
-[15.7.1 View OAuth Application Tokens 284](#view-oauth-application-tokens)
+[15.7.1 View OAuth Application Tokens](#view-oauth-application-tokens)
 
-[15.7.2 Delete OAuth Application Tokens 285](#delete-oauth-application-tokens)
+[15.7.2 Delete OAuth Application Tokens](#delete-oauth-application-tokens)
 
-[15.8 Manage OAuth Applications 286](#manage-oauth-applications)
+[15.8 Manage OAuth Applications](#manage-oauth-applications)
 
-[15.8.1 View OAuth Applications 286](#view-oauth-applications)
+[15.8.1 View OAuth Applications](#view-oauth-applications)
 
-[15.8.2 Delete OAuth Applications 286](#delete-oauth-applications)
+[15.8.2 Delete OAuth Applications](#delete-oauth-applications)
 
-[15.9 Manage roles 288](#manage-roles)
+[15.9 Manage roles](#manage-roles)
 
-[15.9.1 View roles 288](#view-roles)
+[15.9.1 View roles](#view-roles)
 
-[15.9.2 Create a role 289](#create-a-role)
+[15.9.2 Create a role](#create-a-role)
 
-[15.9.3 Edit a role 289](#edit-a-role)
+[15.9.3 Edit a role](#edit-a-role)
 
-[15.9.4 Delete roles 290](#delete-roles)
+[15.9.4 Delete roles](#delete-roles)
 
-[15.10 Manage Session Activities 292](#manage-session-activities)
+[15.10 Manage Session Activities](#manage-session-activities)
 
-[15.10.1 View Session Activities 292](#view-session-activities)
+[15.10.1 View Session Activities](#view-session-activities)
 
-[15.10.2 Delete Session Activities 292](#delete-session-activities)
+[15.10.2 Delete Session Activities](#delete-session-activities)
 
-[15.11 Manage users 293](#manage-users)
+[15.11 Manage users](#manage-users)
 
-[15.11.1 View users 293](#view-users)
+[15.11.1 View users](#view-users)
 
-[15.11.2 Add a user 293](#add-a-user)
+[15.11.2 Add a user](#add-a-user)
 
-[15.11.3 Edit a user 294](#edit-a-user)
+[15.11.3 Edit a user](#edit-a-user)
 
-[15.11.4 Disable or enable users 295](#disable-or-enable-users)
+[15.11.4 Disable or enable users](#disable-or-enable-users)
 
-[15.12 Manage User Profiles 297](#manage-user-profiles)
+[15.12 Manage User Profiles](#manage-user-profiles)
 
-[15.12.1 View User Profiles 297](#view-user-profiles)
+[15.12.1 View User Profiles](#view-user-profiles)
 
-[15.12.2 Delete User Profiles 297](#delete-user-profiles)
+[15.12.2 Delete User Profiles](#delete-user-profiles)
 
-[16. Setting 298](#setting)
+[16. Setting](#setting)
 
-[16.1 Configure the author display setting 299](#configure-the-author-display-setting)
+[16.1 Configure the author display setting](#configure-the-author-display-setting)
 
-[16.2 Display the Index Link 300](#display-the-index-link)
+[16.2 Display the Index Link](#display-the-index-link)
 
 [16.3 Configure the activity list display](#configure-the-activity-list-display)
 
-[16.4 Set up languages 301](#set-up-languages)
+[16.4 Set up languages](#set-up-languages)
 
-[16.5 Display the PDF cover page 302](#display-the-pdf-cover-page)
+[16.5 Display the PDF cover page](#display-the-pdf-cover-page)
 
-[16.6 Configure the ranking display 305](#configure-the-ranking-display)
+[16.6 Configure the ranking display](#configure-the-ranking-display)
 
-[16.7 Modify the statistics setting 307](#modify-the-statistics-setting)
+[16.7 Modify the statistics setting](#modify-the-statistics-setting)
 
-[16.8 Configure the Web page style 308](#configure-the-web-page-style)
+[16.8 Configure the Web page style](#configure-the-web-page-style)
 
-[16.9 Set up Identifiers 312](#set-up-identifiers)
+[16.9 Set up Identifiers](#set-up-identifiers)
 
-[16.9.1 View Identifiers 312](#view-identifiers)
+[16.9.1 View Identifiers](#view-identifiers)
 
-[16.9.2 Create an Identifier 312](#create-an-identifier)
+[16.9.2 Create an Identifier](#create-an-identifier)
 
-[16.9.3 Edit an Identifier 315](#edit-an-identifier)
+[16.9.3 Edit an Identifier](#edit-an-identifier)
 
-[16.10 Modify the export settings 316](#modify-the-export-settings)
+[16.10 Modify the export settings](#modify-the-export-settings)
 
-[16.11 Configure the log analysis settings 317](#configure-the-log-analysis-settings)
+[16.11 Configure the log analysis settings](#configure-the-log-analysis-settings)
 
-[16.12 Configure the search conditions, the number of results displayed, and the initial display 318](#configure-the-search-conditions-the-number-of-results-displayed-and-the-initial-display)
+[16.12 Configure the search conditions, the number of results displayed, and the initial display](#configure-the-search-conditions-the-number-of-results-displayed-and-the-initial-display)
 
-[16.12.1 Configure the author search setting 318](#configure-the-author-search-setting)
+[16.12.1 Configure the author search setting](#configure-the-author-search-setting)
 
-[16.12.2 Configure the search results settings 318](#configure-the-search-results-settings)
+[16.12.2 Configure the search results settings](#configure-the-search-results-settings)
 
-[16.12.3 Configure detail search results settings 319](#configure-detail-search-results-settings)
+[16.12.3 Configure detail search results settings](#configure-detail-search-results-settings)
 
 [16.12.4 Change the labels of detail search items](#change-the-labels-of-detail-search-items)
 
 [16.12.5 Customize the detail search](#customize-the-detail-search)
 
-[16.12.6 Configure the index tree/facet display 321](#configure-the-index-treefacet-display)
+[16.12.6 Configure the index tree/facet display](#configure-the-index-treefacet-display)
 
 [16.12.7 Configure generic detail search items](#configure-generic-detail-search-items)
 
-[16.12.8 Configure the initial display 323](#configure-the-initial-display)
+[16.12.8 Configure the initial display](#configure-the-initial-display)
 
-[16.13 Manage faceted searches 325](#manage-faceted-searches)
+[16.13 Manage faceted searches](#manage-faceted-searches)
 
-[16.13.1 Configure faceted searches 325](#configure-faceted-searches)
+[16.13.1 Configure faceted searches](#configure-faceted-searches)
 
-[16.14 Configure the site information 329](#configure-the-site-information)
+[16.14 Configure the site information](#configure-the-site-information)
 
-[16.15 Configure IP addresses permitted by the site license 331](#configure-ip-addresses-permitted-by-the-site-license)
+[16.15 Configure IP addresses permitted by the site license](#configure-ip-addresses-permitted-by-the-site-license)
 
-[16.16 Create a sitemap 334](#create-a-sitemap)
+[16.16 Create a sitemap](#create-a-sitemap)
 
-[16.17 Set up emails 335](#set-up-emails)
+[16.17 Set up emails](#set-up-emails)
 
 [16.18 Edit mail templates](#edit-mail-templates)
 
@@ -640,23 +640,23 @@ The format conventions used in this document are as follows:
 
 [16.18.2 Default mail templates](#default-mail-templates)
 
-[16.19 Set up a WebAPI Account 337](#set-up-a-webapi-account)
+[16.19 Set up a WebAPI Account](#set-up-a-webapi-account)
 
-[16.20 Configure the file preview settings 339](#configure-the-file-preview-settings)
+[16.20 Configure the file preview settings](#configure-the-file-preview-settings)
 
-[16.21 Allow Shibboleth users 340](#allow-shibboleth-users)
+[16.21 Allow Shibboleth users](#allow-shibboleth-users)
 
-[16.22 Manage restricted access 341](#manage-restricted-access)
+[16.22 Manage restricted access](#manage-restricted-access)
 
-[16.22.1 Configure restricted access 341](#configure-restricted-access)
+[16.22.1 Configure restricted access](#configure-restricted-access)
 
 [16.22.2 Secret URL feature](#secret-url-feature)
 
-[16.22.3 Email notifications on the result of the application for the restricted access 345](#email-notifications-on-the-result-of-the-application-for-the-restricted-access)
+[16.22.3 Email notifications on the result of the application for the restricted access](#email-notifications-on-the-result-of-the-application-for-the-restricted-access)
 
-[16.22.4 Other email notifications for the restricted access 352](#other-email-notifications-for-the-restricted-access)
+[16.22.4 Other email notifications for the restricted access](#other-email-notifications-for-the-restricted-access)
 
-[16.23 Set up an institution name 367](#set-up-an-institution-name)
+[16.23 Set up an institution name](#set-up-an-institution-name)
 
 [16.24 Manage the CRIS linkage](#manage-the-cris-linkage)
 
@@ -672,31 +672,31 @@ The format conventions used in this document are as follows:
 
 [18.1 Set up the ElasticSearch index](#set-up-the-elasticsearch-index)
 
-[19. User Account 368](#user-account)
+[19. User Account](#user-account)
 
-[19.1 Update a profile 369](#update-a-profile)
+[19.1 Update a profile](#update-a-profile)
 
-[19.2 Change a password 370](#change-a-password)
+[19.2 Change a password](#change-a-password)
 
-[19.3 Determine which device is used to log in to an account 371](#determine-which-device-is-used-to-log-in-to-an-account)
+[19.3 Determine which device is used to log in to an account](#determine-which-device-is-used-to-log-in-to-an-account)
 
-[19.4 Manage applications 372](#manage-applications)
+[19.4 Manage applications](#manage-applications)
 
-[19.5 Manage groups 373](#manage-groups)
+[19.5 Manage groups](#manage-groups)
 
-[19.5.1 Accept a request or invitation to join a group 373](#accept-a-request-or-invitation-to-join-a-group)
+[19.5.1 Accept a request or invitation to join a group](#accept-a-request-or-invitation-to-join-a-group)
 
-[19.5.2 Create a group 374](#create-a-group)
+[19.5.2 Create a group](#create-a-group)
 
-[19.5.3 Invite members to a group 375](#invite-members-to-a-group)
+[19.5.3 Invite members to a group](#invite-members-to-a-group)
 
-[19.5.4 Edit a group 377](#edit-a-group)
+[19.5.4 Edit a group](#edit-a-group)
 
-[19.5.5 Delete a group 378](#delete-a-group)
+[19.5.5 Delete a group](#delete-a-group)
 
-[19.6 Modify the session validity time 380](#modify-the-session-validity-time)
+[19.6 Modify the session validity time](#modify-the-session-validity-time)
 
-[19.7 Access the Administration screen 381](#access-the-administration-screen-1)
+[19.7 Access the Administration screen](#access-the-administration-screen-1)
 
 [20. Advanced Menu](#advanced-menu)
 
@@ -8508,7 +8508,7 @@ This section explains how to bulk export items.
         
         The exported file is structured as follows.
         
-        ![テキスト, 手紙 自動的に生成された説明](media/media/image74.png)
+        ![](media/media/image74.png)
         
         A tsv file will be generated for each item type in the \<ItemTypeName (ItemTypeID)\> format. The content file for each item will not be generated.
         If the number of items to be exported within an item type exceeds a certain threshold, the TSV file will be split accordingly. In such cases, the file name will follow the format \<ItemTypeName (ItemTypeID).part(partNo)\>.
@@ -8525,15 +8525,15 @@ This section explains how to bulk export items.
     
     When you click "Cancel", a confirmation dialog box will appear asking if you want to cancel the bulk export operation. Select a button displayed in the dialog box.
     
-    ![テーブル 低い精度で自動的に生成された説明](media/media/image75.png)
+    ![](media/media/image75.png)
 
 <!-- end list -->
 
-1)  If you select "Execute":
+1.  If you select "Execute":
     
     You will close the confirmation dialog without bulk exporting the items.
 
-2)  If you select "Cancel":
+2.  If you select "Cancel":
     
     The confirmation dialog will close without cancelling the bulk export.
 
@@ -8640,10 +8640,10 @@ For elements other than the metadata files defined for item types, see the "Supp
 > There are two directory structures used for import.
 
   - The directory structure that includes a bagit.txt file  
-    ![テキスト, 手紙 自動的に生成された説明](media/media/image79.png)
+    ![](media/media/image79.png)
 
   - The directory structure that does not include a bagit.txt file  
-    ![テキスト 自動的に生成された説明](media/media/image80.png)
+    ![](media/media/image80.png)
 
 > You can include multiple tsv files for different item types in a single import operation.
 > 
@@ -8653,15 +8653,15 @@ For elements other than the metadata files defined for item types, see the "Supp
 
 <!-- end list -->
 
-1)  > Click "Change Identifier Mode".
+1.  > Click "Change Identifier Mode".
     
     ![](media/media/image81.png)
 
-2)  > Click "Next".
+2.  > Click "Next".
     
     A disclaimer appears in the "Change Identifier Mode" dialog box.![](media/media/image82.png)
 
-3)  > Click "I agree to the terms of use" and then click "OK".  
+3.  > Click "I agree to the terms of use" and then click "OK".  
     > The file is loaded and checked, and the "Import" tab appears. The "Import" tab displays the check results on the loaded file.  
     > ![](media/media/image83.png)
 
@@ -8677,7 +8677,7 @@ Table 3‑2. Error messages of the DOI duplication check
 | 2   | ERROR | Specified DOI was withdrawn. Please specify another DOI. |
 | 3   | ERROR | Specified DOI is duplicated with another import item. Please specify another DOI. |
 
-4)  > Make sure that the results displayed under "Check Result" are either "Register" or "Update".
+4.  > Make sure that the results displayed under "Check Result" are either "Register" or "Update".
 
 The message "Register with \[Change Identifier Mode\]" appears above the "Import" button.
 
@@ -9149,7 +9149,7 @@ Table 3‑6. Validation check results associated with metadata elements
 | Error | An error related to a DOI                                                                | Since the item has a DOI, it must be associated with an index whose index status is "Public" and whose Harvest Publishing is "Public". | アイテムにDOIが付与されているため、インデックス状態が「公開」かつハーベスト公開が「公開」のインデックスに関連付けが必要です。 | You tried to grant an item a DOI, although it was not associated with an index whose index status was "Public" and whose Harvest Publishing was "Public". |
 | Error | An error related to a DOI                                                                | Specified {DOI} is different from existing {DOI}.                                                                                      | 指定された{DOI}が登録済みの{DOI}と異なっています                                    | The DOI granted to an existing item differs from the DOI value specified in the import file.                                                              |
 
-5)  > Click "Import".  
+5.  > Click "Import".  
     > The files are imported. The "Result" tab appears.  
     > Specify the index to which you want to import the item based on the index ID and the value of POS\_INDEX.  
     > Register the DOI and CNRI specified for the new item you import.  
@@ -9180,16 +9180,16 @@ Table 3‑7. Error messages of the import results
 
 <!-- end list -->
 
-1)  > Click "Next".  
+1.  > Click "Next".  
     > The file is loaded and checked, and the "Import" tab appears. The "Import" tab displays the check results on the loaded file.
 
-2)  > Make sure that the results displayed under "Check Result" are either "Register" or "Update".  
+2.  > Make sure that the results displayed under "Check Result" are either "Register" or "Update".  
     > Items with "Error" results cannot be imported. Check the file and start again from Step 2.
     
     ![](media/media/image85.png)For the description of the elements in the "Import" tab, see "Table 3-3. The elements on the "Import" tab".  
     For the description of the validation check results on the imported files, see "Table 3-4. Validation check results associated with the tsv format", "Table 3-5. Validation check results not associated with metadata elements", and "Table 3-6. Validation check results associated with metadata elements".
 
-3)  > Click "Import".  
+3.  > Click "Import".  
     > The files are imported. The "Result" tab appears.  
     > Specify the index to which you want to import the item based on the index ID and the value of POS\_INDEX.  
     > Register the CNRI specified for the new item you import. Once you have specified \[DOI\_RA\], register the DOI as well.  
@@ -9627,11 +9627,11 @@ If the import file contains doi or prefix, an error message will be displayed.
 
 ・If DOI is left blank:
 
-‏"Please specify {}." (DOI will be displayed in {})
+"Please specify {}." (DOI will be displayed in {})
 
 ・If the import file contains doi or prefix (when "prefix" or "prefix/" is selected):
 
-‏"Please specify DOI suffix."
+"Please specify DOI suffix."
 
 ・DOIs are granted according to the constraints table for granting PID's (JPCOAR\_JaLC\_Guideline\_appendix\_v1.pdf). Whether or not to grant a DOI is based on "Required" or "Selection required" conditions. If more than one required mapping element is contained in a single item type, the condition for granting a DOI is satisfied when one of the multiple elements is entered.
 
@@ -9643,9 +9643,9 @@ You cannot modify the resource type (dc:type) when updating. If you modify one, 
 
 ・When you update with an import file, if the original file of an existing item has the same name and contains the same file path, the following rules will be used to register the file.
 
-‏- Keep: Do not register duplicates
+- Keep: Do not register duplicates
 
-‏- Upgrade: Register duplicates (\* The rationale behind this is that, based on the filename alone, it is impossible to determine whether the two files are the same or different files with the same name).
+- Upgrade: Register duplicates (\* The rationale behind this is that, based on the filename alone, it is impossible to determine whether the two files are the same or different files with the same name).
 
 ## Import items in the RO-Crate format
 
@@ -10013,13 +10013,13 @@ A popup window appears for your to operate.
 
 <!-- end list -->
 
-1)  > If you click "Delete All":
+1.  > If you click "Delete All":
 
 > All the child indexes and items will be deleted.
 > 
 > ![](media/media/image97.png)
 
-2)  > If you click "Move Items To Parent Index":
+2.  > If you click "Move Items To Parent Index":
 
 > The items and child indexes under the index will be moved to be placed under the parent index.
 > 
@@ -10888,7 +10888,7 @@ This section explains how to delete a widget.
 
 <!-- end list -->
 
-1)  > In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line for a widget.
+1.  > In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line for a widget.
 
 > The widget is deleted. The message "Record was successfully deleted" appears.
 > 
@@ -10900,12 +10900,12 @@ This section explains how to delete a widget.
 
 <!-- end list -->
 
-1)  > On the "Edit" tab, click "Delete".
+1.  > On the "Edit" tab, click "Delete".
 
 > You are prompted to confirm the deletion.  
 > ![](media/media/image167.png)
 
-2)  > Click "OK".
+2.  > Click "OK".
 
 > The widget is deleted. The message "Widget item has deleted successfully" appears.
 > 
@@ -13685,7 +13685,7 @@ You use this setting to access the OAI-PMH provider feature.
 
 > You can specify the information to be used when outputting repository information from OAI-PMH.
 
-The repository information is available from "http://\[site\_URL\]/?action=repository\_oaipmh\&verb=Identify".
+The repository information is available from "http://[site_URL]/?action=repository_oaipmh&verb=Identify".
 
 ![](media/media/image286.png)
 
@@ -13849,7 +13849,7 @@ This section explains how to output Resource Lists and Resource Dumps.
 > 
 > [v2.1.0] The zip files and manifest.xml include only the files that the accessing user can download (the same determination as for files that can be downloaded on the item detail screen).
 
-1)  > Clicking on the link displayed in the "Resource List Url" will output the Resource Lists for the corresponding index.
+1.  > Clicking on the link displayed in the "Resource List Url" will output the Resource Lists for the corresponding index.
 
 > ![](media/media/image292.png)
 
@@ -13857,7 +13857,7 @@ Figure 11‑1. Sample output Resource Lists
 
 ![](media/media/image293.png)
 
-2)  > Clicking on the link displayed in the "Resource Dump Url" will output the Resource Dumps for the corresponding index.
+2.  > Clicking on the link displayed in the "Resource Dump Url" will output the Resource Dumps for the corresponding index.
 
 Figure 11‑2. Sample output Resource Dumps
 
@@ -13975,7 +13975,7 @@ This section explains how to output Change Lists and Change Dumps.
 > 
 > [v2.1.0] If WEKO\_SEARCH\_FIX\_ACCESSRIGHTS is enabled (True) in instance.cfg, an item whose embargo period has ended is output in the Change List and Change Dump of the date of its publication date (the end date of the embargo period) if the publication date is later than its update date and time. By default (disabled), it is output for the date of its update date and time.
 
-1)  > Clicking on the link displayed in the "Change List Url" will output the Change Lists for the corresponding index.
+1.  > Clicking on the link displayed in the "Change List Url" will output the Change Lists for the corresponding index.
 
 > ![](media/media/image298.png)
 
@@ -13983,13 +13983,13 @@ Figure 11‑3. Sample output Change Lists
 
 ![](media/media/image299.png)
 
-2)  > Clicking on the URL shown for \<loc\> in the Change Lists will output the Change Lists for the corresponding date.
+2.  > Clicking on the URL shown for \<loc\> in the Change Lists will output the Change Lists for the corresponding date.
 
 Figure 11‑4. Sample output Change Lists
 
 ![](media/media/image300.png)
 
-3)  > Clicking on the link displayed in the "Change Dump Url" will output the Change Dumps for the corresponding index.
+3.  > Clicking on the link displayed in the "Change Dump Url" will output the Change Dumps for the corresponding index.
 
 > ![](media/media/image301.png)
 > 
@@ -13997,7 +13997,7 @@ Figure 11‑4. Sample output Change Lists
 
 ![](media/media/image302.png)
 
-4)  > Clicking on the URL shown for \<loc\> in the Change Dumps will output the Change Dumps for the corresponding date.
+4.  > Clicking on the URL shown for \<loc\> in the Change Dumps will output the Change Dumps for the corresponding date.
 
 Figure 11‑6. Sample output Change Dumps
 
@@ -14133,11 +14133,11 @@ This section explains how to collect data.
 
 <!-- end list -->
 
-1)  In the "List" tab, click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Automatic".
+1.  In the "List" tab, click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Automatic".
 
 > The Resync details screen appears.
 
-2)  Click "OFF".
+2.  Click "OFF".
 
 > The collection process will be executed automatically at the configured execution interval.
 > 
@@ -14155,17 +14155,17 @@ This section explains how to collect data.
 
 <!-- end list -->
 
-1)  In the "List" tab, click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Manual".
+1.  In the "List" tab, click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Manual".
 
 > The Resync details screen appears.
 
-2)  Click "Sync".
+2.  Click "Sync".
 
 > Data collection is performed. The data collection results appear in the "Running logs" table with the "Log Type" set to "sync".
 > 
 > ![](media/media/image308.png)
 
-3)  Click "Import".
+3.  Click "Import".
 
 > The retrieved data is imported into your System.
 > 
@@ -14927,17 +14927,17 @@ To delete actions individually, do the following:
 
 To delete multiple actions at once, do the following:
 
-1)  > In the "List" tab, check the check boxes at the beginning of the lines.
+1.  > In the "List" tab, check the check boxes at the beginning of the lines.
 
 ![](media/media/image332.png)
 
-2)  > Click on the "With selected" tab, and select "Delete".
+2.  > Click on the "With selected" tab, and select "Delete".
 
 > You are prompted to confirm the deletion.
 
 ![](media/media/image333.png)
 
-3)  > Click "OK".
+3.  > Click "OK".
 
 > The actions are deleted.
 
@@ -15595,7 +15595,7 @@ This section explains how to view User Profiles.
 
 The "List" tab shows a list of identities. You can filter the list by selecting criteria and specifying values in "Add Filter".
 
-![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image365.png)
+![](media/media/image365.png)
 
 2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
 
@@ -15710,7 +15710,7 @@ This section explains how to set up display languages. The languages you configu
 
 A screen appears where you can configure languages.
 
-2.  To add a display language, select it from "Target language" and click "\>". To remove a display language, select it from "Registered language" and click "\<".
+2.  To add a display language, select it from "Target language" and click "\>". To remove a display language, select it from "Registered language" and click "&lt;".
 
 According to your action, the language is added to or removed from "Registered language".
 
@@ -15903,11 +15903,11 @@ A screen appears where you can configure the color. The default is set to white.
 
 <!-- end list -->
 
-1)  > Repeatedly click the "RGB" bar until the label displays "HSL".
+1.  > Repeatedly click the "RGB" bar until the label displays "HSL".
     
     ![](media/media/image376.png)
 
-2)  > Specify the HSL values in percentage points in the respective "H", "S", and "L" boxes.
+2.  > Specify the HSL values in percentage points in the respective "H", "S", and "L" boxes.
     
     The background color reflects the specified HSL value.
     
@@ -15919,9 +15919,9 @@ A screen appears where you can configure the color. The default is set to white.
 
 <!-- end list -->
 
-1)  > Repeatedly click the "RGB" bar until the label displays "HEX".
+1.  > Repeatedly click the "RGB" bar until the label displays "HEX".
 
-2)  > Specify the color code in the HEX text box.
+2.  > Specify the color code in the HEX text box.
     
     The background color reflects the specified color code.
     
@@ -16685,19 +16685,19 @@ Table 16‑11. The elements in "Site Info"
 
 <!-- end list -->
 
-1)  > Specify a site name in the default language.
+1.  > Specify a site name in the default language.
     
     The initial display is the language shown at the top of the "Registered language" list in the "Language" screen.
 
-2)  > Click "+Add site name".
+2.  > Click "+Add site name".
     
     A field is added for an additional site name
 
-3)  > Select a language and specify a site name.
+3.  > Select a language and specify a site name.
     
     The language options shown in the pull-down are those included in the "Registered language" list in the "Language" screen.
 
-4)  > Click "Delete" to delete a site name.
+4.  > Click "Delete" to delete a site name.
     
     The field for the corresponding site name is deleted.
     
@@ -16709,13 +16709,13 @@ Table 16‑11. The elements in "Site Info"
 
 <!-- end list -->
 
-1)  > Click "Select icon file".
+1.  > Click "Select icon file".
 
 > A dialog appears where you can select an icon file.
 
 You can select an icon with the extension ".ico".
 
-2)  > Select an icon and click the "Open" button.
+2.  > Select an icon and click the "Open" button.
     
     The selected icon name appears with the corresponding image.
 
