@@ -295,7 +295,7 @@ Figure 1-2. Data registration
 
 This section explains the terminology used in the System.
 
-Table 1‑1. Terms used in the System
+Table 1-1. Terms used in the System
 
 <table>
 <thead>
@@ -443,7 +443,7 @@ Table 1‑1. Terms used in the System
 
 The following table shows the System features.
 
-Table 1‑2. The features related to registering and viewing data in the System
+Table 1-2. The features related to registering and viewing data in the System
 
 | Features                                                                                              | Description                                                                                                                                                                                                      |
 | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -462,7 +462,7 @@ You will find the following elements in the Home screen.
 
 > ![](media/media/image3.png)
 
-Table 1‑3. The elements in the Home screen
+Table 1-3. The elements in the Home screen
 
 <table>
 <thead>
@@ -575,7 +575,7 @@ The login screen appears.
 
 ![](media/media/image11.png)
 
-Table 2‑1. The elements in the "Log in" screen
+Table 2-1. The elements in the "Log in" screen
 
 | No. | Element                                                         | Description                                                                                                                                                                                                                  |
 | --- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -608,7 +608,7 @@ Table 2‑1. The elements in the "Log in" screen
     
     ![](media/media/image14.png)
 
-Table 2‑2. The elements in the GakuNin Embedded DS login screen (pattern 1)
+Table 2-2. The elements in the GakuNin Embedded DS login screen (pattern 1)
 
 | No. | Element                                                              | Description                                                                                                                          |
 | --- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -631,7 +631,7 @@ The WEKO3 home screen appears.
 
 ![](media/media/image19.png)
 
-Table 2‑3. The elements in the GakuNin Embedded DS login screen (pattern 2)
+Table 2-3. The elements in the GakuNin Embedded DS login screen (pattern 2)
 
 <table>
 <thead>
@@ -736,7 +736,7 @@ Figure 2-3. The "Change password" screen
 
 ![](media/media/image23.png)
 
-Table 2‑4. The elements in the "Change password" screen
+Table 2-4. The elements in the "Change password" screen
 
 | No. | Element                                               | Description                                                                                        |
 | --- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -761,7 +761,7 @@ The "Sign up" screen appears.
 
 ![](media/media/image25.png)
 
-Table 2‑5. The elements in the "Sign up" screen
+Table 2-5. The elements in the "Sign up" screen
 
 | No. | Element                                               | Description                                                                                                                                                                          |
 | --- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -967,7 +967,7 @@ Figure 3-1. The "Most Viewed Items" screen
 
 ![](media/media/image39.png)
 
-Table 3‑1. The elements in the "Most Viewed Items" screen
+Table 3-1. The elements in the "Most Viewed Items" screen
 
 | No. | Element            | Description                                                                                              |
 | --- | ------------------ | -------------------------------------------------------------------------------------------------------- |
@@ -1050,7 +1050,7 @@ Enter a keyword in the keyword search text box and check the "Full text" or "Key
 
 19. 
 
-Table 3‑2. The elements in the simple search screen
+Table 3-2. The elements in the simple search screen
 
 <table>
 <thead>
@@ -1101,7 +1101,7 @@ The search results appear. See "Chapter 4: View item details" for more informati
 
 ![](media/media/image46.png)
 
-Table 3‑3. The elements in the "Search Results" screen
+Table 3-3. The elements in the "Search Results" screen
 
 | No. | Element                                               | Description                                                                                                                                                                                                      |
 | --- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1157,7 +1157,7 @@ Note: To use the search criteria you have set, use the search button in the adva
 
 ![](media/media/image53.png)
 
-Table 3‑4. The elements in the advanced search screen
+Table 3-4. The elements in the advanced search screen
 
 <table>
 <thead>
@@ -1207,7 +1207,7 @@ Figure 3-6. The "Search Results" screen
 
 ![](media/media/image60.png)
 
-Table 3‑5. The elements in the "Search Results" screen
+Table 3-5. The elements in the "Search Results" screen
 
 | No. | Element                                               | Description                                                                                                                                                                                          |
 | --- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1307,7 +1307,7 @@ Figure 4-1. The item details screen
 
 ![](media/media/image66.png)
 
-Table 4‑1. The elements in the item details screen
+Table 4-1. The elements in the item details screen
 
 <table>
 <thead>
@@ -1401,7 +1401,7 @@ Figure 4-2. The "Confirm" screen
 
 ![](media/media/image71.png)
 
-Table 4‑2. The elements in the "Confirm" screen
+Table 4-2. The elements in the "Confirm" screen
 
 | No. | Element                                                         | Description                                                          |
 | --- | --------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -1454,7 +1454,7 @@ Figure 4-5. The "Versions" screen
 
 ![](media/media/image79.png)
 
-Table 4‑3. The elements in the "Versions" screen
+Table 4-3. The elements in the "Versions" screen
 
 | No. | Element           | Description                                           |
 | --- | ----------------- | ----------------------------------------------------- |
@@ -1584,7 +1584,7 @@ Figure 4-6. The "Share" screen
 
 ![](media/media/image89.png)
 
-Table 4‑4. The elements in the "Share" screen
+Table 4-4. The elements in the "Share" screen
 
 | No. | Element                                                                 | Description                                                                                                                                    |
 | --- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1608,7 +1608,7 @@ You can view item metadata as bibliographic citation.
 
 ![](media/media/image97.png)
 
-Table 4‑5. The elements in the "Cite as" screen
+Table 4-5. The elements in the "Cite as" screen
 
 <table>
 <thead>
@@ -1649,7 +1649,7 @@ Figure 4-10. The "Export" screen
 
 ![](media/media/image99.png)![](media/media/image100.png)
 
-Table 4‑6. The elements in the "Export" screen
+Table 4-6. The elements in the "Export" screen
 
 | No. | Element                 | Description                                                                 |
 | --- | ----------------------- | --------------------------------------------------------------------------- |
@@ -1666,7 +1666,7 @@ Table 4‑6. The elements in the "Export" screen
 
 The "Communities" area displays the communities to which the item belongs.
 
-Table 4‑7. The elements in the "Communities" area
+Table 4-7. The elements in the "Communities" area
 
 | No. | Element         | Description                                                    |
 | --- | --------------- | -------------------------------------------------------------- |
@@ -1687,7 +1687,7 @@ Figure 4-12. The "Stats" tab
 
 The following table explains each element in the Information screen.
 
-Table 4‑8. The elements in the Information screen
+Table 4-8. The elements in the Information screen
 
 <table>
 <thead>
@@ -1730,7 +1730,7 @@ Table 4‑8. The elements in the Information screen
 
 The following table explains the elements displayed in the "Version" and "Stats" tabs.
 
-Table 4‑9. The "Version" and "Stats" tabs on the Information screen
+Table 4-9. The "Version" and "Stats" tabs on the Information screen
 
 | No. | Tab   | Element                     | Description                                                                                                                                                      |
 | --- | ----- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1815,7 +1815,7 @@ The metadata is registered with Google Scholar based on the output metadata.
 
 The JPCOAR mapping (jpcoar_v2_mapping) corresponds to the Google Scholar metadata as follows.
 
-Table 4‑10. Google Scholar metadata
+Table 4-10. Google Scholar metadata
 
 | No. | JPCOAR mapping     | Google Scholar metadata |
 | --- | ------------------ | ----------------------- |
@@ -1839,7 +1839,7 @@ Google Dataset metadata is output when the following conditions are met:
 
 Google Dataset metadata is output as follows.
 
-Table 4‑11. Google Dataset metadata
+Table 4-11. Google Dataset metadata
 
 <table>
 <thead>
@@ -2035,7 +2035,7 @@ See "Section 5.2. View activities" for more information on this screen.
 
 ![](media/media/image107.png)
 
-Table 5‑1. The elements in the workflow selection screen
+Table 5-1. The elements in the workflow selection screen
 
 | No. | Element                                                | Description                                                                                                                                                                               |
 | --- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2049,7 +2049,7 @@ The "Step" screen for the flow set at the start of the selected workflow appears
 
 ![](media/media/image108.png)
 
-Table 5‑2. The actions in the "Step" screen
+Table 5-2. The actions in the "Step" screen
 
 | No. | Action Name       | Description                                                   |
 | --- | ----------------- | ------------------------------------------------------------- |
@@ -2111,7 +2111,7 @@ This section explains how to automatically populate metadata from an external da
     
     ![](media/media/image117.png)
 
-Table 5‑4. The elements in the "Automatic metadata input" screen
+Table 5-4. The elements in the "Automatic metadata input" screen
 
 <table>
 <thead>
@@ -2335,7 +2335,7 @@ Additional Information:
 > 
 > You can also change the file display order in the item details screen by dragging and dropping the files to rearrange them in the input area.
 
-Table 5‑6. The elements in the Item Registration screen
+Table 5-6. The elements in the Item Registration screen
 
 | No. | Element                                                          | Description                                                                                                                                                                                                                    |
 | --- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -2876,7 +2876,7 @@ Table 5-13. The elements in the Item Registration screen
 <tr class="odd">
 <td>1</td>
 <td>"PubDate" pull-down list<sup>*</sup></td>
-<td>Select the publish date from the pull-down list or enter it manually. Enter a date in the <em>yyyy-mm-dd</em> format. To select from the pull-down list, see "Figure 5‑10. "PubDate" pull-down list".</td>
+<td>Select the publish date from the pull-down list or enter it manually. Enter a date in the <em>yyyy-mm-dd</em> format. To select from the pull-down list, see "Figure 5-10. "PubDate" pull-down list".</td>
 </tr>
 <tr class="even">
 <td>2</td>
@@ -3139,7 +3139,7 @@ This section explains how to set up the version type.
 
 ![](media/media/image171.png)
 
-Figure 5‑18. The "Version Type" pull-down list
+Figure 5-18. The "Version Type" pull-down list
 
 ![](media/media/image172.png)
 
@@ -3178,7 +3178,7 @@ See "Table 5-14. The elements in the creator search screen" for information on t
 
 ![](media/media/image176.png)
 
-> Table 5‑16. The elements in the "Feedback Mail Destination" screen
+> Table 5-16. The elements in the "Feedback Mail Destination" screen
 
 <table>
 <thead>
@@ -3405,7 +3405,7 @@ Displays the name of the index checked in the Index Tree.
 
 ![](media/media/image184.png)
 
-Table 5‑22. The elements in the "Specific index" screen
+Table 5-22. The elements in the "Specific index" screen
 
 | No. | Element                                                | Description                                                               |
 | --- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
@@ -3426,7 +3426,7 @@ The comment input screen appears.
 
 ![](media/media/image186.png)![](media/media/image186.png)![](media/media/image187.png)
 
-Table 5‑23. The elements in the comment input screen
+Table 5-23. The elements in the comment input screen
 
 | No. | Element                                                                             | Description                                                                  |
 | --- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -3484,7 +3484,7 @@ This section explains how to grant a DOI to an item in the Identifier Grant acti
 
 ![](media/media/image194.png)
 
-Figure 5‑20. The "Identifier Grant" screen
+Figure 5-20. The "Identifier Grant" screen
 
 ![](media/media/image195.png)
 
@@ -3802,7 +3802,7 @@ Table 5-26. The elements in the activities list screen
 
 > ![](media/media/image211.png)
 
-Table 5‑27. The elements in the filter screen
+Table 5-27. The elements in the filter screen
 
 <table>
 <thead>
@@ -3864,7 +3864,7 @@ This section explains how to page through the activities list.
 
 ![](media/media/image214.png)
 
-Table 5‑28. The elements for paging
+Table 5-28. The elements for paging
 
 <table>
 <thead>
@@ -3964,7 +3964,7 @@ This section explains how to view the activity details.
 
 The activity details screen appears.
 
-Figure 5‑25. The activity details screen
+Figure 5-25. The activity details screen
 
 ![](media/media/image218.png)
 
@@ -4122,7 +4122,7 @@ If the "Delete" button of an item is pressed on another device or on the same de
 
 ![](media/media/image233.png)
 
-Table 6‑1. The elements in the "Confirm" screen
+Table 6-1. The elements in the "Confirm" screen
 
 | No. | Element                                                         | Description                                                            |
 | --- | --------------------------------------------------------------- | ---------------------------------------------------------------------- |
@@ -4265,7 +4265,7 @@ The "Communities" screen appears.
 
 ![](media/media/image237.png)
 
-Table 9‑1. The elements in the "Communities" screen
+Table 9-1. The elements in the "Communities" screen
 
 | No. | Element                     | Description                                                                                                                                                                  |
 | --- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4313,7 +4313,7 @@ The "Profile" screen appears.
 
 ![](media/media/image240.png)![](media/media/image240.png)![](media/media/image241.png)
 
-Table 10‑1. The elements in the "Profile" screen
+Table 10-1. The elements in the "Profile" screen
 
 | No. | Element                                                          | Description                                                                                                                                                            |
 | --- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4387,7 +4387,7 @@ A screen appears where you can create an action.
 
 ![](media/media/image250.png)![](media/media/image252.png)
 
-Table 10‑2. The elements in the "New OAuth Application" screen
+Table 10-2. The elements in the "New OAuth Application" screen
 
 <table>
 <thead>
@@ -4445,7 +4445,7 @@ A screen appears where you can create an action.
 
 ![](media/media/image254.png)
 
-Table 10‑3. The elements in the "New personal access token" screen
+Table 10-3. The elements in the "New personal access token" screen
 
 | No. | Element | Description     |
 | --- | ------- | --------------- |
@@ -4543,7 +4543,7 @@ This section explains how to display the cookie consent screen.
 
 The following table shows the items displayed in the cookie consent screen.
 
-Table 10‑4. The items displayed in the cookie consent screen
+Table 10-4. The items displayed in the cookie consent screen
 
 | No. | Type        | Purpose                                                                                   | Application                     |
 | --- | ----------- | ----------------------------------------------------------------------------------------- | ------------------------------- |
@@ -4576,7 +4576,7 @@ Note: That the index where the item is registered is public and that the Publish
 
 When the Secret URL feature is enabled, the following items are added.
 
-Table 10‑5. The items displayed when the Secret URL feature is enabled
+Table 10-5. The items displayed when the Secret URL feature is enabled
 
 | No. | Element                 | Description                                                                                                                                                                                                                      |
 | --- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4592,7 +4592,7 @@ Click the "Secret URL" button to display the area for creating a secret URL.
 
 The following table explains the items in the area for creating a secret URL.
 
-Table 10‑6. The items in the area for creating a secret URL
+Table 10-6. The items in the area for creating a secret URL
 
 | No. | Element                        | Description                                                                                                                      |
 | --- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |

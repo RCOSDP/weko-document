@@ -712,13 +712,13 @@ This chapter provides a high-level overview of the System.
 
 The System allows you to store and publish academic research results. The System's repository can store content in a variety of formats, including PDF files, videos, and images. You can efficiently manage research results by categorizing and arranging them in a tree structure. You can also reference data by keyword search or full-text search. The data in the repository can also be synchronized with other repositories. For information on the terminology used in this document, such as "item" or "index", see Secton 1.2. "Glossary".
 
-Figure 1‑1. Data management in the System
+Figure 1-1. Data management in the System
 
 ![](media/media/image1.png)
 
 To register an item, you must first create a workflow and register the item. You then need to get approval from reviewers/approvers before publishing the item.
 
-Figure 1‑2. Registering data
+Figure 1-2. Registering data
 
 ![](media/media/image2.png)
 
@@ -726,7 +726,7 @@ Figure 1‑2. Registering data
 
 This section explains the terminology used in the System.
 
-Table 1‑1. Terms used in the System
+Table 1-1. Terms used in the System
 
 <table>
 <thead>
@@ -879,7 +879,7 @@ Table 1‑1. Terms used in the System
 
 The following table shows the administrator roles for the System.
 
-Table 1‑2. Administrator roles for the System
+Table 1-2. Administrator roles for the System
 
 | Administrator role                                                                               | Description                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -889,7 +889,7 @@ Table 1‑2. Administrator roles for the System
 
 The following table shows the administrative features of the System and the administrator roles that can perform each operation.
 
-Table 1‑3. System features and administrator roles
+Table 1-3. System features and administrator roles
 
 Legend: 〇: Feature available, ×: Feature not available
 
@@ -1716,7 +1716,7 @@ For information on the input formats, see "Table 2-1. Input formats for metadata
 
 ![](media/media/image7.png)
 
-Table 2‑1. Input formats for metadata attributes
+Table 2-1. Input formats for metadata attributes
 
 <table>
 <thead>
@@ -1901,7 +1901,7 @@ Select "Deleted Item Type" to display the deleted item types. "Deleted Item Type
 
 The following table shows the operations that are enabled for each item type.
 
-Table 2‑2. The operations that are enabled for each item type
+Table 2-2. The operations that are enabled for each item type
 
 Legend: 〇: Available, ×: Not available
 
@@ -7183,7 +7183,7 @@ An element is added.
     
     The options also appear directly under the child element. You can check one or more of the "Required", "Show List", "Specify Newline", or "Hide" checkboxes.
 
-Table 2‑3. Elements available in "Option"
+Table 2-3. Elements available in "Option"
 
 | Option          | Description                                                                                              |
 | --------------- | -------------------------------------------------------------------------------------------------------- |
@@ -7319,7 +7319,7 @@ If an unexpected situation occurs, such as the item type not being found, the pr
 
 If all of the above checks are passed, the item type is deleted and message No. 8 appears.
 
-Table 2‑5. Messages displayed on deletion
+Table 2-5. Messages displayed on deletion
 
 | No. | Type    | Message |
 | --- | ------- | ------- |
@@ -8349,7 +8349,7 @@ The RO-Crate mapping in this screen is a separate setting from the JSON-LD mappi
 
 To access the mapping screen, click "Item Types" and then click "RO-Crate Mapping". If no item type is registered, "You do not even have an itemtype." appears.
 
-Table 2‑6. The elements in the "RO-Crate Mapping" screen
+Table 2-6. The elements in the "RO-Crate Mapping" screen
 
 | Element | Description |
 |---|---|
@@ -8388,9 +8388,9 @@ Table 2‑6. The elements in the "RO-Crate Mapping" screen
 
     The input is checked, and if there is no problem, the settings are saved. "Successfully saved new mapping." appears at the top of the screen.
 
-    If the input is incomplete, a message in "Table 2‑7. Error messages of the RO-Crate mapping" appears in the corresponding input field, and the settings are not saved.
+    If the input is incomplete, a message in "Table 2-7. Error messages of the RO-Crate mapping" appears in the corresponding input field, and the settings are not saved.
 
-Table 2‑7. Error messages of the RO-Crate mapping
+Table 2-7. Error messages of the RO-Crate mapping
 
 | No. | Message | Cause |
 |---|---|---|
@@ -8404,7 +8404,7 @@ Table 2‑7. Error messages of the RO-Crate mapping
 
 Notes:
 
-  - If the node being edited has incomplete input, a message No. 2 to 6 in Table 2‑7 appears, and you cannot select another node.
+  - If the node being edited has incomplete input, a message No. 2 to 6 in Table 2-7 appears, and you cannot select another node.
 
   - If you switch the "Item Type" with unsaved changes, the confirmation dialog "Would you like to cancel your changes?" appears. Click "OK" to discard the changes and switch, or click "Close" to cancel switching.
 
@@ -8568,7 +8568,7 @@ The "Select" tab is where you can start importing items.
     
     If an error occurs when downloading an item type, the error message "Failed to download" will appear.
 
-Table 3‑1. The content of the downloaded item type template
+Table 3-1. The content of the downloaded item type template
 
 <table>
 <thead>
@@ -8667,9 +8667,9 @@ For elements other than the metadata files defined for item types, see the "Supp
 
     When "Change Identifier Mode" is enabled and a DOI is specified for an item, the System checks whether the DOI exists in the registered DOIs.
 
-    If a record that matches the specified DOI exists in the registered DOIs, error message No. 1 in Table 3‑2 appears. If a withdrawn DOI is specified, error message No. 2 in Table 3‑2 appears. If the specified DOI is duplicated in the import file, error message No. 3 in Table 3‑2 appears.
+    If a record that matches the specified DOI exists in the registered DOIs, error message No. 1 in Table 3-2 appears. If a withdrawn DOI is specified, error message No. 2 in Table 3-2 appears. If the specified DOI is duplicated in the import file, error message No. 3 in Table 3-2 appears.
 
-Table 3‑2. Error messages of the DOI duplication check
+Table 3-2. Error messages of the DOI duplication check
 
 | No. | Type  | Message |
 | --- | ----- | ------- |
@@ -8685,7 +8685,7 @@ Items with "Error" results cannot be imported. Check the file and start again fr
 
 > ![](media/media/image84.png)
 
-Table 3‑3. The elements on the "Import" tab
+Table 3-3. The elements on the "Import" tab
 
 <table>
 <thead>
@@ -8754,7 +8754,7 @@ Table 3‑3. The elements on the "Import" tab
 
 If an error occurs when downloading, the error message "Failed to download" will appear.
 
-Table 3‑4. Validation check results associated with the tsv format
+Table 3-4. Validation check results associated with the tsv format
 
 <table>
 <thead>
@@ -8914,7 +8914,7 @@ Table 3‑4. Validation check results associated with the tsv format
 
 \* The checks related to upload IDs in the table are for the large file upload feature, which has not been released (its release has been postponed). In the current version, you cannot specify an upload ID on import.
 
-Table 3‑5. Validation check results not associated with metadata elements
+Table 3-5. Validation check results not associated with metadata elements
 
 <table>
 <thead>
@@ -9135,7 +9135,7 @@ Table 3‑5. Validation check results not associated with metadata elements
 </tbody>
 </table>
 
-Table 3‑6. Validation check results associated with metadata elements
+Table 3-6. Validation check results associated with metadata elements
 
 | Type  | Element                                                                                  | English                                                                                                                                | Japanese                                                         | Description                                                                                                                                               |
 | ----- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9155,17 +9155,17 @@ Table 3‑6. Validation check results associated with metadata elements
     > Register the DOI and CNRI specified for the new item you import.  
     > Edit the DOI and CNRI registered in the existing item.
     
-    If the specified DOI is used for another item, message No. 1 in Table 3‑7 appears.
+    If the specified DOI is used for another item, message No. 1 in Table 3-7 appears.
     
-    If the specified DOI has been withdrawn, message No. 2 in Table 3‑7 appears.
+    If the specified DOI has been withdrawn, message No. 2 in Table 3-7 appears.
     
-    If you perform import after deleting an individual item, message No. 3 in Table 3‑7 appears.
+    If you perform import after deleting an individual item, message No. 3 in Table 3-7 appears.
     
-    If you perform import while editing an individual item, message No. 4 in Table 3‑7 appears.
+    If you perform import while editing an individual item, message No. 4 in Table 3-7 appears.
     
     If the user's session validity time is exceeded, the import process will still be executed.
 
-Table 3‑7. Error messages of the import results
+Table 3-7. Error messages of the import results
 
 | No. | Message |
 | --- | ------- |
@@ -9205,7 +9205,7 @@ Table 3‑7. Error messages of the import results
     
     ![](media/media/image86.png)
 
-Table 3‑8. The elements in the "Result" tab
+Table 3-8. The elements in the "Result" tab
 
 <table>
 <thead>
@@ -9756,7 +9756,7 @@ If the replacement rules are set incorrectly (for example, a nonexistent rule na
 
   - Destination indexes: There is no restriction by community, and you can specify any index.
 
-Table 3‑9. Endpoints of the bulk import API
+Table 3-9. Endpoints of the bulk import API
 
 | No. | Request | Description |
 |-----|-----------|------|
@@ -9831,7 +9831,7 @@ An index ("New Index") is added to the bottom line of that index. No selection i
     
     ![](media/media/image90.png)The following table lists the information you can enter for the index.
 
-Table 4‑1. The elements in "Index Edit"
+Table 4-1. The elements in "Index Edit"
 
 <table>
 <thead>
@@ -10071,7 +10071,7 @@ The setting elements for the journal information appear.
     
     ![](media/media/image102.png)
 
-Table 4‑2. "Journal Information" elements and their corresponding KBART values
+Table 4-2. "Journal Information" elements and their corresponding KBART values
 
 <table>
 <thead>
@@ -10133,7 +10133,7 @@ Table 4‑2. "Journal Information" elements and their corresponding KBART values
 <p>　* Specify "97", followed by "8" or "9", a hyphen (-), one or more digits of "0" to "9", a hyphen (-), one or more digits of "0" to "9", a hyphen (-), one or more digits of "0" to "9", a hyphen (-), and a single-digit of "0" to "9" or "X".</p></td>
 </tr>
 <tr class="even">
-<td> Date of first issue available online<sup>*</sup></td>
+<td> Date of first issue available online<sup>*</sup></td>
 <td>date_first_issue_online</td>
 <td><p>Enter the date of the first issue available online. This element is required.</p>
 <p>Format: YYYY-MM-DD, YYYY-MM, or YYYY</p></td>
@@ -10149,7 +10149,7 @@ Table 4‑2. "Journal Information" elements and their corresponding KBART values
 <td>Enter the number of the first issue available online.</td>
 </tr>
 <tr class="odd">
-<td> Date of last issue available online</td>
+<td> Date of last issue available online</td>
 <td>date_last_issue_online</td>
 <td><p>Enter the date of the last issue available online.</p>
 <p>Format: YYYY-MM-DD, YYYY-MM, or YYYY</p></td>
@@ -10189,7 +10189,7 @@ Table 4‑2. "Journal Information" elements and their corresponding KBART values
 <td>Enter the publisher name.</td>
 </tr>
 <tr class="even">
-<td>Publication type<sup>*</sup> </td>
+<td>Publication type<sup>*</sup> </td>
 <td>publication_type</td>
 <td><p>Select the publication type.</p>
 <p>Choice: Serial</p></td>
@@ -10267,11 +10267,11 @@ The asterisk (\*) denotes a required entry.
 
 Error messages will be automatically displayed if the entry does not meet the relevant restriction or format.
 
-Figure 4‑1. An error message when the entry does not meet the relevant format
+Figure 4-1. An error message when the entry does not meet the relevant format
 
 ![](media/media/image103.png)
 
-Figure 4‑2. An error message when the entry does not meet the relevant restriction
+Figure 4-2. An error message when the entry does not meet the relevant restriction
 
 ![](media/media/image104.png)
 
@@ -10367,7 +10367,7 @@ A screen appears where you can create a widget.
 
 The following table lists the information you can enter.
 
-Table 5‑1. Elements and descriptions for creating a widget
+Table 5-1. Elements and descriptions for creating a widget
 
 <table>
 <thead>
@@ -10473,11 +10473,11 @@ Specify the widget type. The following are examples of input and display for eac
 
 ##### Free description
 
-Figure 5‑1. Elements for the Free description setting
+Figure 5-1. Elements for the Free description setting
 
 ![](media/media/image117.png)
 
-Table 5‑2. Elements and descriptions for the free description setting
+Table 5-2. Elements and descriptions for the free description setting
 
 <table>
 <thead>
@@ -10567,41 +10567,41 @@ Table 5‑2. Elements and descriptions for the free description setting
 </tbody>
 </table>
 
-Figure 5‑2. The formats for the header
+Figure 5-2. The formats for the header
 
 ![](media/media/image135.png)
 
-Figure 5‑3. Fonts
+Figure 5-3. Fonts
 
 ![](media/media/image136.png)
 
-Figure 5‑4. Text size
+Figure 5-4. Text size
 
 ![](media/media/image137.png)
 
-Figure 5‑5. Text color
+Figure 5-5. Text color
 
 ![](media/media/image138.png)
 
-Figure 5‑6. The background color of the text
+Figure 5-6. The background color of the text
 
 ![](media/media/image139.png)
 
-Figure 5‑7. The Insert Link popup
+Figure 5-7. The Insert Link popup
 
 ![](media/media/image140.png)
 
-Figure 5‑8. Sample Free description display
+Figure 5-8. Sample Free description display
 
 ![](media/media/image141.png)
 
 ##### Access counter
 
-Figure 5‑9. Elements for the Access counter setting
+Figure 5-9. Elements for the Access counter setting
 
 ![](media/media/image142.png)
 
-Table 5‑3. Elements and descriptions for the access counter setting
+Table 5-3. Elements and descriptions for the access counter setting
 
 <table>
 <thead>
@@ -10631,17 +10631,17 @@ Table 5‑3. Elements and descriptions for the access counter setting
 </tbody>
 </table>
 
-Figure 5‑10. Sample Access counter display
+Figure 5-10. Sample Access counter display
 
 ![](media/media/image143.png)
 
 ##### Notice
 
-Figure 5‑11. Elements for the Notice setting
+Figure 5-11. Elements for the Notice setting
 
 ![](media/media/image144.png)
 
-Table 5‑4. Elements and descriptions for the Notice setting
+Table 5-4. Elements and descriptions for the Notice setting
 
 <table>
 <thead>
@@ -10680,17 +10680,17 @@ Table 5‑4. Elements and descriptions for the Notice setting
 </tbody>
 </table>
 
-Figure 5‑12. Sample Notice display
+Figure 5-12. Sample Notice display
 
 ![](media/media/image145.png)
 
 ##### New arrivals
 
-Figure 5‑13. Elements for the New arrivals setting
+Figure 5-13. Elements for the New arrivals setting
 
 ![](media/media/image146.png)
 
-Table 5‑5. Elements and descriptions for New arrivals
+Table 5-5. Elements and descriptions for New arrivals
 
 <table>
 <thead>
@@ -10719,37 +10719,37 @@ Table 5‑5. Elements and descriptions for New arrivals
 </tbody>
 </table>
 
-Figure 5‑14. The New date pull-down
+Figure 5-14. The New date pull-down
 
 ![](media/media/image147.png)
 
-Figure 5‑15. The "Display Results" pull-down
+Figure 5-15. The "Display Results" pull-down
 
 ![](media/media/image148.png)
 
-Figure 5‑16. Sample New arrivals display
+Figure 5-16. Sample New arrivals display
 
 ![](media/media/image149.png)
 
 ##### Main contents
 
-Figure 5‑17. Elements for the Main contents setting
+Figure 5-17. Elements for the Main contents setting
 
 ![](media/media/image150.png)
 
 The elements for "Main contents" are only those described in "Table 5-1. Elements and descriptions for creating a widget".
 
-Figure 5‑18. Sample Main contents display
+Figure 5-18. Sample Main contents display
 
 ![](media/media/image151.png)
 
 ##### Menu
 
-Figure 5‑19. Elements for the Menu setting
+Figure 5-19. Elements for the Menu setting
 
 ![](media/media/image152.png)
 
-Table 5‑6. Elements and descriptions for Menu
+Table 5-6. Elements and descriptions for Menu
 
 <table>
 <thead>
@@ -10795,17 +10795,17 @@ Table 5‑6. Elements and descriptions for Menu
 </tbody>
 </table>
 
-Figure 5‑20. Color specification
+Figure 5-20. Color specification
 
 ![](media/media/image153.png)
 
-Figure 5‑21. Sample Menu display
+Figure 5-21. Sample Menu display
 
 ![](media/media/image154.png)
 
 ##### Header
 
-Figure 5‑22. Elements for the Header setting
+Figure 5-22. Elements for the Header setting
 
 ![](media/media/image155.png)
 
@@ -10815,17 +10815,17 @@ See "Figure 5-20. Color specification" for specifying a color. The default is se
 
 For the detailed settings for the Free description option, see "Table 5-2. Elements and descriptions for the free description setting".
 
-Figure 5‑23. Sample Header display
+Figure 5-23. Sample Header display
 
 ![](media/media/image156.png)
 
 ##### Footer
 
-Figure 5‑24. Elements for the Footer setting
+Figure 5-24. Elements for the Footer setting
 
 ![](media/media/image157.png)
 
-Figure 5‑25. Sample Footer display
+Figure 5-25. Sample Footer display
 
 ![](media/media/image158.png)
 
@@ -10839,7 +10839,7 @@ For the detailed settings for the Free description option, see "Table 5-2. Eleme
 
 Specify the theme of the widget.
 
-Table 5‑7. Sample display for each theme
+Table 5-7. Sample display for each theme
 
 | Theme     | Sample display                             | Description                                                                                                |
 | --------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
@@ -10851,7 +10851,7 @@ Table 5‑7. Sample display for each theme
 
 Specify the border style of the widget.
 
-Table 5‑8. Sample display for each border style
+Table 5-8. Sample display for each border style
 
 | Theme  | Sample display                             | Description                 |
 | ------ | ------------------------------------------ | --------------------------- |
@@ -11087,7 +11087,7 @@ The registered author IDs appear on the list in the "Author ID" tab.
 
 > The following table lists the information displayed.
 
-Table 6‑1. The elements in the Author ID list
+Table 6-1. The elements in the Author ID list
 
 <table>
 <thead>
@@ -11167,7 +11167,7 @@ The screen appears where you can add an author.
 
 The following table lists the information you can enter.
 
-Table 6‑2. The elements in the "Name" area
+Table 6-2. The elements in the "Name" area
 
 <table>
 <thead>
@@ -11267,7 +11267,7 @@ Table 6‑2. The elements in the "Name" area
 
 The following table lists the information you can enter.
 
-Table 6‑3. The elements in the "Author ID" area
+Table 6-3. The elements in the "Author ID" area
 
 <table>
 <thead>
@@ -11327,7 +11327,7 @@ Notes on the landing page URL:
     
     ![](media/media/image190.png)
 
-Table 6‑4. The elements in the "E-Mail" area
+Table 6-4. The elements in the "E-Mail" area
 
 <table>
 <thead>
@@ -11355,7 +11355,7 @@ Table 6‑4. The elements in the "E-Mail" area
 
 6.  Enter the community information.
 
-Table 6‑5. The elements in the "Community" area
+Table 6-5. The elements in the "Community" area
 
 | Element          | Description |
 | ---------------- | ----------- |
@@ -11447,7 +11447,7 @@ The registered ID Prefixes appear in the list on the "ID Prefix" tab.
 
 > The following table lists the information displayed.
 
-Table 6‑6. The elements in the ID Prefix list
+Table 6-6. The elements in the ID Prefix list
 
 <table>
 <thead>
@@ -11491,7 +11491,7 @@ This section explains how to add an external author ID Prefix.
 
 The following table lists the information you can enter.
 
-Table 6‑7. The elements for the external author ID Prefix
+Table 6-7. The elements for the external author ID Prefix
 
 <table>
 <thead>
@@ -11631,7 +11631,7 @@ The registered affiliation ID Prefixes appear in the list.
 
 The following table lists the information displayed.
 
-Table 6‑8. The elements in the affiliation ID Prefix list
+Table 6-8. The elements in the affiliation ID Prefix list
 
 | Element     | Description |
 | ----------- | ----------- |
@@ -11647,7 +11647,7 @@ To add an affiliation ID Prefix, enter the affiliation identifier, the scheme na
 
 The following table lists the information you can enter.
 
-Table 6‑9. The elements in the "Affiliation ID" tab
+Table 6-9. The elements in the "Affiliation ID" tab
 
 | Element                | Description |
 | ---------------------- | ----------- |
@@ -11712,7 +11712,7 @@ This section explains how to bulk export author information.
 > 
 > Click on the URL to download the tsv file.
 
-Table 6‑10. The elements of author information to be downloaded
+Table 6-10. The elements of author information to be downloaded
 
 <table>
 <thead>
@@ -11962,7 +11962,7 @@ This section explains how to import author information by specifying a file.著�
 
     If the file format does not match the target selected in "Import target", an error occurs.
 
-    Table 6-11 lists the imported elements contained in the tsv file when importing the author DB. Table 6‑11‑1 lists the elements contained in the tsv file when importing identifier information. The first row of identifier information contains a string indicating the table.
+    Table 6-11 lists the imported elements contained in the tsv file when importing the author DB. Table 6-11-1 lists the elements contained in the tsv file when importing identifier information. The first row of identifier information contains a string indicating the table.
 
       - \#author\_prefix\_settings (author identifiers)
 
@@ -11976,7 +11976,7 @@ This section explains how to import author information by specifying a file.著�
 
       - If you close the dialog box by any other operation, the force change mode is turned off.
 
-Table 6‑12. The imported elements of author information
+Table 6-12. The imported elements of author information
 
 <table>
 <thead>
@@ -12147,7 +12147,7 @@ Table 6‑12. The imported elements of author information
 </tbody>
 </table>
 
-Table 6‑13. The imported elements of identifier information
+Table 6-13. The imported elements of identifier information
 
 | #   | Row 2<br>Header element (internal key) | Row 3<br>Label (English) | Row 4<br>Label (Japanese) | Description |
 | --- | --------------------- | ------------------- | --------------------- | ----------- |
@@ -12180,7 +12180,7 @@ Table 6‑13. The imported elements of identifier information
 > 
 > See "Table 6-16 Validation checks" for information on the validation checks on import files.
 
-Table 6‑14. The elements on the "Import" tab
+Table 6-14. The elements on the "Import" tab
 
 <table>
 <thead>
@@ -12261,7 +12261,7 @@ When an error occurs, the error message "Failed to download" will appear.
 > 
 > See "Table 6-16 Validation checks" for information on the validation checks shown on the "Result" tab.
 
-Table 6‑15. The elements in the "Result" tab
+Table 6-15. The elements in the "Result" tab
 
 <table>
 <thead>
@@ -12330,7 +12330,7 @@ When an error occurs, the error message "Failed to download" will appear.
 
 The following table lists the validation checks during the import process of author information.
 
-Table 6‑16 Validation checks
+Table 6-16 Validation checks
 
 <table>
 <thead>
@@ -12544,7 +12544,7 @@ Table 6‑16 Validation checks
 
 The following table lists the validation checks during the import process of identifiers ("ID Prefix" and "Affiliation ID").
 
-Table 6‑17 Validation checks for identifiers
+Table 6-17 Validation checks for identifiers
 
 | Type | Tab to be checked | English | Japanese | Description |
 | ---- | ----------------- | ------- | -------- | ----------- |
@@ -12626,7 +12626,7 @@ When an error occurs, the error message "Unexpected error occurred" will appear.
 
 The following is a list of fixed form reports that can be downloaded in the tsv format.
 
-Table 7‑1. The list of fixed form reports
+Table 7-1. The list of fixed form reports
 
 <table>
 <thead>
@@ -12803,47 +12803,47 @@ Table 7‑1. The list of fixed form reports
 </tbody>
 </table>
 
-Figure 7‑1. File Downloads
+Figure 7-1. File Downloads
 
 ![](media/media/image212.png)
 
-Figure 7‑2. Paid File Downloads
+Figure 7-2. Paid File Downloads
 
 ![](media/media/image213.png)
 
-Figure 7‑3. File Previews
+Figure 7-3. File Previews
 
 ![](media/media/image214.png)
 
-Figure 7‑4. Paid File Previews
+Figure 7-4. Paid File Previews
 
 ![](media/media/image215.png)
 
-Figure 7‑5. Index Access
+Figure 7-5. Index Access
 
 ![](media/media/image216.png)
 
-Figure 7‑6. Item View
+Figure 7-6. Item View
 
 ![](media/media/image217.png)
 
-Figure 7‑7. File Using Per User
+Figure 7-7. File Using Per User
 
 ![](media/media/image218.png)
 
-Figure 7‑8. Search Keyword
+Figure 7-8. Search Keyword
 
 ![](media/media/image219.png)
 
-Figure 7‑9. Top Page Access
+Figure 7-9. Top Page Access
 
 ![](media/media/image220.png)
 
-Figure 7‑10. Users
+Figure 7-10. Users
 
 ![](media/media/image221.png)
 
-Figure 7‑11. Site Access
+Figure 7-11. Site Access
 
 ![](media/media/image222.png)
 
@@ -12911,7 +12911,7 @@ The email schedule is set. Fixed form reports email will be sent based on the sp
 
 The following table lists the information you can enter.
 
-Table 7‑2. The elements for "Custom Report"
+Table 7-2. The elements for "Custom Report"
 
 <table>
 <thead>
@@ -13040,7 +13040,7 @@ Notes:
 
   - When the aggregation period is one month, the "total" column will not be included in the output for each file.
 
-Table 7‑3. Site license statistics
+Table 7-3. Site license statistics
 
 <table>
 <thead>
@@ -13217,7 +13217,7 @@ A screen appears where you can create a new workflow.
 
 2.  > Specify a name for the workflow you want to create, select a flow, and select an item type.
 
-Table 8‑1. The elements for adding a workflow
+Table 8-1. The elements for adding a workflow
 
 | Element | Description |
 | ------- | ----------- |
@@ -13350,7 +13350,7 @@ A screen appears where you can create a community.
 
 ![](media/media/image261.png)
 
-Table 9‑1. The elements in the "Create" tab
+Table 9-1. The elements in the "Create" tab
 
 | Element         | Description                                                                           |
 | --------------- | ------------------------------------------------------------------------------------- |
@@ -13430,7 +13430,7 @@ Enter information for each element.
 
 ![](media/media/image264.png)
 
-Table 9‑2. The elements in the "Create" tab
+Table 9-2. The elements in the "Create" tab
 
 | Element    | Description                                   |
 | ---------- | --------------------------------------------- |
@@ -13595,7 +13595,7 @@ The details appear.
 
 ![](media/media/image278.png)
 
-Table 10‑1. The elements in the "Create" tab
+Table 10-1. The elements in the "Create" tab
 
 | Element           | Description                                                                                    |
 | ----------------- | ---------------------------------------------------------------------------------------------- |
@@ -13853,13 +13853,13 @@ This section explains how to output Resource Lists and Resource Dumps.
 
 > ![](media/media/image292.png)
 
-Figure 11‑1. Sample output Resource Lists
+Figure 11-1. Sample output Resource Lists
 
 ![](media/media/image293.png)
 
 2.  > Clicking on the link displayed in the "Resource Dump Url" will output the Resource Dumps for the corresponding index.
 
-Figure 11‑2. Sample output Resource Dumps
+Figure 11-2. Sample output Resource Dumps
 
 > ![](media/media/image294.png)
 
@@ -13883,7 +13883,7 @@ This section explains how to create a Resource List.
 > 
 > ![](media/media/image296.png)
 
-Table 11‑1. The elements on the Resource List create tab
+Table 11-1. The elements on the Resource List create tab
 
 <table>
 <thead>
@@ -13979,13 +13979,13 @@ This section explains how to output Change Lists and Change Dumps.
 
 > ![](media/media/image298.png)
 
-Figure 11‑3. Sample output Change Lists
+Figure 11-3. Sample output Change Lists
 
 ![](media/media/image299.png)
 
 2.  > Clicking on the URL shown for \<loc\> in the Change Lists will output the Change Lists for the corresponding date.
 
-Figure 11‑4. Sample output Change Lists
+Figure 11-4. Sample output Change Lists
 
 ![](media/media/image300.png)
 
@@ -13993,13 +13993,13 @@ Figure 11‑4. Sample output Change Lists
 
 > ![](media/media/image301.png)
 > 
-> Figure 11‑5. Sample output Change Dumps
+> Figure 11-5. Sample output Change Dumps
 
 ![](media/media/image302.png)
 
 4.  > Clicking on the URL shown for \<loc\> in the Change Dumps will output the Change Dumps for the corresponding date.
 
-Figure 11‑6. Sample output Change Dumps
+Figure 11-6. Sample output Change Dumps
 
 ![](media/media/image303.png)
 
@@ -14023,7 +14023,7 @@ This section explains how to create a Change List.
 > 
 > ![](media/media/image305.png)
 
-Table 11‑2. The elements on the Change List create tab
+Table 11-2. The elements on the Change List create tab
 
 <table>
 <thead>
@@ -14185,7 +14185,7 @@ This section explains how to create a Resync.
 > 
 > ![](media/media/image311.png)
 
-Table 11‑3. The elements on the Resync create tab
+Table 11-3. The elements on the Resync create tab
 
 <table>
 <thead>
@@ -14324,7 +14324,7 @@ This section explains how to configure the settings for linking items with metad
 
 > The following table lists the elements you can set.
 
-Table 12‑1. The elements on the TSV/CSV tab
+Table 12-1. The elements on the TSV/CSV tab
 
 | Element | Description |
 |---|---|
@@ -14348,7 +14348,7 @@ This section explains how to configure the settings for linking items with metad
 
 > The following table lists the elements you can set.
 
-Table 12‑2. The elements on the XML tab
+Table 12-2. The elements on the XML tab
 
 | Element | Description |
 |---|---|
@@ -14371,7 +14371,7 @@ This section explains how to create a setting for linking items with metadata in
 
 > The following table lists the elements you can set.
 
-Table 12‑3. The elements on the JSON-LD create tab
+Table 12-3. The elements on the JSON-LD create tab
 
 | Element | Description |
 |---|---|
@@ -14523,7 +14523,7 @@ A screen appears where you can create a Bucket.
 
 ![](media/media/image317.png)
 
-Table 14‑1. The elements in the "Create" tab
+Table 14-1. The elements in the "Create" tab
 
 | Element               | Description                                                                                      |
 | --------------------- | ------------------------------------------------------------------------------------------------ |
@@ -14657,19 +14657,19 @@ Enter information for each element.
 
 ![](media/media/image323.png)
 
-Table 14‑2. The elements in the "Create" tab
+Table 14-2. The elements in the "Create" tab
 
 | Element    | Description                                        |
 | ---------- | -------------------------------------------------- |
 | Name       | Specify a Location name. This element is required. |
 | URI        | Specify the URI for the Location. For an S3-compatible storage, specify "S3://*bucket name*". If Type is S3 Virtual Host, specify a URL starting with "https://". |
-| Type       | Select a type. The types are blank, "S3 Path", and "S3 Virtual Host" (shown as "S3 Virtural Host" on the screen). If you select S3 Path or S3 Virtual Host, the elements for S3-compatible object storage appear (see "Table 14‑3"). |
+| Type       | Select a type. The types are blank, "S3 Path", and "S3 Virtual Host" (shown as "S3 Virtural Host" on the screen). If you select S3 Path or S3 Virtual Host, the elements for S3-compatible object storage appear (see "Table 14-3"). |
 | Quota Size | Specify an upper limit for the capacity.           |
 | Default    | Check if you want to use it as the default.<br>\* If another Location is already set as the default, this element is grayed out (inactive) and cannot be selected. You can set a new Location as the default after clearing the existing default Location. |
 
 If you select "S3 Path" or "S3 Virtual Host" for Type, the following elements appear.
 
-Table 14‑3. The elements for S3-compatible object storage
+Table 14-3. The elements for S3-compatible object storage
 
 | Element    | Description |
 | ---------- | ----------- |
@@ -14804,7 +14804,7 @@ A screen appears where you can create a Location.
 
 For example, if you use "jctest" as the bucket name and the S3 Path style for the object URLs of the institutional storage, specify the settings as follows.
 
-Table 14‑4. Example settings for an institutional storage
+Table 14-4. Example settings for an institutional storage
 
 | Element | Value        |
 | ------- | ------------ |
@@ -14888,7 +14888,7 @@ A screen appears where you can create an action.
 
 ![](media/media/image330.png)
 
-Table 15‑1. The elements in the "Create" tab
+Table 15-1. The elements in the "Create" tab
 
 | Element  | Description                              |
 | -------- | ---------------------------------------- |
@@ -14971,7 +14971,7 @@ Enter information for each element.
 
 ![](media/media/image335.png)
 
-Table 15‑2. The elements in the "Create" tab
+Table 15-2. The elements in the "Create" tab
 
 | Element     | Description                                     |
 | ----------- | ----------------------------------------------- |
@@ -15054,7 +15054,7 @@ Enter information for each element.
 
 ![](media/media/image340.png)
 
-Table 15‑3. The elements in the "Create" tab
+Table 15-3. The elements in the "Create" tab
 
 | Element  | Description                              |
 | -------- | ---------------------------------------- |
@@ -15173,7 +15173,7 @@ Enter information for each element.
 
 ![](media/media/image346.png)
 
-Table 15‑4. The elements in the "Create" tab
+Table 15-4. The elements in the "Create" tab
 
 | Element        | Description                                        |
 | -------------- | -------------------------------------------------- |
@@ -15248,7 +15248,7 @@ Enter information for each element.
 
 ![](media/media/image348.png)
 
-Table 15‑5. The elements in the "Create" tab
+Table 15-5. The elements in the "Create" tab
 
 | Element       | Description                               |
 | ------------- | ----------------------------------------- |
@@ -15412,7 +15412,7 @@ Enter information for each element.
 
 ![](media/media/image355.png)
 
-Table 15‑6. The elements in the "Create" tab
+Table 15-6. The elements in the "Create" tab
 
 | Element     | Description          |
 | ----------- | -------------------- |
@@ -15532,7 +15532,7 @@ Enter information for each element.
 
 ![](media/media/image361.png)
 
-Table 15‑7. The elements in the "Create" tab
+Table 15-7. The elements in the "Create" tab
 
 | Element                | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ |
@@ -15639,7 +15639,7 @@ A screen appears where you can configure the setting.
 
 The following table lists the information you can enter.
 
-Table 16‑1. The elements in "Items".
+Table 16-1. The elements in "Items".
 
 <table>
 <thead>
@@ -15763,7 +15763,7 @@ The following table lists the information displayed.
 
 ![](media/media/image370.png)
 
-Table 16‑2. The elements in "Header Settings"
+Table 16-2. The elements in "Header Settings"
 
 <table>
 <thead>
@@ -15811,7 +15811,7 @@ The following table lists the elements displayed.
 
 ![](media/media/image371.png)
 
-Table 16‑3. The elements in "Ranking"
+Table 16-3. The elements in "Ranking"
 
 <table>
 <thead>
@@ -15957,7 +15957,7 @@ A screen appears where you can create a Prefix ID.
 
 ![](media/media/image380.png)
 
-Table 16‑4. The elements in "Prefix"
+Table 16-4. The elements in "Prefix"
 
 | Element           | Description                                                           |
 | ----------------- | --------------------------------------------------------------------- |
@@ -16027,7 +16027,7 @@ A screen appears where you can configure item export.
 
 The following table lists the information you can enter.
 
-Table 16‑5. The elements in "Item Export"
+Table 16-5. The elements in "Item Export"
 
 | Element                       | Description                                       |
 | ----------------------------- | ------------------------------------------------- |
@@ -16052,7 +16052,7 @@ A screen appears where you can configure the log analysis settings.
 
 The following table lists the information you can enter.
 
-Table 16‑6. The elements in "Items".
+Table 16-6. The elements in "Items".
 
 | Element                          | Description                                                    |
 | -------------------------------- | -------------------------------------------------------------- |
@@ -16077,7 +16077,7 @@ This section explains how to configure the author search.
 > 
 > The following table lists the elements displayed.
 
-Table 16‑7. The elements in the "Search Author Setting" area
+Table 16-7. The elements in the "Search Author Setting" area
 
 <table>
 <thead>
@@ -16109,7 +16109,7 @@ The following table lists the elements displayed.
 
 ![](media/media/image388.png)
 
-Table 16‑8. The elements in "Search Results Setting"
+Table 16-8. The elements in "Search Results Setting"
 
 <table>
 <thead>
@@ -16331,7 +16331,7 @@ This section explains how to configure the index tree/facet display.
 > 
 > ![](media/media/image390.png)
 
-Table 16‑9. The elements in "Index Tree/Facet Display Setting"
+Table 16-9. The elements in "Index Tree/Facet Display Setting"
 
 <table>
 <thead>
@@ -16424,7 +16424,7 @@ You can configure the elements in the main content when the top page screen is i
 > 
 > ![](media/media/image391.png)
 
-Table 16‑10. The elements in "Main Screen Initial Display Setting"
+Table 16-10. The elements in "Main Screen Initial Display Setting"
 
 <table>
 <thead>
@@ -16630,7 +16630,7 @@ The following table lists the elements displayed.
 
 ![](media/media/image397.png)
 
-Table 16‑11. The elements in "Site Info"
+Table 16-11. The elements in "Site Info"
 
 <table>
 <thead>
@@ -16801,7 +16801,7 @@ A screen appears where you can configure the email setting.
 
 The following table lists the information you can enter.
 
-Table 16‑12. The elements in "Mail Setting"
+Table 16-12. The elements in "Mail Setting"
 
 | Element        | Description                              |
 | -------------- | ---------------------------------------- |
@@ -16824,7 +16824,7 @@ The setting is saved. If Server, Port, or Default sender is blank, the setting i
 
 The following table lists the information you can enter.
 
-Table 16‑13. The elements in "Send Test Mail"
+Table 16-13. The elements in "Send Test Mail"
 
 | Element   | Description                        |
 | --------- | ---------------------------------- |
@@ -16859,7 +16859,7 @@ Enter the subject in "Subject" and the body in the text box below it. "Subject" 
 
 A string enclosed in square brackets ([ ]) is used as a variable. The following table lists the variables you can use and their contents.
 
-Table 16‑14. The variables available in mail templates
+Table 16-14. The variables available in mail templates
 
 | Variable                                | Content                                                         |
 | --------------------------------------- | --------------------------------------------------------------- |
@@ -17398,7 +17398,7 @@ The "File Preview" screen appears.
 
 The following table lists the information you can enter.
 
-Table 16‑15. The elements in "File Preview"
+Table 16-15. The elements in "File Preview"
 
 | Element       | Description                                                    |
 | ------------- | -------------------------------------------------------------- |
@@ -18606,7 +18606,7 @@ A screen appears where you can create a group.
 
 ![](media/media/image417.png)
 
-Table 19‑1. The elements in "New group"
+Table 19-1. The elements in "New group"
 
 | Element     | Description                       |
 | ----------- | --------------------------------- |
@@ -18657,7 +18657,7 @@ A screen appears where you can edit the setting.
 
 ![](media/media/image422.png)
 
-Table 19‑2. The input elements
+Table 19-2. The input elements
 
 | Element     | Description                       |
 | ----------- | --------------------------------- |
@@ -18741,7 +18741,7 @@ You can select the input format from the pull-down menu.
 
 The following five input formats are available.
 
-Table 20‑1. The input formats
+Table 20-1. The input formats
 
 | Input format    | Description                                                              |
 | --------------- | ------------------------------------------------------------------------ |
@@ -18773,7 +18773,7 @@ If a label name or the options are left blank, the settings cannot be saved and 
 
 There are 20 items in total. Their initial settings are as follows.
 
-Table 20‑2. The initial settings of the items
+Table 20-2. The initial settings of the items
 
 | Item       | Label name                                          | Input format    | Display |
 | ---------- | --------------------------------------------------- | --------------- | ------- |
