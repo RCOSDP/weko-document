@@ -283,13 +283,13 @@ The System allows you to store and publish academic research results. The System
 
 Figure 1-1. Data management in the System
 
-zu010010.tif![](media/media/image1.png)
+![](media/media/image1.png)
 
 To register an item, you must first create a workflow and register the item. You then need to get approval from reviewers/approvers before publishing the item.
 
 Figure 1-2. Data registration
 
-zu010020.tif![](media/media/image2.png)
+![](media/media/image2.png)
 
 ## Glossary
 
@@ -464,7 +464,7 @@ Table 1‑2. The features related to registering and viewing data in the System
 
 You will find the following elements in the Home screen.
 
-> zu010030.tif![](media/media/image3.png)
+> ![](media/media/image3.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -502,7 +502,7 @@ Table 1‑3. The elements in the Home screen
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>The icon010010.tif<img src="media/media/image4.png" style="width:0.42197in;height:0.12925in" /> button</td>
+<td>The <img src="media/media/image4.png" style="width:0.42197in;height:0.12925in" /> button</td>
 <td>Use this button for a simple search. See "Section 3.3.1. Simple search" for more information.</td>
 </tr>
 <tr class="even">
@@ -512,17 +512,17 @@ Table 1‑3. The elements in the Home screen
 </tr>
 <tr class="odd">
 <td>7</td>
-<td>The "icon010020.tif<img src="media/media/image5.png" style="width:0.45566in;height:0.18611in" />" button</td>
+<td>The "<img src="media/media/image5.png" style="width:0.45566in;height:0.18611in" />" button</td>
 <td>Use this button to log in to an account. See "Section 2.2. Log in to the System" for more information.</td>
 </tr>
 <tr class="even">
 <td>8</td>
-<td>The "icon010030.tif<img src="media/media/image6.png" style="width:0.46927in;height:0.17064in" />" button</td>
+<td>The "<img src="media/media/image6.png" style="width:0.46927in;height:0.17064in" />" button</td>
 <td>Use this button to sign-up for an account. See "Section 2.5. Sign-up for a new account" for more information.</td>
 </tr>
 <tr class="odd">
 <td>9</td>
-<td>The icon010040.tif<img src="media/media/image7.png" style="width:0.50971in;height:0.15755in" /> button</td>
+<td>The <img src="media/media/image7.png" style="width:0.50971in;height:0.15755in" /> button</td>
 <td>Use this button for advanced searches. See "Section 3.3.2. Advanced search" for more information.</td>
 </tr>
 <tr class="even">
@@ -555,11 +555,11 @@ This section explains how to display the Home screen.
 
 When you access the System successfully, the Home screen appears. See "Section 2.2. Log in to the System" for information on logging in to the System.
 
-zu020010.tif![](media/media/image8.png)
+![](media/media/image8.png)
 
 2.  Select a language from the "Language" pull-down list in the upper right corner of the screen.
 
-zu020020.tif![](media/media/image9.png)
+![](media/media/image9.png)
 
 The screen refreshes to display in the language selected.
 
@@ -567,9 +567,9 @@ The screen refreshes to display in the language selected.
 
 This section explains how to log in to the System.
 
-3.  Click the icon020010.tif![](media/media/image5.png) button in the upper right corner of the Home screen.
+3.  Click the ![](media/media/image5.png) button in the upper right corner of the Home screen.
 
-zu020030.tif![](media/media/image10.png)
+![](media/media/image10.png)
 
 The login screen appears.
 
@@ -579,7 +579,7 @@ The login screen appears.
 
 1)  > Enter the account information in the WEKO3 login screen and click the "Log In" button to log in.
 
-zu020040.tif![](media/media/image11.png)
+![](media/media/image11.png)
 
 \<TBLATT POSITION=”1” SCALE=”151”\>
 
@@ -589,12 +589,12 @@ Table 2‑1. The elements in the "Log in" screen
 | --- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | The account text box                                            | Enter the account information (email address) of a general user. The input format should be "*XXXX@XXX*.*XXX*". You can use alphanumeric characters, hyphens (-), and underscores (\_). The maximum length is 16 characters. |
 | 2   | The password text box                                           | Enter the password for the account (email address) you entered. You can enter 6 to 16 characters (alphanumeric characters only).                                                                                             |
-| 3   | The icon020010.tif![](media/media/image5.png) button            | Click to log in with the account (email address) and password you entered. The Home screen of the System appears.                                                                                                            |
-| 4   | The icon020020.tif![icon020020](media/media/image12.png) button | Single sign-on to open sources.                                                                                                                                                                                              |
+| 3   | The ![](media/media/image5.png) button            | Click to log in with the account (email address) and password you entered. The Home screen of the System appears.                                                                                                            |
+| 4   | The ![icon020020](media/media/image12.png) button | Single sign-on to open sources.                                                                                                                                                                                              |
 | 5   | The "Sign Up" link                                              | Click to display the sign-up screen.                                                                                                                                                                                         |
 | 6   | The "Forgot Password" link                                      | Click to reset your password. See "Section 2.4. Change a password" for more information.                                                                                                      |
 
-2)  > Click the icon020010.tif![](media/media/image5.png) button.
+2)  > Click the ![](media/media/image5.png) button.
     
     The Home screen of the System appears.
 
@@ -622,7 +622,7 @@ Table 2‑2. The elements in the GakuNin Embedded DS login screen (pattern 1)
 | --- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | 1   | The entry field for an affiliated institution                        | Enter your institution. As you type, the matching candidates are filtered and displayed.                                             |
 | 2   | The ![](media/media/image15.png)/![](media/media/image16.png) button | Click to show/hide the list of institutions. See "Figure 1. The pull-down list showing candidate institutions" for more information. |
-| 3   | The icon020010.tif![](media/media/image17.png) button                | Click to navigate to the corresponding login screen for the selected institution.                                                    |
+| 3   | The ![](media/media/image17.png) button                | Click to navigate to the corresponding login screen for the selected institution.                                                    |
 | 4   | The "Remember selection for this web browser session" check box      | If checked, you will be automatically logged in to the System while the browser is running.                                          |
 | 5   | The "Reset" link                                                     | Click to delete the information you entered in the institution entry box.                                                            |
 | 6   | The "UK Federation" link                                             | Click to navigate to the predefined institution selection screen.                                                                    |
@@ -674,7 +674,7 @@ Table 2‑3. The elements in the GakuNin Embedded DS login screen (pattern 2)
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>The icon020010.tif<img src="media/media/image17.png" style="width:0.49524in;height:0.25313in" /> button</td>
+<td>The <img src="media/media/image17.png" style="width:0.49524in;height:0.25313in" /> button</td>
 <td>Click to navigate to the corresponding login screen for the selected institution.</td>
 </tr>
 <tr class="even">
@@ -714,11 +714,11 @@ Note: When a user logs in through GakuNin Embedded DS, roles and groups are assi
 
 This section explains how to log out of the System.
 
-1.  Click icon020040.tif![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
+1.  Click ![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
 
 A pull-down menu appears.
 
-zu020050.tif![](media/media/image21.png)
+![](media/media/image21.png)
 
 6.  Click "Log out".
 
@@ -728,11 +728,11 @@ You will log out of the System.
 
 This section explains how to change the password configured for an account.
 
-1.  Click icon020040.tif![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
+1.  Click ![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
 
 A pull-down menu appears.
 
-zu020060.tif![](media/media/image22.png)
+![](media/media/image22.png)
 
 7.  Click "Change password".
 
@@ -742,7 +742,7 @@ The "Change password" screen appears.
 
 Figure 2-3. The "Change password" screen
 
-zu020070.tif![](media/media/image23.png)
+![](media/media/image23.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -753,9 +753,9 @@ Table 2‑4. The elements in the "Change password" screen
 | 1   | The "Current password" text box                       | Enter the password that is currently configured.                                                   |
 | 2   | The "New password" text box                           | Enter a new password. You can enter 6 to 16 characters (alphanumeric characters only).             |
 | 3   | The "Confirm new password" text box                   | Enter the new password again to confirm that the value you specified in "New password" is correct. |
-| 4   | The icon020050.tif![](media/media/image24.png) button | Click to reflect the specified information and update your password.                               |
+| 4   | The ![](media/media/image24.png) button | Click to reflect the specified information and update your password.                               |
 
-9.  Click the icon020050.tif![](media/media/image24.png) button.
+9.  Click the ![](media/media/image24.png) button.
 
 The password is updated.
 
@@ -763,13 +763,13 @@ The password is updated.
 
 This section explains how to create a new account.
 
-1.  Click icon020060.tif![](media/media/image6.png) in the upper right corner of the Home screen.
+1.  Click ![](media/media/image6.png) in the upper right corner of the Home screen.
 
 The "Sign up" screen appears.
 
 10. Enter an account name and password in the "Sign up" screen that appears.
 
-zu020080.tif![](media/media/image25.png)
+![](media/media/image25.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -779,10 +779,10 @@ Table 2‑5. The elements in the "Sign up" screen
 | --- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1   | The "Email Address" text box                          | Enter an email address. The input format should be "*XXXXX*＠*XXX.XXX*". You can use alphanumeric characters, hyphens (-), and underscores (\_). The maximum length is 255 characters. |
 | 2   | The "Password" text box                               | Enter a new password. You can enter 6 to 255 characters (alphanumeric characters only).                                                                                              |
-| 3   | The icon020070.tif![](media/media/image26.png) button | Click to sign-up for the service.                                                                                                                                                    |
-| 4   | The icon020080.tif![](media/media/image27.png) link   | Click to navigate to the login screen. Log in and continue working.                                                                                                                  |
+| 3   | The ![](media/media/image26.png) button | Click to sign-up for the service.                                                                                                                                                    |
+| 4   | The ![](media/media/image27.png) link   | Click to navigate to the login screen. Log in and continue working.                                                                                                                  |
 
-11. Click the icon020070.tif![](media/media/image26.png) button.
+11. Click the ![](media/media/image26.png) button.
 
 Log in with the account you created.
 
@@ -804,17 +804,17 @@ This section explains how to search for items using index links.
 
 This screen shows "Index link".
 
-zu030010.tif![zu030010](media/media/image28.png)
+![zu030010](media/media/image28.png)
 
 12. Select an index name from the "Index Link" pull-down list.
 
 A search for items is performed.
 
-zu030020.tif![](media/media/image29.png)
+![](media/media/image29.png)
 
 13. The search results appear in the "Item Lists" screen.
 
-zu030030.tif![](media/media/image30.png)
+![](media/media/image30.png)
 
 See "Section 3.1.3. View the Item Lists" for more information.
 
@@ -826,7 +826,7 @@ This section explains how to search for items using the index tree.
 
 This screen shows "Index Tree".
 
-zu030040.tif![](media/media/image31.png)
+![](media/media/image31.png)
 
 You can use the index tree to search for items in the following ways.
 
@@ -836,7 +836,7 @@ You can use the index tree to search for items in the following ways.
 
 A search for items is performed. The search results appear in the "Item Lists" screen. See "Section 3.1.3. View the Item Lists" for more information.
 
-zu030050.tif![](media/media/image32.png)
+![](media/media/image32.png)
 
 #### To search from "Index List":
 
@@ -844,7 +844,7 @@ zu030050.tif![](media/media/image32.png)
 
 If child indexes are placed under the index, the "Index List" screen will appear.
 
-zu030060.tif![](media/media/image33.png)
+![](media/media/image33.png)
 
 A list of child indexes belonging to the index appears in the "Index List" screen. Private indexes are not displayed for guest users.
 
@@ -876,11 +876,11 @@ A search for items is performed. The search results appear in the "Item Lists" s
 
 #### To search from "Index Tree":
 
-1.  Click icon030030.tif![icon030030](media/media/image34.png) next to an index in "Index Tree".
+1.  Click ![icon030030](media/media/image34.png) next to an index in "Index Tree".
 
 Child indexes belonging to the index appear.
 
-zu030070.tif![](media/media/image35.png)
+![](media/media/image35.png)
 
 15. Click on an index name.
 
@@ -910,7 +910,7 @@ Display search results as a list of items. The default is set to this format. Th
 
 The display language is chosen according to the following priority order: the language selected for the Web page display \> English \> the first language configured when registering the item \> the first value when registering without configuring languages.
 
-> zu030080.tif![](media/media/image30.png)
+> ![](media/media/image30.png)
 
 | No. | Element     | Description |
 | --- | ----------- | ----------- |
@@ -959,7 +959,7 @@ This section explains how to search for items using the ranking display.
 
 The "Ranking" screen appears.
 
-zu030200.tif![](media/media/image38.png)
+![](media/media/image38.png)
 
 You can view rankings such as the most viewed items, the most downloaded items, or the most searched keywords.
 
@@ -977,7 +977,7 @@ The item details screen for the item appears.
 
 Figure 3-1. The "Most Viewed Items" screen
 
-zu030210.tif![](media/media/image39.png)
+![](media/media/image39.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -994,7 +994,7 @@ It ranks the most-downloaded public item files.
 
 You can view the title and the number of downloads for each item.
 
-zu030220.tif![](media/media/image40.png)
+![](media/media/image40.png)
 
 1.  Click on an item title.
 
@@ -1008,7 +1008,7 @@ It ranks the users based on the number of items they created.
 
 You can view the user and the number of items each created.
 
-zu030230.tif![](media/media/image41.png)
+![](media/media/image41.png)
 
 #### Most Searched Keywords
 
@@ -1016,7 +1016,7 @@ It ranks the keywords based on the number of times they were used for searches.
 
 You can view keywords and the number of times searched.
 
-![テーブル が含まれている画像 自動的に生成された説明](media/media/image42.png)![テーブル が含まれている画像 自動的に生成された説明](media/media/image42.png)zu030240.tif![](media/media/image43.png)
+![テーブル が含まれている画像 自動的に生成された説明](media/media/image42.png)![テーブル が含まれている画像 自動的に生成された説明](media/media/image42.png)![](media/media/image43.png)
 
 1.  Click on a keyword.
 
@@ -1028,7 +1028,7 @@ Recently released items appear here.
 
 You can view the title and published date for each item.
 
-zu030250.tif![](media/media/image44.png)
+![](media/media/image44.png)
 
 1.  Click on an item title.
 
@@ -1098,22 +1098,22 @@ Table 3‑2. The elements in the simple search screen
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>The <img src="media/media/image4.png" style="width:0.65415in;height:0.20037in" />icon030010.tif button</td>
+<td>The <img src="media/media/image4.png" style="width:0.65415in;height:0.20037in" /> button</td>
 <td>Click to run a simple search by keywords.</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>The <img src="media/media/image7.png" style="width:0.61805in;height:0.19103in" />icon030020.tif button</td>
+<td>The <img src="media/media/image7.png" style="width:0.61805in;height:0.19103in" /> button</td>
 <td>Click to display the advanced search screen to specify more details. See "Section 3.3.2. Advanced search" for more information.</td>
 </tr>
 </tbody>
 </table>
 
-2.  Click the icon030010.tif![](media/media/image4.png) button.
+2.  Click the ![](media/media/image4.png) button.
 
 The search results appear. See "Chapter 4: View item details" for more information on search results.
 
-zu030120.tif![](media/media/image46.png)
+![](media/media/image46.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -1122,7 +1122,7 @@ Table 3‑3. The elements in the "Search Results" screen
 | No. | Element                                               | Description                                                                                                                                                                                                      |
 | --- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | "Search Results"                                      | The search results appear.                                                                                                                                                                                       |
-| 2   | The icon030080.tif![](media/media/image47.png) button | Click to open the "Items to Export" screen. You can export information contained in the items. See "Chapter 7: Export items" for more information.                                                               |
+| 2   | The ![](media/media/image47.png) button | Click to open the "Items to Export" screen. You can export information contained in the items. See "Chapter 7: Export items" for more information.                                                               |
 | 3   | An item name                                          | Clicking on a name takes you to the item details screen. See "Chapter 4: View item details" for more information. See "Figure 3-2. The item details screen". |
 | 4   | The "Display Order" pull-down list                    | Select the order in which the search results are displayed from the "Display Order" pull-down list. See "Figure 3-3. The "Display Order" pull-down list". Only the display orders that are set to be shown in the list in the search result display settings are displayed. See "Configure the search results settings" in the System Administration Manual for more information. |
 | 5   | The "asc/desc" pull-down list                         | Select "asc" (ascending) or "desc" (descending) for a sort order. See "Figure 3-4. The "asc/desc" pull-down list" for more information.                                          |
@@ -1133,19 +1133,19 @@ Table 3‑3. The elements in the "Search Results" screen
 
 Figure 3-2. The item details screen
 
-zu030130.tif![](media/media/image48.png)
+![](media/media/image48.png)
 
 Figure 3-3. The "Display Order" pull-down list
 
-zu030140.tif![](media/media/image49.png)
+![](media/media/image49.png)
 
 Figure 3-4. The "asc/desc" pull-down list
 
-zu030150.tif![](media/media/image50.png)
+![](media/media/image50.png)
 
 Figure 3-5. The "Display Number" pull-down list
 
-zu030160.tif![](media/media/image51.png)
+![](media/media/image51.png)
 
 ### Advanced search
 
@@ -1155,7 +1155,7 @@ The keyword search text box appears.
 
 20. Enter a keyword in the keyword search text box and check the "Full text" or "Keyword" radio button as the search method.
 
-21. Click the icon030020.tif![](media/media/image7.png) button.
+21. Click the ![](media/media/image7.png) button.
 
 The advanced search screen appears where you can specify more details.
 
@@ -1171,7 +1171,7 @@ Click Enter to search for items matching the search criteria. The search results
 
 Note: To use the search criteria you have set, use the search button in the advanced search area.
 
-zu030310.tif![](media/media/image53.png)\<TBLATT POSITION=”1” SCALE=”151”\>
+![](media/media/image53.png)\<TBLATT POSITION=”1” SCALE=”151”\>
 
 Table 3‑4. The elements in the advanced search screen
 
@@ -1191,27 +1191,27 @@ Table 3‑4. The elements in the advanced search screen
 </tr>
 <tr class="even">
 <td>2</td>
-<td>The icon030040.tif<img src="media/media/image54.png" style="width:0.20833in;height:0.20833in" alt="icon030040" /> button</td>
+<td>The <img src="media/media/image54.png" style="width:0.20833in;height:0.20833in" alt="icon030040" /> button</td>
 <td>Click to delete the criteria.</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>The icon030050.tif<img src="media/media/image55.png" style="width:0.92708in;height:0.20833in" alt="icon030050" /> button</td>
+<td>The <img src="media/media/image55.png" style="width:0.92708in;height:0.20833in" alt="icon030050" /> button</td>
 <td>Click to add criteria.</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>The icon030060.tif<img src="media/media/image4.png" style="width:0.51181in;height:0.15677in" /> button</td>
+<td>The <img src="media/media/image4.png" style="width:0.51181in;height:0.15677in" /> button</td>
 <td>Click to run a search. The "Search Results" screen will then appear. See "Figure 3-6. The "Search Results" screen" for more information.</td>
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>The icon030070.tif<img src="media/media/image56.png" style="width:0.42708in;height:0.20833in" alt="icon030070" /> button</td>
+<td>The <img src="media/media/image56.png" style="width:0.42708in;height:0.20833in" alt="icon030070" /> button</td>
 <td>Click to clear the criteria.</td>
 </tr>
 <tr class="even">
 <td>6</td>
-<td><img src="media/media/image57.png" style="width:1.48646in;height:1.93872in" /><img src="media/media/image58.png" style="width:1.26059in;height:0.23962in" /><img src="media/media/image59.png" style="width:2.67746in;height:0.23962in" /><img src="media/media/image59.png" style="width:2.67746in;height:0.23962in" />icon030070.tif</td>
+<td><img src="media/media/image57.png" style="width:1.48646in;height:1.93872in" /><img src="media/media/image58.png" style="width:1.26059in;height:0.23962in" /><img src="media/media/image59.png" style="width:2.67746in;height:0.23962in" /><img src="media/media/image59.png" style="width:2.67746in;height:0.23962in" /></td>
 <td><p>Use either of the following date formats for search criteria (Contents Created Date, Academic Degree Date).</p>
 <p>• Specify a date in the yyyy-mm-dd, yyyy-mm, or yyyy format. Using any other format will result in the message "Field does not validate," and the item search will not be completed.</p>
 <p>• Pick a date from the calendar that appears when the area is focused.</p></td>
@@ -1221,7 +1221,7 @@ Table 3‑4. The elements in the advanced search screen
 
 Figure 3-6. The "Search Results" screen
 
-zu030320.tif![](media/media/image60.png)
+![](media/media/image60.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -1230,7 +1230,7 @@ Table 3‑5. The elements in the "Search Results" screen
 | No. | Element                                               | Description                                                                                                                                                                                          |
 | --- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | "Search Results"                                      | The search results appear.                                                                                                                                                                           |
-| 2   | The icon030080.tif![](media/media/image47.png) button | Click to open the "Items to Export" screen. You can export information contained in the items. See "Chapter 7: Export items" for more information.                                                   |
+| 2   | The ![](media/media/image47.png) button | Click to open the "Items to Export" screen. You can export information contained in the items. See "Chapter 7: Export items" for more information.                                                   |
 | 3   | An item name                                          | Clicking on a name takes you to the item details screen. See "Figure 3-2. The item details screen".                                                                          |
 | 4   | The "Display Order" pull-down list                    | Select the order in which the search results are displayed from the "Display Order" pull-down list. See "Figure 3-3. The "Display Order" pull-down list".        |
 | 5   | The "asc/desc" pull-down list                         | Select "asc" (ascending) or "desc" (descending) for a sort order. See "Figure 3-4. The "asc/desc" pull-down list" for more information.                              |
@@ -1297,7 +1297,7 @@ This section explains how to filter items using faceted searches.
     
     The items will be filtered out. The search results appear in the "Item Lists" screen.
 
-zu030030.tif![](media/media/image65.png)
+![](media/media/image65.png)
 
 See "Section 3.1.3. View the Item Lists" for more information.
 
@@ -1323,7 +1323,7 @@ You can view the metadata of an item in the item details screen.
 
 Figure 4-1. The item details screen
 
-zu040010.tif![](media/media/image66.png)
+![](media/media/image66.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -1390,17 +1390,17 @@ Table 4‑1. The elements in the item details screen
 </tr>
 <tr class="odd">
 <td>11</td>
-<td>The icon040010.tif<img src="media/media/image67.png" style="width:0.54167in;height:0.18055in" /> button</td>
+<td>The <img src="media/media/image67.png" style="width:0.54167in;height:0.18055in" /> button</td>
 <td>Click to close the item details screen and return to the previous screen.</td>
 </tr>
 <tr class="even">
 <td>12</td>
-<td>The icon040020.tif<img src="media/media/image68.png" style="width:0.52083in;height:0.17361in" /> button</td>
+<td>The <img src="media/media/image68.png" style="width:0.52083in;height:0.17361in" /> button</td>
 <td>Click to edit the information.</td>
 </tr>
 <tr class="odd">
 <td>13</td>
-<td>The icon040030.tif<img src="media/media/image69.png" style="width:0.54167in;height:0.18055in" /> button</td>
+<td>The <img src="media/media/image69.png" style="width:0.54167in;height:0.18055in" /> button</td>
 <td><p>Click to delete the item.</p>
 <p>The "Confirm" screen appears.</p></td>
 </tr>
@@ -1419,7 +1419,7 @@ You cannot change an item's status to private when it has a DOI assigned. If you
 
 Figure 4-2. The "Confirm" screen
 
-msg040010.tif![](media/media/image71.png)
+![](media/media/image71.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -1427,8 +1427,8 @@ Table 4‑2. The elements in the "Confirm" screen
 
 | No. | Element                                                         | Description                                                          |
 | --- | --------------------------------------------------------------- | -------------------------------------------------------------------- |
-| 1   | The icon040040.tif![icon040040](media/media/image72.png) button | Click to delete the item.                                            |
-| 2   | The icon040050.tif![](media/media/image73.png) button           | Click to cancel the delete operation and close the "Confirm" screen. |
+| 1   | The ![icon040040](media/media/image72.png) button | Click to delete the item.                                            |
+| 2   | The ![](media/media/image73.png) button           | Click to cancel the delete operation and close the "Confirm" screen. |
 
 > Notes:
 
@@ -1454,7 +1454,7 @@ You can check the number of views for an item in the statistics screen.
 
 Figure 4-3. The statistics screen
 
-zu040020.tif![](media/media/image77.png)
+![](media/media/image77.png)
 
 1.  Select a period from the period pull-down list.
 
@@ -1466,7 +1466,7 @@ The view count that appears is broken down by country from which access was made
 
 Figure 4-4. The period pull-down list
 
-zu040030.tif![](media/media/image78.png)
+![](media/media/image78.png)
 
 ### Version
 
@@ -1474,7 +1474,7 @@ You can check the version of the item in the "Versions" screen.
 
 Figure 4-5. The "Versions" screen
 
-zu040040.tif![](media/media/image79.png)
+![](media/media/image79.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -1606,7 +1606,7 @@ You can share items using various social media or print them. (This feature is n
 
 Figure 4-6. The "Share" screen
 
-zu040050.tif![](media/media/image89.png)
+![](media/media/image89.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -1614,19 +1614,19 @@ Table 4‑4. The elements in the "Share" screen
 
 | No. | Element                                                                 | Description                                                                                                                                    |
 | --- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | The icon040060.tif![icon040060](media/media/image90.png) button         | Click to share the item using "Mendeley".                                                                                                      |
-| 2   | The icon040080.tif![icon040080](media/media/image91.png) button         | Click to share the item using "Twitter".                                                                                                       |
-| 3   | The icon040090.tif![icon040090](media/media/image92.png) button         | Click to share the item using "Facebook".                                                                                                      |
-| 4   | The icon040100.tif![icon040100](media/media/image93.png) button         | Click to open the "Print" screen.                                                                                                              |
-| 5   | The icon040110.tif![icon040110](media/media/image94.png) pull-down list | Select the media from the pull-down list to add to social sharing. See "Figure 4-8. The "AddThis" pull-down list. |
+| 1   | The ![icon040060](media/media/image90.png) button         | Click to share the item using "Mendeley".                                                                                                      |
+| 2   | The ![icon040080](media/media/image91.png) button         | Click to share the item using "Twitter".                                                                                                       |
+| 3   | The ![icon040090](media/media/image92.png) button         | Click to share the item using "Facebook".                                                                                                      |
+| 4   | The ![icon040100](media/media/image93.png) button         | Click to open the "Print" screen.                                                                                                              |
+| 5   | The ![icon040110](media/media/image94.png) pull-down list | Select the media from the pull-down list to add to social sharing. See "Figure 4-8. The "AddThis" pull-down list. |
 
 Figure 4-7. The "Print" screen
 
-zu040060.tif![](media/media/image95.png)
+![](media/media/image95.png)
 
 Figure 4-8. The "AddThis" pull-down list
 
-zu040070.tif![](media/media/image96.png)
+![](media/media/image96.png)
 
 ### Bibliographic Citation
 
@@ -1673,7 +1673,7 @@ Note that only the latest version of the metadata will be output.
 
 Figure 4-10. The "Export" screen
 
-![グラフィカル ユーザー インターフェイス 低い精度で自動的に生成された説明](media/media/image99.png)zu040080.tif![](media/media/image100.png)
+![グラフィカル ユーザー インターフェイス 低い精度で自動的に生成された説明](media/media/image99.png)![](media/media/image100.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -2047,21 +2047,21 @@ After logging in to the System as a registered user, you can register activities
 
 1.  From the Home screen, click the "Workflow" tab.
 
-zu050010.tif![](media/media/image103.png)
+![](media/media/image103.png)
 
 The activities list screen appears.
 
-2.  Click the icon050010.tif![](media/media/image104.png) button below the activities list.
+2.  Click the ![](media/media/image104.png) button below the activities list.
 
-zu050020.tif![](media/media/image105.png)
+![](media/media/image105.png)
 
 The workflow selection screen appears.
 
 See "Section 5.2. View activities" for more information on this screen.
 
-3.  In the workflow selection screen, click on the icon050020.tif![](media/media/image106.png) button corresponding to the workflow of the item you want to register.
+3.  In the workflow selection screen, click on the ![](media/media/image106.png) button corresponding to the workflow of the item you want to register.
 
-zu050030.tif![](media/media/image107.png)
+![](media/media/image107.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -2072,10 +2072,10 @@ Table 5‑1. The elements in the workflow selection screen
 | 1   | Workflow                                               | A series of data registration processes that combine an item type and flows. It is created by the administrator.                                                                          |
 | 2   | Item Type                                              | The data type to be registered.                                                                                                                                                           |
 | 3   | Flow                                                   | A combination of processes (actions) to be performed when registering data. For information on each action, see "Table 5-2. The actions in the "Step" screen". |
-| 4   | The icon050020.tif![](media/media/image106.png) button | Click to access to the "Action" screen.                                                                                                                                                   |
-| 5   | The icon050270.tif![](media/media/image67.png) button  | Click to access to the activities list screen.                                                                                                                                            |
+| 4   | The ![](media/media/image106.png) button | Click to access to the "Action" screen.                                                                                                                                                   |
+| 5   | The ![](media/media/image67.png) button  | Click to access to the activities list screen.                                                                                                                                            |
 
-The "Step" screen for the flow set at the start of the selected workflow appears.zu050035.tif
+The "Step" screen for the flow set at the start of the selected workflow appears.
 
 ![](media/media/image108.png)
 
@@ -2106,9 +2106,9 @@ This section explains how to specify files and metadata for an activity.
 
 This section explains how to register an item thumbnail.
 
-1.  In the Item Registration screen, drag and drop the file you want to register in the "Drop files or folders here" section, or click the icon050070.tif![](media/media/image109.png) button.
+1.  In the Item Registration screen, drag and drop the file you want to register in the "Drop files or folders here" section, or click the ![](media/media/image109.png) button.
 
-zu050110.tif![](media/media/image110.png)
+![](media/media/image110.png)
 
 The file selection dialog appears.
 
@@ -2116,7 +2116,7 @@ The file selection dialog appears.
 
 The file information appears.
 
-zu050120.tif![](media/media/image111.png)
+![](media/media/image111.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -2126,8 +2126,8 @@ Table 5-3. The elements in the thumbnail registration screen
 | --- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | 1   | Filename                                             | Displays the name of the file to be registered.                                                      |
 | 2   | Size                                                 | Displays the size of the file to be registered.                                                      |
-| 3   | Progress                                             | Displays icon050060.tif![icon050060](media/media/image112.png) when the file registration completes. |
-| 4   | Action (icon050040.tif![](media/media/image113.png)) | Click to delete the registered file.                                                                 |
+| 3   | Progress                                             | Displays ![icon050060](media/media/image112.png) when the file registration completes. |
+| 4   | Action (![](media/media/image113.png)) | Click to delete the registered file.                                                                 |
 
 #### Automatically populate metadata
 
@@ -2171,7 +2171,7 @@ Table 5‑4. The elements in the "Automatic metadata input" screen
 </tr>
 <tr class="odd">
 <td>3</td>
-<td><img src="media/media/image118.png" style="width:0.625in;height:0.52326in" />icon050050.tif</td>
+<td><img src="media/media/image118.png" style="width:0.625in;height:0.52326in" /></td>
 <td><p>Click to retrieve the information according to the specified type and the ID. The retrieved results will be automatically entered into the metadata element with JPCOAR mapping in the Item Registration screen.</p>
 <ul>
 <li><blockquote>
@@ -2204,7 +2204,7 @@ Table 5‑4. The elements in the "Automatic metadata input" screen
 </tr>
 <tr class="even">
 <td>4</td>
-<td>The icon050050.tif<img src="media/media/image119.png" style="width:0.53125in;height:0.21503in" /> button</td>
+<td>The <img src="media/media/image119.png" style="width:0.53125in;height:0.21503in" /> button</td>
 <td>Click to close the "Automatic metadata input" screen without saving the information in the metadata entry fields of the Item Registration screen.</td>
 </tr>
 </tbody>
@@ -2305,13 +2305,13 @@ This section explains how to set up a proxy contributor.
 
 1.  In the Item Registration screen, select the "Other user" radio button to specify a proxy contributor.
 
-zu050540.tif![zu050540](media/media/image120.png)
+![zu050540](media/media/image120.png)
 
 The entry fields for the user information appear.
 
 7.  Enter the username and email address in the user information entry fields.
 
-zu050545.tif![zu050545](media/media/image121.png)
+![zu050545](media/media/image121.png)
 
 As you enter text in the "Username" or "Email", the matching users registered in the repository are filtered and displayed in the list of candidates. When you select a user from the list of users, the username and email address of the selected user will be populated.
 
@@ -2337,9 +2337,9 @@ When the extended proxy posting feature is enabled (`WEKO_ITEMS_UI_PROXY_POSTING
 
 This section explains how to register a file.
 
-1.  In the Item Registration screen, drag and drop the file you want to register in the "Drop files or folders here" section, or click the icon050030.tif![](media/media/image109.png) button.
+1.  In the Item Registration screen, drag and drop the file you want to register in the "Drop files or folders here" section, or click the ![](media/media/image109.png) button.
 
-zu050090.tif![](media/media/image122.png)
+![](media/media/image122.png)
 
 The file selection dialog appears.
 
@@ -2351,9 +2351,9 @@ If another file with the same name is already being used, the error message "The
 
 > ![](media/media/image123.png)
 
-9.  Click on the icon050050.tif![icon050050](media/media/image124.png) button in the displayed file information.
+9.  Click on the ![icon050050](media/media/image124.png) button in the displayed file information.
 
-zu050100.tif![](media/media/image125.png)
+![](media/media/image125.png)
 
 \<TBLATT POSITION=”1” SCALE=”151”\>　　The file is uploaded.
 
@@ -2375,9 +2375,9 @@ Table 5‑6. The elements in the Item Registration screen
 | --- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1   | "Filename"                                                       | Displays the name of the file to be registered.                                                                                                                                                                                |
 | 2   | "Size"                                                           | Displays the size of the file to be registered.                                                                                                                                                                                |
-| 3   | "Progress"                                                       | When you click the icon050050.tif![icon050050](media/media/image124.png) button, the upload starts, and its progress appears in "%". Displays icon050060.tif![icon050060](media/media/image112.png) when the upload completes. |
-| 4   | The icon050040.tif![](media/media/image113.png) button           | Click to delete the registered file.                                                                                                                                                                                           |
-| 5   | The icon050050.tif![icon050050](media/media/image124.png) button | Click to start uploading the file.                                                                                                                                                                                             |
+| 3   | "Progress"                                                       | When you click the ![icon050050](media/media/image124.png) button, the upload starts, and its progress appears in "%". Displays ![icon050060](media/media/image112.png) when the upload completes. |
+| 4   | The ![](media/media/image113.png) button           | Click to delete the registered file.                                                                                                                                                                                           |
+| 5   | The ![icon050050](media/media/image124.png) button | Click to start uploading the file.                                                                                                                                                                                             |
 
 10. Enter the file information.
 
@@ -2514,13 +2514,13 @@ This section explains how to set up the file preview format, the link name to th
 
 Figure 5-3. The "Display Name" pull-down list
 
-zu050190.tif![](media/media/image130.png)
+![](media/media/image130.png)
 
 11. Select the preview format from the pull-down list.
 
 Figure 5-4. The "Preview" pull-down list
 
-zu050200.tif![](media/media/image131.png)
+![](media/media/image131.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -2542,7 +2542,7 @@ The Preview display must be configured in the WEKO Administration.
 
 12. Select a license from the pull-down list.
 
-Figure 5-5. The "License" pull-down listzu050210.tif
+Figure 5-5. The "License" pull-down list
 
 ![](media/media/image132.png)
 
@@ -2698,7 +2698,7 @@ This section explains how to set up how the file is published.
 
 1.  Specify the publishing method by selecting an "Access" radio button.
 
-zu050220.tif![](media/media/image134.png)
+![](media/media/image134.png)
 
 The access information for restricted access appears as follows
 
@@ -2847,7 +2847,7 @@ This section explains how to set up how the billing file is published.
 
 1.  Specify the publishing method by selecting an "Access" radio button.
 
-zu050220.tif![](media/media/image134.png)
+![](media/media/image134.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -2982,22 +2982,22 @@ Table 5-13. The elements in the Item Registration screen
 </tr>
 <tr class="odd">
 <td>13</td>
-<td>The icon050085.tif<img src="media/media/image146.png" style="width:0.44792in;height:0.1493in" /> button</td>
+<td>The <img src="media/media/image146.png" style="width:0.44792in;height:0.1493in" /> button</td>
 <td>Click to save the specified information temporarily.</td>
 </tr>
 <tr class="even">
 <td>14</td>
-<td>The icon050250.tif<img src="media/media/image147.png" style="width:0.5625in;height:0.1875in" /> button</td>
+<td>The <img src="media/media/image147.png" style="width:0.5625in;height:0.1875in" /> button</td>
 <td>Click to navigate to the "Specific index" screen. See "Section 5.1.2. Set up an index".</td>
 </tr>
 <tr class="odd">
 <td>15</td>
-<td>The icon050260.tif<img src="media/media/image67.png" style="width:0.55208in;height:0.18403in" /> button</td>
+<td>The <img src="media/media/image67.png" style="width:0.55208in;height:0.18403in" /> button</td>
 <td>Clicking this button will not save the information entered, and you will return to the workflow selection screen.</td>
 </tr>
 <tr class="even">
 <td>16</td>
-<td>The <img src="media/media/image148.png" style="width:1.16667in;height:0.47917in" /><img src="media/media/image148.png" style="width:1.16667in;height:0.47917in" />icon050240.tif<img src="media/media/image149.png" style="width:0.4375in;height:0.21875in" /> button</td>
+<td>The <img src="media/media/image148.png" style="width:1.16667in;height:0.47917in" /><img src="media/media/image148.png" style="width:1.16667in;height:0.47917in" /><img src="media/media/image149.png" style="width:0.4375in;height:0.21875in" /> button</td>
 <td>Click to discard the input and terminate the activity you are working on.</td>
 </tr>
 </tbody>
@@ -3019,15 +3019,15 @@ The required elements, however, vary depending on the item type.
 
 Figure 5-10. The "PubDate" pull-down list
 
-zu050050.tif![](media/media/image150.png)
+![](media/media/image150.png)
 
 Figure 5-11. The "Language" pull-down list
 
-zu050060.tif![](media/media/image151.png)
+![](media/media/image151.png)
 
 Figure 5-12. The "Language" pull-down list
 
-zu050070.tif![](media/media/image152.png)
+![](media/media/image152.png)
 
 Figure 5-13. The "Resource Type" pull-down list
 
@@ -3037,21 +3037,19 @@ Additional Information:
 
 If you enter multiple values for a single metadata element, their display order in the item details screen will be the same as that of the metadata element entry area in the Item Registration screen. You can also change the metadata display order in the item details screen by dragging and dropping the metadata to rearrange them in the input area.
 
-zu050080.tif
-
 #### Enter a creator name
 
 Select or directly enter a creator information from the creator search screen.
 
 This section explains how to select a creator in the creator search screen.
 
-1.  In the Item Registration screen, click the icon050110.tif![](media/media/image154.png) button displayed in the creator section.
+1.  In the Item Registration screen, click the ![](media/media/image154.png) button displayed in the creator section.
 
 The creator search screen appears.
 
-13. In the creator search screen, enter a keyword in the "Search" text box and click the icon050120.tif![](media/media/image155.png) button.
+13. In the creator search screen, enter a keyword in the "Search" text box and click the ![](media/media/image155.png) button.
 
-zu050130.tif![](media/media/image156.png)
+![](media/media/image156.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -3073,7 +3071,7 @@ Table 5-14. The elements in the creator search screen
 </tr>
 <tr class="even">
 <td>2</td>
-<td><p>The icon050120.tif<img src="media/media/image155.png" style="width:0.5in;height:0.18085in" /> button</p></td>
+<td><p>The <img src="media/media/image155.png" style="width:0.5in;height:0.18085in" /> button</p></td>
 <td>Click to perform the search according to the specified search criteria. The search results will be displayed in a list.</td>
 </tr>
 <tr class="odd">
@@ -3083,22 +3081,22 @@ Table 5-14. The elements in the creator search screen
 </tr>
 <tr class="even">
 <td>4</td>
-<td>The icon050150.tif<img src="media/media/image157.png" style="width:0.57292in;height:0.20504in" /> button</td>
+<td>The <img src="media/media/image157.png" style="width:0.57292in;height:0.20504in" /> button</td>
 <td>Click to display the "Add Author" screen. Enter the creator information. See "Figure 5-14. The "Add Author" screen".</td>
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>The icon050160.tif<img src="media/media/image158.png" style="width:1.09375in;height:0.25in" alt="icon050160" /> pull-down list</td>
+<td>The <img src="media/media/image158.png" style="width:1.09375in;height:0.25in" alt="icon050160" /> pull-down list</td>
 <td>Select the number of rows displayed in the list of creators from the pull-down list. See "Figure 5-15. The "Display Number" pull-down list".</td>
 </tr>
 <tr class="even">
 <td>6</td>
-<td>The icon050130.tif<img src="media/media/image159.png" style="width:0.35417in;height:0.18245in" /> button</td>
+<td>The <img src="media/media/image159.png" style="width:0.35417in;height:0.18245in" /> button</td>
 <td>Click to close the creator search screen. The creator information will be populated in the creator entry fields of the Item Registration screen.</td>
 </tr>
 <tr class="odd">
 <td>7</td>
-<td>The icon050140.tif<img src="media/media/image160.png" style="width:0.52083in;height:0.20833in" /> button</td>
+<td>The <img src="media/media/image160.png" style="width:0.52083in;height:0.20833in" /> button</td>
 <td>Click to close the creator search screen without saving the information in the creator entry fields of the Item Registration screen.</td>
 </tr>
 </tbody>
@@ -3106,7 +3104,7 @@ Table 5-14. The elements in the creator search screen
 
 Figure 5-14. The "Add Author" screen
 
-![](media/media/image161.png)zu050150.tif
+![](media/media/image161.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -3124,7 +3122,7 @@ Table 5-15. The elements in the "Add Author" screen
 | 8   | The "+ Add a new ID" link                              | Click to add a field for entering another author ID.                                                                      |
 | 9   | The "+ Add E-mail" link                                | Click to add an email field.                                                                                              |
 | 10  | The "+ Add Community" link                             | Click to add a field for entering another community.                                                                      |
-| 11  | The icon050170.tif![](media/media/image162.png) button | Click to navigate to the creator search screen without adding an author.                                                  |
+| 11  | The ![](media/media/image162.png) button | Click to navigate to the creator search screen without adding an author.                                                  |
 | 12  | The "Identifier" pull-down list                        | Select the scheme name of the affiliation identifier from the pull-down list.                                             |
 | 13  | The "Identifier" text box                              | Enter the identifier of the institution the author is affiliated with.                                                    |
 | 14  | The "Affiliation Name" text box                        | Enter the name of the affiliated institution.                                                                             |
@@ -3135,21 +3133,21 @@ Table 5-15. The elements in the "Add Author" screen
 | 19  | The "+ Add Affiliation Name" link                      | Click to add a field for entering another affiliation name.                                                               |
 | 20  | The "+ Add Affiliation Period" link                    | Click to add a field for entering another affiliation period.                                                             |
 | 21  | The "+ Add Affiliation" link                           | Click to add a field for entering another set of affiliation information.                                                 |
-| 22  | The icon050180.tif![](media/media/image163.png) button | Click to navigate to the creator search screen.                                                                           |
-| 23  | The icon050190.tif![](media/media/image164.png) button | Click to add the author and navigate to the creator search screen.                                                        |
-| 24  | The icon050140.tif![](media/media/image160.png) button | Click to close the "Add Author" screen and navigate to the creator search screen.                                         |
+| 22  | The ![](media/media/image163.png) button | Click to navigate to the creator search screen.                                                                           |
+| 23  | The ![](media/media/image164.png) button | Click to add the author and navigate to the creator search screen.                                                        |
+| 24  | The ![](media/media/image160.png) button | Click to close the "Add Author" screen and navigate to the creator search screen.                                         |
 
 Figure 5-15. The "Display Number" pull-down list
 
-zu050140.tif![](media/media/image165.png)
+![](media/media/image165.png)
 
 Figure 5-16. The "Name" pull-down lists
 
-zu050153.tif![](media/media/image166.png) ![](media/media/image167.png)
+![](media/media/image166.png) ![](media/media/image167.png)
 
 Figure 5-17. The "Author ID" pull-down list
 
-zu050156.tif![](media/media/image168.png)
+![](media/media/image168.png)
 
 Additional Information:
 
@@ -3165,7 +3163,7 @@ This section explains how to set up the bibliographic information.
 
 1.  In the Item Registration screen, enter the journal title in the "Title" text box for the bibliographic information.
 
-zu050570.tif![](media/media/image170.png)
+![](media/media/image170.png)
 
 14. Select a language from the "Language" pull-down list.
 
@@ -3187,11 +3185,11 @@ This section explains how to set up the version type.
 
 1.  In the Item Registration screen, select the version type from the "Version Type" pull-down list.
 
-zu050580.tif![](media/media/image171.png)
+![](media/media/image171.png)
 
 Figure 5‑18. The "Version Type" pull-down list
 
-zu050590.tif![](media/media/image172.png)
+![](media/media/image172.png)
 
 
 #### Retrieve policy information
@@ -3214,7 +3212,7 @@ Note: To retrieve policy information, the system administrator must configure th
 
 This section explains how to configure the Feedback Mail Destination setting.
 
-1.  In the Item Registration screen, click the icon050110.tif![](media/media/image154.png) button for the recipient of the feedback mail.  
+1.  In the Item Registration screen, click the ![](media/media/image154.png) button for the recipient of the feedback mail.  
     The creator search screen appears.
 
 ![](media/media/image173.png)
@@ -3246,13 +3244,13 @@ See "Table 5-14. The elements in the creator search screen" for information on t
 </tr>
 <tr class="even">
 <td>2</td>
-<td>The text box showing "Input text"icon050120.tif</td>
+<td>The text box showing "Input text"</td>
 <td><p>You can enter an email address here manually.</p>
 <p>Press the Enter key to register the mail address entered.</p></td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>The icon050140.tif<img src="media/media/image69.png" style="width:0.59055in;height:0.19685in" /> button</td>
+<td>The <img src="media/media/image69.png" style="width:0.59055in;height:0.19685in" /> button</td>
 <td>Click to remove the selected email address from the list.</td>
 </tr>
 </tbody>
@@ -3260,15 +3258,15 @@ See "Table 5-14. The elements in the creator search screen" for information on t
 
 #### Set up access rights
 
-1.  This section explains how to set up the availability of the content. You can select and fill in the information using the controlled vocabulary. In the Item Registration screen, select the access rights from the zu050160.tif"Access Rights" pull-down list. "Access Rights URI" is automatically populated with the relevant access rights URI.
+1.  This section explains how to set up the availability of the content. You can select and fill in the information using the controlled vocabulary. In the Item Registration screen, select the access rights from the "Access Rights" pull-down list. "Access Rights URI" is automatically populated with the relevant access rights URI.
 
 See "Figure 5-19. The "Access Rights" pull-down list".
 
-![](media/media/image177.png)![背景パターン 自動的に生成された説明](media/media/image178.png)![背景パターン 自動的に生成された説明](media/media/image178.png)zu050170.tif
+![](media/media/image177.png)![背景パターン 自動的に生成された説明](media/media/image178.png)![背景パターン 自動的に生成された説明](media/media/image178.png)
 
 Figure 5-19. The "Access Rights" pull-down list
 
-zu050180.tif![](media/media/image179.png)
+![](media/media/image179.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -3313,7 +3311,7 @@ Table 5-17. The options in the "Access Rights" pull-down list
 > 
 > **Additional Information: Verification on the metadata you have entered**
 
-  - > If you click the icon050250.tif![](media/media/image147.png) button without entering the required fields, the error message "The following items is required. Please recheck and input" will be displayed.
+  - > If you click the ![](media/media/image147.png) button without entering the required fields, the error message "The following items is required. Please recheck and input" will be displayed.
 
 > ![](media/media/image180.png)
 
@@ -3455,7 +3453,7 @@ You must specify which index each item belongs to.
 
 Displays the name of the index checked in the Index Tree.
 
-zu050280.tif![](media/media/image184.png)
+![](media/media/image184.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -3464,9 +3462,9 @@ Table 5‑22. The elements in the "Specific index" screen
 | No. | Element                                                | Description                                                               |
 | --- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
 | 1   | Index name                                             | Displays the name of the index checked in the Index Tree.                 |
-| 2   | The icon050080.tif![](media/media/image146.png) button | Click to save the specified information temporarily.                      |
-| 3   | The icon050090.tif![](media/media/image147.png) button | Click to proceed with the operation for the selected items.               |
-| 4   | The icon050100.tif![](media/media/image149.png) button | Click to discard the input and terminate the activity you are working on. |
+| 2   | The ![](media/media/image146.png) button | Click to save the specified information temporarily.                      |
+| 3   | The ![](media/media/image147.png) button | Click to proceed with the operation for the selected items.               |
+| 4   | The ![](media/media/image149.png) button | Click to discard the input and terminate the activity you are working on. |
 
 Notes:
 
@@ -3474,11 +3472,11 @@ If you click the ![](media/media/image146.png) or ![](media/media/image147.png) 
 
 ![](media/media/image185.png)
 
-1.  Click the icon050090.tif![](media/media/image147.png) button.
+1.  Click the ![](media/media/image147.png) button.
 
 The comment input screen appears.
 
-![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image186.png)![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image186.png)zu050290.tif![](media/media/image187.png)
+![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image186.png)![グラフィカル ユーザー インターフェイス, テキスト, アプリケーション, メール 自動的に生成された説明](media/media/image186.png)![](media/media/image187.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -3488,15 +3486,15 @@ Table 5‑23. The elements in the comment input screen
 | --- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | 1   | Comment                                                                             | Enter comments.                                                              |
 | 2   | The "Back" button                                                                   | Click to return to the Item Registration screen.                             |
-| 3   | The icon050080.tif![](media/media/image146.png) button                              | Click to save the specified information temporarily.                         |
-| 4   | The icon050230.tif![](media/media/image147.png) button                              | Click to complete the registration of the item's metadata and content files. |
-| 5   | The ![](media/media/image148.png)icon050240.tif![](media/media/image149.png) button | Click to discard the input and terminate the activity you are working on.    |
+| 3   | The ![](media/media/image146.png) button                              | Click to save the specified information temporarily.                         |
+| 4   | The ![](media/media/image147.png) button                              | Click to complete the registration of the item's metadata and content files. |
+| 5   | The ![](media/media/image148.png)![](media/media/image149.png) button | Click to discard the input and terminate the activity you are working on.    |
 
-22. Click the icon050230.tif![](media/media/image147.png) button.
+22. Click the ![](media/media/image147.png) button.
 
 The "Step" screen appears, and "Item Registration" shows "Done" in the flow.
 
-![グラフ が含まれている画像 自動的に生成された説明](media/media/image188.png)zu050300.tif![](media/media/image189.png)
+![グラフ が含まれている画像 自動的に生成された説明](media/media/image188.png)![](media/media/image189.png)
 
 When you proceed to the next action, you may receive the error message "Please make sure the item type mapping is correct". This message will be displayed if the login session has expired, in which case you need to log in again.
 
@@ -3512,19 +3510,19 @@ You can link up registered items with each other.
 
 The "Item Link" screen belonging to that index appears.
 
-zu050660.tif![](media/media/image191.png)
+![](media/media/image191.png)
 
 You can add links to multiple items that belong to the selected index. Note that only one index can be selected.
 
 23. Select the "+" button for the item you want to link in the "Item Link" screen that appears.
 
-zu050670.tif![](media/media/image192.png)
+![](media/media/image192.png)
 
 24. Enter comments.
 
-zu050680.tif![](media/media/image193.png)
+![](media/media/image193.png)
 
-25. Click the icon050230.tif![](media/media/image147.png) button.
+25. Click the ![](media/media/image147.png) button.
 
 The link will be registered.
 
@@ -3538,13 +3536,13 @@ You can grant a DOI to an item if it has not already been granted one. You must 
 
 This section explains how to grant a DOI to an item in the Identifier Grant action.
 
-zu050310.tif![](media/media/image194.png)
+![](media/media/image194.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
 Figure 5‑20. The "Identifier Grant" screen
 
-zu050330.tif![](media/media/image195.png)
+![](media/media/image195.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -3590,12 +3588,12 @@ Table 5-24. The elements in the "Identifier Grant" screen
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>The icon050080.tif<img src="media/media/image146.png" style="width:0.59055in;height:0.19685in" /> button</td>
+<td>The <img src="media/media/image146.png" style="width:0.59055in;height:0.19685in" /> button</td>
 <td>Click to save the specified information temporarily.</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>The icon050250.tif<img src="media/media/image147.png" style="width:0.59055in;height:0.19685in" /> button</td>
+<td>The <img src="media/media/image147.png" style="width:0.59055in;height:0.19685in" /> button</td>
 <td><p>Proceed to verify whether the conditions for granting a DOI is met.</p>
 <ul>
 <li><blockquote>
@@ -3608,7 +3606,7 @@ Table 5-24. The elements in the "Identifier Grant" screen
 </tr>
 <tr class="odd">
 <td>5</td>
-<td>The icon050240.tif<img src="media/media/image149.png" style="width:0.3937in;height:0.19685in" /> button</td>
+<td>The <img src="media/media/image149.png" style="width:0.3937in;height:0.19685in" /> button</td>
 <td>Click to discard the input and terminate the activity you are working on.</td>
 </tr>
 </tbody>
@@ -3713,23 +3711,23 @@ You can approve items from the "Workflow" screen.
 
 The activities list screen appears. The items that are currently pending approval appear.
 
-zu050340.tif![](media/media/image201.png)
+![](media/media/image201.png)
 
 Notes:
 
 If you do not have the review/approval privilege, the following screen will appear.
 
-zu050350.tif![](media/media/image202.png)
+![](media/media/image202.png)
 
 26. From the activities list screen that appears, click on the name of the activity whose action is "Approval".
 
 The item approval screen appears.
 
-zu050360.tif![](media/media/image203.png)
+![](media/media/image203.png)
 
 27. Click the "Approve" button in the item approval screen.
 
-zu050370.tif![](media/media/image204.png)
+![](media/media/image204.png)
 
 \<TBLATT POSITION=”1” SCALE=”151”\>
 
@@ -3737,10 +3735,10 @@ Table 5-25. The elements in the item approval screen
 
 | No. | Element                                                | Description                                                               |
 | --- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
-| 1   | The icon050200.tif![](media/media/image205.png) button | Click to return to the previous action in the workflow.                   |
-| 2   | The icon050080.tif![](media/media/image146.png) button | Click to save the specified information temporarily.                      |
-| 3   | The icon050220.tif![](media/media/image206.png) button | Click to approve the item.                                                |
-| 4   | The icon050240.tif![](media/media/image149.png) button | Click to discard the input and terminate the activity you are working on. |
+| 1   | The ![](media/media/image205.png) button | Click to return to the previous action in the workflow.                   |
+| 2   | The ![](media/media/image146.png) button | Click to save the specified information temporarily.                      |
+| 3   | The ![](media/media/image206.png) button | Click to approve the item.                                                |
+| 4   | The ![](media/media/image149.png) button | Click to discard the input and terminate the activity you are working on. |
 
 If the registered item was registered from OA Assist, its status is linked to OA Assist.
 
@@ -3766,19 +3764,19 @@ The activities list screen appears. You can work with the activities list using 
 
 Click to view the activities that are being registered or edited, as well as those that have been rejected.
 
-![](media/media/image207.png)zu050400.tif
+![](media/media/image207.png)
 
   - The "Wait" tab
 
 Click to view the activities that are pending approval.
 
-zu050410.tif![](media/media/image208.png)
+![](media/media/image208.png)
 
   - The "All" tab
 
 Click to view the activities that are being registered or edited, those that have been cancelled, those that are pending approval, and those that are complete.
 
-zu050420.tif![](media/media/image209.png)
+![](media/media/image209.png)
 
 > \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -4030,7 +4028,7 @@ The activity details screen appears.
 
 Figure 5‑25. The activity details screen
 
-zu050430.tif![](media/media/image218.png)
+![](media/media/image218.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -4077,27 +4075,27 @@ You can edit items belonging to the index. Locate the item to be edited in the i
 
 Figure 6-1. The "Index Tree" screen
 
-zu060010.tif![](media/media/image219.png)
+![](media/media/image219.png)
 
 1.  Click on an index from the "Index Tree" screen.
 
 The "Item Lists" screen appears.
 
-zu060020.tif![](media/media/image220.png)
+![](media/media/image220.png)
 
 30. Click on the title of the item you want to edit in the "Item Lists" screen that appears.
 
 The item details screen appears.
 
-zu060030.tif![](media/media/image221.png)
+![](media/media/image221.png)
 
-31. Click on the icon060020.tif![](media/media/image68.png) button in the item details screen.
+31. Click on the ![](media/media/image68.png) button in the item details screen.
     
     The Item Registration screen appears.
     
     ![](media/media/image222.png)If the "Edit" button of an item is pressed on another device or on the same device where import is in progress, the message "Item cannot be edited because the import is in progress" will appear.
 
-![](media/media/image224.png)zu060110.tif
+![](media/media/image224.png)
 
 If the item is being edited, you will see the message "The item is being edited". In this case, to edit an item, click on the name of the activity you want to edit from the activities list screen.
 
@@ -4134,17 +4132,17 @@ If the item is being edited, you will see the message "The item is being edited"
     
     You must specify an option for "Version Management".
 
-35. Click the icon060040.tif![](media/media/image147.png) button.
+35. Click the ![](media/media/image147.png) button.
 
 The "Specific index" screen appears. See "Section 5.1.2. Set up an index" for more information.
 
 Notes:
 
-> Click the icon050250.tif![](media/media/image147.png) button in the Item Registration screen to check the specified metadata. If there is an error, you will see a message. For the details of the error, see "Section 5.1.1. Register items," under "Additional Information: Verification on the metadata you have entered".
+> Click the ![](media/media/image147.png) button in the Item Registration screen to check the specified metadata. If there is an error, you will see a message. For the details of the error, see "Section 5.1.1. Register items," under "Additional Information: Verification on the metadata you have entered".
 
-See "Table 5-13. The elements in the Item Registration screen" for information on how the icon060030.tif![](media/media/image146.png), ![](media/media/image67.png), and icon050240.tif![](media/media/image149.png) buttons work on the Item Registration screen.
+See "Table 5-13. The elements in the Item Registration screen" for information on how the ![](media/media/image146.png), ![](media/media/image67.png), and ![](media/media/image149.png) buttons work on the Item Registration screen.
 
-36. Click the icon060070.tif![](media/media/image229.png) button.
+36. Click the ![](media/media/image229.png) button.
 
 You can proceed to the next action defined in the flow.
 
@@ -4166,27 +4164,27 @@ You can delete items belonging to the index. Locate the item to be deleted in th
 
 Figure 6-2. The "Index Tree" screen
 
-zu060010.tif![](media/media/image230.png)
+![](media/media/image230.png)
 
 1.  Click on an index from the "Index Tree" screen.
 
 The "Item Lists" screen appears.
 
-zu060020.tif![](media/media/image231.png)
+![](media/media/image231.png)
 
 37. Click on the title of the item you want to delete in the "Item Lists" screen that appears.
 
 The item details screen appears.
 
-zu060030.tif![](media/media/image232.png)
+![](media/media/image232.png)
 
-38. Click on the icon060030.tif![](media/media/image69.png) button in the item details screen.
+38. Click on the ![](media/media/image69.png) button in the item details screen.
 
 The "Confirm" screen appears.
 
 If the "Delete" button of an item is pressed on another device or on the same device where import is in progress, the message "Item cannot be deleted because the import is in progress" will appear.
 
-msg060010.tif![](media/media/image233.png)
+![](media/media/image233.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -4194,8 +4192,8 @@ Table 6‑1. The elements in the "Confirm" screen
 
 | No. | Element                                                         | Description                                                            |
 | --- | --------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| 1   | The icon060050.tif![icon060050](media/media/image72.png) button | Click to delete the item. You are returned to the "Item Lists" screen. |
-| 2   | The icon060060.tif![](media/media/image73.png) button           | Click to cancel the delete operation and close the "Confirm" screen.   |
+| 1   | The ![icon060050](media/media/image72.png) button | Click to delete the item. You are returned to the "Item Lists" screen. |
+| 2   | The ![](media/media/image73.png) button           | Click to cancel the delete operation and close the "Confirm" screen.   |
 
 Notes:
 
@@ -4203,7 +4201,7 @@ The ![](media/media/image69.png) button does not appear in the item details scre
 
 Older versions of the item do not display the ![](media/media/image69.png) button. When the latest version is deleted, all the previous versions will also be logically deleted.
 
-39. Click the icon060050.tif![icon060050](media/media/image72.png) button.
+39. Click the ![icon060050](media/media/image72.png) button.
 
 The item will be deleted.
 
@@ -4227,11 +4225,11 @@ Run a search by entering keywords in the keyword search text box or run an index
 
 2.  The search results appear in the "Item Lists" screen.
     
-    Click the icon030080.tif![](media/media/image47.png) button to display the "Items to Export" screen.
+    Click the ![](media/media/image47.png) button to display the "Items to Export" screen.
     
-    The icon030080.tif![](media/media/image47.png) button is displayed when exporting items is permitted in the item export settings on the Administration screen.
+    The ![](media/media/image47.png) button is displayed when exporting items is permitted in the item export settings on the Administration screen.
 
-zu070010.tifFigure 7-1. The "Items to Export" screenzu030180.tif
+Figure 7-1. The "Items to Export" screen
 
 ![](media/media/image235.png)
 
@@ -4293,14 +4291,14 @@ Table 7-1. The elements in the "Items to Export" screen
 </tr>
 <tr class="even">
 <td>8</td>
-<td>The icon030080.tif<img src="media/media/image47.png" style="width:0.50858in;height:0.20833in" /> button</td>
+<td>The <img src="media/media/image47.png" style="width:0.50858in;height:0.20833in" /> button</td>
 <td><p>Exports the items selected in the "Item" list.</p>
 <p>The button will remain inactive until you select items.</p>
 <p>The maximum number of items that can be exported at once is displayed to the left of the button ("Max number of items able to export"). If the number of selected items exceeds the maximum, the message "Exceeded number of selectable items." appears and the button becomes inactive.</p></td>
 </tr>
 <tr class="odd">
 <td>9</td>
-<td>The icon030090.tif<img src="media/media/image67.png" style="width:0.53125in;height:0.17708in" /> button</td>
+<td>The <img src="media/media/image67.png" style="width:0.53125in;height:0.17708in" /> button</td>
 <td>Click to return to the simple search screen.</td>
 </tr>
 </tbody>
@@ -4333,7 +4331,7 @@ Communities can be explored when the System is configured to display communities
 
 The "Communities" screen appears.
 
-zu070010.tif![](media/media/image237.png)
+![](media/media/image237.png)
 
 Table 9‑1. The elements in the "Communities" screen
 
@@ -4369,11 +4367,11 @@ This chapter provides tips for working with the System.
 
 This section explains how to modify your account profile.
 
-1.  Click icon080010.tif![icon080010](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
+1.  Click ![icon080010](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
 
 A pull-down menu appears.
 
-zu080010.tif![](media/media/image239.png)
+![](media/media/image239.png)
 
 40. Click "Profile".
 
@@ -4381,7 +4379,7 @@ The "Profile" screen appears.
 
 41. Edit your profile in the "Profile" screen.
 
-![](media/media/image240.png)![](media/media/image240.png)zu080020.tif![](media/media/image241.png)
+![](media/media/image240.png)![](media/media/image240.png)![](media/media/image241.png)
 
 \<TBLATT POSITION=”1” SCALE=”151”\>
 
@@ -4398,20 +4396,20 @@ Table 10‑1. The elements in the "Profile" screen
 | 7   | The "secret key" text box                                        | If you want to use "Copy a file to an open bucket" from the file details screen, enter the secret key of the S3 account to use.                                        |
 | 8   | The "endpoint url" text box                                      | If you want to use "Copy a file to an open bucket" from the file details screen, enter the endpoint URL of the S3 account to use.                                      |
 | 9   | The "region name" text box                                       | If you want to use "Copy a file to an open bucket" from the file details screen and need to specify the region of the S3 account to use, enter the region name.         |
-| 10  | The icon080020.tif![](media/media/image242.png) button           | Click to close the "Profile" screen without saving the changes you have made.                                                                                          |
-| 11  | The icon080030.tif![icon080030](media/media/image243.png) button | Click to update the profile with the changes and close the "Profile" screen.                                                                                           |
+| 10  | The ![](media/media/image242.png) button           | Click to close the "Profile" screen without saving the changes you have made.                                                                                          |
+| 11  | The ![icon080030](media/media/image243.png) button | Click to update the profile with the changes and close the "Profile" screen.                                                                                           |
 
 Note: Items 6 to 9 (the S3 account information) are displayed only when `WEKO_RECORDS_UI_USER_STORAGE_MODIFICATION_ENABLED = True` is set in the configuration file (instance.cfg). This setting is disabled (False) by default.
 
 Figure 10-1. The "Timezone" pull-down list
 
-zu080030.tif![](media/media/image244.png)
+![](media/media/image244.png)
 
 Figure 10-2. The "Language" pull-down list
 
-zu080040.tif![](media/media/image245.png)
+![](media/media/image245.png)
 
-42. Click the icon080030.tif![icon080030](media/media/image243.png) button.
+42. Click the ![icon080030](media/media/image243.png) button.
 
 The profile is updated.
 
@@ -4423,13 +4421,13 @@ This section explains how to determine which device is used to log in to an acco
 
 The "Session" screen appears.
 
-zu080070.tif![](media/media/image246.png)
+![](media/media/image246.png)
 
 2.  Click the "Logout" or "Revoke" button as required.
 
 The sessions are deleted.
 
-zu080080.tif![](media/media/image247.png)
+![](media/media/image247.png)
 
 ## Manage applications
 
@@ -4443,7 +4441,7 @@ This section explains how to view the authorized applications.
 
 A list of the authorized applications appears in "Authorized applications".
 
-zu080090.tif![](media/media/image248.png)
+![](media/media/image248.png)
 
 ### Add an application
 
@@ -4453,11 +4451,11 @@ This section explains how to add an application.
 
 A screen appears where you can create an action.
 
-![](media/media/image249.png)![](media/media/image250.png)zu080100.tif![](media/media/image251.png)
+![](media/media/image249.png)![](media/media/image250.png)![](media/media/image251.png)
 
 2.  Enter information for each element.
 
-![](media/media/image250.png)zu080110.tif![](media/media/image252.png)
+![](media/media/image250.png)![](media/media/image252.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -4513,11 +4511,11 @@ This section explains how to add an access token.
 
 A screen appears where you can create an action.
 
-zu080120.tif![](media/media/image253.png)
+![](media/media/image253.png)
 
 2.  Enter information for each element.
 
-zu080130.tif![](media/media/image254.png)
+![](media/media/image254.png)
 
 \<TBLATT POSITION="1" SCALE="151"\>
 
@@ -4596,17 +4594,17 @@ This section explains how to display the Administration screen.
 
 See "Section 2.2. Log in to the System" for information on how to log in.
 
-2.  Click icon020040.tif![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
+2.  Click ![icon020040](media/media/image20.png) next to the account name in the upper right corner of the Home screen.
 
 A pull-down menu appears.
 
-zu080050.tif![](media/media/image262.png)
+![](media/media/image262.png)
 
 3.  Select Administration.
 
 The Administration screen will be displayed. See the System Administration Manual for instruction.
 
-zu080060.tif![](media/media/image263.png)
+![](media/media/image263.png)
 
 
 ## Display the cookie consent screen
