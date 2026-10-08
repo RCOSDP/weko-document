@@ -80,7 +80,7 @@ MYグループをクリックし、所属グループの中にあるリポジト
 
 ## 学認SP登録
 
-### 自己署名証明書を作成​
+### 自己署名証明書を作成
 
 学認では、Shibbolethサーバの署名用証明書、暗号化用証明書として自己署名証明書を利用する運用は許されている。証明書の有効期間の問題もあるため、ここでは自己署名証明書を作成する。
 
@@ -89,7 +89,7 @@ cd /etc/nginx/
 openssl req -x509 -sha256 -nodes -days 3650 -newkey rsa:4096 -subj /CN=${FQDN} -keyout shib.key -out shib.crt
 ```
 
-### Shibboleth-SPで利用している自己署名証明書を公開できるようにする​（学認申請用）
+### Shibboleth-SPで利用している自己署名証明書を公開できるようにする（学認申請用）
 
 学認で自己署名証明書を利用する場合は、申請時に公開されている必要がある。
 
@@ -134,14 +134,14 @@ supervisorctl restart nginx
 
 申請書が事務局処理されたあと、申請書をダウンロードし、公印取得後、事務局に原本提出する。
 
-## 学認SP登録後​
+## 学認SP登録後
 
 ### SP管理者登録
 
 学認クラウドゲートウェイサービス(https://cg.gakunin.jp)にログインする。
 
 
-### GakuNin mAP登録​申請
+### GakuNin mAP登録申請
 
 [SP管理者](https://nii-auth.atlassian.net/wiki/spaces/gakuninmappublic/pages/44532087/SP)を読み、mAP登録を行う。
 
@@ -267,7 +267,7 @@ FriendlyName="isMemberOf"/>
 
 
 
-#### SPコネクタを作成する​
+#### SPコネクタを作成する
 
 下記サイト説明を参考にShibboleth-SP用のSPコネクタを作成する。
 
@@ -315,7 +315,7 @@ jc_weko3_ir_rcos_nii_ac_jp
 
 作成ボタンをクリックする。
 
-#### ロールグループを作成する​
+#### ロールグループを作成する
 
 [https://sptest.cg.gakunin.jp/map/mygroups/view](https://sptest.cg.gakunin.jp/)にアクセスし、
 グループを作成する。
@@ -430,14 +430,14 @@ https://dev.cg.gakunin.jp/
 -----------------------------------------------------------------------
 ```
 
-### グループへの初期ユーザ追加​
+### グループへの初期ユーザ追加
 
-## 機関側​設定
+## 機関側設定
 
-### 学認IdPの設定​
+### 学認IdPの設定
 
-利用者はattribute-filter.xmlで絞ってもらう​
-接続先を絞っている場合はSP情報追加​
+利用者はattribute-filter.xmlで絞ってもらう
+接続先を絞っている場合はSP情報追加
 
 ```
 <AttributeFilterPolicy id="policyForJAIROCloud">
@@ -772,7 +772,7 @@ sptest.cg.gakunin.jp との接続に失敗している。
 2026-01-21 08:11:40 ERROR Shibboleth.AttributeResolver.SimpleAggregation [2] [default]: unable to obtain a SAML response from attribute authority (https://sptest.cg.gakunin.jp/idp/shibboleth)
 ```
 
-### 【補足】Shibboleth-IdP​の設定
+### 【補足】Shibboleth-IdPの設定
 
 IdP経由でのログインユーザはすべてアイテム登録が可能になるため、
 必要に応じて```AttributeFilterPolicy```による設定する。

@@ -21,7 +21,7 @@ shibdを再起動し、ログにエラーがでてないことを確認する。
 supervisorctl restart shibd
 ```
 
-## WEKO3の設定​
+## WEKO3の設定
 
 instance.cfgの以下設定を変更する。
 

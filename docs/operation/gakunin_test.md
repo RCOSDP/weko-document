@@ -2,7 +2,7 @@
 
 ## 環境構築の概要
 
-本手順書ではWEKO3における学認テストフェデレーション設定およびOrthrosログイン設定手順を説明する。​
+本手順書ではWEKO3における学認テストフェデレーション設定およびOrthrosログイン設定手順を説明する。
 
 1. Shibbboleth-SPの設定
 2. nginxの設定
@@ -124,7 +124,7 @@ nginxを再起動する。
 supervisorctl restart nginx
 ```
 
-#### Shibboleth-SPで利用している自己署名証明書を公開できるようにする​（学認申請用）
+#### Shibboleth-SPで利用している自己署名証明書を公開できるようにする（学認申請用）
 
 学認で自己署名証明書を利用する場合は、申請時に公開されている必要がある。
 
@@ -194,7 +194,7 @@ https://${FQDN}/Shibboleth.sso/DS
 
 申請ボタンをクリックし、申請が承認されるまで待つ。
 
-#### 学認SPが登録されたことを確認する​
+#### 学認SPが登録されたことを確認する
 
 申請状況は[学認申請システム](https://office.gakunin.nii.ac.jp/TestFed/ )から確認できる。
 
@@ -246,7 +246,7 @@ shibdを再起動し、ログにエラーがでてないことを確認する。
 supervisorctl restart shibd
 ```
 
-### GakuNin mAP登録​申請
+### GakuNin mAP登録申請
 
 [SP管理者](https://nii-auth.atlassian.net/wiki/spaces/gakuninmappublic/pages/44532087/SP)を読み、mAP登録を行う。
 
@@ -460,7 +460,7 @@ supervisorctl restart shibd
 
 ### mAPの設定
 
-#### SPコネクタを作成する​
+#### SPコネクタを作成する
 
 下記サイト説明を参考にShibboleth-SP用のSPコネクタを作成する。
 
@@ -513,7 +513,7 @@ jc_weko3_ir_rcos_nii_ac_jp
 
 ![SPコネクタ設定イメージ](pics/gakunin_test_image007.png)
 
-#### ロールグループを作成する​
+#### ロールグループを作成する
 
 [https://sptest.cg.gakunin.jp/map/mygroups/view](https://sptest.cg.gakunin.jp/)にアクセスし、
 グループを作成する。
@@ -637,7 +637,7 @@ https://dev.cg.gakunin.jp/
 -----------------------------------------------------------------------
 ```
 
-### WEKO3の設定​
+### WEKO3の設定
 
 WEKO3で学認ログインができるように設定する。
 関連する設定は以下のとおりである。
@@ -792,7 +792,7 @@ sptest.cg.gakunin.jp との接続に失敗している。
 2026-01-21 08:11:40 ERROR Shibboleth.AttributeResolver.SimpleAggregation [2] [default]: unable to obtain a SAML response from attribute authority (https://sptest.cg.gakunin.jp/idp/shibboleth)
 ```
 
-### 【補足】Shibboleth-IdP​の設定
+### 【補足】Shibboleth-IdPの設定
 
 IdP経由でのログインユーザはすべてアイテム登録が可能になるため、
 必要に応じて```AttributeFilterPolicy```による設定する。
