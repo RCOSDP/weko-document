@@ -726,8 +726,6 @@ Figure 1‑2. Registering data
 
 This section explains the terminology used in the System.
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 1‑1. Terms used in the System
 
 <table>
@@ -881,8 +879,6 @@ Table 1‑1. Terms used in the System
 
 The following table shows the administrator roles for the System.
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 1‑2. Administrator roles for the System
 
 | Administrator role                                                                               | Description                                                                                                                                                                                                                                                    |
@@ -892,8 +888,6 @@ Table 1‑2. Administrator roles for the System
 | Community administrator | Each research category, such as a faculty or department, represents a single index within the index tree. This administrative role is responsible for a particular index and performs harvesting, editing the index tree, registering widgets and other tasks. |
 
 The following table shows the administrative features of the System and the administrator roles that can perform each operation.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 1‑3. System features and administrator roles
 
@@ -1720,7 +1714,7 @@ Check "Required" if you want to make the attribute required. To delete the entry
 
 For information on the input formats, see "Table 2-1. Input formats for metadata attributes".
 
-![](media/media/image7.png)\<TBLATT POSITION=”1” SCALE=”151”\>
+![](media/media/image7.png)
 
 Table 2‑1. Input formats for metadata attributes
 
@@ -1906,8 +1900,6 @@ Select "Item Type for Harvesting" to display the item types available for harves
 Select "Deleted Item Type" to display the deleted item types. "Deleted Item Type" appears only when you are logged in as a system administrator.
 
 The following table shows the operations that are enabled for each item type.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 2‑2. The operations that are enabled for each item type
 
@@ -7191,8 +7183,6 @@ An element is added.
     
     The options also appear directly under the child element. You can check one or more of the "Required", "Show List", "Specify Newline", or "Hide" checkboxes.
 
-> \<TBLATT POSITION="1" SCALE="151"\>
-
 Table 2‑3. Elements available in "Option"
 
 | Option          | Description                                                                                              |
@@ -8695,8 +8685,6 @@ Items with "Error" results cannot be imported. Check the file and start again fr
 
 > ![](media/media/image84.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 3‑3. The elements on the "Import" tab
 
 <table>
@@ -9216,8 +9204,6 @@ Table 3‑7. Error messages of the import results
 2.  Review the information in the "Result" tab.
     
     ![](media/media/image86.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 3‑8. The elements in the "Result" tab
 
@@ -9845,8 +9831,6 @@ An index ("New Index") is added to the bottom line of that index. No selection i
     
     ![](media/media/image90.png)The following table lists the information you can enter for the index.
 
-\<TBLATT POSITION=”1” SCALE=”151”\>
-
 Table 4‑1. The elements in "Index Edit"
 
 <table>
@@ -10383,8 +10367,6 @@ A screen appears where you can create a widget.
 
 The following table lists the information you can enter.
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 5‑1. Elements and descriptions for creating a widget
 
 <table>
@@ -10857,8 +10839,6 @@ For the detailed settings for the Free description option, see "Table 5-2. Eleme
 
 Specify the theme of the widget.
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 5‑7. Sample display for each theme
 
 | Theme     | Sample display                             | Description                                                                                                |
@@ -10870,8 +10850,6 @@ Table 5‑7. Sample display for each theme
 #### Settings for the Border Style element
 
 Specify the border style of the widget.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 5‑8. Sample display for each border style
 
@@ -11188,8 +11166,6 @@ The screen appears where you can add an author.
 ![](media/media/image188.png)
 
 The following table lists the information you can enter.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 6‑2. The elements in the "Name" area
 
@@ -11514,8 +11490,6 @@ This section explains how to add an external author ID Prefix.
     ![](media/media/image198.png)
 
 The following table lists the information you can enter.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 6‑7. The elements for the external author ID Prefix
 
@@ -12871,7 +12845,7 @@ Figure 7‑10. Users
 
 Figure 7‑11. Site Access
 
-![](media/media/image222.png)\<TBLATT POSITION="1" SCALE="151"\>
+![](media/media/image222.png)
 
 ### Send a fixed form report by email
 
@@ -12938,8 +12912,6 @@ The email schedule is set. Fixed form reports email will be sent based on the sp
 The following table lists the information you can enter.
 
 Table 7‑2. The elements for "Custom Report"
-
-\<TBLATT POSITION="0" SCALE="161"\>
 
 <table>
 <thead>
@@ -13067,8 +13039,6 @@ Notes:
   - The filename and aggregation period will be in the "YYYY-MM" format if the aggregation period is one month, instead of the "YYYY-MM - YYYY-MM" format.
 
   - When the aggregation period is one month, the "total" column will not be included in the output for each file.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 7‑3. Site license statistics
 
@@ -13380,8 +13350,6 @@ A screen appears where you can create a community.
 
 ![](media/media/image261.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 9‑1. The elements in the "Create" tab
 
 | Element         | Description                                                                           |
@@ -13461,8 +13429,6 @@ A screen appears where you can specify your favorite community.
 Enter information for each element.
 
 ![](media/media/image264.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 9‑2. The elements in the "Create" tab
 
@@ -13628,8 +13594,6 @@ The details appear.
 2.  > Enter information for each element.
 
 ![](media/media/image278.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 10‑1. The elements in the "Create" tab
 
@@ -14559,8 +14523,6 @@ A screen appears where you can create a Bucket.
 
 ![](media/media/image317.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 14‑1. The elements in the "Create" tab
 
 | Element               | Description                                                                                      |
@@ -14694,8 +14656,6 @@ A screen appears where you can create a Location.
 Enter information for each element.
 
 ![](media/media/image323.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 14‑2. The elements in the "Create" tab
 
@@ -14928,8 +14888,6 @@ A screen appears where you can create an action.
 
 ![](media/media/image330.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 15‑1. The elements in the "Create" tab
 
 | Element  | Description                              |
@@ -15013,8 +14971,6 @@ Enter information for each element.
 
 ![](media/media/image335.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 15‑2. The elements in the "Create" tab
 
 | Element     | Description                                     |
@@ -15097,8 +15053,6 @@ A screen appears where you can create an action.
 Enter information for each element.
 
 ![](media/media/image340.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 15‑3. The elements in the "Create" tab
 
@@ -15219,8 +15173,6 @@ Enter information for each element.
 
 ![](media/media/image346.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 15‑4. The elements in the "Create" tab
 
 | Element        | Description                                        |
@@ -15295,8 +15247,6 @@ A screen appears where you can create an account.
 Enter information for each element.
 
 ![](media/media/image348.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 15‑5. The elements in the "Create" tab
 
@@ -15462,8 +15412,6 @@ Enter information for each element.
 
 ![](media/media/image355.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 15‑6. The elements in the "Create" tab
 
 | Element     | Description          |
@@ -15584,8 +15532,6 @@ Enter information for each element.
 
 ![](media/media/image361.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 15‑7. The elements in the "Create" tab
 
 | Element                | Description                                                  |
@@ -15692,8 +15638,6 @@ A screen appears where you can configure the setting.
 ![](media/media/image366.png)
 
 The following table lists the information you can enter.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 16‑1. The elements in "Items".
 
@@ -15819,8 +15763,6 @@ The following table lists the information displayed.
 
 ![](media/media/image370.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 16‑2. The elements in "Header Settings"
 
 <table>
@@ -15868,8 +15810,6 @@ A screen appears where you can configure the ranking display.
 The following table lists the elements displayed.
 
 ![](media/media/image371.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 16‑3. The elements in "Ranking"
 
@@ -16017,8 +15957,6 @@ A screen appears where you can create a Prefix ID.
 
 ![](media/media/image380.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 16‑4. The elements in "Prefix"
 
 | Element           | Description                                                           |
@@ -16089,8 +16027,6 @@ A screen appears where you can configure item export.
 
 The following table lists the information you can enter.
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 16‑5. The elements in "Item Export"
 
 | Element                       | Description                                       |
@@ -16115,8 +16051,6 @@ A screen appears where you can configure the log analysis settings.
 ![](media/media/image386.png)
 
 The following table lists the information you can enter.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 16‑6. The elements in "Items".
 
@@ -16174,8 +16108,6 @@ This section explains how to configure the search results settings.
 The following table lists the elements displayed.
 
 ![](media/media/image388.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 16‑8. The elements in "Search Results Setting"
 
@@ -16698,8 +16630,6 @@ The following table lists the elements displayed.
 
 ![](media/media/image397.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 16‑11. The elements in "Site Info"
 
 <table>
@@ -16871,8 +16801,6 @@ A screen appears where you can configure the email setting.
 
 The following table lists the information you can enter.
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 16‑12. The elements in "Mail Setting"
 
 | Element        | Description                              |
@@ -16895,8 +16823,6 @@ The setting is saved. If Server, Port, or Default sender is blank, the setting i
 ![](media/media/image405.png)
 
 The following table lists the information you can enter.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 16‑13. The elements in "Send Test Mail"
 
@@ -16932,8 +16858,6 @@ The text boxes on the right side of the screen become editable.
 Enter the subject in "Subject" and the body in the text box below it. "Subject" and the body are required.
 
 A string enclosed in square brackets ([ ]) is used as a variable. The following table lists the variables you can use and their contents.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 16‑14. The variables available in mail templates
 
@@ -17473,8 +17397,6 @@ The "File Preview" screen appears.
 ![](media/media/image408.png)
 
 The following table lists the information you can enter.
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 16‑15. The elements in "File Preview"
 
@@ -18684,8 +18606,6 @@ A screen appears where you can create a group.
 
 ![](media/media/image417.png)
 
-\<TBLATT POSITION="1" SCALE="151"\>
-
 Table 19‑1. The elements in "New group"
 
 | Element     | Description                       |
@@ -18736,8 +18656,6 @@ A screen appears where you can edit the setting.
 2.  Enter information for each element.
 
 ![](media/media/image422.png)
-
-\<TBLATT POSITION="1" SCALE="151"\>
 
 Table 19‑2. The input elements
 
