@@ -1729,32 +1729,32 @@ Table 2‑1. Input formats for metadata attributes
 <tbody>
 <tr class="odd">
 <td>Text</td>
-<td><img src="media/media/image8.png" style="width:1.6875in;height:0.43056in" alt="zu0404050" /></td>
+<td><img src="media/media/image8.png" style="width:1.6875in;height:0.43056in" alt="" /></td>
 <td>Accepts a single line of text as input.</td>
 </tr>
 <tr class="even">
 <td>Text Area</td>
-<td><img src="media/media/image9.png" style="width:2.04167in;height:0.45833in" alt="zu0404060" /></td>
+<td><img src="media/media/image9.png" style="width:2.04167in;height:0.45833in" alt="" /></td>
 <td>Accepts multiple lines of text as input.</td>
 </tr>
 <tr class="odd">
 <td>Check Box<sup>*</sup></td>
-<td><img src="media/media/image10.png" style="width:0.66667in;height:0.96875in" alt="zu0404070" /></td>
+<td><img src="media/media/image10.png" style="width:0.66667in;height:0.96875in" alt="" /></td>
 <td>Accepts the values of one or more selected check boxes as input.</td>
 </tr>
 <tr class="even">
 <td>Selective (radio)<sup>*</sup></td>
-<td><img src="media/media/image11.png" style="width:1.16667in;height:0.61111in" alt="zu0404080" /></td>
+<td><img src="media/media/image11.png" style="width:1.16667in;height:0.61111in" alt="" /></td>
 <td>Accepts the value of a selected radio button as input.</td>
 </tr>
 <tr class="odd">
 <td>Selective (pull-down)<sup>*</sup></td>
-<td><img src="media/media/image12.png" style="width:1.64583in;height:0.45139in" alt="zu0404090" /></td>
+<td><img src="media/media/image12.png" style="width:1.64583in;height:0.45139in" alt="" /></td>
 <td>Accepts the value of a selected pull-down menu as input.</td>
 </tr>
 <tr class="even">
 <td>Date</td>
-<td><img src="media/media/image13.png" style="width:1.66667in;height:1.35417in" alt="zu0404100" /></td>
+<td><img src="media/media/image13.png" style="width:1.66667in;height:1.35417in" alt="" /></td>
 <td><p>Accepts a value specified in either of the following ways as input.</p>
 <ul>
 <li><p>Enter a date with the <em>yyyy-mm-dd, yyyy-mm, or yyyy</em> format.</p></li>
@@ -10345,7 +10345,7 @@ A list of created widgets appears.
 
 ![](media/media/image110.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The detailed information on the widget appears.
 
@@ -10864,7 +10864,7 @@ Table 5‑8. Sample display for each border style
 
 This section explains how to edit a widget.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line for a widget.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line for a widget.
 
 The "Edit" tab appears.
 
@@ -10888,7 +10888,7 @@ This section explains how to delete a widget.
 
 <!-- end list -->
 
-1.  > In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line for a widget.
+1.  > In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line for a widget.
 
 > The widget is deleted. The message "Record was successfully deleted" appears.
 > 
@@ -11003,7 +11003,7 @@ By placing the "Menu" widget, you can display a link to each page you add. The l
 
 This section explains how to change the title or URL of a page.
 
-1.  Click the pencil icon (![iconpen](media/media/image164.png)) that appears to the right of the "Pages" pull-down list.
+1.  Click the pencil icon (![](media/media/image164.png)) that appears to the right of the "Pages" pull-down list.
 
 The "Page" dialog box appears.
 
@@ -11019,13 +11019,13 @@ The change you made is saved. The message "Successfully saved page" appears.
 
 This section explains how to delete a page from the repository.
 
-1.  Click the trash can icon (![icontrashbox](media/media/image165.png)) that appears to the right of the "Pages" pull-down list.
+1.  Click the trash can icon (![](media/media/image165.png)) that appears to the right of the "Pages" pull-down list.
 
 You are prompted to confirm the deletion.
 
 ![](media/media/image181.png)
 
-The trash can icon (![icontrashbox](media/media/image165.png)) does not appear for the "Main Layout" page because it is not a deletable page.
+The trash can icon (![](media/media/image165.png)) does not appear for the "Main Layout" page because it is not a deletable page.
 
 2.  Click "Submit".
 
@@ -13323,7 +13323,7 @@ The "List" tab shows a list of communities. ★\<You can filter the list by sele
 
 ![](media/media/image260.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -13386,7 +13386,7 @@ A community is created.
 
 This section explains how to edit a community.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -13414,7 +13414,7 @@ The "List" tab shows a list of communities.
 
 ![](media/media/image263.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -13447,7 +13447,7 @@ A featured community is created.
 
 This section explains how to edit a favorite community.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -13465,7 +13465,7 @@ The setting is saved.
 
 To delete communities individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected communities will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected communities will be deleted.
 
 To delete multiple communities at once, do the following:
 
@@ -13501,7 +13501,7 @@ The "List" tab shows a list of communities.
 
 To delete inclusion requests individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected inclusion requests will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected inclusion requests will be deleted.
 
 To delete multiple inclusion requests at once, do the following:
 
@@ -13541,7 +13541,7 @@ If you want to select manual execution, do the following steps:
 
 ![](media/media/image271.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -13615,7 +13615,7 @@ Table 10‑1. The elements in the "Create" tab
 
 ### Edit a harvesting plan
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -13645,7 +13645,7 @@ The setting is saved.
 
 To delete records individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected records will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected records will be deleted.
 
 To delete multiple records at once, do the following:
 
@@ -13695,7 +13695,7 @@ An output set is created.
 
 ### Edit an output set
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the ID line.
 
 A screen appears where you can edit the setting.
 
@@ -13717,7 +13717,7 @@ To access the screen where you can configure the Sets setting, click "OAI-PMH" a
 
 ![](media/media/image288.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the ID line.
 
 The details of the ID appear.
 
@@ -13737,7 +13737,7 @@ The Set is created.
 
 ### Edit a Set
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the ID line.
 
 A screen appears where you can edit the setting.
 
@@ -13933,7 +13933,7 @@ Table 11‑1. The elements on the Resource List create tab
 
 This section explains how to edit a Resource List.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 The Resource List edit screen appears.
 
@@ -13945,7 +13945,7 @@ The Resource List edit screen appears.
 
 This section explains how to delete a Resource List.
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line.
 
 > You are prompted to confirm the deletion.
 
@@ -14093,7 +14093,7 @@ Table 11‑2. The elements on the Change List create tab
 
 This section explains how to edit a Change List.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 The Change List edit screen appears.
 
@@ -14111,7 +14111,7 @@ The Change List edit screen appears.
 
 This section explains how to delete a Change List.
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line.
 
 > You are prompted to confirm the deletion.
 
@@ -14133,7 +14133,7 @@ This section explains how to collect data.
 
 <!-- end list -->
 
-1.  In the "List" tab, click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Automatic".
+1.  In the "List" tab, click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Automatic".
 
 > The Resync details screen appears.
 
@@ -14155,7 +14155,7 @@ This section explains how to collect data.
 
 <!-- end list -->
 
-1.  In the "List" tab, click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Manual".
+1.  In the "List" tab, click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line with the "Status" column set to "Manual".
 
 > The Resync details screen appears.
 
@@ -14275,7 +14275,7 @@ Table 11‑3. The elements on the Resync create tab
 
 This section explains how to edit a Resync.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 The Resync edit screen appears.
 
@@ -14287,7 +14287,7 @@ The Resync edit screen appears.
 
 This section explains how to delete a Resync.
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line.
 
 > You are prompted to confirm the deletion.
 
@@ -14439,7 +14439,7 @@ The "List" tab displays a list of Persistent Identifiers. You can filter the lis
 
 ![](media/media/image312.png)
 
-2.  > Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
+2.  > Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the ID line.
     
     The details of the ID appear.
     
@@ -14459,7 +14459,7 @@ The "List" tab displays a list of Record Metadata. You can filter the list by se
 
 ![](media/media/image313.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the ID line.
     
     The details of the Record Metadata appear.
 
@@ -14469,7 +14469,7 @@ This section explains how to delete Record Metadata.
 
 To delete records individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected records will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected records will be deleted.
 
 To delete multiple records at once, do the following:
 
@@ -14507,7 +14507,7 @@ The "List" tab displays a list of Buckets. You can filter the list by selecting 
 
 ![](media/media/image316.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14543,7 +14543,7 @@ The Bucket is created.
 
 This section explains how to edit a Bucket.
 
-1.  > In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  > In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -14571,7 +14571,7 @@ The "List" tab displays a list of File Instances. You can filter the list by sel
 
 ![](media/media/image319.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14597,7 +14597,7 @@ When you delete a File Instance, the File Instance record is deleted, and the us
 
 To delete File Instances individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line.
     
     You are prompted to confirm the deletion.
 
@@ -14633,7 +14633,7 @@ The "List" tab shows a list of Locations. You can filter the list by selecting c
 
 ![](media/media/image322.png)
 
-2.  > Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  > Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14693,7 +14693,7 @@ The location is created.
 
 [v2.1.0] This section explains how to edit a Location. Only system administrators can edit Locations.
 
-1.  > In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  > In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -14713,7 +14713,7 @@ The setting is saved.
 
 To delete Locations individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected locations will then be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected locations will then be deleted.
 
 To delete multiple Locations at once, do the following:
 
@@ -14745,7 +14745,7 @@ The "List" tab displays a list of Multipart Objects. You can filter the list by 
 
 ![](media/media/image327.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14765,7 +14765,7 @@ The "List" tab displays a list of Object Versions. You can filter the list by se
 
 ![](media/media/image328.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14872,7 +14872,7 @@ The "List" tab shows a list of actions added to the role.
 
 ![](media/media/image329.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14905,7 +14905,7 @@ The action is added to the role.
 
 This section explains how to edit a role-based action.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -14923,7 +14923,7 @@ The setting is saved.
 
 To delete actions individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
 
 To delete multiple actions at once, do the following:
 
@@ -14955,7 +14955,7 @@ The "List" tab shows a list of actions added to the role.
 
 ![](media/media/image334.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -14988,7 +14988,7 @@ The action is added to the system role.
 
 This section explains how to edit a system role-based action.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15006,7 +15006,7 @@ The setting is saved.
 
 To delete actions individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
 
 To delete multiple actions at once, do the following:
 
@@ -15038,7 +15038,7 @@ The "List" tab shows a list of actions added to the role.
 
 ![](media/media/image339.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15071,7 +15071,7 @@ The action is added to the user.
 
 This section explains how to edit a user action.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15089,7 +15089,7 @@ The setting is saved.
 
 To delete actions individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected actions will then be deleted.
 
 To delete multiple actions at once, do the following:
 
@@ -15121,7 +15121,7 @@ This section explains how to view Linked account identities.
 
 ![](media/media/image344.png)
 
-2.  > Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  > Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
     
     The details appear.
     
@@ -15129,7 +15129,7 @@ This section explains how to view Linked account identities.
 
 To delete identities individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected identities will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected identities will be deleted.
 
 To delete multiple identities at once, do the following:
 
@@ -15157,7 +15157,7 @@ The "List" tab shows a list of identities. You can filter the list by selecting 
 
 ![](media/media/image345.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15188,7 +15188,7 @@ The token is created.
 
 This section explains how to edit a Linked account token.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15204,7 +15204,7 @@ The setting is saved.
 
 To delete tokens individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected identities will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected identities will be deleted.
 
 To delete multiple tokens at once, do the following:
 
@@ -15232,7 +15232,7 @@ The "List" tab shows a list of identities. You can filter the list by selecting 
 
 ![](media/media/image347.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15266,7 +15266,7 @@ The account is created.
 
 This section explains how to edit a Linked account.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15284,7 +15284,7 @@ The setting is saved.
 
 To delete accounts individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected accounts will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected accounts will be deleted.
 
 To delete multiple accounts at once, do the following:
 
@@ -15316,7 +15316,7 @@ The "List" tab shows a list of identities. You can filter the list by selecting 
 
 ![](media/media/image352.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15324,7 +15324,7 @@ The details appear.
 
 To delete tokens individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected tokens will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected tokens will be deleted.
 
 To delete multiple tokens at once, do the following:
 
@@ -15358,7 +15358,7 @@ The "List" tab shows a list of identities. You can filter the list by selecting 
 
 ![](media/media/image353.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15366,7 +15366,7 @@ The details appear.
 
 To delete applications individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected applications will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected applications will be deleted.
 
 To delete multiple applications at once, do the following:
 
@@ -15396,7 +15396,7 @@ The "List" tab shows a list of identities. You can filter the list by selecting 
 
 ![](media/media/image354.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15428,7 +15428,7 @@ The account is created.
 
 This section explains how to create a role.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15446,7 +15446,7 @@ The setting is saved.
 
 To delete roles individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected roles will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected roles will be deleted.
 
 To delete multiple roles at once, do the following:
 
@@ -15484,7 +15484,7 @@ This section explains how to delete sessions.
 
 \* You cannot delete your own current session. If the selected sessions include your own session, "You could not remove your current session" appears, and the session is not deleted.
 
-To delete a session individually, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line in the "List" tab.
+To delete a session individually, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line in the "List" tab.
 
 To delete multiple sessions at once, do the following:
 
@@ -15516,7 +15516,7 @@ For community administrators, only the users who belong to the communities they 
 
 ![](media/media/image360.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15551,7 +15551,7 @@ The user is created.
 
 This section explains how to edit a user. Only system administrators can edit users.
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the line.
 
 A screen appears where you can edit the setting.
 
@@ -15597,7 +15597,7 @@ The "List" tab shows a list of identities. You can filter the list by selecting 
 
 ![](media/media/image365.png)
 
-2.  Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line.
+2.  Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line.
 
 The details appear.
 
@@ -15607,7 +15607,7 @@ This section explains how to delete User Profiles. Only system administrators ca
 
 To delete User Profiles individually, do the following:
 
-1.  In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected user profiles will be deleted.
+1.  In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The selected user profiles will be deleted.
 
 To delete multiple User Profiles at once, do the following:
 
@@ -15943,7 +15943,7 @@ This section explains how to set up the Prefix IDs for the JaLC DOI handle serve
 
 ![](media/media/image379.png)
 
-2.  > Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the ID line.
+2.  > Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the ID line.
 
 The details of the ID appear.
 
@@ -15971,7 +15971,7 @@ Table 16‑4. The elements in "Prefix"
 
 When a single institution operates multiple WEKO Systems, you can avoid conflicting DOI values by adding a suffix to a Prefix ID.
 
-![zu0804030](media/media/image381.png)
+![](media/media/image381.png)
 
 You cannot modify the setting if you have already registered an item with a DOI.
 
@@ -15987,7 +15987,7 @@ The Prefix ID is created. The "List" tab will display the Prefix ID.
 
 ### Edit an Identifier
 
-1.  In the "List" tab, click on the pencil icon (![iconpen](media/media/image164.png)) displayed at the beginning of the ID line.
+1.  In the "List" tab, click on the pencil icon (![](media/media/image164.png)) displayed at the beginning of the ID line.
 
 A screen appears where you can edit the setting.
 
@@ -16534,11 +16534,11 @@ The "List" tab shows a list of the registered facet elements.
 
 ![](media/media/image392.png)
 
-Click on the eye icon (![iconeye](media/media/image111.png)) displayed at the beginning of the line. The "Details" screen appears.
+Click on the eye icon (![](media/media/image111.png)) displayed at the beginning of the line. The "Details" screen appears.
 
 ![](media/media/image393.png)
 
-Click on the eye icon (![iconpen](media/media/image164.png)) displayed at the beginning of the line. The "Edit" screen appears.
+Click on the eye icon (![](media/media/image164.png)) displayed at the beginning of the line. The "Edit" screen appears.
 
 ![](media/media/image394.png)
 
@@ -16612,7 +16612,7 @@ If "WEKO\_SEARCH\_FIX\_ACCESSRIGHTS" is enabled (True) in the configuration file
 
 ![](media/media/image395.png)
 
-In the "List" tab, click on the trash can icon (![icontrashbox](media/media/image165.png)) displayed at the beginning of the line you want to delete. The relevant "Delete" screen appears. When you click the "Delete" button, a popup window will appear asking you to confirm the action. Click the \[OK\] button to delete the facet element.
+In the "List" tab, click on the trash can icon (![](media/media/image165.png)) displayed at the beginning of the line you want to delete. The relevant "Delete" screen appears. When you click the "Delete" button, a popup window will appear asking you to confirm the action. Click the \[OK\] button to delete the facet element.
 
 ![](media/media/image396.png)
 
