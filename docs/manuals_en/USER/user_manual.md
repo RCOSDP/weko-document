@@ -460,7 +460,7 @@ Table 1-2. The features related to registering and viewing data in the System
 
 You will find the following elements in the Home screen.
 
-> ![](media/media/image3.png)
+![](media/media/image3.png)
 
 Table 1-3. The elements in the Home screen
 
@@ -600,7 +600,7 @@ Table 2-1. The elements in the "Log in" screen
 
 1.  > Enter the account information in the JAIRO Cloud login screen to log in to the System.
 
-> Figure 2-1. The JAIRO Cloud login screen
+Figure 2-1. The JAIRO Cloud login screen
 
 ![](media/media/image13.png)
 
@@ -619,9 +619,9 @@ Table 2-2. The elements in the GakuNin Embedded DS login screen (pattern 1)
 | 5   | The "Reset" link                                                     | Click to delete the information you entered in the institution entry box.                                                            |
 | 6   | The "UK Federation" link                                             | Click to navigate to the predefined institution selection screen.                                                                    |
 
-> Figure 2-2. The pull-down list showing candidate institutions
-> 
-> ![](media/media/image18.png)
+Figure 2-2. The pull-down list showing candidate institutions
+
+![](media/media/image18.png)
 
 Enter the account information in the login screen for the selected institution to log in to the System.
 
@@ -898,7 +898,7 @@ Display search results as a list of items. The default is set to this format. Th
 
 The display language is chosen according to the following priority order: the language selected for the Web page display \> English \> the first language configured when registering the item \> the first value when registering without configuring languages.
 
-> ![](media/media/image30.png)
+![](media/media/image30.png)
 
 | No. | Element     | Description |
 | --- | ----------- | ----------- |
@@ -1467,11 +1467,11 @@ You can view content files registered with an item in a list of file information
 
 1.  > The "Preview" option: Simple
 
-> ![](media/media/image80.png)
+![](media/media/image80.png)
 
 2.  > The "Preview" option: Detail
 
-> ![](media/media/image81.png)
+![](media/media/image81.png)
 
 3.  > The "Preview" option: Preview
 
@@ -2315,7 +2315,7 @@ The file information appears.
 
 If another file with the same name is already being used, the error message "The same file name cannot be registered" will appear.
 
-> ![](media/media/image123.png)
+![](media/media/image123.png)
 
 9.  Click on the ![](media/media/image124.png) button in the displayed file information.
 
@@ -2355,7 +2355,7 @@ The information in the file for restricted access is as follows
 
 The entry elements are the same as the file information up to the license field.
 
-> ![](media/media/image127.png)
+![](media/media/image127.png)
 
 Table 5-7. The elements in the file information screen
 
@@ -2464,13 +2464,13 @@ Table 5-7. The elements in the file information screen
 </tbody>
 </table>
 
-> Figure 5-1. The "Object Type" pull-down list
-> 
-> ![](media/media/image128.png)
-> 
-> Figure 5-2. The "Date Type" pull-down list
-> 
-> ![](media/media/image129.png)
+Figure 5-1. The "Object Type" pull-down list
+
+![](media/media/image128.png)
+
+Figure 5-2. The "Date Type" pull-down list
+
+![](media/media/image129.png)
 
 #### Set up a file
 
@@ -2666,7 +2666,7 @@ The access information for restricted access appears as follows
 
 ![](media/media/image135.png)
 
-Table 5-10 The "Access" radio buttons with publishing options
+Table 5-10. The "Access" radio buttons with publishing options
 
 <table>
 <thead>
@@ -2713,13 +2713,13 @@ Table 5-10 The "Access" radio buttons with publishing options
 </tbody>
 </table>
 
-> Figure 5-7. The "PubDate" text box
-> 
-> ![](media/media/image136.png)
-> 
-> Figure 5-8. The "Group" text box
-> 
-> ![](media/media/image137.png)
+Figure 5-7. The "PubDate" text box
+
+![](media/media/image136.png)
+
+Figure 5-8. The "Group" text box
+
+![](media/media/image137.png)
 
 Additional Information: How to replace files
 
@@ -2809,7 +2809,7 @@ This section explains how to set up how the billing file is published.
 
 ![](media/media/image134.png)
 
-Table 5-12 The "Access" radio buttons with publishing options
+Table 5-12. The "Access" radio buttons with publishing options
 
 <table>
 <thead>
@@ -2850,9 +2850,9 @@ If the user belongs to more than one group, the lowest applicable price will be 
 </tbody>
 </table>
 
-> Figure 5-9. The "Group Name/Price" area
-> 
-> ![](media/media/image141.png)
+Figure 5-9. The "Group Name/Price" area
+
+![](media/media/image141.png)
 
 #### Metadata input elements
 
@@ -2890,7 +2890,7 @@ Table 5-13. The elements in the Item Registration screen
 </tr>
 <tr class="even">
 <td>4</td>
-<td>The "Language" pull-down list under "Language"*<sup>*</sup></td>
+<td>The "Language" pull-down list under "Language"<sup>*</sup></td>
 <td>Select an option from the pull-down list. See "Figure 5-12. The "Language" pull-down list".</td>
 </tr>
 <tr class="odd">
@@ -3178,7 +3178,7 @@ See "Table 5-14. The elements in the creator search screen" for information on t
 
 ![](media/media/image176.png)
 
-> Table 5-16. The elements in the "Feedback Mail Destination" screen
+Table 5-16. The elements in the "Feedback Mail Destination" screen
 
 <table>
 <thead>
@@ -3263,22 +3263,22 @@ Table 5-17. The options in the "Access Rights" pull-down list
 
   - > If you click the ![](media/media/image147.png) button without entering the required fields, the error message "The following items is required. Please recheck and input" will be displayed.
 
-> ![](media/media/image180.png)
+![](media/media/image180.png)
 
   - > If you use an incorrect format, an error message will appear directly below the corresponding field.
 
-> ![](media/media/image181.png)
+![](media/media/image181.png)
 
   - > If you enter an identifier, title, resource type, and creator that match an item already registered, the warning message "The same item may have been registered." appears.
     > Links to the details pages of the registered items that seem to be the same are displayed. Click a link to display the item details screen in a new tab.
 
   - > If the value you enter does not exist in the defined choices, the error message "{} is not one of {}" will appear.
 
-> ![](media/media/image182.png)
+![](media/media/image182.png)
 
   - > If a JavaScript error occurs, the error message "An error occurred while processing the input data\!{}" will appear.
 
-> ![](media/media/image183.png)
+![](media/media/image183.png)
 
 
 #### Set up how users apply to use the item
@@ -3792,7 +3792,7 @@ Table 5-26. The elements in the activities list screen
     
     The filter options appear. Note that the "Created" is always displayed.
 
-> ![](media/media/image210.png)
+![](media/media/image210.png)
 
 29. > Click on a filter.
     
@@ -3800,7 +3800,7 @@ Table 5-26. The elements in the activities list screen
     
     The content of the applied filter will be carried over among the "ToDo", "Wait", and "All" tabs.
 
-> ![](media/media/image211.png)
+![](media/media/image211.png)
 
 Table 5-27. The elements in the filter screen
 
@@ -3900,9 +3900,9 @@ Table 5-28. The elements for paging
 </tbody>
 </table>
 
-> Figure 5-24. The "Display Number" pull-down
-> 
-> ![](media/media/image217.png)
+Figure 5-24. The "Display Number" pull-down
+
+![](media/media/image217.png)
 
 
 ### Export activities to a TSV file
@@ -4042,7 +4042,7 @@ If the item is being edited, you will see the message "The item is being edited"
     1.  > From the Home screen, click the "Workflow" tab.  
         > The activities list screen appears.
 
-> ![](media/media/image226.png)
+![](media/media/image226.png)
 
 2.  > Click on the "ToDo" or "All" tab.
 

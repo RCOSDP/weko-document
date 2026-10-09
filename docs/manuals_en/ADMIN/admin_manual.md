@@ -7077,7 +7077,7 @@ This section explains how to copy a specified item type.
 
 2.  > Check the "New Registration" radio button.
 
-> ![](media/media/image30.png)
+![](media/media/image30.png)
 
 3.  > Enter an item type name.
     
@@ -7520,7 +7520,7 @@ The information you specified is saved.
 
 You can map multiple child properties to a single child element by inserting a comma (,) in the input field.
 
-> ![](media/media/image59.png)
+![](media/media/image59.png)
 
 
 7.  > To output a fixed value to a child element, click "+Add static value".
@@ -7537,7 +7537,7 @@ If an error occurs because of the mapping, restore the original mapping settings
 
 The values appear in "Element (Parent)" and "Schema (Parent)".
 
-> ![](media/media/image60.png)
+![](media/media/image60.png)
 
 2.  > Click "Element defined by System (Parent)".
     
@@ -8452,7 +8452,7 @@ The confirmation dialog appears, showing how the selected items will be updated.
 
 The information of the items displayed in the confirmation dialog is updated. The versions of these items are also updated.
 
-> ![](media/media/image69.png)
+![](media/media/image69.png)
 
 ## Bulk delete items
 
@@ -8683,7 +8683,7 @@ The message "Register with \[Change Identifier Mode\]" appears above the "Import
 
 Items with "Error" results cannot be imported. Check the file and start again from Step 2.
 
-> ![](media/media/image84.png)
+![](media/media/image84.png)
 
 Table 3-3. The elements on the "Import" tab
 
@@ -10285,11 +10285,11 @@ This section explains how to output registered journal information in the KBART 
 
   - > The file is output to "your institution's repository URL" + "/static/weko/kbart/filelist.txt", using the filename in the KBART2 extended format with the last update date.
 
-> ![](media/media/image105.png)
+![](media/media/image105.png)
 
   - > The journal information is output to "your institution's repository URL" + "/static/weko/kbart/\[repository name\]\_AllTitles\_\[last modified date\].txt", as a tsv file in KBART2 extended format.
 
-> ![](media/media/image106.png)
+![](media/media/image106.png)
 
 ## Change a sort order
 
@@ -10349,7 +10349,7 @@ A list of created widgets appears.
 
 The detailed information on the widget appears.
 
-> ![](media/media/image112.png)
+![](media/media/image112.png)
 
 ### Create a widget
 
@@ -10465,7 +10465,7 @@ If you click "Save" without entering the required fields, the error message "\<e
 
 An error message appears if the label name of the widget you specified exists in the System.
 
-> ![](media/media/image116.png)
+![](media/media/image116.png)
 
 #### Settings for the Type element
 
@@ -11149,7 +11149,7 @@ The search results appear.
 
 If there are no results, the message "Sorry, No results" appears.
 
-> ![](media/media/image186.png)
+![](media/media/image186.png)
 
 #### Add an author ID
 
@@ -11263,7 +11263,7 @@ Table 6-2. The elements in the "Name" area
 
 3.  Enter the author ID.
 
-> ![](media/media/image189.png)
+![](media/media/image189.png)
 
 The following table lists the information you can enter.
 
@@ -12330,7 +12330,7 @@ When an error occurs, the error message "Failed to download" will appear.
 
 The following table lists the validation checks during the import process of author information.
 
-Table 6-16 Validation checks
+Table 6-16. Validation checks
 
 <table>
 <thead>
@@ -12544,7 +12544,7 @@ Table 6-16 Validation checks
 
 The following table lists the validation checks during the import process of identifiers ("ID Prefix" and "Affiliation ID").
 
-Table 6-17 Validation checks for identifiers
+Table 6-17. Validation checks for identifiers
 
 | Type | Tab to be checked | English | Japanese | Description |
 | ---- | ----------------- | ------- | -------- | ----------- |
@@ -12620,7 +12620,7 @@ The specified fixed form reports are downloaded. See "Section 7.1.3 Types of fix
 
 When an error occurs, the error message "Unexpected error occurred" will appear.
 
-> ![](media/media/image211.png)
+![](media/media/image211.png)
 
 ### Types of fixed form reports
 
@@ -12891,7 +12891,7 @@ You are prompted to confirm the operation to send the email.
 
 When an error occurs while sending the email, the error message "Unexpected error occurred" will appear.
 
-> ![](media/media/image228.png)
+![](media/media/image228.png)
 
 8.  If you want to send emails regularly, specify "Frequency" for "Transmission Interval" under "Report Email Schedule" and select the "On" radio button.
 
@@ -12992,7 +12992,7 @@ The setting is saved. Feedback mails will be sent based on the specified transmi
 
 The historical feedback mails sent are also displayed in the "Send logs" table.
 
-> ![](media/media/image235.png)
+![](media/media/image235.png)
 
 ## Set up the site license
 
@@ -13145,7 +13145,7 @@ Adding or removing actions to the flow, changing the order of actions, etc., wil
 
 A screen appears where you can edit the flow.
 
-> ![](media/media/image242.png)
+![](media/media/image242.png)
 
 2.  You can limit the roles or users who can perform the action by selecting them in the drop-down list.
 
@@ -13159,7 +13159,7 @@ If you select the "Specify Property" option for "Action User", a modal screen wi
 
 "Action List" appears.
 
-> ![](media/media/image246.png)
+![](media/media/image246.png)
 
 4.  Click "Apply" to add an action. Click "Unusable" to delete an action.
 
@@ -13171,17 +13171,17 @@ For "Approval", you can add multiple "Approval" actions to the action list by cl
 
 You can also delete "Approval" actions from the action list by clicking the "Unusable" button. Clicking the button multiple times also deletes multiple actions. The "Approval" action with the largest branch number in the action list will be deleted first.
 
-> ![](media/media/image247.png)
+![](media/media/image247.png)
 
 5.  To change the order of actions, use "Change Order" to move them up or down.
 
-> ![](media/media/image248.png)
+![](media/media/image248.png)
 
 6.  Click "Save" at the bottom of the screen.
 
 The flow is saved. The message "Updated flow action successfully" appears.
 
-> ![](media/media/image249.png)
+![](media/media/image249.png)
 
 ### Delete a flow
 
@@ -13189,19 +13189,19 @@ The flow is saved. The message "Updated flow action successfully" appears.
 
 A screen appears where you can edit the setting.
 
-> ![](media/media/image250.png)
+![](media/media/image250.png)
 
 2.  Click "Delete".
 
 The flow is deleted.
 
-> ![](media/media/image251.png)
+![](media/media/image251.png)
 
 Notes:
 
 You cannot delete a flow if it is used in a workflow. In this case, clicking "Delete" displays an error message.
 
-> ![](media/media/image252.png)
+![](media/media/image252.png)
 
 ## Set up workflows
 
@@ -13545,7 +13545,7 @@ If you want to select manual execution, do the following steps:
 
 The details appear.
 
-> ![](media/media/image272.png)
+![](media/media/image272.png)
 
 3.  Click "Run".
     
@@ -13565,7 +13565,7 @@ The details appear.
     
     The error details appears in the "Error Message, Url" if an error occurs during the harvesting process.
 
-> ![](media/media/image274.png)
+![](media/media/image274.png)
 
 4.  If you want to suspend harvesting while the process is running, click "Pause".
 
@@ -13851,7 +13851,7 @@ This section explains how to output Resource Lists and Resource Dumps.
 
 1.  > Clicking on the link displayed in the "Resource List Url" will output the Resource Lists for the corresponding index.
 
-> ![](media/media/image292.png)
+![](media/media/image292.png)
 
 Figure 11-1. Sample output Resource Lists
 
@@ -13861,7 +13861,7 @@ Figure 11-1. Sample output Resource Lists
 
 Figure 11-2. Sample output Resource Dumps
 
-> ![](media/media/image294.png)
+![](media/media/image294.png)
 
 3.  > If the "Status" is set to "Private" or the corresponding index is set to private, Resource Lists and Resource Dumps for the index will not be output.
 
@@ -13965,7 +13965,7 @@ This section explains how to output Change Lists and Change Dumps.
 
 1.  > Click on the "List" tab to display the registered Change Lists.
 
-> ![](media/media/image297.png)
+![](media/media/image297.png)
 
 2.  > If the "Status" is set to "Publish" and the corresponding index is set to public, Change Lists and Change Dumps for the index will be output.
 
@@ -13977,7 +13977,7 @@ This section explains how to output Change Lists and Change Dumps.
 
 1.  > Clicking on the link displayed in the "Change List Url" will output the Change Lists for the corresponding index.
 
-> ![](media/media/image298.png)
+![](media/media/image298.png)
 
 Figure 11-3. Sample output Change Lists
 
@@ -13991,9 +13991,9 @@ Figure 11-4. Sample output Change Lists
 
 3.  > Clicking on the link displayed in the "Change Dump Url" will output the Change Dumps for the corresponding index.
 
-> ![](media/media/image301.png)
-> 
-> Figure 11-5. Sample output Change Dumps
+![](media/media/image301.png)
+
+Figure 11-5. Sample output Change Dumps
 
 ![](media/media/image302.png)
 
@@ -16727,7 +16727,7 @@ The setting is saved. The message "Site info is saved successfully" appears.
 
 If you specify multiple site names for a single language, you will get the error message "The same language is set for many site names."
 
-> ![](media/media/image398.png)
+![](media/media/image398.png)
 
 ## Configure IP addresses permitted by the site license
 
@@ -17702,7 +17702,7 @@ The following are sample messages for these three types of automatic email notif
 <td>[Affiliation] です。</td>
 </tr>
 <tr class="odd">
-<td>[Repository name (Japanese)] をご利用いただいて、ありがとうございます。。</td>
+<td>[Repository name (Japanese)] をご利用いただいて、ありがとうございます。</td>
 </tr>
 <tr class="even">
 <td></td>
