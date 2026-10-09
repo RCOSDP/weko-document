@@ -2,11 +2,13 @@ r"""Find markdown that honkit did not render, in the visible text of the built H
 
 usage: python3 scan_rendered.py <html dir>...   (e.g. docs/build/admin/html)
 Reports, per page:
-  esc        backslash escapes shown as text (\< \_ \[ ...)
+  esc        backslash escapes shown as text (\< \_ \[ ...; \| in a table cell: write &#124;)
   md image   ![..](..) shown as text           md link   [..](#..) shown as text
   pipe table | --- | shown as text (a table right after a paragraph line, or inside a list item:
              fix_tables.py)
   comment    <!-- shown as text (a comment that starts in the middle of a paragraph)
+  fence      ``` shown as text (a fence right after a list item line, or two blank lines inside a
+             fence in a list: add a blank line before it / keep one blank line)
   word       Word remnants: INDEXWORD, LINKID, ANCHORID, TBLATT, *.tif, auto-generated alt text
   code-prose paragraphs/images rendered as a code block without a language (indented text after a
              "1)" list, a table or an image that ended the list, or two blank lines in a list)
@@ -25,11 +27,11 @@ class Text(HTMLParser):
     def handle_data(s, d):
         if not s.skip: s.out.append(d)
 
-PATS = {'esc': r'\\[<>_*\[\]#&]', 'md image': r'!\[[^\]]*\]\([^)]*\)', 'md link': r'\]\([#./][^)]*\)',
-        'pipe table': r'\|\s*:?-{3,}:?\s*\|', 'comment': r'<!--',
+PATS = {'esc': r'\\[<>_*\[\]#&|]', 'md image': r'!\[[^\]]*\]\([^)]*\)', 'md link': r'\]\([#./][^)]*\)',
+        'pipe table': r'\|\s*:?-{3,}:?\s*\|', 'comment': r'<!--', 'fence': r'```',
         'word': r'INDEXWORD|LINKID=|ANCHORID=|TBLATT|\w\.tif\b|自動的に生成された説明'}
 PROSE = re.compile(r'!\[[^\]]*\]\(|[ぁ-んァ-ン一-龥]{6,}|\b(?:Click|Select|The|appears)\b')
-CODEISH = re.compile(r'\s*(?:[\[{"$<]|curl|WEKO_|metadata\.|xxxxx|-{5}|Dear |This is a message)')
+CODEISH = re.compile(r'\s*(?:[\[{"$<]|curl|WEKO_|metadata\.|xxxxx|-{5}|Dear |This is a message|.{0,60}\[restricted_)', re.S)  # mail templates
 
 def main(roots):
     found = 0
