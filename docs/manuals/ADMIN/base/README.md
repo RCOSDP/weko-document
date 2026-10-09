@@ -4168,7 +4168,7 @@ WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP = {
 
     指定したDOIが別アイテムで用いられている場合、表 3-7のNo.1のメッセージが表示されます。
 
-    指定したDOIが無効かされている場合、表 3-7のNo.2のメッセージが表示されます。
+    指定したDOIが無効化されている場合、表 3-7のNo.2のメッセージが表示されます。
     
     個別のアイテム削除後に、一括登録を実施した場合、表 3-7のNo.3のメッセージが表示されます
 
@@ -4867,7 +4867,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 <p><b>以下インデックス公開ロック機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。</b><p>
 <p>インデックス公開ロック機能が有効になり、［公開する］にチェックをした場合ポップアップが表示されるようになります。</p>
 <p>上記ポップアップ内のメッセージを確認後「公開設定を有効化する」チェックボックスをチェックし「有効化する」ボタンをクリック後、ポップアップが閉じ、公開するチェックボックスにチェックが入ります。ポップアップを閉じる場合は「閉じる」ボタンをクリックすると、ポップアップが閉じられます。</p>
-<p>図 1-3 インデックス公開ロック機能ポップアップを参照</p></td>
+<p>図 4-1 インデックス公開ロック機能ポップアップを参照</p></td>
 </tr>
 <tr class="even">
 <td>インデックスリンク</td>
@@ -4896,7 +4896,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 <p><b>以下インデックス公開ロック機能は、＜利用申請機能 先行利用機関＞に提供している機能です。当機能の先行利用を申請していな機関は、利用できません。</b><p>
 <p>インデックス公開ロック機能が有効になり、［公開する］にチェックをした場合ポップアップが表示されるようになります。</p>
 <p>上記ポップアップ内のメッセージを確認後「公開設定を有効化する」チェックボックスをチェックし「有効化する」ボタンをクリック後、ポップアップが閉じ、公開するチェックボックスにチェックが入ります。ポップアップを閉じる場合は「閉じる」ボタンをクリックすると、ポップアップが閉じられます。</p>
-<p>図 1-3 インデックス公開ロック機能ポップアップを参照</p></td>
+<p>図 4-1 インデックス公開ロック機能ポップアップを参照</p></td>
 </tr>
 <tr class="odd">
 <td>ONLINE ISSN</td>
@@ -4961,7 +4961,7 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 </tbody>
 </table>
 
-図 1-3 インデックス公開ロック機能ポップアップ  
+図 4-1 インデックス公開ロック機能ポップアップ  
 ![](media/media/image469.png)
 
 3. ［送信］をクリックします。
@@ -5260,11 +5260,11 @@ curl -X GET "https://{ホスト名}/api/items/import-task/get_bulk_import_task_s
 
 ![](media/media/image103.png)
 
-図 4-1 入力したフォーマットが不正の場合
+図 4-2 入力したフォーマットが不正の場合
 
 ![](media/media/image104.png)
 
-図 4-2 入力した文字数が超えている場合
+図 4-3 入力した文字数が超えている場合
 
 5.  ［保存］をクリックします。
     
@@ -6642,7 +6642,7 @@ URLについて
     
 ##### 組織ID Prefix一覧を表示する
 
-組織ID Prefix一覧を表示するには\[Affilication ID\]タブをクリックします。
+組織ID Prefix一覧を表示するには［Affiliation ID］タブをクリックします。
 
 登録されている組織ID Prefix一覧が表示されます。
 
@@ -6692,7 +6692,7 @@ URLについて
 
 入力項目を次に示します。
 
-表 6-9 \[Affilication ID］の項目
+表 6-9 ［Affiliation ID］の項目
 
 <table>
 <thead>
@@ -10302,7 +10302,7 @@ Bucketを作成する方法を説明します。
 
 ![](media/media/image320.png)
 
-表 13-1 ［作成］の項目
+表 14-1 ［作成］の項目
 
 | 項目                    | 説明                                             |
 | --------------------- | ---------------------------------------------- |
@@ -10443,7 +10443,7 @@ Locationを参照する方法を説明します。
 
 ![](media/media/image326.png)
 
-表 13-2 ［作成］の項目
+表 14-2 ［作成］の項目
 
 | 項目         | 説明                          |
 | ---------- | --------------------------- |
@@ -10693,7 +10693,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ![](media/media/image334.png)
 
-表 14-1 ［作成］の項目
+表 15-1 ［作成］の項目
 
 | 項目       | 説明                    |
 | -------- | --------------------- |
@@ -10778,7 +10778,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ![](media/media/image339.png)
 
-表 14-2 ［作成］の項目
+表 15-2 ［作成］の項目
 
 | 項目          | 説明                        |
 | ----------- | ------------------------- |
@@ -10864,7 +10864,7 @@ JAIRO Cloudの機関ストレージとして利用できるストレージ条件
 
 ![](media/media/image344.png)
 
-表 14-3 ［作成］の項目
+表 15-3 ［作成］の項目
 
 | 項目       | 説明                    |
 | -------- | --------------------- |
@@ -10987,7 +10987,7 @@ Linked accountのトークンを作成する方法を説明します。
 
 ![](media/media/image350.png)
 
-表 14-4 ［作成］の項目
+表 15-4 ［作成］の項目
 
 | 項目             | 説明                               |
 | -------------- | -------------------------------- |
@@ -11066,7 +11066,7 @@ Linked accountを作成する方法を説明します。
 
 ![](media/media/image352.png)
 
-表 14-5 ［作成］の項目
+表 15-5 ［作成］の項目
 
 | 項目            | 説明                           |
 | ------------- | ---------------------------- |
@@ -11236,7 +11236,7 @@ OAuth Applicationを参照する方法を説明します。
 
 ![](media/media/image359.png)
 
-表 14-6 ［作成］の項目
+表 15-6 ［作成］の項目
 
 | 項目          | 説明         |
 | ----------- | ---------- |
@@ -11360,7 +11360,7 @@ Session activityを参照する方法を説明します。
 
 ![](media/media/image365.png)
 
-表 14-7 ［作成］の項目
+表 15-7 ［作成］の項目
 
 | 項目                     | 説明                                  |
 | ---------------------- | ----------------------------------- |
@@ -11473,7 +11473,7 @@ User Profileを１件ずつ削除する場合
 
 入力項目を次に示します。
 
-表 15-1 ［Items］の項目
+表 16-1 ［Items］の項目
 
 <table>
 <thead>
@@ -11603,7 +11603,7 @@ PDFカバーページに表示される内容は以下の通りです。
 
 ![](media/media/image374.png)
 
-表 15-2 ［ヘッダ設定］の項目
+表 16-2 ［ヘッダ設定］の項目
 
 <table>
 <thead>
@@ -11653,7 +11653,7 @@ PDFカバーページに表示される内容は以下の通りです。
 
 ![](media/media/image375.png)
 
-表 15-3 ランキング設定項目
+表 16-3 ランキング設定項目
 
 <table>
 <thead>
@@ -11803,7 +11803,7 @@ JaLC DOIハンドルサーバ、JaLC CrossRef DOIハンドルサーバ、およ�
 
 ![](media/media/image384.png)
 
-表 15-4 ［Prefix］の項目
+表 16-4 ［Prefix］の項目
 
 | 項目                | 説明                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------ |
@@ -11879,7 +11879,7 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 
 入力項目を次に示します。
 
-表 15-5 ［Item Export］の項目
+表 16-5 ［Item Export］の項目
 
 | 項目                            | 説明                                 |
 | ----------------------------- | ---------------------------------- |
@@ -11906,7 +11906,7 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 
 入力項目を次に示します。
 
-表 15-6 ［Items］の項目
+表 16-6 ［Items］の項目
 
 | 項目                 | 説明                          |
 | ------------------ | --------------------------- |
@@ -11933,7 +11933,7 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 
 設定項目を次に示します。
 
-表 15-7 著者検索の設定項目
+表 16-7 著者検索の設定項目
 
 <table>
 <thead>
@@ -11965,7 +11965,7 @@ DOIが付与されたアイテムをすでに登録している場合、設定�
 
 ![](media/media/image392.png)
 
-表 15-8 検索結果表示の設定項目
+表 16-8 検索結果表示の設定項目
 
 <table>
 <thead>
@@ -12205,7 +12205,7 @@ $.item_30002_title0.attribute_value_mlt[*].subitem_title
 
 ![](media/media/image399.png)
 
-表 15-9 インデックスツリー/ファセット表示の設定項目
+表 16-9 インデックスツリー/ファセット表示の設定項目
 
 <table>
 <thead>
@@ -12298,7 +12298,7 @@ $.item_30002_title0.attribute_value_mlt[*].subitem_title
 
 ![](media/media/image400.png)
 
-表 15-10 初期表示の設定項目
+表 16-10 初期表示の設定項目
 
 <table>
 <thead>
@@ -12474,7 +12474,7 @@ UIが「RangeSlider」の場合は「AND」のみ選択できます。</td>
 
 ![](media/media/image406.png)
 
-表 15-11 サイト情報設定項目
+表 16-11 サイト情報設定項目
 
 <table>
 <thead>
@@ -12595,8 +12595,10 @@ UIが「RangeSlider」の場合は「AND」のみ選択できます。</td>
 
 
 【注意事項】
-・ここで設定するメールアドレスはAdministration > 統計 > サイトライセンスでメールの送信先として利用されるため、設定値には充分注意する必要があります。
-・【v2.1.0】統計 > サイトライセンスからのメールの手動送信は、システム管理者およびリポジトリ管理者はすべてのリポジトリを対象にできますが、コミュニティ管理者は担当するリポジトリ（コミュニティ）のみが対象です。担当外のリポジトリを指定して送信することはできません。
+
+- ここで設定するメールアドレスはAdministration > 統計 > サイトライセンスでメールの送信先として利用されるため、設定値には充分注意する必要があります。
+- 【v2.1.0】統計 > サイトライセンスからのメールの手動送信は、システム管理者およびリポジトリ管理者はすべてのリポジトリを対象にできますが、コミュニティ管理者は担当するリポジトリ（コミュニティ）のみが対象です。担当外のリポジトリを指定して送信することはできません。
+
 ![](media/media/image486.png)
 
 
@@ -12661,7 +12663,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
      
      入力項目を次に示します。
 
-表 15-12 ［Mail Setting］の項目
+表 16-12 ［Mail Setting］の項目
 
 | 項目       | 説明                  |
 | -------- | ------------------- |
@@ -12684,7 +12686,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
 入力項目を次に示します。
 
-表 15-13 ［Send Test Mail］の項目
+表 16-13 ［Send Test Mail］の項目
 
 | 項目  | 説明                |
 | --- | ----------------- |
@@ -12707,9 +12709,9 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
     ![](media/media/image461.png)
 
 2.  活性化した右のテキストボックスでメールテンプレートを編集する。  
-    その際に、[]で囲むことで変数として使用される文字列とその内容について以下の表 15-14に示す。
+    その際に、[]で囲むことで変数として使用される文字列とその内容について以下の表 16-14に示す。
 
-    表 15-14 メールテンプレート編集で使用可能な変数
+    表 16-14 メールテンプレート編集で使用可能な変数
 
 <table>
 <thead>
@@ -12949,6 +12951,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　利用申請登録のご案内／Register Application for Use
     - 本文:
+
     ```
     [restricted_site_name_ja]です。
     下記のリンクにアクセスしていただき、利用申請の登録を行ってください。
@@ -12983,6 +12986,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　データ利用申請の受付のお知らせ／Your Application was Received
     - 本文:
+
     ```
     [restricted_university_institution]
     [restricted_fullname]　様
@@ -13043,6 +13047,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　データ利用申請の承認のお願い（ログインユーザー向け）／Request for Approval of Application for Use （for logged in users）
     - 本文:
+
     ```
     [advisor_university_institution]
     [advisor_fullname]　様
@@ -13099,6 +13104,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　データ利用申請の承認のお願い（ゲストユーザー向け）／Request for Approval of Application for Use （for guest user）
     - 本文:
+
     ```
     [advisor_university_institution]
     [advisor_fullname]　様
@@ -13155,6 +13161,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　利用申請の審査結果について（ログインユーザー向け）／The results of the review of your application （for logged in users）
     - 本文:
+
     ```
     [restricted_university_institution]
     [restricted_fullname]　様
@@ -13213,6 +13220,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　利用申請の審査結果について（ゲストユーザー向け）／The results of the review of your application （for guest user）
     - 本文:
+
     ```
     [restricted_university_institution]
     [restricted_fullname]　様
@@ -13271,6 +13279,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　利用申請の承認のお知らせ（ログインユーザー向け）／Your application was approved （for logged in users）
     - 本文:
+
     ```
     [restricted_university_institution]
     [restricted_fullname]　様
@@ -13343,6 +13352,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　利用申請の承認のお知らせ（ゲストユーザー向け）／Guest's application was approved （for guest user）
     - 本文:
+
     ```
     [restricted_university_institution]
     [restricted_fullname]　様
@@ -13415,6 +13425,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　利用報告の登録のお願い／Request for register Data Usage Report
     - 本文:
+
     ```
     [restricted_site_name_ja]です。
     下記で申請いただいたデータについてダウンロードされたことを確認しました。
@@ -13470,6 +13481,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　利用報告の登録のお願い／Request for register Data Usage Report
     - 本文:
+
     ```
     [restricted_site_name_ja]です。
     現時点で、下記の利用報告が登録されていません
@@ -13525,6 +13537,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　シークレットURL提供のお知らせ／Notice of providing secret URL
     - 本文
+
     ```
     [restricted_university_institution]
     [restricted_fullname]様
@@ -13545,7 +13558,6 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
     [restricted_site_name_ja]：[restricted_site_url]
     問い合わせ窓口：[restricted_site_mail]
 
-
     ----------------------------------------------------------------------------------
 
     [restricted_university_institution]
@@ -13555,7 +13567,6 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
     Secret URL for [file_name] registered in [restricted_data_name] is created.
 
     The data can be downloaded from the address below.
-
 
     [secret_url]
 
@@ -13576,6 +13587,7 @@ https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
 
     - Subject：　利用申請のお知らせ / Notice of application for use
     - 本文:
+
     ```
     データ提供者 様
 
@@ -13685,7 +13697,7 @@ PDFファイルのプレビューを設定する方法を説明します。
 
 入力項目を次に示します。
 
-表 15-15 ［File Preview］の項目
+表 16-15 ［File Preview］の項目
 
 | 項目            | 説明                        |
 | ------------- | ------------------------- |
@@ -14193,7 +14205,7 @@ APIキーの設定について説明します。
 
 ![](media/media/image429.png)
 
-表 16-1 ［New group］の項目
+表 19-1 ［New group］の項目
 
 | 項目 | 説明             |
 | -- | -------------- |
@@ -14244,7 +14256,7 @@ APIキーの設定について説明します。
 
 ![](media/media/image434.png)
 
-表 16-2 入力項目
+表 19-2 入力項目
 
 | 項目 | 説明             |
 | -- | -------------- |
@@ -14311,12 +14323,12 @@ APIキーの設定について説明します。
 
 1. 画面左にあるアドバンスドのプルダウンメニューから［プロフィール設定編集］をクリックします。
 
-図 12-1 管理者画面
+図 20-1 管理者画面
 ![](media/media/image470.png)
 
 プロフィール設定編集画面が表示されます。
 
-図 12-2 プロフィール設定編集画面
+図 20-2 プロフィール設定編集画面
 ![](media/media/image471.png)
 
 
@@ -14326,7 +14338,7 @@ APIキーの設定について説明します。
 
 ラベルを編集できます。
 
-図 12-3 ラベル名設定テキストボックス
+図 20-3 ラベル名設定テキストボックス
 ![](media/media/image472.png)
 
 2. 入力方法を編集する
@@ -14335,10 +14347,10 @@ APIキーの設定について説明します。
 
 入力方法は下記の5つです。
 
-図 12-4 入力方法設定プルダウン
+図 20-4 入力方法設定プルダウン
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image443.png)
 
-表 17-1 入力方法一覧
+表 20-1 入力方法一覧
 
 | 入力方法          | 説明             |
 | -------------    | --------------------------------------------------------- |
@@ -14352,7 +14364,7 @@ APIキーの設定について説明します。
 
 入力方法が"select"の場合にのみ表示される選択肢オプションを編集できます。
 
-図 12-5 選択肢オプション設定テキストボックス
+図 20-5 選択肢オプション設定テキストボックス
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image464.png)
 
 4. 表示状態を編集する
@@ -14361,19 +14373,19 @@ APIキーの設定について説明します。
 チェックボックスにチェックをすることで画面に項目を表示状態にできます。
 表示状態の項目は、利用申請フロー・利用報告フローの申請者プロパティの項目に自動入力されます。（非表示状態の場合、その項目は自動入力項目から除外されます。）
 
-図 12-6 項目表示設定チェックボックス
+図 20-6 項目表示設定チェックボックス
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image465.png)
 
 5. 状態の保存
 
 画面下部にあるSAVEボタン（![](media/media/image466.png)）を押下することで、編集内容を保存できます。
 
-図 12-7 保存成功画面
+図 20-7 保存成功画面
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image467.png)
 
 ラベル名、または選択オプションが未記入の場合は保存ができません。未記入の項目を入力し、再度保存ボタンを押下してください。
 
-図 12-8 保存失敗画面
+図 20-8 保存失敗画面
 ![グラフィカル ユーザー インターフェイス, アプリケーション 自動的に生成される説明](media/media/image468.png)
 
 
@@ -14381,7 +14393,7 @@ APIキーの設定について説明します。
 
 項目は全てで20項目あり、初期表示は以下の通りです。
 
-表 17-2 初期表示項目一覧
+表 20-2 初期表示項目一覧
 
 | 項目名     | ラベル名           | 入力方法      | 表示状態 |
 |------------|--------------------|---------------|----------|
