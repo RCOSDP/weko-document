@@ -128,20 +128,20 @@
 
 - テーブル名：「files_object」
 - フィールド名：
-  ・「version_id」
-  ・「key」
-  ・「bucket_id」
-  ・「file_id」
-  ・「root_file_id」
-  ・「_mimetype」
-  ・「is_head」
-  ・「created_user_id」
-  ・「updated_user_id」
-  ・「bucket」
-  ・「is_show」
-  ・「is_thumbnail」
-  ・「created」
-  ・「updated」
+  - 「version_id」
+  - 「key」
+  - 「bucket_id」
+  - 「file_id」
+  - 「root_file_id」
+  - 「_mimetype」
+  - 「is_head」
+  - 「created_user_id」
+  - 「updated_user_id」
+  - 「bucket」
+  - 「is_show」
+  - 「is_thumbnail」
+  - 「created」
+  - 「updated」
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

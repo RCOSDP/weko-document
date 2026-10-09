@@ -45,11 +45,11 @@
     - 変更された内容をデータベースに保存する
       - テーブル名：admin_lang_settings
       - カラム名：
-        ・lang_code
-        ・lang_name
-        ・is_registered
-        ・sequence
-        ・is_active
+        - lang_code
+        - lang_name
+        - is_registered
+        - sequence
+        - is_active
 
 - 【言語設定（Language）画面】で設定した表示言語は、ユーザ側の表示言語選択プルダウンから使用可能となる
   - 【言語設定（Language）画面】で設定した順番でプルダウン表示する
@@ -66,8 +66,9 @@
 - 言語一覧のデフォルトを設定する
   - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/populate-instance.sh#L343-L368>
     ※「登録言語」に対して、以下の設定を追加する
-    ・「--registered」をステータス後に追加する
-    ・表示位置を最後の属性で設定する
+
+    - 「--registered」をステータス後に追加する
+    - 表示位置を最後の属性で設定する
   - 現在の設定：
 
 ```

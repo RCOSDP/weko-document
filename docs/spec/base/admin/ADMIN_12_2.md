@@ -169,17 +169,17 @@
 
 - テーブル名：「files_files」
 - フィールド名：
-  ・「id」
-  ・「uri」
-  ・「storage_class」
-  ・「size」
-  ・「checksum」
-  ・「readable」
-  ・「writable」
-  ・「last_check_at」
-  ・「last_check」
-  ・「created」
-  ・「updated」
+  - 「id」
+  - 「uri」
+  - 「storage_class」
+  - 「size」
+  - 「checksum」
+  - 「readable」
+  - 「writable」
+  - 「last_check_at」
+  - 「last_check」
+  - 「created」
+  - 「updated」
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

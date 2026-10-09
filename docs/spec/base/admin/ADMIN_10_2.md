@@ -205,7 +205,7 @@
       </urlset>
       ```
 
-  - 「Status：Private」の場合、、または対象インデックスが「公開しない」と設定する場合、「Change List」及び「Change Dump」を出力すると、以下のようなエラーメッセージを表示する  
+  - 「Status：Private」の場合、または対象インデックスが「公開しない」と設定する場合、「Change List」及び「Change Dump」を出力すると、以下のようなエラーメッセージを表示する  
     エラーメッセージ：  
     　JP：「ページが見つかりません。」  
     　EN：「Page not found」

@@ -93,16 +93,16 @@ OAuthアプリケーショントークン画面の処理について（以下ト
 
 - テーブル名：「oauth2server_token」
 - フィールド名：
-  ・「id」
-  ・「client_id」
-  ・「user_id」
-  ・「token_type」
-  ・「access_token」
-  ・「refresh_token」
-  ・「expires」
-  ・「_scopes」
-  ・「is_personal」
-  ・「is_internal」
+  - 「id」
+  - 「client_id」
+  - 「user_id」
+  - 「token_type」
+  - 「access_token」
+  - 「refresh_token」
+  - 「expires」
+  - 「_scopes」
+  - 「is_personal」
+  - 「is_internal」
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

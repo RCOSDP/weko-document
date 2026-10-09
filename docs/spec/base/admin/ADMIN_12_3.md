@@ -187,25 +187,25 @@
   - 各種設定はデータベースに格納される
     - テーブル名：「files_location」
       - フィールド名：  
-        ・「id」  
-        ・「name」  
-        ・「uri」  
-        ・「default」  
-        ・「type」  
-        ・「access_key」  
-        ・「secret_key」  
-        ・「readonly_access_key」（`postgresql/ddl/61660.sql` で追加。VARCHAR(128)）  
-        ・「readonly_secret_key」（同上）  
-        ・「size」  
-        ・「quota_size」  
-        ・「max_file_size」
-        ・「s3_endpoint_url」
-        ・「s3_send_file_directly」
-        ・「s3_default_block_size」
-        ・「s3_maximum_number_of_parts」
-        ・「s3_region_name」
-        ・「s3_signature_version」
-        ・「s3_url_expiration」
+        - 「id」
+        - 「name」
+        - 「uri」
+        - 「default」
+        - 「type」
+        - 「access_key」
+        - 「secret_key」
+        - 「readonly_access_key」（`postgresql/ddl/61660.sql` で追加。VARCHAR(128)）
+        - 「readonly_secret_key」（同上）
+        - 「size」
+        - 「quota_size」
+        - 「max_file_size」
+        - 「s3_endpoint_url」
+        - 「s3_send_file_directly」
+        - 「s3_default_block_size」
+        - 「s3_maximum_number_of_parts」
+        - 「s3_region_name」
+        - 「s3_signature_version」
+        - 「s3_url_expiration」
 
   - エラーメッセージは以下の通りである
     - 必須項目を指定しない場合、エラーメッセージを該当テキストボックスの下に表示する  

@@ -108,11 +108,11 @@
     - アクセスコントロールをデータベースに保存する
       - テーブル名：「access_actionsroles」
       - フィールド名：
-        ・「id」
-        ・「action」
-        ・「exclude」
-        ・「argument」
-        ・「role_id」
+        - 「id」
+        - 「action」
+        - 「exclude」
+        - 「argument」
+        - 「role_id」
 
   - ［保存してもう一つ追加（Save and Add Another）］ボタンを押すと、設定されたアクセスコントロール内容をロール一覧に追加させ、他のアクセスコントロールを追加設定可能とする
     メッセージを画面上部に表示させる

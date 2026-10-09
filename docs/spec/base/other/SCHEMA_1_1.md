@@ -68,7 +68,7 @@
 |   |  |  |"input_maxItems":"9999", |   |   |   |
 |   |  |  |"input_minItems":"1",  |   |   |   |
 |   |  |  |"input_type":"checkboxes",  |   |   | checkboxes |
-|   |  |  |"input_value":"check1|check2|check3",   |   |   |   |
+|   |  |  |"input_value":"check1&#124;check2&#124;check3",   |   |   |   |
 |   |  |  | "option":{  |   |   |   |
 |   |  |  |  |"crtf":true, |   |   |
 |   |  |  |  |"hidden":false, |   |   |
@@ -87,7 +87,7 @@
 |   |  |  |"input_maxItems":"9999", |   |   |   |
 |   |  |  |"input_minItems":"1",  |   |   |   |
 |   |  |  |"input_type":"radios",  |   |   |  radios |
-|   |  |  |"input_value":"radio1|radio2|radio3",   |   |   |   |
+|   |  |  |"input_value":"radio1&#124;radio2&#124;radio3",   |   |   |   |
 |   |  |  | "option":{  |   |   |   |
 |   |  |  |  |"crtf":true, |   |   |
 |   |  |  |  |"hidden":false, |   |   |

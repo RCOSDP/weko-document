@@ -118,16 +118,16 @@
 - バケット情報は以下のようなデータベースに保存する。
   - テーブル名：「files_bucket」
   - フィールド名：
-    ・「created」
-    ・「updated」
-    ・「id」
-    ・「default_location」
-    ・「default_storage_class」
-    ・「size」
-    ・「quota_size」
-    ・「max_file_size」
-    ・「locked」
-    ・「deleted」
+    - 「created」
+    - 「updated」
+    - 「id」
+    - 「default_location」
+    - 「default_storage_class」
+    - 「size」
+    - 「quota_size」
+    - 「max_file_size」
+    - 「locked」
+    - 「deleted」
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

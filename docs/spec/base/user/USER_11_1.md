@@ -24,14 +24,14 @@
     4. celerybeatが設定されたタイミングでバッチを起動する
     5. キューから得た情報をもとに、データを取得・変換しデータ登録を行う
 
-・キューは、１つのアイテム登録につき１つ存在する。
-・データ連携は、一括反映が可能なため、著者はまとめて、アイテムごとに反映する。（10MB制限に留意する）
-・WEKOでは１アイテム（＝業績情報）内に複数の著者を抱えているが、researchmapでは１著者に複数の業績情報を抱えている。そのため、１キューあたり、著者数ぶんの連携データを作成する。
-・送信対象の著者は、「コントリビュータ」「著者」欄に登録されている、著者DBに登録されている人を対象とする。
-・Researchmapに登録されている著者が連携対象。アイテムに登録された著者の中で、著者DBにresearchmapの情報が登録されている場合のみ連携する。
-・公開アイテムが連携対象。キューに登録されたアイテムでも、非公開ならば連携は行わない。（コンテンツファイルの公開状態は確認しない）
-・連携結果をWEKO内の結果テーブルに書き戻す。（結果が出るまで待機する）
-・リトライを行う。
+- キューは、１つのアイテム登録につき１つ存在する。
+- データ連携は、一括反映が可能なため、著者はまとめて、アイテムごとに反映する。（10MB制限に留意する）
+- WEKOでは１アイテム（＝業績情報）内に複数の著者を抱えているが、researchmapでは１著者に複数の業績情報を抱えている。そのため、１キューあたり、著者数ぶんの連携データを作成する。
+- 送信対象の著者は、「コントリビュータ」「著者」欄に登録されている、著者DBに登録されている人を対象とする。
+- Researchmapに登録されている著者が連携対象。アイテムに登録された著者の中で、著者DBにresearchmapの情報が登録されている場合のみ連携する。
+- 公開アイテムが連携対象。キューに登録されたアイテムでも、非公開ならば連携は行わない。（コンテンツファイルの公開状態は確認しない）
+- 連携結果をWEKO内の結果テーブルに書き戻す。（結果が出るまで待機する）
+- リトライを行う。
 
 ![処理詳細](../media/media/image38.png)
 
@@ -68,7 +68,7 @@
 
 |設定値名|説明|ファイルパス|デフォルト値|
 |---|---|---|---|
-|WEKO_ADMIN_SETTINGS_RESEARCHMAP_LINKAGE_SETTINGS|admin_settingsテーブルのreseachmap関連のデータが入るカラム名 |weko_admin/config.py|researchmap_linkage_settings|
+|WEKO_ADMIN_SETTINGS_RESEARCHMAP_LINKAGE_SETTINGS|admin_settingsテーブルのresearchmap関連のデータが入るカラム名 |weko_admin/config.py|researchmap_linkage_settings|
 |WEKO_ADMIN_SETTINGS_RESEARCHMAP_MERGE_MODES|管理画面で選択できるマージモードの種類|weko_admin/config.py|\[('similar_merge_similar_data','similar merge(similar data priority)'),('similar_merge_input_data','similar merge(input data priority)'),('merge','merge'),('force','force')\]|
 |WEKO_ADMIN_CRIS_LINKAGE_SETTINGS_TEMPLATE|CRIS連携用HTMLのパス|weko_admin/config.py|weko_admin/admin/cris_linkage_setting.html|
 |WEKO_ITEMS_AUTOFILL_RESEARCHMAP_REQUIRED_ITEM|流用入力機能で自動入力可能なJPCOARマッピングの項目一覧|weko_items_autofill/config.py|\["title","creator","contributor","subject","description","publisher","date","language","type","version","identifier","relation","sourceIdentifier","sourceTitle","volume","issue","numPages","pageStart","pageEnd","conference"\]|

@@ -92,16 +92,16 @@ OAuth情報は以下のようなデータベースに保存する。
 
 - テーブル名：「oauth2server_client」
 - フィールド名：
-  ・「name」
-  ・「description」
-  ・「website」
-  ・「user_id」
-  ・「client_id」
-  ・「client_secret」
-  ・「is_confidential」
-  ・「is_internal」
-  ・「_redirect_uris」
-  ・「_default_scopes」
+  - 「name」
+  - 「description」
+  - 「website」
+  - 「user_id」
+  - 「client_id」
+  - 「client_secret」
+  - 「is_confidential」
+  - 「is_internal」
+  - 「_redirect_uris」
+  - 「_default_scopes」
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

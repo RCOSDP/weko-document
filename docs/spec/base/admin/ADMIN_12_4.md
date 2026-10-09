@@ -80,15 +80,15 @@
 
 - テーブル名：「files_multipartobject」
 - フィールド名：
-  ・「created」
-  ・「updated」
-  ・「upload_id」
-  ・「bucket_id」
-  ・「key」
-  ・「file_id」
-  ・「chunk_size」
-  ・「size」
-  ・「completed」
+  - 「created」
+  - 「updated」
+  - 「upload_id」
+  - 「bucket_id」
+  - 「key」
+  - 「file_id」
+  - 「chunk_size」
+  - 「size」
+  - 「completed」
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
