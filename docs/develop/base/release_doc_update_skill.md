@@ -102,6 +102,10 @@ python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/man
 # （行番号は、リンクの前後 3 行の「設定キー：…」がその行にあるかで確かめる）
 python3 .claude/skills/weko-release-doc-update/scripts/check_code_links.py /home/mhaya/weko
 
+# 運用文書など honkit でビルドしない文書の相対リンク・アンカー。--external で外部 URL も確認（404 は移転先か
+# Internet Archive の保存版に差し替える）
+python3 .claude/skills/weko-release-doc-update/scripts/check_doc_links.py --external
+
 # 日本語版の表・図番号を章ごとに振り直し、本文の参照も書き換える（--apply を付けないと変更点の表示だけ）
 python3 .claude/skills/weko-release-doc-update/scripts/renumber_captions_ja.py docs/manuals/USER/base/README.md --apply
 ```
