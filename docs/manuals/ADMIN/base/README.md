@@ -711,7 +711,7 @@ SWORD APIの管理に関する操作手順を説明しています。
 </tr>
 <tr class="even">
 <td>junii2</td>
-<td><p>国立情報学研究所（NII）が公開したメタデータスキーマです（http://www.nii.ac.jp/irp/archive/system/junii2.html）。</p>
+<td><p>国立情報学研究所（NII）が公開したメタデータスキーマです（https://support.irdb.nii.ac.jp/sites/default/files/2018-07/junii2guide_ver3.1.pdf）。</p>
 <p>WEKO3モジュールでは、OAI-PMHのメタデータスキーマとしてjunii2は使用しません。</p></td>
 </tr>
 <tr class="odd">
@@ -10033,7 +10033,7 @@ Resyncの入力項目を次に示します。
 <li><p>［Incremental］を選択する場合、ChangelistのURLのみを「Base URL」に指定できます。</p></li>
 <li><p>［Audit］を選択する場合、Sourceサーバと同期しているかどうか、ResourceListの変更があるかどうかチェックする機能なのでImportボタンを表示されません。</p></li>
 </ul>
-<p>3種類の詳細については、<a href="http://www.openarchives.org/rs/1.1/resourcesync%23DestPers">http://www.openarchives.org/rs/1.1/resourcesync#DestPers</a>を参照してください。</p></td>
+<p>3種類の詳細については、<a href="http://www.openarchives.org/rs/1.1/resourcesync#DestPers">http://www.openarchives.org/rs/1.1/resourcesync#DestPers</a>を参照してください。</p></td>
 </tr>
 <tr class="odd">
 <td>Saving Format</td>

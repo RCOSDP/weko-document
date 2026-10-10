@@ -321,7 +321,7 @@ Table 1-1. Terms used in the System
 </tr>
 <tr class="even">
 <td>junii2</td>
-<td><p>A metadata schema published by the National Institute of Informatics (NII) (https://www.nii.ac.jp/irp/archive/system/junii2.html).</p>
+<td><p>A metadata schema published by the National Institute of Informatics (NII) (https://support.irdb.nii.ac.jp/sites/default/files/2018-07/junii2guide_ver3.1.pdf).</p>
 <p>In the WEKO3 module, you cannot use junii2 as a metadata schema for OAI-PMH.</p></td>
 </tr>
 <tr class="odd">
@@ -1233,7 +1233,7 @@ This feature applies to the Japanese language only. Variant character searches i
 The index definition of variant characters is based on the integrated index of kanji in NACSIS-CAT. You can obtain the index definition from the following Web site:
 
 "Guidelines for providing the integrated index of kanji" (Japanese)  
-https://www.nii.ac.jp/CAT-ILL/about/system/kui.html
+http://web.archive.org/web/20220819013647/https://www.nii.ac.jp/CAT-ILL/about/system/kui.html (archived copy on the Internet Archive)
 
 ## Search by author name
 

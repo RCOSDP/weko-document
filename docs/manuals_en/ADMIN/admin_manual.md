@@ -752,7 +752,7 @@ Table 1-1. Terms used in the System
 </tr>
 <tr class="even">
 <td>junii2</td>
-<td><p>A metadata schema published by the National Institute of Informatics (NII) (http://www.nii.ac.jp/irp/archive/system/junii2.html).</p>
+<td><p>A metadata schema published by the National Institute of Informatics (NII) (https://support.irdb.nii.ac.jp/sites/default/files/2018-07/junii2guide_ver3.1.pdf).</p>
 <p>In the WEKO3 module, you cannot use junii2 as a metadata schema for OAI-PMH.</p></td>
 </tr>
 <tr class="odd">
@@ -13829,7 +13829,7 @@ This chapter provides information on how to manage Resource Sync.
 
 ## Manage Resource Lists
 
-You can output Resource Lists and Resource Dumps for each WEKO3 public index. For the specification of Resource Lists, see [http://www.openarchives.org/rs/1.1/resourcesync\#ResourceList](http://www.openarchives.org/rs/1.1/resourcesync#http://www.openarchives.org/rs/1.1/resourcesync).For the specification of Resource Dumps, see <http://www.openarchives.org/rs/1.1/resourcesync#ResourceDump>.
+You can output Resource Lists and Resource Dumps for each WEKO3 public index. For the specification of Resource Lists, see [http://www.openarchives.org/rs/1.1/resourcesync#ResourceList](http://www.openarchives.org/rs/1.1/resourcesync#ResourceList). For the specification of Resource Dumps, see <http://www.openarchives.org/rs/1.1/resourcesync#ResourceDump>.
 
 The Resource List setting screen is displayed by clicking "Resource Sync" and "Resource List".
 
@@ -13955,7 +13955,7 @@ This section explains how to delete a Resource List.
 
 ## Manage Change Lists
 
-You can output Change Lists and Change Dumps for each WEKO3 public index. For the specification of Change Lists, see [http://www.openarchives.org/rs/1.1/resourcesync\#ChangeList](http://www.openarchives.org/rs/1.1/resourcesync#http://www.openarchives.org/rs/1.1/resourcesync).For the specification of Change Dumps, see [http://www.openarchives.org/rs/1.1/resourcesync\#ChangeDump](http://www.openarchives.org/rs/1.1/resourcesync#http://www.openarchives.org/rs/1.1/resourcesync).
+You can output Change Lists and Change Dumps for each WEKO3 public index. For the specification of Change Lists, see [http://www.openarchives.org/rs/1.1/resourcesync#ChangeList](http://www.openarchives.org/rs/1.1/resourcesync#ChangeList). For the specification of Change Dumps, see [http://www.openarchives.org/rs/1.1/resourcesync#ChangeDump](http://www.openarchives.org/rs/1.1/resourcesync#ChangeDump).
 
 The Change List setting screen is displayed by clicking "Resource Sync" and "Change List".
 

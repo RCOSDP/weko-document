@@ -227,7 +227,7 @@ v2.1.0
 </tr>
 <tr class="even">
 <td>junii2</td>
-<td><p>国立情報学研究所（NII）が公開したメタデータスキーマです（http://www.nii.ac.jp/irp/archive/system/junii2.html）。</p>
+<td><p>国立情報学研究所（NII）が公開したメタデータスキーマです（https://support.irdb.nii.ac.jp/sites/default/files/2018-07/junii2guide_ver3.1.pdf）。</p>
 <p>WEKO3モジュールでは、OAI-PMHのメタデータスキーマとしてjunii2は使用しません。</p></td>
 </tr>
 <tr class="odd">
@@ -1262,7 +1262,7 @@ Shibbolethでログインする画面は、コンテンツファイルでの設�
 異体字のインデックス定義はNACSIS-CATの漢字統合インデックスを用いており、インデックス定義は下記サイトより取得可能です。
 
 \[漢字統合インデックス提供に関するガイドライン\]  
-https://www.nii.ac.jp/CAT-ILL/about/system/kui.html
+http://web.archive.org/web/20220819013647/https://www.nii.ac.jp/CAT-ILL/about/system/kui.html （Internet Archive に保存された版）
 
 ### 著者名で検索する
 
