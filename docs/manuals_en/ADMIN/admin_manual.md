@@ -914,7 +914,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="even">
-<td>アイテムタイプ管理Item Types</td>
+<td>Item Types</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
@@ -1138,7 +1138,7 @@ Legend: 〇: Feature available, ×: Feature not available
 <td></td>
 </tr>
 <tr class="even">
-<td>WorkFlowワーク風呂＾管理</td>
+<td>WorkFlow</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
@@ -6277,7 +6277,7 @@ For "Creator Identifier Scheme", "Contributor Identifier Scheme", and "Rights Ho
 <p>(EN: Applicant Affiliated Institution)</p></td>
 <td>⭘</td>
 <td><p>Institution Name</p>
-<p>(JP: 所属学会名</p>
+<p>(JP: 所属学会名)</p>
 <p>(EN: Institution Name)</p></td>
 <td>Text</td>
 <td></td>
@@ -8510,8 +8510,8 @@ This section explains how to bulk export items.
         
         ![](media/media/image74.png)
         
-        A tsv file will be generated for each item type in the \<ItemTypeName (ItemTypeID)\> format. The content file for each item will not be generated.
-        If the number of items to be exported within an item type exceeds a certain threshold, the TSV file will be split accordingly. In such cases, the file name will follow the format \<ItemTypeName (ItemTypeID).part(partNo)\>.
+        A tsv file will be generated for each item type in the &lt;ItemTypeName (ItemTypeID)&gt; format. The content file for each item will not be generated.
+        If the number of items to be exported within an item type exceeds a certain threshold, the TSV file will be split accordingly. In such cases, the file name will follow the format &lt;ItemTypeName (ItemTypeID).part(partNo)&gt;.
     
     2.  #### If you select "Cancel":
         
@@ -8558,7 +8558,7 @@ The "Select" tab is where you can start importing items.
 > If the "Administration" \> "Items" \> "Import" screen opens on the same device on which you are trying to import, the message "Import is in progress" will appear. This situation happens when, for instance, the screen opens in a different browser, or you navigate from the "Result" tab back to the "Import" tab.
 
 2.  Select an item type from the "Item Type" drop-down list, and click "Download".  
-    The header information for the selected item type will be downloaded in the tsv format. The filename will be *\<item\_type\_name (item\_type\_ID)\>.tsv*.
+    The header information for the selected item type will be downloaded in the tsv format. The filename will be *&lt;item\_type\_name (item\_type\_ID)&gt;.tsv*.
     
     ![](media/media/image77.png)
     
@@ -10459,7 +10459,7 @@ The asterisk (\*) denotes a required entry.
 
 The widget is created. Click on the "List" tab to check that the widget you have created appears.
 
-If you click "Save" without entering the required fields, the error message "\<element\_name\> is required" will be displayed.
+If you click "Save" without entering the required fields, the error message "&lt;element\_name&gt; is required" will be displayed.
 
 ![](media/media/image115.png)
 
@@ -10892,7 +10892,7 @@ This section explains how to delete a widget.
 
 > The widget is deleted. The message "Record was successfully deleted" appears.
 > 
-> If the widget you want to delete is used in "Page Layout", the message "Cannot delete widget (ID: \<widget\_ID\>, because it's setting in Widget Design)" will appear.
+> If the widget you want to delete is used in "Page Layout", the message "Cannot delete widget (ID: &lt;widget\_ID&gt;, because it's setting in Widget Design)" will appear.
 > 
 > ![](media/media/image166.png)
 
@@ -10911,7 +10911,7 @@ This section explains how to delete a widget.
 > 
 > ![](media/media/image168.png)
 > 
-> If the widget you want to delete is used in "Page Layout", the message "Cannot delete widget (ID: \<widget\_ID\>, because it's setting in Widget Design)" will appear.
+> If the widget you want to delete is used in "Page Layout", the message "Cannot delete widget (ID: &lt;widget\_ID&gt;, because it's setting in Widget Design)" will appear.
 > 
 > ![](media/media/image169.png)
 
@@ -10951,7 +10951,7 @@ You need to adjust the position and the width of each widget.
 
 Notes:
 
-"Main Contents", "Header", and "Footer" cannot be set more than once on a page. The error message "\<widget\_type\_name\> has been existed in Preview panel" will be displayed if you try to set more than one widget for any of these types, and the "Add Widget" button will be disabled.
+"Main Contents", "Header", and "Footer" cannot be set more than once on a page. The error message "&lt;widget\_type\_name&gt; has been existed in Preview panel" will be displayed if you try to set more than one widget for any of these types, and the "Add Widget" button will be disabled.
 
 ![](media/media/image173.png)
 
@@ -11579,7 +11579,7 @@ About the URL:
 
 The external author ID Prefix is added. The message "Successfully added" appears.
 
-You must enter "Name" and "Scheme". If you do not enter them, clicking "+Add" will display the error message "enter the correct \<element\_name\>".
+You must enter "Name" and "Scheme". If you do not enter them, clicking "+Add" will display the error message "enter the correct &lt;element\_name&gt;".
 
 You cannot set up the same scheme multiple times in "Scheme". If you select a scheme that is already configured, clicking "+Add" will display the error message "Specified scheme is already exist.".
 
@@ -11670,7 +11670,7 @@ About the URL:
 
 The affiliation ID Prefix is added. The message "Successfully added" appears.
 
-You must enter "Name" and "Scheme". If you do not enter them, clicking "+Add" will display the error message "enter the correct \<element\_name\>".
+You must enter "Name" and "Scheme". If you do not enter them, clicking "+Add" will display the error message "enter the correct &lt;element\_name&gt;".
 
 You cannot set up the same scheme multiple times in "Scheme". If you select a scheme that is already configured, clicking "+Add" will display the error message "Specified scheme is already exist.".
 
@@ -13205,7 +13205,7 @@ You cannot delete a flow if it is used in a workflow. In this case, clicking "De
 
 ## Set up workflows
 
-A workflow is a combination of flows and items. To access the "Flow List" screen, click "WorkFlow" and then clicking "WorkFlow List". You can view a list of workflows and add or delete specified workflows in this screen.
+A workflow is a combination of flows and items. To access the "WorkFlow List" screen, click "WorkFlow" and then click "WorkFlow List". You can view a list of workflows and add or delete specified workflows in this screen.
 
 ### Add a workflow
 
@@ -13319,7 +13319,7 @@ This section explains how to view communities.
 
 1.  Click "Communities", and then click "Community".
 
-The "List" tab shows a list of communities. ★\<You can filter the list by selecting criteria and specifying values in "Add Filter".\>★
+The "List" tab shows a list of communities. ★&lt;You can filter the list by selecting criteria and specifying values in "Add Filter".&gt;★
 
 ![](media/media/image260.png)
 
@@ -13332,11 +13332,11 @@ The details appear.
 | GakuNin mAP role | Display name |
 | --- | --- |
 | System administrator group (default: jc\_roles\_sysadm) | System Administrator |
-| Repository-specific role (jc\_\<FQDN\>\_ro\_radm) | Repository Administrator |
-| Repository-specific role (jc\_\<FQDN\>\_ro\_cadm) | Community Administrator |
-| Repository-specific role (jc\_\<FQDN\>\_ro\_cont) | Contributor |
+| Repository-specific role (jc\_&lt;FQDN&gt;\_ro\_radm) | Repository Administrator |
+| Repository-specific role (jc\_&lt;FQDN&gt;\_ro\_cadm) | Community Administrator |
+| Repository-specific role (jc\_&lt;FQDN&gt;\_ro\_cont) | Contributor |
 
-\* \<FQDN\> is the host name of the IdP entity ID with "." and "-" replaced by "\_".
+\* &lt;FQDN&gt; is the host name of the IdP entity ID with "." and "-" replaced by "\_".
 
 ### Create a community
 
@@ -13821,7 +13821,7 @@ If WEKO\_SEARCH\_FIX\_ACCESSRIGHTS is enabled (True) in instance.cfg, the output
 
   - In period specification with from/until for ListRecords and ListIdentifiers, an item whose embargo period has ended is also output if its publication date is within the specified period, in addition to its update date and time.
 
-  - The \<datestamp\> of an item whose embargo period has ended is the later of the update date and time and the publication date of the item.
+  - The &lt;datestamp&gt; of an item whose embargo period has ended is the later of the update date and time and the publication date of the item.
 
 # Resource Sync
 
@@ -13983,7 +13983,7 @@ Figure 11-3. Sample output Change Lists
 
 ![](media/media/image299.png)
 
-2.  > Clicking on the URL shown for \<loc\> in the Change Lists will output the Change Lists for the corresponding date.
+2.  > Clicking on the URL shown for &lt;loc&gt; in the Change Lists will output the Change Lists for the corresponding date.
 
 Figure 11-4. Sample output Change Lists
 
@@ -13997,7 +13997,7 @@ Figure 11-5. Sample output Change Dumps
 
 ![](media/media/image302.png)
 
-4.  > Clicking on the URL shown for \<loc\> in the Change Dumps will output the Change Dumps for the corresponding date.
+4.  > Clicking on the URL shown for &lt;loc&gt; in the Change Dumps will output the Change Dumps for the corresponding date.
 
 Figure 11-6. Sample output Change Dumps
 
@@ -14269,7 +14269,7 @@ Table 11-3. The elements on the Resync create tab
 
 > The Resync is created.
 > 
-> If you do not specify the required fields, the error message "\<element\_name\> is required" will be displayed.
+> If you do not specify the required fields, the error message "&lt;element\_name&gt; is required" will be displayed.
 
 ### Edit a Resync
 

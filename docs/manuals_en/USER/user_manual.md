@@ -3574,7 +3574,7 @@ Table 5-24. The elements in the "Identifier Grant" screen
 
   - > Only alphanumeric characters and the following symbols are allowed: \_-.;()/.
 
-  - > The format must be "info:doi/\<prefix for DOI\>/\<input value\>" and the length must not exceed 255 characters.
+  - > The format must be "info:doi/&lt;prefix for DOI&gt;/&lt;input value&gt;" and the length must not exceed 255 characters.
 
   - > This DOI is not already being used with another item.
 
