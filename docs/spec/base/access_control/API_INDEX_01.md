@@ -4,14 +4,14 @@
 
 ## 目次
 
-- [GET /api/\<version>/tree](#get-apiversiontree)
-- [GET /api/\<version>/tree/\<index_id>](#get-apiversiontreeindex_id)
-- [GET /api/\<version>/tree/index](#get-apiversiontreeindex)
-- [GET /api/\<version>/tree/index/\<index_id>](#get-apiversiontreeindexindex_id)
-- [GET /api/\<version>/tree/index/\<index_id>/parent](#get-apiversiontreeindexindex_idparent)
-- [POST /api/\<version>/tree/index](#post-apiversiontreeindex)
-- [PUT /api/\<version>/tree/index/\<index_id>](#put-apiversiontreeindexindex_id)
-- [DELETE /api/\<version>/tree/index/\<index_id>](#delete-apiversiontreeindexindex_id)
+- [GET /api/&lt;version>/tree](#get-apiversiontree)
+- [GET /api/&lt;version>/tree/&lt;index_id>](#get-apiversiontreeindex_id)
+- [GET /api/&lt;version>/tree/index](#get-apiversiontreeindex)
+- [GET /api/&lt;version>/tree/index/&lt;index_id>](#get-apiversiontreeindexindex_id)
+- [GET /api/&lt;version>/tree/index/&lt;index_id>/parent](#get-apiversiontreeindexindex_idparent)
+- [POST /api/&lt;version>/tree/index](#post-apiversiontreeindex)
+- [PUT /api/&lt;version>/tree/index/&lt;index_id>](#put-apiversiontreeindexindex_id)
+- [DELETE /api/&lt;version>/tree/index/&lt;index_id>](#delete-apiversiontreeindexindex_id)
 
 ## GET `/api/<version>/tree`
 

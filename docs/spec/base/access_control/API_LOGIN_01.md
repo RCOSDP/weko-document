@@ -4,8 +4,8 @@
 
 ## 目次
 
-- [POST /api/\<version>/login](#post-apiversionlogin)
-- [POST /api/\<version>/logout](#post-apiversionlogout)
+- [POST /api/&lt;version>/login](#post-apiversionlogin)
+- [POST /api/&lt;version>/logout](#post-apiversionlogout)
 
 ## POST `/api/<version>/login`
 

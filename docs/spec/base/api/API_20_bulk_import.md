@@ -23,7 +23,7 @@ APIの認証にはOAuth2を利用する。
 | 項番 | HTTP request | 内容 |
 | :--: | ------------ | ---- |
 | 1 | POST /api/items/import-task | メタデータ（TSV/CSV）を含むZIPファイルをアップロードし、一括インポートタスクを登録する（`mode=check` の場合は検証のみ）。 |
-| 2 | GET /api/items/import-task/get_bulk_import_task_status/\<task_id> | task_id を指定して、インポートタスクの処理状況や実行結果を取得する。 |
+| 2 | GET /api/items/import-task/get_bulk_import_task_status/&lt;task_id> | task_id を指定して、インポートタスクの処理状況や実行結果を取得する。 |
 
 - いずれのエンドポイントも `weko_items_ui/views.py` の `blueprint_api`（`setup.py` の `invenio_base.api_blueprints` で登録、ベースパス `/api`、`url_prefix="/items"`）に定義される。
 - 共通のデコレータ構成は `@oauth2.require_oauth()` → `@limiter.limit("")`（`weko_accounts.utils.limiter`）→ `@require_oauth_scopes(item_bulk_process_scope.id)`。POST 側はさらに `@roles_required(WEKO_PERMISSION_SUPER_ROLE_USER)`（`weko_accounts.utils.roles_required`）を伴う。
@@ -190,7 +190,7 @@ POST /api/items/import-task
 ### 一括インポート進捗取得機能：GET `/api/items/import-task/get_bulk_import_task_status/<task_id>`
 
 #### エンドポイント
-GET /api/items/import-task/get_bulk_import_task_status/\<task_id>
+GET /api/items/import-task/get_bulk_import_task_status/&lt;task_id>
 
 #### パスパラメータ
 

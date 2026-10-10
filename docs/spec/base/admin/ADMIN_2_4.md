@@ -1135,7 +1135,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 - /weko-search-ui/weko_search_ui/admin.py
 
-  -   ItemImportView:check(/admin/items/import/check method=[post])\
+  -   ItemImportView:check(/admin/items/import/check method=[post])<br>
       インポートアイテムのバリデーションを行う。
 
       -   ログインユーザーの権限チェックを行う。
@@ -1183,15 +1183,15 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
     -   handle_check_restricted_access_property
 
         -   インポートファイルから読み込んだアイテムリスト内で、
-            check_terms_in_systemを呼び出し、falseが返却された場合、以下のエラーメッセージを返却する。\
+            check_terms_in_systemを呼び出し、falseが返却された場合、以下のエラーメッセージを返却する。<br>
             英語：「ERROR:The specified terms does not exist in the
-            system」\
+            system」<br>
             日本語：「エラー：指定する利用規約はシステムに存在しません。」
 
         -   インポートファイルから読み込んだアイテムリスト内で、
-            check_terms_in_systemを呼び出し、falseが返却された場合、以下のエラーメッセージを返却する。\
+            check_terms_in_systemを呼び出し、falseが返却された場合、以下のエラーメッセージを返却する。<br>
             英語：「ERROR:The specified provinding method does not exist
-            in the system」\
+            in the system」<br>
             日本語：「エラー：指定する提供方法はシステムに存在しません。」
 
     -   check_provide_in_system
@@ -1211,7 +1211,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 -   /weko-records-ui/weko_records_ui/permittions.py
 
-    -   check_file_download_permission\
+    -   check_file_download_permission<br>
         コンテンツファイルがダウンロードできるかチェックする。
 
         -   accessroleがopen_access(オープンアクセス)の場合、コンテンツの公開日はアイテム公開日に設定し、現在日時と比較して公開日を過ぎていた場合はダウンロード可能とする。
@@ -1263,7 +1263,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
   - 「System」としている項目（"資源タイプResource", "出版タイプResource", "アクセス権Resource"）を一括登録時に自動で設定する機能に関して、  
     自動設定の前提として、対象のアイテムタイプについて各項目がAdmin>ItemTypes>MappingでJPCOARスキーマのマッピングが設定されている必要があります
 
-  - インポート更新時にに資源タイプ（dc:type）の変更は同じコンテンツ種類内でのみ許可される。それ以外の資源タイプにを変更した場合、インポートタブのチェック処理で以下のようにエラーメッセージが表示される。
+  - インポート更新時に資源タイプ（dc:type）の変更は同じコンテンツ種類内でのみ許可される。それ以外の資源タイプに変更した場合、インポートタブのチェック処理で以下のようにエラーメッセージが表示される。
     
       - 「DOI 付与済みアイテムの資源タイプの変更はできません。」
 

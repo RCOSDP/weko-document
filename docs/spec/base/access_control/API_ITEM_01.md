@@ -4,11 +4,11 @@
 
 ## 目次
 
-- [GET /api/\<version>/records](#get-apiversionrecords)
+- [GET /api/&lt;version>/records](#get-apiversionrecords)
 - [GET /api/records/](#get-apirecords)
-- [GET /api/\<version>/records/\<pid_value>](#get-apiversionrecordspid_value)
-- [GET /api/\<version>/records/\<pid_value>/stats](#get-apiversionrecordspid_valuestats)
-- [POST /api/\<version>/records/list](#post-apiversionrecordslist)
+- [GET /api/&lt;version>/records/&lt;pid_value>](#get-apiversionrecordspid_value)
+- [GET /api/&lt;version>/records/&lt;pid_value>/stats](#get-apiversionrecordspid_valuestats)
+- [POST /api/&lt;version>/records/list](#post-apiversionrecordslist)
 - [GET /api/index/](#get-apiindex)
 - [PUT /api/records/](#put-apirecords)
 

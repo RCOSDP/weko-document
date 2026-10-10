@@ -4,9 +4,9 @@
 
 ## 目次
 
-- [GET /api/\<version>/captcha/image](#get-apiversioncaptchaimage)
-- [POST /api/\<version>/captcha/validate](#post-apiversioncaptchavalidate)
-- [POST /api/\<version>/records/\<pid_value>/request-mail](#post-apiversionrecordspid_valuerequest-mail)
+- [GET /api/&lt;version>/captcha/image](#get-apiversioncaptchaimage)
+- [POST /api/&lt;version>/captcha/validate](#post-apiversioncaptchavalidate)
+- [POST /api/&lt;version>/records/&lt;pid_value>/request-mail](#post-apiversionrecordspid_valuerequest-mail)
 
 ## GET `/api/<version>/captcha/image`
 

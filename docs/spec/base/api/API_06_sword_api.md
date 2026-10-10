@@ -35,9 +35,9 @@ APIの認証にはOAuth2を利用する。
 | :--: | ------------------------------ | ---------------------------------------------------------------------------------------- |
 |  1   | GET /sword/service-document    | リポジトリのサービスドキュメントを取得する。                                             |
 |  2   | POST /sword/service-document   | WEKO3の一括登録フォーマットを用いて、アイテムを登録する。                                |
-|  3   | GET /sword/deposit/\<recid>    | recidを指定してリポジトリ上に存在するアイテムのステータスドキュメントを取得する。        |
-|  4   | PUT /sword/deposit/\<recid>    | recidを指定してリポジトリ上に存在するアイテムに対して、メタデータやファイルを置換する。  |
-|  5   | DELETE /sword/deposit/\<recid> | recidを指定してアイテムを削除する。                                                      |
+|  3   | GET /sword/deposit/&lt;recid>    | recidを指定してリポジトリ上に存在するアイテムのステータスドキュメントを取得する。        |
+|  4   | PUT /sword/deposit/&lt;recid>    | recidを指定してリポジトリ上に存在するアイテムに対して、メタデータやファイルを置換する。  |
+|  5   | DELETE /sword/deposit/&lt;recid> | recidを指定してアイテムを削除する。                                                      |
 
 
 ### CURLでのリクエスト実行例：
@@ -334,7 +334,7 @@ POST /sword/service-document
 ### アイテム状態取得機能：GET `/sword/deposit/<recid>`
 
 #### エンドポイント
-GET /sword/deposit/\<recid\>
+GET /sword/deposit/&lt;recid&gt;
 
 #### リクエストヘッダー
 
@@ -372,7 +372,7 @@ GET /sword/deposit/\<recid\>
 ### アイテム更新機能：PUT `/sword/deposit/<recid>`
 
 #### エンドポイント
-PUT /sword/deposit/\<recid\>
+PUT /sword/deposit/&lt;recid&gt;
 
 #### リクエストヘッダー
 
@@ -417,7 +417,7 @@ PUT /sword/deposit/\<recid\>
 ### アイテム削除機能：DELETE `/sword/deposit/<recid>`
 
 #### エンドポイント
-DELETE /sword/deposit/\<recid\>
+DELETE /sword/deposit/&lt;recid&gt;
 
 #### リクエストヘッダー
 

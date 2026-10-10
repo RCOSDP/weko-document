@@ -5,8 +5,8 @@
 ## 目次
 
 - [POST /api/depositactivity](#post-apidepositactivity)
-- [GET /api/depositactivity/\<activity_id>](#get-apidepositactivityactivity_id)
-- [DELETE /api/depositactivity/\<activity_id>](#delete-apidepositactivityactivity_id)
+- [GET /api/depositactivity/&lt;activity_id>](#get-apidepositactivityactivity_id)
+- [DELETE /api/depositactivity/&lt;activity_id>](#delete-apidepositactivityactivity_id)
 
 ## POST /api/depositactivity
 

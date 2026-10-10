@@ -4,12 +4,12 @@
 
 ## 目次
 
-- [GET /api/\<version>/ranking/\<pid_value>/files](#get-apiversionrankingpid_valuefiles)
-- [GET /api/\<version>/records/\<pid_value>/files/\<filename>](#get-apiversionrecordspid_valuefilesfilename)
-- [GET /api/\<version>/records/\<pid_value>/files/\<filename>/stats](#get-apiversionrecordspid_valuefilesfilenamestats)
-- [GET /api/\<version>/records/\<pid_value>/files/all](#get-apiversionrecordspid_valuefilesall)
-- [POST /api/\<version>/records/\<pid_value>/files/selected](#post-apiversionrecordspid_valuefilesselected)
-- [GET /api/\<version>/ranking/\<ranking_type>](#get-apiversionrankingranking_type)
+- [GET /api/&lt;version>/ranking/&lt;pid_value>/files](#get-apiversionrankingpid_valuefiles)
+- [GET /api/&lt;version>/records/&lt;pid_value>/files/&lt;filename>](#get-apiversionrecordspid_valuefilesfilename)
+- [GET /api/&lt;version>/records/&lt;pid_value>/files/&lt;filename>/stats](#get-apiversionrecordspid_valuefilesfilenamestats)
+- [GET /api/&lt;version>/records/&lt;pid_value>/files/all](#get-apiversionrecordspid_valuefilesall)
+- [POST /api/&lt;version>/records/&lt;pid_value>/files/selected](#post-apiversionrecordspid_valuefilesselected)
+- [GET /api/&lt;version>/ranking/&lt;ranking_type>](#get-apiversionrankingranking_type)
 
 <a id="get-apiversionrankingpid_valuefiles"></a>
 

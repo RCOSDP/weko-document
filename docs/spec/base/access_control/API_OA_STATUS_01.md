@@ -4,7 +4,7 @@ OAステータスに関するAPIのアクセスコントロールについて記
 
 ## 目次
 
-- [POST /api/\<version>/oa_status/callback](#post-apiversionoa_statuscallback)
+- [POST /api/&lt;version>/oa_status/callback](#post-apiversionoa_statuscallback)
 
 <a id="post-apiversionoa_statuscallback"></a>
 

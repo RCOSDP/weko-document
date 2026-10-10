@@ -4,13 +4,13 @@
 
 ## 目次
 
-- [GET /api/\<version>/workflow/activities](#get-apiversionworkflowactivities)
-- [POST /api/\<version>/workflow/activities/\<activity_id>/approve](#post-apiversionworkflowactivitiesactivity_idapprove)
-- [POST /api/\<version>/workflow/activities/\<activity_id>/throw-out](#post-apiversionworkflowactivitiesactivity_idthrow-out)
-- [GET /api/\<version>/records/\<pid>/files/\<filename>/terms](#get-apiversionrecordspidfilesfilenameterms)
-- [POST /api/\<version>/records/\<pid>/files/\<filename>/application](#post-apiversionrecordspidfilesfilenameapplication)
-- [POST /api/\<version>/workflow/activities/\<activity_id>/application](#post-apiversionworkflowactivitiesactivity_idapplication)
-- [GET /api/\<version>/records/\<pid>/need-restricted-access](#get-apiversionrecordspidneed-restricted-access)
+- [GET /api/&lt;version>/workflow/activities](#get-apiversionworkflowactivities)
+- [POST /api/&lt;version>/workflow/activities/&lt;activity_id>/approve](#post-apiversionworkflowactivitiesactivity_idapprove)
+- [POST /api/&lt;version>/workflow/activities/&lt;activity_id>/throw-out](#post-apiversionworkflowactivitiesactivity_idthrow-out)
+- [GET /api/&lt;version>/records/&lt;pid>/files/&lt;filename>/terms](#get-apiversionrecordspidfilesfilenameterms)
+- [POST /api/&lt;version>/records/&lt;pid>/files/&lt;filename>/application](#post-apiversionrecordspidfilesfilenameapplication)
+- [POST /api/&lt;version>/workflow/activities/&lt;activity_id>/application](#post-apiversionworkflowactivitiesactivity_idapplication)
+- [GET /api/&lt;version>/records/&lt;pid>/need-restricted-access](#get-apiversionrecordspidneed-restricted-access)
 
 ## GET `/api/<version>/workflow/activities`
 

@@ -757,6 +757,7 @@ POST /api/{version}/authors
     </table>
 
     ※ firstnameまたはfamilyNameが指定されたときはlanguageは必須とする
+
     ※ language、firstname、familyNameが送られてきた場合でnameFormatが指定されていない場合のみデフォルト値を適用する
 
     **identifierInfo**
@@ -1513,6 +1514,7 @@ PUT /api/{version}/authors/{identifier}
     </table>
 
     ※ firstNameまたはfamilyNameが指定されたときはlanguageは必須とする
+
     ※ language、firstname、familyNameが送られてきた場合でnameFormatが指定されていない場合のみデフォルト値を適用する
 
     **identifierInfo**

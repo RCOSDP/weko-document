@@ -65,6 +65,7 @@
 
 - 言語一覧のデフォルトを設定する
   - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/populate-instance.sh#L343-L368>
+
     ※「登録言語」に対して、以下の設定を追加する
 
     - 「--registered」をステータス後に追加する
