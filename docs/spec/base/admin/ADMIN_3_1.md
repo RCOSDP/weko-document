@@ -172,11 +172,11 @@
 
       - 学認mAP連携機能が有効な場合、閲覧権限の設定に学認mAPのグループ情報を利用できる。
 
-         - 【v2.1.0】学認mAP連携として扱われるのは、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT と WEKO_ACCOUNTS_IDP_ENTITY_ID（既定は空）の両方が設定されている場合のみである。未設定の場合は「jc_」で始まるロールも通常のロールとして扱われる。
+         - 【v2.1.0】学認mAP連携として扱われるのは、設定値 WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_PATTERN\_DICT と WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID（既定は空）の両方が設定されている場合のみである。未設定の場合は「jc\_」で始まるロールも通常のロールとして扱われる。
 
-         - 【v2.1.0】グループIDのフォーマットが「<prefix>\_<institution_fqdn>\_<role_keyword>\_<ロール種別>」（既定値では「jc\_<institution_fqdn>\_ro\_<ロール種別>」）に従っている学認mAPロールは非表示となり、閲覧権限の判定時に無視される。
+         - 【v2.1.0】グループIDのフォーマットが「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;role\_keyword&gt;\_<ロール種別>」（既定値では「jc\_&lt;institution\_fqdn&gt;\_ro\_<ロール種別>」）に従っている学認mAPロールは非表示となり、閲覧権限の判定時に無視される。
 
-              - 【v2.1.0】<institution_fqdn>には WEKO_ACCOUNTS_IDP_ENTITY_ID のホスト名から".","-"を"_"に置換した値が設定される（`weko_accounts.api.create_fqdn_from_entity_id`）。自機関以外の FQDN を含むロールは学認mAPロールとして扱われない。
+              - 【v2.1.0】&lt;institution\_fqdn&gt;には WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID のホスト名から".","-"を"\_"に置換した値が設定される（`weko_accounts.api.create_fqdn_from_entity_id`）。自機関以外の FQDN を含むロールは学認mAPロールとして扱われない。
 
                   - 例: abc-u.ac.jp → abc_u_ac_jp
 
@@ -184,7 +184,7 @@
 
               - 【v2.1.0】学認mAPロール・グループのフォーマット（prefix、sysadm_group、role_keyword、group_keyword）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで変更できる。
 
-         - 【v2.1.0】上記以外で「<prefix>\_<institution_fqdn>\_」で始まるグループIDはグループ権限として表示され、閲覧権限を変更できる。権限判定でグループとして扱われるのは「<prefix>\_<institution_fqdn>\_<group_keyword>\_」（既定値では「jc\_<institution_fqdn>\_gr\_」）で始まるもの（`weko_accounts.api.map_group_condition`）である。
+         - 【v2.1.0】上記以外で「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_」で始まるグループIDはグループ権限として表示され、閲覧権限を変更できる。権限判定でグループとして扱われるのは「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;group\_keyword&gt;\_」（既定値では「jc\_&lt;institution\_fqdn&gt;\_gr\_」）で始まるもの（`weko_accounts.api.map_group_condition`）である。
 
               - 【v2.1.0】学認mAPのグループ情報は内部的にはロールだが、グループとして扱われる。
 
@@ -226,9 +226,9 @@
 
          - 【v2.1.0】学認mAP連携として扱われる条件（WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT と WEKO_ACCOUNTS_IDP_ENTITY_ID の両方が設定済み）は閲覧権限と同じである。
 
-         - 【v2.1.0】グループIDのフォーマットが「<prefix>\_<institution_fqdn>\_<role_keyword>\_<ロール種別>」（既定値では「jc\_<institution_fqdn>\_ro\_<ロール種別>」）に従っている学認mAPロールは非表示となり、投稿権限の判定時に無視される。
+         - 【v2.1.0】グループIDのフォーマットが「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;role\_keyword&gt;\_<ロール種別>」（既定値では「jc\_&lt;institution\_fqdn&gt;\_ro\_<ロール種別>」）に従っている学認mAPロールは非表示となり、投稿権限の判定時に無視される。
 
-              - 【v2.1.0】<institution_fqdn>には WEKO_ACCOUNTS_IDP_ENTITY_ID のホスト名から".","-"を"_"に置換した値が設定される。
+              - 【v2.1.0】&lt;institution\_fqdn&gt;には WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID のホスト名から".","-"を"\_"に置換した値が設定される。
 
                   - 例: abc-u.ac.jp → abc_u_ac_jp
 
@@ -236,7 +236,7 @@
 
               - 【v2.1.0】学認mAPロール・グループのフォーマット（prefix、sysadm_group、role_keyword、group_keyword）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで変更できる。
 
-         - 【v2.1.0】上記以外で「<prefix>\_<institution_fqdn>\_」で始まるグループIDはグループ権限として表示され、投稿権限を変更できる。権限判定でグループとして扱われるのは「<prefix>\_<institution_fqdn>\_<group_keyword>\_」（既定値では「jc\_<institution_fqdn>\_gr\_」）で始まるものである。
+         - 【v2.1.0】上記以外で「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_」で始まるグループIDはグループ権限として表示され、投稿権限を変更できる。権限判定でグループとして扱われるのは「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;group\_keyword&gt;\_」（既定値では「jc\_&lt;institution\_fqdn&gt;\_gr\_」）で始まるものである。
 
               - 【v2.1.0】学認mAPのグループ情報は内部的にはロールだが、グループとして扱われる。
 
@@ -337,8 +337,8 @@
 
 |No.|キャッシュ名|有効期限|備考|
 |:---|:---|:---|:---|
-|1|index_tree_view_" + os.environ.get('INVENIO_WEB_HOST_NAME') + "_" + lang|無期限|ユーザ権限に基づく加工前のルートインデックスのツリー情報。<br/>　・キャッシュ名の［ホスト名(INVENIO_WEB_HOST_NAME)］、［言語(current_i18n.language)］は設定に応じて変わる<br/>　　例）index_tree_view_weko3.example.org_ja<br/>ユーザ＝認証あり:当該redisキャッシュを使用する。<br/>ユーザ＝認証なし:No2のredisキャッシュが存在しない場合、No2のredisキャッシュ生成のために当該redisキャッシュを使用する。|
-|2|index_reset_tree_view_" + os.environ.get('INVENIO_WEB_HOST_NAME') + "_" + lang|有効期限(秒) = 有効期限日時 - キャッシュ登録日時|非ログインユーザ向けに加工したMore表示が有効のルートインデックスのツリー情報<br/>ツリー情報取得処理、詳細検索条件用の情報取得処理の改善用<br/>・キャッシュ名の［ホスト名(INVENIO_WEB_HOST_NAME)］、［言語(current_i18n.language)］は設定に応じて変わる<br/>例）index_reset_tree_view_weko3.example.org_ja<br/>・有効期限の［有効期限日時］は、キャッシュ登録日の翌00時00分00秒とする<br/>例）[キャッシュ登録日時］2025-04-01 23:59:00　［有効期限日時］2025-04-02 00:00:00　［有効期限］60秒<br/>※公開日が未来日に設定されたインデックス情報は削除された状態でredisキャッシュに保存される。<br/>そのため公開日を迎えたインデックスが表示されるように、日付が変わるタイミングで毎日キャッシュを削除する必要がある。<br/>・ユーザ認証なしの権限に基づいた加工後のルートインデックスのツリー情報を保存する<br/>ユーザ認証なしの場合に、当該redisキャッシュを使用する|
+|1|index\_tree\_view\_" + os.environ.get('INVENIO\_WEB\_HOST\_NAME') + "\_" + lang|無期限|ユーザ権限に基づく加工前のルートインデックスのツリー情報。<br/>　・キャッシュ名の［ホスト名(INVENIO\_WEB\_HOST\_NAME)］、［言語(current\_i18n.language)］は設定に応じて変わる<br/>　　例）index\_tree\_view\_weko3.example.org\_ja<br/>ユーザ＝認証あり:当該redisキャッシュを使用する。<br/>ユーザ＝認証なし:No2のredisキャッシュが存在しない場合、No2のredisキャッシュ生成のために当該redisキャッシュを使用する。|
+|2|index\_reset\_tree\_view\_" + os.environ.get('INVENIO\_WEB\_HOST\_NAME') + "\_" + lang|有効期限(秒) = 有効期限日時 - キャッシュ登録日時|非ログインユーザ向けに加工したMore表示が有効のルートインデックスのツリー情報<br/>ツリー情報取得処理、詳細検索条件用の情報取得処理の改善用<br/>・キャッシュ名の［ホスト名(INVENIO\_WEB\_HOST\_NAME)］、［言語(current\_i18n.language)］は設定に応じて変わる<br/>例）index\_reset\_tree\_view\_weko3.example.org\_ja<br/>・有効期限の［有効期限日時］は、キャッシュ登録日の翌00時00分00秒とする<br/>例）[キャッシュ登録日時］2025-04-01 23:59:00　［有効期限日時］2025-04-02 00:00:00　［有効期限］60秒<br/>※公開日が未来日に設定されたインデックス情報は削除された状態でredisキャッシュに保存される。<br/>そのため公開日を迎えたインデックスが表示されるように、日付が変わるタイミングで毎日キャッシュを削除する必要がある。<br/>・ユーザ認証なしの権限に基づいた加工後のルートインデックスのツリー情報を保存する<br/>ユーザ認証なしの場合に、当該redisキャッシュを使用する|
 
 
 
@@ -435,4 +435,4 @@
 | 2025/11/12|5254da1cf9caafb27a27f361ae36099da4f2c042|キャッシュ機能の改善|
 | 2025/11/14|213e1edb08782bee732b86d55c34240bc9758867|インデックス権限判定の修正|
 | 2026/07/17|-|v2.1.0差分反映：No Group(-89)既定・閲覧/投稿の「ロールAND グループ」判定・mAPロール除外を追記|
-| 2026/10/05 | 508030789 | release_v2.1.0突合：学認mAPロール/グループの判定条件（map conditions #1891：`<prefix>_<FQDN>_<role_keyword>_`／`<group_keyword>_`、WEKO_ACCOUNTS_IDP_ENTITY_ID 必須）を実装準拠に修正、削除済みインデックス削除時のエラー（#61297）を追記 |
+| 2026/10/05 | 508030789 | release\_v2.1.0突合：学認mAPロール/グループの判定条件（map conditions #1891：`<prefix>_<FQDN>_<role_keyword>_`／`<group_keyword>_`、WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID 必須）を実装準拠に修正、削除済みインデックス削除時のエラー（#61297）を追記 |

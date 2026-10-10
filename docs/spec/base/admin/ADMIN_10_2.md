@@ -27,7 +27,7 @@
     - アクション（編集・削除を表すアイコン）
     - Repository
       - そのChange Listが対象とするインデックス
-      - フォーマット：「{インデックスの英語名} <ID:インデックスID>」
+      - フォーマット：「{インデックスの英語名} &lt;ID:インデックスID&gt;」
     - Change List Url
       - 「Change List」のURLを表示する
     - Change Dump Url
@@ -122,7 +122,7 @@
       - 属される「Change List一覧」のURL
       - Capabilityのタイプ：changelist
       - アイテムに登録されているファイルのURL
-      - <lastmod>：アイテムの更新日付
+      - &lt;lastmod&gt;：アイテムの更新日付
       - 「change」タイプ：created、updated、deleted
     - 「Change List」のサンプル
 
@@ -184,7 +184,7 @@
       - 属される「Change Dump一覧」のURL
       - Capabilityのタイプ：changedump
       - アイテムに登録されているファイルのZipパッケージのURL
-      - <lastmod>：アイテムの更新日付
+      - &lt;lastmod&gt;：アイテムの更新日付
     - 「Change Dump」のサンプル
 
       ```xml

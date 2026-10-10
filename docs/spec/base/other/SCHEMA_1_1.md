@@ -48,7 +48,7 @@
 |   |  | "item_1617186331708":{ |   |   |   |   |
 |   |  |  |"input_maxItems":"9999", |   |   |   |
 |   |  |  |"input_minItems":"1",  |   |   |   |
-|   |  |  |"input_type":"cus_1001",  |   |   |  cus_<property id> |
+|   |  |  |"input_type":"cus_1001",  |   |   |  cus_&lt;property id&gt; |
 |   |  |  |"input_value":"",   |   |   |   |
 |   |  |  | "option":{  |   |   |   |
 |   |  |  |  |"crtf":true, |   |   |

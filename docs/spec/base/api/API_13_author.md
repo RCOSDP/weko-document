@@ -158,7 +158,7 @@ GET /api/{version}/authors
     <tbody>
     <tr>
     <td>Authorization</td>
-    <td>Bearer <access_token></td>
+    <td>Bearer &lt;access_token&gt;</td>
     <td>-</td>
     <td>操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。</td>
     </tr>
@@ -556,7 +556,7 @@ POST /api/{version}/authors
     <tbody>
     <tr>
     <td>Authorization</td>
-    <td>Bearer <access_token></td>
+    <td>Bearer &lt;access_token&gt;</td>
     <td>-</td>
     <td>操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。</td>
     </tr>
@@ -1303,7 +1303,7 @@ PUT /api/{version}/authors/{identifier}
     <tbody>
     <tr>
     <td>Authorization</td>
-    <td>Bearer <access_token></td>
+    <td>Bearer &lt;access_token&gt;</td>
     <td>〇</td>
     <td>操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。</td>
     </tr>
@@ -2076,7 +2076,7 @@ DELETE /api/{version}/authors/{identifier}
     <tbody>
     <tr>
     <td>Authorization</td>
-    <td>Bearer <access_token></td>
+    <td>Bearer &lt;access_token&gt;</td>
     <td>〇</td>
     <td>操作するWEKOユーザーのOAuth認証情報。アクセストークンを用いる。</td>
     </tr>

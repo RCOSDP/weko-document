@@ -63,7 +63,7 @@
 
 ### 実装上の変更（v2.1.0：GakuNin mAP ロール／グループの判定条件）
 
-【v2.1.0】コミュニティ作成・編集画面の「オーナー」「グループ」選択肢に関わる GakuNin mAP のロール／グループ判定が、release_v2.1.0 で変更された（PR #1891）。`invenio_communities/admin.py` の `CommunityModelView` は、オーナー（`owner`）の選択肢を mAP ロール以外のロール、グループ（`group`）の選択肢を mAP グループのロールとする。一覧等でのオーナー表示名（`invenio_communities/models.py` の `Community.owner_display`）は、`sysadm_group` なら `WEKO_ADMIN_PERMISSION_ROLE_SYSTEM`、`<prefix>_<fqdn>_<role_keyword>_<suffix>` と完全一致すれば `role_mapping[suffix]` の表示名に置き換える。
+【v2.1.0】コミュニティ作成・編集画面の「オーナー」「グループ」選択肢に関わる GakuNin mAP のロール／グループ判定が、release\_v2.1.0 で変更された（PR #1891）。`invenio_communities/admin.py` の `CommunityModelView` は、オーナー（`owner`）の選択肢を mAP ロール以外のロール、グループ（`group`）の選択肢を mAP グループのロールとする。一覧等でのオーナー表示名（`invenio_communities/models.py` の `Community.owner_display`）は、`sysadm_group` なら `WEKO_ADMIN_PERMISSION_ROLE_SYSTEM`、`<prefix>_<fqdn>_<role_keyword>_<suffix>` と完全一致すれば `role_mapping[suffix]` の表示名に置き換える。
 
 判定は `weko_accounts/api.py` の関数に集約された（`map_role_condition` / `map_group_condition` / `is_map_role` / `is_map_group` / `is_map_managed_name` / `is_map_sysadm_role`）。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT`（`prefix`、`role_keyword`、`group_keyword`（v2.1.0 で追加、既定 `gr`）、`sysadm_group`、`role_mapping`）と `WEKO_ACCOUNTS_IDP_ENTITY_ID` の両方が設定されている場合のみ有効で、`<fqdn>` は `WEKO_ACCOUNTS_IDP_ENTITY_ID` のホスト名の `.`・`-` を `_` に置換した値（`create_fqdn_from_entity_id`）。
 

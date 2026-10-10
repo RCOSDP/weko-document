@@ -52,9 +52,9 @@ tsvファイルのダウンロードURLにアクセスすることでtsvファ�
       - 最後に出力されたダウンロードURLが表示される（初期の全件エクスポート実行前は何も表示されない）  
           ダウンロードURLは対象によらず単一のルートを使用し、Export targetの値に応じて送出されるファイル名のみが切り替わる。
       - ダウンロードURL(初期値)は対象によらず単一ルート `https://{Domain_Name}/admin/authors/export/download/Creator_export_all` を使用する（出力ファイル名はConfigで設定できるものとする）。送出されるファイル名の例は以下の通り。
-          - 著者情報：　Creator_export_all_{yyyyMMddhhmm}.tsv
-          - 著者識別子：Id_prefix_export_all_{yyyyMMddhhmm}.tsv
-          - 機関識別子：Affiliation_id_export_all_{yyyyMMddhhmm}.tsv
+          - 著者情報：　Creator\_export\_all\_{yyyyMMddhhmm}.tsv
+          - 著者識別子：Id\_prefix\_export\_all\_{yyyyMMddhhmm}.tsv
+          - 機関識別子：Affiliation\_id\_export\_all\_{yyyyMMddhhmm}.tsv
 
 (2) 出力ファイル
 
@@ -219,11 +219,11 @@ modules/weko-authors/weko_authors/config.py
   - **著者DBのエクスポートについて**
       - 著者DBのエクスポートについては著者の量によっては処理が重くなるためバッチ処理を行う。
       - 定数は以下 =右はデフォルト値
-          - `WEKO_AUTHORS_EXPORT_CACHE_TEMP_FILE_PATH_KEY` = 'weko_authors_export_temp_file_path_key'
+          - `WEKO_AUTHORS_EXPORT_CACHE_TEMP_FILE_PATH_KEY` = 'weko\_authors\_export\_temp\_file\_path\_key'
               - exportを行うための一時ファイルのパスをredisに保存する目的
-          - `WEKO_AUTHORS_EXPORT_CACHE_STOP_POINT_KEY` = "weko_authors_export_stop_point"
+          - `WEKO_AUTHORS_EXPORT_CACHE_STOP_POINT_KEY` = "weko\_authors\_export\_stop\_point"
               - exportが一時停止した際に止まった位置をredisに記録する目的
-          - `WEKO_AUTHORS_EXPORT_TMP_PREFIX` = 'authors_export_'
+          - `WEKO_AUTHORS_EXPORT_TMP_PREFIX` = 'authors\_export\_'
               - export時の一時ファイルの命名が目的
           - `WEKO_AUTHORS_EXPORT_BATCH_SIZE` = 1000
               - export時のバッチサイズ

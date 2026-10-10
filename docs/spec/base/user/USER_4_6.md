@@ -267,7 +267,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 
 - 検証は `weko_items_ui.utils.validate_form_input_data` がアイテムタイプの JSON Schema を基準に実行。スキーマは `ItemTypes.get_by_id(id).schema` を複製し、除外項目削除（`remove_excluded_items_in_json_schema`）・著者テーブル補正（`set_scheme_by_author_table`）後に `RecordBase(data).validate()`（jsonschema）で検証。
 - エラー整形：`required`→「Please input all required item.」、`pattern`→「Please input the correct data.」、`SchemaError`→「Schema Error:」＋詳細、他→原文。多言語サブ項目の言語重複は `validation_duplication_error_checker`、日付は `date_pattern_list`（YYYY / YYYY-MM / YYYY-MM-DD / ISO8601+TZD 等）で検査。
-- 赤枠表示の仕組み：検証で得たエラー分類（either/either_key/mapping/pattern/required/required_key）を Redis（`updated_json_schema_{activity_id}`）に保存 → `get_json_schema` → `update_json_schema_by_activity_id` が該当ノードを解析しスキーマの `required` に注入して再描画。エラー確認 API は `GET /check_validation_error_msg/<activity_id>`（存在すれば `code=1`＋`msg`/`error_list`、無ければ `code=0`）。
+- 赤枠表示の仕組み：検証で得たエラー分類（either/either\_key/mapping/pattern/required/required\_key）を Redis（`updated_json_schema_{activity_id}`）に保存 → `get_json_schema` → `update_json_schema_by_activity_id` が該当ノードを解析しスキーマの `required` に注入して再描画。エラー確認 API は `GET /check_validation_error_msg/<activity_id>`（存在すれば `code=1`＋`msg`/`error_list`、無ければ `code=0`）。
 
 ### 2. 重複チェックの分岐
 

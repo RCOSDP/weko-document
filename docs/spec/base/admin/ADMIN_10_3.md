@@ -39,7 +39,7 @@ resyncを利用して外部機関からデータを収集する
       - そのResyncの名前
     - Target Index
       - そのResyncが対象とするインデックス
-      - フォーマット：「{インデックスの英語名} <ID:インデックスID>」
+      - フォーマット：「{インデックスの英語名} &lt;ID:インデックスID&gt;」
     - Base Url
       - データ取得先のURL
     - Status

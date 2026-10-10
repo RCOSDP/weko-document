@@ -281,12 +281,12 @@
 
 - デフォルトプロパティ一覧
     - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L47-L55>
-        - 設定キー: WEKO_ITEMTYPES_UI_DEFAULT_PROPERTIES = {  
-          '1': {'name': _('Text Field'), 'value': 'text'},  
-          '2': {'name': _('Text Area'), 'value': 'textarea'},  
-          '3': {'name': _('Check Box'), 'value': 'checkboxes'},  
-          '4': {'name': _('Radio Button'), 'value': 'radios'},  
-          '5': {'name': _('List Box'), 'value': 'select'},  
+        - 設定キー: WEKO\_ITEMTYPES\_UI\_DEFAULT\_PROPERTIES = {  
+          '1': {'name': \_('Text Field'), 'value': 'text'},  
+          '2': {'name': \_('Text Area'), 'value': 'textarea'},  
+          '3': {'name': \_('Check Box'), 'value': 'checkboxes'},  
+          '4': {'name': \_('Radio Button'), 'value': 'radios'},  
+          '5': {'name': \_('List Box'), 'value': 'select'},  
           '6': {'name': _('Date'), 'value': 'datetime'}  
           }  
           """Default properties of the item type."""

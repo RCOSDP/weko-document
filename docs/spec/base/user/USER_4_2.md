@@ -38,7 +38,7 @@
 
 - アクティビティの実行に制約をかける。 
   - 同一ユーザによる複数アクティビティの実行を禁止する。
-  - 同一アクティビティを複数ユーザが開けないようロックする（/workflow/activity/lock/<ActivityID>）。
+  - 同一アクティビティを複数ユーザが開けないようロックする（/workflow/activity/lock/&lt;ActivityID&gt;）。
 
 ## 関連モジュール
 
@@ -148,14 +148,14 @@ def get_new_activity_id(self, for_delete=False):
 
 ### アクティビティロックの仕組み
 
-- ユーザが現在開いているアクティビティIDがredisのキー「workflow_userlock_activity_<user_id>」に格納される。
-- アクティビティを開いているユーザはredisのキー「workflow_locked_activity_<avtivity_id>」に値「<user_id>-str(int(datetime.timestamp(datetime.now()) * 10 ** 3))」という形式で格納される
+- ユーザが現在開いているアクティビティIDがredisのキー「workflow\_userlock\_activity\_&lt;user\_id&gt;」に格納される。
+- アクティビティを開いているユーザはredisのキー「workflow\_locked\_activity\_&lt;avtivity\_id&gt;」に値「&lt;user\_id&gt;-str(int(datetime.timestamp(datetime.now()) * 10 ** 3))」という形式で格納される
 - アクティビティのロック解除はブラウザの「beforeunloadイベント」 や 「unloadイベント」をとらえ、アンロックを行うAPIを呼び出している。※「beforeunloadイベント」 や 「unloadイベント」の発火率がブラウザにより安定しないため、ユーザが自身でアンロックするボタンも設けた。
 
 | Redisキー名 | 説明 |キー名例|値例|
 | ---- | ---- |---- | ---- |
-| workflow_userlock_activity_<user_id> | TD |cache::workflow_userlock_activity_1||
-| workflow_locked_activity_<avtivity_id> | TD |cache::workflow_locked_activity_A-20241031-00004||
+| workflow\_userlock\_activity\_&lt;user\_id&gt; | TD |cache::workflow\_userlock\_activity\_1||
+| workflow\_locked\_activity\_&lt;avtivity\_id&gt; | TD |cache::workflow\_locked\_activity\_A-20241031-00004||
 
 
 ## 実装補足（v2.0.2 実装との突き合わせ）

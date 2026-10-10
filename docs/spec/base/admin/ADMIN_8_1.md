@@ -106,7 +106,7 @@
             - コミュニティを設定するインデックスを選択する。必須項目である。デフォルトは1番目の項目とする
             - 「Index」プルダウンの選択肢は自身の関連しているコミュニティに限定されたインデックス一覧である
             - 各インデックスの表示形式は以下の通りである  
-            Index<id=インデックスId, index_name=インデックス名>
+            Index&lt;id=インデックスId, index_name=インデックス名&gt;
         - 「Group」プルダウン
             - コミュニティを設定するグループを選択する。
             - 【v2.1.0】「Group」プルダウンの選択肢は、mAPグループを意味するプレフィックスが付いたロール一覧である（`weko_accounts.api.map_group_condition`：`<prefix>_<FQDN>_<group_keyword>_` で始まる名前。既定値では `jc_<FQDN>_gr_`）。WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT または WEKO_ACCOUNTS_IDP_ENTITY_ID が未設定の場合は選択肢が空になる。

@@ -124,7 +124,7 @@
   - 設定キー：SITEMAP_ENDPOINT_PAGE_URL  
     現在の設定値:
 
-> SITEMAP_ENDPOINT_PAGE_URL = '/sitemap_<int:page>.xml.gz'
+> SITEMAP\_ENDPOINT\_PAGE\_URL = '/sitemap\_&lt;int:page&gt;.xml.gz'
 > 
 > Sitemapの上限URL数を設定する
 
@@ -182,7 +182,7 @@
 
 > {
 > 
-> loc: <invenio_records_ui.recidのURL> + pidstore_pid.pid_value,
+> loc: &lt;invenio_records_ui.recidのURL&gt; + pidstore_pid.pid_value,
 > 
 > lastmod: records_metadata.updated
 > 
@@ -190,7 +190,7 @@
 
   - Sitemapの情報をキャッシュに保存する
     
-      - sitemap_<page>.xml.gz
+      - sitemap_&lt;page&gt;.xml.gz
 
 > 'sitemap_' + page_number: {
 > 
@@ -245,7 +245,7 @@
 > 
 > ]
 
-  - sitemap_<page>.xml.gz  
+  - sitemap_&lt;page&gt;.xml.gz  
     weko_sitemap.ext.pageでURLに入力しているページ番号に応じて、該当「page_number」から取得するデータを出力、weko_sitemap.ext.gzip_responseでデータを「gz」ファイルに圧力する。
 
 ## 実装補足（v2.0.2 実装との突き合わせ）

@@ -87,7 +87,7 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足：JWT生成関数は `create_jwt`（`weko_items_ui.linkage`）。BASE_URL/HOST の既定は `https://api-trial.researchmap.jp` / `api-trial.researchmap.jp:443`。連携結果モデルは `CRISLinkageResult`（table `cris_linkage_result`）。連携タスクの beat は `crontab(hour=0, minute=0)`。config は `WEKO_ITEMS_UI_CRIS_LINKAGE_RESEARCHMAP_*`（weko-items-ui）。
+- 実装補足：JWT生成関数は `create_jwt`（`weko_items_ui.linkage`）。BASE\_URL/HOST の既定は `https://api-trial.researchmap.jp` / `api-trial.researchmap.jp:443`。連携結果モデルは `CRISLinkageResult`（table `cris_linkage_result`）。連携タスクの beat は `crontab(hour=0, minute=0)`。config は `WEKO_ITEMS_UI_CRIS_LINKAGE_RESEARCHMAP_*`（weko-items-ui）。
 
 ## 更新履歴
 

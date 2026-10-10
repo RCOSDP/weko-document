@@ -38,7 +38,7 @@
     - アクション（編集・削除を表すアイコン）
     - Repository
       - そのResource Listが対象とするインデックス
-      - フォーマット：「{インデックスの英語名} <ID:インデックスID>」
+      - フォーマット：「{インデックスの英語名} &lt;ID:インデックスID&gt;」
     - Resource List Url
       - 「Resource List」のURLを表示する
     - Resource Dump Url
@@ -85,8 +85,8 @@
         - 「capability.xml」のURL
         - Capabilityのタイプ：resourcelist
         - 該当インデックスに属するアイテム一覧
-          - <loc>：アイテムのURL
-          - <lastmod>：アイテムの更新日付。フォーマット：YYYY-MM-DDThh:mm:ss.ttttttZ
+          - &lt;loc&gt;：アイテムのURL
+          - &lt;lastmod&gt;：アイテムの更新日付。フォーマット：YYYY-MM-DDThh:mm:ss.ttttttZ
     - 「Resource List」のサンプル
 
       ```xml
@@ -115,8 +115,8 @@
         - 「capability.xml」のURL
         - Capabilityのタイプ：resourcedump
         - 該当インデックスに属するアイテム一覧
-        - <loc>：該当インデックスに属されるアイテムに登録されているファイルのZipパッケージのURL
-        - <lastmod>：アイテムの更新日付。フォーマット：YYYY-MM-DDThh:mm:ss.ttttttZ
+        - &lt;loc&gt;：該当インデックスに属されるアイテムに登録されているファイルのZipパッケージのURL
+        - &lt;lastmod&gt;：アイテムの更新日付。フォーマット：YYYY-MM-DDThh:mm:ss.ttttttZ
         - 該当「resource Dump Manifest」のURL(「Resource Dump」詳細画面での設定に応じて表示する)
     - 「Resource Dump」のサンプル
 

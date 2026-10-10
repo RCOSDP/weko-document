@@ -53,7 +53,7 @@
      - ハーベスト処理
        - 「identifier」をキーとして以下の判定をおこなう。  
          「identifier」値はoaiserverで出力された値である。  
-         フォーマット：「oai:invenio:recid/<id>」
+         フォーマット：「oai:invenio:recid/&lt;id&gt;」
          - WEKOリポジトリに存在しないものは新規登録をする。
          - 「identifier」が同じものはアイテムのメタデータ、アイテムのバージョン及び所属インデックスを更新する。
          - アイテムが削除されている(OAI-PMHの削除フラグがセットされている)ものはハーベストし、ハーベストされた場合、削除されてないアイテムとして登録する。
@@ -197,7 +197,7 @@ OAI-PMHハーベスト実行履歴の表示件数を設定
 
 - 新規アイテムの「pid_id」、「pid_value」の値を設定する。
   - 「pid_id」= hvstid
-  - 「pid_value」= identifier値（oai:invenio:recid/<id>）
+  - 「pid_value」= identifier値（oai:invenio:recid/&lt;id&gt;）
 
 - 存在している場合、アイテムのメタデータおよび所属インデックスを更新する。
 - 削除されている(OAI-PMHの削除フラグがセットされている)アイテムは、WEKOリポジトリに登録されているアイテムを削除する

@@ -4,16 +4,16 @@
 
 - DOI未付与、かつDOI取り下げ済みではないアイテムに対してはDOIを付与する事が可能である
 
-- DOIのURL形式：<ルートURL>/<Prefix>/<suffix>
+- DOIのURL形式：<ルートURL>/&lt;Prefix&gt;/&lt;suffix&gt;
 
   - <ルートURL>：コンフィグファイルでの設定
-  - <Prefix>：アドミン画面に指定されている値
-  - <suffix>：コンフィグファイルでの設定値によって異なる
+  - &lt;Prefix&gt;：アドミン画面に指定されている値
+  - &lt;suffix&gt;：コンフィグファイルでの設定値によって異なる
 
-- ハンドルのURL形式：<ハンドルのURL>/<Prefix>/<ハンドルローカル名>
+- ハンドルのURL形式：<ハンドルのURL>/&lt;Prefix&gt;/<ハンドルローカル名>
 
   - <ハンドルのURL>：コンフィグファイルでの設定
-  - <Prefix>：「handle_creds.json 」ファイルに設定値  
+  - &lt;Prefix&gt;：「handle_creds.json 」ファイルに設定値  
     キー："prefix"
   - <ハンドルローカル名>：LHS（Local Handle Server）から返却される値で、ユニークの値
 
@@ -177,7 +177,7 @@ DOI付与の種類
 - DOI付与済みアイテムを新規登録後、編集時に必須項目の値の削除や必須項目のプロパティの削除はできない。  
   削除をした場合、［Identifier Grant］画面から［Item Registration］画面に遷移し、「PID付与の条件を満たしていません。」とエラーメッセージが表示される。
 
-- 編集時の資源タイプ（dc:type）の変更は、同じコンテンツ種類内でのみ許可される。それ以外の資源タイプに変更した場合、インポートタブのチェック処理で「DOI付与済みアイテムの資源タイプの変更はできません。」とエラーメッセージが表示される。
+- 編集時の資源タイプ（dc:type）の変更は、同じコンテンツ種類内でのみ許可される。それ以外の資源タイプに変更した場合、［Identifier Grant］画面から［Item Registration］画面に遷移し、「DOI付与済みアイテムの資源タイプの変更はできません。」とエラーメッセージが表示される（`check_doi_validation_not_pass` → `item_metadata_validation`）。
 
 2.5. 付与済みDOI及びCNRIハンドルを表示
 
@@ -415,7 +415,7 @@ CNRIハンドルをregister_handleメソッドで付与する
 
 ## 2. DOI検証の分岐・エラー
 
-- 検証入口 `check_doi_validation_not_pass(item_id, activity_id, identifier_select[, without_ver_id])` → `item_metadata_validation`。戻り値：文字列＝致命メッセージ（`code:-1`/500）、True＝検証NG（error_list を Redis `updated_json_schema_{activity_id}`（TTL300秒）に保存し `previous_action(req=-1)` で差戻し）、False＝OK。差戻し後は `weko_items_ui.views.check_validation_error_msg` が Redis を読み該当項目を赤枠表示。
+- 検証入口 `check_doi_validation_not_pass(item_id, activity_id, identifier_select[, without_ver_id])` → `item_metadata_validation`。戻り値：文字列＝致命メッセージ（`code:-1`/500）、True＝検証NG（error\_list を Redis `updated_json_schema_{activity_id}`（TTL300秒）に保存し `previous_action(req=-1)` で差戻し）、False＝OK。差戻し後は `weko_items_ui.views.check_validation_error_msg` が Redis を読み該当項目を赤枠表示。
 - `item_metadata_validation` の事前分岐：`identifier_type=='0'` は検証スキップ／資源タイプ取得不可は `error_list['mapping']=['dc:type']`／item_type・resource_type 欠落は `required`／`without_ver_id` 指定で旧版と資源タイプの分類が異なる場合「You cannot change the resource type of items that have been grant a DOI.」／NDL JaLC は資源タイプ `doctoral thesis` 限定。
 - 必須プロパティ（種別×資源タイプ分類）：JaLC=title/type（ジャーナルは pageStart 追加）／Crossref=ジャーナルで title/type/sourceIdentifier/sourceTitle、書籍・学位論文で title/type／DataCite=研究データで title/type／NDL JaLC=title/type。本文URL(`fileURI`)はアイテムタイプ名 DDI ではスキップ、新規で `file_path` があれば追加しない、他は必須追加。必須が空なら「Cannot register selected DOI for current Item Type of this item.」。
 - プロパティ検証は `validation_item_property` → `validattion_item_property_required` ／ `...either_required`。参照定義は種別で切替：Crossref→`DOI_VALIDATION_INFO_CROSSREF`、DataCite→`DOI_VALIDATION_INFO_DATACITE`、他→`DOI_VALIDATION_INFO`（CROSSREF/DATACITE は publisher/creator 等で `xml:lang='en'` を要求）。エラー種別：`required`/`required_key`/`pattern`/`either`/`either_key`/`mapping`/`other`。

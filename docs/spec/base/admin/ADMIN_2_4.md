@@ -295,7 +295,7 @@
 | 1列目 | 「#ItemType」固定                                                                       |
 | ----- | ---------------------------------------------------------------------------------------- |
 | 2列目 | アイテムタイプ名                                                                         |
-| 3列目 | アイテムタイプのjsonschemaのURI。形式は「https://FQDN/items/jsonschema/<ItemType ID>」 |
+| 3列目 | アイテムタイプのjsonschemaのURI。形式は「`https://FQDN/items/jsonschema/<ItemType ID>`」 |
 
 ##### 2行目：各項目のJSONパス。各種処理に使用される項目。
 
@@ -700,7 +700,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
 ◆出力イメージ
 
-> #ItemType 紀要論文（出版者版、オープンアクセス、JaLC_DOI_登録あり）(16) https://FQDN/items/jsonschema/16
+> #ItemType 紀要論文（出版者版、オープンアクセス、JaLC\_DOI\_登録あり）(16) https://FQDN/items/jsonschema/16
 > 
 > #.id .uri .metadata.path[0] .pos_index[0] .publish_status .feedback_mail[0] .request_mail[0] .item_application.workflow .item_application.terms .item_application.terms_description .cnri .doi_ra .doi .edit_mode .metadata.pubdate　 …
 > 

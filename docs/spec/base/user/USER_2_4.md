@@ -260,12 +260,12 @@ tsvの形式についてはweko_items_ui.utils.make_stats_fileメソッドを参
 RO-Crateの形式については[ADMIN_2.5 RO-Crateインポート](../admin/ADMIN_2_5.md)を参照すること。
 
 - 「Item to Export」エリアの「Export Format」項目でRO-Crateを選び、エクスポートボタンを押す。  
-  この操作によって、weko_items_ui.utils.export_itemsメソッドにてwrite_rocrateメソッドが呼び出され、RO-Crateファイルが出力される。
-- tsvの形式の場合と同様にweko_items_ui.utils.make_stats_fileから出力可能なメタデータを取得し、
-  weko_search_ui.mapper.JsonLdMapper.to_rocrate_metadataメソッドでRO-Crateのメタデータを作成する。  
+  この操作によって、weko\_items\_ui.utils.export\_itemsメソッドにてwrite\_rocrateメソッドが呼び出され、RO-Crateファイルが出力される。
+- tsvの形式の場合と同様にweko\_items\_ui.utils.make\_stats\_fileから出力可能なメタデータを取得し、
+  weko\_search\_ui.mapper.JsonLdMapper.to\_rocrate\_metadataメソッドでRO-Crateのメタデータを作成する。  
 - RO-CrateのメタデータはJsonldMappingより取得したマッピング定義をもとに、アイテムタイプから変換される。
 - 作成したRO-Crateのメタデータはro-crate-metadata.jsonとして出力される。
-- 出力するアイテムが複数ある場合は、record_idごとにzipファイルを作成する。  
+- 出力するアイテムが複数ある場合は、record\_idごとにzipファイルを作成する。  
   zipファイル名は「recid_[record_idの値].zip」とする。
 
 

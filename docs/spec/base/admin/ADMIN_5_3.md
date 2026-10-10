@@ -710,7 +710,7 @@
 
 Prefix/所属機関（`validate_import_data_for_prefix`）：`scheme`/`name` 必須、`url` は http 始まり必須（空可）、id_prefix で `scheme=="WEKO"` 禁止（「The scheme WEKO cannot be used.」）、scheme 重複・削除時の未存在/使用中チェック。
 
-結果ファイル：チェック結果 `import_author_check_result_YYYYMMDDHHMM.tsv`（No./WEKO ID/full_name/MailAddress/Check Result。Result は Error:… または Register/Update/Delete）。実行結果 `import_author_result_YYYYMMDDHHMM.tsv`（No./Start Date/End Date/WEKO ID/full_name/Status）。一時ファイルはキャッシュ（`WEKO_AUTHORS_IMPORT_CACHE_*_KEY`、TTL=`WEKO_AUTHORS_CACHE_TTL`＝1日）で受け渡し、`check_tmp_file_time_for_author` が定期削除。
+結果ファイル：チェック結果 `import_author_check_result_YYYYMMDDHHMM.tsv`（No./WEKO ID/full\_name/MailAddress/Check Result。Result は Error:… または Register/Update/Delete）。実行結果 `import_author_result_YYYYMMDDHHMM.tsv`（No./Start Date/End Date/WEKO ID/full\_name/Status）。一時ファイルはキャッシュ（`WEKO_AUTHORS_IMPORT_CACHE_*_KEY`、TTL=`WEKO_AUTHORS_CACHE_TTL`＝1日）で受け渡し、`check_tmp_file_time_for_author` が定期削除。
 
 ### 3. データモデル
 

@@ -8,7 +8,7 @@
 
 画面のヘッダ部分にある表示言語切替のプルダウンを操作する。
 
-または、「[トップページURL]/accounts/settings/lang/<lang_code>」のURLでアクセスする。
+または、「[トップページURL]/accounts/settings/lang/&lt;lang_code&gt;」のURLでアクセスする。
 
 ## 利用可能なロール
 
@@ -40,7 +40,7 @@
 
 ## 処理概要
 
-weko_admin.views.custom_set_lang（blueprint prefix `/accounts/settings`）にて、<lang_code> で指定された言語コードが登録言語（model AdminLangSettings）に合致した場合、その言語が選択されたことをSessionに保存して言語切替を行ったページにリダイレクトしている。
+weko_admin.views.custom_set_lang（blueprint prefix `/accounts/settings`）にて、&lt;lang_code&gt; で指定された言語コードが登録言語（model AdminLangSettings）に合致した場合、その言語が選択されたことをSessionに保存して言語切替を行ったページにリダイレクトしている。
 
 - 保存先のSessionは、session[current_app.config["I18N_SESSION_KEY"]]である。
 

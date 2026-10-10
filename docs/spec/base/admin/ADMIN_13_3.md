@@ -21,7 +21,7 @@
     - 「User ID」と「Email」には、accounts_userテーブルの「id」「email」フィールドの値が表示される。
   - 「作成」（Create）タブでは、【アクセス：ロール（Access: Roles）画面】の「Role」と異なり「User」を選択する。
     - 「User」の選択肢として、accounts_userテーブルに登録されたユーザーが表示される。
-    - 各選択肢は、「User<id=(レコードのid), email=(レコードのemail)>」の形で表示される。
+    - 各選択肢は、「User&lt;id=(レコードのid), email=(レコードのemail)&gt;」の形で表示される。
 
 ## 関連モジュール
 

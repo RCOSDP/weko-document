@@ -90,11 +90,11 @@ APIの認証にはOAuth2を利用する。
 
 | 項番 | HTTP Method | エンドポイント                        | Description                          |
 | :--: | ----------- | ------------------------------------- | ------------------------------------ |
-|  1   | GET         | /api/<version>/tree                   | 全インデックスの情報を取得する       |
-|  2   | GET         | /api/<version>/tree/<index_id>        | 指定したインデックスの情報を取得する |
-|  3   | POST        | /api/<version>/tree/index             | インデックスを新規作成する           |
-|  4   | PUT         | /api/<version>/tree/index/<index_id>  | 指定したインデックスを更新する       |
-|  5   | DELETE      | /api/<version>/tree/index/<index_id>  | 指定したインデックスを削除する       |
+|  1   | GET         | /api/&lt;version&gt;/tree                   | 全インデックスの情報を取得する       |
+|  2   | GET         | /api/&lt;version&gt;/tree/&lt;index_id&gt;        | 指定したインデックスの情報を取得する |
+|  3   | POST        | /api/&lt;version&gt;/tree/index             | インデックスを新規作成する           |
+|  4   | PUT         | /api/&lt;version&gt;/tree/index/&lt;index_id&gt;  | 指定したインデックスを更新する       |
+|  5   | DELETE      | /api/&lt;version&gt;/tree/index/&lt;index_id&gt;  | 指定したインデックスを削除する       |
 
 ### Scope
 インデックス情報を取得するためには、アクセストークンに以下のスコープを要求する。
@@ -179,7 +179,7 @@ $ curl -k "https://192.168.56.200/api/v1/tree/1623632832836" -H "Authorization:B
 
 #### エンドポイント
 GET /api/&lt;version>/tree：全インデックス  
-GET /api/&lt;version>/tree/<index_id>：指定したインデックス
+GET /api/&lt;version>/tree/&lt;index_id&gt;：指定したインデックス
 
 #### リクエストヘッダー
 
@@ -320,7 +320,7 @@ POST /api/&lt;version>/tree/index
 指定したインデックスの情報を更新する。
 
 #### エンドポイント
-PUT /api/&lt;version>/tree/index/<index_id>
+PUT /api/&lt;version>/tree/index/&lt;index_id&gt;
 
 #### リクエストヘッダー
 
@@ -370,7 +370,7 @@ PUT /api/&lt;version>/tree/index/<index_id>
 指定したインデックスを削除する。
 
 #### エンドポイント
-DELETE /api/&lt;version>/tree/index/<index_id>
+DELETE /api/&lt;version>/tree/index/&lt;index_id&gt;
 
 #### リクエストヘッダー
 

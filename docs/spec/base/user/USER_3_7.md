@@ -321,7 +321,7 @@
         
           - アイテムのメタデータをJSON形式でエクスポートする。
         
-          - アイテム詳細画面のエクスポートエリアに表示されているJSONリンクを押下する。/records/<item_id>/export/json
+          - アイテム詳細画面のエクスポートエリアに表示されているJSONリンクを押下する。/records/&lt;item_id&gt;/export/json
         
           - 表示例は別紙「JSON出力例.txt」を参照。
         
@@ -339,7 +339,7 @@
         
           -  アイテムのメタデータをBIBTEX形式でエクスポートする。
         
-          -  アイテム詳細画面のエクスポートエリアに表示されているBIBTEXリンクを押下する。/records/<item_id>/export/bibtex
+          -  アイテム詳細画面のエクスポートエリアに表示されているBIBTEXリンクを押下する。/records/&lt;item_id&gt;/export/bibtex
         
           -  表示例は別紙「BIBTEX出力例.txt」を参照。
         
@@ -440,9 +440,9 @@
 
   - DOI、またはHDLのURLがメタデータレコードに含まれない場合、レコードIDを元に、識別子の値を生成し、「system_identifier_doi」プロパティーとし情報を返す
 
-(3)「_init_」メソッドで以下の情報を取得し、メタデータレコードにマッピングデータを組み込む
+(3)「\_init\_」メソッドで以下の情報を取得し、メタデータレコードにマッピングデータを組み込む
 
-  - weko_schema_ui.schema.SchemaTree._init_を使用する。
+  - weko\_schema\_ui.schema.SchemaTree.\_init\_を使用する。
 
   - メタデータレコード
 

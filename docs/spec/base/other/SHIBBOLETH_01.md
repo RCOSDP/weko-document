@@ -40,11 +40,11 @@
 
         - 「jc_roles_sysadm」→ システム管理者ロール'System Administrator'
 
-        - 「jc_<fqdn>_ro_radm」→ リポジトリ管理者ロール'Repository Administrator'
+        - 「jc_&lt;fqdn&gt;_ro_radm」→ リポジトリ管理者ロール'Repository Administrator'
 
-        - 「jc_<fqdn>_ro_cadm」→ コミュニティ管理者ロール'Community Administrator'
+        - 「jc_&lt;fqdn&gt;_ro_cadm」→ コミュニティ管理者ロール'Community Administrator'
 
-        - 「jc_<fqdn>_ro_cont」→ 一般利用者ロール'Contributor'
+        - 「jc_&lt;fqdn&gt;_ro_cont」→ 一般利用者ロール'Contributor'
 
 2\. Shibboleth IdPからの属性情報に基づき、サイトライセンス機能を制御する
 
@@ -164,9 +164,9 @@
 
       - Redisの情報を用いて、WEKO3の学認mAPグループリストを更新する
 
-        - Redisから「<institution_fqdn>とWEKO_ACCOUNTS_GAKUNIN_GROUP_SUFFIXを結合した値」をキーとして対応する機関の学認mAPグループをリストで取得する
+        - Redisから「&lt;institution_fqdn&gt;とWEKO_ACCOUNTS_GAKUNIN_GROUP_SUFFIXを結合した値」をキーとして対応する機関の学認mAPグループをリストで取得する
 
-          - <institution_fqdn>は対象機関のIdPのentityID（変数 WEKO_ACCOUNTS_IDP_ENTITY_ID）からFQDNを取得し、"."または"-"を"_"に置き換えた値になる
+          - &lt;institution\_fqdn&gt;は対象機関のIdPのentityID（変数 WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID）からFQDNを取得し、"."または"-"を"\_"に置き換えた値になる
 
         - 取得した学認mAPグループリストはロールとして登録されていないかチェックする。ロールとして登録されていない学認mAPグループの場合、新規ロールとしてaccounts_roleテーブルにレコード追加する
 
@@ -276,11 +276,11 @@
 
               - 「jc_roles_sysadm」→ システム管理者ロール'System Administrator'
 
-              - 「jc_<fqdn>_ro_radm」→ リポジトリ管理者ロール'Repository Administrator'
+              - 「jc_&lt;fqdn&gt;_ro_radm」→ リポジトリ管理者ロール'Repository Administrator'
 
-              - 「jc_<fqdn>_ro_cadm」→ コミュニティ管理者ロール'Community Administrator'
+              - 「jc_&lt;fqdn&gt;_ro_cadm」→ コミュニティ管理者ロール'Community Administrator'
 
-              - 「jc_<fqdn>_ro_cont」→ 一般利用者ロール'Contributor'
+              - 「jc_&lt;fqdn&gt;_ro_cont」→ 一般利用者ロール'Contributor'
 
       - ログインする
 
@@ -304,11 +304,11 @@
 
               - 「jc_roles_sysadm」→ システム管理者ロール'System Administrator'
 
-              - 「jc_<fqdn>_ro_radm」→ リポジトリ管理者ロール'Repository Administrator'
+              - 「jc_&lt;fqdn&gt;_ro_radm」→ リポジトリ管理者ロール'Repository Administrator'
 
-              - 「jc_<fqdn>_ro_cadm」→ コミュニティ管理者ロール'Community Administrator'
+              - 「jc_&lt;fqdn&gt;_ro_cadm」→ コミュニティ管理者ロール'Community Administrator'
 
-              - 「jc_<fqdn>_ro_cont」→ 一般利用者ロール'Contributor'
+              - 「jc_&lt;fqdn&gt;_ro_cont」→ 一般利用者ロール'Contributor'
 
   - shibboleth_userテーブルにレコードを作成する場合は、あわせてユーザ関連テーブルも上書きする
 
@@ -339,7 +339,7 @@
 | 2025/03/12 | 407a511f757c1991078dc69f4560a2f64a42b615 | ユーザープロビジョニング自動化追記、ロール情報修正 |
 | 2026/07/14 |  | 本文を実装準拠に修正 |
 | 2026/07/17 |  | v2.1.0差分反映：各shibビューの `next=ams`（AMS経路）分岐を追記 |
-| 2026/10/05 | 508030789 | release_v2.1.0突合：SP 属性の受け付け元限定（`shib_sp_source_required`・nginx の `$realip_remote_addr` 判定）、mAP ロール／グループ判定条件（`group_keyword`・`is_map_*`）を追記。属性受け渡しの説明を旧 `login.php` から現行の `login.py`（fcgiwrap 実行の CGI）に更新 |
+| 2026/10/05 | 508030789 | release\_v2.1.0突合：SP 属性の受け付け元限定（`shib_sp_source_required`・nginx の `$realip_remote_addr` 判定）、mAP ロール／グループ判定条件（`group_keyword`・`is_map_*`）を追記。属性受け渡しの説明を旧 `login.php` から現行の `login.py`（fcgiwrap 実行の CGI）に更新 |
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

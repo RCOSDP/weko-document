@@ -841,4 +841,4 @@
 |---|---|---|
 |2025/03/27|057e4d8985a4b5526c0db7f07f717a4bb45bc984|初版作成|
 |2026/07/17||v2.1.0差分反映：arXiv メタデータ自動補完ソースを追加（`arXivURL`／`get_arXiv_*`／endpoint `get_auto_fill_record_data_arXivapi`／config `WEKO_WORKSPACE_ARXIV_API_URL`・`_REQUIRED_ITEM`）、DOI識別子への `relationType='isVersionOf'` 付与を追記|
-| 2026/10/05 | 508030789 | release_v2.1.0突合：arXiv のリクエストパラメータを `search_query=doi:{doi}` に訂正、取得データ表を `get_arXiv_*` の実装（応答パス・マッピング先）に合わせて整理、処理概要の重複節を削除 |
+| 2026/10/05 | 508030789 | release\_v2.1.0突合：arXiv のリクエストパラメータを `search_query=doi:{doi}` に訂正、取得データ表を `get_arXiv_*` の実装（応答パス・マッピング先）に合わせて整理、処理概要の重複節を削除 |

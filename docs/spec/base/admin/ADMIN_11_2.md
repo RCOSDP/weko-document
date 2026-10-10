@@ -90,7 +90,7 @@
   - pid_typeが「recid」
   - object_uuidがrecords_metadataテーブルでのidと一致する
 - 詳細（Details）タブでの操作は、以下のように処理される
-  - ［削除（Delete）］ボタンを押したときには'/soft_delete/<string:id>'の形で、［復元（Restore）］ボタンを押したときには'/restore/<string:id>'の形でリクエストのURLを作成する
+  - ［削除（Delete）］ボタンを押したときには'/soft_delete/&lt;string:id&gt;'の形で、［復元（Restore）］ボタンを押したときには'/restore/&lt;string:id&gt;'の形でリクエストのURLを作成する
     - ［削除（Delete）］ボタンではweko_records_ui.utils.soft_delete関数、［復元（Restore）］ボタンではweko_records_ui.utils.restore関数が呼び出される
     - 対象レコードがロックされている場合は、削除されずにcode=-1・is_locked=Trueが返る
 - 一覧（List）タブにて、レコードをチェックして「選択▼」（With selected▼）タブの［削除（Delete）］ボタンを押すと、チェックしたレコードごとにinvenio_records.admin.RecordMetadataModelView.delete_modelメソッドが呼び出される
