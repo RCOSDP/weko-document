@@ -98,6 +98,10 @@ python3 .claude/skills/weko-release-doc-update/scripts/verify_manual.py --tag '�
 # 表・図番号が章ごとに連番か確認（英語版・日本語版）
 python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/manuals_en/USER/user_manual.md
 
+# weko のソースへのリンク（https://github.com/RCOSDP/weko/blob/…#L10-L20）のブランチ・タグ、ファイル、行番号を実装の clone で確認
+# （行番号は、リンクの前後 3 行の「設定キー：…」がその行にあるかで確かめる）
+python3 .claude/skills/weko-release-doc-update/scripts/check_code_links.py /home/mhaya/weko
+
 # 日本語版の表・図番号を章ごとに振り直し、本文の参照も書き換える（--apply を付けないと変更点の表示だけ）
 python3 .claude/skills/weko-release-doc-update/scripts/renumber_captions_ja.py docs/manuals/USER/base/README.md --apply
 ```
