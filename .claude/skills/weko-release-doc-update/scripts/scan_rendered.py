@@ -3,6 +3,8 @@ r"""Find markdown that honkit did not render, in the visible text of the built H
 usage: python3 scan_rendered.py <html dir>...   (e.g. docs/build/admin/html)
 Reports, per page:
   esc        backslash escapes shown as text (\< \_ \[ ...; \| in a table cell: write &#124;)
+  backslash  a "\" left before a tag, a line end or a cell end: "\<name>" (honkit makes <name> a hidden HTML tag:
+             write &lt;name&gt;), a "\" line break (write <br>), "\|" that split a cell (write &#124;)
   md image   ![..](..) shown as text           md link   [..](#..) shown as text
   pipe table | --- | shown as text (a table right after a paragraph line, or inside a list item:
              fix_tables.py)
@@ -47,6 +49,11 @@ def main(roots):
                 if ms:
                     found += len(ms); m = ms[0]
                     print(f'{root} {rel}: {k} x{len(ms)} | {t[max(0, m.start() - 40):m.end() + 30]}')
+            body = re.sub(r'<(pre|code)\b.*?</\1>', '', src, flags=re.S)
+            ms = list(re.finditer(r'(?<!\\)\\(?:<(?!br\b)[A-Za-z]|\r?\n|</t[dh]>)', body))
+            if ms:
+                found += len(ms); m = ms[0]
+                print(f'{root} {rel}: backslash x{len(ms)} | {body[max(0, m.start() - 40):m.end() + 30]!r}')
             if '自動的に生成された説明' in src and 'word' not in t:
                 found += 1; print(f'{root} {rel}: word (alt text) x{src.count("自動的に生成された説明")}')
             for m in re.finditer(r'<pre><code(?: class="lang-\w*")?>(.*?)</code></pre>', src, re.S):
