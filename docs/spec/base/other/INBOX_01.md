@@ -301,7 +301,7 @@ Webpush APIを使用してユーザーの購読情報に基づき生成された
   Link: <https://example.repo.nii.ac.jp/inbox>; rel="http://www.w3.org/ns/ldp#inbox"
   ```
 
-  参考: [Coar Notify: Discovery](https://coar-notify.net/guide/discovery/)
+  参考: [COAR Notify: Signposting](https://coar-notify.net/guide/signposting/)
 
 ## 開発環境の構築
 weko のプロジェクト直下に index ディレクトリがあり、 INBOX 用の Dockerfile を配置している。  

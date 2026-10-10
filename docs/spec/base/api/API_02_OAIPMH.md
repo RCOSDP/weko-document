@@ -5,7 +5,7 @@
 OAI-PMH(Open Archives Initiative Protocol for Metadata Harvesting)2.0とは、メタデータ交換のための通信プロトコルである。
 
 プロトコルの仕様（日本語訳）：
-[https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/](https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/)
+[http://web.archive.org/web/20201204210635/https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/OpenArchivesProtocol.htm](http://web.archive.org/web/20201204210635/https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/OpenArchivesProtocol.htm)（Internet Archive に保存された版）
 
 
 WEKO3はメタデータをリポジトリから取り込むハーベスタ機能とリポジトリからハーベスタに対してメタデータを提供するプロバイダ機能の両方に対応する。

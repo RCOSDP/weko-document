@@ -21,7 +21,7 @@
     - Output Set：チェックボックス
       - チェックボックスにチェックを入れる場合、OAI-PMHリクエストに対して、正常レスポンスを返す。
       - チェックボックスにチェックを入れない場合、OAI-PMHリクエストに対して、エラーレスポンスを返す。  
-        [エラーと例外状況](https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/OpenArchivesProtocol.htm#ErrorConditions)
+        [エラーと例外状況](http://web.archive.org/web/20201204210635/https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/OpenArchivesProtocol.htm#ErrorConditions)
     - Emails：管理者メールアドレスを入れる。
     - Repository Name：リポジトリ名を入れる。
     - Earliest Datastamp：Identifyの作成時間を自動で入れる。  

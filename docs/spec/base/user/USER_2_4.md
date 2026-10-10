@@ -126,7 +126,7 @@
 
 - エクスポート（TSV出力）時のテキスト処理は以下の通り
 
-    - 改行コード（\\n）→<br/> に変換する（`escape_newline`）（[~~\#23229\#note-6~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229#note-6)）
+    - 改行コード（\\n）→<br/> に変換する（`escape_newline`）（[~~\#23229\#note-6~~](https://redmine.devops.rcos.nii.ac.jp/issues/23229#note-6)（関係者のみ閲覧可））
 
 
 ## 関連モジュール

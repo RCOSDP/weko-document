@@ -18,7 +18,7 @@
   - タイムスタンプ、接続者の情報を記録する。エラーがある場合はエラー情報を記録する。
 
 - 詳細のシーケンス図は以下を参照  
-  <https://redmine.devops.rcos.nii.ac.jp/attachments/25959/SequenceDiagram.xlsx>
+  <https://redmine.devops.rcos.nii.ac.jp/attachments/25959/SequenceDiagram.xlsx>（関係者のみ閲覧可）
 
 ![](../media/media/image6.png)
 

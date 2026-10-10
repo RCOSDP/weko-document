@@ -53,7 +53,7 @@
 | | | タイプ | Select | 日付タイプは「Available」固定（Item Registration画面では入力エリアは存在しない） |
 | データタイプ | Radios | - | - | "アクセス"で"ログインユーザのみ"を選択したときに登録する。選択肢は統制語彙リスト（ソース上の統制語彙定義）による |
 | 提供方法 | List | ロール | Select | "アクセス"で"制限公開"を選択したときに登録する/ Administration＞UserManagement＞Roleで管理しているロールと「非ログインユーザ（Guest）」をリストに表示する |
-| | | ワークフロー | Select | Administration＞WorkFlow＞WorkFlow Listで管理しているワークフローのうち「制限公開フラグ」（`workflow.open_restricted`、関連ストーリー：[#24080](https://redmine.devops.rcos.nii.ac.jp/issues/24080)）が有効なものをリストに表示する |
+| | | ワークフロー | Select | Administration＞WorkFlow＞WorkFlow Listで管理しているワークフローのうち「制限公開フラグ」（`workflow.open_restricted`、関連ストーリー：[#24080](https://redmine.devops.rcos.nii.ac.jp/issues/24080)（関係者のみ閲覧可））が有効なものをリストに表示する |
 | 利用規約 | Select | - | - | "アクセス"で"制限公開"を選択したときに登録する。管理画面で登録した利用規約をリストで表示する。選択肢に「自由入力」を設ける（内部値 `term_free`） |
 
 ## アクセス選択肢の内部値マッピング

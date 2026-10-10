@@ -6,7 +6,7 @@ invenio.cfg(instance.cfg) > config.py(各モジュール)
 
 2. invenio.cfg
 
-- webコンテナビルド時にinstance.cfgから invenio.cfg([コンフィグ一覧](https://redmine.devops.rcos.nii.ac.jp/attachments/26751/invenio_cfg.xlsx))が生成される。
+- webコンテナビルド時にinstance.cfgから invenio.cfg([コンフィグ一覧](https://redmine.devops.rcos.nii.ac.jp/attachments/26751/invenio_cfg.xlsx)（関係者のみ閲覧可）)が生成される。
   - instance.cfg: <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg>
 
 - 各configのパラメータについて、以下のパラメータが「invenio.cfg」にてオーバーライド可能である。

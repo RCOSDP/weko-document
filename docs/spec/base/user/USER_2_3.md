@@ -79,9 +79,9 @@
 - 本機能は、RabbitMQ/Celeryを用いて非同期バッチ処理とする。
 - 登録された雑誌情報は、  
   ERDB（Electronic Resources Database = 電子リソース管理データベース）が  
-  取り込めるKBART2拡張形式で出力可能とする　【参考情報】 [ERDB-JP連携マニュアル.pdf](https://redmine.devops.rcos.nii.ac.jp/attachments/download/4308/ERDB-JP%E9%80%A3%E6%90%BA%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB.pdf)
+  取り込めるKBART2拡張形式で出力可能とする　【参考情報】 [ERDB-JP連携マニュアル.pdf](https://redmine.devops.rcos.nii.ac.jp/attachments/download/4308/ERDB-JP%E9%80%A3%E6%90%BA%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB.pdf)（関係者のみ閲覧可）
   - 出力対象は、登録されている全ての雑誌情報（Journal）とする。なお、雑誌出力設定（is_output）はKBART出力の対象をフィルタせず、画面表示の有無にのみ作用する
-  - 出力項目は、「 [WEKO_KBART出力項目一覧_v1.17.xlsx](https://redmine.devops.rcos.nii.ac.jp/attachments/download/4677/WEKO_KBART%E5%87%BA%E5%8A%9B%E9%A0%85%E7%9B%AE%E4%B8%80%E8%A6%A7_v1.17.xlsx) 」に記載される下記 34項目 とする
+  - 出力項目は、「 [WEKO_KBART出力項目一覧_v1.17.xlsx](https://redmine.devops.rcos.nii.ac.jp/attachments/download/4677/WEKO_KBART%E5%87%BA%E5%8A%9B%E9%A0%85%E7%9B%AE%E4%B8%80%E8%A6%A7_v1.17.xlsx)（関係者のみ閲覧可） 」に記載される下記 34項目 とする
   - 出力形式は、tsv形式とする。
   - 出力は自動で行われる。デフォルトでは1日おきに出力される。間隔の変更、手動での出力方法については処理概要を参照すること
   - 出力されたファイルのweb上での確認方法について  
@@ -191,7 +191,7 @@ ls
 - ログの出力先
   - /work/weko_devXX/celery.log
   - ログはファイル出力であり、APIは実装していない。登録された雑誌情報をログファイルで出力している。
-  - 雑誌情報を含むcelery.logのサンプルは [こちら](https://redmine.devops.rcos.nii.ac.jp/attachments/26367/celery.log)
+  - 雑誌情報を含むcelery.logのサンプルは [こちら](https://redmine.devops.rcos.nii.ac.jp/attachments/26367/celery.log)（関係者のみ閲覧可）
 - 手動での雑誌情報出力方法について  
   以下のコードをターミナルに入力する。
 

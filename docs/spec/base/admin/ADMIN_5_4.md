@@ -84,7 +84,7 @@ IDスキーマ名（Scheme）プルダウンに表示するScheme一覧を設定
 
 - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L25>
 - 設定キー：WEKO_AUTHORS_LIST_SCHEME
-- 現在の設定値：`WEKO_AUTHORS_LIST_SCHEME = ['e-Rad', 'NRID', 'ORCID', 'ISNI', 'VIAF', 'AID', 'kakenhi', 'Ringgold', 'GRID', 'ROR', 'e-Rad_Researcher', 'researchmap', 'Other']`
+- 現在の設定値：`WEKO_AUTHORS_LIST_SCHEME = ['e-Rad', 'e-Rad_Researcher', 'NRID', 'ORCID', 'ISNI', 'VIAF', 'AID', 'kakenhi', 'Ringgold', 'GRID', 'ROR', 'researchmap', 'Other']`
 
 インデックスを設定する
 

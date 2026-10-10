@@ -559,7 +559,7 @@ CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の�
 | 4 | 識別子変更モードで新規／更新時にCNRIを設定しない | エラー | {}を設定してください。 | Please specify {}. | {}に「CNRI」が入る |
 | 5 | 形式チェック（管理画面で登録されているPrefixと一致しない) | エラー | 指定された{}のPrefixが誤っています。 | Specified Prefix of {} is incorrect. | {}に「CNRI」が入る |
 | 6 | 形式チェック（Suffixに半角英数字、半角記号「_-.;()/」以外を使用） | エラー | CNRIのSuffixは半角英数字、半角記号「_-.;()/」以外使用できません。 | Suffix of CNRI can only be used with half-width alphanumeric characters and half-width symbols “_-.; () /”. | エラーチェックが存在しない |
-| 7 | 形式チェック（最大長超え） | エラー | 指定された{}が最大長を超えています。 | The specified {} exceeds the maximum length. | {}に「CNRI」が入る<br>pidstoreの上限が255のため、http://～とprefix/を含めて255が上限となるようにチェックする |
+| 7 | 形式チェック（最大長超え） | エラー | 指定された{}が最大長を超えています。 | The specified {} exceeds the maximum length. | {}に「CNRI」が入る<br>pidstoreの上限が255のため、`http://～`とprefix/を含めて255が上限となるようにチェックする |
 
   - .doi_ra（.DOI_RA）と.doi（.DOI）
 
@@ -583,7 +583,7 @@ CNRIハンドルの未設定・設定ユーザーのDOI付与状況は以下の�
 | ------ | ----------------------------------------------------------------- | ---------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | 1      | 形式チェック（管理画面で登録されているPrefixと一致しない）        | エラー     | 指定されたDOIのPrefixが誤っています。                                            | Specified Prefix of DOI is incorrect.                                                                      |                                                                                        |
 | 2      | 形式チェック（Suffixに半角英数字、半角記号「_-.;()/」以外を使用）| エラー     | DOIのSuffixは半角英数字、半角記号「_-.;()/」以外使用できません。                | Suffix of {} can only be used with half-width alphanumeric characters and half-width symbols "_-.; () /". | エラーチェックがなく、このメッセージは表示されない                                     |
-| 3      | 形式チェック（最大長超え）                                        | エラー     | 指定されたDOIが最大長を超えています                                              | The specified DOI exceeds the maximum length.                                                              | pidstoreの上限が255のため、http://～とprefix/を含めて255が上限となるようにチェックする |
+| 3      | 形式チェック（最大長超え）                                        | エラー     | 指定されたDOIが最大長を超えています                                              | The specified DOI exceeds the maximum length.                                                              | pidstoreの上限が255のため、`http://～`とprefix/を含めて255が上限となるようにチェックする |
 | 4      | 指定された内容が不正（通常モードで更新時に登録内容から変更）      | ワーニング |                                                                                  | The specified DOI is wrong and fixed with the registered DOI.                                              | 多言語対応ができていない                                                               |
 | 5      | 識別子変更モードでDOIが指定されていない                           | エラー     |                                                                                  | Please specify DOI prefix/suffix.                                                                          | 多言語対応ができていない                                                               |
 | 6      | 識別子変更モードでDOIに「/」が含まれていない                      | エラー     |                                                                                  | Please specify DOI suffix.                                                                                 | 多言語対応ができていない                                                               |
@@ -782,7 +782,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
           - メタデータの必須項目が入力されていること
           - メタデータの入力内容が、入力制約に合致していること
               - DOI付与：DOI_RA の設定に従い、資源タイプ、必須、いずれか必須のチェックを行うこと  
-                <https://redmine.devops.rcos.nii.ac.jp/attachments/download/6107/JPCOAR_JaLC_Guideline_appendix_v1.pdf>
+                <https://redmine.devops.rcos.nii.ac.jp/attachments/download/6107/JPCOAR_JaLC_Guideline_appendix_v1.pdf>（関係者のみ閲覧可）
               - dc:titleのxml:langは必須としない。
               - 日付項目：ISO-8601で規定する3 形式（YYYY-MM-DD、YYYY-MM、YYYY）のチェックを行うこと
           - 存在するインデックスツリーであること

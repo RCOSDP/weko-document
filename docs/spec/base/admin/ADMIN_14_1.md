@@ -22,7 +22,7 @@
 
 E-mailの表示/非表示を設定する
 
-- 【Administration > Setting (設定) > Items (アイテム表示) 画面】の「Display Email」エリアにてE-Mailの表示（Display Email ）/非表示（Hide Email）を設定することができる。本設定によりアイテム詳細画面、ADMIN14-4 PDFカバーページ および <https://redmine.devops.rcos.nii.ac.jp/projects/weko-dev-doc/wiki/JSON>USER3-7 Export(JSON) 機能 におけるE-Mail出力を制御する。
+- 【Administration > Setting (設定) > Items (アイテム表示) 画面】の「Display Email」エリアにてE-Mailの表示（Display Email ）/非表示（Hide Email）を設定することができる。本設定によりアイテム詳細画面、ADMIN14-4 PDFカバーページ および <https://redmine.devops.rcos.nii.ac.jp/projects/weko-dev-doc/wiki/JSON>（関係者のみ閲覧可）USER3-7 Export(JSON) 機能 におけるE-Mail出力を制御する。
   - Display Email が設定されている場合、アイテム詳細画面、PDFカバーページおよびJSON Export機能にてメールアドレスを表示する。
   - Hide Email が設定されている場合、アイテム詳細画面、PDFカバーページおよびJSON Export機能にてメールアドレスを表示しない。
   - 「保存」（Save）ボタンを押すと、設定内容を保存する

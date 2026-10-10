@@ -96,7 +96,7 @@
         
           - DDI : 別紙「USER3-7>DDIハーベスト規格ver2_2019120」を参照。
         
-          - [JPCOAR](https://support.irdb.nii.ac.jp/sites/default/files/2018-08/mapping_jpcoar_v1.0.1_1.pdf) (<https://support.irdb.nii.ac.jp/sites/default/files/2018-08/mapping_jpcoar_v1.0.1_1.pdf>)
+          - [JPCOAR](https://support.irdb.nii.ac.jp/sites/default/files/2024-06/mapping_jpcoar_v1.0.x_0.pdf) (<https://support.irdb.nii.ac.jp/sites/default/files/2024-06/mapping_jpcoar_v1.0.x_0.pdf>)
 
 3. OAI-PMHのプロバイダ機能の有効・無効をインデックスごとに設定可能
 
@@ -148,7 +148,7 @@
   - アイテム詳細画面での「OAI-PMH」領域にOAI-PMHスキーマボタンを押すと、該当フォーマットとしてアイテムのメタデータをOAI-PMH出力する
     
       - OAI-PMHの要求リクエストでエラーまたは例外状況が発生した場合に下記のOAI-PMHエラーを返せる  
-        「3.6 エラーと例外状況 」(<https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/OpenArchivesProtocol.htm#ErrorConditions>)  
+        「3.6 エラーと例外状況 」(<http://web.archive.org/web/20201204210635/https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/OpenArchivesProtocol.htm#ErrorConditions>)  
         ※DDIマッピングがない場合のエラーコード修正は以下の様に設定されている。  
         <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oaiserver/invenio_oaiserver/config.py#L207-L212>
     
