@@ -8335,7 +8335,7 @@ In this case, you can resolve the error by correcting the mapping as follows.
 
 This section explains how to set up the mapping between an item type and RO-Crate, which is used to output the metadata of items in the RO-Crate format (JSON-LD). You set up one mapping for each item type.
 
-The mapping set up in this screen is used to convert the metadata of items into the RO-Crate format in the APIs that return items in the RO-Crate format (the item search API "GET /api/v1/records", the search result list output API "POST /api/v1/records/list", and the item detail API "GET /api/v1/records/<item ID>").
+The mapping set up in this screen is used to convert the metadata of items into the RO-Crate format in the APIs that return items in the RO-Crate format (the item search API "GET /api/v1/records", the search result list output API "POST /api/v1/records/list", and the item detail API "GET /api/v1/records/&lt;item ID&gt;").
 
   - Items of an item type for which no RO-Crate mapping is set up are not included in the search targets of the item search API and the search result list output API.
 
@@ -17462,7 +17462,7 @@ Notes:
 
 ・[v2.1.0] User attributes sent from the Shibboleth SP are accepted only when sent from the SP login script (login.py) on the Web server. The accepted source addresses are specified with "WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS" in the configuration file (default: "127.0.0.1" and "::1"). Transmissions from other addresses are rejected. When you update an existing environment, update the login script (login.py) and the nginx settings at the same time. If you update only one of them, Shibboleth login will fail.
 
-・Logins to the WEKO API (/api/<version>/login) are rate-limited per source IP address. The limit is specified with "WEKO_API_LIMIT_RATE_DEFAULT" in the configuration file (default: 100 per minute).
+・Logins to the WEKO API (/api/&lt;version&gt;/login) are rate-limited per source IP address. The limit is specified with "WEKO_API_LIMIT_RATE_DEFAULT" in the configuration file (default: 100 per minute).
 
 ## Manage restricted access
 

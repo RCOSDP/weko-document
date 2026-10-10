@@ -4701,7 +4701,7 @@ If you click "Selected Items" without selecting any items, the error message "Er
 
 The exported TSV file is as follows.
 
-  - The file name is in the format "itemlist_export_*YYYYMMDDhhmmss*.tsv", and the character encoding is UTF-8 (with BOM).
+  - The file name is in the format "itemlist\_export\_*YYYYMMDDhhmmss*.tsv", and the character encoding is UTF-8 (with BOM).
 
   - [v2.1.0] The first line contains column headers in the display language. The columns are output in the following order:
 

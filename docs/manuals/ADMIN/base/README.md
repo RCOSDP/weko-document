@@ -1723,7 +1723,7 @@ SWORD APIの管理に関する操作手順を説明しています。
 
   - ［Administration］画面の左側メニューには、ログインしているユーザのロールで利用できるメニューだけが表示されます。複数のロールを持つユーザは、いずれかのロールで利用できるメニューをすべて利用できます。
 
-  - 【v2.1.0】学認（Shibboleth）ログインで GakuNin mAP のグループとの連携（設定ファイルの WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPS。既定は False）を有効にしている場合、mAP のロール用グループに所属するユーザには、対応する WEKO のロール（System Administrator、Repository Administrator、Community Administrator、Contributor）がログイン時に付与されます。管理画面で利用できるメニューは、付与されたロールに従います。なお、GakuNin mAP のロール用グループ（ロール名が jc_roles_sysadm、または jc_<em>FQDN</em>_ro_ で始まるもの）は、ユーザ管理・ワークフロー管理・コミュニティ管理のロールの選択肢には表示されません。また、mAP のグループ（jc_<em>FQDN</em>_gr_ で始まるもの）は、ロールではなくグループとして扱われます。<em>FQDN</em>は、WEKO_ACCOUNTS_IDP_ENTITY_ID に設定したエンティティIDのホスト名の「.」「-」を「_」に置き換えた文字列です。
+  - 【v2.1.0】学認（Shibboleth）ログインで GakuNin mAP のグループとの連携（設定ファイルの WEKO\_ACCOUNTS\_SHIB\_BIND\_GAKUNIN\_MAP\_GROUPS。既定は False）を有効にしている場合、mAP のロール用グループに所属するユーザには、対応する WEKO のロール（System Administrator、Repository Administrator、Community Administrator、Contributor）がログイン時に付与されます。管理画面で利用できるメニューは、付与されたロールに従います。なお、GakuNin mAP のロール用グループ（ロール名が jc\_roles\_sysadm、または jc\_<em>FQDN</em>\_ro\_ で始まるもの）は、ユーザ管理・ワークフロー管理・コミュニティ管理のロールの選択肢には表示されません。また、mAP のグループ（jc\_<em>FQDN</em>\_gr\_ で始まるもの）は、ロールではなくグループとして扱われます。<em>FQDN</em>は、WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID に設定したエンティティIDのホスト名の「.」「-」を「\_」に置き換えた文字列です。
 
 ### 管理画面を表示する
 
