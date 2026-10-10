@@ -251,7 +251,7 @@ DOIや各種外部サービスIDを用いて、Web APIからメタデータを�
 | --- | --- | --- |
 | 1 | 【作成者】  [作成者識別子](https://schema.irdb.nii.ac.jp/ja/schema/2.0/3-.1) | 「e-Rad研究者番号とORCID」を記入する。<br>※e-Rad研究者番号・ORCIDは[KAKEN](https://nrid.nii.ac.jp/index/)や[researchmap](https://researchmap.jp/researchers)で確認できる。 |
 | 2 | **【作成者】**  [**作成者姓名**](https://schema.irdb.nii.ac.jp/ja/schema/2.0/3-.2) | 「姓, 名」の形で入力する。<br>例：公開, 太郎/Koukai, Taro |
-| 3 | 【作成者】  作成者所属.[所属機関識別子](https://schema.irdb.nii.ac.jp/ja/schema/2.0/3-.6-.1) | 作成者の所属機関識別子（RORが推奨される）を入力する。<br>※RORは[Research Organization Registry (ROR) \| Home](https://ror.org/)の検索窓に英語で大学名を入れて検索するとヒットするURI形式（`https://ror.org/…`）のもの。 |
+| 3 | 【作成者】  作成者所属.[所属機関識別子](https://schema.irdb.nii.ac.jp/ja/schema/2.0/3-.6-.1) | 作成者の所属機関識別子（RORが推奨される）を入力する。<br>※RORは[Research Organization Registry (ROR) &#124; Home](https://ror.org/)の検索窓に英語で大学名を入れて検索するとヒットするURI形式（`https://ror.org/…`）のもの。 |
 | 4 | 【作成者】  作成者所属.[所属機関名](https://schema.irdb.nii.ac.jp/ja/schema/2.0/3-.6-.2) | 作成者の所属機関名を入力する。 |
 
 入力例：
