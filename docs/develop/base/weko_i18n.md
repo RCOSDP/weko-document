@@ -186,4 +186,4 @@ console.log(filter_language('en', obj));
 console.log(filter_language('ja', obj));
 参考サイト：
 〇substack/js-traverse
-https://github.com/substack/js-traverse
+https://github.com/ljharb/js-traverse

@@ -599,7 +599,7 @@ shibd: started
 
 ### nginxの設定
 
-WEKO3ではShibboleth対応のために[nginx-http-shibbolethモジュール](github.com/nginx-shib/nginx-http-shibboleth)を利用する。
+WEKO3ではShibboleth対応のために[nginx-http-shibbolethモジュール](https://github.com/nginx-shib/nginx-http-shibboleth)を利用する。
 
 ### Shibboleth-SPからアプリケーションに渡す属性を設定する
 

@@ -61,7 +61,7 @@ shibd: started
 
 ### nginxの設定
 
-WEKO3ではShibboleth対応のために[nginx-http-shibbolethモジュール](github.com/nginx-shib/nginx-http-shibboleth)を利用する。
+WEKO3ではShibboleth対応のために[nginx-http-shibbolethモジュール](https://github.com/nginx-shib/nginx-http-shibboleth)を利用する。
 
 #### Shibboleth-SPからアプリケーションに渡す属性を設定する
 
@@ -470,11 +470,11 @@ supervisorctl restart shibd
 
 SP管理者の場合は、「SPコネクタの作成」リンクが表示される。
 
-![学認クラウドゲートウェイサービス：グループ機能](./gakunin_test_image010.png)
+![学認クラウドゲートウェイサービス：グループ機能](pics/gakunin_test_image010.png)
 
 「SPコネクタの作成」をクリックする。
 
-![SPコネクタの作成](./gakunin_test_image011.png)
+![SPコネクタの作成](pics/gakunin_test_image011.png)
 
 
 
