@@ -92,7 +92,7 @@
 
   -  学認mAPグループ情報をWEKO3と連携するか設定する。(Trueの場合、学認mAPグループとWEKO3を連携する。)
 
-    - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L111>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L242>
 
     - 設定キー：WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPS
 
@@ -102,7 +102,7 @@
 
   - GakuNin mAPグループのグループIDのフォーマットおよびWEKO3のロールを紐づけるキーワード
 
-    - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L114>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L248-L258>
 
     - 設定キー：WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT
 
@@ -126,7 +126,7 @@
 
       - 例 {"abc_idp_ac_jp": ["jc_abc_idp_ac_jp_groups_yyy"] }
 
-    - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L126>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L236>
 
     - 設定キー：WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPING
 
@@ -136,7 +136,7 @@
 
   - 自機関のIdPを判別するためのIdPのentityID。
 
-    - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L129>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L233>
 
     - 設定キー：WEKO_ACCOUNTS_IDP_ENTITY_ID
 
@@ -146,7 +146,7 @@
 
   - 学認mAPのグループ情報を取得するキー値のsuffix
 
-    - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-accounts/weko_accounts/config.py#L131>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L245>
 
     - 設定キー：WEKO_ACCOUNTS_GAKUNIN_GROUP_SUFFIX
 

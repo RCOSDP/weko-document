@@ -346,7 +346,7 @@
 
   - GakuNin mAPから連携されたグループ情報の閲覧権限初期値を設定する。（Trueの場合、閲覧権限ありとして初期値を設定する。）
 
-      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L96>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L261>
 
       - 設定キー：WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING_PERMISSION
 
@@ -356,7 +356,7 @@
 
   - GakuNin mAPから連携されたグループ情報の投稿権限初期値を設定する。（Trueの場合、投稿権限ありとして初期値を設定する。）
 
-      - パス：<https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-index-tree/weko_index_tree/config.py#L99>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L264>
 
       - 設定キー：WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_CONTRIBUTE_PERMISSION
 
@@ -397,7 +397,7 @@
 |27| |recursive_contribute_role|false| |
 |【v2.1.0】28| |contribute_group|(現在存在するすべてのグループを許可),-89| |
 |29| |recursive_contribute_group|false| |
-|30|表示形式|display_format|1(一覧形式を表す)|1:一覧形式, 2:目次形式| |
+|30|表示形式|display_format|1(一覧形式を表す)|1:一覧形式, 2:目次形式|
 |31|サムネイル|image_name|None|値に入るのはサムネイル画像のパスを表す文字列|
 
   - インデックス編集について

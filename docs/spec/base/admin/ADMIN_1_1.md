@@ -312,7 +312,7 @@
           False: バージョンアップを無効にする
 
 - アイテムタイプの強制インポート機能を有効にする・しない設定
-    - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L69-L70>
+    - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L69>
         - 設定キー: WEKO_ITEMTYPES_UI_FORCED_IMPORT_ENABLED = False  
           """Enable Forced Import."""  
           True: 強制インポートを有効にする.  

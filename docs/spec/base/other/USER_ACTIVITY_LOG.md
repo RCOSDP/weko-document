@@ -12,9 +12,9 @@
 
 ## ログ取得機能マスタ定義
 
-  - パス: <https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-logging/weko_logging/config.py#L96-L324>
+  - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-logging/weko_logging/config.py#L96-L324>
 
-  - 設定キー：WEKO_LOGGING_USER_ACTIVITY_DB_SETTING
+  - 設定キー：WEKO_LOGGING_OPERATION_MASTER
 
   - どのような操作が行われた場合に、基本監査ログを出力するか定義したマスタ。
 
@@ -166,7 +166,7 @@ WEKO_LOGGING_OPERATION_MASTER = {
 
   - DBへ出力するログレベル、およびDBのレコードの有効期限の設定
 
-      - パス: <https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-logging/weko_logging/config.py#L82-L88>
+      - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-logging/weko_logging/config.py#L82-L88>
 
       - 設定キー：WEKO_LOGGING_USER_ACTIVITY_DB_SETTING
 
@@ -188,10 +188,10 @@ WEKO_LOGGING_OPERATION_MASTER = {
 
   - 標準出力するログの設定
 
-      - パス: <https://github.com/RCOSDP/weko/blob/v1.1.0/modules/weko-logging/weko_logging/config.py#L91-L93>
+      - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-logging/weko_logging/config.py#L91-L93>
 
 
-      - 設定キー：WEKO_LOGGING_USER_ACTIVITY_DB_SETTING
+      - 設定キー：WEKO_LOGGING_USER_ACTIVITY_STREAM_SETTING
 
       - 現在の設定値：
 

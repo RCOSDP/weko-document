@@ -166,7 +166,7 @@
         また、画面で設定を変更した場合は、その変更が最優先される。
 
           - パス（config.py）：  
-            <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L110-L116>
+            <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L142-L163>
 
           - 設定キー：WEKO_ACCOUNTS_GAKUNIN_ROLE, WEKO_ACCOUNTS_ORTHROS_OUTSIDE_ROLE, WEKO_ACCOUNTS_EXTRA_ROLE
           > if AdminSettings.query.filter_by(name='default_role_settings').first() is None:
@@ -208,7 +208,7 @@
       - 選択肢の一覧はコンフィグから読み込んで weko_accounts.shibuser.createDefaultRoleSettingArea 関数 で生成する。
 
           - パス（config.py）：  
-            <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L121-L144>
+            <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L130-L136>
 
           - 設定キー：WEKO_ACCOUNTS_ROLE_LIST
 
@@ -280,7 +280,7 @@
         また、画面で設定を変更した場合は、その変更が最優先される。
 
           - パス（config.py）：  
-            <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L77-L82>
+            <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L99-L104>
 
           - 設定キー：WEKO_ACCOUNTS_ATTRIBUTE_MAP
 
@@ -303,7 +303,7 @@
       - 選択肢の一覧はコンフィグから読み込んで weko_accounts.shibuser.createAttrMapSettingArea 関数 で生成する。
 
           - パス（config.py）：   
-            <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L85-L100>
+            <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L107-L127>
 
           - 設定キー：WEKO_ACCOUNTS_ATTRIBUTE_LIST
 

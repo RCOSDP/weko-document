@@ -150,7 +150,7 @@
       - OAI-PMHの要求リクエストでエラーまたは例外状況が発生した場合に下記のOAI-PMHエラーを返せる  
         「3.6 エラーと例外状況 」(<https://www.nii.ac.jp/irp/archive/translation/oai-pmh2.0/OpenArchivesProtocol.htm#ErrorConditions>)  
         ※DDIマッピングがない場合のエラーコード修正は以下の様に設定されている。  
-        <https://github.com/RCOSDP/weko/blob/0.9.22/modules/invenio-oaiserver/invenio_oaiserver/config.py#L207-L212>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oaiserver/invenio_oaiserver/config.py#L207-L212>
     
       - 公開／非公開インデックスに属するアイテムのOAI-PMHの出力を制御する
         
