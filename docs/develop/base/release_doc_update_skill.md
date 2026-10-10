@@ -145,6 +145,12 @@ python3 .claude/skills/weko-release-doc-update/scripts/renumber_captions_ja.py d
   python3 .claude/skills/weko-release-doc-update/scripts/fix_tables.py docs/spec/base/api/API_13_author.md --apply
   ```
 
+- `GET /api/<version>/records` の `<version>` のように、`<…>` が HTML タグとして扱われて画面から消える箇所と、`release_v2.1.0` の `_` が斜体の印になって `release`*`v2.1.0…`* と表示される箇所は、次で直します（honkit と同じ変換をして判定するので、先にビルドして honkit を入れておく）。見出しは表示だけで、変えません。直したらビルドし直し、`scan_rendered.py` が code-esc を出した行（字下げのコードブロックの中）は元に戻します。
+
+  ```
+  git ls-files -z 'docs/spec/*.md' 'docs/manuals/*.md' 'docs/manuals_en/*.md' | python3 .claude/skills/weko-release-doc-update/scripts/fix_inline.py -z --apply
+  ```
+
 - ログに出る shelljs の警告、`prism-Python.js` が見つからないエラー、deprecated 警告は、最後に「generation finished with success」があれば問題ありません。
 - 本の名前は `spec`、`admin`、`user`、`GUIDE`、`admin_en`、`user_en` です。開発者向け文書・運用文書は book.json が無いため対象外です。
 - ビルド結果は別リポジトリに登録して github.io で公開しているので、公開サイトで切れるリンクを残さないよう、SLUG も直します。

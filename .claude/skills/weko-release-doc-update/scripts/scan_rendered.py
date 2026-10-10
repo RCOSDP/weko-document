@@ -5,6 +5,11 @@ Reports, per page:
   esc        backslash escapes shown as text (\< \_ \[ ...; \| in a table cell: write &#124;)
   backslash  a "\" left before a tag, a line end or a cell end: "\<name>" (honkit makes <name> a hidden HTML tag:
              write &lt;name&gt;), a "\" line break (write <br>), "\|" that split a cell (write &#124;)
+  tag        "<name>" placeholders that honkit emitted as unknown HTML tags, hidden in the browser
+             (GET /api/<version>/records shows "GET /api//records"): write &lt;name&gt; (fix_inline.py).
+             Headings are skipped (changing them changes their anchors)
+  underscore "_" made into emphasis inside a word (release_v2.1.0 -> release<em>v2.1.0...): write \_ (fix_inline.py)
+  code-esc   \_ or &lt; shown as text in a code block (an escape added to a line that is in an indented code block)
   md image   ![..](..) shown as text           md link   [..](#..) shown as text
   pipe table | --- | shown as text (a table right after a paragraph line, or inside a list item:
              fix_tables.py)
@@ -17,6 +22,11 @@ Reports, per page:
 Fenced code (with a language) and <code> are not checked. The GUIDE's mermaid arrows (-->) are not comments.
 """
 import re, sys, glob, html
+KNOWN = set('''html head body title meta link script style div span p a img br hr h1 h2 h3 h4 h5 h6 ul ol li table thead
+tbody tfoot tr th td caption colgroup col pre code em strong b i u s del ins sup sub blockquote dl dt dd nav header footer
+section article aside main figure figcaption small big font center label input button form select option textarea iframe
+svg path g rect circle line polyline polygon text defs use tt kbd var samp abbr cite q mark details summary wbr noscript
+video source audio picture time object embed param map area rt ruby rp bdi bdo dfn address strike nobr'''.split())
 from html.parser import HTMLParser
 
 class Text(HTMLParser):
@@ -54,6 +64,15 @@ def main(roots):
             if ms:
                 found += len(ms); m = ms[0]
                 print(f'{root} {rel}: backslash x{len(ms)} | {body[max(0, m.start() - 40):m.end() + 30]!r}')
+            nocode = re.sub(r'<h([1-6])\b.*?</h\1>', '', body, flags=re.S)
+            for k, pt in (('tag', r'</?([A-Za-z][^\s>/]*)'), ('underscore', r'[A-Za-z0-9]<em>|</em>[A-Za-z0-9]')):
+                ms = [m for m in re.finditer(pt, nocode) if k != 'tag' or m[1].lower() not in KNOWN]
+                if ms:
+                    found += len(ms); m = ms[0]
+                    print(f'{root} {rel}: {k} x{len(ms)} | {nocode[max(0, m.start() - 40):m.end() + 30]!r}')
+            ms = [m for b in re.findall(r'<pre\b.*?</pre>', src, re.S) for m in re.finditer(r'\\_|&amp;lt;', b)]
+            if ms:
+                found += len(ms); print(f'{root} {rel}: code-esc x{len(ms)}')
             if '自動的に生成された説明' in src and 'word' not in t:
                 found += 1; print(f'{root} {rel}: word (alt text) x{src.count("自動的に生成された説明")}')
             for m in re.finditer(r'<pre><code(?: class="lang-\w*")?>(.*?)</code></pre>', src, re.S):
