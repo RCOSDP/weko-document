@@ -9,7 +9,7 @@
 設定値で置換ルール定義(`WEKO_SEARCH_UI_IMPORT_REPLACE_RULES`)、適用ルールマップ(`WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP`)の2つを設定する。  
 いずれも weko-search-ui の config（`weko_search_ui/config.py`）に既定値が定義されており、変更する場合は `instance.cfg` 等で上書きする。release_v2.1.0 の既定値は以下のとおり（#63281 で `scripts/instance.cfg` に置いていた同内容の設定を削除し、モジュールの既定値に移した）。既定ルール `pipe_full_width` は `target_path` が空のため、既定のままでは置換は行われない。
 
-```Python
+```python
 WEKO_SEARCH_UI_IMPORT_REPLACE_RULES = {
     "pipe_full_width": {
         "from": "|",
@@ -45,7 +45,7 @@ JSONLD形式のメタデータを取り込む際、自動で以下の文字列�
 
 置換ルールは以下のような構成で定義する。
 
-```Python
+```python
 ルール名: {
     "from": ...,
     "to": ...,
@@ -115,7 +115,7 @@ JSONLD形式のメタデータを取り込む際、自動で以下の文字列�
 
 is_regexのTrue/Falseでfromの書き方が変わるため、例を記載する。  
 
-```Python
+```python
 WEKO_SEARCH_UI_IMPORT_REPLACE_RULES = {
     # is_regexがFalseの場合の定義の書き方例
     "pipe_full_width": {
@@ -146,7 +146,7 @@ WEKO_SEARCH_UI_IMPORT_REPLACE_RULES = {
 
     例： 同一ルール名を定義した場合
 
-    ```Python
+    ```python
     WEKO_SEARCH_UI_IMPORT_REPLACE_RULES = {
         # 無効
         "rule_name": {
@@ -181,7 +181,7 @@ WEKO_SEARCH_UI_IMPORT_REPLACE_RULES = {
 2. `to`に正規表現を用いた場合  
     toに指定した文字列は**そのままの文字列**として置換されるため、正規表現を用いると意図した置換にはならない。
 
-    ```Python
+    ```python
     "rule_name": {
         "from": r"\|",
         "to": r"\uFF5C",　# 全角パイプ相当の正規表現
@@ -196,7 +196,7 @@ WEKO_SEARCH_UI_IMPORT_REPLACE_RULES = {
 
     以下のようにUnicodeエスケープであれば指定可能。
 
-    ```Python
+    ```python
     "rule_name": {
         "from": r"\|",
         "to": "\uFF5C",　# 全角パイプ相当のUnicodeエスケープ
@@ -222,7 +222,7 @@ WEKO_SEARCH_UI_IMPORT_REPLACE_RULES = {
 
 #### 記述例
 
-```Python
+```python
 WEKO_SEARCH_UI_IMPORT_REPLACE_RULE_MAP = {
     "32001": [    # jsonld_mappingsテーブルのid(mapping_id)
         "pipe_full_width"
