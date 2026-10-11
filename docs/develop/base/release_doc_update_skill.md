@@ -106,7 +106,8 @@ python3 .claude/skills/weko-release-doc-update/scripts/check_code_links.py /home
 # 見つからないものは KEEP と表示されるので手で直す）
 python3 .claude/skills/weko-release-doc-update/scripts/retarget_code_links.py /home/mhaya/weko v0.9.22 release_v2.1.0 --apply
 
-# 機能仕様書の「現在の設定値」を実装の config.py と比べる
+# 機能仕様書の「現在の設定値」を実装の config.py と比べる。instance.cfg で上書きされる設定の「既定」を
+# config.py の値で書いている箇所も OVERRIDE として表示する
 python3 .claude/skills/weko-release-doc-update/scripts/check_config_values.py /home/mhaya/weko origin/release_v2.1.0
 
 # 運用文書など honkit でビルドしない文書の相対リンク・アンカー。--external で外部 URL も確認（404 は移転先か
