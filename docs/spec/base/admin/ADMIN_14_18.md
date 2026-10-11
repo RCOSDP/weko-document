@@ -58,7 +58,7 @@
         
           - 取得できなかった場合は、以下のコンフィグからデフォルトの内容を取得する
             
-              - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-files-rest/invenio_files_rest/config.py#L128-L131>
+              - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-files-rest/invenio_files_rest/config.py#L132-L135>
             
               - 設定キー：
                 

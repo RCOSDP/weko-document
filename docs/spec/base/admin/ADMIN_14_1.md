@@ -43,18 +43,18 @@ E-mailの表示/非表示を設定する
   - weko_admin.models.AdminSettingsを呼び出し、admin_settingsテーブルを更新する。
 
 - weko-records-ui.utils.is_show_email_of_creator
-  - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/utils.py#L578-L624>
+  - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/utils.py#L893-L931>
   - 当該アイテムタイプについて、E-Mail表示する場合はTrueを返す。
 
 - ファイルの公開日の表示/非表示を設定する
   - デフォルト状態の設定：
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L68>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L66>
     - 設定キー： OPEN_DATE_DISPLAY_FLG
     - 現在の設定値：
       - OPEN_DATE_DISPLAY_FLG = True
 
 - 表示/非表示状態の値を設定する
-  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L69-L70>
+  - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L67-L67>
   - 設定キー：OPEN_DATE_DISPLAY_VALUE、OPEN_DATE_HIDE_VALUE
   - 現在の設定値：
     - OPEN_DATE_DISPLAY_VALUE = '1'
@@ -62,7 +62,7 @@ E-mailの表示/非表示を設定する
 
 - E-mailの表示/非表示を設定する
   - デフォルト状態の設定：
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L65>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L63>
     - 設定キー： EMAIL_DISPLAY_FLG
     - 現在の設定値：
       - EMAIL_DISPLAY_FLG = True

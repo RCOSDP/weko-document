@@ -99,7 +99,7 @@ Invenio 拡張は entry_points 経由でアプリに組み込まれる（詳細�
 - **未対応のまま残っている定義**がある。例: ワークフローの OA Policy Confirmation（action_id 6, `oa_policy`）は
   config 定義のみで `WEKO_WORKFLOW_ACTIONS` に含まれず、`views.py` に処理分岐が無い（非対応）。
 - **旧バージョン参照は陳腐化**している。各仕様の更新履歴や `other/MODULE_01.md`・`other/CONFIG_01.md` にある
-  GitHub リンク（v0.9.22 など）は古い。実体は tag `v2.0.2` の実装を正とし、以後の差分は release_v2.1.0（508030789）まで各仕様に反映している。
+  GitHub リンク（v0.9.22 など）は古かったが、v0.9.22 を指していたリンクは release_v2.1.0 の該当行に張り替えた（hfix・main・develop_v2.0.0 等のブランチを指すリンクは残っている）。実体は tag `v2.0.2` の実装を正とし、以後の差分は release_v2.1.0（508030789）まで各仕様に反映している。
 - **config キーの綴り・実在に注意**。過去に `S3_SECRECT_ACCESS_KEY`（誤）→ `S3_SECRET_ACCESS_KEY`（正）等の混入があった。
   存在しないキーもある。config は [横断索引](CROSS_REFERENCE.md) 経由で `other/CONFIG_01.md` と実 `config.py` の両方で確認する。
 - **未認証時の応答はアプリ・リクエスト種別で異なる**（v2.1.0）。API アプリは 401 JSON、UI アプリは API/AJAX 呼び出しのみ 401 JSON で、画面遷移はログイン画面へリダイレクトする（`weko_accounts.unauthorized`）。新しい API を足す際は `login_required` だけでなく権限チェック（`permissions.py` の factory 等）も付ける。

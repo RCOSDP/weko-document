@@ -64,7 +64,7 @@
 1. 設定
 
 - 言語一覧のデフォルトを設定する
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/populate-instance.sh#L343-L368>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/populate-instance.sh#L319-L347>
 
     ※「登録言語」に対して、以下の設定を追加する
 
@@ -76,7 +76,9 @@
 ${INVENIO_WEB_INSTANCE} language create \
     --active --registered "en" "English" 001
 ${INVENIO_WEB_INSTANCE} language create \
-    --active "zh" "中文" 000
+    --active "zh-cn" "中文 (簡体)" 000
+${INVENIO_WEB_INSTANCE} language create \
+    --active "zh-tw" "中文 (繁体)" 000
 ${INVENIO_WEB_INSTANCE} language create \
     --active "id" "Indonesia" 000
 ${INVENIO_WEB_INSTANCE} language create \

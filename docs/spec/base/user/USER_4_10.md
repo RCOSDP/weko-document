@@ -278,12 +278,12 @@ docker-compose exec web invenio collect -v && docker-compose exec web invenio as
 CNRIハンドルのURLをコンフィグファイルに設定
 
 - コンフィグキー：WEKO_SERVER_CNRI_HOST_LINK
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/config.py#L114>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/config.py#L279>
 
 サフィックスの設定方法をコンフィグファイルに設定
 
 - コンフィグキー：IDENTIFIER_GRANT_SUFFIX_METHOD
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/config.py#L56>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/config.py#L62>
 - 設定値：0、1、2  
   　　0：自動連番  
   　　1：半自動入力  
@@ -292,7 +292,7 @@ CNRIハンドルのURLをコンフィグファイルに設定
 各DOI発行機関のルートURLをコンフィグファイルに設定
 
 - コンフィグキー：IDENTIFIER_GRANT_LIST
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/config.py#L48>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/config.py#L54>
 
 invenio.cfg のコンフィグに設定しているものでオーバーライドできるように、current_app.configを以下のように設定する
 
@@ -366,34 +366,34 @@ CNRIハンドルをregister_handleメソッドで付与する
    資源タイプが「software」あるいは「dataset」、かつDOIタイプ：JaLCの場合、「いずれか必須」の項目は「位置情報」の以下の３つ項目となっている  
    位置情報（点）、位置情報（空間）, 位置情報（自由記述）
 
-   <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/utils.py#L338>
+   <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/utils.py#L362>
 
-   <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/utils.py#L382>
+   <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/utils.py#L471>
 
-   <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/utils.py#L653-L684>
+   <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/utils.py#L932-L963>
 
 3. 「いずれか必須」の項目を入力されたかをチェックするために、validattion_item_property_either_required関数を呼び出す
 
-   <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/utils.py#L641>
+   <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/utils.py#L920>
 
    - 「いずれか必須」の項目のいずれかを入力された場合、エラーなしとして結果を返却する
    - 「いずれか必須」の項目のいずれかも入力されない場合、エラーとして、エラーとなっている項目名の一覧を返却する
 
 4. アイテム登録画面に遷移する
 
-   <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/views.py#L1541-L1550>
+   <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/views.py#L1952-L1961>
 
 5. アイテム登録画面にて、check_validation_error_msgのAPIを呼び出し、返却された項目名一覧を取得し、赤文字で画面に表示する
 
-   <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/static/js/weko_items_ui/app.js#L2261-L2281>
+   <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-items-ui/weko_items_ui/static/js/weko_items_ui/app.js#L2529-L2549>
 
-   <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/views.py#L359-L363>
+   <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-items-ui/weko_items_ui/views.py#L505-L509>
 
-   <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/utils.py#L691-L697>
+   <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-items-ui/weko_items_ui/utils.py#L1755-L1761>
 
 6. アイテム登録画面にて「いずれか必須」の項目を入力されたかチェックする
 
-   <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/static/js/weko_items_ui/app.js#L3904>
+   <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-items-ui/weko_items_ui/static/js/weko_items_ui/app.js#L4415>
 
    入力された場合、次の画面に遷移する
 

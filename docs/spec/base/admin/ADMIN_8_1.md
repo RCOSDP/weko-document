@@ -187,7 +187,7 @@
 
 一覧（List）タブ表示時、編集（Edit）タブ表示時に、操作するユーザのロールを確認して、それらのidで最小のものが以下のコンフィグで指定する値より大きい場合にはModelViewとは異なる処理を行う
 
-  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio_communities/config.py#L165>
+  - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-communities/invenio_communities/config.py#L179>
   - 設定キー：COMMUNITIES_LIMITED_ROLE_ACCESS_PERMIT
 
 一覧（List）タブ表示時に、index_viewメソッド（WEKOソースでオーバーライドされていない）が呼び出される

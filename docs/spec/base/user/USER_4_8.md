@@ -79,7 +79,7 @@
 
 フィードバックメール送信タイミングを設定
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L98>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L223>
 - 設定キー：「send-feedback-mail-schedules」
 - 設定値: day_of_month、hour、minute  
   現在の設定値：day_of_month='1', hour=0, minute=0

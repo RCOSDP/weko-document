@@ -316,10 +316,10 @@
   - 保存時には`LocationModelView.on_model_change()`メソッド内でバリデーションを実行する。保存対象のロケーションが`default=True`に設定されている場合、他に`default=True`のロケーションが存在しないかを確認する。存在する場合は`ValidationError`を発生させ、保存を中止し、画面上部にエラーメッセージを表示する。
 
   - ロケーションの使用量合計はコンテンツアップロード時に集計する
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-files-rest/invenio_files_rest/utils.py#L123-L131>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-files-rest/invenio_files_rest/utils.py#L127-L135>
 
   - メール通知の定期実行を設定する
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/populate-instance.sh#L460-L462>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/populate-instance.sh#L440-L442>
     - 設定キー：「storage_check_settings」
     - 現在の設定値：
       ```
@@ -329,7 +329,7 @@
       ```
 
   - バケットごとでの使用上限（QUOTA_SIZE）を設定する
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-deposit/weko_deposit/config.py#L27>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-deposit/weko_deposit/config.py#L27>
     - 設定キー：「WEKO_BUCKET_QUOTA_SIZE」
     - 現在の設定値：
       ```
@@ -337,7 +337,7 @@
       ```
 
   - 一つのファイルの最大容量を設定する
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-deposit/weko_deposit/config.py#L30>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-deposit/weko_deposit/config.py#L30>
     - 設定キー：「WEKO_MAX_FILE_SIZE」
     - 現在の設定値：
       ```

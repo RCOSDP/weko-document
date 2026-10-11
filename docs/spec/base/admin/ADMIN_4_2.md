@@ -114,8 +114,8 @@
 
 画面表示時は、weko_gridlayout.admin.WidgetDesign.indexメソッドにより、以下のコンフィグで定められたテンプレートを用いる。
 
-- パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L20>
-- 設定キー：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L20>
+- パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L20>
+- 設定キー：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L20>
 
 「Repository」プルダウンの選択を変更したとき、以下のメソッドが呼び出される。
 
@@ -161,7 +161,7 @@ if (!/\/[a-z0-9?&/=]*/.test(this.state.url)) {
 ページ本体で［Save］ボタンを押すと、widget.design.jsのsaveWidgetDesignSettingメソッドでエラーチェックを行う。
 
 - 以下のパスの部分でウィジェット配置情報を取得して、空だった場合はエラーメッセージ「Please add Widget to Preview panel.」を表示する。
-  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/static/js/weko_gridlayout/widget.design.js#L1027-L1054>
+  - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/static/js/weko_gridlayout/widget.design.js#L1133-L1160>
 - エラーがなければ、weko_gridlayout.views.save_widget_layout_settingメソッドがajaxで呼び出される。
   - このメソッド中でweko_gridlayout.services.WidgetDesignServices.update_widget_design_settingメソッドを呼び出し、その中で以下のテーブルのレコードを作成または更新する。
     - widget_design_page（デフォルトページ以外。更新のみ）

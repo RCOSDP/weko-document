@@ -286,7 +286,7 @@ TSVファイルに書き込まれる件数は、以下の定数によって制�
 
 - アクティビティの各タブを定義する（開発に使用している）
 
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/config.py#L278-L182>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/config.py#L458-L462>
 
   - 設定キー及び設定値：
 
@@ -331,7 +331,7 @@ TSVファイルに書き込まれる件数は、以下の定数によって制�
 
   - 取得されたデータをUIに以下のテンプレートで表示する
 
-- テンプレート： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/templates/weko_workflow/activity_list.html>
+- テンプレート： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/templates/weko_workflow/activity_list.html>
 
 - デフォルトの表示数：20  
 - ページ：1

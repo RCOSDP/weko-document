@@ -52,7 +52,7 @@
       - 宛先：チェックした機関のメールアドレス
       - 件名：[○○機関リポジトリ]YYYY.MM-yyyy.mm statistics report  
         ※YYYY.MMは集計月(from), yyyy.mmは集計月(to)を表示
-      - メールのテンプレート： https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/templates/weko_admin/email_templates/site_license_report.html
+      - メールのテンプレート： https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/templates/weko_admin/email_templates/site_license_report.html
       - 本文：サイトライセンス利用統計の内容
         - WEKO Top Page Access Count
         - Number Of Searches
@@ -83,7 +83,7 @@
 ## 処理概要
 
 - 画面表示したとき、［保存（Save）］ボタンを押したときの処理は、以下で行う。
-  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/admin.py>
+  - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/admin.py>
   - SiteLicenseSendMailSettingsViewクラスのindexメソッド
     - ［保存（Save）］ボタンを押したときは、画面からPOSTで呼び出される。POSTで呼ばれたときに限り、データの更新を行う。
       - 「Automatic Send」ラジオボタンの選択状態によって、admin_settingsテーブルの、nameが「site_license_mail_settings」であるレコード（repo_id をキーとするネスト dict）の該当リポジトリ分を更新する。
@@ -95,7 +95,7 @@
     - 呼び出し元の画面では、POSTの結果にかかわらず、画面を更新する。
 
 - ［メール手動送信（Manual Send）］ボタンを押したときの処理は、以下で行う。
-  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/views.py>
+  - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/views.py>
   - manual_send_site_license_mailメソッド
     - 画面で選択中のリポジトリIDがフォームの `repo_id` として送信される。
     - 【v2.1.0】権限確認：login_required ＋ System/Repository/Community Administrator のロール確認に加え、`_form_repository_scope_required` により、フォームの `repo_id` が操作者の担当範囲であることを確認する（System/Repository Administrator は全リポジトリ、それ以外は `Community.get_repositories_by_user` で得た担当コミュニティのみ。`repo_id` が空、または担当外の場合は 403）。内部呼び出しで引数 `repo_id` を渡した場合はこの確認は行わない。

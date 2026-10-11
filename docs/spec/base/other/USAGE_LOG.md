@@ -18,7 +18,7 @@ Celery のイベント処理タスク（`invenio_stats.tasks.process_events`）�
   別紙「Precedure_of_implementing_file-download_function_V1.02.xlsx」を参照
 
 - CELERY SCHEDULE 設定  
-  <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L70>
+  <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L195>
   のCELERY_BEAT_SCHEDULE に、以下のように追加する
 
 ```

@@ -132,12 +132,12 @@ resyncを利用して外部機関からデータを収集する
 
 - 本画面では、resync_indexesテーブルの情報を閲覧、作成、編集、削除して、その情報をもとにデータ収集を行う
   - 画面表示時に、invenio_resourcesyncclient.admin.AdminResyncClient.indexメソッドによってテンプレートを指定する
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py#L22>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py#L22-L23>
     - 設定キー：INVENIO_RESOURCESYNCCLIENT_ADMIN_TEMPLATE
   - 「List」タブの表示時に、同クラスのget_listメソッドによってテーブルの情報をid昇順で取得する
   - 「Create」タブで［Create］ボタンを押したとき、同クラスのcreate_resyncメソッドによって、重複チェックを行わずに新たにレコードを作成する
     - 「resync_save_dir」フィールドの値は、以下のコンフィグで指定する文字列にレコードのidを加えた文字列を設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py#L51>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py#L53>
       - 設定キー：INVENIO_RESYNC_SAVE_PATH
   - 「Edit」タブで［Edit］ボタンを押したとき、同クラスのupdate_resyncメソッドによってレコードを更新する
   - 「List」タブでごみ箱アイコンを押したとき、同クラスのdelete_resyncメソッドによって該当レコードを物理削除する

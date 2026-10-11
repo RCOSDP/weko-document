@@ -65,8 +65,8 @@
     - 設定キー：「send-feedback-mail-schedules」
     - 設定値：月の日、時間、分
     - メールテンプレート：
-      - EN： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/templates/weko_admin/email_templates/statistic_mail_template_en.tpl>
-      - JP： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/templates/weko_admin/email_templates/statistic_mail_template_ja.tpl>
+      - EN： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/templates/weko_admin/email_templates/statistic_mail_template_en.tpl>
+      - JP： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/templates/weko_admin/email_templates/statistic_mail_template_ja.tpl>
 - メールの件名には、【Administration > 設定（setting） > サイト情報（site info）画面】 の「サイト名」を使用する  
   　日本語メールには日本語サイト名を、英語メールには英語サイト名をセットする
 - アイテム登録時（[USER-4-8: Item Registration：フィードバックメール機能](../user/USER_4_8.md)を参照）にフィードバックメールを受信する設定にしている方を対象とする
@@ -127,7 +127,7 @@
 
 フィードバックメール送信タイミングを設定
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L98>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L223>
 - 設定キー：「send-feedback-mail-schedules」
 - 設定値: day_of_month、hour、minute  
   現在の設定値：day_of_month='1', hour=0, minute=0

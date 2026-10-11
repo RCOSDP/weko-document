@@ -205,17 +205,17 @@ WEKO_LOGGING_OPERATION_MASTER = {
 
   - テーブル名：user_activity_logs
 
-      - json、remarks以外の項目はjsonの中に同じ項目を入れる
+      - log、remarks以外の項目はlog（json）の中に同じ項目を入れる
 
 | 項目名         | カラム名        | データ型                       | Not Null | デフォルト | 説明                                        |
 | -------------- | --------------- | ------------------------------ | -------- | ---------- | ------------------------------------------- |
 | 識別子         | id              | integer                        | Yes(PK)  | -          | 連番。                                      |
-| 日時           | date            | timestamp(6) without time zone | Yes      | -          | ログを出力する日時                          |
+| 日時           | date            | timestamp(6) without time zone | Yes(PK)  | -          | ログを出力する日時                          |
 | ユーザーID     | user_id         | integer                        |          | null       | 操作を行ったユーザーのID                    |
-| コミュニティID | community_id | text                           | Yes      | -          | コミュニティ（サブリポジトリ）のID |
+| コミュニティID | community_id | character varying(100)         |          | null       | コミュニティ（サブリポジトリ）のID |
 | ロググループID     | log_group_id       | integer                        |          | null       | リクエスト毎に付けられる一連の処理のID   |
-| ログ           | json            | jsonb                          |          | -          | ログ。中身はjson項目定義参照                |
-| 備考           | remarks         |                                |      | null       |
+| ログ           | log             | jsonb                          | Yes      | -          | ログ。中身はjson項目定義参照                |
+| 備考           | remarks         | text                           |          | null       | 備考                                        |
 
 ### json項目定義
 

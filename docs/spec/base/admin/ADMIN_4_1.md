@@ -280,7 +280,7 @@
 
 表示言語設定に対応するウィジェットラベルを設定しない場合、ウィジェットラベルのデフォルトを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L28>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L28>
 - 設定キー： 「WEKO_GRIDLAYOUT_DEFAULT_WIDGET_LABEL」
 - 現在の設定値：
 
@@ -290,7 +290,7 @@ WEKO_GRIDLAYOUT_DEFAULT_WIDGET_LABEL = "No Title"
 
 表示言語設定に対応するウィジェットがない場合、ウィジェット言語のデフォルトを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L31>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L31>
 - 設定キー： 「WEKO_GRIDLAYOUT_DEFAULT_LANGUAGE_CODE」
 - 現在の設定値：
 
@@ -300,7 +300,7 @@ WEKO_GRIDLAYOUT_DEFAULT_LANGUAGE_CODE = "en"
 
 「New Arrivals」ウィジェット種類での「Display Results」のデフォルト値を設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L34>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L34>
 - 設定キー： 「WEKO_GRIDLAYOUT_DEFAULT_DISPLAY_RESULT」
 - 現在の設定値：
 
@@ -310,7 +310,7 @@ WEKO_GRIDLAYOUT_DEFAULT_DISPLAY_RESULT = "5"
 
 「New Arrivals」ウィジェット種類での「New date」のデフォルト値を設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L37>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L37>
 - 設定キー： 「WEKO_GRIDLAYOUT_DEFAULT_NEW_DATE」
 - 現在の設定値：
 
@@ -321,8 +321,8 @@ WEKO_GRIDLAYOUT_DEFAULT_NEW_DATE = "5"
 開発に使用しているウィジェット名を設定する
 
 - パス：
-  - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L40-L49>
-  - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L80>
+  - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L40-L49>
+  - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L80>
 - 設定キー：
   - 「WEKO_GRIDLAYOUT_ACCESS_COUNTER_TYPE」
   - 「WEKO_GRIDLAYOUT_NEW_ARRIVALS_TYPE」
@@ -340,7 +340,7 @@ WEKO_GRIDLAYOUT_MENU_WIDGET_TYPE = 'Menu'
 ```
 
 - ウィジェットの高さの自動計算・不自動計算を設定する
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L89>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L89>
   - 設定キー： 「WEKO_GRIDLAYOUT_AUTO_ADJUST_THE_HEIGHT」
   - 現在の設定値：
 
@@ -349,7 +349,7 @@ WEKO_GRIDLAYOUT_AUTO_ADJUST_THE_HEIGHT = True
 ```
 
 - サーバから返却するウィジェットのデータを圧縮するかどうかを設定する
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L95>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L95>
   - 設定キー：「WEKO_GRIDLAYOUT_IS_COMPRESS_WIDGET」
   - 現在の設定値：
 
@@ -358,7 +358,7 @@ WEKO_GRIDLAYOUT_IS_COMPRESS_WIDGET = True
 ```
 
 - サーバから返却するウィジェットのデータの圧縮レベルを設定する
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L92>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L92>
   - 設定キー：「WEKO_GRIDLAYOUT_COMPRESS_LEVEL」
   - 現在の設定値：
 
@@ -367,7 +367,7 @@ WEKO_GRIDLAYOUT_COMPRESS_LEVEL = 6
 ```
 
 - サーバから返却するウィジェットデータのキャッシュ名を設定する
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L98-L102>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L98-L102>
   - 設定キー：
     - 「WEKO_GRIDLAYOUT_WIDGET_CACHE_KEY」
     - 「WEKO_GRIDLAYOUT_WIDGET_PAGE_CACHE_KEY」
@@ -379,7 +379,7 @@ WEKO_GRIDLAYOUT_WIDGET_PAGE_CACHE_KEY = "widget_page_cache"
 ```
 
 - ウィジェットに関するファイルアップロードのBucketIDを設定する
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L104>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L104>
   - 設定キー：「WEKO_GRIDLAYOUT_BUCKET_UUID」
   - 現在の設定値：
 
@@ -388,7 +388,7 @@ WEKO_GRIDLAYOUT_BUCKET_UUID = "517f7d98-ab2c-4736-91ea-54ba34e7905d"
 ```
 
 - 静的なウィジェットファイルサイズの上限を設定する
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py#L107>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py#L107>
   - 設定キー：「WEKO_GRIDLAYOUT_FILE_MAX_SIZE」
   - 現在の設定値：
 

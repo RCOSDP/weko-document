@@ -96,7 +96,7 @@
 一括更新対象を設定する
 
 - パス：  
-  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py>
+  <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py>
 - 設定キー：「WEKO_RECORDS_UI_BULK_UPDATE_FIELDS」
 - 現在の設定値：
 
@@ -110,7 +110,7 @@ WEKO_RECORDS_UI_BULK_UPDATE_FIELDS = {
 一括更新画面にてインデックス検索、詳細検索、簡易検索のいずれかを行う。
 
 - weko_search_ui.rest.IndexSearchResource.getメソッドを呼び出し、検索条件にのっとったアイテムの情報を取得し、表示する。
-- weko_search_ui.admin.ItemManagementBulkSearch.indexメソッドを呼び出し、様々な情報を取得し、画面に表示する。詳細は以下のgithubを参照すること。ソースコード：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/admin.py>
+- weko_search_ui.admin.ItemManagementBulkSearch.indexメソッドを呼び出し、様々な情報を取得し、画面に表示する。詳細は以下のgithubを参照すること。ソースコード：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/admin.py>
 
 一括更新の実行
 

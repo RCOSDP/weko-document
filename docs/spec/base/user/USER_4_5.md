@@ -186,7 +186,7 @@ Item Registrationの一部として、ファイルをアップロードしてそ
 
 Creative Commonsのライセンス表記を設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L248>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L391>
 - 設定キー： 「WEKO_RECORDS_UI_LICENSE_DICT」
 - 現在の設定値：
 

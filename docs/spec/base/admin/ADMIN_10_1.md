@@ -175,14 +175,14 @@
   - Resync: Resource ListとChange Listから構成され、ハーベスト機能と同じ。他のサイトからの情報を取得し登録する。
 - 本画面では、resourcelist_indexesテーブルの情報を閲覧、作成、編集、削除する
   - 画面表示時に、invenio_resourcesyncserver.admin.AdminResourceListView.indexメソッドによってテンプレートを指定する
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L21>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L21-L22>
     - 設定キー：INVENIO_RESOURCESYNCSERVER_ADMIN_TEMPLATE
   - 「List」タブの表示時に、同クラスのget_listメソッドによってテーブルの情報を全件取得する
     - 画面の「Resource List Url」と「Resource Dump Url」の表示内容は、内容の表示時にresource.js中でそれぞれ「url_path」フィールドの値に「/resourcelist.xml」「/resourcedump.xml」を結合して作成している
     - 「status」フィールドは真偽値であるが、内容の表示時にresource.js中でフィールドの値によって「Publish」か「Private」を表示するようにしている
   - 「Create」タブで［Create］ボタンを押したとき、同クラスのcreateメソッドによって、テーブルに対象インデックスについてのレコードがない場合に、新たにレコードを作成する
     - 対象インデックスについてのレコードがすでにあった場合には、作成せずに以下のコンフィグで指定されたメッセージを返す
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L44-L45>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L44-L45>
       - 設定キー：VALIDATE_MESSAGE
   - 「Edit」タブで［Save］ボタンを押したとき、同クラスのupdateメソッドによってレコードを更新する
   - 「List」タブでごみ箱アイコンを押したとき、同クラスのdeleteメソッドによってレコードを物理削除する

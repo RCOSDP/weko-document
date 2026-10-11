@@ -75,7 +75,7 @@
 - flow_define
 
 取得されたワークフロー一覧の情報を以下のテンプレートで表示する  
-<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/templates/weko_workflow/workflow_list.html>
+<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/templates/weko_workflow/workflow_list.html>
 
  ワークフローのactivity_idの採番ロジックは以下の通り。  
 登録・更新用アクティビティは 「A-YYYYMMDD-nnnnn」、削除用アクティビティは「D-YYYYMMDD-nnnnn」の形式で生成される。  

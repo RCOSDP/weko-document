@@ -93,10 +93,10 @@
 ログイン画面の種類を決定するコンフィグは、instance.cfgまたはweko-accountsのconfig.pyで設定する。両方で設定されている場合、instance.cfgの設定が優先される。
 
 - パス（instance.cfg）：  
-  https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg
+  https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg
 
 - パス（config.py）：  
-  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py>
+  <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py>
 
 - 対象となるコンフィグは以下の通り。
 

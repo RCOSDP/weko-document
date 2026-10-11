@@ -128,8 +128,8 @@
 
   - ［キャンセル（Cancel）］ボタンを押すと、設定されたアクセスコントロール内容をアクセスコントロール一覧に追加せず、「一覧」（List）タブに戻る
 
-- v0.9.22でのデフォルトアクセスコントロールは以下の通りである
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/populate-instance.sh#L241-L338>
+- v2.1.0でのデフォルトアクセスコントロールは以下の通りである
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/populate-instance.sh#L210-L315>
 
 ## 関連モジュール
 

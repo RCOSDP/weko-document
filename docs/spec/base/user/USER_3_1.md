@@ -232,7 +232,7 @@
 
   - 作成者のプロパティーキー
 
-      - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-deposit/weko_deposit/config.py#L130>
+      - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-deposit/weko_deposit/config.py#L165-L190>
 
       - 設定キー：WEKO_DEPOSIT_SYS_CREATOR_KEY
 
@@ -240,8 +240,10 @@
 
         ```
         WEKO_DEPOSIT_SYS_CREATOR_KEY = {
+            'creator_type': 'creatorType',
             'creator_names': 'creatorNames',
             'creator_name': 'creatorName',
+            'creator_name_type': 'creatorNameType',
             'creator_lang': 'creatorNameLang',
             'family_names': 'familyNames',
             'family_name': 'familyName',
@@ -267,7 +269,7 @@
 
   - 書誌情報のプロパティーキー
 
-      - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-deposit/weko_deposit/config.py#L190-L198>
+      - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-deposit/weko_deposit/config.py#L227-L235>
 
       - 設定キー：WEKO_DEPOSIT_BIBLIOGRAPHIC_INFO_SYS_KEY
 
@@ -287,7 +289,7 @@
 
   - 書誌情報に対して実装に使用するキーを設定
 
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-deposit/weko_deposit/config.py#L156>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-deposit/weko_deposit/config.py#L193-L199>
 
       - 設定キー：WEKO_DEPOSIT_BIBLIOGRAPHIC_INFO_KEY
 
@@ -305,7 +307,7 @@
 
   - 書誌情報にて、上記のキーに応じてUIに表示するテキストを設定
 
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-deposit/weko_deposit/config.py#L165-L186>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-deposit/weko_deposit/config.py#L202-L223>
 
       - 設定キー：WEKO_DEPOSIT_BIBLIOGRAPHIC_TRANSLATIONS
 
@@ -355,16 +357,16 @@
           - 書誌情報に対して、一つのサブアイテムキーが「WEKO_DEPOSIT_BIBLIOGRAPHIC_INFO_SYS_KEY」一覧に属される場合、「書誌情報」とする。  
             表示言語を取得、該当するラベルを取得、以下のテンプレートで表示する。  
             テンプレート：  
-            <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/output_bibliographic_information_detail.html>
+            <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/output_bibliographic_information_detail.html>
 
           - 作成者に対して、プロパティー情報に「attribute_type = creator」が保存する場合、「作成者」とする。  
             表示言語を取得、該当するラベルを取得、以下のテンプレートで表示する。  
             テンプレート：  
-            <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/creator_detail_template.html>
+            <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/creator_detail_template.html>
 
           - 残りプロパティーに対して表示言語を取得、該当するラベルを取得、以下のテンプレートで表示する。  
             テンプレート：  
-            <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/output_detail_data.html>
+            <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/output_detail_data.html>
 
 【補足】
 
@@ -377,7 +379,7 @@
       - アップロードされているサムネイル画像の横幅が「100px」を超える場合、横幅を「100px」に自動調整し、あわせて縦の長さも元の画像の比率にあわせて自動調整される。
 
       - なお、横幅の最大値の設定はコンフィグで設定可能：  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py>  
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py>  
         「WEKO_RECORDS_UI_DEFAULT_MAX_WIDTH_THUMBNAIL = 100」
 
 ## 実装補足（v2.0.2 実装との突き合わせ）

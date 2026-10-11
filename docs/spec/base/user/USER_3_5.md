@@ -38,12 +38,12 @@
       - アイテム単位の閲覧回数は、【アイテム詳細画面】での「Views」エリアに表示する
 
       - アイテム詳細画面に遷移する時に、「record_viewed」というシグナルを読み取る  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/views.py#L451-L456>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/views.py#L506-L511>
 
           - record_viewedのシグナルはconfigで設定されたタイミング（数秒）で実行されて、閲覧回数をDBから取得しESに登録する。
 
       - record_viewedのシグナル実行後、invenio-statsが閲覧回数をログ集計をする。 （invenioの処理）  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/views.py#L209-L212>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-stats/invenio_stats/views.py#L264-L273>
 
       - 閲覧回数は、全ドメインと各ドメイン毎（トップレベルドメイン毎）で集計値を表示する
 
@@ -63,13 +63,13 @@
 
       - ファイルをダウンロードされるたびに、「file_downloaded」シグナルを読み取る。  
         このシグナルはDBからダウンロード回数を取得しESに登録する。  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-files-rest/invenio_files_rest/views.py#L766>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-files-rest/invenio_files_rest/views.py#L816>
 
       - 再生回数は、「再生回数」（Plays）エリアに表示する
 
       - ファイルをプレビューされるたびに、「file_previewed」シグナルを読み取る。  
         このシグナルはDBから再生回数を取得しESに登録する。  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-files-rest/invenio_files_rest/views.py#L764>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-files-rest/invenio_files_rest/views.py#L814>
 
       - 「file_downloaded」や「file_previewed」シグナル実行後、invenio-statsがダウンロード回数と再生回数をログ集計してくれる　（invenioの処理）
 
@@ -86,7 +86,7 @@
       - ダウンロード回数と再生回数は、ファイルの差し替えを行った場合でも統計値は引き継いで集計する
 
       - 集計はCELERY_BEAT_SCHEDULEのstats-aggregate-events設定に従い実施される。デフォルトでは起動時のタイミングから１日毎に集計される。  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L77>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L202>
 
 ```
 'stats-aggregate-events': {

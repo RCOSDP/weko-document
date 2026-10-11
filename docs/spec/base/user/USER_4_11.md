@@ -97,8 +97,8 @@
 
 「action_endpoint 'item_link'」の場合、以下の定義からアイテム間の関係性を取得、以下のテンプレートで取得した情報を表示する
 
-- アイテム間の関係性の定義： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/static/js/weko_workflow/workflow_item_link.js#L387>
-- テンプレート： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/templates/weko_workflow/item_link.html>
+- アイテム間の関係性の定義： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/static/js/weko_workflow/workflow_item_link.js#L395>
+- テンプレート： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/templates/weko_workflow/item_link.html>
 - 「送信」（Next）または「保存」（Save）ボタンを押すと、設定されたアイテム間リンクや入力したコメントの情報をデータベースに保存する
   - データベースの情報
     - テーブル名：item_reference

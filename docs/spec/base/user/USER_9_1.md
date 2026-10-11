@@ -35,10 +35,10 @@
 - 本機能の有効化を設定するコンフィグは、instance.cfgまたはweko-themeのconfig.pyで設定する。両方で設定されている場合、instance.cfgの設定が優先される。
 
   - パス（instance.cfg）：  
-    https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg
+    https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg
 
   - パス（config.py）：  
-    https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-theme/weko_theme/config.py
+    https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-theme/weko_theme/config.py
 
 - ENABLE_COOKIE_CONSENT = True の場合に機能が有効となる。
 

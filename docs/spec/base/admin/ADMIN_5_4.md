@@ -82,19 +82,19 @@
 
 IDスキーマ名（Scheme）プルダウンに表示するScheme一覧を設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L25>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py#L24-L25>
 - 設定キー：WEKO_AUTHORS_LIST_SCHEME
 - 現在の設定値：`WEKO_AUTHORS_LIST_SCHEME = ['e-Rad', 'e-Rad_Researcher', 'NRID', 'ORCID', 'ISNI', 'VIAF', 'AID', 'kakenhi', 'Ringgold', 'GRID', 'ROR', 'researchmap', 'Other']`
 
 インデックスを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L29>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py#L28>
 - 設定キー：WEKO_AUTHORS_INDEX_ITEM_OTHER
 - 現在の設定値：`WEKO_AUTHORS_INDEX_ITEM_OTHER = 12`
 
 ID Prefix画面のテンプレートを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L48>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py#L48>
 - 設定キー：WEKO_AUTHORS_ADMIN_PREFIX_TEMPLATE
 - 現在の設定値：`WEKO_AUTHORS_ADMIN_PREFIX_TEMPLATE = 'weko_authors/admin/prefix_list.html'`
 

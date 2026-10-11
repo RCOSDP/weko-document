@@ -99,7 +99,7 @@ RSSアイコンを押下すると、WEKO RSS配信情報を取得し、該当ア
   - パラメータはindex_id, page, count, term, langの5項目とする。
   - 各パラメータのデフォルト値はweko_index_tree/config.pyで設定し、変更可能とする。  
     パス：  
-    <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-index-tree/weko_index_tree/config.py#L69-L82>
+    <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-index-tree/weko_index_tree/config.py#L75-L88>
   - 選択されたインデックスのインデックスIDをパラメータindex_idに設定し、他のパラメータはデフォルト値を設定する。
   - 表示件数の設定値の上限はweko_index_tree/config.pyで設定し、変更可能とする。
     - 表示件数の設定値の上限の値は100とする。  

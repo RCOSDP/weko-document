@@ -7,7 +7,7 @@ invenio.cfg(instance.cfg) > config.py(各モジュール)
 2. invenio.cfg
 
 - webコンテナビルド時にinstance.cfgから invenio.cfg([コンフィグ一覧](https://redmine.devops.rcos.nii.ac.jp/attachments/26751/invenio_cfg.xlsx)（関係者のみ閲覧可）)が生成される。
-  - instance.cfg: <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg>
+  - instance.cfg: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg>
 
 - 各configのパラメータについて、以下のパラメータが「invenio.cfg」にてオーバーライド可能である。
 
@@ -90,49 +90,49 @@ WEKO_RECORDS_UI_OA_GET_OA_POLICIES_URL
 
 | モジュール | configuration |
 | ---- | ---- |
-| invenio-accounts | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-accounts/invenio_accounts/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-accounts/invenio_accounts/config.py) |
-| invenio-communities | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio_communities/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio_communities/config.py) |
-| invenio-db | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-db/invenio_db/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-db/invenio_db/config.py) |
-| invenio-deposit | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-deposit/invenio_deposit/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-deposit/invenio_deposit/config.py) |
-| invenio-files-rest | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-files-rest/invenio_files_rest/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-files-rest/invenio_files_rest/config.py) |
-| invenio-iiif | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-iiif/invenio_iiif/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-iiif/invenio_iiif/config.py) |
-| invenio-indexer | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-indexer/invenio_indexer/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-indexer/invenio_indexer/config.py) |
-| invenio-mail | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-mail/invenio_mail/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-mail/invenio_mail/config.py) |
-| invenio-oaiharvester | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oaiharvester/invenio_oaiharvester/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oaiharvester/invenio_oaiharvester/config.py) |
-| invenio-oaiserver | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oaiserver/invenio_oaiserver/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oaiserver/invenio_oaiserver/config.py) |
-| invenio-oauth2server | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oauth2server/invenio_oauth2server/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oauth2server/invenio_oauth2server/config.py) |
-| invenio-previewer | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-previewer/invenio_previewer/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-previewer/invenio_previewer/config.py) |
-| invenio-queues | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-queues/invenio_queues/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-queues/invenio_queues/config.py) |
-| invenio-records | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records/invenio_records/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records/invenio_records/config.py) |
-| invenio-records-rest | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records-rest/invenio_records_rest/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records-rest/invenio_records_rest/config.py) |
-| invenio-resourcesyncclient | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py) |
-| invenio-resourcesyncserver | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py) |
-| invenio-s3 | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-s3/invenio_s3/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-s3/invenio_s3/config.py) |
-| invenio-stats | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/config.py) |
-| weko-accounts | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py) |
-| weko-admin | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py) |
-| weko-authors | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py) |
-| weko-bulkupdate | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-bulkupdate/weko_bulkupdate/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-bulkupdate/weko_bulkupdate/config.py) |
-| weko-deposit | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-deposit/weko_deposit/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-deposit/weko_deposit/config.py) |
-| weko-gridlayout | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-gridlayout/weko_gridlayout/config.py) |
+| invenio-accounts | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-accounts/invenio_accounts/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-accounts/invenio_accounts/config.py) |
+| invenio-communities | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-communities/invenio_communities/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-communities/invenio_communities/config.py) |
+| invenio-db | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-db/invenio_db/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-db/invenio_db/config.py) |
+| invenio-deposit | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-deposit/invenio_deposit/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-deposit/invenio_deposit/config.py) |
+| invenio-files-rest | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-files-rest/invenio_files_rest/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-files-rest/invenio_files_rest/config.py) |
+| invenio-iiif | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-iiif/invenio_iiif/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-iiif/invenio_iiif/config.py) |
+| invenio-indexer | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-indexer/invenio_indexer/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-indexer/invenio_indexer/config.py) |
+| invenio-mail | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-mail/invenio_mail/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-mail/invenio_mail/config.py) |
+| invenio-oaiharvester | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oaiharvester/invenio_oaiharvester/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oaiharvester/invenio_oaiharvester/config.py) |
+| invenio-oaiserver | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oaiserver/invenio_oaiserver/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oaiserver/invenio_oaiserver/config.py) |
+| invenio-oauth2server | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oauth2server/invenio_oauth2server/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oauth2server/invenio_oauth2server/config.py) |
+| invenio-previewer | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-previewer/invenio_previewer/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-previewer/invenio_previewer/config.py) |
+| invenio-queues | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-queues/invenio_queues/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-queues/invenio_queues/config.py) |
+| invenio-records | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-records/invenio_records/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-records/invenio_records/config.py) |
+| invenio-records-rest | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-records-rest/invenio_records_rest/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-records-rest/invenio_records_rest/config.py) |
+| invenio-resourcesyncclient | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncclient/invenio_resourcesyncclient/config.py) |
+| invenio-resourcesyncserver | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py) |
+| invenio-s3 | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-s3/invenio_s3/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-s3/invenio_s3/config.py) |
+| invenio-stats | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-stats/invenio_stats/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-stats/invenio_stats/config.py) |
+| weko-accounts | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py) |
+| weko-admin | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py) |
+| weko-authors | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py) |
+| weko-bulkupdate | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-bulkupdate/weko_bulkupdate/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-bulkupdate/weko_bulkupdate/config.py) |
+| weko-deposit | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-deposit/weko_deposit/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-deposit/weko_deposit/config.py) |
+| weko-gridlayout | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-gridlayout/weko_gridlayout/config.py) |
 | weko-groups | config.py無し |
-| weko-handle | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-handle/weko_handle/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-handle/weko_handle/config.py) |
-| weko-index-tree | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-index-tree/weko_index_tree/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-index-tree/weko_index_tree/config.py) |
-| weko-indextree-journal | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-indextree-journal/weko_indextree_journal/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-indextree-journal/weko_indextree_journal/config.py) |
-| weko-items-autofill | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-autofill/weko_items_autofill/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-autofill/weko_items_autofill/config.py) |
-| weko-items-ui | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/config.py) |
-| weko-itemtypes-ui | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py) |
-| weko-logging | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-logging/weko_logging/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-logging/weko_logging/config.py) |
-| weko-plugins | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-plugins/weko_plugins/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-plugins/weko_plugins/config.py) |
-| weko-records | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records/weko_records/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records/weko_records/config.py) |
-| weko-records-ui | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py) |
+| weko-handle | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-handle/weko_handle/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-handle/weko_handle/config.py) |
+| weko-index-tree | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-index-tree/weko_index_tree/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-index-tree/weko_index_tree/config.py) |
+| weko-indextree-journal | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-indextree-journal/weko_indextree_journal/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-indextree-journal/weko_indextree_journal/config.py) |
+| weko-items-autofill | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-items-autofill/weko_items_autofill/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-items-autofill/weko_items_autofill/config.py) |
+| weko-items-ui | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-items-ui/weko_items_ui/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-items-ui/weko_items_ui/config.py) |
+| weko-itemtypes-ui | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py) |
+| weko-logging | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-logging/weko_logging/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-logging/weko_logging/config.py) |
+| weko-plugins | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-plugins/weko_plugins/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-plugins/weko_plugins/config.py) |
+| weko-records | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records/weko_records/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records/weko_records/config.py) |
+| weko-records-ui | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py) |
 | weko-redis | config.py無し |
-| weko-schema-ui | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-schema-ui/weko_schema_ui/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-schema-ui/weko_schema_ui/config.py) |
-| weko-search-ui | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py) |
-| weko-sitemap | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-sitemap/weko_sitemap/config.py) |
-| weko-theme | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-theme/weko_theme/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-theme/weko_theme/config.py) |
-| weko-user-profiles | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-user-profiles/weko_user_profiles/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-user-profiles/weko_user_profiles/config.py) |
-| weko-workflow | [https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/config.py](https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-workflow/weko_workflow/config.py) |
+| weko-schema-ui | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-schema-ui/weko_schema_ui/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-schema-ui/weko_schema_ui/config.py) |
+| weko-search-ui | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py) |
+| weko-sitemap | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-sitemap/weko_sitemap/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-sitemap/weko_sitemap/config.py) |
+| weko-theme | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-theme/weko_theme/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-theme/weko_theme/config.py) |
+| weko-user-profiles | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-user-profiles/weko_user_profiles/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-user-profiles/weko_user_profiles/config.py) |
+| weko-workflow | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/config.py) |
 | weko-notifications | [https://github.com/RCOSDP/weko/blob/main/modules/weko-notifications/weko_notifications/config.py](https://github.com/RCOSDP/weko/blob/main/modules/weko-notifications/weko_notifications/config.py) |
 | weko-signposting | [https://github.com/RCOSDP/weko/blob/main/modules/weko-signposting/weko_signposting/config.py](https://github.com/RCOSDP/weko/blob/main/modules/weko-signposting/weko_signposting/config.py) |
 | weko-swordserver | [https://github.com/RCOSDP/weko/blob/main/modules/weko-swordserver/weko_swordserver/config.py](https://github.com/RCOSDP/weko/blob/main/modules/weko-swordserver/weko_swordserver/config.py) |
@@ -151,7 +151,7 @@ WEKO_RECORDS_UI_OA_GET_OA_POLICIES_URL
 
 - S3 のキー名は `S3_SECRET_ACCESS_KEY`（`S3_ACCCESS_KEY_ID` の綴りはソース側もこの綴り）。
 - `WEKO_WORKFLOW_APPROVE_DONE` / `WEKO_WORKFLOW_APPROVE_REJECTED` / `WEKO_WORKFLOW_USAGE_REPORT_ACTIVITY_URL` は v2.0.2 に存在しない。
-- config は `scripts/instance.cfg`（jinja テンプレート）から生成され、環境変数 `environ()` で上書きされる。GitHub参照リンクは v0.9.22 固定で陳腐化。
+- config は `scripts/instance.cfg`（jinja テンプレート）から生成され、環境変数 `environ()` で上書きされる。GitHub参照リンクは v0.9.22 固定だったが、release_v2.1.0 の該当行に張り替えた。
 - 実装補足（v2.1.0、追加・変更された主な config）：
   - `S3_READONLY_ACCESS_KEY_ID` / `S3_READONLY_SECRET_ACCESS_KEY`（invenio-s3、既定 None。`scripts/instance.cfg` にも None で定義）：S3 から読み出す（書き込みモード `wb` 以外で開く）際に使う読み取り専用のアクセスキー。ロケーションに読み取り専用キー（`readonly_access_key` / `readonly_secret_key`）が設定されていればそちらを優先する（`invenio_s3.ext.InvenioS3.init_s3fs_info`。#61752）。書き込みは従来どおり `S3_ACCESS_KEY_ID` / `S3_SECRET_ACCESS_KEY`。
   - `WEKO_ACCOUNTS_UNAUTHORIZED_JSON`（weko-accounts、既定 True）：未ログイン時、API アプリは常に、UI アプリは API/AJAX 呼び出しと判定したリクエストに 401 JSON を返す（[ログイン](../user/USER_8_2.md) 参照）。

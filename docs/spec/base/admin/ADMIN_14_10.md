@@ -118,7 +118,7 @@
         
           - loganalysis_restricted_crawler_listテーブルが空だった場合は、以下のコンフィグからデフォルトの共有クローラーリストのURLを取得してテーブルに追加して、再度全件取得する
             
-              - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py#L120-L122>
+              - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L141-L143>
             
               - 設定キー：WEKO_ADMIN_DEFAULT_CRAWLER_LISTS
 
@@ -227,13 +227,13 @@
             
               - 以下のコンフィグで、共有クローラーリストによるチェックで正規表現を使用するかどうかを制御する
                 
-                  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py#L1278>
+                  - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L1399>
                 
                   - 設定キー：WEKO_ADMIN_USE_REGEX_IN_CRAWLER_LIST
             
               - 以下のコンフィグで定めたRedisデータベースに接続する
                 
-                  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L43>
+                  - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L54>
                 
                   - 設定キー：CRAWLER_REDIS_DB
             
@@ -253,7 +253,7 @@
                     
                       - 保存するデータには、以下のコンフィグで定めたTTLを設定する
                         
-                          - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L44>
+                          - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L56>
                         
                           - 設定キー：CRAWLER_REDIS_TTL
                     

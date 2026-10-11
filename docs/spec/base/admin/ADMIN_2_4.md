@@ -1016,7 +1016,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 ### 3. 設定
 
   - 一括登録画面のテンプレートを設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L87>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L86>
       - 設定キー：WEKO_ITEM_ADMIN_IMPORT_TEMPLATE
       - 現在の設定値：
         ```
@@ -1024,28 +1024,28 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         ```
 
   - 「インポート」（Import）タブ にてダウンロードファイルに表示する項目を設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L512>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L524>
       - 設定キー：WEKO_IMPORT_CHECK_LIST_NAME
       - 現在の設定値：
         ```
         WEKO_IMPORT_CHECK_LIST_NAME = ["No", "Item Type", "Item Id", "Title", "Check result"]
         ```
   - 「結果」（Result）タブにてダウンロードファイルに表示する項目を設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L514>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L526-L533>
       - 設定キー：WEKO_IMPORT_LIST_NAME
       - 現在の設定値：
         ```
         WEKO_IMPORT_LIST_NAME = [
-            "No",
-            "Start Date",
-            "End Date",
-            "Item Id",
-            "Action",
-            "Work Flow ",
+            _("No."),
+            _("Start Date"),
+            _("End Date"),
+            _("Item ID"),
+            _("Status"),
+            _("Import Result"),
         ]
         ```
   - メール形式（フィードバックメール）を設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L524>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L536>
       - 設定キー：WEKO_IMPORT_EMAIL_PATTERN
       - 現在の設定値：
         ```
@@ -1053,7 +1053,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         ```
 
   - tsvファイルに正当となる公開ステータスを設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L525>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L537>
       - 設定キー：WEKO_IMPORT_PUBLISH_STATUS
       - 現在の設定値：
         ```
@@ -1061,7 +1061,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         ```
 
   - tsvファイルに正当となるDOI_RAの値を設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L526>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L538>
       - 設定キー：WEKO_IMPORT_DOI_TYPE
       - 現在の設定値：
         ```
@@ -1070,7 +1070,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
   - 日付(ISO-8601)プロパティのサブアイテムキーを設定する  
     日付形式のバリデーションチェックに使用する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L528>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L540>
       - 設定キー：WEKO_IMPORT_SUBITEM_DATE_ISO
       - 現在の設定値：
         ```
@@ -1078,7 +1078,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         ```
 
   - 免責事項表示の対応言語を設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L532>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L544>
       - 設定キー：WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FILE_LANGUAGES
       - 現在の設定値：
         ```
@@ -1086,7 +1086,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         ```
 
   - 免責事項ファイルの配置先を設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L534>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L546-L548>
       - 設定キー：WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FILE_LOCATION
       - 現在の設定値：
         ```
@@ -1094,7 +1094,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         ```
 
   - 免責事項ファイルのプレフィックスを設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L538>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L550>
       - 設定キー：WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FIRST_FILE_NAME
       - 現在の設定値：
         ```
@@ -1102,7 +1102,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
         ```
 
   - 免責事項ファイルの拡張子を設定する
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/config.py#L540>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/config.py#L552>
       - 設定キー：WEKO_ADMIN_IMPORT_CHANGE_IDENTIFIER_MODE_FILE_EXTENSION
       - 現在の設定値：
         ```

@@ -282,7 +282,7 @@ RO-Crateの形式については[ADMIN_2.5 RO-Crateインポート](../admin/ADM
    - /home/invenio/.virtualenvs/invenio/var/instance/data/tmp/weko_export_xxxxxxxx
 
 - weko_items_ui.utils.export_items  
- <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-items-ui/weko_items_ui/utils.py#L1423-L1507>
+ <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-items-ui/weko_items_ui/utils.py#L2569-L2691>
 
 
 ## 実装補足（v2.0.2 実装との突き合わせ）

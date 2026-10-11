@@ -148,7 +148,7 @@
 
       - アイテムが下書きの状態の場合、アイテムバージョン一覧には表示しない。  
         ['_deposit']['status'] == 'draft' の場合は取得したactive_versionsを削除する。  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/views.py#L423>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/views.py#L478>
 
       - デフォルトとし、4つの最新バージョンをアイテム詳細画面に表示する
 
@@ -160,7 +160,7 @@
 
       - アイテムバージョン一覧からバージョンをクリックすると、PIDの値を取得し、該当メタデータを取得し、表示する  
         weko_records_ui.templates.weko_records_ui.box.versionsにおいてinvenio_records_ui.recidを使用する。  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/box/versions.html>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/box/versions.html>
 
       - OAI-PMH出力及びJSON、BIBTEX出力を実行する時、表示しているバージョンのPID値を取得し、実行する  
         invenio_oaiserver.response.pyを使用する。

@@ -31,7 +31,7 @@
 1. 設定
 
 jpcoarのマッピングとGoogle Scholar meta tagとの対応をtarget_mapに設定する。  
-<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/utils.py#L1204-L1213>
+<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/utils.py#L1656-L1665>
 
   - 設定タグ：
 
@@ -51,7 +51,7 @@ jpcoarのマッピングとGoogle Scholar meta tagとの対応をtarget_mapに�
 
 Google Scholar出力をすることのできるリソースタイプ
 
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L526-L574>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L636-L684>
 
   - 設定キー：「WEKO_RECORDS_UI_GOOGLE_SCHOLAR_OUTPUT_RESOURCE_TYPE」
 

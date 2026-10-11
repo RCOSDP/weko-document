@@ -201,13 +201,13 @@
 
 送信間隔の選択肢を設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py#L125>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L146>
 - 設定キー：WEKO_ADMIN_REPORT_FREQUENCIES
 - 現在の設定値：`WEKO_ADMIN_REPORT_FREQUENCIES = ['daily', 'weekly', 'monthly']`
 
 「メールスケジュールの報告」でのデフォルトを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py#L128>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L149-L151>
 - 設定キー：WEKO_ADMIN_REPORT_DELIVERY_SCHED
 - 現在の設定値：
 
@@ -219,7 +219,7 @@ WEKO_ADMIN_REPORT_DELIVERY_SCHED = {
 
 csvファイルに各定型レポートタイプのヘッダーを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py#L139>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L164-L176>
 - 設定キー：WEKO_ADMIN_REPORT_HEADERS
 - 現在の設定値：
 
@@ -241,7 +241,7 @@ WEKO_ADMIN_REPORT_HEADERS = {
 
 csvファイルに各定型レポートタイプのサブヘッダーを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py#L154>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L179-L183>
 - 設定キー：WEKO_ADMIN_REPORT_SUB_HEADERS
 - 現在の設定値：
 
@@ -255,7 +255,7 @@ WEKO_ADMIN_REPORT_SUB_HEADERS = {
 
 各定型レポートの出力カラムを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py#L161>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L186-L213>
 - 設定キー：WEKO_ADMIN_REPORT_COLS
 - 現在の設定値：
 
@@ -292,7 +292,7 @@ WEKO_ADMIN_REPORT_COLS = {
 
 定型レポートのファイル名を設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py#L191>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L216-L228>
 - 設定キー：WEKO_ADMIN_REPORT_FILE_NAMES
 - 現在の設定値：
 
@@ -314,7 +314,7 @@ WEKO_ADMIN_REPORT_FILE_NAMES = {
 
 定型レポートメールのテンプレートを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/config.py#L206>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L231>
 - 設定キー：WEKO_ADMIN_REPORT_EMAIL_TEMPLATE
 - 現在の設定値：`WEKO_ADMIN_REPORT_EMAIL_TEMPLATE = 'weko_admin/email_templates/report.html'`
 
@@ -337,7 +337,7 @@ STATS_WEKO_DB_BACKUP_BOOKMARK = False
 
 invenio_stats.tasks.aggregate_events 実行時の集計範囲は --start-date, --end-date に指定された日付を元に集計する。
 
-- 関連コード： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/aggregations.py#L385>
+- 関連コード： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-stats/invenio_stats/aggregations.py#L385>
 
 Celeryタスクとしてinvenio_stats.tasks.aggregate_eventsが実行された場合の集計範囲は start_date, end_date と、update_bookmark を元に集計する。デフォルト値は以下の通り。
 
@@ -350,14 +350,14 @@ start_date は以下のデータ値を取得する
 1. bookmarkから取得された日付。すなわち、前回に集計された時の end_date。
 2. 1.のデータがなければ、events-statsから取得された最古の日付。
 
-参照コード： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/aggregations.py#L391-L395>
+参照コード： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-stats/invenio_stats/aggregations.py#L391-L395>
 
 end_date は以下のデータの一番小さい値となる
 
 1. 現在の日付
 2. start_date + 7 days
 
-参照コード: <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/aggregations.py#L400-L406>
+参照コード: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-stats/invenio_stats/aggregations.py#L400-L406>
 
 update_bookmark はパフォーマンスを改善するために、以前に集計された events-stats を再実行しないように制御するもの。デフォルト値はTrue。
 
@@ -453,14 +453,14 @@ Example:
 
 「Custom Report」エリアの「Start Date」「End Date」の入力値のチェックは、以下のようになっている。
 
-- <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-admin/weko_admin/static/js/weko_admin/custom_report.js>
+- <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/static/js/weko_admin/custom_report.js>
   - 入力すると、ComponentDatePickerのhandleChangeEventで、以下のどちらかでフォームの外観を変更する。どちらも満たさなくなると元に戻る。
     - JavascriptのDate.parse()メソッドで解釈できない
     - 入力値を「/」で分割した配列の長さが3でない
   - ［Display］ボタンを押すと、ComponentComboboxのhandleClickEvent中でcheckValidDateメソッドによるチェックを行う。以下のどちらかで、エラーメッセージをポップアップで表示する。
     - 「Start Date」「End Date」の入力値の片方でもJavascriptのDate.parse()メソッドで解釈できない
     - 「Start Date」>「End Date」
-- <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-stats/invenio_stats/utils.py>
+- <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-stats/invenio_stats/utils.py>
   - QueryItemRegReportHelper.getメソッドで、入力値を受け取ってカスタムレポートを返す。
     - ここでは、pythonのdatetime.strptime(入力値, '%Y-%m-%d')で入力値を日付オブジェクトに変換している。入力値が'%Y-%m-%d'のフォーマットで構文解析できない場合、ValueErrorによって処理が中断され、カスタムレポートが返されない。
 

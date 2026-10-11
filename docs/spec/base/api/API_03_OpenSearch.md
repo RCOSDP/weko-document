@@ -385,7 +385,7 @@ WEKO_OPENSEARCH_IMAGE_URL = 'static/favicon.ico'
 - format変換：
   - modules/invenio-records-rest/invenio_records_rest/serializers/json.py
   - weko_search_ui/views.py
-    - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-search-ui/weko_search_ui/views.py#L310>
+    - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-search-ui/weko_search_ui/views.py#L304>
 
 - weko_search_ui.views.opensearch_description関数でOpenSearch Descriptionファイルを作成している
   - invenio_records_rest.views.RecordsListResource.getメソッドで検索を行う
@@ -406,7 +406,7 @@ WEKO_OPENSEARCH_IMAGE_URL = 'static/favicon.ico'
 - 主要設定値
 
   - `WEKO_SEARCH_KEYWORDS_DICT`（検索キーの内部フィールド対応）
-  - `WEKO_OPENSEARCH_SYSTEM_SHORTNAME` / `WEKO_OPENSEARCH_SYSTEM_DESCRIPTION` / `WEKO_OPENSEARCH_SYSTEM_IMAGE_URL`（description.xml）
+  - `WEKO_OPENSEARCH_SYSTEM_SHORTNAME` / `WEKO_OPENSEARCH_SYSTEM_DESCRIPTION` / `WEKO_OPENSEARCH_IMAGE_URL`（description.xml）
 
 > 実装補足（v2.0.2）：エンドポイントは `GET /api/opensearch/search`（description は `GET /api/opensearch/description.xml`）。ログイン状態・ロールに応じ `get_permission_filter` で公開範囲を自動的に絞り込む（非管理者は公開かつ公開日到来分のみ）。
 

@@ -115,8 +115,8 @@
     - そのロールで操作するときは、ワークフロー一覧に表示されず、アクティビティ作成時にそのワークフローを選択できない
     - 詳細は[ADMIN-7-2: ワークフロー](./ADMIN_7_2.md)を参照
 
-- v0.9.22でのデフォルトロールは以下の通りである
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/populate-instance.sh#L228-L231>
+- v2.1.0でのデフォルトロールは以下の通りである
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/populate-instance.sh#L197-L200>
   - ロール：
     - 「System Administrator」
     - 「Repository Administrator」
@@ -131,7 +131,7 @@
 
 - 環境構築時にpopulate-instance.shで初期データを登録することで、デフォルトロールの作成と、各ロールへの権限付与が行われる。
   - 各デフォルトロールの名前は、作成時に環境変数で設定される
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/docker-compose.yml#L57-L60>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/docker-compose.yml#L67-L70>
 
 - 本画面では、accounts_roleテーブルのデータを作成、編集、削除する。
   - 作成、編集時は、画面の設定をもとに、以下のようにaccounts_roleテーブルに保存する。
@@ -142,7 +142,7 @@
 - ロールを作成、編集したとき、invenio_accounts.admin.RoleView.after_model_changeメソッドが呼び出される。分岐によって、以下の場合のみ処理を行う。
   - ロールを新規作成したとき、コンフィグのACCOUNTS_WORKFLOW_ROLE_HIDE_FILTERがTrueである場合にのみ、workflow_userroleテーブルにレコードが作成される。
     - コンフィグは以下を参照する。
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-accounts/invenio_accounts/config.py#L227>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-accounts/invenio_accounts/config.py#L227>
       - キー：ACCOUNTS_WORKFLOW_ROLE_HIDE_FILTER
     - 作成前にworkflow_workflowテーブルを参照して、is_deletedがfalseであるレコードを取得する。その数だけworkflow_userroleテーブルにレコードを作成する。
     - 作成するレコードでは、フィールドを以下のように設定する。

@@ -112,7 +112,7 @@
   - 表示する位置は ファイル情報の左上側とし、右側にアイテムの情報を表示する。
   - アイテムに複数のサムネイルファイルがアップロードされている場合、アイテム詳細画面の１つ目のサムネイルファイルを表示する。
   - サムネイルファイルの画像の表示サイズについて、以下のConfigファイルで設定する。（アイテム詳細画面と同じ設定。初期値は100px）
-  - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L310>  
+  - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L420>  
     「WEKO_RECORDS_UI_DEFAULT_MAX_WIDTH_THUMBNAIL = 100」
   - アップロードされているサムネイルファイルの画像の横幅が設定値を超える場合、横幅は設定値に自動調整し、あわせて縦の長さも元の画像の比率にあわせて自動調整する。
   - サムネイルを表示するエリアは固定とし、アイテムリストの幅を狭くしても、サムネイルを表示するエリアは変更しないものとする。

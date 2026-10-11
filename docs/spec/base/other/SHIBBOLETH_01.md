@@ -26,7 +26,7 @@
 
     - 上記のIdP属性値とロールとの対応は、以下のコンフィグで設定する
 
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L77-L82>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L173-L178>
 
       - 設定キー：WEKO_ACCOUNTS_SHIB_ROLE_RELATION
 
@@ -84,7 +84,7 @@
 
     - HTTP_WEKOIDを利用するかどうかは、以下のconfigで指定する
 
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L97>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L190>
 
       - 設定キー：WEKO_ACCOUNTS_SHIB_ALLOW_USERNAME_INST_EPPN
 
@@ -175,20 +175,20 @@
     - リクエストにShib-Session-IDが含まれず、以下のコンフィグWEKO_ACCOUNTS_SHIB_LOGIN_ENABLEDがfalseの場合はエラーとしてWEKOのログイン画面に遷移する
 
       - パス（instance.cfg）：  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L436>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L579>
 
       - パス（config.py）：  
-        <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L29>
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L29>
 
     - weko_accounts.utils.parse_attributes関数によってリクエストの内容を確認し、必須の項目が含まれない場合はエラーとしてWEKOのログイン画面に遷移する
 
       - 必須項目は以下のコンフィグで設定する
 
         - パス（instance.cfg）：  
-          <https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg#L442-L448>
+          <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L585-L593>
 
         - パス（config.py）：  
-          <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-accounts/weko_accounts/config.py#L64-L74>
+          <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L78-L90>
 
         - 設定キー：WEKO_ACCOUNTS_SSO_ATTRIBUTE_MAP
 

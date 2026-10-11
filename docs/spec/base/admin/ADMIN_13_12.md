@@ -95,7 +95,7 @@
     - JGSS専用のコンフィグです。
       JGSSでは、ユーザーの役割を選択した場合、その役割に該当するロールを自動設定するものです。
       例：役割一覧は以下のコンフィグに定義されています。
-      <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-user-profiles/weko_user_profiles/config.py#L113-L121>
+      <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-user-profiles/weko_user_profiles/config.py#L113-L121>
       この役割一覧の１つを選択した場合、該当するロールに「学院性」ロールが自動設定されます。
 
 ## 関連モジュール
@@ -107,7 +107,7 @@
 - 一覧タブ表示時は、weko_user_profiles.admin.UserProfileView.index_viewメソッドで情報を取得している
 
 - 一覧タブの表示内容は、以下のコンフィグで決定している
-  - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-user-profiles/weko_user_profiles/config.py#L168-L169>
+  - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-user-profiles/weko_user_profiles/config.py#L168-L169>
   - 設定キー：WEKO_USERPROFILES_FORM_COLUMN
   - 以下の表示候補の中から、このコンフィグにあるものを表示している
     - User Id
@@ -126,7 +126,7 @@
 
 - 編集タブ表示時は、UserProfileView.edit_viewメソッドで情報の取得、更新を行う
   - 「Timezone」の選択肢は、以下のコンフィグで設定している
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-user-profiles/weko_user_profiles/config.py#L46-L83>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-user-profiles/weko_user_profiles/config.py#L46-L83>
     - キー：USERPROFILES_TIMEZONE_LIST
   - ［保存（Save）］ボタンを押すと、以下の内容でフォームデータが送信される
     - 「displayname」：画面上の「ユーザー名（Username）」で入力されたもの

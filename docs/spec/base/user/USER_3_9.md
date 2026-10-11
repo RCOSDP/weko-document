@@ -45,28 +45,28 @@
 
 Google Dataaset出力をすることのできるリソースタイプ
 
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L577>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L687>
 
   - 設定キー：  
     「WEKO_RECORDS_UI_GOOGLE_DATASET_RESOURCE_TYPE = [“dataset”]」
 
 Google Dataset descriptionの最小文字数
 
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L580>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L690>
 
   - 設定キー：  
     「WEKO_RECORDS_UI_GOOGLE_DATASET_DESCRIPTION_MIN = 50」
 
 Google Dataset descriptionの最大文字数
 
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L582>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L692>
 
   - 設定キー：  
     「WEKO_RECORDS_UI_GOOGLE_DATASET_DESCRIPTION_MAX = 5000」
 
 「WEKO_RECORDS_UI_GOOGLE_DATASET_DISTRIBUTION_BUNDLE」
 
-  - パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L585-L592>
+  - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L695-L702>
 
 jpcoarマッピングとGoogle Dataset meta tagとの対応:  
 別紙「jpcoarスキーマ、schema.org対応表」参照。

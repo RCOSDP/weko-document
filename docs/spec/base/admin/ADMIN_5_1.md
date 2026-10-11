@@ -255,19 +255,19 @@
 
 表示件数のデフォルト値を設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L204>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py#L369>
 - 設定キー：WEKO_AUTHORS_NUM_OF_PAGE
 - 現在の設定値：`WEKO_AUTHORS_NUM_OF_PAGE = 25`
 
 Author ID一覧画面のテンプレートを設定する
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L42>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py#L42>
 - 設定キー：WEKO_AUTHORS_ADMIN_LIST_TEMPLATE
 - 現在の設定値：`WEKO_AUTHORS_ADMIN_LIST_TEMPLATE = 'weko_authors/admin/author_list.html'`
 
 Author ID編集画面のテンプレートを設定する。
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L45>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py#L45>
 - 設定キー：WEKO_AUTHORS_ADMIN_EDIT_TEMPLATE
 - 現在の設定値：`WEKO_AUTHORS_ADMIN_EDIT_TEMPLATE = 'weko_authors/admin/author_edit.html'`
 

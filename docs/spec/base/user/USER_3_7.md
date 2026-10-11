@@ -327,13 +327,13 @@
         
           - 設定
             
-              - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L198-L202>
+              - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L289-L293>
             
-              - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records-rest/invenio_records_rest/serializers/__init__.py#L17>
+              - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-records-rest/invenio_records_rest/serializers/__init__.py#L17>
         
           - シリアライザ：
             
-              - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-records-rest/invenio_records_rest/serializers/json.py#L70>
+              - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-records-rest/invenio_records_rest/serializers/json.py#L142>
     
       - BIBTEX
         
@@ -345,13 +345,13 @@
         
           -  設定
             
-              -  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/config.py#L203-L207>
+              -  <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L294-L298>
             
-              -  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/box/export.html>
+              -  <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/box/export.html>
         
           -  シリアライザ：
             
-              -  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-schema-ui/weko_schema_ui/serializers/WekoBibTexSerializer.py>
+              -  <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-schema-ui/weko_schema_ui/serializers/WekoBibTexSerializer.py>
 
 ## 関連モジュール
 
@@ -366,12 +366,12 @@
   - プロバイダ不可の場合に対してのエラーコードを設定する  
     設定キー：OAISERVER_CODE_NO_RECORDS_MATCH  
     パス：  
-    <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oaiserver/invenio_oaiserver/config.py#L207>
+    <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oaiserver/invenio_oaiserver/config.py#L207>
 
   - プロバイダ不可の場合に対してのエラーメッセージを設定する  
     設定キー：OAISERVER_MESSAGE_NO_RECORDS_MATCH  
     パス：  
-    <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oaiserver/invenio_oaiserver/config.py#L210>
+    <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oaiserver/invenio_oaiserver/config.py#L210-L212>
 
 2. 実装方法
 
@@ -500,7 +500,7 @@ Elasticsearch の利用
 
   - scroll APIを利用している。 ESの index.max_result_window 以上の結果を取得することができる。
     
-      - <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-oaiserver/invenio_oaiserver/query.py#L192>
+      - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-oaiserver/invenio_oaiserver/query.py#L248>
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

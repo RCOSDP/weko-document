@@ -70,7 +70,7 @@
 - 追加されたインデックスの雑誌情報の表示について、 [USER-2-1 一覧形式表示](../user/USER_2_1.md)を参照してください
 
 入力項目のエラーチェックについては以下を参照すること  
-<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-indextree-journal/weko_indextree_journal/schemas/jsonschema.json>
+<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-indextree-journal/weko_indextree_journal/schemas/jsonschema.json>
 
 ## 関連モジュール
 

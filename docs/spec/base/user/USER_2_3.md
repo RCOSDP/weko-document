@@ -157,7 +157,7 @@
 - 雑誌情報出力処理について。
   - 雑誌情報出力処理はweko_indextree_journal.tasks.export_journal_taskメソッドで行われ、kbart2拡張形式のtxtファイルで出力される。同ディレクトリにfilelist.txtとして出力されたファイル名を記載したtxtファイルも出力する。
   - デフォルトの実行スケジュールは以下のセロリタスクで設定される。  
-    パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/scripts/instance.cfg>
+    パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg>
   - タスク名：「indextree-journal-export-journal」
   - スケジュールを変更したい場合は、キー’schedule’の値を変更すること
 

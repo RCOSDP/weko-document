@@ -77,7 +77,7 @@
 
 画面表示には以下のテンプレートを使用する
 
-- パス：https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-communities/invenio_communities/templates/invenio_communities/communities_list.html
+- パス：https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-communities/invenio_communities/templates/invenio_communities/communities_list.html
 
 「コミュニティ(Communities)」タブを押すと、invenio_communities.views.ui.community_list関数が呼び出される
 

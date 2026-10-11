@@ -65,19 +65,19 @@
 
 IDスキーマ名（Scheme）プルダウンに表示するScheme一覧の設定をする。
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L32>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py#L31-L33>
 - 設定キー：WEKO_AUTHORS_LIST_SCHEME_AFFILIATION
 - 現在の設定値：`WEKO_AUTHORS_LIST_SCHEME_AFFILIATION = ['ISNI', 'GRID', 'Ringgold', 'kakenhi', 'ROR', 'Other']`
 
 「Other」のインデックスを設定する。
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L36>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py#L36>
 - 設定キー：WEKO_AUTHORS_AFFILIATION_IDENTIFIER_ITEM_OTHER
 - 現在の設定値：`WEKO_AUTHORS_AFFILIATION_IDENTIFIER_ITEM_OTHER = 5`
 
 Affiliation ID画面のテンプレートを設定する。
 
-- パス： <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-authors/weko_authors/config.py#L51>
+- パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-authors/weko_authors/config.py#L51-L52>
 - 設定キー：WEKO_AUTHORS_ADMIN_AFFILIATION_TEMPLATE
 - 現在の設定値：`WEKO_AUTHORS_ADMIN_AFFILIATION_TEMPLATE = 'weko_authors/admin/affiliation_list.html'`
 

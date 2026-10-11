@@ -40,7 +40,7 @@
 デフォルトスタイルを設定する
 
   - パス：  
-    <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/box/share.html#L50>
+    <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/templates/weko_records_ui/box/share.html#L71>
 
   - デフォルトの設定値：「style= 'aapg-bulletin'」
 

@@ -220,7 +220,7 @@
 プロフィール入力フォームとその入力内容チェックは、以下で定義している。
 
 - パス：  
-  <https://github.com/RCOSDP/weko/blob/v0.9.22/modules/weko-user-profiles/weko_user_profiles/forms.py>
+  <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-user-profiles/weko_user_profiles/forms.py>
 
 - ProfileFormクラスの内容を、テンプレートprofile.htmlに設定している。
 

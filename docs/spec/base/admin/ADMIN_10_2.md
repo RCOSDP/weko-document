@@ -228,14 +228,14 @@
 
 - 本画面では、changelist_indexesテーブルの情報を閲覧、作成、編集、削除する
   - 画面表示時に、invenio_resourcesyncserver.admin.AdminChangeListView.indexメソッドによってテンプレートを指定する
-    - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L25>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L25-L26>
     - 設定キー：INVENIO_RESOURCESYNC_CHANGE_LIST_ADMIN
   - 「List」タブの表示時に、同クラスのget_listメソッドによってテーブルの情報を全件取得する
     - 画面の「Change List Url」と「Change Dump Url」の表示内容は、内容の表示時にchange_list.js中でそれぞれ「url_path」フィールドの値に「/changelist.xml」「/changedump.xml」を結合して作成している
     - 「status」フィールドは真偽値であるが、内容の表示時にchange_list.js中でフィールドの値によって「Publish」か「Private」を表示するようにしている
   - 「Create」タブで［Create］ボタンを押したとき、同クラスのcreateメソッドによって、テーブルに対象インデックスについてのレコードがない場合に、新たにレコードを作成する
     - 対象インデックスについてのレコードがすでにあった場合には、作成せずに以下のコンフィグで指定されたメッセージを返す
-      - パス：<https://github.com/RCOSDP/weko/blob/v0.9.22/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L44-L45>
+      - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-resourcesyncserver/invenio_resourcesyncserver/config.py#L44-L45>
       - 設定キー：VALIDATE_MESSAGE
   - 「Edit」タブで［Save］ボタンを押したとき、同クラスのupdateメソッドによってレコードを更新する
   - 「List」タブでごみ箱アイコンを押したとき、同クラスのdeleteメソッドによってレコードを物理削除する
