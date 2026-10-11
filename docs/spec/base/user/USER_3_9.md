@@ -48,7 +48,7 @@ Google Dataaset出力をすることのできるリソースタイプ
   - パス： <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py#L687>
 
   - 設定キー：  
-    「WEKO_RECORDS_UI_GOOGLE_DATASET_RESOURCE_TYPE = [“dataset”]」
+    「WEKO_RECORDS_UI_GOOGLE_DATASET_RESOURCE_TYPE = ["dataset"]」
 
 Google Dataset descriptionの最小文字数
 

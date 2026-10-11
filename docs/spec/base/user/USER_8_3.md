@@ -81,13 +81,13 @@
 
 ## 処理概要
 
-パスワードリセットの画面・文言は依存ライブラリ Flask-Security（`flask_security.views.forgot_password`（route `/lost-password/`）/ `reset_password`（route `/reset/<token>`）、`SECURITY_MSG_*` 既定）に由来する。
+パスワードリセットの画面・文言は依存ライブラリ Flask-Security（`flask_security.views.forgot_password`（route `/lost-password/`）/ `reset_password`（route `/lost-password/<token>`）、`SECURITY_MSG_*` 既定）に由来する。
 
 リセットパスワード画面で［リセットパスワード（Reset Password）］ボタンを押すと、invenio_accounts.tasks.send_security_emailにてメールを送信する（`ACCOUNTS_USE_CELERY=True` の場合のみCeleryタスク経由）
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 実装補足：パスワードリセットの画面・文言は **Flask-Security**（`flask_security.views.forgot_password`（`/lost-password/`）/ `reset_password`（`/reset/<token>`）、`SECURITY_MSG_*`）由来。メール送信は `invenio_accounts.tasks.send_security_email`（Celery、`ACCOUNTS_USE_CELERY` 依存）。
+- 実装補足：パスワードリセットの画面・文言は **Flask-Security**（`flask_security.views.forgot_password`（`/lost-password/`）/ `reset_password`（`/lost-password/<token>`）、`SECURITY_MSG_*`）由来。メール送信は `invenio_accounts.tasks.send_security_email`（Celery、`ACCOUNTS_USE_CELERY` 依存）。
 
 ## 更新履歴
 

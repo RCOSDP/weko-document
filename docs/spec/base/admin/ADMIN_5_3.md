@@ -602,18 +602,18 @@
                   </tbody>
                   </table>
 
-              - 保存期間は （デフォルト: 24時間）で管理
+              - 保存期間は `WEKO_AUTHORS_IMPORT_TEMP_FILE_RETENTION_PERIOD`（デフォルト: 24時間）で管理
               - 削除処理は Celery タスクが定期的に実行
 
           - **インポートタブでの表示処理の流れ**
               1. **フロント側**
                   - ユーザーがページを選択
-                  - `GET /api/import/results?page={page}` のような API リクエストを送信
+                  - `GET /admin/authors/import/check_pagination?page_number={page}` のリクエストを送信（`WEKO_AUTHORS_IMPORT_ENTRYPOINTS['check_pagination']`）
 
               2. **サーバ側**
-                  - `page` に基づき、該当 TSV ファイルの該当データを取得
-                  - 以下のtsvからデータを返却
-                      - **インポートタブ**: `import_author_check_result_{yyyymmddhhmm}_part{}.tsv`
+                  - `page_number` に基づき、該当ページのチェック結果の一時ファイルを読み込む
+                  - 以下のファイル（JSON）の内容を返却（`weko_authors.admin.ImportView.check_pagination`）
+                      - **インポートタブ**: 一時ディレクトリ（`WEKO_AUTHORS_IMPORT_TMP_DIR`）の `{アップロードしたファイル名（拡張子なし）}-check-part{page_number}`
 
               3. **フロント側**
                   - 取得したデータを表に表示
