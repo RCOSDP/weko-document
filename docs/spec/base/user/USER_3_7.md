@@ -440,9 +440,9 @@
 
   - DOI、またはHDLのURLがメタデータレコードに含まれない場合、レコードIDを元に、識別子の値を生成し、「system_identifier_doi」プロパティーとし情報を返す
 
-(3)「\_init\_」メソッドで以下の情報を取得し、メタデータレコードにマッピングデータを組み込む
+(3)「`__init__`」メソッドで以下の情報を取得し、メタデータレコードにマッピングデータを組み込む
 
-  - weko\_schema\_ui.schema.SchemaTree.\_init\_を使用する。
+  - `weko_schema_ui.schema.SchemaTree.__init__` を使用する。
 
   - メタデータレコード
 

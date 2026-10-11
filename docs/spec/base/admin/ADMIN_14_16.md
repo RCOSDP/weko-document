@@ -70,7 +70,7 @@
 
 ## 処理概要
 
-  - 画面表示時は、invenio_mail.admin.MailSettingVIew.indexメソッドがGETで呼び出される
+  - 画面表示時は、invenio_mail.admin.MailSettingView.indexメソッドがGETで呼び出される
     
       - このとき、mail_configテーブルからメールサーバの設定を取得する
         
@@ -78,7 +78,7 @@
     
       - 「Mail Setting」の内容を取得したもの、「Send Test Mail」の内容を空欄として表示する
 
-  - ［更新（Update）］ボタンを押すと、invenio_mail.admin.MailSettingVIew.indexメソッドがPOSTで呼び出される
+  - ［更新（Update）］ボタンを押すと、invenio_mail.admin.MailSettingView.indexメソッドがPOSTで呼び出される
     
       - エラーチェックを通過した場合、mail_configテーブルのレコードを更新する
         
@@ -86,7 +86,7 @@
     
       - その後、「Mail Setting」の内容を画面で入力したもの、「Send Test Mail」の内容を空欄として画面に表示する
 
-  - ［送信（Enable）］ボタンを押すと、invenio_mail.admin.MailSettingVIew.send_test_mailメソッドが呼び出される
+  - ［送信（Enable）］ボタンを押すと、invenio_mail.admin.MailSettingView.send_test_mailメソッドが呼び出される
     
       - mail_configテーブルから取得した情報をメールサーバの各種設定として、「Send Test Mail」の各入力欄に入力したものをメッセージとしてcurrent_app.extensions['mail']に設定して、送信する
     
@@ -115,7 +115,7 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 画面/ハンドラ：`invenio_mail.admin.MailSettingView`（クラス名は `MailSettingView`。「MailSettingVIew」は綴り誤り）。`index`（GET/POST）と `send_test_mail`。設定は `MailConfig.get_config` / `set_config`（テーブル `mail_config`）。「ドメイン（Domain）」欄は DB 列 `mail_local_hostname`（SMTP HELO）に対応。
+- 画面/ハンドラ：`invenio_mail.admin.MailSettingView`（クラス名は `MailSettingView`）。`index`（GET/POST）と `send_test_mail`。設定は `MailConfig.get_config` / `set_config`（テーブル `mail_config`）。「ドメイン（Domain）」欄は DB 列 `mail_local_hostname`（SMTP HELO）に対応。
 
 ## 更新履歴
 

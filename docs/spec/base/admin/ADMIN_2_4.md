@@ -1198,7 +1198,7 @@ DOIを指定したアイテムについて、指定された項目が各DOI付�
 
         -   提供方法(provide)のロール(role)とワークフロー(workflow)を取得する。
 
-        -   roleが取得できた場合、invenio_accounts.modelのUserクラスからaccounts_roleテーブルのrole一覧を取得する。上記で取得したロールが一覧に存在しない場合、
+        -   roleが取得できた場合、weko_records_ui.utils.get_rolesでロール一覧（accounts_roleテーブルの全ロールに、未ログインユーザを表す「Guest」（id：none_loggin）を加えたもの）を取得する。上記で取得したロールが一覧に存在しない場合、
             falseを返却する。
 
         -   workflowが取得できた場合、weko_workflow.apiのweko_workflow/weko_workflow/api.pyのget_workflow_listを呼び、取得した一覧にworkflowが存在しない場合、falseを返却する。

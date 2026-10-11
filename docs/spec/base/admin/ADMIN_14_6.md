@@ -64,7 +64,7 @@
 
 ## 処理概要
 
-- 【Administration > Setting (設定) > Stats (統計情報表示)】において、統計情報の表示/非表示を選択して【Save (保存)】を押下すると、weko_admin.StatsSettingsView.indexを呼び出して使用する。
+- 【Administration > Setting (設定) > Stats (統計情報表示)】において、統計情報の表示/非表示を選択して【Save (保存)】を押下すると、weko_admin.admin.StatsSettingsView.indexを呼び出して使用する。
   - weko_admin.models.AdminSettings.updateを呼び出して、admin_settingsテーブルから、「display_stats_settings」カラムを更新する。
 
 - weko_admin.models.AdminSettings.getで「display_stats_settings」を取得して、「WEKO_ADMIN_STATS_SETTINGS_TEMPLATE」に沿って、flask_admin.base.BaseView.renderで更新した状態の統計情報表示設定画面を表示する。「WEKO_ADMIN_STATS_SETTINGS_TEMPLATE」：weko_admin.config
