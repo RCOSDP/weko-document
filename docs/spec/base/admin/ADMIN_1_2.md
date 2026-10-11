@@ -122,7 +122,7 @@ WEKO3の必須項目である「公開日」についてもマッピングする
 ## 処理概要
 
 - HTMLテンプレート
-    - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L37-L37>
+    - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L37-L37>
         - 設定キー: WEKO_ITEMTYPES_UI_ADMIN_MAPPING_TEMPLATE = \\  
           'weko_itemtypes_ui/admin/create_mapping.html'  
           """Mapping template for the item type page."""

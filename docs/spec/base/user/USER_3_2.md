@@ -395,7 +395,7 @@
   - ファイルをプレビュー表示するため、ファイルからPDF形式に変換し、テンポラリーフォルダーに書き込む処理を行う
 
   - テンポラリーフォルダーの初期値は「/var/tmp」であり、以下のConfigファイルで設定できる  
-    <https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/invenio-files-rest/invenio_files_rest/config.py#L132>
+    <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/invenio-files-rest/invenio_files_rest/config.py#L132>
     
       - 設定キー：「FILES_REST_DEFAULT_PDF_SAVE_PATH」
     

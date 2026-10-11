@@ -268,19 +268,19 @@
 ## 処理概要
 
 - HTMLテンプレート
-    - パス：<https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L29-L31>
+    - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L29-L31>
         - 設定キー: WEKO_ITEMTYPES_UI_ADMIN_REGISTER_TEMPLATE = \\  
           'weko_itemtypes_ui/admin/create_itemtype.html'  
           """Register template for the item type page."""
 
 - デフォルトプロパティの表示・非表示
-    - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L44-L45>
+    - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L44-L45>
         - 設定キー: WEKO_ITEMTYPES_UI_SHOW_DEFAULT_PROPERTIES = True  
           """Set to show or hide default properties on the item type page."""  
           デフォルト：True（表示）。False: 非表示。
 
 - デフォルトプロパティ一覧
-    - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L47-L55>
+    - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L47-L55>
         - 設定キー: WEKO\_ITEMTYPES\_UI\_DEFAULT\_PROPERTIES = {  
           '1': {'name': \_('Text Field'), 'value': 'text'},  
           '2': {'name': \_('Text Area'), 'value': 'textarea'},  
@@ -292,7 +292,7 @@
           """Default properties of the item type."""
 
 - 課金ファイルをプロパティ画面に表示する・しないかの設定
-    - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L57-L58>
+    - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L57-L58>
         - 設定キー: WEKO_BILLING_FILE_ACCESS = 1  
           """Show billing file property in list."""  
           1: システム管理者のユーザーID。  
@@ -305,7 +305,7 @@
           （課金ファイルをプロパティ画面に表示する・しない時に合わせて利用される。）
 
 - アイテムタイプのバージョンアップ機能を有効にする・しない設定
-    - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L66-L67>
+    - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L66-L67>
         - 設定キー: WEKO_ITEMTYPES_UI_UPGRADE_VERSION_ENABLED = True  
           """Enable Upgrade Version."""  
           True: バージョンアップを有効にする.  

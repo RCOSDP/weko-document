@@ -75,7 +75,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
       - WEKO_RECORDS_UI_RESTRICTED_API
 
-          - パス: <https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/weko-records-ui/weko_records_ui/config.py>
+          - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py>
 
           - 初期値: False
 
@@ -196,7 +196,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
       - WEKO_RECORDS_UI_RESTRICTED_API
 
-          - パス: <https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/weko-records-ui/weko_records_ui/config.py>
+          - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py>
 
           - 初期値: False
 
@@ -292,7 +292,7 @@ WEKO_RECORDS_UI_RESTRICTED_API が True の状態で API を実行する。
 
       - WEKO_RECORDS_UI_RESTRICTED_API
 
-          - パス: <https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/weko-records-ui/weko_records_ui/config.py>
+          - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-records-ui/weko_records_ui/config.py>
 
           - 初期値: False
 

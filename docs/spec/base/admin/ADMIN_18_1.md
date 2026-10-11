@@ -156,8 +156,8 @@
 プロフィール入力フォームとその入力内容チェックは、以下で定義している。
 
 - パス：
-  - <https://github.com/RCOSDP/weko/blob/main/modules/weko-admin/weko_admin/views.py>
-  - <https://github.com/RCOSDP/weko/tree/main/modules/weko-admin/weko_admin/static/js/weko_admin/user-profile-settings.js>
+  - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/views.py>
+  - <https://github.com/RCOSDP/weko/tree/release_v2.1.0/modules/weko-admin/weko_admin/static/js/weko_admin/user-profile-settings.js>
 - このJavaScriptファイルは、Reactを使用してプロフィール入力フォームを管理し、ユーザーが入力した内容をサーバーに送信するためのもの。
 
 SAVEボタンがクリックされたときにエラーチェックを行い、AJAXリクエストを使用してURL「/api/admin/profile_settings/save」にデータを送信する。

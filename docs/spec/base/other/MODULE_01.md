@@ -2,7 +2,7 @@
 
 利用モジュール、ライブラリは以下のとおり
 
-- invenioモジュール（<https://github.com/RCOSDP/weko/blob/hfix/packages-invenio.txt>）
+- invenioモジュール（<https://github.com/RCOSDP/weko/blob/release_v2.1.0/packages-invenio.txt>）
 - wekoモジュール（<https://github.com/RCOSDP/weko/blob/release_v2.1.0/requirements-weko-modules.txt>）
 - パッケージ（<https://github.com/RCOSDP/weko/blob/release_v2.1.0/packages.txt>）
 

@@ -133,10 +133,10 @@ WEKO_RECORDS_UI_OA_GET_OA_POLICIES_URL
 | weko-theme | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-theme/weko_theme/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-theme/weko_theme/config.py) |
 | weko-user-profiles | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-user-profiles/weko_user_profiles/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-user-profiles/weko_user_profiles/config.py) |
 | weko-workflow | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workflow/weko_workflow/config.py) |
-| weko-notifications | [https://github.com/RCOSDP/weko/blob/main/modules/weko-notifications/weko_notifications/config.py](https://github.com/RCOSDP/weko/blob/main/modules/weko-notifications/weko_notifications/config.py) |
-| weko-signposting | [https://github.com/RCOSDP/weko/blob/main/modules/weko-signposting/weko_signposting/config.py](https://github.com/RCOSDP/weko/blob/main/modules/weko-signposting/weko_signposting/config.py) |
-| weko-swordserver | [https://github.com/RCOSDP/weko/blob/main/modules/weko-swordserver/weko_swordserver/config.py](https://github.com/RCOSDP/weko/blob/main/modules/weko-swordserver/weko_swordserver/config.py) |
-| weko-workspace | [https://github.com/RCOSDP/weko/blob/main/modules/weko-workspace/weko_workspace/config.py](https://github.com/RCOSDP/weko/blob/main/modules/weko-workspace/weko_workspace/config.py) |
+| weko-notifications | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-notifications/weko_notifications/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-notifications/weko_notifications/config.py) |
+| weko-signposting | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-signposting/weko_signposting/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-signposting/weko_signposting/config.py) |
+| weko-swordserver | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-swordserver/weko_swordserver/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-swordserver/weko_swordserver/config.py) |
+| weko-workspace | [https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workspace/weko_workspace/config.py](https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-workspace/weko_workspace/config.py) |
 
 - 更新履歴
 

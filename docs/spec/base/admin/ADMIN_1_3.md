@@ -61,7 +61,7 @@
 ## 処理概要
 
 - 全ての設定はconfig.pyに定義される。
-    - <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-schema-ui/weko_schema_ui/config.py>
+    - <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-schema-ui/weko_schema_ui/config.py>
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

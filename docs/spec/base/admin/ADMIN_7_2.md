@@ -114,7 +114,7 @@
 設定値
 
 - WEKO_ADMIN_DISPLAY_RESTRICTED_SETTINGS
-  - パス：<https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/weko-admin/weko_admin/config.py#L1380>
+  - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L1405>
   - 初期値：True
   - 利用申請フラグの表示非表示を切り替える。
   - scripts/instance.cfg で定義されている場合は、そちらの設定を優先する。

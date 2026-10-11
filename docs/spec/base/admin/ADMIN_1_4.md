@@ -272,13 +272,13 @@
 ## 処理概要
 
 - HTMLテンプレート
-    - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L33-L35>
+    - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L33-L35>
         - 設定キー: WEKO_ITEMTYPES_UI_ADMIN_CREATE_PROPERTY = \\  
           'weko_itemtypes_ui/admin/create_property.html'  
           """Create property template."""
 
 - 課金ファイルをプロパティ画面に表示する・しないかの設定
-    - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L57-L58>
+    - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L57-L58>
         - 設定キー: WEKO_BILLING_FILE_ACCESS = 1  
           """Show billing file property in list."""  
           1: システム管理者のユーザーID。  
@@ -291,7 +291,7 @@
           （課金ファイルをプロパティ画面に表示する・しない時に合わせて利用される。）
 
 - システムプロパティであるかどうか判断するための設定
-    - パス: <https://github.com/RCOSDP/weko/blob/hfix/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L63-L64>
+    - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L63-L64>
         - 設定キー: WEKO_ITEMTYPES_UI_DEFAULT_PROPERTIES_ATT = 'system_prop'  
           """Attribute to detect property is default property which is not shown at properties screen."""
 

@@ -572,7 +572,7 @@
     
       - WEKO_ADMIN_RESTRICTED_ACCESS_DISPLAY_FLAG
         
-          - パス：<https://github.com/RCOSDP/weko/blob/develop_v2.0.0/modules/weko-admin/weko_admin/config.py#L1298>
+          - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-admin/weko_admin/config.py#L1321>
 
           - 初期値：False
 
