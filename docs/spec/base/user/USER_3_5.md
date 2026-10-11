@@ -85,8 +85,8 @@
 
       - ダウンロード回数と再生回数は、ファイルの差し替えを行った場合でも統計値は引き継いで集計する
 
-      - 集計はCELERY_BEAT_SCHEDULEのstats-aggregate-events設定に従い実施される。デフォルトでは起動時のタイミングから１日毎に集計される。  
-        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L202>
+      - 集計はCELERY_BEAT_SCHEDULEのstats-aggregate-events設定に従い実施される。集計は毎日、環境変数 `WEKO_AGGREGATE_EVENT_HOUR`・`WEKO_AGGREGATE_EVENT_MINUTE` で指定した時刻に実行される（`crontab`。docker-compose の既定はどちらも 0 のため、毎日 0:00）。  
+        <https://github.com/RCOSDP/weko/blob/release_v2.1.0/scripts/instance.cfg#L202-L206>
 
 ```
 'stats-aggregate-events': {

@@ -46,7 +46,7 @@
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
-- 有効化 config は `ENABLE_COOKIE_CONSENT`（`weko_theme`、既定 False。`weko_theme.ext` で登録）。同意UIは Klaro（v0.7.16）を `base.html` で使用。
+- 有効化 config は `ENABLE_COOKIE_CONSENT`（`weko_theme` の config.py の既定は False だが、標準の `scripts/instance.cfg` で True に上書きされるため、標準の構成では有効。`weko_theme.ext` で登録）。同意UIは Klaro（v0.7.16）を `base.html` で使用。
 - 実装補足：同意で制御される任意サービスは Facebook と X(Twitter)（＋必須の Google Analytics）。
 
 ## 更新履歴

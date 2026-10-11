@@ -309,7 +309,8 @@
         - 設定キー: WEKO_ITEMTYPES_UI_UPGRADE_VERSION_ENABLED = True  
           """Enable Upgrade Version."""  
           True: バージョンアップを有効にする.  
-          False: バージョンアップを無効にする
+          False: バージョンアップを無効にする  
+          ※標準の `scripts/instance.cfg` で `WEKO_ITEMTYPES_UI_UPGRADE_VERSION_ENABLED = False` に上書きされるため、標準の構成ではバージョンアップは無効
 
 - アイテムタイプの強制インポート機能を有効にする・しない設定
     - パス: <https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-itemtypes-ui/weko_itemtypes_ui/config.py#L69>

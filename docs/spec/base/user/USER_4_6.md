@@ -280,7 +280,7 @@ Item Registrationの一部として、画面上の入力欄でメタデータを
 ### 3. メタデータ自動補完
 
 - 対応API（`WEKO_ITEMS_AUTOFILL_API_LIST`）：JaLC API / 医中誌 Web API / CrossRef / DataCite / CiNii Research。UI 入力方式は DOI/CrossRef/CiNii/WEKOID/researchmap。
-- DOI一括補完 `fetch_metadata_by_doi(doi, item_type_id, original, **kwargs)`：優先順位は `kwargs['meta_data_api']`（SWORD経由時）→ `WEKO_ITEMS_AUTOFILL_TO_BE_USED`（既定空）→ 空なら `["Original"]`。`reversed(api_priority)` で低優先から `result.update` するため高優先が後勝ち。各API呼出は try/except で失敗時スキップ。
+- DOI一括補完 `fetch_metadata_by_doi(doi, item_type_id, original, **kwargs)`：優先順位は `kwargs['meta_data_api']`（SWORD経由時）→ `WEKO_ITEMS_AUTOFILL_TO_BE_USED`（config.py の既定は空。標準の instance.cfg では 6 種すべて）→ 空なら `["Original"]`。`reversed(api_priority)` で低優先から `result.update` するため高優先が後勝ち。各API呼出は try/except で失敗時スキップ。
 - CrossRef は `get_crossref_record_data_with_pid` が `weko_admin.utils.get_current_api_certification("crf")`（`ApiCertificate`、table `api_certificate`、`api_code='crf'`）の PID を要し、未設定なら空リストを返し補完しない。
 - DOI未一致時：各API該当なしは空リストを返し補完は行われない。`get_auto_fill_record_data` は例外時のみ `result['error']` を設定。
 - 自動保存：`WEKO_ITEMS_UI_SAVE_FREQUENCY`（既定 600000ms＝10分）。`iframe/item_edit.html` の hidden input を `app.js` が読み `setInterval` で下書き保存（重複チェックを伴う）。
