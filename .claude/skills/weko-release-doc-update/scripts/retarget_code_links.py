@@ -3,13 +3,14 @@
 usage: python3 retarget_code_links.py <weko clone> <old ref> <new ref> [--apply] [<md>...]
        e.g. retarget_code_links.py ~/weko v0.9.22 release_v2.1.0     (default: every docs/**/*.md in git)
 The new lines are found, in this order:
+  text  the old lines (stripped, blank lines ignored) found once in the new file
   key   a "設定キー：X" (or `X` on the link line) within 3 lines whose definition "X = ..." is in the old lines:
         the definition of X in the new file (up to the line before the next top-level statement or docstring)
-  text  the old lines (stripped, blank lines ignored) found once in the new file
   ends  the first old line found once in the new file, and the last old line after it
   func  an old range that is a whole def/class: the whole def/class of the same name in the new file
 Links whose path is gone, or whose lines cannot be found, are reported and left as they are (KEEP).
-Without --apply only the report is printed. Run check_code_links.py afterwards.
+Without --apply only the report is printed. Check the "text" moves of a single line (a docstring or a comment
+can be found instead of the setting it belongs to) and run check_code_links.py afterwards.
 """
 import re, subprocess, sys
 
@@ -81,10 +82,10 @@ def main(clone, old, new, apply, files):
                 if not a: moved += 1; return base
                 a, b = int(a), int(m[4] or a); o, n = src(ro, path), src(rn, path)
                 how = r = None
-                for k in keys:
+                if (r := find(n, o[a - 1:b])): how = 'text'
+                for k in keys if not r else ():
                     d = defn(o, k)
                     if d and a <= d[0] <= b and (r := defn(n, k)): how = 'key'; break
-                if not r and (r := find(n, o[a - 1:b])): how = 'text'
                 if not r and (r := ends(n, o[a - 1:b])): how = 'ends'
                 if not r and (r := func(o, n, a, b)): how = 'func'
                 if not r:

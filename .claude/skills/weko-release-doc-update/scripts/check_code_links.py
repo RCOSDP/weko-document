@@ -2,7 +2,8 @@
 
 usage: python3 check_code_links.py <weko clone> [<md>...]      (default: every docs/**/*.md in git)
 Reports NOREF (the branch/tag does not exist, e.g. v1.1.0 or 0.9.22 without "v"), NOPATH (no such file at that ref)
-and MISMATCH (a "設定キー：X" within 3 lines of the link is not in the linked lines). Run `git fetch --tags` first.
+and MISMATCH (a "設定キー：X" within 3 lines of the link, or a key X named in the 2 lines above it that the
+linked file defines as "X = ...", is not in the linked lines). Run `git fetch --tags` first.
 """
 import re, subprocess, sys
 
@@ -25,10 +26,14 @@ def main(clone, files):
                     bad += 1; print(f'NOREF {f}:{i + 1} {m[1]}'); continue
                 if git('cat-file', '-e', f'{r}:{m[2]}').returncode:
                     bad += 1; print(f'NOPATH {f}:{i + 1} {m[1]} {m[2]}'); continue
+                if not m[3]: continue
+                a, b = int(m[3]), int(m[4] or m[3]); src = git('show', f'{r}:{m[2]}').stdout.split('\n')
                 keys = [k for j in range(max(0, i - 3), min(i + 4, len(L)))
                         for k in re.findall(r'設定キー[:：]\s*`?([A-Z][A-Z0-9_]+)', L[j])]
-                if not m[3] or not keys: continue
-                a, b = int(m[3]), int(m[4] or m[3]); src = git('show', f'{r}:{m[2]}').stdout.split('\n')
+                # a key named in the 2 lines above the link ("- WEKO_X" / "パス：") that the linked file defines
+                keys += [k for k in set(re.findall(r'\b([A-Z][A-Z0-9]*_[A-Z0-9_]{3,})\b', ' '.join(L[max(0, i - 2):i + 1]).replace('\\_', '_')))
+                         if any(re.match(k + r'\s*=', x) for x in src)]
+                if not keys: continue
                 if not any(k in x for k in keys for x in src[a - 1:b]):
                     bad += 1; print(f'MISMATCH {f}:{i + 1} {m[1]} L{a}-L{b} {keys}')
     print(f'{bad} problems in {tot} links')
