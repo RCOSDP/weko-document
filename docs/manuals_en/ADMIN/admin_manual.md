@@ -11686,7 +11686,7 @@ To delete an affiliation ID Prefix, click "Edit", and then click "Delete".
 
 ## Export author information
 
-You can export author name source information as a batch file.一括出力
+You can export author name source information as a batch file.
 
 This section explains how to bulk export author information.
 
@@ -11936,7 +11936,7 @@ Additional Information:
 
 ## Import author information
 
-This section explains how to import author information by specifying a file.著者 You import files in a tsv file.
+This section explains how to import author information by specifying a file. You import files in a tsv file.
 
 1.  Click "Author Management", and then click "Import".
 
