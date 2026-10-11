@@ -102,6 +102,13 @@ python3 .claude/skills/weko-release-doc-update/scripts/caption_check.py docs/man
 # （行番号は、リンクの前後 3 行の「設定キー：…」がその行にあるかで確かめる）
 python3 .claude/skills/weko-release-doc-update/scripts/check_code_links.py /home/mhaya/weko
 
+# 古いタグ（例 v0.9.22）を指すリンクを、新しいブランチの同じコードの行に張り替える（--apply を付けないと表示だけ。
+# 見つからないものは KEEP と表示されるので手で直す）
+python3 .claude/skills/weko-release-doc-update/scripts/retarget_code_links.py /home/mhaya/weko v0.9.22 release_v2.1.0 --apply
+
+# 機能仕様書の「現在の設定値」を実装の config.py と比べる
+python3 .claude/skills/weko-release-doc-update/scripts/check_config_values.py /home/mhaya/weko origin/release_v2.1.0
+
 # 運用文書など honkit でビルドしない文書の相対リンク・アンカー。--external で外部 URL も確認（404 は移転先か
 # Internet Archive の保存版に差し替える）
 python3 .claude/skills/weko-release-doc-update/scripts/check_doc_links.py --external

@@ -76,5 +76,8 @@
 - **ビルド対象外の文書（operation・develop・howto）は build_docs.sh で確認されない。** v2.1.0 では画像のパス誤り（`./x.png` で実体は `pics/`）、`https://` の無いリンク（相対パス扱いになる）、存在しない見出しへのアンカーがあった。`check_doc_links.py` で確認する。
 - **外部 URL は移転・消滅する**（NII の旧 irp/archive・CAT-ILL のページ、IRDB の PDF、COAR Notify、GitHub のリポジトリ移管）。`check_doc_links.py --external` で 404 を探し、移転先を探す。見つからなければ Internet Archive の保存版にし「（Internet Archive に保存された版）」と添える。`[url\#x](url#url)` のような Word 変換の崩れや、`#` が `%23` になったリンクもここで見つかる。
 - **公開サイトでは開けない関係者限定のリンク**（redmine.devops.rcos.nii.ac.jp、SharePoint）には「（関係者のみ閲覧可）」を添える。見出しの中のものは変えない。
-- 機能仕様書の「現在の設定値」は実装の `config.py` と比べる（v2.1.0 では `WEKO_AUTHORS_LIST_SCHEME` の並び順が違った。並び順はプルダウンの表示順になる）。
+- 機能仕様書の「現在の設定値」は実装の `config.py` と比べる（v2.1.0 では `WEKO_AUTHORS_LIST_SCHEME` の並び順が違った。並び順はプルダウンの表示順になる）。`check_config_values.py` で全件比べられる（v2.1.0 では `WEKO_IMPORT_LIST_NAME`・`WEKO_DEPOSIT_SYS_CREATOR_KEY` も古かった）。本文中の設定キー名も実装に有るか確かめる（`WEKO_OPENSEARCH_SYSTEM_IMAGE_URL` は実際は `WEKO_OPENSEARCH_IMAGE_URL`）。
+- **設定値を新しい版に直したら、リンクも新しい版に向ける。** v2.1.0 では「現在の設定値」は v2.1.0 の値なのにリンクは v0.9.22 のままで、開くと古い値が見えるものがあった。v0.9.22 のリンク 264 本は `retarget_code_links.py` で release_v2.1.0 の同じコードの行に張り替えた（設定キーの定義、同じ行のまとまり、先頭行と末尾行、関数全体の順に探す。見つからない 7 本は手で直した）。
+- **テーブル定義（データ型・Not Null）はモデル（models.py）と比べる。** USER_ACTIVITY_LOG では列名（`json` → 実際は `log`）、型、NULL 可否が違っていた。表の列数がヘッダより少ない行も見落としやすい。
+- **英語版は、日本語版に後から足した注記や手順が抜けやすい。** 【v2.1.0】と [v2.1.0] の数の差を章ごとに比べ、差のある所を読み比べる（タグの付け方の違いで数が合わないこともある）。v2.1.0 ではサイトライセンスの【注意事項】と Location の S3 設定の注記が英語版に無かった。
 - **Word の文字の名残**：図表番号の改行しないハイフン U+2011（`1‑1`。普通の `-` で検索しても見つからない。495 か所を `-` に統一）、NBSP（U+00A0。段落内の 1 文字は空白にするか削除。`<br />` や引用で字下げに使っているものは残す）、リスト番号の後のタブ（`1.\t`）、ゼロ幅スペース（U+200B。運用文書の見出しの末尾など）。
