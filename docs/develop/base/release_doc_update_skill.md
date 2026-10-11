@@ -106,6 +106,9 @@ python3 .claude/skills/weko-release-doc-update/scripts/check_code_links.py /home
 # 見つからないものは KEEP と表示されるので手で直す）
 python3 .claude/skills/weko-release-doc-update/scripts/retarget_code_links.py /home/mhaya/weko v0.9.22 release_v2.1.0 --apply
 
+# 機能仕様書に書かれた API のパス（GET /api/... など）が実装の URL にあるか大まかに確認する
+python3 .claude/skills/weko-release-doc-update/scripts/check_endpoints.py /home/mhaya/weko
+
 # 機能仕様書の「現在の設定値」を実装の config.py と比べる。instance.cfg で上書きされる設定の「既定」を
 # config.py の値で書いている箇所も OVERRIDE として表示する
 python3 .claude/skills/weko-release-doc-update/scripts/check_config_values.py /home/mhaya/weko origin/release_v2.1.0
