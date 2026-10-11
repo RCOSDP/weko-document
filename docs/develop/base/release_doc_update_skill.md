@@ -106,6 +106,10 @@ python3 .claude/skills/weko-release-doc-update/scripts/check_code_links.py /home
 # 見つからないものは KEEP と表示されるので手で直す）
 python3 .claude/skills/weko-release-doc-update/scripts/retarget_code_links.py /home/mhaya/weko v0.9.22 release_v2.1.0 --apply
 
+# 機能仕様書に書かれたモジュール・クラス・関数名が実装にあるか確認する（継承したメソッドや xxx.config.py の
+# ようなファイル名も表示されるので、読んで判断する）
+python3 .claude/skills/weko-release-doc-update/scripts/check_code_refs.py /home/mhaya/weko
+
 # 機能仕様書に書かれた API のパス（GET /api/... など）が実装の URL にあるか大まかに確認する
 python3 .claude/skills/weko-release-doc-update/scripts/check_endpoints.py /home/mhaya/weko
 

@@ -18,6 +18,7 @@ Reports, per page:
              fence in a list: add a blank line before it / keep one blank line)
   template   `` shown as text: honkit took the {{ name }} inside `{{ name }}` as a template variable and left the
              backticks empty (write <code>&#123;&#123; name &#125;&#125;</code>; a fenced code block is safe)
+  dunder     _init_ shown for __init__ (written \_init\_, or __init__ made bold): write `__init__`
   word       Word remnants: INDEXWORD, LINKID, ANCHORID, TBLATT, *.tif, auto-generated alt text
   code-prose paragraphs/images rendered as a code block without a language (indented text after a
              "1)" list, a table or an image that ended the list, or two blank lines in a list)
@@ -44,7 +45,8 @@ class Text(HTMLParser):
 PATS = {'esc': r'\\[<>_*\[\]#&|]', 'md image': r'!\[[^\]]*\]\([^)]*\)', 'md link': r'\]\([#./][^)]*\)',
         'pipe table': r'\|\s*:?-{3,}:?\s*\|', 'comment': r'<!--', 'fence': r'```',
         'word': r'INDEXWORD|LINKID=|ANCHORID=|TBLATT|\w\.tif\b|自動的に生成された説明',
-        'template': r'(?<!`)``(?!`)'}
+        'template': r'(?<!`)``(?!`)',
+        'dunder': r'(?<![\w.])_(?:init|call|str|repr|main|name|file|dict|class)_(?![\w])'}
 PROSE = re.compile(r'!\[[^\]]*\]\(|[ぁ-んァ-ン一-龥]{6,}|\b(?:Click|Select|The|appears)\b')
 CODEISH = re.compile(r'\s*(?:[\[{"$<]|curl|WEKO_|metadata\.|xxxxx|-{5}|Dear |This is a message|.{0,60}\[restricted_)', re.S)  # mail templates
 
