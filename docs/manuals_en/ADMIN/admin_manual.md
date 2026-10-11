@@ -9926,7 +9926,7 @@ Table 4-1. The elements in "Index Edit"
 </tr>
 <tr class="odd">
 <td>Deposit Privilege</td>
-<td><p>Specify the deposit privileges for viewing the index.</p>
+<td><p>Specify the privileges for depositing items to the index.</p>
 <p>[v2.1.0] Users who have at least one of the roles listed in "Role Authorized" and also belong to at least one of the groups listed in "Group Authorized" can register items to the index.</p>
 <p>[v2.1.0] "Authenticated User" is a role that refers to logged-in users, and "Guest" is a role that refers to users who are not logged in. "No Group" is a group that refers to users who are not logged in and logged-in users who do not belong to any group (including GakuNin mAP groups).</p>
 <p>As with the browsing privilege, the system administrator and repository administrator roles are not shown in the role list.</p>
@@ -14667,7 +14667,7 @@ Table 14-2. The elements in the "Create" tab
 | Quota Size | Specify an upper limit for the capacity.           |
 | Default    | Check if you want to use it as the default.<br>\* If another Location is already set as the default, this element is grayed out (inactive) and cannot be selected. You can set a new Location as the default after clearing the existing default Location. |
 
-If you select "S3 Path" or "S3 Virtual Host" for Type, the following elements appear.
+[v2.1.0] If you select "S3 Path" or "S3 Virtual Host" for Type, the following elements appear. Only system administrators can create and edit Locations.
 
 Table 14-3. The elements for S3-compatible object storage
 
@@ -16731,11 +16731,12 @@ If you specify multiple site names for a single language, you will get the error
 
 ## Configure IP addresses permitted by the site license
 
-This section explains how to configure IP addresses permitted by a site license. Users can download paid files free of charge when they access from IP addresses permitted by the site license. You can also exclude certain item types from free downloads even when they access from permitted IP addresses. You can give feedback on usage by site license users on the report screen.
+This section explains how to configure IP addresses permitted by a site license. Users can download paid files free of charge when they access from IP addresses permitted by the site license. You can also exclude certain item types from free downloads even when they access from permitted IP addresses. You can give feedback on usage by site license users on the report screen. Site licenses can be set for each community.
 
 1.  Click "Setting", and then click "Site License".
 
 A screen appears where you can configure permissions for the site license.
+For community administrators, only the site licenses set by the communities they manage are displayed.
 
 2.  Click "+More Input Row".
 
@@ -16746,6 +16747,11 @@ A screen appears where you can enter information for the site license.
 3.  Specify the elements for the site license.
 
 ![](media/media/image400.png)
+
+Notes:
+
+  - The mail address specified here is used as the destination of the emails sent from Administration > Statistics > Site License. Be careful when you specify it.
+  - [v2.1.0] When sending emails manually from Statistics > Site License, system administrators and repository administrators can select any repository, but community administrators can select only the repositories (communities) they manage. Emails cannot be sent for repositories they do not manage.
 
 4.  To add a site license, click "+More Input Row".
 
@@ -16781,11 +16787,11 @@ Additional Information:
 
 An output xml file is stored in the following place:
 
-https://{FQDN}/weko/sitemaps/sitemapindex.xml
+`https://{FQDN}/weko/sitemaps/sitemapindex.xml`
 
 The file is output in the "sitemap\_\*\*\*\*.xml.gz" form (\*\*\*\* is incremented starting at 1). It can be accessed as follows:
 
-https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
+`https://{FQDN}/weko/sitemaps/sitemap_****.xml.gz`
 
 ## Set up emails
 

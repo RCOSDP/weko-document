@@ -12645,11 +12645,11 @@ UIが「RangeSlider」の場合は「AND」のみ選択できます。</td>
 
 出力するxmlファイルは以下でアクセスできる。
 
-https://{FQDN}/weko/sitemaps/sitemapindex.xml
+`https://{FQDN}/weko/sitemaps/sitemapindex.xml`
 
 出力ファイルは「sitemap\_\*\*\*\*.xml.gz」の形で格納されている（\*\*\*\*は1から順にインクリメントされる）。アクセス先は以下の通り。
 
-https://{FQDN}/ weko/sitemaps/sitemap\_\*\*\*\*.xml.gz
+`https://{FQDN}/weko/sitemaps/sitemap_****.xml.gz`
 
 ### メール送信を設定する
 
