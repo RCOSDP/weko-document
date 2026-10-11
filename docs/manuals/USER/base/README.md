@@ -5085,7 +5085,7 @@ researchmap連携を行う手順について説明します。
 
 アクセストークンを追加する方法を説明します。
 
-1.  ［Personal access tokens］で［+New tokens］をクリックします。
+1.  ［Personal access tokens］で［+New token］をクリックします。
     
     ［New personal access token］画面が表示されます。
 

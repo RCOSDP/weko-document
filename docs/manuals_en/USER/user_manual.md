@@ -4379,7 +4379,7 @@ This section explains how to add an application.
 
 1.  Under "Developer Applications", click "+ New application".
 
-A screen appears where you can create an action.
+The "New OAuth Application" screen appears.
 
 ![](media/media/image249.png)![](media/media/image250.png)![](media/media/image251.png)
 
@@ -4435,9 +4435,9 @@ The application is added.
 
 This section explains how to add an access token.
 
-1.  Under "Personal access tokens", click "+ New tokens".
+1.  Under "Personal access tokens", click "+ New token".
 
-A screen appears where you can create an action.
+The "New personal access token" screen appears.
 
 ![](media/media/image253.png)
 
