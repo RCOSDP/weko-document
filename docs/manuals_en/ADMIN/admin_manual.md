@@ -7221,7 +7221,7 @@ The information you edited is saved to the item type.
 
 > Additional Information:
 > 
-> You can control whether the item type version needs to be upgraded or kept with WEKO\_ITEMTYPES\_UI\_UPGRADE\_VERSION\_ENABLED in the configuration file (instance.cfg) (default: True, the version is upgraded).
+> You can control whether the item type version needs to be upgraded or kept with WEKO\_ITEMTYPES\_UI\_UPGRADE\_VERSION\_ENABLED in the configuration file (instance.cfg) (True: the version is upgraded; False: the version is kept). The standard configuration file (instance.cfg) sets it to False (the version is kept).
 > 
 > If the item type version is configured to be kept, your changes will be saved without upgrading the version.
 > 

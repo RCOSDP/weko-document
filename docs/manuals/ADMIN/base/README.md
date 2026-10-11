@@ -2241,7 +2241,7 @@ SWORD APIの管理に関する操作手順を説明しています。
     
     【補足】
     
-    アイテムタイプのバージョンを更新するか、更新しないかを設定ファイル（instance.cfg）の WEKO_ITEMTYPES_UI_UPGRADE_VERSION_ENABLED で制御できます（既定は True：バージョンを更新する）。
+    アイテムタイプのバージョンを更新するか、更新しないかを設定ファイル（instance.cfg）の WEKO_ITEMTYPES_UI_UPGRADE_VERSION_ENABLED で制御できます（True：バージョンを更新する、False：更新しない）。標準の設定ファイル（instance.cfg）では False（更新しない）が設定されています。
     
     アイテムタイプのバージョンを更新しないと設定される場合、アイテムタイプバージョンを変更せずに、編集した内容を保存します。
     

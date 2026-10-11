@@ -5280,7 +5280,7 @@ Cookieの使用確認画面を表示する方法を説明します。
 
 > ご利用目的に応じて、設定が完了したら\[![](media/media/image297.png)\]ボタンを押下し設定を保存してください。
 
-注：「Change consent settings」は、設定ファイル（instance.cfg）で `ENABLE_COOKIE_CONSENT = True` が設定されている場合にだけ表示されます（既定の設定は無効（False）です）。
+注：「Change consent settings」は、設定ファイル（instance.cfg）で `ENABLE_COOKIE_CONSENT = True` が設定されている場合にだけ表示されます（標準の設定ファイル（instance.cfg）では True が設定されています）。
 
 ### 非公開コンテンツをワンタイムアドレスを利用して共有したい
 

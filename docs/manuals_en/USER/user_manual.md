@@ -4552,7 +4552,7 @@ Table 10-4. The items displayed in the cookie consent screen
 
 After completing the settings according to your purpose, click the "Save" button to save the settings.
 
-Note: The "Change consent settings" link is displayed only when `ENABLE_COOKIE_CONSENT = True` is set in the configuration file (instance.cfg). This setting is disabled (False) by default.
+Note: The "Change consent settings" link is displayed only when `ENABLE_COOKIE_CONSENT = True` is set in the configuration file (instance.cfg). The standard configuration file (instance.cfg) sets it to True.
 
 ## Share non-public content using a one-time address
 
