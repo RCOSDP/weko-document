@@ -39,7 +39,7 @@ WEKO3 では、出自と保存先の異なる複数の概念を「ロール」�
 | mAPグループ | mAP groups | mAPロールグループと mAPユーザー定義グループの総称 | — | `accounts_role` | `weko_accounts.api.is_map_managed_name` |
 | WEKOグループ（非推奨） | WEKO group (deprecated) | `weko-groups` モジュールのグループ。ユーザーのアカウント設定画面（`/accounts/settings/groups/`）で作成・管理する。将来削除する予定 | — | `accounts_group` | `weko_groups.models.Group` |
 
-- mAPロールグループ・mAPユーザー定義グループの名称は、学認mAPのグループを作成する JAIRO Cloud Groups Manager の呼び方（ロールグループ / ユーザー定義グループ）に合わせている。グループ ID の命名規則と同期の仕組みは「[学認mAPグループ連携](./other/GAKUNIN_MAP_GROUP_CACHE_01.md)」を参照。
+- mAPロールグループ・mAPユーザー定義グループの名称は、学認mAPのグループを作成する JAIRO Cloud Groups Manager の呼び方（ロールグループ / ユーザー定義グループ）に合わせている。グループ ID の命名規則と同期の仕組みは「[mAPグループ連携](./other/GAKUNIN_MAP_GROUP_CACHE_01.md)」を参照。
 
 - 以下の表記は用いない。
 

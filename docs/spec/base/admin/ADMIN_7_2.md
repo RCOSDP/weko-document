@@ -99,7 +99,7 @@
   - GakuNinRDM Flag：チェックなし
   - 登録先インデックスの指定（Registration Destination Index Designation）：db内のindexテーブルのindex_nameカラムから情報を取り出し、プルダウン形式で表示する。初期状態ではどの情報も選択せず、「指定なし（Undesignated）」とする。
   - ストレージロケーション（Storage Location）：db内のfiles_locationテーブルのnameカラムから情報を取り出し、プルダウン形式で表示する。初期状態ではどの情報も選択せず、「指定なし（Undesignated）」とする。
-  - 【v2.1.0】表示/非表示（Display/Hide）：db内のacounts_roleのnameカラムから情報を取り出し表示（Display）ボックス内に表示する。初期状態では、すべてのroleが表示側に表示される。なお学認mAPロール（`weko_accounts.api.map_role_condition` に一致するロール）は選択肢から除外される（`WorkFlowSettingView.index` / `workflow_detail`、`WorkFlow.get_workflows_by_roles` の表示判定も同条件。v2.1.0 #1891 で判定を map conditions に統一）。
+  - 【v2.1.0】表示/非表示（Display/Hide）：db内のacounts_roleのnameカラムから情報を取り出し表示（Display）ボックス内に表示する。初期状態では、すべてのroleが表示側に表示される。なお mAPロールグループ（`weko_accounts.api.map_role_condition` に一致するもの）は選択肢から除外される（`WorkFlowSettingView.index` / `workflow_detail`、`WorkFlow.get_workflows_by_roles` の表示判定も同条件。v2.1.0 #1891 で判定を map conditions に統一）。
 - 既存のワークフローの編集の場合、入力欄の値は指定したworkflow_idを用いてweko_workflow.api.WorkFlow.get_workflow_detailを使用して情報をdb内のworkflow_workflowテーブルから取り出して表示する。
 
 情報の入力後に[保存（Save）]ボタン押下で、weko_workflow.admin.WorkFlowSettingView.update_workflowが呼び出される。  
@@ -132,3 +132,4 @@
 | 2025/01/23 | - | サブリポジトリ対応 |
 | 2025/10/31 | 160a811eed2c61492558905db34fa0619da6b18f | 要素の表示条件・アクセス権限を記載 |
 | 2026/10/05 | 508030789 | release_v2.1.0突合：表示/非表示ロールの選択肢から学認mAPロールを除外する条件（map conditions #1891）を追記 |
+| 2026/10/26 |  | 用語集（ロールとグループ）に合わせて mAPグループ関連の表記を統一 |

@@ -99,7 +99,7 @@
             エラーメッセージ：「既に存在しています。」
         - 「Owner」プルダウン
             - 所有者のロールを選択する。必須項目である。デフォルトは1番目の項目とする
-            - 【v2.1.0】「Owner」プルダウンの選択肢は、システムに登録されたロールのうち、GakuNin mAP ロール（`weko_accounts.api.map_role_condition`：`sysadm_group` と一致、または `<prefix>_<FQDN>_<role_keyword>_` で始まる名前。FQDN は WEKO_ACCOUNTS_IDP_ENTITY_ID から生成）を除いた一覧である
+            - 【v2.1.0】「Owner」プルダウンの選択肢は、`accounts_role` のレコードのうち、mAPロールグループ（`weko_accounts.api.map_role_condition`：`sysadm_group` と一致、または `<prefix>_<FQDN>_<role_keyword>_` で始まる名前。FQDN は WEKO_ACCOUNTS_IDP_ENTITY_ID から生成）を除いた一覧である
             - 表示形式は以下の通りである  
             ロール - ロール説明(description)
         - 「Index」プルダウン
@@ -109,7 +109,7 @@
             Index&lt;id=インデックスId, index_name=インデックス名&gt;
         - 「Group」プルダウン
             - コミュニティを設定するグループを選択する。
-            - 【v2.1.0】「Group」プルダウンの選択肢は、mAPグループを意味するプレフィックスが付いたロール一覧である（`weko_accounts.api.map_group_condition`：`<prefix>_<FQDN>_<group_keyword>_` で始まる名前。既定値では `jc_<FQDN>_gr_`）。WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT または WEKO_ACCOUNTS_IDP_ENTITY_ID が未設定の場合は選択肢が空になる。
+            - 【v2.1.0】「Group」プルダウンの選択肢は、mAPユーザー定義グループの一覧である（`weko_accounts.api.map_group_condition`：`<prefix>_<FQDN>_<group_keyword>_` で始まる名前。既定値では `jc_<FQDN>_gr_`）。WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT または WEKO_ACCOUNTS_IDP_ENTITY_ID が未設定の場合は選択肢が空になる。
             - 表示形式は以下の通りである  
                 ロール - ロール説明(description)
             - 「Title」テキストボックス  
@@ -218,3 +218,4 @@
 | 2025/01/23 | 1601602fe7ad9e606569f9e67c0b20654c82761d   | サブリポジトリ対応                              |
 | 2026/07/17 |                                            | v2.1.0差分反映：Owner表示名変換（owner_display）・OwnerプルダウンからのmAPロール除外を追記 |
 | 2026/10/05 | 508030789 | release_v2.1.0突合：Owner/Group プルダウンと Owner 表示名変換の mAP 判定を map conditions（#1891）準拠に修正 |
+| 2026/10/26 |  | 用語集（ロールとグループ）に合わせて mAPグループ関連の表記を統一 |

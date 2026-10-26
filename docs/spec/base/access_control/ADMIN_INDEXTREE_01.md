@@ -75,18 +75,18 @@
 
 （2026/07/14 実装 v2.0.2 と突き合わせ）本画面のロール別アクセス可否は、`weko_admin/ext.py` の `WekoAdmin.role_has_access`（`@app.before_request` の `is_accessible_to_role` が全 Flask-Admin ビューの `is_accessible`/`is_visible` を上書き）で判定される。判定は `weko_admin/config.py` の `WEKO_ADMIN_ACCESS_TABLE`（System Administrator は全許可、Repository Administrator は `WEKO_ADMIN_REPOSITORY_ACCESS_LIST`、Community Administrator は `WEKO_ADMIN_COMMUNITY_ACCESS_LIST`）に、当該ビューの endpoint 名が含まれるかで行う。ロールを持たないユーザー（登録／一般）およびゲストは全画面 ×。画面内の作成・編集・削除（CRUD）や一覧の絞り込みは各 ModelView の `can_create`/`can_edit`/`can_delete`/`get_query` による別レイヤで、コミュニティ範囲の絞り込みは `Community.get_repositories_by_user`／`WEKO_PERMISSION_SUPER_ROLE_USER`（System＋Repository）で行われる。
 
-### 実装上の変更（v2.1.0：GakuNin mAP ロール／グループの判定条件）
+### 実装上の変更（v2.1.0：mAPグループの判定条件）
 
-【v2.1.0】インデックスの閲覧・投稿権限（ロール／グループ）に関わる GakuNin mAP のロール／グループ判定が、release_v2.1.0 で変更された（PR #1891）。`weko_index_tree/api.py` の `Indexes` はロール一覧を mAP ロール（`is_map_role`）・mAP グループ（`is_map_managed_name` かつ mAP ロールでない）・その他に分類し、mAP 管理名のロールは権限設定が無い場合に除外する。`weko_index_tree/utils.py` の `check_index_permission_by_role_and_group` は新設の `get_user_roles_and_groups` で、ユーザー・インデックス双方のロール ID を「mAP ロール以外の通常ロール（Guest `-99`・Authenticated User `-98` を含む）」と「mAP グループ」に分けて判定する。
+【v2.1.0】インデックスの閲覧・投稿権限（ロール／グループ）に関わる mAPグループの判定が、release_v2.1.0 で変更された（PR #1891）。`weko_index_tree/api.py` の `Indexes` は `accounts_role` の一覧を mAPロールグループ（`is_map_role`）・mAPユーザー定義グループ（`is_map_managed_name` かつ mAPロールグループでない）・ロールに分類し、mAPグループは権限設定が無い場合に除外する。`weko_index_tree/utils.py` の `check_index_permission_by_role_and_group` は新設の `get_user_roles_and_groups` で、ユーザー・インデックス双方のロール ID を「ロール（ゲスト `-99`・ログインユーザー `-98` を含み、mAPロールグループを除く）」と「mAPユーザー定義グループ」に分けて判定する。
 
 判定は `weko_accounts/api.py` の関数に集約された（`map_role_condition` / `map_group_condition` / `is_map_role` / `is_map_group` / `is_map_managed_name` / `is_map_sysadm_role`）。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT`（`prefix`、`role_keyword`、`group_keyword`（v2.1.0 で追加、既定 `gr`）、`sysadm_group`、`role_mapping`）と `WEKO_ACCOUNTS_IDP_ENTITY_ID` の両方が設定されている場合のみ有効で、`<fqdn>` は `WEKO_ACCOUNTS_IDP_ENTITY_ID` のホスト名の `.`・`-` を `_` に置換した値（`create_fqdn_from_entity_id`）。
 
 | 区分 | ロール名の条件 |
 | --- | --- |
-| mAP ロール | `sysadm_group` と一致、または `<prefix>_<fqdn>_<role_keyword>_` で始まる |
-| mAP グループ | `<prefix>_<fqdn>_<group_keyword>_` で始まる |
+| mAPロールグループ | `sysadm_group` と一致、または `<prefix>_<fqdn>_<role_keyword>_` で始まる |
+| mAPユーザー定義グループ | `<prefix>_<fqdn>_<group_keyword>_` で始まる |
 
-いずれかの設定が無い場合はどのロールも mAP ロール／グループとして扱われない（v2.0.x までの「`role_keyword` を含み `prefix` で始まる」「`_groups_` を含む」という部分一致判定は廃止）。
+いずれかの設定が無い場合は `accounts_role` のどのレコードも mAPグループとして扱われない（v2.0.x までの「`role_keyword` を含み `prefix` で始まる」「`_groups_` を含む」という部分一致判定は廃止）。
 
 ## 更新履歴
 
@@ -94,3 +94,4 @@
 | ---------- | ------------------------------------------ | -------------------------------------------------------- |
 | 2025/08/29 |     6ee63da44c8f2e23ac73d6218ee09f23ba5edcb3    | 初版作成                                                 |
 | 2026/10/05 | 508030789 | release_v2.1.0突合：GakuNin mAP ロール／グループの判定条件（map conditions）を追記 |
+| 2026/10/26 |  | 用語集（ロールとグループ）に合わせて mAPグループ関連の表記を統一 |
