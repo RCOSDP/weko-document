@@ -122,9 +122,9 @@
 
   -  isMemberOf属性がない場合に付与する、IdP毎のデフォルトの学認mAPグループを設定する。
 
-    - IdPのエンティティIDをキーとして、デフォルトの学認mAPグループをリストで値に設定する。
+    - WEKO_ACCOUNTS_IDP_ENTITY_IDに設定した値（リポジトリのShibboleth SPのエンティティID）をそのままキーとして、デフォルトの学認mAPグループをリストで値に設定する。
 
-      - 例 {"abc_idp_ac_jp": ["jc_abc_idp_ac_jp_groups_yyy"] }
+      - 例 {"https://xxx.repo.nii.ac.jp/shibboleth-sp": ["jc_xxx_repo_nii_ac_jp_ro_cont"] }
 
     - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L236>
 
@@ -134,7 +134,11 @@
 
 > WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPING = {}
 
-  - 自機関のIdPを判別するためのIdPのentityID。
+  - リポジトリのShibboleth SPのエンティティID。設定名に反してIdPのエンティティIDではない。
+
+    - 学認mAPグループ情報キャッシュのキー、学認mAPグループIDの判定、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGのキーに用いる。
+
+    - IdPのエンティティIDを設定するとキャッシュのキーが一致せず、エラーを出さずに学認mAPグループの同期が行われなくなる。詳細は[学認mAPグループ連携](./GAKUNIN_MAP_GROUP_CACHE_01.md)を参照。
 
     - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L233>
 
@@ -166,7 +170,9 @@
 
         - Redisから「&lt;institution_fqdn&gt;とWEKO_ACCOUNTS_GAKUNIN_GROUP_SUFFIXを結合した値」をキーとして対応する機関の学認mAPグループをリストで取得する
 
-          - &lt;institution\_fqdn&gt;は対象機関のIdPのentityID（変数 WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID）からFQDNを取得し、"."または"-"を"\_"に置き換えた値になる
+          - &lt;institution\_fqdn&gt;はリポジトリのShibboleth SPのエンティティID（変数 WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID）からFQDNを取得し、"."または"-"を"\_"に置き換えた値になる
+
+          - キャッシュは weko-group-cache-db が作成する。キャッシュの形式は[学認mAPグループ連携](./GAKUNIN_MAP_GROUP_CACHE_01.md)を参照
 
         - 取得した学認mAPグループリストはロールとして登録されていないかチェックする。ロールとして登録されていない学認mAPグループの場合、新規ロールとしてaccounts_roleテーブルにレコード追加する
 
@@ -266,7 +272,7 @@
 
             - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる
 
-              - 認証されたIdPのentityIDの".", "-"を"_"に置き換えた値をキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる
+              - WEKO_ACCOUNTS_IDP_ENTITY_IDの値（リポジトリのShibboleth SPのエンティティID）をそのままキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる
 
               - 該当グループが見つからない場合、またはWEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない
 
@@ -294,7 +300,7 @@
 
             - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる
 
-              - 認証されたIdPのentityIDの".", "-"を"_"に置き換えた値をキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる
+              - WEKO_ACCOUNTS_IDP_ENTITY_IDの値（リポジトリのShibboleth SPのエンティティID）をそのままキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる
 
               - 該当グループが見つからない場合、またはWEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない
 
@@ -340,6 +346,7 @@
 | 2026/07/14 |  | 本文を実装準拠に修正 |
 | 2026/07/17 |  | v2.1.0差分反映：各shibビューの `next=ams`（AMS経路）分岐を追記 |
 | 2026/10/05 | 508030789 | release\_v2.1.0突合：SP 属性の受け付け元限定（`shib_sp_source_required`・nginx の `$realip_remote_addr` 判定）、mAP ロール／グループ判定条件（`group_keyword`・`is_map_*`）を追記。属性受け渡しの説明を旧 `login.php` から現行の `login.py`（fcgiwrap 実行の CGI）に更新 |
+| 2026/10/25 |  | WEKO_ACCOUNTS_IDP_ENTITY_IDの説明をSPのエンティティIDに訂正、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGのキーを実装に合わせて訂正、学認mAPグループ連携への参照を追加 |
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 

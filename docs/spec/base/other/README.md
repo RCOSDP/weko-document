@@ -19,6 +19,7 @@
 | 【v2.1.0】[JSONLDインポート文字列置換](./JSONLD_IMPORT_REPLACE.md) | JSON-LD インポート時の文字列置換ルール（`WEKO_SEARCH_UI_IMPORT_REPLACE_RULES`） |
 | [解析基盤連携](./KAISEKI_01.md) | オンライン分析（Binder 誘導） |
 | [Shibboleth対応](./SHIBBOLETH_01.md) | 学認／Shibboleth ログイン・ロール付与 |
+| [学認mAPグループ連携](./GAKUNIN_MAP_GROUP_CACHE_01.md) | Groups Manager / weko-group-cache-db / WEKO3 の構成と Redis キャッシュ形式 |
 | [elasticsearch](./OTHER_elasticsearch.md) | 検索基盤（ES 6.8）・インデックス |
 | [利用統計ログ](./USAGE_LOG.md) | invenio-stats のイベント／集計 |
 | [基本監査ログ](./USER_ACTIVITY_LOG.md) | weko-logging の操作ログ |
