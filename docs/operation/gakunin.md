@@ -719,6 +719,110 @@ WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPING = {
 
 WEKO3を再起動する。
 
+### 学認mAPのグループ情報をRedisに書き込む
+
+`WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPS = True` のとき、WEKO3はRedisに書き込まれたグループ情報を読み、mAPグループをロールとして登録する。
+WEKO3自身はグループ情報を書き込まない。[weko-group-cache-db](https://github.com/RCOSDP/weko-group-cache-db)（`wgcd`）が、学認クラウドゲートウェイサービスのGroups APIから機関ごとにグループ情報を取得し、Redisに書き込む。
+
+グループ情報が書き込まれていないと、mAPユーザー定義グループはロールとして登録されず、ログインしてもユーザーに付与されない。インデックスの閲覧・投稿権限の設定にも表示されない。
+mAPロールグループによるロール（Repository Administratorなど）の付与は、`isMemberOf`属性だけで行われる。
+用語は[用語集](../spec/base/GLOSSARY.md#ロールとグループ)、キャッシュの形式と設定の対応は[mAPグループ連携（グループ情報キャッシュ）](../spec/base/other/GAKUNIN_MAP_GROUP_CACHE_01.md)を参照する。
+
+WEKO3は、`WEKO_ACCOUNTS_IDP_ENTITY_ID`のURLのホスト部から、Redisのキー（例：`sample_repo_nii_ac_jp_gakunin_groups`）を作る。
+`WEKO_ACCOUNTS_IDP_ENTITY_ID`には、リポジトリのShibboleth SPのエンティティIDを設定する。そのホスト部が、`wgcd`に指定するリポジトリのFQDNと一致していなければならない。
+
+#### weko-group-cache-dbを準備する
+
+weko-group-cache-dbを取得し、Dockerイメージをビルドする。
+実行する環境から、学認クラウドゲートウェイサービスのGroups APIと、WEKO3が使用するRedisの両方に接続できる必要がある。
+
+```
+git clone https://github.com/RCOSDP/weko-group-cache-db.git
+cd weko-group-cache-db
+docker build --target production -t weko-group-cache-db .
+```
+
+`config.toml` を編集する。`map_groups_api_endpoint` は必須で、それ以外は必要なものだけを記載する。
+Redisの接続先とDB番号、キーのサフィックスは、WEKO3の設定（`GROUP_INFO_REDIS_DB`、`WEKO_ACCOUNTS_GAKUNIN_GROUP_SUFFIX`）と一致させる。
+
+```
+map_groups_api_endpoint = "学認クラウドゲートウェイサービスのGroups APIのエンドポイント"
+redis_host = "WEKO3が使用するRedisのホスト名"
+redis_port = 6379
+redis_db_index = 4
+cache_key_suffix = "_gakunin_groups"
+```
+
+Redis Sentinelを使用している場合は、`redis_type`、`redis_sentinel_master`、`[[sentinels]]`を記載する。`redis_type`に指定できる値はweko-group-cache-dbの版によって異なる（[mAPグループ連携（グループ情報キャッシュ）](../spec/base/other/GAKUNIN_MAP_GROUP_CACHE_01.md)の「4. 関連設定」を参照）。
+
+#### 機関の証明書とFQDNリストを用意する
+
+Groups APIの認証には、機関ごとのTLSクライアント証明書と鍵を用いる。
+機関ごとに、リポジトリのFQDNと同じ名前のディレクトリを作成し、証明書を`server.crt`、鍵を`server.key`の名前で置く。
+
+```
+/var/mnt
+├── sample.repo.nii.ac.jp
+│   ├── server.crt
+│   └── server.key
+└── another.repo.nii.ac.jp
+    ├── server.crt
+    └── server.key
+```
+
+FQDNリストファイル（`repositories.txt`）に、グループ情報を書き込むリポジトリのFQDNを1行に1つずつ記載する。
+`#`で始まる行と空行は無視される。
+FQDNリストに記載され、かつ証明書のディレクトリがある機関だけが対象になる。
+
+```
+sample.repo.nii.ac.jp
+another.repo.nii.ac.jp
+```
+
+#### グループ情報を書き込む
+
+証明書のディレクトリを`/var/mnt`に、FQDNリストを`/var/repositories.txt`に、編集した`config.toml`を`/code/config.toml`にマウントしてコンテナを起動する。
+コンテナの既定のコマンドで、FQDNリストに記載された全機関のグループ情報を書き込む。
+
+```
+docker run --rm \
+  -v /path/to/mnt:/var/mnt:ro \
+  -v /path/to/repositories.txt:/var/repositories.txt:ro \
+  -v /path/to/config.toml:/code/config.toml:ro \
+  weko-group-cache-db
+```
+
+1つの機関だけを書き込む場合は、`wgcd one` にリポジトリのFQDNを指定する。
+
+```
+docker run --rm \
+  -v /path/to/mnt:/var/mnt:ro \
+  -v /path/to/repositories.txt:/var/repositories.txt:ro \
+  -v /path/to/config.toml:/code/config.toml:ro \
+  weko-group-cache-db \
+  wgcd one sample.repo.nii.ac.jp -d /var/mnt -l /var/repositories.txt
+```
+
+JAIRO Cloud Groups Managerを利用している場合は、その画面から同じ書き込みを手動で実行することもできる。
+
+#### 書き込まれたことを確認する
+
+Redisに接続し、機関のキーにグループ情報があることを確認する。
+
+```
+redis-cli -n 4 HGETALL sample_repo_nii_ac_jp_gakunin_groups
+```
+
+`groups`に、学認mAPで作成したグループのIDが含まれていればよい。
+その後、Shibbolethでログインするか、管理画面でインデックスツリーの編集画面を開くと、WEKO3にmAPグループが登録される。
+
+#### 定期的に書き込む
+
+書き込んだグループ情報は、`cache_ttl`（デフォルト値：86400秒）を過ぎると消える。
+消えると、WEKO3はmAPグループの同期を行わない。登録済みのmAPグループは削除されないが、学認mAPで追加・削除したグループが反映されなくなる。
+cronなどで、有効期間より短い間隔で定期的に実行する。
+`cache_ttl`に0未満を指定すると、有効期間は無期限になる。
+
 ## 【補足】トラブルシューティング
 
 ### デバグログ出力
