@@ -170,25 +170,25 @@
         
           - 「子インデックスのグループ権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定される。
 
-      - 学認mAP連携機能が有効な場合、閲覧権限の設定に学認mAPのグループ情報を利用できる。
+      - 学認mAP連携機能が有効な場合、閲覧権限の設定に mAPユーザー定義グループを利用できる。
 
          - 【v2.1.0】学認mAP連携として扱われるのは、設定値 WEKO\_ACCOUNTS\_GAKUNIN\_GROUP\_PATTERN\_DICT と WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID（既定は空）の両方が設定されている場合のみである。未設定の場合は「jc\_」で始まるロールも通常のロールとして扱われる。
 
-         - 【v2.1.0】グループIDのフォーマットが「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;role\_keyword&gt;\_<ロール種別>」（既定値では「jc\_&lt;institution\_fqdn&gt;\_ro\_<ロール種別>」）に従っている学認mAPロールは非表示となり、閲覧権限の判定時に無視される。
+         - 【v2.1.0】グループIDのフォーマットが「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;role\_keyword&gt;\_<ロール種別>」（既定値では「jc\_&lt;institution\_fqdn&gt;\_ro\_<ロール種別>」）に従っている mAPロールグループは非表示となり、閲覧権限の判定時に無視される。
 
-              - 【v2.1.0】&lt;institution\_fqdn&gt;には WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID のホスト名から".","-"を"\_"に置換した値が設定される（`weko_accounts.api.create_fqdn_from_entity_id`）。自機関以外の FQDN を含むロールは学認mAPロールとして扱われない。
+              - 【v2.1.0】&lt;institution\_fqdn&gt;には WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID のホスト名から".","-"を"\_"に置換した値が設定される（`weko_accounts.api.create_fqdn_from_entity_id`）。自機関以外の FQDN を含むレコードは mAPロールグループとして扱われない。
 
                   - 例: abc-u.ac.jp → abc_u_ac_jp
 
               - 【v2.1.0】例外的に「jc_roles_sysadm」（設定値の sysadm_group）も非表示となり、閲覧権限の判定時に無視される。
 
-              - 【v2.1.0】学認mAPロール・グループのフォーマット（prefix、sysadm_group、role_keyword、group_keyword）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで変更できる。
+              - 【v2.1.0】mAPグループのフォーマット（prefix、sysadm_group、role_keyword、group_keyword）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで変更できる。
 
          - 【v2.1.0】上記以外で「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_」で始まるグループIDはグループ権限として表示され、閲覧権限を変更できる。権限判定でグループとして扱われるのは「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;group\_keyword&gt;\_」（既定値では「jc\_&lt;institution\_fqdn&gt;\_gr\_」）で始まるもの（`weko_accounts.api.map_group_condition`）である。
 
-              - 【v2.1.0】学認mAPのグループ情報は内部的にはロールだが、グループとして扱われる。
+              - 【v2.1.0】mAPユーザー定義グループは `accounts_role` に登録されるが、グループとして扱われる。
 
-         - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの閲覧権限のデフォルト値は、WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING_PERMISSIONの真偽値から権限有無を決定する。
+         - 学認mAP連携機能で mAPグループが WEKO3 に追加された際、設定する閲覧権限のデフォルト値は、WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING_PERMISSIONの真偽値から権限有無を決定する。
 
   - 「投稿権限」（Deposit Privilege）
     
@@ -222,11 +222,11 @@
         
           - 「子インデックスのグループ権限にも再帰的に反映させる」（Set the base authorities of child indexes recursively）チェックボックスにチェックを入れることで、所属する子インデックスと子孫インデックスすべてにグループの設定が再帰的に設定される。
 
-      - 学認mAP連携機能が有効な場合、投稿権限の設定に学認mAPのグループ情報を利用できる。
+      - 学認mAP連携機能が有効な場合、投稿権限の設定に mAPユーザー定義グループを利用できる。
 
          - 【v2.1.0】学認mAP連携として扱われる条件（WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT と WEKO_ACCOUNTS_IDP_ENTITY_ID の両方が設定済み）は閲覧権限と同じである。
 
-         - 【v2.1.0】グループIDのフォーマットが「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;role\_keyword&gt;\_<ロール種別>」（既定値では「jc\_&lt;institution\_fqdn&gt;\_ro\_<ロール種別>」）に従っている学認mAPロールは非表示となり、投稿権限の判定時に無視される。
+         - 【v2.1.0】グループIDのフォーマットが「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;role\_keyword&gt;\_<ロール種別>」（既定値では「jc\_&lt;institution\_fqdn&gt;\_ro\_<ロール種別>」）に従っている mAPロールグループは非表示となり、投稿権限の判定時に無視される。
 
               - 【v2.1.0】&lt;institution\_fqdn&gt;には WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID のホスト名から".","-"を"\_"に置換した値が設定される。
 
@@ -234,13 +234,13 @@
 
               - 【v2.1.0】例外的に「jc_roles_sysadm」（設定値の sysadm_group）も非表示となり、投稿権限の判定時に無視される。
 
-              - 【v2.1.0】学認mAPロール・グループのフォーマット（prefix、sysadm_group、role_keyword、group_keyword）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで変更できる。
+              - 【v2.1.0】mAPグループのフォーマット（prefix、sysadm_group、role_keyword、group_keyword）は、設定値 WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT を変更することで変更できる。
 
          - 【v2.1.0】上記以外で「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_」で始まるグループIDはグループ権限として表示され、投稿権限を変更できる。権限判定でグループとして扱われるのは「&lt;prefix&gt;\_&lt;institution\_fqdn&gt;\_&lt;group\_keyword&gt;\_」（既定値では「jc\_&lt;institution\_fqdn&gt;\_gr\_」）で始まるものである。
 
-              - 【v2.1.0】学認mAPのグループ情報は内部的にはロールだが、グループとして扱われる。
+              - 【v2.1.0】mAPユーザー定義グループは `accounts_role` に登録されるが、グループとして扱われる。
 
-         - 学認mAP連携機能でGakuNin mAPのグループ情報がWEKO3に追加された際、設定するmAPグループの投稿権限のデフォルト値は、WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_CONTRIBUTE_PERMISSIONの真偽値から権限有無を決定する。
+         - 学認mAP連携機能で mAPグループが WEKO3 に追加された際、設定する投稿権限のデフォルト値は、WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_CONTRIBUTE_PERMISSIONの真偽値から権限有無を決定する。
 
   - 「表示形式(検索結果)」（Display Format(Search Results)）  
     検索結果の表示形式を選択する。
@@ -420,7 +420,7 @@
 - 再帰フラグ：再帰対象は #10 `recursive_public_state` / #18 `recursive_coverpage_check` / #21 `biblio_flag` / #23 `recursive_browsing_role` / #25 `recursive_browsing_group` / #27 `recursive_contribute_role` / #29 `recursive_contribute_group`（#8 public_state・#16 rss_status には再帰なし）。カラム名は `recursive_coverpage_check`。テーブルには `is_deleted` / `owner_user_id` / `cnri` / `index_url` / `harvest_spec` 等の列もある。
 - config：`WEKO_INDEXTREE_GAKUNIN_GROUP_DEFAULT_BROWSING/CONTRIBUTE_PERMISSION` は **weko-accounts/config.py** に定義。関連モジュール（追記）：weko-accounts / weko-handle / weko-workflow / weko-logging。
 - 【v2.1.0】既定グループとNo Group：`Indexes.get_account_group`（`weko_index_tree.api`）が既定のグループ一覧に仮想グループ「No Group」（内部ID `-89`）を含め、新規インデックスの既定 `browsing_group`/`contribute_group` に `-89` を設定する。既存インデックスへは `postgresql/ddl/W2025-61a.sql` で `-89` を追記する。
-- 【v2.1.0】アクセス可否判定：閲覧・投稿いずれのアクセス可否も `weko_index_tree.utils.check_index_permission_by_role_and_group` により、ロール権限の一致（`check_roles`。認証済みユーザーに `-98`、ゲストに `-99` を自動付与し、いずれか1つでも一致すれば許可＝ANY 一致）とグループ権限の一致（`check_groups`。グループ未所属の認証ユーザー／ゲストは `-89`（No Group）扱い。学認mAPグループのロールを含めて ANY 一致）の **両方**（AND）を満たす場合に許可される。管理者ロールは常に許可。ロールとグループの振り分けは `get_user_roles_and_groups` で行い（#1891 で map conditions に統一）、`weko_accounts.api.map_group_condition`（`<prefix>_<FQDN>_<group_keyword>_` で始まる名前）に一致するものをグループ、`map_role_condition`（`sysadm_group` と一致、または `<prefix>_<FQDN>_<role_keyword>_` で始まる名前）に一致する GakuNin mAP ロールは判定対象から除外する。FQDN は `WEKO_ACCOUNTS_IDP_ENTITY_ID` から生成され、同 config または `WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` が未設定の場合は両条件とも偽（mAP 扱いなし）。画面側の振り分けは `Indexes.filter_roles`（`is_map_managed_name`／`is_map_role`）と `get_index_with_role`。呼び出しは `filter_index_list_by_role` / `reduce_index_by_role` / `check_index_permissions`。
+- 【v2.1.0】アクセス可否判定：閲覧・投稿いずれのアクセス可否も `weko_index_tree.utils.check_index_permission_by_role_and_group` により、ロール権限の一致（`check_roles`。認証済みユーザーに `-98`、ゲストに `-99` を自動付与し、いずれか1つでも一致すれば許可＝ANY 一致）とグループ権限の一致（`check_groups`。グループ未所属の認証ユーザー／ゲストは `-89`（No Group）扱い。mAPユーザー定義グループを含めて ANY 一致）の **両方**（AND）を満たす場合に許可される。管理者ロールは常に許可。ロールとグループの振り分けは `get_user_roles_and_groups` で行い（#1891 で map conditions に統一）、`weko_accounts.api.map_group_condition`（`<prefix>_<FQDN>_<group_keyword>_` で始まる名前）に一致するものをグループ、`map_role_condition`（`sysadm_group` と一致、または `<prefix>_<FQDN>_<role_keyword>_` で始まる名前）に一致する mAPロールグループは判定対象から除外する。FQDN は `WEKO_ACCOUNTS_IDP_ENTITY_ID` から生成され、同 config または `WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` が未設定の場合は両条件とも偽（mAP 扱いなし）。画面側の振り分けは `Indexes.filter_roles`（`is_map_managed_name`／`is_map_role`）と `get_index_with_role`。呼び出しは `filter_index_list_by_role` / `reduce_index_by_role` / `check_index_permissions`。
 
 ## 更新履歴
 
@@ -436,3 +436,4 @@
 | 2025/11/14|213e1edb08782bee732b86d55c34240bc9758867|インデックス権限判定の修正|
 | 2026/07/17|-|v2.1.0差分反映：No Group(-89)既定・閲覧/投稿の「ロールAND グループ」判定・mAPロール除外を追記|
 | 2026/10/05 | 508030789 | release\_v2.1.0突合：学認mAPロール/グループの判定条件（map conditions #1891：`<prefix>_<FQDN>_<role_keyword>_`／`<group_keyword>_`、WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID 必須）を実装準拠に修正、削除済みインデックス削除時のエラー（#61297）を追記 |
+| 2026/10/26 |  | 用語集（ロールとグループ）に合わせて mAPグループ関連の表記を統一 |

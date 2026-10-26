@@ -168,9 +168,9 @@
 ※2 自身が管理するインデックスに限ります。
 
 > 【v2.1.0】実装補足（v2.1.0）：条件4は `weko_index_tree.utils.check_index_permission_by_role_and_group` で判定され、「ロール条件」かつ「グループ条件」の両方を満たす必要がある（`check_roles(...) and check_groups(...)`）。管理者ロール（`get_user_roles` の第1要素。呼び出し元により System/Repository Administrator、`is_super_role=True` の場合は Community Administrator も含む）は判定前にバイパスされ、インデックスツリーの絞り込み（`reduce_index_by_role`）では Community Administrator は自身が管理するインデックス（`check_comadmin`）のみバイパスされる。
-> - ロール／グループの分類は `get_user_roles_and_groups` が行い、GakuNin mAP のロール（`weko_accounts.api.map_role_condition`：`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` の `sysadm_group` 名、または `<prefix>_<リポジトリFQDN>_<role_keyword>_` で始まるロール名）は判定対象から除外し、mAP グループ（`map_group_condition`：`<prefix>_<リポジトリFQDN>_<group_keyword>_` で始まるロール名）は「ロールグループ」としてグループ条件側で扱う。GakuNin mAP 連携の設定が無い場合はどのロールも mAP ロール／グループとみなされない（#1891 で、従来の「名前が prefix で始まり role_keyword を含む」判定から置き換え）。
-> - ロール条件：ユーザーの通常ロール（ログイン中は「Authenticated User」(-98)、未ログインは「Guest」(-99) を自動付与）のいずれかがインデックスの閲覧ロールに含まれること。
-> - グループ条件：ユーザーの所属グループ、またはロールグループのいずれかがインデックスの閲覧グループに含まれること。未ログイン、またはグループもロールグループも持たないログインユーザーは「グループなし」(-89) として扱われる。
+> - ロール／グループの分類は `get_user_roles_and_groups` が行い、mAPロールグループ（`weko_accounts.api.map_role_condition`：`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` の `sysadm_group` 名、または `<prefix>_<リポジトリFQDN>_<role_keyword>_` で始まるロール名）は判定対象から除外し、mAPユーザー定義グループ（`map_group_condition`：`<prefix>_<リポジトリFQDN>_<group_keyword>_` で始まるロール名）はグループ条件側で扱う。mAP連携の設定が無い場合は `accounts_role` のどのレコードも mAPグループとみなされない（#1891 で、従来の「名前が prefix で始まり role_keyword を含む」判定から置き換え）。
+> - ロール条件：ユーザーのロール（ログイン中は「Authenticated User」(-98)、未ログインは「Guest」(-99) を自動付与）のいずれかがインデックスの閲覧ロールに含まれること。
+> - グループ条件：ユーザーが所属する WEKOグループ、または mAPユーザー定義グループのいずれかがインデックスの閲覧グループに含まれること。未ログイン、または WEKOグループにも mAPユーザー定義グループにも所属しないログインユーザーは「グループなし」(-89) として扱われる。
 
 ## 実装（アクセス制御の担保）
 
@@ -199,3 +199,4 @@
 | 2025/11/14|213e1edb08782bee732b86d55c34240bc9758867|インデックス権限判定の修正|
 | 2026/07/17 |                                            | v2.1.0差分反映：エンバーゴ考慮のaccessRights             |
 | 2026/10/05 | 508030789 | release_v2.1.0突合：インデックス閲覧権限（ロールかつグループ、mAPロール/グループ分類）の実装補足、インデックス名取得・雑誌情報・フィードバックメール一覧の認可、AJAX未認証401を追記 |
+| 2026/10/26 |  | 用語集（ロールとグループ）に合わせて mAPグループ関連の表記を統一 |

@@ -34,9 +34,9 @@
 
       - 設定値によって既定のロールが設定されている場合は、設定値を用いて既定のロールを付与する。
 
-    - isMemberOfの属性値が付与されている場合、学認mAPグループからロールを割り当てる。
+    - isMemberOfの属性値が付与されている場合、mAPグループからロールを割り当てる。
 
-      - 以下のフォーマットに従う学認mAPグループを持つ場合、それぞれ以下のロールに割り当てる。
+      - 以下のフォーマットに従う mAPロールグループを持つ場合、それぞれ以下のロールに割り当てる。
 
         - 「jc_roles_sysadm」→ システム管理者ロール'System Administrator'
 
@@ -70,11 +70,11 @@
 
       - HTTP_WEKOSOCIETYAFFILIATIONに複数属性が含まれている場合は，複数ロールの割当を行えるようにする。（複数属性が含まれている場合は属性値を半角セミコロン「;」で区切られている）
 
-    - 設定値WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPSが有効（True）の場合、isMemberOfについて、所属している学認mAPグループをWEKO3に紐づける。
+    - 設定値WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPSが有効（True）の場合、isMemberOfについて、所属しているmAPグループをWEKO3に紐づける。
 
-      - 学認mAPグループはそのグループエンティティIDを名前に持つロールとして登録される。
+      - mAPグループはそのグループエンティティIDを名前に持つロールとして登録される。
 
-      - ログイン時に所属している学認mAPグループをWEKO3のユーザーに付与する。
+      - ログイン時に所属しているmAPグループをWEKO3のユーザーに付与する。
 
   - シボレスユーザの紐づけキー
 
@@ -90,7 +90,7 @@
 
 4\. 設定
 
-  -  学認mAPグループ情報をWEKO3と連携するか設定する。(Trueの場合、学認mAPグループとWEKO3を連携する。)
+  -  mAPグループ情報をWEKO3と連携するか設定する。(Trueの場合、mAPグループとWEKO3を連携する。)
 
     - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L242>
 
@@ -100,7 +100,7 @@
 
 > WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPS = False
 
-  - GakuNin mAPグループのグループIDのフォーマットおよびWEKO3のロールを紐づけるキーワード
+  - mAPグループのグループIDのフォーマットおよびWEKO3のロールを紐づけるキーワード
 
     - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L248-L258>
 
@@ -111,18 +111,18 @@
 >      WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT = {
 >          "prefix": "jc",                             # Prefix
 >          "sysadm_group": "jc_roles_sysadm",          # システム管理者のグループ名
->          "role_keyword": "ro",                    # ロールグループを表すキーワード
+>          "role_keyword": "ro",                    # mAPロールグループを表すキーワード
 >          "role_mapping": {
 >              "radm": "Repository Administrator", # リポジトリ管理者グループ
 >              "cadm": "Community Administrator",    # コミュニティ管理者グループ
 >              "cont": "Contributor"            # コントリビュータグループ
 >          },
->          "group_keyword": "gr"                 # mAPグループを表すキーワード
+>          "group_keyword": "gr"                 # mAPユーザー定義グループを表すキーワード
 >      }
 
-  -  isMemberOf属性がない場合に付与する、IdP毎のデフォルトの学認mAPグループを設定する。
+  -  isMemberOf属性がない場合に付与する、IdP毎のデフォルトのmAPグループを設定する。
 
-    - WEKO_ACCOUNTS_IDP_ENTITY_IDに設定した値（リポジトリのShibboleth SPのエンティティID）をそのままキーとして、デフォルトの学認mAPグループをリストで値に設定する。
+    - WEKO_ACCOUNTS_IDP_ENTITY_IDに設定した値（リポジトリのShibboleth SPのエンティティID）をそのままキーとして、デフォルトのmAPグループをリストで値に設定する。
 
       - 例 {"https://xxx.repo.nii.ac.jp/shibboleth-sp": ["jc_xxx_repo_nii_ac_jp_ro_cont"] }
 
@@ -136,9 +136,9 @@
 
   - リポジトリのShibboleth SPのエンティティID。設定名に反してIdPのエンティティIDではない。
 
-    - 学認mAPグループ情報キャッシュのキー、学認mAPグループIDの判定、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGのキーに用いる。
+    - mAPグループ情報キャッシュのキー、mAPグループIDの判定、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGのキーに用いる。
 
-    - IdPのエンティティIDを設定するとキャッシュのキーが一致せず、エラーを出さずに学認mAPグループの同期が行われなくなる。詳細は[学認mAPグループ連携](./GAKUNIN_MAP_GROUP_CACHE_01.md)を参照。
+    - IdPのエンティティIDを設定するとキャッシュのキーが一致せず、エラーを出さずにmAPグループの同期が行われなくなる。詳細は[mAPグループ連携](./GAKUNIN_MAP_GROUP_CACHE_01.md)を参照。
 
     - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L233>
 
@@ -148,7 +148,7 @@
 
 > WEKO_ACCOUNTS_IDP_ENTITY_ID = ""
 
-  - 学認mAPのグループ情報を取得するキー値のsuffix
+  - mAPグループ情報キャッシュのキーのsuffix
 
     - パス：<https://github.com/RCOSDP/weko/blob/release_v2.1.0/modules/weko-accounts/weko_accounts/config.py#L245>
 
@@ -164,19 +164,19 @@
 
     - 【v2.1.0】本関数（`POST /weko/shib/login`）は、Web サーバ上の SP ログインスクリプト（`nginx/login.py`）からの送信だけを受け付ける（デコレータ `weko_accounts.utils.shib_sp_source_required`）。送信元アドレス（`request.remote_addr`）が `WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`（既定 `['127.0.0.1', '::1']`）に含まれない場合は警告ログを出して 403 を返す。ログインスクリプトはループバックアドレス宛てに POST し、Host ヘッダに公開ホスト名を入れる
 
-    - WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPSがTrueのとき、学認mAPグループをWEKO3にロールとして作成する
+    - WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPSがTrueのとき、mAPグループを `accounts_role` に登録する
 
-      - Redisの情報を用いて、WEKO3の学認mAPグループリストを更新する
+      - Redisの情報を用いて、WEKO3のmAPグループリストを更新する
 
-        - Redisから「&lt;institution_fqdn&gt;とWEKO_ACCOUNTS_GAKUNIN_GROUP_SUFFIXを結合した値」をキーとして対応する機関の学認mAPグループをリストで取得する
+        - Redisから「&lt;institution_fqdn&gt;とWEKO_ACCOUNTS_GAKUNIN_GROUP_SUFFIXを結合した値」をキーとして対応する機関のmAPグループをリストで取得する
 
           - &lt;institution\_fqdn&gt;はリポジトリのShibboleth SPのエンティティID（変数 WEKO\_ACCOUNTS\_IDP\_ENTITY\_ID）からFQDNを取得し、"."または"-"を"\_"に置き換えた値になる
 
-          - キャッシュは weko-group-cache-db が作成する。キャッシュの形式は[学認mAPグループ連携](./GAKUNIN_MAP_GROUP_CACHE_01.md)を参照
+          - キャッシュは weko-group-cache-db が作成する。キャッシュの形式は[mAPグループ連携](./GAKUNIN_MAP_GROUP_CACHE_01.md)を参照
 
-        - 取得した学認mAPグループリストはロールとして登録されていないかチェックする。ロールとして登録されていない学認mAPグループの場合、新規ロールとしてaccounts_roleテーブルにレコード追加する
+        - 取得した mAPグループのリストが `accounts_role` に登録されていないかチェックする。登録されていない mAPグループの場合、accounts_role テーブルにレコードを追加する
 
-          - 学認mAPグループのインデックスツリーの権限の初期値を併せて登録する
+          - mAPグループのインデックスツリーの権限の初期値を併せて登録する
 
     - リクエストにShib-Session-IDが含まれず、以下のコンフィグWEKO_ACCOUNTS_SHIB_LOGIN_ENABLEDがfalseの場合はエラーとしてWEKOのログイン画面に遷移する
 
@@ -246,9 +246,9 @@
 
         - レコード作成の有無にかかわらず、weko_accounts.api.ShibUser.check_inメソッドの中で、ロールの割り当てを行う
 
-        - 学認mAPグループの更新（isMemberOf属性値に基づく割り当て）は、weko_accounts.api.ShibUser.check_inメソッド内でインラインに行われる。
+        - mAPグループの更新（isMemberOf属性値に基づく割り当て）は、weko_accounts.api.ShibUser.check_inメソッド内でインラインに行われる。
 
-          - shibboleth_userroleテーブルでisMemberOf属性の値を基に、ユーザの学認mAPグループを割り当てる。
+          - shibboleth_userroleテーブルでisMemberOf属性の値を基に、ユーザのmAPグループを割り当てる。
 
       - WEKO_ACCOUNTS_SKIP_CONFIRMATION_PAGE が true の場合は weko_accounts.views.confirm_user_without_page 関数で新規 ID および shibboleth_user テーブルのレコードの自動生成を行う
 
@@ -266,17 +266,17 @@
 
       - weko_accounts.api.ShibUser.check_inメソッドの中で、ロールの割り当てを行う
 
-        - WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPSがTrueのとき、ログインユーザーに学認mAPグループを割り当てる
+        - WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPSがTrueのとき、ログインユーザーにmAPグループを割り当てる
 
-          - shibboleth_userroleテーブルでisMemberOf属性の値を基に、ユーザーの学認mAPグループをロールとして割り当てる
+          - shibboleth_userroleテーブルでisMemberOf属性の値を基に、ユーザーのmAPグループをロールとして割り当てる
 
-            - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる
+            - mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる
 
-              - WEKO_ACCOUNTS_IDP_ENTITY_IDの値（リポジトリのShibboleth SPのエンティティID）をそのままキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる
+              - WEKO_ACCOUNTS_IDP_ENTITY_IDの値（リポジトリのShibboleth SPのエンティティID）をそのままキーとして利用して、デフォルトのmAPグループを取得して割り当てる
 
               - 該当グループが見つからない場合、またはWEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない
 
-          - 学認mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる
+          - mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる
 
             - 以下のフォーマットに従う場合、対応するWEKO3のロールをログインユーザーに割り当てる
 
@@ -294,17 +294,17 @@
 
       - weko_accounts.api.ShibUser.check_inメソッドの中で、ロールの割り当てを行う
 
-        - WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPSがTrueのとき、ログインユーザーに学認mAPグループを割り当てる
+        - WEKO_ACCOUNTS_SHIB_BIND_GAKUNIN_MAP_GROUPSがTrueのとき、ログインユーザーにmAPグループを割り当てる
 
-          - shibboleth_userroleテーブルでisMemberOf属性の値を基に、ユーザの学認mAPグループをロールとして割り当てる
+          - shibboleth_userroleテーブルでisMemberOf属性の値を基に、ユーザのmAPグループをロールとして割り当てる
 
-            - 学認mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる
+            - mAPグループが割り当てられていないShibbolethログインユーザーの場合、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGの設定値を基に、ログインユーザーのデフォルトのロールを割り当てる
 
-              - WEKO_ACCOUNTS_IDP_ENTITY_IDの値（リポジトリのShibboleth SPのエンティティID）をそのままキーとして利用して、デフォルトの学認mAPグループを取得して割り当てる
+              - WEKO_ACCOUNTS_IDP_ENTITY_IDの値（リポジトリのShibboleth SPのエンティティID）をそのままキーとして利用して、デフォルトのmAPグループを取得して割り当てる
 
               - 該当グループが見つからない場合、またはWEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGに該当するキー値が存在しない場合はユーザーにロールを付与しない
 
-          - 学認mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる
+          - mAPグループの情報を基に、WEKO3のロールをShibbolethログインユーザーに割り当てる
 
             - 以下のフォーマットに従う場合、対応するロールをログインユーザーに割り当てる
 
@@ -346,12 +346,13 @@
 | 2026/07/14 |  | 本文を実装準拠に修正 |
 | 2026/07/17 |  | v2.1.0差分反映：各shibビューの `next=ams`（AMS経路）分岐を追記 |
 | 2026/10/05 | 508030789 | release\_v2.1.0突合：SP 属性の受け付け元限定（`shib_sp_source_required`・nginx の `$realip_remote_addr` 判定）、mAP ロール／グループ判定条件（`group_keyword`・`is_map_*`）を追記。属性受け渡しの説明を旧 `login.php` から現行の `login.py`（fcgiwrap 実行の CGI）に更新 |
-| 2026/10/25 |  | WEKO_ACCOUNTS_IDP_ENTITY_IDの説明をSPのエンティティIDに訂正、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGのキーを実装に合わせて訂正、学認mAPグループ連携への参照を追加 |
+| 2026/10/25 |  | WEKO_ACCOUNTS_IDP_ENTITY_IDの説明をSPのエンティティIDに訂正、WEKO_ACCOUNTS_GAKUNIN_DEFAULT_GROUP_MAPPINGのキーを実装に合わせて訂正、mAPグループ連携への参照を追加 |
+| 2026/10/26 |  | 用語集（ロールとグループ）に合わせて mAPグループ関連の表記を統一 |
 
 ## 実装補足（v2.0.2 実装との突き合わせ）
 
 - 【v2.1.0】実装補足（v2.1.0、SP 属性の受け付け元限定）：IdP の属性はリクエストそのものから取り出すため、`shib_sp_login` は SP ログインスクリプトからの POST に限って受け付ける（`shib_sp_source_required`、許可アドレスは `WEKO_ACCOUNTS_SHIB_SP_ALLOWED_ADDRS`、それ以外は 403）。nginx（`weko.conf`／`weko-ams.conf`／`weko-ams-restricted.conf`）でも `location = /weko/shib/login` を設け、`map "$request_method:$realip_remote_addr" $weko_shib_sp_denied` により GET/HEAD 以外はループバック（`127.0.0.1`／`::1`）からの POST のみ通し、それ以外は 403 とする。判定には real_ip モジュールが X-Forwarded-For で書き換える前の接続元 `$realip_remote_addr` を用い、WEKO へ渡す `REMOTE_ADDR` も同じ値にする（信頼プロキシから X-Forwarded-For にループバックを入れてなりすます経路を塞ぐ）。既存環境では `login.py`／`login.php` と nginx 設定を同時に更新する必要がある（片方だけでは Shibboleth ログインが通らない）。
-- 【v2.1.0】実装補足（v2.1.0、mAP ロール／グループの判定条件）：学認 mAP 由来のロール／グループの判定は `weko_accounts.api` の `map_role_condition`／`map_group_condition`（SQL 条件）および `is_map_role`／`is_map_group`／`is_map_sysadm_role`／`is_map_managed_name` に集約された。ロールは `sysadm_group`（`jc_roles_sysadm`）または `<prefix>_<fqdn>_<role_keyword>_` 前方一致、グループは `<prefix>_<fqdn>_<group_keyword>_`（既定 `jc_<fqdn>_gr_`）前方一致で、`<fqdn>` は `WEKO_ACCOUNTS_IDP_ENTITY_ID` から作る自機関の値（`create_fqdn_from_entity_id`）。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` と `WEKO_ACCOUNTS_IDP_ENTITY_ID` のいずれかが未設定なら、どのロールも mAP 由来とみなさない（`_is_gakunin_map_configured`）。ログイン時のロール更新 `update_roles` で外すロールも、従来の「`jc_` で始まる」から `is_map_managed_name`（`jc_roles_sysadm` または `<prefix>_<fqdn>_` 前方一致）に限定された。ユーザー管理・コミュニティ管理画面のロール／グループ選択肢も同じ条件で振り分ける。
+- 【v2.1.0】実装補足（v2.1.0、mAPグループの判定条件）：mAPロールグループ・mAPユーザー定義グループの判定は `weko_accounts.api` の `map_role_condition`／`map_group_condition`（SQL 条件）および `is_map_role`／`is_map_group`／`is_map_sysadm_role`／`is_map_managed_name` に集約された。mAPロールグループは `sysadm_group`（`jc_roles_sysadm`）または `<prefix>_<fqdn>_<role_keyword>_` 前方一致、mAPユーザー定義グループは `<prefix>_<fqdn>_<group_keyword>_`（既定 `jc_<fqdn>_gr_`）前方一致で、`<fqdn>` は `WEKO_ACCOUNTS_IDP_ENTITY_ID` から作る自機関の値（`create_fqdn_from_entity_id`）。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` と `WEKO_ACCOUNTS_IDP_ENTITY_ID` のいずれかが未設定なら、`accounts_role` のどのレコードも mAPグループとみなさない（`_is_gakunin_map_configured`）。ログイン時のロール更新 `update_roles` で外すロールも、従来の「`jc_` で始まる」から `is_map_managed_name`（`jc_roles_sysadm` または `<prefix>_<fqdn>_` 前方一致）に限定された。ユーザー管理・コミュニティ管理画面のロール／グループ選択肢も同じ条件で振り分ける。
 
 - 実装補足（訂正、v2.0.2）：Shibboleth ログインの実エンドポイントは `POST /weko/shib/login`（`weko_accounts.views.shib_sp_login`）。ロール付与は `ShibUser.check_in`（`gakunin_check_in` というメソッドは存在せず、mAPグループ処理は check_in 内にインライン）→ `_find_organization_name`（organizationName判定。真なら mAPグループ判定 `_assign_roles_to_user` をスキップ）。
 - config 実値：`WEKO_ACCOUNTS_SHIB_ROLE_RELATION = {'管理者':'System Administrator','図書館員':'Repository Administrator','教員':'Contributor','教官':'Contributor'}`。`WEKO_ACCOUNTS_GAKUNIN_GROUP_PATTERN_DICT` は `role_keyword='ro'`、`role_mapping={'radm':'Repository Administrator','cadm':'Community Administrator','cont':'Contributor'}`（グループ名例は `jc_<fqdn>_ro_radm` 等）。`WEKO_ACCOUNTS_IDP_ENTITY_ID` の既定は空文字。
