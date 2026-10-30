@@ -230,3 +230,4 @@
     - [POST /api/&lt;version>/records/&lt;pid>/files/&lt;filename>/application](API_RESTRICTED_ACCESS_01.md#post-apiversionrecordspidfilesfilenameapplication)
     - [POST /api/&lt;version>/workflow/activities/&lt;activity_id>/application](API_RESTRICTED_ACCESS_01.md#post-apiversionworkflowactivitiesactivity_idapplication)
     - [GET /api/&lt;version>/records/&lt;pid>/need-restricted-access](API_RESTRICTED_ACCESS_01.md#get-apiversionrecordspidneed-restricted-access)
+  - [レコード・デポジットの登録・更新・削除](API_RECORD_WRITE_01.md#レコードデポジットの登録更新削除)
