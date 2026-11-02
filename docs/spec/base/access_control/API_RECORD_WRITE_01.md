@@ -18,6 +18,7 @@
 | `/api/workspace/search` | `RECORDS_REST_ENDPOINTS['worksapce']` の `list_route` | GET, POST |
 | `/api/deposits/items` | `DEPOSIT_REST_ENDPOINTS['depid']`（`WEKO_DEPOSIT_REST_ENDPOINTS`）の `list_route` | GET, POST |
 | `/api/deposits/items/<pid_value>` | 同上の `item_route` | GET, PUT, PATCH, DELETE |
+| `/api/deposits/items/<pid_value>/actions/<action>` | 同上の `actions` ルート（`<action>`＝`edit`・`discard`） | POST |
 
 ## 3. 権限
 
@@ -59,11 +60,27 @@
 
 - GET の権限は変更しない。DELETE は従来どおり `deny_all`
 
+### 3-4. `POST /api/deposits/items/<pid_value>/actions/<action>`（`edit`・`discard`）（ID：RW-D-03）
+
+| 条件 / ロール | システム<br>管理者 | リポジトリ<br>管理者 | コミュニティ<br>管理者 | 登録ユーザー | 一般ユーザー | ゲスト<br>（未ログイン） |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| アイテムの編集権限あり | ○ | ○ | ○ | ○ | ○ | － |
+| アイテムの編集権限なし | － | － | ×（403） | ×（403） | ×（403） | ×（401） |
+| アイテムが存在しない | ×（404） | ×（404） | ×（404） | ×（404） | ×（404） | ×（401） |
+
+- `actions` ルート（編集開始＝`edit`・破棄＝`discard`）の POST にも、RW-D-02 と同じデコレータ `weko_deposit.rest:require_item_edit_permission` を適用する。判定内容（`edit_permission_factory`・バージョン付き pid の親 recid 判定）は RW-D-02 と同じ
+
 ## 4. 判定の順序
 
-- RW-D-01・RW-D-02 のデコレータは、Invenio-Records-REST の権限ファクトリより先に実行する。デコレータで拒否した場合、ビューの処理（レコードの作成・更新）は行わない
+- RW-D-01・RW-D-02・RW-D-03 のデコレータは、Invenio-Records-REST の権限ファクトリより先に実行する。デコレータで拒否した場合、ビューの処理（レコードの作成・更新・編集開始・破棄）は行わない
 
-- デコレータは対象のメソッドにのみ適用する（POST：`list_route`、PUT・PATCH：`item_route`）。同じルートの GET 等には適用しない
+- デコレータは対象のメソッドにのみ適用する（POST：`list_route`・`actions` ルート、PUT・PATCH：`item_route`）。同じルートの GET 等には適用しない
+
+- 判定を権限ファクトリ（`*_permission_factory_imp`）ではなくデコレータで行うのは、次の理由による（`weko_deposit.rest:require_item_edit_permission` の実装による）
+
+  - 対象ビューは `ContentNegotiatedMethodView` で、ビュー本体が例外補足（`try`）に包まれている。ビュー内部で `abort` すると、その例外が本体側の補足に取り込まれて想定と異なる応答になる。判定をビューの外側（デコレータ）に置くことでこれを避ける
+
+  - 未ログインの扱いを `@login_required` に任せると、UI アプリの文脈ではログイン画面への 302 応答が返り、その応答が `make_response(*result)` に渡されて `(pid, record)` として展開されるため型が合わなくなる。デコレータ内で 401 を送出することで、未ログインを 401、編集権限なしを 403 と明確に分ける
 
 ## 5. 設定
 
@@ -73,6 +90,7 @@
   | ---- | ---- | ---- |
   | `create_decorators` | `list_route` の POST | デコレータ、またはそのインポート文字列のリスト |
   | `update_decorators` | `item_route` の PUT・PATCH | 同上 |
+  | `action_decorators` | `actions` ルートの POST | 同上 |
 
 - リストの先頭のデコレータが最も外側（最初に実行）となる
 
@@ -94,7 +112,8 @@
 | 参照の回帰 | `/api/records` 等の GET（検索・詳細）が従来どおり利用できる | RW-R-01 |
 | デポジット登録 | 未ログインかつゲストセッションなしは 401、ログイン済み・ゲストセッションありは登録できる | RW-D-01 |
 | デポジット更新 | PUT・PATCH それぞれについて、未ログイン 401、編集権限なし 403、存在しない 404、編集権限ありは更新できる | RW-D-02 |
-| バージョン付き pid | `<recid>.<version>` の PUT・PATCH を親の recid の編集権限で判定する | RW-D-02 |
+| デポジットのアクション | `actions`（`edit`・`discard`）の POST について、未ログイン 401、編集権限なし 403、存在しない 404、編集権限ありは実行できる | RW-D-03 |
+| バージョン付き pid | `<recid>.<version>` の PUT・PATCH・`actions` POST を親の recid の編集権限で判定する | RW-D-02・RW-D-03 |
 | メソッドの限定 | デコレータが GET 等の対象外メソッドに影響しない | 4 |
 | 既存経路の回帰 | アイテム登録画面・アイテム編集・SWORD API・一括インポートによる登録・編集が従来どおり完了する | 1 |
 | オプション | `create_decorators`・`update_decorators` 未指定のエンドポイントは従来どおり動作する。指定順に適用される | 5 |
@@ -104,3 +123,4 @@
 | 日付 | 更新内容 |
 | ---- | ---- |
 | （リリース日） | 新規作成（<リリース版>） |
+| 2026/11/02 | `actions` ルート（`edit`・`discard`）の POST と `action_decorators` オプションを追記（RW-D-03）。権限ファクトリではなくデコレータで判定する理由（ビュー本体の例外補足・`make_response` の展開と 401/403 の分離）を §4 に追記 |
