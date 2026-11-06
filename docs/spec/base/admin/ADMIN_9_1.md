@@ -195,6 +195,35 @@ OAI-PMHハーベスト実行履歴の表示件数を設定
         </tbody>
         </table>
 
+      - DDI（oai_ddi25 / ddi）の場合、取得したメタデータ中の空要素（値を持たない要素。例：`<depositr/>`）は無視する。
+
+        <table>
+        <thead>
+        <tr>
+        <th>ケース</th>
+        <th>例</th>
+        <th>処理</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>DDIマッピング定義に含まれる要素が空要素</td>
+        <td>&lt;altTitl/&gt;、&lt;depositr/&gt;</td>
+        <td>当該要素は値なしとして扱い、登録しない。同一レコードの他の要素は通常どおり登録する。対象はDDIマッピング定義に含まれるすべての要素であり、特定の要素名に依存しない</td>
+        </tr>
+        <tr>
+        <td>繰り返し要素に空要素と値を持つ要素が混在</td>
+        <td>&lt;holdings URI="…"/&gt; と &lt;holdings/&gt; の混在</td>
+        <td>空要素のみを除外し、値を持つ要素を登録する</td>
+        </tr>
+        <tr>
+        <td>要素内容は空だが属性を持つ要素</td>
+        <td>&lt;holdings URI="…"/&gt;</td>
+        <td>従来どおり属性値を登録する</td>
+        </tr>
+        </tbody>
+        </table>
+
 - 新規アイテムの「pid_id」、「pid_value」の値を設定する。
   - 「pid_id」= hvstid
   - 「pid_value」= identifier値（oai:invenio:recid/&lt;id&gt;）
@@ -264,3 +293,4 @@ OAI-PMHハーベスト実行履歴の表示件数を設定
 | 2025/01/23 | - | サブリポジトリ対応 |
 | 2025/12/22 | 3746dcec79f1b508e40d8ba078c3165cd8acca3a | v2.0.0 対応 |
 | 2026/10/05 | 508030789 | release_v2.1.0突合：Target Index の選択肢から削除済みインデックスを除外（#61565）を追記 |
+| 2026/10/23 | - | DDIハーベストにおける空要素の取扱い（空要素を無視）を追記（J2026-03） |
